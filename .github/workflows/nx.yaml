@@ -1,9 +1,10 @@
-name: CI
+name: NX test
 on:
   push:
     branches:
       # Change this if your primary branch is not main
-      - main
+      - '**'        # matches every branch
+      - '!main'
   pull_request:
 
 # Needed for nx-set-shas when run on the main branch
