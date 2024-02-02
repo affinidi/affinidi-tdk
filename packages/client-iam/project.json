@@ -1,0 +1,35 @@
+{
+  "name": "@affinidi/test-client-iam",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/client-iam",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/mylib",
+        "main": "packages/client-iam/index.ts",
+        "tsConfig": "packages/client-iam/tsconfig.lib.json",
+        "assets": ["packages/client-iam/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+      "semantic-release": {
+        "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+        
+        "options": {
+                  "changelog": true,
+        "github": true,
+        "npm": false,
+                  "repositoryUrl": "git@github.com:affinidi/sdk-poc.git",
+            "branches": [
+              "main"
+        ]
+      }
+  }
+  },
+  "tags": []
+}
