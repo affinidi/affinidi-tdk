@@ -59,7 +59,7 @@
           "changelog": true,
           "github": true,
           "npm": false,
-          "repositoryUrl": "git@github.com:affinidi/sdk-poc.git",
+          "repositoryUrl": "git@github.com:affinidi/sdk.git",
           "branches": [
             "main"
           ]
