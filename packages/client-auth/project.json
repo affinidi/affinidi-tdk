@@ -1,0 +1,35 @@
+{
+  "name": "@affinidi/test-client-auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/client-auth",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/mylib",
+        "main": "packages/client-auth/index.ts",
+        "tsConfig": "packages/client-auth/tsconfig.lib.json",
+        "assets": ["packages/client-auth/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+      "semantic-release": {
+        "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+        
+        "options": {
+                  "changelog": true,
+        "github": true,
+        "npm": false,
+                  "repositoryUrl": "git@github.com:affinidi/sdk-poc.git",
+            "branches": [
+              "main"
+        ]
+      }
+  }
+  },
+  "tags": []
+}

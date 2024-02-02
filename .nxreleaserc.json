@@ -1,0 +1,9 @@
+{
+  "changelog": true,
+  "npm": true,
+  "github": true,
+  "repositoryUrl": "git@github.com:affinidi/sdk-poc.git",
+  "branches": [
+    "master"
+  ]
+}

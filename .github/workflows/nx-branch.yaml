@@ -1,4 +1,4 @@
-name: NX test
+name: NX branch
 on:
   push:
     branches:
