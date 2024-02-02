@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/affinidi/sdk-poc/compare/@affinidi/test-client-iam-v1.0.0...@affinidi/test-client-iam-v1.0.1) (2024-02-02)
+
+
+### Bug Fixes
+
+* format ([b9723c3](https://github.com/affinidi/sdk-poc/commit/b9723c3a15882c45bdedf702c19a63c4aced6370))
+
 # 1.0.0 (2024-02-02)
 
 
