@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/affinidi/sdk-poc/compare/@affinidi/test-client-iam-v1.0.1...@affinidi/test-client-iam-v1.1.0) (2024-02-02)
+
+
+### Features
+
+* update client kms ([fd6a62a](https://github.com/affinidi/sdk-poc/commit/fd6a62ae3aa8f3a42e3b7e58ebbbc0f702306abe))
+
 ## [1.0.1](https://github.com/affinidi/sdk-poc/compare/@affinidi/test-client-iam-v1.0.0...@affinidi/test-client-iam-v1.0.1) (2024-02-02)
 
 
