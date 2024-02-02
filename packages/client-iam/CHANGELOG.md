@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.2.0...@affinidi/test-client-iam-v1.2.1) (2024-02-02)
+
+
+### Bug Fixes
+
+* name of the repo ([bae5b6f](https://github.com/affinidi/sdk/commit/bae5b6f11ec14f04cbb6fb7e392c6722af558a55))
+
 # [1.2.0](https://github.com/affinidi/sdk-poc/compare/@affinidi/test-client-iam-v1.1.0...@affinidi/test-client-iam-v1.2.0) (2024-02-02)
 
 
