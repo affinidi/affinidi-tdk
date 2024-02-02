@@ -1,6 +1,6 @@
 {
   "name": "@affinidi/test-client-iam",
-  "version": "0.2.4",
+  "version": "0.1.0",
   "description": "OpenAPI client for @affinidi/test-client-iam",
   "author": "Affinidi",
   "repository": {
