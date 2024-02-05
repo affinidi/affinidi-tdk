@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.3.0...@affinidi/test-client-iam-v1.4.0) (2024-02-05)
+
+
+### Features
+
+* update client dcf ([6d8b7d3](https://github.com/affinidi/sdk/commit/6d8b7d378b11e0aa59769f0e315e90df3f6f931c))
+
 # [1.3.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.2.1...@affinidi/test-client-iam-v1.3.0) (2024-02-05)
 
 
