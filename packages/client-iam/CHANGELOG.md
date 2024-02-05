@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.6.0...@affinidi/test-client-iam-v1.7.0) (2024-02-05)
+
+
+### Features
+
+* update client aca ([932e680](https://github.com/affinidi/sdk/commit/932e680de2f744684bedfef56285a38b87bf0fe8))
+
 # [1.6.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.5.0...@affinidi/test-client-iam-v1.6.0) (2024-02-05)
 
 
