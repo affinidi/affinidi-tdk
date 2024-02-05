@@ -54,7 +54,7 @@
         "options": {
           "changelog": true,
           "github": true,
-          "npm": false,
+          "npm": true,
           "repositoryUrl": "git@github.com:affinidi/sdk.git",
           "branches": [
             "main"
