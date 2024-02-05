@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.2.1...@affinidi/test-client-iam-v1.3.0) (2024-02-05)
+
+
+### Features
+
+* update client kyc ([71e5563](https://github.com/affinidi/sdk/commit/71e556394c207b5addc398a83b312e38c7c9f412))
+
 ## [1.2.1](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.2.0...@affinidi/test-client-iam-v1.2.1) (2024-02-02)
 
 
