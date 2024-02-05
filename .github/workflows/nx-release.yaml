@@ -21,3 +21,4 @@ jobs:
       - run: npx nx run-many  -t semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.PUBLIC_NPM_NODE_AUTH_TOKEN }}
