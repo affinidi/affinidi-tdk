@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.7.0...@affinidi/test-client-iam-v1.7.1) (2024-02-06)
+
+
+### Bug Fixes
+
+* remove clients ([686fcab](https://github.com/affinidi/sdk/commit/686fcab48591889d698516b45d1ff1215f75e679))
+
 # [1.7.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.6.0...@affinidi/test-client-iam-v1.7.0) (2024-02-05)
 
 
