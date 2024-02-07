@@ -1,11 +1,11 @@
 {
   "name": "affinidi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "prepare": "husky install"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "tslib": "^2.3.0"
   },
