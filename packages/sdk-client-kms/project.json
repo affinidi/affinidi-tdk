@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
+  "private": false,
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -24,7 +25,15 @@
         "github": true,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/sdk.git",
-        "branches": ["main"]
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
       }
     }
   },
