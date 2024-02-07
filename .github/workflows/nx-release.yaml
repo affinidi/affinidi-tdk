@@ -18,7 +18,10 @@ jobs:
 
       - run: npm ci
 
-      - run: npx nx run-many  -t semantic-release
+    #   - run: npx nx run-many  -t semantic-release
+      - run: npm unpublish affinidi@1.2.0
+      - run: npm unpublish affinidi@1.2.0
+        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #   NPM_TOKEN: ${{ secrets.PUBLIC_NPM_NODE_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.PUBLIC_NPM_NODE_AUTH_TOKEN }}
