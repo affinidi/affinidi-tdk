@@ -1,6 +1,6 @@
 {
   "name": "@affinidi/sdk",
-  "version": "1.0.3",
+  "version": "1.2.0",
   "license": "MIT",
   "scripts": {
     "prepare": "husky install"
