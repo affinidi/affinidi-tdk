@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.0.3...@affinidi/test-sdk-client-iam-v1.0.4) (2024-02-07)
+
+
+### Bug Fixes
+
+* checkin ([d062d4d](https://github.com/affinidi/sdk/commit/d062d4db6d86b6f5f0fbbfb5976208e771192a15))
+
 ## [1.0.3](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.0.2...@affinidi/test-sdk-client-iam-v1.0.3) (2024-02-07)
 
 
