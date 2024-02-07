@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-kms-v1.0.1...@affinidi/test-sdk-client-kms-v1.1.0) (2024-02-07)
+
+
+### Features
+
+* update client iam ([#23](https://github.com/affinidi/sdk/issues/23)) ([66a0010](https://github.com/affinidi/sdk/commit/66a001014dea0d582512cd5d005da1e49438a165))
+
 ## [1.0.1](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-kms-v1.0.0...@affinidi/test-sdk-client-kms-v1.0.1) (2024-02-07)
 
 
