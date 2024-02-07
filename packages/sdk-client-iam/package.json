@@ -1,7 +1,7 @@
 {
   "name": "@affinidi/test-sdk-client-iam",
   "version": "1.0.0",
-  "description": "OpenAPI client for @affinidi/test-sdk-client-iam v1.97.3",
+  "description": "OpenAPI client for @affinidi/test-sdk-client-iam main",
   "author": "Affinidi",
   "repository": {
     "type": "git",
@@ -29,40 +29,6 @@
   "dependencies": {
     "axios": "^1.6.0",
     "url": "^0.11.3"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "executor": "@nx/js:tsc",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "options": {
-          "outputPath": "packages/test-sdk-client-iam",
-          "main": "packages/test-sdk-client-iam/index.ts",
-          "tsConfig": "packages/test-sdk-client-iam/tsconfig.lib.json",
-          "assets": [
-            "packages/test-sdk-client-iam/*.md"
-          ]
-        }
-      },
-      "lint": {
-        "executor": "@nx/eslint:lint"
-      },
-      "semantic-release": {
-        "executor": "@theunderscorer/nx-semantic-release:semantic-release",
-        "options": {
-          "changelog": true,
-          "github": true,
-          "npm": true,
-          "repositoryUrl": "git@github.com:affinidi/sdk.git",
-          "branches": [
-            "main"
-          ]
-        }
-      }
-    },
-    "tags": []
   },
   "devDependencies": {
     "@types/node": "^18.18.2",
