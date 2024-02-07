@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.7.1...@affinidi/test-client-iam-v1.8.0) (2024-02-07)
+
+
+### Features
+
+* update client iam ([#17](https://github.com/affinidi/sdk/issues/17)) ([0d0e57b](https://github.com/affinidi/sdk/commit/0d0e57b4ab18345718426d06b67e1a11a7dee3ae))
+* update client kms ([#18](https://github.com/affinidi/sdk/issues/18)) ([baecf01](https://github.com/affinidi/sdk/commit/baecf01fd61e721c4637dcdb724dd251b713d928))
+
 ## [1.7.1](https://github.com/affinidi/sdk/compare/@affinidi/test-client-iam-v1.7.0...@affinidi/test-client-iam-v1.7.1) (2024-02-06)
 
 
