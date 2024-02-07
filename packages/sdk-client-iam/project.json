@@ -24,7 +24,15 @@
         "github": true,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/sdk.git",
-        "branches": ["main"]
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
       }
     }
   },
