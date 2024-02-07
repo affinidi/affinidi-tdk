@@ -1,6 +1,6 @@
 {
   "name": "@affinidi/test-sdk-client-kms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenAPI client for @affinidi/test-sdk-client-kms main",
   "author": "Affinidi",
   "repository": {

@@ -1,3 +1,14 @@
+## [1.0.1](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-kms-v1.0.0...@affinidi/test-sdk-client-kms-v1.0.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* checkin ([d062d4d](https://github.com/affinidi/sdk/commit/d062d4db6d86b6f5f0fbbfb5976208e771192a15))
+* checkin ([0fff372](https://github.com/affinidi/sdk/commit/0fff372316c1d43210f60321448ebc58d782c75d))
+* checkin ([5448521](https://github.com/affinidi/sdk/commit/5448521a2279127910194fb00c3944f200c15cfa))
+* checkin ([e90b7eb](https://github.com/affinidi/sdk/commit/e90b7eb93d829d9e8b9cfb7217f94bb0fff0b5d4))
+* unprivate ([3ed123f](https://github.com/affinidi/sdk/commit/3ed123f615e6c59f55fb8abbd6de258da200caa0))
+
 # 1.0.0 (2024-02-07)
 
 
