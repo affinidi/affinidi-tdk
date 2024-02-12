@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.3.1...@affinidi/test-sdk-client-iam-v1.3.2) (2024-02-12)
+
+
+### Bug Fixes
+
+* package-lock ([62d2c7f](https://github.com/affinidi/sdk/commit/62d2c7f3ef139c3092446016043c1c720c7e9904))
+
 ## [1.3.1](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.3.0...@affinidi/test-sdk-client-iam-v1.3.1) (2024-02-12)
 
 
