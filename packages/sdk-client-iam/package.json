@@ -1,6 +1,6 @@
 {
   "name": "@affinidi/test-sdk-client-iam",
-  "version": "1.3.0",
+  "version": "1.0.0",
   "description": "OpenAPI client for @affinidi/test-sdk-client-iam main",
   "author": "Affinidi",
   "repository": {
@@ -16,7 +16,7 @@
     "openapi-generator",
     "@affinidi/test-sdk-client-iam"
   ],
-  "license": "Unlicense",
+  "license": "Apache-2.0",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/esm/index.js",
