@@ -1,0 +1,15 @@
+name: security
+on:
+  pull_request: {}
+  workflow_dispatch: {}
+jobs:
+  security:
+    permissions:
+      contents: read
+      checks: read
+      statuses: read
+      security-events: write
+    uses: affinidi/pipeline-security/.github/workflows/security-scanners.yml@feat/check-inherit
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit
