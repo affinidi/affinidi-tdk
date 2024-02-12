@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.2.0...@affinidi/test-sdk-client-iam-v1.2.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* disalbe publishing for now ([b3f18c0](https://github.com/affinidi/sdk/commit/b3f18c0387b654e12bb93e05e3848e4fa8ea3995))
+
 # [1.2.0](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.1.0...@affinidi/test-sdk-client-iam-v1.2.0) (2024-02-07)
 
 
