@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/test-sdk-client-iam",
+  "name": "@affinidi/test-sdk-client-kyc",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/packages/test-sdk-client-iam",
-        "main": "packages/test-sdk-client-iam/index.ts",
-        "tsConfig": "packages/test-sdk-client-iam/tsconfig.lib.json",
-        "assets": ["packages/test-sdk-client-iam/*.md"]
+        "outputPath": "dist/packages/packages/test-sdk-client-kyc",
+        "main": "packages/test-sdk-client-kyc/index.ts",
+        "tsConfig": "packages/test-sdk-client-kyc/tsconfig.lib.json",
+        "assets": ["packages/test-sdk-client-kyc/*.md"]
       }
     },
     "lint": {

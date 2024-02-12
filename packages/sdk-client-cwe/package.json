@@ -1,7 +1,7 @@
 {
-  "name": "@affinidi/test-sdk-client-kms",
+  "name": "@affinidi/test-sdk-client-cwe",
   "version": "1.0.0",
-  "description": "OpenAPI client for @affinidi/test-sdk-client-kms main",
+  "description": "OpenAPI client for @affinidi/test-sdk-client-cwe main",
   "author": "Affinidi",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "network",
     "openapi-client",
     "openapi-generator",
-    "@affinidi/test-sdk-client-kms"
+    "@affinidi/test-sdk-client-cwe"
   ],
   "license": "Apache-2.0",
   "main": "./dist/index.js",
