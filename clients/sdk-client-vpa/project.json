@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi/sdk-client-vpa",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/client-iam",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/packages/sdk-client-vpa",
+        "main": "packages/sdk-client-vpa/index.ts",
+        "tsConfig": "packages/sdk-client-vpa/tsconfig.lib.json",
+        "assets": ["packages/sdk-client-vpa/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
