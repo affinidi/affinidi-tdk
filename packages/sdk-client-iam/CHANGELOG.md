@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.3.2...@affinidi/test-sdk-client-iam-v1.4.0) (2024-02-14)
+
+
+### Features
+
+* update client all ([#35](https://github.com/affinidi/sdk/issues/35)) ([0575b81](https://github.com/affinidi/sdk/commit/0575b81ccd041409328b39f2f418adf526c45148))
+
 ## [1.3.2](https://github.com/affinidi/sdk/compare/@affinidi/test-sdk-client-iam-v1.3.1...@affinidi/test-sdk-client-iam-v1.3.2) (2024-02-12)
 
 
