@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi/sdk-client-kms",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/client-iam",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/packages/sdk-client-kms",
+        "main": "packages/sdk-client-kms/index.ts",
+        "tsConfig": "packages/sdk-client-kms/tsconfig.lib.json",
+        "assets": ["packages/sdk-client-kms/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
