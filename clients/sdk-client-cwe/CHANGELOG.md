@@ -6,6 +6,14 @@
 * redo layout ([2a11238](https://github.com/affinidi/sdk/commit/2a11238a61236fada32f799145af3d921e103d49))
 * update package lock ([81e578b](https://github.com/affinidi/sdk/commit/81e578b27f5420878c7c9c402bc1ee778e3abb65))
 
+# [1.1.0](https://github.com/affinidi/sdk/compare/@affinidi/sdk-client-cwe-v1.0.0...@affinidi/sdk-client-cwe-v1.1.0) (2024-02-16)
+
+
+### Features
+
+* redo layout ([2a11238](https://github.com/affinidi/sdk/commit/2a11238a61236fada32f799145af3d921e103d49))
+* update package lock ([81e578b](https://github.com/affinidi/sdk/commit/81e578b27f5420878c7c9c402bc1ee778e3abb65))
+
 # [1.1.0](https://github.com/affinidi/sdk/compare/@affinidi/sdk-client-cwe-v1.0.0...@affinidi/sdk-client-cwe-v1.1.0) (2024-02-14)
 
 
