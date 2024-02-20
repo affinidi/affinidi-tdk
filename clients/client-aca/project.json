@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi/client-aca",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "clients/client-aca",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/clients/client-aca",
+        "main": "clients/client-aca/index.ts",
+        "tsConfig": "clients/client-aca/tsconfig.lib.json",
+        "assets": ["clients/client-aca/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
