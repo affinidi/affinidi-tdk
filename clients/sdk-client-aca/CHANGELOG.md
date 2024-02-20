@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/affinidi/sdk/compare/@affinidi/sdk-client-aca-v1.1.0...@affinidi/sdk-client-aca-v1.2.0) (2024-02-20)
+
+
+### Features
+
+* ftl-13432 add auth-provider package, with auto refresh project scoped token for PAT ([5913616](https://github.com/affinidi/sdk/commit/5913616ba9364c4db04e668ce15431259741d63e))
+
 # [1.1.0](https://github.com/affinidi/sdk/compare/@affinidi/sdk-client-aca-v1.0.0...@affinidi/sdk-client-aca-v1.1.0) (2024-02-14)
 
 
