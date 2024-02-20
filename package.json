@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "license": "Apache-2.0",
   "scripts": {
+    "build": "nx run-many --verbose --target=build",
     "prepare": "husky install"
   },
   "private": true,
