@@ -1,9 +1,9 @@
-## @affinidi/sdk-client-vpa
+## @affinidi/tdk-client-vpa
 
 ### Usage
 
 ```bash
-npm install @affinidi/sdk-client-vpa --save
+npm install @affinidi/tdk-client-vpa --save
 ```
 
 #### With PAT
@@ -11,7 +11,7 @@ npm install @affinidi/sdk-client-vpa --save
 To call service methods with personal access token, you need to get a getProjectScopedToken for the machine user:
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/sdk-client-vpa';
+import { SomeClassApi, Configuration } from '@affinidi/tdk-client-vpa';
 import { authProvider } from '@affinidi/test-auth-provider';
 
 const projectScopedToken = await authProvider.getProjectScopedToken({
@@ -38,7 +38,7 @@ await api.oneOfMethods();
 #### With session ID via BFF
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/sdk-client-vpa';
+import { SomeClassApi, Configuration } from '@affinidi/tdk-client-vpa';
 import { getBffHeaders } from '@affinidi/test-auth-provider';
 
 const headers = getBffHeaders(cookieName, sessionId);

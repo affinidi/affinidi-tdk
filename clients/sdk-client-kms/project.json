@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/sdk-client-kms",
+  "name": "@affinidi/tdk-client-kms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/packages/sdk-client-kms",
-        "main": "packages/sdk-client-kms/index.ts",
-        "tsConfig": "packages/sdk-client-kms/tsconfig.lib.json",
-        "assets": ["packages/sdk-client-kms/*.md"]
+        "outputPath": "dist/packages/packages/tdk-client-kms",
+        "main": "packages/tdk-client-kms/index.ts",
+        "tsConfig": "packages/tdk-client-kms/tsconfig.lib.json",
+        "assets": ["packages/tdk-client-kms/*.md"]
       }
     },
     "lint": {
@@ -24,7 +24,7 @@
         "changelog": true,
         "github": true,
         "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "repositoryUrl": "git@github.com:affinidi/tdk.git",
         "branches": ["main"],
         "plugins": [
           [

@@ -1,20 +1,20 @@
 {
-  "name": "@affinidi/sdk-client-kyc",
+  "name": "@affinidi/tdk-client-kyc",
   "version": "1.2.0",
-  "description": "OpenAPI client for @affinidi/sdk-client-kyc main",
+  "description": "OpenAPI client for @affinidi/tdk-client-kyc main",
   "author": "Affinidi",
   "repository": {
     "type": "git",
     "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
   },
   "keywords": [
-    "affinidi-sdk",
+    "affinidi-tdk",
     "identity",
     "holistic",
     "network",
     "openapi-client",
     "openapi-generator",
-    "@affinidi/sdk-client-kyc"
+    "@affinidi/tdk-client-kyc"
   ],
   "license": "Apache-2.0",
   "main": "./dist/index.js",

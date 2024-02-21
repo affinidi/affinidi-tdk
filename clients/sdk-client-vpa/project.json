@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/sdk-client-vpa",
+  "name": "@affinidi/tdk-client-vpa",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/packages/sdk-client-vpa",
-        "main": "packages/sdk-client-vpa/index.ts",
-        "tsConfig": "packages/sdk-client-vpa/tsconfig.lib.json",
-        "assets": ["packages/sdk-client-vpa/*.md"]
+        "outputPath": "dist/packages/packages/tdk-client-vpa",
+        "main": "packages/tdk-client-vpa/index.ts",
+        "tsConfig": "packages/tdk-client-vpa/tsconfig.lib.json",
+        "assets": ["packages/tdk-client-vpa/*.md"]
       }
     },
     "lint": {
@@ -24,7 +24,7 @@
         "changelog": true,
         "github": true,
         "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "repositoryUrl": "git@github.com:affinidi/tdk.git",
         "branches": ["main"],
         "plugins": [
           [
