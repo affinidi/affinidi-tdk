@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi/client-cwe",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "clients/client-cwe",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/clients/client-cwe",
+        "main": "clients/client-cwe/index.ts",
+        "tsConfig": "clients/client-cwe/tsconfig.lib.json",
+        "assets": ["clients/client-cwe/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
