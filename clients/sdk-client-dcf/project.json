@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/sdk-client-dcf",
+  "name": "@affinidi/tdk-client-dcf",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/packages/sdk-client-dcf",
-        "main": "packages/sdk-client-dcf/index.ts",
-        "tsConfig": "packages/sdk-client-dcf/tsconfig.lib.json",
-        "assets": ["packages/sdk-client-dcf/*.md"]
+        "outputPath": "dist/packages/packages/tdk-client-dcf",
+        "main": "packages/tdk-client-dcf/index.ts",
+        "tsConfig": "packages/tdk-client-dcf/tsconfig.lib.json",
+        "assets": ["packages/tdk-client-dcf/*.md"]
       }
     },
     "lint": {
@@ -24,7 +24,7 @@
         "changelog": true,
         "github": true,
         "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "repositoryUrl": "git@github.com:affinidi/tdk.git",
         "branches": ["main"],
         "plugins": [
           [

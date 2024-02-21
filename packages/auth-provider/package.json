@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/sdk-auth-provider",
+  "name": "@affinidi/tdk-auth-provider",
   "version": "0.1.0",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
@@ -8,10 +8,11 @@
     "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
   },
   "keywords": [
-    "affinidi-sdk",
+    "affinidi-tdk",
     "identity",
     "holistic",
-    "network"
+    "network",
+    "trust"
   ],
   "license": "Apache-2.0",
   "main": "./dist/index.js",

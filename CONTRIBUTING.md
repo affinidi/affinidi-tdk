@@ -1,4 +1,4 @@
-# Contributing to Affinidi SDK
+# Contributing to Affinidi TDK
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
@@ -33,14 +33,15 @@ when introducing new method.
 ## Auto update of versions and changelogs
 
 After merge of PR, the github actions publish all libs that have increased version.  
-To make it easier when you are updating one of lib and all SDK packages you can use ./utils/pre-publish-update.js  
+To make it easier when you are updating one of lib and all TDK packages you can use ./utils/pre-publish-update.js  
 The flow is:
+
 * if libs without internal dependencies were updated - process them first
 * if libs with internal dependencies were updated - update libs they are depend on and update them
-* if SDK should be update - update all libs sdk depend on and then update SDK
+* if TDK should be update - update all libs TDK depend on and then update TDK
 
 All libs are updated one by one, when all SDKs are updated by one iteration.  
-The script updates in package.json / dependencies all internal dependencies of the lib (or sdks) that were updated, before so no need to manually do it.   
+The script updates in package.json / dependencies all internal dependencies of the lib (or sdks) that were updated, before so no need to manually do it.
 More details in the code.
 
 ## Code of Conduct
@@ -64,7 +65,7 @@ include:
 * Gracefully accepting constructive criticism
 * Focusing on what is best for the community
 * Showing empathy towards other community members
-* Avoiding obvious comments about things like code styling and indentation. 
+* Avoiding obvious comments about things like code styling and indentation.
 ** If you see yourself wanting to do that more than once - open issue with a repo to update the ESLint/Prettier rules to address this concern once and for all. **Code reviews should be about logic, not indenting or adding more newlines**
 
 Examples of unacceptable behavior by participants include:

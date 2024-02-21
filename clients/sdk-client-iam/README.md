@@ -1,9 +1,9 @@
-## @affinidi/sdk-client-iam
+## @affinidi/tdk-client-iam
 
 ### Usage
 
 ```bash
-npm install @affinidi/sdk-client-iam --save
+npm install @affinidi/tdk-client-iam --save
 ```
 
 #### With PAT
@@ -11,7 +11,7 @@ npm install @affinidi/sdk-client-iam --save
 To call service methods with personal access token, you need to get a getProjectScopedToken for the machine user:
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/sdk-client-iam';
+import { SomeClassApi, Configuration } from '@affinidi/tdk-client-iam';
 import { authProvider } from '@affinidi/test-auth-provider';
 
 const projectScopedToken = await authProvider.getProjectScopedToken({
@@ -38,7 +38,7 @@ await api.oneOfMethods();
 #### With session ID via BFF
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/sdk-client-iam';
+import { SomeClassApi, Configuration } from '@affinidi/tdk-client-iam';
 import { getBffHeaders } from '@affinidi/test-auth-provider';
 
 const headers = getBffHeaders(cookieName, sessionId);

@@ -1158,7 +1158,7 @@ export const ConsumerAuthApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory tdk is not yet able to this endpoint properly.
      * @summary The Consumer OAuth 2.0 Token Endpoint
      * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
      * @param {*} [options] Override http request option.
@@ -1223,7 +1223,7 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
     ConsumerAuthApiAxiosParamCreator(configuration);
   return {
     /**
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory tdk is not yet able to this endpoint properly.
      * @summary The Consumer OAuth 2.0 Token Endpoint
      * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
      * @param {*} [options] Override http request option.
@@ -1270,7 +1270,7 @@ export const ConsumerAuthApiFactory = function (
   const localVarFp = ConsumerAuthApiFp(configuration);
   return {
     /**
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory tdk is not yet able to this endpoint properly.
      * @summary The Consumer OAuth 2.0 Token Endpoint
      * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
      * @param {*} [options] Override http request option.
@@ -1295,7 +1295,7 @@ export const ConsumerAuthApiFactory = function (
  */
 export class ConsumerAuthApi extends BaseAPI {
   /**
-   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory tdk is not yet able to this endpoint properly.
    * @summary The Consumer OAuth 2.0 Token Endpoint
    * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
    * @param {*} [options] Override http request option.

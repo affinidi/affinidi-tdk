@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/sdk-client-cwe",
+  "name": "@affinidi/tdk-client-cwe",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/client-iam",
   "projectType": "library",
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/packages/sdk-client-cwe",
-        "main": "packages/sdk-client-cwe/index.ts",
-        "tsConfig": "packages/sdk-client-cwe/tsconfig.lib.json",
-        "assets": ["packages/sdk-client-cwe/*.md"]
+        "outputPath": "dist/packages/packages/tdk-client-cwe",
+        "main": "packages/tdk-client-cwe/index.ts",
+        "tsConfig": "packages/tdk-client-cwe/tsconfig.lib.json",
+        "assets": ["packages/tdk-client-cwe/*.md"]
       }
     },
     "lint": {
@@ -24,7 +24,7 @@
         "changelog": true,
         "github": true,
         "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/sdk.git",
+        "repositoryUrl": "git@github.com:affinidi/tdk.git",
         "branches": ["main"],
         "plugins": [
           [
