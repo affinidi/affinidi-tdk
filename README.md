@@ -1,6 +1,6 @@
 # Affinidi TDK
 
-The Affinidi TDK is a modern interface to easily manage and integrate Affinidi services into your software. It is meant to minimize dependencies and enable developers seamless entry into [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
+The Affinidi TDK (Trust Development Kit) is a modern interface to easily manage and integrate Affinidi services into your software. It is meant to minimize dependencies and enable developers seamless entry into [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
 # Building the TDK:
 
