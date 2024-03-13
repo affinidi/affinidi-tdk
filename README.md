@@ -1,10 +1,10 @@
-# Affinidi TDK
+# Affinidi Trust Development Kit (Affinidi TDK)
 
-The Affinidi TDK (Trust Development Kit) is a modern interface to easily manage and integrate Affinidi services into your software. It is meant to minimize dependencies and enable developers seamless entry into [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
+The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate Affinidi services into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
-# Building the TDK:
+## Building the TDK
 
-## Requirements
+### Requirements
 
 - [NodeJs v18 or higher](https://nodejs.org)
 - Supported platforms
@@ -12,35 +12,35 @@ The Affinidi TDK (Trust Development Kit) is a modern interface to easily manage 
   - MacOS
   - Windows
 
-## Building from Source
+### Building from Source
 
-To build the clients, run the command
+To build the TDK clients, run the command:
 
 `npm run build`
 
-The generated client information is available [here](clients).
-
-## What are the features of Affinidi TDK?
-
-The Affinidi TDK provides [clients](clients) that contain endpoints as methods to access Affinidi services like the KYC, IAM, Wallet, VPA amongst others.
-
-The commonly used utilities are clubbed as [packages](packages). For example, the auth-provider package can be used to fetch the project-scoped token and could also be passed to the client to access the endpoints. You can check that out [here](clients/client-aca/README.md#L47).
-
-Also, It will provide high-level abstractions in the form of [libraries](libs) that combine logic and data to perform important business logic functionalities.
-
-The Affinidi TDK will also have support for multiple programming languages.
+The client information is generated in the [clients](clients) directory.
 
 ## How do I use Affinidi TDK?
 
-You can check out the [README](clients/client-aca/README.md) for any particular resource to understand how to integrate it into your code base.
+The Affinidi TDK provides [clients](clients) with endpoints as methods to access Affinidi services like KYC, IAM, Wallet, and VPA, among others.
 
-# Support & Feedback
+The [packages](packages) are commonly used utilities to perform actions. For example, the `auth-provider` package can fetch the _project-scoped_ token and passed to the client to access the endpoints. You can check the sample usage [here](clients/client-aca/README.md#L47).
 
-If you face any issues or have some suggestions for us please don't hesitate to create a ticket [here](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
+[Libraries](libs) provide high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
-If you have a technical issue with the TDK's codebase, you can also [create an issue](https://github.com/affinidi/affinidi-tdk/issues) directly in GitHub.
+You can check out the README for any particular [client](clients) for sample usage, including the packages and libraries, and to understand how to integrate it into your application.
 
-# FAQ
+## Supported Programming Languages
+
+The Affinidi TDK supports multiple programming languages.
+
+## Support & Feedback
+
+If you face any issues or have suggestions, please don't hesitate to contact us using [this link](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
+
+If you have a technical issue with the Affinidi TDK's codebase, you can also [create an issue](https://github.com/affinidi/affinidi-tdk/issues) directly in GitHub.
+
+## FAQ
 
 ### What can I develop?
 
@@ -50,7 +50,7 @@ You are only limited by your imagination! Affinidi TDK is a toolbox with which y
 
 We only provide the tools - how you use them is largely up to you. We have no control over what you develop with our tools - but please use our tools responsibly!
 
-We hope that you will not develop anything that contravenes any applicable laws or regulations. Your projects should also not infringe on Affinidi’s or any third party’s intellectual property (for instance, misusing other parties’ data, code, logos, etc).
+We hope that you will not develop anything that contravenes any applicable laws or regulations. Your projects should also not infringe on Affinidi's or any third party's intellectual property (for instance, misusing other parties' data, code, logos, etc).
 
 ### What responsibilities do I have to my end-users?
 
@@ -72,9 +72,9 @@ We may from time to time impose limits on your use of the Affinidi TDK, such as 
 
 From time to time, we may request certain information from you to ensure that you are complying with the [Terms and Conditions](https://www.affinidi.com/terms-conditions).
 
-### Can I share my developer’s account with others?
+### Can I share my developer's account with others?
 
-When you create a developer’s account with us, we will issue you your private login credentials. Please do not share this with anyone else, as you would be responsible for activities that happen under your account. If you have interested friends, ask them to sign up – let's build together!
+When you create a developer's account with us, we will issue you your private login credentials. Please do not share this with anyone else, as you would be responsible for activities that happen under your account. If you have interested friends, ask them to sign up – let's build together!
 
 ### Telemetry
 
