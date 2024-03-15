@@ -1,3 +1,3 @@
 # Packages
 
-This folder supposed to keep packages. Internal utils middleware
+This folder is supposed to keep packages. Internal utils middleware
