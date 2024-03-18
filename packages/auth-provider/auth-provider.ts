@@ -1,15 +1,5 @@
-import { validateToken, getProjectScopedToken } from './helpers'
+import { Jwt, ProjectScopedToken } from './helpers'
 
-type ProjectScopedTokenParams = {
-  apiGatewayUrl: string
-  keyId: string
-  machineUserId: string
-  passphrase: string
-  privateKey: string
-  projectId: string
-  publicKey: string
-  tokenEndpoint: string
-}
 
 export class AuthProvider {
   private projectScopedToken = ''
@@ -21,8 +11,10 @@ export class AuthProvider {
   private readonly projectId: string = ''
   private readonly publicKey: string = ''
   private readonly tokenEndpoint: string = ''
+  private readonly projectScopedTokenInstance: ProjectScopedToken
+  private readonly jwt: Jwt
 
-  constructor(param: ProjectScopedTokenParams) {
+  constructor(param: { [key: string]: string }) {
     this.apiGatewayUrl = param.apiGatewayUrl
     this.keyId = param.keyId
     this.machineUserId = param.machineUserId
@@ -31,24 +23,29 @@ export class AuthProvider {
     this.projectId = param.projectId
     this.publicKey = param.publicKey
     this.tokenEndpoint = param.tokenEndpoint
+    this.projectScopedTokenInstance = new ProjectScopedToken()
+    this.jwt = new Jwt()
   }
 
-  public async getProjectScopedToken(): Promise<string> {
+  public async fetchProjectScopedToken(): Promise<string> {
     // NOTE: `isValid` for project scoped token can be checked when we pass Elements public key
-    const { /* isValid, */ isExpired } = this.projectScopedToken && validateToken(this.projectScopedToken, this.publicKey)
+    const isExpired =
+      this.projectScopedToken &&
+      this.jwt.validateToken(this.projectScopedToken, this.publicKey)
 
     const shouldRefresh = !this.projectScopedToken || isExpired
 
     if (shouldRefresh) {
-      this.projectScopedToken = await getProjectScopedToken({
-        apiGatewayUrl: this.apiGatewayUrl,
-        keyId: this.keyId,
-        machineUserId: this.machineUserId,
-        passphrase: this.passphrase,
-        privateKey: this.privateKey,
-        projectId: this.projectId,
-        tokenEndpoint: this.tokenEndpoint,
-      })
+      this.projectScopedToken =
+        await this.projectScopedTokenInstance.fetchProjectScopedToken({
+          apiGatewayUrl: this.apiGatewayUrl,
+          keyId: this.keyId,
+          machineUserId: this.machineUserId,
+          passphrase: this.passphrase,
+          privateKey: this.privateKey,
+          projectId: this.projectId,
+          tokenEndpoint: this.tokenEndpoint,
+        })
     }
 
     return this.projectScopedToken

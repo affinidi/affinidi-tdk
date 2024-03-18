@@ -15,13 +15,25 @@
     "trust"
   ],
   "license": "Apache-2.0",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/esm/index.js",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "sideEffects": false,
+  "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+  "jsii": {
+    "outdir": "dist",
+    "versionFormat": "short",
+    "targets": {
+      "python": {
+        "distName": "affinidi-tdk.auth-provider",
+        "module": "affinidi_tdk.auth_provider"
+      }
+    }
+  },
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.esm.json",
+    "build": "jsii -vvv",
+    "build:watch": "jsii -w",
     "lint": "eslint . --ext .ts",
+    "package": "jsii-pacmak -vvv",
     "prepare": "npm run build"
   },
   "dependencies": {
@@ -32,7 +44,15 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.3",
     "@types/qs": "^6.9.8",
+    "jsii": "^5.3.25",
+    "jsii-pacmak": "^1.95.0",
     "typescript": "^5.2.2"
-  }    
+  },
+  "stability": "stable",
+  "types": "index.d.ts",
+  "bundleDependencies": [
+    "axios",
+    "jsonwebtoken",
+    "qs"
+  ]
 }
-
