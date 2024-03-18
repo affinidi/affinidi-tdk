@@ -1,15 +1,4 @@
-import { validateToken, getProjectScopedToken } from './helpers'
-
-type ProjectScopedTokenParams = {
-  apiGatewayUrl: string
-  keyId: string
-  machineUserId: string
-  passphrase: string
-  privateKey: string
-  projectId: string
-  publicKey: string
-  tokenEndpoint: string
-}
+import { Jwt, ProjectScopedToken } from './helpers'
 
 export class AuthProvider {
   private projectScopedToken = ''
@@ -21,34 +10,42 @@ export class AuthProvider {
   private readonly projectId: string = ''
   private readonly publicKey: string = ''
   private readonly tokenEndpoint: string = ''
+  private readonly projectScopedTokenInstance: ProjectScopedToken
+  private readonly jwt: Jwt
 
-  constructor(param: ProjectScopedTokenParams) {
-    this.apiGatewayUrl = param.apiGatewayUrl
-    this.keyId = param.keyId
-    this.machineUserId = param.machineUserId
-    this.passphrase = param.passphrase
-    this.privateKey = param.privateKey
-    this.projectId = param.projectId
-    this.publicKey = param.publicKey
-    this.tokenEndpoint = param.tokenEndpoint
+  constructor(params: { [key: string]: string }) {
+    this.apiGatewayUrl = params.apiGatewayUrl
+    this.keyId = params.keyId
+    this.machineUserId = params.machineUserId
+    this.passphrase = params.passphrase
+    this.privateKey = params.privateKey
+    this.projectId = params.projectId
+    this.publicKey = params.publicKey
+    this.tokenEndpoint = params.tokenEndpoint
+    this.projectScopedTokenInstance = new ProjectScopedToken()
+    this.jwt = new Jwt()
   }
 
-  public async getProjectScopedToken(): Promise<string> {
-    // NOTE: `isValid` for project scoped token can be checked when we pass Elements public key
-    const { /* isValid, */ isExpired } = this.projectScopedToken && validateToken(this.projectScopedToken, this.publicKey)
+  private shouldRefreshToken(): boolean {
+    const itExistsAndExpired =
+      !!this.projectScopedToken &&
+      this.jwt.validateToken(this.projectScopedToken, this.publicKey).isExpired // NOTE: `isValid` for project scoped token can be checked when we pass Elements public key
 
-    const shouldRefresh = !this.projectScopedToken || isExpired
+    return !this.projectScopedToken || itExistsAndExpired
+  }
 
-    if (shouldRefresh) {
-      this.projectScopedToken = await getProjectScopedToken({
-        apiGatewayUrl: this.apiGatewayUrl,
-        keyId: this.keyId,
-        machineUserId: this.machineUserId,
-        passphrase: this.passphrase,
-        privateKey: this.privateKey,
-        projectId: this.projectId,
-        tokenEndpoint: this.tokenEndpoint,
-      })
+  public async fetchProjectScopedToken(): Promise<string> {
+    if (this.shouldRefreshToken()) {
+      this.projectScopedToken =
+        await this.projectScopedTokenInstance.fetchProjectScopedToken({
+          apiGatewayUrl: this.apiGatewayUrl,
+          keyId: this.keyId,
+          machineUserId: this.machineUserId,
+          passphrase: this.passphrase,
+          privateKey: this.privateKey,
+          projectId: this.projectId,
+          tokenEndpoint: this.tokenEndpoint,
+        })
     }
 
     return this.projectScopedToken

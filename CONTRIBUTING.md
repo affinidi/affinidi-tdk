@@ -22,6 +22,7 @@ and a **code sample** or an **executable test case** demonstrating the expected 
 5. Ensure to add `typedoc`'s types: `@description`, `@param`, `@returns` with proper description
 when introducing a new method.
 6. Avoid using variable names like `i` or abbreviations - names should be simple and unambiguous.
+7. We are using JSII to polyglot the TDK. Please refer to [JSII restrictions](https://aws.github.io/jsii/user-guides/lib-author/typescript-restrictions/) for Typescript.
 
 ## Pull Request Process
 

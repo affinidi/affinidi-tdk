@@ -1,3 +1,7 @@
-export { validateToken } from './jwt'
-export { getBffHeaders } from './get-bff-headers'
-export { getProjectScopedToken } from './get-project-scoped-token'
+export { IValidateToken, Jwt } from './jwt'
+export { BffHeaders } from './get-bff-headers'
+export {
+  ISignPayload,
+  IFetchProjectScopedToken,
+  ProjectScopedToken,
+} from './fetch-project-scoped-token'
