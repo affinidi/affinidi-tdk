@@ -19,7 +19,7 @@ npm install <path_to_tdk-auth-provider.jsii.tgz>
 ```
 
 ```ts
-import { AuthProvider } from '@affinidi/sdk-auth-provider';
+import { AuthProvider } from '@affinidi/sdk-auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -30,9 +30,9 @@ const authProvider = new AuthProvider({
   publicKey,
   projectId,
   tokenEndpoint,
-});
+})
 
-const projectScopedToken = await authProvider.getProjectScopedToken();
+const projectScopedToken = await authProvider.getProjectScopedToken()
 ```
 
 ### Python

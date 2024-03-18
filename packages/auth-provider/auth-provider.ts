@@ -1,6 +1,5 @@
 import { Jwt, ProjectScopedToken } from './helpers'
 
-
 export class AuthProvider {
   private projectScopedToken = ''
   private readonly apiGatewayUrl: string = ''
@@ -14,28 +13,29 @@ export class AuthProvider {
   private readonly projectScopedTokenInstance: ProjectScopedToken
   private readonly jwt: Jwt
 
-  constructor(param: { [key: string]: string }) {
-    this.apiGatewayUrl = param.apiGatewayUrl
-    this.keyId = param.keyId
-    this.machineUserId = param.machineUserId
-    this.passphrase = param.passphrase
-    this.privateKey = param.privateKey
-    this.projectId = param.projectId
-    this.publicKey = param.publicKey
-    this.tokenEndpoint = param.tokenEndpoint
+  constructor(params: { [key: string]: string }) {
+    this.apiGatewayUrl = params.apiGatewayUrl
+    this.keyId = params.keyId
+    this.machineUserId = params.machineUserId
+    this.passphrase = params.passphrase
+    this.privateKey = params.privateKey
+    this.projectId = params.projectId
+    this.publicKey = params.publicKey
+    this.tokenEndpoint = params.tokenEndpoint
     this.projectScopedTokenInstance = new ProjectScopedToken()
     this.jwt = new Jwt()
   }
 
+  private shouldRefreshToken(): boolean {
+    const itExistsAndExpired =
+      !!this.projectScopedToken &&
+      this.jwt.validateToken(this.projectScopedToken, this.publicKey).isExpired // NOTE: `isValid` for project scoped token can be checked when we pass Elements public key
+
+    return !this.projectScopedToken || itExistsAndExpired
+  }
+
   public async fetchProjectScopedToken(): Promise<string> {
-    // NOTE: `isValid` for project scoped token can be checked when we pass Elements public key
-    const isExpired =
-      this.projectScopedToken &&
-      this.jwt.validateToken(this.projectScopedToken, this.publicKey)
-
-    const shouldRefresh = !this.projectScopedToken || isExpired
-
-    if (shouldRefresh) {
+    if (this.shouldRefreshToken()) {
       this.projectScopedToken =
         await this.projectScopedTokenInstance.fetchProjectScopedToken({
           apiGatewayUrl: this.apiGatewayUrl,
