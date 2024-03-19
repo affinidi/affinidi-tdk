@@ -4,7 +4,6 @@
 import axios from 'axios'
 
 import { ConfigurationApi, GroupApi, Configuration as AuthConfiguration } from '@affinidi/client-vpa'
-import { PoliciesApi, Configuration as IamConfiguration } from '@affinidi/client-iam'
 import { AuthProvider } from '@affinidi/tdk-auth-provider'
 
 // NOTE: set your variables for PAT
@@ -35,12 +34,6 @@ const authConfiguration = new AuthConfiguration({
   basePath: `${apiGatewayUrl}/vpa`,
 })
 
-const iamConfiguration = new IamConfiguration({
-  apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-  basePath: `${apiGatewayUrl}/iam`,
-})
-
-// === VPA ===
 async function getListLoginConfigsWithToken() {
   // use Affinidi CLI to get projectScopedToken:
   // - affinidi start
@@ -78,19 +71,7 @@ async function getGroupById() {
   return data
 }
 
-// === IAM ===
-async function getPolicies() {
-  const api = new PoliciesApi(iamConfiguration)
-
-  const { data } = await api.getPolicies(machineUserId, 'token')
-
-  return data
-}
-
 getListLoginConfigsWithToken()
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error))
-getPolicies()
   .then((data) => console.log(data))
   .catch((error) => console.log(error))
 getListLoginConfigs()
