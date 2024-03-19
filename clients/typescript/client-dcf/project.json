@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi/client-dcf",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "dcf/client-dcf",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/dcf/client-dcf",
+        "main": "dcf/client-dcf/index.ts",
+        "tsConfig": "dcf/client-dcf/tsconfig.lib.json",
+        "assets": ["dcf/client-dcf/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
