@@ -1,0 +1,30 @@
+# VerifyPresentationOutput
+
+Response model of /verify-vp
+
+## Properties
+
+| Name         | Type                                                                    | Description         | Notes |
+| ------------ | ----------------------------------------------------------------------- | ------------------- | ----- |
+| **errors**   | [**VerifyPresentationOutputErrors**](VerifyPresentationOutputErrors.md) |                     |
+| **is_valid** | **bool**                                                                | Verification result |
+
+## Example
+
+```python
+from affinidi_tdk_client_ver.models.verify_presentation_output import VerifyPresentationOutput
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of VerifyPresentationOutput from a JSON string
+verify_presentation_output_instance = VerifyPresentationOutput.from_json(json)
+# print the JSON string representation of the object
+print VerifyPresentationOutput.to_json()
+
+# convert the object into a dict
+verify_presentation_output_dict = verify_presentation_output_instance.to_dict()
+# create an instance of VerifyPresentationOutput from a dict
+verify_presentation_output_form_dict = verify_presentation_output.from_dict(verify_presentation_output_dict)
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
