@@ -1158,3 +1158,3188 @@ export interface WhoamiDto {
    */
   principalType: string;
 }
+
+/**
+ * ConsumerAuthApi - axios parameter creator
+ * @export
+ */
+export const ConsumerAuthApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * @summary The Consumer OAuth 2.0 Token Endpoint
+     * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    consumerAuthTokenEndpoint: async (
+      consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'consumerAuthTokenEndpointInput' is not null or undefined
+      assertParamExists(
+        'consumerAuthTokenEndpoint',
+        'consumerAuthTokenEndpointInput',
+        consumerAuthTokenEndpointInput
+      );
+      const localVarPath = `/v1/consumer/oauth2/token`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        consumerAuthTokenEndpointInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * ConsumerAuthApi - functional programming interface
+ * @export
+ */
+export const ConsumerAuthApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    ConsumerAuthApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * @summary The Consumer OAuth 2.0 Token Endpoint
+     * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async consumerAuthTokenEndpoint(
+      consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<ConsumerAuthTokenEndpointOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.consumerAuthTokenEndpoint(
+          consumerAuthTokenEndpointInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConsumerAuthApi.consumerAuthTokenEndpoint']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * ConsumerAuthApi - factory interface
+ * @export
+ */
+export const ConsumerAuthApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = ConsumerAuthApiFp(configuration);
+  return {
+    /**
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * @summary The Consumer OAuth 2.0 Token Endpoint
+     * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    consumerAuthTokenEndpoint(
+      consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
+      options?: any
+    ): AxiosPromise<ConsumerAuthTokenEndpointOutput> {
+      return localVarFp
+        .consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * ConsumerAuthApi - object-oriented interface
+ * @export
+ * @class ConsumerAuthApi
+ * @extends {BaseAPI}
+ */
+export class ConsumerAuthApi extends BaseAPI {
+  /**
+   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+   * @summary The Consumer OAuth 2.0 Token Endpoint
+   * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConsumerAuthApi
+   */
+  public consumerAuthTokenEndpoint(
+    consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConsumerAuthApiFp(this.configuration)
+      .consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyDelete: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1AuthProxyDelete', 'proxy', proxy);
+      const localVarPath = `/v1/auth/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyGet: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1AuthProxyGet', 'proxy', proxy);
+      const localVarPath = `/v1/auth/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPatch: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1AuthProxyPatch', 'proxy', proxy);
+      const localVarPath = `/v1/auth/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPost: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1AuthProxyPost', 'proxy', proxy);
+      const localVarPath = `/v1/auth/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPut: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1AuthProxyPut', 'proxy', proxy);
+      const localVarPath = `/v1/auth/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyDelete: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1IdpProxyDelete', 'proxy', proxy);
+      const localVarPath = `/v1/idp/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyGet: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1IdpProxyGet', 'proxy', proxy);
+      const localVarPath = `/v1/idp/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPatch: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1IdpProxyPatch', 'proxy', proxy);
+      const localVarPath = `/v1/idp/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPost: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1IdpProxyPost', 'proxy', proxy);
+      const localVarPath = `/v1/idp/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPut: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1IdpProxyPut', 'proxy', proxy);
+      const localVarPath = `/v1/idp/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1AuthProxyDelete(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1AuthProxyDelete(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1AuthProxyDelete']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1AuthProxyGet(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyGet(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1AuthProxyGet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1AuthProxyPatch(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1AuthProxyPatch(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1AuthProxyPatch']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1AuthProxyPost(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyPost(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1AuthProxyPost']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1AuthProxyPut(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyPut(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1AuthProxyPut']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1IdpProxyDelete(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1IdpProxyDelete(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1IdpProxyDelete']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1IdpProxyGet(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyGet(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1IdpProxyGet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1IdpProxyPatch(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPatch(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1IdpProxyPatch']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1IdpProxyPost(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPost(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1IdpProxyPost']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1IdpProxyPut(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPut(
+        proxy,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1IdpProxyPut']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = DefaultApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyDelete(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1AuthProxyDelete(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyGet(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1AuthProxyGet(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPatch(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1AuthProxyPatch(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPost(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1AuthProxyPost(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1AuthProxyPut(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1AuthProxyPut(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyDelete(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1IdpProxyDelete(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyGet(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1IdpProxyGet(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPatch(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1IdpProxyPatch(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPost(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1IdpProxyPost(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1IdpProxyPut(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1IdpProxyPut(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1AuthProxyDelete(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1AuthProxyDelete(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1AuthProxyGet(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1AuthProxyGet(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1AuthProxyPatch(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1AuthProxyPatch(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1AuthProxyPost(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1AuthProxyPost(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1AuthProxyPut(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1AuthProxyPut(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1IdpProxyDelete(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1IdpProxyDelete(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1IdpProxyGet(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1IdpProxyGet(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1IdpProxyPatch(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1IdpProxyPatch(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1IdpProxyPost(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1IdpProxyPost(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1IdpProxyPut(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1IdpProxyPut(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * PoliciesApi - axios parameter creator
+ * @export
+ */
+export const PoliciesApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {string} principalId
+     * @param {GetPoliciesPrincipalTypeEnum} principalType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPolicies: async (
+      principalId: string,
+      principalType: GetPoliciesPrincipalTypeEnum,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'principalId' is not null or undefined
+      assertParamExists('getPolicies', 'principalId', principalId);
+      // verify required parameter 'principalType' is not null or undefined
+      assertParamExists('getPolicies', 'principalType', principalType);
+      const localVarPath = `/v1/policies/principals/{principalId}`.replace(
+        `{${'principalId'}}`,
+        encodeURIComponent(String(principalId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (principalType !== undefined) {
+        localVarQueryParameter['principalType'] = principalType;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} principalId
+     * @param {UpdatePoliciesPrincipalTypeEnum} principalType
+     * @param {PolicyDto} policyDto UpdatePolicies
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePolicies: async (
+      principalId: string,
+      principalType: UpdatePoliciesPrincipalTypeEnum,
+      policyDto: PolicyDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'principalId' is not null or undefined
+      assertParamExists('updatePolicies', 'principalId', principalId);
+      // verify required parameter 'principalType' is not null or undefined
+      assertParamExists('updatePolicies', 'principalType', principalType);
+      // verify required parameter 'policyDto' is not null or undefined
+      assertParamExists('updatePolicies', 'policyDto', policyDto);
+      const localVarPath = `/v1/policies/principals/{principalId}`.replace(
+        `{${'principalId'}}`,
+        encodeURIComponent(String(principalId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (principalType !== undefined) {
+        localVarQueryParameter['principalType'] = principalType;
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        policyDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * PoliciesApi - functional programming interface
+ * @export
+ */
+export const PoliciesApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = PoliciesApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {string} principalId
+     * @param {GetPoliciesPrincipalTypeEnum} principalType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getPolicies(
+      principalId: string,
+      principalType: GetPoliciesPrincipalTypeEnum,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getPolicies(
+        principalId,
+        principalType,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['PoliciesApi.getPolicies']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} principalId
+     * @param {UpdatePoliciesPrincipalTypeEnum} principalType
+     * @param {PolicyDto} policyDto UpdatePolicies
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatePolicies(
+      principalId: string,
+      principalType: UpdatePoliciesPrincipalTypeEnum,
+      policyDto: PolicyDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updatePolicies(
+        principalId,
+        principalType,
+        policyDto,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['PoliciesApi.updatePolicies']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * PoliciesApi - factory interface
+ * @export
+ */
+export const PoliciesApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = PoliciesApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {string} principalId
+     * @param {GetPoliciesPrincipalTypeEnum} principalType
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPolicies(
+      principalId: string,
+      principalType: GetPoliciesPrincipalTypeEnum,
+      options?: any
+    ): AxiosPromise<PolicyDto> {
+      return localVarFp
+        .getPolicies(principalId, principalType, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} principalId
+     * @param {UpdatePoliciesPrincipalTypeEnum} principalType
+     * @param {PolicyDto} policyDto UpdatePolicies
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePolicies(
+      principalId: string,
+      principalType: UpdatePoliciesPrincipalTypeEnum,
+      policyDto: PolicyDto,
+      options?: any
+    ): AxiosPromise<PolicyDto> {
+      return localVarFp
+        .updatePolicies(principalId, principalType, policyDto, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * PoliciesApi - object-oriented interface
+ * @export
+ * @class PoliciesApi
+ * @extends {BaseAPI}
+ */
+export class PoliciesApi extends BaseAPI {
+  /**
+   *
+   * @param {string} principalId
+   * @param {GetPoliciesPrincipalTypeEnum} principalType
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PoliciesApi
+   */
+  public getPolicies(
+    principalId: string,
+    principalType: GetPoliciesPrincipalTypeEnum,
+    options?: RawAxiosRequestConfig
+  ) {
+    return PoliciesApiFp(this.configuration)
+      .getPolicies(principalId, principalType, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} principalId
+   * @param {UpdatePoliciesPrincipalTypeEnum} principalType
+   * @param {PolicyDto} policyDto UpdatePolicies
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PoliciesApi
+   */
+  public updatePolicies(
+    principalId: string,
+    principalType: UpdatePoliciesPrincipalTypeEnum,
+    policyDto: PolicyDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return PoliciesApiFp(this.configuration)
+      .updatePolicies(principalId, principalType, policyDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * @export
+ */
+export const GetPoliciesPrincipalTypeEnum = {
+  User: 'user',
+  Token: 'token',
+} as const;
+export type GetPoliciesPrincipalTypeEnum =
+  (typeof GetPoliciesPrincipalTypeEnum)[keyof typeof GetPoliciesPrincipalTypeEnum];
+/**
+ * @export
+ */
+export const UpdatePoliciesPrincipalTypeEnum = {
+  User: 'user',
+  Token: 'token',
+} as const;
+export type UpdatePoliciesPrincipalTypeEnum =
+  (typeof UpdatePoliciesPrincipalTypeEnum)[keyof typeof UpdatePoliciesPrincipalTypeEnum];
+
+/**
+ * ProjectsApi - axios parameter creator
+ * @export
+ */
+export const ProjectsApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {AddUserToProjectInput} addUserToProjectInput AddPrincipalToProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPrincipalToProject: async (
+      addUserToProjectInput: AddUserToProjectInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'addUserToProjectInput' is not null or undefined
+      assertParamExists(
+        'addPrincipalToProject',
+        'addUserToProjectInput',
+        addUserToProjectInput
+      );
+      const localVarPath = `/v1/projects/principals`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        addUserToProjectInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateProjectInput} createProjectInput CreateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProject: async (
+      createProjectInput: CreateProjectInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createProjectInput' is not null or undefined
+      assertParamExists(
+        'createProject',
+        'createProjectInput',
+        createProjectInput
+      );
+      const localVarPath = `/v1/projects`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createProjectInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} principalId id of principal
+     * @param {DeletePrincipalFromProjectPrincipalTypeEnum} principalType type of principal
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePrincipalFromProject: async (
+      principalId: string,
+      principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'principalId' is not null or undefined
+      assertParamExists(
+        'deletePrincipalFromProject',
+        'principalId',
+        principalId
+      );
+      // verify required parameter 'principalType' is not null or undefined
+      assertParamExists(
+        'deletePrincipalFromProject',
+        'principalType',
+        principalType
+      );
+      const localVarPath = `/v1/projects/principals/{principalId}`.replace(
+        `{${'principalId'}}`,
+        encodeURIComponent(String(principalId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (principalType !== undefined) {
+        localVarQueryParameter['principalType'] = principalType;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listPrincipalsOfProject: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/projects/principals`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProject: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/projects`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} projectId projectId
+     * @param {UpdateProjectInput} updateProjectInput UpdateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateProject: async (
+      projectId: string,
+      updateProjectInput: UpdateProjectInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('updateProject', 'projectId', projectId);
+      // verify required parameter 'updateProjectInput' is not null or undefined
+      assertParamExists(
+        'updateProject',
+        'updateProjectInput',
+        updateProjectInput
+      );
+      const localVarPath = `/v1/projects/{projectId}`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateProjectInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * ProjectsApi - functional programming interface
+ * @export
+ */
+export const ProjectsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ProjectsApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {AddUserToProjectInput} addUserToProjectInput AddPrincipalToProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async addPrincipalToProject(
+      addUserToProjectInput: AddUserToProjectInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.addPrincipalToProject(
+          addUserToProjectInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.addPrincipalToProject']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {CreateProjectInput} createProjectInput CreateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createProject(
+      createProjectInput: CreateProjectInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createProject(
+        createProjectInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.createProject']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} principalId id of principal
+     * @param {DeletePrincipalFromProjectPrincipalTypeEnum} principalType type of principal
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletePrincipalFromProject(
+      principalId: string,
+      principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.deletePrincipalFromProject(
+          principalId,
+          principalType,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.deletePrincipalFromProject']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listPrincipalsOfProject(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listPrincipalsOfProject(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.listPrincipalsOfProject']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listProject(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectList>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listProject(
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.listProject']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} projectId projectId
+     * @param {UpdateProjectInput} updateProjectInput UpdateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateProject(
+      projectId: string,
+      updateProjectInput: UpdateProjectInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateProject(
+        projectId,
+        updateProjectInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ProjectsApi.updateProject']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * ProjectsApi - factory interface
+ * @export
+ */
+export const ProjectsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = ProjectsApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {AddUserToProjectInput} addUserToProjectInput AddPrincipalToProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addPrincipalToProject(
+      addUserToProjectInput: AddUserToProjectInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .addPrincipalToProject(addUserToProjectInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateProjectInput} createProjectInput CreateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProject(
+      createProjectInput: CreateProjectInput,
+      options?: any
+    ): AxiosPromise<ProjectDto> {
+      return localVarFp
+        .createProject(createProjectInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} principalId id of principal
+     * @param {DeletePrincipalFromProjectPrincipalTypeEnum} principalType type of principal
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePrincipalFromProject(
+      principalId: string,
+      principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deletePrincipalFromProject(principalId, principalType, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listPrincipalsOfProject(options?: any): AxiosPromise<UserList> {
+      return localVarFp
+        .listPrincipalsOfProject(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProject(options?: any): AxiosPromise<ProjectList> {
+      return localVarFp
+        .listProject(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} projectId projectId
+     * @param {UpdateProjectInput} updateProjectInput UpdateProject
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateProject(
+      projectId: string,
+      updateProjectInput: UpdateProjectInput,
+      options?: any
+    ): AxiosPromise<ProjectDto> {
+      return localVarFp
+        .updateProject(projectId, updateProjectInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * ProjectsApi - object-oriented interface
+ * @export
+ * @class ProjectsApi
+ * @extends {BaseAPI}
+ */
+export class ProjectsApi extends BaseAPI {
+  /**
+   *
+   * @param {AddUserToProjectInput} addUserToProjectInput AddPrincipalToProject
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public addPrincipalToProject(
+    addUserToProjectInput: AddUserToProjectInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ProjectsApiFp(this.configuration)
+      .addPrincipalToProject(addUserToProjectInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {CreateProjectInput} createProjectInput CreateProject
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public createProject(
+    createProjectInput: CreateProjectInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ProjectsApiFp(this.configuration)
+      .createProject(createProjectInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} principalId id of principal
+   * @param {DeletePrincipalFromProjectPrincipalTypeEnum} principalType type of principal
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public deletePrincipalFromProject(
+    principalId: string,
+    principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ProjectsApiFp(this.configuration)
+      .deletePrincipalFromProject(principalId, principalType, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public listPrincipalsOfProject(options?: RawAxiosRequestConfig) {
+    return ProjectsApiFp(this.configuration)
+      .listPrincipalsOfProject(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public listProject(options?: RawAxiosRequestConfig) {
+    return ProjectsApiFp(this.configuration)
+      .listProject(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} projectId projectId
+   * @param {UpdateProjectInput} updateProjectInput UpdateProject
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public updateProject(
+    projectId: string,
+    updateProjectInput: UpdateProjectInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ProjectsApiFp(this.configuration)
+      .updateProject(projectId, updateProjectInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * @export
+ */
+export const DeletePrincipalFromProjectPrincipalTypeEnum = {
+  User: 'user',
+  Token: 'token',
+} as const;
+export type DeletePrincipalFromProjectPrincipalTypeEnum =
+  (typeof DeletePrincipalFromProjectPrincipalTypeEnum)[keyof typeof DeletePrincipalFromProjectPrincipalTypeEnum];
+
+/**
+ * StsApi - axios parameter creator
+ * @export
+ */
+export const StsApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {CreateProjectScopedTokenInput} createProjectScopedTokenInput CreateProjectScopedToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProjectScopedToken: async (
+      createProjectScopedTokenInput: CreateProjectScopedTokenInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createProjectScopedTokenInput' is not null or undefined
+      assertParamExists(
+        'createProjectScopedToken',
+        'createProjectScopedTokenInput',
+        createProjectScopedTokenInput
+      );
+      const localVarPath = `/v1/sts/create-project-scoped-token`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createProjectScopedTokenInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    whoami: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/sts/whoami`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * StsApi - functional programming interface
+ * @export
+ */
+export const StsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = StsApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {CreateProjectScopedTokenInput} createProjectScopedTokenInput CreateProjectScopedToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createProjectScopedToken(
+      createProjectScopedTokenInput: CreateProjectScopedTokenInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateProjectScopedTokenOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.createProjectScopedToken(
+          createProjectScopedTokenInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['StsApi.createProjectScopedToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async whoami(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhoamiDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.whoami(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['StsApi.whoami']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * StsApi - factory interface
+ * @export
+ */
+export const StsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = StsApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {CreateProjectScopedTokenInput} createProjectScopedTokenInput CreateProjectScopedToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProjectScopedToken(
+      createProjectScopedTokenInput: CreateProjectScopedTokenInput,
+      options?: any
+    ): AxiosPromise<CreateProjectScopedTokenOutput> {
+      return localVarFp
+        .createProjectScopedToken(createProjectScopedTokenInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    whoami(options?: any): AxiosPromise<WhoamiDto> {
+      return localVarFp
+        .whoami(options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * StsApi - object-oriented interface
+ * @export
+ * @class StsApi
+ * @extends {BaseAPI}
+ */
+export class StsApi extends BaseAPI {
+  /**
+   *
+   * @param {CreateProjectScopedTokenInput} createProjectScopedTokenInput CreateProjectScopedToken
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StsApi
+   */
+  public createProjectScopedToken(
+    createProjectScopedTokenInput: CreateProjectScopedTokenInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return StsApiFp(this.configuration)
+      .createProjectScopedToken(createProjectScopedTokenInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StsApi
+   */
+  public whoami(options?: RawAxiosRequestConfig) {
+    return StsApiFp(this.configuration)
+      .whoami(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * TokensApi - axios parameter creator
+ * @export
+ */
+export const TokensApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {CreateTokenInput} createTokenInput CreateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createToken: async (
+      createTokenInput: CreateTokenInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createTokenInput' is not null or undefined
+      assertParamExists('createToken', 'createTokenInput', createTokenInput);
+      const localVarPath = `/v1/tokens`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createTokenInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteToken: async (
+      tokenId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'tokenId' is not null or undefined
+      assertParamExists('deleteToken', 'tokenId', tokenId);
+      const localVarPath = `/v1/tokens/{tokenId}`.replace(
+        `{${'tokenId'}}`,
+        encodeURIComponent(String(tokenId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getToken: async (
+      tokenId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'tokenId' is not null or undefined
+      assertParamExists('getToken', 'tokenId', tokenId);
+      const localVarPath = `/v1/tokens/{tokenId}`.replace(
+        `{${'tokenId'}}`,
+        encodeURIComponent(String(tokenId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listToken: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/tokens`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {UpdateTokenInput} updateTokenInput UpdateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateToken: async (
+      tokenId: string,
+      updateTokenInput: UpdateTokenInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'tokenId' is not null or undefined
+      assertParamExists('updateToken', 'tokenId', tokenId);
+      // verify required parameter 'updateTokenInput' is not null or undefined
+      assertParamExists('updateToken', 'updateTokenInput', updateTokenInput);
+      const localVarPath = `/v1/tokens/{tokenId}`.replace(
+        `{${'tokenId'}}`,
+        encodeURIComponent(String(tokenId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateTokenInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * TokensApi - functional programming interface
+ * @export
+ */
+export const TokensApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = TokensApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {CreateTokenInput} createTokenInput CreateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createToken(
+      createTokenInput: CreateTokenInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createToken(
+        createTokenInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['TokensApi.createToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteToken(
+      tokenId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteToken(
+        tokenId,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['TokensApi.deleteToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getToken(
+      tokenId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getToken(
+        tokenId,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['TokensApi.getToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listToken(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenList>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listToken(
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['TokensApi.listToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {UpdateTokenInput} updateTokenInput UpdateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateToken(
+      tokenId: string,
+      updateTokenInput: UpdateTokenInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateToken(
+        tokenId,
+        updateTokenInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['TokensApi.updateToken']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * TokensApi - factory interface
+ * @export
+ */
+export const TokensApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = TokensApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {CreateTokenInput} createTokenInput CreateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createToken(
+      createTokenInput: CreateTokenInput,
+      options?: any
+    ): AxiosPromise<TokenDto> {
+      return localVarFp
+        .createToken(createTokenInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteToken(tokenId: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .deleteToken(tokenId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getToken(tokenId: string, options?: any): AxiosPromise<TokenDto> {
+      return localVarFp
+        .getToken(tokenId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listToken(options?: any): AxiosPromise<TokenList> {
+      return localVarFp
+        .listToken(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} tokenId
+     * @param {UpdateTokenInput} updateTokenInput UpdateToken
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateToken(
+      tokenId: string,
+      updateTokenInput: UpdateTokenInput,
+      options?: any
+    ): AxiosPromise<TokenDto> {
+      return localVarFp
+        .updateToken(tokenId, updateTokenInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * TokensApi - object-oriented interface
+ * @export
+ * @class TokensApi
+ * @extends {BaseAPI}
+ */
+export class TokensApi extends BaseAPI {
+  /**
+   *
+   * @param {CreateTokenInput} createTokenInput CreateToken
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public createToken(
+    createTokenInput: CreateTokenInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return TokensApiFp(this.configuration)
+      .createToken(createTokenInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} tokenId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public deleteToken(tokenId: string, options?: RawAxiosRequestConfig) {
+    return TokensApiFp(this.configuration)
+      .deleteToken(tokenId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} tokenId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public getToken(tokenId: string, options?: RawAxiosRequestConfig) {
+    return TokensApiFp(this.configuration)
+      .getToken(tokenId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public listToken(options?: RawAxiosRequestConfig) {
+    return TokensApiFp(this.configuration)
+      .listToken(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} tokenId
+   * @param {UpdateTokenInput} updateTokenInput UpdateToken
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public updateToken(
+    tokenId: string,
+    updateTokenInput: UpdateTokenInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return TokensApiFp(this.configuration)
+      .updateToken(tokenId, updateTokenInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * WellKnownApi - axios parameter creator
+ * @export
+ */
+export const WellKnownApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWellKnownJwks: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/.well-known/jwks.json`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * WellKnownApi - functional programming interface
+ * @export
+ */
+export const WellKnownApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    WellKnownApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getWellKnownJwks(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<JsonWebKeySetDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getWellKnownJwks(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['WellKnownApi.getWellKnownJwks']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * WellKnownApi - factory interface
+ * @export
+ */
+export const WellKnownApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = WellKnownApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWellKnownJwks(options?: any): AxiosPromise<JsonWebKeySetDto> {
+      return localVarFp
+        .getWellKnownJwks(options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * WellKnownApi - object-oriented interface
+ * @export
+ * @class WellKnownApi
+ * @extends {BaseAPI}
+ */
+export class WellKnownApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WellKnownApi
+   */
+  public getWellKnownJwks(options?: RawAxiosRequestConfig) {
+    return WellKnownApiFp(this.configuration)
+      .getWellKnownJwks(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
