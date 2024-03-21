@@ -1,0 +1,12 @@
+.gitignore
+.npmignore
+README.md
+api.ts
+base.ts
+common.ts
+configuration.ts
+index.ts
+package.json
+project.json
+tsconfig.esm.json
+tsconfig.json
