@@ -2,24 +2,24 @@ import {
   WalletApi,
   Configuration,
   SignCredentialResultDto,
-} from '@affinidi/client-cwe';
+} from '@affinidi/client-cwe'
 
 export interface SignCredential extends SignCredentialResultDto {}
 
 export interface ICWEParams {
-  projectScopedToken: string;
-  apiGatewayUrl: string;
+  authProvider: any
+  apiGatewayUrl: string
 }
 
 export class Cwe {
-  private readonly walletApi: WalletApi;
-  constructor({ projectScopedToken, apiGatewayUrl }: ICWEParams) {
+  private readonly walletApi: WalletApi
+  constructor({ authProvider, apiGatewayUrl }: ICWEParams) {
     this.walletApi = new WalletApi(
       new Configuration({
-        apiKey: projectScopedToken,
+        apiKey: authProvider.fetchProjectScopedToken(),
         basePath: `${apiGatewayUrl}/cwe`,
       })
-    );
+    )
   }
 
   public async signCredential(
@@ -28,8 +28,8 @@ export class Cwe {
   ): Promise<{ [key: string]: any }> {
     const signedCredential = (
       await this.walletApi.signCredential(walletId, signCredentialInput)
-    ).data;
+    ).data
 
-    return signedCredential;
+    return signedCredential
   }
 }
