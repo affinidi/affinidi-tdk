@@ -11,6 +11,7 @@ DTO contains result of key config creation
 | **seed_id**        | **str** | id of the parent seed record               | [optional] |
 | **seed_ari**       | **str** | ARI of the parent seed record              | [optional] |
 | **public_key_hex** | **str** | public key of the key config in HEX format | [optional] |
+| **did_method**     | **str** | did method of the key record               | [optional] |
 
 ## Example
 

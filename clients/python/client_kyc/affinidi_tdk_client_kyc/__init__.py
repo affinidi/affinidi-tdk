@@ -18,6 +18,8 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from affinidi_tdk_client_kyc.api.cors_api import CorsApi
+from affinidi_tdk_client_kyc.api.otp_api import OtpApi
 
 # import ApiClient
 from affinidi_tdk_client_kyc.api_response import ApiResponse
@@ -32,6 +34,7 @@ from affinidi_tdk_client_kyc.exceptions import ApiException
 
 # import models into sdk package
 from affinidi_tdk_client_kyc.models.code_mismatch_exception_error import CodeMismatchExceptionError
+from affinidi_tdk_client_kyc.models.complete_otp_operation400_response import CompleteOtpOperation400Response
 from affinidi_tdk_client_kyc.models.complete_request import CompleteRequest
 from affinidi_tdk_client_kyc.models.complete_response import CompleteResponse
 from affinidi_tdk_client_kyc.models.cors_complete_otp_operation_ok import CorsCompleteOtpOperationOK

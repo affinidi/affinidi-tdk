@@ -61,14 +61,91 @@ import affinidi_tdk_client_iam
 from affinidi_tdk_client_iam.rest import ApiException
 from pprint import pprint
 
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_client_iam.Configuration(
+    host = "http://localhost"
+)
+
+
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_client_iam.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_client_iam.ConsumerAuthApi(api_client)
+    consumer_auth_token_endpoint_input = affinidi_tdk_client_iam.ConsumerAuthTokenEndpointInput() # ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+
+    try:
+        # The Consumer OAuth 2.0 Token Endpoint
+        api_response = api_instance.consumer_auth_token_endpoint(consumer_auth_token_endpoint_input)
+        print("The response of ConsumerAuthApi->consumer_auth_token_endpoint:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ConsumerAuthApi->consumer_auth_token_endpoint: %s\n" % e)
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class             | Method                                                                                     | HTTP request                                     | Description                           |
+| ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------- |
+| _ConsumerAuthApi_ | [**consumer_auth_token_endpoint**](docs/ConsumerAuthApi.md#consumer_auth_token_endpoint)   | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint |
+| _CorsApi_         | [**cors_consumer_auth_token_endpoint**](docs/CorsApi.md#cors_consumer_auth_token_endpoint) | **OPTIONS** /v1/consumer/oauth2/token            | CORS Support                          |
+| _DefaultApi_      | [**v1_auth_admin_proxy_delete**](docs/DefaultApi.md#v1_auth_admin_proxy_delete)            | **DELETE** /v1/auth/admin/{proxy+}               |
+| _DefaultApi_      | [**v1_auth_admin_proxy_get**](docs/DefaultApi.md#v1_auth_admin_proxy_get)                  | **GET** /v1/auth/admin/{proxy+}                  |
+| _DefaultApi_      | [**v1_auth_admin_proxy_patch**](docs/DefaultApi.md#v1_auth_admin_proxy_patch)              | **PATCH** /v1/auth/admin/{proxy+}                |
+| _DefaultApi_      | [**v1_auth_admin_proxy_post**](docs/DefaultApi.md#v1_auth_admin_proxy_post)                | **POST** /v1/auth/admin/{proxy+}                 |
+| _DefaultApi_      | [**v1_auth_admin_proxy_put**](docs/DefaultApi.md#v1_auth_admin_proxy_put)                  | **PUT** /v1/auth/admin/{proxy+}                  |
+| _DefaultApi_      | [**v1_idp_ui_proxy_delete**](docs/DefaultApi.md#v1_idp_ui_proxy_delete)                    | **DELETE** /v1/idp/ui/{proxy+}                   |
+| _DefaultApi_      | [**v1_idp_ui_proxy_get**](docs/DefaultApi.md#v1_idp_ui_proxy_get)                          | **GET** /v1/idp/ui/{proxy+}                      |
+| _DefaultApi_      | [**v1_idp_ui_proxy_patch**](docs/DefaultApi.md#v1_idp_ui_proxy_patch)                      | **PATCH** /v1/idp/ui/{proxy+}                    |
+| _DefaultApi_      | [**v1_idp_ui_proxy_post**](docs/DefaultApi.md#v1_idp_ui_proxy_post)                        | **POST** /v1/idp/ui/{proxy+}                     |
+| _DefaultApi_      | [**v1_idp_ui_proxy_put**](docs/DefaultApi.md#v1_idp_ui_proxy_put)                          | **PUT** /v1/idp/ui/{proxy+}                      |
+| _PoliciesApi_     | [**get_policies**](docs/PoliciesApi.md#get_policies)                                       | **GET** /v1/policies/principals/{principalId}    |
+| _PoliciesApi_     | [**update_policies**](docs/PoliciesApi.md#update_policies)                                 | **PUT** /v1/policies/principals/{principalId}    |
+| _ProjectsApi_     | [**add_principal_to_project**](docs/ProjectsApi.md#add_principal_to_project)               | **POST** /v1/projects/principals                 |
+| _ProjectsApi_     | [**create_project**](docs/ProjectsApi.md#create_project)                                   | **POST** /v1/projects                            |
+| _ProjectsApi_     | [**delete_principal_from_project**](docs/ProjectsApi.md#delete_principal_from_project)     | **DELETE** /v1/projects/principals/{principalId} |
+| _ProjectsApi_     | [**list_principals_of_project**](docs/ProjectsApi.md#list_principals_of_project)           | **GET** /v1/projects/principals                  |
+| _ProjectsApi_     | [**list_project**](docs/ProjectsApi.md#list_project)                                       | **GET** /v1/projects                             |
+| _ProjectsApi_     | [**update_project**](docs/ProjectsApi.md#update_project)                                   | **PATCH** /v1/projects/{projectId}               |
+| _StsApi_          | [**create_project_scoped_token**](docs/StsApi.md#create_project_scoped_token)              | **POST** /v1/sts/create-project-scoped-token     |
+| _StsApi_          | [**whoami**](docs/StsApi.md#whoami)                                                        | **GET** /v1/sts/whoami                           |
+| _TokensApi_       | [**create_token**](docs/TokensApi.md#create_token)                                         | **POST** /v1/tokens                              |
+| _TokensApi_       | [**delete_token**](docs/TokensApi.md#delete_token)                                         | **DELETE** /v1/tokens/{tokenId}                  |
+| _TokensApi_       | [**get_token**](docs/TokensApi.md#get_token)                                               | **GET** /v1/tokens/{tokenId}                     |
+| _TokensApi_       | [**list_token**](docs/TokensApi.md#list_token)                                             | **GET** /v1/tokens                               |
+| _TokensApi_       | [**update_token**](docs/TokensApi.md#update_token)                                         | **PATCH** /v1/tokens/{tokenId}                   |
+| _WellKnownApi_    | [**get_well_known_jwks**](docs/WellKnownApi.md#get_well_known_jwks)                        | **GET** /.well-known/jwks.json                   |
+| _XAffinidiTdkApi_ | [**add_principal_to_project**](docs/XAffinidiTdkApi.md#add_principal_to_project)           | **POST** /v1/projects/principals                 |
+| _XAffinidiTdkApi_ | [**consumer_auth_token_endpoint**](docs/XAffinidiTdkApi.md#consumer_auth_token_endpoint)   | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint |
+| _XAffinidiTdkApi_ | [**create_project**](docs/XAffinidiTdkApi.md#create_project)                               | **POST** /v1/projects                            |
+| _XAffinidiTdkApi_ | [**create_project_scoped_token**](docs/XAffinidiTdkApi.md#create_project_scoped_token)     | **POST** /v1/sts/create-project-scoped-token     |
+| _XAffinidiTdkApi_ | [**create_token**](docs/XAffinidiTdkApi.md#create_token)                                   | **POST** /v1/tokens                              |
+| _XAffinidiTdkApi_ | [**delete_principal_from_project**](docs/XAffinidiTdkApi.md#delete_principal_from_project) | **DELETE** /v1/projects/principals/{principalId} |
+| _XAffinidiTdkApi_ | [**delete_token**](docs/XAffinidiTdkApi.md#delete_token)                                   | **DELETE** /v1/tokens/{tokenId}                  |
+| _XAffinidiTdkApi_ | [**get_policies**](docs/XAffinidiTdkApi.md#get_policies)                                   | **GET** /v1/policies/principals/{principalId}    |
+| _XAffinidiTdkApi_ | [**get_token**](docs/XAffinidiTdkApi.md#get_token)                                         | **GET** /v1/tokens/{tokenId}                     |
+| _XAffinidiTdkApi_ | [**get_well_known_jwks**](docs/XAffinidiTdkApi.md#get_well_known_jwks)                     | **GET** /.well-known/jwks.json                   |
+| _XAffinidiTdkApi_ | [**list_principals_of_project**](docs/XAffinidiTdkApi.md#list_principals_of_project)       | **GET** /v1/projects/principals                  |
+| _XAffinidiTdkApi_ | [**list_project**](docs/XAffinidiTdkApi.md#list_project)                                   | **GET** /v1/projects                             |
+| _XAffinidiTdkApi_ | [**list_token**](docs/XAffinidiTdkApi.md#list_token)                                       | **GET** /v1/tokens                               |
+| _XAffinidiTdkApi_ | [**update_policies**](docs/XAffinidiTdkApi.md#update_policies)                             | **PUT** /v1/policies/principals/{principalId}    |
+| _XAffinidiTdkApi_ | [**update_project**](docs/XAffinidiTdkApi.md#update_project)                               | **PATCH** /v1/projects/{projectId}               |
+| _XAffinidiTdkApi_ | [**update_token**](docs/XAffinidiTdkApi.md#update_token)                                   | **PATCH** /v1/tokens/{tokenId}                   |
+| _XAffinidiTdkApi_ | [**v1_auth_proxy_delete**](docs/XAffinidiTdkApi.md#v1_auth_proxy_delete)                   | **DELETE** /v1/auth/{proxy+}                     |
+| _XAffinidiTdkApi_ | [**v1_auth_proxy_get**](docs/XAffinidiTdkApi.md#v1_auth_proxy_get)                         | **GET** /v1/auth/{proxy+}                        |
+| _XAffinidiTdkApi_ | [**v1_auth_proxy_patch**](docs/XAffinidiTdkApi.md#v1_auth_proxy_patch)                     | **PATCH** /v1/auth/{proxy+}                      |
+| _XAffinidiTdkApi_ | [**v1_auth_proxy_post**](docs/XAffinidiTdkApi.md#v1_auth_proxy_post)                       | **POST** /v1/auth/{proxy+}                       |
+| _XAffinidiTdkApi_ | [**v1_auth_proxy_put**](docs/XAffinidiTdkApi.md#v1_auth_proxy_put)                         | **PUT** /v1/auth/{proxy+}                        |
+| _XAffinidiTdkApi_ | [**v1_idp_proxy_delete**](docs/XAffinidiTdkApi.md#v1_idp_proxy_delete)                     | **DELETE** /v1/idp/{proxy+}                      |
+| _XAffinidiTdkApi_ | [**v1_idp_proxy_get**](docs/XAffinidiTdkApi.md#v1_idp_proxy_get)                           | **GET** /v1/idp/{proxy+}                         |
+| _XAffinidiTdkApi_ | [**v1_idp_proxy_patch**](docs/XAffinidiTdkApi.md#v1_idp_proxy_patch)                       | **PATCH** /v1/idp/{proxy+}                       |
+| _XAffinidiTdkApi_ | [**v1_idp_proxy_post**](docs/XAffinidiTdkApi.md#v1_idp_proxy_post)                         | **POST** /v1/idp/{proxy+}                        |
+| _XAffinidiTdkApi_ | [**v1_idp_proxy_put**](docs/XAffinidiTdkApi.md#v1_idp_proxy_put)                           | **PUT** /v1/idp/{proxy+}                         |
+| _XAffinidiTdkApi_ | [**whoami**](docs/XAffinidiTdkApi.md#whoami)                                               | **GET** /v1/sts/whoami                           |
 
 ## Documentation For Models
 
@@ -148,3 +225,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

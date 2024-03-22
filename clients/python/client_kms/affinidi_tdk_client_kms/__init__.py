@@ -18,6 +18,8 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from affinidi_tdk_client_kms.api.key_api import KeyApi
+from affinidi_tdk_client_kms.api.seed_api import SeedApi
 
 # import ApiClient
 from affinidi_tdk_client_kms.api_response import ApiResponse
@@ -36,6 +38,7 @@ from affinidi_tdk_client_kms.models.create_keys_config_result_dto import CreateK
 from affinidi_tdk_client_kms.models.create_seed_result_dto import CreateSeedResultDto
 from affinidi_tdk_client_kms.models.decrypt_by_private_key_input_dto import DecryptByPrivateKeyInputDto
 from affinidi_tdk_client_kms.models.decrypt_by_private_key_result_dto import DecryptByPrivateKeyResultDto
+from affinidi_tdk_client_kms.models.empty_input import EmptyInput
 from affinidi_tdk_client_kms.models.error import Error
 from affinidi_tdk_client_kms.models.error_detail import ErrorDetail
 from affinidi_tdk_client_kms.models.export_seed_result_dto import ExportSeedResultDto
@@ -43,6 +46,7 @@ from affinidi_tdk_client_kms.models.get_key_result_dto import GetKeyResultDto
 from affinidi_tdk_client_kms.models.get_seed_result_dto import GetSeedResultDto
 from affinidi_tdk_client_kms.models.import_seed_mnemonic_input_dto import ImportSeedMnemonicInputDto
 from affinidi_tdk_client_kms.models.import_seed_raw_input_dto import ImportSeedRawInputDto
+from affinidi_tdk_client_kms.models.import_seed_request import ImportSeedRequest
 from affinidi_tdk_client_kms.models.list_seed_result_dto import ListSeedResultDto
 from affinidi_tdk_client_kms.models.list_seed_result_dto_records_inner import ListSeedResultDtoRecordsInner
 from affinidi_tdk_client_kms.models.sign_credential_input_dto import SignCredentialInputDto

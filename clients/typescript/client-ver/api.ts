@@ -1941,3 +1941,676 @@ export class VerifierApi extends BaseAPI {
       .then((request) => request(this.axios, this.basePath));
   }
 }
+
+/**
+ * XAffinidiTdkApi - axios parameter creator
+ * @export
+ */
+export const XAffinidiTdkApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Build credential share request JWT object from input data.
+     * @summary Builds credential share request
+     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    buildCredentialRequest: async (
+      buildCredentialRequestInput: BuildCredentialRequestInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'buildCredentialRequestInput' is not null or undefined
+      assertParamExists(
+        'buildCredentialRequest',
+        'buildCredentialRequestInput',
+        buildCredentialRequestInput
+      );
+      const localVarPath = `/v1/verifier/build-credential-request`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        buildCredentialRequestInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateJwt: async (
+      validateJwtInput: ValidateJwtInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'validateJwtInput' is not null or undefined
+      assertParamExists('validateJwt', 'validateJwtInput', validateJwtInput);
+      const localVarPath = `/v1/verifier/validate-jwt`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        validateJwtInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying share response token
+     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentialShareResponse: async (
+      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyCredentialShareResponseInput' is not null or undefined
+      assertParamExists(
+        'verifyCredentialShareResponse',
+        'verifyCredentialShareResponseInput',
+        verifyCredentialShareResponseInput
+      );
+      const localVarPath = `/v1/verifier/verify-share-response`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyCredentialShareResponseInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentials: async (
+      verifyCredentialInput: VerifyCredentialInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyCredentialInput' is not null or undefined
+      assertParamExists(
+        'verifyCredentials',
+        'verifyCredentialInput',
+        verifyCredentialInput
+      );
+      const localVarPath = `/v1/verifier/verify-vcs`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyCredentialInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentation: async (
+      verifyPresentationInput: VerifyPresentationInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyPresentationInput' is not null or undefined
+      assertParamExists(
+        'verifyPresentation',
+        'verifyPresentationInput',
+        verifyPresentationInput
+      );
+      const localVarPath = `/v1/verifier/verify-vp`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyPresentationInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * XAffinidiTdkApi - functional programming interface
+ * @export
+ */
+export const XAffinidiTdkApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    XAffinidiTdkApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Build credential share request JWT object from input data.
+     * @summary Builds credential share request
+     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async buildCredentialRequest(
+      buildCredentialRequestInput: BuildCredentialRequestInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<BuildCredentialRequestOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.buildCredentialRequest(
+          buildCredentialRequestInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['XAffinidiTdkApi.buildCredentialRequest']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async validateJwt(
+      validateJwtInput: ValidateJwtInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<ValidateJwtOutput>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.validateJwt(
+        validateJwtInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['XAffinidiTdkApi.validateJwt']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying share response token
+     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyCredentialShareResponse(
+      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<VerifyCredentialShareResponseOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyCredentialShareResponse(
+          verifyCredentialShareResponseInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['XAffinidiTdkApi.verifyCredentialShareResponse']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyCredentials(
+      verifyCredentialInput: VerifyCredentialInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<VerifyCredentialOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyCredentials(
+          verifyCredentialInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['XAffinidiTdkApi.verifyCredentials']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyPresentation(
+      verifyPresentationInput: VerifyPresentationInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<VerifyPresentationOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyPresentation(
+          verifyPresentationInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['XAffinidiTdkApi.verifyPresentation']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * XAffinidiTdkApi - factory interface
+ * @export
+ */
+export const XAffinidiTdkApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = XAffinidiTdkApiFp(configuration);
+  return {
+    /**
+     * Build credential share request JWT object from input data.
+     * @summary Builds credential share request
+     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    buildCredentialRequest(
+      buildCredentialRequestInput: BuildCredentialRequestInput,
+      options?: any
+    ): AxiosPromise<BuildCredentialRequestOutput> {
+      return localVarFp
+        .buildCredentialRequest(buildCredentialRequestInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateJwt(
+      validateJwtInput: ValidateJwtInput,
+      options?: any
+    ): AxiosPromise<ValidateJwtOutput> {
+      return localVarFp
+        .validateJwt(validateJwtInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying share response token
+     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentialShareResponse(
+      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
+      options?: any
+    ): AxiosPromise<VerifyCredentialShareResponseOutput> {
+      return localVarFp
+        .verifyCredentialShareResponse(
+          verifyCredentialShareResponseInput,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentials(
+      verifyCredentialInput: VerifyCredentialInput,
+      options?: any
+    ): AxiosPromise<VerifyCredentialOutput> {
+      return localVarFp
+        .verifyCredentials(verifyCredentialInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentation(
+      verifyPresentationInput: VerifyPresentationInput,
+      options?: any
+    ): AxiosPromise<VerifyPresentationOutput> {
+      return localVarFp
+        .verifyPresentation(verifyPresentationInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * XAffinidiTdkApi - object-oriented interface
+ * @export
+ * @class XAffinidiTdkApi
+ * @extends {BaseAPI}
+ */
+export class XAffinidiTdkApi extends BaseAPI {
+  /**
+   * Build credential share request JWT object from input data.
+   * @summary Builds credential share request
+   * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof XAffinidiTdkApi
+   */
+  public buildCredentialRequest(
+    buildCredentialRequestInput: BuildCredentialRequestInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return XAffinidiTdkApiFp(this.configuration)
+      .buildCredentialRequest(buildCredentialRequestInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+   * @summary Validates JWT token
+   * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof XAffinidiTdkApi
+   */
+  public validateJwt(
+    validateJwtInput: ValidateJwtInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return XAffinidiTdkApiFp(this.configuration)
+      .validateJwt(validateJwtInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
+   * @summary Verifying share response token
+   * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof XAffinidiTdkApi
+   */
+  public verifyCredentialShareResponse(
+    verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return XAffinidiTdkApiFp(this.configuration)
+      .verifyCredentialShareResponse(
+        verifyCredentialShareResponseInput,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+   * @summary Verifying VC
+   * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof XAffinidiTdkApi
+   */
+  public verifyCredentials(
+    verifyCredentialInput: VerifyCredentialInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return XAffinidiTdkApiFp(this.configuration)
+      .verifyCredentials(verifyCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+   * @summary Verifying VP
+   * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof XAffinidiTdkApi
+   */
+  public verifyPresentation(
+    verifyPresentationInput: VerifyPresentationInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return XAffinidiTdkApiFp(this.configuration)
+      .verifyPresentation(verifyPresentationInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}

@@ -16,6 +16,7 @@
 
 # import models into model package
 from affinidi_tdk_client_kyc.models.code_mismatch_exception_error import CodeMismatchExceptionError
+from affinidi_tdk_client_kyc.models.complete_otp_operation400_response import CompleteOtpOperation400Response
 from affinidi_tdk_client_kyc.models.complete_request import CompleteRequest
 from affinidi_tdk_client_kyc.models.complete_response import CompleteResponse
 from affinidi_tdk_client_kyc.models.cors_complete_otp_operation_ok import CorsCompleteOtpOperationOK

@@ -4,9 +4,11 @@ DTO contains configuration to create a key from the seed
 
 ## Properties
 
-| Name                | Type    | Description | Notes |
-| ------------------- | ------- | ----------- | ----- |
-| **derivation_path** | **str** |             |
+| Name                | Type    | Description                       | Notes      |
+| ------------------- | ------- | --------------------------------- | ---------- |
+| **derivation_path** | **str** |                                   |
+| **did_method**      | **str** | method of the DID, default is key | [optional] |
+| **did_web_url**     | **str** |                                   | [optional] |
 
 ## Example
 

@@ -40,6 +40,34 @@ import {
 } from './base';
 
 /**
+ * CreateWalletInput
+ * @export
+ * @interface CreateWalletInput
+ */
+export interface CreateWalletInput {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateWalletInput
+   */
+  didMethod?: CreateWalletInputDidMethodEnum;
+  /**
+   * If the did method is web, this is the URL of the did
+   * @type {string}
+   * @memberof CreateWalletInput
+   */
+  didWebUrl?: string;
+}
+
+export const CreateWalletInputDidMethodEnum = {
+  Key: 'key',
+  Web: 'web',
+} as const;
+
+export type CreateWalletInputDidMethodEnum =
+  (typeof CreateWalletInputDidMethodEnum)[keyof typeof CreateWalletInputDidMethodEnum];
+
+/**
  * wallet dto
  * @export
  * @interface CreateWalletResponse
@@ -540,6 +568,12 @@ export interface WalletDto {
    */
   did?: string;
   /**
+   * did document of the wallet
+   * @type {object}
+   * @memberof WalletDto
+   */
+  didDocument?: object;
+  /**
    * ARI of the wallet
    * @type {string}
    * @memberof WalletDto
@@ -583,4 +617,943 @@ export interface WalletsListDto {
    * @memberof WalletsListDto
    */
   wallets?: Array<WalletDto>;
+}
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * delete wallet by walletId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteWallet: async (
+      walletId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('deleteWallet', 'walletId', walletId);
+      const localVarPath = `/v1/wallets/{walletId}`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * delete wallet by walletId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteWallet(
+      walletId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteWallet(
+        walletId,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.deleteWallet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = DefaultApiFp(configuration);
+  return {
+    /**
+     * delete wallet by walletId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteWallet(walletId: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .deleteWallet(walletId, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   * delete wallet by walletId
+   * @param {string} walletId id of the wallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public deleteWallet(walletId: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .deleteWallet(walletId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * RevocationApi - axios parameter creator
+ * @export
+ */
+export const RevocationApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Get revocation list 2020 Credential (required to check if VC revoked).
+     * @summary Return revocation list credential.
+     * @param {string} listId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRevocationListCredential: async (
+      listId: string,
+      walletId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'listId' is not null or undefined
+      assertParamExists('getRevocationListCredential', 'listId', listId);
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('getRevocationListCredential', 'walletId', walletId);
+      const localVarPath = `/v1/wallets/{walletId}/revocation-list/{listId}`
+        .replace(`{${'listId'}}`, encodeURIComponent(String(listId)))
+        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Update index/credetial at appropriate revocation list (set revoken is true).
+     * @summary Revoke Credential.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialInput} revokeCredentialInput RevokeCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeCredential: async (
+      walletId: string,
+      revokeCredentialInput: RevokeCredentialInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('revokeCredential', 'walletId', walletId);
+      // verify required parameter 'revokeCredentialInput' is not null or undefined
+      assertParamExists(
+        'revokeCredential',
+        'revokeCredentialInput',
+        revokeCredentialInput
+      );
+      const localVarPath = `/v1/wallets/{walletId}/revoke`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        revokeCredentialInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * RevocationApi - functional programming interface
+ * @export
+ */
+export const RevocationApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    RevocationApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Get revocation list 2020 Credential (required to check if VC revoked).
+     * @summary Return revocation list credential.
+     * @param {string} listId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getRevocationListCredential(
+      listId: string,
+      walletId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<GetRevocationListCredentialResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getRevocationListCredential(
+          listId,
+          walletId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['RevocationApi.getRevocationListCredential']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Update index/credetial at appropriate revocation list (set revoken is true).
+     * @summary Revoke Credential.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialInput} revokeCredentialInput RevokeCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async revokeCredential(
+      walletId: string,
+      revokeCredentialInput: RevokeCredentialInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.revokeCredential(
+          walletId,
+          revokeCredentialInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['RevocationApi.revokeCredential']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * RevocationApi - factory interface
+ * @export
+ */
+export const RevocationApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = RevocationApiFp(configuration);
+  return {
+    /**
+     * Get revocation list 2020 Credential (required to check if VC revoked).
+     * @summary Return revocation list credential.
+     * @param {string} listId
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRevocationListCredential(
+      listId: string,
+      walletId: string,
+      options?: any
+    ): AxiosPromise<GetRevocationListCredentialResultDto> {
+      return localVarFp
+        .getRevocationListCredential(listId, walletId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Update index/credetial at appropriate revocation list (set revoken is true).
+     * @summary Revoke Credential.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialInput} revokeCredentialInput RevokeCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeCredential(
+      walletId: string,
+      revokeCredentialInput: RevokeCredentialInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .revokeCredential(walletId, revokeCredentialInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * RevocationApi - object-oriented interface
+ * @export
+ * @class RevocationApi
+ * @extends {BaseAPI}
+ */
+export class RevocationApi extends BaseAPI {
+  /**
+   * Get revocation list 2020 Credential (required to check if VC revoked).
+   * @summary Return revocation list credential.
+   * @param {string} listId
+   * @param {string} walletId id of the wallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof RevocationApi
+   */
+  public getRevocationListCredential(
+    listId: string,
+    walletId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return RevocationApiFp(this.configuration)
+      .getRevocationListCredential(listId, walletId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Update index/credetial at appropriate revocation list (set revoken is true).
+   * @summary Revoke Credential.
+   * @param {string} walletId id of the wallet
+   * @param {RevokeCredentialInput} revokeCredentialInput RevokeCredential
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof RevocationApi
+   */
+  public revokeCredential(
+    walletId: string,
+    revokeCredentialInput: RevokeCredentialInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return RevocationApiFp(this.configuration)
+      .revokeCredential(walletId, revokeCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * WalletApi - axios parameter creator
+ * @export
+ */
+export const WalletApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * creates a wallet
+     * @param {CreateWalletInput} [createWalletInput] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWallet: async (
+      createWalletInput?: CreateWalletInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/wallets`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createWalletInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * get wallet details using wallet Id.
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWallet: async (
+      walletId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('getWallet', 'walletId', walletId);
+      const localVarPath = `/v1/wallets/{walletId}`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * lists all wallets
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listWallets: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/wallets`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * signs credential with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredential: async (
+      walletId: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signCredential', 'walletId', walletId);
+      // verify required parameter 'signCredentialInputDto' is not null or undefined
+      assertParamExists(
+        'signCredential',
+        'signCredentialInputDto',
+        signCredentialInputDto
+      );
+      const localVarPath = `/v1/wallets/{walletId}/sign-credential`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signCredentialInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * WalletApi - functional programming interface
+ * @export
+ */
+export const WalletApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = WalletApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * creates a wallet
+     * @param {CreateWalletInput} [createWalletInput] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createWallet(
+      createWalletInput?: CreateWalletInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateWalletResponse>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createWallet(
+        createWalletInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['WalletApi.createWallet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * get wallet details using wallet Id.
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getWallet(
+      walletId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getWallet(
+        walletId,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['WalletApi.getWallet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * lists all wallets
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listWallets(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletsListDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listWallets(
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['WalletApi.listWallets']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * signs credential with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signCredential(
+      walletId: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<SignCredentialResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.signCredential(
+        walletId,
+        signCredentialInputDto,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['WalletApi.signCredential']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * WalletApi - factory interface
+ * @export
+ */
+export const WalletApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = WalletApiFp(configuration);
+  return {
+    /**
+     * creates a wallet
+     * @param {CreateWalletInput} [createWalletInput] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWallet(
+      createWalletInput?: CreateWalletInput,
+      options?: any
+    ): AxiosPromise<CreateWalletResponse> {
+      return localVarFp
+        .createWallet(createWalletInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * get wallet details using wallet Id.
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWallet(walletId: string, options?: any): AxiosPromise<WalletDto> {
+      return localVarFp
+        .getWallet(walletId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * lists all wallets
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listWallets(options?: any): AxiosPromise<WalletsListDto> {
+      return localVarFp
+        .listWallets(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * signs credential with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredential(
+      walletId: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options?: any
+    ): AxiosPromise<SignCredentialResultDto> {
+      return localVarFp
+        .signCredential(walletId, signCredentialInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * WalletApi - object-oriented interface
+ * @export
+ * @class WalletApi
+ * @extends {BaseAPI}
+ */
+export class WalletApi extends BaseAPI {
+  /**
+   * creates a wallet
+   * @param {CreateWalletInput} [createWalletInput] CreateWallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public createWallet(
+    createWalletInput?: CreateWalletInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return WalletApiFp(this.configuration)
+      .createWallet(createWalletInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * get wallet details using wallet Id.
+   * @param {string} walletId id of the wallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public getWallet(walletId: string, options?: RawAxiosRequestConfig) {
+    return WalletApiFp(this.configuration)
+      .getWallet(walletId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * lists all wallets
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public listWallets(options?: RawAxiosRequestConfig) {
+    return WalletApiFp(this.configuration)
+      .listWallets(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * signs credential with the wallet
+   * @param {string} walletId id of the wallet
+   * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signCredential(
+    walletId: string,
+    signCredentialInputDto: SignCredentialInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return WalletApiFp(this.configuration)
+      .signCredential(walletId, signCredentialInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
 }

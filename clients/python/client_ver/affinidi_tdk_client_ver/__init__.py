@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from affinidi_tdk_client_ver.api.verifier_api import VerifierApi
+from affinidi_tdk_client_ver.api.x_affinidi_tdk_api import XAffinidiTdkApi
 
 # import ApiClient
 from affinidi_tdk_client_ver.api_response import ApiResponse

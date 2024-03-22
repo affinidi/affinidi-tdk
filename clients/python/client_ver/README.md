@@ -99,13 +99,18 @@ with affinidi_tdk_client_ver.ApiClient(configuration) as api_client:
 
 All URIs are relative to _http://localhost_
 
-| Class         | Method                                                                                       | HTTP request                                   | Description                     |
-| ------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------- |
-| _VerifierApi_ | [**build_credential_request**](docs/VerifierApi.md#build_credential_request)                 | **POST** /v1/verifier/build-credential-request | Builds credential share request |
-| _VerifierApi_ | [**validate_jwt**](docs/VerifierApi.md#validate_jwt)                                         | **POST** /v1/verifier/validate-jwt             | Validates JWT token             |
-| _VerifierApi_ | [**verify_credential_share_response**](docs/VerifierApi.md#verify_credential_share_response) | **POST** /v1/verifier/verify-share-response    | Verifying share response token  |
-| _VerifierApi_ | [**verify_credentials**](docs/VerifierApi.md#verify_credentials)                             | **POST** /v1/verifier/verify-vcs               | Verifying VC                    |
-| _VerifierApi_ | [**verify_presentation**](docs/VerifierApi.md#verify_presentation)                           | **POST** /v1/verifier/verify-vp                | Verifying VP                    |
+| Class             | Method                                                                                           | HTTP request                                   | Description                     |
+| ----------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------- | ------------------------------- |
+| _VerifierApi_     | [**build_credential_request**](docs/VerifierApi.md#build_credential_request)                     | **POST** /v1/verifier/build-credential-request | Builds credential share request |
+| _VerifierApi_     | [**validate_jwt**](docs/VerifierApi.md#validate_jwt)                                             | **POST** /v1/verifier/validate-jwt             | Validates JWT token             |
+| _VerifierApi_     | [**verify_credential_share_response**](docs/VerifierApi.md#verify_credential_share_response)     | **POST** /v1/verifier/verify-share-response    | Verifying share response token  |
+| _VerifierApi_     | [**verify_credentials**](docs/VerifierApi.md#verify_credentials)                                 | **POST** /v1/verifier/verify-vcs               | Verifying VC                    |
+| _VerifierApi_     | [**verify_presentation**](docs/VerifierApi.md#verify_presentation)                               | **POST** /v1/verifier/verify-vp                | Verifying VP                    |
+| _XAffinidiTdkApi_ | [**build_credential_request**](docs/XAffinidiTdkApi.md#build_credential_request)                 | **POST** /v1/verifier/build-credential-request | Builds credential share request |
+| _XAffinidiTdkApi_ | [**validate_jwt**](docs/XAffinidiTdkApi.md#validate_jwt)                                         | **POST** /v1/verifier/validate-jwt             | Validates JWT token             |
+| _XAffinidiTdkApi_ | [**verify_credential_share_response**](docs/XAffinidiTdkApi.md#verify_credential_share_response) | **POST** /v1/verifier/verify-share-response    | Verifying share response token  |
+| _XAffinidiTdkApi_ | [**verify_credentials**](docs/XAffinidiTdkApi.md#verify_credentials)                             | **POST** /v1/verifier/verify-vcs               | Verifying VC                    |
+| _XAffinidiTdkApi_ | [**verify_presentation**](docs/XAffinidiTdkApi.md#verify_presentation)                           | **POST** /v1/verifier/verify-vp                | Verifying VP                    |
 
 ## Documentation For Models
 

@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class CreateKeysConfigResultDto(BaseModel):
     """
@@ -31,7 +31,18 @@ class CreateKeysConfigResultDto(BaseModel):
     seed_id: Optional[StrictStr] = Field(None, alias="seedId", description="id of the parent seed record")
     seed_ari: Optional[StrictStr] = Field(None, alias="seedAri", description="ARI of the parent seed record")
     public_key_hex: Optional[StrictStr] = Field(None, alias="publicKeyHex", description="public key of the key config in HEX format")
-    __properties = ["id", "ari", "seedId", "seedAri", "publicKeyHex"]
+    did_method: Optional[StrictStr] = Field(None, alias="didMethod", description="did method of the key record")
+    __properties = ["id", "ari", "seedId", "seedAri", "publicKeyHex", "didMethod"]
+
+    @validator('did_method')
+    def did_method_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('key', 'web'):
+            raise ValueError("must be one of enum values ('key', 'web')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +84,8 @@ class CreateKeysConfigResultDto(BaseModel):
             "ari": obj.get("ari"),
             "seed_id": obj.get("seedId"),
             "seed_ari": obj.get("seedAri"),
-            "public_key_hex": obj.get("publicKeyHex")
+            "public_key_hex": obj.get("publicKeyHex"),
+            "did_method": obj.get("didMethod")
         })
         return _obj
 

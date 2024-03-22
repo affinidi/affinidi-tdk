@@ -61,18 +61,44 @@ import affinidi_tdk_client_kyc
 from affinidi_tdk_client_kyc.rest import ApiException
 from pprint import pprint
 
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_client_kyc.Configuration(
+    host = "http://localhost"
+)
+
+
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_client_kyc.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_client_kyc.CorsApi(api_client)
+
+    try:
+        # CORS Support
+        api_response = api_instance.cors_complete_otp_operation()
+        print("The response of CorsApi->cors_complete_otp_operation:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CorsApi->cors_complete_otp_operation: %s\n" % e)
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class     | Method                                                                         | HTTP request                 | Description  |
+| --------- | ------------------------------------------------------------------------------ | ---------------------------- | ------------ |
+| _CorsApi_ | [**cors_complete_otp_operation**](docs/CorsApi.md#cors_complete_otp_operation) | **OPTIONS** /v1/otp/complete | CORS Support |
+| _CorsApi_ | [**cors_initiate_otp_operation**](docs/CorsApi.md#cors_initiate_otp_operation) | **OPTIONS** /v1/otp/initiate | CORS Support |
+| _OtpApi_  | [**complete_otp_operation**](docs/OtpApi.md#complete_otp_operation)            | **POST** /v1/otp/complete    |
+| _OtpApi_  | [**initiate_otp_operation**](docs/OtpApi.md#initiate_otp_operation)            | **POST** /v1/otp/initiate    |
 
 ## Documentation For Models
 
 - [CodeMismatchExceptionError](docs/CodeMismatchExceptionError.md)
+- [CompleteOtpOperation400Response](docs/CompleteOtpOperation400Response.md)
 - [CompleteRequest](docs/CompleteRequest.md)
 - [CompleteResponse](docs/CompleteResponse.md)
 - [CorsCompleteOtpOperationOK](docs/CorsCompleteOtpOperationOK.md)
@@ -140,3 +166,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+consumer-eng@affinidi.com

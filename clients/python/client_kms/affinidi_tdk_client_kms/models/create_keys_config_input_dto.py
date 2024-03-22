@@ -19,15 +19,27 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, StrictStr
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class CreateKeysConfigInputDto(BaseModel):
     """
     DTO contains configuration to create a key from the seed  # noqa: E501
     """
     derivation_path: StrictStr = Field(..., alias="derivationPath")
-    __properties = ["derivationPath"]
+    did_method: Optional[StrictStr] = Field(None, alias="didMethod", description="method of the DID, default is key")
+    did_web_url: Optional[StrictStr] = Field(None, alias="didWebUrl")
+    __properties = ["derivationPath", "didMethod", "didWebUrl"]
+
+    @validator('did_method')
+    def did_method_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('key', 'web'):
+            raise ValueError("must be one of enum values ('key', 'web')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -65,7 +77,9 @@ class CreateKeysConfigInputDto(BaseModel):
             return CreateKeysConfigInputDto.parse_obj(obj)
 
         _obj = CreateKeysConfigInputDto.parse_obj({
-            "derivation_path": obj.get("derivationPath")
+            "derivation_path": obj.get("derivationPath"),
+            "did_method": obj.get("didMethod"),
+            "did_web_url": obj.get("didWebUrl")
         })
         return _obj
 

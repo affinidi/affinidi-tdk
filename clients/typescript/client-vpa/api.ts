@@ -1183,6 +1183,14 @@ export type LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum =
   (typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum];
 
 /**
+ * @type LoginSessionAcceptResponse400Response
+ * @export
+ */
+export type LoginSessionAcceptResponse400Response =
+  | InvalidParameterError
+  | VPTokenValidationError;
+
+/**
  * Authorization Response per OpenID for Verifiable Presentations Specification
  * @export
  * @interface LoginSessionAcceptResponseInput
@@ -1975,3 +1983,5020 @@ export const VPTokenValidationErrorHttpStatusCodeEnum = {
 
 export type VPTokenValidationErrorHttpStatusCodeEnum =
   (typeof VPTokenValidationErrorHttpStatusCodeEnum)[keyof typeof VPTokenValidationErrorHttpStatusCodeEnum];
+
+/**
+ * AllowListApi - axios parameter creator
+ * @export
+ */
+export const AllowListApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Allow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    allowGroups: async (
+      groupNamesInput?: GroupNamesInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/allow-list/groups/add`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        groupNamesInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Disallow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disallowGroups: async (
+      groupNamesInput?: GroupNamesInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/allow-list/groups/remove`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        groupNamesInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Get Allowed Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAllowedGroups: async (
+      pageToken?: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/allow-list/groups`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (pageToken !== undefined) {
+        localVarQueryParameter['pageToken'] = pageToken;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * AllowListApi - functional programming interface
+ * @export
+ */
+export const AllowListApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    AllowListApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Allow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async allowGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.allowGroups(
+        groupNamesInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['AllowListApi.allowGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Disallow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async disallowGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.disallowGroups(
+        groupNamesInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['AllowListApi.disallowGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Get Allowed Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAllowedGroups(
+      pageToken?: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupNames>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAllowedGroups(pageToken, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['AllowListApi.listAllowedGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * AllowListApi - factory interface
+ * @export
+ */
+export const AllowListApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = AllowListApiFp(configuration);
+  return {
+    /**
+     * Allow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    allowGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .allowGroups(groupNamesInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Disallow Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    disallowGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .disallowGroups(groupNamesInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Get Allowed Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAllowedGroups(
+      pageToken?: string,
+      options?: any
+    ): AxiosPromise<GroupNames> {
+      return localVarFp
+        .listAllowedGroups(pageToken, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * AllowListApi - object-oriented interface
+ * @export
+ * @class AllowListApi
+ * @extends {BaseAPI}
+ */
+export class AllowListApi extends BaseAPI {
+  /**
+   * Allow Single or Multiple Groups
+   * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AllowListApi
+   */
+  public allowGroups(
+    groupNamesInput?: GroupNamesInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return AllowListApiFp(this.configuration)
+      .allowGroups(groupNamesInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Disallow Single or Multiple Groups
+   * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AllowListApi
+   */
+  public disallowGroups(
+    groupNamesInput?: GroupNamesInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return AllowListApiFp(this.configuration)
+      .disallowGroups(groupNamesInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Get Allowed Groups
+   * @param {string} [pageToken]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AllowListApi
+   */
+  public listAllowedGroups(
+    pageToken?: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return AllowListApiFp(this.configuration)
+      .listAllowedGroups(pageToken, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * ConfigurationApi - axios parameter creator
+ * @export
+ */
+export const ConfigurationApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * @summary Create a new login configuration
+     * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createLoginConfigurations: async (
+      createLoginConfigurationInput?: CreateLoginConfigurationInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/configurations`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createLoginConfigurationInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Delete login configurations by ID
+     * @summary Delete login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteLoginConfigurationsById: async (
+      configurationId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'deleteLoginConfigurationsById',
+        'configurationId',
+        configurationId
+      );
+      const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
+        `{${'configurationId'}}`,
+        encodeURIComponent(String(configurationId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Get Client Metadata By  OAuth 2.0 Client ID
+     * @summary Get Client Metadata By  OAuth 2.0 Client ID
+     * @param {string} clientId OAuth 2.0 Client ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClientMetadataByClientId: async (
+      clientId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'clientId' is not null or undefined
+      assertParamExists('getClientMetadataByClientId', 'clientId', clientId);
+      const localVarPath =
+        `/v1/login/configurations/metadata/{clientId}`.replace(
+          `{${'clientId'}}`,
+          encodeURIComponent(String(clientId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Get login configuration by ID
+     * @summary Get login configuration by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLoginConfigurationsById: async (
+      configurationId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'getLoginConfigurationsById',
+        'configurationId',
+        configurationId
+      );
+      const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
+        `{${'configurationId'}}`,
+        encodeURIComponent(String(configurationId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Endpoint to retrieve list of login configurations
+     * @summary List login configurations
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listLoginConfigurations: async (
+      limit?: number,
+      exclusiveStartKey?: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/configurations`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit;
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Update login configurations by ID
+     * @summary Update login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {UpdateLoginConfigurationInput} [updateLoginConfigurationInput] UpdateLoginConfigurationsById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateLoginConfigurationsById: async (
+      configurationId: string,
+      updateLoginConfigurationInput?: UpdateLoginConfigurationInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'updateLoginConfigurationsById',
+        'configurationId',
+        configurationId
+      );
+      const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
+        `{${'configurationId'}}`,
+        encodeURIComponent(String(configurationId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateLoginConfigurationInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * ConfigurationApi - functional programming interface
+ * @export
+ */
+export const ConfigurationApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    ConfigurationApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * @summary Create a new login configuration
+     * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createLoginConfigurations(
+      createLoginConfigurationInput?: CreateLoginConfigurationInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateLoginConfigurationOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.createLoginConfigurations(
+          createLoginConfigurationInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.createLoginConfigurations']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Delete login configurations by ID
+     * @summary Delete login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteLoginConfigurationsById(
+      configurationId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.deleteLoginConfigurationsById(
+          configurationId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.deleteLoginConfigurationsById']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Get Client Metadata By  OAuth 2.0 Client ID
+     * @summary Get Client Metadata By  OAuth 2.0 Client ID
+     * @param {string} clientId OAuth 2.0 Client ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getClientMetadataByClientId(
+      clientId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginConfigurationClientMetadata>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getClientMetadataByClientId(
+          clientId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.getClientMetadataByClientId']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Get login configuration by ID
+     * @summary Get login configuration by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getLoginConfigurationsById(
+      configurationId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginConfigurationObject>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getLoginConfigurationsById(
+          configurationId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.getLoginConfigurationsById']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Endpoint to retrieve list of login configurations
+     * @summary List login configurations
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listLoginConfigurations(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<ListLoginConfigurationOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listLoginConfigurations(
+          limit,
+          exclusiveStartKey,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.listLoginConfigurations']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Update login configurations by ID
+     * @summary Update login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {UpdateLoginConfigurationInput} [updateLoginConfigurationInput] UpdateLoginConfigurationsById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateLoginConfigurationsById(
+      configurationId: string,
+      updateLoginConfigurationInput?: UpdateLoginConfigurationInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginConfigurationObject>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.updateLoginConfigurationsById(
+          configurationId,
+          updateLoginConfigurationInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConfigurationApi.updateLoginConfigurationsById']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * ConfigurationApi - factory interface
+ * @export
+ */
+export const ConfigurationApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = ConfigurationApiFp(configuration);
+  return {
+    /**
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * @summary Create a new login configuration
+     * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createLoginConfigurations(
+      createLoginConfigurationInput?: CreateLoginConfigurationInput,
+      options?: any
+    ): AxiosPromise<CreateLoginConfigurationOutput> {
+      return localVarFp
+        .createLoginConfigurations(createLoginConfigurationInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Delete login configurations by ID
+     * @summary Delete login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteLoginConfigurationsById(
+      configurationId: string,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deleteLoginConfigurationsById(configurationId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Get Client Metadata By  OAuth 2.0 Client ID
+     * @summary Get Client Metadata By  OAuth 2.0 Client ID
+     * @param {string} clientId OAuth 2.0 Client ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClientMetadataByClientId(
+      clientId: string,
+      options?: any
+    ): AxiosPromise<LoginConfigurationClientMetadata> {
+      return localVarFp
+        .getClientMetadataByClientId(clientId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Get login configuration by ID
+     * @summary Get login configuration by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getLoginConfigurationsById(
+      configurationId: string,
+      options?: any
+    ): AxiosPromise<LoginConfigurationObject> {
+      return localVarFp
+        .getLoginConfigurationsById(configurationId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Endpoint to retrieve list of login configurations
+     * @summary List login configurations
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listLoginConfigurations(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: any
+    ): AxiosPromise<ListLoginConfigurationOutput> {
+      return localVarFp
+        .listLoginConfigurations(limit, exclusiveStartKey, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Update login configurations by ID
+     * @summary Update login configurations by ID
+     * @param {string} configurationId The id of the login configuration
+     * @param {UpdateLoginConfigurationInput} [updateLoginConfigurationInput] UpdateLoginConfigurationsById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateLoginConfigurationsById(
+      configurationId: string,
+      updateLoginConfigurationInput?: UpdateLoginConfigurationInput,
+      options?: any
+    ): AxiosPromise<LoginConfigurationObject> {
+      return localVarFp
+        .updateLoginConfigurationsById(
+          configurationId,
+          updateLoginConfigurationInput,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * ConfigurationApi - object-oriented interface
+ * @export
+ * @class ConfigurationApi
+ * @extends {BaseAPI}
+ */
+export class ConfigurationApi extends BaseAPI {
+  /**
+   * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+   * @summary Create a new login configuration
+   * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public createLoginConfigurations(
+    createLoginConfigurationInput?: CreateLoginConfigurationInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .createLoginConfigurations(createLoginConfigurationInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Delete login configurations by ID
+   * @summary Delete login configurations by ID
+   * @param {string} configurationId The id of the login configuration
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public deleteLoginConfigurationsById(
+    configurationId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .deleteLoginConfigurationsById(configurationId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Get Client Metadata By  OAuth 2.0 Client ID
+   * @summary Get Client Metadata By  OAuth 2.0 Client ID
+   * @param {string} clientId OAuth 2.0 Client ID
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public getClientMetadataByClientId(
+    clientId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .getClientMetadataByClientId(clientId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Get login configuration by ID
+   * @summary Get login configuration by ID
+   * @param {string} configurationId The id of the login configuration
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public getLoginConfigurationsById(
+    configurationId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .getLoginConfigurationsById(configurationId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Endpoint to retrieve list of login configurations
+   * @summary List login configurations
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public listLoginConfigurations(
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .listLoginConfigurations(limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Update login configurations by ID
+   * @summary Update login configurations by ID
+   * @param {string} configurationId The id of the login configuration
+   * @param {UpdateLoginConfigurationInput} [updateLoginConfigurationInput] UpdateLoginConfigurationsById
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConfigurationApi
+   */
+  public updateLoginConfigurationsById(
+    configurationId: string,
+    updateLoginConfigurationInput?: UpdateLoginConfigurationInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConfigurationApiFp(this.configuration)
+      .updateLoginConfigurationsById(
+        configurationId,
+        updateLoginConfigurationInput,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * ConsentApi - axios parameter creator
+ * @export
+ */
+export const ConsentApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * IDP consent request automated by adapter frontend
+     * @summary IDP consent request automated by adapter frontend
+     * @param {string} [consentChallenge] Consent challenge provided by IDP
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    consentRequest: async (
+      consentChallenge?: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/consent/request`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      if (consentChallenge !== undefined) {
+        localVarQueryParameter['consent_challenge'] = consentChallenge;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * ConsentApi - functional programming interface
+ * @export
+ */
+export const ConsentApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = ConsentApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * IDP consent request automated by adapter frontend
+     * @summary IDP consent request automated by adapter frontend
+     * @param {string} [consentChallenge] Consent challenge provided by IDP
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async consentRequest(
+      consentChallenge?: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.consentRequest(
+        consentChallenge,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['ConsentApi.consentRequest']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * ConsentApi - factory interface
+ * @export
+ */
+export const ConsentApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = ConsentApiFp(configuration);
+  return {
+    /**
+     * IDP consent request automated by adapter frontend
+     * @summary IDP consent request automated by adapter frontend
+     * @param {string} [consentChallenge] Consent challenge provided by IDP
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    consentRequest(
+      consentChallenge?: string,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .consentRequest(consentChallenge, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * ConsentApi - object-oriented interface
+ * @export
+ * @class ConsentApi
+ * @extends {BaseAPI}
+ */
+export class ConsentApi extends BaseAPI {
+  /**
+   * IDP consent request automated by adapter frontend
+   * @summary IDP consent request automated by adapter frontend
+   * @param {string} [consentChallenge] Consent challenge provided by IDP
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ConsentApi
+   */
+  public consentRequest(
+    consentChallenge?: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return ConsentApiFp(this.configuration)
+      .consentRequest(consentChallenge, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * CorsApi - axios parameter creator
+ * @export
+ */
+export const CorsApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionAcceptResponse: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/sessions/{sessionId}/accept-response`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'OPTIONS',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionForIdp: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/sessions/for-idp`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'OPTIONS',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionRejectResponse: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/sessions/{sessionId}/reject-response`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'OPTIONS',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * CorsApi - functional programming interface
+ * @export
+ */
+export const CorsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = CorsApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async corsLoginSessionAcceptResponse(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CorsLoginSessionAcceptResponseOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.corsLoginSessionAcceptResponse(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['CorsApi.corsLoginSessionAcceptResponse']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async corsLoginSessionForIdp(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CorsLoginSessionForIdpOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.corsLoginSessionForIdp(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['CorsApi.corsLoginSessionForIdp']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async corsLoginSessionRejectResponse(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CorsLoginSessionRejectResponseOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.corsLoginSessionRejectResponse(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['CorsApi.corsLoginSessionRejectResponse']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * CorsApi - factory interface
+ * @export
+ */
+export const CorsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = CorsApiFp(configuration);
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionAcceptResponse(
+      options?: any
+    ): AxiosPromise<CorsLoginSessionAcceptResponseOK> {
+      return localVarFp
+        .corsLoginSessionAcceptResponse(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionForIdp(
+      options?: any
+    ): AxiosPromise<CorsLoginSessionForIdpOK> {
+      return localVarFp
+        .corsLoginSessionForIdp(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsLoginSessionRejectResponse(
+      options?: any
+    ): AxiosPromise<CorsLoginSessionRejectResponseOK> {
+      return localVarFp
+        .corsLoginSessionRejectResponse(options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * CorsApi - object-oriented interface
+ * @export
+ * @class CorsApi
+ * @extends {BaseAPI}
+ */
+export class CorsApi extends BaseAPI {
+  /**
+   * Enables CORS by returning correct headers
+   * @summary CORS Support
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CorsApi
+   */
+  public corsLoginSessionAcceptResponse(options?: RawAxiosRequestConfig) {
+    return CorsApiFp(this.configuration)
+      .corsLoginSessionAcceptResponse(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Enables CORS by returning correct headers
+   * @summary CORS Support
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CorsApi
+   */
+  public corsLoginSessionForIdp(options?: RawAxiosRequestConfig) {
+    return CorsApiFp(this.configuration)
+      .corsLoginSessionForIdp(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Enables CORS by returning correct headers
+   * @summary CORS Support
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CorsApi
+   */
+  public corsLoginSessionRejectResponse(options?: RawAxiosRequestConfig) {
+    return CorsApiFp(this.configuration)
+      .corsLoginSessionRejectResponse(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyDelete: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1LoginAdminProxyDelete', 'proxy', proxy);
+      const localVarPath = `/v1/login/admin/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyGet: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1LoginAdminProxyGet', 'proxy', proxy);
+      const localVarPath = `/v1/login/admin/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPatch: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1LoginAdminProxyPatch', 'proxy', proxy);
+      const localVarPath = `/v1/login/admin/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPost: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1LoginAdminProxyPost', 'proxy', proxy);
+      const localVarPath = `/v1/login/admin/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPut: async (
+      proxy: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'proxy' is not null or undefined
+      assertParamExists('v1LoginAdminProxyPut', 'proxy', proxy);
+      const localVarPath = `/v1/login/admin/{proxy+}`.replace(
+        `{${'proxy'}}`,
+        encodeURIComponent(String(proxy))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginAdminProxyDelete(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginAdminProxyDelete(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1LoginAdminProxyDelete']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginAdminProxyGet(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginAdminProxyGet(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1LoginAdminProxyGet']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginAdminProxyPatch(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginAdminProxyPatch(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1LoginAdminProxyPatch']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginAdminProxyPost(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginAdminProxyPost(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1LoginAdminProxyPost']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginAdminProxyPut(
+      proxy: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginAdminProxyPut(proxy, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DefaultApi.v1LoginAdminProxyPut']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = DefaultApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyDelete(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginAdminProxyDelete(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyGet(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginAdminProxyGet(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPatch(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginAdminProxyPatch(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPost(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginAdminProxyPost(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} proxy
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginAdminProxyPut(proxy: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginAdminProxyPut(proxy, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1LoginAdminProxyDelete(
+    proxy: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DefaultApiFp(this.configuration)
+      .v1LoginAdminProxyDelete(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1LoginAdminProxyGet(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1LoginAdminProxyGet(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1LoginAdminProxyPatch(
+    proxy: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DefaultApiFp(this.configuration)
+      .v1LoginAdminProxyPatch(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1LoginAdminProxyPost(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1LoginAdminProxyPost(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} proxy
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public v1LoginAdminProxyPut(proxy: string, options?: RawAxiosRequestConfig) {
+    return DefaultApiFp(this.configuration)
+      .v1LoginAdminProxyPut(proxy, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * DenyListApi - axios parameter creator
+ * @export
+ */
+export const DenyListApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Block Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    blockGroups: async (
+      groupNamesInput?: GroupNamesInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/groups/add`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        groupNamesInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Block Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    blockUsers: async (
+      blockedUsersInput?: BlockedUsersInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/users/add`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        blockedUsersInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Get Blocked Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBlockedGroups: async (
+      pageToken?: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/groups`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (pageToken !== undefined) {
+        localVarQueryParameter['pageToken'] = pageToken;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Get List of Blocked Users
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBlockedUsers: async (
+      pageToken?: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/users`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (pageToken !== undefined) {
+        localVarQueryParameter['pageToken'] = pageToken;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Unblock Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unblockGroups: async (
+      groupNamesInput?: GroupNamesInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/groups/remove`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        groupNamesInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Unblock Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unblockUsers: async (
+      blockedUsersInput?: BlockedUsersInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/deny-list/users/remove`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        blockedUsersInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * DenyListApi - functional programming interface
+ * @export
+ */
+export const DenyListApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DenyListApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Block Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async blockGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.blockGroups(
+        groupNamesInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.blockGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Block Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async blockUsers(
+      blockedUsersInput?: BlockedUsersInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.blockUsers(
+        blockedUsersInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.blockUsers']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Get Blocked Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listBlockedGroups(
+      pageToken?: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupNames>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listBlockedGroups(pageToken, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.listBlockedGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Get List of Blocked Users
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listBlockedUsers(
+      pageToken?: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<BlockedUsers>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listBlockedUsers(pageToken, options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.listBlockedUsers']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Unblock Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async unblockGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.unblockGroups(
+        groupNamesInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.unblockGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Unblock Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async unblockUsers(
+      blockedUsersInput?: BlockedUsersInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.unblockUsers(
+        blockedUsersInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['DenyListApi.unblockUsers']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * DenyListApi - factory interface
+ * @export
+ */
+export const DenyListApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = DenyListApiFp(configuration);
+  return {
+    /**
+     * Block Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    blockGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .blockGroups(groupNamesInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Block Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    blockUsers(
+      blockedUsersInput?: BlockedUsersInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .blockUsers(blockedUsersInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Get Blocked Groups
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBlockedGroups(
+      pageToken?: string,
+      options?: any
+    ): AxiosPromise<GroupNames> {
+      return localVarFp
+        .listBlockedGroups(pageToken, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Get List of Blocked Users
+     * @param {string} [pageToken]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listBlockedUsers(
+      pageToken?: string,
+      options?: any
+    ): AxiosPromise<BlockedUsers> {
+      return localVarFp
+        .listBlockedUsers(pageToken, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Unblock Single or Multiple Groups
+     * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unblockGroups(
+      groupNamesInput?: GroupNamesInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .unblockGroups(groupNamesInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Unblock Single or Multiple user ids
+     * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unblockUsers(
+      blockedUsersInput?: BlockedUsersInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .unblockUsers(blockedUsersInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * DenyListApi - object-oriented interface
+ * @export
+ * @class DenyListApi
+ * @extends {BaseAPI}
+ */
+export class DenyListApi extends BaseAPI {
+  /**
+   * Block Single or Multiple Groups
+   * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public blockGroups(
+    groupNamesInput?: GroupNamesInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DenyListApiFp(this.configuration)
+      .blockGroups(groupNamesInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Block Single or Multiple user ids
+   * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public blockUsers(
+    blockedUsersInput?: BlockedUsersInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DenyListApiFp(this.configuration)
+      .blockUsers(blockedUsersInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Get Blocked Groups
+   * @param {string} [pageToken]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public listBlockedGroups(
+    pageToken?: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DenyListApiFp(this.configuration)
+      .listBlockedGroups(pageToken, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Get List of Blocked Users
+   * @param {string} [pageToken]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public listBlockedUsers(pageToken?: string, options?: RawAxiosRequestConfig) {
+    return DenyListApiFp(this.configuration)
+      .listBlockedUsers(pageToken, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Unblock Single or Multiple Groups
+   * @param {GroupNamesInput} [groupNamesInput] List of group names as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public unblockGroups(
+    groupNamesInput?: GroupNamesInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DenyListApiFp(this.configuration)
+      .unblockGroups(groupNamesInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Unblock Single or Multiple user ids
+   * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DenyListApi
+   */
+  public unblockUsers(
+    blockedUsersInput?: BlockedUsersInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return DenyListApiFp(this.configuration)
+      .unblockUsers(blockedUsersInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * GroupApi - axios parameter creator
+ * @export
+ */
+export const GroupApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {string} groupName
+     * @param {AddUserToGroupInput} addUserToGroupInput AddUserToGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addUserToGroup: async (
+      groupName: string,
+      addUserToGroupInput: AddUserToGroupInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'groupName' is not null or undefined
+      assertParamExists('addUserToGroup', 'groupName', groupName);
+      // verify required parameter 'addUserToGroupInput' is not null or undefined
+      assertParamExists(
+        'addUserToGroup',
+        'addUserToGroupInput',
+        addUserToGroupInput
+      );
+      const localVarPath = `/v1/groups/{groupName}/users`.replace(
+        `{${'groupName'}}`,
+        encodeURIComponent(String(groupName))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        addUserToGroupInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {CreateGroupInput} createGroupInput CreateGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createGroup: async (
+      createGroupInput: CreateGroupInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createGroupInput' is not null or undefined
+      assertParamExists('createGroup', 'createGroupInput', createGroupInput);
+      const localVarPath = `/v1/groups`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createGroupInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteGroup: async (
+      groupName: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'groupName' is not null or undefined
+      assertParamExists('deleteGroup', 'groupName', groupName);
+      const localVarPath = `/v1/groups/{groupName}`.replace(
+        `{${'groupName'}}`,
+        encodeURIComponent(String(groupName))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGroupById: async (
+      groupName: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'groupName' is not null or undefined
+      assertParamExists('getGroupById', 'groupName', groupName);
+      const localVarPath = `/v1/groups/{groupName}`.replace(
+        `{${'groupName'}}`,
+        encodeURIComponent(String(groupName))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {ListGroupUserMappingsSortOrderEnum} [sortOrder] sort response in specific order. By default it is in desc order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listGroupUserMappings: async (
+      groupName: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      sortOrder?: ListGroupUserMappingsSortOrderEnum,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'groupName' is not null or undefined
+      assertParamExists('listGroupUserMappings', 'groupName', groupName);
+      const localVarPath = `/v1/groups/{groupName}/users`.replace(
+        `{${'groupName'}}`,
+        encodeURIComponent(String(groupName))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit;
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey;
+      }
+
+      if (sortOrder !== undefined) {
+        localVarQueryParameter['sortOrder'] = sortOrder;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listGroups: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/groups`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {RemoveUserFromGroupInput} removeUserFromGroupInput Remove user from group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeUserFromGroup: async (
+      groupName: string,
+      removeUserFromGroupInput: RemoveUserFromGroupInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'groupName' is not null or undefined
+      assertParamExists('removeUserFromGroup', 'groupName', groupName);
+      // verify required parameter 'removeUserFromGroupInput' is not null or undefined
+      assertParamExists(
+        'removeUserFromGroup',
+        'removeUserFromGroupInput',
+        removeUserFromGroupInput
+      );
+      const localVarPath = `/v1/groups/{groupName}/users`.replace(
+        `{${'groupName'}}`,
+        encodeURIComponent(String(groupName))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        removeUserFromGroupInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * GroupApi - functional programming interface
+ * @export
+ */
+export const GroupApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = GroupApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {string} groupName
+     * @param {AddUserToGroupInput} addUserToGroupInput AddUserToGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async addUserToGroup(
+      groupName: string,
+      addUserToGroupInput: AddUserToGroupInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<GroupUserMappingDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.addUserToGroup(
+        groupName,
+        addUserToGroupInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.addUserToGroup']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {CreateGroupInput} createGroupInput CreateGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createGroup(
+      createGroupInput: CreateGroupInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createGroup(
+        createGroupInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.createGroup']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteGroup(
+      groupName: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGroup(
+        groupName,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.deleteGroup']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getGroupById(
+      groupName: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getGroupById(
+        groupName,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.getGroupById']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {ListGroupUserMappingsSortOrderEnum} [sortOrder] sort response in specific order. By default it is in desc order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listGroupUserMappings(
+      groupName: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      sortOrder?: ListGroupUserMappingsSortOrderEnum,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<GroupUserMappingsList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listGroupUserMappings(
+          groupName,
+          limit,
+          exclusiveStartKey,
+          sortOrder,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.listGroupUserMappings']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listGroups(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GroupsList>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups(
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.listGroups']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {RemoveUserFromGroupInput} removeUserFromGroupInput Remove user from group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async removeUserFromGroup(
+      groupName: string,
+      removeUserFromGroupInput: RemoveUserFromGroupInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.removeUserFromGroup(
+          groupName,
+          removeUserFromGroupInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['GroupApi.removeUserFromGroup']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * GroupApi - factory interface
+ * @export
+ */
+export const GroupApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = GroupApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {string} groupName
+     * @param {AddUserToGroupInput} addUserToGroupInput AddUserToGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addUserToGroup(
+      groupName: string,
+      addUserToGroupInput: AddUserToGroupInput,
+      options?: any
+    ): AxiosPromise<GroupUserMappingDto> {
+      return localVarFp
+        .addUserToGroup(groupName, addUserToGroupInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {CreateGroupInput} createGroupInput CreateGroup
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createGroup(
+      createGroupInput: CreateGroupInput,
+      options?: any
+    ): AxiosPromise<GroupDto> {
+      return localVarFp
+        .createGroup(createGroupInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteGroup(groupName: string, options?: any): AxiosPromise<void> {
+      return localVarFp
+        .deleteGroup(groupName, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getGroupById(groupName: string, options?: any): AxiosPromise<GroupDto> {
+      return localVarFp
+        .getGroupById(groupName, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {ListGroupUserMappingsSortOrderEnum} [sortOrder] sort response in specific order. By default it is in desc order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listGroupUserMappings(
+      groupName: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      sortOrder?: ListGroupUserMappingsSortOrderEnum,
+      options?: any
+    ): AxiosPromise<GroupUserMappingsList> {
+      return localVarFp
+        .listGroupUserMappings(
+          groupName,
+          limit,
+          exclusiveStartKey,
+          sortOrder,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listGroups(options?: any): AxiosPromise<GroupsList> {
+      return localVarFp
+        .listGroups(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} groupName
+     * @param {RemoveUserFromGroupInput} removeUserFromGroupInput Remove user from group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeUserFromGroup(
+      groupName: string,
+      removeUserFromGroupInput: RemoveUserFromGroupInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .removeUserFromGroup(groupName, removeUserFromGroupInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * GroupApi - object-oriented interface
+ * @export
+ * @class GroupApi
+ * @extends {BaseAPI}
+ */
+export class GroupApi extends BaseAPI {
+  /**
+   *
+   * @param {string} groupName
+   * @param {AddUserToGroupInput} addUserToGroupInput AddUserToGroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public addUserToGroup(
+    groupName: string,
+    addUserToGroupInput: AddUserToGroupInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return GroupApiFp(this.configuration)
+      .addUserToGroup(groupName, addUserToGroupInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {CreateGroupInput} createGroupInput CreateGroup
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public createGroup(
+    createGroupInput: CreateGroupInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return GroupApiFp(this.configuration)
+      .createGroup(createGroupInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} groupName
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public deleteGroup(groupName: string, options?: RawAxiosRequestConfig) {
+    return GroupApiFp(this.configuration)
+      .deleteGroup(groupName, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} groupName
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public getGroupById(groupName: string, options?: RawAxiosRequestConfig) {
+    return GroupApiFp(this.configuration)
+      .getGroupById(groupName, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} groupName
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+   * @param {ListGroupUserMappingsSortOrderEnum} [sortOrder] sort response in specific order. By default it is in desc order
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public listGroupUserMappings(
+    groupName: string,
+    limit?: number,
+    exclusiveStartKey?: string,
+    sortOrder?: ListGroupUserMappingsSortOrderEnum,
+    options?: RawAxiosRequestConfig
+  ) {
+    return GroupApiFp(this.configuration)
+      .listGroupUserMappings(
+        groupName,
+        limit,
+        exclusiveStartKey,
+        sortOrder,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public listGroups(options?: RawAxiosRequestConfig) {
+    return GroupApiFp(this.configuration)
+      .listGroups(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} groupName
+   * @param {RemoveUserFromGroupInput} removeUserFromGroupInput Remove user from group
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof GroupApi
+   */
+  public removeUserFromGroup(
+    groupName: string,
+    removeUserFromGroupInput: RemoveUserFromGroupInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return GroupApiFp(this.configuration)
+      .removeUserFromGroup(groupName, removeUserFromGroupInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * @export
+ */
+export const ListGroupUserMappingsSortOrderEnum = {
+  Asc: 'asc',
+  Desc: 'desc',
+} as const;
+export type ListGroupUserMappingsSortOrderEnum =
+  (typeof ListGroupUserMappingsSortOrderEnum)[keyof typeof ListGroupUserMappingsSortOrderEnum];
+
+/**
+ * IdpApi - axios parameter creator
+ * @export
+ */
+export const IdpApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * The authorization endpoint is one of the components in the OAuth 2.0 flow. It\'s the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access.
+     * @summary OAuth 2.0 Authorize Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2AuthGet: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdOauth2AuthGet',
+        'projectId',
+        projectId
+      );
+      const localVarPath = `/v1/login/project/{projectId}/oauth2/auth`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Revoking a token (both access and refresh) means that the tokens will be invalid.  A revoked access token can no longer be used to make access requests, and a revoked  refresh token can no longer be used to refresh an access token. Revoking a refresh  token also invalidates the access token that was created with it. A token may only  be revoked by the client the token was generated for.
+     * @summary Revoke OAuth 2.0 Access or Refresh Token
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2RevokePost: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdOauth2RevokePost',
+        'projectId',
+        projectId
+      );
+      const localVarPath =
+        `/v1/login/project/{projectId}/oauth2/revoke`.replace(
+          `{${'projectId'}}`,
+          encodeURIComponent(String(projectId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow.
+     * @summary OpenID Connect Front- and Back-channel Enabled Logout
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2SessionsLogoutGet: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdOauth2SessionsLogoutGet',
+        'projectId',
+        projectId
+      );
+      const localVarPath =
+        `/v1/login/project/{projectId}/oauth2/sessions/logout`.replace(
+          `{${'projectId'}}`,
+          encodeURIComponent(String(projectId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * The token endpoint is a critical component in the OAuth 2.0 protocol. It\'s the URL where a client application makes a request to exchange an authorization grant (such as an authorization code) for an access token. After a user grants authorization at the authorization endpoint, the client application receives an authorization grant, which is then exchanged for an access token at the token endpoint. This access token is then used to access the user\'s resources on the protected server.
+     * @summary The OAuth 2.0 Token Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2TokenPost: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdOauth2TokenPost',
+        'projectId',
+        projectId
+      );
+      const localVarPath = `/v1/login/project/{projectId}/oauth2/token`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * This endpoint returns the payload of the ID Token,  including session.id_token values, of the provided  OAuth 2.0 Access Token\'s consent request. In the case of authentication error, a WWW-Authenticate  header might be set in the response with more information  about the error. See the spec for more details about  header format.
+     * @summary OpenID Connect Userinfo
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdUserinfoGet: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdUserinfoGet',
+        'projectId',
+        projectId
+      );
+      const localVarPath = `/v1/login/project/{projectId}/userinfo`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Tokens and, if enabled, OAuth 2.0 JWT Access Tokens. This endpoint can be used with client libraries like node-jwks-rsa among others.
+     * @summary Discover Well-Known JSON Web Keys
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdWellKnownJwksJsonGet: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdWellKnownJwksJsonGet',
+        'projectId',
+        projectId
+      );
+      const localVarPath =
+        `/v1/login/project/{projectId}/.well-known/jwks.json`.replace(
+          `{${'projectId'}}`,
+          encodeURIComponent(String(projectId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * A mechanism for an OpenID Connect Relying Party to discover the End-User\'s  OpenID Provider and obtain information needed to interact with it, including  its OAuth 2.0 endpoint locations.
+     * @summary OpenID Connect Discovery
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdWellKnownOpenidConfigurationGet: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'v1LoginProjectProjectIdWellKnownOpenidConfigurationGet',
+        'projectId',
+        projectId
+      );
+      const localVarPath =
+        `/v1/login/project/{projectId}/.well-known/openid-configuration`.replace(
+          `{${'projectId'}}`,
+          encodeURIComponent(String(projectId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * IdpApi - functional programming interface
+ * @export
+ */
+export const IdpApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = IdpApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * The authorization endpoint is one of the components in the OAuth 2.0 flow. It\'s the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access.
+     * @summary OAuth 2.0 Authorize Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdOauth2AuthGet(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdOauth2AuthGet(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['IdpApi.v1LoginProjectProjectIdOauth2AuthGet']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Revoking a token (both access and refresh) means that the tokens will be invalid.  A revoked access token can no longer be used to make access requests, and a revoked  refresh token can no longer be used to refresh an access token. Revoking a refresh  token also invalidates the access token that was created with it. A token may only  be revoked by the client the token was generated for.
+     * @summary Revoke OAuth 2.0 Access or Refresh Token
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdOauth2RevokePost(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdOauth2RevokePost(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['IdpApi.v1LoginProjectProjectIdOauth2RevokePost']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow.
+     * @summary OpenID Connect Front- and Back-channel Enabled Logout
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdOauth2SessionsLogoutGet(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdOauth2SessionsLogoutGet(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap[
+          'IdpApi.v1LoginProjectProjectIdOauth2SessionsLogoutGet'
+        ]?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * The token endpoint is a critical component in the OAuth 2.0 protocol. It\'s the URL where a client application makes a request to exchange an authorization grant (such as an authorization code) for an access token. After a user grants authorization at the authorization endpoint, the client application receives an authorization grant, which is then exchanged for an access token at the token endpoint. This access token is then used to access the user\'s resources on the protected server.
+     * @summary The OAuth 2.0 Token Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdOauth2TokenPost(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OAuth2Token>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdOauth2TokenPost(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['IdpApi.v1LoginProjectProjectIdOauth2TokenPost']?.[
+          index
+        ]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * This endpoint returns the payload of the ID Token,  including session.id_token values, of the provided  OAuth 2.0 Access Token\'s consent request. In the case of authentication error, a WWW-Authenticate  header might be set in the response with more information  about the error. See the spec for more details about  header format.
+     * @summary OpenID Connect Userinfo
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdUserinfoGet(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserInfo>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdUserinfoGet(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['IdpApi.v1LoginProjectProjectIdUserinfoGet']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Tokens and, if enabled, OAuth 2.0 JWT Access Tokens. This endpoint can be used with client libraries like node-jwks-rsa among others.
+     * @summary Discover Well-Known JSON Web Keys
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdWellKnownJwksJsonGet(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<JsonWebKey>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdWellKnownJwksJsonGet(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap[
+          'IdpApi.v1LoginProjectProjectIdWellKnownJwksJsonGet'
+        ]?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * A mechanism for an OpenID Connect Relying Party to discover the End-User\'s  OpenID Provider and obtain information needed to interact with it, including  its OAuth 2.0 endpoint locations.
+     * @summary OpenID Connect Discovery
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+      projectId: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<OIDCConfig>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+          projectId,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap[
+          'IdpApi.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'
+        ]?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * IdpApi - factory interface
+ * @export
+ */
+export const IdpApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = IdpApiFp(configuration);
+  return {
+    /**
+     * The authorization endpoint is one of the components in the OAuth 2.0 flow. It\'s the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access.
+     * @summary OAuth 2.0 Authorize Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2AuthGet(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginProjectProjectIdOauth2AuthGet(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Revoking a token (both access and refresh) means that the tokens will be invalid.  A revoked access token can no longer be used to make access requests, and a revoked  refresh token can no longer be used to refresh an access token. Revoking a refresh  token also invalidates the access token that was created with it. A token may only  be revoked by the client the token was generated for.
+     * @summary Revoke OAuth 2.0 Access or Refresh Token
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2RevokePost(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginProjectProjectIdOauth2RevokePost(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow.
+     * @summary OpenID Connect Front- and Back-channel Enabled Logout
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2SessionsLogoutGet(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * The token endpoint is a critical component in the OAuth 2.0 protocol. It\'s the URL where a client application makes a request to exchange an authorization grant (such as an authorization code) for an access token. After a user grants authorization at the authorization endpoint, the client application receives an authorization grant, which is then exchanged for an access token at the token endpoint. This access token is then used to access the user\'s resources on the protected server.
+     * @summary The OAuth 2.0 Token Endpoint
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdOauth2TokenPost(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<OAuth2Token> {
+      return localVarFp
+        .v1LoginProjectProjectIdOauth2TokenPost(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * This endpoint returns the payload of the ID Token,  including session.id_token values, of the provided  OAuth 2.0 Access Token\'s consent request. In the case of authentication error, a WWW-Authenticate  header might be set in the response with more information  about the error. See the spec for more details about  header format.
+     * @summary OpenID Connect Userinfo
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdUserinfoGet(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<GetUserInfo> {
+      return localVarFp
+        .v1LoginProjectProjectIdUserinfoGet(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Tokens and, if enabled, OAuth 2.0 JWT Access Tokens. This endpoint can be used with client libraries like node-jwks-rsa among others.
+     * @summary Discover Well-Known JSON Web Keys
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdWellKnownJwksJsonGet(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<JsonWebKey> {
+      return localVarFp
+        .v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * A mechanism for an OpenID Connect Relying Party to discover the End-User\'s  OpenID Provider and obtain information needed to interact with it, including  its OAuth 2.0 endpoint locations.
+     * @summary OpenID Connect Discovery
+     * @param {string} projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+      projectId: string,
+      options?: any
+    ): AxiosPromise<OIDCConfig> {
+      return localVarFp
+        .v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+          projectId,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * IdpApi - object-oriented interface
+ * @export
+ * @class IdpApi
+ * @extends {BaseAPI}
+ */
+export class IdpApi extends BaseAPI {
+  /**
+   * The authorization endpoint is one of the components in the OAuth 2.0 flow. It\'s the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access.
+   * @summary OAuth 2.0 Authorize Endpoint
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdOauth2AuthGet(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdOauth2AuthGet(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Revoking a token (both access and refresh) means that the tokens will be invalid.  A revoked access token can no longer be used to make access requests, and a revoked  refresh token can no longer be used to refresh an access token. Revoking a refresh  token also invalidates the access token that was created with it. A token may only  be revoked by the client the token was generated for.
+   * @summary Revoke OAuth 2.0 Access or Refresh Token
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdOauth2RevokePost(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdOauth2RevokePost(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow.
+   * @summary OpenID Connect Front- and Back-channel Enabled Logout
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdOauth2SessionsLogoutGet(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * The token endpoint is a critical component in the OAuth 2.0 protocol. It\'s the URL where a client application makes a request to exchange an authorization grant (such as an authorization code) for an access token. After a user grants authorization at the authorization endpoint, the client application receives an authorization grant, which is then exchanged for an access token at the token endpoint. This access token is then used to access the user\'s resources on the protected server.
+   * @summary The OAuth 2.0 Token Endpoint
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdOauth2TokenPost(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdOauth2TokenPost(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * This endpoint returns the payload of the ID Token,  including session.id_token values, of the provided  OAuth 2.0 Access Token\'s consent request. In the case of authentication error, a WWW-Authenticate  header might be set in the response with more information  about the error. See the spec for more details about  header format.
+   * @summary OpenID Connect Userinfo
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdUserinfoGet(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdUserinfoGet(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Tokens and, if enabled, OAuth 2.0 JWT Access Tokens. This endpoint can be used with client libraries like node-jwks-rsa among others.
+   * @summary Discover Well-Known JSON Web Keys
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdWellKnownJwksJsonGet(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * A mechanism for an OpenID Connect Relying Party to discover the End-User\'s  OpenID Provider and obtain information needed to interact with it, including  its OAuth 2.0 endpoint locations.
+   * @summary OpenID Connect Discovery
+   * @param {string} projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IdpApi
+   */
+  public v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+    projectId: string,
+    options?: RawAxiosRequestConfig
+  ) {
+    return IdpApiFp(this.configuration)
+      .v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
+        projectId,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * SessionApi - axios parameter creator
+ * @export
+ */
+export const SessionApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Accepts and Validates the OIDC VP Response sent by the Wallet
+     * @summary Accept OIDC VP Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionAcceptResponseInput} [loginSessionAcceptResponseInput] LoginSessionAcceptResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionAcceptResponse: async (
+      sessionId: string,
+      loginSessionAcceptResponseInput?: LoginSessionAcceptResponseInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'sessionId' is not null or undefined
+      assertParamExists('loginSessionAcceptResponse', 'sessionId', sessionId);
+      const localVarPath =
+        `/v1/login/sessions/{sessionId}/accept-response`.replace(
+          `{${'sessionId'}}`,
+          encodeURIComponent(String(sessionId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        loginSessionAcceptResponseInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Creates Login Session for IDP Login by using the Login Challenge
+     * @summary Create Login Session for IDP Login
+     * @param {LoginSessionForIDPInput} [loginSessionForIDPInput] LoginSessionForIdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionForIdp: async (
+      loginSessionForIDPInput?: LoginSessionForIDPInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/login/sessions/for-idp`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        loginSessionForIDPInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * The user declines the request for access to their data
+     * @summary Reject Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionRejectResponseInput} [loginSessionRejectResponseInput] LoginSessionRejectResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionRejectResponse: async (
+      sessionId: string,
+      loginSessionRejectResponseInput?: LoginSessionRejectResponseInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'sessionId' is not null or undefined
+      assertParamExists('loginSessionRejectResponse', 'sessionId', sessionId);
+      const localVarPath =
+        `/v1/login/sessions/{sessionId}/reject-response`.replace(
+          `{${'sessionId'}}`,
+          encodeURIComponent(String(sessionId))
+        );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        loginSessionRejectResponseInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * SessionApi - functional programming interface
+ * @export
+ */
+export const SessionApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = SessionApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Accepts and Validates the OIDC VP Response sent by the Wallet
+     * @summary Accept OIDC VP Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionAcceptResponseInput} [loginSessionAcceptResponseInput] LoginSessionAcceptResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async loginSessionAcceptResponse(
+      sessionId: string,
+      loginSessionAcceptResponseInput?: LoginSessionAcceptResponseInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginSessionAcceptResponseOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.loginSessionAcceptResponse(
+          sessionId,
+          loginSessionAcceptResponseInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SessionApi.loginSessionAcceptResponse']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Creates Login Session for IDP Login by using the Login Challenge
+     * @summary Create Login Session for IDP Login
+     * @param {LoginSessionForIDPInput} [loginSessionForIDPInput] LoginSessionForIdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async loginSessionForIdp(
+      loginSessionForIDPInput?: LoginSessionForIDPInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginSessionDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.loginSessionForIdp(
+          loginSessionForIDPInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SessionApi.loginSessionForIdp']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * The user declines the request for access to their data
+     * @summary Reject Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionRejectResponseInput} [loginSessionRejectResponseInput] LoginSessionRejectResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async loginSessionRejectResponse(
+      sessionId: string,
+      loginSessionRejectResponseInput?: LoginSessionRejectResponseInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<LoginSessionRejectResponseOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.loginSessionRejectResponse(
+          sessionId,
+          loginSessionRejectResponseInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SessionApi.loginSessionRejectResponse']?.[index]
+          ?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * SessionApi - factory interface
+ * @export
+ */
+export const SessionApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = SessionApiFp(configuration);
+  return {
+    /**
+     * Accepts and Validates the OIDC VP Response sent by the Wallet
+     * @summary Accept OIDC VP Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionAcceptResponseInput} [loginSessionAcceptResponseInput] LoginSessionAcceptResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionAcceptResponse(
+      sessionId: string,
+      loginSessionAcceptResponseInput?: LoginSessionAcceptResponseInput,
+      options?: any
+    ): AxiosPromise<LoginSessionAcceptResponseOutput> {
+      return localVarFp
+        .loginSessionAcceptResponse(
+          sessionId,
+          loginSessionAcceptResponseInput,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Creates Login Session for IDP Login by using the Login Challenge
+     * @summary Create Login Session for IDP Login
+     * @param {LoginSessionForIDPInput} [loginSessionForIDPInput] LoginSessionForIdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionForIdp(
+      loginSessionForIDPInput?: LoginSessionForIDPInput,
+      options?: any
+    ): AxiosPromise<LoginSessionDto> {
+      return localVarFp
+        .loginSessionForIdp(loginSessionForIDPInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * The user declines the request for access to their data
+     * @summary Reject Response for Login Session
+     * @param {string} sessionId The id of the login session
+     * @param {LoginSessionRejectResponseInput} [loginSessionRejectResponseInput] LoginSessionRejectResponse
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginSessionRejectResponse(
+      sessionId: string,
+      loginSessionRejectResponseInput?: LoginSessionRejectResponseInput,
+      options?: any
+    ): AxiosPromise<LoginSessionRejectResponseOutput> {
+      return localVarFp
+        .loginSessionRejectResponse(
+          sessionId,
+          loginSessionRejectResponseInput,
+          options
+        )
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * SessionApi - object-oriented interface
+ * @export
+ * @class SessionApi
+ * @extends {BaseAPI}
+ */
+export class SessionApi extends BaseAPI {
+  /**
+   * Accepts and Validates the OIDC VP Response sent by the Wallet
+   * @summary Accept OIDC VP Response for Login Session
+   * @param {string} sessionId The id of the login session
+   * @param {LoginSessionAcceptResponseInput} [loginSessionAcceptResponseInput] LoginSessionAcceptResponse
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SessionApi
+   */
+  public loginSessionAcceptResponse(
+    sessionId: string,
+    loginSessionAcceptResponseInput?: LoginSessionAcceptResponseInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SessionApiFp(this.configuration)
+      .loginSessionAcceptResponse(
+        sessionId,
+        loginSessionAcceptResponseInput,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Creates Login Session for IDP Login by using the Login Challenge
+   * @summary Create Login Session for IDP Login
+   * @param {LoginSessionForIDPInput} [loginSessionForIDPInput] LoginSessionForIdp
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SessionApi
+   */
+  public loginSessionForIdp(
+    loginSessionForIDPInput?: LoginSessionForIDPInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SessionApiFp(this.configuration)
+      .loginSessionForIdp(loginSessionForIDPInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * The user declines the request for access to their data
+   * @summary Reject Response for Login Session
+   * @param {string} sessionId The id of the login session
+   * @param {LoginSessionRejectResponseInput} [loginSessionRejectResponseInput] LoginSessionRejectResponse
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SessionApi
+   */
+  public loginSessionRejectResponse(
+    sessionId: string,
+    loginSessionRejectResponseInput?: LoginSessionRejectResponseInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SessionApiFp(this.configuration)
+      .loginSessionRejectResponse(
+        sessionId,
+        loginSessionRejectResponseInput,
+        options
+      )
+      .then((request) => request(this.axios, this.basePath));
+  }
+}

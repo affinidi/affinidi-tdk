@@ -61,14 +61,58 @@ import affinidi_tdk_client_kms
 from affinidi_tdk_client_kms.rest import ApiException
 from pprint import pprint
 
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_client_kms.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_client_kms.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_client_kms.KeyApi(api_client)
+    id = 'id_example' # str | id of seed record
+    create_keys_config_input_dto = affinidi_tdk_client_kms.CreateKeysConfigInputDto() # CreateKeysConfigInputDto | CreateKey
+
+    try:
+        api_response = api_instance.create_key(id, create_keys_config_input_dto)
+        print("The response of KeyApi->create_key:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling KeyApi->create_key: %s\n" % e)
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class     | Method                                                                 | HTTP request                                  | Description |
+| --------- | ---------------------------------------------------------------------- | --------------------------------------------- | ----------- |
+| _KeyApi_  | [**create_key**](docs/KeyApi.md#create_key)                            | **POST** /v1/seeds/{id}/keys                  |
+| _KeyApi_  | [**decrypt_by_private_key**](docs/KeyApi.md#decrypt_by_private_key)    | **POST** /v1/keys/{id}/decrypt-by-private-key |
+| _KeyApi_  | [**kmssign_credential**](docs/KeyApi.md#kmssign_credential)            | **POST** /v1/keys/{id}/sign-credential        |
+| _KeyApi_  | [**sign**](docs/KeyApi.md#sign)                                        | **POST** /v1/keys/{id}/sign                   |
+| _KeyApi_  | [**sign_jwt**](docs/KeyApi.md#sign_jwt)                                | **POST** /v1/keys/{id}/sign-jwt               |
+| _SeedApi_ | [**create_seed**](docs/SeedApi.md#create_seed)                         | **POST** /v1/seeds                            |
+| _SeedApi_ | [**export_seed_as_mnemonic**](docs/SeedApi.md#export_seed_as_mnemonic) | **POST** /v1/seeds/{id}/export-mnemonic       |
+| _SeedApi_ | [**get_key**](docs/SeedApi.md#get_key)                                 | **GET** /v1/keys/{id}                         |
+| _SeedApi_ | [**get_seed**](docs/SeedApi.md#get_seed)                               | **GET** /v1/seeds/{id}                        |
+| _SeedApi_ | [**import_seed**](docs/SeedApi.md#import_seed)                         | **POST** /v1/seeds/import                     |
+| _SeedApi_ | [**list_seed**](docs/SeedApi.md#list_seed)                             | **GET** /v1/seeds                             |
+| _SeedApi_ | [**revoke_seed**](docs/SeedApi.md#revoke_seed)                         | **PATCH** /v1/seeds/{id}/revoke               |
 
 ## Documentation For Models
 
@@ -77,6 +121,7 @@ All URIs are relative to _http://localhost_
 - [CreateSeedResultDto](docs/CreateSeedResultDto.md)
 - [DecryptByPrivateKeyInputDto](docs/DecryptByPrivateKeyInputDto.md)
 - [DecryptByPrivateKeyResultDto](docs/DecryptByPrivateKeyResultDto.md)
+- [EmptyInput](docs/EmptyInput.md)
 - [Error](docs/Error.md)
 - [ErrorDetail](docs/ErrorDetail.md)
 - [ExportSeedResultDto](docs/ExportSeedResultDto.md)
@@ -84,6 +129,7 @@ All URIs are relative to _http://localhost_
 - [GetSeedResultDto](docs/GetSeedResultDto.md)
 - [ImportSeedMnemonicInputDto](docs/ImportSeedMnemonicInputDto.md)
 - [ImportSeedRawInputDto](docs/ImportSeedRawInputDto.md)
+- [ImportSeedRequest](docs/ImportSeedRequest.md)
 - [ListSeedResultDto](docs/ListSeedResultDto.md)
 - [ListSeedResultDtoRecordsInner](docs/ListSeedResultDtoRecordsInner.md)
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
@@ -107,3 +153,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

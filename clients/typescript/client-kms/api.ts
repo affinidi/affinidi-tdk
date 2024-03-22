@@ -51,7 +51,28 @@ export interface CreateKeysConfigInputDto {
    * @memberof CreateKeysConfigInputDto
    */
   derivationPath: string;
+  /**
+   * method of the DID, default is key
+   * @type {string}
+   * @memberof CreateKeysConfigInputDto
+   */
+  didMethod?: CreateKeysConfigInputDtoDidMethodEnum;
+  /**
+   *
+   * @type {string}
+   * @memberof CreateKeysConfigInputDto
+   */
+  didWebUrl?: string;
 }
+
+export const CreateKeysConfigInputDtoDidMethodEnum = {
+  Key: 'key',
+  Web: 'web',
+} as const;
+
+export type CreateKeysConfigInputDtoDidMethodEnum =
+  (typeof CreateKeysConfigInputDtoDidMethodEnum)[keyof typeof CreateKeysConfigInputDtoDidMethodEnum];
+
 /**
  * DTO contains result of key config creation
  * @export
@@ -88,7 +109,22 @@ export interface CreateKeysConfigResultDto {
    * @memberof CreateKeysConfigResultDto
    */
   publicKeyHex?: string;
+  /**
+   * did method of the key record
+   * @type {string}
+   * @memberof CreateKeysConfigResultDto
+   */
+  didMethod?: CreateKeysConfigResultDtoDidMethodEnum;
 }
+
+export const CreateKeysConfigResultDtoDidMethodEnum = {
+  Key: 'key',
+  Web: 'web',
+} as const;
+
+export type CreateKeysConfigResultDtoDidMethodEnum =
+  (typeof CreateKeysConfigResultDtoDidMethodEnum)[keyof typeof CreateKeysConfigResultDtoDidMethodEnum];
+
 /**
  * DTO contains a result of the seed record creation
  * @export
@@ -133,6 +169,19 @@ export interface DecryptByPrivateKeyResultDto {
    * @memberof DecryptByPrivateKeyResultDto
    */
   decryptedData: string;
+}
+/**
+ *
+ * @export
+ * @interface EmptyInput
+ */
+export interface EmptyInput {
+  /**
+   *
+   * @type {string}
+   * @memberof EmptyInput
+   */
+  emptyInput?: string;
 }
 /**
  * Detail of an error
@@ -272,6 +321,14 @@ export interface ImportSeedRawInputDto {
    */
   seedHex?: string;
 }
+/**
+ * @type ImportSeedRequest
+ * @export
+ */
+export type ImportSeedRequest =
+  | ImportSeedMnemonicInputDto
+  | ImportSeedRawInputDto;
+
 /**
  * DTO contains list of seed records
  * @export
@@ -452,3 +509,1563 @@ export interface SignResultDto {
    */
   signature: string;
 }
+
+/**
+ * KeyApi - axios parameter creator
+ * @export
+ */
+export const KeyApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {CreateKeysConfigInputDto} createKeysConfigInputDto CreateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createKey: async (
+      id: string,
+      createKeysConfigInputDto: CreateKeysConfigInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('createKey', 'id', id);
+      // verify required parameter 'createKeysConfigInputDto' is not null or undefined
+      assertParamExists(
+        'createKey',
+        'createKeysConfigInputDto',
+        createKeysConfigInputDto
+      );
+      const localVarPath = `/v1/seeds/{id}/keys`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createKeysConfigInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {DecryptByPrivateKeyInputDto} decryptByPrivateKeyInputDto DecryptByPrivateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    decryptByPrivateKey: async (
+      id: string,
+      decryptByPrivateKeyInputDto: DecryptByPrivateKeyInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('decryptByPrivateKey', 'id', id);
+      // verify required parameter 'decryptByPrivateKeyInputDto' is not null or undefined
+      assertParamExists(
+        'decryptByPrivateKey',
+        'decryptByPrivateKeyInputDto',
+        decryptByPrivateKeyInputDto
+      );
+      const localVarPath = `/v1/keys/{id}/decrypt-by-private-key`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        decryptByPrivateKeyInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    kmssignCredential: async (
+      id: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('kmssignCredential', 'id', id);
+      // verify required parameter 'signCredentialInputDto' is not null or undefined
+      assertParamExists(
+        'kmssignCredential',
+        'signCredentialInputDto',
+        signCredentialInputDto
+      );
+      const localVarPath = `/v1/keys/{id}/sign-credential`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signCredentialInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of signing key configuration
+     * @param {SignInputDto} signInputDto Sign
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sign: async (
+      id: string,
+      signInputDto: SignInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('sign', 'id', id);
+      // verify required parameter 'signInputDto' is not null or undefined
+      assertParamExists('sign', 'signInputDto', signInputDto);
+      const localVarPath = `/v1/keys/{id}/sign`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {SignJwtInputDto} signJwtInputDto SignJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwt: async (
+      id: string,
+      signJwtInputDto: SignJwtInputDto,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('signJwt', 'id', id);
+      // verify required parameter 'signJwtInputDto' is not null or undefined
+      assertParamExists('signJwt', 'signJwtInputDto', signJwtInputDto);
+      const localVarPath = `/v1/keys/{id}/sign-jwt`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signJwtInputDto,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * KeyApi - functional programming interface
+ * @export
+ */
+export const KeyApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = KeyApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {CreateKeysConfigInputDto} createKeysConfigInputDto CreateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createKey(
+      id: string,
+      createKeysConfigInputDto: CreateKeysConfigInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateKeysConfigResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createKey(
+        id,
+        createKeysConfigInputDto,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['KeyApi.createKey']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {DecryptByPrivateKeyInputDto} decryptByPrivateKeyInputDto DecryptByPrivateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async decryptByPrivateKey(
+      id: string,
+      decryptByPrivateKeyInputDto: DecryptByPrivateKeyInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<DecryptByPrivateKeyResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.decryptByPrivateKey(
+          id,
+          decryptByPrivateKeyInputDto,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['KeyApi.decryptByPrivateKey']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async kmssignCredential(
+      id: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<SignCredentialResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.kmssignCredential(
+          id,
+          signCredentialInputDto,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['KeyApi.kmssignCredential']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of signing key configuration
+     * @param {SignInputDto} signInputDto Sign
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async sign(
+      id: string,
+      signInputDto: SignInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SignResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.sign(
+        id,
+        signInputDto,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath = operationServerMap['KeyApi.sign']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {SignJwtInputDto} signJwtInputDto SignJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signJwt(
+      id: string,
+      signJwtInputDto: SignJwtInputDto,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<SignJwtResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.signJwt(
+        id,
+        signJwtInputDto,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['KeyApi.signJwt']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * KeyApi - factory interface
+ * @export
+ */
+export const KeyApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = KeyApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {CreateKeysConfigInputDto} createKeysConfigInputDto CreateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createKey(
+      id: string,
+      createKeysConfigInputDto: CreateKeysConfigInputDto,
+      options?: any
+    ): AxiosPromise<CreateKeysConfigResultDto> {
+      return localVarFp
+        .createKey(id, createKeysConfigInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {DecryptByPrivateKeyInputDto} decryptByPrivateKeyInputDto DecryptByPrivateKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    decryptByPrivateKey(
+      id: string,
+      decryptByPrivateKeyInputDto: DecryptByPrivateKeyInputDto,
+      options?: any
+    ): AxiosPromise<DecryptByPrivateKeyResultDto> {
+      return localVarFp
+        .decryptByPrivateKey(id, decryptByPrivateKeyInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    kmssignCredential(
+      id: string,
+      signCredentialInputDto: SignCredentialInputDto,
+      options?: any
+    ): AxiosPromise<SignCredentialResultDto> {
+      return localVarFp
+        .kmssignCredential(id, signCredentialInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of signing key configuration
+     * @param {SignInputDto} signInputDto Sign
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    sign(
+      id: string,
+      signInputDto: SignInputDto,
+      options?: any
+    ): AxiosPromise<SignResultDto> {
+      return localVarFp
+        .sign(id, signInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of seed
+     * @param {SignJwtInputDto} signJwtInputDto SignJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwt(
+      id: string,
+      signJwtInputDto: SignJwtInputDto,
+      options?: any
+    ): AxiosPromise<SignJwtResultDto> {
+      return localVarFp
+        .signJwt(id, signJwtInputDto, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * KeyApi - object-oriented interface
+ * @export
+ * @class KeyApi
+ * @extends {BaseAPI}
+ */
+export class KeyApi extends BaseAPI {
+  /**
+   *
+   * @param {string} id id of seed record
+   * @param {CreateKeysConfigInputDto} createKeysConfigInputDto CreateKey
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof KeyApi
+   */
+  public createKey(
+    id: string,
+    createKeysConfigInputDto: CreateKeysConfigInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return KeyApiFp(this.configuration)
+      .createKey(id, createKeysConfigInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of seed
+   * @param {DecryptByPrivateKeyInputDto} decryptByPrivateKeyInputDto DecryptByPrivateKey
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof KeyApi
+   */
+  public decryptByPrivateKey(
+    id: string,
+    decryptByPrivateKeyInputDto: DecryptByPrivateKeyInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return KeyApiFp(this.configuration)
+      .decryptByPrivateKey(id, decryptByPrivateKeyInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of key
+   * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof KeyApi
+   */
+  public kmssignCredential(
+    id: string,
+    signCredentialInputDto: SignCredentialInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return KeyApiFp(this.configuration)
+      .kmssignCredential(id, signCredentialInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of signing key configuration
+   * @param {SignInputDto} signInputDto Sign
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof KeyApi
+   */
+  public sign(
+    id: string,
+    signInputDto: SignInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return KeyApiFp(this.configuration)
+      .sign(id, signInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of seed
+   * @param {SignJwtInputDto} signJwtInputDto SignJwt
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof KeyApi
+   */
+  public signJwt(
+    id: string,
+    signJwtInputDto: SignJwtInputDto,
+    options?: RawAxiosRequestConfig
+  ) {
+    return KeyApiFp(this.configuration)
+      .signJwt(id, signJwtInputDto, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * SeedApi - axios parameter creator
+ * @export
+ */
+export const SeedApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {EmptyInput} [emptyInput] CreateSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createSeed: async (
+      emptyInput?: EmptyInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/seeds`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        emptyInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Export seed as a mnemonic phrase (for seed 128bit / 256bit (default)). Returns the exported seed from the service
+     * @param {string} id id of seed to be exported
+     * @param {EmptyInput} [emptyInput] ExportSeedAsMnemonic
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    exportSeedAsMnemonic: async (
+      id: string,
+      emptyInput?: EmptyInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('exportSeedAsMnemonic', 'id', id);
+      const localVarPath = `/v1/seeds/{id}/export-mnemonic`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        emptyInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getKey: async (
+      id: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('getKey', 'id', id);
+      const localVarPath = `/v1/keys/{id}`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSeed: async (
+      id: string,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('getSeed', 'id', id);
+      const localVarPath = `/v1/seeds/{id}`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {ImportSeedRequest} importSeedRequest ImportSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    importSeed: async (
+      importSeedRequest: ImportSeedRequest,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'importSeedRequest' is not null or undefined
+      assertParamExists('importSeed', 'importSeedRequest', importSeedRequest);
+      const localVarPath = `/v1/seeds/import`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        importSeedRequest,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {ListSeedStatusEnum} [status]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listSeed: async (
+      status?: ListSeedStatusEnum,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/seeds`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      if (status !== undefined) {
+        localVarQueryParameter['status'] = status;
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * revokes the seed, after that the keys derived from this seed cannot be used anymore. Revoked seed id will be listed in seed list with isRevoked=true flag
+     * @param {string} id id of seed record
+     * @param {EmptyInput} [emptyInput] RevokeSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeSeed: async (
+      id: string,
+      emptyInput?: EmptyInput,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'id' is not null or undefined
+      assertParamExists('revokeSeed', 'id', id);
+      const localVarPath = `/v1/seeds/{id}/revoke`.replace(
+        `{${'id'}}`,
+        encodeURIComponent(String(id))
+      );
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        emptyInput,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * SeedApi - functional programming interface
+ * @export
+ */
+export const SeedApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = SeedApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {EmptyInput} [emptyInput] CreateSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createSeed(
+      emptyInput?: EmptyInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateSeedResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createSeed(
+        emptyInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.createSeed']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Export seed as a mnemonic phrase (for seed 128bit / 256bit (default)). Returns the exported seed from the service
+     * @param {string} id id of seed to be exported
+     * @param {EmptyInput} [emptyInput] ExportSeedAsMnemonic
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async exportSeedAsMnemonic(
+      id: string,
+      emptyInput?: EmptyInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<ExportSeedResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.exportSeedAsMnemonic(
+          id,
+          emptyInput,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.exportSeedAsMnemonic']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getKey(
+      id: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<GetKeyResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getKey(
+        id,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.getKey']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getSeed(
+      id: string,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<GetSeedResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getSeed(
+        id,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.getSeed']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {ImportSeedRequest} importSeedRequest ImportSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async importSeed(
+      importSeedRequest: ImportSeedRequest,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CreateSeedResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.importSeed(
+        importSeedRequest,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.importSeed']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {ListSeedStatusEnum} [status]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listSeed(
+      status?: ListSeedStatusEnum,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<ListSeedResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listSeed(
+        status,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.listSeed']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * revokes the seed, after that the keys derived from this seed cannot be used anymore. Revoked seed id will be listed in seed list with isRevoked=true flag
+     * @param {string} id id of seed record
+     * @param {EmptyInput} [emptyInput] RevokeSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async revokeSeed(
+      id: string,
+      emptyInput?: EmptyInput,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.revokeSeed(
+        id,
+        emptyInput,
+        options
+      );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['SeedApi.revokeSeed']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * SeedApi - factory interface
+ * @export
+ */
+export const SeedApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = SeedApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {EmptyInput} [emptyInput] CreateSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createSeed(
+      emptyInput?: EmptyInput,
+      options?: any
+    ): AxiosPromise<CreateSeedResultDto> {
+      return localVarFp
+        .createSeed(emptyInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Export seed as a mnemonic phrase (for seed 128bit / 256bit (default)). Returns the exported seed from the service
+     * @param {string} id id of seed to be exported
+     * @param {EmptyInput} [emptyInput] ExportSeedAsMnemonic
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    exportSeedAsMnemonic(
+      id: string,
+      emptyInput?: EmptyInput,
+      options?: any
+    ): AxiosPromise<ExportSeedResultDto> {
+      return localVarFp
+        .exportSeedAsMnemonic(id, emptyInput, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of key
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getKey(id: string, options?: any): AxiosPromise<GetKeyResultDto> {
+      return localVarFp
+        .getKey(id, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {string} id id of seed record
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getSeed(id: string, options?: any): AxiosPromise<GetSeedResultDto> {
+      return localVarFp
+        .getSeed(id, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {ImportSeedRequest} importSeedRequest ImportSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    importSeed(
+      importSeedRequest: ImportSeedRequest,
+      options?: any
+    ): AxiosPromise<CreateSeedResultDto> {
+      return localVarFp
+        .importSeed(importSeedRequest, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {ListSeedStatusEnum} [status]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listSeed(
+      status?: ListSeedStatusEnum,
+      options?: any
+    ): AxiosPromise<ListSeedResultDto> {
+      return localVarFp
+        .listSeed(status, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * revokes the seed, after that the keys derived from this seed cannot be used anymore. Revoked seed id will be listed in seed list with isRevoked=true flag
+     * @param {string} id id of seed record
+     * @param {EmptyInput} [emptyInput] RevokeSeed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeSeed(
+      id: string,
+      emptyInput?: EmptyInput,
+      options?: any
+    ): AxiosPromise<void> {
+      return localVarFp
+        .revokeSeed(id, emptyInput, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * SeedApi - object-oriented interface
+ * @export
+ * @class SeedApi
+ * @extends {BaseAPI}
+ */
+export class SeedApi extends BaseAPI {
+  /**
+   *
+   * @param {EmptyInput} [emptyInput] CreateSeed
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public createSeed(emptyInput?: EmptyInput, options?: RawAxiosRequestConfig) {
+    return SeedApiFp(this.configuration)
+      .createSeed(emptyInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Export seed as a mnemonic phrase (for seed 128bit / 256bit (default)). Returns the exported seed from the service
+   * @param {string} id id of seed to be exported
+   * @param {EmptyInput} [emptyInput] ExportSeedAsMnemonic
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public exportSeedAsMnemonic(
+    id: string,
+    emptyInput?: EmptyInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SeedApiFp(this.configuration)
+      .exportSeedAsMnemonic(id, emptyInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of key
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public getKey(id: string, options?: RawAxiosRequestConfig) {
+    return SeedApiFp(this.configuration)
+      .getKey(id, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {string} id id of seed record
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public getSeed(id: string, options?: RawAxiosRequestConfig) {
+    return SeedApiFp(this.configuration)
+      .getSeed(id, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {ImportSeedRequest} importSeedRequest ImportSeed
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public importSeed(
+    importSeedRequest: ImportSeedRequest,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SeedApiFp(this.configuration)
+      .importSeed(importSeedRequest, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {ListSeedStatusEnum} [status]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public listSeed(
+    status?: ListSeedStatusEnum,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SeedApiFp(this.configuration)
+      .listSeed(status, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * revokes the seed, after that the keys derived from this seed cannot be used anymore. Revoked seed id will be listed in seed list with isRevoked=true flag
+   * @param {string} id id of seed record
+   * @param {EmptyInput} [emptyInput] RevokeSeed
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeedApi
+   */
+  public revokeSeed(
+    id: string,
+    emptyInput?: EmptyInput,
+    options?: RawAxiosRequestConfig
+  ) {
+    return SeedApiFp(this.configuration)
+      .revokeSeed(id, emptyInput, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * @export
+ */
+export const ListSeedStatusEnum = {
+  Revoked: 'REVOKED',
+  Active: 'ACTIVE',
+} as const;
+export type ListSeedStatusEnum =
+  (typeof ListSeedStatusEnum)[keyof typeof ListSeedStatusEnum];

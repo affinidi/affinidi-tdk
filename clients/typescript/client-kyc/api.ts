@@ -97,6 +97,14 @@ export type CodeMismatchExceptionErrorHttpStatusCodeEnum =
   (typeof CodeMismatchExceptionErrorHttpStatusCodeEnum)[keyof typeof CodeMismatchExceptionErrorHttpStatusCodeEnum];
 
 /**
+ * @type CompleteOtpOperation400Response
+ * @export
+ */
+export type CompleteOtpOperation400Response =
+  | CodeMismatchExceptionError
+  | ExpiredCodeExceptionError;
+
+/**
  * completeOtp operation request
  * @export
  * @interface CompleteRequest
@@ -574,3 +582,515 @@ export const UsernameExistsExceptionErrorHttpStatusCodeEnum = {
 
 export type UsernameExistsExceptionErrorHttpStatusCodeEnum =
   (typeof UsernameExistsExceptionErrorHttpStatusCodeEnum)[keyof typeof UsernameExistsExceptionErrorHttpStatusCodeEnum];
+
+/**
+ * CorsApi - axios parameter creator
+ * @export
+ */
+export const CorsApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsCompleteOtpOperation: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/otp/complete`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'OPTIONS',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsInitiateOtpOperation: async (
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/otp/initiate`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'OPTIONS',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * CorsApi - functional programming interface
+ * @export
+ */
+export const CorsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = CorsApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async corsCompleteOtpOperation(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CorsCompleteOtpOperationOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.corsCompleteOtpOperation(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['CorsApi.corsCompleteOtpOperation']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async corsInitiateOtpOperation(
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CorsInitiateOtpOperationOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.corsInitiateOtpOperation(options);
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['CorsApi.corsInitiateOtpOperation']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * CorsApi - factory interface
+ * @export
+ */
+export const CorsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = CorsApiFp(configuration);
+  return {
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsCompleteOtpOperation(
+      options?: any
+    ): AxiosPromise<CorsCompleteOtpOperationOK> {
+      return localVarFp
+        .corsCompleteOtpOperation(options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Enables CORS by returning correct headers
+     * @summary CORS Support
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    corsInitiateOtpOperation(
+      options?: any
+    ): AxiosPromise<CorsInitiateOtpOperationOK> {
+      return localVarFp
+        .corsInitiateOtpOperation(options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * CorsApi - object-oriented interface
+ * @export
+ * @class CorsApi
+ * @extends {BaseAPI}
+ */
+export class CorsApi extends BaseAPI {
+  /**
+   * Enables CORS by returning correct headers
+   * @summary CORS Support
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CorsApi
+   */
+  public corsCompleteOtpOperation(options?: RawAxiosRequestConfig) {
+    return CorsApiFp(this.configuration)
+      .corsCompleteOtpOperation(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Enables CORS by returning correct headers
+   * @summary CORS Support
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CorsApi
+   */
+  public corsInitiateOtpOperation(options?: RawAxiosRequestConfig) {
+    return CorsApiFp(this.configuration)
+      .corsInitiateOtpOperation(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}
+
+/**
+ * OtpApi - axios parameter creator
+ * @export
+ */
+export const OtpApiAxiosParamCreator = function (
+  configuration?: Configuration
+) {
+  return {
+    /**
+     *
+     * @param {CompleteRequest} completeRequest CompleteOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    completeOtpOperation: async (
+      completeRequest: CompleteRequest,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'completeRequest' is not null or undefined
+      assertParamExists(
+        'completeOtpOperation',
+        'completeRequest',
+        completeRequest
+      );
+      const localVarPath = `/v1/otp/complete`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        completeRequest,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     *
+     * @param {InitiateRequest} initiateRequest InitiateOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    initiateOtpOperation: async (
+      initiateRequest: InitiateRequest,
+      options: RawAxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'initiateRequest' is not null or undefined
+      assertParamExists(
+        'initiateOtpOperation',
+        'initiateRequest',
+        initiateRequest
+      );
+      const localVarPath = `/v1/otp/initiate`;
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration
+      );
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        initiateRequest,
+        localVarRequestOptions,
+        configuration
+      );
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  };
+};
+
+/**
+ * OtpApi - functional programming interface
+ * @export
+ */
+export const OtpApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = OtpApiAxiosParamCreator(configuration);
+  return {
+    /**
+     *
+     * @param {CompleteRequest} completeRequest CompleteOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async completeOtpOperation(
+      completeRequest: CompleteRequest,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<CompleteResponse>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.completeOtpOperation(
+          completeRequest,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['OtpApi.completeOtpOperation']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+    /**
+     *
+     * @param {InitiateRequest} initiateRequest InitiateOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async initiateOtpOperation(
+      initiateRequest: InitiateRequest,
+      options?: RawAxiosRequestConfig
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string
+      ) => AxiosPromise<InitiateResponse>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.initiateOtpOperation(
+          initiateRequest,
+          options
+        );
+      const index = configuration?.serverIndex ?? 0;
+      const operationBasePath =
+        operationServerMap['OtpApi.initiateOtpOperation']?.[index]?.url;
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration
+        )(axios, operationBasePath || basePath);
+    },
+  };
+};
+
+/**
+ * OtpApi - factory interface
+ * @export
+ */
+export const OtpApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance
+) {
+  const localVarFp = OtpApiFp(configuration);
+  return {
+    /**
+     *
+     * @param {CompleteRequest} completeRequest CompleteOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    completeOtpOperation(
+      completeRequest: CompleteRequest,
+      options?: any
+    ): AxiosPromise<CompleteResponse> {
+      return localVarFp
+        .completeOtpOperation(completeRequest, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     *
+     * @param {InitiateRequest} initiateRequest InitiateOtpOperation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    initiateOtpOperation(
+      initiateRequest: InitiateRequest,
+      options?: any
+    ): AxiosPromise<InitiateResponse> {
+      return localVarFp
+        .initiateOtpOperation(initiateRequest, options)
+        .then((request) => request(axios, basePath));
+    },
+  };
+};
+
+/**
+ * OtpApi - object-oriented interface
+ * @export
+ * @class OtpApi
+ * @extends {BaseAPI}
+ */
+export class OtpApi extends BaseAPI {
+  /**
+   *
+   * @param {CompleteRequest} completeRequest CompleteOtpOperation
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OtpApi
+   */
+  public completeOtpOperation(
+    completeRequest: CompleteRequest,
+    options?: RawAxiosRequestConfig
+  ) {
+    return OtpApiFp(this.configuration)
+      .completeOtpOperation(completeRequest, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   *
+   * @param {InitiateRequest} initiateRequest InitiateOtpOperation
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof OtpApi
+   */
+  public initiateOtpOperation(
+    initiateRequest: InitiateRequest,
+    options?: RawAxiosRequestConfig
+  ) {
+    return OtpApiFp(this.configuration)
+      .initiateOtpOperation(initiateRequest, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+}

@@ -18,6 +18,9 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from affinidi_tdk_client_cwe.api.revocation_api import RevocationApi
+from affinidi_tdk_client_cwe.api.default_api import DefaultApi
+from affinidi_tdk_client_cwe.api.wallet_api import WalletApi
 
 # import ApiClient
 from affinidi_tdk_client_cwe.api_response import ApiResponse
@@ -31,6 +34,7 @@ from affinidi_tdk_client_cwe.exceptions import ApiAttributeError
 from affinidi_tdk_client_cwe.exceptions import ApiException
 
 # import models into sdk package
+from affinidi_tdk_client_cwe.models.create_wallet_input import CreateWalletInput
 from affinidi_tdk_client_cwe.models.create_wallet_response import CreateWalletResponse
 from affinidi_tdk_client_cwe.models.entity_not_found_error import EntityNotFoundError
 from affinidi_tdk_client_cwe.models.get_revocation_list_credential_result_dto import GetRevocationListCredentialResultDto
