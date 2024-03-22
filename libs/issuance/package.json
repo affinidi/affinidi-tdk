@@ -1,0 +1,57 @@
+{
+    "name": "@affinidi/issuance",
+    "version": "0.1.0",
+    "description": "Issue a VC",
+    "author": "Affinidi",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    },
+    "keywords": [
+        "affinidi-tdk",
+        "identity",
+        "issuance",
+        "holistic",
+        "network",
+        "trust"
+    ],
+    "license": "Apache-2.0",
+    "main": "index.js",
+    "typings": "index.d.ts",
+    "sideEffects": false,
+    "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+    "jsii": {
+        "outdir": "dist",
+        "versionFormat": "short",
+        "targets": {
+            "python": {
+                "distName": "affinidi-tdk.issuance",
+                "module": "affinidi_tdk.issuance"
+            }
+        }
+    },
+    "scripts": {
+        "build": "jsii -vvv",
+        "build:watch": "jsii -w",
+        "lint": "eslint . --ext .ts",
+        "package": "jsii-pacmak -vvv",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "@affinidi/client-cwe": "^0.0.2-beta",
+        "did-resolver": "^4.1.0"
+    },
+    "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.3",
+        "@types/qs": "^6.9.8",
+        "jsii": "^5.3.25",
+        "jsii-pacmak": "^1.95.0",
+        "typescript": "^5.2.2"
+    },
+    "stability": "stable",
+    "types": "index.d.ts",
+    "bundleDependencies": [
+        "@affinidi/client-cwe",
+        "did-resolver"
+    ]
+}

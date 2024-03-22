@@ -1,4 +1,4 @@
-## @affinidi/sdk-auth-provider
+## @affinidi/tdk-auth-provider
 
 ### Build JSII
 
@@ -19,7 +19,7 @@ npm install <path_to_tdk-auth-provider.jsii.tgz>
 ```
 
 ```ts
-import { AuthProvider } from '@affinidi/sdk-auth-provider'
+import { AuthProvider } from '@affinidi/tdk-auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
