@@ -16,7 +16,7 @@ export class Cwe {
   constructor({ authProvider, apiGatewayUrl }: ICWEParams) {
     this.walletApi = new WalletApi(
       new Configuration({
-        apiKey: authProvider.fetchProjectScopedToken(),
+        apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
         basePath: `${apiGatewayUrl}/cwe`,
       })
     )
