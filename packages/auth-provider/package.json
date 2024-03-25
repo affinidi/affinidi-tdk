@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "@affinidi/client-iam": "^0.0.2-beta",
-    "@affinidi/client-vpa": "^0.0.2-beta",
     "axios": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
     "qs": "^6.11.2",
@@ -56,7 +55,6 @@
   "types": "index.d.ts",
   "bundleDependencies": [
     "@affinidi/client-iam",
-    "@affinidi/client-vpa",
     "axios",
     "jsonwebtoken",
     "qs",
