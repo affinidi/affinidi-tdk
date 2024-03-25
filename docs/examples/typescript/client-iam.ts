@@ -1,8 +1,6 @@
 // npm install -S @affinidi/tdk-auth-provider @affinidi/client-TLA
 // NOTE: TLA is one of the services: aca, cwe, dcf, iam, kms, kyc, vpa
 
-import axios from 'axios'
-
 import { PoliciesApi, Configuration as IamConfiguration } from '@affinidi/client-iam'
 import { AuthProvider } from '@affinidi/tdk-auth-provider'
 

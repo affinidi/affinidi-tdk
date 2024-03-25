@@ -13,15 +13,15 @@ export class AuthProvider {
   private readonly projectScopedTokenInstance: ProjectScopedToken
   private readonly jwt: Jwt
 
-  constructor(params: { [key: string]: string }) {
-    this.apiGatewayUrl = params.apiGatewayUrl
-    this.keyId = params.keyId
-    this.machineUserId = params.machineUserId
-    this.passphrase = params.passphrase
-    this.privateKey = params.privateKey
-    this.projectId = params.projectId
-    this.publicKey = params.publicKey
-    this.tokenEndpoint = params.tokenEndpoint
+  constructor(authProviderParams: { [key: string]: string }) {
+    this.apiGatewayUrl = authProviderParams.apiGatewayUrl
+    this.keyId = authProviderParams.keyId
+    this.machineUserId = authProviderParams.machineUserId
+    this.passphrase = authProviderParams.passphrase
+    this.privateKey = authProviderParams.privateKey
+    this.projectId = authProviderParams.projectId
+    this.publicKey = authProviderParams.publicKey
+    this.tokenEndpoint = authProviderParams.tokenEndpoint
     this.projectScopedTokenInstance = new ProjectScopedToken()
     this.jwt = new Jwt()
   }

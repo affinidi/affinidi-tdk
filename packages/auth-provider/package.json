@@ -37,13 +37,17 @@
     "prepare": "npm run build"
   },
   "dependencies": {
+    "@affinidi/client-iam": "^0.0.2-beta",
+    "@affinidi/client-vpa": "^0.0.2-beta",
     "axios": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
-    "qs": "^6.11.2"
+    "qs": "^6.11.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.3",
     "@types/qs": "^6.9.8",
+    "@types/uuid": "^9.0.8",
     "jsii": "^5.3.25",
     "jsii-pacmak": "^1.95.0",
     "typescript": "^5.2.2"
@@ -51,8 +55,11 @@
   "stability": "stable",
   "types": "index.d.ts",
   "bundleDependencies": [
+    "@affinidi/client-iam",
+    "@affinidi/client-vpa",
     "axios",
     "jsonwebtoken",
-    "qs"
+    "qs",
+    "uuid"
   ]
 }

@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
+    "@affinidi/tdk-auth-provider": "0.0.3-beta",
     "tslib": "^2.3.0"
   },
   "keywords": [

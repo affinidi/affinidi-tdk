@@ -1,4 +1,4 @@
-## @affinidi/sdk-auth-provider
+## @affinidi/tdk-auth-provider
 
 ### Build JSII
 
@@ -14,17 +14,52 @@ The code will be generated under /dist for each language.
 
 ### JS
 
+#### Create Personal Access Token
+
+This is optional - if you don't have your personal access token yet, follow the steps below:
+
+* login to Affinidi via CLI:
+
+```bash
+affinidi start
+```
+
+This will return you projectId, which is needed later.
+
+
+```bash
+affinidi whoami | jq '"\(.access_token) ~~~ \(.projectScopedToken)"'
+```
+
+NOTE: if you don't have `jq`
+
+```bash
+affinidi whoami
+```
+
+and save the values `access_token` and `projectScopedToken`.
+
 ```bash
 npm install <path_to_tdk-auth-provider.jsii.tgz>
 ```
 
 ```ts
-import { AuthProvider } from '@affinidi/sdk-auth-provider'
+import { PersonalAccessToken } from '@affinidi/tdk-auth-provider'
+
+const pat = new PersonalAccessToken({ passphrase, userAccessToken, projectScopedToken })
+const { tokenId, keyId, publicKey, privateKey } = await pat.createPersonalAccessToken()
+```
+
+🤖 A new personal access token now can be used to access Affinidi services.
+
+
+```ts
+import { AuthProvider } from '@affinidi/tdk-auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
   keyId,
-  machineUserId,
+  machineUserId, // tokenId from above
   passphrase,
   privateKey,
   publicKey,
