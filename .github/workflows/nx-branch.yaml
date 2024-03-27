@@ -3,7 +3,7 @@ on:
   push:
     branches:
       # Change this if your primary branch is not main
-      - '**'        # matches every branch
+      - '**' # matches every branch
       - '!main'
   pull_request:
 
@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+      - env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
       - uses: nrwl/nx-set-shas@v3
       # This line is needed for nx affected to work when CI is running on a PR
