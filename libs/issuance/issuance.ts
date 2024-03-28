@@ -115,6 +115,10 @@ export class Issuance {
       throw new Error('"data" or "credentialSubject" must be provided')
     }
 
+    if (!holderDid) {
+      throw new Error('"holderDid" must be provided')
+    }
+
     const {
       context,
       credentialType: credType,
@@ -138,7 +142,7 @@ export class Issuance {
 
     return { unsignedCredential }
   }
-
+  // use buildUnsignedVC before issuing a vc
   public async issueVC(
     vc: any,
     walletId: string,
