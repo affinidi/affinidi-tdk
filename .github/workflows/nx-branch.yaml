@@ -25,8 +25,6 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: nrwl/nx-set-shas@v3
       # This line is needed for nx affected to work when CI is running on a PR
       - run: git branch --track main origin/main
