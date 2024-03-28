@@ -141,7 +141,7 @@ export class Issuance {
 
   public async issueVC(
     vc: any,
-    walletId: string
+    walletId: string,
   ): Promise<{ [key: string]: any }> {
     const signedCredential = await this.cwe.signCredential(walletId, vc)
 

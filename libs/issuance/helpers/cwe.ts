@@ -18,13 +18,13 @@ export class Cwe {
       new Configuration({
         apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
         basePath: `${apiGatewayUrl}/cwe`,
-      })
+      }),
     )
   }
 
   public async signCredential(
     walletId: string,
-    signCredentialInput: any
+    signCredentialInput: any,
   ): Promise<{ [key: string]: any }> {
     const signedCredential = (
       await this.walletApi.signCredential(walletId, signCredentialInput)

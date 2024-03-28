@@ -6,10 +6,7 @@ export interface IValidateToken {
 }
 
 export class Jwt {
-  public validateToken(
-    token: string,
-    publicKey: string
-  ): IValidateToken {
+  public validateToken(token: string, publicKey: string): IValidateToken {
     try {
       // NOTE:
       //   - algorithm for JWT of project scoped token is ES256

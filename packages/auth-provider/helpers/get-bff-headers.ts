@@ -2,7 +2,7 @@ export class BffHeaders {
   public getBffHeaders(
     cookieName: string,
     sessionId: string,
-    cliVersion?: string
+    cliVersion?: string,
   ): { [key: string]: string } {
     return {
       Accept: 'application/json',
