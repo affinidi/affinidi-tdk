@@ -3,7 +3,7 @@ on:
   push:
     branches:
       # Change this if your primary branch is not main
-      - '**'        # matches every branch
+      - '**' # matches every branch
       - '!main'
   pull_request:
 

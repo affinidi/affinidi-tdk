@@ -45,7 +45,6 @@
   },
   "workspaces": [
     "packages/*",
-    "libs/*",
     "clients/*"
   ]
 }

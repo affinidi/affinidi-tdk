@@ -1,7 +1,7 @@
 // npm install -S @affinidi/tdk-auth-provider @affinidi/client-TLA
 // NOTE: TLA is one of the services: aca, cwe, dcf, iam, kms, kyc, vpa
 
-import { PoliciesApi, Configuration as IamConfiguration } from '@affinidi/client-iam'
+import { Configuration, WalletApi } from '@affinidi/client-cwe'
 import { AuthProvider } from '@affinidi/tdk-auth-provider'
 
 // NOTE: set your variables for PAT
@@ -11,10 +11,9 @@ const passphrase = 'top-secret'
 const keyId = 'KeyId'
 const machineUserId = '<your_machine_user_id>'
 const projectId = '<your_project_id>'
-const tokenEndpoint = 'https://apse1.auth.developer.affinidi.io/auth/oauth2/token'
+const tokenEndpoint =
+  'https://apse1.auth.developer.affinidi.io/auth/oauth2/token'
 const apiGatewayUrl = 'https://apse1.api.affinidi.io'
-
-const projectScopedToken = '<your_project_id>'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -27,19 +26,15 @@ const authProvider = new AuthProvider({
   tokenEndpoint,
 })
 
-const iamConfiguration = new IamConfiguration({
-  apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-  basePath: `${apiGatewayUrl}/iam`,
-})
+const walletApi = new WalletApi(
+  new Configuration({
+    apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
+    basePath: `${apiGatewayUrl}/cwe`,
+  })
+)
 
-async function getPolicies() {
-  const api = new PoliciesApi(iamConfiguration)
+const wallet = (await walletApi.createWallet()).data.wallet
 
-  const { data } = await api.getPolicies(machineUserId, 'token')
+const walletInfo = (await walletApi.getWallet(wallet.id)).data
 
-  return data
-}
-
-getPolicies()
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error))
+const wallets = (await walletApi.listWallets()).data.wallets
