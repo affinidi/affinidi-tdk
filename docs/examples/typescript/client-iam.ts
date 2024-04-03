@@ -9,7 +9,7 @@ const privateKey = '<your_private_key>'
 const publicKey = '<your_public_key>'
 const passphrase = 'top-secret'
 const keyId = 'KeyId'
-const machineUserId = '<your_machine_user_id>'
+const tokenId = '<your_personal_access_token_id>'
 const projectId = '<your_project_id>'
 const tokenEndpoint = 'https://apse1.auth.developer.affinidi.io/auth/oauth2/token'
 const apiGatewayUrl = 'https://apse1.api.affinidi.io'
@@ -19,7 +19,7 @@ const projectScopedToken = '<your_project_id>'
 const authProvider = new AuthProvider({
   apiGatewayUrl,
   keyId,
-  machineUserId,
+  tokenId,
   passphrase,
   privateKey,
   publicKey,
@@ -35,7 +35,7 @@ const iamConfiguration = new IamConfiguration({
 async function getPolicies() {
   const api = new PoliciesApi(iamConfiguration)
 
-  const { data } = await api.getPolicies(machineUserId, 'token')
+  const { data } = await api.getPolicies(tokenId, 'token')
 
   return data
 }

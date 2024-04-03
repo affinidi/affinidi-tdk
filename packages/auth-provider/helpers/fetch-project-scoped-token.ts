@@ -6,7 +6,7 @@ import * as qs from 'qs'
 const ALGORITHM = 'RS256'
 
 export interface ISignPayload {
-  machineUserId: string
+  tokenId: string
   tokenEndpoint: string
   privateKey: string
   passphrase: string
@@ -20,7 +20,7 @@ export interface IFetchProjectScopedToken extends ISignPayload {
 
 export class ProjectScopedToken {
   public async signPayload({
-    machineUserId,
+    tokenId,
     tokenEndpoint,
     privateKey,
     passphrase,
@@ -29,8 +29,8 @@ export class ProjectScopedToken {
     const issueTimeInSeconds = Math.floor(new Date().getTime() / 1000)
 
     const payload = {
-      iss: machineUserId,
-      sub: machineUserId,
+      iss: tokenId,
+      sub: tokenId,
       aud: tokenEndpoint,
       jti: new Date().toString() + Math.random(),
       exp: issueTimeInSeconds + 5 * 60,
@@ -53,14 +53,14 @@ export class ProjectScopedToken {
   }
 
   public async getUserAccessToken({
-    machineUserId,
+    tokenId,
     tokenEndpoint,
     privateKey,
     passphrase,
     keyId,
   }: ISignPayload) {
     const token = await this.signPayload({
-      machineUserId,
+      tokenId,
       tokenEndpoint,
       privateKey,
       passphrase,
@@ -73,7 +73,7 @@ export class ProjectScopedToken {
       client_assertion_type:
         'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
       client_assertion: token,
-      client_id: machineUserId,
+      client_id: tokenId,
     })
 
     const { data } = await axios(tokenEndpoint, {
@@ -90,14 +90,14 @@ export class ProjectScopedToken {
   public async fetchProjectScopedToken({
     apiGatewayUrl,
     projectId,
-    machineUserId,
+    tokenId,
     tokenEndpoint,
     privateKey,
     passphrase,
     keyId,
   }: IFetchProjectScopedToken) {
     const userAccessToken = await this.getUserAccessToken({
-      machineUserId,
+      tokenId,
       tokenEndpoint,
       privateKey,
       passphrase,

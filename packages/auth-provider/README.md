@@ -24,7 +24,7 @@ import { AuthProvider } from '@affinidi/tdk-auth-provider'
 const authProvider = new AuthProvider({
   apiGatewayUrl,
   keyId,
-  machineUserId,
+  tokenId,
   passphrase,
   privateKey,
   publicKey,
@@ -47,7 +47,7 @@ import affinidi_tdk.auth_provider
 stats = {
   apiGatewayUrl,
   keyId,
-  machineUserId,
+  tokenId,
   passphrase,
   privateKey,
   publicKey,
