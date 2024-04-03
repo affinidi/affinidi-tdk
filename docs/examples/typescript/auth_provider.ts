@@ -5,7 +5,7 @@ const authProvider = new AuthProvider({
     publicKey: '<your_public_key>',
     passphrase: 'top-secret',
     keyId: 'KeyId',
-    machineUserId: '<your_machine_user_id>',
+    tokenId: '<your_personal_access_token_id>',
     projectId: '<your_project_id>',
     tokenEndpoint:
       'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',

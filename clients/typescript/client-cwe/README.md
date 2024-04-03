@@ -34,7 +34,7 @@ import { AuthProvider } from '@affinidi/test-auth-provider';
 const authProvider = new AuthProvider({
   apiGatewayUrl,
   keyId,
-  machineUserId,
+  tokenId,
   passphrase,
   privateKey,
   publicKey,

@@ -3,7 +3,7 @@ import { Jwt, ProjectScopedToken } from './helpers'
 export interface IAuthProviderParams {
   apiGatewayUrl: string
   keyId: string
-  machineUserId: string
+  tokenId: string
   passphrase: string
   privateKey: string
   projectId: string
@@ -15,7 +15,7 @@ export class AuthProvider {
   private projectScopedToken = ''
   private readonly apiGatewayUrl: string = ''
   private readonly keyId: string = ''
-  private readonly machineUserId: string = ''
+  private readonly tokenId: string = ''
   private readonly passphrase: string = ''
   private readonly privateKey: string = ''
   private readonly projectId: string = ''
@@ -28,7 +28,7 @@ export class AuthProvider {
     const authProviderParams: IAuthProviderParams = {
       apiGatewayUrl: '',
       keyId: '',
-      machineUserId: '',
+      tokenId: '',
       passphrase: '',
       privateKey: '',
       projectId: '',
@@ -38,7 +38,7 @@ export class AuthProvider {
     this.validateMissingInput(authProviderParams, param)
     this.apiGatewayUrl = param.apiGatewayUrl
     this.keyId = param.keyId
-    this.machineUserId = param.machineUserId
+    this.tokenId = param.tokenId
     this.passphrase = param.passphrase
     this.privateKey = param.privateKey
     this.projectId = param.projectId
@@ -73,7 +73,7 @@ export class AuthProvider {
         await this.projectScopedTokenInstance.fetchProjectScopedToken({
           apiGatewayUrl: this.apiGatewayUrl,
           keyId: this.keyId,
-          machineUserId: this.machineUserId,
+          tokenId: this.tokenId,
           passphrase: this.passphrase,
           privateKey: this.privateKey,
           projectId: this.projectId,
