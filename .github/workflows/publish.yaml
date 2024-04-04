@@ -1,0 +1,28 @@
+name: Publish
+on:
+  push:
+    branches:
+      - '**' # matches every branch
+      - '!main'
+  pull_request:
+
+# Needed for nx-set-shas when run on the main branch
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          # architecture: 'x64'
+        # cache: 'pip'
+      - name: publish artifact
+        run: .github-action-scripts/build-and-publish-artifacts.sh
