@@ -2,18 +2,18 @@
 
 ## Properties
 
-| Name                           | Type                                                                        | Description                                                                 | Notes                        |
-| ------------------------------ | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------- |
-| **name**                       | **str**                                                                     | User defined login configuration name                                       |
-| **redirect_uris**              | **List[str]**                                                               | OAuth 2.0 Redirect URIs                                                     |
-| **vp_definition**              | **str**                                                                     | VP definition in JSON stringify format                                      | [optional]                   |
-| **presentation_definition**    | **object**                                                                  | Presentation Definition                                                     | [optional]                   |
-| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                     |                                                                             | [optional]                   |
-| **client_metadata**            | [**LoginConfigurationClientMetadata**](LoginConfigurationClientMetadata.md) |                                                                             | [optional]                   |
-| **claim_format**               | **str**                                                                     | ID token claims output format. Default is array.                            | [optional]                   |
-| **fail_on_mapping_conflict**   | **bool**                                                                    | Interrupts login process if duplications of data fields names will be found | [optional] [default to True] |
-| **scope**                      | **str**                                                                     | List of groups separated by space                                           | [optional]                   |
-| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                   |                                                                             | [optional]                   |
+| Name                           | Type                                                                                  | Description                                                                 | Notes                        |
+| ------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------- |
+| **name**                       | **str**                                                                               | User defined login configuration name                                       |
+| **redirect_uris**              | **List[str]**                                                                         | OAuth 2.0 Redirect URIs                                                     |
+| **vp_definition**              | **str**                                                                               | VP definition in JSON stringify format                                      | [optional]                   |
+| **presentation_definition**    | **object**                                                                            | Presentation Definition                                                     | [optional]                   |
+| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                               |                                                                             | [optional]                   |
+| **client_metadata**            | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |                                                                             | [optional]                   |
+| **claim_format**               | **str**                                                                               | ID token claims output format. Default is array.                            | [optional]                   |
+| **fail_on_mapping_conflict**   | **bool**                                                                              | Interrupts login process if duplications of data fields names will be found | [optional] [default to True] |
+| **scope**                      | **str**                                                                               | List of groups separated by space                                           | [optional]                   |
+| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                             |                                                                             | [optional]                   |
 
 ## Example
 

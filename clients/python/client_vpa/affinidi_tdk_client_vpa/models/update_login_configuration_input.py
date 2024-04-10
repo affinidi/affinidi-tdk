@@ -22,7 +22,7 @@ import json
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from affinidi_tdk_client_vpa.models.id_token_mapping import IdTokenMapping
-from affinidi_tdk_client_vpa.models.login_configuration_client_metadata import LoginConfigurationClientMetadata
+from affinidi_tdk_client_vpa.models.login_configuration_client_metadata_input import LoginConfigurationClientMetadataInput
 from affinidi_tdk_client_vpa.models.token_endpoint_auth_method import TokenEndpointAuthMethod
 
 class UpdateLoginConfigurationInput(BaseModel):
@@ -35,7 +35,7 @@ class UpdateLoginConfigurationInput(BaseModel):
     vp_definition: Optional[StrictStr] = Field(None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(None, alias="presentationDefinition", description="Presentation Definition")
     id_token_mapping: Optional[IdTokenMapping] = Field(None, alias="idTokenMapping")
-    client_metadata: Optional[LoginConfigurationClientMetadata] = Field(None, alias="clientMetadata")
+    client_metadata: Optional[LoginConfigurationClientMetadataInput] = Field(None, alias="clientMetadata")
     token_endpoint_auth_method: Optional[TokenEndpointAuthMethod] = Field(None, alias="tokenEndpointAuthMethod")
     fail_on_mapping_conflict: Optional[StrictBool] = Field(None, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
     __properties = ["name", "redirectUris", "clientSecret", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod", "failOnMappingConflict"]
@@ -88,7 +88,7 @@ class UpdateLoginConfigurationInput(BaseModel):
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
             "id_token_mapping": IdTokenMapping.from_dict(obj.get("idTokenMapping")) if obj.get("idTokenMapping") is not None else None,
-            "client_metadata": LoginConfigurationClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "client_metadata": LoginConfigurationClientMetadataInput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod"),
             "fail_on_mapping_conflict": obj.get("failOnMappingConflict")
         })

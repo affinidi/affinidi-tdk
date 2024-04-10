@@ -22,7 +22,7 @@ import json
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_client_vpa.models.create_login_configuration_output_auth import CreateLoginConfigurationOutputAuth
-from affinidi_tdk_client_vpa.models.login_configuration_client_metadata import LoginConfigurationClientMetadata
+from affinidi_tdk_client_vpa.models.login_configuration_client_metadata_output import LoginConfigurationClientMetadataOutput
 
 class CreateLoginConfigurationOutput(BaseModel):
     """
@@ -34,7 +34,7 @@ class CreateLoginConfigurationOutput(BaseModel):
     name: StrictStr = Field(..., description="User defined login configuration name")
     auth: CreateLoginConfigurationOutputAuth = Field(...)
     redirect_uris: conlist(StrictStr) = Field(..., alias="redirectUris", description="OAuth 2.0 Redirect URIs")
-    client_metadata: LoginConfigurationClientMetadata = Field(..., alias="clientMetadata")
+    client_metadata: LoginConfigurationClientMetadataOutput = Field(..., alias="clientMetadata")
     creation_date: StrictStr = Field(..., alias="creationDate", description="OAuth 2.0 Client Creation Date")
     __properties = ["ari", "projectId", "configurationId", "name", "auth", "redirectUris", "clientMetadata", "creationDate"]
 
@@ -86,7 +86,7 @@ class CreateLoginConfigurationOutput(BaseModel):
             "name": obj.get("name"),
             "auth": CreateLoginConfigurationOutputAuth.from_dict(obj.get("auth")) if obj.get("auth") is not None else None,
             "redirect_uris": obj.get("redirectUris"),
-            "client_metadata": LoginConfigurationClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "creation_date": obj.get("creationDate")
         })
         return _obj

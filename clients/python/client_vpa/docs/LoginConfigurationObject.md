@@ -2,21 +2,21 @@
 
 ## Properties
 
-| Name                           | Type                                                                        | Description                            | Notes      |
-| ------------------------------ | --------------------------------------------------------------------------- | -------------------------------------- | ---------- |
-| **ari**                        | **str**                                                                     | Configuration ari                      |
-| **configuration_id**           | **str**                                                                     | Configuration id                       | [optional] |
-| **project_id**                 | **str**                                                                     | Project id                             |
-| **name**                       | **str**                                                                     | User defined login configuration name  |
-| **redirect_uris**              | **List[str]**                                                               | OAuth 2.0 Redirect URIs                | [optional] |
-| **scope**                      | **str**                                                                     | OAuth 2.0 Client Scope                 | [optional] |
-| **client_id**                  | **str**                                                                     | OAuth 2.0 Client ID                    |
-| **creation_date**              | **str**                                                                     | OAuth 2.0 Client Creation Date         |
-| **vp_definition**              | **str**                                                                     | VP definition in JSON stringify format |
-| **presentation_definition**    | **object**                                                                  | Presentation Definition                | [optional] |
-| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                     |                                        |
-| **client_metadata**            | [**LoginConfigurationClientMetadata**](LoginConfigurationClientMetadata.md) |                                        |
-| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                   |                                        |
+| Name                           | Type                                                                                    | Description                            | Notes      |
+| ------------------------------ | --------------------------------------------------------------------------------------- | -------------------------------------- | ---------- |
+| **ari**                        | **str**                                                                                 | Configuration ari                      |
+| **configuration_id**           | **str**                                                                                 | Configuration id                       | [optional] |
+| **project_id**                 | **str**                                                                                 | Project id                             |
+| **name**                       | **str**                                                                                 | User defined login configuration name  |
+| **redirect_uris**              | **List[str]**                                                                           | OAuth 2.0 Redirect URIs                | [optional] |
+| **scope**                      | **str**                                                                                 | OAuth 2.0 Client Scope                 | [optional] |
+| **client_id**                  | **str**                                                                                 | OAuth 2.0 Client ID                    |
+| **creation_date**              | **str**                                                                                 | OAuth 2.0 Client Creation Date         |
+| **vp_definition**              | **str**                                                                                 | VP definition in JSON stringify format |
+| **presentation_definition**    | **object**                                                                              | Presentation Definition                | [optional] |
+| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                                 |                                        |
+| **client_metadata**            | [**LoginConfigurationClientMetadataOutput**](LoginConfigurationClientMetadataOutput.md) |                                        |
+| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                               |                                        |
 
 ## Example
 

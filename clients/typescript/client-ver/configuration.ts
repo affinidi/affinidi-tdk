@@ -17,18 +17,18 @@ export interface ConfigurationParameters {
     | string
     | Promise<string>
     | ((name: string) => string)
-    | ((name: string) => Promise<string>);
-  username?: string;
-  password?: string;
+    | ((name: string) => Promise<string>)
+  username?: string
+  password?: string
   accessToken?:
     | string
     | Promise<string>
     | ((name?: string, scopes?: string[]) => string)
-    | ((name?: string, scopes?: string[]) => Promise<string>);
-  basePath?: string;
-  serverIndex?: number;
-  baseOptions?: any;
-  formDataCtor?: new () => any;
+    | ((name?: string, scopes?: string[]) => Promise<string>)
+  basePath?: string
+  serverIndex?: number
+  baseOptions?: any
+  formDataCtor?: new () => any
 }
 
 export class Configuration {
@@ -41,21 +41,21 @@ export class Configuration {
     | string
     | Promise<string>
     | ((name: string) => string)
-    | ((name: string) => Promise<string>);
+    | ((name: string) => Promise<string>)
   /**
    * parameter for basic security
    *
    * @type {string}
    * @memberof Configuration
    */
-  username?: string;
+  username?: string
   /**
    * parameter for basic security
    *
    * @type {string}
    * @memberof Configuration
    */
-  password?: string;
+  password?: string
   /**
    * parameter for oauth2 security
    * @param name security name
@@ -66,28 +66,28 @@ export class Configuration {
     | string
     | Promise<string>
     | ((name?: string, scopes?: string[]) => string)
-    | ((name?: string, scopes?: string[]) => Promise<string>);
+    | ((name?: string, scopes?: string[]) => Promise<string>)
   /**
    * override base path
    *
    * @type {string}
    * @memberof Configuration
    */
-  basePath?: string;
+  basePath?: string
   /**
    * override server index
    *
    * @type {number}
    * @memberof Configuration
    */
-  serverIndex?: number;
+  serverIndex?: number
   /**
    * base options for axios calls
    *
    * @type {any}
    * @memberof Configuration
    */
-  baseOptions?: any;
+  baseOptions?: any
   /**
    * The FormData constructor that will be used to create multipart form data
    * requests. You can inject this here so that execution environments that
@@ -95,17 +95,17 @@ export class Configuration {
    *
    * @type {new () => FormData}
    */
-  formDataCtor?: new () => any;
+  formDataCtor?: new () => any
 
   constructor(param: ConfigurationParameters = {}) {
-    this.apiKey = param.apiKey;
-    this.username = param.username;
-    this.password = param.password;
-    this.accessToken = param.accessToken;
-    this.basePath = param.basePath;
-    this.serverIndex = param.serverIndex;
-    this.baseOptions = param.baseOptions;
-    this.formDataCtor = param.formDataCtor;
+    this.apiKey = param.apiKey
+    this.username = param.username
+    this.password = param.password
+    this.accessToken = param.accessToken
+    this.basePath = param.basePath
+    this.serverIndex = param.serverIndex
+    this.baseOptions = param.baseOptions
+    this.formDataCtor = param.formDataCtor
   }
 
   /**
@@ -122,11 +122,11 @@ export class Configuration {
     const jsonMime: RegExp = new RegExp(
       '^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$',
       'i'
-    );
+    )
     return (
       mime !== null &&
       (jsonMime.test(mime) ||
         mime.toLowerCase() === 'application/json-patch+json')
-    );
+    )
   }
 }

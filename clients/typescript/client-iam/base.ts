@@ -12,37 +12,37 @@
  * Do not edit the class manually.
  */
 
-import type { Configuration } from './configuration';
+import type { Configuration } from './configuration'
 // Some imports not used depending on template conditions
 // @ts-ignore
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
-import globalAxios, { AxiosError } from 'axios';
-import axiosRetry from 'axios-retry';
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios'
+import globalAxios, { AxiosError } from 'axios'
+import axiosRetry from 'axios-retry'
 
 export class SdkError extends Error {
-  private readonly details: undefined;
-  private readonly traceId: string;
-  private readonly httpStatusCode: number | undefined;
+  private readonly details: undefined
+  private readonly traceId: string
+  private readonly httpStatusCode: number | undefined
 
   constructor(originalError: unknown = {}) {
-    const isAxiosError = originalError instanceof AxiosError;
+    const isAxiosError = originalError instanceof AxiosError
 
     if (!isAxiosError) {
-      throw originalError;
+      throw originalError
     }
 
-    super(originalError.response?.data?.message);
+    super(originalError.response?.data?.message)
 
-    this.name = originalError.response?.data?.name;
-    this.details = originalError.response?.data?.details;
-    this.message = originalError.response?.data?.message;
-    this.traceId = originalError.response?.data?.traceId;
-    this.httpStatusCode = originalError.response?.status;
+    this.name = originalError.response?.data?.name
+    this.details = originalError.response?.data?.details
+    this.message = originalError.response?.data?.message
+    this.traceId = originalError.response?.data?.traceId
+    this.httpStatusCode = originalError.response?.status
   }
 }
 
-export const BASE_PATH = 'http://localhost'.replace(/\/+$/, '');
-const MAX_AXIOS_REQUESTS_RETRY = 3;
+export const BASE_PATH = 'http://localhost'.replace(/\/+$/, '')
+const MAX_AXIOS_REQUESTS_RETRY = 3
 
 /**
  *
@@ -53,7 +53,7 @@ export const COLLECTION_FORMATS = {
   ssv: ' ',
   tsv: '\t',
   pipes: '|',
-};
+}
 
 /**
  *
@@ -61,8 +61,8 @@ export const COLLECTION_FORMATS = {
  * @interface RequestArgs
  */
 export interface RequestArgs {
-  url: string;
-  options: RawAxiosRequestConfig;
+  url: string
+  options: RawAxiosRequestConfig
 }
 
 /**
@@ -71,7 +71,7 @@ export interface RequestArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-  protected configuration: Configuration | undefined;
+  protected configuration: Configuration | undefined
 
   constructor(
     configuration?: Configuration,
@@ -80,8 +80,8 @@ export class BaseAPI {
     retryConfig?: any
   ) {
     if (configuration) {
-      this.configuration = configuration;
-      this.basePath = configuration.basePath ?? basePath;
+      this.configuration = configuration
+      this.basePath = configuration.basePath ?? basePath
     }
 
     axiosRetry(globalAxios, {
@@ -97,16 +97,16 @@ export class BaseAPI {
       retryCondition(error) {
         // NOTE: retrying only for 5XX errors
         if (error?.response && error.response.status >= 500) {
-          return true;
+          return true
         }
 
         // return false
-        throw new SdkError(error);
+        throw new SdkError(error)
       },
       onRetry: (retryCount, error, requestConfig) => {
-        console.log(retryCount);
+        console.log(retryCount)
       },
-    });
+    })
   }
 }
 
@@ -118,20 +118,20 @@ export class BaseAPI {
  */
 export class RequiredError extends Error {
   constructor(public field: string, msg?: string) {
-    super(msg);
-    this.name = 'RequiredError';
+    super(msg)
+    this.name = 'RequiredError'
   }
 }
 
 interface ServerMap {
   [key: string]: {
-    url: string;
-    description: string;
-  }[];
+    url: string
+    description: string
+  }[]
 }
 
 /**
  *
  * @export
  */
-export const operationServerMap: ServerMap = {};
+export const operationServerMap: ServerMap = {}
