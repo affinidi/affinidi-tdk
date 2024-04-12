@@ -1,7 +1,7 @@
 {
   "name": "@affinidi/client-vpa",
   "version": "1.0.0",
-  "description": "OpenAPI client for @affinidi/client-vpa undefined",
+  "description": "OpenAPI client for @affinidi/client-vpa main",
   "author": "Affinidi",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
-    "axios-retry": "^4.0.0",
+    "axios-retry": "^4.1.0",
     "url": "^0.11.3"
   },
   "devDependencies": {

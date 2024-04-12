@@ -12,8 +12,8 @@
  * Do not edit the class manually.
  */
 
-export * from './api';
-export * from './configuration';
+export * from './api'
+export * from './configuration'
 
 // @ts-ignore
-if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer;
+if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer

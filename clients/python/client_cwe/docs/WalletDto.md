@@ -4,12 +4,13 @@ wallet dto
 
 ## Properties
 
-| Name     | Type                                                  | Description                       | Notes      |
-| -------- | ----------------------------------------------------- | --------------------------------- | ---------- |
-| **id**   | **str**                                               | id of the wallet in uuidV4 format | [optional] |
-| **did**  | **str**                                               | did of the wallet                 | [optional] |
-| **ari**  | **str**                                               | ARI of the wallet                 | [optional] |
-| **keys** | [**List[WalletDtoKeysInner]**](WalletDtoKeysInner.md) |                                   | [optional] |
+| Name             | Type                                                  | Description                       | Notes      |
+| ---------------- | ----------------------------------------------------- | --------------------------------- | ---------- |
+| **id**           | **str**                                               | id of the wallet in uuidV4 format | [optional] |
+| **did**          | **str**                                               | did of the wallet                 | [optional] |
+| **did_document** | **object**                                            | did document of the wallet        | [optional] |
+| **ari**          | **str**                                               | ARI of the wallet                 | [optional] |
+| **keys**         | [**List[WalletDtoKeysInner]**](WalletDtoKeysInner.md) |                                   | [optional] |
 
 ## Example
 

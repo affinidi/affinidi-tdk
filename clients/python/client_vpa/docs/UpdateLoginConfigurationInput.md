@@ -2,17 +2,17 @@
 
 ## Properties
 
-| Name                           | Type                                                                        | Description                                                                 | Notes      |
-| ------------------------------ | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------- |
-| **name**                       | **str**                                                                     | User defined login configuration name                                       | [optional] |
-| **redirect_uris**              | **List[str]**                                                               | OAuth 2.0 Redirect URIs                                                     | [optional] |
-| **client_secret**              | **str**                                                                     | OAuth2 client secret                                                        | [optional] |
-| **vp_definition**              | **str**                                                                     | VP definition in JSON stringify format                                      | [optional] |
-| **presentation_definition**    | **object**                                                                  | Presentation Definition                                                     | [optional] |
-| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                     |                                                                             | [optional] |
-| **client_metadata**            | [**LoginConfigurationClientMetadata**](LoginConfigurationClientMetadata.md) |                                                                             | [optional] |
-| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                   |                                                                             | [optional] |
-| **fail_on_mapping_conflict**   | **bool**                                                                    | Interrupts login process if duplications of data fields names will be found | [optional] |
+| Name                           | Type                                                                                  | Description                                                                 | Notes      |
+| ------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------- |
+| **name**                       | **str**                                                                               | User defined login configuration name                                       | [optional] |
+| **redirect_uris**              | **List[str]**                                                                         | OAuth 2.0 Redirect URIs                                                     | [optional] |
+| **client_secret**              | **str**                                                                               | OAuth2 client secret                                                        | [optional] |
+| **vp_definition**              | **str**                                                                               | VP definition in JSON stringify format                                      | [optional] |
+| **presentation_definition**    | **object**                                                                            | Presentation Definition                                                     | [optional] |
+| **id_token_mapping**           | [**IdTokenMapping**](IdTokenMapping.md)                                               |                                                                             | [optional] |
+| **client_metadata**            | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |                                                                             | [optional] |
+| **token_endpoint_auth_method** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                             |                                                                             | [optional] |
+| **fail_on_mapping_conflict**   | **bool**                                                                              | Interrupts login process if duplications of data fields names will be found | [optional] |
 
 ## Example
 

@@ -6,30 +6,49 @@
 npm install @affinidi/client-iam --save
 ```
 
-#### With project scoped token
+#### Http Client settings
+
+We use [Axios plugin](https://github.com/softonic/axios-retry) that intercepts failed requests and retries them whenever possible.
+
+You can configure some of retry parameters:
+
+| Name               | Type      | Default | Description                                                                                                                                                                                                                                                                           |
+| ------------------ | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| retries            | `Number`  | `3`     | The number of times to retry before failing. 1 = One retry after first failure. The number can be between 0 and 3.                                                                                                                                                                    |
+| isExponentialDelay | `Boolean` | `false` | By default there is no delay between retries. Another option is exponentialDelay ([Exponential Backoff](https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff)), when a client periodically retrying a failed request over an increasing amount of time. |
+
+Please note that retry condition is not configurable and axios-retry default value is used `isNetworkOrIdempotentRequestError`. It retries if it is a network error or a 5xx error on an idempotent request (GET, HEAD, OPTIONS, PUT or DELETE).
+
+#### With project scoped token and a custom Http client settings
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/client-iam';
+import { SomeClassApi, Configuration } from '@affinidi/client-iam'
 
-const projectScopedToken = '...'; // NOTE: you can get it after making Affinidi Login (via CLI, Portal)
+const projectScopedToken = '...' // NOTE: you can get it after making Affinidi Login (via CLI, Dev Portal)
 
 const api = new SomeClassApi(
   new Configuration({
     apiKey: projectScopedToken,
     basePath: `${apiGatewayUrl}/`,
   })
-);
+)
 
-await api.oneOfMethods();
+await api.oneOfMethods()
 ```
 
 #### With PAT
 
-To call service methods with personal access token, you need to get a getProjectScopedToken for the machine user:
+💡 To create PAT, use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
+
+```sh
+affinidi token create-token -n MyNewToken -w -p YOUR-SECRET-PASSPHRASE
+```
+
+This command will return you variables to initialize AuthProvider as required below.
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/client-iam';
-import { AuthProvider } from '@affinidi/test-auth-provider';
+import { SomeClassApi, Configuration } from '@affinidi/client-iam'
+import { AuthProvider } from '@affinidi/tdk-auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -40,31 +59,31 @@ const authProvider = new AuthProvider({
   publicKey,
   projectId,
   tokenEndpoint,
-});
+})
 
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.getProjectScopedToken.bind(authProvider),
     basePath: `${apiGatewayUrl}/`,
   })
-);
+)
 
-await api.oneOfMethods();
+await api.oneOfMethods()
 ```
 
 #### With session ID via BFF
 
 ```ts
-import { SomeClassApi, Configuration } from '@affinidi/client-iam';
-import { getBffHeaders } from '@affinidi/test-auth-provider';
+import { SomeClassApi, Configuration } from '@affinidi/client-iam'
+import { getBffHeaders } from '@affinidi/test-auth-provider'
 
-const headers = getBffHeaders(cookieName, sessionId);
+const headers = getBffHeaders(cookieName, sessionId)
 
-const baseOptions = { headers };
+const baseOptions = { headers }
 
 const api = new SomeClassApi(
   new Configuration({ basePath: `${bffHost}/`, baseOptions })
-);
+)
 
-await api.oneOfMethods();
+await api.oneOfMethods()
 ```

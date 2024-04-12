@@ -15,7 +15,10 @@
 
 
 # import models into model package
+from affinidi_tdk_client_cwe.models.create_wallet_input import CreateWalletInput
 from affinidi_tdk_client_cwe.models.create_wallet_response import CreateWalletResponse
+from affinidi_tdk_client_cwe.models.did_key_input_params import DidKeyInputParams
+from affinidi_tdk_client_cwe.models.did_web_input_params import DidWebInputParams
 from affinidi_tdk_client_cwe.models.entity_not_found_error import EntityNotFoundError
 from affinidi_tdk_client_cwe.models.get_revocation_list_credential_result_dto import GetRevocationListCredentialResultDto
 from affinidi_tdk_client_cwe.models.invalid_did_parameter_error import InvalidDidParameterError

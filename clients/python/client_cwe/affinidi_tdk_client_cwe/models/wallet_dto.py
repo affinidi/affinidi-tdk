@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_client_cwe.models.wallet_dto_keys_inner import WalletDtoKeysInner
 
@@ -29,9 +29,10 @@ class WalletDto(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="id of the wallet in uuidV4 format")
     did: Optional[StrictStr] = Field(None, description="did of the wallet")
+    did_document: Optional[Dict[str, Any]] = Field(None, alias="didDocument", description="did document of the wallet")
     ari: Optional[StrictStr] = Field(None, description="ARI of the wallet")
     keys: Optional[conlist(WalletDtoKeysInner)] = None
-    __properties = ["id", "did", "ari", "keys"]
+    __properties = ["id", "did", "didDocument", "ari", "keys"]
 
     class Config:
         """Pydantic configuration"""
@@ -78,6 +79,7 @@ class WalletDto(BaseModel):
         _obj = WalletDto.parse_obj({
             "id": obj.get("id"),
             "did": obj.get("did"),
+            "did_document": obj.get("didDocument"),
             "ari": obj.get("ari"),
             "keys": [WalletDtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None
         })
