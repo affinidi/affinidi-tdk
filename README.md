@@ -20,6 +20,12 @@ To build the TDK clients, run the command:
 
 The client information is generated in the [clients](clients) directory.
 
+### Create Sample Project
+
+To create a sample project for a package or library, run the command
+
+`npm run create:sample`
+
 ## How do I use Affinidi TDK?
 
 The Affinidi TDK provides [clients](clients) with endpoints as methods to access Affinidi services like KYC, IAM, Wallet, and VPA, among others.
