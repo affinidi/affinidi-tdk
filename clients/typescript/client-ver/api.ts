@@ -12,9 +12,9 @@
  * Do not edit the class manually.
  */
 
-import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
-import globalAxios from 'axios';
+import type { Configuration } from './configuration'
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios'
+import globalAxios from 'axios'
 // Some imports not used depending on template conditions
 // @ts-ignore
 import {
@@ -28,8 +28,8 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
-} from './common';
-import type { RequestArgs } from './base';
+} from './common'
+import type { RequestArgs } from './base'
 // @ts-ignore
 import {
   BASE_PATH,
@@ -37,70 +37,8 @@ import {
   BaseAPI,
   RequiredError,
   operationServerMap,
-} from './base';
+} from './base'
 
-/**
- * Request model of /build-credential-request
- * @export
- * @interface BuildCredentialRequestInput
- */
-export interface BuildCredentialRequestInput {
-  /**
-   * Type of the URL
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  callbackUrl?: string | null;
-  /**
-   * Requirements of the VC
-   * @type {Array<CredentialRequirements>}
-   * @memberof BuildCredentialRequestInput
-   */
-  credentialRequirements: Array<CredentialRequirements>;
-  /**
-   * Type of the DID
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  issuerDid?: string | null;
-  /**
-   * Type of the DID
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  subjectDid?: string | null;
-  /**
-   * Type of the DID
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  audienceDid?: string | null;
-  /**
-   * Type of the Date ISO
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  expiresAt?: string | null;
-  /**
-   * Credential request nonce
-   * @type {string}
-   * @memberof BuildCredentialRequestInput
-   */
-  nonce?: string | null;
-}
-/**
- * Response model of /build-credential-request
- * @export
- * @interface BuildCredentialRequestOutput
- */
-export interface BuildCredentialRequestOutput {
-  /**
-   *
-   * @type {FreeFormObject}
-   * @memberof BuildCredentialRequestOutput
-   */
-  credentialShareRequest: FreeFormObject;
-}
 /**
  *
  * @export
@@ -112,53 +50,53 @@ export interface Constraints {
    * @type {string}
    * @memberof Constraints
    */
-  limit_disclosure?: ConstraintsLimitDisclosureEnum;
+  limit_disclosure?: ConstraintsLimitDisclosureEnum
   /**
    *
    * @type {ConstraintsStatuses}
    * @memberof Constraints
    */
-  statuses?: ConstraintsStatuses;
+  statuses?: ConstraintsStatuses
   /**
    *
    * @type {Array<Field>}
    * @memberof Constraints
    */
-  fields?: Array<Field>;
+  fields?: Array<Field>
   /**
    *
    * @type {string}
    * @memberof Constraints
    */
-  subject_is_issuer?: ConstraintsSubjectIsIssuerEnum;
+  subject_is_issuer?: ConstraintsSubjectIsIssuerEnum
   /**
    *
    * @type {Array<HolderSubject>}
    * @memberof Constraints
    */
-  is_holder?: Array<HolderSubject>;
+  is_holder?: Array<HolderSubject>
   /**
    *
    * @type {Array<HolderSubject>}
    * @memberof Constraints
    */
-  same_subject?: Array<HolderSubject>;
+  same_subject?: Array<HolderSubject>
 }
 
 export const ConstraintsLimitDisclosureEnum = {
   Required: 'required',
   Preferred: 'preferred',
-} as const;
+} as const
 
 export type ConstraintsLimitDisclosureEnum =
-  (typeof ConstraintsLimitDisclosureEnum)[keyof typeof ConstraintsLimitDisclosureEnum];
+  (typeof ConstraintsLimitDisclosureEnum)[keyof typeof ConstraintsLimitDisclosureEnum]
 export const ConstraintsSubjectIsIssuerEnum = {
   Required: 'required',
   Preferred: 'preferred',
-} as const;
+} as const
 
 export type ConstraintsSubjectIsIssuerEnum =
-  (typeof ConstraintsSubjectIsIssuerEnum)[keyof typeof ConstraintsSubjectIsIssuerEnum];
+  (typeof ConstraintsSubjectIsIssuerEnum)[keyof typeof ConstraintsSubjectIsIssuerEnum]
 
 /**
  *
@@ -171,19 +109,19 @@ export interface ConstraintsStatuses {
    * @type {PdStatus}
    * @memberof ConstraintsStatuses
    */
-  active?: PdStatus;
+  active?: PdStatus
   /**
    *
    * @type {PdStatus}
    * @memberof ConstraintsStatuses
    */
-  suspended?: PdStatus;
+  suspended?: PdStatus
   /**
    *
    * @type {PdStatus}
    * @memberof ConstraintsStatuses
    */
-  revoked?: PdStatus;
+  revoked?: PdStatus
 }
 /**
  * Requirements of the VC
@@ -196,13 +134,13 @@ export interface CredentialRequirements {
    * @type {Array<string>}
    * @memberof CredentialRequirements
    */
-  type: Array<string>;
+  type: Array<string>
   /**
    *
    * @type {CredentialRequirementsConstraints}
    * @memberof CredentialRequirements
    */
-  constraints?: CredentialRequirementsConstraints;
+  constraints?: CredentialRequirementsConstraints
 }
 /**
  * Constraint list of the VC requirements
@@ -221,25 +159,25 @@ export interface Descriptor {
    * @type {string}
    * @memberof Descriptor
    */
-  id: string;
+  id: string
   /**
    *
    * @type {string}
    * @memberof Descriptor
    */
-  path: string;
+  path: string
   /**
    *
    * @type {NestedDescriptor}
    * @memberof Descriptor
    */
-  path_nested?: NestedDescriptor;
+  path_nested?: NestedDescriptor
   /**
    *
    * @type {string}
    * @memberof Descriptor
    */
-  format: string;
+  format: string
 }
 /**
  * Detail of the error
@@ -252,7 +190,7 @@ export interface ErrorDetail {
    * @type {string}
    * @memberof ErrorDetail
    */
-  message?: string;
+  message?: string
 }
 /**
  *
@@ -265,13 +203,13 @@ export interface EvaluateVpOutput {
    * @type {boolean}
    * @memberof EvaluateVpOutput
    */
-  result: boolean;
+  result: boolean
   /**
    *
    * @type {Array<string>}
    * @memberof EvaluateVpOutput
    */
-  errors: Array<string>;
+  errors: Array<string>
 }
 /**
  *
@@ -284,40 +222,40 @@ export interface Field {
    * @type {string}
    * @memberof Field
    */
-  id?: string;
+  id?: string
   /**
    *
    * @type {Array<string>}
    * @memberof Field
    */
-  path?: Array<string>;
+  path?: Array<string>
   /**
    *
    * @type {string}
    * @memberof Field
    */
-  purpose?: string;
+  purpose?: string
   /**
    *
    * @type {Filter}
    * @memberof Field
    */
-  filter?: Filter;
+  filter?: Filter
   /**
    *
    * @type {string}
    * @memberof Field
    */
-  predicate?: FieldPredicateEnum;
+  predicate?: FieldPredicateEnum
 }
 
 export const FieldPredicateEnum = {
   Required: 'required',
   Preferred: 'preferred',
-} as const;
+} as const
 
 export type FieldPredicateEnum =
-  (typeof FieldPredicateEnum)[keyof typeof FieldPredicateEnum];
+  (typeof FieldPredicateEnum)[keyof typeof FieldPredicateEnum]
 
 /**
  *
@@ -330,121 +268,121 @@ export interface Filter {
    * @type {FilterConst}
    * @memberof Filter
    */
-  _const?: FilterConst;
+  _const?: FilterConst
   /**
    *
    * @type {Array<FilterConst>}
    * @memberof Filter
    */
-  _enum?: Array<FilterConst>;
+  _enum?: Array<FilterConst>
   /**
    *
    * @type {FilterConst}
    * @memberof Filter
    */
-  exclusiveMinimum?: FilterConst;
+  exclusiveMinimum?: FilterConst
   /**
    *
    * @type {FilterConst}
    * @memberof Filter
    */
-  exclusiveMaximum?: FilterConst;
+  exclusiveMaximum?: FilterConst
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  format?: string;
+  format?: string
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  formatMaximum?: string;
+  formatMaximum?: string
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  formatMinimum?: string;
+  formatMinimum?: string
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  formatExclusiveMaximum?: string;
+  formatExclusiveMaximum?: string
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  formatExclusiveMinimum?: string;
+  formatExclusiveMinimum?: string
   /**
    *
    * @type {number}
    * @memberof Filter
    */
-  minLength?: number;
+  minLength?: number
   /**
    *
    * @type {number}
    * @memberof Filter
    */
-  maxLength?: number;
+  maxLength?: number
   /**
    *
    * @type {FilterConst}
    * @memberof Filter
    */
-  minimum?: FilterConst;
+  minimum?: FilterConst
   /**
    *
    * @type {FilterConst}
    * @memberof Filter
    */
-  maximum?: FilterConst;
+  maximum?: FilterConst
   /**
    *
    * @type {object}
    * @memberof Filter
    */
-  not?: object;
+  not?: object
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  pattern?: string;
+  pattern?: string
   /**
    *
    * @type {Filter}
    * @memberof Filter
    */
-  contains?: Filter;
+  contains?: Filter
   /**
    *
    * @type {FilterItems}
    * @memberof Filter
    */
-  items?: FilterItems;
+  items?: FilterItems
   /**
    *
    * @type {string}
    * @memberof Filter
    */
-  type?: string;
+  type?: string
 }
 /**
  * @type FilterConst
  * @export
  */
-export type FilterConst = number | string;
+export type FilterConst = number | string
 
 /**
  * @type FilterItems
  * @export
  */
-export type FilterItems = Array<Filter> | Filter;
+export type FilterItems = Array<Filter> | Filter
 
 /**
  *
@@ -457,37 +395,37 @@ export interface Format {
    * @type {JwtObject}
    * @memberof Format
    */
-  jwt?: JwtObject;
+  jwt?: JwtObject
   /**
    *
    * @type {JwtObject}
    * @memberof Format
    */
-  jwt_vc?: JwtObject;
+  jwt_vc?: JwtObject
   /**
    *
    * @type {JwtObject}
    * @memberof Format
    */
-  jwt_vp?: JwtObject;
+  jwt_vp?: JwtObject
   /**
    *
    * @type {LdpObject}
    * @memberof Format
    */
-  ldp?: LdpObject;
+  ldp?: LdpObject
   /**
    *
    * @type {LdpObject}
    * @memberof Format
    */
-  ldp_vc?: LdpObject;
+  ldp_vc?: LdpObject
   /**
    *
    * @type {LdpObject}
    * @memberof Format
    */
-  ldp_vp?: LdpObject;
+  ldp_vp?: LdpObject
 }
 /**
  * Dynamic model
@@ -495,7 +433,7 @@ export interface Format {
  * @interface FreeFormObject
  */
 export interface FreeFormObject {
-  [key: string]: any;
+  [key: string]: any
 }
 /**
  *
@@ -508,22 +446,22 @@ export interface HolderSubject {
    * @type {Array<string>}
    * @memberof HolderSubject
    */
-  field_id: Array<string>;
+  field_id: Array<string>
   /**
    *
    * @type {string}
    * @memberof HolderSubject
    */
-  directive: HolderSubjectDirectiveEnum;
+  directive: HolderSubjectDirectiveEnum
 }
 
 export const HolderSubjectDirectiveEnum = {
   Required: 'required',
   Preferred: 'preferred',
-} as const;
+} as const
 
 export type HolderSubjectDirectiveEnum =
-  (typeof HolderSubjectDirectiveEnum)[keyof typeof HolderSubjectDirectiveEnum];
+  (typeof HolderSubjectDirectiveEnum)[keyof typeof HolderSubjectDirectiveEnum]
 
 /**
  *
@@ -536,38 +474,95 @@ export interface InputDescriptor {
    * @type {string}
    * @memberof InputDescriptor
    */
-  id: string;
+  id: string
   /**
    *
    * @type {Constraints}
    * @memberof InputDescriptor
    */
-  constraints: Constraints;
+  constraints: Constraints
   /**
    *
    * @type {string}
    * @memberof InputDescriptor
    */
-  name?: string;
+  name?: string
   /**
    *
    * @type {string}
    * @memberof InputDescriptor
    */
-  purpose?: string;
+  purpose?: string
   /**
    *
    * @type {Format}
    * @memberof InputDescriptor
    */
-  format?: Format;
+  format?: Format
   /**
    *
    * @type {Array<string>}
    * @memberof InputDescriptor
    */
-  group?: Array<string>;
+  group?: Array<string>
 }
+/**
+ *
+ * @export
+ * @interface InvalidParameterError
+ */
+export interface InvalidParameterError {
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidParameterError
+   */
+  name: InvalidParameterErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidParameterError
+   */
+  message: InvalidParameterErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof InvalidParameterError
+   */
+  httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidParameterError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<NotFoundErrorDetailsInner>}
+   * @memberof InvalidParameterError
+   */
+  details?: Array<NotFoundErrorDetailsInner>
+}
+
+export const InvalidParameterErrorNameEnum = {
+  InvalidParameterError: 'InvalidParameterError',
+} as const
+
+export type InvalidParameterErrorNameEnum =
+  (typeof InvalidParameterErrorNameEnum)[keyof typeof InvalidParameterErrorNameEnum]
+export const InvalidParameterErrorMessageEnum = {
+  InvalidParameterParam: 'Invalid parameter: ${param}.',
+} as const
+
+export type InvalidParameterErrorMessageEnum =
+  (typeof InvalidParameterErrorMessageEnum)[keyof typeof InvalidParameterErrorMessageEnum]
+export const InvalidParameterErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type InvalidParameterErrorHttpStatusCodeEnum =
+  (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
+
 /**
  *
  * @export
@@ -579,7 +574,7 @@ export interface JwtObject {
    * @type {Array<string>}
    * @memberof JwtObject
    */
-  alg: Array<string>;
+  alg: Array<string>
 }
 /**
  *
@@ -592,7 +587,7 @@ export interface LdpObject {
    * @type {Array<string>}
    * @memberof LdpObject
    */
-  proof_type: Array<string>;
+  proof_type: Array<string>
 }
 /**
  * Error object
@@ -605,37 +600,37 @@ export interface ModelError {
    * @type {string}
    * @memberof ModelError
    */
-  errorCode?: string;
+  errorCode?: string
   /**
    * Error message
    * @type {string}
    * @memberof ModelError
    */
-  errorMessage?: string;
+  errorMessage?: string
   /**
    * Verbose message
    * @type {string}
    * @memberof ModelError
    */
-  message?: string;
+  message?: string
   /**
    * Error name
    * @type {string}
    * @memberof ModelError
    */
-  name?: string;
+  name?: string
   /**
    * Debug identifier
    * @type {string}
    * @memberof ModelError
    */
-  debugId?: string;
+  debugId?: string
   /**
    * Error details
    * @type {Array<ErrorDetail>}
    * @memberof ModelError
    */
-  details?: Array<ErrorDetail>;
+  details?: Array<ErrorDetail>
 }
 /**
  *
@@ -648,25 +643,113 @@ export interface NestedDescriptor {
    * @type {string}
    * @memberof NestedDescriptor
    */
-  id?: string;
+  id?: string
   /**
    *
    * @type {string}
    * @memberof NestedDescriptor
    */
-  path: string;
+  path: string
   /**
    *
    * @type {NestedDescriptor}
    * @memberof NestedDescriptor
    */
-  path_nested?: NestedDescriptor;
+  path_nested?: NestedDescriptor
   /**
    *
    * @type {string}
    * @memberof NestedDescriptor
    */
-  format: string;
+  format: string
+}
+/**
+ *
+ * @export
+ * @interface NotFoundError
+ */
+export interface NotFoundError {
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundError
+   */
+  name: NotFoundErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundError
+   */
+  message: NotFoundErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof NotFoundError
+   */
+  httpStatusCode: NotFoundErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<NotFoundErrorDetailsInner>}
+   * @memberof NotFoundError
+   */
+  details?: Array<NotFoundErrorDetailsInner>
+}
+
+export const NotFoundErrorNameEnum = {
+  NotFoundError: 'NotFoundError',
+} as const
+
+export type NotFoundErrorNameEnum =
+  (typeof NotFoundErrorNameEnum)[keyof typeof NotFoundErrorNameEnum]
+export const NotFoundErrorMessageEnum = {
+  NotFoundParam: 'Not found: ${param}.',
+} as const
+
+export type NotFoundErrorMessageEnum =
+  (typeof NotFoundErrorMessageEnum)[keyof typeof NotFoundErrorMessageEnum]
+export const NotFoundErrorHttpStatusCodeEnum = {
+  NUMBER_404: 404,
+} as const
+
+export type NotFoundErrorHttpStatusCodeEnum =
+  (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
+ * @interface NotFoundErrorDetailsInner
+ */
+export interface NotFoundErrorDetailsInner {
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  issue: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  field?: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  value?: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  location?: string
 }
 /**
  *
@@ -679,17 +762,17 @@ export interface PdStatus {
    * @type {string}
    * @memberof PdStatus
    */
-  directive?: PdStatusDirectiveEnum;
+  directive?: PdStatusDirectiveEnum
 }
 
 export const PdStatusDirectiveEnum = {
   Required: 'required',
   Allowed: 'allowed',
   Disallowed: 'disallowed',
-} as const;
+} as const
 
 export type PdStatusDirectiveEnum =
-  (typeof PdStatusDirectiveEnum)[keyof typeof PdStatusDirectiveEnum];
+  (typeof PdStatusDirectiveEnum)[keyof typeof PdStatusDirectiveEnum]
 
 /**
  * Presentation definition
@@ -702,43 +785,43 @@ export interface PresentationDefinition {
    * @type {string}
    * @memberof PresentationDefinition
    */
-  id: string;
+  id: string
   /**
    * Definition name
    * @type {string}
    * @memberof PresentationDefinition
    */
-  name?: string;
+  name?: string
   /**
    * Definition purpose
    * @type {string}
    * @memberof PresentationDefinition
    */
-  purpose?: string;
+  purpose?: string
   /**
    *
    * @type {Format}
    * @memberof PresentationDefinition
    */
-  format?: Format;
+  format?: Format
   /**
    *
    * @type {Array<SubmissionRequirement>}
    * @memberof PresentationDefinition
    */
-  submission_requirements?: Array<SubmissionRequirement>;
+  submission_requirements?: Array<SubmissionRequirement>
   /**
    *
    * @type {Array<InputDescriptor>}
    * @memberof PresentationDefinition
    */
-  input_descriptors: Array<InputDescriptor>;
+  input_descriptors: Array<InputDescriptor>
   /**
    *
    * @type {FreeFormObject}
    * @memberof PresentationDefinition
    */
-  frame?: FreeFormObject;
+  frame?: FreeFormObject
 }
 /**
  *
@@ -751,19 +834,19 @@ export interface PresentationSubmission {
    * @type {string}
    * @memberof PresentationSubmission
    */
-  id: string;
+  id: string
   /**
    *
    * @type {string}
    * @memberof PresentationSubmission
    */
-  definition_id: string;
+  definition_id: string
   /**
    *
    * @type {Array<Descriptor>}
    * @memberof PresentationSubmission
    */
-  descriptor_map: Array<Descriptor>;
+  descriptor_map: Array<Descriptor>
 }
 /**
  *
@@ -776,58 +859,58 @@ export interface SubmissionRequirement {
    * @type {string}
    * @memberof SubmissionRequirement
    */
-  name?: string;
+  name?: string
   /**
    *
    * @type {string}
    * @memberof SubmissionRequirement
    */
-  purpose?: string;
+  purpose?: string
   /**
    *
    * @type {string}
    * @memberof SubmissionRequirement
    */
-  rule: SubmissionRequirementRuleEnum;
+  rule: SubmissionRequirementRuleEnum
   /**
    *
    * @type {number}
    * @memberof SubmissionRequirement
    */
-  count?: number;
+  count?: number
   /**
    *
    * @type {number}
    * @memberof SubmissionRequirement
    */
-  min?: number;
+  min?: number
   /**
    *
    * @type {number}
    * @memberof SubmissionRequirement
    */
-  max?: number;
+  max?: number
   /**
    *
    * @type {string}
    * @memberof SubmissionRequirement
    */
-  from?: string;
+  from?: string
   /**
    *
    * @type {Array<SubmissionRequirement>}
    * @memberof SubmissionRequirement
    */
-  from_nested?: Array<SubmissionRequirement>;
+  from_nested?: Array<SubmissionRequirement>
 }
 
 export const SubmissionRequirementRuleEnum = {
   All: 'all',
   Pick: 'pick',
-} as const;
+} as const
 
 export type SubmissionRequirementRuleEnum =
-  (typeof SubmissionRequirementRuleEnum)[keyof typeof SubmissionRequirementRuleEnum];
+  (typeof SubmissionRequirementRuleEnum)[keyof typeof SubmissionRequirementRuleEnum]
 
 /**
  * Request model of /validate-jwt
@@ -840,7 +923,7 @@ export interface ValidateJwtInput {
    * @type {string}
    * @memberof ValidateJwtInput
    */
-  token: string;
+  token: string
 }
 /**
  * Response model of /validate-jwt
@@ -853,13 +936,13 @@ export interface ValidateJwtOutput {
    * @type {boolean}
    * @memberof ValidateJwtOutput
    */
-  isValid: boolean;
+  isValid: boolean
   /**
    * Decoded payload of the token
    * @type {object}
    * @memberof ValidateJwtOutput
    */
-  payload: object;
+  payload: object
 }
 /**
  * Request model of /verify-vcs
@@ -872,13 +955,13 @@ export interface VerifyCredentialInput {
    * @type {Array<W3cCredential>}
    * @memberof VerifyCredentialInput
    */
-  verifiableCredentials: Array<W3cCredential>;
+  verifiableCredentials: Array<W3cCredential>
   /**
    *
    * @type {FreeFormObject}
    * @memberof VerifyCredentialInput
    */
-  issuerDidDocument?: FreeFormObject;
+  issuerDidDocument?: FreeFormObject
 }
 /**
  * Response model of /verify-vcs
@@ -891,75 +974,13 @@ export interface VerifyCredentialOutput {
    * @type {Array<string>}
    * @memberof VerifyCredentialOutput
    */
-  errors: Array<string>;
+  errors: Array<string>
   /**
    * Verification result
    * @type {boolean}
    * @memberof VerifyCredentialOutput
    */
-  isValid: boolean;
-}
-/**
- * Request model of /verify-share-response
- * @export
- * @interface VerifyCredentialShareResponseInput
- */
-export interface VerifyCredentialShareResponseInput {
-  /**
-   * Token of the credential share request
-   * @type {string}
-   * @memberof VerifyCredentialShareResponseInput
-   */
-  credentialShareRequestToken?: string | null;
-  /**
-   * Token of the credential share response
-   * @type {string}
-   * @memberof VerifyCredentialShareResponseInput
-   */
-  credentialShareResponseToken: string;
-  /**
-   * Defines if holder did should be a subject
-   * @type {boolean}
-   * @memberof VerifyCredentialShareResponseInput
-   */
-  isHolderMustBeSubject?: boolean | null;
-}
-/**
- * Response model of /verify-share-response
- * @export
- * @interface VerifyCredentialShareResponseOutput
- */
-export interface VerifyCredentialShareResponseOutput {
-  /**
-   * JWT ID
-   * @type {string}
-   * @memberof VerifyCredentialShareResponseOutput
-   */
-  jti: string;
-  /**
-   * Errors of the failed verification
-   * @type {Array<string>}
-   * @memberof VerifyCredentialShareResponseOutput
-   */
-  errors: Array<string>;
-  /**
-   * Issuer of VCs
-   * @type {string}
-   * @memberof VerifyCredentialShareResponseOutput
-   */
-  issuer: string;
-  /**
-   * Verification result
-   * @type {boolean}
-   * @memberof VerifyCredentialShareResponseOutput
-   */
-  isValid: boolean;
-  /**
-   * Supplied credentials
-   * @type {Array<object>}
-   * @memberof VerifyCredentialShareResponseOutput
-   */
-  suppliedCredentials: Array<object>;
+  isValid: boolean
 }
 /**
  * Request model of /verify-vp
@@ -972,31 +993,31 @@ export interface VerifyPresentationInput {
    * @type {W3cPresentation}
    * @memberof VerifyPresentationInput
    */
-  verifiablePresentation?: W3cPresentation;
+  verifiablePresentation?: W3cPresentation
   /**
    *
    * @type {W3cPresentation}
    * @memberof VerifyPresentationInput
    */
-  signedPresentation?: W3cPresentation;
+  signedPresentation?: W3cPresentation
   /**
    *
    * @type {PresentationDefinition}
    * @memberof VerifyPresentationInput
    */
-  presentationDefinition?: PresentationDefinition;
+  presentationDefinition?: PresentationDefinition
   /**
    *
    * @type {PresentationSubmission}
    * @memberof VerifyPresentationInput
    */
-  presentationSubmission?: PresentationSubmission;
+  presentationSubmission?: PresentationSubmission
   /**
    *
    * @type {string}
    * @memberof VerifyPresentationInput
    */
-  challenge?: string;
+  challenge?: string
 }
 /**
  * Response model of /verify-vp
@@ -1009,13 +1030,13 @@ export interface VerifyPresentationOutput {
    * @type {VerifyPresentationOutputErrors}
    * @memberof VerifyPresentationOutput
    */
-  errors: VerifyPresentationOutputErrors;
+  errors: VerifyPresentationOutputErrors
   /**
    * Verification result
    * @type {boolean}
    * @memberof VerifyPresentationOutput
    */
-  isValid: boolean;
+  isValid: boolean
 }
 /**
  * Error of the verification
@@ -1034,67 +1055,67 @@ export interface W3cCredential {
    * @type {W3cPresentationContext}
    * @memberof W3cCredential
    */
-  '@context': W3cPresentationContext;
+  '@context': W3cPresentationContext
   /**
    *
    * @type {string}
    * @memberof W3cCredential
    */
-  id?: string | null;
+  id?: string | null
   /**
    *
    * @type {Array<string>}
    * @memberof W3cCredential
    */
-  type: Array<string>;
+  type: Array<string>
   /**
    *
    * @type {W3cCredentialHolder}
    * @memberof W3cCredential
    */
-  holder?: W3cCredentialHolder;
+  holder?: W3cCredentialHolder
   /**
    *
    * @type {W3cCredentialCredentialSubject}
    * @memberof W3cCredential
    */
-  credentialSubject: W3cCredentialCredentialSubject;
+  credentialSubject: W3cCredentialCredentialSubject
   /**
    *
    * @type {W3cCredentialStatus}
    * @memberof W3cCredential
    */
-  credentialStatus?: W3cCredentialStatus;
+  credentialStatus?: W3cCredentialStatus
   /**
    *
    * @type {string}
    * @memberof W3cCredential
    */
-  issuanceDate: string;
+  issuanceDate: string
   /**
    *
    * @type {string}
    * @memberof W3cCredential
    */
-  issuer: string;
+  issuer: string
   /**
    *
    * @type {string}
    * @memberof W3cCredential
    */
-  expirationDate?: string | null;
+  expirationDate?: string | null
   /**
    *
    * @type {W3cProof}
    * @memberof W3cCredential
    */
-  proof: W3cProof;
+  proof: W3cProof
   /**
    *
    * @type {W3cCredentialCredentialSchema}
    * @memberof W3cCredential
    */
-  credentialSchema?: W3cCredentialCredentialSchema;
+  credentialSchema?: W3cCredentialCredentialSchema
 }
 /**
  *
@@ -1107,25 +1128,25 @@ export interface W3cCredentialCredentialSchema {
    * @type {string}
    * @memberof W3cCredentialCredentialSchema
    */
-  id?: string;
+  id?: string
   /**
    *
    * @type {string}
    * @memberof W3cCredentialCredentialSchema
    */
-  type?: string;
+  type?: string
 }
 /**
  * @type W3cCredentialCredentialSubject
  * @export
  */
-export type W3cCredentialCredentialSubject = Array<string> | object;
+export type W3cCredentialCredentialSubject = Array<string> | object
 
 /**
  * @type W3cCredentialHolder
  * @export
  */
-export type W3cCredentialHolder = object | string;
+export type W3cCredentialHolder = object | string
 
 /**
  *
@@ -1138,25 +1159,25 @@ export interface W3cCredentialStatus {
    * @type {string}
    * @memberof W3cCredentialStatus
    */
-  id: string;
+  id: string
   /**
    *
    * @type {string}
    * @memberof W3cCredentialStatus
    */
-  type: string;
+  type: string
   /**
    *
    * @type {string}
    * @memberof W3cCredentialStatus
    */
-  revocationListIndex: string;
+  revocationListIndex: string
   /**
    *
    * @type {string}
    * @memberof W3cCredentialStatus
    */
-  revocationListCredential: string;
+  revocationListCredential: string
 }
 /**
  *
@@ -1169,43 +1190,43 @@ export interface W3cPresentation {
    * @type {W3cPresentationContext}
    * @memberof W3cPresentation
    */
-  '@context': W3cPresentationContext;
+  '@context': W3cPresentationContext
   /**
    *
    * @type {string}
    * @memberof W3cPresentation
    */
-  id?: string | null;
+  id?: string | null
   /**
    *
    * @type {Array<string>}
    * @memberof W3cPresentation
    */
-  type: Array<string>;
+  type: Array<string>
   /**
    *
    * @type {object}
    * @memberof W3cPresentation
    */
-  holder: object;
+  holder: object
   /**
    *
    * @type {Array<W3cCredential>}
    * @memberof W3cPresentation
    */
-  verifiableCredential: Array<W3cCredential>;
+  verifiableCredential: Array<W3cCredential>
   /**
    *
    * @type {PresentationSubmission}
    * @memberof W3cPresentation
    */
-  presentation_submission?: PresentationSubmission;
+  presentation_submission?: PresentationSubmission
   /**
    *
    * @type {object}
    * @memberof W3cPresentation
    */
-  proof: object;
+  proof: object
 }
 /**
  * @type W3cPresentationContext
@@ -1214,13 +1235,13 @@ export interface W3cPresentation {
 export type W3cPresentationContext =
   | Array<W3cPresentationContextOneOfInner>
   | string
-  | { [key: string]: any };
+  | { [key: string]: any }
 
 /**
  * @type W3cPresentationContextOneOfInner
  * @export
  */
-export type W3cPresentationContextOneOfInner = string | { [key: string]: any };
+export type W3cPresentationContextOneOfInner = string | { [key: string]: any }
 
 /**
  *
@@ -1233,711 +1254,41 @@ export interface W3cProof {
    * @type {string}
    * @memberof W3cProof
    */
-  type?: string | null;
+  type?: string | null
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  created?: string | null;
+  created?: string | null
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  verificationMethod: string;
+  verificationMethod: string
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  proofPurpose: string;
+  proofPurpose: string
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  jws?: string | null;
+  jws?: string | null
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  proofValue?: string | null;
+  proofValue?: string | null
   /**
    *
    * @type {string}
    * @memberof W3cProof
    */
-  nonce?: string | null;
-}
-
-/**
- * VerifierApi - axios parameter creator
- * @export
- */
-export const VerifierApiAxiosParamCreator = function (
-  configuration?: Configuration
-) {
-  return {
-    /**
-     * Build credential share request JWT object from input data.
-     * @summary Builds credential share request
-     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    buildCredentialRequest: async (
-      buildCredentialRequestInput: BuildCredentialRequestInput,
-      options: RawAxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'buildCredentialRequestInput' is not null or undefined
-      assertParamExists(
-        'buildCredentialRequest',
-        'buildCredentialRequestInput',
-        buildCredentialRequestInput
-      );
-      const localVarPath = `/v1/verifier/build-credential-request`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration
-      );
-
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        buildCredentialRequestInput,
-        localVarRequestOptions,
-        configuration
-      );
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
-     * @summary Validates JWT token
-     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    validateJwt: async (
-      validateJwtInput: ValidateJwtInput,
-      options: RawAxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'validateJwtInput' is not null or undefined
-      assertParamExists('validateJwt', 'validateJwtInput', validateJwtInput);
-      const localVarPath = `/v1/verifier/validate-jwt`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration
-      );
-
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        validateJwtInput,
-        localVarRequestOptions,
-        configuration
-      );
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying share response token
-     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyCredentialShareResponse: async (
-      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
-      options: RawAxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'verifyCredentialShareResponseInput' is not null or undefined
-      assertParamExists(
-        'verifyCredentialShareResponse',
-        'verifyCredentialShareResponseInput',
-        verifyCredentialShareResponseInput
-      );
-      const localVarPath = `/v1/verifier/verify-share-response`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration
-      );
-
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        verifyCredentialShareResponseInput,
-        localVarRequestOptions,
-        configuration
-      );
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying VC
-     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyCredentials: async (
-      verifyCredentialInput: VerifyCredentialInput,
-      options: RawAxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'verifyCredentialInput' is not null or undefined
-      assertParamExists(
-        'verifyCredentials',
-        'verifyCredentialInput',
-        verifyCredentialInput
-      );
-      const localVarPath = `/v1/verifier/verify-vcs`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration
-      );
-
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        verifyCredentialInput,
-        localVarRequestOptions,
-        configuration
-      );
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
-     * @summary Verifying VP
-     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyPresentation: async (
-      verifyPresentationInput: VerifyPresentationInput,
-      options: RawAxiosRequestConfig = {}
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'verifyPresentationInput' is not null or undefined
-      assertParamExists(
-        'verifyPresentation',
-        'verifyPresentationInput',
-        verifyPresentationInput
-      );
-      const localVarPath = `/v1/verifier/verify-vp`;
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-      let baseOptions;
-      if (configuration) {
-        baseOptions = configuration.baseOptions;
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration
-      );
-
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter);
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {};
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      };
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        verifyPresentationInput,
-        localVarRequestOptions,
-        configuration
-      );
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-  };
-};
-
-/**
- * VerifierApi - functional programming interface
- * @export
- */
-export const VerifierApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = VerifierApiAxiosParamCreator(configuration);
-  return {
-    /**
-     * Build credential share request JWT object from input data.
-     * @summary Builds credential share request
-     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async buildCredentialRequest(
-      buildCredentialRequestInput: BuildCredentialRequestInput,
-      options?: RawAxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<BuildCredentialRequestOutput>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.buildCredentialRequest(
-          buildCredentialRequestInput,
-          options
-        );
-      const index = configuration?.serverIndex ?? 0;
-      const operationBasePath =
-        operationServerMap['VerifierApi.buildCredentialRequest']?.[index]?.url;
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration
-        )(axios, operationBasePath || basePath);
-    },
-    /**
-     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
-     * @summary Validates JWT token
-     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async validateJwt(
-      validateJwtInput: ValidateJwtInput,
-      options?: RawAxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<ValidateJwtOutput>
-    > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.validateJwt(
-        validateJwtInput,
-        options
-      );
-      const index = configuration?.serverIndex ?? 0;
-      const operationBasePath =
-        operationServerMap['VerifierApi.validateJwt']?.[index]?.url;
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration
-        )(axios, operationBasePath || basePath);
-    },
-    /**
-     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying share response token
-     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async verifyCredentialShareResponse(
-      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
-      options?: RawAxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<VerifyCredentialShareResponseOutput>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.verifyCredentialShareResponse(
-          verifyCredentialShareResponseInput,
-          options
-        );
-      const index = configuration?.serverIndex ?? 0;
-      const operationBasePath =
-        operationServerMap['VerifierApi.verifyCredentialShareResponse']?.[index]
-          ?.url;
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration
-        )(axios, operationBasePath || basePath);
-    },
-    /**
-     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying VC
-     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async verifyCredentials(
-      verifyCredentialInput: VerifyCredentialInput,
-      options?: RawAxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<VerifyCredentialOutput>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.verifyCredentials(
-          verifyCredentialInput,
-          options
-        );
-      const index = configuration?.serverIndex ?? 0;
-      const operationBasePath =
-        operationServerMap['VerifierApi.verifyCredentials']?.[index]?.url;
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration
-        )(axios, operationBasePath || basePath);
-    },
-    /**
-     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
-     * @summary Verifying VP
-     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async verifyPresentation(
-      verifyPresentationInput: VerifyPresentationInput,
-      options?: RawAxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-      ) => AxiosPromise<VerifyPresentationOutput>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.verifyPresentation(
-          verifyPresentationInput,
-          options
-        );
-      const index = configuration?.serverIndex ?? 0;
-      const operationBasePath =
-        operationServerMap['VerifierApi.verifyPresentation']?.[index]?.url;
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration
-        )(axios, operationBasePath || basePath);
-    },
-  };
-};
-
-/**
- * VerifierApi - factory interface
- * @export
- */
-export const VerifierApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance
-) {
-  const localVarFp = VerifierApiFp(configuration);
-  return {
-    /**
-     * Build credential share request JWT object from input data.
-     * @summary Builds credential share request
-     * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    buildCredentialRequest(
-      buildCredentialRequestInput: BuildCredentialRequestInput,
-      options?: any
-    ): AxiosPromise<BuildCredentialRequestOutput> {
-      return localVarFp
-        .buildCredentialRequest(buildCredentialRequestInput, options)
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
-     * @summary Validates JWT token
-     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    validateJwt(
-      validateJwtInput: ValidateJwtInput,
-      options?: any
-    ): AxiosPromise<ValidateJwtOutput> {
-      return localVarFp
-        .validateJwt(validateJwtInput, options)
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying share response token
-     * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyCredentialShareResponse(
-      verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
-      options?: any
-    ): AxiosPromise<VerifyCredentialShareResponseOutput> {
-      return localVarFp
-        .verifyCredentialShareResponse(
-          verifyCredentialShareResponseInput,
-          options
-        )
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
-     * @summary Verifying VC
-     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyCredentials(
-      verifyCredentialInput: VerifyCredentialInput,
-      options?: any
-    ): AxiosPromise<VerifyCredentialOutput> {
-      return localVarFp
-        .verifyCredentials(verifyCredentialInput, options)
-        .then((request) => request(axios, basePath));
-    },
-    /**
-     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
-     * @summary Verifying VP
-     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    verifyPresentation(
-      verifyPresentationInput: VerifyPresentationInput,
-      options?: any
-    ): AxiosPromise<VerifyPresentationOutput> {
-      return localVarFp
-        .verifyPresentation(verifyPresentationInput, options)
-        .then((request) => request(axios, basePath));
-    },
-  };
-};
-
-/**
- * VerifierApi - object-oriented interface
- * @export
- * @class VerifierApi
- * @extends {BaseAPI}
- */
-export class VerifierApi extends BaseAPI {
-  /**
-   * Build credential share request JWT object from input data.
-   * @summary Builds credential share request
-   * @param {BuildCredentialRequestInput} buildCredentialRequestInput BuildCredentialRequest
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof VerifierApi
-   */
-  public buildCredentialRequest(
-    buildCredentialRequestInput: BuildCredentialRequestInput,
-    options?: RawAxiosRequestConfig
-  ) {
-    return VerifierApiFp(this.configuration)
-      .buildCredentialRequest(buildCredentialRequestInput, options)
-      .then((request) => request(this.axios, this.basePath));
-  }
-
-  /**
-   * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
-   * @summary Validates JWT token
-   * @param {ValidateJwtInput} validateJwtInput ValidateJwt
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof VerifierApi
-   */
-  public validateJwt(
-    validateJwtInput: ValidateJwtInput,
-    options?: RawAxiosRequestConfig
-  ) {
-    return VerifierApiFp(this.configuration)
-      .validateJwt(validateJwtInput, options)
-      .then((request) => request(this.axios, this.basePath));
-  }
-
-  /**
-   * Verifying JWT token (signature and expiration), validate each credential inside it (signature), validate response against request if requestToken was passed.  `errors` contains list of error messages for invalid credentials.
-   * @summary Verifying share response token
-   * @param {VerifyCredentialShareResponseInput} verifyCredentialShareResponseInput VerifyCredentialShareResponse
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof VerifierApi
-   */
-  public verifyCredentialShareResponse(
-    verifyCredentialShareResponseInput: VerifyCredentialShareResponseInput,
-    options?: RawAxiosRequestConfig
-  ) {
-    return VerifierApiFp(this.configuration)
-      .verifyCredentialShareResponse(
-        verifyCredentialShareResponseInput,
-        options
-      )
-      .then((request) => request(this.axios, this.basePath));
-  }
-
-  /**
-   * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
-   * @summary Verifying VC
-   * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof VerifierApi
-   */
-  public verifyCredentials(
-    verifyCredentialInput: VerifyCredentialInput,
-    options?: RawAxiosRequestConfig
-  ) {
-    return VerifierApiFp(this.configuration)
-      .verifyCredentials(verifyCredentialInput, options)
-      .then((request) => request(this.axios, this.basePath));
-  }
-
-  /**
-   * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
-   * @summary Verifying VP
-   * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof VerifierApi
-   */
-  public verifyPresentation(
-    verifyPresentationInput: VerifyPresentationInput,
-    options?: RawAxiosRequestConfig
-  ) {
-    return VerifierApiFp(this.configuration)
-      .verifyPresentation(verifyPresentationInput, options)
-      .then((request) => request(this.axios, this.basePath));
-  }
+  nonce?: string | null
 }

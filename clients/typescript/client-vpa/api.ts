@@ -12,9 +12,9 @@
  * Do not edit the class manually.
  */
 
-import type { Configuration } from './configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
-import globalAxios from 'axios';
+import type { Configuration } from './configuration'
+import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios'
+import globalAxios from 'axios'
 // Some imports not used depending on template conditions
 // @ts-ignore
 import {
@@ -28,8 +28,8 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
-} from './common';
-import type { RequestArgs } from './base';
+} from './common'
+import type { RequestArgs } from './base'
 // @ts-ignore
 import {
   BASE_PATH,
@@ -37,7 +37,7 @@ import {
   BaseAPI,
   RequiredError,
   operationServerMap,
-} from './base';
+} from './base'
 
 /**
  *
@@ -50,52 +50,52 @@ export interface ActionForbiddenError {
    * @type {string}
    * @memberof ActionForbiddenError
    */
-  name: ActionForbiddenErrorNameEnum;
+  name: ActionForbiddenErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof ActionForbiddenError
    */
-  message: ActionForbiddenErrorMessageEnum;
+  message: ActionForbiddenErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof ActionForbiddenError
    */
-  httpStatusCode: ActionForbiddenErrorHttpStatusCodeEnum;
+  httpStatusCode: ActionForbiddenErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof ActionForbiddenError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof ActionForbiddenError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const ActionForbiddenErrorNameEnum = {
   ActionForbiddenError: 'ActionForbiddenError',
-} as const;
+} as const
 
 export type ActionForbiddenErrorNameEnum =
-  (typeof ActionForbiddenErrorNameEnum)[keyof typeof ActionForbiddenErrorNameEnum];
+  (typeof ActionForbiddenErrorNameEnum)[keyof typeof ActionForbiddenErrorNameEnum]
 export const ActionForbiddenErrorMessageEnum = {
   PrincipalCanNotExecuteActionOnGivenResource:
     'Principal can not execute action on given resource',
-} as const;
+} as const
 
 export type ActionForbiddenErrorMessageEnum =
-  (typeof ActionForbiddenErrorMessageEnum)[keyof typeof ActionForbiddenErrorMessageEnum];
+  (typeof ActionForbiddenErrorMessageEnum)[keyof typeof ActionForbiddenErrorMessageEnum]
 export const ActionForbiddenErrorHttpStatusCodeEnum = {
   NUMBER_403: 403,
-} as const;
+} as const
 
 export type ActionForbiddenErrorHttpStatusCodeEnum =
-  (typeof ActionForbiddenErrorHttpStatusCodeEnum)[keyof typeof ActionForbiddenErrorHttpStatusCodeEnum];
+  (typeof ActionForbiddenErrorHttpStatusCodeEnum)[keyof typeof ActionForbiddenErrorHttpStatusCodeEnum]
 
 /**
  * input used to add a user to a group
@@ -108,7 +108,7 @@ export interface AddUserToGroupInput {
    * @type {string}
    * @memberof AddUserToGroupInput
    */
-  userId: string;
+  userId: string
 }
 /**
  *
@@ -121,13 +121,13 @@ export interface BlockedUsers {
    * @type {Array<string>}
    * @memberof BlockedUsers
    */
-  userIds: Array<string>;
+  userIds: Array<string>
   /**
    *
    * @type {object}
    * @memberof BlockedUsers
    */
-  pageToken?: object;
+  pageToken?: object
 }
 /**
  *
@@ -140,7 +140,7 @@ export interface BlockedUsersInput {
    * @type {Array<string>}
    * @memberof BlockedUsersInput
    */
-  userIds: Array<string>;
+  userIds: Array<string>
 }
 /**
  *
@@ -153,7 +153,7 @@ export interface CorsLoginSessionAcceptResponseOK {
    * @type {string}
    * @memberof CorsLoginSessionAcceptResponseOK
    */
-  corsLoginSessionAcceptResponseOk?: string;
+  corsLoginSessionAcceptResponseOk?: string
 }
 /**
  *
@@ -166,7 +166,7 @@ export interface CorsLoginSessionForIdpOK {
    * @type {string}
    * @memberof CorsLoginSessionForIdpOK
    */
-  corsLoginSessionForIdpOk?: string;
+  corsLoginSessionForIdpOk?: string
 }
 /**
  *
@@ -179,7 +179,7 @@ export interface CorsLoginSessionRejectResponseOK {
    * @type {string}
    * @memberof CorsLoginSessionRejectResponseOK
    */
-  corsLoginSessionRejectResponseOk?: string;
+  corsLoginSessionRejectResponseOk?: string
 }
 /**
  *
@@ -192,7 +192,7 @@ export interface CreateGroupInput {
    * @type {string}
    * @memberof CreateGroupInput
    */
-  groupName: string;
+  groupName: string
 }
 /**
  *
@@ -205,70 +205,70 @@ export interface CreateLoginConfigurationInput {
    * @type {string}
    * @memberof CreateLoginConfigurationInput
    */
-  name: string;
+  name: string
   /**
    * OAuth 2.0 Redirect URIs
    * @type {Array<string>}
    * @memberof CreateLoginConfigurationInput
    */
-  redirectUris: Array<string>;
+  redirectUris: Array<string>
   /**
    * VP definition in JSON stringify format
    * @type {string}
    * @memberof CreateLoginConfigurationInput
    */
-  vpDefinition?: string;
+  vpDefinition?: string
   /**
    * Presentation Definition
    * @type {object}
    * @memberof CreateLoginConfigurationInput
    */
-  presentationDefinition?: object;
+  presentationDefinition?: object
   /**
    *
    * @type {IdTokenMapping}
    * @memberof CreateLoginConfigurationInput
    */
-  idTokenMapping?: IdTokenMapping;
+  idTokenMapping?: IdTokenMapping
   /**
    *
-   * @type {LoginConfigurationClientMetadata}
+   * @type {LoginConfigurationClientMetadataInput}
    * @memberof CreateLoginConfigurationInput
    */
-  clientMetadata?: LoginConfigurationClientMetadata;
+  clientMetadata?: LoginConfigurationClientMetadataInput
   /**
    * ID token claims output format. Default is array.
    * @type {string}
    * @memberof CreateLoginConfigurationInput
    */
-  claimFormat?: CreateLoginConfigurationInputClaimFormatEnum;
+  claimFormat?: CreateLoginConfigurationInputClaimFormatEnum
   /**
    * Interrupts login process if duplications of data fields names will be found
    * @type {boolean}
    * @memberof CreateLoginConfigurationInput
    */
-  failOnMappingConflict?: boolean;
+  failOnMappingConflict?: boolean
   /**
    * List of groups separated by space
    * @type {string}
    * @memberof CreateLoginConfigurationInput
    */
-  scope?: string;
+  scope?: string
   /**
    *
    * @type {TokenEndpointAuthMethod}
    * @memberof CreateLoginConfigurationInput
    */
-  tokenEndpointAuthMethod?: TokenEndpointAuthMethod;
+  tokenEndpointAuthMethod?: TokenEndpointAuthMethod
 }
 
 export const CreateLoginConfigurationInputClaimFormatEnum = {
   Array: 'array',
   Map: 'map',
-} as const;
+} as const
 
 export type CreateLoginConfigurationInputClaimFormatEnum =
-  (typeof CreateLoginConfigurationInputClaimFormatEnum)[keyof typeof CreateLoginConfigurationInputClaimFormatEnum];
+  (typeof CreateLoginConfigurationInputClaimFormatEnum)[keyof typeof CreateLoginConfigurationInputClaimFormatEnum]
 
 /**
  *
@@ -281,49 +281,49 @@ export interface CreateLoginConfigurationOutput {
    * @type {string}
    * @memberof CreateLoginConfigurationOutput
    */
-  ari: string;
+  ari: string
   /**
    * Project id
    * @type {string}
    * @memberof CreateLoginConfigurationOutput
    */
-  projectId: string;
+  projectId: string
   /**
    * Configuration id
    * @type {string}
    * @memberof CreateLoginConfigurationOutput
    */
-  configurationId?: string;
+  configurationId?: string
   /**
    * User defined login configuration name
    * @type {string}
    * @memberof CreateLoginConfigurationOutput
    */
-  name: string;
+  name: string
   /**
    *
    * @type {CreateLoginConfigurationOutputAuth}
    * @memberof CreateLoginConfigurationOutput
    */
-  auth: CreateLoginConfigurationOutputAuth;
+  auth: CreateLoginConfigurationOutputAuth
   /**
    * OAuth 2.0 Redirect URIs
    * @type {Array<string>}
    * @memberof CreateLoginConfigurationOutput
    */
-  redirectUris: Array<string>;
+  redirectUris: Array<string>
   /**
    *
-   * @type {LoginConfigurationClientMetadata}
+   * @type {LoginConfigurationClientMetadataOutput}
    * @memberof CreateLoginConfigurationOutput
    */
-  clientMetadata: LoginConfigurationClientMetadata;
+  clientMetadata: LoginConfigurationClientMetadataOutput
   /**
    * OAuth 2.0 Client Creation Date
    * @type {string}
    * @memberof CreateLoginConfigurationOutput
    */
-  creationDate: string;
+  creationDate: string
 }
 /**
  * OIDC Auth Credentials
@@ -336,25 +336,25 @@ export interface CreateLoginConfigurationOutputAuth {
    * @type {string}
    * @memberof CreateLoginConfigurationOutputAuth
    */
-  clientId: string;
+  clientId: string
   /**
    * OAuth 2.0 Client Secret
    * @type {string}
    * @memberof CreateLoginConfigurationOutputAuth
    */
-  clientSecret?: string;
+  clientSecret?: string
   /**
    * OAuth 2.0 Client Scope
    * @type {string}
    * @memberof CreateLoginConfigurationOutputAuth
    */
-  scope?: string;
+  scope?: string
   /**
    * Issuer URL
    * @type {string}
    * @memberof CreateLoginConfigurationOutputAuth
    */
-  issuer?: string;
+  issuer?: string
 }
 /**
  *
@@ -367,31 +367,31 @@ export interface ErrorOAuth2 {
    * @type {string}
    * @memberof ErrorOAuth2
    */
-  error: string;
+  error: string
   /**
    * Error Debug Information. Only available in dev mode.
    * @type {string}
    * @memberof ErrorOAuth2
    */
-  error_debug?: string;
+  error_debug?: string
   /**
    * Error Description
    * @type {string}
    * @memberof ErrorOAuth2
    */
-  error_description: string;
+  error_description: string
   /**
    * Error Hint. Helps the user identify the error cause.
    * @type {string}
    * @memberof ErrorOAuth2
    */
-  error_hint?: string;
+  error_hint?: string
   /**
    * HTTP Status Code
    * @type {string}
    * @memberof ErrorOAuth2
    */
-  status_code: string;
+  status_code: string
 }
 /**
  *
@@ -404,115 +404,115 @@ export interface GetUserInfo {
    * @type {string}
    * @memberof GetUserInfo
    */
-  birthdate?: string;
+  birthdate?: string
   /**
    * End-User\'s preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322]  addr-spec syntax. The RP MUST NOT rely upon this value being unique, as discussed in Section 5.7.
    * @type {string}
    * @memberof GetUserInfo
    */
-  email?: string;
+  email?: string
   /**
    * True if the End-User\'s e-mail address has been verified; otherwise false. When this  Claim Value is true, this means that the OP took affirmative steps to ensure that  this e-mail address was controlled by the End-User at the time the verification was  performed. The means by which an e-mail address is verified is context-specific, and  dependent upon the trust framework or contractual agreements within which the parties  are operating.
    * @type {boolean}
    * @memberof GetUserInfo
    */
-  email_verified?: boolean;
+  email_verified?: boolean
   /**
    * Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have  multiple family names or no family name; all can be present, with the names being  separated by space characters.
    * @type {string}
    * @memberof GetUserInfo
    */
-  family_name?: string;
+  family_name?: string
   /**
    * End-User\'s gender. Values defined by this specification are female and male.  Other values MAY be used when neither of the defined values are applicable.
    * @type {string}
    * @memberof GetUserInfo
    */
-  gender?: string;
+  gender?: string
   /**
    * Given name(s) or first name(s) of the End-User. Note that in some cultures,  people can have multiple given names; all can be present, with the names being  separated by space characters.
    * @type {string}
    * @memberof GetUserInfo
    */
-  given_name?: string;
+  given_name?: string
   /**
    * End-User\'s locale, represented as a BCP47 [RFC5646] language tag. This is  typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an  ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash.  For example, en-US or fr-CA. As a compatibility note, some implementations have  used an underscore as the separator rather than a dash, for example, en_US;  Relying Parties MAY choose to accept this locale syntax as well.
    * @type {string}
    * @memberof GetUserInfo
    */
-  locale?: string;
+  locale?: string
   /**
    * Middle name(s) of the End-User. Note that in some cultures, people can have  multiple middle names; all can be present, with the names being separated by  space characters. Also note that in some cultures, middle names are not used.
    * @type {string}
    * @memberof GetUserInfo
    */
-  middle_name?: string;
+  middle_name?: string
   /**
    * End-User\'s full name in displayable form including all name parts, possibly  including titles and suffixes, ordered according to the End-User\'s locale and preferences.
    * @type {string}
    * @memberof GetUserInfo
    */
-  name?: string;
+  name?: string
   /**
    * Casual name of the End-User that may or may not be the same as the given_name.  For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
    * @type {string}
    * @memberof GetUserInfo
    */
-  nickname?: string;
+  nickname?: string
   /**
    * End-User\'s preferred telephone number. E.164 [E.164] is RECOMMENDED as the format of this Claim,  for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension,  it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax,  for example, +1 (604) 555-1234;ext=5678.
    * @type {string}
    * @memberof GetUserInfo
    */
-  phone_number?: string;
+  phone_number?: string
   /**
    * True if the End-User\'s phone number has been verified; otherwise false. When this Claim  Value is true, this means that the OP took affirmative steps to ensure that this phone  number was controlled by the End-User at the time the verification was performed. The means  by which a phone number is verified is context-specific, and dependent upon the trust framework  or contractual agreements within which the parties are operating. When true, the phone_number  Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.
    * @type {boolean}
    * @memberof GetUserInfo
    */
-  phone_number_verified?: boolean;
+  phone_number_verified?: boolean
   /**
    * URL of the End-User\'s profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD  specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User.
    * @type {string}
    * @memberof GetUserInfo
    */
-  picture?: string;
+  picture?: string
   /**
    * Non-unique shorthand name by which the End-User wishes to be referred to at the RP, such as  janedoe or j.doe. This value MAY be any valid JSON string including special characters  such as @, /, or whitespace.
    * @type {string}
    * @memberof GetUserInfo
    */
-  preferred_username?: string;
+  preferred_username?: string
   /**
    * URL of the End-User\'s profile page. The contents of this Web page SHOULD be about the End-User.
    * @type {string}
    * @memberof GetUserInfo
    */
-  profile?: string;
+  profile?: string
   /**
    * Subject - Identifier for the End-User at the IssuerURL.
    * @type {string}
    * @memberof GetUserInfo
    */
-  sub?: string;
+  sub?: string
   /**
    * Time the End-User\'s information was last updated. Its value is a JSON number  representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.
    * @type {number}
    * @memberof GetUserInfo
    */
-  updated_at?: number;
+  updated_at?: number
   /**
    * URL of the End-User\'s Web page or blog. This Web page SHOULD contain information  published by the End-User or an organization that the End-User is affiliated with.
    * @type {string}
    * @memberof GetUserInfo
    */
-  website?: string;
+  website?: string
   /**
    * String from zoneinfo [zoneinfo] time zone database representing the End-User\'s  time zone. For example, Europe/Paris or America/Los_Angeles.
    * @type {string}
    * @memberof GetUserInfo
    */
-  zoneinfo?: string;
+  zoneinfo?: string
 }
 /**
  *
@@ -525,25 +525,25 @@ export interface GroupDto {
    * @type {string}
    * @memberof GroupDto
    */
-  ari: string;
+  ari: string
   /**
    * Project id
    * @type {string}
    * @memberof GroupDto
    */
-  projectId: string;
+  projectId: string
   /**
    * name of the group, identifier within a project
    * @type {string}
    * @memberof GroupDto
    */
-  groupName: string;
+  groupName: string
   /**
    * Group creation date
    * @type {string}
    * @memberof GroupDto
    */
-  creationDate: string;
+  creationDate: string
 }
 /**
  *
@@ -556,13 +556,13 @@ export interface GroupNames {
    * @type {Array<string>}
    * @memberof GroupNames
    */
-  groupNames: Array<string>;
+  groupNames: Array<string>
   /**
    *
    * @type {object}
    * @memberof GroupNames
    */
-  pageToken?: object;
+  pageToken?: object
 }
 /**
  *
@@ -575,7 +575,7 @@ export interface GroupNamesInput {
    * @type {Array<string>}
    * @memberof GroupNamesInput
    */
-  groupNames: Array<string>;
+  groupNames: Array<string>
 }
 /**
  *
@@ -588,13 +588,13 @@ export interface GroupUserMappingDto {
    * @type {string}
    * @memberof GroupUserMappingDto
    */
-  userId: string;
+  userId: string
   /**
    * Group to user mapping creation date
    * @type {string}
    * @memberof GroupUserMappingDto
    */
-  addedAt: string;
+  addedAt: string
 }
 /**
  *
@@ -607,19 +607,19 @@ export interface GroupUserMappingsList {
    * @type {Array<GroupUserMappingDto>}
    * @memberof GroupUserMappingsList
    */
-  users?: Array<GroupUserMappingDto>;
+  users?: Array<GroupUserMappingDto>
   /**
    *
    * @type {string}
    * @memberof GroupUserMappingsList
    */
-  lastEvaluatedKey?: string;
+  lastEvaluatedKey?: string
   /**
    *
    * @type {number}
    * @memberof GroupUserMappingsList
    */
-  totalUserCount?: number;
+  totalUserCount?: number
 }
 /**
  *
@@ -632,7 +632,7 @@ export interface GroupsList {
    * @type {Array<GroupDto>}
    * @memberof GroupsList
    */
-  groups?: Array<GroupDto>;
+  groups?: Array<GroupDto>
 }
 /**
  *
@@ -645,51 +645,51 @@ export interface GroupsPerUserLimitExceededError {
    * @type {string}
    * @memberof GroupsPerUserLimitExceededError
    */
-  name: GroupsPerUserLimitExceededErrorNameEnum;
+  name: GroupsPerUserLimitExceededErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof GroupsPerUserLimitExceededError
    */
-  message: GroupsPerUserLimitExceededErrorMessageEnum;
+  message: GroupsPerUserLimitExceededErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof GroupsPerUserLimitExceededError
    */
-  httpStatusCode: GroupsPerUserLimitExceededErrorHttpStatusCodeEnum;
+  httpStatusCode: GroupsPerUserLimitExceededErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof GroupsPerUserLimitExceededError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof GroupsPerUserLimitExceededError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const GroupsPerUserLimitExceededErrorNameEnum = {
   GroupsPerUserLimitExceededError: 'GroupsPerUserLimitExceededError',
-} as const;
+} as const
 
 export type GroupsPerUserLimitExceededErrorNameEnum =
-  (typeof GroupsPerUserLimitExceededErrorNameEnum)[keyof typeof GroupsPerUserLimitExceededErrorNameEnum];
+  (typeof GroupsPerUserLimitExceededErrorNameEnum)[keyof typeof GroupsPerUserLimitExceededErrorNameEnum]
 export const GroupsPerUserLimitExceededErrorMessageEnum = {
   AmountOfGroupsPerUserIsLimited: 'Amount of groups per user is limited.',
-} as const;
+} as const
 
 export type GroupsPerUserLimitExceededErrorMessageEnum =
-  (typeof GroupsPerUserLimitExceededErrorMessageEnum)[keyof typeof GroupsPerUserLimitExceededErrorMessageEnum];
+  (typeof GroupsPerUserLimitExceededErrorMessageEnum)[keyof typeof GroupsPerUserLimitExceededErrorMessageEnum]
 export const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum = {
   NUMBER_409: 409,
-} as const;
+} as const
 
 export type GroupsPerUserLimitExceededErrorHttpStatusCodeEnum =
-  (typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum)[keyof typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum];
+  (typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum)[keyof typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum]
 
 /**
  * Fields name/path mapping between the vp_token and the id_token
@@ -708,19 +708,19 @@ export interface IdTokenMappingInner {
    * @type {string}
    * @memberof IdTokenMappingInner
    */
-  sourceField: string;
+  sourceField: string
   /**
    * Name of the corresponding field in the id_token
    * @type {string}
    * @memberof IdTokenMappingInner
    */
-  idTokenClaim: string;
+  idTokenClaim: string
   /**
    * Id of related input descriptor from presentation definition
    * @type {string}
    * @memberof IdTokenMappingInner
    */
-  inputDescriptorId?: string;
+  inputDescriptorId?: string
 }
 /**
  *
@@ -733,51 +733,51 @@ export interface InvalidGroupsError {
    * @type {string}
    * @memberof InvalidGroupsError
    */
-  name: InvalidGroupsErrorNameEnum;
+  name: InvalidGroupsErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof InvalidGroupsError
    */
-  message: InvalidGroupsErrorMessageEnum;
+  message: InvalidGroupsErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof InvalidGroupsError
    */
-  httpStatusCode: InvalidGroupsErrorHttpStatusCodeEnum;
+  httpStatusCode: InvalidGroupsErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof InvalidGroupsError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof InvalidGroupsError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const InvalidGroupsErrorNameEnum = {
   InvalidGroupsError: 'InvalidGroupsError',
-} as const;
+} as const
 
 export type InvalidGroupsErrorNameEnum =
-  (typeof InvalidGroupsErrorNameEnum)[keyof typeof InvalidGroupsErrorNameEnum];
+  (typeof InvalidGroupsErrorNameEnum)[keyof typeof InvalidGroupsErrorNameEnum]
 export const InvalidGroupsErrorMessageEnum = {
   InvalidGroupsNames: 'Invalid groups names',
-} as const;
+} as const
 
 export type InvalidGroupsErrorMessageEnum =
-  (typeof InvalidGroupsErrorMessageEnum)[keyof typeof InvalidGroupsErrorMessageEnum];
+  (typeof InvalidGroupsErrorMessageEnum)[keyof typeof InvalidGroupsErrorMessageEnum]
 export const InvalidGroupsErrorHttpStatusCodeEnum = {
   NUMBER_400: 400,
-} as const;
+} as const
 
 export type InvalidGroupsErrorHttpStatusCodeEnum =
-  (typeof InvalidGroupsErrorHttpStatusCodeEnum)[keyof typeof InvalidGroupsErrorHttpStatusCodeEnum];
+  (typeof InvalidGroupsErrorHttpStatusCodeEnum)[keyof typeof InvalidGroupsErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -790,51 +790,51 @@ export interface InvalidParameterError {
    * @type {string}
    * @memberof InvalidParameterError
    */
-  name: InvalidParameterErrorNameEnum;
+  name: InvalidParameterErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof InvalidParameterError
    */
-  message: InvalidParameterErrorMessageEnum;
+  message: InvalidParameterErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof InvalidParameterError
    */
-  httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum;
+  httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof InvalidParameterError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof InvalidParameterError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const InvalidParameterErrorNameEnum = {
   InvalidParameterError: 'InvalidParameterError',
-} as const;
+} as const
 
 export type InvalidParameterErrorNameEnum =
-  (typeof InvalidParameterErrorNameEnum)[keyof typeof InvalidParameterErrorNameEnum];
+  (typeof InvalidParameterErrorNameEnum)[keyof typeof InvalidParameterErrorNameEnum]
 export const InvalidParameterErrorMessageEnum = {
   InvalidParameterParam: 'Invalid parameter: ${param}.',
-} as const;
+} as const
 
 export type InvalidParameterErrorMessageEnum =
-  (typeof InvalidParameterErrorMessageEnum)[keyof typeof InvalidParameterErrorMessageEnum];
+  (typeof InvalidParameterErrorMessageEnum)[keyof typeof InvalidParameterErrorMessageEnum]
 export const InvalidParameterErrorHttpStatusCodeEnum = {
   NUMBER_400: 400,
-} as const;
+} as const
 
 export type InvalidParameterErrorHttpStatusCodeEnum =
-  (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum];
+  (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -847,25 +847,25 @@ export interface InvalidParameterErrorDetailsInner {
    * @type {string}
    * @memberof InvalidParameterErrorDetailsInner
    */
-  issue: string;
+  issue: string
   /**
    *
    * @type {string}
    * @memberof InvalidParameterErrorDetailsInner
    */
-  field?: string;
+  field?: string
   /**
    *
    * @type {string}
    * @memberof InvalidParameterErrorDetailsInner
    */
-  value?: string;
+  value?: string
   /**
    *
    * @type {string}
    * @memberof InvalidParameterErrorDetailsInner
    */
-  location?: string;
+  location?: string
 }
 /**
  *
@@ -878,7 +878,7 @@ export interface JsonWebKey {
    * @type {Array<JsonWebKeyKeysInner>}
    * @memberof JsonWebKey
    */
-  keys?: Array<JsonWebKeyKeysInner>;
+  keys?: Array<JsonWebKeyKeysInner>
 }
 /**
  *
@@ -891,103 +891,103 @@ export interface JsonWebKeyKeysInner {
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  alg: string;
+  alg: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  crv?: string;
+  crv?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  d?: string;
+  d?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  dp?: string;
+  dp?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  dq?: string;
+  dq?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  e?: string;
+  e?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  k?: string;
+  k?: string
   /**
    * The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  kid: string;
+  kid: string
   /**
    * The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string.
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  kty: string;
+  kty: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  n?: string;
+  n?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  p?: string;
+  p?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  q?: string;
+  q?: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  qi?: string;
+  qi?: string
   /**
    * Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption).
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  use: string;
+  use: string
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  x?: string;
+  x?: string
   /**
    * The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER  [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
    * @type {Array<string>}
    * @memberof JsonWebKeyKeysInner
    */
-  x5c: Array<string>;
+  x5c: Array<string>
   /**
    *
    * @type {string}
    * @memberof JsonWebKeyKeysInner
    */
-  y?: string;
+  y?: string
 }
 /**
  *
@@ -1000,40 +1000,71 @@ export interface ListLoginConfigurationOutput {
    * @type {Array<LoginConfigurationObject>}
    * @memberof ListLoginConfigurationOutput
    */
-  configurations: Array<LoginConfigurationObject>;
+  configurations: Array<LoginConfigurationObject>
   /**
    *
    * @type {string}
    * @memberof ListLoginConfigurationOutput
    */
-  lastEvaluatedKey?: string;
+  lastEvaluatedKey?: string
 }
 /**
  * login configuration client metadata
  * @export
- * @interface LoginConfigurationClientMetadata
+ * @interface LoginConfigurationClientMetadataInput
  */
-export interface LoginConfigurationClientMetadata {
-  [key: string]: any;
+export interface LoginConfigurationClientMetadataInput {
+  /**
+   * application name that will be displayed in consent page
+   * @type {string}
+   * @memberof LoginConfigurationClientMetadataInput
+   */
+  name: string
+  /**
+   * origin url that will be displayed in consent page
+   * @type {string}
+   * @memberof LoginConfigurationClientMetadataInput
+   */
+  origin: string
+  /**
+   * logo url that will be displayed in consent page
+   * @type {string}
+   * @memberof LoginConfigurationClientMetadataInput
+   */
+  logo: string
+}
+/**
+ * login configuration client metadata
+ * @export
+ * @interface LoginConfigurationClientMetadataOutput
+ */
+export interface LoginConfigurationClientMetadataOutput {
+  [key: string]: any
 
   /**
    * application name that will be displayed in consent page
    * @type {string}
-   * @memberof LoginConfigurationClientMetadata
+   * @memberof LoginConfigurationClientMetadataOutput
    */
-  name: string;
+  name: string
   /**
    * origin url that will be displayed in consent page
    * @type {string}
-   * @memberof LoginConfigurationClientMetadata
+   * @memberof LoginConfigurationClientMetadataOutput
    */
-  origin: string;
+  origin: string
   /**
    * logo url that will be displayed in consent page
    * @type {string}
-   * @memberof LoginConfigurationClientMetadata
+   * @memberof LoginConfigurationClientMetadataOutput
    */
-  logo: string;
+  logo: string
+  /**
+   * indicates if the developer\'s ownership of the domain has been verified
+   * @type {boolean}
+   * @memberof LoginConfigurationClientMetadataOutput
+   */
+  domainVerified?: boolean
 }
 /**
  *
@@ -1041,86 +1072,86 @@ export interface LoginConfigurationClientMetadata {
  * @interface LoginConfigurationObject
  */
 export interface LoginConfigurationObject {
-  [key: string]: any;
+  [key: string]: any
 
   /**
    * Configuration ari
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  ari: string;
+  ari: string
   /**
    * Configuration id
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  configurationId?: string;
+  configurationId?: string
   /**
    * Project id
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  projectId: string;
+  projectId: string
   /**
    * User defined login configuration name
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  name: string;
+  name: string
   /**
    * OAuth 2.0 Redirect URIs
    * @type {Array<string>}
    * @memberof LoginConfigurationObject
    */
-  redirectUris?: Array<string>;
+  redirectUris?: Array<string>
   /**
    * OAuth 2.0 Client Scope
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  scope?: string;
+  scope?: string
   /**
    * OAuth 2.0 Client ID
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  clientId: string;
+  clientId: string
   /**
    * OAuth 2.0 Client Creation Date
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  creationDate: string;
+  creationDate: string
   /**
    * VP definition in JSON stringify format
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  vpDefinition: string;
+  vpDefinition: string
   /**
    * Presentation Definition
    * @type {object}
    * @memberof LoginConfigurationObject
    */
-  presentationDefinition?: object;
+  presentationDefinition?: object
   /**
    *
    * @type {IdTokenMapping}
    * @memberof LoginConfigurationObject
    */
-  idTokenMapping: IdTokenMapping;
+  idTokenMapping: IdTokenMapping
   /**
    *
-   * @type {LoginConfigurationClientMetadata}
+   * @type {LoginConfigurationClientMetadataOutput}
    * @memberof LoginConfigurationObject
    */
-  clientMetadata: LoginConfigurationClientMetadata;
+  clientMetadata: LoginConfigurationClientMetadataOutput
   /**
    *
    * @type {TokenEndpointAuthMethod}
    * @memberof LoginConfigurationObject
    */
-  tokenEndpointAuthMethod: TokenEndpointAuthMethod;
+  tokenEndpointAuthMethod: TokenEndpointAuthMethod
 }
 
 /**
@@ -1134,53 +1165,53 @@ export interface LoginConfigurationReadInvalidClientIdError {
    * @type {string}
    * @memberof LoginConfigurationReadInvalidClientIdError
    */
-  name: LoginConfigurationReadInvalidClientIdErrorNameEnum;
+  name: LoginConfigurationReadInvalidClientIdErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof LoginConfigurationReadInvalidClientIdError
    */
-  message: LoginConfigurationReadInvalidClientIdErrorMessageEnum;
+  message: LoginConfigurationReadInvalidClientIdErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof LoginConfigurationReadInvalidClientIdError
    */
-  httpStatusCode: LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum;
+  httpStatusCode: LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof LoginConfigurationReadInvalidClientIdError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof LoginConfigurationReadInvalidClientIdError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const LoginConfigurationReadInvalidClientIdErrorNameEnum = {
   LoginConfigurationReadInvalidClientIdError:
     'LoginConfigurationReadInvalidClientIdError',
-} as const;
+} as const
 
 export type LoginConfigurationReadInvalidClientIdErrorNameEnum =
-  (typeof LoginConfigurationReadInvalidClientIdErrorNameEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorNameEnum];
+  (typeof LoginConfigurationReadInvalidClientIdErrorNameEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorNameEnum]
 export const LoginConfigurationReadInvalidClientIdErrorMessageEnum = {
   LoginConfigurationReadInvalidClientIdError:
     'LoginConfigurationReadInvalidClientIdError',
-} as const;
+} as const
 
 export type LoginConfigurationReadInvalidClientIdErrorMessageEnum =
-  (typeof LoginConfigurationReadInvalidClientIdErrorMessageEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorMessageEnum];
+  (typeof LoginConfigurationReadInvalidClientIdErrorMessageEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorMessageEnum]
 export const LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum = {
   NUMBER_400: 400,
-} as const;
+} as const
 
 export type LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum =
-  (typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum];
+  (typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum)[keyof typeof LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum]
 
 /**
  * Authorization Response per OpenID for Verifiable Presentations Specification
@@ -1188,7 +1219,7 @@ export type LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum =
  * @interface LoginSessionAcceptResponseInput
  */
 export interface LoginSessionAcceptResponseInput {
-  [key: string]: any;
+  [key: string]: any
 }
 /**
  * Direct Post Response URI endpoint result
@@ -1196,7 +1227,7 @@ export interface LoginSessionAcceptResponseInput {
  * @interface LoginSessionAcceptResponseOutput
  */
 export interface LoginSessionAcceptResponseOutput {
-  [key: string]: any;
+  [key: string]: any
 }
 /**
  *
@@ -1209,13 +1240,13 @@ export interface LoginSessionDto {
    * @type {string}
    * @memberof LoginSessionDto
    */
-  id: string;
+  id: string
   /**
    *
    * @type {LoginSessionDtoAuthorizationRequest}
    * @memberof LoginSessionDto
    */
-  authorizationRequest: LoginSessionDtoAuthorizationRequest;
+  authorizationRequest: LoginSessionDtoAuthorizationRequest
 }
 /**
  *
@@ -1228,25 +1259,25 @@ export interface LoginSessionDtoAuthorizationRequest {
    * @type {string}
    * @memberof LoginSessionDtoAuthorizationRequest
    */
-  state: string;
+  state: string
   /**
    * Presentation Definition to ask from the user. In JSON Stringify format.
    * @type {string}
    * @memberof LoginSessionDtoAuthorizationRequest
    */
-  presentationDefinition: string;
+  presentationDefinition: string
   /**
    * ARI is used for analytics proposals.
    * @type {string}
    * @memberof LoginSessionDtoAuthorizationRequest
    */
-  ari?: string;
+  ari?: string
   /**
    * clientId used for detect origin.
    * @type {string}
    * @memberof LoginSessionDtoAuthorizationRequest
    */
-  clientId?: string;
+  clientId?: string
 }
 /**
  * Input for Creating a Login Session
@@ -1259,13 +1290,13 @@ export interface LoginSessionForIDPInput {
    * @type {string}
    * @memberof LoginSessionForIDPInput
    */
-  loginChallenge: string;
+  loginChallenge: string
   /**
    * IDP client id to Associate the Session with
    * @type {string}
    * @memberof LoginSessionForIDPInput
    */
-  clientId: string;
+  clientId: string
 }
 /**
  * Authorization Response per OpenID for Verifiable Presentations Specification
@@ -1273,26 +1304,26 @@ export interface LoginSessionForIDPInput {
  * @interface LoginSessionRejectResponseInput
  */
 export interface LoginSessionRejectResponseInput {
-  [key: string]: any;
+  [key: string]: any
 
   /**
    * The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to request_denied
    * @type {string}
    * @memberof LoginSessionRejectResponseInput
    */
-  error?: string;
+  error?: string
   /**
    * Description of the error in a human readable format
    * @type {string}
    * @memberof LoginSessionRejectResponseInput
    */
-  errorDescription?: string;
+  errorDescription?: string
   /**
    * Random state associated to the Session
    * @type {string}
    * @memberof LoginSessionRejectResponseInput
    */
-  state: string;
+  state: string
 }
 /**
  * Direct Post Response URI endpoint result
@@ -1300,7 +1331,7 @@ export interface LoginSessionRejectResponseInput {
  * @interface LoginSessionRejectResponseOutput
  */
 export interface LoginSessionRejectResponseOutput {
-  [key: string]: any;
+  [key: string]: any
 }
 /**
  *
@@ -1313,51 +1344,51 @@ export interface NotFoundError {
    * @type {string}
    * @memberof NotFoundError
    */
-  name: NotFoundErrorNameEnum;
+  name: NotFoundErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof NotFoundError
    */
-  message: NotFoundErrorMessageEnum;
+  message: NotFoundErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof NotFoundError
    */
-  httpStatusCode: NotFoundErrorHttpStatusCodeEnum;
+  httpStatusCode: NotFoundErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof NotFoundError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof NotFoundError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const NotFoundErrorNameEnum = {
   NotFoundError: 'NotFoundError',
-} as const;
+} as const
 
 export type NotFoundErrorNameEnum =
-  (typeof NotFoundErrorNameEnum)[keyof typeof NotFoundErrorNameEnum];
+  (typeof NotFoundErrorNameEnum)[keyof typeof NotFoundErrorNameEnum]
 export const NotFoundErrorMessageEnum = {
   NotFoundParam: 'Not found: ${param}.',
-} as const;
+} as const
 
 export type NotFoundErrorMessageEnum =
-  (typeof NotFoundErrorMessageEnum)[keyof typeof NotFoundErrorMessageEnum];
+  (typeof NotFoundErrorMessageEnum)[keyof typeof NotFoundErrorMessageEnum]
 export const NotFoundErrorHttpStatusCodeEnum = {
   NUMBER_404: 404,
-} as const;
+} as const
 
 export type NotFoundErrorHttpStatusCodeEnum =
-  (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum];
+  (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -1370,37 +1401,37 @@ export interface OAuth2Token {
    * @type {string}
    * @memberof OAuth2Token
    */
-  access_token?: string;
+  access_token?: string
   /**
    * The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated.
    * @type {number}
    * @memberof OAuth2Token
    */
-  expires_in?: number;
+  expires_in?: number
   /**
    * To retrieve a refresh token request the id_token scope.
    * @type {number}
    * @memberof OAuth2Token
    */
-  id_token?: number;
+  id_token?: number
   /**
    * The refresh token, which can be used to obtain new access tokens.  To retrieve it add the scope \"offline\" to your access token request.
    * @type {string}
    * @memberof OAuth2Token
    */
-  refresh_token?: string;
+  refresh_token?: string
   /**
    * The scope of the access token
    * @type {string}
    * @memberof OAuth2Token
    */
-  scope?: string;
+  scope?: string
   /**
    * The type of the token issued
    * @type {string}
    * @memberof OAuth2Token
    */
-  token_type?: string;
+  token_type?: string
 }
 /**
  *
@@ -1413,187 +1444,187 @@ export interface OIDCConfig {
    * @type {string}
    * @memberof OIDCConfig
    */
-  authorization_endpoint: string;
+  authorization_endpoint: string
   /**
    * OpenID Connect Back-Channel Logout Session Required. Boolean value specifying whether the OP can pass a sid (session ID)  Claim in the Logout Token to identify the RP session with the OP. If  supported, the sid Claim is also included in ID Tokens issued by the OP
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  backchannel_logout_session_supported?: boolean;
+  backchannel_logout_session_supported?: boolean
   /**
    * OpenID Connect Back-Channel Logout Supported. Boolean value specifying whether the OP supports  back-channel logout, with true indicating support.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  backchannel_logout_supported?: boolean;
+  backchannel_logout_supported?: boolean
   /**
    * OpenID Connect Claims Parameter Parameter Supported Boolean value specifying whether the OP supports use  of the claims parameter, with true indicating support.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  claims_parameter_supported?: boolean;
+  claims_parameter_supported?: boolean
   /**
    * OpenID Connect Supported Claims   JSON array containing a list of the Claim Names of the  Claims that the OpenID Provider MAY be able to supply  values for. Note that for privacy or other reasons,  this might not be an exhaustive list.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  claims_supported?: Array<string>;
+  claims_supported?: Array<string>
   /**
    * OAuth 2.0 PKCE Supported Code Challenge Methods JSON array containing a list of Proof Key for Code  Exchange (PKCE) [RFC7636] code challenge methods  supported by this authorization server.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  code_challenge_methods_supported?: Array<string>;
+  code_challenge_methods_supported?: Array<string>
   /**
    * OpenID Connect Verifiable Credentials Endpoint Contains the URL of the Verifiable Credentials Endpoint.
    * @type {string}
    * @memberof OIDCConfig
    */
-  credentials_endpoint_draft_00?: string;
+  credentials_endpoint_draft_00?: string
   /**
    * OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable  Credentials supported by this authorization server.
    * @type {Array<OIDCConfigCredentialsSupportedDraft00Inner>}
    * @memberof OIDCConfig
    */
-  credentials_supported_draft_00?: Array<OIDCConfigCredentialsSupportedDraft00Inner>;
+  credentials_supported_draft_00?: Array<OIDCConfigCredentialsSupportedDraft00Inner>
   /**
    * OpenID Connect End-Session Endpoint URL at the OP to which an RP can perform  a redirect to request that the End-User be  logged out at the OP.
    * @type {string}
    * @memberof OIDCConfig
    */
-  end_session_endpoint?: string;
+  end_session_endpoint?: string
   /**
    * OpenID Connect Front-Channel Logout Session Required Boolean value specifying whether the OP can pass iss  (issuer) and sid (session ID) query parameters to identify  the RP session with the OP when the frontchannel_logout_uri  is used. If supported, the sid Claim is also included in ID  Tokens issued by the OP.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  frontchannel_logout_session_supported?: boolean;
+  frontchannel_logout_session_supported?: boolean
   /**
    * OpenID Connect Front-Channel Logout Supported Boolean value specifying whether the OP supports HTTP-based logout, with true indicating support.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  frontchannel_logout_supported?: boolean;
+  frontchannel_logout_supported?: boolean
   /**
    * OAuth 2.0 Supported Grant Types JSON array containing a list of the OAuth 2.0 Grant Type values that this OP supports.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  grant_types_supported?: Array<string>;
+  grant_types_supported?: Array<string>
   /**
    * OpenID Connect Default ID Token Signing Algorithms Algorithm used to sign OpenID Connect ID Tokens.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  id_token_signed_response_alg: Array<string>;
+  id_token_signed_response_alg: Array<string>
   /**
    * OpenID Connect Supported ID Token Signing Algorithms JSON array containing a list of the JWS signing algorithms  (alg values) supported by the OP for the ID Token to encode the Claims in a JWT.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  id_token_signing_alg_values_supported: Array<string>;
+  id_token_signing_alg_values_supported: Array<string>
   /**
    * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component  that the OP asserts as its IssuerURL Identifier. If IssuerURL discovery  is supported , this value MUST be identical to the issuer value returned by WebFinger.  This also MUST be identical to the iss Claim value in ID Tokens issued from this IssuerURL.
    * @type {string}
    * @memberof OIDCConfig
    */
-  issuer: string;
+  issuer: string
   /**
    * OpenID Connect Well-Known JSON Web Keys URL URL of the OP\'s JSON Web Key Set [JWK] document. This contains the signing key(s) the RP  uses to validate signatures from the OP. The JWK Set MAY also contain the Server\'s  encryption key(s), which are used by RPs to encrypt requests to the Server. When both  signing and encryption keys are made available, a use (Key Use) parameter value is REQUIRED  for all keys in the referenced JWK Set to indicate each key\'s intended usage. Although some  algorithms allow the same key to be used for both signatures and encryption, doing so is  NOT RECOMMENDED, as it is less secure. The JWK x5c parameter MAY be used to provide X.509  representations of keys provided. When used, the bare key values MUST still be present and  MUST match those in the certificate.
    * @type {string}
    * @memberof OIDCConfig
    */
-  jwks_uri: string;
+  jwks_uri: string
   /**
    * OpenID Connect Dynamic Client Registration Endpoint URL
    * @type {string}
    * @memberof OIDCConfig
    */
-  registration_endpoint?: string;
+  registration_endpoint?: string
   /**
    * OpenID Connect Supported Request Object Signing Algorithms JSON array containing a list of the JWS signing algorithms (alg values) supported by  the OP for Request Objects, which are described in Section 6.1 of  OpenID Connect Core 1.0 [OpenID.Core]. These algorithms are used both when the  Request Object is passed by value (using the request parameter) and when it is  passed by reference (using the request_uri parameter).
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  request_object_signing_alg_values_supported?: Array<string>;
+  request_object_signing_alg_values_supported?: Array<string>
   /**
    * OpenID Connect Request Parameter Supported Boolean value specifying whether the OP supports use of the request parameter, with true indicating support.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  request_parameter_supported?: boolean;
+  request_parameter_supported?: boolean
   /**
    * OpenID Connect Request URI Parameter Supported Boolean value specifying whether the OP supports use of the request_uri parameter, with true indicating support.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  request_uri_parameter_supported?: boolean;
+  request_uri_parameter_supported?: boolean
   /**
    * OpenID Connect Requires Request URI Registration Boolean value specifying whether the OP requires any request_uri values used to be  pre-registered using the request_uris registration parameter.
    * @type {boolean}
    * @memberof OIDCConfig
    */
-  require_request_uri_registration?: boolean;
+  require_request_uri_registration?: boolean
   /**
    * OAuth 2.0 Supported Response Modes JSON array containing a list of the OAuth 2.0 response_mode values that this OP supports.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  response_modes_supported?: Array<string>;
+  response_modes_supported?: Array<string>
   /**
    * OAuth 2.0 Supported Response Types JSON array containing a list of the OAuth 2.0 response_type values that this OP supports.  Dynamic OpenID Providers MUST support the code, id_token, and the token id_token Response Type values.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  response_types_supported: Array<string>;
+  response_types_supported: Array<string>
   /**
    * OAuth 2.0 Token Revocation URL URL of the authorization server\'s OAuth 2.0 revocation endpoint.
    * @type {string}
    * @memberof OIDCConfig
    */
-  revocation_endpoint?: string;
+  revocation_endpoint?: string
   /**
    * OAuth 2.0 Supported Scope Values JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that this server supports.  The server MUST support the openid scope value. Servers MAY choose not to advertise  some supported scope values even when this parameter is used
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  scopes_supported?: Array<string>;
+  scopes_supported?: Array<string>
   /**
    * OpenID Connect Supported Subject Types JSON array containing a list of the Subject Identifier types that this OP supports.  Valid types include pairwise and public.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  subject_types_supported: Array<string>;
+  subject_types_supported: Array<string>
   /**
    * OAuth 2.0 Token Endpoint URL
    * @type {string}
    * @memberof OIDCConfig
    */
-  token_endpoint: string;
+  token_endpoint: string
   /**
    * OAuth 2.0 Supported Client Authentication Methods JSON array containing a list of Client Authentication methods supported by this Token Endpoint.  The options are client_secret_post, client_secret_basic, client_secret_jwt,  and private_key_jwt, as described in Section 9 of OpenID Connect Core 1.0
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  token_endpoint_auth_methods_supported?: Array<string>;
+  token_endpoint_auth_methods_supported?: Array<string>
   /**
    * OpenID Connect Userinfo URL URL of the OP\'s UserInfo Endpoint.
    * @type {string}
    * @memberof OIDCConfig
    */
-  userinfo_endpoint?: string;
+  userinfo_endpoint?: string
   /**
    * OpenID Connect User Userinfo Signing Algorithm Algorithm used to sign OpenID Connect Userinfo Responses.
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  userinfo_signed_response_alg: Array<string>;
+  userinfo_signed_response_alg: Array<string>
   /**
    * OpenID Connect Supported Userinfo Signing Algorithm JSON array containing a list of the JWS [JWS] signing algorithms (alg values) [JWA]  supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT].
    * @type {Array<string>}
    * @memberof OIDCConfig
    */
-  userinfo_signing_alg_values_supported?: Array<string>;
+  userinfo_signing_alg_values_supported?: Array<string>
 }
 /**
  *
@@ -1606,25 +1637,25 @@ export interface OIDCConfigCredentialsSupportedDraft00Inner {
    * @type {Array<string>}
    * @memberof OIDCConfigCredentialsSupportedDraft00Inner
    */
-  cryptographic_binding_methods_supported?: Array<string>;
+  cryptographic_binding_methods_supported?: Array<string>
   /**
    *
    * @type {Array<string>}
    * @memberof OIDCConfigCredentialsSupportedDraft00Inner
    */
-  cryptographic_suites_supported?: Array<string>;
+  cryptographic_suites_supported?: Array<string>
   /**
    *
    * @type {string}
    * @memberof OIDCConfigCredentialsSupportedDraft00Inner
    */
-  format?: string;
+  format?: string
   /**
    *
    * @type {Array<string>}
    * @memberof OIDCConfigCredentialsSupportedDraft00Inner
    */
-  types?: Array<string>;
+  types?: Array<string>
 }
 /**
  * Redirect Response
@@ -1637,21 +1668,21 @@ export interface RedirectResponse {
    * @type {string}
    * @memberof RedirectResponse
    */
-  type: RedirectResponseTypeEnum;
+  type: RedirectResponseTypeEnum
   /**
    * URL to redirect to
    * @type {string}
    * @memberof RedirectResponse
    */
-  to: string;
+  to: string
 }
 
 export const RedirectResponseTypeEnum = {
   RedirectResponse: 'REDIRECT_RESPONSE',
-} as const;
+} as const
 
 export type RedirectResponseTypeEnum =
-  (typeof RedirectResponseTypeEnum)[keyof typeof RedirectResponseTypeEnum];
+  (typeof RedirectResponseTypeEnum)[keyof typeof RedirectResponseTypeEnum]
 
 /**
  * input used to remove a user from a group
@@ -1664,7 +1695,7 @@ export interface RemoveUserFromGroupInput {
    * @type {string}
    * @memberof RemoveUserFromGroupInput
    */
-  userId: string;
+  userId: string
 }
 /**
  *
@@ -1677,51 +1708,51 @@ export interface ResourceCreationError {
    * @type {string}
    * @memberof ResourceCreationError
    */
-  name: ResourceCreationErrorNameEnum;
+  name: ResourceCreationErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof ResourceCreationError
    */
-  message: ResourceCreationErrorMessageEnum;
+  message: ResourceCreationErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof ResourceCreationError
    */
-  httpStatusCode: ResourceCreationErrorHttpStatusCodeEnum;
+  httpStatusCode: ResourceCreationErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof ResourceCreationError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof ResourceCreationError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const ResourceCreationErrorNameEnum = {
   ResourceCreationError: 'ResourceCreationError',
-} as const;
+} as const
 
 export type ResourceCreationErrorNameEnum =
-  (typeof ResourceCreationErrorNameEnum)[keyof typeof ResourceCreationErrorNameEnum];
+  (typeof ResourceCreationErrorNameEnum)[keyof typeof ResourceCreationErrorNameEnum]
 export const ResourceCreationErrorMessageEnum = {
   FailedToCreateResources: 'Failed to create resources.',
-} as const;
+} as const
 
 export type ResourceCreationErrorMessageEnum =
-  (typeof ResourceCreationErrorMessageEnum)[keyof typeof ResourceCreationErrorMessageEnum];
+  (typeof ResourceCreationErrorMessageEnum)[keyof typeof ResourceCreationErrorMessageEnum]
 export const ResourceCreationErrorHttpStatusCodeEnum = {
   NUMBER_424: 424,
-} as const;
+} as const
 
 export type ResourceCreationErrorHttpStatusCodeEnum =
-  (typeof ResourceCreationErrorHttpStatusCodeEnum)[keyof typeof ResourceCreationErrorHttpStatusCodeEnum];
+  (typeof ResourceCreationErrorHttpStatusCodeEnum)[keyof typeof ResourceCreationErrorHttpStatusCodeEnum]
 
 /**
  * Service Error Response
@@ -1734,25 +1765,25 @@ export interface ServiceErrorResponse {
    * @type {string}
    * @memberof ServiceErrorResponse
    */
-  debugId: string;
+  debugId: string
   /**
    * name of the error
    * @type {string}
    * @memberof ServiceErrorResponse
    */
-  name: string;
+  name: string
   /**
    * backwards compatible Affinidi error code
    * @type {string}
    * @memberof ServiceErrorResponse
    */
-  code: string;
+  code: string
   /**
    * error details
    * @type {Array<ServiceErrorResponseDetailsInner>}
    * @memberof ServiceErrorResponse
    */
-  details?: Array<ServiceErrorResponseDetailsInner>;
+  details?: Array<ServiceErrorResponseDetailsInner>
 }
 /**
  *
@@ -1765,25 +1796,25 @@ export interface ServiceErrorResponseDetailsInner {
    * @type {string}
    * @memberof ServiceErrorResponseDetailsInner
    */
-  issue: string;
+  issue: string
   /**
    * fields
    * @type {string}
    * @memberof ServiceErrorResponseDetailsInner
    */
-  field?: string;
+  field?: string
   /**
    * value
    * @type {string}
    * @memberof ServiceErrorResponseDetailsInner
    */
-  value?: string;
+  value?: string
   /**
    * location
    * @type {string}
    * @memberof ServiceErrorResponseDetailsInner
    */
-  location?: string;
+  location?: string
 }
 /**
  * Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret.
@@ -1795,10 +1826,10 @@ export const TokenEndpointAuthMethod = {
   ClientSecretBasic: 'client_secret_basic',
   ClientSecretPost: 'client_secret_post',
   None: 'none',
-} as const;
+} as const
 
 export type TokenEndpointAuthMethod =
-  (typeof TokenEndpointAuthMethod)[keyof typeof TokenEndpointAuthMethod];
+  (typeof TokenEndpointAuthMethod)[keyof typeof TokenEndpointAuthMethod]
 
 /**
  *
@@ -1811,51 +1842,51 @@ export interface UnauthorizedError {
    * @type {string}
    * @memberof UnauthorizedError
    */
-  name: UnauthorizedErrorNameEnum;
+  name: UnauthorizedErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof UnauthorizedError
    */
-  message: UnauthorizedErrorMessageEnum;
+  message: UnauthorizedErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof UnauthorizedError
    */
-  httpStatusCode: UnauthorizedErrorHttpStatusCodeEnum;
+  httpStatusCode: UnauthorizedErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof UnauthorizedError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof UnauthorizedError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const UnauthorizedErrorNameEnum = {
   UnauthorizedError: 'UnauthorizedError',
-} as const;
+} as const
 
 export type UnauthorizedErrorNameEnum =
-  (typeof UnauthorizedErrorNameEnum)[keyof typeof UnauthorizedErrorNameEnum];
+  (typeof UnauthorizedErrorNameEnum)[keyof typeof UnauthorizedErrorNameEnum]
 export const UnauthorizedErrorMessageEnum = {
   Unauthorized: 'Unauthorized',
-} as const;
+} as const
 
 export type UnauthorizedErrorMessageEnum =
-  (typeof UnauthorizedErrorMessageEnum)[keyof typeof UnauthorizedErrorMessageEnum];
+  (typeof UnauthorizedErrorMessageEnum)[keyof typeof UnauthorizedErrorMessageEnum]
 export const UnauthorizedErrorHttpStatusCodeEnum = {
   NUMBER_401: 401,
-} as const;
+} as const
 
 export type UnauthorizedErrorHttpStatusCodeEnum =
-  (typeof UnauthorizedErrorHttpStatusCodeEnum)[keyof typeof UnauthorizedErrorHttpStatusCodeEnum];
+  (typeof UnauthorizedErrorHttpStatusCodeEnum)[keyof typeof UnauthorizedErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -1868,55 +1899,55 @@ export interface UpdateLoginConfigurationInput {
    * @type {string}
    * @memberof UpdateLoginConfigurationInput
    */
-  name?: string;
+  name?: string
   /**
    * OAuth 2.0 Redirect URIs
    * @type {Array<string>}
    * @memberof UpdateLoginConfigurationInput
    */
-  redirectUris?: Array<string>;
+  redirectUris?: Array<string>
   /**
    * OAuth2 client secret
    * @type {string}
    * @memberof UpdateLoginConfigurationInput
    */
-  clientSecret?: string;
+  clientSecret?: string
   /**
    * VP definition in JSON stringify format
    * @type {string}
    * @memberof UpdateLoginConfigurationInput
    */
-  vpDefinition?: string;
+  vpDefinition?: string
   /**
    * Presentation Definition
    * @type {object}
    * @memberof UpdateLoginConfigurationInput
    */
-  presentationDefinition?: object;
+  presentationDefinition?: object
   /**
    *
    * @type {IdTokenMapping}
    * @memberof UpdateLoginConfigurationInput
    */
-  idTokenMapping?: IdTokenMapping;
+  idTokenMapping?: IdTokenMapping
   /**
    *
-   * @type {LoginConfigurationClientMetadata}
+   * @type {LoginConfigurationClientMetadataInput}
    * @memberof UpdateLoginConfigurationInput
    */
-  clientMetadata?: LoginConfigurationClientMetadata;
+  clientMetadata?: LoginConfigurationClientMetadataInput
   /**
    *
    * @type {TokenEndpointAuthMethod}
    * @memberof UpdateLoginConfigurationInput
    */
-  tokenEndpointAuthMethod?: TokenEndpointAuthMethod;
+  tokenEndpointAuthMethod?: TokenEndpointAuthMethod
   /**
    * Interrupts login process if duplications of data fields names will be found
    * @type {boolean}
    * @memberof UpdateLoginConfigurationInput
    */
-  failOnMappingConflict?: boolean;
+  failOnMappingConflict?: boolean
 }
 
 /**
@@ -1930,48 +1961,48 @@ export interface VPTokenValidationError {
    * @type {string}
    * @memberof VPTokenValidationError
    */
-  name: VPTokenValidationErrorNameEnum;
+  name: VPTokenValidationErrorNameEnum
   /**
    *
    * @type {string}
    * @memberof VPTokenValidationError
    */
-  message: VPTokenValidationErrorMessageEnum;
+  message: VPTokenValidationErrorMessageEnum
   /**
    *
    * @type {number}
    * @memberof VPTokenValidationError
    */
-  httpStatusCode: VPTokenValidationErrorHttpStatusCodeEnum;
+  httpStatusCode: VPTokenValidationErrorHttpStatusCodeEnum
   /**
    *
    * @type {string}
    * @memberof VPTokenValidationError
    */
-  traceId: string;
+  traceId: string
   /**
    *
    * @type {Array<InvalidParameterErrorDetailsInner>}
    * @memberof VPTokenValidationError
    */
-  details?: Array<InvalidParameterErrorDetailsInner>;
+  details?: Array<InvalidParameterErrorDetailsInner>
 }
 
 export const VPTokenValidationErrorNameEnum = {
   VpTokenValidationError: 'VPTokenValidationError',
-} as const;
+} as const
 
 export type VPTokenValidationErrorNameEnum =
-  (typeof VPTokenValidationErrorNameEnum)[keyof typeof VPTokenValidationErrorNameEnum];
+  (typeof VPTokenValidationErrorNameEnum)[keyof typeof VPTokenValidationErrorNameEnum]
 export const VPTokenValidationErrorMessageEnum = {
   VpTokenValidationEndedWithAnError: 'VP token validation ended with an error',
-} as const;
+} as const
 
 export type VPTokenValidationErrorMessageEnum =
-  (typeof VPTokenValidationErrorMessageEnum)[keyof typeof VPTokenValidationErrorMessageEnum];
+  (typeof VPTokenValidationErrorMessageEnum)[keyof typeof VPTokenValidationErrorMessageEnum]
 export const VPTokenValidationErrorHttpStatusCodeEnum = {
   NUMBER_400: 400,
-} as const;
+} as const
 
 export type VPTokenValidationErrorHttpStatusCodeEnum =
-  (typeof VPTokenValidationErrorHttpStatusCodeEnum)[keyof typeof VPTokenValidationErrorHttpStatusCodeEnum];
+  (typeof VPTokenValidationErrorHttpStatusCodeEnum)[keyof typeof VPTokenValidationErrorHttpStatusCodeEnum]

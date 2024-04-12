@@ -61,18 +61,61 @@ import affinidi_tdk_client_cwe
 from affinidi_tdk_client_cwe.rest import ApiException
 from pprint import pprint
 
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_client_cwe.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_client_cwe.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_client_cwe.RevocationApi(api_client)
+    list_id = 'list_id_example' # str |
+    wallet_id = 'wallet_id_example' # str | id of the wallet
+
+    try:
+        # Return revocation list credential.
+        api_response = api_instance.get_revocation_list_credential(list_id, wallet_id)
+        print("The response of RevocationApi->get_revocation_list_credential:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling RevocationApi->get_revocation_list_credential: %s\n" % e)
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class           | Method                                                                                     | HTTP request                                            | Description                        |
+| --------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------- |
+| _RevocationApi_ | [**get_revocation_list_credential**](docs/RevocationApi.md#get_revocation_list_credential) | **GET** /v1/wallets/{walletId}/revocation-list/{listId} | Return revocation list credential. |
+| _RevocationApi_ | [**revoke_credential**](docs/RevocationApi.md#revoke_credential)                           | **POST** /v1/wallets/{walletId}/revoke                  | Revoke Credential.                 |
+| _DefaultApi_    | [**delete_wallet**](docs/DefaultApi.md#delete_wallet)                                      | **DELETE** /v1/wallets/{walletId}                       |
+| _WalletApi_     | [**create_wallet**](docs/WalletApi.md#create_wallet)                                       | **POST** /v1/wallets                                    |
+| _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                             | **GET** /v1/wallets/{walletId}                          |
+| _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                         | **GET** /v1/wallets                                     |
+| _WalletApi_     | [**sign_credential**](docs/WalletApi.md#sign_credential)                                   | **POST** /v1/wallets/{walletId}/sign-credential         |
 
 ## Documentation For Models
 
+- [CreateWalletInput](docs/CreateWalletInput.md)
 - [CreateWalletResponse](docs/CreateWalletResponse.md)
+- [DidKeyInputParams](docs/DidKeyInputParams.md)
+- [DidWebInputParams](docs/DidWebInputParams.md)
 - [EntityNotFoundError](docs/EntityNotFoundError.md)
 - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
 - [InvalidDidParameterError](docs/InvalidDidParameterError.md)
@@ -103,3 +146,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

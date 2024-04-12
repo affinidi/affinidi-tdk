@@ -22,7 +22,7 @@ import json
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_client_vpa.models.id_token_mapping import IdTokenMapping
-from affinidi_tdk_client_vpa.models.login_configuration_client_metadata import LoginConfigurationClientMetadata
+from affinidi_tdk_client_vpa.models.login_configuration_client_metadata_output import LoginConfigurationClientMetadataOutput
 from affinidi_tdk_client_vpa.models.token_endpoint_auth_method import TokenEndpointAuthMethod
 
 class LoginConfigurationObject(BaseModel):
@@ -40,7 +40,7 @@ class LoginConfigurationObject(BaseModel):
     vp_definition: StrictStr = Field(..., alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(None, alias="presentationDefinition", description="Presentation Definition")
     id_token_mapping: IdTokenMapping = Field(..., alias="idTokenMapping")
-    client_metadata: LoginConfigurationClientMetadata = Field(..., alias="clientMetadata")
+    client_metadata: LoginConfigurationClientMetadataOutput = Field(..., alias="clientMetadata")
     token_endpoint_auth_method: TokenEndpointAuthMethod = Field(..., alias="tokenEndpointAuthMethod")
     additional_properties: Dict[str, Any] = {}
     __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
@@ -104,7 +104,7 @@ class LoginConfigurationObject(BaseModel):
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
             "id_token_mapping": IdTokenMapping.from_dict(obj.get("idTokenMapping")) if obj.get("idTokenMapping") is not None else None,
-            "client_metadata": LoginConfigurationClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod")
         })
         # store additional fields in additional_properties
