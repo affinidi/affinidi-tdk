@@ -2,43 +2,59 @@
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate Affinidi services into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
-## Building the TDK
-
-### Requirements
-
-- [NodeJs v18 or higher](https://nodejs.org)
-- Supported platforms
-  - Linux
-  - MacOS
-  - Windows
-
-### Building from Source
-
-To build the TDK clients, run the command:
-
-`npm run build`
-
-The client information is generated in the [clients](clients) directory.
-
 ## How do I use Affinidi TDK?
 
-The Affinidi TDK provides [clients](clients) with endpoints as methods to access Affinidi services like KYC, IAM, Wallet, and VPA, among others.
+The Affinidi TDK provides three type of modules:
 
-The [packages](packages) are commonly used utilities to perform actions. For example, the `auth-provider` package can fetch the _project-scoped_ token and passed to the client to access the endpoints. You can check the sample usage [here](clients/client-aca/README.md#L47).
+- [Clients](clients), which offer methods to access Affinidi services like IAM, Verifier, Wallet, and VPA, among others.
 
-[Libraries](libs) provide high-level abstractions that combine logic and data to perform necessary business logic functionalities.
+- [Libraries](libs), which provide high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
-You can check out the README for any particular [client](clients) for sample usage, including the packages and libraries, and to understand how to integrate it into your application.
+- [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
 
-## Supported Programming Languages
+Each module has its own README that you can check to better understand how to integrate it into your application.
 
-The Affinidi TDK supports multiple programming languages.
+## Supported programming languages
 
-## Support & Feedback
+The Affinidi TDK modules support the following programming languages:
+
+|                                                   |                     Typescript                     |                     Python                     | Dart |
+| ------------------------------------------------- | :------------------------------------------------: | :--------------------------------------------: | :--: |
+| **Libraries**                                     |
+| [issuance](libs/issuance/README.md)               |                         🟢                         |                       🟢                       |  🔴  |
+| **Packages**                                      |
+| [auth-packgage](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |  🔴  |
+| **Clients**                                       |
+| client_cwe                                        | [🟢 Link](clients/typescript/client-cwe/README.md) | [🟢 Link](clients/python/client_cwe/README.md) |  🟡  |
+| client_iam                                        | [🟢 Link](clients/typescript/client-iam/README.md) | [🟢 Link](clients/python/client_iam/README.md) |  🟡  |
+| client_ver                                        | [🟢 Link](clients/typescript/client-ver/README.md) | [🟢 Link](clients/python/client_ver/README.md) |  🟡  |
+| client_vpa                                        | [🟢 Link](clients/typescript/client-vpa/README.md) | [🟢 Link](clients/python/client_vpa/README.md) |  🟡  |
+
+🟢 Supported<br>
+🟡 Experimental<br>
+🔴 Not supported
+
+## Support & feedback
 
 If you face any issues or have suggestions, please don't hesitate to contact us using [this link](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
 
-If you have a technical issue with the Affinidi TDK's codebase, you can also [create an issue](https://github.com/affinidi/affinidi-tdk/issues) directly in GitHub.
+### Reporting technical issues
+
+If you have a technical issue with the Affinidi TDK's codebase, you can also create an issue directly in GitHub.
+
+1. Ensure the bug was not already reported by searching on GitHub under
+   [Issues](https://github.com/affinidi/affinidi-tdk/issues).
+
+2. If you're unable to find an open issue addressing the problem,
+   [open a new one](https://github.com/affinidi/affinidi-tdk/issues/new).
+   Be sure to include a **title and clear description**, as much relevant information as possible,
+   and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
+
+## Contributing
+
+Want to contribute?
+
+Head down to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
 
 ## FAQ
 
