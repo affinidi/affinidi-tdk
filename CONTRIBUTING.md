@@ -52,8 +52,7 @@ The module will be generated under `/dist` for each language, ready to use.
 2. Ensure the pull request doesn't contain redundant comments, console.log, etc.
 3. Ensure your code is covered with unit and integration tests (NOTE: no mocks/stubs in integration tests).
 4. Avoid adding comments to explain what code does, code should be self-explanatory and clean.
-5. Ensure to add `typedoc`'s types: `@description`, `@param`, `@returns` with proper description when introducing a new method.
-6. Avoid using variable names like `i` or abbreviations - names should be simple and unambiguous.
+5. Avoid using variable names like `i` or abbreviations - names should be simple and unambiguous.
 
 ## Auto update of versions and changelogs
 
