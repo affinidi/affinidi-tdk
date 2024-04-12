@@ -18,17 +18,17 @@ Each module has its own README that you can check to better understand how to in
 
 The Affinidi TDK offers the following modules and programming languages:
 
-|                                                   |                     Typescript                     |                     Python                     | Dart |
-| ------------------------------------------------- | :------------------------------------------------: | :--------------------------------------------: | :--: |
+|                                                   |                     Typescript                     |                     Python                     |                     Dart                     |
+| ------------------------------------------------- | :------------------------------------------------: | :--------------------------------------------: | :------------------------------------------: |
 | **Libraries**                                     |
-| [issuance](libs/issuance/README.md)               |                         🟢                         |                       🟢                       |  🔴  |
+| [issuance](libs/issuance/README.md)               |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Packages**                                      |
-| [auth-packgage](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |  🔴  |
+| [auth-provider](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Clients**                                       |
-| client_cwe                                        | [🟢 Link](clients/typescript/client-cwe/README.md) | [🟢 Link](clients/python/client_cwe/README.md) |  🟡  |
-| client_iam                                        | [🟢 Link](clients/typescript/client-iam/README.md) | [🟢 Link](clients/python/client_iam/README.md) |  🟡  |
-| client_ver                                        | [🟢 Link](clients/typescript/client-ver/README.md) | [🟢 Link](clients/python/client_ver/README.md) |  🟡  |
-| client_vpa                                        | [🟢 Link](clients/typescript/client-vpa/README.md) | [🟢 Link](clients/python/client_vpa/README.md) |  🟡  |
+| client_cwe                                        | [🟢 Link](clients/typescript/client-cwe/README.md) | [🟢 Link](clients/python/client_cwe/README.md) | [🟡 Link](clients/dart/client_cwe/README.md) |
+| client_iam                                        | [🟢 Link](clients/typescript/client-iam/README.md) | [🟢 Link](clients/python/client_iam/README.md) | [🟡 Link](clients/dart/client_iam/README.md) |
+| client_ver                                        | [🟢 Link](clients/typescript/client-ver/README.md) | [🟢 Link](clients/python/client_ver/README.md) | [🟡 Link](clients/dart/client_ver/README.md) |
+| client_vpa                                        | [🟢 Link](clients/typescript/client-vpa/README.md) | [🟢 Link](clients/python/client_vpa/README.md) | [🟡 Link](clients/dart/client_vpa/README.md) |
 
 🟢 Supported<br>
 🟡 Experimental<br>
