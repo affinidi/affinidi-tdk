@@ -4,7 +4,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "nx run-many --verbose --target=build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "create:sample": "./scripts/create-sample.sh"
   },
   "private": true,
   "dependencies": {
