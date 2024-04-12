@@ -6,31 +6,54 @@ Clients are generated intenally by Affinidi based on our API's. So, please don't
 
 ## Contributing to libraries and packages
 
+Libraries and packages are created once using Typescript and then automatically transpiled to other languages using [AWS JSII](https://github.com/aws/jsii).
+
+**_JSII introduce some restrictions on what you can code on Typescript, so please refer to [restrictions](https://aws.github.io/jsii/user-guides/lib-author/typescript-restrictions/)._**
+
 ### Requirements
 
 - [Node.js v18 or higher](https://nodejs.org)
 
-### Building
+### Creating a new library or package
 
-TODO
+To easily add a new library or package you can run a command that creates a sample Hello World Typescript module on either `libs` or `packages`:
 
-## Code quality expectations
+`npm run create:sample`
+
+If your module requires some dependencies you should add them to `bundleDependencies` as well:
+
+```JSON
+  "dependencies": {
+    "axios": "^1.5.1"
+  },
+  ...
+  "bundleDependencies": [
+    "axios"
+  ]
+```
+
+Remember to update the [root README.md](/README.md#available-modules) with the newly added module.
+
+### Building locally
+
+To build and transpile a module locally to all the supported languages open a terminal on your module and run:
+
+```
+npm i --prefix .
+npm run build
+npm run package
+```
+
+The module will be generated under `/dist` for each language, ready to use.
+
+### Code quality expectations
 
 1. Ensure the pipeline checks are finished successfully.
 2. Ensure the pull request doesn't contain redundant comments, console.log, etc.
 3. Ensure your code is covered with unit and integration tests (NOTE: no mocks/stubs in integration tests).
 4. Avoid adding comments to explain what code does, code should be self-explanatory and clean.
-5. Ensure to add `typedoc`'s types: `@description`, `@param`, `@returns` with proper description
-   when introducing a new method.
+5. Ensure to add `typedoc`'s types: `@description`, `@param`, `@returns` with proper description when introducing a new method.
 6. Avoid using variable names like `i` or abbreviations - names should be simple and unambiguous.
-7. We are using JSII to polyglot the TDK. Please refer to [JSII restrictions](https://aws.github.io/jsii/user-guides/lib-author/typescript-restrictions/) for Typescript.
-
-## Pull Request Process
-
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
-2. Update the [README.md](/README.md) and [CHANGELOG.md](/CHANGELOG.md) with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any example files and the [README.md](/README.md) to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Auto update of versions and changelogs
 

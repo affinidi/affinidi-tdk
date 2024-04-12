@@ -14,9 +14,9 @@ The Affinidi TDK provides three type of modules:
 
 Each module has its own README that you can check to better understand how to integrate it into your application.
 
-## Supported programming languages
+## Available modules
 
-The Affinidi TDK modules support the following programming languages:
+The Affinidi TDK offers the following modules and programming languages:
 
 |                                                   |                     Typescript                     |                     Python                     | Dart |
 | ------------------------------------------------- | :------------------------------------------------: | :--------------------------------------------: | :--: |
@@ -54,7 +54,7 @@ If you have a technical issue with the Affinidi TDK's codebase, you can also cre
 
 Want to contribute?
 
-Head down to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+Head over to our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
 
 ## FAQ
 
