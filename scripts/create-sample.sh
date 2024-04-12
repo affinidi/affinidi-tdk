@@ -2,7 +2,7 @@
 read -p "Choose an option (libs / packages): " choice
 
 if [ "$choice" = "libs" ] || [ "$choice" = "packages" ]; then
-    source_dir="default"
+    source_dir="sample"
     if [ "$choice" = "libs" ]; then
         dir="library"
     else
