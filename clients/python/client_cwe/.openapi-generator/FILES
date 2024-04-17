@@ -61,10 +61,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_wallet_input.py
-test/test_default_api.py
-test/test_did_key_input_params.py
-test/test_did_web_input_params.py
-test/test_revocation_api.py
-test/test_wallet_api.py
 tox.ini

@@ -121,6 +121,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_login_configuration_client_metadata_input.py
-test/test_login_configuration_client_metadata_output.py
 tox.ini
