@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { ISignPayload } from './jwt'
 import * as jwt from 'jsonwebtoken'
 
@@ -16,7 +17,7 @@ export class Iota {
       iss: tokenId,
       sub: tokenId,
       aud: audience,
-      jti: new Date().toString() + Math.random(),
+      jti: uuidv4(),
       exp: issueTimeInSeconds + 5 * 60,
       iat: issueTimeInSeconds,
       project_id: projectId,
