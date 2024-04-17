@@ -1,4 +1,10 @@
-import { Jwt, ProjectScopedToken } from './helpers'
+import { v4 as uuidv4 } from 'uuid'
+import { Jwt, ProjectScopedToken, Iota } from './helpers'
+
+export interface IotaTokenOutput {
+  readonly iotaJwt: string
+  readonly iotaSessionId: string
+}
 
 export interface IAuthProviderParams {
   apiGatewayUrl: string
@@ -23,6 +29,7 @@ export class AuthProvider {
   private readonly tokenEndpoint: string = ''
   private readonly projectScopedTokenInstance: ProjectScopedToken
   private readonly jwt: Jwt
+  private readonly iotaInstance: Iota
 
   constructor(param: { [key: string]: string }) {
     const authProviderParams: IAuthProviderParams = {
@@ -46,6 +53,7 @@ export class AuthProvider {
     this.tokenEndpoint = param.tokenEndpoint
     this.projectScopedTokenInstance = new ProjectScopedToken()
     this.jwt = new Jwt()
+    this.iotaInstance = new Iota()
   }
 
   private validateMissingInput<T>(interfaceType: T, input: any): void {
@@ -53,7 +61,6 @@ export class AuthProvider {
 
     const keys = Object.keys(interfaceType as object) as Array<keyof T>
     keys.forEach((key) => !input[key] && missingFields.push(key as string))
-
     if (missingFields.length > 0) {
       throw new Error(`Required fields missing: ${missingFields.join(', ')}`)
     }
@@ -77,10 +84,25 @@ export class AuthProvider {
           passphrase: this.passphrase,
           privateKey: this.privateKey,
           projectId: this.projectId,
-          tokenEndpoint: this.tokenEndpoint,
+          audience: this.tokenEndpoint,
         })
     }
 
     return this.projectScopedToken
+  }
+
+  public createIotaToken(iotaSessionId?: string): IotaTokenOutput {
+    const sessionId = iotaSessionId ?? uuidv4()
+
+    return {
+      iotaJwt: this.iotaInstance.signIotaJwt(this.projectId, sessionId, {
+        keyId: this.keyId,
+        tokenId: this.tokenId,
+        passphrase: this.passphrase,
+        privateKey: this.privateKey,
+        audience: 'iota.affinidi.io',
+      }),
+      iotaSessionId: sessionId,
+    }
   }
 }

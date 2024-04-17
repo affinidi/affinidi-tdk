@@ -1,7 +1,7 @@
-export { IValidateToken, Jwt } from './jwt'
+export { IValidateToken, Jwt, ISignPayload } from './jwt'
 export { BffHeaders } from './get-bff-headers'
 export {
-  ISignPayload,
   IFetchProjectScopedToken,
   ProjectScopedToken,
 } from './fetch-project-scoped-token'
+export { Iota } from './iota'

@@ -1,17 +1,10 @@
 import axios from 'axios'
 import * as jwt from 'jsonwebtoken'
 import * as qs from 'qs'
+import { ISignPayload } from './jwt'
 
 // TODO: export and config against supported values
 const ALGORITHM = 'RS256'
-
-export interface ISignPayload {
-  tokenId: string
-  tokenEndpoint: string
-  privateKey: string
-  passphrase: string
-  keyId: string
-}
 
 export interface IFetchProjectScopedToken extends ISignPayload {
   apiGatewayUrl: string
@@ -21,7 +14,7 @@ export interface IFetchProjectScopedToken extends ISignPayload {
 export class ProjectScopedToken {
   public async signPayload({
     tokenId,
-    tokenEndpoint,
+    audience,
     privateKey,
     passphrase,
     keyId,
@@ -31,7 +24,7 @@ export class ProjectScopedToken {
     const payload = {
       iss: tokenId,
       sub: tokenId,
-      aud: tokenEndpoint,
+      aud: audience,
       jti: new Date().toString() + Math.random(),
       exp: issueTimeInSeconds + 5 * 60,
       iat: issueTimeInSeconds,
@@ -46,7 +39,7 @@ export class ProjectScopedToken {
       {
         algorithm: ALGORITHM,
         keyid: keyId,
-      },
+      }
     )
 
     return token
@@ -54,14 +47,14 @@ export class ProjectScopedToken {
 
   public async getUserAccessToken({
     tokenId,
-    tokenEndpoint,
+    audience,
     privateKey,
     passphrase,
     keyId,
   }: ISignPayload) {
     const token = await this.signPayload({
       tokenId,
-      tokenEndpoint,
+      audience,
       privateKey,
       passphrase,
       keyId,
@@ -76,7 +69,7 @@ export class ProjectScopedToken {
       client_id: tokenId,
     })
 
-    const { data } = await axios(tokenEndpoint, {
+    const { data } = await axios(audience, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -91,14 +84,14 @@ export class ProjectScopedToken {
     apiGatewayUrl,
     projectId,
     tokenId,
-    tokenEndpoint,
+    audience,
     privateKey,
     passphrase,
     keyId,
   }: IFetchProjectScopedToken) {
     const userAccessToken = await this.getUserAccessToken({
       tokenId,
-      tokenEndpoint,
+      audience,
       privateKey,
       passphrase,
       keyId,
@@ -113,7 +106,7 @@ export class ProjectScopedToken {
           'Content-Type': 'application/json',
         },
         data: { projectId },
-      },
+      }
     )
 
     return data.accessToken
