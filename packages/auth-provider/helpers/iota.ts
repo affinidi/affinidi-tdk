@@ -8,6 +8,7 @@ const ALGORITHM = 'RS256'
 export class Iota {
   signIotaJwt(
     projectId: string,
+    iotaConfigId: string,
     iotaSessionId: string,
     { tokenId, privateKey, passphrase, keyId, audience }: ISignPayload
   ) {
@@ -21,6 +22,7 @@ export class Iota {
       exp: issueTimeInSeconds + 5 * 60,
       iat: issueTimeInSeconds,
       project_id: projectId,
+      iota_configuration_id: iotaConfigId,
       iota_session_id: iotaSessionId,
     }
 

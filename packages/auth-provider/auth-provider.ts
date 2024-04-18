@@ -91,17 +91,25 @@ export class AuthProvider {
     return this.projectScopedToken
   }
 
-  public createIotaToken(iotaSessionId?: string): IotaTokenOutput {
+  public createIotaToken(
+    iotaConfigId: string,
+    iotaSessionId?: string
+  ): IotaTokenOutput {
     const sessionId = iotaSessionId ?? uuidv4()
 
     return {
-      iotaJwt: this.iotaInstance.signIotaJwt(this.projectId, sessionId, {
-        keyId: this.keyId,
-        tokenId: this.tokenId,
-        passphrase: this.passphrase,
-        privateKey: this.privateKey,
-        audience: 'iota.affinidi.io',
-      }),
+      iotaJwt: this.iotaInstance.signIotaJwt(
+        this.projectId,
+        iotaConfigId,
+        sessionId,
+        {
+          keyId: this.keyId,
+          tokenId: this.tokenId,
+          passphrase: this.passphrase,
+          privateKey: this.privateKey,
+          audience: 'iota.affinidi.io',
+        }
+      ),
       iotaSessionId: sessionId,
     }
   }
