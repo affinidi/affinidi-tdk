@@ -1,5 +1,9 @@
 ## @affinidi/client-cwe
 
+### Service API Endpoints and Models
+
+Please check [the documentation for API Endpoints and Models](./docs/README.md) for more details.
+
 ### Usage
 
 ```bash
@@ -12,10 +16,10 @@ We use [Axios plugin](https://github.com/softonic/axios-retry) that intercepts f
 
 You can configure some of retry parameters:
 
-| Name               | Type      | Default | Description                                                                                                                                                                                                                                                                           |
-| ------------------ | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| retries            | `Number`  | `3`     | The number of times to retry before failing. 1 = One retry after first failure. The number can be between 0 and 3.                                                                                                                                                                    |
-| isExponentialDelay | `Boolean` | `false` | By default there is no delay between retries. Another option is exponentialDelay ([Exponential Backoff](https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff)), when a client periodically retrying a failed request over an increasing amount of time. |
+| Name               | Type      | Default | Description                                                                                                                                                                                                                                                                      |
+| ------------------ | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| retries            | `Number`  | `3`     | The number of times to retry before failing. 1 = One retry after first failure. The number can be between 0 and 3.                                                                                                                                                               |
+| isExponentialDelay | `Boolean` | `false` | By default there is no delay between retries. When option is set to true (See [Exponential Backoff](https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff)), the client will periodically retry a failed request over an increasing amount of time. |
 
 Please note that retry condition is not configurable and axios-retry default value is used `isNetworkOrIdempotentRequestError`. It retries if it is a network error or a 5xx error on an idempotent request (GET, HEAD, OPTIONS, PUT or DELETE).
 
@@ -26,11 +30,17 @@ import { SomeClassApi, Configuration } from '@affinidi/client-cwe'
 
 const projectScopedToken = '...' // NOTE: you can get it after making Affinidi Login (via CLI, Dev Portal)
 
+const retryConfig = {
+  retries: 2,
+  isExponentialDelay: true,
+}
+
 const api = new SomeClassApi(
   new Configuration({
     apiKey: projectScopedToken,
-    basePath: `${apiGatewayUrl}/`,
-  })
+    basePath: `${apiGatewayUrl}/cwe`,
+  }),
+  retryConfig
 )
 
 await api.oneOfMethods()
@@ -64,7 +74,7 @@ const authProvider = new AuthProvider({
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.getProjectScopedToken.bind(authProvider),
-    basePath: `${apiGatewayUrl}/`,
+    basePath: `${apiGatewayUrl}/cwe`,
   })
 )
 
@@ -82,7 +92,7 @@ const headers = getBffHeaders(cookieName, sessionId)
 const baseOptions = { headers }
 
 const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/`, baseOptions })
+  new Configuration({ basePath: `${bffHost}/cwe`, baseOptions })
 )
 
 await api.oneOfMethods()

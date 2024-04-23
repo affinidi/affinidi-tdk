@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+Models/AwsExchangeCredentials.md
+Models/AwsExchangeCredentialsOK.md
+Models/AwsExchangeCredentialsOK_credentials.md
+Models/AwsExchangeCredentialsSigV4OK.md
+Models/CallbackInput.md
+Models/CorsAwsEnableWbxOK.md
+Models/CorsAwsExchangeCredentialsOK.md
+Models/DemoWbx.md
+Models/InvalidParameterError.md
+Models/InvalidParameterError_details_inner.md
+Models/OperationForbiddenError.md
+Models/VPTokenValidationError.md
+README.md

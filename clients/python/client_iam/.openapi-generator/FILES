@@ -105,11 +105,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_consumer_auth_api.py
-test/test_default_api.py
-test/test_policies_api.py
-test/test_projects_api.py
-test/test_sts_api.py
-test/test_tokens_api.py
-test/test_well_known_api.py
 tox.ini
