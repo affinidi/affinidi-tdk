@@ -32,7 +32,7 @@ const authProvider = new AuthProvider({
   tokenEndpoint,
 })
 
-const projectScopedToken = await authProvider.getProjectScopedToken()
+const projectScopedToken = await authProvider.fetchProjectScopedToken()
 ```
 
 ### Python
