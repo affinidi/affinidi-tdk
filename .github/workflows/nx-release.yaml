@@ -29,7 +29,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Publish to npm
-      - run: npx nx release publish
+      # setting parallel higher than one might cause problems with locking git repo
+      - run: npx nx release publish --parallel 1
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
