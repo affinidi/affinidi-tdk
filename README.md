@@ -6,7 +6,7 @@ The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that all
 
 The Affinidi TDK provides three type of modules:
 
-- [Clients](clients), which offer methods to access Affinidi services like IAM, Verifier, Wallet, and VPA, among others.
+- [Clients](clients), which offer methods to access Affinidi services like IAM, Verifier, Orgnaizational Wallet, and Login configuation, among others.
 
 - [Libraries](libs), which provide high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
@@ -25,10 +25,10 @@ The Affinidi TDK offers the following modules and programming languages:
 | **Packages**                                      |
 | [auth-provider](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Clients**                                       |
-| client_cwe                                        | [🟢 Link](clients/typescript/client-cwe/README.md) | [🟢 Link](clients/python/client_cwe/README.md) | [🟡 Link](clients/dart/client_cwe/README.md) |
-| client_iam                                        | [🟢 Link](clients/typescript/client-iam/README.md) | [🟢 Link](clients/python/client_iam/README.md) | [🟡 Link](clients/dart/client_iam/README.md) |
-| client_ver                                        | [🟢 Link](clients/typescript/client-ver/README.md) | [🟢 Link](clients/python/client_ver/README.md) | [🟡 Link](clients/dart/client_ver/README.md) |
-| client_vpa                                        | [🟢 Link](clients/typescript/client-vpa/README.md) | [🟢 Link](clients/python/client_vpa/README.md) | [🟡 Link](clients/dart/client_vpa/README.md) |
+| organizational-wallet-client                                        | [🟢 Link](clients/typescript/organizational-wallet-client/README.md) | [🟢 Link](clients/python/organizational_wallet_client/README.md) | [🟡 Link](clients/dart/organizational-wallet-client/README.md) |
+| iam-client                                        | [🟢 Link](clients/typescript/iam-client/README.md) | [🟢 Link](clients/python/iam_client/README.md) | [🟡 Link](clients/dart/iam_client/README.md) |
+| credential-verification-client                                        | [🟢 Link](clients/typescript/credential-verification-client/README.md) | [🟢 Link](clients/python/credential_verification_client/README.md) | [🟡 Link](clients/dart/credential_verification_client/README.md) |
+| login-configation                                        | [🟢 Link](clients/typescript/login-configuration/README.md) | [🟢 Link](clients/python/login_configuration/README.md) | [🟡 Link](clients/dart/login_configuration/README.md) |
 
 🟢 Supported<br>
 🟡 Experimental<br>

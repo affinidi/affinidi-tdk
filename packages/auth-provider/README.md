@@ -1,4 +1,4 @@
-## @affinidi/tdk-auth-provider
+## @affinidi-tdk/auth-provider
 
 ### Build JSII
 
@@ -19,7 +19,7 @@ npm install <path_to_tdk-auth-provider.jsii.tgz>
 ```
 
 ```ts
-import { AuthProvider } from '@affinidi/tdk-auth-provider'
+import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -42,7 +42,7 @@ pip install <path_to_affinidi-tdk-auth-provider.whl>
 ```
 
 ```python
-import affinidi_tdk.auth_provider
+import affinidi_tdk_auth_provider
 
 stats = {
   apiGatewayUrl,
@@ -55,7 +55,7 @@ stats = {
   tokenEndpoint,
 }
 
-authProvider = affinidi_tdk.auth_provider.AuthProvider(stats)
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
 
 projectScopedToken = authProvider.fetch_project_scoped_token()
 ```

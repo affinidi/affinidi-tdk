@@ -1,0 +1,48 @@
+// npm install -S @affinidi-tdk/auth-provider @affinidi-tdk/iam-client
+
+import {
+  PoliciesApi,
+  Configuration as IamConfiguration,
+} from '@affinidi-tdk/iam-client'
+import { AuthProvider } from '@affinidi-tdk/auth-provider'
+
+// NOTE: set your variables for PAT
+const privateKey = '<your_private_key>'
+const publicKey = '<your_public_key>'
+const passphrase = 'top-secret'
+const keyId = 'KeyId'
+const tokenId = '<your_personal_access_token_id>'
+const projectId = '<your_project_id>'
+const tokenEndpoint =
+  'https://apse1.auth.developer.affinidi.io/auth/oauth2/token'
+const apiGatewayUrl = 'https://apse1.api.affinidi.io'
+
+const projectScopedToken = '<your_project_id>'
+
+const authProvider = new AuthProvider({
+  apiGatewayUrl,
+  keyId,
+  tokenId,
+  passphrase,
+  privateKey,
+  publicKey,
+  projectId,
+  tokenEndpoint,
+})
+
+const iamConfiguration = new IamConfiguration({
+  apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
+  basePath: `${apiGatewayUrl}/iam`,
+})
+
+async function getPolicies() {
+  const api = new PoliciesApi(iamConfiguration)
+
+  const { data } = await api.getPolicies(tokenId, 'token')
+
+  return data
+}
+
+getPolicies()
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error))

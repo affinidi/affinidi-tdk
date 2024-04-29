@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi-tdk/organizational-wallet-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "organizational-wallet/organizational-wallet-client",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/organizational-wallet/organizational-wallet-client",
+        "main": "organizational-wallet/organizational-wallet-client/index.ts",
+        "tsConfig": "organizational-wallet/organizational-wallet-client/tsconfig.lib.json",
+        "assets": ["organizational-wallet/organizational-wallet-client/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
