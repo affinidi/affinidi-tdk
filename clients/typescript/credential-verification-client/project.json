@@ -1,0 +1,43 @@
+{
+  "name": "@affinidi-tdk/credential-verification-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "credential-verification/credential-verification-client",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/credential-verification/credential-verification-client",
+        "main": "credential-verification/credential-verification-client/index.ts",
+        "tsConfig": "credential-verification/credential-verification-client/tsconfig.lib.json",
+        "assets": [
+          "credential-verification/credential-verification-client/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": []
+}
