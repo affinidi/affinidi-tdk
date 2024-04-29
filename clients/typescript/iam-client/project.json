@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/iam/iam-client",
-        "main": "iam/iam-client/index.ts",
-        "tsConfig": "iam/iam-client/tsconfig.lib.json",
-        "assets": ["iam/iam-client/*.md"]
+        "outputPath": "src/clients/typescript/iam-client/dist",
+        "main": "src/clients/typescript/iam-client/index.ts",
+        "tsConfig": "src/clients/typescript/iam-client/tsconfig.esm.json",
+        "assets": ["src/clients/typescript/iam-client/*.md", "src/clients/typescript/iam-client/docs/*.md"]
       }
     },
     "lint": {
