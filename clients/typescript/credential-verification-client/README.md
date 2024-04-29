@@ -64,7 +64,7 @@ import {
   SomeClassApi,
   Configuration,
 } from '@affinidi-tdk/credential-verification-client'
-import { AuthProvider } from '@affinidi/tdk-auth-provider'
+import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,

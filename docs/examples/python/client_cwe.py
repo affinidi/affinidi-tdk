@@ -1,10 +1,10 @@
-# NOTE: affinidi_tdk.auth_provider is not published to PyPi yet
+# NOTE: affinidi_tdk_auth_provider is not published to PyPi yet
 # pip3 install <path to python client_cwe file>
 
-from affinidi_tdk_client_cwe.api_client import ApiClient
-from affinidi_tdk_client_cwe.configuration import Configuration
-from affinidi_tdk_client_cwe.api.wallet_api import WalletApi
-import affinidi_tdk.auth_provider
+from affinidi_tdk_organizational_wallet.api_client import ApiClient
+from affinidi_tdk_organizational_wallet.configuration import Configuration
+from affinidi_tdk_organizational_wallet.api.wallet_api import WalletApi
+import affinidi_tdk_auth_provider
 
 stats = {
   'privateKey': '<your_private_key>',
@@ -17,7 +17,7 @@ stats = {
   'apiGatewayUrl': 'https://apse1.api.affinidi.io'
 }
 
-authProvider = affinidi_tdk.auth_provider.AuthProvider(stats)
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
 
 projectScopedToken = authProvider.fetch_project_scoped_token()
 
