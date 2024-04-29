@@ -2,8 +2,8 @@ name: Publish
 on:
   push:
     branches:
-      - '**' # matches every branch
-      - '!main'
+      - 'feat/build-artifacts-in-pipeline' # matches every branch
+      # - '!main'
   # pull_request:
 
 # Needed for nx-set-shas when run on the main branch
