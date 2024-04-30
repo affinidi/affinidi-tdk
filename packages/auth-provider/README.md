@@ -14,8 +14,11 @@ The code will be generated under /dist for each language.
 
 ### JS
 
+### Install
+
 ```bash
-npm install <path_to_tdk-auth-provider.jsii.tgz>
+npm install @affinidi-tdk/auth-provider
+
 ```
 
 ```ts
