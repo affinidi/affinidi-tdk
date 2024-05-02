@@ -1,12 +1,16 @@
-name: default
+name: release
 
 on:
   push:
     branches:
       - 'main'
 
+      
 jobs:
   release:
+    permissions: 
+      contents: write
+      actions: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,7 +22,16 @@ jobs:
 
       - run: npm ci
 
-      - run: npx nx run-many  -t semantic-release
+      # Generate tag/changelog
+      - run: npx nx run-many  -t semantic-release --parallel 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.PUBLIC_NPM_NODE_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Publish to npm
+      # setting parallel higher than one might cause problems with locking git repo
+      - run: npx nx release publish 
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

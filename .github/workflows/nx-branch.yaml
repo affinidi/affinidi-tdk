@@ -1,4 +1,4 @@
-name: NX branch
+name: branch
 on:
   push:
     branches:
@@ -7,11 +7,10 @@ on:
       - '!main'
   pull_request:
 
-# Needed for nx-set-shas when run on the main branch
 permissions:
   actions: read
   contents: read
-
+  
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -29,5 +28,6 @@ jobs:
       # This line is needed for nx affected to work when CI is running on a PR
       - run: git branch --track main origin/main
 
-      # - run: npx nx-cloud record -- nx format:check
+      # Enable after running npx nx format:write
+      # - run: npx nx format:check  
       - run: npx nx affected -t build --parallel=3

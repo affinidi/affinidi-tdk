@@ -4,8 +4,17 @@
       "analyzeSourceFiles": true
     }
   },
+  "workspaceLayout": {
+    "libsDir": "clients"
+  },
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "release": {
+    "projectsRelationship": "independent",
+    "version": {
+      "conventionalCommits": true
+    }
+  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],

@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi/tdk-auth-provider",
+  "name": "@affinidi-tdk/auth-provider",
   "version": "0.1.1",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
@@ -24,8 +24,8 @@
     "versionFormat": "short",
     "targets": {
       "python": {
-        "distName": "affinidi-tdk.auth-provider",
-        "module": "affinidi_tdk.auth_provider"
+        "distName": "affinidi-tdk_auth-provider",
+        "module": "affinidi_tdk_auth_provider"
       }
     }
   },
