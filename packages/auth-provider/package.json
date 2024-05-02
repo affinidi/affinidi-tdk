@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/auth-provider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
   "repository": {
@@ -40,11 +40,13 @@
   "dependencies": {
     "axios": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
-    "qs": "^6.11.2"
+    "qs": "^6.11.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.3",
     "@types/qs": "^6.9.8",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "eslint": "^8.57.0",
@@ -59,6 +61,7 @@
   "bundleDependencies": [
     "axios",
     "jsonwebtoken",
-    "qs"
+    "qs",
+    "uuid"
   ]
 }

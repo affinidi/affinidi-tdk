@@ -1,5 +1,13 @@
 import * as jwt from 'jsonwebtoken'
 
+export interface ISignPayload {
+  tokenId: string
+  audience: string
+  privateKey: string
+  passphrase: string
+  keyId: string
+}
+
 export interface IValidateToken {
   isValid: boolean
   isExpired: boolean
