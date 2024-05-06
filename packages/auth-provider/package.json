@@ -1,11 +1,11 @@
 {
   "name": "@affinidi-tdk/auth-provider",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    "url": "https://github.com/affinidi/affinidi-tdk"
   },
   "keywords": [
     "affinidi-tdk",
