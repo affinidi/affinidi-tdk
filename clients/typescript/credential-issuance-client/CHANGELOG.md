@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.0.0...@affinidi-tdk/credential-issuance-client-v1.1.0) (2024-05-07)
+
+
+### Bug Fixes
+
+* release parallelism ([a8e6a2a](https://github.com/affinidi/affinidi-tdk/commit/a8e6a2a05e594a093f136aee67fbb543937b2654))
+* roll version ([72eb51a](https://github.com/affinidi/affinidi-tdk/commit/72eb51aad11dc407677330d47e389d825dbe7b6e))
+
+
+### Features
+
+* make apiGatewayUrl and tokenEndpoint optional and point to production by default  ([#74](https://github.com/affinidi/affinidi-tdk/issues/74)) ([a38ca3b](https://github.com/affinidi/affinidi-tdk/commit/a38ca3b46f8165295ff6ff0723609b9f62aec236))
+
 # 1.0.0 (2024-04-29)
 
 
