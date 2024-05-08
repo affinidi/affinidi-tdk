@@ -31,7 +31,9 @@ jobs:
       - run: npm ci
 
       - name: Authenticate with private NPM package
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          npm whoami
 
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo
@@ -43,7 +45,9 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
           # Publish to npm
-      - run: npx nx release publish --verbose || cat ~/.npm/_logs/*.log
+      - run: |
+          npm whoami
+          npx nx release publish --verbose || cat ~/.npm/_logs/*.log
         name: release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
