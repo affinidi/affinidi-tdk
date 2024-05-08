@@ -1,7 +1,7 @@
 {
   "name": "@affinidi-tdk/credential-issuance-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "credential-issuance/credential-issuance-client",
+  "sourceRoot": "clients/typescript/credential-issuance-client",
   "projectType": "library",
   "private": false,
   "targets": {
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/credential-issuance/credential-issuance-client",
-        "main": "credential-issuance/credential-issuance-client/index.ts",
-        "tsConfig": "credential-issuance/credential-issuance-client/tsconfig.lib.json",
-        "assets": ["credential-issuance/credential-issuance-client/*.md"]
+        "outputPath": "dist/",
+        "main": "dist/index.ts",
+        "tsConfig": "clients/typescript/credential-issuance-client/tsconfig.lib.json",
+        "assets": ["**/*.md"]
       }
     },
     "lint": {

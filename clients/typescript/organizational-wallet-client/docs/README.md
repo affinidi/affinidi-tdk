@@ -15,6 +15,7 @@ All URIs are relative to _http://localhost_
 | _WalletApi_     | [**getWallet**](Apis/WalletApi.md#getwallet)                                         | **GET** /v1/wallets/{walletId}                          | get wallet details using wallet Id.    |
 | _WalletApi_     | [**listWallets**](Apis/WalletApi.md#listwallets)                                     | **GET** /v1/wallets                                     | lists all wallets                      |
 | _WalletApi_     | [**signCredential**](Apis/WalletApi.md#signcredential)                               | **POST** /v1/wallets/{walletId}/sign-credential         | signs credential with the wallet       |
+| _WalletApi_     | [**signJwtToken**](Apis/WalletApi.md#signjwttoken)                                   | **POST** /v1/wallets/{walletId}/sign-jwt                | signs a jwt token with the wallet      |
 | _WalletApi_     | [**updateWallet**](Apis/WalletApi.md#updatewallet)                                   | **PATCH** /v1/wallets/{walletId}                        | update wallet details using wallet Id. |
 
 <a name="documentation-for-models"></a>
@@ -38,6 +39,8 @@ All URIs are relative to _http://localhost_
 - [SignCredentialInputDto](./Models/SignCredentialInputDto.md)
 - [SignCredentialInputDto_unsignedCredentialParams](./Models/SignCredentialInputDto_unsignedCredentialParams.md)
 - [SignCredentialResultDto](./Models/SignCredentialResultDto.md)
+- [SignJwtToken](./Models/SignJwtToken.md)
+- [SignJwtTokenOK](./Models/SignJwtTokenOK.md)
 - [UpdateWalletInput](./Models/UpdateWalletInput.md)
 - [WalletDto](./Models/WalletDto.md)
 - [WalletDto_keys_inner](./Models/WalletDto_keys_inner.md)

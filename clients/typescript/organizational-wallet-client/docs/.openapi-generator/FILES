@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/RevocationApi.md
 Apis/WalletApi.md
 Models/CreateWalletInput.md
@@ -18,6 +17,8 @@ Models/ServiceErrorResponse_details_inner.md
 Models/SignCredentialInputDto.md
 Models/SignCredentialInputDto_unsignedCredentialParams.md
 Models/SignCredentialResultDto.md
+Models/SignJwtToken.md
+Models/SignJwtTokenOK.md
 Models/UpdateWalletInput.md
 Models/WalletDto.md
 Models/WalletDto_keys_inner.md

@@ -15,6 +15,7 @@ All URIs are relative to _http://localhost_
 | [**getWallet**](WalletApi.md#getwallet)           | **GET** /v1/wallets/{walletId}                  |
 | [**listWallets**](WalletApi.md#listwallets)       | **GET** /v1/wallets                             |
 | [**signCredential**](WalletApi.md#signcredential) | **POST** /v1/wallets/{walletId}/sign-credential |
+| [**signJwtToken**](WalletApi.md#signjwttoken)     | **POST** /v1/wallets/{walletId}/sign-jwt        |
 | [**updateWallet**](WalletApi.md#updatewallet)     | **PATCH** /v1/wallets/{walletId}                |
 
 # **createWallet**
@@ -238,6 +239,55 @@ try {
 ### Return type
 
 [**SignCredentialResultDto**](SignCredentialResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **signJwtToken**
+
+> SignJwtTokenOK signJwtToken(walletId, signJwtToken)
+
+signs a jwt token with the wallet
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_organizational_wallet_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = WalletApi();
+final walletId = walletId_example; // String | id of the wallet.
+final signJwtToken = SignJwtToken(); // SignJwtToken | SignJwtToken
+
+try {
+    final result = api_instance.signJwtToken(walletId, signJwtToken);
+    print(result);
+} catch (e) {
+    print('Exception when calling WalletApi->signJwtToken: $e\n');
+}
+```
+
+### Parameters
+
+| Name             | Type                                | Description       | Notes |
+| ---------------- | ----------------------------------- | ----------------- | ----- |
+| **walletId**     | **String**                          | id of the wallet. |
+| **signJwtToken** | [**SignJwtToken**](SignJwtToken.md) | SignJwtToken      |
+
+### Return type
+
+[**SignJwtTokenOK**](SignJwtTokenOK.md)
 
 ### Authorization
 

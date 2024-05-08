@@ -1,7 +1,7 @@
 {
   "name": "@affinidi-tdk/credential-verification-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "credential-verification/credential-verification-client",
+  "sourceRoot": "clients/typescript/credential-verification-client",
   "projectType": "library",
   "private": false,
   "targets": {
@@ -9,12 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/credential-verification/credential-verification-client",
-        "main": "credential-verification/credential-verification-client/index.ts",
-        "tsConfig": "credential-verification/credential-verification-client/tsconfig.lib.json",
-        "assets": [
-          "credential-verification/credential-verification-client/*.md"
-        ]
+        "outputPath": "dist/",
+        "main": "dist/index.ts",
+        "tsConfig": "clients/typescript/credential-verification-client/tsconfig.lib.json",
+        "assets": ["**/*.md"]
       }
     },
     "lint": {

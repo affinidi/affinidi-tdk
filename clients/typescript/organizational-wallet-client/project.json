@@ -1,7 +1,7 @@
 {
   "name": "@affinidi-tdk/organizational-wallet-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "organizational-wallet/organizational-wallet-client",
+  "sourceRoot": "clients/typescript/organizational-wallet-client",
   "projectType": "library",
   "private": false,
   "targets": {
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/organizational-wallet/organizational-wallet-client",
-        "main": "organizational-wallet/organizational-wallet-client/index.ts",
-        "tsConfig": "organizational-wallet/organizational-wallet-client/tsconfig.lib.json",
-        "assets": ["organizational-wallet/organizational-wallet-client/*.md"]
+        "outputPath": "dist/",
+        "main": "dist/index.ts",
+        "tsConfig": "clients/typescript/organizational-wallet-client/tsconfig.lib.json",
+        "assets": ["**/*.md"]
       }
     },
     "lint": {

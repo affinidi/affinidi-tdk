@@ -109,6 +109,7 @@ All URIs are relative to _http://localhost_
 | _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                             | **GET** /v1/wallets/{walletId}                          |
 | _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                         | **GET** /v1/wallets                                     |
 | _WalletApi_     | [**sign_credential**](docs/WalletApi.md#sign_credential)                                   | **POST** /v1/wallets/{walletId}/sign-credential         |
+| _WalletApi_     | [**sign_jwt_token**](docs/WalletApi.md#sign_jwt_token)                                     | **POST** /v1/wallets/{walletId}/sign-jwt                |
 | _WalletApi_     | [**update_wallet**](docs/WalletApi.md#update_wallet)                                       | **PATCH** /v1/wallets/{walletId}                        |
 
 ## Documentation For Models
@@ -130,6 +131,8 @@ All URIs are relative to _http://localhost_
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
 - [SignCredentialInputDtoUnsignedCredentialParams](docs/SignCredentialInputDtoUnsignedCredentialParams.md)
 - [SignCredentialResultDto](docs/SignCredentialResultDto.md)
+- [SignJwtToken](docs/SignJwtToken.md)
+- [SignJwtTokenOK](docs/SignJwtTokenOK.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)

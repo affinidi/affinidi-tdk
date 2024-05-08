@@ -1,7 +1,7 @@
 {
   "name": "@affinidi-tdk/login-configuration-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "login-configuration/login-configuration-client",
+  "sourceRoot": "clients/typescript/login-configuration-client",
   "projectType": "library",
   "private": false,
   "targets": {
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/login-configuration/login-configuration-client",
-        "main": "login-configuration/login-configuration-client/index.ts",
-        "tsConfig": "login-configuration/login-configuration-client/tsconfig.lib.json",
-        "assets": ["login-configuration/login-configuration-client/*.md"]
+        "outputPath": "dist/",
+        "main": "dist/index.ts",
+        "tsConfig": "clients/typescript/login-configuration-client/tsconfig.lib.json",
+        "assets": ["**/*.md"]
       }
     },
     "lint": {

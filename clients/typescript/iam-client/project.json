@@ -1,7 +1,7 @@
 {
   "name": "@affinidi-tdk/iam-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "iam/iam-client",
+  "sourceRoot": "clients/typescript/iam-client",
   "projectType": "library",
   "private": false,
   "targets": {
@@ -9,10 +9,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "src/clients/typescript/iam-client/dist",
-        "main": "src/clients/typescript/iam-client/index.ts",
-        "tsConfig": "src/clients/typescript/iam-client/tsconfig.esm.json",
-        "assets": ["src/clients/typescript/iam-client/*.md", "src/clients/typescript/iam-client/docs/*.md"]
+        "outputPath": "dist/",
+        "main": "dist/index.ts",
+        "tsConfig": "clients/typescript/iam-client/tsconfig.lib.json",
+        "assets": ["**/*.md"]
       }
     },
     "lint": {

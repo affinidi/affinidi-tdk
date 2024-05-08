@@ -9,6 +9,7 @@ All URIs are relative to _http://localhost_
 | [**getWallet**](WalletApi.md#getWallet)           | **GET** /v1/wallets/{walletId}                  |             |
 | [**listWallets**](WalletApi.md#listWallets)       | **GET** /v1/wallets                             |             |
 | [**signCredential**](WalletApi.md#signCredential) | **POST** /v1/wallets/{walletId}/sign-credential |             |
+| [**signJwtToken**](WalletApi.md#signJwtToken)     | **POST** /v1/wallets/{walletId}/sign-jwt        |             |
 | [**updateWallet**](WalletApi.md#updateWallet)     | **PATCH** /v1/wallets/{walletId}                |             |
 
 <a name="createWallet"></a>
@@ -135,6 +136,34 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SignCredentialResultDto**](../Models/SignCredentialResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="signJwtToken"></a>
+
+# **signJwtToken**
+
+> SignJwtTokenOK signJwtToken(walletId, SignJwtToken)
+
+    signs a jwt token with the wallet
+
+### Parameters
+
+| Name             | Type                                          | Description       | Notes             |
+| ---------------- | --------------------------------------------- | ----------------- | ----------------- |
+| **walletId**     | **String**                                    | id of the wallet. | [default to null] |
+| **SignJwtToken** | [**SignJwtToken**](../Models/SignJwtToken.md) | SignJwtToken      |                   |
+
+### Return type
+
+[**SignJwtTokenOK**](../Models/SignJwtTokenOK.md)
 
 ### Authorization
 

@@ -48,6 +48,8 @@ part 'model/service_error_response_details_inner.dart';
 part 'model/sign_credential_input_dto.dart';
 part 'model/sign_credential_input_dto_unsigned_credential_params.dart';
 part 'model/sign_credential_result_dto.dart';
+part 'model/sign_jwt_token.dart';
+part 'model/sign_jwt_token_ok.dart';
 part 'model/update_wallet_input.dart';
 part 'model/wallet_dto.dart';
 part 'model/wallet_dto_keys_inner.dart';

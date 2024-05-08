@@ -198,12 +198,16 @@ class ApiClient {
           return CorsLoginSessionRejectResponseOK.fromJson(value);
         case 'CreateGroupInput':
           return CreateGroupInput.fromJson(value);
+        case 'CreateHydraNetworkError':
+          return CreateHydraNetworkError.fromJson(value);
         case 'CreateLoginConfigurationInput':
           return CreateLoginConfigurationInput.fromJson(value);
         case 'CreateLoginConfigurationOutput':
           return CreateLoginConfigurationOutput.fromJson(value);
         case 'CreateLoginConfigurationOutputAuth':
           return CreateLoginConfigurationOutputAuth.fromJson(value);
+        case 'CreateProjectNetworkError':
+          return CreateProjectNetworkError.fromJson(value);
         case 'ErrorOAuth2':
           return ErrorOAuth2.fromJson(value);
         case 'GetUserInfo':

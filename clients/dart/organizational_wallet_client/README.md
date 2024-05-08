@@ -75,6 +75,7 @@ All URIs are relative to _http://localhost_
 | _WalletApi_     | [**getWallet**](doc//WalletApi.md#getwallet)                                         | **GET** /v1/wallets/{walletId}                          |
 | _WalletApi_     | [**listWallets**](doc//WalletApi.md#listwallets)                                     | **GET** /v1/wallets                                     |
 | _WalletApi_     | [**signCredential**](doc//WalletApi.md#signcredential)                               | **POST** /v1/wallets/{walletId}/sign-credential         |
+| _WalletApi_     | [**signJwtToken**](doc//WalletApi.md#signjwttoken)                                   | **POST** /v1/wallets/{walletId}/sign-jwt                |
 | _WalletApi_     | [**updateWallet**](doc//WalletApi.md#updatewallet)                                   | **PATCH** /v1/wallets/{walletId}                        |
 
 ## Documentation For Models
@@ -96,6 +97,8 @@ All URIs are relative to _http://localhost_
 - [SignCredentialInputDto](doc//SignCredentialInputDto.md)
 - [SignCredentialInputDtoUnsignedCredentialParams](doc//SignCredentialInputDtoUnsignedCredentialParams.md)
 - [SignCredentialResultDto](doc//SignCredentialResultDto.md)
+- [SignJwtToken](doc//SignJwtToken.md)
+- [SignJwtTokenOK](doc//SignJwtTokenOK.md)
 - [UpdateWalletInput](doc//UpdateWalletInput.md)
 - [WalletDto](doc//WalletDto.md)
 - [WalletDtoKeysInner](doc//WalletDtoKeysInner.md)
