@@ -31,13 +31,13 @@ jobs:
       - run: npm ci
 
       # Generate tag/changelog
+      # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx run-many  -t semantic-release --parallel 1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       # Publish to npm
-      # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx release publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
