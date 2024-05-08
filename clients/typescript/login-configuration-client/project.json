@@ -7,12 +7,16 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/login-configuration/login-configuration-client",
         "main": "login-configuration/login-configuration-client/index.ts",
         "tsConfig": "login-configuration/login-configuration-client/tsconfig.lib.json",
-        "assets": ["login-configuration/login-configuration-client/*.md"]
+        "assets": [
+          "login-configuration/login-configuration-client/*.md"
+        ]
       }
     },
     "lint": {
@@ -22,10 +26,12 @@
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
         "changelog": true,
-        "github": true,
+        "github": false,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
+        "branches": [
+          "main"
+        ],
         "plugins": [
           [
             "@semantic-release/npm",

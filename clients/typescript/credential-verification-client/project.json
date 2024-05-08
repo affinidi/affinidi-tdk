@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/credential-verification/credential-verification-client",
         "main": "credential-verification/credential-verification-client/index.ts",
@@ -24,10 +26,12 @@
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
         "changelog": true,
-        "github": true,
+        "github": false,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
+        "branches": [
+          "main"
+        ],
         "plugins": [
           [
             "@semantic-release/npm",

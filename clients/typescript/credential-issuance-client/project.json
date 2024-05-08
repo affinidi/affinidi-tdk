@@ -7,12 +7,16 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/credential-issuance/credential-issuance-client",
         "main": "credential-issuance/credential-issuance-client/index.ts",
         "tsConfig": "credential-issuance/credential-issuance-client/tsconfig.lib.json",
-        "assets": ["credential-issuance/credential-issuance-client/*.md"]
+        "assets": [
+          "credential-issuance/credential-issuance-client/*.md"
+        ]
       }
     },
     "lint": {
@@ -22,10 +26,12 @@
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
         "changelog": true,
-        "github": true,
+        "github": false,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
+        "branches": [
+          "main"
+        ],
         "plugins": [
           [
             "@semantic-release/npm",
