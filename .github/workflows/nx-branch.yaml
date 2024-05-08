@@ -10,7 +10,7 @@ on:
 permissions:
   actions: read
   contents: read
-  
+
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
       # Cache node_modules
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: 'npm'
       - run: npm ci
       - uses: nrwl/nx-set-shas@v3
@@ -29,5 +29,5 @@ jobs:
       - run: git branch --track main origin/main
 
       # Enable after running npx nx format:write
-      # - run: npx nx format:check  
+      # - run: npx nx format:check
       - run: npx nx affected -t build --parallel=3
