@@ -30,15 +30,21 @@ jobs:
           cache: 'npm'
       - run: npm ci
 
+      - name: Authenticate with private NPM package
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx run-many  -t semantic-release --parallel 1
+        name: semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # Publish to npm
-      - run: npx nx release publish --verbose
+
+          # Publish to npm
+      - run: npx nx release publish --verbose || cat ~/.npm/_logs/*.log
+        name: release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
