@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "src/clients/typescript/iam-client/dist",
         "main": "src/clients/typescript/iam-client/index.ts",
@@ -29,10 +27,9 @@
         "changelog": true,
         "github": false,
         "npm": true,
+        "git": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": [
-          "main"
-        ],
+        "branches": ["main"],
         "plugins": [
           [
             "@semantic-release/npm",
