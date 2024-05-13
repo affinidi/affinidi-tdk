@@ -1,3 +1,10 @@
+# 1.0.0 (2024-05-13)
+
+
+### Bug Fixes
+
+* release ([4e6905f](https://github.com/affinidi/affinidi-tdk/commit/4e6905fa20f9b5f4374941111515889f43243e9d))
+
 # [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.0.1...@affinidi-tdk/credential-verification-client-v1.1.0) (2024-05-13)
 
 
