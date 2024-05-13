@@ -23,7 +23,7 @@ jobs:
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      # Cache node_modules
+      # Setup cache, npm
       - uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -44,28 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-          scope: "@affinidi-tdk"
-      # Publish to npm manual
-      - run: |
-          echo "${NODE_AUTH_TOKEN}"
-          cd clients/typescript/organizational-wallet-client
-          npm publish
-        name: release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-          scope: "@affinidi-tdk"
       # Publish to npm
       - run: |
           npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
