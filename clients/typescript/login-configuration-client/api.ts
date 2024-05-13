@@ -197,6 +197,63 @@ export interface CreateGroupInput {
 /**
  *
  * @export
+ * @interface CreateHydraNetworkError
+ */
+export interface CreateHydraNetworkError {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateHydraNetworkError
+   */
+  name: CreateHydraNetworkErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CreateHydraNetworkError
+   */
+  message: CreateHydraNetworkErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof CreateHydraNetworkError
+   */
+  httpStatusCode: CreateHydraNetworkErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CreateHydraNetworkError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<InvalidParameterErrorDetailsInner>}
+   * @memberof CreateHydraNetworkError
+   */
+  details?: Array<InvalidParameterErrorDetailsInner>
+}
+
+export const CreateHydraNetworkErrorNameEnum = {
+  CreateHydraNetworkError: 'CreateHydraNetworkError',
+} as const
+
+export type CreateHydraNetworkErrorNameEnum =
+  (typeof CreateHydraNetworkErrorNameEnum)[keyof typeof CreateHydraNetworkErrorNameEnum]
+export const CreateHydraNetworkErrorMessageEnum = {
+  CreateHydraNetworkError: 'CreateHydraNetworkError',
+} as const
+
+export type CreateHydraNetworkErrorMessageEnum =
+  (typeof CreateHydraNetworkErrorMessageEnum)[keyof typeof CreateHydraNetworkErrorMessageEnum]
+export const CreateHydraNetworkErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type CreateHydraNetworkErrorHttpStatusCodeEnum =
+  (typeof CreateHydraNetworkErrorHttpStatusCodeEnum)[keyof typeof CreateHydraNetworkErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface CreateLoginConfigurationInput
  */
 export interface CreateLoginConfigurationInput {
@@ -356,6 +413,63 @@ export interface CreateLoginConfigurationOutputAuth {
    */
   issuer?: string
 }
+/**
+ *
+ * @export
+ * @interface CreateProjectNetworkError
+ */
+export interface CreateProjectNetworkError {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateProjectNetworkError
+   */
+  name: CreateProjectNetworkErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CreateProjectNetworkError
+   */
+  message: CreateProjectNetworkErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof CreateProjectNetworkError
+   */
+  httpStatusCode: CreateProjectNetworkErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CreateProjectNetworkError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<InvalidParameterErrorDetailsInner>}
+   * @memberof CreateProjectNetworkError
+   */
+  details?: Array<InvalidParameterErrorDetailsInner>
+}
+
+export const CreateProjectNetworkErrorNameEnum = {
+  CreateProjectNetworkError: 'CreateProjectNetworkError',
+} as const
+
+export type CreateProjectNetworkErrorNameEnum =
+  (typeof CreateProjectNetworkErrorNameEnum)[keyof typeof CreateProjectNetworkErrorNameEnum]
+export const CreateProjectNetworkErrorMessageEnum = {
+  CreateProjectNetworkError: 'CreateProjectNetworkError',
+} as const
+
+export type CreateProjectNetworkErrorMessageEnum =
+  (typeof CreateProjectNetworkErrorMessageEnum)[keyof typeof CreateProjectNetworkErrorMessageEnum]
+export const CreateProjectNetworkErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type CreateProjectNetworkErrorHttpStatusCodeEnum =
+  (typeof CreateProjectNetworkErrorHttpStatusCodeEnum)[keyof typeof CreateProjectNetworkErrorHttpStatusCodeEnum]
+
 /**
  *
  * @export

@@ -56,6 +56,7 @@ part 'model/generate_credentials400_response.dart';
 part 'model/get_credential_offer400_response.dart';
 part 'model/invalid_credential_request_error.dart';
 part 'model/invalid_credential_type_error.dart';
+part 'model/invalid_issuer_wallet_error.dart';
 part 'model/invalid_jwt_token_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_proof_error.dart';

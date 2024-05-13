@@ -117,6 +117,7 @@ All URIs are relative to _http://localhost_
 | _TokensApi_       | [**get_token**](docs/TokensApi.md#get_token)                                             | **GET** /v1/tokens/{tokenId}                     |
 | _TokensApi_       | [**list_token**](docs/TokensApi.md#list_token)                                           | **GET** /v1/tokens                               |
 | _TokensApi_       | [**update_token**](docs/TokensApi.md#update_token)                                       | **PATCH** /v1/tokens/{tokenId}                   |
+| _WellKnownApi_    | [**get_well_known_did**](docs/WellKnownApi.md#get_well_known_did)                        | **GET** /.well-known/did.json                    |
 | _WellKnownApi_    | [**get_well_known_jwks**](docs/WellKnownApi.md#get_well_known_jwks)                      | **GET** /.well-known/jwks.json                   |
 
 ## Documentation For Models
@@ -130,6 +131,7 @@ All URIs are relative to _http://localhost_
 - [CreateProjectScopedTokenInput](docs/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](docs/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](docs/CreateTokenInput.md)
+- [GetWellKnownDidOK](docs/GetWellKnownDidOK.md)
 - [InvalidJwtTokenError](docs/InvalidJwtTokenError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [JsonWebKeyDto](docs/JsonWebKeyDto.md)

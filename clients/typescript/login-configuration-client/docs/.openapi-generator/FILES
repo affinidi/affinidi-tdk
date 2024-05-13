@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Models/ActionForbiddenError.md
 Models/AddUserToGroupInput.md
 Models/BlockedUsers.md
@@ -7,9 +6,11 @@ Models/CorsLoginSessionAcceptResponseOK.md
 Models/CorsLoginSessionForIdpOK.md
 Models/CorsLoginSessionRejectResponseOK.md
 Models/CreateGroupInput.md
+Models/CreateHydraNetworkError.md
 Models/CreateLoginConfigurationInput.md
 Models/CreateLoginConfigurationOutput.md
 Models/CreateLoginConfigurationOutput_auth.md
+Models/CreateProjectNetworkError.md
 Models/ErrorOAuth2.md
 Models/GetUserInfo.md
 Models/GroupDto.md

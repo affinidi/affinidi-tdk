@@ -21,12 +21,13 @@ import re  # noqa: F401
 
 from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from affinidi_tdk_credential_issuance_client.models.invalid_issuer_wallet_error import InvalidIssuerWalletError
 from affinidi_tdk_credential_issuance_client.models.project_credential_config_exist_error import ProjectCredentialConfigExistError
 from affinidi_tdk_credential_issuance_client.models.project_credential_config_not_exist_error import ProjectCredentialConfigNotExistError
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-CREATEISSUANCECONFIG400RESPONSE_ONE_OF_SCHEMAS = ["ProjectCredentialConfigExistError", "ProjectCredentialConfigNotExistError"]
+CREATEISSUANCECONFIG400RESPONSE_ONE_OF_SCHEMAS = ["InvalidIssuerWalletError", "ProjectCredentialConfigExistError", "ProjectCredentialConfigNotExistError"]
 
 class CreateIssuanceConfig400Response(BaseModel):
     """
@@ -36,8 +37,10 @@ class CreateIssuanceConfig400Response(BaseModel):
     oneof_schema_1_validator: Optional[ProjectCredentialConfigNotExistError] = None
     # data type: ProjectCredentialConfigExistError
     oneof_schema_2_validator: Optional[ProjectCredentialConfigExistError] = None
+    # data type: InvalidIssuerWalletError
+    oneof_schema_3_validator: Optional[InvalidIssuerWalletError] = None
     if TYPE_CHECKING:
-        actual_instance: Union[ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError]
+        actual_instance: Union[InvalidIssuerWalletError, ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError]
     else:
         actual_instance: Any
     one_of_schemas: List[str] = Field(CREATEISSUANCECONFIG400RESPONSE_ONE_OF_SCHEMAS, const=True)
@@ -70,12 +73,17 @@ class CreateIssuanceConfig400Response(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `ProjectCredentialConfigExistError`")
         else:
             match += 1
+        # validate data type: InvalidIssuerWalletError
+        if not isinstance(v, InvalidIssuerWalletError):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `InvalidIssuerWalletError`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in CreateIssuanceConfig400Response with oneOf schemas: ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in CreateIssuanceConfig400Response with oneOf schemas: InvalidIssuerWalletError, ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in CreateIssuanceConfig400Response with oneOf schemas: ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in CreateIssuanceConfig400Response with oneOf schemas: InvalidIssuerWalletError, ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -102,13 +110,19 @@ class CreateIssuanceConfig400Response(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into InvalidIssuerWalletError
+        try:
+            instance.actual_instance = InvalidIssuerWalletError.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into CreateIssuanceConfig400Response with oneOf schemas: ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into CreateIssuanceConfig400Response with oneOf schemas: InvalidIssuerWalletError, ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into CreateIssuanceConfig400Response with oneOf schemas: ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into CreateIssuanceConfig400Response with oneOf schemas: InvalidIssuerWalletError, ProjectCredentialConfigExistError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         else:
             return instance
 

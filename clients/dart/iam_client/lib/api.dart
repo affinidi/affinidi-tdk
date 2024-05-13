@@ -45,6 +45,7 @@ part 'model/create_project_input.dart';
 part 'model/create_project_scoped_token_input.dart';
 part 'model/create_project_scoped_token_output.dart';
 part 'model/create_token_input.dart';
+part 'model/get_well_known_did_ok.dart';
 part 'model/invalid_jwt_token_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/json_web_key_dto.dart';
