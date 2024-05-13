@@ -1,11 +1,8 @@
-# NOTE: affinidi_tdk_auth_provider is not published to PyPi yet
-# pip3 install <path to python client_cwe file>
-
-from affinidi_tdk_organizational_wallet.api_client import ApiClient
-from affinidi_tdk_organizational_wallet.configuration import Configuration
-from affinidi_tdk_organizational_wallet.api.wallet_api import WalletApi
+# pip install <path to whl file>
 import affinidi_tdk_auth_provider
+from affinidi_tdk_organizational_wallet_client import Configuration, WalletApi, ApiClient
 
+# Create Auth Provider
 stats = {
   'privateKey': '<your_private_key>',
   'publicKey': '<your_public_key>',
@@ -16,17 +13,15 @@ stats = {
   'tokenEndpoint': 'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
   'apiGatewayUrl': 'https://apse1.api.affinidi.io'
 }
-
 authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
-
 projectScopedToken = authProvider.fetch_project_scoped_token()
+print(projectScopedToken)
 
-client = ApiClient(Configuration(host="<api_gateway_url>"))
-
-wallet_api = WalletApi(client)
-
-wallet = wallet_api.create_wallet()
-
-walletInfo = wallet_api.get_wallet(wallet.id)
-
-wallets = wallet_api.list_wallets()
+configuration = Configuration(
+  host = "https://apse1.api.affinidi.io/cwe",
+  api_key = { "ProjectTokenAuth": projectScopedToken }
+)
+with ApiClient(configuration) as client: 
+  wallet_api_instance = WalletApi(client)
+  wallets = wallet_api_instance.list_wallets()
+  print(wallets)
