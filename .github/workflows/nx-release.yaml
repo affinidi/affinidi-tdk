@@ -52,6 +52,7 @@ jobs:
           scope: "@affinidi-tdk"
       # Publish to npm manual
       - run: |
+          echo "${NODE_AUTH_TOKEN}"
           cd clients/typescript/organizational-wallet-client
           npm publish
         name: release
