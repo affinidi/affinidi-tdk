@@ -2,7 +2,7 @@ import {
   WalletApi,
   Configuration,
   SignCredentialResultDto,
-} from '@affinidi-tdk/organizational-wallet-client'
+} from '@affinidi-tdk/wallets-client'
 
 export interface SignCredential extends SignCredentialResultDto {}
 

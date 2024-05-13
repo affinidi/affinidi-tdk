@@ -4,7 +4,7 @@
 import {
   Configuration,
   WalletApi,
-} from '@affinidi-tdk/organizational-wallet-client'
+} from '@affinidi-tdk/wallets-client'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 // NOTE: set your variables for PAT

@@ -25,7 +25,7 @@ The Affinidi TDK offers the following modules and programming languages:
 | **Packages**                                      |
 | [auth-provider](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Clients**                                       |
-| organizational-wallet-client                                        | [🟢 Link](clients/typescript/organizational-wallet-client/README.md) | [🟢 Link](clients/python/organizational_wallet_client/README.md) | [🟡 Link](clients/dart/organizational-wallet-client/README.md) |
+| wallets-client                                        | [🟢 Link](clients/typescript/wallets-client/README.md) | [🟢 Link](clients/python/wallets_client/README.md) | [🟡 Link](clients/dart/wallets-client/README.md) |
 | iam-client                                        | [🟢 Link](clients/typescript/iam-client/README.md) | [🟢 Link](clients/python/iam_client/README.md) | [🟡 Link](clients/dart/iam_client/README.md) |
 | credential-verification-client                                        | [🟢 Link](clients/typescript/credential-verification-client/README.md) | [🟢 Link](clients/python/credential_verification_client/README.md) | [🟡 Link](clients/dart/credential_verification_client/README.md) |
 | login-configation                                        | [🟢 Link](clients/typescript/login-configuration/README.md) | [🟢 Link](clients/python/login_configuration/README.md) | [🟡 Link](clients/dart/login_configuration/README.md) |

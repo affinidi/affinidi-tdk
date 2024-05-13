@@ -1,6 +1,6 @@
 # pip install <path to whl file>
 import affinidi_tdk_auth_provider
-from affinidi_tdk_organizational_wallet_client import Configuration, WalletApi, ApiClient
+from affinidi_tdk_wallets_client import Configuration, WalletApi, ApiClient
 
 # Create Auth Provider
 stats = {

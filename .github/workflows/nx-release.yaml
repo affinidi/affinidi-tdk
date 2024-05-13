@@ -49,7 +49,7 @@ jobs:
 
       # Publish to npm
       - run: |
-          npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
+          npx nx release publish --verbose
         name: release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -39,7 +39,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@affinidi-tdk/organizational-wallet-client": "^0.0.2-beta",
+    "@affinidi-tdk/wallets-client": "^0.0.2-beta",
     "did-resolver": "^4.1.0"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
   "stability": "stable",
   "types": "index.d.ts",
   "bundleDependencies": [
-    "@affinidi-tdk/organizational-wallet-client",
+    "@affinidi-tdk/wallets-client",
     "did-resolver"
   ]
 }
