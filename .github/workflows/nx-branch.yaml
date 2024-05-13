@@ -1,12 +1,9 @@
-name: branch
+name: build
 on:
-  push:
-    branches:
-      # Change this if your primary branch is not main
-      - '**' # matches every branch
-      - '!main'
-  pull_request:
-
+  workflow_run:
+    workflows: [security]
+    types: [completed]
+    
 permissions:
   actions: read
   contents: read

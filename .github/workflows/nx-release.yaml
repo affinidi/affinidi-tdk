@@ -1,13 +1,10 @@
 name: release
 
 on:
-  push:
-    branches:
-      - 'main'
-  # workflow_run:
-  #   workflows: [security]
-  #   types: [completed]
-  #   branches: [main]
+  workflow_run:
+    workflows: [build]
+    types: [completed]
+    branches: [main]
 
 
 jobs:
