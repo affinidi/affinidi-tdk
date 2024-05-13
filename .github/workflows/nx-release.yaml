@@ -33,12 +33,23 @@ jobs:
       - run: npm ci
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: "@affinidi-tdk"
       - run: npx nx run-many  -t semantic-release --parallel 1
         name: semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: "@affinidi-tdk"
       # Publish to npm manual
       - run: |
           cd clients/typescript/organizational-wallet-client
@@ -48,6 +59,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
 
+          - uses: actions/setup-node@v4
+            with:
+              node-version: 18
+              cache: 'npm'
+              registry-url: 'https://registry.npmjs.org'
+              scope: "@affinidi-tdk"
       # Publish to npm
       - run: |
           npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
