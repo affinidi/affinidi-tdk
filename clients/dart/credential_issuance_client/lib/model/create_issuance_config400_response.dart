@@ -151,11 +151,11 @@ class CreateIssuanceConfig400ResponseNameEnum {
 
   String toJson() => value;
 
-  static const projectCredentialConfigExistError = CreateIssuanceConfig400ResponseNameEnum._(r'ProjectCredentialConfigExistError');
+  static const invalidIssuerWalletError = CreateIssuanceConfig400ResponseNameEnum._(r'InvalidIssuerWalletError');
 
   /// List of all possible values in this [enum][CreateIssuanceConfig400ResponseNameEnum].
   static const values = <CreateIssuanceConfig400ResponseNameEnum>[
-    projectCredentialConfigExistError,
+    invalidIssuerWalletError,
   ];
 
   static CreateIssuanceConfig400ResponseNameEnum? fromJson(dynamic value) => CreateIssuanceConfig400ResponseNameEnumTypeTransformer().decode(value);
@@ -194,7 +194,7 @@ class CreateIssuanceConfig400ResponseNameEnumTypeTransformer {
   CreateIssuanceConfig400ResponseNameEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'ProjectCredentialConfigExistError': return CreateIssuanceConfig400ResponseNameEnum.projectCredentialConfigExistError;
+        case r'InvalidIssuerWalletError': return CreateIssuanceConfig400ResponseNameEnum.invalidIssuerWalletError;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -222,11 +222,11 @@ class CreateIssuanceConfig400ResponseMessageEnum {
 
   String toJson() => value;
 
-  static const credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject = CreateIssuanceConfig400ResponseMessageEnum._(r'Credential config is exist for the project, one config is allowed for each project');
+  static const issuerWalletIdIsInvalid = CreateIssuanceConfig400ResponseMessageEnum._(r'issuer wallet id is invalid');
 
   /// List of all possible values in this [enum][CreateIssuanceConfig400ResponseMessageEnum].
   static const values = <CreateIssuanceConfig400ResponseMessageEnum>[
-    credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject,
+    issuerWalletIdIsInvalid,
   ];
 
   static CreateIssuanceConfig400ResponseMessageEnum? fromJson(dynamic value) => CreateIssuanceConfig400ResponseMessageEnumTypeTransformer().decode(value);
@@ -265,7 +265,7 @@ class CreateIssuanceConfig400ResponseMessageEnumTypeTransformer {
   CreateIssuanceConfig400ResponseMessageEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Credential config is exist for the project, one config is allowed for each project': return CreateIssuanceConfig400ResponseMessageEnum.credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject;
+        case r'issuer wallet id is invalid': return CreateIssuanceConfig400ResponseMessageEnum.issuerWalletIdIsInvalid;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

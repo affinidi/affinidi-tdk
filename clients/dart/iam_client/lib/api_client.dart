@@ -200,6 +200,8 @@ class ApiClient {
           return CreateProjectScopedTokenOutput.fromJson(value);
         case 'CreateTokenInput':
           return CreateTokenInput.fromJson(value);
+        case 'GetWellKnownDidOK':
+          return GetWellKnownDidOK.fromJson(value);
         case 'InvalidJwtTokenError':
           return InvalidJwtTokenError.fromJson(value);
         case 'InvalidParameterError':

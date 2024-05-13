@@ -226,6 +226,8 @@ class ApiClient {
           return InvalidCredentialRequestError.fromJson(value);
         case 'InvalidCredentialTypeError':
           return InvalidCredentialTypeError.fromJson(value);
+        case 'InvalidIssuerWalletError':
+          return InvalidIssuerWalletError.fromJson(value);
         case 'InvalidJwtTokenError':
           return InvalidJwtTokenError.fromJson(value);
         case 'InvalidParameterError':

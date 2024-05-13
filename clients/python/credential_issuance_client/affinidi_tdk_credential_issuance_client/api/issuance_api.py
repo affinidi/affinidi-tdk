@@ -319,6 +319,7 @@ class IssuanceApi:
 
         _response_types_map = {
             '200': "ListIssuanceResponse",
+            '403': "ActionForbiddenError",
         }
 
         return self.api_client.call_api(
@@ -475,6 +476,7 @@ class IssuanceApi:
         _response_types_map = {
             '200': "StartIssuanceResponse",
             '400': "StartIssuance400Response",
+            '403': "ActionForbiddenError",
         }
 
         return self.api_client.call_api(

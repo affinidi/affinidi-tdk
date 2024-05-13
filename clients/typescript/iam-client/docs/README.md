@@ -34,6 +34,7 @@ All URIs are relative to _http://localhost_
 | _TokensApi_       | [**getToken**](Apis/TokensApi.md#gettoken)                                         | **GET** /v1/tokens/{tokenId}                     |                                       |
 | _TokensApi_       | [**listToken**](Apis/TokensApi.md#listtoken)                                       | **GET** /v1/tokens                               |                                       |
 | _TokensApi_       | [**updateToken**](Apis/TokensApi.md#updatetoken)                                   | **PATCH** /v1/tokens/{tokenId}                   |                                       |
+| _WellKnownApi_    | [**getWellKnownDid**](Apis/WellKnownApi.md#getwellknowndid)                        | **GET** /.well-known/did.json                    |                                       |
 | _WellKnownApi_    | [**getWellKnownJwks**](Apis/WellKnownApi.md#getwellknownjwks)                      | **GET** /.well-known/jwks.json                   |                                       |
 
 <a name="documentation-for-models"></a>

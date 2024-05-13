@@ -43,6 +43,7 @@ All URIs are relative to _http://localhost_
 - [DeferredCredentialInput](./Models/DeferredCredentialInput.md)
 - [InvalidCredentialRequestError](./Models/InvalidCredentialRequestError.md)
 - [InvalidCredentialTypeError](./Models/InvalidCredentialTypeError.md)
+- [InvalidIssuerWalletError](./Models/InvalidIssuerWalletError.md)
 - [InvalidJwtTokenError](./Models/InvalidJwtTokenError.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)
 - [InvalidProofError](./Models/InvalidProofError.md)

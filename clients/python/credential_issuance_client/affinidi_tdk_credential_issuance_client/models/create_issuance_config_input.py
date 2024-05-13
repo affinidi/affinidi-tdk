@@ -27,7 +27,7 @@ class CreateIssuanceConfigInput(BaseModel):
     """
     CreateIssuanceConfigInput
     """
-    issuer_wallet_id: Optional[StrictStr] = Field(None, alias="issuerWalletId", description="Issuer Wallet id")
+    issuer_wallet_id: StrictStr = Field(..., alias="issuerWalletId", description="Issuer Wallet id")
     credential_offer_duration: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
     format: Optional[StrictStr] = Field(None, description="String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type")
     credential_supported: conlist(CreateIssuanceConfigInputCredentialSupportedInner) = Field(..., alias="credentialSupported")

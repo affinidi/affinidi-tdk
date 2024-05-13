@@ -159,9 +159,10 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-| ----------- | ----------- | ---------------- |
-| **200**     | Ok          | -                |
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **200**     | Ok             | -                |
+| **403**     | ForbiddenError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -242,5 +243,6 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 | ----------- | --------------- | ---------------- |
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

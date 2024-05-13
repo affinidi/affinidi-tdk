@@ -13,7 +13,7 @@ part of openapi.api;
 class CreateIssuanceConfigInput {
   /// Returns a new [CreateIssuanceConfigInput] instance.
   CreateIssuanceConfigInput({
-    this.issuerWalletId,
+    required this.issuerWalletId,
     this.credentialOfferDuration,
     this.format,
     this.credentialSupported = const [],
@@ -21,13 +21,7 @@ class CreateIssuanceConfigInput {
   });
 
   /// Issuer Wallet id
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? issuerWalletId;
+  String issuerWalletId;
 
   /// credential offer duration in second
   ///
@@ -57,7 +51,7 @@ class CreateIssuanceConfigInput {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (issuerWalletId == null ? 0 : issuerWalletId!.hashCode) +
+    (issuerWalletId.hashCode) +
     (credentialOfferDuration == null ? 0 : credentialOfferDuration!.hashCode) +
     (format == null ? 0 : format!.hashCode) +
     (credentialSupported.hashCode) +
@@ -68,11 +62,7 @@ class CreateIssuanceConfigInput {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.issuerWalletId != null) {
       json[r'issuerWalletId'] = this.issuerWalletId;
-    } else {
-      json[r'issuerWalletId'] = null;
-    }
     if (this.credentialOfferDuration != null) {
       json[r'credentialOfferDuration'] = this.credentialOfferDuration;
     } else {
@@ -107,7 +97,7 @@ class CreateIssuanceConfigInput {
       }());
 
       return CreateIssuanceConfigInput(
-        issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId'),
+        issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId')!,
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),
         format: CreateIssuanceConfigInputFormatEnum.fromJson(json[r'format']),
         credentialSupported: CreateIssuanceConfigInputCredentialSupportedInner.listFromJson(json[r'credentialSupported']),
@@ -159,6 +149,7 @@ class CreateIssuanceConfigInput {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'issuerWalletId',
     'credentialSupported',
   };
 }

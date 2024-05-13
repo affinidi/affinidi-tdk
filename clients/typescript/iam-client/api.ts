@@ -290,6 +290,14 @@ export interface CreateTokenInput {
 /**
  *
  * @export
+ * @interface GetWellKnownDidOK
+ */
+export interface GetWellKnownDidOK {
+  [key: string]: any
+}
+/**
+ *
+ * @export
  * @interface InvalidJwtTokenError
  */
 export interface InvalidJwtTokenError {
@@ -1164,7 +1172,7 @@ export interface WhoamiDto {
  * @export
  */
 export const ConsumerAuthApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -1176,13 +1184,13 @@ export const ConsumerAuthApiAxiosParamCreator = function (
      */
     consumerAuthTokenEndpoint: async (
       consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'consumerAuthTokenEndpointInput' is not null or undefined
       assertParamExists(
         'consumerAuthTokenEndpoint',
         'consumerAuthTokenEndpointInput',
-        consumerAuthTokenEndpointInput
+        consumerAuthTokenEndpointInput,
       )
       const localVarPath = `/v1/consumer/oauth2/token`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1213,7 +1221,7 @@ export const ConsumerAuthApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         consumerAuthTokenEndpointInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -1241,17 +1249,17 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
      */
     async consumerAuthTokenEndpoint(
       consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (
         axios?: AxiosInstance,
-        basePath?: string
+        basePath?: string,
       ) => AxiosPromise<ConsumerAuthTokenEndpointOutput>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.consumerAuthTokenEndpoint(
           consumerAuthTokenEndpointInput,
-          options
+          options,
         )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1262,7 +1270,7 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -1275,7 +1283,7 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
 export const ConsumerAuthApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = ConsumerAuthApiFp(configuration)
   return {
@@ -1288,7 +1296,7 @@ export const ConsumerAuthApiFactory = function (
      */
     consumerAuthTokenEndpoint(
       consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<ConsumerAuthTokenEndpointOutput> {
       return localVarFp
         .consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, options)
@@ -1314,7 +1322,7 @@ export class ConsumerAuthApi extends BaseAPI {
    */
   public consumerAuthTokenEndpoint(
     consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return ConsumerAuthApiFp(this.configuration)
       .consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, options)
@@ -1327,7 +1335,7 @@ export class ConsumerAuthApi extends BaseAPI {
  * @export
  */
 export const DefaultApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -1338,13 +1346,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1AuthProxyDelete: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyDelete', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1383,13 +1391,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1AuthProxyGet: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyGet', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1428,13 +1436,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1AuthProxyPatch: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPatch', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1473,13 +1481,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1AuthProxyPost: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPost', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1518,13 +1526,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1AuthProxyPut: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPut', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1563,13 +1571,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1IdpProxyDelete: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyDelete', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1608,13 +1616,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1IdpProxyGet: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyGet', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1653,13 +1661,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1IdpProxyPatch: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPatch', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1698,13 +1706,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1IdpProxyPost: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPost', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1743,13 +1751,13 @@ export const DefaultApiAxiosParamCreator = function (
      */
     v1IdpProxyPut: async (
       proxy: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPut', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
         `{${'proxy'}}`,
-        encodeURIComponent(String(proxy))
+        encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -1798,7 +1806,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1AuthProxyDelete(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -1812,7 +1820,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1823,13 +1831,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1AuthProxyGet(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyGet(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1839,7 +1847,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1850,7 +1858,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1AuthProxyPatch(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -1864,7 +1872,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1875,13 +1883,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1AuthProxyPost(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyPost(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1891,7 +1899,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1902,13 +1910,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1AuthProxyPut(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1AuthProxyPut(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1918,7 +1926,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1929,7 +1937,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1IdpProxyDelete(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -1943,7 +1951,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1954,13 +1962,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1IdpProxyGet(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyGet(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1970,7 +1978,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -1981,13 +1989,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1IdpProxyPatch(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPatch(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -1997,7 +2005,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -2008,13 +2016,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1IdpProxyPost(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPost(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -2024,7 +2032,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -2035,13 +2043,13 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      */
     async v1IdpProxyPut(
       proxy: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.v1IdpProxyPut(
         proxy,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -2051,7 +2059,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -2064,7 +2072,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
 export const DefaultApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = DefaultApiFp(configuration)
   return {
@@ -2324,7 +2332,7 @@ export class DefaultApi extends BaseAPI {
  * @export
  */
 export const PoliciesApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -2337,7 +2345,7 @@ export const PoliciesApiAxiosParamCreator = function (
     getPolicies: async (
       principalId: string,
       principalType: GetPoliciesPrincipalTypeEnum,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'principalId' is not null or undefined
       assertParamExists('getPolicies', 'principalId', principalId)
@@ -2345,7 +2353,7 @@ export const PoliciesApiAxiosParamCreator = function (
       assertParamExists('getPolicies', 'principalType', principalType)
       const localVarPath = `/v1/policies/principals/{principalId}`.replace(
         `{${'principalId'}}`,
-        encodeURIComponent(String(principalId))
+        encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -2366,7 +2374,7 @@ export const PoliciesApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       if (principalType !== undefined) {
@@ -2399,7 +2407,7 @@ export const PoliciesApiAxiosParamCreator = function (
       principalId: string,
       principalType: UpdatePoliciesPrincipalTypeEnum,
       policyDto: PolicyDto,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'principalId' is not null or undefined
       assertParamExists('updatePolicies', 'principalId', principalId)
@@ -2409,7 +2417,7 @@ export const PoliciesApiAxiosParamCreator = function (
       assertParamExists('updatePolicies', 'policyDto', policyDto)
       const localVarPath = `/v1/policies/principals/{principalId}`.replace(
         `{${'principalId'}}`,
-        encodeURIComponent(String(principalId))
+        encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -2430,7 +2438,7 @@ export const PoliciesApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       if (principalType !== undefined) {
@@ -2450,7 +2458,7 @@ export const PoliciesApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         policyDto,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -2478,14 +2486,14 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
     async getPolicies(
       principalId: string,
       principalType: GetPoliciesPrincipalTypeEnum,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getPolicies(
         principalId,
         principalType,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -2495,7 +2503,7 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -2510,7 +2518,7 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
       principalId: string,
       principalType: UpdatePoliciesPrincipalTypeEnum,
       policyDto: PolicyDto,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PolicyDto>
     > {
@@ -2518,7 +2526,7 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
         principalId,
         principalType,
         policyDto,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -2528,7 +2536,7 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -2541,7 +2549,7 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
 export const PoliciesApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = PoliciesApiFp(configuration)
   return {
@@ -2555,7 +2563,7 @@ export const PoliciesApiFactory = function (
     getPolicies(
       principalId: string,
       principalType: GetPoliciesPrincipalTypeEnum,
-      options?: any
+      options?: any,
     ): AxiosPromise<PolicyDto> {
       return localVarFp
         .getPolicies(principalId, principalType, options)
@@ -2573,7 +2581,7 @@ export const PoliciesApiFactory = function (
       principalId: string,
       principalType: UpdatePoliciesPrincipalTypeEnum,
       policyDto: PolicyDto,
-      options?: any
+      options?: any,
     ): AxiosPromise<PolicyDto> {
       return localVarFp
         .updatePolicies(principalId, principalType, policyDto, options)
@@ -2600,7 +2608,7 @@ export class PoliciesApi extends BaseAPI {
   public getPolicies(
     principalId: string,
     principalType: GetPoliciesPrincipalTypeEnum,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return PoliciesApiFp(this.configuration)
       .getPolicies(principalId, principalType, options)
@@ -2620,7 +2628,7 @@ export class PoliciesApi extends BaseAPI {
     principalId: string,
     principalType: UpdatePoliciesPrincipalTypeEnum,
     policyDto: PolicyDto,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return PoliciesApiFp(this.configuration)
       .updatePolicies(principalId, principalType, policyDto, options)
@@ -2652,7 +2660,7 @@ export type UpdatePoliciesPrincipalTypeEnum =
  * @export
  */
 export const ProjectsApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -2663,13 +2671,13 @@ export const ProjectsApiAxiosParamCreator = function (
      */
     addPrincipalToProject: async (
       addUserToProjectInput: AddUserToProjectInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'addUserToProjectInput' is not null or undefined
       assertParamExists(
         'addPrincipalToProject',
         'addUserToProjectInput',
-        addUserToProjectInput
+        addUserToProjectInput,
       )
       const localVarPath = `/v1/projects/principals`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2691,7 +2699,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -2707,7 +2715,7 @@ export const ProjectsApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         addUserToProjectInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -2723,13 +2731,13 @@ export const ProjectsApiAxiosParamCreator = function (
      */
     createProject: async (
       createProjectInput: CreateProjectInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createProjectInput' is not null or undefined
       assertParamExists(
         'createProject',
         'createProjectInput',
-        createProjectInput
+        createProjectInput,
       )
       const localVarPath = `/v1/projects`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2751,7 +2759,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -2767,7 +2775,7 @@ export const ProjectsApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         createProjectInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -2785,23 +2793,23 @@ export const ProjectsApiAxiosParamCreator = function (
     deletePrincipalFromProject: async (
       principalId: string,
       principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'principalId' is not null or undefined
       assertParamExists(
         'deletePrincipalFromProject',
         'principalId',
-        principalId
+        principalId,
       )
       // verify required parameter 'principalType' is not null or undefined
       assertParamExists(
         'deletePrincipalFromProject',
         'principalType',
-        principalType
+        principalType,
       )
       const localVarPath = `/v1/projects/principals/{principalId}`.replace(
         `{${'principalId'}}`,
-        encodeURIComponent(String(principalId))
+        encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -2822,7 +2830,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       if (principalType !== undefined) {
@@ -2849,7 +2857,7 @@ export const ProjectsApiAxiosParamCreator = function (
      * @throws {RequiredError}
      */
     listPrincipalsOfProject: async (
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/projects/principals`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2871,7 +2879,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -2894,7 +2902,7 @@ export const ProjectsApiAxiosParamCreator = function (
      * @throws {RequiredError}
      */
     listProject: async (
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/projects`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2916,7 +2924,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -2943,7 +2951,7 @@ export const ProjectsApiAxiosParamCreator = function (
     updateProject: async (
       projectId: string,
       updateProjectInput: UpdateProjectInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'projectId' is not null or undefined
       assertParamExists('updateProject', 'projectId', projectId)
@@ -2951,11 +2959,11 @@ export const ProjectsApiAxiosParamCreator = function (
       assertParamExists(
         'updateProject',
         'updateProjectInput',
-        updateProjectInput
+        updateProjectInput,
       )
       const localVarPath = `/v1/projects/{projectId}`.replace(
         `{${'projectId'}}`,
-        encodeURIComponent(String(projectId))
+        encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -2976,7 +2984,7 @@ export const ProjectsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -2992,7 +3000,7 @@ export const ProjectsApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         updateProjectInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -3018,14 +3026,14 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
      */
     async addPrincipalToProject(
       addUserToProjectInput: AddUserToProjectInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.addPrincipalToProject(
           addUserToProjectInput,
-          options
+          options,
         )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3035,7 +3043,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3046,13 +3054,13 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
      */
     async createProject(
       createProjectInput: CreateProjectInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.createProject(
         createProjectInput,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3062,7 +3070,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3075,7 +3083,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     async deletePrincipalFromProject(
       principalId: string,
       principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
@@ -3083,7 +3091,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
         await localVarAxiosParamCreator.deletePrincipalFromProject(
           principalId,
           principalType,
-          options
+          options,
         )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3094,7 +3102,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3103,7 +3111,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async listPrincipalsOfProject(
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserList>
     > {
@@ -3117,7 +3125,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3126,13 +3134,12 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async listProject(
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectList>
     > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listProject(
-        options
-      )
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listProject(options)
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
         operationServerMap['ProjectsApi.listProject']?.[index]?.url
@@ -3141,7 +3148,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3154,14 +3161,14 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     async updateProject(
       projectId: string,
       updateProjectInput: UpdateProjectInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.updateProject(
         projectId,
         updateProjectInput,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3171,7 +3178,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -3184,7 +3191,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
 export const ProjectsApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = ProjectsApiFp(configuration)
   return {
@@ -3196,7 +3203,7 @@ export const ProjectsApiFactory = function (
      */
     addPrincipalToProject(
       addUserToProjectInput: AddUserToProjectInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<void> {
       return localVarFp
         .addPrincipalToProject(addUserToProjectInput, options)
@@ -3210,7 +3217,7 @@ export const ProjectsApiFactory = function (
      */
     createProject(
       createProjectInput: CreateProjectInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<ProjectDto> {
       return localVarFp
         .createProject(createProjectInput, options)
@@ -3226,7 +3233,7 @@ export const ProjectsApiFactory = function (
     deletePrincipalFromProject(
       principalId: string,
       principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
-      options?: any
+      options?: any,
     ): AxiosPromise<void> {
       return localVarFp
         .deletePrincipalFromProject(principalId, principalType, options)
@@ -3262,7 +3269,7 @@ export const ProjectsApiFactory = function (
     updateProject(
       projectId: string,
       updateProjectInput: UpdateProjectInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<ProjectDto> {
       return localVarFp
         .updateProject(projectId, updateProjectInput, options)
@@ -3287,7 +3294,7 @@ export class ProjectsApi extends BaseAPI {
    */
   public addPrincipalToProject(
     addUserToProjectInput: AddUserToProjectInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return ProjectsApiFp(this.configuration)
       .addPrincipalToProject(addUserToProjectInput, options)
@@ -3303,7 +3310,7 @@ export class ProjectsApi extends BaseAPI {
    */
   public createProject(
     createProjectInput: CreateProjectInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return ProjectsApiFp(this.configuration)
       .createProject(createProjectInput, options)
@@ -3321,7 +3328,7 @@ export class ProjectsApi extends BaseAPI {
   public deletePrincipalFromProject(
     principalId: string,
     principalType: DeletePrincipalFromProjectPrincipalTypeEnum,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return ProjectsApiFp(this.configuration)
       .deletePrincipalFromProject(principalId, principalType, options)
@@ -3363,7 +3370,7 @@ export class ProjectsApi extends BaseAPI {
   public updateProject(
     projectId: string,
     updateProjectInput: UpdateProjectInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return ProjectsApiFp(this.configuration)
       .updateProject(projectId, updateProjectInput, options)
@@ -3386,7 +3393,7 @@ export type DeletePrincipalFromProjectPrincipalTypeEnum =
  * @export
  */
 export const StsApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -3397,13 +3404,13 @@ export const StsApiAxiosParamCreator = function (
      */
     createProjectScopedToken: async (
       createProjectScopedTokenInput: CreateProjectScopedTokenInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createProjectScopedTokenInput' is not null or undefined
       assertParamExists(
         'createProjectScopedToken',
         'createProjectScopedTokenInput',
-        createProjectScopedTokenInput
+        createProjectScopedTokenInput,
       )
       const localVarPath = `/v1/sts/create-project-scoped-token`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3425,7 +3432,7 @@ export const StsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -3441,7 +3448,7 @@ export const StsApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         createProjectScopedTokenInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -3455,7 +3462,7 @@ export const StsApiAxiosParamCreator = function (
      * @throws {RequiredError}
      */
     whoami: async (
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/sts/whoami`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3477,7 +3484,7 @@ export const StsApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3512,17 +3519,17 @@ export const StsApiFp = function (configuration?: Configuration) {
      */
     async createProjectScopedToken(
       createProjectScopedTokenInput: CreateProjectScopedTokenInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (
         axios?: AxiosInstance,
-        basePath?: string
+        basePath?: string,
       ) => AxiosPromise<CreateProjectScopedTokenOutput>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.createProjectScopedToken(
           createProjectScopedTokenInput,
-          options
+          options,
         )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3532,7 +3539,7 @@ export const StsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3541,7 +3548,7 @@ export const StsApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async whoami(
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WhoamiDto>
     > {
@@ -3554,7 +3561,7 @@ export const StsApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -3567,7 +3574,7 @@ export const StsApiFp = function (configuration?: Configuration) {
 export const StsApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = StsApiFp(configuration)
   return {
@@ -3579,7 +3586,7 @@ export const StsApiFactory = function (
      */
     createProjectScopedToken(
       createProjectScopedTokenInput: CreateProjectScopedTokenInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<CreateProjectScopedTokenOutput> {
       return localVarFp
         .createProjectScopedToken(createProjectScopedTokenInput, options)
@@ -3614,7 +3621,7 @@ export class StsApi extends BaseAPI {
    */
   public createProjectScopedToken(
     createProjectScopedTokenInput: CreateProjectScopedTokenInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return StsApiFp(this.configuration)
       .createProjectScopedToken(createProjectScopedTokenInput, options)
@@ -3639,7 +3646,7 @@ export class StsApi extends BaseAPI {
  * @export
  */
 export const TokensApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -3650,7 +3657,7 @@ export const TokensApiAxiosParamCreator = function (
      */
     createToken: async (
       createTokenInput: CreateTokenInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createTokenInput' is not null or undefined
       assertParamExists('createToken', 'createTokenInput', createTokenInput)
@@ -3674,7 +3681,7 @@ export const TokensApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -3690,7 +3697,7 @@ export const TokensApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         createTokenInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -3706,13 +3713,13 @@ export const TokensApiAxiosParamCreator = function (
      */
     deleteToken: async (
       tokenId: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('deleteToken', 'tokenId', tokenId)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
         `{${'tokenId'}}`,
-        encodeURIComponent(String(tokenId))
+        encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -3733,7 +3740,7 @@ export const TokensApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3758,13 +3765,13 @@ export const TokensApiAxiosParamCreator = function (
      */
     getToken: async (
       tokenId: string,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('getToken', 'tokenId', tokenId)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
         `{${'tokenId'}}`,
-        encodeURIComponent(String(tokenId))
+        encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -3785,7 +3792,7 @@ export const TokensApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3808,7 +3815,7 @@ export const TokensApiAxiosParamCreator = function (
      * @throws {RequiredError}
      */
     listToken: async (
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/tokens`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3830,7 +3837,7 @@ export const TokensApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3857,7 +3864,7 @@ export const TokensApiAxiosParamCreator = function (
     updateToken: async (
       tokenId: string,
       updateTokenInput: UpdateTokenInput,
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('updateToken', 'tokenId', tokenId)
@@ -3865,7 +3872,7 @@ export const TokensApiAxiosParamCreator = function (
       assertParamExists('updateToken', 'updateTokenInput', updateTokenInput)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
         `{${'tokenId'}}`,
-        encodeURIComponent(String(tokenId))
+        encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
@@ -3886,7 +3893,7 @@ export const TokensApiAxiosParamCreator = function (
       await setApiKeyToObject(
         localVarHeaderParameter,
         'authorization',
-        configuration
+        configuration,
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -3902,7 +3909,7 @@ export const TokensApiAxiosParamCreator = function (
       localVarRequestOptions.data = serializeDataIfNeeded(
         updateTokenInput,
         localVarRequestOptions,
-        configuration
+        configuration,
       )
 
       return {
@@ -3928,13 +3935,13 @@ export const TokensApiFp = function (configuration?: Configuration) {
      */
     async createToken(
       createTokenInput: CreateTokenInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.createToken(
         createTokenInput,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3944,7 +3951,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3955,13 +3962,13 @@ export const TokensApiFp = function (configuration?: Configuration) {
      */
     async deleteToken(
       tokenId: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.deleteToken(
         tokenId,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3971,7 +3978,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -3982,13 +3989,13 @@ export const TokensApiFp = function (configuration?: Configuration) {
      */
     async getToken(
       tokenId: string,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getToken(
         tokenId,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -3998,7 +4005,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -4007,13 +4014,12 @@ export const TokensApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async listToken(
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenList>
     > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.listToken(
-        options
-      )
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listToken(options)
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
         operationServerMap['TokensApi.listToken']?.[index]?.url
@@ -4022,7 +4028,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
     /**
@@ -4035,14 +4041,14 @@ export const TokensApiFp = function (configuration?: Configuration) {
     async updateToken(
       tokenId: string,
       updateTokenInput: UpdateTokenInput,
-      options?: RawAxiosRequestConfig
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenDto>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.updateToken(
         tokenId,
         updateTokenInput,
-        options
+        options,
       )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
@@ -4052,7 +4058,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -4065,7 +4071,7 @@ export const TokensApiFp = function (configuration?: Configuration) {
 export const TokensApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = TokensApiFp(configuration)
   return {
@@ -4077,7 +4083,7 @@ export const TokensApiFactory = function (
      */
     createToken(
       createTokenInput: CreateTokenInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<TokenDto> {
       return localVarFp
         .createToken(createTokenInput, options)
@@ -4125,7 +4131,7 @@ export const TokensApiFactory = function (
     updateToken(
       tokenId: string,
       updateTokenInput: UpdateTokenInput,
-      options?: any
+      options?: any,
     ): AxiosPromise<TokenDto> {
       return localVarFp
         .updateToken(tokenId, updateTokenInput, options)
@@ -4150,7 +4156,7 @@ export class TokensApi extends BaseAPI {
    */
   public createToken(
     createTokenInput: CreateTokenInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return TokensApiFp(this.configuration)
       .createToken(createTokenInput, options)
@@ -4206,7 +4212,7 @@ export class TokensApi extends BaseAPI {
   public updateToken(
     tokenId: string,
     updateTokenInput: UpdateTokenInput,
-    options?: RawAxiosRequestConfig
+    options?: RawAxiosRequestConfig,
   ) {
     return TokensApiFp(this.configuration)
       .updateToken(tokenId, updateTokenInput, options)
@@ -4219,7 +4225,7 @@ export class TokensApi extends BaseAPI {
  * @export
  */
 export const WellKnownApiAxiosParamCreator = function (
-  configuration?: Configuration
+  configuration?: Configuration,
 ) {
   return {
     /**
@@ -4227,8 +4233,46 @@ export const WellKnownApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
+    getWellKnownDid: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/.well-known/did.json`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
     getWellKnownJwks: async (
-      options: RawAxiosRequestConfig = {}
+      options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/.well-known/jwks.json`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4275,12 +4319,38 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getWellKnownJwks(
-      options?: RawAxiosRequestConfig
+    async getWellKnownDid(
+      options?: RawAxiosRequestConfig,
     ): Promise<
       (
         axios?: AxiosInstance,
-        basePath?: string
+        basePath?: string,
+      ) => AxiosPromise<GetWellKnownDidOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getWellKnownDid(options)
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['WellKnownApi.getWellKnownDid']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getWellKnownJwks(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
       ) => AxiosPromise<JsonWebKeySetDto>
     > {
       const localVarAxiosArgs =
@@ -4293,7 +4363,7 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
           localVarAxiosArgs,
           globalAxios,
           BASE_PATH,
-          configuration
+          configuration,
         )(axios, operationBasePath || basePath)
     },
   }
@@ -4306,10 +4376,20 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
 export const WellKnownApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
-  axios?: AxiosInstance
+  axios?: AxiosInstance,
 ) {
   const localVarFp = WellKnownApiFp(configuration)
   return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWellKnownDid(options?: any): AxiosPromise<GetWellKnownDidOK> {
+      return localVarFp
+        .getWellKnownDid(options)
+        .then((request) => request(axios, basePath))
+    },
     /**
      *
      * @param {*} [options] Override http request option.
@@ -4330,6 +4410,18 @@ export const WellKnownApiFactory = function (
  * @extends {BaseAPI}
  */
 export class WellKnownApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WellKnownApi
+   */
+  public getWellKnownDid(options?: RawAxiosRequestConfig) {
+    return WellKnownApiFp(this.configuration)
+      .getWellKnownDid(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    *
    * @param {*} [options] Override http request option.

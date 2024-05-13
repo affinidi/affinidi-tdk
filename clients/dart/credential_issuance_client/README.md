@@ -103,6 +103,7 @@ All URIs are relative to _http://localhost_
 - [GetCredentialOffer400Response](doc//GetCredentialOffer400Response.md)
 - [InvalidCredentialRequestError](doc//InvalidCredentialRequestError.md)
 - [InvalidCredentialTypeError](doc//InvalidCredentialTypeError.md)
+- [InvalidIssuerWalletError](doc//InvalidIssuerWalletError.md)
 - [InvalidJwtTokenError](doc//InvalidJwtTokenError.md)
 - [InvalidParameterError](doc//InvalidParameterError.md)
 - [InvalidProofError](doc//InvalidProofError.md)
