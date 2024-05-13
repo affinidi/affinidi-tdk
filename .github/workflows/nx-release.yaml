@@ -29,8 +29,8 @@ jobs:
           node-version: 18
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
+          scope: "@affinidi-tdk"
       - run: npm ci
-
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx run-many  -t semantic-release --parallel 1
@@ -38,14 +38,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-          # Publish to npm
+      # Publish to npm
       - run: |
-          npm whoami
-          npx nx release publish --verbose || cat ~/.npm/_logs/*.log
+          npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
         name: release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
