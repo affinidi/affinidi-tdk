@@ -1,15 +1,26 @@
-name: build
+name: branch
 on:
-  workflow_run:
-    workflows: [security]
-    types: [completed]
+  push:
+    branches:
+      - '**'
+      - '!main'
     
 permissions:
   actions: read
   contents: read
 
 jobs:
-  main:
+  security:
+    permissions:
+      contents: read
+      checks: read
+      statuses: read
+      security-events: write
+    uses: affinidi/pipeline-security/.github/workflows/security-scanners.yml@feat/check-inherit
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit    
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

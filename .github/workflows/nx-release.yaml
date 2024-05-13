@@ -1,13 +1,41 @@
 name: release
 
 on:
-  workflow_run:
-    workflows: [build]
-    types: [completed]
-    branches: [main]
+  push:
+    branches:
+      - 'main'
 
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Cache node_modules
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+      - uses: nrwl/nx-set-shas@v3
+      # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+
+      # Enable after running npx nx format:write
+      # - run: npx nx format:check
+      - run: npx nx affected -t build --parallel=3  
+  security:
+    permissions:
+      contents: read
+      checks: read
+      statuses: read
+      security-events: write
+    uses: affinidi/pipeline-security/.github/workflows/security-scanners.yml@feat/check-inherit
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit  
   release:
     concurrency: release
     runs-on: ubuntu-latest
