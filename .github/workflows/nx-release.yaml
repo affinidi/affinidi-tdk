@@ -18,7 +18,7 @@ jobs:
     secrets: inherit
   build:
     runs-on: ubuntu-latest
-    needs: 
+    needs:
       - security
     steps:
       - uses: actions/checkout@v4
@@ -40,8 +40,8 @@ jobs:
   release:
     concurrency: release
     runs-on: ubuntu-latest
-    needs: 
-      - build    
+    needs:
+      - build
     steps:
       - name: Generate token from app token #https://github.com/tibdex/github-app-token
         id: generate_token
