@@ -39,6 +39,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # Publish to npm manual
+      - run: |
+          cd clients/typescript/organizational-wallet-client
+          npm publish
+        name: release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
+
       # Publish to npm
       - run: |
           npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
