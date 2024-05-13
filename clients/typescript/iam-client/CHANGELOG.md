@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.1.0...@affinidi-tdk/iam-client-v1.1.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* cwe wallets references ([a666441](https://github.com/affinidi/affinidi-tdk/commit/a66644156c63cb5c315f268eb964859b3447e729))
+
 # [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.0.2...@affinidi-tdk/iam-client-v1.1.0) (2024-05-13)
 
 
