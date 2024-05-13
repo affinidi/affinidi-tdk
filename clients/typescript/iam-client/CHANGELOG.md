@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.0.2...@affinidi-tdk/iam-client-v1.1.0) (2024-05-13)
+
+
+### Bug Fixes
+
+* force login to npmrc ([2d68fcc](https://github.com/affinidi/affinidi-tdk/commit/2d68fcc2462a24fa6f37c8c11edf6ffed329538c))
+* force login to npmrc ([ae847ad](https://github.com/affinidi/affinidi-tdk/commit/ae847ade15a6a6d2e5c14030d955c2c43c0565a5))
+* release ([0b4dc5d](https://github.com/affinidi/affinidi-tdk/commit/0b4dc5dfc7ecf01675f3f4f810a6c2a3995d548e))
+
+
+### Features
+
+* update naming ([#78](https://github.com/affinidi/affinidi-tdk/issues/78)) ([df2f57f](https://github.com/affinidi/affinidi-tdk/commit/df2f57f2584ae5b3bbdabe0fa7f3c80e735e01c0))
+
 # 1.0.0 (2024-05-08)
 
 
