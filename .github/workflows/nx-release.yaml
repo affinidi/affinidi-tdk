@@ -5,7 +5,6 @@ on:
     branches:
       - 'main'
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,7 +24,7 @@ jobs:
 
       # Enable after running npx nx format:write
       # - run: npx nx format:check
-      - run: npx nx affected -t build --parallel=3  
+      - run: npx nx affected -t build --parallel=3
   security:
     permissions:
       contents: read
@@ -35,7 +34,7 @@ jobs:
     uses: affinidi/pipeline-security/.github/workflows/security-scanners.yml@feat/check-inherit
     with:
       config-path: .github/labeler.yml
-    secrets: inherit  
+    secrets: inherit
   release:
     concurrency: release
     runs-on: ubuntu-latest
@@ -62,7 +61,7 @@ jobs:
           node-version: 18
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
-          scope: "@affinidi-tdk"
+          scope: '@affinidi-tdk'
       - run: npm ci
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo

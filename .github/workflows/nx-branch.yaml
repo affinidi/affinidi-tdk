@@ -4,7 +4,7 @@ on:
     branches:
       - '**'
       - '!main'
-    
+
 permissions:
   actions: read
   contents: read
@@ -19,7 +19,7 @@ jobs:
     uses: affinidi/pipeline-security/.github/workflows/security-scanners.yml@feat/check-inherit
     with:
       config-path: .github/labeler.yml
-    secrets: inherit    
+    secrets: inherit
   build:
     runs-on: ubuntu-latest
     steps:
