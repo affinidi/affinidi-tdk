@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.0.0...@affinidi-tdk/credential-issuance-client-v1.0.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* cwe wallets references ([a666441](https://github.com/affinidi/affinidi-tdk/commit/a66644156c63cb5c315f268eb964859b3447e729))
+
 # 1.0.0 (2024-05-13)
 
 
