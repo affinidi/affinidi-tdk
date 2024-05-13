@@ -1,0 +1,41 @@
+{
+  "name": "@affinidi-tdk/credential-issuance-client",
+  "version": "1.0.1",
+  "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL ISSUANCE",
+  "author": "Affinidi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client"
+  },
+  "keywords": [
+    "affinidi-tdk",
+    "identity",
+    "holistic",
+    "network",
+    "openapi-client",
+    "openapi-generator",
+    "@affinidi-tdk/credential-issuance-client"
+  ],
+  "license": "Apache-2.0",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "*"
+  ],
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json",
+    "lint": "eslint . --ext .ts",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "axios-retry": "^4.1.0",
+    "url": "^0.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.18.2",
+    "typescript": "^4.0"
+  }
+}

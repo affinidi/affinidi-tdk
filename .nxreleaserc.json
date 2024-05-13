@@ -1,0 +1,9 @@
+{
+  "changelog": true,
+  "npm": true,
+  "github": false,
+  "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+  "branches": [
+    "master"
+  ]
+}
