@@ -59,12 +59,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
 
-          - uses: actions/setup-node@v4
-            with:
-              node-version: 18
-              cache: 'npm'
-              registry-url: 'https://registry.npmjs.org'
-              scope: "@affinidi-tdk"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: "@affinidi-tdk"
       # Publish to npm
       - run: |
           npx nx release publish --verbose || cat ~/.npm/_logs/*.log || npm whoami
