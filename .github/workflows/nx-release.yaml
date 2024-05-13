@@ -28,12 +28,8 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-
-      - name: Authenticate with private NPM package
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm whoami
 
       # Generate tag/changelog
       # setting parallel higher than one might cause problems with locking git repo
