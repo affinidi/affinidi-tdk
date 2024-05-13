@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.2.0...@affinidi-tdk/login-configuration-client-v1.2.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* cwe wallets references ([a666441](https://github.com/affinidi/affinidi-tdk/commit/a66644156c63cb5c315f268eb964859b3447e729))
+
 # [1.2.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.1.3...@affinidi-tdk/login-configuration-client-v1.2.0) (2024-05-13)
 
 
