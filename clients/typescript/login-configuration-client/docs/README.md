@@ -6,8 +6,37 @@
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class              | Method                                                                                                                              | HTTP request                                                           | Description                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- |
+| _AllowListApi_     | [**allowGroups**](Apis/AllowListApi.md#allowgroups)                                                                                 | **POST** /v1/allow-list/groups/add                                     | Allow Single or Multiple Groups                       |
+| _AllowListApi_     | [**disallowGroups**](Apis/AllowListApi.md#disallowgroups)                                                                           | **POST** /v1/allow-list/groups/remove                                  | Disallow Single or Multiple Groups                    |
+| _AllowListApi_     | [**listAllowedGroups**](Apis/AllowListApi.md#listallowedgroups)                                                                     | **GET** /v1/allow-list/groups                                          | Get Allowed Groups                                    |
+| _ConfigurationApi_ | [**createLoginConfigurations**](Apis/ConfigurationApi.md#createloginconfigurations)                                                 | **POST** /v1/login/configurations                                      | Create a new login configuration                      |
+| _ConfigurationApi_ | [**deleteLoginConfigurationsById**](Apis/ConfigurationApi.md#deleteloginconfigurationsbyid)                                         | **DELETE** /v1/login/configurations/{configurationId}                  | Delete login configurations by ID                     |
+| _ConfigurationApi_ | [**getClientMetadataByClientId**](Apis/ConfigurationApi.md#getclientmetadatabyclientid)                                             | **GET** /v1/login/configurations/metadata/{clientId}                   | Get Client Metadata By OAuth 2.0 Client ID            |
+| _ConfigurationApi_ | [**getLoginConfigurationsById**](Apis/ConfigurationApi.md#getloginconfigurationsbyid)                                               | **GET** /v1/login/configurations/{configurationId}                     | Get login configuration by ID                         |
+| _ConfigurationApi_ | [**listLoginConfigurations**](Apis/ConfigurationApi.md#listloginconfigurations)                                                     | **GET** /v1/login/configurations                                       | List login configurations                             |
+| _ConfigurationApi_ | [**updateLoginConfigurationsById**](Apis/ConfigurationApi.md#updateloginconfigurationsbyid)                                         | **PATCH** /v1/login/configurations/{configurationId}                   | Update login configurations by ID                     |
+| _DenyListApi_      | [**blockGroups**](Apis/DenyListApi.md#blockgroups)                                                                                  | **POST** /v1/deny-list/groups/add                                      | Block Single or Multiple Groups                       |
+| _DenyListApi_      | [**blockUsers**](Apis/DenyListApi.md#blockusers)                                                                                    | **POST** /v1/deny-list/users/add                                       | Block Single or Multiple user ids                     |
+| _DenyListApi_      | [**listBlockedGroups**](Apis/DenyListApi.md#listblockedgroups)                                                                      | **GET** /v1/deny-list/groups                                           | Get Blocked Groups                                    |
+| _DenyListApi_      | [**listBlockedUsers**](Apis/DenyListApi.md#listblockedusers)                                                                        | **GET** /v1/deny-list/users                                            | Get List of Blocked Users                             |
+| _DenyListApi_      | [**unblockGroups**](Apis/DenyListApi.md#unblockgroups)                                                                              | **POST** /v1/deny-list/groups/remove                                   | Unblock Single or Multiple Groups                     |
+| _DenyListApi_      | [**unblockUsers**](Apis/DenyListApi.md#unblockusers)                                                                                | **POST** /v1/deny-list/users/remove                                    | Unblock Single or Multiple user ids                   |
+| _GroupApi_         | [**addUserToGroup**](Apis/GroupApi.md#addusertogroup)                                                                               | **POST** /v1/groups/{groupName}/users                                  |                                                       |
+| _GroupApi_         | [**createGroup**](Apis/GroupApi.md#creategroup)                                                                                     | **POST** /v1/groups                                                    |                                                       |
+| _GroupApi_         | [**deleteGroup**](Apis/GroupApi.md#deletegroup)                                                                                     | **DELETE** /v1/groups/{groupName}                                      |                                                       |
+| _GroupApi_         | [**getGroupById**](Apis/GroupApi.md#getgroupbyid)                                                                                   | **GET** /v1/groups/{groupName}                                         |                                                       |
+| _GroupApi_         | [**listGroupUserMappings**](Apis/GroupApi.md#listgroupusermappings)                                                                 | **GET** /v1/groups/{groupName}/users                                   |                                                       |
+| _GroupApi_         | [**listGroups**](Apis/GroupApi.md#listgroups)                                                                                       | **GET** /v1/groups                                                     |                                                       |
+| _GroupApi_         | [**removeUserFromGroup**](Apis/GroupApi.md#removeuserfromgroup)                                                                     | **DELETE** /v1/groups/{groupName}/users                                |                                                       |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2AuthGet**](Apis/IdpApi.md#v1loginprojectprojectidoauth2authget)                                     | **GET** /v1/login/project/{projectId}/oauth2/auth                      | OAuth 2.0 Authorize Endpoint                          |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2RevokePost**](Apis/IdpApi.md#v1loginprojectprojectidoauth2revokepost)                               | **POST** /v1/login/project/{projectId}/oauth2/revoke                   | Revoke OAuth 2.0 Access or Refresh Token              |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2SessionsLogoutGet**](Apis/IdpApi.md#v1loginprojectprojectidoauth2sessionslogoutget)                 | **GET** /v1/login/project/{projectId}/oauth2/sessions/logout           | OpenID Connect Front- and Back-channel Enabled Logout |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2TokenPost**](Apis/IdpApi.md#v1loginprojectprojectidoauth2tokenpost)                                 | **POST** /v1/login/project/{projectId}/oauth2/token                    | The OAuth 2.0 Token Endpoint                          |
+| _IdpApi_           | [**v1LoginProjectProjectIdUserinfoGet**](Apis/IdpApi.md#v1loginprojectprojectiduserinfoget)                                         | **GET** /v1/login/project/{projectId}/userinfo                         | OpenID Connect Userinfo                               |
+| _IdpApi_           | [**v1LoginProjectProjectIdWellKnownJwksJsonGet**](Apis/IdpApi.md#v1loginprojectprojectidwellknownjwksjsonget)                       | **GET** /v1/login/project/{projectId}/.well-known/jwks.json            | Discover Well-Known JSON Web Keys                     |
+| _IdpApi_           | [**v1LoginProjectProjectIdWellKnownOpenidConfigurationGet**](Apis/IdpApi.md#v1loginprojectprojectidwellknownopenidconfigurationget) | **GET** /v1/login/project/{projectId}/.well-known/openid-configuration | OpenID Connect Discovery                              |
 
 <a name="documentation-for-models"></a>
 
@@ -64,6 +93,7 @@ All URIs are relative to _http://localhost_
 - [UnauthorizedError](./Models/UnauthorizedError.md)
 - [UpdateLoginConfigurationInput](./Models/UpdateLoginConfigurationInput.md)
 - [VPTokenValidationError](./Models/VPTokenValidationError.md)
+- [createLoginConfigurations_400_response](./Models/createLoginConfigurations_400_response.md)
 
 <a name="documentation-for-authorization"></a>
 

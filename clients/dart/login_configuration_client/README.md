@@ -46,14 +46,57 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = AllowListApi();
+final groupNamesInput = GroupNamesInput(); // GroupNamesInput | List of group names as input
+
+try {
+    api_instance.allowGroups(groupNamesInput);
+} catch (e) {
+    print('Exception when calling AllowListApi->allowGroups: $e\n');
+}
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class              | Method                                                                                                                              | HTTP request                                                           | Description                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- |
+| _AllowListApi_     | [**allowGroups**](doc//AllowListApi.md#allowgroups)                                                                                 | **POST** /v1/allow-list/groups/add                                     |
+| _AllowListApi_     | [**disallowGroups**](doc//AllowListApi.md#disallowgroups)                                                                           | **POST** /v1/allow-list/groups/remove                                  |
+| _AllowListApi_     | [**listAllowedGroups**](doc//AllowListApi.md#listallowedgroups)                                                                     | **GET** /v1/allow-list/groups                                          |
+| _ConfigurationApi_ | [**createLoginConfigurations**](doc//ConfigurationApi.md#createloginconfigurations)                                                 | **POST** /v1/login/configurations                                      | Create a new login configuration                      |
+| _ConfigurationApi_ | [**deleteLoginConfigurationsById**](doc//ConfigurationApi.md#deleteloginconfigurationsbyid)                                         | **DELETE** /v1/login/configurations/{configurationId}                  | Delete login configurations by ID                     |
+| _ConfigurationApi_ | [**getClientMetadataByClientId**](doc//ConfigurationApi.md#getclientmetadatabyclientid)                                             | **GET** /v1/login/configurations/metadata/{clientId}                   | Get Client Metadata By OAuth 2.0 Client ID            |
+| _ConfigurationApi_ | [**getLoginConfigurationsById**](doc//ConfigurationApi.md#getloginconfigurationsbyid)                                               | **GET** /v1/login/configurations/{configurationId}                     | Get login configuration by ID                         |
+| _ConfigurationApi_ | [**listLoginConfigurations**](doc//ConfigurationApi.md#listloginconfigurations)                                                     | **GET** /v1/login/configurations                                       | List login configurations                             |
+| _ConfigurationApi_ | [**updateLoginConfigurationsById**](doc//ConfigurationApi.md#updateloginconfigurationsbyid)                                         | **PATCH** /v1/login/configurations/{configurationId}                   | Update login configurations by ID                     |
+| _DenyListApi_      | [**blockGroups**](doc//DenyListApi.md#blockgroups)                                                                                  | **POST** /v1/deny-list/groups/add                                      |
+| _DenyListApi_      | [**blockUsers**](doc//DenyListApi.md#blockusers)                                                                                    | **POST** /v1/deny-list/users/add                                       |
+| _DenyListApi_      | [**listBlockedGroups**](doc//DenyListApi.md#listblockedgroups)                                                                      | **GET** /v1/deny-list/groups                                           |
+| _DenyListApi_      | [**listBlockedUsers**](doc//DenyListApi.md#listblockedusers)                                                                        | **GET** /v1/deny-list/users                                            |
+| _DenyListApi_      | [**unblockGroups**](doc//DenyListApi.md#unblockgroups)                                                                              | **POST** /v1/deny-list/groups/remove                                   |
+| _DenyListApi_      | [**unblockUsers**](doc//DenyListApi.md#unblockusers)                                                                                | **POST** /v1/deny-list/users/remove                                    |
+| _GroupApi_         | [**addUserToGroup**](doc//GroupApi.md#addusertogroup)                                                                               | **POST** /v1/groups/{groupName}/users                                  |
+| _GroupApi_         | [**createGroup**](doc//GroupApi.md#creategroup)                                                                                     | **POST** /v1/groups                                                    |
+| _GroupApi_         | [**deleteGroup**](doc//GroupApi.md#deletegroup)                                                                                     | **DELETE** /v1/groups/{groupName}                                      |
+| _GroupApi_         | [**getGroupById**](doc//GroupApi.md#getgroupbyid)                                                                                   | **GET** /v1/groups/{groupName}                                         |
+| _GroupApi_         | [**listGroupUserMappings**](doc//GroupApi.md#listgroupusermappings)                                                                 | **GET** /v1/groups/{groupName}/users                                   |
+| _GroupApi_         | [**listGroups**](doc//GroupApi.md#listgroups)                                                                                       | **GET** /v1/groups                                                     |
+| _GroupApi_         | [**removeUserFromGroup**](doc//GroupApi.md#removeuserfromgroup)                                                                     | **DELETE** /v1/groups/{groupName}/users                                |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2AuthGet**](doc//IdpApi.md#v1loginprojectprojectidoauth2authget)                                     | **GET** /v1/login/project/{projectId}/oauth2/auth                      | OAuth 2.0 Authorize Endpoint                          |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2RevokePost**](doc//IdpApi.md#v1loginprojectprojectidoauth2revokepost)                               | **POST** /v1/login/project/{projectId}/oauth2/revoke                   | Revoke OAuth 2.0 Access or Refresh Token              |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2SessionsLogoutGet**](doc//IdpApi.md#v1loginprojectprojectidoauth2sessionslogoutget)                 | **GET** /v1/login/project/{projectId}/oauth2/sessions/logout           | OpenID Connect Front- and Back-channel Enabled Logout |
+| _IdpApi_           | [**v1LoginProjectProjectIdOauth2TokenPost**](doc//IdpApi.md#v1loginprojectprojectidoauth2tokenpost)                                 | **POST** /v1/login/project/{projectId}/oauth2/token                    | The OAuth 2.0 Token Endpoint                          |
+| _IdpApi_           | [**v1LoginProjectProjectIdUserinfoGet**](doc//IdpApi.md#v1loginprojectprojectiduserinfoget)                                         | **GET** /v1/login/project/{projectId}/userinfo                         | OpenID Connect Userinfo                               |
+| _IdpApi_           | [**v1LoginProjectProjectIdWellKnownJwksJsonGet**](doc//IdpApi.md#v1loginprojectprojectidwellknownjwksjsonget)                       | **GET** /v1/login/project/{projectId}/.well-known/jwks.json            | Discover Well-Known JSON Web Keys                     |
+| _IdpApi_           | [**v1LoginProjectProjectIdWellKnownOpenidConfigurationGet**](doc//IdpApi.md#v1loginprojectprojectidwellknownopenidconfigurationget) | **GET** /v1/login/project/{projectId}/.well-known/openid-configuration | OpenID Connect Discovery                              |
 
 ## Documentation For Models
 
@@ -69,6 +112,7 @@ All URIs are relative to _http://localhost_
 - [CreateLoginConfigurationInput](doc//CreateLoginConfigurationInput.md)
 - [CreateLoginConfigurationOutput](doc//CreateLoginConfigurationOutput.md)
 - [CreateLoginConfigurationOutputAuth](doc//CreateLoginConfigurationOutputAuth.md)
+- [CreateLoginConfigurations400Response](doc//CreateLoginConfigurations400Response.md)
 - [CreateProjectNetworkError](doc//CreateProjectNetworkError.md)
 - [ErrorOAuth2](doc//ErrorOAuth2.md)
 - [GetUserInfo](doc//GetUserInfo.md)
@@ -146,3 +190,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

@@ -28,6 +28,11 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/allow_list_api.dart';
+part 'api/configuration_api.dart';
+part 'api/deny_list_api.dart';
+part 'api/group_api.dart';
+part 'api/idp_api.dart';
 
 part 'model/action_forbidden_error.dart';
 part 'model/add_user_to_group_input.dart';
@@ -41,6 +46,7 @@ part 'model/create_hydra_network_error.dart';
 part 'model/create_login_configuration_input.dart';
 part 'model/create_login_configuration_output.dart';
 part 'model/create_login_configuration_output_auth.dart';
+part 'model/create_login_configurations400_response.dart';
 part 'model/create_project_network_error.dart';
 part 'model/error_o_auth2.dart';
 part 'model/get_user_info.dart';

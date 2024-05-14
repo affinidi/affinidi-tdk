@@ -206,6 +206,8 @@ class ApiClient {
           return CreateLoginConfigurationOutput.fromJson(value);
         case 'CreateLoginConfigurationOutputAuth':
           return CreateLoginConfigurationOutputAuth.fromJson(value);
+        case 'CreateLoginConfigurations400Response':
+          return CreateLoginConfigurations400Response.fromJson(value);
         case 'CreateProjectNetworkError':
           return CreateProjectNetworkError.fromJson(value);
         case 'ErrorOAuth2':

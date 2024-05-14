@@ -4,6 +4,11 @@
 README.md
 affinidi_tdk_login_configuration_client/__init__.py
 affinidi_tdk_login_configuration_client/api/__init__.py
+affinidi_tdk_login_configuration_client/api/allow_list_api.py
+affinidi_tdk_login_configuration_client/api/configuration_api.py
+affinidi_tdk_login_configuration_client/api/deny_list_api.py
+affinidi_tdk_login_configuration_client/api/group_api.py
+affinidi_tdk_login_configuration_client/api/idp_api.py
 affinidi_tdk_login_configuration_client/api_client.py
 affinidi_tdk_login_configuration_client/api_response.py
 affinidi_tdk_login_configuration_client/configuration.py
@@ -21,6 +26,7 @@ affinidi_tdk_login_configuration_client/models/create_hydra_network_error.py
 affinidi_tdk_login_configuration_client/models/create_login_configuration_input.py
 affinidi_tdk_login_configuration_client/models/create_login_configuration_output.py
 affinidi_tdk_login_configuration_client/models/create_login_configuration_output_auth.py
+affinidi_tdk_login_configuration_client/models/create_login_configurations400_response.py
 affinidi_tdk_login_configuration_client/models/create_project_network_error.py
 affinidi_tdk_login_configuration_client/models/error_o_auth2.py
 affinidi_tdk_login_configuration_client/models/get_user_info.py
@@ -68,8 +74,10 @@ affinidi_tdk_login_configuration_client/py.typed
 affinidi_tdk_login_configuration_client/rest.py
 docs/ActionForbiddenError.md
 docs/AddUserToGroupInput.md
+docs/AllowListApi.md
 docs/BlockedUsers.md
 docs/BlockedUsersInput.md
+docs/ConfigurationApi.md
 docs/CorsLoginSessionAcceptResponseOK.md
 docs/CorsLoginSessionForIdpOK.md
 docs/CorsLoginSessionRejectResponseOK.md
@@ -78,9 +86,12 @@ docs/CreateHydraNetworkError.md
 docs/CreateLoginConfigurationInput.md
 docs/CreateLoginConfigurationOutput.md
 docs/CreateLoginConfigurationOutputAuth.md
+docs/CreateLoginConfigurations400Response.md
 docs/CreateProjectNetworkError.md
+docs/DenyListApi.md
 docs/ErrorOAuth2.md
 docs/GetUserInfo.md
+docs/GroupApi.md
 docs/GroupDto.md
 docs/GroupNames.md
 docs/GroupNamesInput.md
@@ -90,6 +101,7 @@ docs/GroupsList.md
 docs/GroupsPerUserLimitExceededError.md
 docs/IdTokenMapping.md
 docs/IdTokenMappingInner.md
+docs/IdpApi.md
 docs/InvalidClaimContextError.md
 docs/InvalidGroupsError.md
 docs/InvalidParameterError.md
@@ -127,6 +139,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_hydra_network_error.py
-test/test_create_project_network_error.py
+test/test_allow_list_api.py
+test/test_configuration_api.py
+test/test_create_login_configurations400_response.py
+test/test_deny_list_api.py
+test/test_group_api.py
+test/test_idp_api.py
 tox.ini
