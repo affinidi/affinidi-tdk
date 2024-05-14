@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.0.2...@affinidi-tdk/credential-verification-client-v1.1.0) (2024-05-14)
+
+
+### Features
+
+* update client for login configuration ([be0ad7a](https://github.com/affinidi/affinidi-tdk/commit/be0ad7aa261769d9f13f17932ede3e8b2171cff1))
+
 # 1.0.0 (2024-05-14)
 
 
