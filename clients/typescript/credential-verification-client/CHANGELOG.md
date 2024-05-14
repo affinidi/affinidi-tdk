@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 1.0.0 (2024-05-13)
 
 
@@ -145,3 +146,5 @@
 - update clients ([9c05a24](https://github.com/affinidi/affinidi-tdk/commit/9c05a24f31e99a19f97103ffa27c7a7f6882aeb5))
 - update namespace and package names ([#72](https://github.com/affinidi/affinidi-tdk/issues/72)) ([58c9484](https://github.com/affinidi/affinidi-tdk/commit/58c94848383076cb014f0e125f8e88427d61370f))
 - update package lock ([81e578b](https://github.com/affinidi/affinidi-tdk/commit/81e578b27f5420878c7c9c402bc1ee778e3abb65))
+=======
+>>>>>>> 4473fdf (fix: reset changelogs, force new versions)
