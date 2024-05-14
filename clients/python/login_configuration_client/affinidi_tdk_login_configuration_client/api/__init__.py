@@ -1,4 +1,9 @@
 # flake8: noqa
 
 # import apis into api package
+from affinidi_tdk_login_configuration_client.api.allow_list_api import AllowListApi
+from affinidi_tdk_login_configuration_client.api.configuration_api import ConfigurationApi
+from affinidi_tdk_login_configuration_client.api.deny_list_api import DenyListApi
+from affinidi_tdk_login_configuration_client.api.group_api import GroupApi
+from affinidi_tdk_login_configuration_client.api.idp_api import IdpApi
 

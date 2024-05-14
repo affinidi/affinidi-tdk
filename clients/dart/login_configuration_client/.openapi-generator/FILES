@@ -4,8 +4,10 @@ README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
 doc/AddUserToGroupInput.md
+doc/AllowListApi.md
 doc/BlockedUsers.md
 doc/BlockedUsersInput.md
+doc/ConfigurationApi.md
 doc/CorsLoginSessionAcceptResponseOK.md
 doc/CorsLoginSessionForIdpOK.md
 doc/CorsLoginSessionRejectResponseOK.md
@@ -14,9 +16,12 @@ doc/CreateHydraNetworkError.md
 doc/CreateLoginConfigurationInput.md
 doc/CreateLoginConfigurationOutput.md
 doc/CreateLoginConfigurationOutputAuth.md
+doc/CreateLoginConfigurations400Response.md
 doc/CreateProjectNetworkError.md
+doc/DenyListApi.md
 doc/ErrorOAuth2.md
 doc/GetUserInfo.md
+doc/GroupApi.md
 doc/GroupDto.md
 doc/GroupNames.md
 doc/GroupNamesInput.md
@@ -24,6 +29,7 @@ doc/GroupUserMappingDto.md
 doc/GroupUserMappingsList.md
 doc/GroupsList.md
 doc/GroupsPerUserLimitExceededError.md
+doc/IdpApi.md
 doc/InvalidClaimContextError.md
 doc/InvalidGroupsError.md
 doc/InvalidParameterError.md
@@ -52,6 +58,11 @@ doc/UnauthorizedError.md
 doc/UpdateLoginConfigurationInput.md
 doc/VPTokenValidationError.md
 lib/api.dart
+lib/api/allow_list_api.dart
+lib/api/configuration_api.dart
+lib/api/deny_list_api.dart
+lib/api/group_api.dart
+lib/api/idp_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
@@ -72,6 +83,7 @@ lib/model/create_hydra_network_error.dart
 lib/model/create_login_configuration_input.dart
 lib/model/create_login_configuration_output.dart
 lib/model/create_login_configuration_output_auth.dart
+lib/model/create_login_configurations400_response.dart
 lib/model/create_project_network_error.dart
 lib/model/error_o_auth2.dart
 lib/model/get_user_info.dart
@@ -110,5 +122,9 @@ lib/model/unauthorized_error.dart
 lib/model/update_login_configuration_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/create_hydra_network_error_test.dart
-test/create_project_network_error_test.dart
+test/allow_list_api_test.dart
+test/configuration_api_test.dart
+test/create_login_configurations400_response_test.dart
+test/deny_list_api_test.dart
+test/group_api_test.dart
+test/idp_api_test.dart

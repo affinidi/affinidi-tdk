@@ -1,3 +1,8 @@
+Apis/AllowListApi.md
+Apis/ConfigurationApi.md
+Apis/DenyListApi.md
+Apis/GroupApi.md
+Apis/IdpApi.md
 Models/ActionForbiddenError.md
 Models/AddUserToGroupInput.md
 Models/BlockedUsers.md
@@ -49,4 +54,5 @@ Models/TokenEndpointAuthMethod.md
 Models/UnauthorizedError.md
 Models/UpdateLoginConfigurationInput.md
 Models/VPTokenValidationError.md
+Models/createLoginConfigurations_400_response.md
 README.md
