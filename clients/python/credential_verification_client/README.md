@@ -61,14 +61,49 @@ import affinidi_tdk_credential_verification_client
 from affinidi_tdk_credential_verification_client.rest import ApiException
 from pprint import pprint
 
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_credential_verification_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_credential_verification_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_credential_verification_client.DefaultApi(api_client)
+    verify_credential_input = affinidi_tdk_credential_verification_client.VerifyCredentialInput() # VerifyCredentialInput | VerifyCredentials
+
+    try:
+        # Verifying VC
+        api_response = api_instance.verify_credentials(verify_credential_input)
+        print("The response of DefaultApi->verify_credentials:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->verify_credentials: %s\n" % e)
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class         | Method                                                            | HTTP request                       | Description         |
+| ------------- | ----------------------------------------------------------------- | ---------------------------------- | ------------------- |
+| _DefaultApi_  | [**verify_credentials**](docs/DefaultApi.md#verify_credentials)   | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
+| _DefaultApi_  | [**verify_presentation**](docs/DefaultApi.md#verify_presentation) | **POST** /v1/verifier/verify-vp    | Verifying VP        |
+| _VerifierApi_ | [**validate_jwt**](docs/VerifierApi.md#validate_jwt)              | **POST** /v1/verifier/validate-jwt | Validates JWT token |
 
 ## Documentation For Models
 
@@ -137,3 +172,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

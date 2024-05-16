@@ -6,8 +6,11 @@
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class         | Method                                                          | HTTP request                       | Description         |
+| ------------- | --------------------------------------------------------------- | ---------------------------------- | ------------------- |
+| _DefaultApi_  | [**verifyCredentials**](Apis/DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
+| _DefaultApi_  | [**verifyPresentation**](Apis/DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp    | Verifying VP        |
+| _VerifierApi_ | [**validateJwt**](Apis/VerifierApi.md#validatejwt)              | **POST** /v1/verifier/validate-jwt | Validates JWT token |
 
 <a name="documentation-for-models"></a>
 

@@ -1292,3 +1292,459 @@ export interface W3cProof {
    */
   nonce?: string | null
 }
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentials: async (
+      verifyCredentialInput: VerifyCredentialInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyCredentialInput' is not null or undefined
+      assertParamExists(
+        'verifyCredentials',
+        'verifyCredentialInput',
+        verifyCredentialInput,
+      )
+      const localVarPath = `/v1/verifier/verify-vcs`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyCredentialInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentation: async (
+      verifyPresentationInput: VerifyPresentationInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyPresentationInput' is not null or undefined
+      assertParamExists(
+        'verifyPresentation',
+        'verifyPresentationInput',
+        verifyPresentationInput,
+      )
+      const localVarPath = `/v1/verifier/verify-vp`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyPresentationInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyCredentials(
+      verifyCredentialInput: VerifyCredentialInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<VerifyCredentialOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyCredentials(
+          verifyCredentialInput,
+          options,
+        )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['DefaultApi.verifyCredentials']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyPresentation(
+      verifyPresentationInput: VerifyPresentationInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<VerifyPresentationOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyPresentation(
+          verifyPresentationInput,
+          options,
+        )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['DefaultApi.verifyPresentation']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = DefaultApiFp(configuration)
+  return {
+    /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentials(
+      verifyCredentialInput: VerifyCredentialInput,
+      options?: any,
+    ): AxiosPromise<VerifyCredentialOutput> {
+      return localVarFp
+        .verifyCredentials(verifyCredentialInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentation(
+      verifyPresentationInput: VerifyPresentationInput,
+      options?: any,
+    ): AxiosPromise<VerifyPresentationOutput> {
+      return localVarFp
+        .verifyPresentation(verifyPresentationInput, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+   * @summary Verifying VC
+   * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public verifyCredentials(
+    verifyCredentialInput: VerifyCredentialInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .verifyCredentials(verifyCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
+   * @summary Verifying VP
+   * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public verifyPresentation(
+    verifyPresentationInput: VerifyPresentationInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .verifyPresentation(verifyPresentationInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * VerifierApi - axios parameter creator
+ * @export
+ */
+export const VerifierApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateJwt: async (
+      validateJwtInput: ValidateJwtInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'validateJwtInput' is not null or undefined
+      assertParamExists('validateJwt', 'validateJwtInput', validateJwtInput)
+      const localVarPath = `/v1/verifier/validate-jwt`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        validateJwtInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * VerifierApi - functional programming interface
+ * @export
+ */
+export const VerifierApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = VerifierApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async validateJwt(
+      validateJwtInput: ValidateJwtInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ValidateJwtOutput>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.validateJwt(
+        validateJwtInput,
+        options,
+      )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['VerifierApi.validateJwt']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * VerifierApi - factory interface
+ * @export
+ */
+export const VerifierApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = VerifierApiFp(configuration)
+  return {
+    /**
+     * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+     * @summary Validates JWT token
+     * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    validateJwt(
+      validateJwtInput: ValidateJwtInput,
+      options?: any,
+    ): AxiosPromise<ValidateJwtOutput> {
+      return localVarFp
+        .validateJwt(validateJwtInput, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * VerifierApi - object-oriented interface
+ * @export
+ * @class VerifierApi
+ * @extends {BaseAPI}
+ */
+export class VerifierApi extends BaseAPI {
+  /**
+   * Validates JWT object.  returns   isValid: boolean   payload: payload from JWT
+   * @summary Validates JWT token
+   * @param {ValidateJwtInput} validateJwtInput ValidateJwt
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof VerifierApi
+   */
+  public validateJwt(
+    validateJwtInput: ValidateJwtInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return VerifierApiFp(this.configuration)
+      .validateJwt(validateJwtInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
