@@ -28,6 +28,8 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/default_api.dart';
+part 'api/verifier_api.dart';
 
 part 'model/constraints.dart';
 part 'model/constraints_statuses.dart';

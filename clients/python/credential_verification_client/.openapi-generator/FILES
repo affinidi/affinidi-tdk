@@ -4,6 +4,8 @@
 README.md
 affinidi_tdk_credential_verification_client/__init__.py
 affinidi_tdk_credential_verification_client/api/__init__.py
+affinidi_tdk_credential_verification_client/api/default_api.py
+affinidi_tdk_credential_verification_client/api/verifier_api.py
 affinidi_tdk_credential_verification_client/api_client.py
 affinidi_tdk_credential_verification_client/api_response.py
 affinidi_tdk_credential_verification_client/configuration.py
@@ -57,6 +59,7 @@ docs/Constraints.md
 docs/ConstraintsStatuses.md
 docs/CredentialRequirements.md
 docs/CredentialRequirementsConstraints.md
+docs/DefaultApi.md
 docs/Descriptor.md
 docs/Error.md
 docs/ErrorDetail.md
@@ -81,6 +84,7 @@ docs/PresentationSubmission.md
 docs/SubmissionRequirement.md
 docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
+docs/VerifierApi.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyPresentationInput.md
@@ -101,4 +105,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_default_api.py
+test/test_verifier_api.py
 tox.ini

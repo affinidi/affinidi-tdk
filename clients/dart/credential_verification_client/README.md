@@ -44,14 +44,32 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:affinidi_tdk_credential_verification_client/api.dart';
 
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = DefaultApi();
+final verifyCredentialInput = VerifyCredentialInput(); // VerifyCredentialInput | VerifyCredentials
+
+try {
+    final result = api_instance.verifyCredentials(verifyCredentialInput);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->verifyCredentials: $e\n');
+}
+
 ```
 
 ## Documentation for API Endpoints
 
 All URIs are relative to _http://localhost_
 
-| Class | Method | HTTP request | Description |
-| ----- | ------ | ------------ | ----------- |
+| Class         | Method                                                          | HTTP request                       | Description         |
+| ------------- | --------------------------------------------------------------- | ---------------------------------- | ------------------- |
+| _DefaultApi_  | [**verifyCredentials**](doc//DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
+| _DefaultApi_  | [**verifyPresentation**](doc//DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp    | Verifying VP        |
+| _VerifierApi_ | [**validateJwt**](doc//VerifierApi.md#validatejwt)              | **POST** /v1/verifier/validate-jwt | Validates JWT token |
 
 ## Documentation For Models
 
@@ -115,3 +133,5 @@ Authentication schemes defined for the API:
 - **Location**: HTTP header
 
 ## Author
+
+nucleus.team@affinidi.com

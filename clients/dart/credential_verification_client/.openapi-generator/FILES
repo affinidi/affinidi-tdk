@@ -6,6 +6,7 @@ doc/Constraints.md
 doc/ConstraintsStatuses.md
 doc/CredentialRequirements.md
 doc/CredentialRequirementsConstraints.md
+doc/DefaultApi.md
 doc/Descriptor.md
 doc/Error.md
 doc/ErrorDetail.md
@@ -30,6 +31,7 @@ doc/PresentationSubmission.md
 doc/SubmissionRequirement.md
 doc/ValidateJwtInput.md
 doc/ValidateJwtOutput.md
+doc/VerifierApi.md
 doc/VerifyCredentialInput.md
 doc/VerifyCredentialOutput.md
 doc/VerifyPresentationInput.md
@@ -45,6 +47,8 @@ doc/W3cPresentationContext.md
 doc/W3cPresentationContextOneOfInner.md
 doc/W3cProof.md
 lib/api.dart
+lib/api/default_api.dart
+lib/api/verifier_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
@@ -96,3 +100,5 @@ lib/model/w3c_presentation_context.dart
 lib/model/w3c_presentation_context_one_of_inner.dart
 lib/model/w3c_proof.dart
 pubspec.yaml
+test/default_api_test.dart
+test/verifier_api_test.dart
