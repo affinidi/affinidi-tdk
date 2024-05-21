@@ -47,15 +47,15 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@affinidi-tdk'
       - run: npm ci
-      # Generate tag/changelog
+      # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
-      - run: npx nx run-many  -t semantic-release --parallel=false
+      - run: npx nx affected  -t semantic-release --parallel=false
         name: semantic release
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish to npm
+      # Publish to npm with new nx release publish functionality
       - run: |
           npx nx release publish --verbose
         name: release
