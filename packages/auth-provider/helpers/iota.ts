@@ -17,6 +17,7 @@ export class Iota {
     const payload = {
       iss: tokenId,
       sub: tokenId,
+      kid: tokenId,
       aud: audience,
       jti: uuidv4(),
       exp: issueTimeInSeconds + 5 * 60,
@@ -24,6 +25,7 @@ export class Iota {
       project_id: projectId,
       iota_configuration_id: iotaConfigId,
       iota_session_id: iotaSessionId,
+      scope: 'iota_channel',
     }
 
     const token = jwt.sign(
