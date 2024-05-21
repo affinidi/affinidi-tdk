@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.4.0...@affinidi-tdk/login-configuration-client-v1.5.0) (2024-05-21)
+
+
+### Features
+
+* update parameters for iota token expected by service ([#83](https://github.com/affinidi/affinidi-tdk/issues/83)) ([6a4e284](https://github.com/affinidi/affinidi-tdk/commit/6a4e284e0358bbed3f9faedca82cb438c2099cfa))
+
 # [1.4.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.3.0...@affinidi-tdk/login-configuration-client-v1.4.0) (2024-05-16)
 
 
