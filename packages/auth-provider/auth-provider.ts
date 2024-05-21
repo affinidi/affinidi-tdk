@@ -119,10 +119,10 @@ export class AuthProvider {
         sessionId,
         {
           keyId: this.keyId,
-          tokenId: this.tokenId,
+          tokenId: `token/${this.tokenId}`,
           passphrase: this.passphrase,
           privateKey: this.privateKey,
-          audience: 'iota.affinidi.io',
+          audience: `${this.apiGatewayUrl}/ais/v1/aws-exchange-credentials`,
         },
       ),
       iotaSessionId: sessionId,
