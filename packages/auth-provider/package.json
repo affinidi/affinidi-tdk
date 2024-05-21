@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/auth-provider",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
   "repository": {
