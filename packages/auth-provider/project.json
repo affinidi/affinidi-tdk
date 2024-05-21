@@ -12,6 +12,9 @@
         "command": "npm run build"
       }
     },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
     "release": {
       "executor": "nx:run-commands",
       "options": {
@@ -23,6 +26,24 @@
           "target": "build"
         }
       ]
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
     }
   }
 }
