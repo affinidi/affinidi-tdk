@@ -7,6 +7,9 @@ The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that all
 The Affinidi TDK provides three type of modules:
 
 - [Clients](clients), which offer methods to access Affinidi services like IAM, Verifier, Wallets, and Login configuation, among others.
+
+- [Libraries](libs), which provide high-level abstractions that combine logic and data to perform necessary business logic functionalities.
+
 - [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
 
 Each module has its own README that you can check to better understand how to integrate it into your application.
@@ -17,6 +20,8 @@ The Affinidi TDK offers the following modules and programming languages:
 
 |                                                   |                     Typescript                     |                     Python                     |                     Dart                     |
 | ------------------------------------------------- | :------------------------------------------------: | :--------------------------------------------: | :------------------------------------------: |
+| **Libraries**                                     |
+| [issuance](libs/issuance/README.md)               |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Packages**                                      |
 | [auth-provider](packages/auth-provider/README.md) |                         🟢                         |                       🟢                       |                      🔴                      |
 | **Clients**                                       |
