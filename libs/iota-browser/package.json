@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-browser",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Browser module to fetch data through Affinidi Iota Framework",
   "author": "Affinidi",
   "repository": {
@@ -23,10 +23,8 @@
   "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
   "scripts": {
     "build": "tsc",
-    "build:esbuild": "node esbuild.config.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "package": "npm pack",
     "prepare": "npm run build"
   },
   "dependencies": {

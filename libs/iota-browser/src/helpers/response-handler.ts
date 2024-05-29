@@ -15,6 +15,12 @@ export type IotaResponse = {
   presentationSubmission: string
 }
 
+// TODO Error type
+export type IotaResponseCallbackFunction = (
+  err: Error | null,
+  data: IotaResponse | null,
+) => void
+
 export class ResponseHandler {
   channelProvider: ChannelProvider
   constructor(channelProvider: ChannelProvider) {
@@ -42,7 +48,7 @@ export class ResponseHandler {
                 event.correlationId === correlationId
               ) {
                 if (vaultHandler) {
-                  vaultHandler.closeVault(correlationId)
+                  vaultHandler.closeVault({ correlationId })
                 }
                 console.log('response-callback:', event)
                 // TODO handle Zod errors gracefully
@@ -72,11 +78,11 @@ export class ResponseHandler {
 
   getResponseWithCallback(
     correlationId: string,
-    vaultHandler: VaultHandler,
-    callback: any,
+    callback: IotaResponseCallbackFunction,
+    vaultHandler?: VaultHandler,
   ) {
     this.getResponse(correlationId, vaultHandler)
-      .then((request) => callback(null, request))
+      .then((response) => callback(null, response))
       .catch((error) => callback(error, null))
   }
 }
