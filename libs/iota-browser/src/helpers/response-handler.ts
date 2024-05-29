@@ -36,14 +36,14 @@ export class ResponseHandler {
             )
 
             try {
-              if (vaultHandler) {
-                vaultHandler.closeVault(correlationId)
-              }
               const event = JSON.parse(raw_data)
               if (
                 event.eventType === 'response-callback' &&
                 event.correlationId === correlationId
               ) {
+                if (vaultHandler) {
+                  vaultHandler.closeVault(correlationId)
+                }
                 console.log('response-callback:', event)
                 // TODO handle Zod errors gracefully
                 const responseCallback =
