@@ -1,7 +1,6 @@
 import { IotaUtils } from '@affinidi-tdk/iota-utils'
 import {
   CloseVaultParams,
-  IotaRequestParams,
   IotaResponseCallbackFunction,
   OpenMode,
 } from './helpers'
@@ -10,7 +9,11 @@ import { VaultHandlerOpenParams } from './helpers/vault-handler'
 
 type RequestInitializationParams = {
   session: Session
-  request: IotaRequestParams
+  correlationId: string
+  payload: {
+    request: string
+    client_id: string
+  }
 }
 
 type OpenVaultParams = {
@@ -22,15 +25,20 @@ type OpenVaultParams = {
 
 export class IotaRequest {
   private session: Session
-  request: IotaRequestParams
+  correlationId: string
+  payload: {
+    request: string
+    client_id: string
+  }
 
   constructor(params: RequestInitializationParams) {
     this.session = params.session
-    this.request = params.request
+    this.correlationId = params.correlationId
+    this.payload = params.payload
   }
 
   async getResponse() {
-    return this.session.getResponse(this.request.correlationId)
+    return this.session.getResponse(this.correlationId)
   }
 
   getResponseWithCallback(
@@ -42,7 +50,7 @@ export class IotaRequest {
 
   openVault(params?: OpenVaultParams) {
     const handlerHandlerParams: VaultHandlerOpenParams = {
-      correlationId: this.request.correlationId,
+      correlationId: this.correlationId,
       link: params?.link ?? this.getSuggestedLink(),
       openMode: params?.openMode,
     }
@@ -54,7 +62,7 @@ export class IotaRequest {
   }
 
   getSuggestedLink(): string {
-    const links = IotaUtils.createVaultLinks(this.request)
+    const links = IotaUtils.createVaultLinks({ payload: this.payload })
     return links.web
   }
 }

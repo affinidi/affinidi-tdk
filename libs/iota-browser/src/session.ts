@@ -59,7 +59,8 @@ export class Session {
     const iotaRequest = await this.channelProvider.prepareRequest(params)
     const request = new IotaRequest({
       session: this,
-      request: iotaRequest,
+      correlationId: iotaRequest.correlationId,
+      payload: iotaRequest.payload,
     })
     return request
   }
