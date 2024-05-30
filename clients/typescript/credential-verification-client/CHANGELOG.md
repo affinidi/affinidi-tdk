@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.3.0...@affinidi-tdk/credential-verification-client-v1.4.0) (2024-05-30)
+
+
+### Features
+
+* update client ais ([#90](https://github.com/affinidi/affinidi-tdk/issues/90)) ([d421910](https://github.com/affinidi/affinidi-tdk/commit/d4219107f43c3ff1b4960a9758f0211b41ace0ed))
+
 # [1.3.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.2.0...@affinidi-tdk/credential-verification-client-v1.3.0) (2024-05-21)
 
 
