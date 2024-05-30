@@ -1,7 +1,7 @@
 export { IotaAuthProvider } from './iota-auth-provider'
 export {
   ChannelProvider,
-  IotaRequest,
+  IotaRequestParams,
   IotaRequestCallbackFunction,
 } from './channel-provider'
 export {
@@ -9,9 +9,4 @@ export {
   IotaResponse,
   IotaResponseCallbackFunction,
 } from './response-handler'
-export {
-  VaultHandler,
-  OpenVaultParams,
-  CloseVaultParams,
-  OpenMode,
-} from './vault-handler'
+export { VaultHandler, CloseVaultParams, OpenMode } from './vault-handler'

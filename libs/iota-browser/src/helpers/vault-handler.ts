@@ -5,7 +5,7 @@ export enum OpenMode {
   Popup,
 }
 
-export type OpenVaultParams = {
+export type VaultHandlerOpenParams = {
   correlationId: string
   link: string
 
@@ -20,7 +20,7 @@ export type CloseVaultParams = {
 export class VaultHandler {
   private cache = new WindowCache()
 
-  public openVault(params: OpenVaultParams) {
+  public openVault(params: VaultHandlerOpenParams) {
     var { correlationId, link, openMode = OpenMode.NewTab } = params
     let windowFeatures = ''
     if (openMode === OpenMode.Popup) {
