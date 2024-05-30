@@ -1,9 +1,5 @@
 export { IotaAuthProvider } from './iota-auth-provider'
-export {
-  ChannelProvider,
-  IotaRequestParams,
-  IotaRequestCallbackFunction,
-} from './channel-provider'
+export { ChannelProvider, IotaRequestParams } from './channel-provider'
 export {
   ResponseHandler,
   IotaResponse,

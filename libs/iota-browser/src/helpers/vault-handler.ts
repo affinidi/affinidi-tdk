@@ -24,8 +24,8 @@ export class VaultHandler {
     var { correlationId, link, openMode = OpenMode.NewTab } = params
     let windowFeatures = ''
     if (openMode === OpenMode.Popup) {
-      const width = 800
-      const height = 1000
+      const width = 770
+      const height = 920
       const left = (window.screen.width - width) / 2
       const top = (window.screen.height - height) / 2
       windowFeatures = `popup=true,width=${width},height=${height},left=${left},top=${top}`

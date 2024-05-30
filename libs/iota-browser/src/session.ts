@@ -1,6 +1,5 @@
 import {
   ChannelProvider,
-  IotaRequestCallbackFunction,
   PrepareRequestParams,
 } from './helpers/channel-provider'
 import { IotaAuthProvider } from './helpers/iota-auth-provider'
@@ -15,6 +14,11 @@ import { IotaRequest } from './request'
 export type SessionParams = {
   token: string
 }
+// TODO Error type
+export type IotaRequestCallbackFunction = (
+  err: Error | null,
+  data: IotaRequest | null,
+) => void
 
 export class Session {
   channelProvider: ChannelProvider
@@ -64,8 +68,9 @@ export class Session {
     params: PrepareRequestParams,
     callback: IotaRequestCallbackFunction,
   ) {
-    this.isChannelProviderInitialized()
-    this.channelProvider.prepareRequestWithCallback(params, callback)
+    this.prepareRequest(params)
+      .then((request) => callback(null, request))
+      .catch((error) => callback(error, null))
   }
 
   async getResponse(correlationId: string): Promise<IotaResponse> {

@@ -30,7 +30,7 @@ export type IotaRequestParams = {
 }
 
 // TODO Error type
-export type IotaRequestCallbackFunction = (
+export type IotaRequestParamsCallbackFunction = (
   err: Error | null,
   data: IotaRequestParams | null,
 ) => void
@@ -209,7 +209,7 @@ export class ChannelProvider {
 
   prepareRequestWithCallback(
     params: PrepareRequestParams,
-    callback: IotaRequestCallbackFunction,
+    callback: IotaRequestParamsCallbackFunction,
   ) {
     this.prepareRequest(params)
       .then((request) => callback(null, request))

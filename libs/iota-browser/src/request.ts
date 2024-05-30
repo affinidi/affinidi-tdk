@@ -1,9 +1,14 @@
 import { IotaUtils } from '@affinidi-tdk/iota-utils'
-import { CloseVaultParams, IotaRequestParams, OpenMode } from './helpers'
+import {
+  CloseVaultParams,
+  IotaRequestParams,
+  IotaResponseCallbackFunction,
+  OpenMode,
+} from './helpers'
 import { Session } from './session'
 import { VaultHandlerOpenParams } from './helpers/vault-handler'
 
-type RequestParams = {
+type RequestInitializationParams = {
   session: Session
   request: IotaRequestParams
 }
@@ -17,15 +22,22 @@ type OpenVaultParams = {
 
 export class IotaRequest {
   private session: Session
-  private request: IotaRequestParams
+  request: IotaRequestParams
 
-  constructor(params: RequestParams) {
+  constructor(params: RequestInitializationParams) {
     this.session = params.session
     this.request = params.request
   }
 
-  getResponse() {
+  async getResponse() {
     return this.session.getResponse(this.request.correlationId)
+  }
+
+  getResponseWithCallback(
+    correlationId: string,
+    callback: IotaResponseCallbackFunction,
+  ) {
+    this.session.getResponseWithCallback(correlationId, callback)
   }
 
   openVault(params?: OpenVaultParams) {
