@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.5.0...@affinidi-tdk/login-configuration-client-v1.6.0) (2024-05-30)
+
+
+### Features
+
+* update client ais ([#90](https://github.com/affinidi/affinidi-tdk/issues/90)) ([d421910](https://github.com/affinidi/affinidi-tdk/commit/d4219107f43c3ff1b4960a9758f0211b41ace0ed))
+
 # [1.5.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.4.0...@affinidi-tdk/login-configuration-client-v1.5.0) (2024-05-21)
 
 
