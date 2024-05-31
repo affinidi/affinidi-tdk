@@ -1,5 +1,6 @@
 export * from './helpers'
 export * from './session'
+export * from './request'
 export {
   PrepareRequestEvent,
   SignedRequestEvent,

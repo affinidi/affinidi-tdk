@@ -21,7 +21,7 @@ export type PrepareRequestParams = {
   correlationId?: string
 }
 
-export type IotaRequest = {
+export type IotaRequestParams = {
   correlationId: string
   payload: {
     request: string
@@ -30,9 +30,9 @@ export type IotaRequest = {
 }
 
 // TODO Error type
-export type IotaRequestCallbackFunction = (
+export type IotaRequestParamsCallbackFunction = (
   err: Error | null,
-  data: IotaRequest | null,
+  data: IotaRequestParams | null,
 ) => void
 
 export class ChannelProvider {
@@ -143,7 +143,9 @@ export class ChannelProvider {
     console.log(`Subscribed to ${topicName}...`)
   }
 
-  async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
+  async prepareRequest(
+    params: PrepareRequestParams,
+  ): Promise<IotaRequestParams> {
     const client = this.getClient()
     const topicName = this.getTopicName()
     const correlationId = params.correlationId ?? uuidv4()
@@ -185,7 +187,7 @@ export class ChannelProvider {
                   reject(new Error('Unexpected request claims received'))
                 }
                 const client_id = claims.client_id as string
-                const request: IotaRequest = {
+                const request: IotaRequestParams = {
                   correlationId: signedRequest.correlationId,
                   payload: {
                     request: signedRequest.data.jwt,
@@ -207,7 +209,7 @@ export class ChannelProvider {
 
   prepareRequestWithCallback(
     params: PrepareRequestParams,
-    callback: IotaRequestCallbackFunction,
+    callback: IotaRequestParamsCallbackFunction,
   ) {
     this.prepareRequest(params)
       .then((request) => callback(null, request))

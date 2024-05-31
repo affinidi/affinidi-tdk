@@ -1,7 +1,5 @@
 import {
   ChannelProvider,
-  IotaRequest,
-  IotaRequestCallbackFunction,
   PrepareRequestParams,
 } from './helpers/channel-provider'
 import { IotaAuthProvider } from './helpers/iota-auth-provider'
@@ -10,15 +8,17 @@ import {
   IotaResponseCallbackFunction,
   ResponseHandler,
 } from './helpers/response-handler'
-import {
-  CloseVaultParams,
-  OpenVaultParams,
-  VaultHandler,
-} from './helpers/vault-handler'
+import { VaultHandler } from './helpers/vault-handler'
+import { IotaRequest } from './request'
 
 export type SessionParams = {
   token: string
 }
+// TODO Error type
+export type IotaRequestCallbackFunction = (
+  err: Error | null,
+  data: IotaRequest | null,
+) => void
 
 export class Session {
   channelProvider: ChannelProvider
@@ -56,16 +56,22 @@ export class Session {
 
   async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
     this.isChannelProviderInitialized()
-
-    return this.channelProvider.prepareRequest(params)
+    const iotaRequest = await this.channelProvider.prepareRequest(params)
+    const request = new IotaRequest({
+      session: this,
+      correlationId: iotaRequest.correlationId,
+      payload: iotaRequest.payload,
+    })
+    return request
   }
 
   prepareRequestWithCallback(
     params: PrepareRequestParams,
     callback: IotaRequestCallbackFunction,
   ) {
-    this.isChannelProviderInitialized()
-    this.channelProvider.prepareRequestWithCallback(params, callback)
+    this.prepareRequest(params)
+      .then((request) => callback(null, request))
+      .catch((error) => callback(error, null))
   }
 
   async getResponse(correlationId: string): Promise<IotaResponse> {
@@ -85,14 +91,6 @@ export class Session {
       callback,
       this.vaultHandler,
     )
-  }
-
-  openVault(params: OpenVaultParams) {
-    this.vaultHandler.openVault(params)
-  }
-
-  closeVault(params: CloseVaultParams) {
-    this.vaultHandler.closeVault(params)
   }
 
   private isChannelProviderInitialized() {
