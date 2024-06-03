@@ -26,6 +26,9 @@ All URIs are relative to _http://localhost_
 
 - [ActionForbiddenError](./Models/ActionForbiddenError.md)
 - [ActionForbiddenError_details_inner](./Models/ActionForbiddenError_details_inner.md)
+- [CorsGenerateCredentialsOK](./Models/CorsGenerateCredentialsOK.md)
+- [CorsGetCredentialOfferOK](./Models/CorsGetCredentialOfferOK.md)
+- [CorsGetWellKnownOpenIdCredentialIssuerOK](./Models/CorsGetWellKnownOpenIdCredentialIssuerOK.md)
 - [CreateCredentialInput](./Models/CreateCredentialInput.md)
 - [CreateIssuanceConfigInput](./Models/CreateIssuanceConfigInput.md)
 - [CreateIssuanceConfigInput_credentialSupported_inner](./Models/CreateIssuanceConfigInput_credentialSupported_inner.md)
@@ -59,6 +62,7 @@ All URIs are relative to _http://localhost_
 - [StartIssuanceInput_data_inner](./Models/StartIssuanceInput_data_inner.md)
 - [StartIssuanceResponse](./Models/StartIssuanceResponse.md)
 - [UpdateIssuanceConfigInput](./Models/UpdateIssuanceConfigInput.md)
+- [VcClaimedError](./Models/VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](./Models/WellKnownOpenIdCredentialIssuerResponse.md)
 - [createIssuanceConfig_400_response](./Models/createIssuanceConfig_400_response.md)
 - [generateCredentials_400_response](./Models/generateCredentials_400_response.md)

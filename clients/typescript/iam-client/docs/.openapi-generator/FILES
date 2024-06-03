@@ -21,6 +21,7 @@ Models/JsonWebKeySetDto.md
 Models/NotFoundError.md
 Models/PolicyDto.md
 Models/PolicyStatementDto.md
+Models/PrincipalCannotBeDeletedError.md
 Models/PrincipalDoesNotBelongToProjectError.md
 Models/ProjectDto.md
 Models/ProjectList.md

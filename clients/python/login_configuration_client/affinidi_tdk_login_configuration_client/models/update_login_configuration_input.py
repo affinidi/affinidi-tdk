@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -31,6 +31,7 @@ class UpdateLoginConfigurationInput(BaseModel):
     """
     name: Optional[StrictStr] = Field(None, description="User defined login configuration name")
     redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="redirectUris", description="OAuth 2.0 Redirect URIs")
+    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete.")
     client_secret: Optional[StrictStr] = Field(None, alias="clientSecret", description="OAuth2 client secret")
     vp_definition: Optional[StrictStr] = Field(None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(None, alias="presentationDefinition", description="Presentation Definition")
@@ -38,7 +39,7 @@ class UpdateLoginConfigurationInput(BaseModel):
     client_metadata: Optional[LoginConfigurationClientMetadataInput] = Field(None, alias="clientMetadata")
     token_endpoint_auth_method: Optional[TokenEndpointAuthMethod] = Field(None, alias="tokenEndpointAuthMethod")
     fail_on_mapping_conflict: Optional[StrictBool] = Field(None, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
-    __properties = ["name", "redirectUris", "clientSecret", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod", "failOnMappingConflict"]
+    __properties = ["name", "redirectUris", "postLogoutRedirectUris", "clientSecret", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod", "failOnMappingConflict"]
 
     class Config:
         """Pydantic configuration"""
@@ -84,6 +85,7 @@ class UpdateLoginConfigurationInput(BaseModel):
         _obj = UpdateLoginConfigurationInput.parse_obj({
             "name": obj.get("name"),
             "redirect_uris": obj.get("redirectUris"),
+            "post_logout_redirect_uris": obj.get("postLogoutRedirectUris"),
             "client_secret": obj.get("clientSecret"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),

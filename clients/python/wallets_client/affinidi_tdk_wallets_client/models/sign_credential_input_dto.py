@@ -27,7 +27,7 @@ class SignCredentialInputDto(BaseModel):
     """
     DTO contains params to sign credential  # noqa: E501
     """
-    unsigned_credential: Optional[Dict[str, Any]] = Field(None, alias="unsignedCredential", description="Unsiged Credential. If provided \"unsignedCredentialParams\" is not accepted")
+    unsigned_credential: Optional[Dict[str, Any]] = Field(None, alias="unsignedCredential", description="Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted")
     revocable: Optional[StrictBool] = None
     unsigned_credential_params: Optional[SignCredentialInputDtoUnsignedCredentialParams] = Field(None, alias="unsignedCredentialParams")
     __properties = ["unsignedCredential", "revocable", "unsignedCredentialParams"]

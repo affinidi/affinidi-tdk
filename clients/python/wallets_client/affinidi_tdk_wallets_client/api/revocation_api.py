@@ -47,7 +47,7 @@ class RevocationApi:
 
     @validate_arguments
     def get_revocation_list_credential(self, list_id : StrictStr, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> GetRevocationListCredentialResultDto:  # noqa: E501
-        """Return revocation list credential.  # noqa: E501
+        """(Deprecated) Return revocation list credential.  # noqa: E501
 
         Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -79,7 +79,7 @@ class RevocationApi:
 
     @validate_arguments
     def get_revocation_list_credential_with_http_info(self, list_id : StrictStr, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Return revocation list credential.  # noqa: E501
+        """(Deprecated) Return revocation list credential.  # noqa: E501
 
         Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -116,6 +116,8 @@ class RevocationApi:
                  returns the request thread.
         :rtype: tuple(GetRevocationListCredentialResultDto, status_code(int), headers(HTTPHeaderDict))
         """
+
+        warnings.warn("GET /v1/wallets/{walletId}/revocation-list/{listId} is deprecated.", DeprecationWarning)
 
         _params = locals()
 

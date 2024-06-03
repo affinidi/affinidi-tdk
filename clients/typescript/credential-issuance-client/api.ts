@@ -131,6 +131,45 @@ export interface ActionForbiddenErrorDetailsInner {
 /**
  *
  * @export
+ * @interface CorsGenerateCredentialsOK
+ */
+export interface CorsGenerateCredentialsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGenerateCredentialsOK
+   */
+  corsGenerateCredentialsOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsGetCredentialOfferOK
+ */
+export interface CorsGetCredentialOfferOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetCredentialOfferOK
+   */
+  corsGetCredentialOfferOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsGetWellKnownOpenIdCredentialIssuerOK
+ */
+export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetWellKnownOpenIdCredentialIssuerOK
+   */
+  corsGetWellKnownOpenIdCredentialIssuerOk?: string
+}
+/**
+ *
+ * @export
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
@@ -595,6 +634,7 @@ export type GetCredentialOffer400Response =
   | CredentialOfferExpiredError
   | InvalidParameterError
   | ProjectCredentialConfigNotExistError
+  | VcClaimedError
 
 /**
  *
@@ -1464,6 +1504,64 @@ export const UpdateIssuanceConfigInputFormatEnum = {
 
 export type UpdateIssuanceConfigInputFormatEnum =
   (typeof UpdateIssuanceConfigInputFormatEnum)[keyof typeof UpdateIssuanceConfigInputFormatEnum]
+
+/**
+ *
+ * @export
+ * @interface VcClaimedError
+ */
+export interface VcClaimedError {
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  name: VcClaimedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  message: VcClaimedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof VcClaimedError
+   */
+  httpStatusCode: VcClaimedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof VcClaimedError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const VcClaimedErrorNameEnum = {
+  VcClaimedError: 'VcClaimedError',
+} as const
+
+export type VcClaimedErrorNameEnum =
+  (typeof VcClaimedErrorNameEnum)[keyof typeof VcClaimedErrorNameEnum]
+export const VcClaimedErrorMessageEnum = {
+  TheRequestedVcHasAlreadyBeenClaimedByTheUser:
+    'The requested VC has already been claimed by the user',
+} as const
+
+export type VcClaimedErrorMessageEnum =
+  (typeof VcClaimedErrorMessageEnum)[keyof typeof VcClaimedErrorMessageEnum]
+export const VcClaimedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type VcClaimedErrorHttpStatusCodeEnum =
+  (typeof VcClaimedErrorHttpStatusCodeEnum)[keyof typeof VcClaimedErrorHttpStatusCodeEnum]
 
 /**
  *

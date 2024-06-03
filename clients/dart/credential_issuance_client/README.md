@@ -83,6 +83,9 @@ All URIs are relative to _http://localhost_
 
 - [ActionForbiddenError](doc//ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](doc//ActionForbiddenErrorDetailsInner.md)
+- [CorsGenerateCredentialsOK](doc//CorsGenerateCredentialsOK.md)
+- [CorsGetCredentialOfferOK](doc//CorsGetCredentialOfferOK.md)
+- [CorsGetWellKnownOpenIdCredentialIssuerOK](doc//CorsGetWellKnownOpenIdCredentialIssuerOK.md)
 - [CreateCredentialInput](doc//CreateCredentialInput.md)
 - [CreateIssuanceConfig400Response](doc//CreateIssuanceConfig400Response.md)
 - [CreateIssuanceConfigInput](doc//CreateIssuanceConfigInput.md)
@@ -120,6 +123,7 @@ All URIs are relative to _http://localhost_
 - [StartIssuanceInputDataInner](doc//StartIssuanceInputDataInner.md)
 - [StartIssuanceResponse](doc//StartIssuanceResponse.md)
 - [UpdateIssuanceConfigInput](doc//UpdateIssuanceConfigInput.md)
+- [VcClaimedError](doc//VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](doc//WellKnownOpenIdCredentialIssuerResponse.md)
 
 ## Documentation For Authorization

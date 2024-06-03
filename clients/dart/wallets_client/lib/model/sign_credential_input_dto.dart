@@ -18,7 +18,7 @@ class SignCredentialInputDto {
     this.unsignedCredentialParams,
   });
 
-  /// Unsiged Credential. If provided \"unsignedCredentialParams\" is not accepted
+  /// Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -41,7 +41,7 @@ class JsonWebKeyKeysInner(BaseModel):
     qi: Optional[StrictStr] = None
     use: StrictStr = Field(..., description="Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption). ")
     x: Optional[StrictStr] = None
-    x5c: conlist(StrictStr) = Field(..., description="The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER  [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. ")
+    x5c: conlist(StrictStr) = Field(..., description="The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. ")
     y: Optional[StrictStr] = None
     __properties = ["alg", "crv", "d", "dp", "dq", "e", "k", "kid", "kty", "n", "p", "q", "qi", "use", "x", "x5c", "y"]
 

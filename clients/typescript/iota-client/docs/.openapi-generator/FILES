@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/CallbackApi.md
 Apis/ConfigurationsApi.md
 Apis/DefaultApi.md
@@ -10,6 +9,7 @@ Models/AwsExchangeCredentialsOK_credentials.md
 Models/CallbackInput.md
 Models/ConsentDto.md
 Models/CorsAwsExchangeCredentialsOK.md
+Models/CorsIotOidc4vpcallbackOK.md
 Models/CreateIotaConfigurationInput.md
 Models/CreatePexQueryInput.md
 Models/DemoWbx.md

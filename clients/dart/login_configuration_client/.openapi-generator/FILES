@@ -122,9 +122,3 @@ lib/model/unauthorized_error.dart
 lib/model/update_login_configuration_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/allow_list_api_test.dart
-test/configuration_api_test.dart
-test/create_login_configurations400_response_test.dart
-test/deny_list_api_test.dart
-test/group_api_test.dart
-test/idp_api_test.dart

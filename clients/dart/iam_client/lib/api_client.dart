@@ -216,6 +216,8 @@ class ApiClient {
           return PolicyDto.fromJson(value);
         case 'PolicyStatementDto':
           return PolicyStatementDto.fromJson(value);
+        case 'PrincipalCannotBeDeletedError':
+          return PrincipalCannotBeDeletedError.fromJson(value);
         case 'PrincipalDoesNotBelongToProjectError':
           return PrincipalDoesNotBelongToProjectError.fromJson(value);
         case 'ProjectDto':

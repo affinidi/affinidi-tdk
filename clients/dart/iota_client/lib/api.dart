@@ -40,6 +40,7 @@ part 'model/aws_exchange_credentials_ok_credentials.dart';
 part 'model/callback_input.dart';
 part 'model/consent_dto.dart';
 part 'model/cors_aws_exchange_credentials_ok.dart';
+part 'model/cors_iot_oidc4vpcallback_ok.dart';
 part 'model/create_iota_configuration_input.dart';
 part 'model/create_pex_query_input.dart';
 part 'model/demo_wbx.dart';

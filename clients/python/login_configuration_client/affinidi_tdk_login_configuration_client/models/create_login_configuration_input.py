@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -31,6 +31,7 @@ class CreateLoginConfigurationInput(BaseModel):
     """
     name: StrictStr = Field(..., description="User defined login configuration name")
     redirect_uris: conlist(StrictStr) = Field(..., alias="redirectUris", description="OAuth 2.0 Redirect URIs")
+    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete.")
     vp_definition: Optional[StrictStr] = Field(None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(None, alias="presentationDefinition", description="Presentation Definition")
     id_token_mapping: Optional[IdTokenMapping] = Field(None, alias="idTokenMapping")
@@ -39,7 +40,7 @@ class CreateLoginConfigurationInput(BaseModel):
     fail_on_mapping_conflict: Optional[StrictBool] = Field(True, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
     scope: Optional[StrictStr] = Field(None, description="List of groups separated by space")
     token_endpoint_auth_method: Optional[TokenEndpointAuthMethod] = Field(None, alias="tokenEndpointAuthMethod")
-    __properties = ["name", "redirectUris", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "claimFormat", "failOnMappingConflict", "scope", "tokenEndpointAuthMethod"]
+    __properties = ["name", "redirectUris", "postLogoutRedirectUris", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "claimFormat", "failOnMappingConflict", "scope", "tokenEndpointAuthMethod"]
 
     @validator('claim_format')
     def claim_format_validate_enum(cls, value):
@@ -95,6 +96,7 @@ class CreateLoginConfigurationInput(BaseModel):
         _obj = CreateLoginConfigurationInput.parse_obj({
             "name": obj.get("name"),
             "redirect_uris": obj.get("redirectUris"),
+            "post_logout_redirect_uris": obj.get("postLogoutRedirectUris"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
             "id_token_mapping": IdTokenMapping.from_dict(obj.get("idTokenMapping")) if obj.get("idTokenMapping") is not None else None,

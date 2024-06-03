@@ -49,15 +49,16 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = RevocationApi();
-final listId = listId_example; // String |
-final walletId = walletId_example; // String | id of the wallet
+final api_instance = DefaultApi();
+final projectId = projectId_example; // String | Description for projectId.
+final walletId = walletId_example; // String | Description for walletId.
+final statusId = statusId_example; // String | Description for statusId.
 
 try {
-    final result = api_instance.getRevocationListCredential(listId, walletId);
+    final result = api_instance.getRevocationCredentialStatus(projectId, walletId, statusId);
     print(result);
 } catch (e) {
-    print('Exception when calling RevocationApi->getRevocationListCredential: $e\n');
+    print('Exception when calling DefaultApi->getRevocationCredentialStatus: $e\n');
 }
 
 ```
@@ -66,17 +67,18 @@ try {
 
 All URIs are relative to _http://localhost_
 
-| Class           | Method                                                                               | HTTP request                                            | Description                        |
-| --------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------- |
-| _RevocationApi_ | [**getRevocationListCredential**](doc//RevocationApi.md#getrevocationlistcredential) | **GET** /v1/wallets/{walletId}/revocation-list/{listId} | Return revocation list credential. |
-| _RevocationApi_ | [**revokeCredential**](doc//RevocationApi.md#revokecredential)                       | **POST** /v1/wallets/{walletId}/revoke                  | Revoke Credential.                 |
-| _WalletApi_     | [**createWallet**](doc//WalletApi.md#createwallet)                                   | **POST** /v1/wallets                                    |
-| _WalletApi_     | [**deleteWallet**](doc//WalletApi.md#deletewallet)                                   | **DELETE** /v1/wallets/{walletId}                       |
-| _WalletApi_     | [**getWallet**](doc//WalletApi.md#getwallet)                                         | **GET** /v1/wallets/{walletId}                          |
-| _WalletApi_     | [**listWallets**](doc//WalletApi.md#listwallets)                                     | **GET** /v1/wallets                                     |
-| _WalletApi_     | [**signCredential**](doc//WalletApi.md#signcredential)                               | **POST** /v1/wallets/{walletId}/sign-credential         |
-| _WalletApi_     | [**signJwtToken**](doc//WalletApi.md#signjwttoken)                                   | **POST** /v1/wallets/{walletId}/sign-jwt                |
-| _WalletApi_     | [**updateWallet**](doc//WalletApi.md#updatewallet)                                   | **PATCH** /v1/wallets/{walletId}                        |
+| Class           | Method                                                                                | HTTP request                                                                       | Description                        |
+| --------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
+| _DefaultApi_    | [**getRevocationCredentialStatus**](doc//DefaultApi.md#getrevocationcredentialstatus) | **GET** /v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId} |
+| _RevocationApi_ | [**getRevocationListCredential**](doc//RevocationApi.md#getrevocationlistcredential)  | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
+| _RevocationApi_ | [**revokeCredential**](doc//RevocationApi.md#revokecredential)                        | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
+| _WalletApi_     | [**createWallet**](doc//WalletApi.md#createwallet)                                    | **POST** /v1/wallets                                                               |
+| _WalletApi_     | [**deleteWallet**](doc//WalletApi.md#deletewallet)                                    | **DELETE** /v1/wallets/{walletId}                                                  |
+| _WalletApi_     | [**getWallet**](doc//WalletApi.md#getwallet)                                          | **GET** /v1/wallets/{walletId}                                                     |
+| _WalletApi_     | [**listWallets**](doc//WalletApi.md#listwallets)                                      | **GET** /v1/wallets                                                                |
+| _WalletApi_     | [**signCredential**](doc//WalletApi.md#signcredential)                                | **POST** /v1/wallets/{walletId}/sign-credential                                    |
+| _WalletApi_     | [**signJwtToken**](doc//WalletApi.md#signjwttoken)                                    | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
+| _WalletApi_     | [**updateWallet**](doc//WalletApi.md#updatewallet)                                    | **PATCH** /v1/wallets/{walletId}                                                   |
 
 ## Documentation For Models
 
@@ -85,6 +87,7 @@ All URIs are relative to _http://localhost_
 - [DidKeyInputParams](doc//DidKeyInputParams.md)
 - [DidWebInputParams](doc//DidWebInputParams.md)
 - [EntityNotFoundError](doc//EntityNotFoundError.md)
+- [GetRevocationCredentialStatusOK](doc//GetRevocationCredentialStatusOK.md)
 - [GetRevocationListCredentialResultDto](doc//GetRevocationListCredentialResultDto.md)
 - [InvalidDidParameterError](doc//InvalidDidParameterError.md)
 - [InvalidParameterError](doc//InvalidParameterError.md)

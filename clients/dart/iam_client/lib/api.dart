@@ -53,6 +53,7 @@ part 'model/json_web_key_set_dto.dart';
 part 'model/not_found_error.dart';
 part 'model/policy_dto.dart';
 part 'model/policy_statement_dto.dart';
+part 'model/principal_cannot_be_deleted_error.dart';
 part 'model/principal_does_not_belong_to_project_error.dart';
 part 'model/project_dto.dart';
 part 'model/project_list.dart';

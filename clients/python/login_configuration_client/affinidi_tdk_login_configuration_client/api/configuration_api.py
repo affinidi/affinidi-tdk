@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -55,7 +55,7 @@ class ConfigurationApi:
     def create_login_configurations(self, create_login_configuration_input : Annotated[Optional[CreateLoginConfigurationInput], Field(description="CreateLoginConfigurations")] = None, **kwargs) -> CreateLoginConfigurationOutput:  # noqa: E501
         """Create a new login configuration  # noqa: E501
 
-        Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.   # noqa: E501
+        Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -85,7 +85,7 @@ class ConfigurationApi:
     def create_login_configurations_with_http_info(self, create_login_configuration_input : Annotated[Optional[CreateLoginConfigurationInput], Field(description="CreateLoginConfigurations")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Create a new login configuration  # noqa: E501
 
-        Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.   # noqa: E501
+        Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

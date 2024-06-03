@@ -1,4 +1,4 @@
-.openapi-generator-ignore
+Apis/DefaultApi.md
 Apis/RevocationApi.md
 Apis/WalletApi.md
 Models/CreateWalletInput.md
@@ -6,6 +6,7 @@ Models/CreateWalletResponse.md
 Models/DidKeyInputParams.md
 Models/DidWebInputParams.md
 Models/EntityNotFoundError.md
+Models/GetRevocationCredentialStatusOK.md
 Models/GetRevocationListCredentialResultDto.md
 Models/InvalidDidParameterError.md
 Models/InvalidParameterError.md

@@ -105,6 +105,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_default_api.py
-test/test_verifier_api.py
 tox.ini

@@ -196,6 +196,8 @@ class ApiClient {
           return ConsentDto.fromJson(value);
         case 'CorsAwsExchangeCredentialsOK':
           return CorsAwsExchangeCredentialsOK.fromJson(value);
+        case 'CorsIotOidc4vpcallbackOK':
+          return CorsIotOidc4vpcallbackOK.fromJson(value);
         case 'CreateIotaConfigurationInput':
           return CreateIotaConfigurationInput.fromJson(value);
         case 'CreatePexQueryInput':

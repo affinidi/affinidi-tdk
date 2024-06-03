@@ -132,7 +132,7 @@ class JsonWebKeyKeysInner {
   ///
   String? x;
 
-  /// The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER  [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
+  /// The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
   List<String> x5c;
 
   ///
