@@ -1,5 +1,5 @@
-import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
+import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import * as jose from 'jose'
 import { v4 as uuidv4 } from 'uuid'
 import {
@@ -19,6 +19,7 @@ type ChannelProviderParams = {
 export type PrepareRequestParams = {
   queryId: string
   correlationId?: string
+  audience?: string
 }
 
 export type IotaRequestParams = {
@@ -154,6 +155,7 @@ export class ChannelProvider {
       eventType: 'prepareRequest',
       queryId: params.queryId,
       correlationId,
+      ...(params.audience ? { audience: params.audience } : {}),
     }
 
     const publishPacket: mqtt5.PublishPacket = {
