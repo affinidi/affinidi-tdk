@@ -5,6 +5,9 @@ Apis/OfferApi.md
 Apis/WellKnownApi.md
 Models/ActionForbiddenError.md
 Models/ActionForbiddenError_details_inner.md
+Models/CorsGenerateCredentialsOK.md
+Models/CorsGetCredentialOfferOK.md
+Models/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 Models/CreateCredentialInput.md
 Models/CreateIssuanceConfigInput.md
 Models/CreateIssuanceConfigInput_credentialSupported_inner.md
@@ -38,6 +41,7 @@ Models/StartIssuanceInput.md
 Models/StartIssuanceInput_data_inner.md
 Models/StartIssuanceResponse.md
 Models/UpdateIssuanceConfigInput.md
+Models/VcClaimedError.md
 Models/WellKnownOpenIdCredentialIssuerResponse.md
 Models/createIssuanceConfig_400_response.md
 Models/generateCredentials_400_response.md

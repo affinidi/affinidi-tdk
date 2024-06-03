@@ -48,7 +48,7 @@ class OAuth2Token {
   ///
   int? idToken;
 
-  /// The refresh token, which can be used to obtain new access tokens.  To retrieve it add the scope \"offline\" to your access token request. 
+  /// The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

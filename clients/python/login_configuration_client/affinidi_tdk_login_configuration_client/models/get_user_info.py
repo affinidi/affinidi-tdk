@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -38,7 +38,7 @@ class GetUserInfo(BaseModel):
     nickname: Optional[StrictStr] = Field(None, description="Casual name of the End-User that may or may not be the same as the given_name.  For instance, a nickname value of Mike might be returned alongside a given_name value of Michael. ")
     phone_number: Optional[StrictStr] = Field(None, description="End-User's preferred telephone number. E.164 [E.164] is RECOMMENDED as the format of this Claim,  for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension,  it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax,  for example, +1 (604) 555-1234;ext=5678. ")
     phone_number_verified: Optional[StrictBool] = Field(None, description="True if the End-User's phone number has been verified; otherwise false. When this Claim  Value is true, this means that the OP took affirmative steps to ensure that this phone  number was controlled by the End-User at the time the verification was performed. The means  by which a phone number is verified is context-specific, and dependent upon the trust framework  or contractual agreements within which the parties are operating. When true, the phone_number  Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format. ")
-    picture: Optional[StrictStr] = Field(None, description="URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD  specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User. ")
+    picture: Optional[StrictStr] = Field(None, description="URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User. ")
     preferred_username: Optional[StrictStr] = Field(None, description="Non-unique shorthand name by which the End-User wishes to be referred to at the RP, such as  janedoe or j.doe. This value MAY be any valid JSON string including special characters  such as @, /, or whitespace. ")
     profile: Optional[StrictStr] = Field(None, description="URL of the End-User's profile page. The contents of this Web page SHOULD be about the End-User. ")
     sub: Optional[StrictStr] = Field(None, description="Subject - Identifier for the End-User at the IssuerURL. ")

@@ -16,6 +16,9 @@ affinidi_tdk_credential_issuance_client/exceptions.py
 affinidi_tdk_credential_issuance_client/models/__init__.py
 affinidi_tdk_credential_issuance_client/models/action_forbidden_error.py
 affinidi_tdk_credential_issuance_client/models/action_forbidden_error_details_inner.py
+affinidi_tdk_credential_issuance_client/models/cors_generate_credentials_ok.py
+affinidi_tdk_credential_issuance_client/models/cors_get_credential_offer_ok.py
+affinidi_tdk_credential_issuance_client/models/cors_get_well_known_open_id_credential_issuer_ok.py
 affinidi_tdk_credential_issuance_client/models/create_credential_input.py
 affinidi_tdk_credential_issuance_client/models/create_issuance_config400_response.py
 affinidi_tdk_credential_issuance_client/models/create_issuance_config_input.py
@@ -53,12 +56,16 @@ affinidi_tdk_credential_issuance_client/models/start_issuance_input.py
 affinidi_tdk_credential_issuance_client/models/start_issuance_input_data_inner.py
 affinidi_tdk_credential_issuance_client/models/start_issuance_response.py
 affinidi_tdk_credential_issuance_client/models/update_issuance_config_input.py
+affinidi_tdk_credential_issuance_client/models/vc_claimed_error.py
 affinidi_tdk_credential_issuance_client/models/well_known_open_id_credential_issuer_response.py
 affinidi_tdk_credential_issuance_client/py.typed
 affinidi_tdk_credential_issuance_client/rest.py
 docs/ActionForbiddenError.md
 docs/ActionForbiddenErrorDetailsInner.md
 docs/ConfigurationApi.md
+docs/CorsGenerateCredentialsOK.md
+docs/CorsGetCredentialOfferOK.md
+docs/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 docs/CreateCredentialInput.md
 docs/CreateIssuanceConfig400Response.md
 docs/CreateIssuanceConfigInput.md
@@ -99,6 +106,7 @@ docs/StartIssuanceInput.md
 docs/StartIssuanceInputDataInner.md
 docs/StartIssuanceResponse.md
 docs/UpdateIssuanceConfigInput.md
+docs/VcClaimedError.md
 docs/WellKnownApi.md
 docs/WellKnownOpenIdCredentialIssuerResponse.md
 pyproject.toml
@@ -107,5 +115,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_invalid_issuer_wallet_error.py
+test/test_cors_generate_credentials_ok.py
+test/test_cors_get_credential_offer_ok.py
+test/test_cors_get_well_known_open_id_credential_issuer_ok.py
+test/test_vc_claimed_error.py
 tox.ini

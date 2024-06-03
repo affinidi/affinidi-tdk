@@ -605,6 +605,64 @@ export interface PolicyStatementDto {
 /**
  *
  * @export
+ * @interface PrincipalCannotBeDeletedError
+ */
+export interface PrincipalCannotBeDeletedError {
+  /**
+   *
+   * @type {string}
+   * @memberof PrincipalCannotBeDeletedError
+   */
+  name: PrincipalCannotBeDeletedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof PrincipalCannotBeDeletedError
+   */
+  message: PrincipalCannotBeDeletedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof PrincipalCannotBeDeletedError
+   */
+  httpStatusCode: PrincipalCannotBeDeletedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof PrincipalCannotBeDeletedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof PrincipalCannotBeDeletedError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const PrincipalCannotBeDeletedErrorNameEnum = {
+  PrincipalCannotBeDeletedError: 'PrincipalCannotBeDeletedError',
+} as const
+
+export type PrincipalCannotBeDeletedErrorNameEnum =
+  (typeof PrincipalCannotBeDeletedErrorNameEnum)[keyof typeof PrincipalCannotBeDeletedErrorNameEnum]
+export const PrincipalCannotBeDeletedErrorMessageEnum = {
+  CannotDeleteOwnRecordFromTheProjectWithTheSamePrincipalId:
+    'Cannot delete own record from the project with the same principalId',
+} as const
+
+export type PrincipalCannotBeDeletedErrorMessageEnum =
+  (typeof PrincipalCannotBeDeletedErrorMessageEnum)[keyof typeof PrincipalCannotBeDeletedErrorMessageEnum]
+export const PrincipalCannotBeDeletedErrorHttpStatusCodeEnum = {
+  NUMBER_409: 409,
+} as const
+
+export type PrincipalCannotBeDeletedErrorHttpStatusCodeEnum =
+  (typeof PrincipalCannotBeDeletedErrorHttpStatusCodeEnum)[keyof typeof PrincipalCannotBeDeletedErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface PrincipalDoesNotBelongToProjectError
  */
 export interface PrincipalDoesNotBelongToProjectError {

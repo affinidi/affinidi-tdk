@@ -235,6 +235,7 @@ void (empty response body)
 | **204**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+| **409**     | ConflictError   | -                |
 | **500**     | UnexpectedError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

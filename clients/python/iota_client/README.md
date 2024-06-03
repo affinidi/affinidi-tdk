@@ -110,6 +110,7 @@ All URIs are relative to _http://localhost_
 - [CallbackInput](docs/CallbackInput.md)
 - [ConsentDto](docs/ConsentDto.md)
 - [CorsAwsExchangeCredentialsOK](docs/CorsAwsExchangeCredentialsOK.md)
+- [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
 - [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](docs/CreatePexQueryInput.md)
 - [DemoWbx](docs/DemoWbx.md)

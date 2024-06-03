@@ -64,9 +64,9 @@ No authorization required
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Ok              | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

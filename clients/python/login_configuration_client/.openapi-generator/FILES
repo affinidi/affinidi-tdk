@@ -139,10 +139,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_allow_list_api.py
-test/test_configuration_api.py
-test/test_create_login_configurations400_response.py
-test/test_deny_list_api.py
-test/test_group_api.py
-test/test_idp_api.py
 tox.ini

@@ -82,6 +82,7 @@ All URIs are relative to _http://localhost_
 - [CallbackInput](doc//CallbackInput.md)
 - [ConsentDto](doc//ConsentDto.md)
 - [CorsAwsExchangeCredentialsOK](doc//CorsAwsExchangeCredentialsOK.md)
+- [CorsIotOidc4vpcallbackOK](doc//CorsIotOidc4vpcallbackOK.md)
 - [CreateIotaConfigurationInput](doc//CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](doc//CreatePexQueryInput.md)
 - [DemoWbx](doc//DemoWbx.md)

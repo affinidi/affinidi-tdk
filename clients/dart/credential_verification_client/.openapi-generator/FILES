@@ -100,5 +100,3 @@ lib/model/w3c_presentation_context.dart
 lib/model/w3c_presentation_context_one_of_inner.dart
 lib/model/w3c_proof.dart
 pubspec.yaml
-test/default_api_test.dart
-test/verifier_api_test.dart

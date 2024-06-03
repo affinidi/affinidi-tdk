@@ -192,6 +192,8 @@ class ApiClient {
           return DidWebInputParams.fromJson(value);
         case 'EntityNotFoundError':
           return EntityNotFoundError.fromJson(value);
+        case 'GetRevocationCredentialStatusOK':
+          return GetRevocationCredentialStatusOK.fromJson(value);
         case 'GetRevocationListCredentialResultDto':
           return GetRevocationListCredentialResultDto.fromJson(value);
         case 'InvalidDidParameterError':

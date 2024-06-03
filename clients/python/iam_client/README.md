@@ -139,6 +139,7 @@ All URIs are relative to _http://localhost_
 - [NotFoundError](docs/NotFoundError.md)
 - [PolicyDto](docs/PolicyDto.md)
 - [PolicyStatementDto](docs/PolicyStatementDto.md)
+- [PrincipalCannotBeDeletedError](docs/PrincipalCannotBeDeletedError.md)
 - [PrincipalDoesNotBelongToProjectError](docs/PrincipalDoesNotBelongToProjectError.md)
 - [ProjectDto](docs/ProjectDto.md)
 - [ProjectList](docs/ProjectList.md)

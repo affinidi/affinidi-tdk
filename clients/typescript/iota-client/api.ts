@@ -251,6 +251,19 @@ export interface CorsAwsExchangeCredentialsOK {
 /**
  *
  * @export
+ * @interface CorsIotOidc4vpcallbackOK
+ */
+export interface CorsIotOidc4vpcallbackOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsIotOidc4vpcallbackOK
+   */
+  corsIotOidc4vpcallbackOk?: string
+}
+/**
+ *
+ * @export
  * @interface CreateIotaConfigurationInput
  */
 export interface CreateIotaConfigurationInput {

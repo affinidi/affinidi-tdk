@@ -57,6 +57,7 @@ All URIs are relative to _http://localhost_
 - [NotFoundError](./Models/NotFoundError.md)
 - [PolicyDto](./Models/PolicyDto.md)
 - [PolicyStatementDto](./Models/PolicyStatementDto.md)
+- [PrincipalCannotBeDeletedError](./Models/PrincipalCannotBeDeletedError.md)
 - [PrincipalDoesNotBelongToProjectError](./Models/PrincipalDoesNotBelongToProjectError.md)
 - [ProjectDto](./Models/ProjectDto.md)
 - [ProjectList](./Models/ProjectList.md)

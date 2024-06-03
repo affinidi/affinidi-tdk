@@ -28,6 +28,7 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/default_api.dart';
 part 'api/revocation_api.dart';
 part 'api/wallet_api.dart';
 
@@ -36,6 +37,7 @@ part 'model/create_wallet_response.dart';
 part 'model/did_key_input_params.dart';
 part 'model/did_web_input_params.dart';
 part 'model/entity_not_found_error.dart';
+part 'model/get_revocation_credential_status_ok.dart';
 part 'model/get_revocation_list_credential_result_dto.dart';
 part 'model/invalid_did_parameter_error.dart';
 part 'model/invalid_parameter_error.dart';
