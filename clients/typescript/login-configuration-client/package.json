@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/login-configuration-client",
-  "version": "1.0.0",
+  "version": "1.7.0",
   "description": "Affinidi TDK typescript client for Affinidi LOGIN CONFIGURATION",
   "author": "Affinidi",
   "repository": {
