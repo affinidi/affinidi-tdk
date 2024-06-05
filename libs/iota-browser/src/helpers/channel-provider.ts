@@ -11,7 +11,7 @@ import { IotaAuthProvider, IotaCredentials } from './iota-auth-provider'
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
 
-type ChannelProviderParams = {
+export type ChannelProviderParams = {
   iotaAuthProvider: IotaAuthProvider
   iotEndpoint?: string
 }
@@ -22,7 +22,7 @@ export type PrepareRequestParams = {
   audience?: string
 }
 
-export type IotaRequestParams = {
+export type IotaChannelRequest = {
   correlationId: string
   payload: {
     request: string
@@ -31,9 +31,9 @@ export type IotaRequestParams = {
 }
 
 // TODO Error type
-export type IotaRequestParamsCallbackFunction = (
+export type IotaChannelRequestCallbackFunction = (
   err: Error | null,
-  data: IotaRequestParams | null,
+  data: IotaChannelRequest | null,
 ) => void
 
 export class ChannelProvider {
@@ -146,7 +146,7 @@ export class ChannelProvider {
 
   async prepareRequest(
     params: PrepareRequestParams,
-  ): Promise<IotaRequestParams> {
+  ): Promise<IotaChannelRequest> {
     const client = this.getClient()
     const topicName = this.getTopicName()
     const correlationId = params.correlationId ?? uuidv4()
@@ -189,7 +189,7 @@ export class ChannelProvider {
                   reject(new Error('Unexpected request claims received'))
                 }
                 const client_id = claims.client_id as string
-                const request: IotaRequestParams = {
+                const request: IotaChannelRequest = {
                   correlationId: signedRequest.correlationId,
                   payload: {
                     request: signedRequest.data.jwt,
@@ -211,7 +211,7 @@ export class ChannelProvider {
 
   prepareRequestWithCallback(
     params: PrepareRequestParams,
-    callback: IotaRequestParamsCallbackFunction,
+    callback: IotaChannelRequestCallbackFunction,
   ) {
     this.prepareRequest(params)
       .then((request) => callback(null, request))
