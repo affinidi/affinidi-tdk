@@ -1,5 +1,5 @@
-import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
+import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import * as jose from 'jose'
 import { v4 as uuidv4 } from 'uuid'
 import {
@@ -11,7 +11,7 @@ import { IotaAuthProvider, IotaCredentials } from './iota-auth-provider'
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
 
-type ChannelProviderParams = {
+export type ChannelProviderParams = {
   iotaAuthProvider: IotaAuthProvider
   iotEndpoint?: string
 }
@@ -19,15 +19,22 @@ type ChannelProviderParams = {
 export type PrepareRequestParams = {
   queryId: string
   correlationId?: string
+  audience?: string
 }
 
-export type IotaRequest = {
+export type IotaChannelRequest = {
   correlationId: string
   payload: {
     request: string
     client_id: string
   }
 }
+
+// TODO Error type
+export type IotaChannelRequestCallbackFunction = (
+  err: Error | null,
+  data: IotaChannelRequest | null,
+) => void
 
 export class ChannelProvider {
   iotaAuthProvider: IotaAuthProvider
@@ -137,7 +144,9 @@ export class ChannelProvider {
     console.log(`Subscribed to ${topicName}...`)
   }
 
-  async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
+  async prepareRequest(
+    params: PrepareRequestParams,
+  ): Promise<IotaChannelRequest> {
     const client = this.getClient()
     const topicName = this.getTopicName()
     const correlationId = params.correlationId ?? uuidv4()
@@ -146,6 +155,7 @@ export class ChannelProvider {
       eventType: 'prepareRequest',
       queryId: params.queryId,
       correlationId,
+      ...(params.audience ? { audience: params.audience } : {}),
     }
 
     const publishPacket: mqtt5.PublishPacket = {
@@ -179,7 +189,7 @@ export class ChannelProvider {
                   reject(new Error('Unexpected request claims received'))
                 }
                 const client_id = claims.client_id as string
-                const request: IotaRequest = {
+                const request: IotaChannelRequest = {
                   correlationId: signedRequest.correlationId,
                   payload: {
                     request: signedRequest.data.jwt,
@@ -199,7 +209,10 @@ export class ChannelProvider {
     })
   }
 
-  prepareRequestWithCallback(params: PrepareRequestParams, callback: any) {
+  prepareRequestWithCallback(
+    params: PrepareRequestParams,
+    callback: IotaChannelRequestCallbackFunction,
+  ) {
     this.prepareRequest(params)
       .then((request) => callback(null, request))
       .catch((error) => callback(error, null))

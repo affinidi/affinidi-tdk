@@ -1,12 +1,11 @@
-import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
-import { ChannelProvider } from './channel-provider'
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
+import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import {
   ResponseCallbackEventSchema,
   VerifiablePresentation,
   VerifiablePresentationSchema,
 } from '../validators/events'
-import { VaultHandler } from './vault-handler'
+import { ChannelProvider } from './channel-provider'
 
 export type IotaResponse = {
   correlationId: string
@@ -15,16 +14,19 @@ export type IotaResponse = {
   presentationSubmission: string
 }
 
+// TODO Error type
+export type IotaResponseCallbackFunction = (
+  err: Error | null,
+  data: IotaResponse | null,
+) => void
+
 export class ResponseHandler {
   channelProvider: ChannelProvider
   constructor(channelProvider: ChannelProvider) {
     this.channelProvider = channelProvider
   }
 
-  async getResponse(
-    correlationId: string,
-    vaultHandler?: VaultHandler,
-  ): Promise<IotaResponse> {
+  async getResponse(correlationId: string): Promise<IotaResponse> {
     const client = this.channelProvider.getClient()
     return new Promise((resolve, reject) => {
       client.on(
@@ -41,9 +43,6 @@ export class ResponseHandler {
                 event.eventType === 'response-callback' &&
                 event.correlationId === correlationId
               ) {
-                if (vaultHandler) {
-                  vaultHandler.closeVault(correlationId)
-                }
                 console.log('response-callback:', event)
                 // TODO handle Zod errors gracefully
                 const responseCallback =
@@ -72,11 +71,10 @@ export class ResponseHandler {
 
   getResponseWithCallback(
     correlationId: string,
-    vaultHandler: VaultHandler,
-    callback: any,
+    callback: IotaResponseCallbackFunction,
   ) {
-    this.getResponse(correlationId, vaultHandler)
-      .then((request) => callback(null, request))
+    this.getResponse(correlationId)
+      .then((response) => callback(null, response))
       .catch((error) => callback(error, null))
   }
 }

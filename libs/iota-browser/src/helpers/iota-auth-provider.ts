@@ -8,7 +8,7 @@ import { AwsCredentialIdentity } from '@smithy/types'
 const DEFAULT_REGION = 'ap-southeast-1'
 const DEFAULT_API_GW = 'https://apse1.dev.api.affinidi.io/ais'
 
-type AuthProviderParams = {
+export type AuthProviderParams = {
   region: string
   apiGW: string
 }
