@@ -53,7 +53,7 @@ export class IotaRequest {
   }
 
   getSuggestedLink(): string {
-    const links = IotaUtils.createVaultLinks({ payload: this.payload })
-    return links.web
+    const link = IotaUtils.createVaultLink({ payload: this.payload })
+    return link
   }
 }
