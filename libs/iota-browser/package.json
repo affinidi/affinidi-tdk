@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@affinidi-tdk/iota-client": "^1.1.0",
-    "@affinidi-tdk/iota-utils": "file:iota-utils@0.1.2.jsii.tgz",
+    "@affinidi-tdk/iota-utils": "file:../../packages/iota-utils",
     "@aws-sdk/client-cognito-identity": "^3.583.0",
     "@smithy/types": "^3.0.0",
     "aws-crt": "^1.21.2",

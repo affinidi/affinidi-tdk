@@ -1,4 +1,6 @@
+import { IotaCredentials } from '@affinidi-tdk/iota-utils'
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
+import { AwsCredentialIdentity } from '@smithy/types'
 import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import * as jose from 'jose'
 import { v4 as uuidv4 } from 'uuid'
@@ -6,14 +8,17 @@ import {
   PrepareRequestEvent,
   SignedRequestEventSchema,
 } from '../validators/events'
-import { IotaAuthProvider, IotaCredentials } from './iota-auth-provider'
 
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
+const DEFAULT_REGION = 'ap-southeast-1'
+const DEFAULT_API_GW = 'https://apse1.dev.api.affinidi.io/ais'
 
 export type ChannelProviderParams = {
-  iotaAuthProvider: IotaAuthProvider
+  credentials: IotaCredentials
   iotEndpoint?: string
+  region?: string
+  apiGW?: string
 }
 
 export type PrepareRequestParams = {
@@ -37,7 +42,6 @@ export type IotaChannelRequestCallbackFunction = (
 ) => void
 
 export class ChannelProvider {
-  iotaAuthProvider: IotaAuthProvider
   iotEndpoint: string
   region: string
   apiGW: string
@@ -45,11 +49,10 @@ export class ChannelProvider {
   iotaClient?: mqtt5.Mqtt5Client
   topicName?: string
 
-  constructor(params: ChannelProviderParams) {
-    this.iotaAuthProvider = params.iotaAuthProvider
-    this.iotEndpoint = params.iotEndpoint ?? DEFAULT_IOT_ENDPOINT
-    this.region = this.iotaAuthProvider.region
-    this.apiGW = this.iotaAuthProvider.apiGW
+  constructor(params?: ChannelProviderParams) {
+    this.iotEndpoint = params?.iotEndpoint ?? DEFAULT_IOT_ENDPOINT
+    this.region = params?.region ?? DEFAULT_REGION
+    this.apiGW = params?.apiGW ?? DEFAULT_API_GW
   }
 
   getClient(): mqtt5.Mqtt5Client {
@@ -68,15 +71,25 @@ export class ChannelProvider {
     return this.topicName
   }
 
-  async authenticate(token: string) {
-    const iotaCredentials =
-      await this.iotaAuthProvider.limitedTokenToIotaCredentials(token)
-    this.iotaConfigBuilder = await this.createConfigBuilder(iotaCredentials)
-    this.topicName = `iota/v1/${iotaCredentials.iotClientId}`
-    console.log('Authenticated with Iota')
+  async initialize(credentials: IotaCredentials) {
+    const credentialsProvider = new CustomCredentialsProvider(
+      {
+        accessKeyId: credentials.credentials.accessKeyId!,
+        secretAccessKey: credentials.credentials.secretKey!,
+        sessionToken: credentials.credentials.sessionToken!,
+      },
+      this.region,
+    )
+    this.iotaConfigBuilder = await this.createConfigBuilder(
+      credentialsProvider,
+      credentials.iotClientId,
+    )
+    this.topicName = `iota/v1/${credentials.iotClientId}`
+    this.iotaClient = await this.startClient()
+    console.log('Initialized Iota channel')
   }
 
-  async startClient(): Promise<mqtt5.Mqtt5Client> {
+  private async startClient(): Promise<mqtt5.Mqtt5Client> {
     if (!this.iotaConfigBuilder || !this.topicName) {
       throw new Error('Not authenticated with Affinidi Iota Framework')
     }
@@ -88,28 +101,23 @@ export class ChannelProvider {
     return this.iotaClient
   }
 
-  async initialize(token: string) {
-    await this.authenticate(token)
-    this.iotaClient = await this.startClient()
-    console.log('Initialized Iota channel')
-  }
-
   private async createConfigBuilder(
-    iotaCredentials: IotaCredentials,
+    credentialsProvider: CustomCredentialsProvider,
+    iotClientId: string,
   ): Promise<iot.AwsIotMqtt5ClientConfigBuilder> {
     const configBuilder =
       iot.AwsIotMqtt5ClientConfigBuilder.newWebsocketMqttBuilderWithSigv4Auth(
         this.iotEndpoint,
         {
           region: this.region,
-          credentialsProvider: iotaCredentials.credentialsProvider,
+          credentialsProvider: credentialsProvider,
         },
       )
 
     configBuilder
       .withSessionBehavior(mqtt5.ClientSessionBehavior.RejoinAlways)
       .withConnectProperties({
-        clientId: iotaCredentials.iotClientId,
+        clientId: iotClientId,
         keepAliveIntervalSeconds: 60,
         sessionExpiryIntervalSeconds: 60,
       })
@@ -216,5 +224,29 @@ export class ChannelProvider {
     this.prepareRequest(params)
       .then((request) => callback(null, request))
       .catch((error) => callback(error, null))
+  }
+}
+
+class CustomCredentialsProvider {
+  private awsCredentialIdentity: AwsCredentialIdentity
+  private region: string
+
+  constructor(awsCredentialIdentity: AwsCredentialIdentity, region: string) {
+    this.awsCredentialIdentity = awsCredentialIdentity
+    this.region = region
+  }
+
+  getCredentials() {
+    return {
+      aws_region: this.region,
+      aws_access_id: this.awsCredentialIdentity.accessKeyId,
+      aws_secret_key: this.awsCredentialIdentity.secretAccessKey,
+      aws_sts_token: this.awsCredentialIdentity.sessionToken,
+    }
+  }
+
+  async refreshCredentials(): Promise<void> {
+    // TODO
+    return Promise.resolve()
   }
 }

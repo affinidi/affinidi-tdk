@@ -1,4 +1,8 @@
-import { EnvironmentHandler } from './helpers'
+import {
+  EnvironmentHandler,
+  IotaAuthProvider,
+  IotaCredentials,
+} from './helpers'
 import { Environment } from './helpers/environment'
 
 const LOCAL_VAULT_URL = 'http://localhost:3001/login'
@@ -26,5 +30,12 @@ export class IotaUtils {
     const vaultLink = `${envToWebVaultUrlMap[this.env] || PROD_VAULT_URL}?${queryString}`
 
     return vaultLink
+  }
+
+  static async limitedTokenToIotaCredentials(
+    token: string,
+  ): Promise<IotaCredentials> {
+    const authProvider = new IotaAuthProvider()
+    return authProvider.limitedTokenToIotaCredentials(token)
   }
 }
