@@ -1,42 +1,26 @@
-import { WindowCache } from './window-cache'
-
 export enum OpenMode {
   NewTab,
   Popup,
 }
 
 export type VaultHandlerOpenParams = {
-  correlationId: string
   link: string
 
   /** @defaultValue NewTab */
-  openMode?: OpenMode
-}
-
-export type CloseVaultParams = {
-  correlationId: string
+  mode?: OpenMode
 }
 
 export class VaultHandler {
-  private cache = new WindowCache()
-
   public openVault(params: VaultHandlerOpenParams) {
-    var { correlationId, link, openMode = OpenMode.NewTab } = params
+    var { link, mode = OpenMode.NewTab } = params
     let windowFeatures = ''
-    if (openMode === OpenMode.Popup) {
-      const width = 770
-      const height = 920
+    if (mode === OpenMode.Popup) {
+      const width = 450
+      const height = 800
       const left = (window.screen.width - width) / 2
       const top = (window.screen.height - height) / 2
       windowFeatures = `popup=true,width=${width},height=${height},left=${left},top=${top}`
     }
-    const win = window.open(link, '_blank', windowFeatures)
-    this.cache.addWindow(correlationId, win)
-  }
-
-  public closeVault(params: CloseVaultParams) {
-    const win = this.cache.getWindow(params.correlationId)
-    if (win) win.close()
-    this.cache.deleteWindow(params.correlationId)
+    window.open(link, '_blank', windowFeatures)
   }
 }

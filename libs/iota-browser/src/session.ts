@@ -77,7 +77,7 @@ export class Session {
   async getResponse(correlationId: string): Promise<IotaResponse> {
     this.isChannelProviderInitialized()
     const responseHandler = new ResponseHandler(this.channelProvider)
-    return responseHandler.getResponse(correlationId, this.vaultHandler)
+    return responseHandler.getResponse(correlationId)
   }
 
   getResponseWithCallback(
@@ -86,11 +86,7 @@ export class Session {
   ) {
     this.isChannelProviderInitialized()
     const responseHandler = new ResponseHandler(this.channelProvider)
-    responseHandler.getResponseWithCallback(
-      correlationId,
-      callback,
-      this.vaultHandler,
-    )
+    responseHandler.getResponseWithCallback(correlationId, callback)
   }
 
   private isChannelProviderInitialized() {
