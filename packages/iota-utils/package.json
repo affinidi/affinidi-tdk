@@ -1,0 +1,54 @@
+{
+  "name": "@affinidi-tdk/iota-utils",
+  "version": "0.1.2",
+  "description": "Description",
+  "author": "Affinidi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/affinidi/affinidi-tdk"
+  },
+  "keywords": [
+    "affinidi-tdk",
+    "identity",
+    "holistic",
+    "network",
+    "trust"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "sideEffects": false,
+  "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+  "jsii": {
+    "outdir": "dist",
+    "versionFormat": "short",
+    "targets": {
+      "python": {
+        "distName": "affinidi-tdk.iota-utils",
+        "module": "affinidi_tdk.iota_utils"
+      }
+    }
+  },
+  "scripts": {
+    "build": "jsii -vvv",
+    "build:watch": "jsii -w",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "package": "jsii-pacmak -vvv",
+    "prepare": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "jsii": "^5.3.25",
+    "jsii-pacmak": "^1.95.0",
+    "typescript": "^5.2.2"
+  },
+  "stability": "stable",
+  "types": "index.d.ts",
+  "bundleDependencies": []
+}
