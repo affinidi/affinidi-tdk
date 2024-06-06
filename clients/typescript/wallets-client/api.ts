@@ -581,6 +581,14 @@ export interface ServiceErrorResponseDetailsInner {
   location?: string
 }
 /**
+ * @type SignCredential400Response
+ * @export
+ */
+export type SignCredential400Response =
+  | InvalidParameterError
+  | SigningFailedError
+
+/**
  * DTO contains params to sign credential
  * @export
  * @interface SignCredentialInputDto
@@ -693,6 +701,63 @@ export interface SignJwtTokenOK {
    */
   signedJwt?: string
 }
+/**
+ *
+ * @export
+ * @interface SigningFailedError
+ */
+export interface SigningFailedError {
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  name: SigningFailedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  message: SigningFailedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof SigningFailedError
+   */
+  httpStatusCode: SigningFailedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof SigningFailedError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const SigningFailedErrorNameEnum = {
+  SigningFailedError: 'SigningFailedError',
+} as const
+
+export type SigningFailedErrorNameEnum =
+  (typeof SigningFailedErrorNameEnum)[keyof typeof SigningFailedErrorNameEnum]
+export const SigningFailedErrorMessageEnum = {
+  SigningFailed: 'Signing failed.',
+} as const
+
+export type SigningFailedErrorMessageEnum =
+  (typeof SigningFailedErrorMessageEnum)[keyof typeof SigningFailedErrorMessageEnum]
+export const SigningFailedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type SigningFailedErrorHttpStatusCodeEnum =
+  (typeof SigningFailedErrorHttpStatusCodeEnum)[keyof typeof SigningFailedErrorHttpStatusCodeEnum]
+
 /**
  * Update wallet input params
  * @export

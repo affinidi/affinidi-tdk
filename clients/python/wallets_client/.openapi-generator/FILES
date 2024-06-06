@@ -27,11 +27,13 @@ affinidi_tdk_wallets_client/models/operation_forbidden_error.py
 affinidi_tdk_wallets_client/models/revoke_credential_input.py
 affinidi_tdk_wallets_client/models/service_error_response.py
 affinidi_tdk_wallets_client/models/service_error_response_details_inner.py
+affinidi_tdk_wallets_client/models/sign_credential400_response.py
 affinidi_tdk_wallets_client/models/sign_credential_input_dto.py
 affinidi_tdk_wallets_client/models/sign_credential_input_dto_unsigned_credential_params.py
 affinidi_tdk_wallets_client/models/sign_credential_result_dto.py
 affinidi_tdk_wallets_client/models/sign_jwt_token.py
 affinidi_tdk_wallets_client/models/sign_jwt_token_ok.py
+affinidi_tdk_wallets_client/models/signing_failed_error.py
 affinidi_tdk_wallets_client/models/update_wallet_input.py
 affinidi_tdk_wallets_client/models/wallet_dto.py
 affinidi_tdk_wallets_client/models/wallet_dto_keys_inner.py
@@ -55,11 +57,13 @@ docs/RevocationApi.md
 docs/RevokeCredentialInput.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
+docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
 docs/SignCredentialInputDtoUnsignedCredentialParams.md
 docs/SignCredentialResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SigningFailedError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
@@ -71,6 +75,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_default_api.py
-test/test_get_revocation_credential_status_ok.py
+test/test_sign_credential400_response.py
+test/test_signing_failed_error.py
 tox.ini

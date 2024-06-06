@@ -65,11 +65,10 @@ try {
 
 All URIs are relative to _http://localhost_
 
-| Class         | Method                                                          | HTTP request                       | Description         |
-| ------------- | --------------------------------------------------------------- | ---------------------------------- | ------------------- |
-| _DefaultApi_  | [**verifyCredentials**](doc//DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
-| _DefaultApi_  | [**verifyPresentation**](doc//DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp    | Verifying VP        |
-| _VerifierApi_ | [**validateJwt**](doc//VerifierApi.md#validatejwt)              | **POST** /v1/verifier/validate-jwt | Validates JWT token |
+| Class        | Method                                                          | HTTP request                     | Description  |
+| ------------ | --------------------------------------------------------------- | -------------------------------- | ------------ |
+| _DefaultApi_ | [**verifyCredentials**](doc//DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
+| _DefaultApi_ | [**verifyPresentation**](doc//DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
 
 ## Documentation For Models
 

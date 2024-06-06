@@ -109,5 +109,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_principal_cannot_be_deleted_error.py
 tox.ini

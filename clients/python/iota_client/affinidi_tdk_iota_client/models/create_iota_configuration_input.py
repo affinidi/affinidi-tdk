@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr, confloat, conint
 from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
 
 class CreateIotaConfigurationInput(BaseModel):
@@ -32,7 +32,7 @@ class CreateIotaConfigurationInput(BaseModel):
     iota_response_webhook_url: Optional[StrictStr] = Field(None, alias="iotaResponseWebhookURL", description="webhook to call when data is ready")
     enable_verification: StrictBool = Field(..., alias="enableVerification")
     enable_consent_audit_log: StrictBool = Field(..., alias="enableConsentAuditLog")
-    token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="tokenMaxAge", description="token time to live in seconds")
+    token_max_age: Optional[Union[confloat(ge=1, strict=True), conint(ge=1, strict=True)]] = Field(None, alias="tokenMaxAge", description="token time to live in seconds")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(..., alias="clientMetadata")
     __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata"]
 

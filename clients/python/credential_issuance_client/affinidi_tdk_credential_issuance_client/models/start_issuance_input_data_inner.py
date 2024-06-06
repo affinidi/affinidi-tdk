@@ -19,8 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+from affinidi_tdk_credential_issuance_client.models.start_issuance_input_data_inner_meta_data import StartIssuanceInputDataInnerMetaData
 
 class StartIssuanceInputDataInner(BaseModel):
     """
@@ -28,7 +29,8 @@ class StartIssuanceInputDataInner(BaseModel):
     """
     credential_type_id: StrictStr = Field(..., alias="credentialTypeId", description="It is a String that identifies a Credential that is being requested to be issued.")
     credential_data: Dict[str, Any] = Field(..., alias="credentialData", description="Object of data to be included in the issued credential ,should  match the credential type")
-    __properties = ["credentialTypeId", "credentialData"]
+    meta_data: Optional[StartIssuanceInputDataInnerMetaData] = Field(None, alias="metaData")
+    __properties = ["credentialTypeId", "credentialData", "metaData"]
 
     class Config:
         """Pydantic configuration"""
@@ -54,6 +56,9 @@ class StartIssuanceInputDataInner(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of meta_data
+        if self.meta_data:
+            _dict['metaData'] = self.meta_data.to_dict()
         return _dict
 
     @classmethod
@@ -67,7 +72,8 @@ class StartIssuanceInputDataInner(BaseModel):
 
         _obj = StartIssuanceInputDataInner.parse_obj({
             "credential_type_id": obj.get("credentialTypeId"),
-            "credential_data": obj.get("credentialData")
+            "credential_data": obj.get("credentialData"),
+            "meta_data": StartIssuanceInputDataInnerMetaData.from_dict(obj.get("metaData")) if obj.get("metaData") is not None else None
         })
         return _obj
 

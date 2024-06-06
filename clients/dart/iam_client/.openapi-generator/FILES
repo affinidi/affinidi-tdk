@@ -104,4 +104,3 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
-test/principal_cannot_be_deleted_error_test.dart
