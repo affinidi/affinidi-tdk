@@ -73,6 +73,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/4987930?v=4",
       "profile": "https://github.com/Bergmam",
       "contributions": ["code", "doc"]
+    },
+    {
+      "login": "sureshaff",
+      "name": "sureshaff",
+      "avatar_url": "https://avatars.githubusercontent.com/u/170073177?v=4",
+      "profile": "https://github.com/sureshaff",
+      "contributions": ["security"]
     }
   ],
   "contributorsPerLine": 7,

@@ -1,6 +1,6 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate Affinidi services into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
@@ -114,6 +114,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/maratsh"><img src="https://avatars.githubusercontent.com/u/533533?v=4?s=100" width="100px;" alt="maratsh"/><br /><sub><b>maratsh</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=maratsh" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=maratsh" title="Documentation">📖</a> <a href="#example-maratsh" title="Examples">💡</a> <a href="#ideas-maratsh" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-maratsh" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#platform-maratsh" title="Packaging/porting to new platform">📦</a> <a href="#security-maratsh" title="Security">🛡️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pulkitb2"><img src="https://avatars.githubusercontent.com/u/146182581?v=4?s=100" width="100px;" alt="Pulkit Batra"/><br /><sub><b>Pulkit Batra</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=pulkitb2" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=pulkitb2" title="Documentation">📖</a> <a href="#example-pulkitb2" title="Examples">💡</a> <a href="#ideas-pulkitb2" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-pulkitb2" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-pulkitb2" title="Maintenance">🚧</a> <a href="#platform-pulkitb2" title="Packaging/porting to new platform">📦</a> <a href="#plugin-pulkitb2" title="Plugin/utility libraries">🔌</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Bergmam"><img src="https://avatars.githubusercontent.com/u/4987930?v=4?s=100" width="100px;" alt="Anton Bergman"/><br /><sub><b>Anton Bergman</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=Bergmam" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=Bergmam" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sureshaff"><img src="https://avatars.githubusercontent.com/u/170073177?v=4?s=100" width="100px;" alt="sureshaff"/><br /><sub><b>sureshaff</b></sub></a><br /><a href="#security-sureshaff" title="Security">🛡️</a></td>
     </tr>
   </tbody>
   <tfoot>
