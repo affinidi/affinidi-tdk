@@ -66,6 +66,13 @@
         "platform",
         "plugin"
       ]
+    },
+    {
+      "login": "Bergmam",
+      "name": "Anton Bergman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4987930?v=4",
+      "profile": "https://github.com/Bergmam",
+      "contributions": ["code", "doc"]
     }
   ],
   "contributorsPerLine": 7,
