@@ -44,7 +44,6 @@ export class IotaAuthProvider {
       iotClientId,
       credentials: { identityId, token: cognitoToken },
     } = response.data
-    console.log('credentials', { identityId, cognitoToken })
 
     const cognitoIdentityClient = new CognitoIdentityClient({
       region: this.region,

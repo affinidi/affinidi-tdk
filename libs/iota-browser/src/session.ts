@@ -21,9 +21,9 @@ export type IotaRequestCallbackFunction = (
 ) => void
 
 export class Session {
-  channelProvider: ChannelProvider
+  private channelProvider: ChannelProvider
+  private credentials: IotaCredentials
   vaultHandler: VaultHandler
-  credentials: IotaCredentials
 
   constructor(params: SessionParams) {
     const { credentials } = params

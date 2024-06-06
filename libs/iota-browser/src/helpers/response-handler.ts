@@ -43,7 +43,6 @@ export class ResponseHandler {
                 event.eventType === 'response-callback' &&
                 event.correlationId === correlationId
               ) {
-                console.log('response-callback:', event)
                 // TODO handle Zod errors gracefully
                 const responseCallback =
                   ResponseCallbackEventSchema.parse(event)
@@ -60,7 +59,6 @@ export class ResponseHandler {
                 resolve(response)
               }
             } catch (error) {
-              console.log(error)
               reject(error)
             }
           }

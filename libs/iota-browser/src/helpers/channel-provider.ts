@@ -86,7 +86,6 @@ export class ChannelProvider {
     )
     this.topicName = `iota/v1/${credentials.iotClientId}`
     this.iotaClient = await this.startClient()
-    console.log('Initialized Iota channel')
   }
 
   private async startClient(): Promise<mqtt5.Mqtt5Client> {
@@ -94,7 +93,6 @@ export class ChannelProvider {
       throw new Error('Not authenticated with Affinidi Iota Framework')
     }
     if (!this.iotaClient) {
-      console.log('Client not yet started. Starting...')
       this.iotaClient = await this.startMqttClient(this.iotaConfigBuilder)
       await this.subscribeToTopic(this.iotaClient, this.topicName)
     }
@@ -134,8 +132,6 @@ export class ChannelProvider {
     // TODO Add any required handlers
 
     client.start()
-    console.log('Client started')
-
     return client
   }
 
@@ -149,7 +145,6 @@ export class ChannelProvider {
       ],
     }
     await client.subscribe(packet)
-    console.log(`Subscribed to ${topicName}...`)
   }
 
   async prepareRequest(
@@ -172,7 +167,6 @@ export class ChannelProvider {
       qos: mqtt5.QoS.AtLeastOnce,
     }
     await client.publish(publishPacket)
-    console.log('prepareRequest:', eventPayload)
 
     return new Promise((resolve, reject) => {
       client.on(
@@ -188,7 +182,6 @@ export class ChannelProvider {
                 event.eventType === 'signedRequest' &&
                 correlationId === event.correlationId
               ) {
-                console.log('signedRequest:', event)
                 // TODO handle Zod errors gracefully
                 const signedRequest = SignedRequestEventSchema.parse(event)
                 const claims = jose.decodeJwt(signedRequest.data.jwt)
@@ -208,7 +201,6 @@ export class ChannelProvider {
                 resolve(request)
               }
             } catch (error) {
-              console.log(error)
               reject(error)
             }
           }
