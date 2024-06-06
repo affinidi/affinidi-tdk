@@ -1,4 +1,7 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate Affinidi services into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
@@ -93,3 +96,38 @@ Affinidi collects usage data to improve our products and services. For informati
 
 _Disclaimer:
 Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi TDK, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aeffinidi"><img src="https://avatars.githubusercontent.com/u/86773100?v=4?s=100" width="100px;" alt="aeffinidi"/><br /><sub><b>aeffinidi</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=aeffinidi" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=aeffinidi" title="Documentation">📖</a> <a href="#example-aeffinidi" title="Examples">💡</a> <a href="#ideas-aeffinidi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#tool-aeffinidi" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rbrazhnyk"><img src="https://avatars.githubusercontent.com/u/4462680?v=4?s=100" width="100px;" alt="Roman Brazhnyk"/><br /><sub><b>Roman Brazhnyk</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=rbrazhnyk" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=rbrazhnyk" title="Documentation">📖</a> <a href="#ideas-rbrazhnyk" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-rbrazhnyk" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/carlos-affinidi"><img src="https://avatars.githubusercontent.com/u/86779651?v=4?s=100" width="100px;" alt="Carlos Rincon"/><br /><sub><b>Carlos Rincon</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=carlos-affinidi" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=carlos-affinidi" title="Documentation">📖</a> <a href="#ideas-carlos-affinidi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-carlos-affinidi" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/linn-affinidi"><img src="https://avatars.githubusercontent.com/u/115471777?v=4?s=100" width="100px;" alt="Linn Htoo"/><br /><sub><b>Linn Htoo</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=linn-affinidi" title="Code">💻</a> <a href="#maintenance-linn-affinidi" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/maratsh"><img src="https://avatars.githubusercontent.com/u/533533?v=4?s=100" width="100px;" alt="maratsh"/><br /><sub><b>maratsh</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=maratsh" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=maratsh" title="Documentation">📖</a> <a href="#example-maratsh" title="Examples">💡</a> <a href="#ideas-maratsh" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-maratsh" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#platform-maratsh" title="Packaging/porting to new platform">📦</a> <a href="#security-maratsh" title="Security">🛡️</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

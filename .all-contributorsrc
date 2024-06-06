@@ -1,0 +1,58 @@
+{
+  "projectName": "affinidi-tdk",
+  "projectOwner": "affinidi",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "aeffinidi",
+      "name": "aeffinidi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86773100?v=4",
+      "profile": "https://github.com/aeffinidi",
+      "contributions": ["code", "doc", "example", "ideas", "tool"]
+    },
+    {
+      "login": "rbrazhnyk",
+      "name": "Roman Brazhnyk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4462680?v=4",
+      "profile": "https://github.com/rbrazhnyk",
+      "contributions": ["code", "doc", "ideas", "research"]
+    },
+    {
+      "login": "carlos-affinidi",
+      "name": "Carlos Rincon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86779651?v=4",
+      "profile": "https://github.com/carlos-affinidi",
+      "contributions": ["code", "doc", "ideas", "maintenance"]
+    },
+    {
+      "login": "linn-affinidi",
+      "name": "Linn Htoo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/115471777?v=4",
+      "profile": "https://github.com/linn-affinidi",
+      "contributions": ["code", "maintenance"]
+    },
+    {
+      "login": "maratsh",
+      "name": "maratsh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/533533?v=4",
+      "profile": "https://github.com/maratsh",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "platform",
+        "security"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}
+
