@@ -50,6 +50,22 @@
         "platform",
         "security"
       ]
+    },
+    {
+      "login": "pulkitb2",
+      "name": "Pulkit Batra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/146182581?v=4",
+      "profile": "https://github.com/pulkitb2",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7,
