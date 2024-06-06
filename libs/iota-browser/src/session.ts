@@ -1,8 +1,8 @@
+import { IotaCredentials } from '@affinidi-tdk/iota-utils'
 import {
   ChannelProvider,
   PrepareRequestParams,
 } from './helpers/channel-provider'
-import { IotaAuthProvider } from './helpers/iota-auth-provider'
 import {
   IotaResponse,
   IotaResponseCallbackFunction,
@@ -12,7 +12,7 @@ import { VaultHandler } from './helpers/vault-handler'
 import { IotaRequest } from './request'
 
 export type SessionParams = {
-  token: string
+  credentials: IotaCredentials
 }
 // TODO Error type
 export type IotaRequestCallbackFunction = (
@@ -21,37 +21,23 @@ export type IotaRequestCallbackFunction = (
 ) => void
 
 export class Session {
-  channelProvider: ChannelProvider
+  private channelProvider: ChannelProvider
+  private credentials: IotaCredentials
   vaultHandler: VaultHandler
-  token: string
 
   constructor(params: SessionParams) {
-    const { token } = params
-
-    this.token = token
-    const iotaAuthProvider = new IotaAuthProvider()
-
-    this.channelProvider = new ChannelProvider({
-      iotaAuthProvider,
-    })
-
+    const { credentials } = params
+    this.credentials = credentials
+    this.channelProvider = new ChannelProvider()
     this.vaultHandler = new VaultHandler()
   }
 
   async initialize(): Promise<void> {
     try {
-      await this.channelProvider.initialize(this.token)
+      await this.channelProvider.initialize(this.credentials)
     } catch (error) {
       console.error('Error initializing IotaChannelProvider:', error)
     }
-  }
-
-  async authenticate(): Promise<void> {
-    await this.channelProvider.authenticate(this.token)
-  }
-
-  async startClient() {
-    return this.channelProvider.startClient()
   }
 
   async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
