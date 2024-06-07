@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.5.0...@affinidi-tdk/credential-verification-client-v1.6.0) (2024-06-07)
+
+
+### Features
+
+* update client all ([#100](https://github.com/affinidi/affinidi-tdk/issues/100)) ([ab5ffeb](https://github.com/affinidi/affinidi-tdk/commit/ab5ffeb22f49434a2c701b70d2d398c69584356c))
+
 # [1.5.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.4.0...@affinidi-tdk/credential-verification-client-v1.5.0) (2024-06-03)
 
 
