@@ -21,7 +21,7 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, StrictStr, conlist, validator
-from affinidi_tdk_credential_issuance_client.models.create_issuance_config_input_credential_supported_inner import CreateIssuanceConfigInputCredentialSupportedInner
+from affinidi_tdk_credential_issuance_client.models.issuance_config_dto_credential_supported_inner import IssuanceConfigDtoCredentialSupportedInner
 
 class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     """
@@ -30,7 +30,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     authorization_endpoint: Optional[StrictStr] = None
     credential_endpoint: Optional[StrictStr] = None
     credential_issuer: Optional[StrictStr] = None
-    credentials_supported: Optional[conlist(CreateIssuanceConfigInputCredentialSupportedInner)] = None
+    credentials_supported: Optional[conlist(IssuanceConfigDtoCredentialSupportedInner)] = None
     deferred_credential_endpoint: Optional[StrictStr] = None
     grant_types_supported: Optional[conlist(StrictStr)] = None
     jwks_uri: Optional[StrictStr] = None
@@ -125,7 +125,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             "authorization_endpoint": obj.get("authorization_endpoint"),
             "credential_endpoint": obj.get("credential_endpoint"),
             "credential_issuer": obj.get("credential_issuer"),
-            "credentials_supported": [CreateIssuanceConfigInputCredentialSupportedInner.from_dict(_item) for _item in obj.get("credentials_supported")] if obj.get("credentials_supported") is not None else None,
+            "credentials_supported": [IssuanceConfigDtoCredentialSupportedInner.from_dict(_item) for _item in obj.get("credentials_supported")] if obj.get("credentials_supported") is not None else None,
             "deferred_credential_endpoint": obj.get("deferred_credential_endpoint"),
             "grant_types_supported": obj.get("grant_types_supported"),
             "jwks_uri": obj.get("jwks_uri"),

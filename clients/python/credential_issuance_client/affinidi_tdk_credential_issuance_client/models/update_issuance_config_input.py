@@ -20,7 +20,7 @@ import json
 
 
 from typing import Any, Dict, List, Optional, Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist, validator
+from pydantic import BaseModel, Field, StrictStr, confloat, conint, conlist, validator
 from affinidi_tdk_credential_issuance_client.models.create_issuance_config_input_credential_supported_inner import CreateIssuanceConfigInputCredentialSupportedInner
 
 class UpdateIssuanceConfigInput(BaseModel):
@@ -28,7 +28,7 @@ class UpdateIssuanceConfigInput(BaseModel):
     UpdateIssuanceConfigInput
     """
     issuer_wallet_id: Optional[StrictStr] = Field(None, alias="issuerWalletId", description="Issuer Wallet id")
-    credential_offer_duration: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
+    credential_offer_duration: Optional[Union[confloat(le=604801, ge=1, multiple_of=1, strict=True), conint(le=604801, ge=1, strict=True)]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
     format: Optional[StrictStr] = Field(None, description="String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type")
     issuer_uri: Optional[StrictStr] = Field(None, alias="issuerUri", description="Issuer URI")
     credential_supported: Optional[conlist(CreateIssuanceConfigInputCredentialSupportedInner)] = Field(None, alias="credentialSupported")

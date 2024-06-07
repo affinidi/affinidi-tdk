@@ -19,7 +19,6 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from affinidi_tdk_credential_verification_client.api.default_api import DefaultApi
-from affinidi_tdk_credential_verification_client.api.verifier_api import VerifierApi
 
 # import ApiClient
 from affinidi_tdk_credential_verification_client.api_response import ApiResponse

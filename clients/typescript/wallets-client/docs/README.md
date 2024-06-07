@@ -43,10 +43,12 @@ All URIs are relative to _http://localhost_
 - [SignCredentialResultDto](./Models/SignCredentialResultDto.md)
 - [SignJwtToken](./Models/SignJwtToken.md)
 - [SignJwtTokenOK](./Models/SignJwtTokenOK.md)
+- [SigningFailedError](./Models/SigningFailedError.md)
 - [UpdateWalletInput](./Models/UpdateWalletInput.md)
 - [WalletDto](./Models/WalletDto.md)
 - [WalletDto_keys_inner](./Models/WalletDto_keys_inner.md)
 - [WalletsListDto](./Models/WalletsListDto.md)
+- [signCredential_400_response](./Models/signCredential_400_response.md)
 
 <a name="documentation-for-authorization"></a>
 

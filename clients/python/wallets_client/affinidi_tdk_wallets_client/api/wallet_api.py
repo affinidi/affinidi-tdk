@@ -749,7 +749,7 @@ class WalletApi:
 
         _response_types_map = {
             '200': "SignCredentialResultDto",
-            '400': "InvalidParameterError",
+            '400': "SignCredential400Response",
             '403': "OperationForbiddenError",
             '404': "NotFoundError",
         }

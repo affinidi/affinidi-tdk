@@ -87,5 +87,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_cors_iot_oidc4vpcallback_ok.py
 tox.ini

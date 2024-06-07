@@ -4,10 +4,11 @@ Data to be included in issued credential
 
 ## Properties
 
-| Name                   | Type                  | Description                                                                              | Notes |
-| ---------------------- | --------------------- | ---------------------------------------------------------------------------------------- | ----- |
-| **credential_type_id** | **str**               | It is a String that identifies a Credential that is being requested to be issued.        |
-| **credential_data**    | **Dict[str, object]** | Object of data to be included in the issued credential ,should match the credential type |
+| Name                   | Type                                                                              | Description                                                                              | Notes      |
+| ---------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------- |
+| **credential_type_id** | **str**                                                                           | It is a String that identifies a Credential that is being requested to be issued.        |
+| **credential_data**    | **Dict[str, object]**                                                             | Object of data to be included in the issued credential ,should match the credential type |
+| **meta_data**          | [**StartIssuanceInputDataInnerMetaData**](StartIssuanceInputDataInnerMetaData.md) |                                                                                          | [optional] |
 
 ## Example
 

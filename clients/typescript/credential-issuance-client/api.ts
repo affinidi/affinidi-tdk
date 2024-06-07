@@ -1030,10 +1030,10 @@ export interface IssuanceConfigDto {
   issuerUri?: string
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
    * @memberof IssuanceConfigDto
    */
-  credentialSupported?: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentialSupported?: Array<IssuanceConfigDtoCredentialSupportedInner>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
    * @type {{ [key: string]: any; }}
@@ -1055,6 +1055,31 @@ export const IssuanceConfigDtoFormatEnum = {
 export type IssuanceConfigDtoFormatEnum =
   (typeof IssuanceConfigDtoFormatEnum)[keyof typeof IssuanceConfigDtoFormatEnum]
 
+/**
+ *
+ * @export
+ * @interface IssuanceConfigDtoCredentialSupportedInner
+ */
+export interface IssuanceConfigDtoCredentialSupportedInner {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  credentialTypeId: string
+  /**
+   * credential jsonLdContextUrl
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  jsonSchemaUrl: string
+  /**
+   * credential jsonSchemaUrl
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  jsonLdContextUrl: string
+}
 /**
  *
  * @export
@@ -1422,6 +1447,25 @@ export interface StartIssuanceInputDataInner {
    * @memberof StartIssuanceInputDataInner
    */
   credentialData: { [key: string]: any }
+  /**
+   *
+   * @type {StartIssuanceInputDataInnerMetaData}
+   * @memberof StartIssuanceInputDataInner
+   */
+  metaData?: StartIssuanceInputDataInnerMetaData
+}
+/**
+ * Object of metadata to be included in the additionalProperties related to vc
+ * @export
+ * @interface StartIssuanceInputDataInnerMetaData
+ */
+export interface StartIssuanceInputDataInnerMetaData {
+  /**
+   * Date and time when the credential will expire
+   * @type {string}
+   * @memberof StartIssuanceInputDataInnerMetaData
+   */
+  expirationDate: string
 }
 /**
  *
@@ -1591,10 +1635,10 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
   credential_issuer?: string
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
-  credentials_supported?: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentials_supported?: Array<IssuanceConfigDtoCredentialSupportedInner>
   /**
    *
    * @type {string}

@@ -20,7 +20,7 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from pydantic import BaseModel, Field, StrictStr, conlist, constr, validator
 from affinidi_tdk_credential_issuance_client.models.start_issuance_input_data_inner import StartIssuanceInputDataInner
 
 class StartIssuanceInput(BaseModel):
@@ -28,7 +28,7 @@ class StartIssuanceInput(BaseModel):
     StartIssuanceInput
     """
     claim_mode: Optional[StrictStr] = Field(None, alias="claimMode")
-    holder_did: StrictStr = Field(..., alias="holderDid", description="Holder DID")
+    holder_did: constr(strict=True) = Field(..., alias="holderDid", description="Holder DID")
     issuance_id: Optional[StrictStr] = Field(None, alias="issuanceId", description="Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.")
     data: conlist(StartIssuanceInputDataInner) = Field(...)
     __properties = ["claimMode", "holderDid", "issuanceId", "data"]
@@ -41,6 +41,13 @@ class StartIssuanceInput(BaseModel):
 
         if value not in ('NORMAL', 'TX_CODE'):
             raise ValueError("must be one of enum values ('NORMAL', 'TX_CODE')")
+        return value
+
+    @validator('holder_did')
+    def holder_did_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^did:.+$", value):
+            raise ValueError(r"must validate the regular expression /^did:.+$/")
         return value
 
     class Config:

@@ -242,6 +242,8 @@ class ApiClient {
           return InvalidProofError.fromJson(value);
         case 'IssuanceConfigDto':
           return IssuanceConfigDto.fromJson(value);
+        case 'IssuanceConfigDtoCredentialSupportedInner':
+          return IssuanceConfigDtoCredentialSupportedInner.fromJson(value);
         case 'IssuanceConfigListResponse':
           return IssuanceConfigListResponse.fromJson(value);
         case 'IssuanceConfigMiniDto':
@@ -262,6 +264,8 @@ class ApiClient {
           return StartIssuanceInput.fromJson(value);
         case 'StartIssuanceInputDataInner':
           return StartIssuanceInputDataInner.fromJson(value);
+        case 'StartIssuanceInputDataInnerMetaData':
+          return StartIssuanceInputDataInnerMetaData.fromJson(value);
         case 'StartIssuanceResponse':
           return StartIssuanceResponse.fromJson(value);
         case 'UpdateIssuanceConfigInput':

@@ -212,6 +212,8 @@ class ApiClient {
           return ServiceErrorResponse.fromJson(value);
         case 'ServiceErrorResponseDetailsInner':
           return ServiceErrorResponseDetailsInner.fromJson(value);
+        case 'SignCredential400Response':
+          return SignCredential400Response.fromJson(value);
         case 'SignCredentialInputDto':
           return SignCredentialInputDto.fromJson(value);
         case 'SignCredentialInputDtoUnsignedCredentialParams':
@@ -222,6 +224,8 @@ class ApiClient {
           return SignJwtToken.fromJson(value);
         case 'SignJwtTokenOK':
           return SignJwtTokenOK.fromJson(value);
+        case 'SigningFailedError':
+          return SigningFailedError.fromJson(value);
         case 'UpdateWalletInput':
           return UpdateWalletInput.fromJson(value);
         case 'WalletDto':

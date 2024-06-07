@@ -30,6 +30,7 @@ Models/InvalidJwtTokenError.md
 Models/InvalidParameterError.md
 Models/InvalidProofError.md
 Models/IssuanceConfigDto.md
+Models/IssuanceConfigDto_credentialSupported_inner.md
 Models/IssuanceConfigListResponse.md
 Models/IssuanceConfigMiniDto.md
 Models/IssuanceStateResponse.md
@@ -39,6 +40,7 @@ Models/ProjectCredentialConfigExistError.md
 Models/ProjectCredentialConfigNotExistError.md
 Models/StartIssuanceInput.md
 Models/StartIssuanceInput_data_inner.md
+Models/StartIssuanceInput_data_inner_metaData.md
 Models/StartIssuanceResponse.md
 Models/UpdateIssuanceConfigInput.md
 Models/VcClaimedError.md

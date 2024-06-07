@@ -31,7 +31,6 @@ doc/PresentationSubmission.md
 doc/SubmissionRequirement.md
 doc/ValidateJwtInput.md
 doc/ValidateJwtOutput.md
-doc/VerifierApi.md
 doc/VerifyCredentialInput.md
 doc/VerifyCredentialOutput.md
 doc/VerifyPresentationInput.md
@@ -48,7 +47,6 @@ doc/W3cPresentationContextOneOfInner.md
 doc/W3cProof.md
 lib/api.dart
 lib/api/default_api.dart
-lib/api/verifier_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart
