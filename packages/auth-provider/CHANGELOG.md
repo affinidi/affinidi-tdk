@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.3.0...@affinidi-tdk/auth-provider-v1.3.1) (2024-06-10)
+
+
+### Bug Fixes
+
+* bundle type dependencies ([#102](https://github.com/affinidi/affinidi-tdk/issues/102)) ([2d779c0](https://github.com/affinidi/affinidi-tdk/commit/2d779c05dbacbe8c396c28e680425b30105c1a94))
+
 # [1.3.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.2.0...@affinidi-tdk/auth-provider-v1.3.0) (2024-06-07)
 
 
