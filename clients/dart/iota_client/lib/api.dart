@@ -32,6 +32,7 @@ part 'api/callback_api.dart';
 part 'api/configurations_api.dart';
 part 'api/default_api.dart';
 part 'api/iota_api.dart';
+part 'api/pex_query_api.dart';
 
 part 'model/already_exists_error.dart';
 part 'model/aws_exchange_credentials.dart';

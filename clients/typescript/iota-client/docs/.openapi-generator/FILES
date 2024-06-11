@@ -2,6 +2,7 @@ Apis/CallbackApi.md
 Apis/ConfigurationsApi.md
 Apis/DefaultApi.md
 Apis/IotaApi.md
+Apis/PexQueryApi.md
 Models/AlreadyExistsError.md
 Models/AwsExchangeCredentials.md
 Models/AwsExchangeCredentialsOK.md

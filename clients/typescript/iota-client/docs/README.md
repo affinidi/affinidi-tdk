@@ -17,6 +17,11 @@ All URIs are relative to _http://localhost_
 | _ConfigurationsApi_ | [**updateIotaConfigurationById**](Apis/ConfigurationsApi.md#updateiotaconfigurationbyid)   | **PATCH** /v1/configurations/{configurationId}                             |                                                   |
 | _DefaultApi_        | [**listLoggedConsents**](Apis/DefaultApi.md#listloggedconsents)                            | **GET** /v1/logged-consents                                                | returns a list of logged consents for the project |
 | _IotaApi_           | [**awsExchangeCredentials**](Apis/IotaApi.md#awsexchangecredentials)                       | **POST** /v1/aws-exchange-credentials                                      | It exchanges limited token into cognito           |
+| _PexQueryApi_       | [**createPexQuery**](Apis/PexQueryApi.md#createpexquery)                                   | **POST** /v1/configurations/{configurationId}/pex-queries                  |                                                   |
+| _PexQueryApi_       | [**deletePexQueryById**](Apis/PexQueryApi.md#deletepexquerybyid)                           | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |                                                   |
+| _PexQueryApi_       | [**getPexQueryById**](Apis/PexQueryApi.md#getpexquerybyid)                                 | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |                                                   |
+| _PexQueryApi_       | [**listPexQueries**](Apis/PexQueryApi.md#listpexqueries)                                   | **GET** /v1/configurations/{configurationId}/pex-queries                   |                                                   |
+| _PexQueryApi_       | [**updatePexQueryById**](Apis/PexQueryApi.md#updatepexquerybyid)                           | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |                                                   |
 
 <a name="documentation-for-models"></a>
 
