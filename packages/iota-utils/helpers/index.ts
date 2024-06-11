@@ -1,7 +1,7 @@
 export { Environment, EnvironmentHandler } from './environment'
 export {
-  Credentials,
-  IAuthProviderParams,
   IotaAuthProvider,
-  IotaCredentials,
+  type Credentials,
+  type IAuthProviderParams,
+  type IotaCredentials,
 } from './iota-auth-provider'
