@@ -12,7 +12,7 @@ export type VaultHandlerOpenParams = {
 
 export class VaultHandler {
   public openVault(params: VaultHandlerOpenParams) {
-    var { link, mode = OpenMode.NewTab } = params
+    const { link, mode = OpenMode.NewTab } = params
     let windowFeatures = ''
     if (mode === OpenMode.Popup) {
       const width = 450
