@@ -100,6 +100,11 @@ All URIs are relative to _http://localhost_
 | _ConfigurationsApi_ | [**update_iota_configuration_by_id**](docs/ConfigurationsApi.md#update_iota_configuration_by_id)   | **PATCH** /v1/configurations/{configurationId}                             |
 | _DefaultApi_        | [**list_logged_consents**](docs/DefaultApi.md#list_logged_consents)                                | **GET** /v1/logged-consents                                                |
 | _IotaApi_           | [**aws_exchange_credentials**](docs/IotaApi.md#aws_exchange_credentials)                           | **POST** /v1/aws-exchange-credentials                                      |
+| _PexQueryApi_       | [**create_pex_query**](docs/PexQueryApi.md#create_pex_query)                                       | **POST** /v1/configurations/{configurationId}/pex-queries                  |
+| _PexQueryApi_       | [**delete_pex_query_by_id**](docs/PexQueryApi.md#delete_pex_query_by_id)                           | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
+| _PexQueryApi_       | [**get_pex_query_by_id**](docs/PexQueryApi.md#get_pex_query_by_id)                                 | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
+| _PexQueryApi_       | [**list_pex_queries**](docs/PexQueryApi.md#list_pex_queries)                                       | **GET** /v1/configurations/{configurationId}/pex-queries                   |
+| _PexQueryApi_       | [**update_pex_query_by_id**](docs/PexQueryApi.md#update_pex_query_by_id)                           | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |
 
 ## Documentation For Models
 

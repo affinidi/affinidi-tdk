@@ -2327,3 +2327,702 @@ export class IotaApi extends BaseAPI {
       .then((request) => request(this.axios, this.basePath))
   }
 }
+
+/**
+ * PexQueryApi - axios parameter creator
+ * @export
+ */
+export const PexQueryApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {CreatePexQueryInput} createPexQueryInput CreatePexQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createPexQuery: async (
+      configurationId: string,
+      createPexQueryInput: CreatePexQueryInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('createPexQuery', 'configurationId', configurationId)
+      // verify required parameter 'createPexQueryInput' is not null or undefined
+      assertParamExists(
+        'createPexQuery',
+        'createPexQueryInput',
+        createPexQueryInput,
+      )
+      const localVarPath =
+        `/v1/configurations/{configurationId}/pex-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createPexQueryInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePexQueryById: async (
+      configurationId: string,
+      queryId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'deletePexQueryById',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('deletePexQueryById', 'queryId', queryId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/pex-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPexQueryById: async (
+      configurationId: string,
+      queryId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('getPexQueryById', 'configurationId', configurationId)
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('getPexQueryById', 'queryId', queryId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/pex-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listPexQueries: async (
+      configurationId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('listPexQueries', 'configurationId', configurationId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/pex-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {UpdatePexQueryInput} updatePexQueryInput UpdatePexQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePexQueryById: async (
+      configurationId: string,
+      queryId: string,
+      updatePexQueryInput: UpdatePexQueryInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'updatePexQueryById',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('updatePexQueryById', 'queryId', queryId)
+      // verify required parameter 'updatePexQueryInput' is not null or undefined
+      assertParamExists(
+        'updatePexQueryById',
+        'updatePexQueryInput',
+        updatePexQueryInput,
+      )
+      const localVarPath =
+        `/v1/configurations/{configurationId}/pex-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updatePexQueryInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * PexQueryApi - functional programming interface
+ * @export
+ */
+export const PexQueryApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = PexQueryApiAxiosParamCreator(configuration)
+  return {
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {CreatePexQueryInput} createPexQueryInput CreatePexQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createPexQuery(
+      configurationId: string,
+      createPexQueryInput: CreatePexQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PexQueryDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createPexQuery(
+        configurationId,
+        createPexQueryInput,
+        options,
+      )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['PexQueryApi.createPexQuery']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletePexQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.deletePexQueryById(
+          configurationId,
+          queryId,
+          options,
+        )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['PexQueryApi.deletePexQueryById']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getPexQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PexQueryDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getPexQueryById(
+        configurationId,
+        queryId,
+        options,
+      )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['PexQueryApi.getPexQueryById']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listPexQueries(
+      configurationId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListPexQueriesOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listPexQueries(
+        configurationId,
+        options,
+      )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['PexQueryApi.listPexQueries']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {UpdatePexQueryInput} updatePexQueryInput UpdatePexQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updatePexQueryById(
+      configurationId: string,
+      queryId: string,
+      updatePexQueryInput: UpdatePexQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PexQueryDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.updatePexQueryById(
+          configurationId,
+          queryId,
+          updatePexQueryInput,
+          options,
+        )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['PexQueryApi.updatePexQueryById']?.[index]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * PexQueryApi - factory interface
+ * @export
+ */
+export const PexQueryApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = PexQueryApiFp(configuration)
+  return {
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {CreatePexQueryInput} createPexQueryInput CreatePexQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createPexQuery(
+      configurationId: string,
+      createPexQueryInput: CreatePexQueryInput,
+      options?: any,
+    ): AxiosPromise<PexQueryDto> {
+      return localVarFp
+        .createPexQuery(configurationId, createPexQueryInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePexQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: any,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deletePexQueryById(configurationId, queryId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getPexQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: any,
+    ): AxiosPromise<PexQueryDto> {
+      return localVarFp
+        .getPexQueryById(configurationId, queryId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listPexQueries(
+      configurationId: string,
+      options?: any,
+    ): AxiosPromise<ListPexQueriesOK> {
+      return localVarFp
+        .listPexQueries(configurationId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {string} queryId pex-query Id
+     * @param {UpdatePexQueryInput} updatePexQueryInput UpdatePexQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updatePexQueryById(
+      configurationId: string,
+      queryId: string,
+      updatePexQueryInput: UpdatePexQueryInput,
+      options?: any,
+    ): AxiosPromise<PexQueryDto> {
+      return localVarFp
+        .updatePexQueryById(
+          configurationId,
+          queryId,
+          updatePexQueryInput,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * PexQueryApi - object-oriented interface
+ * @export
+ * @class PexQueryApi
+ * @extends {BaseAPI}
+ */
+export class PexQueryApi extends BaseAPI {
+  /**
+   *
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {CreatePexQueryInput} createPexQueryInput CreatePexQuery
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public createPexQuery(
+    configurationId: string,
+    createPexQueryInput: CreatePexQueryInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .createPexQuery(configurationId, createPexQueryInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {string} queryId pex-query Id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public deletePexQueryById(
+    configurationId: string,
+    queryId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .deletePexQueryById(configurationId, queryId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {string} queryId pex-query Id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public getPexQueryById(
+    configurationId: string,
+    queryId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .getPexQueryById(configurationId, queryId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public listPexQueries(
+    configurationId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .listPexQueries(configurationId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {string} queryId pex-query Id
+   * @param {UpdatePexQueryInput} updatePexQueryInput UpdatePexQueryById
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public updatePexQueryById(
+    configurationId: string,
+    queryId: string,
+    updatePexQueryInput: UpdatePexQueryInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .updatePexQueryById(
+        configurationId,
+        queryId,
+        updatePexQueryInput,
+        options,
+      )
+      .then((request) => request(this.axios, this.basePath))
+  }
+}

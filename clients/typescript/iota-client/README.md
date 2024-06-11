@@ -38,7 +38,7 @@ const retryConfig = {
 const api = new SomeClassApi(
   new Configuration({
     apiKey: projectScopedToken,
-    basePath: `${apiGatewayUrl}/`,
+    basePath: `${apiGatewayUrl}/ais`,
   }),
   retryConfig,
 )
@@ -74,7 +74,7 @@ const authProvider = new AuthProvider({
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-    basePath: `${apiGatewayUrl}/`,
+    basePath: `${apiGatewayUrl}/ais`,
   }),
 )
 
@@ -92,7 +92,7 @@ const headers = getBffHeaders(cookieName, sessionId)
 const baseOptions = { headers }
 
 const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/`, baseOptions }),
+  new Configuration({ basePath: `${bffHost}/ais`, baseOptions }),
 )
 
 await api.oneOfMethods()
