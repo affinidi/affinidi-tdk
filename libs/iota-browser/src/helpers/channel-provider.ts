@@ -5,8 +5,6 @@ import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import * as jose from 'jose'
 import { v4 as uuidv4 } from 'uuid'
 import {
-  ErrorEventSchema,
-  ErrorEvent,
   EventTypes,
   PrepareRequestEvent,
   SignedRequestEvent,
@@ -15,9 +13,9 @@ import {
   SignedRequestJWTSchema,
 } from '../validators/events'
 import {
-  getErrorMessage,
   getUnexpectedErrorMessage,
   ErrorCode,
+  getError,
 } from 'src/validators/error'
 
 const DEFAULT_IOT_ENDPOINT =
@@ -158,6 +156,29 @@ export class ChannelProvider {
     await client.subscribe(packet)
   }
 
+  private getRequest(event: SignedRequestEvent) {
+    let signedRequest: SignedRequestEvent, signedRequestJWT: SignedRequestJWT
+    try {
+      signedRequest = SignedRequestEventSchema.parse(event)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT))
+    }
+    try {
+      const claims = jose.decodeJwt(signedRequest.data.jwt)
+      signedRequestJWT = SignedRequestJWTSchema.parse(claims)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT))
+    }
+    const request: IotaChannelRequest = {
+      correlationId: signedRequest.correlationId,
+      payload: {
+        request: signedRequest.data.jwt,
+        client_id: signedRequestJWT.client_id,
+      },
+    }
+    return request
+  }
+
   async prepareRequest(
     params: PrepareRequestParams,
   ): Promise<IotaChannelRequest> {
@@ -187,49 +208,20 @@ export class ChannelProvider {
             const raw_data = toUtf8(
               messageReceivedEvent.message.payload as Buffer,
             )
+            let event
             try {
-              const event = JSON.parse(raw_data)
-              if (correlationId !== event.correlationId) {
-                return
-              }
-              if (event.eventType === EventTypes.SignedRequest) {
-                let signedRequest: SignedRequestEvent,
-                  signedRequestJWT: SignedRequestJWT
-                try {
-                  signedRequest = SignedRequestEventSchema.parse(event)
-                } catch (e) {
-                  throw Error(
-                    getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT),
-                  )
-                }
-                try {
-                  const claims = jose.decodeJwt(signedRequest.data.jwt)
-                  signedRequestJWT = SignedRequestJWTSchema.parse(claims)
-                } catch (e) {
-                  throw Error(
-                    getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT),
-                  )
-                }
-                const request: IotaChannelRequest = {
-                  correlationId: signedRequest.correlationId,
-                  payload: {
-                    request: signedRequest.data.jwt,
-                    client_id: signedRequestJWT.client_id,
-                  },
-                }
-
-                resolve(request)
-              } else if (event.eventType === EventTypes.Error) {
-                let errorEvent: ErrorEvent
-                try {
-                  errorEvent = ErrorEventSchema.parse(event)
-                } catch (e) {
-                  throw Error(getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT))
-                }
-                throw Error(getErrorMessage(errorEvent))
-              }
-            } catch (error) {
-              reject(error)
+              event = JSON.parse(raw_data)
+            } catch (e) {
+              reject(e)
+            }
+            if (correlationId !== event.correlationId) {
+              return
+            }
+            if (event.eventType === EventTypes.SignedRequest) {
+              const request = this.getRequest(event)
+              resolve(request)
+            } else if (event.eventType === EventTypes.Error) {
+              getError(event)
             }
           }
         },

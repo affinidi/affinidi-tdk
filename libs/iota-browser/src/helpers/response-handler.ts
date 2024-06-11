@@ -1,9 +1,7 @@
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
 import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import {
-  ErrorEventSchema,
   EventTypes,
-  ErrorEvent,
   ResponseCallbackEventSchema,
   VerifiablePresentation,
   VerifiablePresentationSchema,
@@ -12,7 +10,7 @@ import {
 import { ChannelProvider } from './channel-provider'
 import {
   ErrorCode,
-  getErrorMessage,
+  getError,
   getUnexpectedErrorMessage,
 } from 'src/validators/error'
 
@@ -35,6 +33,31 @@ export class ResponseHandler {
     this.channelProvider = channelProvider
   }
 
+  private getResponseHandler(event: ResponseCallbackEvent) {
+    let responseCallback: ResponseCallbackEvent, vpToken: VerifiablePresentation
+    try {
+      responseCallback = ResponseCallbackEventSchema.parse(event)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.RESPONSE_CALLBACK_EVENT))
+    }
+    try {
+      vpToken = VerifiablePresentationSchema.parse(
+        JSON.parse(responseCallback.vpToken),
+      )
+    } catch (e) {
+      throw Error(
+        getUnexpectedErrorMessage(ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA),
+      )
+    }
+    const response: IotaResponse = {
+      correlationId: responseCallback.correlationId,
+      vpToken,
+      // TODO parse presentation submission, same as vpToken
+      presentationSubmission: responseCallback.presentationSubmission,
+    }
+    return response
+  }
+
   async getResponse(correlationId: string): Promise<IotaResponse> {
     const client = this.channelProvider.getClient()
     return new Promise((resolve, reject) => {
@@ -45,54 +68,20 @@ export class ResponseHandler {
             const raw_data = toUtf8(
               messageReceivedEvent.message.payload as Buffer,
             )
-
+            let event
             try {
-              const event = JSON.parse(raw_data)
-              if (correlationId !== event.correlationId) {
-                return
-              }
-              if (event.eventType === EventTypes.ResponseCallback) {
-                let responseCallback: ResponseCallbackEvent,
-                  vpToken: VerifiablePresentation
-                try {
-                  responseCallback = ResponseCallbackEventSchema.parse(event)
-                } catch (e) {
-                  throw Error(
-                    getUnexpectedErrorMessage(
-                      ErrorCode.RESPONSE_CALLBACK_EVENT,
-                    ),
-                  )
-                }
-                try {
-                  vpToken = VerifiablePresentationSchema.parse(
-                    JSON.parse(responseCallback.vpToken),
-                  )
-                } catch (e) {
-                  throw Error(
-                    getUnexpectedErrorMessage(
-                      ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
-                    ),
-                  )
-                }
-                const response: IotaResponse = {
-                  correlationId: responseCallback.correlationId,
-                  vpToken,
-                  // TODO parse presentation submission, same as vpToken
-                  presentationSubmission:
-                    responseCallback.presentationSubmission,
-                }
-                resolve(response)
-              } else if (event.eventType === EventTypes.Error) {
-                let errorEvent: ErrorEvent
-                try {
-                  errorEvent = ErrorEventSchema.parse(event)
-                } catch (e) {
-                  throw Error(getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT))
-                }
-                throw Error(getErrorMessage(errorEvent))
-              }
+              event = JSON.parse(raw_data)
             } catch (error) {
               reject(error)
+            }
+            if (correlationId !== event.correlationId) {
+              return
+            }
+            if (event.eventType === EventTypes.ResponseCallback) {
+              const response = this.getResponseHandler(event)
+              resolve(response)
+            } else if (event.eventType === EventTypes.Error) {
+              getError(event)
             }
           }
         },

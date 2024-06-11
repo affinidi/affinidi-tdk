@@ -1,4 +1,4 @@
-import { ErrorEvent } from '../validators/events'
+import { ErrorEvent, ErrorEventSchema } from '../validators/events'
 
 export enum ErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
@@ -21,4 +21,14 @@ export function getUnexpectedErrorMessage(code: ErrorCode) {
 
 export function getErrorMessage(errorEvent: ErrorEvent): string {
   return `Something went wrong. ${getIssue(errorEvent)}. Error Code ${errorEvent.error.httpStatusCode}`
+}
+
+export function getError(event: ErrorEvent) {
+  let errorEvent: ErrorEvent
+  try {
+    errorEvent = ErrorEventSchema.parse(event)
+  } catch (e) {
+    throw Error(getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT))
+  }
+  throw Error(getErrorMessage(errorEvent))
 }
