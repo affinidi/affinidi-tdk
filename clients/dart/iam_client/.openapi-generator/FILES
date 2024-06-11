@@ -22,6 +22,7 @@ doc/NotFoundError.md
 doc/PoliciesApi.md
 doc/PolicyDto.md
 doc/PolicyStatementDto.md
+doc/PrincipalCannotBeDeletedError.md
 doc/PrincipalDoesNotBelongToProjectError.md
 doc/ProjectDto.md
 doc/ProjectList.md
@@ -80,6 +81,7 @@ lib/model/json_web_key_set_dto.dart
 lib/model/not_found_error.dart
 lib/model/policy_dto.dart
 lib/model/policy_statement_dto.dart
+lib/model/principal_cannot_be_deleted_error.dart
 lib/model/principal_does_not_belong_to_project_error.dart
 lib/model/project_dto.dart
 lib/model/project_list.dart
@@ -102,4 +104,3 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
-test/get_well_known_did_ok_test.dart

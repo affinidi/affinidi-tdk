@@ -4,11 +4,11 @@ DTO contains params to sign credential
 
 ## Properties
 
-| Name                           | Type                                                                                                    | Description                                                                            | Notes      |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------- |
-| **unsigned_credential**        | **object**                                                                                              | Unsiged Credential. If provided \&quot;unsignedCredentialParams\&quot; is not accepted | [optional] |
-| **revocable**                  | **bool**                                                                                                |                                                                                        | [optional] |
-| **unsigned_credential_params** | [**SignCredentialInputDtoUnsignedCredentialParams**](SignCredentialInputDtoUnsignedCredentialParams.md) |                                                                                        | [optional] |
+| Name                           | Type                                                                                                    | Description                                                                             | Notes      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------- |
+| **unsigned_credential**        | **object**                                                                                              | Unsigned Credential. If provided \&quot;unsignedCredentialParams\&quot; is not accepted | [optional] |
+| **revocable**                  | **bool**                                                                                                |                                                                                         | [optional] |
+| **unsigned_credential_params** | [**SignCredentialInputDtoUnsignedCredentialParams**](SignCredentialInputDtoUnsignedCredentialParams.md) |                                                                                         | [optional] |
 
 ## Example
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OidcVpAdapterBackend
- * Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token
+ * Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: nucleus.team@affinidi.com
@@ -269,6 +269,12 @@ export interface CreateLoginConfigurationInput {
    * @memberof CreateLoginConfigurationInput
    */
   redirectUris: Array<string>
+  /**
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete.
+   * @type {Array<string>}
+   * @memberof CreateLoginConfigurationInput
+   */
+  postLogoutRedirectUris?: Array<string>
   /**
    * VP definition in JSON stringify format
    * @type {string}
@@ -595,7 +601,7 @@ export interface GetUserInfo {
    */
   phone_number_verified?: boolean
   /**
-   * URL of the End-User\'s profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD  specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User.
+   * URL of the End-User\'s profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User.
    * @type {string}
    * @memberof GetUserInfo
    */
@@ -1157,7 +1163,7 @@ export interface JsonWebKeyKeysInner {
    */
   x?: string
   /**
-   * The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER  [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
+   * The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
    * @type {Array<string>}
    * @memberof JsonWebKeyKeysInner
    */
@@ -1595,7 +1601,7 @@ export interface OAuth2Token {
    */
   id_token?: number
   /**
-   * The refresh token, which can be used to obtain new access tokens.  To retrieve it add the scope \"offline\" to your access token request.
+   * The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
    * @type {string}
    * @memberof OAuth2Token
    */
@@ -1704,7 +1710,7 @@ export interface OIDCConfig {
    */
   id_token_signing_alg_values_supported: Array<string>
   /**
-   * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component  that the OP asserts as its IssuerURL Identifier. If IssuerURL discovery  is supported , this value MUST be identical to the issuer value returned by WebFinger.  This also MUST be identical to the iss Claim value in ID Tokens issued from this IssuerURL.
+   * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component that the OP asserts as its IssuerURL Identifier. If IssuerURL discovery  is supported , this value MUST be identical to the issuer value returned by WebFinger.  This also MUST be identical to the iss Claim value in ID Tokens issued from this IssuerURL.
    * @type {string}
    * @memberof OIDCConfig
    */
@@ -2086,6 +2092,12 @@ export interface UpdateLoginConfigurationInput {
    * @memberof UpdateLoginConfigurationInput
    */
   redirectUris?: Array<string>
+  /**
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete.
+   * @type {Array<string>}
+   * @memberof UpdateLoginConfigurationInput
+   */
+  postLogoutRedirectUris?: Array<string>
   /**
    * OAuth2 client secret
    * @type {string}
@@ -2567,7 +2579,7 @@ export const ConfigurationApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
      * @summary Create a new login configuration
      * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
      * @param {*} [options] Override http request option.
@@ -2918,7 +2930,7 @@ export const ConfigurationApiFp = function (configuration?: Configuration) {
     ConfigurationApiAxiosParamCreator(configuration)
   return {
     /**
-     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
      * @summary Create a new login configuration
      * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
      * @param {*} [options] Override http request option.
@@ -3138,7 +3150,7 @@ export const ConfigurationApiFactory = function (
   const localVarFp = ConfigurationApiFp(configuration)
   return {
     /**
-     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+     * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
      * @summary Create a new login configuration
      * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
      * @param {*} [options] Override http request option.
@@ -3246,7 +3258,7 @@ export const ConfigurationApiFactory = function (
  */
 export class ConfigurationApi extends BaseAPI {
   /**
-   * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.   This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+   * Create a new login configuration  `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
    * @summary Create a new login configuration
    * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
    * @param {*} [options] Override http request option.

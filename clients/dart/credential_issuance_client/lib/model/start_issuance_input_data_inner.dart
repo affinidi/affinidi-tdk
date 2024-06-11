@@ -15,6 +15,7 @@ class StartIssuanceInputDataInner {
   StartIssuanceInputDataInner({
     required this.credentialTypeId,
     this.credentialData = const {},
+    this.metaData,
   });
 
   /// It is a String that identifies a Credential that is being requested to be issued.
@@ -23,24 +24,39 @@ class StartIssuanceInputDataInner {
   /// Object of data to be included in the issued credential ,should  match the credential type
   Map<String, Object> credentialData;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  StartIssuanceInputDataInnerMetaData? metaData;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is StartIssuanceInputDataInner &&
     other.credentialTypeId == credentialTypeId &&
-    _deepEquality.equals(other.credentialData, credentialData);
+    _deepEquality.equals(other.credentialData, credentialData) &&
+    other.metaData == metaData;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (credentialTypeId.hashCode) +
-    (credentialData.hashCode);
+    (credentialData.hashCode) +
+    (metaData == null ? 0 : metaData!.hashCode);
 
   @override
-  String toString() => 'StartIssuanceInputDataInner[credentialTypeId=$credentialTypeId, credentialData=$credentialData]';
+  String toString() => 'StartIssuanceInputDataInner[credentialTypeId=$credentialTypeId, credentialData=$credentialData, metaData=$metaData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'credentialTypeId'] = this.credentialTypeId;
       json[r'credentialData'] = this.credentialData;
+    if (this.metaData != null) {
+      json[r'metaData'] = this.metaData;
+    } else {
+      json[r'metaData'] = null;
+    }
     return json;
   }
 
@@ -65,6 +81,7 @@ class StartIssuanceInputDataInner {
       return StartIssuanceInputDataInner(
         credentialTypeId: mapValueOfType<String>(json, r'credentialTypeId')!,
         credentialData: mapCastOfType<String, Object>(json, r'credentialData')!,
+        metaData: StartIssuanceInputDataInnerMetaData.fromJson(json[r'metaData']),
       );
     }
     return null;

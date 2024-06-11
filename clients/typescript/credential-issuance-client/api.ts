@@ -131,6 +131,45 @@ export interface ActionForbiddenErrorDetailsInner {
 /**
  *
  * @export
+ * @interface CorsGenerateCredentialsOK
+ */
+export interface CorsGenerateCredentialsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGenerateCredentialsOK
+   */
+  corsGenerateCredentialsOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsGetCredentialOfferOK
+ */
+export interface CorsGetCredentialOfferOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetCredentialOfferOK
+   */
+  corsGetCredentialOfferOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsGetWellKnownOpenIdCredentialIssuerOK
+ */
+export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetWellKnownOpenIdCredentialIssuerOK
+   */
+  corsGetWellKnownOpenIdCredentialIssuerOk?: string
+}
+/**
+ *
+ * @export
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
@@ -595,6 +634,7 @@ export type GetCredentialOffer400Response =
   | CredentialOfferExpiredError
   | InvalidParameterError
   | ProjectCredentialConfigNotExistError
+  | VcClaimedError
 
 /**
  *
@@ -990,10 +1030,10 @@ export interface IssuanceConfigDto {
   issuerUri?: string
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
    * @memberof IssuanceConfigDto
    */
-  credentialSupported?: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentialSupported?: Array<IssuanceConfigDtoCredentialSupportedInner>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
    * @type {{ [key: string]: any; }}
@@ -1015,6 +1055,31 @@ export const IssuanceConfigDtoFormatEnum = {
 export type IssuanceConfigDtoFormatEnum =
   (typeof IssuanceConfigDtoFormatEnum)[keyof typeof IssuanceConfigDtoFormatEnum]
 
+/**
+ *
+ * @export
+ * @interface IssuanceConfigDtoCredentialSupportedInner
+ */
+export interface IssuanceConfigDtoCredentialSupportedInner {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  credentialTypeId: string
+  /**
+   * credential jsonLdContextUrl
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  jsonSchemaUrl: string
+  /**
+   * credential jsonSchemaUrl
+   * @type {string}
+   * @memberof IssuanceConfigDtoCredentialSupportedInner
+   */
+  jsonLdContextUrl: string
+}
 /**
  *
  * @export
@@ -1382,6 +1447,25 @@ export interface StartIssuanceInputDataInner {
    * @memberof StartIssuanceInputDataInner
    */
   credentialData: { [key: string]: any }
+  /**
+   *
+   * @type {StartIssuanceInputDataInnerMetaData}
+   * @memberof StartIssuanceInputDataInner
+   */
+  metaData?: StartIssuanceInputDataInnerMetaData
+}
+/**
+ * Object of metadata to be included in the additionalProperties related to vc
+ * @export
+ * @interface StartIssuanceInputDataInnerMetaData
+ */
+export interface StartIssuanceInputDataInnerMetaData {
+  /**
+   * Date and time when the credential will expire
+   * @type {string}
+   * @memberof StartIssuanceInputDataInnerMetaData
+   */
+  expirationDate: string
 }
 /**
  *
@@ -1468,6 +1552,64 @@ export type UpdateIssuanceConfigInputFormatEnum =
 /**
  *
  * @export
+ * @interface VcClaimedError
+ */
+export interface VcClaimedError {
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  name: VcClaimedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  message: VcClaimedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof VcClaimedError
+   */
+  httpStatusCode: VcClaimedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof VcClaimedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof VcClaimedError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const VcClaimedErrorNameEnum = {
+  VcClaimedError: 'VcClaimedError',
+} as const
+
+export type VcClaimedErrorNameEnum =
+  (typeof VcClaimedErrorNameEnum)[keyof typeof VcClaimedErrorNameEnum]
+export const VcClaimedErrorMessageEnum = {
+  TheRequestedVcHasAlreadyBeenClaimedByTheUser:
+    'The requested VC has already been claimed by the user',
+} as const
+
+export type VcClaimedErrorMessageEnum =
+  (typeof VcClaimedErrorMessageEnum)[keyof typeof VcClaimedErrorMessageEnum]
+export const VcClaimedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type VcClaimedErrorHttpStatusCodeEnum =
+  (typeof VcClaimedErrorHttpStatusCodeEnum)[keyof typeof VcClaimedErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface WellKnownOpenIdCredentialIssuerResponse
  */
 export interface WellKnownOpenIdCredentialIssuerResponse {
@@ -1493,10 +1635,10 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
   credential_issuer?: string
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
-  credentials_supported?: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentials_supported?: Array<IssuanceConfigDtoCredentialSupportedInner>
   /**
    *
    * @type {string}

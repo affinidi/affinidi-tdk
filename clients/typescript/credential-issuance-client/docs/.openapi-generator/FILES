@@ -5,6 +5,9 @@ Apis/OfferApi.md
 Apis/WellKnownApi.md
 Models/ActionForbiddenError.md
 Models/ActionForbiddenError_details_inner.md
+Models/CorsGenerateCredentialsOK.md
+Models/CorsGetCredentialOfferOK.md
+Models/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 Models/CreateCredentialInput.md
 Models/CreateIssuanceConfigInput.md
 Models/CreateIssuanceConfigInput_credentialSupported_inner.md
@@ -27,6 +30,7 @@ Models/InvalidJwtTokenError.md
 Models/InvalidParameterError.md
 Models/InvalidProofError.md
 Models/IssuanceConfigDto.md
+Models/IssuanceConfigDto_credentialSupported_inner.md
 Models/IssuanceConfigListResponse.md
 Models/IssuanceConfigMiniDto.md
 Models/IssuanceStateResponse.md
@@ -36,8 +40,10 @@ Models/ProjectCredentialConfigExistError.md
 Models/ProjectCredentialConfigNotExistError.md
 Models/StartIssuanceInput.md
 Models/StartIssuanceInput_data_inner.md
+Models/StartIssuanceInput_data_inner_metaData.md
 Models/StartIssuanceResponse.md
 Models/UpdateIssuanceConfigInput.md
+Models/VcClaimedError.md
 Models/WellKnownOpenIdCredentialIssuerResponse.md
 Models/createIssuanceConfig_400_response.md
 Models/generateCredentials_400_response.md

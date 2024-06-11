@@ -3,7 +3,7 @@
 """
     OidcVpAdapterBackend
 
-    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.)  to set up an authorization token 
+    Affinidi OIDC VP Adapter Backend  An authorization token is necessary to create or obtain a project Access Token and access Admin APIs. Follow these step-by-step [instructions](https://lemmatree.atlassian.net/wiki/spaces/NETCORE/pages/2735317648020/ASA+Developer+Flow#Instructions-on-how-to-create-the-Project.) to set up an authorization token 
 
     The version of the OpenAPI document: 1.0.0
     Contact: nucleus.team@affinidi.com
@@ -29,7 +29,7 @@ class OAuth2Token(BaseModel):
     access_token: Optional[StrictStr] = Field(None, description="The access token issued by the authorization server. ")
     expires_in: Optional[StrictInt] = Field(None, description="The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated. ")
     id_token: Optional[StrictInt] = Field(None, description="To retrieve a refresh token request the id_token scope. ")
-    refresh_token: Optional[StrictStr] = Field(None, description="The refresh token, which can be used to obtain new access tokens.  To retrieve it add the scope \"offline\" to your access token request. ")
+    refresh_token: Optional[StrictStr] = Field(None, description="The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. ")
     scope: Optional[StrictStr] = Field(None, description="The scope of the access token ")
     token_type: Optional[StrictStr] = Field(None, description="The type of the token issued ")
     __properties = ["access_token", "expires_in", "id_token", "refresh_token", "scope", "token_type"]

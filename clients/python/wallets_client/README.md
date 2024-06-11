@@ -100,17 +100,18 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 
 All URIs are relative to _http://localhost_
 
-| Class           | Method                                                                                     | HTTP request                                            | Description                        |
-| --------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ---------------------------------- |
-| _RevocationApi_ | [**get_revocation_list_credential**](docs/RevocationApi.md#get_revocation_list_credential) | **GET** /v1/wallets/{walletId}/revocation-list/{listId} | Return revocation list credential. |
-| _RevocationApi_ | [**revoke_credential**](docs/RevocationApi.md#revoke_credential)                           | **POST** /v1/wallets/{walletId}/revoke                  | Revoke Credential.                 |
-| _WalletApi_     | [**create_wallet**](docs/WalletApi.md#create_wallet)                                       | **POST** /v1/wallets                                    |
-| _WalletApi_     | [**delete_wallet**](docs/WalletApi.md#delete_wallet)                                       | **DELETE** /v1/wallets/{walletId}                       |
-| _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                             | **GET** /v1/wallets/{walletId}                          |
-| _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                         | **GET** /v1/wallets                                     |
-| _WalletApi_     | [**sign_credential**](docs/WalletApi.md#sign_credential)                                   | **POST** /v1/wallets/{walletId}/sign-credential         |
-| _WalletApi_     | [**sign_jwt_token**](docs/WalletApi.md#sign_jwt_token)                                     | **POST** /v1/wallets/{walletId}/sign-jwt                |
-| _WalletApi_     | [**update_wallet**](docs/WalletApi.md#update_wallet)                                       | **PATCH** /v1/wallets/{walletId}                        |
+| Class           | Method                                                                                      | HTTP request                                                                       | Description                        |
+| --------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
+| _RevocationApi_ | [**get_revocation_list_credential**](docs/RevocationApi.md#get_revocation_list_credential)  | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
+| _RevocationApi_ | [**revoke_credential**](docs/RevocationApi.md#revoke_credential)                            | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
+| _DefaultApi_    | [**get_revocation_credential_status**](docs/DefaultApi.md#get_revocation_credential_status) | **GET** /v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId} |
+| _WalletApi_     | [**create_wallet**](docs/WalletApi.md#create_wallet)                                        | **POST** /v1/wallets                                                               |
+| _WalletApi_     | [**delete_wallet**](docs/WalletApi.md#delete_wallet)                                        | **DELETE** /v1/wallets/{walletId}                                                  |
+| _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                              | **GET** /v1/wallets/{walletId}                                                     |
+| _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                          | **GET** /v1/wallets                                                                |
+| _WalletApi_     | [**sign_credential**](docs/WalletApi.md#sign_credential)                                    | **POST** /v1/wallets/{walletId}/sign-credential                                    |
+| _WalletApi_     | [**sign_jwt_token**](docs/WalletApi.md#sign_jwt_token)                                      | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
+| _WalletApi_     | [**update_wallet**](docs/WalletApi.md#update_wallet)                                        | **PATCH** /v1/wallets/{walletId}                                                   |
 
 ## Documentation For Models
 
@@ -119,6 +120,7 @@ All URIs are relative to _http://localhost_
 - [DidKeyInputParams](docs/DidKeyInputParams.md)
 - [DidWebInputParams](docs/DidWebInputParams.md)
 - [EntityNotFoundError](docs/EntityNotFoundError.md)
+- [GetRevocationCredentialStatusOK](docs/GetRevocationCredentialStatusOK.md)
 - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
 - [InvalidDidParameterError](docs/InvalidDidParameterError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
@@ -128,11 +130,13 @@ All URIs are relative to _http://localhost_
 - [RevokeCredentialInput](docs/RevokeCredentialInput.md)
 - [ServiceErrorResponse](docs/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](docs/ServiceErrorResponseDetailsInner.md)
+- [SignCredential400Response](docs/SignCredential400Response.md)
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
 - [SignCredentialInputDtoUnsignedCredentialParams](docs/SignCredentialInputDtoUnsignedCredentialParams.md)
 - [SignCredentialResultDto](docs/SignCredentialResultDto.md)
 - [SignJwtToken](docs/SignJwtToken.md)
 - [SignJwtTokenOK](docs/SignJwtTokenOK.md)
+- [SigningFailedError](docs/SigningFailedError.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)

@@ -99,11 +99,10 @@ with affinidi_tdk_credential_verification_client.ApiClient(configuration) as api
 
 All URIs are relative to _http://localhost_
 
-| Class         | Method                                                            | HTTP request                       | Description         |
-| ------------- | ----------------------------------------------------------------- | ---------------------------------- | ------------------- |
-| _DefaultApi_  | [**verify_credentials**](docs/DefaultApi.md#verify_credentials)   | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
-| _DefaultApi_  | [**verify_presentation**](docs/DefaultApi.md#verify_presentation) | **POST** /v1/verifier/verify-vp    | Verifying VP        |
-| _VerifierApi_ | [**validate_jwt**](docs/VerifierApi.md#validate_jwt)              | **POST** /v1/verifier/validate-jwt | Validates JWT token |
+| Class        | Method                                                            | HTTP request                     | Description  |
+| ------------ | ----------------------------------------------------------------- | -------------------------------- | ------------ |
+| _DefaultApi_ | [**verify_credentials**](docs/DefaultApi.md#verify_credentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
+| _DefaultApi_ | [**verify_presentation**](docs/DefaultApi.md#verify_presentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
 
 ## Documentation For Models
 

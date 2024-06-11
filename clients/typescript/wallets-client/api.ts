@@ -190,6 +190,19 @@ export type EntityNotFoundErrorHttpStatusCodeEnum =
 /**
  * DTO contains revocation list credential
  * @export
+ * @interface GetRevocationCredentialStatusOK
+ */
+export interface GetRevocationCredentialStatusOK {
+  /**
+   *
+   * @type {object}
+   * @memberof GetRevocationCredentialStatusOK
+   */
+  revocationListCredential: object
+}
+/**
+ * DTO contains revocation list credential
+ * @export
  * @interface GetRevocationListCredentialResultDto
  */
 export interface GetRevocationListCredentialResultDto {
@@ -568,13 +581,21 @@ export interface ServiceErrorResponseDetailsInner {
   location?: string
 }
 /**
+ * @type SignCredential400Response
+ * @export
+ */
+export type SignCredential400Response =
+  | InvalidParameterError
+  | SigningFailedError
+
+/**
  * DTO contains params to sign credential
  * @export
  * @interface SignCredentialInputDto
  */
 export interface SignCredentialInputDto {
   /**
-   * Unsiged Credential. If provided \"unsignedCredentialParams\" is not accepted
+   * Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
    * @type {object}
    * @memberof SignCredentialInputDto
    */
@@ -681,6 +702,63 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
+ *
+ * @export
+ * @interface SigningFailedError
+ */
+export interface SigningFailedError {
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  name: SigningFailedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  message: SigningFailedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof SigningFailedError
+   */
+  httpStatusCode: SigningFailedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof SigningFailedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof SigningFailedError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const SigningFailedErrorNameEnum = {
+  SigningFailedError: 'SigningFailedError',
+} as const
+
+export type SigningFailedErrorNameEnum =
+  (typeof SigningFailedErrorNameEnum)[keyof typeof SigningFailedErrorNameEnum]
+export const SigningFailedErrorMessageEnum = {
+  SigningFailed: 'Signing failed.',
+} as const
+
+export type SigningFailedErrorMessageEnum =
+  (typeof SigningFailedErrorMessageEnum)[keyof typeof SigningFailedErrorMessageEnum]
+export const SigningFailedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type SigningFailedErrorHttpStatusCodeEnum =
+  (typeof SigningFailedErrorHttpStatusCodeEnum)[keyof typeof SigningFailedErrorHttpStatusCodeEnum]
+
+/**
  * Update wallet input params
  * @export
  * @interface UpdateWalletInput
@@ -782,6 +860,186 @@ export interface WalletsListDto {
 }
 
 /**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Get revocation status list as RevocationListCredential
+     * @param {string} projectId Description for projectId.
+     * @param {string} walletId Description for walletId.
+     * @param {string} statusId Description for statusId.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRevocationCredentialStatus: async (
+      projectId: string,
+      walletId: string,
+      statusId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('getRevocationCredentialStatus', 'projectId', projectId)
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('getRevocationCredentialStatus', 'walletId', walletId)
+      // verify required parameter 'statusId' is not null or undefined
+      assertParamExists('getRevocationCredentialStatus', 'statusId', statusId)
+      const localVarPath =
+        `/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}`
+          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+          .replace(`{${'statusId'}}`, encodeURIComponent(String(statusId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Get revocation status list as RevocationListCredential
+     * @param {string} projectId Description for projectId.
+     * @param {string} walletId Description for walletId.
+     * @param {string} statusId Description for statusId.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getRevocationCredentialStatus(
+      projectId: string,
+      walletId: string,
+      statusId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<GetRevocationListCredentialResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getRevocationCredentialStatus(
+          projectId,
+          walletId,
+          statusId,
+          options,
+        )
+      const index = configuration?.serverIndex ?? 0
+      const operationBasePath =
+        operationServerMap['DefaultApi.getRevocationCredentialStatus']?.[index]
+          ?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, operationBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = DefaultApiFp(configuration)
+  return {
+    /**
+     * Get revocation status list as RevocationListCredential
+     * @param {string} projectId Description for projectId.
+     * @param {string} walletId Description for walletId.
+     * @param {string} statusId Description for statusId.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRevocationCredentialStatus(
+      projectId: string,
+      walletId: string,
+      statusId: string,
+      options?: any,
+    ): AxiosPromise<GetRevocationListCredentialResultDto> {
+      return localVarFp
+        .getRevocationCredentialStatus(projectId, walletId, statusId, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   * Get revocation status list as RevocationListCredential
+   * @param {string} projectId Description for projectId.
+   * @param {string} walletId Description for walletId.
+   * @param {string} statusId Description for statusId.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public getRevocationCredentialStatus(
+    projectId: string,
+    walletId: string,
+    statusId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .getRevocationCredentialStatus(projectId, walletId, statusId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * RevocationApi - axios parameter creator
  * @export
  */
@@ -795,6 +1053,7 @@ export const RevocationApiAxiosParamCreator = function (
      * @param {string} listId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     getRevocationListCredential: async (
@@ -930,6 +1189,7 @@ export const RevocationApiFp = function (configuration?: Configuration) {
      * @param {string} listId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     async getRevocationListCredential(
@@ -1012,6 +1272,7 @@ export const RevocationApiFactory = function (
      * @param {string} listId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     getRevocationListCredential(
@@ -1056,6 +1317,7 @@ export class RevocationApi extends BaseAPI {
    * @param {string} listId
    * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
+   * @deprecated
    * @throws {RequiredError}
    * @memberof RevocationApi
    */

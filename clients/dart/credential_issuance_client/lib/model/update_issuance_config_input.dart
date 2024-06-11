@@ -32,6 +32,9 @@ class UpdateIssuanceConfigInput {
 
   /// credential offer duration in second
   ///
+  /// Minimum value: 1
+  /// Maximum value: 604801
+  ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.

@@ -36,6 +36,9 @@ part 'api/well_known_api.dart';
 
 part 'model/action_forbidden_error.dart';
 part 'model/action_forbidden_error_details_inner.dart';
+part 'model/cors_generate_credentials_ok.dart';
+part 'model/cors_get_credential_offer_ok.dart';
+part 'model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 part 'model/create_credential_input.dart';
 part 'model/create_issuance_config400_response.dart';
 part 'model/create_issuance_config_input.dart';
@@ -61,6 +64,7 @@ part 'model/invalid_jwt_token_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_proof_error.dart';
 part 'model/issuance_config_dto.dart';
+part 'model/issuance_config_dto_credential_supported_inner.dart';
 part 'model/issuance_config_list_response.dart';
 part 'model/issuance_config_mini_dto.dart';
 part 'model/issuance_state_response.dart';
@@ -71,8 +75,10 @@ part 'model/project_credential_config_not_exist_error.dart';
 part 'model/start_issuance400_response.dart';
 part 'model/start_issuance_input.dart';
 part 'model/start_issuance_input_data_inner.dart';
+part 'model/start_issuance_input_data_inner_meta_data.dart';
 part 'model/start_issuance_response.dart';
 part 'model/update_issuance_config_input.dart';
+part 'model/vc_claimed_error.dart';
 part 'model/well_known_open_id_credential_issuer_response.dart';
 
 

@@ -15,6 +15,7 @@ class UpdateLoginConfigurationInput {
   UpdateLoginConfigurationInput({
     this.name,
     this.redirectUris = const [],
+    this.postLogoutRedirectUris = const [],
     this.clientSecret,
     this.vpDefinition,
     this.presentationDefinition,
@@ -34,6 +35,9 @@ class UpdateLoginConfigurationInput {
 
   /// OAuth 2.0 Redirect URIs
   List<String> redirectUris;
+
+  /// Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete.
+  List<String> postLogoutRedirectUris;
 
   /// OAuth2 client secret
   ///
@@ -91,6 +95,7 @@ class UpdateLoginConfigurationInput {
   bool operator ==(Object other) => identical(this, other) || other is UpdateLoginConfigurationInput &&
     other.name == name &&
     _deepEquality.equals(other.redirectUris, redirectUris) &&
+    _deepEquality.equals(other.postLogoutRedirectUris, postLogoutRedirectUris) &&
     other.clientSecret == clientSecret &&
     other.vpDefinition == vpDefinition &&
     other.presentationDefinition == presentationDefinition &&
@@ -103,6 +108,7 @@ class UpdateLoginConfigurationInput {
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
     (redirectUris.hashCode) +
+    (postLogoutRedirectUris.hashCode) +
     (clientSecret == null ? 0 : clientSecret!.hashCode) +
     (vpDefinition == null ? 0 : vpDefinition!.hashCode) +
     (presentationDefinition == null ? 0 : presentationDefinition!.hashCode) +
@@ -111,7 +117,7 @@ class UpdateLoginConfigurationInput {
     (failOnMappingConflict == null ? 0 : failOnMappingConflict!.hashCode);
 
   @override
-  String toString() => 'UpdateLoginConfigurationInput[name=$name, redirectUris=$redirectUris, clientSecret=$clientSecret, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, tokenEndpointAuthMethod=$tokenEndpointAuthMethod, failOnMappingConflict=$failOnMappingConflict]';
+  String toString() => 'UpdateLoginConfigurationInput[name=$name, redirectUris=$redirectUris, postLogoutRedirectUris=$postLogoutRedirectUris, clientSecret=$clientSecret, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, tokenEndpointAuthMethod=$tokenEndpointAuthMethod, failOnMappingConflict=$failOnMappingConflict]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -121,6 +127,7 @@ class UpdateLoginConfigurationInput {
       json[r'name'] = null;
     }
       json[r'redirectUris'] = this.redirectUris;
+      json[r'postLogoutRedirectUris'] = this.postLogoutRedirectUris;
     if (this.clientSecret != null) {
       json[r'clientSecret'] = this.clientSecret;
     } else {
@@ -176,6 +183,9 @@ class UpdateLoginConfigurationInput {
         name: mapValueOfType<String>(json, r'name'),
         redirectUris: json[r'redirectUris'] is Iterable
             ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        postLogoutRedirectUris: json[r'postLogoutRedirectUris'] is Iterable
+            ? (json[r'postLogoutRedirectUris'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         clientSecret: mapValueOfType<String>(json, r'clientSecret'),
         vpDefinition: mapValueOfType<String>(json, r'vpDefinition'),

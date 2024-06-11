@@ -186,6 +186,12 @@ class ApiClient {
           return ActionForbiddenError.fromJson(value);
         case 'ActionForbiddenErrorDetailsInner':
           return ActionForbiddenErrorDetailsInner.fromJson(value);
+        case 'CorsGenerateCredentialsOK':
+          return CorsGenerateCredentialsOK.fromJson(value);
+        case 'CorsGetCredentialOfferOK':
+          return CorsGetCredentialOfferOK.fromJson(value);
+        case 'CorsGetWellKnownOpenIdCredentialIssuerOK':
+          return CorsGetWellKnownOpenIdCredentialIssuerOK.fromJson(value);
         case 'CreateCredentialInput':
           return CreateCredentialInput.fromJson(value);
         case 'CreateIssuanceConfig400Response':
@@ -236,6 +242,8 @@ class ApiClient {
           return InvalidProofError.fromJson(value);
         case 'IssuanceConfigDto':
           return IssuanceConfigDto.fromJson(value);
+        case 'IssuanceConfigDtoCredentialSupportedInner':
+          return IssuanceConfigDtoCredentialSupportedInner.fromJson(value);
         case 'IssuanceConfigListResponse':
           return IssuanceConfigListResponse.fromJson(value);
         case 'IssuanceConfigMiniDto':
@@ -256,10 +264,14 @@ class ApiClient {
           return StartIssuanceInput.fromJson(value);
         case 'StartIssuanceInputDataInner':
           return StartIssuanceInputDataInner.fromJson(value);
+        case 'StartIssuanceInputDataInnerMetaData':
+          return StartIssuanceInputDataInnerMetaData.fromJson(value);
         case 'StartIssuanceResponse':
           return StartIssuanceResponse.fromJson(value);
         case 'UpdateIssuanceConfigInput':
           return UpdateIssuanceConfigInput.fromJson(value);
+        case 'VcClaimedError':
+          return VcClaimedError.fromJson(value);
         case 'WellKnownOpenIdCredentialIssuerResponse':
           return WellKnownOpenIdCredentialIssuerResponse.fromJson(value);
         default:

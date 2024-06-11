@@ -151,11 +151,11 @@ class GetCredentialOffer400ResponseNameEnum {
 
   String toJson() => value;
 
-  static const credentialOfferExpiredError = GetCredentialOffer400ResponseNameEnum._(r'CredentialOfferExpiredError');
+  static const vcClaimedError = GetCredentialOffer400ResponseNameEnum._(r'VcClaimedError');
 
   /// List of all possible values in this [enum][GetCredentialOffer400ResponseNameEnum].
   static const values = <GetCredentialOffer400ResponseNameEnum>[
-    credentialOfferExpiredError,
+    vcClaimedError,
   ];
 
   static GetCredentialOffer400ResponseNameEnum? fromJson(dynamic value) => GetCredentialOffer400ResponseNameEnumTypeTransformer().decode(value);
@@ -194,7 +194,7 @@ class GetCredentialOffer400ResponseNameEnumTypeTransformer {
   GetCredentialOffer400ResponseNameEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'CredentialOfferExpiredError': return GetCredentialOffer400ResponseNameEnum.credentialOfferExpiredError;
+        case r'VcClaimedError': return GetCredentialOffer400ResponseNameEnum.vcClaimedError;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -222,11 +222,11 @@ class GetCredentialOffer400ResponseMessageEnum {
 
   String toJson() => value;
 
-  static const credentialOfferIsExpired = GetCredentialOffer400ResponseMessageEnum._(r'Credential offer is expired');
+  static const theRequestedVCHasAlreadyBeenClaimedByTheUser = GetCredentialOffer400ResponseMessageEnum._(r'The requested VC has already been claimed by the user');
 
   /// List of all possible values in this [enum][GetCredentialOffer400ResponseMessageEnum].
   static const values = <GetCredentialOffer400ResponseMessageEnum>[
-    credentialOfferIsExpired,
+    theRequestedVCHasAlreadyBeenClaimedByTheUser,
   ];
 
   static GetCredentialOffer400ResponseMessageEnum? fromJson(dynamic value) => GetCredentialOffer400ResponseMessageEnumTypeTransformer().decode(value);
@@ -265,7 +265,7 @@ class GetCredentialOffer400ResponseMessageEnumTypeTransformer {
   GetCredentialOffer400ResponseMessageEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Credential offer is expired': return GetCredentialOffer400ResponseMessageEnum.credentialOfferIsExpired;
+        case r'The requested VC has already been claimed by the user': return GetCredentialOffer400ResponseMessageEnum.theRequestedVCHasAlreadyBeenClaimedByTheUser;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

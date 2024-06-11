@@ -1,4 +1,4 @@
-.openapi-generator-ignore
+Apis/DefaultApi.md
 Apis/RevocationApi.md
 Apis/WalletApi.md
 Models/CreateWalletInput.md
@@ -6,6 +6,7 @@ Models/CreateWalletResponse.md
 Models/DidKeyInputParams.md
 Models/DidWebInputParams.md
 Models/EntityNotFoundError.md
+Models/GetRevocationCredentialStatusOK.md
 Models/GetRevocationListCredentialResultDto.md
 Models/InvalidDidParameterError.md
 Models/InvalidParameterError.md
@@ -20,8 +21,10 @@ Models/SignCredentialInputDto_unsignedCredentialParams.md
 Models/SignCredentialResultDto.md
 Models/SignJwtToken.md
 Models/SignJwtTokenOK.md
+Models/SigningFailedError.md
 Models/UpdateWalletInput.md
 Models/WalletDto.md
 Models/WalletDto_keys_inner.md
 Models/WalletsListDto.md
+Models/signCredential_400_response.md
 README.md

@@ -20,16 +20,30 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 
 class CreateIssuanceConfigInputCredentialSupportedInner(BaseModel):
     """
     CreateIssuanceConfigInputCredentialSupportedInner
     """
     credential_type_id: StrictStr = Field(..., alias="credentialTypeId", description="It is a String that identifies a Credential that is being requested to be issued.")
-    json_schema_url: StrictStr = Field(..., alias="jsonSchemaUrl", description="credential jsonLdContextUrl")
-    json_ld_context_url: StrictStr = Field(..., alias="jsonLdContextUrl", description="credential jsonSchemaUrl")
+    json_schema_url: constr(strict=True) = Field(..., alias="jsonSchemaUrl", description="credential jsonLdContextUrl")
+    json_ld_context_url: constr(strict=True) = Field(..., alias="jsonLdContextUrl", description="credential jsonSchemaUrl")
     __properties = ["credentialTypeId", "jsonSchemaUrl", "jsonLdContextUrl"]
+
+    @validator('json_schema_url')
+    def json_schema_url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^https:\/\/(.+)\.json$", value):
+            raise ValueError(r"must validate the regular expression /^https:\/\/(.+)\.json$/")
+        return value
+
+    @validator('json_ld_context_url')
+    def json_ld_context_url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^https:\/\/(.+)\.jsonld$", value):
+            raise ValueError(r"must validate the regular expression /^https:\/\/(.+)\.jsonld$/")
+        return value
 
     class Config:
         """Pydantic configuration"""

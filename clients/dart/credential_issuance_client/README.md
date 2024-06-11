@@ -83,6 +83,9 @@ All URIs are relative to _http://localhost_
 
 - [ActionForbiddenError](doc//ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](doc//ActionForbiddenErrorDetailsInner.md)
+- [CorsGenerateCredentialsOK](doc//CorsGenerateCredentialsOK.md)
+- [CorsGetCredentialOfferOK](doc//CorsGetCredentialOfferOK.md)
+- [CorsGetWellKnownOpenIdCredentialIssuerOK](doc//CorsGetWellKnownOpenIdCredentialIssuerOK.md)
 - [CreateCredentialInput](doc//CreateCredentialInput.md)
 - [CreateIssuanceConfig400Response](doc//CreateIssuanceConfig400Response.md)
 - [CreateIssuanceConfigInput](doc//CreateIssuanceConfigInput.md)
@@ -108,6 +111,7 @@ All URIs are relative to _http://localhost_
 - [InvalidParameterError](doc//InvalidParameterError.md)
 - [InvalidProofError](doc//InvalidProofError.md)
 - [IssuanceConfigDto](doc//IssuanceConfigDto.md)
+- [IssuanceConfigDtoCredentialSupportedInner](doc//IssuanceConfigDtoCredentialSupportedInner.md)
 - [IssuanceConfigListResponse](doc//IssuanceConfigListResponse.md)
 - [IssuanceConfigMiniDto](doc//IssuanceConfigMiniDto.md)
 - [IssuanceStateResponse](doc//IssuanceStateResponse.md)
@@ -118,8 +122,10 @@ All URIs are relative to _http://localhost_
 - [StartIssuance400Response](doc//StartIssuance400Response.md)
 - [StartIssuanceInput](doc//StartIssuanceInput.md)
 - [StartIssuanceInputDataInner](doc//StartIssuanceInputDataInner.md)
+- [StartIssuanceInputDataInnerMetaData](doc//StartIssuanceInputDataInnerMetaData.md)
 - [StartIssuanceResponse](doc//StartIssuanceResponse.md)
 - [UpdateIssuanceConfigInput](doc//UpdateIssuanceConfigInput.md)
+- [VcClaimedError](doc//VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](doc//WellKnownOpenIdCredentialIssuerResponse.md)
 
 ## Documentation For Authorization

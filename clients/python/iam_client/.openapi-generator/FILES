@@ -33,6 +33,7 @@ affinidi_tdk_iam_client/models/json_web_key_set_dto.py
 affinidi_tdk_iam_client/models/not_found_error.py
 affinidi_tdk_iam_client/models/policy_dto.py
 affinidi_tdk_iam_client/models/policy_statement_dto.py
+affinidi_tdk_iam_client/models/principal_cannot_be_deleted_error.py
 affinidi_tdk_iam_client/models/principal_does_not_belong_to_project_error.py
 affinidi_tdk_iam_client/models/project_dto.py
 affinidi_tdk_iam_client/models/project_list.py
@@ -76,6 +77,7 @@ docs/NotFoundError.md
 docs/PoliciesApi.md
 docs/PolicyDto.md
 docs/PolicyStatementDto.md
+docs/PrincipalCannotBeDeletedError.md
 docs/PrincipalDoesNotBelongToProjectError.md
 docs/ProjectDto.md
 docs/ProjectList.md
@@ -107,5 +109,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_get_well_known_did_ok.py
 tox.ini

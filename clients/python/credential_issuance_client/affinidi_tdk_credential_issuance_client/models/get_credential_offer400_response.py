@@ -24,10 +24,11 @@ from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
 from affinidi_tdk_credential_issuance_client.models.credential_offer_expired_error import CredentialOfferExpiredError
 from affinidi_tdk_credential_issuance_client.models.invalid_parameter_error import InvalidParameterError
 from affinidi_tdk_credential_issuance_client.models.project_credential_config_not_exist_error import ProjectCredentialConfigNotExistError
+from affinidi_tdk_credential_issuance_client.models.vc_claimed_error import VcClaimedError
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-GETCREDENTIALOFFER400RESPONSE_ONE_OF_SCHEMAS = ["CredentialOfferExpiredError", "InvalidParameterError", "ProjectCredentialConfigNotExistError"]
+GETCREDENTIALOFFER400RESPONSE_ONE_OF_SCHEMAS = ["CredentialOfferExpiredError", "InvalidParameterError", "ProjectCredentialConfigNotExistError", "VcClaimedError"]
 
 class GetCredentialOffer400Response(BaseModel):
     """
@@ -39,8 +40,10 @@ class GetCredentialOffer400Response(BaseModel):
     oneof_schema_2_validator: Optional[ProjectCredentialConfigNotExistError] = None
     # data type: CredentialOfferExpiredError
     oneof_schema_3_validator: Optional[CredentialOfferExpiredError] = None
+    # data type: VcClaimedError
+    oneof_schema_4_validator: Optional[VcClaimedError] = None
     if TYPE_CHECKING:
-        actual_instance: Union[CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError]
+        actual_instance: Union[CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError]
     else:
         actual_instance: Any
     one_of_schemas: List[str] = Field(GETCREDENTIALOFFER400RESPONSE_ONE_OF_SCHEMAS, const=True)
@@ -78,12 +81,17 @@ class GetCredentialOffer400Response(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `CredentialOfferExpiredError`")
         else:
             match += 1
+        # validate data type: VcClaimedError
+        if not isinstance(v, VcClaimedError):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `VcClaimedError`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -116,13 +124,19 @@ class GetCredentialOffer400Response(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into VcClaimedError
+        try:
+            instance.actual_instance = VcClaimedError.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetCredentialOffer400Response with oneOf schemas: CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError. Details: " + ", ".join(error_messages))
         else:
             return instance
 
