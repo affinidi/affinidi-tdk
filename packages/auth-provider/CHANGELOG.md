@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.3.1...@affinidi-tdk/auth-provider-v1.4.0) (2024-06-11)
+
+
+### Features
+
+* add did in createIotaToken ([#104](https://github.com/affinidi/affinidi-tdk/issues/104)) ([e8c1723](https://github.com/affinidi/affinidi-tdk/commit/e8c172399c0f1ce2ab8f661c4f0f9c27f38cad79))
+
 ## [1.3.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.3.0...@affinidi-tdk/auth-provider-v1.3.1) (2024-06-10)
 
 
