@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.5.0...@affinidi-tdk/wallets-client-v1.6.0) (2024-06-11)
+
+
+### Features
+
+* update client ais ([#106](https://github.com/affinidi/affinidi-tdk/issues/106)) ([94f681f](https://github.com/affinidi/affinidi-tdk/commit/94f681f9bcc560a13e9f914d6aab4eb8406e96b7))
+
 # [1.5.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.4.0...@affinidi-tdk/wallets-client-v1.5.0) (2024-06-07)
 
 
