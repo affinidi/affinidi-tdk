@@ -16,7 +16,7 @@ import {
   getUnexpectedErrorMessage,
   ErrorCode,
   getError,
-} from 'src/validators/error'
+} from '../validators/error'
 
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'

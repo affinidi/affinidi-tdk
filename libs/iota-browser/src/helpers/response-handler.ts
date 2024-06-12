@@ -12,7 +12,7 @@ import {
   ErrorCode,
   getError,
   getUnexpectedErrorMessage,
-} from 'src/validators/error'
+} from '../validators/error'
 
 export type IotaResponse = {
   correlationId: string
