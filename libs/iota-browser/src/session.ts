@@ -41,18 +41,14 @@ export class Session {
   }
 
   async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
-    try {
-      this.isChannelProviderInitialized()
-      const iotaRequest = await this.channelProvider.prepareRequest(params)
-      const request = new IotaRequest({
-        session: this,
-        correlationId: iotaRequest.correlationId,
-        payload: iotaRequest.payload,
-      })
-      return request
-    } catch (e) {
-      throw (e)
-    }
+    this.isChannelProviderInitialized()
+    const iotaRequest = await this.channelProvider.prepareRequest(params)
+    const request = new IotaRequest({
+      session: this,
+      correlationId: iotaRequest.correlationId,
+      payload: iotaRequest.payload,
+    })
+    return request
   }
 
   prepareRequestWithCallback(
@@ -65,13 +61,9 @@ export class Session {
   }
 
   async getResponse(correlationId: string): Promise<IotaResponse> {
-    try {
-      this.isChannelProviderInitialized()
-      const responseHandler = new ResponseHandler(this.channelProvider)
-      return responseHandler.getResponse(correlationId)
-    } catch (e) {
-      throw (e)
-    }
+    this.isChannelProviderInitialized()
+    const responseHandler = new ResponseHandler(this.channelProvider)
+    return responseHandler.getResponse(correlationId)
   }
 
   getResponseWithCallback(
