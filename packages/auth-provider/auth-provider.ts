@@ -108,6 +108,7 @@ export class AuthProvider {
 
   public createIotaToken(
     iotaConfigId: string,
+    did: string,
     iotaSessionId?: string,
   ): IotaTokenOutput {
     const sessionId = iotaSessionId ?? uuidv4()
@@ -122,7 +123,7 @@ export class AuthProvider {
           tokenId: `token/${this.tokenId}`,
           passphrase: this.passphrase,
           privateKey: this.privateKey,
-          audience: `${this.apiGatewayUrl}/ais/v1/aws-exchange-credentials`,
+          audience: did,
         },
       ),
       iotaSessionId: sessionId,
