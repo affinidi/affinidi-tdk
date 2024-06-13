@@ -9,9 +9,9 @@ export enum ErrorCode {
 }
 
 function getIssue(errorEvent: ErrorEvent) {
-  return errorEvent.error.details![0].issue &&
-    errorEvent.error.details![0].issue.length > 0
-    ? errorEvent.error.details![0].issue
+  return errorEvent.error.details![0].issues &&
+    errorEvent.error.details![0].issues.length > 0
+    ? errorEvent.error.details![0].issues
     : errorEvent.error.message
 }
 
