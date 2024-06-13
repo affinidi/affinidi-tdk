@@ -68,20 +68,19 @@ export class ResponseHandler {
             const raw_data = toUtf8(
               messageReceivedEvent.message.payload as Buffer,
             )
-            let event
             try {
-              event = JSON.parse(raw_data)
+              const event = JSON.parse(raw_data)
+              if (correlationId !== event.correlationId) {
+                return
+              }
+              if (event.eventType === EventTypes.ResponseCallback) {
+                const response = this.getResponseHandler(event)
+                resolve(response)
+              } else if (event.eventType === EventTypes.Error) {
+                getError(event)
+              }
             } catch (error) {
               reject(error)
-            }
-            if (correlationId !== event.correlationId) {
-              return
-            }
-            if (event.eventType === EventTypes.ResponseCallback) {
-              const response = this.getResponseHandler(event)
-              resolve(response)
-            } else if (event.eventType === EventTypes.Error) {
-              getError(event)
             }
           }
         },

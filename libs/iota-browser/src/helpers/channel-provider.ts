@@ -208,20 +208,19 @@ export class ChannelProvider {
             const raw_data = toUtf8(
               messageReceivedEvent.message.payload as Buffer,
             )
-            let event
             try {
-              event = JSON.parse(raw_data)
+              const event = JSON.parse(raw_data)
+              if (correlationId !== event.correlationId) {
+                return
+              }
+              if (event.eventType === EventTypes.SignedRequest) {
+                const request = this.getRequest(event)
+                resolve(request)
+              } else if (event.eventType === EventTypes.Error) {
+                getError(event)
+              }
             } catch (e) {
               reject(e)
-            }
-            if (correlationId !== event.correlationId) {
-              return
-            }
-            if (event.eventType === EventTypes.SignedRequest) {
-              const request = this.getRequest(event)
-              resolve(request)
-            } else if (event.eventType === EventTypes.Error) {
-              getError(event)
             }
           }
         },
