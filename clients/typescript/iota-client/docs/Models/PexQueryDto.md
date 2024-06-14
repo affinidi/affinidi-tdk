@@ -7,6 +7,7 @@
 | **ari**              | **String** |                                        | [default to null] |
 | **queryId**          | **String** |                                        | [default to null] |
 | **name**             | **String** |                                        | [default to null] |
+| **description**      | **String** |                                        | [default to null] |
 | **configurationAri** | **String** |                                        | [default to null] |
 | **vpDefinition**     | **String** | VP definition in JSON stringify format | [default to null] |
 

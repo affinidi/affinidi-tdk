@@ -114,5 +114,3 @@ lib/model/update_issuance_config_input.dart
 lib/model/vc_claimed_error.dart
 lib/model/well_known_open_id_credential_issuer_response.dart
 pubspec.yaml
-test/issuance_config_dto_credential_supported_inner_test.dart
-test/start_issuance_input_data_inner_meta_data_test.dart

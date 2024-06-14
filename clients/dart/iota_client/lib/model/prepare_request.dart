@@ -13,14 +13,14 @@ part of openapi.api;
 class PrepareRequest {
   /// Returns a new [PrepareRequest] instance.
   PrepareRequest({
-    required this.iotClientId,
+    required this.connectionClientId,
     required this.queryId,
     required this.correlationId,
     this.tokenMaxAge,
     this.audience,
   });
 
-  String iotClientId;
+  String connectionClientId;
 
   String queryId;
 
@@ -45,7 +45,7 @@ class PrepareRequest {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PrepareRequest &&
-    other.iotClientId == iotClientId &&
+    other.connectionClientId == connectionClientId &&
     other.queryId == queryId &&
     other.correlationId == correlationId &&
     other.tokenMaxAge == tokenMaxAge &&
@@ -54,18 +54,18 @@ class PrepareRequest {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (iotClientId.hashCode) +
+    (connectionClientId.hashCode) +
     (queryId.hashCode) +
     (correlationId.hashCode) +
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
     (audience == null ? 0 : audience!.hashCode);
 
   @override
-  String toString() => 'PrepareRequest[iotClientId=$iotClientId, queryId=$queryId, correlationId=$correlationId, tokenMaxAge=$tokenMaxAge, audience=$audience]';
+  String toString() => 'PrepareRequest[connectionClientId=$connectionClientId, queryId=$queryId, correlationId=$correlationId, tokenMaxAge=$tokenMaxAge, audience=$audience]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'iotClientId'] = this.iotClientId;
+      json[r'connectionClientId'] = this.connectionClientId;
       json[r'queryId'] = this.queryId;
       json[r'correlationId'] = this.correlationId;
     if (this.tokenMaxAge != null) {
@@ -100,7 +100,7 @@ class PrepareRequest {
       }());
 
       return PrepareRequest(
-        iotClientId: mapValueOfType<String>(json, r'iotClientId')!,
+        connectionClientId: mapValueOfType<String>(json, r'connectionClientId')!,
         queryId: mapValueOfType<String>(json, r'queryId')!,
         correlationId: mapValueOfType<String>(json, r'correlationId')!,
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
@@ -152,7 +152,7 @@ class PrepareRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'iotClientId',
+    'connectionClientId',
     'queryId',
     'correlationId',
   };

@@ -1,6 +1,6 @@
 # affinidi_tdk_iam_client.WellKnownApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Method                                                         | HTTP request                   | Description |
 | -------------------------------------------------------------- | ------------------------------ | ----------- |
@@ -21,10 +21,10 @@ from affinidi_tdk_iam_client.models.get_well_known_did_ok import GetWellKnownDid
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -81,10 +81,10 @@ from affinidi_tdk_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 

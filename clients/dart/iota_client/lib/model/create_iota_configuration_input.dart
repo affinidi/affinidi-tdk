@@ -14,6 +14,7 @@ class CreateIotaConfigurationInput {
   /// Returns a new [CreateIotaConfigurationInput] instance.
   CreateIotaConfigurationInput({
     required this.name,
+    this.description,
     required this.walletAri,
     this.iotaResponseWebhookURL,
     required this.enableVerification,
@@ -22,8 +23,17 @@ class CreateIotaConfigurationInput {
     required this.clientMetadata,
   });
 
-  /// The name of the config
+  /// The name of the configuration
   String name;
+
+  /// Description of the configuration
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// The wallet Ari that will be used to sign
   String walletAri;
@@ -57,6 +67,7 @@ class CreateIotaConfigurationInput {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateIotaConfigurationInput &&
     other.name == name &&
+    other.description == description &&
     other.walletAri == walletAri &&
     other.iotaResponseWebhookURL == iotaResponseWebhookURL &&
     other.enableVerification == enableVerification &&
@@ -68,6 +79,7 @@ class CreateIotaConfigurationInput {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (walletAri.hashCode) +
     (iotaResponseWebhookURL == null ? 0 : iotaResponseWebhookURL!.hashCode) +
     (enableVerification.hashCode) +
@@ -76,11 +88,16 @@ class CreateIotaConfigurationInput {
     (clientMetadata.hashCode);
 
   @override
-  String toString() => 'CreateIotaConfigurationInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata]';
+  String toString() => 'CreateIotaConfigurationInput[name=$name, description=$description, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'walletAri'] = this.walletAri;
     if (this.iotaResponseWebhookURL != null) {
       json[r'iotaResponseWebhookURL'] = this.iotaResponseWebhookURL;
@@ -118,6 +135,7 @@ class CreateIotaConfigurationInput {
 
       return CreateIotaConfigurationInput(
         name: mapValueOfType<String>(json, r'name')!,
+        description: mapValueOfType<String>(json, r'description'),
         walletAri: mapValueOfType<String>(json, r'walletAri')!,
         iotaResponseWebhookURL: mapValueOfType<String>(json, r'iotaResponseWebhookURL'),
         enableVerification: mapValueOfType<bool>(json, r'enableVerification')!,

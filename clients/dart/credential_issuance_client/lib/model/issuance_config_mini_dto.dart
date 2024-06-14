@@ -14,6 +14,7 @@ class IssuanceConfigMiniDto {
   /// Returns a new [IssuanceConfigMiniDto] instance.
   IssuanceConfigMiniDto({
     required this.id,
+    this.name,
     this.issuerDid,
     this.issuerWalletId,
     this.credentialOfferDuration,
@@ -25,6 +26,14 @@ class IssuanceConfigMiniDto {
   });
 
   String id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
 
   /// Issuer DID
   ///
@@ -88,6 +97,7 @@ class IssuanceConfigMiniDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is IssuanceConfigMiniDto &&
     other.id == id &&
+    other.name == name &&
     other.issuerDid == issuerDid &&
     other.issuerWalletId == issuerWalletId &&
     other.credentialOfferDuration == credentialOfferDuration &&
@@ -101,6 +111,7 @@ class IssuanceConfigMiniDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
     (issuerDid == null ? 0 : issuerDid!.hashCode) +
     (issuerWalletId == null ? 0 : issuerWalletId!.hashCode) +
     (credentialOfferDuration == null ? 0 : credentialOfferDuration!.hashCode) +
@@ -111,11 +122,16 @@ class IssuanceConfigMiniDto {
     (version == null ? 0 : version!.hashCode);
 
   @override
-  String toString() => 'IssuanceConfigMiniDto[id=$id, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, issuerMetadata=$issuerMetadata, version=$version]';
+  String toString() => 'IssuanceConfigMiniDto[id=$id, name=$name, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, issuerMetadata=$issuerMetadata, version=$version]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
     if (this.issuerDid != null) {
       json[r'issuerDid'] = this.issuerDid;
     } else {
@@ -175,6 +191,7 @@ class IssuanceConfigMiniDto {
 
       return IssuanceConfigMiniDto(
         id: mapValueOfType<String>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name'),
         issuerDid: mapValueOfType<String>(json, r'issuerDid'),
         issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId'),
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),

@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name              | Type    | Description                            | Notes |
-| ----------------- | ------- | -------------------------------------- | ----- |
+| Name              | Type    | Description                            | Notes      |
+| ----------------- | ------- | -------------------------------------- | ---------- |
 | **name**          | **str** |                                        |
 | **vp_definition** | **str** | VP definition in JSON stringify format |
+| **description**   | **str** | Description of query                   | [optional] |
 
 ## Example
 

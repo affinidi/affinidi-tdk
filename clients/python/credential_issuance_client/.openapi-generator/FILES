@@ -119,6 +119,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_issuance_config_dto_credential_supported_inner.py
-test/test_start_issuance_input_data_inner_meta_data.py
 tox.ini

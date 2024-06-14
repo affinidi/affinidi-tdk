@@ -15,6 +15,7 @@ class CreatePexQueryInput {
   CreatePexQueryInput({
     required this.name,
     required this.vpDefinition,
+    this.description,
   });
 
   String name;
@@ -22,24 +23,40 @@ class CreatePexQueryInput {
   /// VP definition in JSON stringify format
   String vpDefinition;
 
+  /// Description of query
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreatePexQueryInput &&
     other.name == name &&
-    other.vpDefinition == vpDefinition;
+    other.vpDefinition == vpDefinition &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
-    (vpDefinition.hashCode);
+    (vpDefinition.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'CreatePexQueryInput[name=$name, vpDefinition=$vpDefinition]';
+  String toString() => 'CreatePexQueryInput[name=$name, vpDefinition=$vpDefinition, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
       json[r'vpDefinition'] = this.vpDefinition;
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
     return json;
   }
 
@@ -64,6 +81,7 @@ class CreatePexQueryInput {
       return CreatePexQueryInput(
         name: mapValueOfType<String>(json, r'name')!,
         vpDefinition: mapValueOfType<String>(json, r'vpDefinition')!,
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;

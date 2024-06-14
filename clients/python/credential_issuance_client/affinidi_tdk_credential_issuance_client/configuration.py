@@ -88,7 +88,7 @@ conf = affinidi_tdk_credential_issuance_client.Configuration(
                  ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost" if host is None else host
+        self._base_path = "https://apse1.api.affinidi.io/cis" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -461,7 +461,7 @@ conf = affinidi_tdk_credential_issuance_client.Configuration(
         """
         return [
             {
-                'url': "",
+                'url': "https://apse1.api.affinidi.io/cis",
                 'description': "No description provided",
             }
         ]

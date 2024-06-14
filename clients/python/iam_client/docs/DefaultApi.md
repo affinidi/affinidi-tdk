@@ -1,6 +1,6 @@
 # affinidi_tdk_iam_client.DefaultApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Method                                                         | HTTP request                 | Description |
 | -------------------------------------------------------------- | ---------------------------- | ----------- |
@@ -28,10 +28,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -81,10 +81,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -134,10 +134,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -187,10 +187,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -240,10 +240,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -293,10 +293,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -346,10 +346,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -399,10 +399,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -452,10 +452,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 
@@ -505,10 +505,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 

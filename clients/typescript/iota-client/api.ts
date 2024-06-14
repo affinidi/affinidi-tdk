@@ -120,7 +120,7 @@ export interface AwsExchangeCredentialsOK {
    * @type {string}
    * @memberof AwsExchangeCredentialsOK
    */
-  iotClientId: string
+  connectionClientId: string
   /**
    *
    * @type {AwsExchangeCredentialsOKCredentials}
@@ -225,7 +225,25 @@ export interface ConsentDto {
    * @type {string}
    * @memberof ConsentDto
    */
-  updatedAt: string
+  modifiedAt: string
+  /**
+   *
+   * @type {string}
+   * @memberof ConsentDto
+   */
+  modifiedBy: string
+  /**
+   *
+   * @type {string}
+   * @memberof ConsentDto
+   */
+  createdAt: string
+  /**
+   *
+   * @type {string}
+   * @memberof ConsentDto
+   */
+  createdBy: string
 }
 
 export const ConsentDtoStatusEnum = {
@@ -268,11 +286,17 @@ export interface CorsIotOidc4vpcallbackOK {
  */
 export interface CreateIotaConfigurationInput {
   /**
-   * The name of the config
+   * The name of the configuration
    * @type {string}
    * @memberof CreateIotaConfigurationInput
    */
   name: string
+  /**
+   * Description of the configuration
+   * @type {string}
+   * @memberof CreateIotaConfigurationInput
+   */
+  description?: string
   /**
    * The wallet Ari that will be used to sign
    * @type {string}
@@ -328,6 +352,12 @@ export interface CreatePexQueryInput {
    * @memberof CreatePexQueryInput
    */
   vpDefinition: string
+  /**
+   * Description of query
+   * @type {string}
+   * @memberof CreatePexQueryInput
+   */
+  description?: string
 }
 /**
  *
@@ -800,6 +830,12 @@ export interface PexQueryDto {
    * @type {string}
    * @memberof PexQueryDto
    */
+  description: string
+  /**
+   *
+   * @type {string}
+   * @memberof PexQueryDto
+   */
   configurationAri: string
   /**
    * VP definition in JSON stringify format
@@ -819,7 +855,7 @@ export interface PrepareRequest {
    * @type {string}
    * @memberof PrepareRequest
    */
-  iotClientId: string
+  connectionClientId: string
   /**
    *
    * @type {string}
@@ -1007,7 +1043,13 @@ export interface UpdatePexQueryInput {
    * @type {string}
    * @memberof UpdatePexQueryInput
    */
-  vpDefinition: string
+  vpDefinition?: string
+  /**
+   *
+   * @type {string}
+   * @memberof UpdatePexQueryInput
+   */
+  description?: string
 }
 /**
  *

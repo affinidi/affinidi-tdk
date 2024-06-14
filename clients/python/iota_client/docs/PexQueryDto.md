@@ -7,6 +7,7 @@
 | **ari**               | **str** |                                        |
 | **query_id**          | **str** |                                        |
 | **name**              | **str** |                                        |
+| **description**       | **str** |                                        |
 | **configuration_ari** | **str** |                                        |
 | **vp_definition**     | **str** | VP definition in JSON stringify format |
 

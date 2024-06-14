@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
 class CreatePexQueryInput(BaseModel):
@@ -28,7 +28,8 @@ class CreatePexQueryInput(BaseModel):
     """
     name: StrictStr = Field(...)
     vp_definition: StrictStr = Field(..., alias="vpDefinition", description="VP definition in JSON stringify format")
-    __properties = ["name", "vpDefinition"]
+    description: Optional[StrictStr] = Field(None, description="Description of query")
+    __properties = ["name", "vpDefinition", "description"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +68,8 @@ class CreatePexQueryInput(BaseModel):
 
         _obj = CreatePexQueryInput.parse_obj({
             "name": obj.get("name"),
-            "vp_definition": obj.get("vpDefinition")
+            "vp_definition": obj.get("vpDefinition"),
+            "description": obj.get("description")
         })
         return _obj
 

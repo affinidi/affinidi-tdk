@@ -27,9 +27,9 @@ class AwsExchangeCredentialsOK(BaseModel):
     """
     AwsExchangeCredentialsOK
     """
-    iot_client_id: StrictStr = Field(..., alias="iotClientId")
+    connection_client_id: StrictStr = Field(..., alias="connectionClientId")
     credentials: AwsExchangeCredentialsOKCredentials = Field(...)
-    __properties = ["iotClientId", "credentials"]
+    __properties = ["connectionClientId", "credentials"]
 
     class Config:
         """Pydantic configuration"""
@@ -70,7 +70,7 @@ class AwsExchangeCredentialsOK(BaseModel):
             return AwsExchangeCredentialsOK.parse_obj(obj)
 
         _obj = AwsExchangeCredentialsOK.parse_obj({
-            "iot_client_id": obj.get("iotClientId"),
+            "connection_client_id": obj.get("connectionClientId"),
             "credentials": AwsExchangeCredentialsOKCredentials.from_dict(obj.get("credentials")) if obj.get("credentials") is not None else None
         })
         return _obj
