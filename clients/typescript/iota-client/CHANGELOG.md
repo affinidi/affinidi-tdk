@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.3.0...@affinidi-tdk/iota-client-v1.4.0) (2024-06-14)
+
+
+### Features
+
+* update client all ([#107](https://github.com/affinidi/affinidi-tdk/issues/107)) ([6f93eb4](https://github.com/affinidi/affinidi-tdk/commit/6f93eb410143e68a3890e643f9a8b56e6d07b308))
+
 # [1.3.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.2.0...@affinidi-tdk/iota-client-v1.3.0) (2024-06-11)
 
 
