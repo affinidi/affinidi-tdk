@@ -18,6 +18,7 @@ class LoginConfigurationObject {
     required this.projectId,
     required this.name,
     this.redirectUris = const [],
+    this.postLogoutRedirectUris = const [],
     this.scope,
     required this.clientId,
     required this.creationDate,
@@ -47,6 +48,9 @@ class LoginConfigurationObject {
 
   /// OAuth 2.0 Redirect URIs
   List<String> redirectUris;
+
+  /// Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+  List<String> postLogoutRedirectUris;
 
   /// OAuth 2.0 Client Scope
   ///
@@ -86,6 +90,7 @@ class LoginConfigurationObject {
     other.projectId == projectId &&
     other.name == name &&
     _deepEquality.equals(other.redirectUris, redirectUris) &&
+    _deepEquality.equals(other.postLogoutRedirectUris, postLogoutRedirectUris) &&
     other.scope == scope &&
     other.clientId == clientId &&
     other.creationDate == creationDate &&
@@ -102,6 +107,7 @@ class LoginConfigurationObject {
     (projectId.hashCode) +
     (name.hashCode) +
     (redirectUris.hashCode) +
+    (postLogoutRedirectUris.hashCode) +
     (scope == null ? 0 : scope!.hashCode) +
     (clientId.hashCode) +
     (creationDate.hashCode) +
@@ -111,7 +117,7 @@ class LoginConfigurationObject {
     (tokenEndpointAuthMethod.hashCode);
 
   @override
-  String toString() => 'LoginConfigurationObject[ari=$ari, configurationId=$configurationId, projectId=$projectId, name=$name, redirectUris=$redirectUris, scope=$scope, clientId=$clientId, creationDate=$creationDate, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, tokenEndpointAuthMethod=$tokenEndpointAuthMethod]';
+  String toString() => 'LoginConfigurationObject[ari=$ari, configurationId=$configurationId, projectId=$projectId, name=$name, redirectUris=$redirectUris, postLogoutRedirectUris=$postLogoutRedirectUris, scope=$scope, clientId=$clientId, creationDate=$creationDate, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, tokenEndpointAuthMethod=$tokenEndpointAuthMethod]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -124,6 +130,7 @@ class LoginConfigurationObject {
       json[r'projectId'] = this.projectId;
       json[r'name'] = this.name;
       json[r'redirectUris'] = this.redirectUris;
+      json[r'postLogoutRedirectUris'] = this.postLogoutRedirectUris;
     if (this.scope != null) {
       json[r'scope'] = this.scope;
     } else {
@@ -167,6 +174,9 @@ class LoginConfigurationObject {
         name: mapValueOfType<String>(json, r'name')!,
         redirectUris: json[r'redirectUris'] is Iterable
             ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        postLogoutRedirectUris: json[r'postLogoutRedirectUris'] is Iterable
+            ? (json[r'postLogoutRedirectUris'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         scope: mapValueOfType<String>(json, r'scope'),
         clientId: mapValueOfType<String>(json, r'clientId')!,

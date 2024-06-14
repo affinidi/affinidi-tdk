@@ -27,13 +27,15 @@ class UpdateIssuanceConfigInput(BaseModel):
     """
     UpdateIssuanceConfigInput
     """
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     issuer_wallet_id: Optional[StrictStr] = Field(None, alias="issuerWalletId", description="Issuer Wallet id")
     credential_offer_duration: Optional[Union[confloat(le=604801, ge=1, multiple_of=1, strict=True), conint(le=604801, ge=1, strict=True)]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
     format: Optional[StrictStr] = Field(None, description="String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type")
     issuer_uri: Optional[StrictStr] = Field(None, alias="issuerUri", description="Issuer URI")
     credential_supported: Optional[conlist(CreateIssuanceConfigInputCredentialSupportedInner)] = Field(None, alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
-    __properties = ["issuerWalletId", "credentialOfferDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata"]
+    __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata"]
 
     @validator('format')
     def format_validate_enum(cls, value):
@@ -88,6 +90,8 @@ class UpdateIssuanceConfigInput(BaseModel):
             return UpdateIssuanceConfigInput.parse_obj(obj)
 
         _obj = UpdateIssuanceConfigInput.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "issuer_wallet_id": obj.get("issuerWalletId"),
             "credential_offer_duration": obj.get("credentialOfferDuration"),
             "format": obj.get("format"),

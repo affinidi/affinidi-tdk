@@ -31,7 +31,7 @@ class CreateLoginConfigurationInput(BaseModel):
     """
     name: StrictStr = Field(..., description="User defined login configuration name")
     redirect_uris: conlist(StrictStr) = Field(..., alias="redirectUris", description="OAuth 2.0 Redirect URIs")
-    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete.")
+    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs")
     vp_definition: Optional[StrictStr] = Field(None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(None, alias="presentationDefinition", description="Presentation Definition")
     id_token_mapping: Optional[IdTokenMapping] = Field(None, alias="idTokenMapping")

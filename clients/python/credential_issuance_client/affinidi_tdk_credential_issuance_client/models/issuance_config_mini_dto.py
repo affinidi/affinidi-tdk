@@ -27,6 +27,7 @@ class IssuanceConfigMiniDto(BaseModel):
     IssuanceConfigMiniDto
     """
     id: StrictStr = Field(...)
+    name: Optional[StrictStr] = None
     issuer_did: Optional[StrictStr] = Field(None, alias="issuerDid", description="Issuer DID")
     issuer_wallet_id: Optional[StrictStr] = Field(None, alias="issuerWalletId", description="Issuer Wallet id")
     credential_offer_duration: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
@@ -35,7 +36,7 @@ class IssuanceConfigMiniDto(BaseModel):
     issuer_uri: Optional[StrictStr] = Field(None, alias="issuerUri", description="Issuer URI")
     issuer_metadata: Optional[Dict[str, Any]] = Field(None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
     version: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties = ["id", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "issuerMetadata", "version"]
+    __properties = ["id", "name", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "issuerMetadata", "version"]
 
     @validator('format')
     def format_validate_enum(cls, value):
@@ -84,6 +85,7 @@ class IssuanceConfigMiniDto(BaseModel):
 
         _obj = IssuanceConfigMiniDto.parse_obj({
             "id": obj.get("id"),
+            "name": obj.get("name"),
             "issuer_did": obj.get("issuerDid"),
             "issuer_wallet_id": obj.get("issuerWalletId"),
             "credential_offer_duration": obj.get("credentialOfferDuration"),

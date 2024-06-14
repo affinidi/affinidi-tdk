@@ -14,6 +14,8 @@ class IssuanceConfigDto {
   /// Returns a new [IssuanceConfigDto] instance.
   IssuanceConfigDto({
     this.id,
+    this.name,
+    this.description,
     this.issuerDid,
     this.issuerWalletId,
     this.credentialOfferDuration,
@@ -32,6 +34,22 @@ class IssuanceConfigDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? id;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// Issuer DID
   ///
@@ -97,6 +115,8 @@ class IssuanceConfigDto {
   @override
   bool operator ==(Object other) => identical(this, other) || other is IssuanceConfigDto &&
     other.id == id &&
+    other.name == name &&
+    other.description == description &&
     other.issuerDid == issuerDid &&
     other.issuerWalletId == issuerWalletId &&
     other.credentialOfferDuration == credentialOfferDuration &&
@@ -111,6 +131,8 @@ class IssuanceConfigDto {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id == null ? 0 : id!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (issuerDid == null ? 0 : issuerDid!.hashCode) +
     (issuerWalletId == null ? 0 : issuerWalletId!.hashCode) +
     (credentialOfferDuration == null ? 0 : credentialOfferDuration!.hashCode) +
@@ -122,7 +144,7 @@ class IssuanceConfigDto {
     (version == null ? 0 : version!.hashCode);
 
   @override
-  String toString() => 'IssuanceConfigDto[id=$id, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version]';
+  String toString() => 'IssuanceConfigDto[id=$id, name=$name, description=$description, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -130,6 +152,16 @@ class IssuanceConfigDto {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
     }
     if (this.issuerDid != null) {
       json[r'issuerDid'] = this.issuerDid;
@@ -191,6 +223,8 @@ class IssuanceConfigDto {
 
       return IssuanceConfigDto(
         id: mapValueOfType<String>(json, r'id'),
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
         issuerDid: mapValueOfType<String>(json, r'issuerDid'),
         issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId'),
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),

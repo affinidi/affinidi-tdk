@@ -41,7 +41,6 @@ const retryConfig = {
 const api = new SomeClassApi(
   new Configuration({
     apiKey: projectScopedToken,
-    basePath: `${apiGatewayUrl}/`,
   }),
   retryConfig,
 )
@@ -64,7 +63,7 @@ import {
   SomeClassApi,
   Configuration,
 } from '@affinidi-tdk/credential-verification-client'
-import { AuthProvider } from '@affinidi/tdk-auth-provider'
+import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -80,7 +79,6 @@ const authProvider = new AuthProvider({
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-    basePath: `${apiGatewayUrl}/`,
   }),
 )
 
@@ -94,14 +92,14 @@ import {
   SomeClassApi,
   Configuration,
 } from '@affinidi-tdk/credential-verification-client'
-import { getBffHeaders } from '@affinidi/test-auth-provider'
+import { getBffHeaders } from '@affinidi-tdk/auth-provider'
 
 const headers = getBffHeaders(cookieName, sessionId)
 
 const baseOptions = { headers }
 
 const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/`, baseOptions }),
+  new Configuration({ basePath: `${bffHost}/ver`, baseOptions }),
 )
 
 await api.oneOfMethods()

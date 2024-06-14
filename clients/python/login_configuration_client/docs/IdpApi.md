@@ -1,6 +1,6 @@
 # affinidi_tdk_login_configuration_client.IdpApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 | Method                                                                                                                                           | HTTP request                                                           | Description                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -29,10 +29,10 @@ import affinidi_tdk_login_configuration_client
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -87,10 +87,10 @@ import affinidi_tdk_login_configuration_client
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -151,10 +151,10 @@ import affinidi_tdk_login_configuration_client
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -216,10 +216,10 @@ from affinidi_tdk_login_configuration_client.models.o_auth2_token import OAuth2T
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -283,10 +283,10 @@ from affinidi_tdk_login_configuration_client.models.get_user_info import GetUser
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -350,10 +350,10 @@ from affinidi_tdk_login_configuration_client.models.json_web_key import JsonWebK
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 
@@ -417,10 +417,10 @@ from affinidi_tdk_login_configuration_client.models.oidc_config import OIDCConfi
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 

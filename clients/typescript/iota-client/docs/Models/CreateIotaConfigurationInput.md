@@ -4,7 +4,8 @@
 
 | Name                       | Type                                                                              | Description                              | Notes                        |
 | -------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------- | ---------------------------- |
-| **name**                   | **String**                                                                        | The name of the config                   | [default to null]            |
+| **name**                   | **String**                                                                        | The name of the configuration            | [default to null]            |
+| **description**            | **String**                                                                        | Description of the configuration         | [optional] [default to null] |
 | **walletAri**              | **String**                                                                        | The wallet Ari that will be used to sign | [default to null]            |
 | **iotaResponseWebhookURL** | **String**                                                                        | webhook to call when data is ready       | [optional] [default to null] |
 | **enableVerification**     | **Boolean**                                                                       |                                          | [default to null]            |

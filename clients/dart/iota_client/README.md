@@ -59,7 +59,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 | Class               | Method                                                                                     | HTTP request                                                               | Description                              |
 | ------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ---------------------------------------- |

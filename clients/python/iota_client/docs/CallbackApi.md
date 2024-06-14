@@ -1,6 +1,6 @@
 # affinidi_tdk_iota_client.CallbackApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 | Method                                                            | HTTP request          | Description                              |
 | ----------------------------------------------------------------- | --------------------- | ---------------------------------------- |
@@ -24,10 +24,10 @@ from affinidi_tdk_iota_client.models.callback_input import CallbackInput
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 

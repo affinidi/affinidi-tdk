@@ -18,7 +18,10 @@ class ConsentDto {
     required this.userId,
     required this.vcType,
     required this.status,
-    required this.updatedAt,
+    required this.modifiedAt,
+    required this.modifiedBy,
+    required this.createdAt,
+    required this.createdBy,
   });
 
   String projectId;
@@ -34,7 +37,13 @@ class ConsentDto {
 
   ConsentDtoStatusEnum status;
 
-  String updatedAt;
+  String modifiedAt;
+
+  String modifiedBy;
+
+  String createdAt;
+
+  String createdBy;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ConsentDto &&
@@ -43,7 +52,10 @@ class ConsentDto {
     other.userId == userId &&
     other.vcType == vcType &&
     other.status == status &&
-    other.updatedAt == updatedAt;
+    other.modifiedAt == modifiedAt &&
+    other.modifiedBy == modifiedBy &&
+    other.createdAt == createdAt &&
+    other.createdBy == createdBy;
 
   @override
   int get hashCode =>
@@ -53,10 +65,13 @@ class ConsentDto {
     (userId.hashCode) +
     (vcType.hashCode) +
     (status.hashCode) +
-    (updatedAt.hashCode);
+    (modifiedAt.hashCode) +
+    (modifiedBy.hashCode) +
+    (createdAt.hashCode) +
+    (createdBy.hashCode);
 
   @override
-  String toString() => 'ConsentDto[projectId=$projectId, id=$id, userId=$userId, vcType=$vcType, status=$status, updatedAt=$updatedAt]';
+  String toString() => 'ConsentDto[projectId=$projectId, id=$id, userId=$userId, vcType=$vcType, status=$status, modifiedAt=$modifiedAt, modifiedBy=$modifiedBy, createdAt=$createdAt, createdBy=$createdBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -65,7 +80,10 @@ class ConsentDto {
       json[r'userId'] = this.userId;
       json[r'vcType'] = this.vcType;
       json[r'status'] = this.status;
-      json[r'updatedAt'] = this.updatedAt;
+      json[r'modifiedAt'] = this.modifiedAt;
+      json[r'modifiedBy'] = this.modifiedBy;
+      json[r'createdAt'] = this.createdAt;
+      json[r'createdBy'] = this.createdBy;
     return json;
   }
 
@@ -93,7 +111,10 @@ class ConsentDto {
         userId: mapValueOfType<String>(json, r'userId')!,
         vcType: mapValueOfType<String>(json, r'vcType')!,
         status: ConsentDtoStatusEnum.fromJson(json[r'status'])!,
-        updatedAt: mapValueOfType<String>(json, r'updatedAt')!,
+        modifiedAt: mapValueOfType<String>(json, r'modifiedAt')!,
+        modifiedBy: mapValueOfType<String>(json, r'modifiedBy')!,
+        createdAt: mapValueOfType<String>(json, r'createdAt')!,
+        createdBy: mapValueOfType<String>(json, r'createdBy')!,
       );
     }
     return null;
@@ -146,7 +167,10 @@ class ConsentDto {
     'userId',
     'vcType',
     'status',
-    'updatedAt',
+    'modifiedAt',
+    'modifiedBy',
+    'createdAt',
+    'createdBy',
   };
 }
 

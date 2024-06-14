@@ -13,27 +13,53 @@ part of openapi.api;
 class UpdatePexQueryInput {
   /// Returns a new [UpdatePexQueryInput] instance.
   UpdatePexQueryInput({
-    required this.vpDefinition,
+    this.vpDefinition,
+    this.description,
   });
 
   /// VP definition in JSON stringify format
-  String vpDefinition;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? vpDefinition;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdatePexQueryInput &&
-    other.vpDefinition == vpDefinition;
+    other.vpDefinition == vpDefinition &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (vpDefinition.hashCode);
+    (vpDefinition == null ? 0 : vpDefinition!.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'UpdatePexQueryInput[vpDefinition=$vpDefinition]';
+  String toString() => 'UpdatePexQueryInput[vpDefinition=$vpDefinition, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.vpDefinition != null) {
       json[r'vpDefinition'] = this.vpDefinition;
+    } else {
+      json[r'vpDefinition'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
     return json;
   }
 
@@ -56,7 +82,8 @@ class UpdatePexQueryInput {
       }());
 
       return UpdatePexQueryInput(
-        vpDefinition: mapValueOfType<String>(json, r'vpDefinition')!,
+        vpDefinition: mapValueOfType<String>(json, r'vpDefinition'),
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;
@@ -104,7 +131,6 @@ class UpdatePexQueryInput {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'vpDefinition',
   };
 }
 
