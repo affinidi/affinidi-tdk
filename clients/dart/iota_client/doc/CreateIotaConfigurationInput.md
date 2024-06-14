@@ -10,7 +10,8 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 | Name                       | Type                                                                            | Description                              | Notes      |
 | -------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------- | ---------- |
-| **name**                   | **String**                                                                      | The name of the config                   |
+| **name**                   | **String**                                                                      | The name of the configuration            |
+| **description**            | **String**                                                                      | Description of the configuration         | [optional] |
 | **walletAri**              | **String**                                                                      | The wallet Ari that will be used to sign |
 | **iotaResponseWebhookURL** | **String**                                                                      | webhook to call when data is ready       | [optional] |
 | **enableVerification**     | **bool**                                                                        |                                          |

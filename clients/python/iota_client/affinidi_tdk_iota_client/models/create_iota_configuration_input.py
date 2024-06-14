@@ -27,14 +27,15 @@ class CreateIotaConfigurationInput(BaseModel):
     """
     CreateIotaConfigurationInput
     """
-    name: StrictStr = Field(..., description="The name of the config")
+    name: StrictStr = Field(..., description="The name of the configuration")
+    description: Optional[StrictStr] = Field(None, description="Description of the configuration")
     wallet_ari: StrictStr = Field(..., alias="walletAri", description="The wallet Ari that will be used to sign")
     iota_response_webhook_url: Optional[StrictStr] = Field(None, alias="iotaResponseWebhookURL", description="webhook to call when data is ready")
     enable_verification: StrictBool = Field(..., alias="enableVerification")
     enable_consent_audit_log: StrictBool = Field(..., alias="enableConsentAuditLog")
     token_max_age: Optional[Union[confloat(ge=1, strict=True), conint(ge=1, strict=True)]] = Field(None, alias="tokenMaxAge", description="token time to live in seconds")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(..., alias="clientMetadata")
-    __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata"]
+    __properties = ["name", "description", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -76,6 +77,7 @@ class CreateIotaConfigurationInput(BaseModel):
 
         _obj = CreateIotaConfigurationInput.parse_obj({
             "name": obj.get("name"),
+            "description": obj.get("description"),
             "wallet_ari": obj.get("walletAri"),
             "iota_response_webhook_url": obj.get("iotaResponseWebhookURL"),
             "enable_verification": obj.get("enableVerification"),

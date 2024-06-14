@@ -75,6 +75,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_sign_credential400_response.py
-test/test_signing_failed_error.py
 tox.ini

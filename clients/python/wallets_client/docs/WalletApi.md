@@ -1,6 +1,6 @@
 # affinidi_tdk_wallets_client.WalletApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
 | Method                                              | HTTP request                                    | Description |
 | --------------------------------------------------- | ----------------------------------------------- | ----------- |
@@ -31,10 +31,10 @@ from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWall
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,10 +107,10 @@ import affinidi_tdk_wallets_client
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -181,10 +181,10 @@ from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -260,10 +260,10 @@ from affinidi_tdk_wallets_client.models.wallets_list_dto import WalletsListDto
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -336,10 +336,10 @@ from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCr
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -418,10 +418,10 @@ from affinidi_tdk_wallets_client.models.sign_jwt_token_ok import SignJwtTokenOK
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -500,10 +500,10 @@ from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto
 from affinidi_tdk_wallets_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_wallets_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cwe"
 )
 
 # The client must configure the authentication and authorization parameters

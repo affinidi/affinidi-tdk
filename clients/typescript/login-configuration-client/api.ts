@@ -270,7 +270,7 @@ export interface CreateLoginConfigurationInput {
    */
   redirectUris: Array<string>
   /**
-   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete.
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
    * @type {Array<string>}
    * @memberof CreateLoginConfigurationInput
    */
@@ -387,6 +387,12 @@ export interface CreateLoginConfigurationOutput {
    * @memberof CreateLoginConfigurationOutput
    */
   creationDate: string
+  /**
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+   * @type {Array<string>}
+   * @memberof CreateLoginConfigurationOutput
+   */
+  postLogoutRedirectUris?: Array<string>
 }
 /**
  * OIDC Auth Credentials
@@ -1291,6 +1297,12 @@ export interface LoginConfigurationObject {
    */
   redirectUris?: Array<string>
   /**
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+   * @type {Array<string>}
+   * @memberof LoginConfigurationObject
+   */
+  postLogoutRedirectUris?: Array<string>
+  /**
    * OAuth 2.0 Client Scope
    * @type {string}
    * @memberof LoginConfigurationObject
@@ -2093,7 +2105,7 @@ export interface UpdateLoginConfigurationInput {
    */
   redirectUris?: Array<string>
   /**
-   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete.
+   * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
    * @type {Array<string>}
    * @memberof UpdateLoginConfigurationInput
    */

@@ -202,6 +202,18 @@ export type CreateIssuanceConfig400Response =
  */
 export interface CreateIssuanceConfigInput {
   /**
+   *
+   * @type {string}
+   * @memberof CreateIssuanceConfigInput
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof CreateIssuanceConfigInput
+   */
+  description?: string
+  /**
    * Issuer Wallet id
    * @type {string}
    * @memberof CreateIssuanceConfigInput
@@ -993,6 +1005,18 @@ export interface IssuanceConfigDto {
    */
   id?: string
   /**
+   *
+   * @type {string}
+   * @memberof IssuanceConfigDto
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof IssuanceConfigDto
+   */
+  description?: string
+  /**
    * Issuer DID
    * @type {string}
    * @memberof IssuanceConfigDto
@@ -1105,6 +1129,12 @@ export interface IssuanceConfigMiniDto {
    * @memberof IssuanceConfigMiniDto
    */
   id: string
+  /**
+   *
+   * @type {string}
+   * @memberof IssuanceConfigMiniDto
+   */
+  name?: string
   /**
    * Issuer DID
    * @type {string}
@@ -1504,6 +1534,18 @@ export interface StartIssuanceResponse {
  * @interface UpdateIssuanceConfigInput
  */
 export interface UpdateIssuanceConfigInput {
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateIssuanceConfigInput
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof UpdateIssuanceConfigInput
+   */
+  description?: string
   /**
    * Issuer Wallet id
    * @type {string}

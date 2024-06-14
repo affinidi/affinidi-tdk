@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Name               | Type      | Description                   | Notes      |
-| ------------------ | --------- | ----------------------------- | ---------- |
-| **iot_client_id**  | **str**   |                               |
-| **query_id**       | **str**   |                               |
-| **correlation_id** | **str**   |                               |
-| **token_max_age**  | **float** | token time to live in seconds | [optional] |
-| **audience**       | **str**   |                               | [optional] |
+| Name                     | Type      | Description                   | Notes      |
+| ------------------------ | --------- | ----------------------------- | ---------- |
+| **connection_client_id** | **str**   |                               |
+| **query_id**             | **str**   |                               |
+| **correlation_id**       | **str**   |                               |
+| **token_max_age**        | **float** | token time to live in seconds | [optional] |
+| **audience**             | **str**   |                               | [optional] |
 
 ## Example
 

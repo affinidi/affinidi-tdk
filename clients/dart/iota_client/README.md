@@ -59,7 +59,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 | Class               | Method                                                                                     | HTTP request                                                               | Description                              |
 | ------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ---------------------------------------- |
@@ -72,6 +72,11 @@ All URIs are relative to _http://localhost_
 | _ConfigurationsApi_ | [**updateIotaConfigurationById**](doc//ConfigurationsApi.md#updateiotaconfigurationbyid)   | **PATCH** /v1/configurations/{configurationId}                             |
 | _DefaultApi_        | [**listLoggedConsents**](doc//DefaultApi.md#listloggedconsents)                            | **GET** /v1/logged-consents                                                |
 | _IotaApi_           | [**awsExchangeCredentials**](doc//IotaApi.md#awsexchangecredentials)                       | **POST** /v1/aws-exchange-credentials                                      |
+| _PexQueryApi_       | [**createPexQuery**](doc//PexQueryApi.md#createpexquery)                                   | **POST** /v1/configurations/{configurationId}/pex-queries                  |
+| _PexQueryApi_       | [**deletePexQueryById**](doc//PexQueryApi.md#deletepexquerybyid)                           | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
+| _PexQueryApi_       | [**getPexQueryById**](doc//PexQueryApi.md#getpexquerybyid)                                 | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
+| _PexQueryApi_       | [**listPexQueries**](doc//PexQueryApi.md#listpexqueries)                                   | **GET** /v1/configurations/{configurationId}/pex-queries                   |
+| _PexQueryApi_       | [**updatePexQueryById**](doc//PexQueryApi.md#updatepexquerybyid)                           | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |
 
 ## Documentation For Models
 

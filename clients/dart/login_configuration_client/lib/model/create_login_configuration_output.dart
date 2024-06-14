@@ -21,6 +21,7 @@ class CreateLoginConfigurationOutput {
     this.redirectUris = const [],
     required this.clientMetadata,
     required this.creationDate,
+    this.postLogoutRedirectUris = const [],
   });
 
   /// Configuration ari
@@ -51,6 +52,9 @@ class CreateLoginConfigurationOutput {
   /// OAuth 2.0 Client Creation Date
   String creationDate;
 
+  /// Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+  List<String> postLogoutRedirectUris;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateLoginConfigurationOutput &&
     other.ari == ari &&
@@ -60,7 +64,8 @@ class CreateLoginConfigurationOutput {
     other.auth == auth &&
     _deepEquality.equals(other.redirectUris, redirectUris) &&
     other.clientMetadata == clientMetadata &&
-    other.creationDate == creationDate;
+    other.creationDate == creationDate &&
+    _deepEquality.equals(other.postLogoutRedirectUris, postLogoutRedirectUris);
 
   @override
   int get hashCode =>
@@ -72,10 +77,11 @@ class CreateLoginConfigurationOutput {
     (auth.hashCode) +
     (redirectUris.hashCode) +
     (clientMetadata.hashCode) +
-    (creationDate.hashCode);
+    (creationDate.hashCode) +
+    (postLogoutRedirectUris.hashCode);
 
   @override
-  String toString() => 'CreateLoginConfigurationOutput[ari=$ari, projectId=$projectId, configurationId=$configurationId, name=$name, auth=$auth, redirectUris=$redirectUris, clientMetadata=$clientMetadata, creationDate=$creationDate]';
+  String toString() => 'CreateLoginConfigurationOutput[ari=$ari, projectId=$projectId, configurationId=$configurationId, name=$name, auth=$auth, redirectUris=$redirectUris, clientMetadata=$clientMetadata, creationDate=$creationDate, postLogoutRedirectUris=$postLogoutRedirectUris]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -91,6 +97,7 @@ class CreateLoginConfigurationOutput {
       json[r'redirectUris'] = this.redirectUris;
       json[r'clientMetadata'] = this.clientMetadata;
       json[r'creationDate'] = this.creationDate;
+      json[r'postLogoutRedirectUris'] = this.postLogoutRedirectUris;
     return json;
   }
 
@@ -123,6 +130,9 @@ class CreateLoginConfigurationOutput {
             : const [],
         clientMetadata: LoginConfigurationClientMetadataOutput.fromJson(json[r'clientMetadata'])!,
         creationDate: mapValueOfType<String>(json, r'creationDate')!,
+        postLogoutRedirectUris: json[r'postLogoutRedirectUris'] is Iterable
+            ? (json[r'postLogoutRedirectUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

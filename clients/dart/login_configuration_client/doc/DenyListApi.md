@@ -6,7 +6,7 @@
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 ```
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 | Method                                                    | HTTP request                         | Description |
 | --------------------------------------------------------- | ------------------------------------ | ----------- |

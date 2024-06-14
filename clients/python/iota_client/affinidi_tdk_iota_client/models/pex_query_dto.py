@@ -29,9 +29,10 @@ class PexQueryDto(BaseModel):
     ari: StrictStr = Field(...)
     query_id: StrictStr = Field(..., alias="queryId")
     name: StrictStr = Field(...)
+    description: StrictStr = Field(...)
     configuration_ari: StrictStr = Field(..., alias="configurationAri")
     vp_definition: StrictStr = Field(..., alias="vpDefinition", description="VP definition in JSON stringify format")
-    __properties = ["ari", "queryId", "name", "configurationAri", "vpDefinition"]
+    __properties = ["ari", "queryId", "name", "description", "configurationAri", "vpDefinition"]
 
     class Config:
         """Pydantic configuration"""
@@ -72,6 +73,7 @@ class PexQueryDto(BaseModel):
             "ari": obj.get("ari"),
             "query_id": obj.get("queryId"),
             "name": obj.get("name"),
+            "description": obj.get("description"),
             "configuration_ari": obj.get("configurationAri"),
             "vp_definition": obj.get("vpDefinition")
         })

@@ -31,7 +31,7 @@ class CreateLoginConfigurationInput {
   /// OAuth 2.0 Redirect URIs
   List<String> redirectUris;
 
-  /// Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete.
+  /// Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
   List<String> postLogoutRedirectUris;
 
   /// VP definition in JSON stringify format

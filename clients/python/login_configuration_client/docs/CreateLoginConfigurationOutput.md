@@ -2,16 +2,17 @@
 
 ## Properties
 
-| Name                 | Type                                                                                    | Description                           | Notes      |
-| -------------------- | --------------------------------------------------------------------------------------- | ------------------------------------- | ---------- |
-| **ari**              | **str**                                                                                 | Configuration ari                     |
-| **project_id**       | **str**                                                                                 | Project id                            |
-| **configuration_id** | **str**                                                                                 | Configuration id                      | [optional] |
-| **name**             | **str**                                                                                 | User defined login configuration name |
-| **auth**             | [**CreateLoginConfigurationOutputAuth**](CreateLoginConfigurationOutputAuth.md)         |                                       |
-| **redirect_uris**    | **List[str]**                                                                           | OAuth 2.0 Redirect URIs               |
-| **client_metadata**  | [**LoginConfigurationClientMetadataOutput**](LoginConfigurationClientMetadataOutput.md) |                                       |
-| **creation_date**    | **str**                                                                                 | OAuth 2.0 Client Creation Date        |
+| Name                          | Type                                                                                    | Description                                                                                                                                                                                                     | Notes      |
+| ----------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **ari**                       | **str**                                                                                 | Configuration ari                                                                                                                                                                                               |
+| **project_id**                | **str**                                                                                 | Project id                                                                                                                                                                                                      |
+| **configuration_id**          | **str**                                                                                 | Configuration id                                                                                                                                                                                                | [optional] |
+| **name**                      | **str**                                                                                 | User defined login configuration name                                                                                                                                                                           |
+| **auth**                      | [**CreateLoginConfigurationOutputAuth**](CreateLoginConfigurationOutputAuth.md)         |                                                                                                                                                                                                                 |
+| **redirect_uris**             | **List[str]**                                                                           | OAuth 2.0 Redirect URIs                                                                                                                                                                                         |
+| **client_metadata**           | [**LoginConfigurationClientMetadataOutput**](LoginConfigurationClientMetadataOutput.md) |                                                                                                                                                                                                                 |
+| **creation_date**             | **str**                                                                                 | OAuth 2.0 Client Creation Date                                                                                                                                                                                  |
+| **post_logout_redirect_uris** | **List[str]**                                                                           | Post Logout Redirect URIs, Used to redirect the user&#39;s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs | [optional] |
 
 ## Example
 

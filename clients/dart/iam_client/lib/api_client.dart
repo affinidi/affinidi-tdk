@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost', this.authentication,});
+  ApiClient({this.basePath = 'https://apse1.api.affinidi.io/iam', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

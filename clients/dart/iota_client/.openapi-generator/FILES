@@ -28,6 +28,7 @@ doc/ListPexQueriesOK.md
 doc/MessagePublishingError.md
 doc/NotFoundError.md
 doc/OperationForbiddenError.md
+doc/PexQueryApi.md
 doc/PexQueryDto.md
 doc/PrepareRequest.md
 doc/PrepareRequestCreated.md
@@ -42,6 +43,7 @@ lib/api/callback_api.dart
 lib/api/configurations_api.dart
 lib/api/default_api.dart
 lib/api/iota_api.dart
+lib/api/pex_query_api.dart
 lib/api_client.dart
 lib/api_exception.dart
 lib/api_helper.dart

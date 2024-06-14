@@ -16,6 +16,7 @@ class PexQueryDto {
     required this.ari,
     required this.queryId,
     required this.name,
+    required this.description,
     required this.configurationAri,
     required this.vpDefinition,
   });
@@ -25,6 +26,8 @@ class PexQueryDto {
   String queryId;
 
   String name;
+
+  String description;
 
   String configurationAri;
 
@@ -36,6 +39,7 @@ class PexQueryDto {
     other.ari == ari &&
     other.queryId == queryId &&
     other.name == name &&
+    other.description == description &&
     other.configurationAri == configurationAri &&
     other.vpDefinition == vpDefinition;
 
@@ -45,17 +49,19 @@ class PexQueryDto {
     (ari.hashCode) +
     (queryId.hashCode) +
     (name.hashCode) +
+    (description.hashCode) +
     (configurationAri.hashCode) +
     (vpDefinition.hashCode);
 
   @override
-  String toString() => 'PexQueryDto[ari=$ari, queryId=$queryId, name=$name, configurationAri=$configurationAri, vpDefinition=$vpDefinition]';
+  String toString() => 'PexQueryDto[ari=$ari, queryId=$queryId, name=$name, description=$description, configurationAri=$configurationAri, vpDefinition=$vpDefinition]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'ari'] = this.ari;
       json[r'queryId'] = this.queryId;
       json[r'name'] = this.name;
+      json[r'description'] = this.description;
       json[r'configurationAri'] = this.configurationAri;
       json[r'vpDefinition'] = this.vpDefinition;
     return json;
@@ -83,6 +89,7 @@ class PexQueryDto {
         ari: mapValueOfType<String>(json, r'ari')!,
         queryId: mapValueOfType<String>(json, r'queryId')!,
         name: mapValueOfType<String>(json, r'name')!,
+        description: mapValueOfType<String>(json, r'description')!,
         configurationAri: mapValueOfType<String>(json, r'configurationAri')!,
         vpDefinition: mapValueOfType<String>(json, r'vpDefinition')!,
       );
@@ -135,6 +142,7 @@ class PexQueryDto {
     'ari',
     'queryId',
     'name',
+    'description',
     'configurationAri',
     'vpDefinition',
   };

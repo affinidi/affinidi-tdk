@@ -13,12 +13,30 @@ part of openapi.api;
 class CreateIssuanceConfigInput {
   /// Returns a new [CreateIssuanceConfigInput] instance.
   CreateIssuanceConfigInput({
+    this.name,
+    this.description,
     required this.issuerWalletId,
     this.credentialOfferDuration,
     this.format,
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// Issuer Wallet id
   String issuerWalletId;
@@ -45,6 +63,8 @@ class CreateIssuanceConfigInput {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateIssuanceConfigInput &&
+    other.name == name &&
+    other.description == description &&
     other.issuerWalletId == issuerWalletId &&
     other.credentialOfferDuration == credentialOfferDuration &&
     other.format == format &&
@@ -54,6 +74,8 @@ class CreateIssuanceConfigInput {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (issuerWalletId.hashCode) +
     (credentialOfferDuration == null ? 0 : credentialOfferDuration!.hashCode) +
     (format == null ? 0 : format!.hashCode) +
@@ -61,10 +83,20 @@ class CreateIssuanceConfigInput {
     (issuerMetadata.hashCode);
 
   @override
-  String toString() => 'CreateIssuanceConfigInput[issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata]';
+  String toString() => 'CreateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'issuerWalletId'] = this.issuerWalletId;
     if (this.credentialOfferDuration != null) {
       json[r'credentialOfferDuration'] = this.credentialOfferDuration;
@@ -100,6 +132,8 @@ class CreateIssuanceConfigInput {
       }());
 
       return CreateIssuanceConfigInput(
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
         issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId')!,
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),
         format: CreateIssuanceConfigInputFormatEnum.fromJson(json[r'format']),
