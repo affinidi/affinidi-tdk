@@ -19,16 +19,16 @@ export function getUnexpectedErrorMessage(code: ErrorCode) {
   return `Unexpected error occured. Error Code: ${code} `
 }
 
-export function getErrorMessage(errorEvent: ErrorEvent): string {
+export function formatEventError(errorEvent: ErrorEvent): string {
   return `Something went wrong. ${getIssue(errorEvent)}. Error Code ${errorEvent.error.httpStatusCode}`
 }
 
-export function getError(event: ErrorEvent) {
+export function throwEventParsingError(event: ErrorEvent): never {
   let errorEvent: ErrorEvent
   try {
     errorEvent = ErrorEventSchema.parse(event)
   } catch (e) {
     throw Error(getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT))
   }
-  throw Error(getErrorMessage(errorEvent))
+  throw Error(formatEventError(errorEvent))
 }

@@ -10,7 +10,7 @@ import {
 import { ChannelProvider } from './channel-provider'
 import {
   ErrorCode,
-  getError,
+  throwEventParsingError,
   getUnexpectedErrorMessage,
 } from '../validators/error'
 
@@ -77,7 +77,7 @@ export class ResponseHandler {
                 const response = this.getResponseHandler(event)
                 resolve(response)
               } else if (event.eventType === EventTypes.Error) {
-                getError(event)
+                throwEventParsingError(event)
               }
             } catch (error) {
               reject(error)

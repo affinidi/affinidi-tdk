@@ -15,7 +15,7 @@ import {
 import {
   getUnexpectedErrorMessage,
   ErrorCode,
-  getError,
+  throwEventParsingError,
 } from '../validators/error'
 
 const DEFAULT_IOT_ENDPOINT =
@@ -217,7 +217,7 @@ export class ChannelProvider {
                 const request = this.getRequest(event)
                 resolve(request)
               } else if (event.eventType === EventTypes.Error) {
-                getError(event)
+                throwEventParsingError(event)
               }
             } catch (e) {
               reject(e)
