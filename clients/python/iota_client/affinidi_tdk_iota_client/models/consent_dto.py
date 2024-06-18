@@ -31,8 +31,11 @@ class ConsentDto(BaseModel):
     user_id: StrictStr = Field(..., alias="userId", description="unique identifier of the user")
     vc_type: StrictStr = Field(..., alias="vcType", description="VC type of shared vc. If the actual VC has several VC types (excluding base types as VerifiableCredential) then for each of the a separate record will be added")
     status: StrictStr = Field(...)
-    updated_at: StrictStr = Field(..., alias="updatedAt")
-    __properties = ["projectId", "id", "userId", "vcType", "status", "updatedAt"]
+    modified_at: StrictStr = Field(..., alias="modifiedAt")
+    modified_by: StrictStr = Field(..., alias="modifiedBy")
+    created_at: StrictStr = Field(..., alias="createdAt")
+    created_by: StrictStr = Field(..., alias="createdBy")
+    __properties = ["projectId", "id", "userId", "vcType", "status", "modifiedAt", "modifiedBy", "createdAt", "createdBy"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -82,7 +85,10 @@ class ConsentDto(BaseModel):
             "user_id": obj.get("userId"),
             "vc_type": obj.get("vcType"),
             "status": obj.get("status"),
-            "updated_at": obj.get("updatedAt")
+            "modified_at": obj.get("modifiedAt"),
+            "modified_by": obj.get("modifiedBy"),
+            "created_at": obj.get("createdAt"),
+            "created_by": obj.get("createdBy")
         })
         return _obj
 

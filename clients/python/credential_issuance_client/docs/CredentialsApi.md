@@ -1,6 +1,6 @@
 # affinidi_tdk_credential_issuance_client.CredentialsApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 | Method                                                             | HTTP request                        | Description |
 | ------------------------------------------------------------------ | ----------------------------------- | ----------- |
@@ -25,10 +25,10 @@ from affinidi_tdk_credential_issuance_client.models.credential_response import C
 from affinidi_tdk_credential_issuance_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cis
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_credential_issuance_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/cis"
 )
 
 # The client must configure the authentication and authorization parameters

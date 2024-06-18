@@ -8,6 +8,7 @@ affinidi_tdk_iota_client/api/callback_api.py
 affinidi_tdk_iota_client/api/configurations_api.py
 affinidi_tdk_iota_client/api/default_api.py
 affinidi_tdk_iota_client/api/iota_api.py
+affinidi_tdk_iota_client/api/pex_query_api.py
 affinidi_tdk_iota_client/api_client.py
 affinidi_tdk_iota_client/api_response.py
 affinidi_tdk_iota_client/configuration.py
@@ -72,6 +73,7 @@ docs/ListPexQueriesOK.md
 docs/MessagePublishingError.md
 docs/NotFoundError.md
 docs/OperationForbiddenError.md
+docs/PexQueryApi.md
 docs/PexQueryDto.md
 docs/PrepareRequest.md
 docs/PrepareRequestCreated.md

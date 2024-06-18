@@ -14,7 +14,7 @@ export interface IAuthProviderParams {
 
 export interface IotaCredentials {
   readonly credentials: Credentials
-  readonly iotClientId: string
+  readonly connectionClientId: string
 }
 
 export interface Credentials {
@@ -41,7 +41,7 @@ export class IotaAuthProvider {
       assertion: token,
     })
     const {
-      iotClientId,
+      connectionClientId,
       credentials: { identityId, token: cognitoToken },
     } = response.data
 
@@ -68,7 +68,7 @@ export class IotaAuthProvider {
         sessionToken: credentials.SessionToken,
         expiration: credentials.Expiration,
       },
-      iotClientId,
+      connectionClientId,
     }
   }
 }

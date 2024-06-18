@@ -1,6 +1,6 @@
 # affinidi_tdk_login_configuration_client.GroupApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 | Method                                                               | HTTP request                            | Description |
 | -------------------------------------------------------------------- | --------------------------------------- | ----------- |
@@ -29,10 +29,10 @@ from affinidi_tdk_login_configuration_client.models.group_user_mapping_dto impor
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -109,10 +109,10 @@ from affinidi_tdk_login_configuration_client.models.group_dto import GroupDto
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -185,10 +185,10 @@ import affinidi_tdk_login_configuration_client
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -259,10 +259,10 @@ from affinidi_tdk_login_configuration_client.models.group_dto import GroupDto
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -336,10 +336,10 @@ from affinidi_tdk_login_configuration_client.models.group_user_mappings_list imp
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -419,10 +419,10 @@ from affinidi_tdk_login_configuration_client.models.groups_list import GroupsLis
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -493,10 +493,10 @@ from affinidi_tdk_login_configuration_client.models.remove_user_from_group_input
 from affinidi_tdk_login_configuration_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/vpa
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_login_configuration_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/vpa"
 )
 
 # The client must configure the authentication and authorization parameters

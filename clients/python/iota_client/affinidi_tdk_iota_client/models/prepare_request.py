@@ -26,12 +26,12 @@ class PrepareRequest(BaseModel):
     """
     PrepareRequest
     """
-    iot_client_id: StrictStr = Field(..., alias="iotClientId")
+    connection_client_id: StrictStr = Field(..., alias="connectionClientId")
     query_id: StrictStr = Field(..., alias="queryId")
     correlation_id: StrictStr = Field(..., alias="correlationId")
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="tokenMaxAge", description="token time to live in seconds")
     audience: Optional[StrictStr] = None
-    __properties = ["iotClientId", "queryId", "correlationId", "tokenMaxAge", "audience"]
+    __properties = ["connectionClientId", "queryId", "correlationId", "tokenMaxAge", "audience"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,7 +69,7 @@ class PrepareRequest(BaseModel):
             return PrepareRequest.parse_obj(obj)
 
         _obj = PrepareRequest.parse_obj({
-            "iot_client_id": obj.get("iotClientId"),
+            "connection_client_id": obj.get("connectionClientId"),
             "query_id": obj.get("queryId"),
             "correlation_id": obj.get("correlationId"),
             "token_max_age": obj.get("tokenMaxAge"),

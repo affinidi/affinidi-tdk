@@ -91,9 +91,9 @@ export class ChannelProvider {
     )
     this.iotaConfigBuilder = await this.createConfigBuilder(
       credentialsProvider,
-      credentials.iotClientId,
+      credentials.connectionClientId,
     )
-    this.topicName = `iota/v1/${credentials.iotClientId}`
+    this.topicName = `iota/v1/${credentials.connectionClientId}`
     this.iotaClient = await this.startClient()
   }
 

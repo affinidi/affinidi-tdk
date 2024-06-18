@@ -1,6 +1,6 @@
 # affinidi_tdk_iam_client.TokensApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Method                                        | HTTP request                    | Description |
 | --------------------------------------------- | ------------------------------- | ----------- |
@@ -27,10 +27,10 @@ from affinidi_tdk_iam_client.models.token_dto import TokenDto
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,10 +102,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -177,10 +177,10 @@ from affinidi_tdk_iam_client.models.token_dto import TokenDto
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -254,10 +254,10 @@ from affinidi_tdk_iam_client.models.token_list import TokenList
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -328,10 +328,10 @@ from affinidi_tdk_iam_client.models.update_token_input import UpdateTokenInput
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -38,7 +38,6 @@ const retryConfig = {
 const api = new SomeClassApi(
   new Configuration({
     apiKey: projectScopedToken,
-    basePath: `${apiGatewayUrl}/`,
   }),
   retryConfig,
 )
@@ -58,7 +57,7 @@ This command will return you variables to initialize AuthProvider as required be
 
 ```ts
 import { SomeClassApi, Configuration } from '@affinidi-tdk/iota-client'
-import { AuthProvider } from '@affinidi/tdk-auth-provider'
+import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 const authProvider = new AuthProvider({
   apiGatewayUrl,
@@ -74,7 +73,6 @@ const authProvider = new AuthProvider({
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
-    basePath: `${apiGatewayUrl}/`,
   }),
 )
 
@@ -85,14 +83,14 @@ await api.oneOfMethods()
 
 ```ts
 import { SomeClassApi, Configuration } from '@affinidi-tdk/iota-client'
-import { getBffHeaders } from '@affinidi/test-auth-provider'
+import { getBffHeaders } from '@affinidi-tdk/auth-provider'
 
 const headers = getBffHeaders(cookieName, sessionId)
 
 const baseOptions = { headers }
 
 const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/`, baseOptions }),
+  new Configuration({ basePath: `${bffHost}/ais`, baseOptions }),
 )
 
 await api.oneOfMethods()

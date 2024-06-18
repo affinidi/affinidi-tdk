@@ -34,6 +34,7 @@ class LoginConfigurationObject(BaseModel):
     project_id: StrictStr = Field(..., alias="projectId", description="Project id")
     name: StrictStr = Field(..., description="User defined login configuration name")
     redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="redirectUris", description="OAuth 2.0 Redirect URIs")
+    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs")
     scope: Optional[StrictStr] = Field(None, description="OAuth 2.0 Client Scope")
     client_id: StrictStr = Field(..., alias="clientId", description="OAuth 2.0 Client ID")
     creation_date: StrictStr = Field(..., alias="creationDate", description="OAuth 2.0 Client Creation Date")
@@ -43,7 +44,7 @@ class LoginConfigurationObject(BaseModel):
     client_metadata: LoginConfigurationClientMetadataOutput = Field(..., alias="clientMetadata")
     token_endpoint_auth_method: TokenEndpointAuthMethod = Field(..., alias="tokenEndpointAuthMethod")
     additional_properties: Dict[str, Any] = {}
-    __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
+    __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "postLogoutRedirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
 
     class Config:
         """Pydantic configuration"""
@@ -98,6 +99,7 @@ class LoginConfigurationObject(BaseModel):
             "project_id": obj.get("projectId"),
             "name": obj.get("name"),
             "redirect_uris": obj.get("redirectUris"),
+            "post_logout_redirect_uris": obj.get("postLogoutRedirectUris"),
             "scope": obj.get("scope"),
             "client_id": obj.get("clientId"),
             "creation_date": obj.get("creationDate"),

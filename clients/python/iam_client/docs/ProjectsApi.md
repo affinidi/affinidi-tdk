@@ -1,6 +1,6 @@
 # affinidi_tdk_iam_client.ProjectsApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Method                                                                            | HTTP request                                     | Description |
 | --------------------------------------------------------------------------------- | ------------------------------------------------ | ----------- |
@@ -27,10 +27,10 @@ from affinidi_tdk_iam_client.models.add_user_to_project_input import AddUserToPr
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -103,10 +103,10 @@ from affinidi_tdk_iam_client.models.project_dto import ProjectDto
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -178,10 +178,10 @@ import affinidi_tdk_iam_client
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -256,10 +256,10 @@ from affinidi_tdk_iam_client.models.user_list import UserList
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -330,10 +330,10 @@ from affinidi_tdk_iam_client.models.project_list import ProjectList
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -403,10 +403,10 @@ from affinidi_tdk_iam_client.models.update_project_input import UpdateProjectInp
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/iam
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iam_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/iam"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -36,7 +36,8 @@ class CreateLoginConfigurationOutput(BaseModel):
     redirect_uris: conlist(StrictStr) = Field(..., alias="redirectUris", description="OAuth 2.0 Redirect URIs")
     client_metadata: LoginConfigurationClientMetadataOutput = Field(..., alias="clientMetadata")
     creation_date: StrictStr = Field(..., alias="creationDate", description="OAuth 2.0 Client Creation Date")
-    __properties = ["ari", "projectId", "configurationId", "name", "auth", "redirectUris", "clientMetadata", "creationDate"]
+    post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs")
+    __properties = ["ari", "projectId", "configurationId", "name", "auth", "redirectUris", "clientMetadata", "creationDate", "postLogoutRedirectUris"]
 
     class Config:
         """Pydantic configuration"""
@@ -87,7 +88,8 @@ class CreateLoginConfigurationOutput(BaseModel):
             "auth": CreateLoginConfigurationOutputAuth.from_dict(obj.get("auth")) if obj.get("auth") is not None else None,
             "redirect_uris": obj.get("redirectUris"),
             "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
-            "creation_date": obj.get("creationDate")
+            "creation_date": obj.get("creationDate"),
+            "post_logout_redirect_uris": obj.get("postLogoutRedirectUris")
         })
         return _obj
 

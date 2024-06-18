@@ -1,6 +1,6 @@
 # affinidi_tdk_iota_client.ConfigurationsApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 | Method                                                                                        | HTTP request                                                               | Description |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ----------- |
@@ -28,10 +28,10 @@ from affinidi_tdk_iota_client.models.iota_configuration_dto import IotaConfigura
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -105,10 +105,10 @@ import affinidi_tdk_iota_client
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -179,10 +179,10 @@ from affinidi_tdk_iota_client.models.iota_configuration_dto import IotaConfigura
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -254,10 +254,10 @@ from affinidi_tdk_iota_client.models.get_iota_configuration_meta_data_ok import 
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 
@@ -322,10 +322,10 @@ from affinidi_tdk_iota_client.models.list_configuration_ok import ListConfigurat
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -396,10 +396,10 @@ from affinidi_tdk_iota_client.models.update_configuration_by_id_input import Upd
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/ais
 # See configuration.py for a list of all supported configuration parameters.
 configuration = affinidi_tdk_iota_client.Configuration(
-    host = "http://localhost"
+    host = "https://apse1.api.affinidi.io/ais"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -41,7 +41,7 @@ export class SdkError extends Error {
   }
 }
 
-export const BASE_PATH = 'http://localhost'.replace(/\/+$/, '')
+export const BASE_PATH = 'https://apse1.api.affinidi.io/ver'.replace(/\/+$/, '')
 const DEFAULT_REQUEST_RETRIES = 3
 
 /**

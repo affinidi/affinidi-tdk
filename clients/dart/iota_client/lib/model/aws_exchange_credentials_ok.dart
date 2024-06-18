@@ -13,31 +13,31 @@ part of openapi.api;
 class AwsExchangeCredentialsOK {
   /// Returns a new [AwsExchangeCredentialsOK] instance.
   AwsExchangeCredentialsOK({
-    required this.iotClientId,
+    required this.connectionClientId,
     required this.credentials,
   });
 
-  String iotClientId;
+  String connectionClientId;
 
   AwsExchangeCredentialsOKCredentials credentials;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AwsExchangeCredentialsOK &&
-    other.iotClientId == iotClientId &&
+    other.connectionClientId == connectionClientId &&
     other.credentials == credentials;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (iotClientId.hashCode) +
+    (connectionClientId.hashCode) +
     (credentials.hashCode);
 
   @override
-  String toString() => 'AwsExchangeCredentialsOK[iotClientId=$iotClientId, credentials=$credentials]';
+  String toString() => 'AwsExchangeCredentialsOK[connectionClientId=$connectionClientId, credentials=$credentials]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'iotClientId'] = this.iotClientId;
+      json[r'connectionClientId'] = this.connectionClientId;
       json[r'credentials'] = this.credentials;
     return json;
   }
@@ -61,7 +61,7 @@ class AwsExchangeCredentialsOK {
       }());
 
       return AwsExchangeCredentialsOK(
-        iotClientId: mapValueOfType<String>(json, r'iotClientId')!,
+        connectionClientId: mapValueOfType<String>(json, r'connectionClientId')!,
         credentials: AwsExchangeCredentialsOKCredentials.fromJson(json[r'credentials'])!,
       );
     }
@@ -110,7 +110,7 @@ class AwsExchangeCredentialsOK {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'iotClientId',
+    'connectionClientId',
     'credentials',
   };
 }

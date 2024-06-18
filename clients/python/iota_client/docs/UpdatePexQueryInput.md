@@ -2,9 +2,10 @@
 
 ## Properties
 
-| Name              | Type    | Description                            | Notes |
-| ----------------- | ------- | -------------------------------------- | ----- |
-| **vp_definition** | **str** | VP definition in JSON stringify format |
+| Name              | Type    | Description                            | Notes      |
+| ----------------- | ------- | -------------------------------------- | ---------- |
+| **vp_definition** | **str** | VP definition in JSON stringify format | [optional] |
+| **description**   | **str** |                                        | [optional] |
 
 ## Example
 

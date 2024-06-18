@@ -13,6 +13,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 | **ari**              | **String** |                                        |
 | **queryId**          | **String** |                                        |
 | **name**             | **String** |                                        |
+| **description**      | **String** |                                        |
 | **configurationAri** | **String** |                                        |
 | **vpDefinition**     | **String** | VP definition in JSON stringify format |
 

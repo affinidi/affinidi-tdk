@@ -1,6 +1,6 @@
 # CredentialsApi
 
-All URIs are relative to _http://localhost_
+All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 | Method                                                           | HTTP request                        | Description |
 | ---------------------------------------------------------------- | ----------------------------------- | ----------- |
