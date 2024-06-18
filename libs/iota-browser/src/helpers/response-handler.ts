@@ -1,11 +1,18 @@
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
 import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import {
+  EventTypes,
   ResponseCallbackEventSchema,
   VerifiablePresentation,
   VerifiablePresentationSchema,
+  ResponseCallbackEvent,
 } from '../validators/events'
 import { ChannelProvider } from './channel-provider'
+import {
+  ErrorCode,
+  throwEventParsingError,
+  getUnexpectedErrorMessage,
+} from '../validators/error'
 
 export type IotaResponse = {
   correlationId: string
@@ -26,6 +33,31 @@ export class ResponseHandler {
     this.channelProvider = channelProvider
   }
 
+  private getResponseHandler(event: ResponseCallbackEvent) {
+    let responseCallback: ResponseCallbackEvent, vpToken: VerifiablePresentation
+    try {
+      responseCallback = ResponseCallbackEventSchema.parse(event)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.RESPONSE_CALLBACK_EVENT))
+    }
+    try {
+      vpToken = VerifiablePresentationSchema.parse(
+        JSON.parse(responseCallback.vpToken),
+      )
+    } catch (e) {
+      throw Error(
+        getUnexpectedErrorMessage(ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA),
+      )
+    }
+    const response: IotaResponse = {
+      correlationId: responseCallback.correlationId,
+      vpToken,
+      // TODO parse presentation submission, same as vpToken
+      presentationSubmission: responseCallback.presentationSubmission,
+    }
+    return response
+  }
+
   async getResponse(correlationId: string): Promise<IotaResponse> {
     const client = this.channelProvider.getClient()
     return new Promise((resolve, reject) => {
@@ -36,27 +68,16 @@ export class ResponseHandler {
             const raw_data = toUtf8(
               messageReceivedEvent.message.payload as Buffer,
             )
-
             try {
               const event = JSON.parse(raw_data)
-              if (
-                event.eventType === 'response-callback' &&
-                event.correlationId === correlationId
-              ) {
-                // TODO handle Zod errors gracefully
-                const responseCallback =
-                  ResponseCallbackEventSchema.parse(event)
-                const vpToken = VerifiablePresentationSchema.parse(
-                  JSON.parse(responseCallback.vpToken),
-                )
-                const response: IotaResponse = {
-                  correlationId: responseCallback.correlationId,
-                  vpToken,
-                  // TODO parse presentation submission, same as vpToken
-                  presentationSubmission:
-                    responseCallback.presentationSubmission,
-                }
+              if (correlationId !== event.correlationId) {
+                return
+              }
+              if (event.eventType === EventTypes.ResponseCallback) {
+                const response = this.getResponseHandler(event)
                 resolve(response)
+              } else if (event.eventType === EventTypes.Error) {
+                throwEventParsingError(event)
               }
             } catch (error) {
               reject(error)

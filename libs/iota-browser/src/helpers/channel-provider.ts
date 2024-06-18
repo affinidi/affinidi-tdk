@@ -5,9 +5,18 @@ import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import * as jose from 'jose'
 import { v4 as uuidv4 } from 'uuid'
 import {
+  EventTypes,
   PrepareRequestEvent,
+  SignedRequestEvent,
   SignedRequestEventSchema,
+  SignedRequestJWT,
+  SignedRequestJWTSchema,
 } from '../validators/events'
+import {
+  getUnexpectedErrorMessage,
+  ErrorCode,
+  throwEventParsingError,
+} from '../validators/error'
 
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
@@ -147,6 +156,29 @@ export class ChannelProvider {
     await client.subscribe(packet)
   }
 
+  private getRequest(event: SignedRequestEvent) {
+    let signedRequest: SignedRequestEvent, signedRequestJWT: SignedRequestJWT
+    try {
+      signedRequest = SignedRequestEventSchema.parse(event)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT))
+    }
+    try {
+      const claims = jose.decodeJwt(signedRequest.data.jwt)
+      signedRequestJWT = SignedRequestJWTSchema.parse(claims)
+    } catch (e) {
+      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT))
+    }
+    const request: IotaChannelRequest = {
+      correlationId: signedRequest.correlationId,
+      payload: {
+        request: signedRequest.data.jwt,
+        client_id: signedRequestJWT.client_id,
+      },
+    }
+    return request
+  }
+
   async prepareRequest(
     params: PrepareRequestParams,
   ): Promise<IotaChannelRequest> {
@@ -178,30 +210,17 @@ export class ChannelProvider {
             )
             try {
               const event = JSON.parse(raw_data)
-              if (
-                event.eventType === 'signedRequest' &&
-                correlationId === event.correlationId
-              ) {
-                // TODO handle Zod errors gracefully
-                const signedRequest = SignedRequestEventSchema.parse(event)
-                const claims = jose.decodeJwt(signedRequest.data.jwt)
-                // TODO Zod validate JWT
-                if (!claims.client_id && typeof claims.client_id === 'string') {
-                  reject(new Error('Unexpected request claims received'))
-                }
-                const client_id = claims.client_id as string
-                const request: IotaChannelRequest = {
-                  correlationId: signedRequest.correlationId,
-                  payload: {
-                    request: signedRequest.data.jwt,
-                    client_id,
-                  },
-                }
-
-                resolve(request)
+              if (correlationId !== event.correlationId) {
+                return
               }
-            } catch (error) {
-              reject(error)
+              if (event.eventType === EventTypes.SignedRequest) {
+                const request = this.getRequest(event)
+                resolve(request)
+              } else if (event.eventType === EventTypes.Error) {
+                throwEventParsingError(event)
+              }
+            } catch (e) {
+              reject(e)
             }
           }
         },

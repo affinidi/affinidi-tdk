@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const EventTypes = {
+export const EventTypes = {
   PrepareRequest: 'prepareRequest',
   SignedRequest: 'signedRequest',
   ResponseCallback: 'response-callback',
@@ -28,6 +28,11 @@ export const SignedRequestEventSchema = BaseEvent.extend({
 })
 export type SignedRequestEvent = z.infer<typeof SignedRequestEventSchema>
 
+export const SignedRequestJWTSchema = z.object({
+  client_id: z.string(),
+})
+export type SignedRequestJWT = z.infer<typeof SignedRequestJWTSchema>
+
 // TODO full VP schema
 export const VerifiablePresentationSchema = z.object({
   verifiableCredential: z.array(z.object({ credentialSubject: z.any() })),
@@ -45,12 +50,12 @@ export type ResponseCallbackEvent = z.infer<typeof ResponseCallbackEventSchema>
 
 const ERROR_LOCATION = ['body', 'path', 'query'] as const
 const ErrorDetailItem = z.object({
-  issue: z.string(),
+  issues: z.string(),
   field: z.string().optional(),
   value: z.string().optional(),
   location: z.enum(ERROR_LOCATION).optional(),
 })
-const ErrorEventSchema = BaseEvent.extend({
+export const ErrorEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.Error),
   error: z.object({
     message: z.string(),
