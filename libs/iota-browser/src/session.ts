@@ -10,11 +10,12 @@ import {
 } from './helpers/response-handler'
 import { VaultHandler } from './helpers/vault-handler'
 import { IotaRequest } from './request'
+import { Logger } from './validators/logger'
 
 export type SessionParams = {
   credentials: IotaCredentials
 }
-// TODO Error type
+
 export type IotaRequestCallbackFunction = (
   err: Error | null,
   data: IotaRequest | null,
@@ -33,11 +34,7 @@ export class Session {
   }
 
   async initialize(): Promise<void> {
-    try {
-      await this.channelProvider.initialize(this.credentials)
-    } catch (error) {
-      console.error('Error initializing IotaChannelProvider:', error)
-    }
+    await this.channelProvider.initialize(this.credentials)
   }
 
   async prepareRequest(params: PrepareRequestParams): Promise<IotaRequest> {
@@ -77,8 +74,9 @@ export class Session {
 
   private isChannelProviderInitialized() {
     if (!this.channelProvider) {
-      // TODO Error type
-      throw new Error('IotaChannelProvider not initialized')
+      const msg = 'Iota session not initialized'
+      Logger.debug(msg)
+      throw new Error(msg)
     }
   }
 }

@@ -17,6 +17,7 @@ import {
   ErrorCode,
   throwEventParsingError,
 } from '../validators/error'
+import { Logger } from '../validators/logger'
 
 const DEFAULT_IOT_ENDPOINT =
   'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
@@ -44,7 +45,6 @@ export type IotaChannelRequest = {
   }
 }
 
-// TODO Error type
 export type IotaChannelRequestCallbackFunction = (
   err: Error | null,
   data: IotaChannelRequest | null,
@@ -65,22 +65,25 @@ export class ChannelProvider {
   }
 
   getClient(): mqtt5.Mqtt5Client {
-    // TODO check if we need to restart the mqtt client
     if (!this.iotaClient) {
-      throw new Error('Iota client not stated')
+      const msg = 'Iota client not stated'
+      Logger.debug(msg)
+      throw new Error(msg)
     }
     return this.iotaClient
   }
 
   getTopicName(): string {
-    // TODO check if we need to restart the mqtt client
     if (!this.topicName) {
-      throw new Error('Not authenticated with Affinidi Iota Framework')
+      const msg = 'Not authenticated with Affinidi Iota Framework'
+      Logger.debug(msg)
+      throw new Error(msg)
     }
     return this.topicName
   }
 
   async initialize(credentials: IotaCredentials) {
+    Logger.debug('Initializing Iota channel')
     const credentialsProvider = new CustomCredentialsProvider(
       {
         accessKeyId: credentials.credentials.accessKeyId!,
@@ -99,9 +102,12 @@ export class ChannelProvider {
 
   private async startClient(): Promise<mqtt5.Mqtt5Client> {
     if (!this.iotaConfigBuilder || !this.topicName) {
-      throw new Error('Not authenticated with Affinidi Iota Framework')
+      const msg = 'Not authenticated with Affinidi Iota Framework'
+      Logger.debug(msg)
+      throw new Error(msg)
     }
     if (!this.iotaClient) {
+      Logger.debug('Mqtt client has not been started yet')
       this.iotaClient = await this.startMqttClient(this.iotaConfigBuilder)
       await this.subscribeToTopic(this.iotaClient, this.topicName)
     }
@@ -135,12 +141,11 @@ export class ChannelProvider {
   private async startMqttClient(
     iotaConfigBuilder: iot.AwsIotMqtt5ClientConfigBuilder,
   ): Promise<mqtt5.Mqtt5Client> {
+    Logger.debug('Starting mqtt client')
     const config = iotaConfigBuilder.build()
     const client = new mqtt5.Mqtt5Client(config)
-
-    // TODO Add any required handlers
-
     client.start()
+    Logger.debug('Mqtt client started')
     return client
   }
 
@@ -154,6 +159,7 @@ export class ChannelProvider {
       ],
     }
     await client.subscribe(packet)
+    Logger.debug('Subscribed to topic', topicName)
   }
 
   private getRequest(event: SignedRequestEvent) {
@@ -161,13 +167,17 @@ export class ChannelProvider {
     try {
       signedRequest = SignedRequestEventSchema.parse(event)
     } catch (e) {
-      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT))
+      const msg = getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT)
+      Logger.debug(msg)
+      throw Error(msg)
     }
     try {
       const claims = jose.decodeJwt(signedRequest.data.jwt)
       signedRequestJWT = SignedRequestJWTSchema.parse(claims)
     } catch (e) {
-      throw Error(getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT))
+      const msg = getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT)
+      Logger.debug(msg)
+      throw Error(msg)
     }
     const request: IotaChannelRequest = {
       correlationId: signedRequest.correlationId,
@@ -198,7 +208,10 @@ export class ChannelProvider {
       payload: eventPayload,
       qos: mqtt5.QoS.AtLeastOnce,
     }
+
+    Logger.debug('Publishing prepare request event', publishPacket)
     await client.publish(publishPacket)
+    Logger.debug('Published. Listening for response...')
 
     return new Promise((resolve, reject) => {
       client.on(
@@ -215,11 +228,13 @@ export class ChannelProvider {
               }
               if (event.eventType === EventTypes.SignedRequest) {
                 const request = this.getRequest(event)
+                Logger.debug('Signed request received', request)
                 resolve(request)
               } else if (event.eventType === EventTypes.Error) {
                 throwEventParsingError(event)
               }
             } catch (e) {
+              Logger.debug('Error processing event data')
               reject(e)
             }
           }

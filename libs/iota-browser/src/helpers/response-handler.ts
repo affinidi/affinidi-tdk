@@ -13,6 +13,7 @@ import {
   throwEventParsingError,
   getUnexpectedErrorMessage,
 } from '../validators/error'
+import { Logger } from '../validators/logger'
 
 export type IotaResponse = {
   correlationId: string
@@ -38,16 +39,20 @@ export class ResponseHandler {
     try {
       responseCallback = ResponseCallbackEventSchema.parse(event)
     } catch (e) {
-      throw Error(getUnexpectedErrorMessage(ErrorCode.RESPONSE_CALLBACK_EVENT))
+      const msg = getUnexpectedErrorMessage(ErrorCode.RESPONSE_CALLBACK_EVENT)
+      Logger.debug(msg)
+      throw Error(msg)
     }
     try {
       vpToken = VerifiablePresentationSchema.parse(
         JSON.parse(responseCallback.vpToken),
       )
     } catch (e) {
-      throw Error(
-        getUnexpectedErrorMessage(ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA),
+      const msg = getUnexpectedErrorMessage(
+        ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
       )
+      Logger.debug(msg)
+      throw Error(msg)
     }
     const response: IotaResponse = {
       correlationId: responseCallback.correlationId,
@@ -75,11 +80,13 @@ export class ResponseHandler {
               }
               if (event.eventType === EventTypes.ResponseCallback) {
                 const response = this.getResponseHandler(event)
+                Logger.debug('Response received', response)
                 resolve(response)
               } else if (event.eventType === EventTypes.Error) {
                 throwEventParsingError(event)
               }
             } catch (error) {
+              Logger.debug('Error processing event data')
               reject(error)
             }
           }

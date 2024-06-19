@@ -1,3 +1,5 @@
+import { Logger } from '../validators/logger'
+
 export enum OpenMode {
   NewTab,
   Popup,
@@ -12,6 +14,7 @@ export type VaultHandlerOpenParams = {
 
 export class VaultHandler {
   public openVault(params: VaultHandlerOpenParams) {
+    Logger.debug('Opening vault', params)
     const { link, mode = OpenMode.NewTab } = params
     let windowFeatures = ''
     if (mode === OpenMode.Popup) {

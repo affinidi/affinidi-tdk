@@ -1,4 +1,5 @@
 import { ErrorEvent, ErrorEventSchema } from '../validators/events'
+import { Logger } from './logger'
 
 export enum ErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
@@ -28,7 +29,11 @@ export function throwEventParsingError(event: ErrorEvent): never {
   try {
     errorEvent = ErrorEventSchema.parse(event)
   } catch (e) {
-    throw Error(getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT))
+    const msg = getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT)
+    Logger.debug(msg)
+    throw Error(msg)
   }
-  throw Error(formatEventError(errorEvent))
+  const msg = formatEventError(errorEvent)
+  Logger.debug(msg)
+  throw Error(msg)
 }
