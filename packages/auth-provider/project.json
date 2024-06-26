@@ -5,12 +5,22 @@
   "projectType": "library",
   "private": false,
   "targets": {
+    "install-node-modules": {
+      "executor": "nx:run-commands",
+        "options": {
+          "cwd": "packages/auth-provider",
+          "command": "npm i --prefix ."
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/auth-provider",
         "command": "npm run build"
-      }
+      },
+      "dependsOn": [
+        "install-node-modules"
+      ]
     },
     "lint": {
       "executor": "@nx/eslint:lint"
