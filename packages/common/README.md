@@ -1,4 +1,4 @@
-## @affinidi/name
+## @affinidi-tdk/common
 
 ### Build JSII
 
@@ -15,19 +15,6 @@ The code will be generated under /dist for each language.
 ### JS
 
 ```bash
-npm install <path_to_name.jsii.tgz>
+npm install @affinidi-tdk/common
 ```
 
-```ts
-// Code to demonstrate usage
-```
-
-### Python
-
-```bash
-pip install <path_to_affinidi-name.whl>
-```
-
-```python
-## Code to demonstrate usage
-```
