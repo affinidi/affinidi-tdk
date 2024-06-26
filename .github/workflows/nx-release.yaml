@@ -61,4 +61,5 @@ jobs:
         name: release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this 
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
