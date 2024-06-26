@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.6.0...@affinidi-tdk/auth-provider-v1.6.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* no bundled dependencies in auth-provider package ([#108](https://github.com/affinidi/affinidi-tdk/issues/108)) ([5e1c876](https://github.com/affinidi/affinidi-tdk/commit/5e1c87698daaf741a0be99dfb76a6fa5bf748a2b))
+
 # [1.6.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.5.0...@affinidi-tdk/auth-provider-v1.6.0) (2024-06-14)
 
 
