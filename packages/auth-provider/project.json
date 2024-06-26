@@ -15,7 +15,7 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
-    "release": {
+    "nx-release-publish": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/auth-provider",
