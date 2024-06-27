@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.9.0...@affinidi-tdk/credential-issuance-client-v1.10.0) (2024-06-27)
+
+
+### Features
+
+* use common package to get backend endpoints ([#112](https://github.com/affinidi/affinidi-tdk/issues/112)) ([fc522dc](https://github.com/affinidi/affinidi-tdk/commit/fc522dcd5a2f986f47b8994ab4c3cd470703f4de))
+
 # [1.9.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.8.0...@affinidi-tdk/credential-issuance-client-v1.9.0) (2024-06-27)
 
 
