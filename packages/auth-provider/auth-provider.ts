@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { Jwt, ProjectScopedToken, Iota } from './helpers'
-
-const API_GATEWAY_URL = 'https://apse1.api.affinidi.io'
-const TOKEN_ENDPOINT = 'https://apse1.auth.developer.affinidi.io/auth/oauth2/token'
+import { EnvironmentUtils } from '@affinidi-tdk/common'
 
 export interface IotaTokenOutput {
   readonly iotaJwt: string
@@ -47,11 +45,11 @@ export class AuthProvider {
     }
 
     if (!param.apiGatewayUrl) {
-      param.apiGatewayUrl = API_GATEWAY_URL
+      param.apiGatewayUrl = EnvironmentUtils.fetchApiGwUrl()
     }
 
     if (!param.tokenEndpoint) {
-      param.tokenEndpoint = TOKEN_ENDPOINT
+      param.tokenEndpoint = EnvironmentUtils.fetchElementsAuthTokenUrl()
     }
 
     this.validateMissingInput(authProviderParams, param)

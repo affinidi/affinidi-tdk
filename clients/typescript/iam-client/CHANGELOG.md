@@ -1,3 +1,17 @@
+# [1.10.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.9.0...@affinidi-tdk/iam-client-v1.10.0) (2024-06-27)
+
+
+### Features
+
+* use common package to get backend endpoints ([#112](https://github.com/affinidi/affinidi-tdk/issues/112)) ([fc522dc](https://github.com/affinidi/affinidi-tdk/commit/fc522dcd5a2f986f47b8994ab4c3cd470703f4de))
+
+# [1.9.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.8.0...@affinidi-tdk/iam-client-v1.9.0) (2024-06-27)
+
+
+### Features
+
+* common package ([#111](https://github.com/affinidi/affinidi-tdk/issues/111)) ([0293729](https://github.com/affinidi/affinidi-tdk/commit/0293729fb4cc0b6b405f63051f3d4b49cb433fc8))
+
 # [1.8.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.7.0...@affinidi-tdk/iam-client-v1.8.0) (2024-06-14)
 
 
