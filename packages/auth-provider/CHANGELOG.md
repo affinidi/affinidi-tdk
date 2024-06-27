@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.6.2...@affinidi-tdk/auth-provider-v1.7.0) (2024-06-27)
+
+
+### Features
+
+* common package ([#111](https://github.com/affinidi/affinidi-tdk/issues/111)) ([0293729](https://github.com/affinidi/affinidi-tdk/commit/0293729fb4cc0b6b405f63051f3d4b49cb433fc8))
+
 ## [1.6.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.6.1...@affinidi-tdk/auth-provider-v1.6.2) (2024-06-26)
 
 
