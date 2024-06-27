@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.8.0...@affinidi-tdk/credential-issuance-client-v1.9.0) (2024-06-27)
+
+
+### Features
+
+* common package ([#111](https://github.com/affinidi/affinidi-tdk/issues/111)) ([0293729](https://github.com/affinidi/affinidi-tdk/commit/0293729fb4cc0b6b405f63051f3d4b49cb433fc8))
+
 # [1.8.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.7.0...@affinidi-tdk/credential-issuance-client-v1.8.0) (2024-06-14)
 
 
