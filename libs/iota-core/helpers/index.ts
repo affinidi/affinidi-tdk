@@ -1,4 +1,3 @@
-export { Environment, EnvironmentHandler } from './environment'
 export {
   IotaAuthProvider,
   type Credentials,

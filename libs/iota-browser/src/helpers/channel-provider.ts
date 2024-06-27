@@ -1,4 +1,3 @@
-import { IotaCredentials } from '@affinidi-tdk/iota-utils'
 import { toUtf8 } from '@aws-sdk/util-utf8-browser'
 import { AwsCredentialIdentity } from '@smithy/types'
 import { iot, mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
@@ -17,18 +16,24 @@ import {
   ErrorCode,
   throwEventParsingError,
 } from '../validators/error'
-import { Logger } from '../validators/logger'
+import { EnvironmentUtils, Logger } from '@affinidi-tdk/common/helpers'
 
-const DEFAULT_IOT_ENDPOINT =
-  'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'
-const DEFAULT_REGION = 'ap-southeast-1'
-const DEFAULT_API_GW = 'https://apse1.dev.api.affinidi.io/ais'
+export interface IotaCredentials {
+  readonly credentials: Credentials
+  readonly connectionClientId: string
+}
+
+export interface Credentials {
+  readonly accessKeyId?: string
+  readonly secretKey?: string
+  readonly sessionToken?: string
+  readonly expiration?: Date
+}
 
 export type ChannelProviderParams = {
   credentials: IotaCredentials
   iotEndpoint?: string
   region?: string
-  apiGW?: string
 }
 
 export type PrepareRequestParams = {
@@ -53,15 +58,13 @@ export type IotaChannelRequestCallbackFunction = (
 export class ChannelProvider {
   iotEndpoint: string
   region: string
-  apiGW: string
   iotaConfigBuilder?: iot.AwsIotMqtt5ClientConfigBuilder
   iotaClient?: mqtt5.Mqtt5Client
   topicName?: string
 
   constructor(params?: ChannelProviderParams) {
-    this.iotEndpoint = params?.iotEndpoint ?? DEFAULT_IOT_ENDPOINT
-    this.region = params?.region ?? DEFAULT_REGION
-    this.apiGW = params?.apiGW ?? DEFAULT_API_GW
+    this.iotEndpoint = params?.iotEndpoint ?? EnvironmentUtils.fetchIotUrl()
+    this.region = params?.region ?? EnvironmentUtils.fetchRegion()
   }
 
   getClient(): mqtt5.Mqtt5Client {

@@ -1,4 +1,4 @@
-import { Logger } from '../validators/logger'
+import { Logger } from '@affinidi-tdk/common/helpers'
 
 export enum OpenMode {
   NewTab,
