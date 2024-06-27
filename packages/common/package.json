@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/common",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Affinidi TDK Common library with shared utils",
   "author": "Affinidi",
   "repository": {
