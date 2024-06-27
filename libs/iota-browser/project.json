@@ -1,26 +1,24 @@
 {
-  "name": "@affinidi-tdk/auth-provider",
+  "name": "@affinidi-tdk/iota-browser",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/auth-provider",
+  "sourceRoot": "libs/iota-browser",
   "projectType": "library",
   "private": false,
   "targets": {
     "install-node-modules": {
       "executor": "nx:run-commands",
-        "options": {
-          "cwd": "packages/auth-provider",
-          "command": "npm i --prefix ."
+      "options": {
+        "cwd": "libs/iota-browser",
+        "command": "npm i --prefix ."
       }
     },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "packages/auth-provider",
+        "cwd": "libs/iota-browser",
         "command": "npm run build"
       },
-      "dependsOn": [
-        "install-node-modules"
-      ]
+      "dependsOn": ["install-node-modules"]
     },
     "lint": {
       "executor": "@nx/eslint:lint"
@@ -28,7 +26,7 @@
     "nx-release-publish": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "packages/auth-provider",
+        "cwd": "libs/iota-browser",
         "command": "npm run publib-npm"
       },
       "dependsOn": [

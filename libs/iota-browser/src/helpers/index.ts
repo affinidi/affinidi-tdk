@@ -1,13 +1,18 @@
 export {
+  type IotaCredentials,
   ChannelProvider,
-  ChannelProviderParams,
-  IotaChannelRequest,
-  IotaChannelRequestCallbackFunction,
-  PrepareRequestParams,
+  type ChannelProviderParams,
+  type IotaChannelRequest,
+  type IotaChannelRequestCallbackFunction,
+  type PrepareRequestParams,
 } from './channel-provider'
 export {
-  IotaResponse,
-  IotaResponseCallbackFunction,
+  type IotaResponse,
+  type IotaResponseCallbackFunction,
   ResponseHandler,
 } from './response-handler'
-export { OpenMode, VaultHandler, VaultHandlerOpenParams } from './vault-handler'
+export {
+  OpenMode,
+  type VaultHandler,
+  VaultHandlerOpenParams,
+} from './vault-handler'
