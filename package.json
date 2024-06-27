@@ -43,7 +43,6 @@
     "typescript": "~5.4.5"
   },
   "workspaces": [
-    "libs/*",
     "packages/*",
     "clients/typescript/*"
   ]
