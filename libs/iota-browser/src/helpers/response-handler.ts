@@ -9,9 +9,10 @@ import {
 } from '../validators/events'
 import { ChannelProvider } from './channel-provider'
 import {
-  ErrorCode,
-  throwEventParsingError,
-  getUnexpectedErrorMessage,
+  InternalErrorCode,
+  throwEventError,
+  IotaError,
+  newUnexpectedError,
 } from '../validators/error'
 import { Logger } from '@affinidi-tdk/common/helpers'
 
@@ -22,9 +23,8 @@ export type IotaResponse = {
   presentationSubmission: string
 }
 
-// TODO Error type
 export type IotaResponseCallbackFunction = (
-  err: Error | null,
+  err: IotaError | null,
   data: IotaResponse | null,
 ) => void
 
@@ -39,20 +39,20 @@ export class ResponseHandler {
     try {
       responseCallback = ResponseCallbackEventSchema.parse(event)
     } catch (e) {
-      const msg = getUnexpectedErrorMessage(ErrorCode.RESPONSE_CALLBACK_EVENT)
-      Logger.debug(msg)
-      throw Error(msg)
+      throw newUnexpectedError(
+        InternalErrorCode.RESPONSE_CALLBACK_EVENT,
+        event.correlationId,
+      )
     }
     try {
       vpToken = VerifiablePresentationSchema.parse(
         JSON.parse(responseCallback.vpToken),
       )
     } catch (e) {
-      const msg = getUnexpectedErrorMessage(
-        ErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
+      throw newUnexpectedError(
+        InternalErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
+        event.correlationId,
       )
-      Logger.debug(msg)
-      throw Error(msg)
     }
     const response: IotaResponse = {
       correlationId: responseCallback.correlationId,
@@ -83,10 +83,11 @@ export class ResponseHandler {
                 Logger.debug('Response received', response)
                 resolve(response)
               } else if (event.eventType === EventTypes.Error) {
-                throwEventParsingError(event)
+                Logger.debug('Error received', event)
+                throwEventError(event)
               }
             } catch (error) {
-              Logger.debug('Error processing event data')
+              Logger.debug('Error on data request')
               reject(error)
             }
           }

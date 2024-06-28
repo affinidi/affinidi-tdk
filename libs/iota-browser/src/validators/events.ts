@@ -50,7 +50,7 @@ export type ResponseCallbackEvent = z.infer<typeof ResponseCallbackEventSchema>
 
 const ERROR_LOCATION = ['body', 'path', 'query'] as const
 const ErrorDetailItem = z.object({
-  issues: z.string(),
+  issue: z.string().optional(),
   field: z.string().optional(),
   value: z.string().optional(),
   location: z.enum(ERROR_LOCATION).optional(),

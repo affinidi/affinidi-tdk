@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-browser",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Browser module to fetch data through Affinidi Iota Framework",
   "author": "Affinidi",
   "repository": {

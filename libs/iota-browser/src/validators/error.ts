@@ -1,39 +1,94 @@
 import { ErrorEvent, ErrorEventSchema } from '../validators/events'
 import { Logger } from '@affinidi-tdk/common/helpers'
 
-export enum ErrorCode {
+export class IotaError extends Error {
+  code: string
+  correlationId: string | null
+  issue: string | null
+  constructor(
+    message: string,
+    code: IotaErrorCode,
+    correlationId?: string,
+    issue?: string,
+  ) {
+    super(message)
+    this.code = code
+    this.correlationId = correlationId ?? null
+    this.issue = issue ?? null
+  }
+}
+
+export enum InternalErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
   'SIGNED_REQUEST_JWT' = 'SignedRequestJWT',
   'RESPONSE_CALLBACK_EVENT' = 'ResponseCallbackEvent',
   'VERIFIABLE_PRESENTATION_SCHEMA' = 'VerifiablePresentationSchema',
-  'ERROR_EVENT' = 'ErrorEvent',
+  'PARSING_ERROR_EVENT' = 'ParsingErrorEvent',
+}
+
+export enum IotaErrorCode {
+  'UNEXPECTED_ERROR' = 'UnexpectedError',
+  'DATA_REQUEST_ERROR' = 'DataRequestError',
+  'IOTA_CLIENT_NOT_STARTED' = 'IotaClientNotStarted',
+  'NOT_AUTHENTICATED' = 'NotAuthenticated',
+  'IOTA_SESSION_NOT_INITIALIZED' = 'IotaSessionNotInitialized',
+  'UNABLE_TO_CONNECT_WITH_PROVIDED_CREDENTIALS' = 'UnableToConnectWithProvidedCredentials',
 }
 
 function getIssue(errorEvent: ErrorEvent) {
-  return errorEvent.error.details![0].issues &&
-    errorEvent.error.details![0].issues.length > 0
-    ? errorEvent.error.details![0].issues
+  return errorEvent.error.details![0].issue &&
+    errorEvent.error.details![0].issue.length > 0
+    ? errorEvent.error.details![0].issue
     : errorEvent.error.message
 }
 
-export function getUnexpectedErrorMessage(code: ErrorCode) {
-  return `Unexpected error occured. Error Code: ${code} `
+export function newUnexpectedError(
+  internalErrorCode: InternalErrorCode,
+  correlationId?: string,
+): IotaError {
+  const msg = `Unexpected error occured. Error Code: ${internalErrorCode}`
+  const error = new IotaError(
+    msg,
+    IotaErrorCode.UNEXPECTED_ERROR,
+    correlationId,
+    internalErrorCode,
+  )
+  Logger.debug(msg, error)
+  return error
 }
 
-export function formatEventError(errorEvent: ErrorEvent): string {
-  return `Something went wrong. ${getIssue(errorEvent)}. Error Code ${errorEvent.error.httpStatusCode}`
+export function newIotaError(iotaErrorCode: IotaErrorCode): IotaError {
+  const msg = `Error setting up Iota channel. Error Code: ${iotaErrorCode}`
+  const error = new IotaError(msg, iotaErrorCode)
+  Logger.debug(msg, error)
+  return error
 }
 
-export function throwEventParsingError(event: ErrorEvent): never {
+export function newRequestError(event: ErrorEvent): IotaError {
+  const issue = getIssue(event)
+  const msg = `Error received for request ${event.correlationId}: ${issue}`
+  const error = new IotaError(
+    msg,
+    IotaErrorCode.DATA_REQUEST_ERROR,
+    event.correlationId,
+    issue,
+  )
+  Logger.debug(msg, error)
+  return error
+}
+
+export function throwEventError(event: ErrorEvent): never {
   let errorEvent: ErrorEvent
   try {
     errorEvent = ErrorEventSchema.parse(event)
   } catch (e) {
-    const msg = getUnexpectedErrorMessage(ErrorCode.ERROR_EVENT)
-    Logger.debug(msg)
-    throw Error(msg)
+    if (e instanceof Error) {
+      Logger.debug(e.message)
+    }
+    throw newUnexpectedError(
+      InternalErrorCode.PARSING_ERROR_EVENT,
+      event.correlationId,
+    )
   }
-  const msg = formatEventError(errorEvent)
-  Logger.debug(msg)
-  throw Error(msg)
+  throw newRequestError(event)
 }

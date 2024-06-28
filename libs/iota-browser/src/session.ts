@@ -10,14 +10,14 @@ import {
 } from './helpers/response-handler'
 import { VaultHandler } from './helpers/vault-handler'
 import { IotaRequest } from './request'
-import { Logger } from '@affinidi-tdk/common/helpers'
+import { IotaError, IotaErrorCode, newIotaError } from './validators/error'
 
 export type SessionParams = {
   credentials: IotaCredentials
 }
 
 export type IotaRequestCallbackFunction = (
-  err: Error | null,
+  err: IotaError | null,
   data: IotaRequest | null,
 ) => void
 
@@ -74,9 +74,7 @@ export class Session {
 
   private isChannelProviderInitialized() {
     if (!this.channelProvider) {
-      const msg = 'Iota session not initialized'
-      Logger.debug(msg)
-      throw new Error(msg)
+      throw newIotaError(IotaErrorCode.IOTA_SESSION_NOT_INITIALIZED)
     }
   }
 }
