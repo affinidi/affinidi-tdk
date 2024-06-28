@@ -1,5 +1,5 @@
 import { ErrorEvent, ErrorEventSchema } from '../validators/events'
-import { Logger } from './logger'
+import { Logger } from '@affinidi-tdk/common/helpers'
 
 export enum ErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',

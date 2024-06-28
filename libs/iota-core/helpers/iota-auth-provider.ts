@@ -1,11 +1,9 @@
+import { EnvironmentUtils } from '@affinidi-tdk/common'
 import { Configuration, IotaApi } from '@affinidi-tdk/iota-client'
 import {
   CognitoIdentityClient,
   GetCredentialsForIdentityCommand,
 } from '@aws-sdk/client-cognito-identity'
-
-const DEFAULT_REGION = 'ap-southeast-1'
-const DEFAULT_API_GW = 'https://apse1.dev.api.affinidi.io/ais'
 
 export interface IAuthProviderParams {
   region: string
@@ -29,13 +27,13 @@ export class IotaAuthProvider {
   apiGW: string
 
   constructor(param?: { [key: string]: any }) {
-    this.region = param?.region ?? DEFAULT_REGION
-    this.apiGW = param?.apiGW ?? DEFAULT_API_GW
+    this.region = param?.region ?? EnvironmentUtils.fetchRegion()
+    this.apiGW = param?.apiGW ?? EnvironmentUtils.fetchApiGwUrl()
   }
 
   async limitedTokenToIotaCredentials(token: string): Promise<IotaCredentials> {
     const iotaAPIClient = new IotaApi(
-      new Configuration({ basePath: this.apiGW ?? DEFAULT_API_GW }),
+      new Configuration({ basePath: `${this.apiGW}/ais` }),
     )
     const response = await iotaAPIClient.awsExchangeCredentials({
       assertion: token,

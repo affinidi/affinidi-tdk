@@ -1,6 +1,6 @@
-import { IotaCredentials } from '@affinidi-tdk/iota-utils'
 import {
   ChannelProvider,
+  IotaCredentials,
   PrepareRequestParams,
 } from './helpers/channel-provider'
 import {
@@ -10,7 +10,7 @@ import {
 } from './helpers/response-handler'
 import { VaultHandler } from './helpers/vault-handler'
 import { IotaRequest } from './request'
-import { Logger } from './validators/logger'
+import { Logger } from '@affinidi-tdk/common/helpers'
 
 export type SessionParams = {
   credentials: IotaCredentials

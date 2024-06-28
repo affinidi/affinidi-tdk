@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-browser",
-  "version": "0.2.10",
+  "version": "0.2.21",
   "description": "Browser module to fetch data through Affinidi Iota Framework",
   "author": "Affinidi",
   "repository": {
@@ -9,11 +9,11 @@
   },
   "keywords": [
     "affinidi-tdk",
+    "affinidi-iota-framework",
     "identity",
     "holistic",
     "network",
-    "trust",
-    "iota"
+    "trust"
   ],
   "license": "Apache-2.0",
   "main": "./dist/index.js",
@@ -25,14 +25,12 @@
     "build": "tsc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "prepare": "npm run build"
+    "package": "npm pack",
+    "publib-npm": "publib-npm"
   },
   "dependencies": {
-    "@affinidi-tdk/iota-client": "^1.1.0",
-    "@affinidi-tdk/iota-utils": "file:../../packages/iota-utils",
-    "@aws-sdk/client-cognito-identity": "^3.583.0",
+    "@affinidi-tdk/common": "^1.1.0",
     "@smithy/types": "^3.0.0",
-    "aws-crt": "^1.21.2",
     "aws-iot-device-sdk-v2": "^1.19.5",
     "jose": "^5.3.0",
     "uuid": "^9.0.1",

@@ -1,4 +1,4 @@
-import { IotaUtils } from '@affinidi-tdk/iota-utils'
+import { VaultUtils } from '@affinidi-tdk/common'
 import { IotaResponseCallbackFunction, OpenMode } from './helpers'
 import { VaultHandlerOpenParams } from './helpers/vault-handler'
 import { Session } from './session'
@@ -53,7 +53,9 @@ export class IotaRequest {
   }
 
   getSuggestedLink(): string {
-    const link = IotaUtils.createVaultLink({ payload: this.payload })
-    return link
+    return VaultUtils.buildShareLink(
+      this.payload.request,
+      this.payload.client_id,
+    )
   }
 }
