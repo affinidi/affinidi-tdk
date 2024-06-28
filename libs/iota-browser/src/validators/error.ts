@@ -3,8 +3,8 @@ import { Logger } from '@affinidi-tdk/common/helpers'
 
 export class IotaError extends Error {
   code: string
-  correlationId: string | null
-  issue: string | null
+  correlationId?: string
+  issue?: string
   constructor(
     message: string,
     code: IotaErrorCode,
@@ -13,8 +13,8 @@ export class IotaError extends Error {
   ) {
     super(message)
     this.code = code
-    this.correlationId = correlationId ?? null
-    this.issue = issue ?? null
+    this.correlationId = correlationId
+    this.issue = issue
   }
 }
 
