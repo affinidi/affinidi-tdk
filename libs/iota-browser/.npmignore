@@ -1,0 +1,16 @@
+# empty npmignore to ensure all required files (e.g., in the dist folder) are published by npm
+
+node_modules
+coverage
+.vscode
+.DS_Store
+.nyc_output
+.history
+.idea
+Thumbs.db
+
+src/
+
+*.tgz
+tsconfig.json
+.eslintrc.json

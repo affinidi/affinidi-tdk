@@ -1,0 +1,57 @@
+{
+  "name": "@affinidi-tdk/iota-browser",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/iota-browser",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "install-node-modules": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/iota-browser",
+        "command": "npm i --prefix ."
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/iota-browser",
+        "command": "npm run build"
+      },
+      "dependsOn": ["install-node-modules"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "nx-release-publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "libs/iota-browser",
+        "command": "npm run publib-npm"
+      },
+      "dependsOn": [
+        {
+          "target": "build"
+        }
+      ]
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": true,
+        "github": true,
+        "npm": true,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/npm",
+            {
+              "npmPublish": true
+            }
+          ]
+        ]
+      }
+    }
+  }
+}
