@@ -8,3 +8,4 @@ export {
   ResponseCallbackEvent,
   ErrorEvent,
 } from './validators/events'
+export { IotaError, IotaErrorCode } from './validators/error'

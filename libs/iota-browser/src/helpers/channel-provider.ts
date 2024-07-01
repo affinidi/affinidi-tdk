@@ -12,9 +12,12 @@ import {
   SignedRequestJWTSchema,
 } from '../validators/events'
 import {
-  getUnexpectedErrorMessage,
-  ErrorCode,
-  throwEventParsingError,
+  InternalErrorCode,
+  throwEventError,
+  IotaError,
+  newUnexpectedError,
+  IotaErrorCode,
+  newIotaError,
 } from '../validators/error'
 import { EnvironmentUtils, Logger } from '@affinidi-tdk/common/helpers'
 
@@ -51,7 +54,7 @@ export type IotaChannelRequest = {
 }
 
 export type IotaChannelRequestCallbackFunction = (
-  err: Error | null,
+  err: IotaError | null,
   data: IotaChannelRequest | null,
 ) => void
 
@@ -69,18 +72,14 @@ export class ChannelProvider {
 
   getClient(): mqtt5.Mqtt5Client {
     if (!this.iotaClient) {
-      const msg = 'Iota client not stated'
-      Logger.debug(msg)
-      throw new Error(msg)
+      throw newIotaError(IotaErrorCode.IOTA_CLIENT_NOT_STARTED)
     }
     return this.iotaClient
   }
 
   getTopicName(): string {
     if (!this.topicName) {
-      const msg = 'Not authenticated with Affinidi Iota Framework'
-      Logger.debug(msg)
-      throw new Error(msg)
+      throw newIotaError(IotaErrorCode.NOT_AUTHENTICATED)
     }
     return this.topicName
   }
@@ -105,14 +104,18 @@ export class ChannelProvider {
 
   private async startClient(): Promise<mqtt5.Mqtt5Client> {
     if (!this.iotaConfigBuilder || !this.topicName) {
-      const msg = 'Not authenticated with Affinidi Iota Framework'
-      Logger.debug(msg)
-      throw new Error(msg)
+      throw newIotaError(IotaErrorCode.NOT_AUTHENTICATED)
     }
     if (!this.iotaClient) {
       Logger.debug('Mqtt client has not been started yet')
-      this.iotaClient = await this.startMqttClient(this.iotaConfigBuilder)
-      await this.subscribeToTopic(this.iotaClient, this.topicName)
+      try {
+        this.iotaClient = await this.startMqttClient(this.iotaConfigBuilder)
+        await this.subscribeToTopic(this.iotaClient, this.topicName)
+      } catch {
+        throw newIotaError(
+          IotaErrorCode.UNABLE_TO_CONNECT_WITH_PROVIDED_CREDENTIALS,
+        )
+      }
     }
     return this.iotaClient
   }
@@ -170,17 +173,19 @@ export class ChannelProvider {
     try {
       signedRequest = SignedRequestEventSchema.parse(event)
     } catch (e) {
-      const msg = getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_EVENT)
-      Logger.debug(msg)
-      throw Error(msg)
+      throw newUnexpectedError(
+        InternalErrorCode.SIGNED_REQUEST_EVENT,
+        event.correlationId,
+      )
     }
     try {
       const claims = jose.decodeJwt(signedRequest.data.jwt)
       signedRequestJWT = SignedRequestJWTSchema.parse(claims)
     } catch (e) {
-      const msg = getUnexpectedErrorMessage(ErrorCode.SIGNED_REQUEST_JWT)
-      Logger.debug(msg)
-      throw Error(msg)
+      throw newUnexpectedError(
+        InternalErrorCode.SIGNED_REQUEST_JWT,
+        event.correlationId,
+      )
     }
     const request: IotaChannelRequest = {
       correlationId: signedRequest.correlationId,
@@ -234,7 +239,7 @@ export class ChannelProvider {
                 Logger.debug('Signed request received', request)
                 resolve(request)
               } else if (event.eventType === EventTypes.Error) {
-                throwEventParsingError(event)
+                throwEventError(event)
               }
             } catch (e) {
               Logger.debug('Error processing event data')
