@@ -8,7 +8,7 @@ npm install @affinidi-tdk/iota-core
 
 ### Usage
 
-Head over to Affinidi Iota Framework [documentation page](https://docs.affindi.com/services/iota-framework) to better understand how the service works.
+Head over to [Affinidi Iota Framework documentation](https://docs.affindi.com/services/iota-framework) page to better understand how the service works.
 
-For details on how to use this library please head over to its [documentation page](https://docs.affindi.com/dev-tools/affinidi-tdk/libraries/iota-core).
+For details on how to use this library please head over to [iota-core documentation](https://docs.affindi.com/dev-tools/affinidi-tdk/libraries/iota-core) page.
 
