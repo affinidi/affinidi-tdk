@@ -21,7 +21,6 @@ const authProvider = new AuthProvider({
   tokenId,
   passphrase,
   privateKey,
-  publicKey,
   projectId,
   tokenEndpoint,
 })
@@ -62,7 +61,6 @@ stats = {
   tokenId,
   passphrase,
   privateKey,
-  publicKey,
   projectId,
   tokenEndpoint,
 }
