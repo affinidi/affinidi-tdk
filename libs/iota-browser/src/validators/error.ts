@@ -2,7 +2,7 @@ import { ErrorEvent, ErrorEventSchema } from '../validators/events'
 import { Logger } from '@affinidi-tdk/common/helpers'
 
 export class IotaError extends Error {
-  code: string
+  code: IotaErrorCode
   correlationId?: string
   issue?: string
   constructor(
@@ -18,14 +18,6 @@ export class IotaError extends Error {
   }
 }
 
-export enum InternalErrorCode {
-  'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
-  'SIGNED_REQUEST_JWT' = 'SignedRequestJWT',
-  'RESPONSE_CALLBACK_EVENT' = 'ResponseCallbackEvent',
-  'VERIFIABLE_PRESENTATION_SCHEMA' = 'VerifiablePresentationSchema',
-  'PARSING_ERROR_EVENT' = 'ParsingErrorEvent',
-}
-
 export enum IotaErrorCode {
   'UNEXPECTED_ERROR' = 'UnexpectedError',
   'DATA_REQUEST_ERROR' = 'DataRequestError',
@@ -33,6 +25,14 @@ export enum IotaErrorCode {
   'NOT_AUTHENTICATED' = 'NotAuthenticated',
   'IOTA_SESSION_NOT_INITIALIZED' = 'IotaSessionNotInitialized',
   'UNABLE_TO_CONNECT_WITH_PROVIDED_CREDENTIALS' = 'UnableToConnectWithProvidedCredentials',
+}
+
+export enum InternalErrorCode {
+  'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
+  'SIGNED_REQUEST_JWT' = 'SignedRequestJWT',
+  'RESPONSE_CALLBACK_EVENT' = 'ResponseCallbackEvent',
+  'VERIFIABLE_PRESENTATION_SCHEMA' = 'VerifiablePresentationSchema',
+  'PARSING_ERROR_EVENT' = 'ParsingErrorEvent',
 }
 
 function getIssue(errorEvent: ErrorEvent) {
