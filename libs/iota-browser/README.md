@@ -1,33 +1,14 @@
-## @affinidi/name
+## @affinidi/iota-browser
 
-### Build JSII
+### Installation
 
+```bash
+npm install @affinidi-tdk/iota-browser
 ```
-npm i --prefix .
-npm run build
-npm run package
-```
-
-The code will be generated under /dist for each language.
 
 ### Usage
 
-### JS
+Head over to Affinidi Iota Framework [documentation page](https://docs.affindi.com/dev-tools/affinidi-tdk/libraries/iota-browser) to better understand how the service works.
 
-```bash
-npm install <path_to_name.jsii.tgz>
-```
+For details on how to use this library please head over to its [documentation page](https://docs.affindi.com/dev-tools/affinidi-tdk/libraries/iota-browser).
 
-```ts
-// Code to demonstrate usage
-```
-
-### Python
-
-```bash
-pip install <path_to_affinidi-name.whl>
-```
-
-```python
-## Code to demonstrate usage
-```
