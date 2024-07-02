@@ -39,7 +39,7 @@ export class ProjectScopedToken {
       {
         algorithm: ALGORITHM,
         keyid: keyId,
-      }
+      },
     )
 
     return token
@@ -106,7 +106,7 @@ export class ProjectScopedToken {
           'Content-Type': 'application/json',
         },
         data: { projectId },
-      }
+      },
     )
 
     return data.accessToken
