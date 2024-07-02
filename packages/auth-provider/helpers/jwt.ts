@@ -1,3 +1,5 @@
+import axios from 'axios'
+import * as jwkToPem from 'jwk-to-pem'
 import * as jwt from 'jsonwebtoken'
 
 export interface ISignPayload {
@@ -16,10 +18,6 @@ export interface IValidateToken {
 export class Jwt {
   public validateToken(token: string, publicKey: string): IValidateToken {
     try {
-      // NOTE:
-      //   - algorithm for JWT of project scoped token is ES256
-      //     ```jwt.verify(token, publicKey, { algorithms: ['ES256'] })```
-      //   - isValid for project scoped token can be checked when we pass Elements public key
       jwt.verify(token, publicKey)
 
       return { isValid: true, isExpired: false }
@@ -30,5 +28,25 @@ export class Jwt {
 
       return { isValid: false, isExpired: false }
     }
+  }
+
+  public async fetchPublicKey(apiGatewayUrl: string): Promise<string> {
+    const { data } = await axios(`${apiGatewayUrl}/iam/.well-known/jwks.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    const hasKeys = data?.keys?.length > 0
+
+    if (hasKeys) {
+      const jwk = data.keys[0]
+      const publickKeyPem = jwkToPem(jwk)
+
+      return publickKeyPem
+    }
+
+    return ''
   }
 }

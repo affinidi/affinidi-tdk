@@ -10,7 +10,7 @@ export class Iota {
     projectId: string,
     iotaConfigId: string,
     iotaSessionId: string,
-    { tokenId, privateKey, passphrase, keyId, audience }: ISignPayload
+    { tokenId, privateKey, passphrase, keyId, audience }: ISignPayload,
   ) {
     const issueTimeInSeconds = Math.floor(new Date().getTime() / 1000)
 
@@ -37,7 +37,7 @@ export class Iota {
       {
         algorithm: ALGORITHM,
         keyid: keyId,
-      }
+      },
     )
 
     return token
