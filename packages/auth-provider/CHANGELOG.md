@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.8.1...@affinidi-tdk/auth-provider-v1.8.2) (2024-07-03)
+
+
+### Bug Fixes
+
+* updated prod iot core url ([#118](https://github.com/affinidi/affinidi-tdk/issues/118)) ([404fa0f](https://github.com/affinidi/affinidi-tdk/commit/404fa0f0cf25fc0eda1cba93c62c509873b5b4f8))
+
 ## [1.8.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.8.0...@affinidi-tdk/auth-provider-v1.8.1) (2024-07-02)
 
 
