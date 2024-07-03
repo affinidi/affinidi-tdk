@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-browser",
-  "version": "0.2.23",
+  "version": "0.0.1",
   "description": "Browser module to fetch data through Affinidi Iota Framework",
   "author": "Affinidi",
   "repository": {
@@ -32,7 +32,7 @@
     "publib-npm": "publib-npm"
   },
   "dependencies": {
-    "@affinidi-tdk/common": "^1.1.0",
+    "@affinidi-tdk/common": "^1.1.1",
     "@smithy/types": "^3.0.0",
     "aws-iot-device-sdk-v2": "^1.19.5",
     "jose": "^5.3.0",
