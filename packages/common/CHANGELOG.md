@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.1.2...@affinidi-tdk/common-v1.2.0) (2024-07-03)
+
+
+### Features
+
+* iota libraries ([#114](https://github.com/affinidi/affinidi-tdk/issues/114)) ([ff9443a](https://github.com/affinidi/affinidi-tdk/commit/ff9443aacff3dfad3a94226963d2968aa33b9d82)), closes [#91](https://github.com/affinidi/affinidi-tdk/issues/91)
+
 ## [1.1.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.1.1...@affinidi-tdk/common-v1.1.2) (2024-07-03)
 
 
