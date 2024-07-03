@@ -26,7 +26,7 @@ const envToIotUrl = {
   [Environment.DEVELOPMENT]:
     'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
   [Environment.PRODUCTION]:
-    'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+    'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
 }
 
 export class EnvironmentUtils {
