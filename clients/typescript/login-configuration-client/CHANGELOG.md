@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.13.0...@affinidi-tdk/login-configuration-client-v1.14.0) (2024-07-05)
+
+
+### Features
+
+* use jose to get pem from jwk, since it has no issues in nextjs ([#121](https://github.com/affinidi/affinidi-tdk/issues/121)) ([300608c](https://github.com/affinidi/affinidi-tdk/commit/300608c4e1be54d15c9713cb6b7e7f55c843a291))
+
 # [1.13.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.12.1...@affinidi-tdk/login-configuration-client-v1.13.0) (2024-07-03)
 
 
