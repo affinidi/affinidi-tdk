@@ -31,7 +31,8 @@ export enum InternalErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
   'SIGNED_REQUEST_JWT' = 'SignedRequestJWT',
   'RESPONSE_CALLBACK_EVENT' = 'ResponseCallbackEvent',
-  'VERIFIABLE_PRESENTATION_SCHEMA' = 'VerifiablePresentationSchema',
+  'PARSING_VERIFIABLE_PRESENTATION' = 'ParsingVerifiablePresentation',
+  'PARSING_PRESENTATION_SUBMISSION' = 'ParsingPresentationSubmission',
   'PARSING_ERROR_EVENT' = 'ParsingErrorEvent',
 }
 

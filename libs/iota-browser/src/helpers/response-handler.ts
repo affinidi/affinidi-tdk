@@ -3,8 +3,6 @@ import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import {
   EventTypes,
   ResponseCallbackEventSchema,
-  VerifiablePresentation,
-  VerifiablePresentationSchema,
   ResponseCallbackEvent,
 } from '../validators/events'
 import { ChannelProvider } from './channel-provider'
@@ -18,7 +16,7 @@ import { Logger } from '@affinidi-tdk/common/helpers'
 
 export type IotaResponse = {
   correlationId: string
-  vpToken: VerifiablePresentation
+  vpToken: any
   // TODO Proper typing for presentation submission
   presentationSubmission: string
 }
@@ -35,7 +33,9 @@ export class ResponseHandler {
   }
 
   private getResponseHandler(event: ResponseCallbackEvent) {
-    let responseCallback: ResponseCallbackEvent, vpToken: VerifiablePresentation
+    let responseCallback: ResponseCallbackEvent,
+      vpToken: any,
+      presentationSubmission: any
     try {
       responseCallback = ResponseCallbackEventSchema.parse(event)
     } catch (e) {
@@ -45,20 +45,29 @@ export class ResponseHandler {
       )
     }
     try {
-      vpToken = VerifiablePresentationSchema.parse(
-        JSON.parse(responseCallback.vpToken),
+      // TODO schema parse vpToken
+      vpToken = JSON.parse(responseCallback.vpToken)
+    } catch (e) {
+      throw newUnexpectedError(
+        InternalErrorCode.PARSING_VERIFIABLE_PRESENTATION,
+        event.correlationId,
+      )
+    }
+    try {
+      // TODO schema parse presentation submission
+      presentationSubmission = JSON.parse(
+        responseCallback.presentationSubmission,
       )
     } catch (e) {
       throw newUnexpectedError(
-        InternalErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
+        InternalErrorCode.PARSING_PRESENTATION_SUBMISSION,
         event.correlationId,
       )
     }
     const response: IotaResponse = {
       correlationId: responseCallback.correlationId,
       vpToken,
-      // TODO parse presentation submission, same as vpToken
-      presentationSubmission: responseCallback.presentationSubmission,
+      presentationSubmission,
     }
     return response
   }

@@ -33,14 +33,6 @@ export const SignedRequestJWTSchema = z.object({
 })
 export type SignedRequestJWT = z.infer<typeof SignedRequestJWTSchema>
 
-// TODO full VP schema
-export const VerifiablePresentationSchema = z.object({
-  verifiableCredential: z.array(z.object({ credentialSubject: z.any() })),
-})
-export type VerifiablePresentation = z.infer<
-  typeof VerifiablePresentationSchema
->
-
 export const ResponseCallbackEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.ResponseCallback),
   vpToken: z.string(),
