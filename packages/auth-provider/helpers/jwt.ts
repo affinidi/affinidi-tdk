@@ -1,6 +1,6 @@
 import axios from 'axios'
-import * as jwkToPem from 'jwk-to-pem'
 import * as jwt from 'jsonwebtoken'
+import * as jose from 'jose'
 
 export interface ISignPayload {
   tokenId: string
@@ -42,7 +42,9 @@ export class Jwt {
 
     if (hasKeys) {
       const jwk = data.keys[0]
-      const publickKeyPem = jwkToPem(jwk)
+
+      const ecPublicKey = (await jose.importJWK(jwk)) as jose.KeyLike
+      const publickKeyPem = await jose.exportSPKI(ecPublicKey)
 
       return publickKeyPem
     }

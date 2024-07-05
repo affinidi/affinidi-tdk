@@ -40,12 +40,11 @@
   "dependencies": {
     "@affinidi-tdk/common": "^1.0.0",
     "@types/jsonwebtoken": "^9.0.3",
-    "@types/jwk-to-pem": "^2.0.3",
     "@types/qs": "^6.9.8",
     "@types/uuid": "^9.0.8",
     "axios": "^1.5.1",
+    "jose": "^5.6.3",
     "jsonwebtoken": "^9.0.2",
-    "jwk-to-pem": "^2.0.5",
     "qs": "^6.11.2",
     "uuid": "^9.0.1"
   },
@@ -73,12 +72,11 @@
   "bundleDependencies": [
     "@affinidi-tdk/common",
     "@types/jsonwebtoken",
-    "@types/jwk-to-pem",
     "@types/qs",
     "@types/uuid",
     "axios",
+    "jose",
     "jsonwebtoken",
-    "jwk-to-pem",
     "qs",
     "uuid"
   ]
