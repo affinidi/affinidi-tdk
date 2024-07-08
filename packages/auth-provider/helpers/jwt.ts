@@ -6,7 +6,7 @@ export interface ISignPayload {
   tokenId: string
   audience: string
   privateKey: string
-  passphrase: string
+  passphrase?: string
   keyId: string
 }
 
