@@ -7,9 +7,9 @@ import {
   EventTypes,
   PrepareRequestEvent,
   SignedRequestEvent,
-  SignedRequestEventSchema,
+  signedRequestEventSchema,
   SignedRequestJWT,
-  SignedRequestJWTSchema,
+  signedRequestJWTSchema,
 } from '../validators/events'
 import {
   InternalErrorCode,
@@ -171,7 +171,7 @@ export class ChannelProvider {
   private getRequest(event: SignedRequestEvent) {
     let signedRequest: SignedRequestEvent, signedRequestJWT: SignedRequestJWT
     try {
-      signedRequest = SignedRequestEventSchema.parse(event)
+      signedRequest = signedRequestEventSchema.parse(event)
     } catch (e) {
       throw newUnexpectedError(
         InternalErrorCode.SIGNED_REQUEST_EVENT,
@@ -180,7 +180,7 @@ export class ChannelProvider {
     }
     try {
       const claims = jose.decodeJwt(signedRequest.data.jwt)
-      signedRequestJWT = SignedRequestJWTSchema.parse(claims)
+      signedRequestJWT = signedRequestJWTSchema.parse(claims)
     } catch (e) {
       throw newUnexpectedError(
         InternalErrorCode.SIGNED_REQUEST_JWT,

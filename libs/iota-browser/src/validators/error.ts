@@ -1,4 +1,4 @@
-import { ErrorEvent, ErrorEventSchema } from '../validators/events'
+import { ErrorEvent, errorEventSchema } from '../validators/events'
 import { Logger } from '@affinidi-tdk/common/helpers'
 
 export class IotaError extends Error {
@@ -81,7 +81,7 @@ export function newRequestError(event: ErrorEvent): IotaError {
 export function throwEventError(event: ErrorEvent): never {
   let errorEvent: ErrorEvent
   try {
-    errorEvent = ErrorEventSchema.parse(event)
+    errorEvent = errorEventSchema.parse(event)
   } catch (e) {
     if (e instanceof Error) {
       Logger.debug(e.message)

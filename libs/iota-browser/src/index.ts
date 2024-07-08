@@ -8,3 +8,9 @@ export {
   ErrorEvent,
 } from './validators/events'
 export { IotaError, IotaErrorCode } from './validators/error'
+export {
+  Descriptor,
+  PresentationSubmission,
+  VerifiableCredential,
+  VerifiablePresentation,
+} from './validators/ssi'
