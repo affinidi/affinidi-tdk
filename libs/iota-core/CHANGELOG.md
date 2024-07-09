@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.1.0...@affinidi-tdk/iota-core-v1.1.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* return full vp token ([#122](https://github.com/affinidi/affinidi-tdk/issues/122)) ([760678c](https://github.com/affinidi/affinidi-tdk/commit/760678c64d5c4d0a3fbd21cb0a66eb6e43bd6af2))
+
 # [1.1.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.0.0...@affinidi-tdk/iota-core-v1.1.0) (2024-07-05)
 
 
