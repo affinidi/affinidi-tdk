@@ -42,7 +42,7 @@ const verifiableCredentialSchema = z
       .passthrough()
       .optional(),
     credentialSubject: z.any(),
-    expirationDate: z.string().datetime().optional(),
+    expirationDate: z.string().optional(),
     evidence: z.array(z.any()).optional(),
     holder: z
       .object({
@@ -50,7 +50,7 @@ const verifiableCredentialSchema = z
       })
       .passthrough(),
     id: z.string(),
-    issuanceDate: z.string().datetime(),
+    issuanceDate: z.string(),
     issuer: z.string(),
     proof: z.any().optional(),
     refreshService: z
