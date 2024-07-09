@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.10.0...@affinidi-tdk/auth-provider-v1.11.0) (2024-07-09)
+
+
+### Features
+
+* make keyid and passphrase optional ([#123](https://github.com/affinidi/affinidi-tdk/issues/123)) ([48802a9](https://github.com/affinidi/affinidi-tdk/commit/48802a986d20530fcd02efde475414ff2a171154))
+
 # [1.10.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.9.0...@affinidi-tdk/auth-provider-v1.10.0) (2024-07-05)
 
 
