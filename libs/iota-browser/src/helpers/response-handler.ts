@@ -2,9 +2,7 @@ import { toUtf8 } from '@aws-sdk/util-utf8-browser'
 import { mqtt5 } from 'aws-iot-device-sdk-v2/dist/browser'
 import {
   EventTypes,
-  ResponseCallbackEventSchema,
-  VerifiablePresentation,
-  VerifiablePresentationSchema,
+  responseCallbackEventSchema,
   ResponseCallbackEvent,
 } from '../validators/events'
 import { ChannelProvider } from './channel-provider'
@@ -15,12 +13,26 @@ import {
   newUnexpectedError,
 } from '../validators/error'
 import { Logger } from '@affinidi-tdk/common/helpers'
+import {
+  PresentationSubmission,
+  VerifiablePresentation,
+  presentationSubmissionSchema,
+  verifiablePresentationSchema,
+} from '../validators/ssi'
 
-export type IotaResponse = {
+export class IotaResponse {
   correlationId: string
-  vpToken: VerifiablePresentation
-  // TODO Proper typing for presentation submission
-  presentationSubmission: string
+  verifiablePresentation: VerifiablePresentation
+  presentationSubmission: PresentationSubmission
+  constructor(
+    correlationId: string,
+    verifiablePresentation: VerifiablePresentation,
+    presentationSubmission: PresentationSubmission,
+  ) {
+    this.correlationId = correlationId
+    this.verifiablePresentation = verifiablePresentation
+    this.presentationSubmission = presentationSubmission
+  }
 }
 
 export type IotaResponseCallbackFunction = (
@@ -35,9 +47,11 @@ export class ResponseHandler {
   }
 
   private getResponseHandler(event: ResponseCallbackEvent) {
-    let responseCallback: ResponseCallbackEvent, vpToken: VerifiablePresentation
+    let responseCallback: ResponseCallbackEvent
+    let verifiablePresentation: VerifiablePresentation
+    let presentationSubmission: PresentationSubmission
     try {
-      responseCallback = ResponseCallbackEventSchema.parse(event)
+      responseCallback = responseCallbackEventSchema.parse(event)
     } catch (e) {
       throw newUnexpectedError(
         InternalErrorCode.RESPONSE_CALLBACK_EVENT,
@@ -45,21 +59,33 @@ export class ResponseHandler {
       )
     }
     try {
-      vpToken = VerifiablePresentationSchema.parse(
-        JSON.parse(responseCallback.vpToken),
-      )
+      const vpJson = JSON.parse(responseCallback.vpToken)
+      verifiablePresentation = verifiablePresentationSchema.parse(vpJson)
     } catch (e) {
       throw newUnexpectedError(
-        InternalErrorCode.VERIFIABLE_PRESENTATION_SCHEMA,
+        InternalErrorCode.PARSING_VERIFIABLE_PRESENTATION,
         event.correlationId,
       )
     }
-    const response: IotaResponse = {
-      correlationId: responseCallback.correlationId,
-      vpToken,
-      // TODO parse presentation submission, same as vpToken
-      presentationSubmission: responseCallback.presentationSubmission,
+    try {
+      const presentationSubmissionJson = JSON.parse(
+        responseCallback.presentationSubmission,
+      )
+      presentationSubmission = presentationSubmissionSchema.parse(
+        presentationSubmissionJson,
+      )
+    } catch (e) {
+      throw newUnexpectedError(
+        InternalErrorCode.PARSING_PRESENTATION_SUBMISSION,
+        event.correlationId,
+      )
     }
+    const response = new IotaResponse(
+      responseCallback.correlationId,
+      verifiablePresentation,
+      presentationSubmission,
+    )
+
     return response
   }
 

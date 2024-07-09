@@ -7,7 +7,7 @@ export {
   type PrepareRequestParams,
 } from './channel-provider'
 export {
-  type IotaResponse,
+  IotaResponse,
   type IotaResponseCallbackFunction,
   ResponseHandler,
 } from './response-handler'

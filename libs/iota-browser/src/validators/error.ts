@@ -1,4 +1,4 @@
-import { ErrorEvent, ErrorEventSchema } from '../validators/events'
+import { ErrorEvent, errorEventSchema } from '../validators/events'
 import { Logger } from '@affinidi-tdk/common/helpers'
 
 export class IotaError extends Error {
@@ -31,7 +31,8 @@ export enum InternalErrorCode {
   'SIGNED_REQUEST_EVENT' = 'SignedRequestEvent',
   'SIGNED_REQUEST_JWT' = 'SignedRequestJWT',
   'RESPONSE_CALLBACK_EVENT' = 'ResponseCallbackEvent',
-  'VERIFIABLE_PRESENTATION_SCHEMA' = 'VerifiablePresentationSchema',
+  'PARSING_VERIFIABLE_PRESENTATION' = 'ParsingVerifiablePresentation',
+  'PARSING_PRESENTATION_SUBMISSION' = 'ParsingPresentationSubmission',
   'PARSING_ERROR_EVENT' = 'ParsingErrorEvent',
 }
 
@@ -80,7 +81,7 @@ export function newRequestError(event: ErrorEvent): IotaError {
 export function throwEventError(event: ErrorEvent): never {
   let errorEvent: ErrorEvent
   try {
-    errorEvent = ErrorEventSchema.parse(event)
+    errorEvent = errorEventSchema.parse(event)
   } catch (e) {
     if (e instanceof Error) {
       Logger.debug(e.message)

@@ -12,41 +12,33 @@ const BaseEvent = z.object({
   correlationId: z.string().uuid(),
 })
 
-const PrepareRequestEventSchema = BaseEvent.extend({
+const prepareRequestEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.PrepareRequest),
   queryId: z.string(),
   tokenMaxAge: z.number().optional(),
   audience: z.string().optional(),
 })
-export type PrepareRequestEvent = z.infer<typeof PrepareRequestEventSchema>
+export type PrepareRequestEvent = z.infer<typeof prepareRequestEventSchema>
 
-export const SignedRequestEventSchema = BaseEvent.extend({
+export const signedRequestEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.SignedRequest),
   data: z.object({
     jwt: z.string(),
   }),
 })
-export type SignedRequestEvent = z.infer<typeof SignedRequestEventSchema>
+export type SignedRequestEvent = z.infer<typeof signedRequestEventSchema>
 
-export const SignedRequestJWTSchema = z.object({
+export const signedRequestJWTSchema = z.object({
   client_id: z.string(),
 })
-export type SignedRequestJWT = z.infer<typeof SignedRequestJWTSchema>
+export type SignedRequestJWT = z.infer<typeof signedRequestJWTSchema>
 
-// TODO full VP schema
-export const VerifiablePresentationSchema = z.object({
-  verifiableCredential: z.array(z.object({ credentialSubject: z.any() })),
-})
-export type VerifiablePresentation = z.infer<
-  typeof VerifiablePresentationSchema
->
-
-export const ResponseCallbackEventSchema = BaseEvent.extend({
+export const responseCallbackEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.ResponseCallback),
   vpToken: z.string(),
   presentationSubmission: z.string(),
 })
-export type ResponseCallbackEvent = z.infer<typeof ResponseCallbackEventSchema>
+export type ResponseCallbackEvent = z.infer<typeof responseCallbackEventSchema>
 
 const ERROR_LOCATION = ['body', 'path', 'query'] as const
 const ErrorDetailItem = z.object({
@@ -55,7 +47,7 @@ const ErrorDetailItem = z.object({
   value: z.string().optional(),
   location: z.enum(ERROR_LOCATION).optional(),
 })
-export const ErrorEventSchema = BaseEvent.extend({
+export const errorEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.Error),
   error: z.object({
     message: z.string(),
@@ -63,4 +55,4 @@ export const ErrorEventSchema = BaseEvent.extend({
     details: z.array(ErrorDetailItem).optional(),
   }),
 })
-export type ErrorEvent = z.infer<typeof ErrorEventSchema>
+export type ErrorEvent = z.infer<typeof errorEventSchema>
