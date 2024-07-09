@@ -1,0 +1,18 @@
+name: Pull Request on Branch Push
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  auto-pull-request:
+    name: Open pull request on new branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull-request-action
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: 'feat/update-client'
+          PULL_REQUEST_BRANCH: 'main'
+          PULL_REQUEST_UPDATE: true
+          PASS_IF_EXISTS: true
