@@ -28,17 +28,20 @@ export class Iota {
       scope: 'iota_channel',
     }
 
-    const token = jwt.sign(
-      payload,
-      {
+    let secret
+    if (passphrase) {
+      secret = {
         key: privateKey,
         passphrase,
-      },
-      {
-        algorithm: ALGORITHM,
-        keyid: keyId,
-      },
-    )
+      }
+    } else {
+      secret = privateKey
+    }
+
+    const token = jwt.sign(payload, secret, {
+      algorithm: ALGORITHM,
+      keyid: keyId,
+    })
 
     return token
   }
