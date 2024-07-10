@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.1.1...@affinidi-tdk/iota-browser-v1.1.2) (2024-07-10)
+
+
+### Bug Fixes
+
+* remove vc schema datetime validation ([#125](https://github.com/affinidi/affinidi-tdk/issues/125)) ([4b1eebd](https://github.com/affinidi/affinidi-tdk/commit/4b1eebda814281ecd7be6017d76328b51ac77d94))
+
 ## [1.1.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.1.0...@affinidi-tdk/iota-browser-v1.1.1) (2024-07-09)
 
 
