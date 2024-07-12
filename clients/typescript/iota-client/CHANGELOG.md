@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.8.0...@affinidi-tdk/iota-client-v1.9.0) (2024-07-12)
+
+
+### Features
+
+* update client cis ([#127](https://github.com/affinidi/affinidi-tdk/issues/127)) ([64fe4b2](https://github.com/affinidi/affinidi-tdk/commit/64fe4b2673a436cbf7251a662e7eae7b625a7f02))
+
 # [1.8.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.7.0...@affinidi-tdk/iota-client-v1.8.0) (2024-07-05)
 
 
