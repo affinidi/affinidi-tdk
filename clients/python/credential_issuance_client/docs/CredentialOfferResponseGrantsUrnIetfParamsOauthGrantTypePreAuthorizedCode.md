@@ -4,10 +4,10 @@ Grant type for `pre-authorized_code` flow
 
 ## Properties
 
-| Name                    | Type                                                                                                                                                                      | Description                                        | Notes |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ----- |
+| Name                    | Type                                                                                                                                                                      | Description                                        | Notes      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------- |
 | **pre_authorized_code** | **str**                                                                                                                                                                   | pre authorized code to be exchanged with jwt token |
-| **tx_code**             | [**CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode**](CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.md) |                                                    |
+| **tx_code**             | [**CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode**](CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.md) |                                                    | [optional] |
 
 ## Example
 

@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from affinidi_tdk_credential_issuance_client.models.credential_proof import CredentialProof
 
@@ -27,8 +27,9 @@ class CreateCredentialInput(BaseModel):
     """
     CreateCredentialInput
     """
-    credential_identifier: StrictStr = Field(..., description="It is a String that identifies a Credential that is being requested to be issued.")
+    credential_identifier: Optional[StrictStr] = Field(None, description="It is a String that identifies a Credential that is being requested to be issued.")
     proof: CredentialProof = Field(...)
+    additional_properties: Dict[str, Any] = {}
     __properties = ["credential_identifier", "proof"]
 
     class Config:
@@ -53,11 +54,17 @@ class CreateCredentialInput(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
+                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of proof
         if self.proof:
             _dict['proof'] = self.proof.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -73,6 +80,11 @@ class CreateCredentialInput(BaseModel):
             "credential_identifier": obj.get("credential_identifier"),
             "proof": CredentialProof.from_dict(obj.get("proof")) if obj.get("proof") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

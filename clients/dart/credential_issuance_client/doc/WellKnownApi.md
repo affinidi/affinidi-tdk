@@ -14,7 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **getWellKnownOpenIdCredentialIssuer**
 
-> WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer()
+> WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(projectId)
 
 ### Example
 
@@ -22,9 +22,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
 final api_instance = WellKnownApi();
+final projectId = projectId_example; // String | Affinidi project id
 
 try {
-    final result = api_instance.getWellKnownOpenIdCredentialIssuer();
+    final result = api_instance.getWellKnownOpenIdCredentialIssuer(projectId);
     print(result);
 } catch (e) {
     print('Exception when calling WellKnownApi->getWellKnownOpenIdCredentialIssuer: $e\n');
@@ -33,7 +34,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name          | Type       | Description         | Notes |
+| ------------- | ---------- | ------------------- | ----- |
+| **projectId** | **String** | Affinidi project id |
 
 ### Return type
 

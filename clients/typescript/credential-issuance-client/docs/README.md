@@ -42,6 +42,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CredentialResponse](./Models/CredentialResponse.md)
 - [CredentialResponseDeferred](./Models/CredentialResponseDeferred.md)
 - [CredentialResponseImmediate](./Models/CredentialResponseImmediate.md)
+- [CredentialResponseImmediate_c_nonce_expires_in](./Models/CredentialResponseImmediate_c_nonce_expires_in.md)
+- [CredentialResponseImmediate_credential](./Models/CredentialResponseImmediate_credential.md)
 - [CredentialSubjectNotValidError](./Models/CredentialSubjectNotValidError.md)
 - [DeferredCredentialInput](./Models/DeferredCredentialInput.md)
 - [InvalidCredentialRequestError](./Models/InvalidCredentialRequestError.md)

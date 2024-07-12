@@ -265,10 +265,12 @@ class IssuanceConfigMiniDtoFormatEnum {
   String toJson() => value;
 
   static const ldpVc = IssuanceConfigMiniDtoFormatEnum._(r'ldp_vc');
+  static const jwtVcJsonLd = IssuanceConfigMiniDtoFormatEnum._(r'jwt_vc_json-ld');
 
   /// List of all possible values in this [enum][IssuanceConfigMiniDtoFormatEnum].
   static const values = <IssuanceConfigMiniDtoFormatEnum>[
     ldpVc,
+    jwtVcJsonLd,
   ];
 
   static IssuanceConfigMiniDtoFormatEnum? fromJson(dynamic value) => IssuanceConfigMiniDtoFormatEnumTypeTransformer().decode(value);
@@ -308,6 +310,7 @@ class IssuanceConfigMiniDtoFormatEnumTypeTransformer {
     if (data != null) {
       switch (data) {
         case r'ldp_vc': return IssuanceConfigMiniDtoFormatEnum.ldpVc;
+        case r'jwt_vc_json-ld': return IssuanceConfigMiniDtoFormatEnum.jwtVcJsonLd;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

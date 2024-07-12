@@ -133,6 +133,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CredentialResponse](docs/CredentialResponse.md)
 - [CredentialResponseDeferred](docs/CredentialResponseDeferred.md)
 - [CredentialResponseImmediate](docs/CredentialResponseImmediate.md)
+- [CredentialResponseImmediateCNonceExpiresIn](docs/CredentialResponseImmediateCNonceExpiresIn.md)
+- [CredentialResponseImmediateCredential](docs/CredentialResponseImmediateCredential.md)
 - [CredentialSubjectNotValidError](docs/CredentialSubjectNotValidError.md)
 - [DeferredCredentialInput](docs/DeferredCredentialInput.md)
 - [GenerateCredentials400Response](docs/GenerateCredentials400Response.md)

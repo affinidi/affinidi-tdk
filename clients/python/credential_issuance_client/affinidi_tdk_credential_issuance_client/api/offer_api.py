@@ -45,16 +45,18 @@ class OfferApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_credential_offer(self, issuance_id : Annotated[StrictStr, Field(..., description="issuanceId from credential_offer_uri")], **kwargs) -> CredentialOfferResponse:  # noqa: E501
+    def get_credential_offer(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], issuance_id : Annotated[StrictStr, Field(..., description="issuanceId from credential_offer_uri")], **kwargs) -> CredentialOfferResponse:  # noqa: E501
         """get_credential_offer  # noqa: E501
 
         Endpoint used to return Credential Offer details, used with `credential_offer_uri` response  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_credential_offer(issuance_id, async_req=True)
+        >>> thread = api.get_credential_offer(project_id, issuance_id, async_req=True)
         >>> result = thread.get()
 
+        :param project_id: Affinidi project id (required)
+        :type project_id: str
         :param issuance_id: issuanceId from credential_offer_uri (required)
         :type issuance_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -72,19 +74,21 @@ class OfferApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_credential_offer_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_credential_offer_with_http_info(issuance_id, **kwargs)  # noqa: E501
+        return self.get_credential_offer_with_http_info(project_id, issuance_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_credential_offer_with_http_info(self, issuance_id : Annotated[StrictStr, Field(..., description="issuanceId from credential_offer_uri")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_credential_offer_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], issuance_id : Annotated[StrictStr, Field(..., description="issuanceId from credential_offer_uri")], **kwargs) -> ApiResponse:  # noqa: E501
         """get_credential_offer  # noqa: E501
 
         Endpoint used to return Credential Offer details, used with `credential_offer_uri` response  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_credential_offer_with_http_info(issuance_id, async_req=True)
+        >>> thread = api.get_credential_offer_with_http_info(project_id, issuance_id, async_req=True)
         >>> result = thread.get()
 
+        :param project_id: Affinidi project id (required)
+        :type project_id: str
         :param issuance_id: issuanceId from credential_offer_uri (required)
         :type issuance_id: str
         :param async_req: Whether to execute the request asynchronously.
@@ -115,6 +119,7 @@ class OfferApi:
         _params = locals()
 
         _all_params = [
+            'project_id',
             'issuance_id'
         ]
         _all_params.extend(
@@ -143,6 +148,9 @@ class OfferApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['project_id'] is not None:
+            _path_params['projectId'] = _params['project_id']
+
         if _params['issuance_id'] is not None:
             _path_params['issuanceId'] = _params['issuance_id']
 

@@ -2,11 +2,11 @@
 
 ## Properties
 
-| Name                   | Type                  | Description                                                                                                                   | Notes |
-| ---------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **credential**         | **Dict[str, object]** | Issued Credential, It can be a string or an object, depending on the Credential format. default format is &#x60;ldp_vc&#x60;. |
-| **c_nonce**            | **str**               | String containing a nonce to be used when creating a proof of possession of the key proof                                     |
-| **c_nonce_expires_in** | **float**             | Lifetime in seconds of the c_nonce                                                                                            |
+| Name                   | Type                                                                                            | Description                                                                               | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----- |
+| **credential**         | [**CredentialResponseImmediateCredential**](CredentialResponseImmediateCredential.md)           |                                                                                           |
+| **c_nonce**            | **str**                                                                                         | String containing a nonce to be used when creating a proof of possession of the key proof |
+| **c_nonce_expires_in** | [**CredentialResponseImmediateCNonceExpiresIn**](CredentialResponseImmediateCNonceExpiresIn.md) |                                                                                           |
 
 ## Example
 

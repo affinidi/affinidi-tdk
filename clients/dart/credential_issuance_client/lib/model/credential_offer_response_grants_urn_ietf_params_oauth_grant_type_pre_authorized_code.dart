@@ -14,13 +14,19 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
   /// Returns a new [CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode] instance.
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode({
     required this.preAuthorizedCode,
-    required this.txCode,
+    this.txCode,
   });
 
   /// pre authorized code to be exchanged with jwt token
   String preAuthorizedCode;
 
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode? txCode;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode &&
@@ -31,7 +37,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (preAuthorizedCode.hashCode) +
-    (txCode.hashCode);
+    (txCode == null ? 0 : txCode!.hashCode);
 
   @override
   String toString() => 'CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode[preAuthorizedCode=$preAuthorizedCode, txCode=$txCode]';
@@ -39,7 +45,11 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'pre-authorized_code'] = this.preAuthorizedCode;
+    if (this.txCode != null) {
       json[r'tx_code'] = this.txCode;
+    } else {
+      json[r'tx_code'] = null;
+    }
     return json;
   }
 
@@ -63,7 +73,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
 
       return CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode(
         preAuthorizedCode: mapValueOfType<String>(json, r'pre-authorized_code')!,
-        txCode: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.fromJson(json[r'tx_code'])!,
+        txCode: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.fromJson(json[r'tx_code']),
       );
     }
     return null;
@@ -112,7 +122,6 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'pre-authorized_code',
-    'tx_code',
   };
 }
 

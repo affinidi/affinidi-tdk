@@ -33,6 +33,8 @@ affinidi_tdk_credential_issuance_client/models/credential_proof.py
 affinidi_tdk_credential_issuance_client/models/credential_response.py
 affinidi_tdk_credential_issuance_client/models/credential_response_deferred.py
 affinidi_tdk_credential_issuance_client/models/credential_response_immediate.py
+affinidi_tdk_credential_issuance_client/models/credential_response_immediate_c_nonce_expires_in.py
+affinidi_tdk_credential_issuance_client/models/credential_response_immediate_credential.py
 affinidi_tdk_credential_issuance_client/models/credential_subject_not_valid_error.py
 affinidi_tdk_credential_issuance_client/models/deferred_credential_input.py
 affinidi_tdk_credential_issuance_client/models/generate_credentials400_response.py
@@ -82,6 +84,8 @@ docs/CredentialProof.md
 docs/CredentialResponse.md
 docs/CredentialResponseDeferred.md
 docs/CredentialResponseImmediate.md
+docs/CredentialResponseImmediateCNonceExpiresIn.md
+docs/CredentialResponseImmediateCredential.md
 docs/CredentialSubjectNotValidError.md
 docs/CredentialsApi.md
 docs/DeferredCredentialInput.md
@@ -119,4 +123,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_credential_response_immediate_c_nonce_expires_in.py
+test/test_credential_response_immediate_credential.py
 tox.ini

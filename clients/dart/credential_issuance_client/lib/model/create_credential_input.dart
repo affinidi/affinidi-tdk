@@ -13,12 +13,18 @@ part of openapi.api;
 class CreateCredentialInput {
   /// Returns a new [CreateCredentialInput] instance.
   CreateCredentialInput({
-    required this.credentialIdentifier,
+    this.credentialIdentifier,
     required this.proof,
   });
 
   /// It is a String that identifies a Credential that is being requested to be issued.
-  String credentialIdentifier;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? credentialIdentifier;
 
   CredentialProof proof;
 
@@ -30,7 +36,7 @@ class CreateCredentialInput {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (credentialIdentifier.hashCode) +
+    (credentialIdentifier == null ? 0 : credentialIdentifier!.hashCode) +
     (proof.hashCode);
 
   @override
@@ -38,7 +44,11 @@ class CreateCredentialInput {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.credentialIdentifier != null) {
       json[r'credential_identifier'] = this.credentialIdentifier;
+    } else {
+      json[r'credential_identifier'] = null;
+    }
       json[r'proof'] = this.proof;
     return json;
   }
@@ -62,7 +72,7 @@ class CreateCredentialInput {
       }());
 
       return CreateCredentialInput(
-        credentialIdentifier: mapValueOfType<String>(json, r'credential_identifier')!,
+        credentialIdentifier: mapValueOfType<String>(json, r'credential_identifier'),
         proof: CredentialProof.fromJson(json[r'proof'])!,
       );
     }
@@ -111,7 +121,6 @@ class CreateCredentialInput {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'credential_identifier',
     'proof',
   };
 }

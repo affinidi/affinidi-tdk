@@ -13,14 +13,13 @@ part of openapi.api;
 class CredentialResponse {
   /// Returns a new [CredentialResponse] instance.
   CredentialResponse({
-    this.credential = const {},
+    required this.credential,
     required this.cNonce,
     required this.cNonceExpiresIn,
     required this.transactionId,
   });
 
-  /// Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
-  Map<String, Object> credential;
+  CredentialResponseImmediateCredential credential;
 
   /// String containing a nonce to be used when creating a proof of possession of the key proof
   String cNonce;
@@ -33,7 +32,7 @@ class CredentialResponse {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CredentialResponse &&
-    _deepEquality.equals(other.credential, credential) &&
+    other.credential == credential &&
     other.cNonce == cNonce &&
     other.cNonceExpiresIn == cNonceExpiresIn &&
     other.transactionId == transactionId;
@@ -77,7 +76,7 @@ class CredentialResponse {
       }());
 
       return CredentialResponse(
-        credential: mapCastOfType<String, Object>(json, r'credential')!,
+        credential: CredentialResponseImmediateCredential.fromJson(json[r'credential'])!,
         cNonce: mapValueOfType<String>(json, r'c_nonce')!,
         cNonceExpiresIn: mapValueOfType<int>(json, r'c_nonce_expires_in')!,
         transactionId: mapValueOfType<String>(json, r'transaction_id')!,

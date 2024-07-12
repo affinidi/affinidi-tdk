@@ -10,11 +10,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **getWellKnownOpenIdCredentialIssuer**
 
-> WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer()
+> WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(projectId)
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name          | Type       | Description         | Notes             |
+| ------------- | ---------- | ------------------- | ----------------- |
+| **projectId** | **String** | Affinidi project id | [default to null] |
 
 ### Return type
 

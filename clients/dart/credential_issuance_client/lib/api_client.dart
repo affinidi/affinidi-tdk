@@ -220,6 +220,10 @@ class ApiClient {
           return CredentialResponseDeferred.fromJson(value);
         case 'CredentialResponseImmediate':
           return CredentialResponseImmediate.fromJson(value);
+        case 'CredentialResponseImmediateCNonceExpiresIn':
+          return CredentialResponseImmediateCNonceExpiresIn.fromJson(value);
+        case 'CredentialResponseImmediateCredential':
+          return CredentialResponseImmediateCredential.fromJson(value);
         case 'CredentialSubjectNotValidError':
           return CredentialSubjectNotValidError.fromJson(value);
         case 'DeferredCredentialInput':

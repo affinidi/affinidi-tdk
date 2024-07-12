@@ -53,6 +53,8 @@ part 'model/credential_proof.dart';
 part 'model/credential_response.dart';
 part 'model/credential_response_deferred.dart';
 part 'model/credential_response_immediate.dart';
+part 'model/credential_response_immediate_c_nonce_expires_in.dart';
+part 'model/credential_response_immediate_credential.dart';
 part 'model/credential_subject_not_valid_error.dart';
 part 'model/deferred_credential_input.dart';
 part 'model/generate_credentials400_response.dart';

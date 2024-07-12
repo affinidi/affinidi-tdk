@@ -21,6 +21,8 @@ Models/CredentialProof.md
 Models/CredentialResponse.md
 Models/CredentialResponseDeferred.md
 Models/CredentialResponseImmediate.md
+Models/CredentialResponseImmediate_c_nonce_expires_in.md
+Models/CredentialResponseImmediate_credential.md
 Models/CredentialSubjectNotValidError.md
 Models/DeferredCredentialInput.md
 Models/InvalidCredentialRequestError.md
