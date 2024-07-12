@@ -202,8 +202,6 @@ class ApiClient {
           return CreateIotaConfigurationInput.fromJson(value);
         case 'CreatePexQueryInput':
           return CreatePexQueryInput.fromJson(value);
-        case 'DemoWbx':
-          return DemoWbx.fromJson(value);
         case 'GetIotaConfigurationMetaDataOK':
           return GetIotaConfigurationMetaDataOK.fromJson(value);
         case 'InvalidParameterError':

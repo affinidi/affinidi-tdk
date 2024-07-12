@@ -19,15 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 
 class BlockedUsersInput(BaseModel):
     """
     BlockedUsersInput
     """
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     user_ids: conlist(StrictStr, max_items=25) = Field(..., alias="userIds")
-    __properties = ["userIds"]
+    __properties = ["name", "description", "userIds"]
 
     class Config:
         """Pydantic configuration"""
@@ -65,6 +67,8 @@ class BlockedUsersInput(BaseModel):
             return BlockedUsersInput.parse_obj(obj)
 
         _obj = BlockedUsersInput.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "user_ids": obj.get("userIds")
         })
         return _obj

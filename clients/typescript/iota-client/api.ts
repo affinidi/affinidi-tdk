@@ -362,25 +362,6 @@ export interface CreatePexQueryInput {
 /**
  *
  * @export
- * @interface DemoWbx
- */
-export interface DemoWbx {
-  /**
-   *
-   * @type {string}
-   * @memberof DemoWbx
-   */
-  topicName: string
-  /**
-   *
-   * @type {object}
-   * @memberof DemoWbx
-   */
-  event: object
-}
-/**
- *
- * @export
  * @interface GetIotaConfigurationMetaDataOK
  */
 export interface GetIotaConfigurationMetaDataOK {
@@ -1012,6 +993,12 @@ export interface UpdateConfigurationByIdInput {
    * @memberof UpdateConfigurationByIdInput
    */
   tokenMaxAge?: number
+  /**
+   * The description of the config
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  description?: string
   /**
    *
    * @type {IotaConfigurationDtoClientMetadata}
