@@ -22,11 +22,15 @@ class OfferApi {
   ///
   /// Parameters:
   ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  ///
   /// * [String] issuanceId (required):
   ///   issuanceId from credential_offer_uri
-  Future<Response> getCredentialOfferWithHttpInfo(String issuanceId,) async {
+  Future<Response> getCredentialOfferWithHttpInfo(String projectId, String issuanceId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/{projectId}/offers/{issuanceId}'
+      .replaceAll('{projectId}', projectId)
       .replaceAll('{issuanceId}', issuanceId);
 
     // ignore: prefer_final_locals
@@ -54,10 +58,13 @@ class OfferApi {
   ///
   /// Parameters:
   ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  ///
   /// * [String] issuanceId (required):
   ///   issuanceId from credential_offer_uri
-  Future<CredentialOfferResponse?> getCredentialOffer(String issuanceId,) async {
-    final response = await getCredentialOfferWithHttpInfo(issuanceId,);
+  Future<CredentialOfferResponse?> getCredentialOffer(String projectId, String issuanceId,) async {
+    final response = await getCredentialOfferWithHttpInfo(projectId, issuanceId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

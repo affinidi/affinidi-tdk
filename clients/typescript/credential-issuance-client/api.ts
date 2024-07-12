@@ -173,12 +173,14 @@ export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
+  [key: string]: any
+
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
    * @type {string}
    * @memberof CreateCredentialInput
    */
-  credential_identifier: string
+  credential_identifier?: string
   /**
    *
    * @type {CredentialProof}
@@ -247,6 +249,7 @@ export interface CreateIssuanceConfigInput {
 
 export const CreateIssuanceConfigInputFormatEnum = {
   LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
 } as const
 
 export type CreateIssuanceConfigInputFormatEnum =
@@ -447,7 +450,7 @@ export interface CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuth
    * @type {CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode}
    * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
    */
-  tx_code: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
+  tx_code?: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
 }
 /**
  * Object specifying whether the Authorization Server expects presentation of a Transaction Code by the End-User along with the Token Request in a Pre-Authorized Code Flow
@@ -541,11 +544,11 @@ export interface CredentialResponseDeferred {
  */
 export interface CredentialResponseImmediate {
   /**
-   * Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
-   * @type {{ [key: string]: any; }}
+   *
+   * @type {CredentialResponseImmediateCredential}
    * @memberof CredentialResponseImmediate
    */
-  credential: { [key: string]: any }
+  credential: CredentialResponseImmediateCredential
   /**
    * String containing a nonce to be used when creating a proof of possession of the key proof
    * @type {string}
@@ -553,12 +556,26 @@ export interface CredentialResponseImmediate {
    */
   c_nonce: string
   /**
-   * Lifetime in seconds of the c_nonce
-   * @type {number}
+   *
+   * @type {CredentialResponseImmediateCNonceExpiresIn}
    * @memberof CredentialResponseImmediate
    */
-  c_nonce_expires_in: number
+  c_nonce_expires_in: CredentialResponseImmediateCNonceExpiresIn
 }
+/**
+ * @type CredentialResponseImmediateCNonceExpiresIn
+ * @export
+ */
+export type CredentialResponseImmediateCNonceExpiresIn = number | string
+
+/**
+ * @type CredentialResponseImmediateCredential
+ * @export
+ */
+export type CredentialResponseImmediateCredential =
+  | string
+  | { [key: string]: any }
+
 /**
  *
  * @export
@@ -1074,6 +1091,7 @@ export interface IssuanceConfigDto {
 
 export const IssuanceConfigDtoFormatEnum = {
   LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
 } as const
 
 export type IssuanceConfigDtoFormatEnum =
@@ -1187,6 +1205,7 @@ export interface IssuanceConfigMiniDto {
 
 export const IssuanceConfigMiniDtoFormatEnum = {
   LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
 } as const
 
 export type IssuanceConfigMiniDtoFormatEnum =
@@ -1230,10 +1249,23 @@ export type IssuanceStateResponseStatusEnum =
 export interface ListIssuanceResponse {
   /**
    * The list of all issuances for the Project
-   * @type {Array<object>}
+   * @type {Array<ListIssuanceResponseIssuancesInner>}
    * @memberof ListIssuanceResponse
    */
-  issuances: Array<object>
+  issuances: Array<ListIssuanceResponseIssuancesInner>
+}
+/**
+ *
+ * @export
+ * @interface ListIssuanceResponseIssuancesInner
+ */
+export interface ListIssuanceResponseIssuancesInner {
+  /**
+   * issuance id
+   * @type {string}
+   * @memberof ListIssuanceResponseIssuancesInner
+   */
+  id: string
 }
 /**
  *
@@ -1586,6 +1618,7 @@ export interface UpdateIssuanceConfigInput {
 
 export const UpdateIssuanceConfigInputFormatEnum = {
   LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
 } as const
 
 export type UpdateIssuanceConfigInputFormatEnum =
@@ -2980,20 +3013,23 @@ export const OfferApiAxiosParamCreator = function (
   return {
     /**
      * Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
+     * @param {string} projectId Affinidi project id
      * @param {string} issuanceId issuanceId from credential_offer_uri
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCredentialOffer: async (
+      projectId: string,
       issuanceId: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('getCredentialOffer', 'projectId', projectId)
       // verify required parameter 'issuanceId' is not null or undefined
       assertParamExists('getCredentialOffer', 'issuanceId', issuanceId)
-      const localVarPath = `/v1/{projectId}/offers/{issuanceId}`.replace(
-        `{${'issuanceId'}}`,
-        encodeURIComponent(String(issuanceId)),
-      )
+      const localVarPath = `/v1/{projectId}/offers/{issuanceId}`
+        .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+        .replace(`{${'issuanceId'}}`, encodeURIComponent(String(issuanceId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3035,11 +3071,13 @@ export const OfferApiFp = function (configuration?: Configuration) {
   return {
     /**
      * Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
+     * @param {string} projectId Affinidi project id
      * @param {string} issuanceId issuanceId from credential_offer_uri
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getCredentialOffer(
+      projectId: string,
       issuanceId: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
@@ -3049,7 +3087,11 @@ export const OfferApiFp = function (configuration?: Configuration) {
       ) => AxiosPromise<CredentialOfferResponse>
     > {
       const localVarAxiosArgs =
-        await localVarAxiosParamCreator.getCredentialOffer(issuanceId, options)
+        await localVarAxiosParamCreator.getCredentialOffer(
+          projectId,
+          issuanceId,
+          options,
+        )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
         operationServerMap['OfferApi.getCredentialOffer']?.[index]?.url
@@ -3077,16 +3119,18 @@ export const OfferApiFactory = function (
   return {
     /**
      * Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
+     * @param {string} projectId Affinidi project id
      * @param {string} issuanceId issuanceId from credential_offer_uri
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getCredentialOffer(
+      projectId: string,
       issuanceId: string,
       options?: any,
     ): AxiosPromise<CredentialOfferResponse> {
       return localVarFp
-        .getCredentialOffer(issuanceId, options)
+        .getCredentialOffer(projectId, issuanceId, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -3101,17 +3145,19 @@ export const OfferApiFactory = function (
 export class OfferApi extends BaseAPI {
   /**
    * Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
+   * @param {string} projectId Affinidi project id
    * @param {string} issuanceId issuanceId from credential_offer_uri
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof OfferApi
    */
   public getCredentialOffer(
+    projectId: string,
     issuanceId: string,
     options?: RawAxiosRequestConfig,
   ) {
     return OfferApiFp(this.configuration)
-      .getCredentialOffer(issuanceId, options)
+      .getCredentialOffer(projectId, issuanceId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -3126,13 +3172,25 @@ export const WellKnownApiAxiosParamCreator = function (
   return {
     /**
      *
+     * @param {string} projectId Affinidi project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getWellKnownOpenIdCredentialIssuer: async (
+      projectId: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
-      const localVarPath = `/v1/{projectId}/.well-known/openid-credential-issuer`
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'getWellKnownOpenIdCredentialIssuer',
+        'projectId',
+        projectId,
+      )
+      const localVarPath =
+        `/v1/{projectId}/.well-known/openid-credential-issuer`.replace(
+          `{${'projectId'}}`,
+          encodeURIComponent(String(projectId)),
+        )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3174,10 +3232,12 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
   return {
     /**
      *
+     * @param {string} projectId Affinidi project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getWellKnownOpenIdCredentialIssuer(
+      projectId: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -3187,6 +3247,7 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.getWellKnownOpenIdCredentialIssuer(
+          projectId,
           options,
         )
       const index = configuration?.serverIndex ?? 0
@@ -3218,14 +3279,16 @@ export const WellKnownApiFactory = function (
   return {
     /**
      *
+     * @param {string} projectId Affinidi project id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getWellKnownOpenIdCredentialIssuer(
+      projectId: string,
       options?: any,
     ): AxiosPromise<WellKnownOpenIdCredentialIssuerResponse> {
       return localVarFp
-        .getWellKnownOpenIdCredentialIssuer(options)
+        .getWellKnownOpenIdCredentialIssuer(projectId, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -3240,13 +3303,17 @@ export const WellKnownApiFactory = function (
 export class WellKnownApi extends BaseAPI {
   /**
    *
+   * @param {string} projectId Affinidi project id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof WellKnownApi
    */
-  public getWellKnownOpenIdCredentialIssuer(options?: RawAxiosRequestConfig) {
+  public getWellKnownOpenIdCredentialIssuer(
+    projectId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
     return WellKnownApiFp(this.configuration)
-      .getWellKnownOpenIdCredentialIssuer(options)
+      .getWellKnownOpenIdCredentialIssuer(projectId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

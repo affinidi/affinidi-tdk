@@ -8,7 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **get_credential_offer**
 
-> CredentialOfferResponse get_credential_offer(issuance_id)
+> CredentialOfferResponse get_credential_offer(project_id, issuance_id)
 
 Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
 
@@ -33,10 +33,11 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_credential_issuance_client.OfferApi(api_client)
+    project_id = 'project_id_example' # str | Affinidi project id
     issuance_id = 'issuance_id_example' # str | issuanceId from credential_offer_uri
 
     try:
-        api_response = api_instance.get_credential_offer(issuance_id)
+        api_response = api_instance.get_credential_offer(project_id, issuance_id)
         print("The response of OfferApi->get_credential_offer:\n")
         pprint(api_response)
     except Exception as e:
@@ -47,6 +48,7 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 | Name            | Type    | Description                          | Notes |
 | --------------- | ------- | ------------------------------------ | ----- |
+| **project_id**  | **str** | Affinidi project id                  |
 | **issuance_id** | **str** | issuanceId from credential_offer_uri |
 
 ### Return type

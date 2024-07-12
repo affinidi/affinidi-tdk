@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code import CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
 
@@ -28,7 +28,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode(
     Grant type for `pre-authorized_code` flow  # noqa: E501
     """
     pre_authorized_code: StrictStr = Field(..., alias="pre-authorized_code", description="pre authorized code to be exchanged with jwt token")
-    tx_code: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode = Field(...)
+    tx_code: Optional[CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode] = None
     __properties = ["pre-authorized_code", "tx_code"]
 
     class Config:

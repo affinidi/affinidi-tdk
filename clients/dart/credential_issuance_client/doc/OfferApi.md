@@ -14,7 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **getCredentialOffer**
 
-> CredentialOfferResponse getCredentialOffer(issuanceId)
+> CredentialOfferResponse getCredentialOffer(projectId, issuanceId)
 
 Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
 
@@ -24,10 +24,11 @@ Endpoint used to return Credential Offer details, used with `credential_offer_ur
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
 final api_instance = OfferApi();
+final projectId = projectId_example; // String | Affinidi project id
 final issuanceId = issuanceId_example; // String | issuanceId from credential_offer_uri
 
 try {
-    final result = api_instance.getCredentialOffer(issuanceId);
+    final result = api_instance.getCredentialOffer(projectId, issuanceId);
     print(result);
 } catch (e) {
     print('Exception when calling OfferApi->getCredentialOffer: $e\n');
@@ -38,6 +39,7 @@ try {
 
 | Name           | Type       | Description                          | Notes |
 | -------------- | ---------- | ------------------------------------ | ----- |
+| **projectId**  | **String** | Affinidi project id                  |
 | **issuanceId** | **String** | issuanceId from credential_offer_uri |
 
 ### Return type

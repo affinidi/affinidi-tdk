@@ -17,9 +17,14 @@ class WellKnownApi {
   final ApiClient apiClient;
 
   /// Performs an HTTP 'GET /v1/{projectId}/.well-known/openid-credential-issuer' operation and returns the [Response].
-  Future<Response> getWellKnownOpenIdCredentialIssuerWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  Future<Response> getWellKnownOpenIdCredentialIssuerWithHttpInfo(String projectId,) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/{projectId}/.well-known/openid-credential-issuer';
+    final path = r'/v1/{projectId}/.well-known/openid-credential-issuer'
+      .replaceAll('{projectId}', projectId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -42,8 +47,12 @@ class WellKnownApi {
     );
   }
 
-  Future<WellKnownOpenIdCredentialIssuerResponse?> getWellKnownOpenIdCredentialIssuer() async {
-    final response = await getWellKnownOpenIdCredentialIssuerWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  Future<WellKnownOpenIdCredentialIssuerResponse?> getWellKnownOpenIdCredentialIssuer(String projectId,) async {
+    final response = await getWellKnownOpenIdCredentialIssuerWithHttpInfo(projectId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

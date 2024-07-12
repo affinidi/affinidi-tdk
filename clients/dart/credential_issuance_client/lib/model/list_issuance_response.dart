@@ -17,7 +17,7 @@ class ListIssuanceResponse {
   });
 
   /// The list of all issuances for the Project
-  List<Object> issuances;
+  List<ListIssuanceResponseIssuancesInner> issuances;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ListIssuanceResponse &&
@@ -56,7 +56,7 @@ class ListIssuanceResponse {
       }());
 
       return ListIssuanceResponse(
-        issuances: Object.listFromJson(json[r'issuances']),
+        issuances: ListIssuanceResponseIssuancesInner.listFromJson(json[r'issuances']),
       );
     }
     return null;

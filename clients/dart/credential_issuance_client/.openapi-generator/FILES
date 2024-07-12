@@ -22,6 +22,8 @@ doc/CredentialProof.md
 doc/CredentialResponse.md
 doc/CredentialResponseDeferred.md
 doc/CredentialResponseImmediate.md
+doc/CredentialResponseImmediateCNonceExpiresIn.md
+doc/CredentialResponseImmediateCredential.md
 doc/CredentialSubjectNotValidError.md
 doc/CredentialsApi.md
 doc/DeferredCredentialInput.md
@@ -40,6 +42,7 @@ doc/IssuanceConfigListResponse.md
 doc/IssuanceConfigMiniDto.md
 doc/IssuanceStateResponse.md
 doc/ListIssuanceResponse.md
+doc/ListIssuanceResponseIssuancesInner.md
 doc/NotFoundError.md
 doc/OfferApi.md
 doc/ProjectCredentialConfigExistError.md
@@ -86,6 +89,8 @@ lib/model/credential_proof.dart
 lib/model/credential_response.dart
 lib/model/credential_response_deferred.dart
 lib/model/credential_response_immediate.dart
+lib/model/credential_response_immediate_c_nonce_expires_in.dart
+lib/model/credential_response_immediate_credential.dart
 lib/model/credential_subject_not_valid_error.dart
 lib/model/deferred_credential_input.dart
 lib/model/generate_credentials400_response.dart
@@ -102,6 +107,7 @@ lib/model/issuance_config_list_response.dart
 lib/model/issuance_config_mini_dto.dart
 lib/model/issuance_state_response.dart
 lib/model/list_issuance_response.dart
+lib/model/list_issuance_response_issuances_inner.dart
 lib/model/not_found_error.dart
 lib/model/project_credential_config_exist_error.dart
 lib/model/project_credential_config_not_exist_error.dart
@@ -114,3 +120,6 @@ lib/model/update_issuance_config_input.dart
 lib/model/vc_claimed_error.dart
 lib/model/well_known_open_id_credential_issuer_response.dart
 pubspec.yaml
+test/credential_response_immediate_c_nonce_expires_in_test.dart
+test/credential_response_immediate_credential_test.dart
+test/list_issuance_response_issuances_inner_test.dart

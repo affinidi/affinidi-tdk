@@ -220,6 +220,10 @@ class ApiClient {
           return CredentialResponseDeferred.fromJson(value);
         case 'CredentialResponseImmediate':
           return CredentialResponseImmediate.fromJson(value);
+        case 'CredentialResponseImmediateCNonceExpiresIn':
+          return CredentialResponseImmediateCNonceExpiresIn.fromJson(value);
+        case 'CredentialResponseImmediateCredential':
+          return CredentialResponseImmediateCredential.fromJson(value);
         case 'CredentialSubjectNotValidError':
           return CredentialSubjectNotValidError.fromJson(value);
         case 'DeferredCredentialInput':
@@ -252,6 +256,8 @@ class ApiClient {
           return IssuanceStateResponse.fromJson(value);
         case 'ListIssuanceResponse':
           return ListIssuanceResponse.fromJson(value);
+        case 'ListIssuanceResponseIssuancesInner':
+          return ListIssuanceResponseIssuancesInner.fromJson(value);
         case 'NotFoundError':
           return NotFoundError.fromJson(value);
         case 'ProjectCredentialConfigExistError':
