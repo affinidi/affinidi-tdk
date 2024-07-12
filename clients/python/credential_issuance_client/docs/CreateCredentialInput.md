@@ -2,9 +2,9 @@
 
 ## Properties
 
-| Name                      | Type                                      | Description                                                                       | Notes |
-| ------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------- | ----- |
-| **credential_identifier** | **str**                                   | It is a String that identifies a Credential that is being requested to be issued. |
+| Name                      | Type                                      | Description                                                                       | Notes      |
+| ------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------- | ---------- |
+| **credential_identifier** | **str**                                   | It is a String that identifies a Credential that is being requested to be issued. | [optional] |
 | **proof**                 | [**CredentialProof**](CredentialProof.md) |                                                                                   |
 
 ## Example

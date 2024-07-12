@@ -13,23 +13,21 @@ part of openapi.api;
 class CredentialResponseImmediate {
   /// Returns a new [CredentialResponseImmediate] instance.
   CredentialResponseImmediate({
-    this.credential = const {},
+    required this.credential,
     required this.cNonce,
     required this.cNonceExpiresIn,
   });
 
-  /// Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
-  Map<String, Object> credential;
+  CredentialResponseImmediateCredential credential;
 
   /// String containing a nonce to be used when creating a proof of possession of the key proof
   String cNonce;
 
-  /// Lifetime in seconds of the c_nonce
-  int cNonceExpiresIn;
+  CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CredentialResponseImmediate &&
-    _deepEquality.equals(other.credential, credential) &&
+    other.credential == credential &&
     other.cNonce == cNonce &&
     other.cNonceExpiresIn == cNonceExpiresIn;
 
@@ -70,9 +68,9 @@ class CredentialResponseImmediate {
       }());
 
       return CredentialResponseImmediate(
-        credential: mapCastOfType<String, Object>(json, r'credential')!,
+        credential: CredentialResponseImmediateCredential.fromJson(json[r'credential'])!,
         cNonce: mapValueOfType<String>(json, r'c_nonce')!,
-        cNonceExpiresIn: mapValueOfType<int>(json, r'c_nonce_expires_in')!,
+        cNonceExpiresIn: CredentialResponseImmediateCNonceExpiresIn.fromJson(json[r'c_nonce_expires_in'])!,
       );
     }
     return null;

@@ -19,16 +19,18 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
+
+from pydantic import BaseModel, Field, StrictStr
+from affinidi_tdk_credential_issuance_client.models.credential_response_immediate_c_nonce_expires_in import CredentialResponseImmediateCNonceExpiresIn
+from affinidi_tdk_credential_issuance_client.models.credential_response_immediate_credential import CredentialResponseImmediateCredential
 
 class CredentialResponseImmediate(BaseModel):
     """
     CredentialResponseImmediate
     """
-    credential: Dict[str, Any] = Field(..., description="Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.")
+    credential: CredentialResponseImmediateCredential = Field(...)
     c_nonce: StrictStr = Field(..., description="String containing a nonce to be used when creating a proof of possession of the key proof")
-    c_nonce_expires_in: Union[StrictFloat, StrictInt] = Field(..., description="Lifetime in seconds of the c_nonce")
+    c_nonce_expires_in: CredentialResponseImmediateCNonceExpiresIn = Field(...)
     __properties = ["credential", "c_nonce", "c_nonce_expires_in"]
 
     class Config:
@@ -55,6 +57,12 @@ class CredentialResponseImmediate(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of credential
+        if self.credential:
+            _dict['credential'] = self.credential.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of c_nonce_expires_in
+        if self.c_nonce_expires_in:
+            _dict['c_nonce_expires_in'] = self.c_nonce_expires_in.to_dict()
         return _dict
 
     @classmethod
@@ -67,9 +75,9 @@ class CredentialResponseImmediate(BaseModel):
             return CredentialResponseImmediate.parse_obj(obj)
 
         _obj = CredentialResponseImmediate.parse_obj({
-            "credential": obj.get("credential"),
+            "credential": CredentialResponseImmediateCredential.from_dict(obj.get("credential")) if obj.get("credential") is not None else None,
             "c_nonce": obj.get("c_nonce"),
-            "c_nonce_expires_in": obj.get("c_nonce_expires_in")
+            "c_nonce_expires_in": CredentialResponseImmediateCNonceExpiresIn.from_dict(obj.get("c_nonce_expires_in")) if obj.get("c_nonce_expires_in") is not None else None
         })
         return _obj
 

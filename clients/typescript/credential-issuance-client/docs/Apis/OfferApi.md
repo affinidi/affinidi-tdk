@@ -10,7 +10,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **getCredentialOffer**
 
-> CredentialOfferResponse getCredentialOffer(issuanceId)
+> CredentialOfferResponse getCredentialOffer(projectId, issuanceId)
 
     Endpoint used to return Credential Offer details, used with &#x60;credential_offer_uri&#x60; response
 
@@ -18,6 +18,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 | Name           | Type       | Description                          | Notes             |
 | -------------- | ---------- | ------------------------------------ | ----------------- |
+| **projectId**  | **String** | Affinidi project id                  | [default to null] |
 | **issuanceId** | **String** | issuanceId from credential_offer_uri | [default to null] |
 
 ### Return type

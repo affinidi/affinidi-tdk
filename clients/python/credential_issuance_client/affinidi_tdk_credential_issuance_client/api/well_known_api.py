@@ -19,6 +19,9 @@ import warnings
 
 from pydantic import validate_arguments, ValidationError
 
+from typing_extensions import Annotated
+from pydantic import Field, StrictStr
+
 from affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response import WellKnownOpenIdCredentialIssuerResponse
 
 from affinidi_tdk_credential_issuance_client.api_client import ApiClient
@@ -42,15 +45,17 @@ class WellKnownApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_well_known_open_id_credential_issuer(self, **kwargs) -> WellKnownOpenIdCredentialIssuerResponse:  # noqa: E501
+    def get_well_known_open_id_credential_issuer(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], **kwargs) -> WellKnownOpenIdCredentialIssuerResponse:  # noqa: E501
         """get_well_known_open_id_credential_issuer  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_well_known_open_id_credential_issuer(async_req=True)
+        >>> thread = api.get_well_known_open_id_credential_issuer(project_id, async_req=True)
         >>> result = thread.get()
 
+        :param project_id: Affinidi project id (required)
+        :type project_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -66,18 +71,20 @@ class WellKnownApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_well_known_open_id_credential_issuer_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_well_known_open_id_credential_issuer_with_http_info(**kwargs)  # noqa: E501
+        return self.get_well_known_open_id_credential_issuer_with_http_info(project_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_well_known_open_id_credential_issuer_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_well_known_open_id_credential_issuer_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], **kwargs) -> ApiResponse:  # noqa: E501
         """get_well_known_open_id_credential_issuer  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_well_known_open_id_credential_issuer_with_http_info(async_req=True)
+        >>> thread = api.get_well_known_open_id_credential_issuer_with_http_info(project_id, async_req=True)
         >>> result = thread.get()
 
+        :param project_id: Affinidi project id (required)
+        :type project_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -106,6 +113,7 @@ class WellKnownApi:
         _params = locals()
 
         _all_params = [
+            'project_id'
         ]
         _all_params.extend(
             [
@@ -133,6 +141,9 @@ class WellKnownApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['project_id'] is not None:
+            _path_params['projectId'] = _params['project_id']
+
 
         # process the query parameters
         _query_params = []

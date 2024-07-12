@@ -8,7 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **get_well_known_open_id_credential_issuer**
 
-> WellKnownOpenIdCredentialIssuerResponse get_well_known_open_id_credential_issuer()
+> WellKnownOpenIdCredentialIssuerResponse get_well_known_open_id_credential_issuer(project_id)
 
 ### Example
 
@@ -31,9 +31,10 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_credential_issuance_client.WellKnownApi(api_client)
+    project_id = 'project_id_example' # str | Affinidi project id
 
     try:
-        api_response = api_instance.get_well_known_open_id_credential_issuer()
+        api_response = api_instance.get_well_known_open_id_credential_issuer(project_id)
         print("The response of WellKnownApi->get_well_known_open_id_credential_issuer:\n")
         pprint(api_response)
     except Exception as e:
@@ -42,7 +43,9 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name           | Type    | Description         | Notes |
+| -------------- | ------- | ------------------- | ----- |
+| **project_id** | **str** | Affinidi project id |
 
 ### Return type
 

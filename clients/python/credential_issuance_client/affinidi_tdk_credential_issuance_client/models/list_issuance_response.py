@@ -21,12 +21,13 @@ import json
 
 from typing import List
 from pydantic import BaseModel, Field, conlist
+from affinidi_tdk_credential_issuance_client.models.list_issuance_response_issuances_inner import ListIssuanceResponseIssuancesInner
 
 class ListIssuanceResponse(BaseModel):
     """
     ListIssuanceResponse
     """
-    issuances: conlist(object) = Field(..., description="The list of all issuances for the Project")
+    issuances: conlist(ListIssuanceResponseIssuancesInner) = Field(..., description="The list of all issuances for the Project")
     __properties = ["issuances"]
 
     class Config:
@@ -53,6 +54,13 @@ class ListIssuanceResponse(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in issuances (list)
+        _items = []
+        if self.issuances:
+            for _item in self.issuances:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['issuances'] = _items
         return _dict
 
     @classmethod
@@ -65,7 +73,7 @@ class ListIssuanceResponse(BaseModel):
             return ListIssuanceResponse.parse_obj(obj)
 
         _obj = ListIssuanceResponse.parse_obj({
-            "issuances": obj.get("issuances")
+            "issuances": [ListIssuanceResponseIssuancesInner.from_dict(_item) for _item in obj.get("issuances")] if obj.get("issuances") is not None else None
         })
         return _obj
 

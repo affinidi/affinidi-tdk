@@ -2,9 +2,9 @@
 
 ## Properties
 
-| Name          | Type             | Description                               | Notes |
-| ------------- | ---------------- | ----------------------------------------- | ----- |
-| **issuances** | **List[object]** | The list of all issuances for the Project |
+| Name          | Type                                                                                  | Description                               | Notes |
+| ------------- | ------------------------------------------------------------------------------------- | ----------------------------------------- | ----- |
+| **issuances** | [**List[ListIssuanceResponseIssuancesInner]**](ListIssuanceResponseIssuancesInner.md) | The list of all issuances for the Project |
 
 ## Example
 
