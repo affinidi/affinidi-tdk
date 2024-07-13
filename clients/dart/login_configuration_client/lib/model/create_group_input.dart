@@ -14,26 +14,58 @@ class CreateGroupInput {
   /// Returns a new [CreateGroupInput] instance.
   CreateGroupInput({
     required this.groupName,
+    this.name,
+    this.description,
   });
 
   /// name of the group for users, used as an id
   String groupName;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateGroupInput &&
-    other.groupName == groupName;
+    other.groupName == groupName &&
+    other.name == name &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (groupName.hashCode);
+    (groupName.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'CreateGroupInput[groupName=$groupName]';
+  String toString() => 'CreateGroupInput[groupName=$groupName, name=$name, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'groupName'] = this.groupName;
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
     return json;
   }
 
@@ -57,6 +89,8 @@ class CreateGroupInput {
 
       return CreateGroupInput(
         groupName: mapValueOfType<String>(json, r'groupName')!,
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;
