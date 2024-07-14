@@ -4,6 +4,8 @@
 
 | Name             | Type                                                  | Description | Notes      |
 | ---------------- | ----------------------------------------------------- | ----------- | ---------- |
+| **name**         | **str**                                               |             | [optional] |
+| **description**  | **str**                                               |             | [optional] |
 | **principal_id** | **str**                                               |             | [optional] |
 | **project_id**   | **str**                                               |             | [optional] |
 | **version**      | **str**                                               |             |
