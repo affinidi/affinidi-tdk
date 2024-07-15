@@ -51,6 +51,7 @@ part 'model/sign_credential400_response.dart';
 part 'model/sign_credential_input_dto.dart';
 part 'model/sign_credential_input_dto_unsigned_credential_params.dart';
 part 'model/sign_credential_result_dto.dart';
+part 'model/sign_credential_result_dto_signed_credential.dart';
 part 'model/sign_jwt_token.dart';
 part 'model/sign_jwt_token_ok.dart';
 part 'model/signing_failed_error.dart';
