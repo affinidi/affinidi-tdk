@@ -10,6 +10,7 @@
 | **enable_verification**       | **bool**                                                                        |                                          | [optional] |
 | **enable_consent_audit_log**  | **bool**                                                                        |                                          | [optional] |
 | **token_max_age**             | **float**                                                                       | token time to live in seconds            | [optional] |
+| **description**               | **str**                                                                         | The description of the config            | [optional] |
 | **client_metadata**           | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |                                          | [optional] |
 
 ## Example

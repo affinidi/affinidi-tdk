@@ -23,6 +23,7 @@ doc/SignCredential400Response.md
 doc/SignCredentialInputDto.md
 doc/SignCredentialInputDtoUnsignedCredentialParams.md
 doc/SignCredentialResultDto.md
+doc/SignCredentialResultDtoSignedCredential.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
 doc/SigningFailedError.md
@@ -62,6 +63,7 @@ lib/model/sign_credential400_response.dart
 lib/model/sign_credential_input_dto.dart
 lib/model/sign_credential_input_dto_unsigned_credential_params.dart
 lib/model/sign_credential_result_dto.dart
+lib/model/sign_credential_result_dto_signed_credential.dart
 lib/model/sign_jwt_token.dart
 lib/model/sign_jwt_token_ok.dart
 lib/model/signing_failed_error.dart
@@ -70,3 +72,4 @@ lib/model/wallet_dto.dart
 lib/model/wallet_dto_keys_inner.dart
 lib/model/wallets_list_dto.dart
 pubspec.yaml
+test/sign_credential_result_dto_signed_credential_test.dart

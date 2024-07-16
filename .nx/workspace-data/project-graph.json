@@ -1317,6 +1317,15 @@
         "hash": "18395649546124891387"
       }
     },
+    "npm:@affinidi-tdk/iota-client@1.9.0": {
+      "type": "npm",
+      "name": "npm:@affinidi-tdk/iota-client@1.9.0",
+      "data": {
+        "version": "1.9.0",
+        "packageName": "@affinidi-tdk/iota-client",
+        "hash": "sha512-MMszIMPCy/KFSEAU548IaqzeazF03oUf6EN+VctLdNeydJh2xmYahD2zKE3wbnNR1SCjuyoJIEq5NBzr7+anlg=="
+      }
+    },
     "npm:@ampproject/remapping": {
       "type": "npm",
       "name": "npm:@ampproject/remapping",
@@ -13745,6 +13754,23 @@
       {
         "source": "npm:minimatch@9.0.5",
         "target": "npm:brace-expansion",
+        "type": "static"
+      }
+    ],
+    "npm:@affinidi-tdk/iota-client@1.9.0": [
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
+        "target": "npm:axios-retry",
+        "type": "static"
+      },
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
+        "target": "npm:url",
         "type": "static"
       }
     ],

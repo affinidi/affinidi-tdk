@@ -19,15 +19,17 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, constr, validator
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 
 class CreateGroupInput(BaseModel):
     """
     CreateGroupInput
     """
     group_name: constr(strict=True, max_length=24) = Field(..., alias="groupName", description="name of the group for users, used as an id")
-    __properties = ["groupName"]
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    __properties = ["groupName", "name", "description"]
 
     @validator('group_name')
     def group_name_validate_regular_expression(cls, value):
@@ -72,7 +74,9 @@ class CreateGroupInput(BaseModel):
             return CreateGroupInput.parse_obj(obj)
 
         _obj = CreateGroupInput.parse_obj({
-            "group_name": obj.get("groupName")
+            "group_name": obj.get("groupName"),
+            "name": obj.get("name"),
+            "description": obj.get("description")
         })
         return _obj
 

@@ -222,11 +222,11 @@ class InvalidDidParameterErrorMessageEnum {
 
   String toJson() => value;
 
-  static const givenDidInFieldDoubleQuoteToDidDoubleQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod = InvalidDidParameterErrorMessageEnum._(r'Given did in field \"toDid\" is invalid. Use only resolvable form of did.');
+  static const givenDidInFieldQuoteToDidQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod = InvalidDidParameterErrorMessageEnum._(r'Given did in field 'toDid' is invalid. Use only resolvable form of did.');
 
   /// List of all possible values in this [enum][InvalidDidParameterErrorMessageEnum].
   static const values = <InvalidDidParameterErrorMessageEnum>[
-    givenDidInFieldDoubleQuoteToDidDoubleQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod,
+    givenDidInFieldQuoteToDidQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod,
   ];
 
   static InvalidDidParameterErrorMessageEnum? fromJson(dynamic value) => InvalidDidParameterErrorMessageEnumTypeTransformer().decode(value);
@@ -265,7 +265,7 @@ class InvalidDidParameterErrorMessageEnumTypeTransformer {
   InvalidDidParameterErrorMessageEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Given did in field \"toDid\" is invalid. Use only resolvable form of did.': return InvalidDidParameterErrorMessageEnum.givenDidInFieldDoubleQuoteToDidDoubleQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod;
+        case r'Given did in field 'toDid' is invalid. Use only resolvable form of did.': return InvalidDidParameterErrorMessageEnum.givenDidInFieldQuoteToDidQuoteIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
