@@ -125,7 +125,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_credential_response_immediate_c_nonce_expires_in.py
-test/test_credential_response_immediate_credential.py
-test/test_list_issuance_response_issuances_inner.py
 tox.ini
