@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.0...@affinidi-tdk/iota-browser-v1.2.1) (2024-07-17)
+
+
+### Bug Fixes
+
+* popup mode ([#136](https://github.com/affinidi/affinidi-tdk/issues/136)) ([0f27252](https://github.com/affinidi/affinidi-tdk/commit/0f2725237009f44585465e5bdcc6bbe55dead0fa))
+
 # [1.2.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.1.2...@affinidi-tdk/iota-browser-v1.2.0) (2024-07-12)
 
 
