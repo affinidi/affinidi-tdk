@@ -17,7 +17,7 @@ export class VaultHandler {
     Logger.debug('Opening vault', params)
     const { link, mode = OpenMode.NewTab } = params
     let windowFeatures = ''
-    if (mode === OpenMode.Popup) {
+    if (mode == OpenMode.Popup) {
       const width = 450
       const height = 800
       const left = (window.screen.width - width) / 2
