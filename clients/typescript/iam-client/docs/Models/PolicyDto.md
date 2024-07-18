@@ -4,6 +4,8 @@
 
 | Name            | Type                              | Description | Notes                        |
 | --------------- | --------------------------------- | ----------- | ---------------------------- |
+| **name**        | **String**                        |             | [optional] [default to null] |
+| **description** | **String**                        |             | [optional] [default to null] |
 | **principalId** | **String**                        |             | [optional] [default to null] |
 | **projectId**   | **String**                        |             | [optional] [default to null] |
 | **version**     | **String**                        |             | [default to null]            |
