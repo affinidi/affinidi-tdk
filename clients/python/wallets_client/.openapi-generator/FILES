@@ -31,6 +31,7 @@ affinidi_tdk_wallets_client/models/sign_credential400_response.py
 affinidi_tdk_wallets_client/models/sign_credential_input_dto.py
 affinidi_tdk_wallets_client/models/sign_credential_input_dto_unsigned_credential_params.py
 affinidi_tdk_wallets_client/models/sign_credential_result_dto.py
+affinidi_tdk_wallets_client/models/sign_credential_result_dto_signed_credential.py
 affinidi_tdk_wallets_client/models/sign_jwt_token.py
 affinidi_tdk_wallets_client/models/sign_jwt_token_ok.py
 affinidi_tdk_wallets_client/models/signing_failed_error.py
@@ -61,6 +62,7 @@ docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
 docs/SignCredentialInputDtoUnsignedCredentialParams.md
 docs/SignCredentialResultDto.md
+docs/SignCredentialResultDtoSignedCredential.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
 docs/SigningFailedError.md
@@ -75,4 +77,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_sign_credential_result_dto_signed_credential.py
 tox.ini

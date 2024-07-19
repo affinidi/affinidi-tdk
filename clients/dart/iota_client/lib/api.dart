@@ -44,7 +44,6 @@ part 'model/cors_aws_exchange_credentials_ok.dart';
 part 'model/cors_iot_oidc4vpcallback_ok.dart';
 part 'model/create_iota_configuration_input.dart';
 part 'model/create_pex_query_input.dart';
-part 'model/demo_wbx.dart';
 part 'model/get_iota_configuration_meta_data_ok.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_parameter_error_details_inner.dart';

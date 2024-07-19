@@ -362,25 +362,6 @@ export interface CreatePexQueryInput {
 /**
  *
  * @export
- * @interface DemoWbx
- */
-export interface DemoWbx {
-  /**
-   *
-   * @type {string}
-   * @memberof DemoWbx
-   */
-  topicName: string
-  /**
-   *
-   * @type {object}
-   * @memberof DemoWbx
-   */
-  event: object
-}
-/**
- *
- * @export
  * @interface GetIotaConfigurationMetaDataOK
  */
 export interface GetIotaConfigurationMetaDataOK {
@@ -629,6 +610,12 @@ export interface ListPexQueriesOK {
    * @memberof ListPexQueriesOK
    */
   pexQueries: Array<PexQueryDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ListPexQueriesOK
+   */
+  lastEvaluatedKey?: string
 }
 /**
  *
@@ -1012,6 +999,12 @@ export interface UpdateConfigurationByIdInput {
    * @memberof UpdateConfigurationByIdInput
    */
   tokenMaxAge?: number
+  /**
+   * The description of the config
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  description?: string
   /**
    *
    * @type {IotaConfigurationDtoClientMetadata}
@@ -2571,11 +2564,15 @@ export const PexQueryApiAxiosParamCreator = function (
     /**
      *
      * @param {string} configurationId iotaConfiguration Id
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPexQueries: async (
       configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'configurationId' is not null or undefined
@@ -2606,6 +2603,14 @@ export const PexQueryApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2803,11 +2808,15 @@ export const PexQueryApiFp = function (configuration?: Configuration) {
     /**
      *
      * @param {string} configurationId iotaConfiguration Id
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listPexQueries(
       configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -2817,6 +2826,8 @@ export const PexQueryApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.listPexQueries(
         configurationId,
+        limit,
+        exclusiveStartKey,
         options,
       )
       const index = configuration?.serverIndex ?? 0
@@ -2929,15 +2940,19 @@ export const PexQueryApiFactory = function (
     /**
      *
      * @param {string} configurationId iotaConfiguration Id
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPexQueries(
       configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: any,
     ): AxiosPromise<ListPexQueriesOK> {
       return localVarFp
-        .listPexQueries(configurationId, options)
+        .listPexQueries(configurationId, limit, exclusiveStartKey, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3030,16 +3045,20 @@ export class PexQueryApi extends BaseAPI {
   /**
    *
    * @param {string} configurationId iotaConfiguration Id
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PexQueryApi
    */
   public listPexQueries(
     configurationId: string,
+    limit?: number,
+    exclusiveStartKey?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return PexQueryApiFp(this.configuration)
-      .listPexQueries(configurationId, options)
+      .listPexQueries(configurationId, limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

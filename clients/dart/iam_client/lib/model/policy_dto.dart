@@ -13,11 +13,29 @@ part of openapi.api;
 class PolicyDto {
   /// Returns a new [PolicyDto] instance.
   PolicyDto({
+    this.name,
+    this.description,
     this.principalId,
     this.projectId,
     required this.version,
     this.statement = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -41,6 +59,8 @@ class PolicyDto {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PolicyDto &&
+    other.name == name &&
+    other.description == description &&
     other.principalId == principalId &&
     other.projectId == projectId &&
     other.version == version &&
@@ -49,16 +69,28 @@ class PolicyDto {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (principalId == null ? 0 : principalId!.hashCode) +
     (projectId == null ? 0 : projectId!.hashCode) +
     (version.hashCode) +
     (statement.hashCode);
 
   @override
-  String toString() => 'PolicyDto[principalId=$principalId, projectId=$projectId, version=$version, statement=$statement]';
+  String toString() => 'PolicyDto[name=$name, description=$description, principalId=$principalId, projectId=$projectId, version=$version, statement=$statement]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
     if (this.principalId != null) {
       json[r'principalId'] = this.principalId;
     } else {
@@ -93,6 +125,8 @@ class PolicyDto {
       }());
 
       return PolicyDto(
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
         principalId: mapValueOfType<String>(json, r'principalId'),
         projectId: mapValueOfType<String>(json, r'projectId'),
         version: mapValueOfType<String>(json, r'version')!,
