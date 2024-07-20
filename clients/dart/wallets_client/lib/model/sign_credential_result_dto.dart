@@ -16,7 +16,7 @@ class SignCredentialResultDto {
     required this.signedCredential,
   });
 
-  Object signedCredential;
+  SignCredentialResultDtoSignedCredential signedCredential;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SignCredentialResultDto &&
@@ -55,7 +55,7 @@ class SignCredentialResultDto {
       }());
 
       return SignCredentialResultDto(
-        signedCredential: mapValueOfType<Object>(json, r'signedCredential')!,
+        signedCredential: SignCredentialResultDtoSignedCredential.fromJson(json[r'signedCredential'])!,
       );
     }
     return null;

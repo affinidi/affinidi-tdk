@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, constr, validator
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 from affinidi_tdk_iam_client.models.token_authentication_method_dto import TokenAuthenticationMethodDto
 
 class CreateTokenInput(BaseModel):
@@ -29,7 +29,8 @@ class CreateTokenInput(BaseModel):
     """
     name: constr(strict=True) = Field(...)
     authentication_method: TokenAuthenticationMethodDto = Field(..., alias="authenticationMethod")
-    __properties = ["name", "authenticationMethod"]
+    description: Optional[StrictStr] = None
+    __properties = ["name", "authenticationMethod", "description"]
 
     @validator('name')
     def name_validate_regular_expression(cls, value):
@@ -78,7 +79,8 @@ class CreateTokenInput(BaseModel):
 
         _obj = CreateTokenInput.parse_obj({
             "name": obj.get("name"),
-            "authentication_method": TokenAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None
+            "authentication_method": TokenAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None,
+            "description": obj.get("description")
         })
         return _obj
 

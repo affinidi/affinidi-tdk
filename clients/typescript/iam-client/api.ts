@@ -286,6 +286,12 @@ export interface CreateTokenInput {
    * @memberof CreateTokenInput
    */
   authenticationMethod: TokenAuthenticationMethodDto
+  /**
+   *
+   * @type {string}
+   * @memberof CreateTokenInput
+   */
+  description?: string
 }
 /**
  *
@@ -546,6 +552,18 @@ export type NotFoundErrorHttpStatusCodeEnum =
  * @interface PolicyDto
  */
 export interface PolicyDto {
+  /**
+   *
+   * @type {string}
+   * @memberof PolicyDto
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof PolicyDto
+   */
+  description?: string
   /**
    *
    * @type {string}

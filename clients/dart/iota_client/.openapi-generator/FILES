@@ -15,7 +15,6 @@ doc/CorsIotOidc4vpcallbackOK.md
 doc/CreateIotaConfigurationInput.md
 doc/CreatePexQueryInput.md
 doc/DefaultApi.md
-doc/DemoWbx.md
 doc/GetIotaConfigurationMetaDataOK.md
 doc/InvalidParameterError.md
 doc/InvalidParameterErrorDetailsInner.md
@@ -62,7 +61,6 @@ lib/model/cors_aws_exchange_credentials_ok.dart
 lib/model/cors_iot_oidc4vpcallback_ok.dart
 lib/model/create_iota_configuration_input.dart
 lib/model/create_pex_query_input.dart
-lib/model/demo_wbx.dart
 lib/model/get_iota_configuration_meta_data_ok.dart
 lib/model/invalid_parameter_error.dart
 lib/model/invalid_parameter_error_details_inner.dart

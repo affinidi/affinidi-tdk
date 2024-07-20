@@ -4,9 +4,11 @@ input used to add a user to a group
 
 ## Properties
 
-| Name        | Type    | Description                   | Notes |
-| ----------- | ------- | ----------------------------- | ----- |
-| **user_id** | **str** | Unique identifier of the user |
+| Name            | Type    | Description                   | Notes      |
+| --------------- | ------- | ----------------------------- | ---------- |
+| **name**        | **str** |                               | [optional] |
+| **description** | **str** |                               | [optional] |
+| **user_id**     | **str** | Unique identifier of the user |
 
 ## Example
 

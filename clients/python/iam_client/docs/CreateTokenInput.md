@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name                      | Type                                                                | Description | Notes |
-| ------------------------- | ------------------------------------------------------------------- | ----------- | ----- |
+| Name                      | Type                                                                | Description | Notes      |
+| ------------------------- | ------------------------------------------------------------------- | ----------- | ---------- |
 | **name**                  | **str**                                                             |             |
 | **authentication_method** | [**TokenAuthenticationMethodDto**](TokenAuthenticationMethodDto.md) |             |
+| **description**           | **str**                                                             |             | [optional] |
 
 ## Example
 
