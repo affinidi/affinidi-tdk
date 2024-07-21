@@ -259,7 +259,7 @@ export type InvalidDidParameterErrorNameEnum =
   (typeof InvalidDidParameterErrorNameEnum)[keyof typeof InvalidDidParameterErrorNameEnum]
 export const InvalidDidParameterErrorMessageEnum = {
   GivenDidInFieldToDidIsInvalidUseOnlyResolvableFormOfDid:
-    'Given did in field "toDid" is invalid. Use only resolvable form of did.',
+    "Given did in field 'toDid' is invalid. Use only resolvable form of did.",
 } as const
 
 export type InvalidDidParameterErrorMessageEnum =
@@ -608,11 +608,26 @@ export interface SignCredentialInputDto {
   revocable?: boolean
   /**
    *
+   * @type {string}
+   * @memberof SignCredentialInputDto
+   */
+  credentialFormat?: SignCredentialInputDtoCredentialFormatEnum
+  /**
+   *
    * @type {SignCredentialInputDtoUnsignedCredentialParams}
    * @memberof SignCredentialInputDto
    */
   unsignedCredentialParams?: SignCredentialInputDtoUnsignedCredentialParams
 }
+
+export const SignCredentialInputDtoCredentialFormatEnum = {
+  LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
+} as const
+
+export type SignCredentialInputDtoCredentialFormatEnum =
+  (typeof SignCredentialInputDtoCredentialFormatEnum)[keyof typeof SignCredentialInputDtoCredentialFormatEnum]
+
 /**
  * unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \"unsignedCredential\" is given
  * @export
@@ -664,11 +679,17 @@ export interface SignCredentialInputDtoUnsignedCredentialParams {
 export interface SignCredentialResultDto {
   /**
    *
-   * @type {object}
+   * @type {SignCredentialResultDtoSignedCredential}
    * @memberof SignCredentialResultDto
    */
-  signedCredential: object
+  signedCredential: SignCredentialResultDtoSignedCredential
 }
+/**
+ * @type SignCredentialResultDtoSignedCredential
+ * @export
+ */
+export type SignCredentialResultDtoSignedCredential = object | string
+
 /**
  * DTO contains parts of JWT to be signed
  * @export
