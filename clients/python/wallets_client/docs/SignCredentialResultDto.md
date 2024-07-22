@@ -4,9 +4,9 @@ DTO contains signed credential
 
 ## Properties
 
-| Name                  | Type       | Description | Notes |
-| --------------------- | ---------- | ----------- | ----- |
-| **signed_credential** | **object** |             |
+| Name                  | Type                                                                                      | Description | Notes |
+| --------------------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **signed_credential** | [**SignCredentialResultDtoSignedCredential**](SignCredentialResultDtoSignedCredential.md) |             |
 
 ## Example
 

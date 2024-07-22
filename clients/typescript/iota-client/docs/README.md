@@ -37,7 +37,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [CorsIotOidc4vpcallbackOK](./Models/CorsIotOidc4vpcallbackOK.md)
 - [CreateIotaConfigurationInput](./Models/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](./Models/CreatePexQueryInput.md)
-- [DemoWbx](./Models/DemoWbx.md)
 - [GetIotaConfigurationMetaDataOK](./Models/GetIotaConfigurationMetaDataOK.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)
 - [InvalidParameterError_details_inner](./Models/InvalidParameterError_details_inner.md)

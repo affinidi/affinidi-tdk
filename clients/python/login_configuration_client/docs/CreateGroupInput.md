@@ -2,9 +2,11 @@
 
 ## Properties
 
-| Name           | Type    | Description                                | Notes |
-| -------------- | ------- | ------------------------------------------ | ----- |
-| **group_name** | **str** | name of the group for users, used as an id |
+| Name            | Type    | Description                                | Notes      |
+| --------------- | ------- | ------------------------------------------ | ---------- |
+| **group_name**  | **str** | name of the group for users, used as an id |
+| **name**        | **str** |                                            | [optional] |
+| **description** | **str** |                                            | [optional] |
 
 ## Example
 

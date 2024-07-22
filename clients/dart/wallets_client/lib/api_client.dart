@@ -220,6 +220,8 @@ class ApiClient {
           return SignCredentialInputDtoUnsignedCredentialParams.fromJson(value);
         case 'SignCredentialResultDto':
           return SignCredentialResultDto.fromJson(value);
+        case 'SignCredentialResultDtoSignedCredential':
+          return SignCredentialResultDtoSignedCredential.fromJson(value);
         case 'SignJwtToken':
           return SignJwtToken.fromJson(value);
         case 'SignJwtTokenOK':
