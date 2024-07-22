@@ -95,7 +95,7 @@ When you create a developer's account with us, we will issue you your private lo
 Affinidi collects usage data to improve our products and services. For information on what data we collect and how we use your data, please refer to our [Privacy Notice](https://www.affinidi.com/privacy-notice).
 
 _Disclaimer:
-Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi TDK, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
+Please note that this FAQ is provided for informational purposes only and is not to be considered a legal document. For the legal terms and conditions governing your use of the Affinidi Services, please refer to our [Terms and Conditions](https://www.affinidi.com/terms-conditions)._
 
 ## Contributors ✨
 
