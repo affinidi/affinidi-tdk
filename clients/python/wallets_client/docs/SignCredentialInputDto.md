@@ -8,6 +8,7 @@ DTO contains params to sign credential
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------- |
 | **unsigned_credential**        | **object**                                                                                              | Unsigned Credential. If provided \&quot;unsignedCredentialParams\&quot; is not accepted | [optional] |
 | **revocable**                  | **bool**                                                                                                |                                                                                         | [optional] |
+| **credential_format**          | **str**                                                                                                 |                                                                                         | [optional] |
 | **unsigned_credential_params** | [**SignCredentialInputDtoUnsignedCredentialParams**](SignCredentialInputDtoUnsignedCredentialParams.md) |                                                                                         | [optional] |
 
 ## Example

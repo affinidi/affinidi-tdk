@@ -19,15 +19,17 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
 class AddUserToGroupInput(BaseModel):
     """
     input used to add a user to a group  # noqa: E501
     """
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     user_id: StrictStr = Field(..., alias="userId", description="Unique identifier of the user")
-    __properties = ["userId"]
+    __properties = ["name", "description", "userId"]
 
     class Config:
         """Pydantic configuration"""
@@ -65,6 +67,8 @@ class AddUserToGroupInput(BaseModel):
             return AddUserToGroupInput.parse_obj(obj)
 
         _obj = AddUserToGroupInput.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "user_id": obj.get("userId")
         })
         return _obj

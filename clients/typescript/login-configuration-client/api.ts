@@ -104,6 +104,18 @@ export type ActionForbiddenErrorHttpStatusCodeEnum =
  */
 export interface AddUserToGroupInput {
   /**
+   *
+   * @type {string}
+   * @memberof AddUserToGroupInput
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof AddUserToGroupInput
+   */
+  description?: string
+  /**
    * Unique identifier of the user
    * @type {string}
    * @memberof AddUserToGroupInput
@@ -135,6 +147,18 @@ export interface BlockedUsers {
  * @interface BlockedUsersInput
  */
 export interface BlockedUsersInput {
+  /**
+   *
+   * @type {string}
+   * @memberof BlockedUsersInput
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof BlockedUsersInput
+   */
+  description?: string
   /**
    *
    * @type {Array<string>}
@@ -193,6 +217,18 @@ export interface CreateGroupInput {
    * @memberof CreateGroupInput
    */
   groupName: string
+  /**
+   *
+   * @type {string}
+   * @memberof CreateGroupInput
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof CreateGroupInput
+   */
+  description?: string
 }
 /**
  *
@@ -263,6 +299,12 @@ export interface CreateLoginConfigurationInput {
    * @memberof CreateLoginConfigurationInput
    */
   name: string
+  /**
+   *
+   * @type {string}
+   * @memberof CreateLoginConfigurationInput
+   */
+  description?: string
   /**
    * OAuth 2.0 Redirect URIs
    * @type {Array<string>}

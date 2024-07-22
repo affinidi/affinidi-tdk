@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, conlist
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_iota_client.models.pex_query_dto import PexQueryDto
 
 class ListPexQueriesOK(BaseModel):
@@ -28,7 +28,8 @@ class ListPexQueriesOK(BaseModel):
     ListPexQueriesOK
     """
     pex_queries: conlist(PexQueryDto) = Field(..., alias="pexQueries")
-    __properties = ["pexQueries"]
+    last_evaluated_key: Optional[StrictStr] = Field(None, alias="lastEvaluatedKey")
+    __properties = ["pexQueries", "lastEvaluatedKey"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +74,8 @@ class ListPexQueriesOK(BaseModel):
             return ListPexQueriesOK.parse_obj(obj)
 
         _obj = ListPexQueriesOK.parse_obj({
-            "pex_queries": [PexQueryDto.from_dict(_item) for _item in obj.get("pexQueries")] if obj.get("pexQueries") is not None else None
+            "pex_queries": [PexQueryDto.from_dict(_item) for _item in obj.get("pexQueries")] if obj.get("pexQueries") is not None else None,
+            "last_evaluated_key": obj.get("lastEvaluatedKey")
         })
         return _obj
 

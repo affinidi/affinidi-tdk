@@ -2,9 +2,11 @@
 
 ## Properties
 
-| Name         | Type          | Description | Notes |
-| ------------ | ------------- | ----------- | ----- |
-| **user_ids** | **List[str]** |             |
+| Name            | Type          | Description | Notes      |
+| --------------- | ------------- | ----------- | ---------- |
+| **name**        | **str**       |             | [optional] |
+| **description** | **str**       |             | [optional] |
+| **user_ids**    | **List[str]** |             |
 
 ## Example
 

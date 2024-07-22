@@ -65,7 +65,6 @@ const authProvider = new AuthProvider({
   tokenId,
   passphrase,
   privateKey,
-  publicKey,
   projectId,
   tokenEndpoint,
 })

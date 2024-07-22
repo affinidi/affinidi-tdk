@@ -27,11 +27,13 @@ class PolicyDto(BaseModel):
     """
     PolicyDto
     """
+    name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     principal_id: Optional[StrictStr] = Field(None, alias="principalId")
     project_id: Optional[StrictStr] = Field(None, alias="projectId")
     version: StrictStr = Field(...)
     statement: conlist(PolicyStatementDto) = Field(...)
-    __properties = ["principalId", "projectId", "version", "statement"]
+    __properties = ["name", "description", "principalId", "projectId", "version", "statement"]
 
     class Config:
         """Pydantic configuration"""
@@ -76,6 +78,8 @@ class PolicyDto(BaseModel):
             return PolicyDto.parse_obj(obj)
 
         _obj = PolicyDto.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "principal_id": obj.get("principalId"),
             "project_id": obj.get("projectId"),
             "version": obj.get("version"),

@@ -14,25 +14,41 @@ class ListPexQueriesOK {
   /// Returns a new [ListPexQueriesOK] instance.
   ListPexQueriesOK({
     this.pexQueries = const [],
+    this.lastEvaluatedKey,
   });
 
   List<PexQueryDto> pexQueries;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastEvaluatedKey;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ListPexQueriesOK &&
-    _deepEquality.equals(other.pexQueries, pexQueries);
+    _deepEquality.equals(other.pexQueries, pexQueries) &&
+    other.lastEvaluatedKey == lastEvaluatedKey;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (pexQueries.hashCode);
+    (pexQueries.hashCode) +
+    (lastEvaluatedKey == null ? 0 : lastEvaluatedKey!.hashCode);
 
   @override
-  String toString() => 'ListPexQueriesOK[pexQueries=$pexQueries]';
+  String toString() => 'ListPexQueriesOK[pexQueries=$pexQueries, lastEvaluatedKey=$lastEvaluatedKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'pexQueries'] = this.pexQueries;
+    if (this.lastEvaluatedKey != null) {
+      json[r'lastEvaluatedKey'] = this.lastEvaluatedKey;
+    } else {
+      json[r'lastEvaluatedKey'] = null;
+    }
     return json;
   }
 
@@ -56,6 +72,7 @@ class ListPexQueriesOK {
 
       return ListPexQueriesOK(
         pexQueries: PexQueryDto.listFromJson(json[r'pexQueries']),
+        lastEvaluatedKey: mapValueOfType<String>(json, r'lastEvaluatedKey'),
       );
     }
     return null;

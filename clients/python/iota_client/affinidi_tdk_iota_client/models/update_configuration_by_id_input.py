@@ -33,8 +33,9 @@ class UpdateConfigurationByIdInput(BaseModel):
     enable_verification: Optional[StrictBool] = Field(None, alias="enableVerification")
     enable_consent_audit_log: Optional[StrictBool] = Field(None, alias="enableConsentAuditLog")
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="tokenMaxAge", description="token time to live in seconds")
+    description: Optional[StrictStr] = Field(None, description="The description of the config")
     client_metadata: Optional[IotaConfigurationDtoClientMetadata] = Field(None, alias="clientMetadata")
-    __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata"]
+    __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "description", "clientMetadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -81,6 +82,7 @@ class UpdateConfigurationByIdInput(BaseModel):
             "enable_verification": obj.get("enableVerification"),
             "enable_consent_audit_log": obj.get("enableConsentAuditLog"),
             "token_max_age": obj.get("tokenMaxAge"),
+            "description": obj.get("description"),
             "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None
         })
         return _obj

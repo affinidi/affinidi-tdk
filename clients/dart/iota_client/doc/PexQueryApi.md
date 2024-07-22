@@ -158,7 +158,7 @@ try {
 
 # **listPexQueries**
 
-> ListPexQueriesOK listPexQueries(configurationId)
+> ListPexQueriesOK listPexQueries(configurationId, limit, exclusiveStartKey)
 
 ### Example
 
@@ -171,9 +171,11 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 final api_instance = PexQueryApi();
 final configurationId = configurationId_example; // String | iotaConfiguration Id
+final limit = 56; // int | Maximum number of records to fetch in a list
+final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listPexQueries(configurationId);
+    final result = api_instance.listPexQueries(configurationId, limit, exclusiveStartKey);
     print(result);
 } catch (e) {
     print('Exception when calling PexQueryApi->listPexQueries: $e\n');
@@ -182,9 +184,11 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description          | Notes |
-| ------------------- | ---------- | -------------------- | ----- |
-| **configurationId** | **String** | iotaConfiguration Id |
+| Name                  | Type       | Description                                                                                                                                                    | Notes      |
+| --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **configurationId**   | **String** | iotaConfiguration Id                                                                                                                                           |
+| **limit**             | **int**    | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
+| **exclusiveStartKey** | **String** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |
 
 ### Return type
 
