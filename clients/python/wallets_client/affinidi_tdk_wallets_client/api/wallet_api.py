@@ -480,16 +480,18 @@ class WalletApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_wallets(self, **kwargs) -> WalletsListDto:  # noqa: E501
+    def list_wallets(self, did_type : Optional[StrictStr] = None, **kwargs) -> WalletsListDto:  # noqa: E501
         """list_wallets  # noqa: E501
 
         lists all wallets  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_wallets(async_req=True)
+        >>> thread = api.list_wallets(did_type, async_req=True)
         >>> result = thread.get()
 
+        :param did_type:
+        :type did_type: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -505,19 +507,21 @@ class WalletApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_wallets_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_wallets_with_http_info(**kwargs)  # noqa: E501
+        return self.list_wallets_with_http_info(did_type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_wallets_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_wallets_with_http_info(self, did_type : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_wallets  # noqa: E501
 
         lists all wallets  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_wallets_with_http_info(async_req=True)
+        >>> thread = api.list_wallets_with_http_info(did_type, async_req=True)
         >>> result = thread.get()
 
+        :param did_type:
+        :type did_type: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -546,6 +550,7 @@ class WalletApi:
         _params = locals()
 
         _all_params = [
+            'did_type'
         ]
         _all_params.extend(
             [
@@ -576,6 +581,9 @@ class WalletApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('did_type') is not None:  # noqa: E501
+            _query_params.append(('didType', _params['did_type']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

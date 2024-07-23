@@ -19,6 +19,7 @@ class UpdateConfigurationByIdInput {
     this.enableVerification,
     this.enableConsentAuditLog,
     this.tokenMaxAge,
+    this.description,
     this.clientMetadata,
   });
 
@@ -74,6 +75,15 @@ class UpdateConfigurationByIdInput {
   ///
   int? tokenMaxAge;
 
+  /// The description of the config
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -90,6 +100,7 @@ class UpdateConfigurationByIdInput {
     other.enableVerification == enableVerification &&
     other.enableConsentAuditLog == enableConsentAuditLog &&
     other.tokenMaxAge == tokenMaxAge &&
+    other.description == description &&
     other.clientMetadata == clientMetadata;
 
   @override
@@ -101,10 +112,11 @@ class UpdateConfigurationByIdInput {
     (enableVerification == null ? 0 : enableVerification!.hashCode) +
     (enableConsentAuditLog == null ? 0 : enableConsentAuditLog!.hashCode) +
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (clientMetadata == null ? 0 : clientMetadata!.hashCode);
 
   @override
-  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata]';
+  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, description=$description, clientMetadata=$clientMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -137,6 +149,11 @@ class UpdateConfigurationByIdInput {
       json[r'tokenMaxAge'] = this.tokenMaxAge;
     } else {
       json[r'tokenMaxAge'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
     }
     if (this.clientMetadata != null) {
       json[r'clientMetadata'] = this.clientMetadata;
@@ -171,6 +188,7 @@ class UpdateConfigurationByIdInput {
         enableVerification: mapValueOfType<bool>(json, r'enableVerification'),
         enableConsentAuditLog: mapValueOfType<bool>(json, r'enableConsentAuditLog'),
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
+        description: mapValueOfType<String>(json, r'description'),
         clientMetadata: IotaConfigurationDtoClientMetadata.fromJson(json[r'clientMetadata']),
       );
     }

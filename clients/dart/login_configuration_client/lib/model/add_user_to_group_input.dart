@@ -13,26 +13,58 @@ part of openapi.api;
 class AddUserToGroupInput {
   /// Returns a new [AddUserToGroupInput] instance.
   AddUserToGroupInput({
+    this.name,
+    this.description,
     required this.userId,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// Unique identifier of the user
   String userId;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AddUserToGroupInput &&
+    other.name == name &&
+    other.description == description &&
     other.userId == userId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (userId.hashCode);
 
   @override
-  String toString() => 'AddUserToGroupInput[userId=$userId]';
+  String toString() => 'AddUserToGroupInput[name=$name, description=$description, userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'userId'] = this.userId;
     return json;
   }
@@ -56,6 +88,8 @@ class AddUserToGroupInput {
       }());
 
       return AddUserToGroupInput(
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
         userId: mapValueOfType<String>(json, r'userId')!,
       );
     }

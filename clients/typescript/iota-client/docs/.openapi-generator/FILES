@@ -13,7 +13,6 @@ Models/CorsAwsExchangeCredentialsOK.md
 Models/CorsIotOidc4vpcallbackOK.md
 Models/CreateIotaConfigurationInput.md
 Models/CreatePexQueryInput.md
-Models/DemoWbx.md
 Models/GetIotaConfigurationMetaDataOK.md
 Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md

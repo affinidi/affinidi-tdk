@@ -13,25 +13,57 @@ part of openapi.api;
 class BlockedUsersInput {
   /// Returns a new [BlockedUsersInput] instance.
   BlockedUsersInput({
+    this.name,
+    this.description,
     this.userIds = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   List<String> userIds;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BlockedUsersInput &&
+    other.name == name &&
+    other.description == description &&
     _deepEquality.equals(other.userIds, userIds);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (name == null ? 0 : name!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (userIds.hashCode);
 
   @override
-  String toString() => 'BlockedUsersInput[userIds=$userIds]';
+  String toString() => 'BlockedUsersInput[name=$name, description=$description, userIds=$userIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'userIds'] = this.userIds;
     return json;
   }
@@ -55,6 +87,8 @@ class BlockedUsersInput {
       }());
 
       return BlockedUsersInput(
+        name: mapValueOfType<String>(json, r'name'),
+        description: mapValueOfType<String>(json, r'description'),
         userIds: json[r'userIds'] is Iterable
             ? (json[r'userIds'] as Iterable).cast<String>().toList(growable: false)
             : const [],
