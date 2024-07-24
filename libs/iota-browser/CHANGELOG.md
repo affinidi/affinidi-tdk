@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.1...@affinidi-tdk/iota-browser-v1.2.2) (2024-07-24)
+
+
+### Bug Fixes
+
+* allow specifying the vault url via local storage flag for internal use ([#148](https://github.com/affinidi/affinidi-tdk/issues/148)) ([c8d9553](https://github.com/affinidi/affinidi-tdk/commit/c8d9553c126ed3165740bf9d7e2eaf7018681358))
+
 ## [1.2.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.0...@affinidi-tdk/iota-browser-v1.2.1) (2024-07-17)
 
 
