@@ -19,6 +19,18 @@ export type OpenVaultParams = {
   mode?: OpenMode
 }
 
+function buildShareLinkInternal(
+  url: string,
+  request: string,
+  client_id: string,
+): string {
+  const params = new URLSearchParams()
+  params.append('request', request)
+  params.append('client_id', client_id)
+  const queryString = params.toString()
+  return `${url}/login?${queryString}`
+}
+
 export class IotaRequest {
   private session: Session
   correlationId: string
@@ -53,6 +65,16 @@ export class IotaRequest {
   }
 
   getSuggestedLink(): string {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const vaultUrl = window.localStorage.getItem('affinidiVaultUrl')
+      if (vaultUrl) {
+        return buildShareLinkInternal(
+          vaultUrl,
+          this.payload.request,
+          this.payload.client_id,
+        )
+      }
+    }
     return VaultUtils.buildShareLink(
       this.payload.request,
       this.payload.client_id,
