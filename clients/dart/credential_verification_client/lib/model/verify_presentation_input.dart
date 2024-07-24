@@ -42,7 +42,7 @@ class VerifyPresentationInput {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PresentationDefinition? presentationDefinition;
+  Object? presentationDefinition;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -50,7 +50,7 @@ class VerifyPresentationInput {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PresentationSubmission? presentationSubmission;
+  Object? presentationSubmission;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -131,8 +131,8 @@ class VerifyPresentationInput {
       return VerifyPresentationInput(
         verifiablePresentation: W3cPresentation.fromJson(json[r'verifiablePresentation']),
         signedPresentation: W3cPresentation.fromJson(json[r'signedPresentation']),
-        presentationDefinition: PresentationDefinition.fromJson(json[r'presentationDefinition']),
-        presentationSubmission: PresentationSubmission.fromJson(json[r'presentationSubmission']),
+        presentationDefinition: mapValueOfType<Object>(json, r'presentationDefinition'),
+        presentationSubmission: mapValueOfType<Object>(json, r'presentationSubmission'),
         challenge: mapValueOfType<String>(json, r'challenge'),
       );
     }

@@ -244,7 +244,7 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 
 # **list_wallets**
 
-> WalletsListDto list_wallets()
+> WalletsListDto list_wallets(did_type=did_type)
 
 lists all wallets
 
@@ -281,9 +281,10 @@ configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
 with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+    did_type = 'did_type_example' # str |  (optional)
 
     try:
-        api_response = api_instance.list_wallets()
+        api_response = api_instance.list_wallets(did_type=did_type)
         print("The response of WalletApi->list_wallets:\n")
         pprint(api_response)
     except Exception as e:
@@ -292,7 +293,9 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name         | Type    | Description | Notes      |
+| ------------ | ------- | ----------- | ---------- |
+| **did_type** | **str** |             | [optional] |
 
 ### Return type
 

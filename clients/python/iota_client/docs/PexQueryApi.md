@@ -249,7 +249,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 # **list_pex_queries**
 
-> ListPexQueriesOK list_pex_queries(configuration_id)
+> ListPexQueriesOK list_pex_queries(configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
 
 ### Example
 
@@ -285,9 +285,11 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
     configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    limit = 56 # int | Maximum number of records to fetch in a list (optional)
+    exclusive_start_key = 'exclusive_start_key_example' # str | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
 
     try:
-        api_response = api_instance.list_pex_queries(configuration_id)
+        api_response = api_instance.list_pex_queries(configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of PexQueryApi->list_pex_queries:\n")
         pprint(api_response)
     except Exception as e:
@@ -296,9 +298,11 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
+| Name                    | Type    | Description                                                                                                                                                    | Notes      |
+| ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **configuration_id**    | **str** | iotaConfiguration Id                                                                                                                                           |
+| **limit**               | **int** | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
+| **exclusive_start_key** | **str** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |
 
 ### Return type
 

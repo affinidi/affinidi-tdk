@@ -15,30 +15,46 @@ class CreateTokenInput {
   CreateTokenInput({
     required this.name,
     required this.authenticationMethod,
+    this.description,
   });
 
   String name;
 
   TokenAuthenticationMethodDto authenticationMethod;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateTokenInput &&
     other.name == name &&
-    other.authenticationMethod == authenticationMethod;
+    other.authenticationMethod == authenticationMethod &&
+    other.description == description;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
-    (authenticationMethod.hashCode);
+    (authenticationMethod.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() => 'CreateTokenInput[name=$name, authenticationMethod=$authenticationMethod]';
+  String toString() => 'CreateTokenInput[name=$name, authenticationMethod=$authenticationMethod, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
       json[r'authenticationMethod'] = this.authenticationMethod;
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
     return json;
   }
 
@@ -63,6 +79,7 @@ class CreateTokenInput {
       return CreateTokenInput(
         name: mapValueOfType<String>(json, r'name')!,
         authenticationMethod: TokenAuthenticationMethodDto.fromJson(json[r'authenticationMethod'])!,
+        description: mapValueOfType<String>(json, r'description'),
       );
     }
     return null;

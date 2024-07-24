@@ -1002,16 +1002,16 @@ export interface VerifyPresentationInput {
   signedPresentation?: W3cPresentation
   /**
    *
-   * @type {PresentationDefinition}
+   * @type {object}
    * @memberof VerifyPresentationInput
    */
-  presentationDefinition?: PresentationDefinition
+  presentationDefinition?: object
   /**
    *
-   * @type {PresentationSubmission}
+   * @type {object}
    * @memberof VerifyPresentationInput
    */
-  presentationSubmission?: PresentationSubmission
+  presentationSubmission?: object
   /**
    *
    * @type {string}

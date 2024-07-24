@@ -16,6 +16,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 | **enableVerification**     | **bool**                                                                        |                                          | [optional] |
 | **enableConsentAuditLog**  | **bool**                                                                        |                                          | [optional] |
 | **tokenMaxAge**            | **int**                                                                         | token time to live in seconds            | [optional] |
+| **description**            | **String**                                                                      | The description of the config            | [optional] |
 | **clientMetadata**         | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |                                          | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

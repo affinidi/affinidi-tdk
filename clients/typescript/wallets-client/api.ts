@@ -259,7 +259,7 @@ export type InvalidDidParameterErrorNameEnum =
   (typeof InvalidDidParameterErrorNameEnum)[keyof typeof InvalidDidParameterErrorNameEnum]
 export const InvalidDidParameterErrorMessageEnum = {
   GivenDidInFieldToDidIsInvalidUseOnlyResolvableFormOfDid:
-    'Given did in field "toDid" is invalid. Use only resolvable form of did.',
+    "Given did in field 'toDid' is invalid. Use only resolvable form of did.",
 } as const
 
 export type InvalidDidParameterErrorMessageEnum =
@@ -608,11 +608,26 @@ export interface SignCredentialInputDto {
   revocable?: boolean
   /**
    *
+   * @type {string}
+   * @memberof SignCredentialInputDto
+   */
+  credentialFormat?: SignCredentialInputDtoCredentialFormatEnum
+  /**
+   *
    * @type {SignCredentialInputDtoUnsignedCredentialParams}
    * @memberof SignCredentialInputDto
    */
   unsignedCredentialParams?: SignCredentialInputDtoUnsignedCredentialParams
 }
+
+export const SignCredentialInputDtoCredentialFormatEnum = {
+  LdpVc: 'ldp_vc',
+  JwtVcJsonLd: 'jwt_vc_json-ld',
+} as const
+
+export type SignCredentialInputDtoCredentialFormatEnum =
+  (typeof SignCredentialInputDtoCredentialFormatEnum)[keyof typeof SignCredentialInputDtoCredentialFormatEnum]
+
 /**
  * unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \"unsignedCredential\" is given
  * @export
@@ -664,11 +679,17 @@ export interface SignCredentialInputDtoUnsignedCredentialParams {
 export interface SignCredentialResultDto {
   /**
    *
-   * @type {object}
+   * @type {SignCredentialResultDtoSignedCredential}
    * @memberof SignCredentialResultDto
    */
-  signedCredential: object
+  signedCredential: SignCredentialResultDtoSignedCredential
 }
+/**
+ * @type SignCredentialResultDtoSignedCredential
+ * @export
+ */
+export type SignCredentialResultDtoSignedCredential = object | string
+
 /**
  * DTO contains parts of JWT to be signed
  * @export
@@ -1519,10 +1540,12 @@ export const WalletApiAxiosParamCreator = function (
     },
     /**
      * lists all wallets
+     * @param {ListWalletsDidTypeEnum} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listWallets: async (
+      didType?: ListWalletsDidTypeEnum,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/wallets`
@@ -1547,6 +1570,10 @@ export const WalletApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (didType !== undefined) {
+        localVarQueryParameter['didType'] = didType
+      }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1851,16 +1878,20 @@ export const WalletApiFp = function (configuration?: Configuration) {
     },
     /**
      * lists all wallets
+     * @param {ListWalletsDidTypeEnum} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listWallets(
+      didType?: ListWalletsDidTypeEnum,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletsListDto>
     > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.listWallets(options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listWallets(
+        didType,
+        options,
+      )
       const index = configuration?.serverIndex ?? 0
       const operationBasePath =
         operationServerMap['WalletApi.listWallets']?.[index]?.url
@@ -2017,12 +2048,16 @@ export const WalletApiFactory = function (
     },
     /**
      * lists all wallets
+     * @param {ListWalletsDidTypeEnum} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listWallets(options?: any): AxiosPromise<WalletsListDto> {
+    listWallets(
+      didType?: ListWalletsDidTypeEnum,
+      options?: any,
+    ): AxiosPromise<WalletsListDto> {
       return localVarFp
-        .listWallets(options)
+        .listWallets(didType, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2127,13 +2162,17 @@ export class WalletApi extends BaseAPI {
 
   /**
    * lists all wallets
+   * @param {ListWalletsDidTypeEnum} [didType]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof WalletApi
    */
-  public listWallets(options?: RawAxiosRequestConfig) {
+  public listWallets(
+    didType?: ListWalletsDidTypeEnum,
+    options?: RawAxiosRequestConfig,
+  ) {
     return WalletApiFp(this.configuration)
-      .listWallets(options)
+      .listWallets(didType, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -2191,3 +2230,13 @@ export class WalletApi extends BaseAPI {
       .then((request) => request(this.axios, this.basePath))
   }
 }
+
+/**
+ * @export
+ */
+export const ListWalletsDidTypeEnum = {
+  Web: 'WEB',
+  Key: 'KEY',
+} as const
+export type ListWalletsDidTypeEnum =
+  (typeof ListWalletsDidTypeEnum)[keyof typeof ListWalletsDidTypeEnum]
