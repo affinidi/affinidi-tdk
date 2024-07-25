@@ -230,6 +230,7 @@ export class ChannelProvider {
               messageReceivedEvent.message.payload as Buffer,
             )
             try {
+              Logger.debug('Event received', raw_data)
               const event = JSON.parse(raw_data)
               if (correlationId !== event.correlationId) {
                 return
