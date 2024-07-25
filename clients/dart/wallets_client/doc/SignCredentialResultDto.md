@@ -8,8 +8,8 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 
 ## Properties
 
-| Name                 | Type              | Description | Notes |
-| -------------------- | ----------------- | ----------- | ----- |
-| **signedCredential** | [**Object**](.md) |             |
+| Name                 | Type                                                                                      | Description | Notes |
+| -------------------- | ----------------------------------------------------------------------------------------- | ----------- | ----- |
+| **signedCredential** | [**SignCredentialResultDtoSignedCredential**](SignCredentialResultDtoSignedCredential.md) |             |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -2,8 +2,8 @@
 name = "affinidi_tdk_credential_verification_client"
 version = "1.0.0"
 description = "VerificationService"
-authors = ["nucleus <nucleus.team@affinidi.com>"]
-license = "ISC"
+authors = ["Affinidi <info@affinidi.com>"]
+license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 keywords = ["OpenAPI", "OpenAPI-Generator", "VerificationService"]

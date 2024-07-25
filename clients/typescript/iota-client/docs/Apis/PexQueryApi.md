@@ -92,13 +92,15 @@ null (empty response body)
 
 # **listPexQueries**
 
-> ListPexQueriesOK listPexQueries(configurationId)
+> ListPexQueriesOK listPexQueries(configurationId, limit, exclusiveStartKey)
 
 ### Parameters
 
-| Name                | Type       | Description          | Notes             |
-| ------------------- | ---------- | -------------------- | ----------------- |
-| **configurationId** | **String** | iotaConfiguration Id | [default to null] |
+| Name                  | Type        | Description                                                                                                                                                    | Notes                        |
+| --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| **configurationId**   | **String**  | iotaConfiguration Id                                                                                                                                           | [default to null]            |
+| **limit**             | **Integer** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to null] |
+| **exclusiveStartKey** | **String**  | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] [default to null] |
 
 ### Return type
 
