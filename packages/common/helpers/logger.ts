@@ -5,7 +5,7 @@ export class Logger {
     EnvironmentUtils.fetchEnvironment() !== Environment.PRODUCTION
 
   static debug(message: string, ...optionalParams: any[]): void {
-    if (this.isDebugEnabled) {
+    if (this.isDebugEnabled && typeof console !== 'undefined' && console.log) {
       console.log(`TDK: ${message}`, ...optionalParams)
     }
   }
