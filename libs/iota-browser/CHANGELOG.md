@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.3.0...@affinidi-tdk/iota-browser-v1.3.1) (2024-07-25)
+
+
+### Bug Fixes
+
+* add debug log for prepare request event ([#154](https://github.com/affinidi/affinidi-tdk/issues/154)) ([120d8b7](https://github.com/affinidi/affinidi-tdk/commit/120d8b7da7c010e4b91bc9f969c2f83eabdb795f))
+* allow using package on the frontend without depending on process ([#153](https://github.com/affinidi/affinidi-tdk/issues/153)) ([f7f1756](https://github.com/affinidi/affinidi-tdk/commit/f7f1756ae9d7bc14dd3fb8d2a12796009256a618))
+
 # [1.3.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.2...@affinidi-tdk/iota-browser-v1.3.0) (2024-07-25)
 
 
