@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.2...@affinidi-tdk/iota-browser-v1.3.0) (2024-07-25)
+
+
+### Features
+
+* update all clients ([f5ffadb](https://github.com/affinidi/affinidi-tdk/commit/f5ffadb9fa64dbc61caecfb4ceb94c886ab7774f))
+
 ## [1.2.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.2.1...@affinidi-tdk/iota-browser-v1.2.2) (2024-07-24)
 
 
