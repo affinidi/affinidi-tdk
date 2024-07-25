@@ -175,7 +175,11 @@ class WalletApi {
   /// lists all wallets
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> listWalletsWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [String] didType:
+  Future<Response> listWalletsWithHttpInfo({ String? didType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/wallets';
 
@@ -185,6 +189,10 @@ class WalletApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (didType != null) {
+      queryParams.addAll(_queryParams('', 'didType', didType));
+    }
 
     const contentTypes = <String>[];
 
@@ -201,8 +209,12 @@ class WalletApi {
   }
 
   /// lists all wallets
-  Future<WalletsListDto?> listWallets() async {
-    final response = await listWalletsWithHttpInfo();
+  ///
+  /// Parameters:
+  ///
+  /// * [String] didType:
+  Future<WalletsListDto?> listWallets({ String? didType, }) async {
+    final response = await listWalletsWithHttpInfo( didType: didType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

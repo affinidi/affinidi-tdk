@@ -160,7 +160,7 @@ try {
 
 # **listWallets**
 
-> WalletsListDto listWallets()
+> WalletsListDto listWallets(didType)
 
 lists all wallets
 
@@ -174,9 +174,10 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = WalletApi();
+final didType = didType_example; // String |
 
 try {
-    final result = api_instance.listWallets();
+    final result = api_instance.listWallets(didType);
     print(result);
 } catch (e) {
     print('Exception when calling WalletApi->listWallets: $e\n');
@@ -185,7 +186,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name        | Type       | Description | Notes      |
+| ----------- | ---------- | ----------- | ---------- |
+| **didType** | **String** |             | [optional] |
 
 ### Return type
 

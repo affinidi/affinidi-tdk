@@ -2,9 +2,10 @@
 
 ## Properties
 
-| Name            | Type                                    | Description | Notes |
-| --------------- | --------------------------------------- | ----------- | ----- |
-| **pex_queries** | [**List[PexQueryDto]**](PexQueryDto.md) |             |
+| Name                   | Type                                    | Description | Notes      |
+| ---------------------- | --------------------------------------- | ----------- | ---------- |
+| **pex_queries**        | [**List[PexQueryDto]**](PexQueryDto.md) |             |
+| **last_evaluated_key** | **str**                                 |             | [optional] |
 
 ## Example
 

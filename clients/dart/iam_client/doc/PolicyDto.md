@@ -10,6 +10,8 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 
 | Name            | Type                                                  | Description | Notes                 |
 | --------------- | ----------------------------------------------------- | ----------- | --------------------- |
+| **name**        | **String**                                            |             | [optional]            |
+| **description** | **String**                                            |             | [optional]            |
 | **principalId** | **String**                                            |             | [optional]            |
 | **projectId**   | **String**                                            |             | [optional]            |
 | **version**     | **String**                                            |             |

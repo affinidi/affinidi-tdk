@@ -183,7 +183,13 @@ class PexQueryApi {
   ///
   /// * [String] configurationId (required):
   ///   iotaConfiguration Id
-  Future<Response> listPexQueriesWithHttpInfo(String configurationId,) async {
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<Response> listPexQueriesWithHttpInfo(String configurationId, { int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}/pex-queries'
       .replaceAll('{configurationId}', configurationId);
@@ -194,6 +200,13 @@ class PexQueryApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (exclusiveStartKey != null) {
+      queryParams.addAll(_queryParams('', 'exclusiveStartKey', exclusiveStartKey));
+    }
 
     const contentTypes = <String>[];
 
@@ -213,8 +226,14 @@ class PexQueryApi {
   ///
   /// * [String] configurationId (required):
   ///   iotaConfiguration Id
-  Future<ListPexQueriesOK?> listPexQueries(String configurationId,) async {
-    final response = await listPexQueriesWithHttpInfo(configurationId,);
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<ListPexQueriesOK?> listPexQueries(String configurationId, { int? limit, String? exclusiveStartKey, }) async {
+    final response = await listPexQueriesWithHttpInfo(configurationId,  limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -14,6 +14,7 @@ class CreateLoginConfigurationInput {
   /// Returns a new [CreateLoginConfigurationInput] instance.
   CreateLoginConfigurationInput({
     required this.name,
+    this.description,
     this.redirectUris = const [],
     this.postLogoutRedirectUris = const [],
     this.vpDefinition,
@@ -27,6 +28,14 @@ class CreateLoginConfigurationInput {
 
   /// User defined login configuration name
   String name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// OAuth 2.0 Redirect URIs
   List<String> redirectUris;
@@ -86,6 +95,7 @@ class CreateLoginConfigurationInput {
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateLoginConfigurationInput &&
     other.name == name &&
+    other.description == description &&
     _deepEquality.equals(other.redirectUris, redirectUris) &&
     _deepEquality.equals(other.postLogoutRedirectUris, postLogoutRedirectUris) &&
     other.vpDefinition == vpDefinition &&
@@ -100,6 +110,7 @@ class CreateLoginConfigurationInput {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
     (redirectUris.hashCode) +
     (postLogoutRedirectUris.hashCode) +
     (vpDefinition == null ? 0 : vpDefinition!.hashCode) +
@@ -111,11 +122,16 @@ class CreateLoginConfigurationInput {
     (tokenEndpointAuthMethod == null ? 0 : tokenEndpointAuthMethod!.hashCode);
 
   @override
-  String toString() => 'CreateLoginConfigurationInput[name=$name, redirectUris=$redirectUris, postLogoutRedirectUris=$postLogoutRedirectUris, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, claimFormat=$claimFormat, failOnMappingConflict=$failOnMappingConflict, scope=$scope, tokenEndpointAuthMethod=$tokenEndpointAuthMethod]';
+  String toString() => 'CreateLoginConfigurationInput[name=$name, description=$description, redirectUris=$redirectUris, postLogoutRedirectUris=$postLogoutRedirectUris, vpDefinition=$vpDefinition, presentationDefinition=$presentationDefinition, clientMetadata=$clientMetadata, claimFormat=$claimFormat, failOnMappingConflict=$failOnMappingConflict, scope=$scope, tokenEndpointAuthMethod=$tokenEndpointAuthMethod]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
+    }
       json[r'redirectUris'] = this.redirectUris;
       json[r'postLogoutRedirectUris'] = this.postLogoutRedirectUris;
     if (this.vpDefinition != null) {
@@ -172,6 +188,7 @@ class CreateLoginConfigurationInput {
 
       return CreateLoginConfigurationInput(
         name: mapValueOfType<String>(json, r'name')!,
+        description: mapValueOfType<String>(json, r'description'),
         redirectUris: json[r'redirectUris'] is Iterable
             ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
             : const [],

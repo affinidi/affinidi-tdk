@@ -97,13 +97,15 @@ null (empty response body)
 
 # **listWallets**
 
-> WalletsListDto listWallets()
+> WalletsListDto listWallets(didType)
 
     lists all wallets
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name        | Type       | Description | Notes                                         |
+| ----------- | ---------- | ----------- | --------------------------------------------- |
+| **didType** | **String** |             | [optional] [default to null] [enum: WEB, KEY] |
 
 ### Return type
 

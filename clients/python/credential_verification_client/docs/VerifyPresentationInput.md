@@ -4,13 +4,13 @@ Request model of /verify-vp
 
 ## Properties
 
-| Name                        | Type                                                    | Description | Notes      |
-| --------------------------- | ------------------------------------------------------- | ----------- | ---------- |
-| **verifiable_presentation** | [**W3cPresentation**](W3cPresentation.md)               |             | [optional] |
-| **signed_presentation**     | [**W3cPresentation**](W3cPresentation.md)               |             | [optional] |
-| **presentation_definition** | [**PresentationDefinition**](PresentationDefinition.md) |             | [optional] |
-| **presentation_submission** | [**PresentationSubmission**](PresentationSubmission.md) |             | [optional] |
-| **challenge**               | **str**                                                 |             | [optional] |
+| Name                        | Type                                      | Description | Notes      |
+| --------------------------- | ----------------------------------------- | ----------- | ---------- |
+| **verifiable_presentation** | [**W3cPresentation**](W3cPresentation.md) |             | [optional] |
+| **signed_presentation**     | [**W3cPresentation**](W3cPresentation.md) |             | [optional] |
+| **presentation_definition** | **object**                                |             | [optional] |
+| **presentation_submission** | **object**                                |             | [optional] |
+| **challenge**               | **str**                                   |             | [optional] |
 
 ## Example
 
