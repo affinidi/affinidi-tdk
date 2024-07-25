@@ -31,26 +31,28 @@ const envToIotUrl = {
 
 export class EnvironmentUtils {
   static fetchEnvironment(): Environment {
-    const backendEnv = process.env.AFFINIDI_TDK_ENVIRONMENT
-    if (backendEnv) {
-      return backendEnv as Environment
-    }
-
-    const nextPublicEnv = process.env.NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT
-    if (nextPublicEnv) {
-      return nextPublicEnv as Environment
-    }
-
+    try {
+      if (typeof process !== 'undefined' && process.env) {
+        const backendEnv = process.env.AFFINIDI_TDK_ENVIRONMENT
+        if (backendEnv) {
+          return backendEnv as Environment
+        }
+        const nextPublicEnv = process.env.NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT
+        if (nextPublicEnv) {
+          return nextPublicEnv as Environment
+        }
+      }
+    } catch (error) {}
     return Environment.PRODUCTION
   }
 
-  static fetchApiGwUrl(): string {
-    const env = this.fetchEnvironment()
+  static fetchApiGwUrl(env?: Environment): string {
+    env ??= this.fetchEnvironment()
     return `${envToApiGwUrl[env]}`
   }
 
-  static fetchElementsAuthTokenUrl(): string {
-    const env = this.fetchEnvironment()
+  static fetchElementsAuthTokenUrl(env?: Environment): string {
+    env ??= this.fetchEnvironment()
     return `${envToElementsAuthTokenUrl[env]}`
   }
 
@@ -58,8 +60,8 @@ export class EnvironmentUtils {
     return DEFAULT_REGION
   }
 
-  static fetchIotUrl(): string {
-    const env = this.fetchEnvironment()
+  static fetchIotUrl(env?: Environment): string {
+    env ??= this.fetchEnvironment()
     return `${envToIotUrl[env]}`
   }
 }
