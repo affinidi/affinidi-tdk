@@ -72,4 +72,3 @@ lib/model/wallet_dto.dart
 lib/model/wallet_dto_keys_inner.dart
 lib/model/wallets_list_dto.dart
 pubspec.yaml
-test/sign_credential_result_dto_signed_credential_test.dart
