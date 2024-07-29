@@ -40,10 +40,11 @@
   },
   "dependencies": {
     "@affinidi-tdk/common": "^1.1.1",
-    "@affinidi-tdk/iota-client": "^1.6.1",
+    "@affinidi-tdk/iota-client": "^1.10.0",
     "@aws-sdk/client-cognito-identity": "^3.590.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "eslint": "^8.57.0",
