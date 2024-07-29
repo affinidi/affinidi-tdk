@@ -34,6 +34,7 @@ doc/InvalidClaimContextError.md
 doc/InvalidGroupsError.md
 doc/InvalidParameterError.md
 doc/InvalidParameterErrorDetailsInner.md
+doc/InvalidVPTokenCreationTimeError.md
 doc/JsonWebKey.md
 doc/JsonWebKeyKeysInner.md
 doc/ListLoginConfigurationOutput.md
@@ -98,6 +99,7 @@ lib/model/invalid_claim_context_error.dart
 lib/model/invalid_groups_error.dart
 lib/model/invalid_parameter_error.dart
 lib/model/invalid_parameter_error_details_inner.dart
+lib/model/invalid_vp_token_creation_time_error.dart
 lib/model/json_web_key.dart
 lib/model/json_web_key_keys_inner.dart
 lib/model/list_login_configuration_output.dart
@@ -122,3 +124,4 @@ lib/model/unauthorized_error.dart
 lib/model/update_login_configuration_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
+test/invalid_vp_token_creation_time_error_test.dart
