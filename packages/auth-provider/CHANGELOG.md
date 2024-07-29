@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.13.1...@affinidi-tdk/auth-provider-v1.13.2) (2024-07-29)
+
+
+### Bug Fixes
+
+* iota-core build dependency issue ([#159](https://github.com/affinidi/affinidi-tdk/issues/159)) ([3350fa2](https://github.com/affinidi/affinidi-tdk/commit/3350fa2c0753f4886042171442bed9f9f4897e53))
+
 ## [1.13.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.13.0...@affinidi-tdk/auth-provider-v1.13.1) (2024-07-25)
 
 
