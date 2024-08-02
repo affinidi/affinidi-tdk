@@ -35,6 +35,814 @@
   },
   "fileMap": {
     "projectFileMap": {
+      "@affinidi-tdk/iam-client": [
+        {
+          "file": "clients/typescript/iam-client/.gitignore",
+          "hash": "14183275266285273190"
+        },
+        {
+          "file": "clients/typescript/iam-client/.npmignore",
+          "hash": "12459326339142627036"
+        },
+        {
+          "file": "clients/typescript/iam-client/.openapi-generator-ignore",
+          "hash": "3577137087323931601"
+        },
+        {
+          "file": "clients/typescript/iam-client/.openapi-generator/FILES",
+          "hash": "10359846699431722078"
+        },
+        {
+          "file": "clients/typescript/iam-client/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/iam-client/CHANGELOG.md",
+          "hash": "844572421990836148"
+        },
+        {
+          "file": "clients/typescript/iam-client/README.md",
+          "hash": "12699949143447782408"
+        },
+        {
+          "file": "clients/typescript/iam-client/api.ts",
+          "hash": "5381998757282734050",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/iam-client/base.ts",
+          "hash": "14856304259613298743",
+          "deps": ["npm:axios", "npm:axios-retry"]
+        },
+        {
+          "file": "clients/typescript/iam-client/common.ts",
+          "hash": "15678693252897175616",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/iam-client/configuration.ts",
+          "hash": "1300165192884372866"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/.openapi-generator-ignore",
+          "hash": "5921108589004068994"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/.openapi-generator/FILES",
+          "hash": "17887570298762221381"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/ConsumerAuthApi.md",
+          "hash": "15142547601362732925"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/DefaultApi.md",
+          "hash": "15453690463423686356"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/PoliciesApi.md",
+          "hash": "3323869997433113342"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/ProjectsApi.md",
+          "hash": "8608008023295564680"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/StsApi.md",
+          "hash": "3871410128260238070"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/TokensApi.md",
+          "hash": "17002485204841661751"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Apis/WellKnownApi.md",
+          "hash": "6272635339422276140"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ActionForbiddenError.md",
+          "hash": "18007362040578073585"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/AddUserToProjectInput.md",
+          "hash": "10395463020419085379"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ConsumerAuthTokenEndpointInput.md",
+          "hash": "7434740617746731700"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ConsumerAuthTokenEndpointOutput.md",
+          "hash": "16390030873666631183"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/CorsConsumerAuthTokenEndpointOK.md",
+          "hash": "11403998462298080312"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/CreateProjectInput.md",
+          "hash": "8478138782864096"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/CreateProjectScopedTokenInput.md",
+          "hash": "4936078722530724399"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/CreateProjectScopedTokenOutput.md",
+          "hash": "5434058689537105500"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/CreateTokenInput.md",
+          "hash": "3701860621719046580"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/InvalidJwtTokenError.md",
+          "hash": "7141939819443647198"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/InvalidParameterError.md",
+          "hash": "14562729002876630390"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/JsonWebKeyDto.md",
+          "hash": "559070550473187127"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/JsonWebKeySetDto.md",
+          "hash": "11943241829305547903"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/NotFoundError.md",
+          "hash": "15920852436701020447"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/PolicyDto.md",
+          "hash": "9489459275773737014"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/PolicyStatementDto.md",
+          "hash": "3983927640894525599"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/PrincipalCannotBeDeletedError.md",
+          "hash": "2136979989371310049"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/PrincipalDoesNotBelongToProjectError.md",
+          "hash": "17751127252176199596"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ProjectDto.md",
+          "hash": "17057980930395593954"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ProjectList.md",
+          "hash": "10720001158562701191"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ServiceErrorResponse.md",
+          "hash": "12654100678554197327"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/ServiceErrorResponse_details_inner.md",
+          "hash": "1516530252246877190"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenAuthenticationMethodDto.md",
+          "hash": "3787710443469504370"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenDto.md",
+          "hash": "15841670781399145303"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenList.md",
+          "hash": "13834390305784058367"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto.md",
+          "hash": "14465105311217204612"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo.md",
+          "hash": "5075308148664477607"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf.md",
+          "hash": "8440119530435896932"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1.md",
+          "hash": "13267217028667685305"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/TypedPricipalId.md",
+          "hash": "10470985910498918780"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UnauthorizedError.md",
+          "hash": "7230130057439415406"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UnexpectedError.md",
+          "hash": "10166084195587897115"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UpdateProjectInput.md",
+          "hash": "16988955669950572522"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UpdateTokenInput.md",
+          "hash": "16792210607057227689"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UpdateTokenPrivateKeyAuthenticationMethodDto.md",
+          "hash": "17086435968657792647"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UserDto.md",
+          "hash": "2865684923936987772"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/UserList.md",
+          "hash": "5218815472435486555"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/Models/WhoamiDto.md",
+          "hash": "8394771788726974534"
+        },
+        {
+          "file": "clients/typescript/iam-client/docs/README.md",
+          "hash": "695824441572995833"
+        },
+        {
+          "file": "clients/typescript/iam-client/index.ts",
+          "hash": "3820786455494501015"
+        },
+        {
+          "file": "clients/typescript/iam-client/package.json",
+          "hash": "770818769711808242",
+          "deps": [
+            "npm:@types/node@18.19.31",
+            "npm:typescript@4.9.5",
+            "npm:axios",
+            "npm:axios-retry",
+            "npm:url"
+          ]
+        },
+        {
+          "file": "clients/typescript/iam-client/project.json",
+          "hash": "9886125385433995733"
+        },
+        {
+          "file": "clients/typescript/iam-client/tsconfig.esm.json",
+          "hash": "7022370158318588762"
+        },
+        {
+          "file": "clients/typescript/iam-client/tsconfig.json",
+          "hash": "13354068531430747784"
+        }
+      ],
+      "@affinidi-tdk/wallets-client": [
+        {
+          "file": "clients/typescript/wallets-client/.gitignore",
+          "hash": "14183275266285273190"
+        },
+        {
+          "file": "clients/typescript/wallets-client/.npmignore",
+          "hash": "12459326339142627036"
+        },
+        {
+          "file": "clients/typescript/wallets-client/.openapi-generator-ignore",
+          "hash": "3577137087323931601"
+        },
+        {
+          "file": "clients/typescript/wallets-client/.openapi-generator/FILES",
+          "hash": "10359846699431722078"
+        },
+        {
+          "file": "clients/typescript/wallets-client/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/wallets-client/CHANGELOG.md",
+          "hash": "17820234481273543708"
+        },
+        {
+          "file": "clients/typescript/wallets-client/README.md",
+          "hash": "16596071748196359103"
+        },
+        {
+          "file": "clients/typescript/wallets-client/api.ts",
+          "hash": "8661885661370730721",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/wallets-client/base.ts",
+          "hash": "17138704450757319553",
+          "deps": ["npm:axios", "npm:axios-retry"]
+        },
+        {
+          "file": "clients/typescript/wallets-client/common.ts",
+          "hash": "6227610825220132317",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/wallets-client/configuration.ts",
+          "hash": "10220238969185364417"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/.openapi-generator-ignore",
+          "hash": "5921108589004068994"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/.openapi-generator/FILES",
+          "hash": "10423347869626819873"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Apis/DefaultApi.md",
+          "hash": "6405817831559156536"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Apis/RevocationApi.md",
+          "hash": "13341996820022723561"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Apis/WalletApi.md",
+          "hash": "17933919013083404137"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/CreateWalletInput.md",
+          "hash": "11221192023126911053"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/CreateWalletResponse.md",
+          "hash": "10248417582608205481"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/DidKeyInputParams.md",
+          "hash": "288217726585120740"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/DidWebInputParams.md",
+          "hash": "17074276860102129481"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/EntityNotFoundError.md",
+          "hash": "17318636471326406097"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/GetRevocationCredentialStatusOK.md",
+          "hash": "6694591988781616728"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/GetRevocationListCredentialResultDto.md",
+          "hash": "986065773918127838"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/InvalidDidParameterError.md",
+          "hash": "1622640426033636084"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/InvalidParameterError.md",
+          "hash": "14562729002876630390"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/KeyNotFoundError.md",
+          "hash": "15639012012785651737"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/NotFoundError.md",
+          "hash": "15920852436701020447"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/OperationForbiddenError.md",
+          "hash": "2914538603598184368"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/RevokeCredentialInput.md",
+          "hash": "16855176865445778669"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/ServiceErrorResponse.md",
+          "hash": "12654100678554197327"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/ServiceErrorResponse_details_inner.md",
+          "hash": "1516530252246877190"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialInputDto.md",
+          "hash": "449074001468460377"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialInputDto_unsignedCredentialParams.md",
+          "hash": "10346092251564433464"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialResultDto.md",
+          "hash": "2590780018082102696"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialResultDto_signedCredential.md",
+          "hash": "9110788175948797007"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignJwtToken.md",
+          "hash": "3502821734505133824"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SignJwtTokenOK.md",
+          "hash": "3988117821986267275"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/SigningFailedError.md",
+          "hash": "9253508471700514269"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/UpdateWalletInput.md",
+          "hash": "3298720620970288677"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/WalletDto.md",
+          "hash": "11096196368807354235"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/WalletDto_keys_inner.md",
+          "hash": "12889750360559953749"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/WalletsListDto.md",
+          "hash": "8713242098473665721"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/Models/signCredential_400_response.md",
+          "hash": "10669845807794383792"
+        },
+        {
+          "file": "clients/typescript/wallets-client/docs/README.md",
+          "hash": "16538676559672061182"
+        },
+        {
+          "file": "clients/typescript/wallets-client/index.ts",
+          "hash": "13722970733426280413"
+        },
+        {
+          "file": "clients/typescript/wallets-client/package.json",
+          "hash": "17514709532648327142",
+          "deps": [
+            "npm:@types/node@18.19.33",
+            "npm:typescript@4.9.5",
+            "npm:axios",
+            "npm:axios-retry",
+            "npm:url"
+          ]
+        },
+        {
+          "file": "clients/typescript/wallets-client/project.json",
+          "hash": "8985801581962090148"
+        },
+        {
+          "file": "clients/typescript/wallets-client/tsconfig.esm.json",
+          "hash": "7022370158318588762"
+        },
+        {
+          "file": "clients/typescript/wallets-client/tsconfig.json",
+          "hash": "13354068531430747784"
+        }
+      ],
+      "@affinidi-tdk/login-configuration-client": [
+        {
+          "file": "clients/typescript/login-configuration-client/.gitignore",
+          "hash": "14183275266285273190"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/.npmignore",
+          "hash": "12459326339142627036"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/.openapi-generator-ignore",
+          "hash": "3577137087323931601"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/.openapi-generator/FILES",
+          "hash": "10359846699431722078"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/CHANGELOG.md",
+          "hash": "6193626451919467719"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/README.md",
+          "hash": "1883100314997818640"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/api.ts",
+          "hash": "17505899433621754275",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/base.ts",
+          "hash": "16305979978769072359",
+          "deps": ["npm:axios", "npm:axios-retry"]
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/common.ts",
+          "hash": "983535651574902028",
+          "deps": ["npm:axios"]
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/configuration.ts",
+          "hash": "14331948531880182524"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator-ignore",
+          "hash": "5921108589004068994"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator/FILES",
+          "hash": "16524191167708756933"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator/VERSION",
+          "hash": "16136251632416930662"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Apis/AllowListApi.md",
+          "hash": "211826417999458165"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Apis/ConfigurationApi.md",
+          "hash": "6308120419168047526"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Apis/DenyListApi.md",
+          "hash": "7726796964845646802"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Apis/GroupApi.md",
+          "hash": "15673226820463409487"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Apis/IdpApi.md",
+          "hash": "1998998596304502853"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ActionForbiddenError.md",
+          "hash": "14968167471874634050"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/AddUserToGroupInput.md",
+          "hash": "12028981472381019965"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/BlockedUsers.md",
+          "hash": "13849823414408199571"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/BlockedUsersInput.md",
+          "hash": "1414244720524683365"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionAcceptResponseOK.md",
+          "hash": "15669763115432386462"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionForIdpOK.md",
+          "hash": "18379217938836845823"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionRejectResponseOK.md",
+          "hash": "13015445726325978709"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateGroupInput.md",
+          "hash": "1368760751440017943"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateHydraNetworkError.md",
+          "hash": "6257623641657711369"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationInput.md",
+          "hash": "4512187795552444984"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationOutput.md",
+          "hash": "4347603429047299689"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationOutput_auth.md",
+          "hash": "10451887242916935250"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/CreateProjectNetworkError.md",
+          "hash": "14891486953107045514"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ErrorOAuth2.md",
+          "hash": "11116444372217418526"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GetUserInfo.md",
+          "hash": "4945100139571376599"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupDto.md",
+          "hash": "7457067275584979839"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupNames.md",
+          "hash": "2001434629279341104"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupNamesInput.md",
+          "hash": "6459039357265454501"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupUserMappingDto.md",
+          "hash": "3707941998491139578"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupUserMappingsList.md",
+          "hash": "11390371057615918323"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupsList.md",
+          "hash": "9827062062106347096"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/GroupsPerUserLimitExceededError.md",
+          "hash": "17409854853291538664"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/IdTokenMapping_inner.md",
+          "hash": "15532762300707176997"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidClaimContextError.md",
+          "hash": "5080857325547014340"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidGroupsError.md",
+          "hash": "4686520207753966803"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidParameterError.md",
+          "hash": "12586844208213212965"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidParameterError_details_inner.md",
+          "hash": "1817687726993770181"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidVPTokenCreationTimeError.md",
+          "hash": "767794533419124368"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/JsonWebKey.md",
+          "hash": "16498421307409006817"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/JsonWebKey_keys_inner.md",
+          "hash": "13871275167623793304"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ListLoginConfigurationOutput.md",
+          "hash": "7606039821269543586"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationClientMetadataInput.md",
+          "hash": "13828842892164563217"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationClientMetadataOutput.md",
+          "hash": "10503535986774061315"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationObject.md",
+          "hash": "15321466031796432333"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationReadInvalidClientIdError.md",
+          "hash": "15475776983402324909"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionDto.md",
+          "hash": "22747864508565680"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionDto_authorizationRequest.md",
+          "hash": "5174275992233443632"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionForIDPInput.md",
+          "hash": "6709006501811674695"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionRejectResponseInput.md",
+          "hash": "11537462109431281637"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/NotFoundError.md",
+          "hash": "1096161092545869598"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/OAuth2Token.md",
+          "hash": "4930959784088992952"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/OIDCConfig.md",
+          "hash": "2179555926060989602"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/OIDCConfig_credentials_supported_draft_00_inner.md",
+          "hash": "2108824152749288018"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/RedirectResponse.md",
+          "hash": "4785358361067685710"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/RemoveUserFromGroupInput.md",
+          "hash": "3904605322360145707"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ResourceCreationError.md",
+          "hash": "8643644109183080467"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ServiceErrorResponse.md",
+          "hash": "12876953554036964226"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/ServiceErrorResponse_details_inner.md",
+          "hash": "14238076193013934014"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/TokenEndpointAuthMethod.md",
+          "hash": "12927288365239818419"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/UnauthorizedError.md",
+          "hash": "2660119686726151063"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/UpdateLoginConfigurationInput.md",
+          "hash": "3670336846105320965"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/VPTokenValidationError.md",
+          "hash": "12227056606097382675"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/Models/createLoginConfigurations_400_response.md",
+          "hash": "10113364033065977966"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/docs/README.md",
+          "hash": "290730100280849941"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/index.ts",
+          "hash": "14756906097170279877"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/package.json",
+          "hash": "3386776067037058349",
+          "deps": [
+            "npm:@types/node@18.19.31",
+            "npm:typescript@4.9.5",
+            "npm:axios",
+            "npm:axios-retry",
+            "npm:url"
+          ]
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/project.json",
+          "hash": "13049922653240685091"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/tsconfig.esm.json",
+          "hash": "7022370158318588762"
+        },
+        {
+          "file": "clients/typescript/login-configuration-client/tsconfig.json",
+          "hash": "13354068531430747784"
+        }
+      ],
       "@affinidi-tdk/credential-issuance-client": [
         {
           "file": "clients/typescript/credential-issuance-client/.gitignore",
@@ -58,7 +866,7 @@
         },
         {
           "file": "clients/typescript/credential-issuance-client/CHANGELOG.md",
-          "hash": "6747398861456267640"
+          "hash": "7445893590731573027"
         },
         {
           "file": "clients/typescript/credential-issuance-client/README.md",
@@ -343,70 +1151,6 @@
           "hash": "13354068531430747784"
         }
       ],
-      "@affinidi-tdk/iota-core": [
-        {
-          "file": "libs/iota-core/.eslintrc.json",
-          "hash": "1750809890614186748"
-        },
-        {
-          "file": "libs/iota-core/.gitignore",
-          "hash": "1654343886240425559"
-        },
-        {
-          "file": "libs/iota-core/.npmignore",
-          "hash": "12822870603302115381"
-        },
-        {
-          "file": "libs/iota-core/CHANGELOG.md",
-          "hash": "17692757931946007829"
-        },
-        {
-          "file": "libs/iota-core/README.md",
-          "hash": "9792148159756041290"
-        },
-        {
-          "file": "libs/iota-core/helpers/index.ts",
-          "hash": "13085024054351336276"
-        },
-        {
-          "file": "libs/iota-core/helpers/iota-auth-provider.ts",
-          "hash": "6671631258407181963",
-          "deps": ["npm:@aws-sdk/client-cognito-identity"]
-        },
-        {
-          "file": "libs/iota-core/index.ts",
-          "hash": "9030039928657923145"
-        },
-        {
-          "file": "libs/iota-core/iota.ts",
-          "hash": "5497491287560431761"
-        },
-        {
-          "file": "libs/iota-core/package-lock.json",
-          "hash": "9894897686119214121"
-        },
-        {
-          "file": "libs/iota-core/package.json",
-          "hash": "8376960884351482930",
-          "deps": [
-            "npm:@typescript-eslint/eslint-plugin@7.14.1",
-            "npm:@typescript-eslint/parser@7.14.1",
-            "npm:eslint",
-            "npm:eslint-config-prettier",
-            "npm:eslint-plugin-prettier",
-            "npm:jsii",
-            "npm:jsii-pacmak",
-            "npm:typescript",
-            "@affinidi-tdk/common",
-            "@affinidi-tdk/iota-client",
-            "npm:@aws-sdk/client-cognito-identity"
-          ]
-        },
-        {
-          "file": "libs/iota-core/project.json",
-          "hash": "3817763126917309670"
-        }
-      ],
       "@affinidi-tdk/iota-browser": [
         {
           "file": "libs/iota-browser/.eslintrc.json",
@@ -422,7 +1166,7 @@
         },
         {
           "file": "libs/iota-browser/CHANGELOG.md",
-          "hash": "9634779779009913810"
+          "hash": "12683463165213931708"
         },
         {
           "file": "libs/iota-browser/README.md",
@@ -434,7 +1178,7 @@
         },
         {
           "file": "libs/iota-browser/package.json",
-          "hash": "7613263773469227876",
+          "hash": "6318590262347198572",
           "deps": [
             "npm:@types/uuid",
             "npm:@typescript-eslint/eslint-plugin@7.14.1",
@@ -460,7 +1204,7 @@
         },
         {
           "file": "libs/iota-browser/src/helpers/channel-provider.ts",
-          "hash": "5355431321712936449",
+          "hash": "282131842050169925",
           "deps": [
             "npm:@aws-sdk/util-utf8-browser",
             "npm:@smithy/types",
@@ -516,6 +1260,92 @@
           "hash": "18134444585188285237"
         }
       ],
+      "@affinidi-tdk/auth-provider": [
+        {
+          "file": "packages/auth-provider/.eslintrc.json",
+          "hash": "1750809890614186748"
+        },
+        {
+          "file": "packages/auth-provider/.gitignore",
+          "hash": "1654343886240425559"
+        },
+        {
+          "file": "packages/auth-provider/.npmignore",
+          "hash": "12822870603302115381"
+        },
+        {
+          "file": "packages/auth-provider/CHANGELOG.md",
+          "hash": "3139005370471759361"
+        },
+        {
+          "file": "packages/auth-provider/README.md",
+          "hash": "11480977488421270372"
+        },
+        {
+          "file": "packages/auth-provider/auth-provider.ts",
+          "hash": "1410286297950341493",
+          "deps": ["npm:uuid"]
+        },
+        {
+          "file": "packages/auth-provider/helpers/fetch-project-scoped-token.ts",
+          "hash": "17202574524801505075",
+          "deps": ["npm:axios", "npm:jsonwebtoken", "npm:qs"]
+        },
+        {
+          "file": "packages/auth-provider/helpers/get-bff-headers.ts",
+          "hash": "13776581903181663912"
+        },
+        {
+          "file": "packages/auth-provider/helpers/index.ts",
+          "hash": "691866190261439977"
+        },
+        {
+          "file": "packages/auth-provider/helpers/iota.ts",
+          "hash": "6357138712063769166",
+          "deps": ["npm:uuid", "npm:jsonwebtoken"]
+        },
+        {
+          "file": "packages/auth-provider/helpers/jwt.ts",
+          "hash": "16751379328728230434",
+          "deps": ["npm:axios", "npm:jsonwebtoken", "npm:jose"]
+        },
+        {
+          "file": "packages/auth-provider/index.ts",
+          "hash": "3560753177100856969"
+        },
+        {
+          "file": "packages/auth-provider/package-lock.json",
+          "hash": "17441074165217720185"
+        },
+        {
+          "file": "packages/auth-provider/package.json",
+          "hash": "12300534199790569831",
+          "deps": [
+            "npm:@typescript-eslint/eslint-plugin@7.4.0",
+            "npm:@typescript-eslint/parser@7.4.0",
+            "npm:eslint",
+            "npm:eslint-config-prettier",
+            "npm:eslint-plugin-prettier",
+            "npm:jsii",
+            "npm:jsii-pacmak",
+            "npm:jsii-release",
+            "npm:typescript",
+            "@affinidi-tdk/common",
+            "npm:@types/jsonwebtoken",
+            "npm:@types/qs",
+            "npm:@types/uuid",
+            "npm:axios",
+            "npm:jose",
+            "npm:jsonwebtoken",
+            "npm:qs",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "packages/auth-provider/project.json",
+          "hash": "7766335473734343420"
+        }
+      ],
       "@affinidi-tdk/iota-client": [
         {
           "file": "clients/typescript/iota-client/.gitignore",
@@ -539,7 +1369,7 @@
         },
         {
           "file": "clients/typescript/iota-client/CHANGELOG.md",
-          "hash": "8582654973879931266"
+          "hash": "9958580636509345222"
         },
         {
           "file": "clients/typescript/iota-client/README.md",
@@ -547,7 +1377,7 @@
         },
         {
           "file": "clients/typescript/iota-client/api.ts",
-          "hash": "7535100526641766230",
+          "hash": "14858635122430025167",
           "deps": ["npm:axios"]
         },
         {
@@ -586,7 +1416,7 @@
         },
         {
           "file": "clients/typescript/iota-client/docs/Apis/DefaultApi.md",
-          "hash": "2910408234551462943"
+          "hash": "2420569439055406959"
         },
         {
           "file": "clients/typescript/iota-client/docs/Apis/IotaApi.md",
@@ -752,324 +1582,134 @@
           "hash": "13354068531430747784"
         }
       ],
-      "@affinidi-tdk/login-configuration-client": [
+      "@affinidi-tdk/iota-core": [
         {
-          "file": "clients/typescript/login-configuration-client/.gitignore",
-          "hash": "14183275266285273190"
+          "file": "libs/iota-core/.eslintrc.json",
+          "hash": "1750809890614186748"
         },
         {
-          "file": "clients/typescript/login-configuration-client/.npmignore",
-          "hash": "12459326339142627036"
+          "file": "libs/iota-core/.gitignore",
+          "hash": "1654343886240425559"
         },
         {
-          "file": "clients/typescript/login-configuration-client/.openapi-generator-ignore",
-          "hash": "3577137087323931601"
+          "file": "libs/iota-core/.npmignore",
+          "hash": "12822870603302115381"
         },
         {
-          "file": "clients/typescript/login-configuration-client/.openapi-generator/FILES",
-          "hash": "10359846699431722078"
+          "file": "libs/iota-core/CHANGELOG.md",
+          "hash": "16504765658817553118"
         },
         {
-          "file": "clients/typescript/login-configuration-client/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
+          "file": "libs/iota-core/README.md",
+          "hash": "9792148159756041290"
         },
         {
-          "file": "clients/typescript/login-configuration-client/CHANGELOG.md",
-          "hash": "15338467640158097323"
+          "file": "libs/iota-core/helpers/index.ts",
+          "hash": "13085024054351336276"
         },
         {
-          "file": "clients/typescript/login-configuration-client/README.md",
-          "hash": "1883100314997818640"
+          "file": "libs/iota-core/helpers/iota-auth-provider.ts",
+          "hash": "6671631258407181963",
+          "deps": ["npm:@aws-sdk/client-cognito-identity"]
         },
         {
-          "file": "clients/typescript/login-configuration-client/api.ts",
-          "hash": "4272265428066802121",
-          "deps": ["npm:axios"]
+          "file": "libs/iota-core/index.ts",
+          "hash": "9030039928657923145"
         },
         {
-          "file": "clients/typescript/login-configuration-client/base.ts",
-          "hash": "16305979978769072359",
-          "deps": ["npm:axios", "npm:axios-retry"]
+          "file": "libs/iota-core/iota.ts",
+          "hash": "5497491287560431761"
         },
         {
-          "file": "clients/typescript/login-configuration-client/common.ts",
-          "hash": "983535651574902028",
-          "deps": ["npm:axios"]
+          "file": "libs/iota-core/package-lock.json",
+          "hash": "9632689410318565153"
         },
         {
-          "file": "clients/typescript/login-configuration-client/configuration.ts",
-          "hash": "14331948531880182524"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator-ignore",
-          "hash": "5921108589004068994"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator/FILES",
-          "hash": "4512150892306820327"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Apis/AllowListApi.md",
-          "hash": "211826417999458165"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Apis/ConfigurationApi.md",
-          "hash": "6308120419168047526"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Apis/DenyListApi.md",
-          "hash": "7726796964845646802"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Apis/GroupApi.md",
-          "hash": "15673226820463409487"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Apis/IdpApi.md",
-          "hash": "1998998596304502853"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ActionForbiddenError.md",
-          "hash": "14968167471874634050"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/AddUserToGroupInput.md",
-          "hash": "12028981472381019965"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/BlockedUsers.md",
-          "hash": "13849823414408199571"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/BlockedUsersInput.md",
-          "hash": "1414244720524683365"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionAcceptResponseOK.md",
-          "hash": "15669763115432386462"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionForIdpOK.md",
-          "hash": "18379217938836845823"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CorsLoginSessionRejectResponseOK.md",
-          "hash": "13015445726325978709"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateGroupInput.md",
-          "hash": "1368760751440017943"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateHydraNetworkError.md",
-          "hash": "6257623641657711369"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationInput.md",
-          "hash": "4512187795552444984"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationOutput.md",
-          "hash": "4347603429047299689"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateLoginConfigurationOutput_auth.md",
-          "hash": "10451887242916935250"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/CreateProjectNetworkError.md",
-          "hash": "14891486953107045514"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ErrorOAuth2.md",
-          "hash": "11116444372217418526"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GetUserInfo.md",
-          "hash": "4945100139571376599"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupDto.md",
-          "hash": "7457067275584979839"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupNames.md",
-          "hash": "2001434629279341104"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupNamesInput.md",
-          "hash": "6459039357265454501"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupUserMappingDto.md",
-          "hash": "3707941998491139578"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupUserMappingsList.md",
-          "hash": "11390371057615918323"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupsList.md",
-          "hash": "9827062062106347096"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/GroupsPerUserLimitExceededError.md",
-          "hash": "17409854853291538664"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/IdTokenMapping_inner.md",
-          "hash": "15532762300707176997"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidClaimContextError.md",
-          "hash": "5080857325547014340"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidGroupsError.md",
-          "hash": "4686520207753966803"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidParameterError.md",
-          "hash": "12586844208213212965"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/InvalidParameterError_details_inner.md",
-          "hash": "1817687726993770181"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/JsonWebKey.md",
-          "hash": "16498421307409006817"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/JsonWebKey_keys_inner.md",
-          "hash": "13871275167623793304"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ListLoginConfigurationOutput.md",
-          "hash": "7606039821269543586"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationClientMetadataInput.md",
-          "hash": "13828842892164563217"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationClientMetadataOutput.md",
-          "hash": "10503535986774061315"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationObject.md",
-          "hash": "15321466031796432333"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginConfigurationReadInvalidClientIdError.md",
-          "hash": "15475776983402324909"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionDto.md",
-          "hash": "22747864508565680"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionDto_authorizationRequest.md",
-          "hash": "13619981892024046465"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionForIDPInput.md",
-          "hash": "6709006501811674695"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/LoginSessionRejectResponseInput.md",
-          "hash": "11537462109431281637"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/NotFoundError.md",
-          "hash": "1096161092545869598"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/OAuth2Token.md",
-          "hash": "4930959784088992952"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/OIDCConfig.md",
-          "hash": "2179555926060989602"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/OIDCConfig_credentials_supported_draft_00_inner.md",
-          "hash": "2108824152749288018"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/RedirectResponse.md",
-          "hash": "4785358361067685710"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/RemoveUserFromGroupInput.md",
-          "hash": "3904605322360145707"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ResourceCreationError.md",
-          "hash": "8643644109183080467"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ServiceErrorResponse.md",
-          "hash": "12876953554036964226"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/ServiceErrorResponse_details_inner.md",
-          "hash": "14238076193013934014"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/TokenEndpointAuthMethod.md",
-          "hash": "12927288365239818419"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/UnauthorizedError.md",
-          "hash": "2660119686726151063"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/UpdateLoginConfigurationInput.md",
-          "hash": "3670336846105320965"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/VPTokenValidationError.md",
-          "hash": "12227056606097382675"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/Models/createLoginConfigurations_400_response.md",
-          "hash": "10113364033065977966"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/docs/README.md",
-          "hash": "18428175335345609865"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/index.ts",
-          "hash": "14756906097170279877"
-        },
-        {
-          "file": "clients/typescript/login-configuration-client/package.json",
-          "hash": "3386776067037058349",
+          "file": "libs/iota-core/package.json",
+          "hash": "6774695175189263375",
           "deps": [
-            "npm:@types/node@18.19.31",
-            "npm:typescript@4.9.5",
-            "npm:axios",
-            "npm:axios-retry",
-            "npm:url"
+            "npm:@types/node@22.0.0",
+            "npm:@typescript-eslint/eslint-plugin@7.14.1",
+            "npm:@typescript-eslint/parser@7.14.1",
+            "npm:eslint",
+            "npm:eslint-config-prettier",
+            "npm:eslint-plugin-prettier",
+            "npm:jsii",
+            "npm:jsii-pacmak",
+            "npm:typescript",
+            "@affinidi-tdk/common",
+            "@affinidi-tdk/iota-client",
+            "npm:@aws-sdk/client-cognito-identity"
           ]
         },
         {
-          "file": "clients/typescript/login-configuration-client/project.json",
-          "hash": "13049922653240685091"
+          "file": "libs/iota-core/project.json",
+          "hash": "3817763126917309670"
+        }
+      ],
+      "@affinidi-tdk/common": [
+        {
+          "file": "packages/common/.eslintrc.json",
+          "hash": "1750809890614186748"
         },
         {
-          "file": "clients/typescript/login-configuration-client/tsconfig.esm.json",
-          "hash": "7022370158318588762"
+          "file": "packages/common/.gitignore",
+          "hash": "1654343886240425559"
         },
         {
-          "file": "clients/typescript/login-configuration-client/tsconfig.json",
-          "hash": "13354068531430747784"
+          "file": "packages/common/.npmignore",
+          "hash": "12822870603302115381"
+        },
+        {
+          "file": "packages/common/CHANGELOG.md",
+          "hash": "16678199538895984826"
+        },
+        {
+          "file": "packages/common/README.md",
+          "hash": "13736686297854932605"
+        },
+        {
+          "file": "packages/common/helpers/environment.ts",
+          "hash": "11050155173009602866"
+        },
+        {
+          "file": "packages/common/helpers/index.ts",
+          "hash": "3331714586627763516"
+        },
+        {
+          "file": "packages/common/helpers/logger.ts",
+          "hash": "13783866329871777167"
+        },
+        {
+          "file": "packages/common/helpers/vault.ts",
+          "hash": "2687200996638439273"
+        },
+        {
+          "file": "packages/common/index.ts",
+          "hash": "16365846209251303121"
+        },
+        {
+          "file": "packages/common/package-lock.json",
+          "hash": "4491739938388568222"
+        },
+        {
+          "file": "packages/common/package.json",
+          "hash": "18190718287711298171",
+          "deps": [
+            "npm:@typescript-eslint/eslint-plugin@7.14.1",
+            "npm:@typescript-eslint/parser@7.14.1",
+            "npm:eslint",
+            "npm:eslint-config-prettier",
+            "npm:eslint-plugin-prettier",
+            "npm:jsii",
+            "npm:jsii-pacmak",
+            "npm:jsii-release",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/common/project.json",
+          "hash": "18338055837761480757"
         }
       ],
       "@affinidi-tdk/credential-verification-client": [
@@ -1095,7 +1735,7 @@
         },
         {
           "file": "clients/typescript/credential-verification-client/CHANGELOG.md",
-          "hash": "4403536223278086199"
+          "hash": "15517202524209212818"
         },
         {
           "file": "clients/typescript/credential-verification-client/README.md",
@@ -1333,641 +1973,6 @@
         },
         {
           "file": "clients/typescript/credential-verification-client/tsconfig.json",
-          "hash": "13354068531430747784"
-        }
-      ],
-      "@affinidi-tdk/common": [
-        {
-          "file": "packages/common/.eslintrc.json",
-          "hash": "1750809890614186748"
-        },
-        {
-          "file": "packages/common/.gitignore",
-          "hash": "1654343886240425559"
-        },
-        {
-          "file": "packages/common/.npmignore",
-          "hash": "12822870603302115381"
-        },
-        {
-          "file": "packages/common/CHANGELOG.md",
-          "hash": "7493044425498261933"
-        },
-        {
-          "file": "packages/common/README.md",
-          "hash": "13736686297854932605"
-        },
-        {
-          "file": "packages/common/helpers/environment.ts",
-          "hash": "12807175711941537118"
-        },
-        {
-          "file": "packages/common/helpers/index.ts",
-          "hash": "3331714586627763516"
-        },
-        {
-          "file": "packages/common/helpers/logger.ts",
-          "hash": "17616776113026191349"
-        },
-        {
-          "file": "packages/common/helpers/vault.ts",
-          "hash": "2687200996638439273"
-        },
-        {
-          "file": "packages/common/index.ts",
-          "hash": "16365846209251303121"
-        },
-        {
-          "file": "packages/common/package-lock.json",
-          "hash": "4491739938388568222"
-        },
-        {
-          "file": "packages/common/package.json",
-          "hash": "12785570889907162910",
-          "deps": [
-            "npm:@typescript-eslint/eslint-plugin@7.14.1",
-            "npm:@typescript-eslint/parser@7.14.1",
-            "npm:eslint",
-            "npm:eslint-config-prettier",
-            "npm:eslint-plugin-prettier",
-            "npm:jsii",
-            "npm:jsii-pacmak",
-            "npm:jsii-release",
-            "npm:typescript"
-          ]
-        },
-        {
-          "file": "packages/common/project.json",
-          "hash": "18338055837761480757"
-        }
-      ],
-      "@affinidi-tdk/auth-provider": [
-        {
-          "file": "packages/auth-provider/.eslintrc.json",
-          "hash": "1750809890614186748"
-        },
-        {
-          "file": "packages/auth-provider/.gitignore",
-          "hash": "1654343886240425559"
-        },
-        {
-          "file": "packages/auth-provider/.npmignore",
-          "hash": "12822870603302115381"
-        },
-        {
-          "file": "packages/auth-provider/CHANGELOG.md",
-          "hash": "6601577730056138125"
-        },
-        {
-          "file": "packages/auth-provider/README.md",
-          "hash": "11480977488421270372"
-        },
-        {
-          "file": "packages/auth-provider/auth-provider.ts",
-          "hash": "1410286297950341493",
-          "deps": ["npm:uuid"]
-        },
-        {
-          "file": "packages/auth-provider/helpers/fetch-project-scoped-token.ts",
-          "hash": "17202574524801505075",
-          "deps": ["npm:axios", "npm:jsonwebtoken", "npm:qs"]
-        },
-        {
-          "file": "packages/auth-provider/helpers/get-bff-headers.ts",
-          "hash": "13776581903181663912"
-        },
-        {
-          "file": "packages/auth-provider/helpers/index.ts",
-          "hash": "691866190261439977"
-        },
-        {
-          "file": "packages/auth-provider/helpers/iota.ts",
-          "hash": "6357138712063769166",
-          "deps": ["npm:uuid", "npm:jsonwebtoken"]
-        },
-        {
-          "file": "packages/auth-provider/helpers/jwt.ts",
-          "hash": "16751379328728230434",
-          "deps": ["npm:axios", "npm:jsonwebtoken", "npm:jose"]
-        },
-        {
-          "file": "packages/auth-provider/index.ts",
-          "hash": "3560753177100856969"
-        },
-        {
-          "file": "packages/auth-provider/package-lock.json",
-          "hash": "17441074165217720185"
-        },
-        {
-          "file": "packages/auth-provider/package.json",
-          "hash": "4593503654906592228",
-          "deps": [
-            "npm:@typescript-eslint/eslint-plugin@7.4.0",
-            "npm:@typescript-eslint/parser@7.4.0",
-            "npm:eslint",
-            "npm:eslint-config-prettier",
-            "npm:eslint-plugin-prettier",
-            "npm:jsii",
-            "npm:jsii-pacmak",
-            "npm:jsii-release",
-            "npm:typescript",
-            "@affinidi-tdk/common",
-            "npm:@types/jsonwebtoken",
-            "npm:@types/qs",
-            "npm:@types/uuid",
-            "npm:axios",
-            "npm:jose",
-            "npm:jsonwebtoken",
-            "npm:qs",
-            "npm:uuid"
-          ]
-        },
-        {
-          "file": "packages/auth-provider/project.json",
-          "hash": "7766335473734343420"
-        }
-      ],
-      "@affinidi-tdk/iam-client": [
-        {
-          "file": "clients/typescript/iam-client/.gitignore",
-          "hash": "14183275266285273190"
-        },
-        {
-          "file": "clients/typescript/iam-client/.npmignore",
-          "hash": "12459326339142627036"
-        },
-        {
-          "file": "clients/typescript/iam-client/.openapi-generator-ignore",
-          "hash": "3577137087323931601"
-        },
-        {
-          "file": "clients/typescript/iam-client/.openapi-generator/FILES",
-          "hash": "10359846699431722078"
-        },
-        {
-          "file": "clients/typescript/iam-client/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
-        },
-        {
-          "file": "clients/typescript/iam-client/CHANGELOG.md",
-          "hash": "11855981124901361737"
-        },
-        {
-          "file": "clients/typescript/iam-client/README.md",
-          "hash": "12699949143447782408"
-        },
-        {
-          "file": "clients/typescript/iam-client/api.ts",
-          "hash": "5381998757282734050",
-          "deps": ["npm:axios"]
-        },
-        {
-          "file": "clients/typescript/iam-client/base.ts",
-          "hash": "14856304259613298743",
-          "deps": ["npm:axios", "npm:axios-retry"]
-        },
-        {
-          "file": "clients/typescript/iam-client/common.ts",
-          "hash": "15678693252897175616",
-          "deps": ["npm:axios"]
-        },
-        {
-          "file": "clients/typescript/iam-client/configuration.ts",
-          "hash": "1300165192884372866"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/.openapi-generator-ignore",
-          "hash": "5921108589004068994"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/.openapi-generator/FILES",
-          "hash": "17887570298762221381"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/ConsumerAuthApi.md",
-          "hash": "15142547601362732925"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/DefaultApi.md",
-          "hash": "15453690463423686356"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/PoliciesApi.md",
-          "hash": "3323869997433113342"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/ProjectsApi.md",
-          "hash": "8608008023295564680"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/StsApi.md",
-          "hash": "3871410128260238070"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/TokensApi.md",
-          "hash": "17002485204841661751"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Apis/WellKnownApi.md",
-          "hash": "6272635339422276140"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ActionForbiddenError.md",
-          "hash": "18007362040578073585"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/AddUserToProjectInput.md",
-          "hash": "10395463020419085379"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ConsumerAuthTokenEndpointInput.md",
-          "hash": "7434740617746731700"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ConsumerAuthTokenEndpointOutput.md",
-          "hash": "16390030873666631183"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/CorsConsumerAuthTokenEndpointOK.md",
-          "hash": "11403998462298080312"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/CreateProjectInput.md",
-          "hash": "8478138782864096"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/CreateProjectScopedTokenInput.md",
-          "hash": "4936078722530724399"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/CreateProjectScopedTokenOutput.md",
-          "hash": "5434058689537105500"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/CreateTokenInput.md",
-          "hash": "3701860621719046580"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/InvalidJwtTokenError.md",
-          "hash": "7141939819443647198"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/InvalidParameterError.md",
-          "hash": "14562729002876630390"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/JsonWebKeyDto.md",
-          "hash": "559070550473187127"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/JsonWebKeySetDto.md",
-          "hash": "11943241829305547903"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/NotFoundError.md",
-          "hash": "15920852436701020447"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/PolicyDto.md",
-          "hash": "9489459275773737014"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/PolicyStatementDto.md",
-          "hash": "3983927640894525599"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/PrincipalCannotBeDeletedError.md",
-          "hash": "2136979989371310049"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/PrincipalDoesNotBelongToProjectError.md",
-          "hash": "17751127252176199596"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ProjectDto.md",
-          "hash": "17057980930395593954"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ProjectList.md",
-          "hash": "10720001158562701191"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ServiceErrorResponse.md",
-          "hash": "12654100678554197327"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/ServiceErrorResponse_details_inner.md",
-          "hash": "1516530252246877190"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenAuthenticationMethodDto.md",
-          "hash": "3787710443469504370"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenDto.md",
-          "hash": "15841670781399145303"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenList.md",
-          "hash": "13834390305784058367"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto.md",
-          "hash": "14465105311217204612"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo.md",
-          "hash": "5075308148664477607"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf.md",
-          "hash": "8440119530435896932"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1.md",
-          "hash": "13267217028667685305"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/TypedPricipalId.md",
-          "hash": "10470985910498918780"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UnauthorizedError.md",
-          "hash": "7230130057439415406"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UnexpectedError.md",
-          "hash": "10166084195587897115"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UpdateProjectInput.md",
-          "hash": "16988955669950572522"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UpdateTokenInput.md",
-          "hash": "16792210607057227689"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UpdateTokenPrivateKeyAuthenticationMethodDto.md",
-          "hash": "17086435968657792647"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UserDto.md",
-          "hash": "2865684923936987772"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/UserList.md",
-          "hash": "5218815472435486555"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/Models/WhoamiDto.md",
-          "hash": "8394771788726974534"
-        },
-        {
-          "file": "clients/typescript/iam-client/docs/README.md",
-          "hash": "695824441572995833"
-        },
-        {
-          "file": "clients/typescript/iam-client/index.ts",
-          "hash": "3820786455494501015"
-        },
-        {
-          "file": "clients/typescript/iam-client/package.json",
-          "hash": "770818769711808242",
-          "deps": [
-            "npm:@types/node@18.19.31",
-            "npm:typescript@4.9.5",
-            "npm:axios",
-            "npm:axios-retry",
-            "npm:url"
-          ]
-        },
-        {
-          "file": "clients/typescript/iam-client/project.json",
-          "hash": "9886125385433995733"
-        },
-        {
-          "file": "clients/typescript/iam-client/tsconfig.esm.json",
-          "hash": "7022370158318588762"
-        },
-        {
-          "file": "clients/typescript/iam-client/tsconfig.json",
-          "hash": "13354068531430747784"
-        }
-      ],
-      "@affinidi-tdk/wallets-client": [
-        {
-          "file": "clients/typescript/wallets-client/.gitignore",
-          "hash": "14183275266285273190"
-        },
-        {
-          "file": "clients/typescript/wallets-client/.npmignore",
-          "hash": "12459326339142627036"
-        },
-        {
-          "file": "clients/typescript/wallets-client/.openapi-generator-ignore",
-          "hash": "3577137087323931601"
-        },
-        {
-          "file": "clients/typescript/wallets-client/.openapi-generator/FILES",
-          "hash": "10359846699431722078"
-        },
-        {
-          "file": "clients/typescript/wallets-client/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
-        },
-        {
-          "file": "clients/typescript/wallets-client/CHANGELOG.md",
-          "hash": "9483350756789546302"
-        },
-        {
-          "file": "clients/typescript/wallets-client/README.md",
-          "hash": "16596071748196359103"
-        },
-        {
-          "file": "clients/typescript/wallets-client/api.ts",
-          "hash": "8661885661370730721",
-          "deps": ["npm:axios"]
-        },
-        {
-          "file": "clients/typescript/wallets-client/base.ts",
-          "hash": "17138704450757319553",
-          "deps": ["npm:axios", "npm:axios-retry"]
-        },
-        {
-          "file": "clients/typescript/wallets-client/common.ts",
-          "hash": "6227610825220132317",
-          "deps": ["npm:axios"]
-        },
-        {
-          "file": "clients/typescript/wallets-client/configuration.ts",
-          "hash": "10220238969185364417"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/.openapi-generator-ignore",
-          "hash": "5921108589004068994"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/.openapi-generator/FILES",
-          "hash": "10423347869626819873"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/.openapi-generator/VERSION",
-          "hash": "16136251632416930662"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Apis/DefaultApi.md",
-          "hash": "6405817831559156536"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Apis/RevocationApi.md",
-          "hash": "13341996820022723561"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Apis/WalletApi.md",
-          "hash": "17933919013083404137"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/CreateWalletInput.md",
-          "hash": "11221192023126911053"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/CreateWalletResponse.md",
-          "hash": "10248417582608205481"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/DidKeyInputParams.md",
-          "hash": "288217726585120740"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/DidWebInputParams.md",
-          "hash": "17074276860102129481"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/EntityNotFoundError.md",
-          "hash": "17318636471326406097"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/GetRevocationCredentialStatusOK.md",
-          "hash": "6694591988781616728"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/GetRevocationListCredentialResultDto.md",
-          "hash": "986065773918127838"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/InvalidDidParameterError.md",
-          "hash": "1622640426033636084"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/InvalidParameterError.md",
-          "hash": "14562729002876630390"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/KeyNotFoundError.md",
-          "hash": "15639012012785651737"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/NotFoundError.md",
-          "hash": "15920852436701020447"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/OperationForbiddenError.md",
-          "hash": "2914538603598184368"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/RevokeCredentialInput.md",
-          "hash": "16855176865445778669"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/ServiceErrorResponse.md",
-          "hash": "12654100678554197327"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/ServiceErrorResponse_details_inner.md",
-          "hash": "1516530252246877190"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialInputDto.md",
-          "hash": "449074001468460377"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialInputDto_unsignedCredentialParams.md",
-          "hash": "10346092251564433464"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialResultDto.md",
-          "hash": "2590780018082102696"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignCredentialResultDto_signedCredential.md",
-          "hash": "9110788175948797007"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignJwtToken.md",
-          "hash": "3502821734505133824"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SignJwtTokenOK.md",
-          "hash": "3988117821986267275"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/SigningFailedError.md",
-          "hash": "9253508471700514269"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/UpdateWalletInput.md",
-          "hash": "3298720620970288677"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/WalletDto.md",
-          "hash": "11096196368807354235"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/WalletDto_keys_inner.md",
-          "hash": "12889750360559953749"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/WalletsListDto.md",
-          "hash": "8713242098473665721"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/Models/signCredential_400_response.md",
-          "hash": "10669845807794383792"
-        },
-        {
-          "file": "clients/typescript/wallets-client/docs/README.md",
-          "hash": "16538676559672061182"
-        },
-        {
-          "file": "clients/typescript/wallets-client/index.ts",
-          "hash": "13722970733426280413"
-        },
-        {
-          "file": "clients/typescript/wallets-client/package.json",
-          "hash": "17514709532648327142",
-          "deps": [
-            "npm:@types/node@18.19.33",
-            "npm:typescript@4.9.5",
-            "npm:axios",
-            "npm:axios-retry",
-            "npm:url"
-          ]
-        },
-        {
-          "file": "clients/typescript/wallets-client/project.json",
-          "hash": "8985801581962090148"
-        },
-        {
-          "file": "clients/typescript/wallets-client/tsconfig.esm.json",
-          "hash": "7022370158318588762"
-        },
-        {
-          "file": "clients/typescript/wallets-client/tsconfig.json",
           "hash": "13354068531430747784"
         }
       ]
@@ -4067,7 +4072,7 @@
       },
       {
         "file": "clients/dart/iota_client/doc/DefaultApi.md",
-        "hash": "18405349685428401625"
+        "hash": "7968352065802669812"
       },
       {
         "file": "clients/dart/iota_client/doc/DemoWbx.md",
@@ -4175,7 +4180,7 @@
       },
       {
         "file": "clients/dart/iota_client/lib/api/default_api.dart",
-        "hash": "15759469366039703060"
+        "hash": "9263238202452998635"
       },
       {
         "file": "clients/dart/iota_client/lib/api/iota_api.dart",
@@ -4499,7 +4504,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/.openapi-generator/FILES",
-        "hash": "10009014264200757199"
+        "hash": "9212813155107993074"
       },
       {
         "file": "clients/dart/login_configuration_client/.openapi-generator/VERSION",
@@ -4511,7 +4516,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/README.md",
-        "hash": "12945566997650810755"
+        "hash": "16641181391505879011"
       },
       {
         "file": "clients/dart/login_configuration_client/analysis_options.yaml",
@@ -4646,6 +4651,10 @@
         "hash": "11269664638005359387"
       },
       {
+        "file": "clients/dart/login_configuration_client/doc/InvalidVPTokenCreationTimeError.md",
+        "hash": "6828351240707276598"
+      },
+      {
         "file": "clients/dart/login_configuration_client/doc/JsonWebKey.md",
         "hash": "7951081183717742699"
       },
@@ -4679,7 +4688,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/doc/LoginSessionDtoAuthorizationRequest.md",
-        "hash": "14575397341540094410"
+        "hash": "10833559316110194098"
       },
       {
         "file": "clients/dart/login_configuration_client/doc/LoginSessionForIDPInput.md",
@@ -4739,7 +4748,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/lib/api.dart",
-        "hash": "9699939282949605864"
+        "hash": "17284102435496766319"
       },
       {
         "file": "clients/dart/login_configuration_client/lib/api/allow_list_api.dart",
@@ -4763,7 +4772,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/lib/api_client.dart",
-        "hash": "12331747353895025032"
+        "hash": "15566668288229362976"
       },
       {
         "file": "clients/dart/login_configuration_client/lib/api_exception.dart",
@@ -4902,6 +4911,10 @@
         "hash": "4146389732483541921"
       },
       {
+        "file": "clients/dart/login_configuration_client/lib/model/invalid_vp_token_creation_time_error.dart",
+        "hash": "14103052628927385814"
+      },
+      {
         "file": "clients/dart/login_configuration_client/lib/model/json_web_key.dart",
         "hash": "13259684982919517161"
       },
@@ -4935,7 +4948,7 @@
       },
       {
         "file": "clients/dart/login_configuration_client/lib/model/login_session_dto_authorization_request.dart",
-        "hash": "1734730652923159140"
+        "hash": "4078918116456444130"
       },
       {
         "file": "clients/dart/login_configuration_client/lib/model/login_session_for_idp_input.dart",
@@ -5126,6 +5139,10 @@
         "hash": "11892214444064725511"
       },
       {
+        "file": "clients/dart/login_configuration_client/test/invalid_vp_token_creation_time_error_test.dart",
+        "hash": "10971511399575413660"
+      },
+      {
         "file": "clients/dart/login_configuration_client/test/json_web_key_keys_inner_test.dart",
         "hash": "5934822445291046780"
       },
@@ -5227,7 +5244,7 @@
       },
       {
         "file": "clients/dart/wallets_client/.openapi-generator/FILES",
-        "hash": "16606704467098865934"
+        "hash": "4379091480802641271"
       },
       {
         "file": "clients/dart/wallets_client/.openapi-generator/VERSION",
@@ -7695,7 +7712,7 @@
       },
       {
         "file": "clients/python/iota_client/affinidi_tdk_iota_client/api/default_api.py",
-        "hash": "8348702507118852813"
+        "hash": "12332382697569404685"
       },
       {
         "file": "clients/python/iota_client/affinidi_tdk_iota_client/api/iota_api.py",
@@ -7907,7 +7924,7 @@
       },
       {
         "file": "clients/python/iota_client/docs/DefaultApi.md",
-        "hash": "4146995382963937040"
+        "hash": "16735325171077977690"
       },
       {
         "file": "clients/python/iota_client/docs/DemoWbx.md",
@@ -8187,7 +8204,7 @@
       },
       {
         "file": "clients/python/login_configuration_client/.openapi-generator/FILES",
-        "hash": "1251900060338168381"
+        "hash": "16818775708293734835"
       },
       {
         "file": "clients/python/login_configuration_client/.openapi-generator/VERSION",
@@ -8199,11 +8216,11 @@
       },
       {
         "file": "clients/python/login_configuration_client/README.md",
-        "hash": "14578762911019727456"
+        "hash": "1966307598548183501"
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/__init__.py",
-        "hash": "861805399977295205"
+        "hash": "9116687829657444744"
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/api/__init__.py",
@@ -8247,7 +8264,7 @@
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/__init__.py",
-        "hash": "3324780190203041029"
+        "hash": "17472191165228864056"
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/action_forbidden_error.py",
@@ -8366,6 +8383,10 @@
         "hash": "11352803717883370509"
       },
       {
+        "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/invalid_vp_token_creation_time_error.py",
+        "hash": "1980599593558448266"
+      },
+      {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/json_web_key.py",
         "hash": "14122172329803179024"
       },
@@ -8407,7 +8428,7 @@
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/login_session_dto_authorization_request.py",
-        "hash": "3057895217706322608"
+        "hash": "7399398539063618001"
       },
       {
         "file": "clients/python/login_configuration_client/affinidi_tdk_login_configuration_client/models/login_session_for_idp_input.py",
@@ -8618,6 +8639,10 @@
         "hash": "14088156279895321655"
       },
       {
+        "file": "clients/python/login_configuration_client/docs/InvalidVPTokenCreationTimeError.md",
+        "hash": "2826295088250229038"
+      },
+      {
         "file": "clients/python/login_configuration_client/docs/JsonWebKey.md",
         "hash": "14483755368923267467"
       },
@@ -8659,7 +8684,7 @@
       },
       {
         "file": "clients/python/login_configuration_client/docs/LoginSessionDtoAuthorizationRequest.md",
-        "hash": "8162850791828948031"
+        "hash": "5904580189488014382"
       },
       {
         "file": "clients/python/login_configuration_client/docs/LoginSessionForIDPInput.md",
@@ -8886,6 +8911,10 @@
         "hash": "18278626223965997215"
       },
       {
+        "file": "clients/python/login_configuration_client/test/test_invalid_vp_token_creation_time_error.py",
+        "hash": "1803271783189099835"
+      },
+      {
         "file": "clients/python/login_configuration_client/test/test_json_web_key.py",
         "hash": "11581136430835848574"
       },
@@ -9011,7 +9040,7 @@
       },
       {
         "file": "clients/python/wallets_client/.openapi-generator/FILES",
-        "hash": "3512883569123536842"
+        "hash": "17722635681551567359"
       },
       {
         "file": "clients/python/wallets_client/.openapi-generator/VERSION",
@@ -9487,7 +9516,7 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "2034266648754056681"
+        "hash": "7764756288468781121"
       },
       {
         "file": "package.json",
