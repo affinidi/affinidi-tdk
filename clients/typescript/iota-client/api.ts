@@ -2035,6 +2035,7 @@ export const DefaultApiAxiosParamCreator = function (
   return {
     /**
      * returns a list of logged consents for the project
+     * @param {string} [configurationId]
      * @param {string} [userId]
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
@@ -2042,6 +2043,7 @@ export const DefaultApiAxiosParamCreator = function (
      * @throws {RequiredError}
      */
     listLoggedConsents: async (
+      configurationId?: string,
       userId?: string,
       limit?: number,
       exclusiveStartKey?: string,
@@ -2069,6 +2071,10 @@ export const DefaultApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (configurationId !== undefined) {
+        localVarQueryParameter['configurationId'] = configurationId
+      }
 
       if (userId !== undefined) {
         localVarQueryParameter['userId'] = userId
@@ -2108,6 +2114,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
   return {
     /**
      * returns a list of logged consents for the project
+     * @param {string} [configurationId]
      * @param {string} [userId]
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
@@ -2115,6 +2122,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      * @throws {RequiredError}
      */
     async listLoggedConsents(
+      configurationId?: string,
       userId?: string,
       limit?: number,
       exclusiveStartKey?: string,
@@ -2127,6 +2135,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.listLoggedConsents(
+          configurationId,
           userId,
           limit,
           exclusiveStartKey,
@@ -2159,6 +2168,7 @@ export const DefaultApiFactory = function (
   return {
     /**
      * returns a list of logged consents for the project
+     * @param {string} [configurationId]
      * @param {string} [userId]
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
@@ -2166,13 +2176,20 @@ export const DefaultApiFactory = function (
      * @throws {RequiredError}
      */
     listLoggedConsents(
+      configurationId?: string,
       userId?: string,
       limit?: number,
       exclusiveStartKey?: string,
       options?: any,
     ): AxiosPromise<ListLoggedConsentsOK> {
       return localVarFp
-        .listLoggedConsents(userId, limit, exclusiveStartKey, options)
+        .listLoggedConsents(
+          configurationId,
+          userId,
+          limit,
+          exclusiveStartKey,
+          options,
+        )
         .then((request) => request(axios, basePath))
     },
   }
@@ -2187,6 +2204,7 @@ export const DefaultApiFactory = function (
 export class DefaultApi extends BaseAPI {
   /**
    * returns a list of logged consents for the project
+   * @param {string} [configurationId]
    * @param {string} [userId]
    * @param {number} [limit] Maximum number of records to fetch in a list
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
@@ -2195,13 +2213,20 @@ export class DefaultApi extends BaseAPI {
    * @memberof DefaultApi
    */
   public listLoggedConsents(
+    configurationId?: string,
     userId?: string,
     limit?: number,
     exclusiveStartKey?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return DefaultApiFp(this.configuration)
-      .listLoggedConsents(userId, limit, exclusiveStartKey, options)
+      .listLoggedConsents(
+        configurationId,
+        userId,
+        limit,
+        exclusiveStartKey,
+        options,
+      )
       .then((request) => request(this.axios, this.basePath))
   }
 }

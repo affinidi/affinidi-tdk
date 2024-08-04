@@ -61,6 +61,7 @@ part 'model/invalid_claim_context_error.dart';
 part 'model/invalid_groups_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_parameter_error_details_inner.dart';
+part 'model/invalid_vp_token_creation_time_error.dart';
 part 'model/json_web_key.dart';
 part 'model/json_web_key_keys_inner.dart';
 part 'model/list_login_configuration_output.dart';

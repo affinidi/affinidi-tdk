@@ -8,6 +8,7 @@
 | **presentation_definition** | **str** | Presentation Definition to ask from the user. In JSON Stringify format. |
 | **ari**                     | **str** | ARI is used for analytics proposals.                                    | [optional] |
 | **client_id**               | **str** | clientId used for detect origin.                                        | [optional] |
+| **nonce**                   | **str** | nonce for VP Token proof challenge                                      | [optional] |
 
 ## Example
 
