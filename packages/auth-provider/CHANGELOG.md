@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.13.2...@affinidi-tdk/auth-provider-v1.14.0) (2024-08-05)
+
+
+### Features
+
+* update client cis ([#169](https://github.com/affinidi/affinidi-tdk/issues/169)) ([97d06b5](https://github.com/affinidi/affinidi-tdk/commit/97d06b5ced805a416a4bd368b4dd952001015661))
+
 ## [1.13.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.13.1...@affinidi-tdk/auth-provider-v1.13.2) (2024-07-29)
 
 
