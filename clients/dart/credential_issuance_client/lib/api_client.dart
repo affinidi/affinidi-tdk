@@ -202,6 +202,8 @@ class ApiClient {
           return CreateIssuanceConfigInputCredentialSupportedInner.fromJson(value);
         case 'CredentialIssuanceIdExistError':
           return CredentialIssuanceIdExistError.fromJson(value);
+        case 'CredentialOfferClaimedError':
+          return CredentialOfferClaimedError.fromJson(value);
         case 'CredentialOfferExpiredError':
           return CredentialOfferExpiredError.fromJson(value);
         case 'CredentialOfferResponse':
@@ -258,6 +260,8 @@ class ApiClient {
           return ListIssuanceResponse.fromJson(value);
         case 'ListIssuanceResponseIssuancesInner':
           return ListIssuanceResponseIssuancesInner.fromJson(value);
+        case 'MissingHolderDidError':
+          return MissingHolderDidError.fromJson(value);
         case 'NotFoundError':
           return NotFoundError.fromJson(value);
         case 'ProjectCredentialConfigExistError':

@@ -341,6 +341,63 @@ export type CredentialIssuanceIdExistErrorHttpStatusCodeEnum =
 /**
  *
  * @export
+ * @interface CredentialOfferClaimedError
+ */
+export interface CredentialOfferClaimedError {
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  name: CredentialOfferClaimedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  message: CredentialOfferClaimedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof CredentialOfferClaimedError
+   */
+  httpStatusCode: CredentialOfferClaimedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof CredentialOfferClaimedError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const CredentialOfferClaimedErrorNameEnum = {
+  CredentialOfferClaimedError: 'CredentialOfferClaimedError',
+} as const
+
+export type CredentialOfferClaimedErrorNameEnum =
+  (typeof CredentialOfferClaimedErrorNameEnum)[keyof typeof CredentialOfferClaimedErrorNameEnum]
+export const CredentialOfferClaimedErrorMessageEnum = {
+  CredentialOfferIsAlreadyClaimed: 'Credential offer is already claimed',
+} as const
+
+export type CredentialOfferClaimedErrorMessageEnum =
+  (typeof CredentialOfferClaimedErrorMessageEnum)[keyof typeof CredentialOfferClaimedErrorMessageEnum]
+export const CredentialOfferClaimedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type CredentialOfferClaimedErrorHttpStatusCodeEnum =
+  (typeof CredentialOfferClaimedErrorHttpStatusCodeEnum)[keyof typeof CredentialOfferClaimedErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface CredentialOfferExpiredError
  */
 export interface CredentialOfferExpiredError {
@@ -660,6 +717,7 @@ export type GenerateCredentials400Response =
  * @export
  */
 export type GetCredentialOffer400Response =
+  | CredentialOfferClaimedError
   | CredentialOfferExpiredError
   | InvalidParameterError
   | ProjectCredentialConfigNotExistError
@@ -1270,6 +1328,63 @@ export interface ListIssuanceResponseIssuancesInner {
 /**
  *
  * @export
+ * @interface MissingHolderDidError
+ */
+export interface MissingHolderDidError {
+  /**
+   *
+   * @type {string}
+   * @memberof MissingHolderDidError
+   */
+  name: MissingHolderDidErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof MissingHolderDidError
+   */
+  message: MissingHolderDidErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof MissingHolderDidError
+   */
+  httpStatusCode: MissingHolderDidErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof MissingHolderDidError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof MissingHolderDidError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const MissingHolderDidErrorNameEnum = {
+  MissingHolderDidError: 'MissingHolderDidError',
+} as const
+
+export type MissingHolderDidErrorNameEnum =
+  (typeof MissingHolderDidErrorNameEnum)[keyof typeof MissingHolderDidErrorNameEnum]
+export const MissingHolderDidErrorMessageEnum = {
+  HolderDidIsRequiredInThisClaimMode: 'holderDID is required in this claimMode',
+} as const
+
+export type MissingHolderDidErrorMessageEnum =
+  (typeof MissingHolderDidErrorMessageEnum)[keyof typeof MissingHolderDidErrorMessageEnum]
+export const MissingHolderDidErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type MissingHolderDidErrorHttpStatusCodeEnum =
+  (typeof MissingHolderDidErrorHttpStatusCodeEnum)[keyof typeof MissingHolderDidErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface NotFoundError
  */
 export interface NotFoundError {
@@ -1449,6 +1564,7 @@ export type StartIssuance400Response =
   | CredentialSubjectNotValidError
   | InvalidCredentialTypeError
   | InvalidParameterError
+  | MissingHolderDidError
   | ProjectCredentialConfigNotExistError
 
 /**
@@ -1458,7 +1574,7 @@ export type StartIssuance400Response =
  */
 export interface StartIssuanceInput {
   /**
-   *
+   * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
    * @type {string}
    * @memberof StartIssuanceInput
    */
@@ -1468,7 +1584,7 @@ export interface StartIssuanceInput {
    * @type {string}
    * @memberof StartIssuanceInput
    */
-  holderDid: string
+  holderDid?: string
   /**
    * Website\'s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
    * @type {string}
@@ -1486,6 +1602,7 @@ export interface StartIssuanceInput {
 export const StartIssuanceInputClaimModeEnum = {
   Normal: 'NORMAL',
   TxCode: 'TX_CODE',
+  FixedHolder: 'FIXED_HOLDER',
 } as const
 
 export type StartIssuanceInputClaimModeEnum =
