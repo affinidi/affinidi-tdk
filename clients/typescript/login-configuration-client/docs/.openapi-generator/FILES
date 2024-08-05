@@ -30,6 +30,7 @@ Models/InvalidClaimContextError.md
 Models/InvalidGroupsError.md
 Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
+Models/InvalidVPTokenCreationTimeError.md
 Models/JsonWebKey.md
 Models/JsonWebKey_keys_inner.md
 Models/ListLoginConfigurationOutput.md
