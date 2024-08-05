@@ -14,15 +14,22 @@ class StartIssuanceInput {
   /// Returns a new [StartIssuanceInput] instance.
   StartIssuanceInput({
     this.claimMode,
-    required this.holderDid,
+    this.holderDid,
     this.issuanceId,
     this.data = const [],
   });
 
+  /// In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
   StartIssuanceInputClaimModeEnum? claimMode;
 
   /// Holder DID
-  String holderDid;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? holderDid;
 
   /// Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
   ///
@@ -46,7 +53,7 @@ class StartIssuanceInput {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (claimMode == null ? 0 : claimMode!.hashCode) +
-    (holderDid.hashCode) +
+    (holderDid == null ? 0 : holderDid!.hashCode) +
     (issuanceId == null ? 0 : issuanceId!.hashCode) +
     (data.hashCode);
 
@@ -60,7 +67,11 @@ class StartIssuanceInput {
     } else {
       json[r'claimMode'] = null;
     }
+    if (this.holderDid != null) {
       json[r'holderDid'] = this.holderDid;
+    } else {
+      json[r'holderDid'] = null;
+    }
     if (this.issuanceId != null) {
       json[r'issuanceId'] = this.issuanceId;
     } else {
@@ -90,7 +101,7 @@ class StartIssuanceInput {
 
       return StartIssuanceInput(
         claimMode: StartIssuanceInputClaimModeEnum.fromJson(json[r'claimMode']),
-        holderDid: mapValueOfType<String>(json, r'holderDid')!,
+        holderDid: mapValueOfType<String>(json, r'holderDid'),
         issuanceId: mapValueOfType<String>(json, r'issuanceId'),
         data: StartIssuanceInputDataInner.listFromJson(json[r'data']),
       );
@@ -140,12 +151,11 @@ class StartIssuanceInput {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'holderDid',
     'data',
   };
 }
 
-
+/// In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
 class StartIssuanceInputClaimModeEnum {
   /// Instantiate a new enum with the provided [value].
   const StartIssuanceInputClaimModeEnum._(this.value);
@@ -160,11 +170,13 @@ class StartIssuanceInputClaimModeEnum {
 
   static const NORMAL = StartIssuanceInputClaimModeEnum._(r'NORMAL');
   static const TX_CODE = StartIssuanceInputClaimModeEnum._(r'TX_CODE');
+  static const FIXED_HOLDER = StartIssuanceInputClaimModeEnum._(r'FIXED_HOLDER');
 
   /// List of all possible values in this [enum][StartIssuanceInputClaimModeEnum].
   static const values = <StartIssuanceInputClaimModeEnum>[
     NORMAL,
     TX_CODE,
+    FIXED_HOLDER,
   ];
 
   static StartIssuanceInputClaimModeEnum? fromJson(dynamic value) => StartIssuanceInputClaimModeEnumTypeTransformer().decode(value);
@@ -205,6 +217,7 @@ class StartIssuanceInputClaimModeEnumTypeTransformer {
       switch (data) {
         case r'NORMAL': return StartIssuanceInputClaimModeEnum.NORMAL;
         case r'TX_CODE': return StartIssuanceInputClaimModeEnum.TX_CODE;
+        case r'FIXED_HOLDER': return StartIssuanceInputClaimModeEnum.FIXED_HOLDER;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

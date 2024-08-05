@@ -27,8 +27,8 @@ class StartIssuanceInput(BaseModel):
     """
     StartIssuanceInput
     """
-    claim_mode: Optional[StrictStr] = Field(None, alias="claimMode")
-    holder_did: constr(strict=True) = Field(..., alias="holderDid", description="Holder DID")
+    claim_mode: Optional[StrictStr] = Field(None, alias="claimMode", description="In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).")
+    holder_did: Optional[constr(strict=True)] = Field(None, alias="holderDid", description="Holder DID")
     issuance_id: Optional[StrictStr] = Field(None, alias="issuanceId", description="Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.")
     data: conlist(StartIssuanceInputDataInner) = Field(...)
     __properties = ["claimMode", "holderDid", "issuanceId", "data"]
@@ -39,13 +39,16 @@ class StartIssuanceInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('NORMAL', 'TX_CODE'):
-            raise ValueError("must be one of enum values ('NORMAL', 'TX_CODE')")
+        if value not in ('NORMAL', 'TX_CODE', 'FIXED_HOLDER'):
+            raise ValueError("must be one of enum values ('NORMAL', 'TX_CODE', 'FIXED_HOLDER')")
         return value
 
     @validator('holder_did')
     def holder_did_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if value is None:
+            return value
+
         if not re.match(r"^did:.+$", value):
             raise ValueError(r"must validate the regular expression /^did:.+$/")
         return value

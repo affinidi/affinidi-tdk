@@ -12,6 +12,7 @@ Models/CreateCredentialInput.md
 Models/CreateIssuanceConfigInput.md
 Models/CreateIssuanceConfigInput_credentialSupported_inner.md
 Models/CredentialIssuanceIdExistError.md
+Models/CredentialOfferClaimedError.md
 Models/CredentialOfferExpiredError.md
 Models/CredentialOfferResponse.md
 Models/CredentialOfferResponse_grants.md
@@ -38,6 +39,7 @@ Models/IssuanceConfigMiniDto.md
 Models/IssuanceStateResponse.md
 Models/ListIssuanceResponse.md
 Models/ListIssuanceResponse_issuances_inner.md
+Models/MissingHolderDidError.md
 Models/NotFoundError.md
 Models/ProjectCredentialConfigExistError.md
 Models/ProjectCredentialConfigNotExistError.md

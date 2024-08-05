@@ -151,11 +151,11 @@ class StartIssuance400ResponseNameEnum {
 
   String toJson() => value;
 
-  static const credentialIssuanceIdExistError = StartIssuance400ResponseNameEnum._(r'CredentialIssuanceIdExistError');
+  static const missingHolderDidError = StartIssuance400ResponseNameEnum._(r'MissingHolderDidError');
 
   /// List of all possible values in this [enum][StartIssuance400ResponseNameEnum].
   static const values = <StartIssuance400ResponseNameEnum>[
-    credentialIssuanceIdExistError,
+    missingHolderDidError,
   ];
 
   static StartIssuance400ResponseNameEnum? fromJson(dynamic value) => StartIssuance400ResponseNameEnumTypeTransformer().decode(value);
@@ -194,7 +194,7 @@ class StartIssuance400ResponseNameEnumTypeTransformer {
   StartIssuance400ResponseNameEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'CredentialIssuanceIdExistError': return StartIssuance400ResponseNameEnum.credentialIssuanceIdExistError;
+        case r'MissingHolderDidError': return StartIssuance400ResponseNameEnum.missingHolderDidError;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -222,11 +222,11 @@ class StartIssuance400ResponseMessageEnum {
 
   String toJson() => value;
 
-  static const issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId = StartIssuance400ResponseMessageEnum._(r'issuanceId exist for the project, please use different issuanceId');
+  static const holderDIDIsRequiredInThisClaimMode = StartIssuance400ResponseMessageEnum._(r'holderDID is required in this claimMode');
 
   /// List of all possible values in this [enum][StartIssuance400ResponseMessageEnum].
   static const values = <StartIssuance400ResponseMessageEnum>[
-    issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId,
+    holderDIDIsRequiredInThisClaimMode,
   ];
 
   static StartIssuance400ResponseMessageEnum? fromJson(dynamic value) => StartIssuance400ResponseMessageEnumTypeTransformer().decode(value);
@@ -265,7 +265,7 @@ class StartIssuance400ResponseMessageEnumTypeTransformer {
   StartIssuance400ResponseMessageEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'issuanceId exist for the project, please use different issuanceId': return StartIssuance400ResponseMessageEnum.issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId;
+        case r'holderDID is required in this claimMode': return StartIssuance400ResponseMessageEnum.holderDIDIsRequiredInThisClaimMode;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -25,11 +25,12 @@ from affinidi_tdk_credential_issuance_client.models.credential_issuance_id_exist
 from affinidi_tdk_credential_issuance_client.models.credential_subject_not_valid_error import CredentialSubjectNotValidError
 from affinidi_tdk_credential_issuance_client.models.invalid_credential_type_error import InvalidCredentialTypeError
 from affinidi_tdk_credential_issuance_client.models.invalid_parameter_error import InvalidParameterError
+from affinidi_tdk_credential_issuance_client.models.missing_holder_did_error import MissingHolderDidError
 from affinidi_tdk_credential_issuance_client.models.project_credential_config_not_exist_error import ProjectCredentialConfigNotExistError
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-STARTISSUANCE400RESPONSE_ONE_OF_SCHEMAS = ["CredentialIssuanceIdExistError", "CredentialSubjectNotValidError", "InvalidCredentialTypeError", "InvalidParameterError", "ProjectCredentialConfigNotExistError"]
+STARTISSUANCE400RESPONSE_ONE_OF_SCHEMAS = ["CredentialIssuanceIdExistError", "CredentialSubjectNotValidError", "InvalidCredentialTypeError", "InvalidParameterError", "MissingHolderDidError", "ProjectCredentialConfigNotExistError"]
 
 class StartIssuance400Response(BaseModel):
     """
@@ -45,8 +46,10 @@ class StartIssuance400Response(BaseModel):
     oneof_schema_4_validator: Optional[CredentialSubjectNotValidError] = None
     # data type: CredentialIssuanceIdExistError
     oneof_schema_5_validator: Optional[CredentialIssuanceIdExistError] = None
+    # data type: MissingHolderDidError
+    oneof_schema_6_validator: Optional[MissingHolderDidError] = None
     if TYPE_CHECKING:
-        actual_instance: Union[CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, ProjectCredentialConfigNotExistError]
+        actual_instance: Union[CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError]
     else:
         actual_instance: Any
     one_of_schemas: List[str] = Field(STARTISSUANCE400RESPONSE_ONE_OF_SCHEMAS, const=True)
@@ -94,12 +97,17 @@ class StartIssuance400Response(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `CredentialIssuanceIdExistError`")
         else:
             match += 1
+        # validate data type: MissingHolderDidError
+        if not isinstance(v, MissingHolderDidError):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `MissingHolderDidError`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -144,13 +152,19 @@ class StartIssuance400Response(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into MissingHolderDidError
+        try:
+            instance.actual_instance = MissingHolderDidError.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError. Details: " + ", ".join(error_messages))
         else:
             return instance
 

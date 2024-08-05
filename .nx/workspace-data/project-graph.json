@@ -1083,6 +1083,15 @@
         "hash": "14527303307738292875"
       }
     },
+    "npm:@types/node@22.0.0": {
+      "type": "npm",
+      "name": "npm:@types/node@22.0.0",
+      "data": {
+        "version": "22.0.0",
+        "packageName": "@types/node",
+        "hash": "sha512-VT7KSYudcPOzP5Q0wfbowyNLaVR8QWUdw+088uFWwfvpY6uCWaXpqV6ieLAu9WBcnTa7H4Z5RLK8I5t2FuOcqw=="
+      }
+    },
     "npm:@types/node": {
       "type": "npm",
       "name": "npm:@types/node",
@@ -1317,13 +1326,22 @@
         "hash": "18395649546124891387"
       }
     },
-    "npm:@affinidi-tdk/iota-client@1.9.0": {
+    "npm:undici-types@6.11.1": {
       "type": "npm",
-      "name": "npm:@affinidi-tdk/iota-client@1.9.0",
+      "name": "npm:undici-types@6.11.1",
       "data": {
-        "version": "1.9.0",
-        "packageName": "@affinidi-tdk/iota-client",
-        "hash": "sha512-MMszIMPCy/KFSEAU548IaqzeazF03oUf6EN+VctLdNeydJh2xmYahD2zKE3wbnNR1SCjuyoJIEq5NBzr7+anlg=="
+        "version": "6.11.1",
+        "packageName": "undici-types",
+        "hash": "sha512-mIDEX2ek50x0OlRgxryxsenE5XaQD4on5U2inY7RApK3SOJpofyw7uW2AyfMKkhAxXIceo2DeWGVGwyvng1GNQ=="
+      }
+    },
+    "npm:undici-types": {
+      "type": "npm",
+      "name": "npm:undici-types",
+      "data": {
+        "version": "5.26.5",
+        "packageName": "undici-types",
+        "hash": "sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA=="
       }
     },
     "npm:@ampproject/remapping": {
@@ -12864,15 +12882,6 @@
         "hash": "sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw=="
       }
     },
-    "npm:undici-types": {
-      "type": "npm",
-      "name": "npm:undici-types",
-      "data": {
-        "version": "5.26.5",
-        "packageName": "undici-types",
-        "hash": "sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA=="
-      }
-    },
     "npm:unicode-canonical-property-names-ecmascript": {
       "type": "npm",
       "name": "npm:unicode-canonical-property-names-ecmascript",
@@ -13532,6 +13541,11 @@
       },
       {
         "source": "@affinidi-tdk/iota-core",
+        "target": "npm:@types/node@22.0.0",
+        "type": "static"
+      },
+      {
+        "source": "@affinidi-tdk/iota-core",
         "target": "npm:@typescript-eslint/eslint-plugin@7.14.1",
         "type": "static"
       },
@@ -13757,20 +13771,10 @@
         "type": "static"
       }
     ],
-    "npm:@affinidi-tdk/iota-client@1.9.0": [
+    "npm:@types/node@22.0.0": [
       {
-        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
-        "target": "npm:axios",
-        "type": "static"
-      },
-      {
-        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
-        "target": "npm:axios-retry",
-        "type": "static"
-      },
-      {
-        "source": "npm:@affinidi-tdk/iota-client@1.9.0",
-        "target": "npm:url",
+        "source": "npm:@types/node@22.0.0",
+        "target": "npm:undici-types@6.11.1",
         "type": "static"
       }
     ],
