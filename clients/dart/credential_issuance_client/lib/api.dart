@@ -44,6 +44,7 @@ part 'model/create_issuance_config400_response.dart';
 part 'model/create_issuance_config_input.dart';
 part 'model/create_issuance_config_input_credential_supported_inner.dart';
 part 'model/credential_issuance_id_exist_error.dart';
+part 'model/credential_offer_claimed_error.dart';
 part 'model/credential_offer_expired_error.dart';
 part 'model/credential_offer_response.dart';
 part 'model/credential_offer_response_grants.dart';

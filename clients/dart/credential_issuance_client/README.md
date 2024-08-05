@@ -92,6 +92,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CreateIssuanceConfigInput](doc//CreateIssuanceConfigInput.md)
 - [CreateIssuanceConfigInputCredentialSupportedInner](doc//CreateIssuanceConfigInputCredentialSupportedInner.md)
 - [CredentialIssuanceIdExistError](doc//CredentialIssuanceIdExistError.md)
+- [CredentialOfferClaimedError](doc//CredentialOfferClaimedError.md)
 - [CredentialOfferExpiredError](doc//CredentialOfferExpiredError.md)
 - [CredentialOfferResponse](doc//CredentialOfferResponse.md)
 - [CredentialOfferResponseGrants](doc//CredentialOfferResponseGrants.md)

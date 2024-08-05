@@ -341,6 +341,63 @@ export type CredentialIssuanceIdExistErrorHttpStatusCodeEnum =
 /**
  *
  * @export
+ * @interface CredentialOfferClaimedError
+ */
+export interface CredentialOfferClaimedError {
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  name: CredentialOfferClaimedErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  message: CredentialOfferClaimedErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof CredentialOfferClaimedError
+   */
+  httpStatusCode: CredentialOfferClaimedErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof CredentialOfferClaimedError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof CredentialOfferClaimedError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const CredentialOfferClaimedErrorNameEnum = {
+  CredentialOfferClaimedError: 'CredentialOfferClaimedError',
+} as const
+
+export type CredentialOfferClaimedErrorNameEnum =
+  (typeof CredentialOfferClaimedErrorNameEnum)[keyof typeof CredentialOfferClaimedErrorNameEnum]
+export const CredentialOfferClaimedErrorMessageEnum = {
+  CredentialOfferIsAlreadyClaimed: 'Credential offer is already claimed',
+} as const
+
+export type CredentialOfferClaimedErrorMessageEnum =
+  (typeof CredentialOfferClaimedErrorMessageEnum)[keyof typeof CredentialOfferClaimedErrorMessageEnum]
+export const CredentialOfferClaimedErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type CredentialOfferClaimedErrorHttpStatusCodeEnum =
+  (typeof CredentialOfferClaimedErrorHttpStatusCodeEnum)[keyof typeof CredentialOfferClaimedErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface CredentialOfferExpiredError
  */
 export interface CredentialOfferExpiredError {
@@ -660,6 +717,7 @@ export type GenerateCredentials400Response =
  * @export
  */
 export type GetCredentialOffer400Response =
+  | CredentialOfferClaimedError
   | CredentialOfferExpiredError
   | InvalidParameterError
   | ProjectCredentialConfigNotExistError

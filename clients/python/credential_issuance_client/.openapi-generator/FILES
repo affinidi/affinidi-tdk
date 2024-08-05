@@ -24,6 +24,7 @@ affinidi_tdk_credential_issuance_client/models/create_issuance_config400_respons
 affinidi_tdk_credential_issuance_client/models/create_issuance_config_input.py
 affinidi_tdk_credential_issuance_client/models/create_issuance_config_input_credential_supported_inner.py
 affinidi_tdk_credential_issuance_client/models/credential_issuance_id_exist_error.py
+affinidi_tdk_credential_issuance_client/models/credential_offer_claimed_error.py
 affinidi_tdk_credential_issuance_client/models/credential_offer_expired_error.py
 affinidi_tdk_credential_issuance_client/models/credential_offer_response.py
 affinidi_tdk_credential_issuance_client/models/credential_offer_response_grants.py
@@ -76,6 +77,7 @@ docs/CreateIssuanceConfig400Response.md
 docs/CreateIssuanceConfigInput.md
 docs/CreateIssuanceConfigInputCredentialSupportedInner.md
 docs/CredentialIssuanceIdExistError.md
+docs/CredentialOfferClaimedError.md
 docs/CredentialOfferExpiredError.md
 docs/CredentialOfferResponse.md
 docs/CredentialOfferResponseGrants.md
@@ -125,4 +127,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_credential_offer_claimed_error.py
 tox.ini

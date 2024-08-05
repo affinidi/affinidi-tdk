@@ -13,6 +13,7 @@ doc/CreateIssuanceConfig400Response.md
 doc/CreateIssuanceConfigInput.md
 doc/CreateIssuanceConfigInputCredentialSupportedInner.md
 doc/CredentialIssuanceIdExistError.md
+doc/CredentialOfferClaimedError.md
 doc/CredentialOfferExpiredError.md
 doc/CredentialOfferResponse.md
 doc/CredentialOfferResponseGrants.md
@@ -80,6 +81,7 @@ lib/model/create_issuance_config400_response.dart
 lib/model/create_issuance_config_input.dart
 lib/model/create_issuance_config_input_credential_supported_inner.dart
 lib/model/credential_issuance_id_exist_error.dart
+lib/model/credential_offer_claimed_error.dart
 lib/model/credential_offer_expired_error.dart
 lib/model/credential_offer_response.dart
 lib/model/credential_offer_response_grants.dart
@@ -120,3 +122,4 @@ lib/model/update_issuance_config_input.dart
 lib/model/vc_claimed_error.dart
 lib/model/well_known_open_id_credential_issuer_response.dart
 pubspec.yaml
+test/credential_offer_claimed_error_test.dart

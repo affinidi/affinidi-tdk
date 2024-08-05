@@ -202,6 +202,8 @@ class ApiClient {
           return CreateIssuanceConfigInputCredentialSupportedInner.fromJson(value);
         case 'CredentialIssuanceIdExistError':
           return CredentialIssuanceIdExistError.fromJson(value);
+        case 'CredentialOfferClaimedError':
+          return CredentialOfferClaimedError.fromJson(value);
         case 'CredentialOfferExpiredError':
           return CredentialOfferExpiredError.fromJson(value);
         case 'CredentialOfferResponse':
