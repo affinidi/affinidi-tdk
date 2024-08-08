@@ -1326,6 +1326,15 @@
         "hash": "18395649546124891387"
       }
     },
+    "npm:@affinidi-tdk/iota-client@1.11.0": {
+      "type": "npm",
+      "name": "npm:@affinidi-tdk/iota-client@1.11.0",
+      "data": {
+        "version": "1.11.0",
+        "packageName": "@affinidi-tdk/iota-client",
+        "hash": "sha512-6YPvj9imSMlvCkHYikSFBazjUcGNRhbjBUN0u879d+TSnHyQgZXe5cu1qQjIPOvvVBszhVH4L6/0h0D11gOLlQ=="
+      }
+    },
     "npm:undici-types@6.11.1": {
       "type": "npm",
       "name": "npm:undici-types@6.11.1",
@@ -13768,6 +13777,23 @@
       {
         "source": "npm:minimatch@9.0.5",
         "target": "npm:brace-expansion",
+        "type": "static"
+      }
+    ],
+    "npm:@affinidi-tdk/iota-client@1.11.0": [
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.11.0",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.11.0",
+        "target": "npm:axios-retry",
+        "type": "static"
+      },
+      {
+        "source": "npm:@affinidi-tdk/iota-client@1.11.0",
+        "target": "npm:url",
         "type": "static"
       }
     ],

@@ -22,6 +22,8 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [String] configurationId:
+  ///
   /// * [String] userId:
   ///
   /// * [int] limit:
@@ -29,7 +31,7 @@ class DefaultApi {
   ///
   /// * [String] exclusiveStartKey:
   ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-  Future<Response> listLoggedConsentsWithHttpInfo({ String? userId, int? limit, String? exclusiveStartKey, }) async {
+  Future<Response> listLoggedConsentsWithHttpInfo({ String? configurationId, String? userId, int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/logged-consents';
 
@@ -40,6 +42,9 @@ class DefaultApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
+    if (configurationId != null) {
+      queryParams.addAll(_queryParams('', 'configurationId', configurationId));
+    }
     if (userId != null) {
       queryParams.addAll(_queryParams('', 'userId', userId));
     }
@@ -68,6 +73,8 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [String] configurationId:
+  ///
   /// * [String] userId:
   ///
   /// * [int] limit:
@@ -75,8 +82,8 @@ class DefaultApi {
   ///
   /// * [String] exclusiveStartKey:
   ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-  Future<ListLoggedConsentsOK?> listLoggedConsents({ String? userId, int? limit, String? exclusiveStartKey, }) async {
-    final response = await listLoggedConsentsWithHttpInfo( userId: userId, limit: limit, exclusiveStartKey: exclusiveStartKey, );
+  Future<ListLoggedConsentsOK?> listLoggedConsents({ String? configurationId, String? userId, int? limit, String? exclusiveStartKey, }) async {
+    final response = await listLoggedConsentsWithHttpInfo( configurationId: configurationId, userId: userId, limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -30,7 +30,8 @@ class LoginSessionDtoAuthorizationRequest(BaseModel):
     presentation_definition: StrictStr = Field(..., alias="presentationDefinition", description="Presentation Definition to ask from the user. In JSON Stringify format.")
     ari: Optional[StrictStr] = Field(None, description="ARI is used for analytics proposals.")
     client_id: Optional[StrictStr] = Field(None, alias="clientId", description="clientId used for detect origin.")
-    __properties = ["state", "presentationDefinition", "ari", "clientId"]
+    nonce: Optional[StrictStr] = Field(None, description="nonce for VP Token proof challenge")
+    __properties = ["state", "presentationDefinition", "ari", "clientId", "nonce"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,7 +72,8 @@ class LoginSessionDtoAuthorizationRequest(BaseModel):
             "state": obj.get("state"),
             "presentation_definition": obj.get("presentationDefinition"),
             "ari": obj.get("ari"),
-            "client_id": obj.get("clientId")
+            "client_id": obj.get("clientId"),
+            "nonce": obj.get("nonce")
         })
         return _obj
 

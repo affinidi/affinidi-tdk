@@ -17,6 +17,7 @@ class LoginSessionDtoAuthorizationRequest {
     required this.presentationDefinition,
     this.ari,
     this.clientId,
+    this.nonce,
   });
 
   /// State parameter
@@ -43,12 +44,22 @@ class LoginSessionDtoAuthorizationRequest {
   ///
   String? clientId;
 
+  /// nonce for VP Token proof challenge
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? nonce;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginSessionDtoAuthorizationRequest &&
     other.state == state &&
     other.presentationDefinition == presentationDefinition &&
     other.ari == ari &&
-    other.clientId == clientId;
+    other.clientId == clientId &&
+    other.nonce == nonce;
 
   @override
   int get hashCode =>
@@ -56,10 +67,11 @@ class LoginSessionDtoAuthorizationRequest {
     (state.hashCode) +
     (presentationDefinition.hashCode) +
     (ari == null ? 0 : ari!.hashCode) +
-    (clientId == null ? 0 : clientId!.hashCode);
+    (clientId == null ? 0 : clientId!.hashCode) +
+    (nonce == null ? 0 : nonce!.hashCode);
 
   @override
-  String toString() => 'LoginSessionDtoAuthorizationRequest[state=$state, presentationDefinition=$presentationDefinition, ari=$ari, clientId=$clientId]';
+  String toString() => 'LoginSessionDtoAuthorizationRequest[state=$state, presentationDefinition=$presentationDefinition, ari=$ari, clientId=$clientId, nonce=$nonce]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -74,6 +86,11 @@ class LoginSessionDtoAuthorizationRequest {
       json[r'clientId'] = this.clientId;
     } else {
       json[r'clientId'] = null;
+    }
+    if (this.nonce != null) {
+      json[r'nonce'] = this.nonce;
+    } else {
+      json[r'nonce'] = null;
     }
     return json;
   }
@@ -101,6 +118,7 @@ class LoginSessionDtoAuthorizationRequest {
         presentationDefinition: mapValueOfType<String>(json, r'presentationDefinition')!,
         ari: mapValueOfType<String>(json, r'ari'),
         clientId: mapValueOfType<String>(json, r'clientId'),
+        nonce: mapValueOfType<String>(json, r'nonce'),
       );
     }
     return null;

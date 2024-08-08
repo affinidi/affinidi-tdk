@@ -69,6 +69,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [InvalidGroupsError](./Models/InvalidGroupsError.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)
 - [InvalidParameterError_details_inner](./Models/InvalidParameterError_details_inner.md)
+- [InvalidVPTokenCreationTimeError](./Models/InvalidVPTokenCreationTimeError.md)
 - [JsonWebKey](./Models/JsonWebKey.md)
 - [JsonWebKey_keys_inner](./Models/JsonWebKey_keys_inner.md)
 - [ListLoginConfigurationOutput](./Models/ListLoginConfigurationOutput.md)

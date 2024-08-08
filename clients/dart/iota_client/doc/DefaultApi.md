@@ -14,7 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 # **listLoggedConsents**
 
-> ListLoggedConsentsOK listLoggedConsents(userId, limit, exclusiveStartKey)
+> ListLoggedConsentsOK listLoggedConsents(configurationId, userId, limit, exclusiveStartKey)
 
 returns a list of logged consents for the project
 
@@ -28,12 +28,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
+final configurationId = configurationId_example; // String |
 final userId = userId_example; // String |
 final limit = 56; // int | Maximum number of records to fetch in a list
 final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listLoggedConsents(userId, limit, exclusiveStartKey);
+    final result = api_instance.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->listLoggedConsents: $e\n');
@@ -44,6 +45,7 @@ try {
 
 | Name                  | Type       | Description                                                                                                                                                    | Notes      |
 | --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **configurationId**   | **String** |                                                                                                                                                                | [optional] |
 | **userId**            | **String** |                                                                                                                                                                | [optional] |
 | **limit**             | **int**    | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
 | **exclusiveStartKey** | **String** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |

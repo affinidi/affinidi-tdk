@@ -236,6 +236,8 @@ class ApiClient {
           return InvalidParameterError.fromJson(value);
         case 'InvalidParameterErrorDetailsInner':
           return InvalidParameterErrorDetailsInner.fromJson(value);
+        case 'InvalidVPTokenCreationTimeError':
+          return InvalidVPTokenCreationTimeError.fromJson(value);
         case 'JsonWebKey':
           return JsonWebKey.fromJson(value);
         case 'JsonWebKeyKeysInner':

@@ -47,16 +47,18 @@ class DefaultApi:
         self.api_client = api_client
 
     @validate_arguments
-    def list_logged_consents(self, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListLoggedConsentsOK:  # noqa: E501
+    def list_logged_consents(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListLoggedConsentsOK:  # noqa: E501
         """list_logged_consents  # noqa: E501
 
         returns a list of logged consents for the project  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_logged_consents(user_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_logged_consents(configuration_id, user_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param configuration_id:
+        :type configuration_id: str
         :param user_id:
         :type user_id: str
         :param limit: Maximum number of records to fetch in a list
@@ -78,19 +80,21 @@ class DefaultApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_logged_consents_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_logged_consents_with_http_info(user_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
+        return self.list_logged_consents_with_http_info(configuration_id, user_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_logged_consents_with_http_info(self, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_logged_consents_with_http_info(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_logged_consents  # noqa: E501
 
         returns a list of logged consents for the project  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_logged_consents_with_http_info(user_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_logged_consents_with_http_info(configuration_id, user_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param configuration_id:
+        :type configuration_id: str
         :param user_id:
         :type user_id: str
         :param limit: Maximum number of records to fetch in a list
@@ -125,6 +129,7 @@ class DefaultApi:
         _params = locals()
 
         _all_params = [
+            'configuration_id',
             'user_id',
             'limit',
             'exclusive_start_key'
@@ -158,6 +163,9 @@ class DefaultApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('configuration_id') is not None:  # noqa: E501
+            _query_params.append(('configurationId', _params['configuration_id']))
+
         if _params.get('user_id') is not None:  # noqa: E501
             _query_params.append(('userId', _params['user_id']))
 
