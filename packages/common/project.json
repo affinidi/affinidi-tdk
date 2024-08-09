@@ -7,32 +7,35 @@
   "targets": {
     "install-node-modules": {
       "executor": "nx:run-commands",
-      "options": {
-        "cwd": "packages/common",
-        "command": "npm i --prefix ."
+        "options": {
+        "cwd": "{projectRoot}",
+          "command": "npm i --prefix ."
       }
     },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "packages/common",
+        "cwd": "{projectRoot}",
         "command": "npm run build"
       },
-      "dependsOn": ["install-node-modules"]
+      "dependsOn": [
+        "install-node-modules"
+      ],
+       "outputs": [
+        "{projectRoot}/.jsii"
+       ]
     },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
-    "nx-release-publish": {
+    "package": {
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "packages/common",
-        "command": "npm run publib-npm"
+        "cwd": "{projectRoot}",
+        "command": "npm run package"
       },
       "dependsOn": [
-        {
-          "target": "build"
-        }
+        "build"
+      ], 
+      "outputs": [
+        "{projectRoot}/dist/"
       ]
     },
     "semantic-release": {

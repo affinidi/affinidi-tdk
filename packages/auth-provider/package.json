@@ -24,7 +24,7 @@
     "versionFormat": "short",
     "targets": {
       "python": {
-        "distName": "affinidi-tdk_auth-provider",
+        "distName": "affinidi_tdk_auth_provider",
         "module": "affinidi_tdk_auth_provider"
       }
     }
@@ -35,7 +35,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "package": "jsii-pacmak -vvv",
-    "publib-npm": "publib-npm"
+    "publish-npm": "publib-npm",
+    "publish-pypi": "twine upload --verbose --skip-existing dist/python/*"
   },
   "dependencies": {
     "@affinidi-tdk/common": "^1.0.0",

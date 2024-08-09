@@ -25,7 +25,7 @@
     "versionFormat": "short",
     "targets": {
       "python": {
-        "distName": "affinidi-tdk_iota-core",
+        "distName": "affinidi_tdk_iota_core",
         "module": "affinidi_tdk_iota_core"
       }
     }
@@ -36,7 +36,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "package": "jsii-pacmak -vvv",
-    "publib-npm": "publib-npm"
+    "publish-npm": "publib-npm",
+    "publish-pypi": "twine upload --verbose --skip-existing dist/python/*"
   },
   "dependencies": {
     "@affinidi-tdk/common": "^1.1.1",
