@@ -20,6 +20,10 @@ jobs:
     concurrency: release
     runs-on: ubuntu-latest
     environment: main
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
+      contents: read    
     needs:
       - security
     steps:
@@ -47,6 +51,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@affinidi-tdk'
       - run: npm ci
+      
+      - name: build
+        run: |
+          npx nx run-many -t build
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx run-many  -t semantic-release --parallel=false
@@ -54,6 +62,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: package
+        run: |
+          npx nx run-many -t package 
+      
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name:  install twine for pypi releases
+        run: |
+          pip install twine
+
+      - name: Mint pypi token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.3
 
       # Publish to npm with new nx release publish functionality
       - run: |
@@ -63,3 +88,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this 
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          TWINE_USERNAME: '__token__'
+          TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
