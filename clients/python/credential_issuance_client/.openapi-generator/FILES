@@ -129,6 +129,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_credential_offer_claimed_error.py
-test/test_missing_holder_did_error.py
 tox.ini
