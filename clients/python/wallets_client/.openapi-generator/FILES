@@ -77,5 +77,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_sign_credential_result_dto_signed_credential.py
 tox.ini
