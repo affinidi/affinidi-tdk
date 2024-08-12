@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.7.0...@affinidi-tdk/common-v1.7.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* add other 2 lib to publish process ([#181](https://github.com/affinidi/affinidi-tdk/issues/181)) ([ffecc7d](https://github.com/affinidi/affinidi-tdk/commit/ffecc7deec0e13736482c33677c6cf42b3b3d33b))
+
 # [1.7.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.6.0...@affinidi-tdk/common-v1.7.0) (2024-08-12)
 
 
