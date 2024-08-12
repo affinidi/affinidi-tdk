@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.4.0...@affinidi-tdk/iota-browser-v1.5.0) (2024-08-12)
+
+
+### Features
+
+* enable publishing of jsii packages to pypi ([#175](https://github.com/affinidi/affinidi-tdk/issues/175)) ([2066c62](https://github.com/affinidi/affinidi-tdk/commit/2066c6261220c5c4ff558eba65ff94bcaa84ede1))
+
 # [1.4.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.3.2...@affinidi-tdk/iota-browser-v1.4.0) (2024-08-05)
 
 
