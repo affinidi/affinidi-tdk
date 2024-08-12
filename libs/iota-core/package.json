@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-core",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Affinidi Iota Framework core library primarily used in the backend",
   "author": "Affinidi",
   "repository": {
