@@ -7,9 +7,9 @@
   "targets": {
     "install-node-modules": {
       "executor": "nx:run-commands",
-        "options": {
+      "options": {
         "cwd": "{projectRoot}",
-          "command": "npm i --prefix ."
+        "command": "npm i --prefix ."
       }
     },
     "build": {
@@ -18,12 +18,8 @@
         "cwd": "{projectRoot}",
         "command": "npm run build"
       },
-      "dependsOn": [
-        "install-node-modules"
-      ],
-       "outputs": [
-        "{projectRoot}/.jsii"
-       ]
+      "dependsOn": ["install-node-modules"],
+      "outputs": ["{projectRoot}/.jsii"]
     },
     "package": {
       "executor": "nx:run-commands",
@@ -31,12 +27,16 @@
         "cwd": "{projectRoot}",
         "command": "npm run package"
       },
-      "dependsOn": [
-        "build"
-      ], 
-      "outputs": [
-        "{projectRoot}/dist/"
-      ]
+      "dependsOn": ["build"],
+      "outputs": ["{projectRoot}/dist/"]
+    },
+
+    "nx-release-publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["npm run publish-pypi", "npm run publish-npm"]
+      }
     },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
