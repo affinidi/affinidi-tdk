@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.14.1...@affinidi-tdk/credential-issuance-client-v1.15.0) (2024-08-05)
+
+
+### Features
+
+* update client cis ([#169](https://github.com/affinidi/affinidi-tdk/issues/169)) ([97d06b5](https://github.com/affinidi/affinidi-tdk/commit/97d06b5ced805a416a4bd368b4dd952001015661))
+
 ## [1.14.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.14.0...@affinidi-tdk/credential-issuance-client-v1.14.1) (2024-07-29)
 
 

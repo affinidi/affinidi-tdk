@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/common",
-  "version": "1.5.2",
+  "version": "1.7.1",
   "description": "Affinidi TDK Common library with shared utils",
   "author": "Affinidi",
   "repository": {
@@ -24,7 +24,7 @@
     "versionFormat": "short",
     "targets": {
       "python": {
-        "distName": "affinidi-tdk_common",
+        "distName": "affinidi_tdk_common",
         "module": "affinidi_tdk_common"
       }
     }
@@ -35,7 +35,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "package": "jsii-pacmak -vvv",
-    "publib-npm": "publib-npm"
+    "publish-npm": "publib-npm",
+    "publish-pypi": "twine upload --verbose --skip-existing dist/python/*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.4.0",
