@@ -1104,6 +1104,63 @@ export interface InvalidParameterErrorDetailsInner {
 /**
  *
  * @export
+ * @interface InvalidVPTokenCreationTimeError
+ */
+export interface InvalidVPTokenCreationTimeError {
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidVPTokenCreationTimeError
+   */
+  name: InvalidVPTokenCreationTimeErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidVPTokenCreationTimeError
+   */
+  message: InvalidVPTokenCreationTimeErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof InvalidVPTokenCreationTimeError
+   */
+  httpStatusCode: InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidVPTokenCreationTimeError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<InvalidParameterErrorDetailsInner>}
+   * @memberof InvalidVPTokenCreationTimeError
+   */
+  details?: Array<InvalidParameterErrorDetailsInner>
+}
+
+export const InvalidVPTokenCreationTimeErrorNameEnum = {
+  InvalidVpTokenCreationTimeError: 'InvalidVPTokenCreationTimeError',
+} as const
+
+export type InvalidVPTokenCreationTimeErrorNameEnum =
+  (typeof InvalidVPTokenCreationTimeErrorNameEnum)[keyof typeof InvalidVPTokenCreationTimeErrorNameEnum]
+export const InvalidVPTokenCreationTimeErrorMessageEnum = {
+  VpTokenHasExpired: 'VP token has expired',
+} as const
+
+export type InvalidVPTokenCreationTimeErrorMessageEnum =
+  (typeof InvalidVPTokenCreationTimeErrorMessageEnum)[keyof typeof InvalidVPTokenCreationTimeErrorMessageEnum]
+export const InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum =
+  (typeof InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum)[keyof typeof InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface JsonWebKey
  */
 export interface JsonWebKey {
@@ -1518,6 +1575,12 @@ export interface LoginSessionDtoAuthorizationRequest {
    * @memberof LoginSessionDtoAuthorizationRequest
    */
   clientId?: string
+  /**
+   * nonce for VP Token proof challenge
+   * @type {string}
+   * @memberof LoginSessionDtoAuthorizationRequest
+   */
+  nonce?: string
 }
 /**
  * Input for Creating a Login Session
