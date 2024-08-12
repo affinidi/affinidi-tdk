@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.15.0...@affinidi-tdk/auth-provider-v1.15.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* add other 2 lib to publish process ([#181](https://github.com/affinidi/affinidi-tdk/issues/181)) ([ffecc7d](https://github.com/affinidi/affinidi-tdk/commit/ffecc7deec0e13736482c33677c6cf42b3b3d33b))
+
 # [1.15.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.14.0...@affinidi-tdk/auth-provider-v1.15.0) (2024-08-12)
 
 
