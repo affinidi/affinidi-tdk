@@ -21,14 +21,14 @@ import json
 
 
 from pydantic import BaseModel, Field, StrictStr
-from affinidi_tdk_iota_client.models.aws_exchange_credentials_ok_credentials import AwsExchangeCredentialsOKCredentials
+from affinidi_tdk_iota_client.models.aws_exchange_credentials_project_token_ok_credentials import AwsExchangeCredentialsProjectTokenOKCredentials
 
 class AwsExchangeCredentialsOK(BaseModel):
     """
     AwsExchangeCredentialsOK
     """
     connection_client_id: StrictStr = Field(..., alias="connectionClientId")
-    credentials: AwsExchangeCredentialsOKCredentials = Field(...)
+    credentials: AwsExchangeCredentialsProjectTokenOKCredentials = Field(...)
     __properties = ["connectionClientId", "credentials"]
 
     class Config:
@@ -71,7 +71,7 @@ class AwsExchangeCredentialsOK(BaseModel):
 
         _obj = AwsExchangeCredentialsOK.parse_obj({
             "connection_client_id": obj.get("connectionClientId"),
-            "credentials": AwsExchangeCredentialsOKCredentials.from_dict(obj.get("credentials")) if obj.get("credentials") is not None else None
+            "credentials": AwsExchangeCredentialsProjectTokenOKCredentials.from_dict(obj.get("credentials")) if obj.get("credentials") is not None else None
         })
         return _obj
 

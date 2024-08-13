@@ -19,7 +19,7 @@ class AwsExchangeCredentialsOK {
 
   String connectionClientId;
 
-  AwsExchangeCredentialsOKCredentials credentials;
+  AwsExchangeCredentialsProjectTokenOKCredentials credentials;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AwsExchangeCredentialsOK &&
@@ -62,7 +62,7 @@ class AwsExchangeCredentialsOK {
 
       return AwsExchangeCredentialsOK(
         connectionClientId: mapValueOfType<String>(json, r'connectionClientId')!,
-        credentials: AwsExchangeCredentialsOKCredentials.fromJson(json[r'credentials'])!,
+        credentials: AwsExchangeCredentialsProjectTokenOKCredentials.fromJson(json[r'credentials'])!,
       );
     }
     return null;

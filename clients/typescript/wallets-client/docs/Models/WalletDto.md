@@ -11,5 +11,7 @@
 | **didDocument** | [**Object**](.md)                   | did document of the wallet        | [optional] [default to null] |
 | **ari**         | **String**                          | ARI of the wallet                 | [optional] [default to null] |
 | **keys**        | [**List**](WalletDto_keys_inner.md) |                                   | [optional] [default to null] |
+| **createdAt**   | **String**                          |                                   | [optional] [default to null] |
+| **modifiedAt**  | **String**                          |                                   | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

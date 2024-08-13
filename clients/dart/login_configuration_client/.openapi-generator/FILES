@@ -124,4 +124,3 @@ lib/model/unauthorized_error.dart
 lib/model/update_login_configuration_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/invalid_vp_token_creation_time_error_test.dart

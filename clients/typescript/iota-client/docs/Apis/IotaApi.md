@@ -2,9 +2,10 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                          | HTTP request                          | Description |
-| --------------------------------------------------------------- | ------------------------------------- | ----------- |
-| [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials) | **POST** /v1/aws-exchange-credentials |             |
+| Method                                                                                  | HTTP request                                        | Description |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials)                         | **POST** /v1/aws-exchange-credentials               |             |
+| [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsExchangeCredentialsProjectToken) | **POST** /v1/aws-exchange-credentials/project-token |             |
 
 <a name="awsExchangeCredentials"></a>
 
@@ -27,6 +28,33 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="awsExchangeCredentialsProjectToken"></a>
+
+# **awsExchangeCredentialsProjectToken**
+
+> AwsExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken)
+
+    It exchanges project token into cognito
+
+### Parameters
+
+| Name                                   | Type                                                                                      | Description                        | Notes |
+| -------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------- | ----- |
+| **AwsExchangeCredentialsProjectToken** | [**AwsExchangeCredentialsProjectToken**](../Models/AwsExchangeCredentialsProjectToken.md) | AwsExchangeCredentialsProjectToken |       |
+
+### Return type
+
+[**AwsExchangeCredentialsOK**](../Models/AwsExchangeCredentialsOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

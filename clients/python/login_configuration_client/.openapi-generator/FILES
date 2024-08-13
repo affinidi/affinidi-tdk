@@ -141,5 +141,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_invalid_vp_token_creation_time_error.py
 tox.ini

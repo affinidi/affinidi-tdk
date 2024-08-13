@@ -6,22 +6,23 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Class               | Method                                                                                     | HTTP request                                                               | Description                                       |
-| ------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------- |
-| _CallbackApi_       | [**iotOIDC4VPCallback**](Apis/CallbackApi.md#iotoidc4vpcallback)                           | **POST** /v1/callback                                                      | Processes the callback for OIDC4VP flows          |
-| _ConfigurationsApi_ | [**createIotaConfiguration**](Apis/ConfigurationsApi.md#createiotaconfiguration)           | **POST** /v1/configurations                                                |                                                   |
-| _ConfigurationsApi_ | [**deleteIotaConfigurationById**](Apis/ConfigurationsApi.md#deleteiotaconfigurationbyid)   | **DELETE** /v1/configurations/{configurationId}                            |                                                   |
-| _ConfigurationsApi_ | [**getIotaConfigurationById**](Apis/ConfigurationsApi.md#getiotaconfigurationbyid)         | **GET** /v1/configurations/{configurationId}                               |                                                   |
-| _ConfigurationsApi_ | [**getIotaConfigurationMetaData**](Apis/ConfigurationsApi.md#getiotaconfigurationmetadata) | **GET** /v1/projects/{projectId}/configurations/{configurationId}/metadata |                                                   |
-| _ConfigurationsApi_ | [**listIotaConfigurations**](Apis/ConfigurationsApi.md#listiotaconfigurations)             | **GET** /v1/configurations                                                 |                                                   |
-| _ConfigurationsApi_ | [**updateIotaConfigurationById**](Apis/ConfigurationsApi.md#updateiotaconfigurationbyid)   | **PATCH** /v1/configurations/{configurationId}                             |                                                   |
-| _DefaultApi_        | [**listLoggedConsents**](Apis/DefaultApi.md#listloggedconsents)                            | **GET** /v1/logged-consents                                                | returns a list of logged consents for the project |
-| _IotaApi_           | [**awsExchangeCredentials**](Apis/IotaApi.md#awsexchangecredentials)                       | **POST** /v1/aws-exchange-credentials                                      | It exchanges limited token into cognito           |
-| _PexQueryApi_       | [**createPexQuery**](Apis/PexQueryApi.md#createpexquery)                                   | **POST** /v1/configurations/{configurationId}/pex-queries                  |                                                   |
-| _PexQueryApi_       | [**deletePexQueryById**](Apis/PexQueryApi.md#deletepexquerybyid)                           | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |                                                   |
-| _PexQueryApi_       | [**getPexQueryById**](Apis/PexQueryApi.md#getpexquerybyid)                                 | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |                                                   |
-| _PexQueryApi_       | [**listPexQueries**](Apis/PexQueryApi.md#listpexqueries)                                   | **GET** /v1/configurations/{configurationId}/pex-queries                   |                                                   |
-| _PexQueryApi_       | [**updatePexQueryById**](Apis/PexQueryApi.md#updatepexquerybyid)                           | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |                                                   |
+| Class               | Method                                                                                       | HTTP request                                                               | Description                                       |
+| ------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------- |
+| _CallbackApi_       | [**iotOIDC4VPCallback**](Apis/CallbackApi.md#iotoidc4vpcallback)                             | **POST** /v1/callback                                                      | Processes the callback for OIDC4VP flows          |
+| _ConfigurationsApi_ | [**createIotaConfiguration**](Apis/ConfigurationsApi.md#createiotaconfiguration)             | **POST** /v1/configurations                                                |                                                   |
+| _ConfigurationsApi_ | [**deleteIotaConfigurationById**](Apis/ConfigurationsApi.md#deleteiotaconfigurationbyid)     | **DELETE** /v1/configurations/{configurationId}                            |                                                   |
+| _ConfigurationsApi_ | [**getIotaConfigurationById**](Apis/ConfigurationsApi.md#getiotaconfigurationbyid)           | **GET** /v1/configurations/{configurationId}                               |                                                   |
+| _ConfigurationsApi_ | [**getIotaConfigurationMetaData**](Apis/ConfigurationsApi.md#getiotaconfigurationmetadata)   | **GET** /v1/projects/{projectId}/configurations/{configurationId}/metadata |                                                   |
+| _ConfigurationsApi_ | [**listIotaConfigurations**](Apis/ConfigurationsApi.md#listiotaconfigurations)               | **GET** /v1/configurations                                                 |                                                   |
+| _ConfigurationsApi_ | [**updateIotaConfigurationById**](Apis/ConfigurationsApi.md#updateiotaconfigurationbyid)     | **PATCH** /v1/configurations/{configurationId}                             |                                                   |
+| _DefaultApi_        | [**listLoggedConsents**](Apis/DefaultApi.md#listloggedconsents)                              | **GET** /v1/logged-consents                                                | returns a list of logged consents for the project |
+| _IotaApi_           | [**awsExchangeCredentials**](Apis/IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                                      | It exchanges limited token into cognito           |
+| _IotaApi_           | [**awsExchangeCredentialsProjectToken**](Apis/IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token                        | It exchanges project token into cognito           |
+| _PexQueryApi_       | [**createPexQuery**](Apis/PexQueryApi.md#createpexquery)                                     | **POST** /v1/configurations/{configurationId}/pex-queries                  |                                                   |
+| _PexQueryApi_       | [**deletePexQueryById**](Apis/PexQueryApi.md#deletepexquerybyid)                             | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |                                                   |
+| _PexQueryApi_       | [**getPexQueryById**](Apis/PexQueryApi.md#getpexquerybyid)                                   | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |                                                   |
+| _PexQueryApi_       | [**listPexQueries**](Apis/PexQueryApi.md#listpexqueries)                                     | **GET** /v1/configurations/{configurationId}/pex-queries                   |                                                   |
+| _PexQueryApi_       | [**updatePexQueryById**](Apis/PexQueryApi.md#updatepexquerybyid)                             | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |                                                   |
 
 <a name="documentation-for-models"></a>
 
@@ -30,10 +31,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [AlreadyExistsError](./Models/AlreadyExistsError.md)
 - [AwsExchangeCredentials](./Models/AwsExchangeCredentials.md)
 - [AwsExchangeCredentialsOK](./Models/AwsExchangeCredentialsOK.md)
-- [AwsExchangeCredentialsOK_credentials](./Models/AwsExchangeCredentialsOK_credentials.md)
+- [AwsExchangeCredentialsProjectToken](./Models/AwsExchangeCredentialsProjectToken.md)
+- [AwsExchangeCredentialsProjectTokenOK](./Models/AwsExchangeCredentialsProjectTokenOK.md)
+- [AwsExchangeCredentialsProjectTokenOK_credentials](./Models/AwsExchangeCredentialsProjectTokenOK_credentials.md)
 - [CallbackInput](./Models/CallbackInput.md)
 - [ConsentDto](./Models/ConsentDto.md)
 - [CorsAwsExchangeCredentialsOK](./Models/CorsAwsExchangeCredentialsOK.md)
+- [CorsAwsExchangeCredentialsProjectTokenOK](./Models/CorsAwsExchangeCredentialsProjectTokenOK.md)
 - [CorsIotOidc4vpcallbackOK](./Models/CorsIotOidc4vpcallbackOK.md)
 - [CreateIotaConfigurationInput](./Models/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](./Models/CreatePexQueryInput.md)

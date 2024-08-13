@@ -17,5 +17,7 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 | **didDocument** | [**Object**](.md)                                     | did document of the wallet        | [optional]                       |
 | **ari**         | **String**                                            | ARI of the wallet                 | [optional]                       |
 | **keys**        | [**List<WalletDtoKeysInner>**](WalletDtoKeysInner.md) |                                   | [optional] [default to const []] |
+| **createdAt**   | **String**                                            |                                   | [optional]                       |
+| **modifiedAt**  | **String**                                            |                                   | [optional]                       |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
