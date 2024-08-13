@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.5.1...@affinidi-tdk/iota-core-v1.5.2) (2024-08-13)
+
+
+### Bug Fixes
+
+* updated readme details ([#183](https://github.com/affinidi/affinidi-tdk/issues/183)) ([98d0cf3](https://github.com/affinidi/affinidi-tdk/commit/98d0cf308698e24e13351abee2ebc1166d0d06b4))
+
 ## [1.5.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.5.0...@affinidi-tdk/iota-core-v1.5.1) (2024-08-12)
 
 
