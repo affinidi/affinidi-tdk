@@ -9,7 +9,7 @@ The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that all
 
 The Affinidi TDK provides three type of modules:
 
-- [Clients](clients), which offer methods to access Affinidi Elements services like IAM, Credential Verification, Wallets, and Login configuation, among others.
+- [Clients](clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
 - [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
 - [Libraries](libraries), which are high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
