@@ -34,7 +34,9 @@ class WalletDto(BaseModel):
     did_document: Optional[Dict[str, Any]] = Field(None, alias="didDocument", description="did document of the wallet")
     ari: Optional[StrictStr] = Field(None, description="ARI of the wallet")
     keys: Optional[conlist(WalletDtoKeysInner)] = None
-    __properties = ["id", "did", "name", "description", "didDocument", "ari", "keys"]
+    created_at: Optional[StrictStr] = Field(None, alias="createdAt")
+    modified_at: Optional[StrictStr] = Field(None, alias="modifiedAt")
+    __properties = ["id", "did", "name", "description", "didDocument", "ari", "keys", "createdAt", "modifiedAt"]
 
     class Config:
         """Pydantic configuration"""
@@ -85,7 +87,9 @@ class WalletDto(BaseModel):
             "description": obj.get("description"),
             "did_document": obj.get("didDocument"),
             "ari": obj.get("ari"),
-            "keys": [WalletDtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None
+            "keys": [WalletDtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None,
+            "created_at": obj.get("createdAt"),
+            "modified_at": obj.get("modifiedAt")
         })
         return _obj
 

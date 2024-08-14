@@ -846,6 +846,18 @@ export interface WalletDto {
    * @memberof WalletDto
    */
   keys?: Array<WalletDtoKeysInner>
+  /**
+   *
+   * @type {string}
+   * @memberof WalletDto
+   */
+  createdAt?: string
+  /**
+   *
+   * @type {string}
+   * @memberof WalletDto
+   */
+  modifiedAt?: string
 }
 /**
  *

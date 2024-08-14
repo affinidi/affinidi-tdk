@@ -188,14 +188,20 @@ class ApiClient {
           return AwsExchangeCredentials.fromJson(value);
         case 'AwsExchangeCredentialsOK':
           return AwsExchangeCredentialsOK.fromJson(value);
-        case 'AwsExchangeCredentialsOKCredentials':
-          return AwsExchangeCredentialsOKCredentials.fromJson(value);
+        case 'AwsExchangeCredentialsProjectToken':
+          return AwsExchangeCredentialsProjectToken.fromJson(value);
+        case 'AwsExchangeCredentialsProjectTokenOK':
+          return AwsExchangeCredentialsProjectTokenOK.fromJson(value);
+        case 'AwsExchangeCredentialsProjectTokenOKCredentials':
+          return AwsExchangeCredentialsProjectTokenOKCredentials.fromJson(value);
         case 'CallbackInput':
           return CallbackInput.fromJson(value);
         case 'ConsentDto':
           return ConsentDto.fromJson(value);
         case 'CorsAwsExchangeCredentialsOK':
           return CorsAwsExchangeCredentialsOK.fromJson(value);
+        case 'CorsAwsExchangeCredentialsProjectTokenOK':
+          return CorsAwsExchangeCredentialsProjectTokenOK.fromJson(value);
         case 'CorsIotOidc4vpcallbackOK':
           return CorsIotOidc4vpcallbackOK.fromJson(value);
         case 'CreateIotaConfigurationInput':

@@ -20,6 +20,8 @@ class WalletDto {
     this.didDocument,
     this.ari,
     this.keys = const [],
+    this.createdAt,
+    this.modifiedAt,
   });
 
   /// id of the wallet in uuidV4 format
@@ -78,6 +80,22 @@ class WalletDto {
 
   List<WalletDtoKeysInner> keys;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? createdAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? modifiedAt;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WalletDto &&
     other.id == id &&
@@ -86,7 +104,9 @@ class WalletDto {
     other.description == description &&
     other.didDocument == didDocument &&
     other.ari == ari &&
-    _deepEquality.equals(other.keys, keys);
+    _deepEquality.equals(other.keys, keys) &&
+    other.createdAt == createdAt &&
+    other.modifiedAt == modifiedAt;
 
   @override
   int get hashCode =>
@@ -97,10 +117,12 @@ class WalletDto {
     (description == null ? 0 : description!.hashCode) +
     (didDocument == null ? 0 : didDocument!.hashCode) +
     (ari == null ? 0 : ari!.hashCode) +
-    (keys.hashCode);
+    (keys.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode) +
+    (modifiedAt == null ? 0 : modifiedAt!.hashCode);
 
   @override
-  String toString() => 'WalletDto[id=$id, did=$did, name=$name, description=$description, didDocument=$didDocument, ari=$ari, keys=$keys]';
+  String toString() => 'WalletDto[id=$id, did=$did, name=$name, description=$description, didDocument=$didDocument, ari=$ari, keys=$keys, createdAt=$createdAt, modifiedAt=$modifiedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -135,6 +157,16 @@ class WalletDto {
       json[r'ari'] = null;
     }
       json[r'keys'] = this.keys;
+    if (this.createdAt != null) {
+      json[r'createdAt'] = this.createdAt;
+    } else {
+      json[r'createdAt'] = null;
+    }
+    if (this.modifiedAt != null) {
+      json[r'modifiedAt'] = this.modifiedAt;
+    } else {
+      json[r'modifiedAt'] = null;
+    }
     return json;
   }
 
@@ -164,6 +196,8 @@ class WalletDto {
         didDocument: mapValueOfType<Object>(json, r'didDocument'),
         ari: mapValueOfType<String>(json, r'ari'),
         keys: WalletDtoKeysInner.listFromJson(json[r'keys']),
+        createdAt: mapValueOfType<String>(json, r'createdAt'),
+        modifiedAt: mapValueOfType<String>(json, r'modifiedAt'),
       );
     }
     return null;

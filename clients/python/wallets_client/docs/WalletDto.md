@@ -13,6 +13,8 @@ wallet dto
 | **did_document** | **object**                                            | did document of the wallet        | [optional] |
 | **ari**          | **str**                                               | ARI of the wallet                 | [optional] |
 | **keys**         | [**List[WalletDtoKeysInner]**](WalletDtoKeysInner.md) |                                   | [optional] |
+| **created_at**   | **str**                                               |                                   | [optional] |
+| **modified_at**  | **str**                                               |                                   | [optional] |
 
 ## Example
 

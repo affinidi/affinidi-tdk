@@ -6,10 +6,13 @@ Apis/PexQueryApi.md
 Models/AlreadyExistsError.md
 Models/AwsExchangeCredentials.md
 Models/AwsExchangeCredentialsOK.md
-Models/AwsExchangeCredentialsOK_credentials.md
+Models/AwsExchangeCredentialsProjectToken.md
+Models/AwsExchangeCredentialsProjectTokenOK.md
+Models/AwsExchangeCredentialsProjectTokenOK_credentials.md
 Models/CallbackInput.md
 Models/ConsentDto.md
 Models/CorsAwsExchangeCredentialsOK.md
+Models/CorsAwsExchangeCredentialsProjectTokenOK.md
 Models/CorsIotOidc4vpcallbackOK.md
 Models/CreateIotaConfigurationInput.md
 Models/CreatePexQueryInput.md
