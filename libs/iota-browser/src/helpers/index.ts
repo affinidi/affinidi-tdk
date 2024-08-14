@@ -11,8 +11,4 @@ export {
   type IotaResponseCallbackFunction,
   ResponseHandler,
 } from './response-handler'
-export {
-  OpenMode,
-  type VaultHandler,
-  VaultHandlerOpenParams,
-} from './vault-handler'
+export { OpenMode, VaultHandler, VaultHandlerOpenParams } from './vault-handler'
