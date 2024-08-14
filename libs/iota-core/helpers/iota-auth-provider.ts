@@ -22,6 +22,11 @@ export interface Credentials {
   readonly expiration?: Date
 }
 
+export interface IdentityCredentials {
+  readonly identityId: string
+  readonly token: string
+}
+
 export class IotaAuthProvider {
   region: string
   apiGW: string
@@ -31,26 +36,38 @@ export class IotaAuthProvider {
     this.apiGW = param?.apiGW ?? EnvironmentUtils.fetchApiGwUrl()
   }
 
-  async limitedTokenToIotaCredentials(token: string): Promise<IotaCredentials> {
+  async limitedTokenToIotaCredentials(
+    limitedToken: string,
+  ): Promise<IotaCredentials> {
     const iotaAPIClient = new IotaApi(
       new Configuration({ basePath: `${this.apiGW}/ais` }),
     )
     const response = await iotaAPIClient.awsExchangeCredentials({
-      assertion: token,
+      assertion: limitedToken,
     })
-    const {
-      connectionClientId,
-      credentials: { identityId, token: cognitoToken },
-    } = response.data
+    const { connectionClientId, credentials: identityCredentials } =
+      response.data
 
+    const credentials =
+      await this.exchangeIdentityCredentials(identityCredentials)
+
+    return {
+      credentials,
+      connectionClientId,
+    }
+  }
+
+  async exchangeIdentityCredentials(
+    identityCredentials: IdentityCredentials,
+  ): Promise<Credentials> {
     const cognitoIdentityClient = new CognitoIdentityClient({
       region: this.region,
     })
     const responseCmd = await cognitoIdentityClient.send(
       new GetCredentialsForIdentityCommand({
-        IdentityId: identityId,
+        IdentityId: identityCredentials.identityId,
         Logins: {
-          'cognito-identity.amazonaws.com': cognitoToken,
+          'cognito-identity.amazonaws.com': identityCredentials.token,
         },
       }),
     )
@@ -58,15 +75,11 @@ export class IotaAuthProvider {
     if (!credentials) {
       throw new Error('Error fetching credentials')
     }
-
     return {
-      credentials: {
-        accessKeyId: credentials.AccessKeyId,
-        secretKey: credentials.SecretKey,
-        sessionToken: credentials.SessionToken,
-        expiration: credentials.Expiration,
-      },
-      connectionClientId,
+      accessKeyId: credentials.AccessKeyId,
+      secretKey: credentials.SecretKey,
+      sessionToken: credentials.SessionToken,
+      expiration: credentials.Expiration,
     }
   }
 }
