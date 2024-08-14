@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.7.0...@affinidi-tdk/iota-browser-v1.7.1) (2024-08-14)
+
+
+### Bug Fixes
+
+* internal export type ([#186](https://github.com/affinidi/affinidi-tdk/issues/186)) ([11b36d2](https://github.com/affinidi/affinidi-tdk/commit/11b36d27dd9a18b9768e71a008fa9691bbf8b286))
+
 # [1.7.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.6.0...@affinidi-tdk/iota-browser-v1.7.0) (2024-08-14)
 
 
