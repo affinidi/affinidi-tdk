@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.7.0...@affinidi-tdk/iota-core-v1.8.0) (2024-08-15)
+
+
+### Features
+
+* exchange identity credentials for iota credentials ([#188](https://github.com/affinidi/affinidi-tdk/issues/188)) ([cea55c0](https://github.com/affinidi/affinidi-tdk/commit/cea55c0ea7796e130cca487faabc507d1d09cc99))
+
 # [1.7.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.6.0...@affinidi-tdk/iota-core-v1.7.0) (2024-08-14)
 
 
