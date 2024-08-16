@@ -49,7 +49,7 @@ class WellKnownOpenIdCredentialIssuerResponse {
   ///
   String? credentialIssuer;
 
-  List<IssuanceConfigDtoCredentialSupportedInner> credentialsSupported;
+  List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -172,7 +172,7 @@ class WellKnownOpenIdCredentialIssuerResponse {
         authorizationEndpoint: mapValueOfType<String>(json, r'authorization_endpoint'),
         credentialEndpoint: mapValueOfType<String>(json, r'credential_endpoint'),
         credentialIssuer: mapValueOfType<String>(json, r'credential_issuer'),
-        credentialsSupported: IssuanceConfigDtoCredentialSupportedInner.listFromJson(json[r'credentials_supported']),
+        credentialsSupported: WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.listFromJson(json[r'credentials_supported']),
         deferredCredentialEndpoint: mapValueOfType<String>(json, r'deferred_credential_endpoint'),
         grantTypesSupported: WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum.listFromJson(json[r'grant_types_supported']),
         jwksUri: mapValueOfType<String>(json, r'jwks_uri'),
