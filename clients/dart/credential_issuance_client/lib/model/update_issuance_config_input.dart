@@ -72,7 +72,7 @@ class UpdateIssuanceConfigInput {
   ///
   String? issuerUri;
 
-  List<CreateIssuanceConfigInputCredentialSupportedInner> credentialSupported;
+  List<CredentialSupportedObject> credentialSupported;
 
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
@@ -165,7 +165,7 @@ class UpdateIssuanceConfigInput {
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),
         format: UpdateIssuanceConfigInputFormatEnum.fromJson(json[r'format']),
         issuerUri: mapValueOfType<String>(json, r'issuerUri'),
-        credentialSupported: CreateIssuanceConfigInputCredentialSupportedInner.listFromJson(json[r'credentialSupported']),
+        credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
       );
     }
