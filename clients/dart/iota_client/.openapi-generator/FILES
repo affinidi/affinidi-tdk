@@ -88,7 +88,3 @@ lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/aws_exchange_credentials_project_token_ok_credentials_test.dart
-test/aws_exchange_credentials_project_token_ok_test.dart
-test/aws_exchange_credentials_project_token_test.dart
-test/cors_aws_exchange_credentials_project_token_ok_test.dart

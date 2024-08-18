@@ -198,8 +198,6 @@ class ApiClient {
           return CreateIssuanceConfig400Response.fromJson(value);
         case 'CreateIssuanceConfigInput':
           return CreateIssuanceConfigInput.fromJson(value);
-        case 'CreateIssuanceConfigInputCredentialSupportedInner':
-          return CreateIssuanceConfigInputCredentialSupportedInner.fromJson(value);
         case 'CredentialIssuanceIdExistError':
           return CredentialIssuanceIdExistError.fromJson(value);
         case 'CredentialOfferClaimedError':
@@ -228,6 +226,8 @@ class ApiClient {
           return CredentialResponseImmediateCredential.fromJson(value);
         case 'CredentialSubjectNotValidError':
           return CredentialSubjectNotValidError.fromJson(value);
+        case 'CredentialSupportedObject':
+          return CredentialSupportedObject.fromJson(value);
         case 'DeferredCredentialInput':
           return DeferredCredentialInput.fromJson(value);
         case 'GenerateCredentials400Response':
@@ -248,8 +248,6 @@ class ApiClient {
           return InvalidProofError.fromJson(value);
         case 'IssuanceConfigDto':
           return IssuanceConfigDto.fromJson(value);
-        case 'IssuanceConfigDtoCredentialSupportedInner':
-          return IssuanceConfigDtoCredentialSupportedInner.fromJson(value);
         case 'IssuanceConfigListResponse':
           return IssuanceConfigListResponse.fromJson(value);
         case 'IssuanceConfigMiniDto':
@@ -278,12 +276,20 @@ class ApiClient {
           return StartIssuanceInputDataInnerMetaData.fromJson(value);
         case 'StartIssuanceResponse':
           return StartIssuanceResponse.fromJson(value);
+        case 'SupportedCredentialMetadata':
+          return SupportedCredentialMetadata.fromJson(value);
+        case 'SupportedCredentialMetadataDisplayInner':
+          return SupportedCredentialMetadataDisplayInner.fromJson(value);
+        case 'SupportedCredentialMetadataDisplayInnerLogo':
+          return SupportedCredentialMetadataDisplayInnerLogo.fromJson(value);
         case 'UpdateIssuanceConfigInput':
           return UpdateIssuanceConfigInput.fromJson(value);
         case 'VcClaimedError':
           return VcClaimedError.fromJson(value);
         case 'WellKnownOpenIdCredentialIssuerResponse':
           return WellKnownOpenIdCredentialIssuerResponse.fromJson(value);
+        case 'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner':
+          return WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

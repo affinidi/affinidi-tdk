@@ -99,7 +99,7 @@ class IssuanceConfigDto {
   ///
   String? issuerUri;
 
-  List<IssuanceConfigDtoCredentialSupportedInner> credentialSupported;
+  List<CredentialSupportedObject> credentialSupported;
 
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
@@ -231,7 +231,7 @@ class IssuanceConfigDto {
         cNonceDuration: mapValueOfType<int>(json, r'cNonceDuration'),
         format: IssuanceConfigDtoFormatEnum.fromJson(json[r'format']),
         issuerUri: mapValueOfType<String>(json, r'issuerUri'),
-        credentialSupported: IssuanceConfigDtoCredentialSupportedInner.listFromJson(json[r'credentialSupported']),
+        credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
         version: mapValueOfType<int>(json, r'version'),
       );

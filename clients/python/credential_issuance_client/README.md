@@ -123,7 +123,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CreateCredentialInput](docs/CreateCredentialInput.md)
 - [CreateIssuanceConfig400Response](docs/CreateIssuanceConfig400Response.md)
 - [CreateIssuanceConfigInput](docs/CreateIssuanceConfigInput.md)
-- [CreateIssuanceConfigInputCredentialSupportedInner](docs/CreateIssuanceConfigInputCredentialSupportedInner.md)
 - [CredentialIssuanceIdExistError](docs/CredentialIssuanceIdExistError.md)
 - [CredentialOfferClaimedError](docs/CredentialOfferClaimedError.md)
 - [CredentialOfferExpiredError](docs/CredentialOfferExpiredError.md)
@@ -138,6 +137,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CredentialResponseImmediateCNonceExpiresIn](docs/CredentialResponseImmediateCNonceExpiresIn.md)
 - [CredentialResponseImmediateCredential](docs/CredentialResponseImmediateCredential.md)
 - [CredentialSubjectNotValidError](docs/CredentialSubjectNotValidError.md)
+- [CredentialSupportedObject](docs/CredentialSupportedObject.md)
 - [DeferredCredentialInput](docs/DeferredCredentialInput.md)
 - [GenerateCredentials400Response](docs/GenerateCredentials400Response.md)
 - [GetCredentialOffer400Response](docs/GetCredentialOffer400Response.md)
@@ -148,7 +148,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [InvalidProofError](docs/InvalidProofError.md)
 - [IssuanceConfigDto](docs/IssuanceConfigDto.md)
-- [IssuanceConfigDtoCredentialSupportedInner](docs/IssuanceConfigDtoCredentialSupportedInner.md)
 - [IssuanceConfigListResponse](docs/IssuanceConfigListResponse.md)
 - [IssuanceConfigMiniDto](docs/IssuanceConfigMiniDto.md)
 - [IssuanceStateResponse](docs/IssuanceStateResponse.md)
@@ -163,9 +162,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [StartIssuanceInputDataInner](docs/StartIssuanceInputDataInner.md)
 - [StartIssuanceInputDataInnerMetaData](docs/StartIssuanceInputDataInnerMetaData.md)
 - [StartIssuanceResponse](docs/StartIssuanceResponse.md)
+- [SupportedCredentialMetadata](docs/SupportedCredentialMetadata.md)
+- [SupportedCredentialMetadataDisplayInner](docs/SupportedCredentialMetadataDisplayInner.md)
+- [SupportedCredentialMetadataDisplayInnerLogo](docs/SupportedCredentialMetadataDisplayInnerLogo.md)
 - [UpdateIssuanceConfigInput](docs/UpdateIssuanceConfigInput.md)
 - [VcClaimedError](docs/VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](docs/WellKnownOpenIdCredentialIssuerResponse.md)
+- [WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner](docs/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md)
 
 <a id="documentation-for-authorization"></a>
 
