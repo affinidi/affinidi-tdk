@@ -15,8 +15,8 @@ export default async function setVersionExecutor(
   options: SetVersionExecutorOptions,
   context: ExecutorContext,
 ): Promise<{ success: boolean }> {
-  const pythonFolderName = options.packageName.replace('-', '_')
-  const tsFolderName = options.packageName.replace('_', '-')
+  const pythonFolderName = options.packageName.replace(/-/gi, '_')
+  const tsFolderName = options.packageName.replace(/_/gi, '-')
   const tsPackageJsonPath = join(
     context.root,
     TS_CLIENTS_PATH,
