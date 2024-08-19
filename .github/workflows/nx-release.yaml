@@ -102,7 +102,7 @@ jobs:
         uses: tschm/token-mint-action@v1.0.3
 
       - name: Set version for non-js client packages
-        run: npx nx set-version
+        run: npx nx run-many -t set-version
 
       - name: build
         run: |
