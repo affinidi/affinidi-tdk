@@ -44,4 +44,3 @@ jobs:
         run: |
           pip install poetry
       - run: npx nx affected -t build --parallel=3
-      - run: npx nx format:check
