@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "properties": {
+    "packageName": {
+      "type": "string",
+      "description": "package name"
+    }
+  },
+  "required": ["packageName"]
+}

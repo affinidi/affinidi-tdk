@@ -78,7 +78,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.ref }}
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -92,13 +92,17 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: install twine
+      - name: install python tools
         run: |
           pip install twine
+          pip install poetry
 
       - name: Mint pypi token
         id: mint
         uses: tschm/token-mint-action@v1.0.3
+
+      - name: Set version for non-js client packages
+        run: npx nx set-version
 
       - name: build
         run: |
@@ -109,10 +113,11 @@ jobs:
       # Publish to npm,pypi  with new nx release publish functionality
       - run: |
           npx nx release publish --verbose
-        name: release
+        name: publish
         env:
           TWINE_USERNAME: '__token__'
           TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
+          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
