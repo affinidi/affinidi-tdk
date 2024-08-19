@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.19.0...@affinidi-tdk/login-configuration-client-v1.20.0) (2024-08-19)
+
+
+### Features
+
+* update client cis ([#191](https://github.com/affinidi/affinidi-tdk/issues/191)) ([fb03790](https://github.com/affinidi/affinidi-tdk/commit/fb03790a8d55030abef6517a728fbc6acc2c4288))
+
 # [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.18.0...@affinidi-tdk/login-configuration-client-v1.19.0) (2024-08-14)
 
 
