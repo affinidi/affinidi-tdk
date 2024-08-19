@@ -235,10 +235,10 @@ export interface CreateIssuanceConfigInput {
   format?: CreateIssuanceConfigInputFormatEnum
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<CredentialSupportedObject>}
    * @memberof CreateIssuanceConfigInput
    */
-  credentialSupported: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentialSupported: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
    * @type {{ [key: string]: any; }}
@@ -255,31 +255,6 @@ export const CreateIssuanceConfigInputFormatEnum = {
 export type CreateIssuanceConfigInputFormatEnum =
   (typeof CreateIssuanceConfigInputFormatEnum)[keyof typeof CreateIssuanceConfigInputFormatEnum]
 
-/**
- *
- * @export
- * @interface CreateIssuanceConfigInputCredentialSupportedInner
- */
-export interface CreateIssuanceConfigInputCredentialSupportedInner {
-  /**
-   * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof CreateIssuanceConfigInputCredentialSupportedInner
-   */
-  credentialTypeId: string
-  /**
-   * credential jsonLdContextUrl
-   * @type {string}
-   * @memberof CreateIssuanceConfigInputCredentialSupportedInner
-   */
-  jsonSchemaUrl: string
-  /**
-   * credential jsonSchemaUrl
-   * @type {string}
-   * @memberof CreateIssuanceConfigInputCredentialSupportedInner
-   */
-  jsonLdContextUrl: string
-}
 /**
  *
  * @export
@@ -691,6 +666,37 @@ export const CredentialSubjectNotValidErrorHttpStatusCodeEnum = {
 export type CredentialSubjectNotValidErrorHttpStatusCodeEnum =
   (typeof CredentialSubjectNotValidErrorHttpStatusCodeEnum)[keyof typeof CredentialSubjectNotValidErrorHttpStatusCodeEnum]
 
+/**
+ *
+ * @export
+ * @interface CredentialSupportedObject
+ */
+export interface CredentialSupportedObject {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof CredentialSupportedObject
+   */
+  credentialTypeId: string
+  /**
+   * credential jsonLdContextUrl
+   * @type {string}
+   * @memberof CredentialSupportedObject
+   */
+  jsonSchemaUrl: string
+  /**
+   * credential jsonSchemaUrl
+   * @type {string}
+   * @memberof CredentialSupportedObject
+   */
+  jsonLdContextUrl: string
+  /**
+   *
+   * @type {SupportedCredentialMetadata}
+   * @memberof CredentialSupportedObject
+   */
+  metadata?: SupportedCredentialMetadata
+}
 /**
  *
  * @export
@@ -1129,10 +1135,10 @@ export interface IssuanceConfigDto {
   issuerUri?: string
   /**
    *
-   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
+   * @type {Array<CredentialSupportedObject>}
    * @memberof IssuanceConfigDto
    */
-  credentialSupported?: Array<IssuanceConfigDtoCredentialSupportedInner>
+  credentialSupported?: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
    * @type {{ [key: string]: any; }}
@@ -1155,31 +1161,6 @@ export const IssuanceConfigDtoFormatEnum = {
 export type IssuanceConfigDtoFormatEnum =
   (typeof IssuanceConfigDtoFormatEnum)[keyof typeof IssuanceConfigDtoFormatEnum]
 
-/**
- *
- * @export
- * @interface IssuanceConfigDtoCredentialSupportedInner
- */
-export interface IssuanceConfigDtoCredentialSupportedInner {
-  /**
-   * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof IssuanceConfigDtoCredentialSupportedInner
-   */
-  credentialTypeId: string
-  /**
-   * credential jsonLdContextUrl
-   * @type {string}
-   * @memberof IssuanceConfigDtoCredentialSupportedInner
-   */
-  jsonSchemaUrl: string
-  /**
-   * credential jsonSchemaUrl
-   * @type {string}
-   * @memberof IssuanceConfigDtoCredentialSupportedInner
-   */
-  jsonLdContextUrl: string
-}
 /**
  *
  * @export
@@ -1680,6 +1661,81 @@ export interface StartIssuanceResponse {
 /**
  *
  * @export
+ * @interface SupportedCredentialMetadata
+ */
+export interface SupportedCredentialMetadata {
+  [key: string]: any
+
+  /**
+   *
+   * @type {Array<SupportedCredentialMetadataDisplayInner>}
+   * @memberof SupportedCredentialMetadata
+   */
+  display?: Array<SupportedCredentialMetadataDisplayInner>
+}
+/**
+ *
+ * @export
+ * @interface SupportedCredentialMetadataDisplayInner
+ */
+export interface SupportedCredentialMetadataDisplayInner {
+  [key: string]: any
+
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInner
+   */
+  name: string
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInner
+   */
+  locale?: string
+  /**
+   *
+   * @type {SupportedCredentialMetadataDisplayInnerLogo}
+   * @memberof SupportedCredentialMetadataDisplayInner
+   */
+  logo?: SupportedCredentialMetadataDisplayInnerLogo
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInner
+   */
+  backgroundColor?: string
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInner
+   */
+  textColor?: string
+}
+/**
+ *
+ * @export
+ * @interface SupportedCredentialMetadataDisplayInnerLogo
+ */
+export interface SupportedCredentialMetadataDisplayInnerLogo {
+  [key: string]: any
+
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInnerLogo
+   */
+  url: string
+  /**
+   *
+   * @type {string}
+   * @memberof SupportedCredentialMetadataDisplayInnerLogo
+   */
+  altText?: string
+}
+/**
+ *
+ * @export
  * @interface UpdateIssuanceConfigInput
  */
 export interface UpdateIssuanceConfigInput {
@@ -1721,10 +1777,10 @@ export interface UpdateIssuanceConfigInput {
   issuerUri?: string
   /**
    *
-   * @type {Array<CreateIssuanceConfigInputCredentialSupportedInner>}
+   * @type {Array<CredentialSupportedObject>}
    * @memberof UpdateIssuanceConfigInput
    */
-  credentialSupported?: Array<CreateIssuanceConfigInputCredentialSupportedInner>
+  credentialSupported?: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
    * @type {{ [key: string]: any; }}
@@ -1827,10 +1883,10 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
   credential_issuer?: string
   /**
    *
-   * @type {Array<IssuanceConfigDtoCredentialSupportedInner>}
+   * @type {Array<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>}
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
-  credentials_supported?: Array<IssuanceConfigDtoCredentialSupportedInner>
+  credentials_supported?: Array<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>
   /**
    *
    * @type {string}
@@ -1892,6 +1948,32 @@ export const WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupp
 
 export type WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum =
   (typeof WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum)[keyof typeof WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum]
+
+/**
+ *
+ * @export
+ * @interface WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+ */
+export interface WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+   */
+  credentialTypeId: string
+  /**
+   * credential jsonLdContextUrl
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+   */
+  jsonSchemaUrl: string
+  /**
+   * credential jsonSchemaUrl
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+   */
+  jsonLdContextUrl: string
+}
 
 /**
  * ConfigurationApi - axios parameter creator

@@ -21,7 +21,7 @@ import json
 
 from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictStr, confloat, conint, conlist, validator
-from affinidi_tdk_credential_issuance_client.models.create_issuance_config_input_credential_supported_inner import CreateIssuanceConfigInputCredentialSupportedInner
+from affinidi_tdk_credential_issuance_client.models.credential_supported_object import CredentialSupportedObject
 
 class CreateIssuanceConfigInput(BaseModel):
     """
@@ -32,7 +32,7 @@ class CreateIssuanceConfigInput(BaseModel):
     issuer_wallet_id: StrictStr = Field(..., alias="issuerWalletId", description="Issuer Wallet id")
     credential_offer_duration: Optional[Union[confloat(le=604801, ge=1, multiple_of=1, strict=True), conint(le=604801, ge=1, strict=True)]] = Field(None, alias="credentialOfferDuration", description="credential offer duration in second")
     format: Optional[StrictStr] = Field(None, description="String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type")
-    credential_supported: conlist(CreateIssuanceConfigInputCredentialSupportedInner) = Field(..., alias="credentialSupported")
+    credential_supported: conlist(CredentialSupportedObject) = Field(..., alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
     __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "credentialSupported", "issuerMetadata"]
 
@@ -94,7 +94,7 @@ class CreateIssuanceConfigInput(BaseModel):
             "issuer_wallet_id": obj.get("issuerWalletId"),
             "credential_offer_duration": obj.get("credentialOfferDuration"),
             "format": obj.get("format"),
-            "credential_supported": [CreateIssuanceConfigInputCredentialSupportedInner.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
+            "credential_supported": [CredentialSupportedObject.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
             "issuer_metadata": obj.get("issuerMetadata")
         })
         return _obj
