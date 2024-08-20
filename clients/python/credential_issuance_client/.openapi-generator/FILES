@@ -129,15 +129,11 @@ docs/VcClaimedError.md
 docs/WellKnownApi.md
 docs/WellKnownOpenIdCredentialIssuerResponse.md
 docs/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_credential_supported_object.py
-test/test_supported_credential_metadata.py
-test/test_supported_credential_metadata_display_inner.py
-test/test_supported_credential_metadata_display_inner_logo.py
-test/test_well_known_open_id_credential_issuer_response_credentials_supported_inner.py
 tox.ini
