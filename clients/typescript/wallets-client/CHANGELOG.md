@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.17.0...@affinidi-tdk/wallets-client-v1.18.0) (2024-08-20)
+
+
+### Features
+
+* python client package releases ([#195](https://github.com/affinidi/affinidi-tdk/issues/195)) ([3444422](https://github.com/affinidi/affinidi-tdk/commit/3444422ee4e3b9820ac5bd35852a2f617a9b429c))
+
 # [1.17.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.16.0...@affinidi-tdk/wallets-client-v1.17.0) (2024-08-19)
 
 
