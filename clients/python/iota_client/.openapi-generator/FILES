@@ -87,14 +87,11 @@ docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_aws_exchange_credentials_project_token.py
-test/test_aws_exchange_credentials_project_token_ok.py
-test/test_aws_exchange_credentials_project_token_ok_credentials.py
-test/test_cors_aws_exchange_credentials_project_token_ok.py
 tox.ini

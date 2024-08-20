@@ -103,6 +103,7 @@ docs/UserDto.md
 docs/UserList.md
 docs/WellKnownApi.md
 docs/WhoamiDto.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

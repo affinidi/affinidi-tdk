@@ -135,6 +135,7 @@ docs/TokenEndpointAuthMethod.md
 docs/UnauthorizedError.md
 docs/UpdateLoginConfigurationInput.md
 docs/VPTokenValidationError.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg
