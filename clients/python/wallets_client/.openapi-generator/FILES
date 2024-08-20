@@ -71,6 +71,7 @@ docs/WalletApi.md
 docs/WalletDto.md
 docs/WalletDtoKeysInner.md
 docs/WalletsListDto.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg
