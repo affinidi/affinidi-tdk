@@ -28,7 +28,7 @@ print SignCredentialInputDtoUnsignedCredentialParams.to_json()
 # convert the object into a dict
 sign_credential_input_dto_unsigned_credential_params_dict = sign_credential_input_dto_unsigned_credential_params_instance.to_dict()
 # create an instance of SignCredentialInputDtoUnsignedCredentialParams from a dict
-sign_credential_input_dto_unsigned_credential_params_form_dict = sign_credential_input_dto_unsigned_credential_params.from_dict(sign_credential_input_dto_unsigned_credential_params_dict)
+sign_credential_input_dto_unsigned_credential_params_from_dict = SignCredentialInputDtoUnsignedCredentialParams.from_dict(sign_credential_input_dto_unsigned_credential_params_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -29,7 +29,7 @@ print JsonWebKeyDto.to_json()
 # convert the object into a dict
 json_web_key_dto_dict = json_web_key_dto_instance.to_dict()
 # create an instance of JsonWebKeyDto from a dict
-json_web_key_dto_form_dict = json_web_key_dto.from_dict(json_web_key_dto_dict)
+json_web_key_dto_from_dict = JsonWebKeyDto.from_dict(json_web_key_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -25,7 +25,7 @@ print SignCredential400Response.to_json()
 # convert the object into a dict
 sign_credential400_response_dict = sign_credential400_response_instance.to_dict()
 # create an instance of SignCredential400Response from a dict
-sign_credential400_response_form_dict = sign_credential400_response.from_dict(sign_credential400_response_dict)
+sign_credential400_response_from_dict = SignCredential400Response.from_dict(sign_credential400_response_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

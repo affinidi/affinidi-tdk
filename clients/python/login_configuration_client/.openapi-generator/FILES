@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_login_configuration_client/__init__.py
 affinidi_tdk_login_configuration_client/api/__init__.py
 affinidi_tdk_login_configuration_client/api/allow_list_api.py

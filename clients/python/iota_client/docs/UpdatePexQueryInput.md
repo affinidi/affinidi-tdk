@@ -22,7 +22,7 @@ print UpdatePexQueryInput.to_json()
 # convert the object into a dict
 update_pex_query_input_dict = update_pex_query_input_instance.to_dict()
 # create an instance of UpdatePexQueryInput from a dict
-update_pex_query_input_form_dict = update_pex_query_input.from_dict(update_pex_query_input_dict)
+update_pex_query_input_from_dict = UpdatePexQueryInput.from_dict(update_pex_query_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

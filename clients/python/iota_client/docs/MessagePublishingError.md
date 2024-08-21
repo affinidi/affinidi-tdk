@@ -25,7 +25,7 @@ print MessagePublishingError.to_json()
 # convert the object into a dict
 message_publishing_error_dict = message_publishing_error_instance.to_dict()
 # create an instance of MessagePublishingError from a dict
-message_publishing_error_form_dict = message_publishing_error.from_dict(message_publishing_error_dict)
+message_publishing_error_from_dict = MessagePublishingError.from_dict(message_publishing_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

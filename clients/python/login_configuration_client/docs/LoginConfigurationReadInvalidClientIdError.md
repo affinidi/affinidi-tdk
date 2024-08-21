@@ -25,7 +25,7 @@ print LoginConfigurationReadInvalidClientIdError.to_json()
 # convert the object into a dict
 login_configuration_read_invalid_client_id_error_dict = login_configuration_read_invalid_client_id_error_instance.to_dict()
 # create an instance of LoginConfigurationReadInvalidClientIdError from a dict
-login_configuration_read_invalid_client_id_error_form_dict = login_configuration_read_invalid_client_id_error.from_dict(login_configuration_read_invalid_client_id_error_dict)
+login_configuration_read_invalid_client_id_error_from_dict = LoginConfigurationReadInvalidClientIdError.from_dict(login_configuration_read_invalid_client_id_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,7 +24,7 @@ print ValidateJwtOutput.to_json()
 # convert the object into a dict
 validate_jwt_output_dict = validate_jwt_output_instance.to_dict()
 # create an instance of ValidateJwtOutput from a dict
-validate_jwt_output_form_dict = validate_jwt_output.from_dict(validate_jwt_output_dict)
+validate_jwt_output_from_dict = ValidateJwtOutput.from_dict(validate_jwt_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

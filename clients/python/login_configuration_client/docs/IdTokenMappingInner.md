@@ -23,7 +23,7 @@ print IdTokenMappingInner.to_json()
 # convert the object into a dict
 id_token_mapping_inner_dict = id_token_mapping_inner_instance.to_dict()
 # create an instance of IdTokenMappingInner from a dict
-id_token_mapping_inner_form_dict = id_token_mapping_inner.from_dict(id_token_mapping_inner_dict)
+id_token_mapping_inner_from_dict = IdTokenMappingInner.from_dict(id_token_mapping_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

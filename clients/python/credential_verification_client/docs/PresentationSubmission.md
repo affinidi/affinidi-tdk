@@ -23,7 +23,7 @@ print PresentationSubmission.to_json()
 # convert the object into a dict
 presentation_submission_dict = presentation_submission_instance.to_dict()
 # create an instance of PresentationSubmission from a dict
-presentation_submission_form_dict = presentation_submission.from_dict(presentation_submission_dict)
+presentation_submission_from_dict = PresentationSubmission.from_dict(presentation_submission_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

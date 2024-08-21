@@ -22,7 +22,7 @@ print VerifyPresentationOutputErrors.to_json()
 # convert the object into a dict
 verify_presentation_output_errors_dict = verify_presentation_output_errors_instance.to_dict()
 # create an instance of VerifyPresentationOutputErrors from a dict
-verify_presentation_output_errors_form_dict = verify_presentation_output_errors.from_dict(verify_presentation_output_errors_dict)
+verify_presentation_output_errors_from_dict = VerifyPresentationOutputErrors.from_dict(verify_presentation_output_errors_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

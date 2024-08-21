@@ -25,7 +25,7 @@ print SigningFailedError.to_json()
 # convert the object into a dict
 signing_failed_error_dict = signing_failed_error_instance.to_dict()
 # create an instance of SigningFailedError from a dict
-signing_failed_error_form_dict = signing_failed_error.from_dict(signing_failed_error_dict)
+signing_failed_error_from_dict = SigningFailedError.from_dict(signing_failed_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

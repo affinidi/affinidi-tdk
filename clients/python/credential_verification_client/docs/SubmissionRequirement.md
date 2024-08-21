@@ -28,7 +28,7 @@ print SubmissionRequirement.to_json()
 # convert the object into a dict
 submission_requirement_dict = submission_requirement_instance.to_dict()
 # create an instance of SubmissionRequirement from a dict
-submission_requirement_form_dict = submission_requirement.from_dict(submission_requirement_dict)
+submission_requirement_from_dict = SubmissionRequirement.from_dict(submission_requirement_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

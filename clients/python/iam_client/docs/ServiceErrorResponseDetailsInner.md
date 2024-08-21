@@ -24,7 +24,7 @@ print ServiceErrorResponseDetailsInner.to_json()
 # convert the object into a dict
 service_error_response_details_inner_dict = service_error_response_details_inner_instance.to_dict()
 # create an instance of ServiceErrorResponseDetailsInner from a dict
-service_error_response_details_inner_form_dict = service_error_response_details_inner.from_dict(service_error_response_details_inner_dict)
+service_error_response_details_inner_from_dict = ServiceErrorResponseDetailsInner.from_dict(service_error_response_details_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

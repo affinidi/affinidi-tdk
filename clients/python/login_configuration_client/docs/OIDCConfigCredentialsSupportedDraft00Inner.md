@@ -24,7 +24,7 @@ print OIDCConfigCredentialsSupportedDraft00Inner.to_json()
 # convert the object into a dict
 oidc_config_credentials_supported_draft00_inner_dict = oidc_config_credentials_supported_draft00_inner_instance.to_dict()
 # create an instance of OIDCConfigCredentialsSupportedDraft00Inner from a dict
-oidc_config_credentials_supported_draft00_inner_form_dict = oidc_config_credentials_supported_draft00_inner.from_dict(oidc_config_credentials_supported_draft00_inner_dict)
+oidc_config_credentials_supported_draft00_inner_from_dict = OIDCConfigCredentialsSupportedDraft00Inner.from_dict(oidc_config_credentials_supported_draft00_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

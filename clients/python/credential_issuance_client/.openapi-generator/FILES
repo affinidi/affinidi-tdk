@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_credential_issuance_client/__init__.py
 affinidi_tdk_credential_issuance_client/api/__init__.py
 affinidi_tdk_credential_issuance_client/api/configuration_api.py

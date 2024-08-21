@@ -29,7 +29,7 @@ print ConsentDto.to_json()
 # convert the object into a dict
 consent_dto_dict = consent_dto_instance.to_dict()
 # create an instance of ConsentDto from a dict
-consent_dto_form_dict = consent_dto.from_dict(consent_dto_dict)
+consent_dto_from_dict = ConsentDto.from_dict(consent_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

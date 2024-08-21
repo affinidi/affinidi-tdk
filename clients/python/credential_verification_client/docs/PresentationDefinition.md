@@ -29,7 +29,7 @@ print PresentationDefinition.to_json()
 # convert the object into a dict
 presentation_definition_dict = presentation_definition_instance.to_dict()
 # create an instance of PresentationDefinition from a dict
-presentation_definition_form_dict = presentation_definition.from_dict(presentation_definition_dict)
+presentation_definition_from_dict = PresentationDefinition.from_dict(presentation_definition_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

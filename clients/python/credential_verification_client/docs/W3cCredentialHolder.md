@@ -20,7 +20,7 @@ print W3cCredentialHolder.to_json()
 # convert the object into a dict
 w3c_credential_holder_dict = w3c_credential_holder_instance.to_dict()
 # create an instance of W3cCredentialHolder from a dict
-w3c_credential_holder_form_dict = w3c_credential_holder.from_dict(w3c_credential_holder_dict)
+w3c_credential_holder_from_dict = W3cCredentialHolder.from_dict(w3c_credential_holder_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

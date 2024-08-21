@@ -25,7 +25,7 @@ print InvalidGroupsError.to_json()
 # convert the object into a dict
 invalid_groups_error_dict = invalid_groups_error_instance.to_dict()
 # create an instance of InvalidGroupsError from a dict
-invalid_groups_error_form_dict = invalid_groups_error.from_dict(invalid_groups_error_dict)
+invalid_groups_error_from_dict = InvalidGroupsError.from_dict(invalid_groups_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

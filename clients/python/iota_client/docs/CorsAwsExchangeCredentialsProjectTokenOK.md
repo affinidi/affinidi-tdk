@@ -21,7 +21,7 @@ print CorsAwsExchangeCredentialsProjectTokenOK.to_json()
 # convert the object into a dict
 cors_aws_exchange_credentials_project_token_ok_dict = cors_aws_exchange_credentials_project_token_ok_instance.to_dict()
 # create an instance of CorsAwsExchangeCredentialsProjectTokenOK from a dict
-cors_aws_exchange_credentials_project_token_ok_form_dict = cors_aws_exchange_credentials_project_token_ok.from_dict(cors_aws_exchange_credentials_project_token_ok_dict)
+cors_aws_exchange_credentials_project_token_ok_from_dict = CorsAwsExchangeCredentialsProjectTokenOK.from_dict(cors_aws_exchange_credentials_project_token_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

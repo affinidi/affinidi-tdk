@@ -25,7 +25,7 @@ print ProjectCredentialConfigExistError.to_json()
 # convert the object into a dict
 project_credential_config_exist_error_dict = project_credential_config_exist_error_instance.to_dict()
 # create an instance of ProjectCredentialConfigExistError from a dict
-project_credential_config_exist_error_form_dict = project_credential_config_exist_error.from_dict(project_credential_config_exist_error_dict)
+project_credential_config_exist_error_from_dict = ProjectCredentialConfigExistError.from_dict(project_credential_config_exist_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

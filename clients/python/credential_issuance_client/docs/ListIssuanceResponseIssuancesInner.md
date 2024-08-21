@@ -21,7 +21,7 @@ print ListIssuanceResponseIssuancesInner.to_json()
 # convert the object into a dict
 list_issuance_response_issuances_inner_dict = list_issuance_response_issuances_inner_instance.to_dict()
 # create an instance of ListIssuanceResponseIssuancesInner from a dict
-list_issuance_response_issuances_inner_form_dict = list_issuance_response_issuances_inner.from_dict(list_issuance_response_issuances_inner_dict)
+list_issuance_response_issuances_inner_from_dict = ListIssuanceResponseIssuancesInner.from_dict(list_issuance_response_issuances_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

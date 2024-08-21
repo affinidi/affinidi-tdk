@@ -26,7 +26,7 @@ print ConsumerAuthTokenEndpointOutput.to_json()
 # convert the object into a dict
 consumer_auth_token_endpoint_output_dict = consumer_auth_token_endpoint_output_instance.to_dict()
 # create an instance of ConsumerAuthTokenEndpointOutput from a dict
-consumer_auth_token_endpoint_output_form_dict = consumer_auth_token_endpoint_output.from_dict(consumer_auth_token_endpoint_output_dict)
+consumer_auth_token_endpoint_output_from_dict = ConsumerAuthTokenEndpointOutput.from_dict(consumer_auth_token_endpoint_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

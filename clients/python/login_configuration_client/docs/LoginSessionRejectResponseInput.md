@@ -25,7 +25,7 @@ print LoginSessionRejectResponseInput.to_json()
 # convert the object into a dict
 login_session_reject_response_input_dict = login_session_reject_response_input_instance.to_dict()
 # create an instance of LoginSessionRejectResponseInput from a dict
-login_session_reject_response_input_form_dict = login_session_reject_response_input.from_dict(login_session_reject_response_input_dict)
+login_session_reject_response_input_from_dict = LoginSessionRejectResponseInput.from_dict(login_session_reject_response_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

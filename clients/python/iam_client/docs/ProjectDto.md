@@ -25,7 +25,7 @@ print ProjectDto.to_json()
 # convert the object into a dict
 project_dto_dict = project_dto_instance.to_dict()
 # create an instance of ProjectDto from a dict
-project_dto_form_dict = project_dto.from_dict(project_dto_dict)
+project_dto_from_dict = ProjectDto.from_dict(project_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,7 +24,7 @@ print CredentialRequirements.to_json()
 # convert the object into a dict
 credential_requirements_dict = credential_requirements_instance.to_dict()
 # create an instance of CredentialRequirements from a dict
-credential_requirements_form_dict = credential_requirements.from_dict(credential_requirements_dict)
+credential_requirements_from_dict = CredentialRequirements.from_dict(credential_requirements_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

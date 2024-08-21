@@ -26,7 +26,7 @@ print CreateLoginConfigurationOutputAuth.to_json()
 # convert the object into a dict
 create_login_configuration_output_auth_dict = create_login_configuration_output_auth_instance.to_dict()
 # create an instance of CreateLoginConfigurationOutputAuth from a dict
-create_login_configuration_output_auth_form_dict = create_login_configuration_output_auth.from_dict(create_login_configuration_output_auth_dict)
+create_login_configuration_output_auth_from_dict = CreateLoginConfigurationOutputAuth.from_dict(create_login_configuration_output_auth_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

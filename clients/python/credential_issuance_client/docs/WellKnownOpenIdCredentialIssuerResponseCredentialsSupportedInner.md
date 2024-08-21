@@ -23,7 +23,7 @@ print WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.to_json()
 # convert the object into a dict
 well_known_open_id_credential_issuer_response_credentials_supported_inner_dict = well_known_open_id_credential_issuer_response_credentials_supported_inner_instance.to_dict()
 # create an instance of WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner from a dict
-well_known_open_id_credential_issuer_response_credentials_supported_inner_form_dict = well_known_open_id_credential_issuer_response_credentials_supported_inner.from_dict(well_known_open_id_credential_issuer_response_credentials_supported_inner_dict)
+well_known_open_id_credential_issuer_response_credentials_supported_inner_from_dict = WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.from_dict(well_known_open_id_credential_issuer_response_credentials_supported_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

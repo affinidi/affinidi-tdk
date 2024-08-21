@@ -23,7 +23,7 @@ print ValidateJwtInput.to_json()
 # convert the object into a dict
 validate_jwt_input_dict = validate_jwt_input_instance.to_dict()
 # create an instance of ValidateJwtInput from a dict
-validate_jwt_input_form_dict = validate_jwt_input.from_dict(validate_jwt_input_dict)
+validate_jwt_input_from_dict = ValidateJwtInput.from_dict(validate_jwt_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

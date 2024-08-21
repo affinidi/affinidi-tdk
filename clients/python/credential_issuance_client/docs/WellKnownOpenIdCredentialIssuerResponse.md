@@ -30,7 +30,7 @@ print WellKnownOpenIdCredentialIssuerResponse.to_json()
 # convert the object into a dict
 well_known_open_id_credential_issuer_response_dict = well_known_open_id_credential_issuer_response_instance.to_dict()
 # create an instance of WellKnownOpenIdCredentialIssuerResponse from a dict
-well_known_open_id_credential_issuer_response_form_dict = well_known_open_id_credential_issuer_response.from_dict(well_known_open_id_credential_issuer_response_dict)
+well_known_open_id_credential_issuer_response_from_dict = WellKnownOpenIdCredentialIssuerResponse.from_dict(well_known_open_id_credential_issuer_response_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

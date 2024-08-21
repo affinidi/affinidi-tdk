@@ -25,7 +25,7 @@ print LoginConfigurationClientMetadataInput.to_json()
 # convert the object into a dict
 login_configuration_client_metadata_input_dict = login_configuration_client_metadata_input_instance.to_dict()
 # create an instance of LoginConfigurationClientMetadataInput from a dict
-login_configuration_client_metadata_input_form_dict = login_configuration_client_metadata_input.from_dict(login_configuration_client_metadata_input_dict)
+login_configuration_client_metadata_input_from_dict = LoginConfigurationClientMetadataInput.from_dict(login_configuration_client_metadata_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

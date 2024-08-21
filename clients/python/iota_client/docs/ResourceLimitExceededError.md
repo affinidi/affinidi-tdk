@@ -25,7 +25,7 @@ print ResourceLimitExceededError.to_json()
 # convert the object into a dict
 resource_limit_exceeded_error_dict = resource_limit_exceeded_error_instance.to_dict()
 # create an instance of ResourceLimitExceededError from a dict
-resource_limit_exceeded_error_form_dict = resource_limit_exceeded_error.from_dict(resource_limit_exceeded_error_dict)
+resource_limit_exceeded_error_from_dict = ResourceLimitExceededError.from_dict(resource_limit_exceeded_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

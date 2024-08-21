@@ -23,7 +23,7 @@ print CredentialResponseDeferred.to_json()
 # convert the object into a dict
 credential_response_deferred_dict = credential_response_deferred_instance.to_dict()
 # create an instance of CredentialResponseDeferred from a dict
-credential_response_deferred_form_dict = credential_response_deferred.from_dict(credential_response_deferred_dict)
+credential_response_deferred_from_dict = CredentialResponseDeferred.from_dict(credential_response_deferred_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

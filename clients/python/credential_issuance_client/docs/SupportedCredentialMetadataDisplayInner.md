@@ -25,7 +25,7 @@ print SupportedCredentialMetadataDisplayInner.to_json()
 # convert the object into a dict
 supported_credential_metadata_display_inner_dict = supported_credential_metadata_display_inner_instance.to_dict()
 # create an instance of SupportedCredentialMetadataDisplayInner from a dict
-supported_credential_metadata_display_inner_form_dict = supported_credential_metadata_display_inner.from_dict(supported_credential_metadata_display_inner_dict)
+supported_credential_metadata_display_inner_from_dict = SupportedCredentialMetadataDisplayInner.from_dict(supported_credential_metadata_display_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

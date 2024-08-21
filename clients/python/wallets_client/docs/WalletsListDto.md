@@ -23,7 +23,7 @@ print WalletsListDto.to_json()
 # convert the object into a dict
 wallets_list_dto_dict = wallets_list_dto_instance.to_dict()
 # create an instance of WalletsListDto from a dict
-wallets_list_dto_form_dict = wallets_list_dto.from_dict(wallets_list_dto_dict)
+wallets_list_dto_from_dict = WalletsListDto.from_dict(wallets_list_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

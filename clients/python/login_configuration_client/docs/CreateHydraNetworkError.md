@@ -25,7 +25,7 @@ print CreateHydraNetworkError.to_json()
 # convert the object into a dict
 create_hydra_network_error_dict = create_hydra_network_error_instance.to_dict()
 # create an instance of CreateHydraNetworkError from a dict
-create_hydra_network_error_form_dict = create_hydra_network_error.from_dict(create_hydra_network_error_dict)
+create_hydra_network_error_from_dict = CreateHydraNetworkError.from_dict(create_hydra_network_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

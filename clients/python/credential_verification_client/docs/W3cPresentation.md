@@ -27,7 +27,7 @@ print W3cPresentation.to_json()
 # convert the object into a dict
 w3c_presentation_dict = w3c_presentation_instance.to_dict()
 # create an instance of W3cPresentation from a dict
-w3c_presentation_form_dict = w3c_presentation.from_dict(w3c_presentation_dict)
+w3c_presentation_from_dict = W3cPresentation.from_dict(w3c_presentation_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ print GetIotaConfigurationMetaDataOK.to_json()
 # convert the object into a dict
 get_iota_configuration_meta_data_ok_dict = get_iota_configuration_meta_data_ok_instance.to_dict()
 # create an instance of GetIotaConfigurationMetaDataOK from a dict
-get_iota_configuration_meta_data_ok_form_dict = get_iota_configuration_meta_data_ok.from_dict(get_iota_configuration_meta_data_ok_dict)
+get_iota_configuration_meta_data_ok_from_dict = GetIotaConfigurationMetaDataOK.from_dict(get_iota_configuration_meta_data_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

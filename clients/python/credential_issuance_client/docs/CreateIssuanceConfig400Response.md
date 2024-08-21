@@ -25,7 +25,7 @@ print CreateIssuanceConfig400Response.to_json()
 # convert the object into a dict
 create_issuance_config400_response_dict = create_issuance_config400_response_instance.to_dict()
 # create an instance of CreateIssuanceConfig400Response from a dict
-create_issuance_config400_response_form_dict = create_issuance_config400_response.from_dict(create_issuance_config400_response_dict)
+create_issuance_config400_response_from_dict = CreateIssuanceConfig400Response.from_dict(create_issuance_config400_response_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,7 +24,7 @@ print UpdateWalletInput.to_json()
 # convert the object into a dict
 update_wallet_input_dict = update_wallet_input_instance.to_dict()
 # create an instance of UpdateWalletInput from a dict
-update_wallet_input_form_dict = update_wallet_input.from_dict(update_wallet_input_dict)
+update_wallet_input_from_dict = UpdateWalletInput.from_dict(update_wallet_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

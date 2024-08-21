@@ -24,7 +24,7 @@ print VerifyPresentationOutput.to_json()
 # convert the object into a dict
 verify_presentation_output_dict = verify_presentation_output_instance.to_dict()
 # create an instance of VerifyPresentationOutput from a dict
-verify_presentation_output_form_dict = verify_presentation_output.from_dict(verify_presentation_output_dict)
+verify_presentation_output_from_dict = VerifyPresentationOutput.from_dict(verify_presentation_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,7 +21,7 @@ print PdStatus.to_json()
 # convert the object into a dict
 pd_status_dict = pd_status_instance.to_dict()
 # create an instance of PdStatus from a dict
-pd_status_form_dict = pd_status.from_dict(pd_status_dict)
+pd_status_from_dict = PdStatus.from_dict(pd_status_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

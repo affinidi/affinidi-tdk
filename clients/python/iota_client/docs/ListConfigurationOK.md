@@ -21,7 +21,7 @@ print ListConfigurationOK.to_json()
 # convert the object into a dict
 list_configuration_ok_dict = list_configuration_ok_instance.to_dict()
 # create an instance of ListConfigurationOK from a dict
-list_configuration_ok_form_dict = list_configuration_ok.from_dict(list_configuration_ok_dict)
+list_configuration_ok_from_dict = ListConfigurationOK.from_dict(list_configuration_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
