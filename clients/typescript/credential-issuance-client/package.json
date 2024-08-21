@@ -1,11 +1,11 @@
 {
   "name": "@affinidi-tdk/credential-issuance-client",
-  "version": "1.20.0",
+  "version": "1.0.0",
   "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL ISSUANCE",
   "author": "Affinidi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client"
+    "url": "https://github.com/affinidi.com/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client"
   },
   "keywords": [
     "affinidi-tdk",

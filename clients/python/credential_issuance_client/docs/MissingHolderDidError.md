@@ -25,7 +25,7 @@ print MissingHolderDidError.to_json()
 # convert the object into a dict
 missing_holder_did_error_dict = missing_holder_did_error_instance.to_dict()
 # create an instance of MissingHolderDidError from a dict
-missing_holder_did_error_form_dict = missing_holder_did_error.from_dict(missing_holder_did_error_dict)
+missing_holder_did_error_from_dict = MissingHolderDidError.from_dict(missing_holder_did_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

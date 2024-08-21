@@ -24,7 +24,7 @@ print CredentialSupportedObject.to_json()
 # convert the object into a dict
 credential_supported_object_dict = credential_supported_object_instance.to_dict()
 # create an instance of CredentialSupportedObject from a dict
-credential_supported_object_form_dict = credential_supported_object.from_dict(credential_supported_object_dict)
+credential_supported_object_from_dict = CredentialSupportedObject.from_dict(credential_supported_object_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

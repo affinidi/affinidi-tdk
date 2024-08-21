@@ -23,7 +23,7 @@ print CredentialOfferResponseGrants.to_json()
 # convert the object into a dict
 credential_offer_response_grants_dict = credential_offer_response_grants_instance.to_dict()
 # create an instance of CredentialOfferResponseGrants from a dict
-credential_offer_response_grants_form_dict = credential_offer_response_grants.from_dict(credential_offer_response_grants_dict)
+credential_offer_response_grants_from_dict = CredentialOfferResponseGrants.from_dict(credential_offer_response_grants_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ print BlockedUsersInput.to_json()
 # convert the object into a dict
 blocked_users_input_dict = blocked_users_input_instance.to_dict()
 # create an instance of BlockedUsersInput from a dict
-blocked_users_input_form_dict = blocked_users_input.from_dict(blocked_users_input_dict)
+blocked_users_input_from_dict = BlockedUsersInput.from_dict(blocked_users_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

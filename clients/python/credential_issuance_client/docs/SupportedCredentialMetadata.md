@@ -21,7 +21,7 @@ print SupportedCredentialMetadata.to_json()
 # convert the object into a dict
 supported_credential_metadata_dict = supported_credential_metadata_instance.to_dict()
 # create an instance of SupportedCredentialMetadata from a dict
-supported_credential_metadata_form_dict = supported_credential_metadata.from_dict(supported_credential_metadata_dict)
+supported_credential_metadata_from_dict = SupportedCredentialMetadata.from_dict(supported_credential_metadata_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

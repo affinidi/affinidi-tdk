@@ -22,7 +22,7 @@ print LoginSessionDto.to_json()
 # convert the object into a dict
 login_session_dto_dict = login_session_dto_instance.to_dict()
 # create an instance of LoginSessionDto from a dict
-login_session_dto_form_dict = login_session_dto.from_dict(login_session_dto_dict)
+login_session_dto_from_dict = LoginSessionDto.from_dict(login_session_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

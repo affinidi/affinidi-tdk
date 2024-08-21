@@ -25,7 +25,7 @@ print PrincipalCannotBeDeletedError.to_json()
 # convert the object into a dict
 principal_cannot_be_deleted_error_dict = principal_cannot_be_deleted_error_instance.to_dict()
 # create an instance of PrincipalCannotBeDeletedError from a dict
-principal_cannot_be_deleted_error_form_dict = principal_cannot_be_deleted_error.from_dict(principal_cannot_be_deleted_error_dict)
+principal_cannot_be_deleted_error_from_dict = PrincipalCannotBeDeletedError.from_dict(principal_cannot_be_deleted_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -22,7 +22,7 @@ print EvaluateVpOutput.to_json()
 # convert the object into a dict
 evaluate_vp_output_dict = evaluate_vp_output_instance.to_dict()
 # create an instance of EvaluateVpOutput from a dict
-evaluate_vp_output_form_dict = evaluate_vp_output.from_dict(evaluate_vp_output_dict)
+evaluate_vp_output_from_dict = EvaluateVpOutput.from_dict(evaluate_vp_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

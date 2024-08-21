@@ -24,7 +24,7 @@ print GroupDto.to_json()
 # convert the object into a dict
 group_dto_dict = group_dto_instance.to_dict()
 # create an instance of GroupDto from a dict
-group_dto_form_dict = group_dto.from_dict(group_dto_dict)
+group_dto_from_dict = GroupDto.from_dict(group_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

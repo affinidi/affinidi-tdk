@@ -21,7 +21,7 @@ print CorsConsumerAuthTokenEndpointOK.to_json()
 # convert the object into a dict
 cors_consumer_auth_token_endpoint_ok_dict = cors_consumer_auth_token_endpoint_ok_instance.to_dict()
 # create an instance of CorsConsumerAuthTokenEndpointOK from a dict
-cors_consumer_auth_token_endpoint_ok_form_dict = cors_consumer_auth_token_endpoint_ok.from_dict(cors_consumer_auth_token_endpoint_ok_dict)
+cors_consumer_auth_token_endpoint_ok_from_dict = CorsConsumerAuthTokenEndpointOK.from_dict(cors_consumer_auth_token_endpoint_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

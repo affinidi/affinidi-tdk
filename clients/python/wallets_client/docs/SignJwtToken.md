@@ -24,7 +24,7 @@ print SignJwtToken.to_json()
 # convert the object into a dict
 sign_jwt_token_dict = sign_jwt_token_instance.to_dict()
 # create an instance of SignJwtToken from a dict
-sign_jwt_token_form_dict = sign_jwt_token.from_dict(sign_jwt_token_dict)
+sign_jwt_token_from_dict = SignJwtToken.from_dict(sign_jwt_token_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

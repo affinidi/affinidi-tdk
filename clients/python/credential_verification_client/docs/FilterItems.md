@@ -38,7 +38,7 @@ print FilterItems.to_json()
 # convert the object into a dict
 filter_items_dict = filter_items_instance.to_dict()
 # create an instance of FilterItems from a dict
-filter_items_form_dict = filter_items.from_dict(filter_items_dict)
+filter_items_from_dict = FilterItems.from_dict(filter_items_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

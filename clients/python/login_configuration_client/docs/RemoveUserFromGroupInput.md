@@ -23,7 +23,7 @@ print RemoveUserFromGroupInput.to_json()
 # convert the object into a dict
 remove_user_from_group_input_dict = remove_user_from_group_input_instance.to_dict()
 # create an instance of RemoveUserFromGroupInput from a dict
-remove_user_from_group_input_form_dict = remove_user_from_group_input.from_dict(remove_user_from_group_input_dict)
+remove_user_from_group_input_from_dict = RemoveUserFromGroupInput.from_dict(remove_user_from_group_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

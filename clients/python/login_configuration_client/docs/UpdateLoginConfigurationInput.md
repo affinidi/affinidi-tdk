@@ -30,7 +30,7 @@ print UpdateLoginConfigurationInput.to_json()
 # convert the object into a dict
 update_login_configuration_input_dict = update_login_configuration_input_instance.to_dict()
 # create an instance of UpdateLoginConfigurationInput from a dict
-update_login_configuration_input_form_dict = update_login_configuration_input.from_dict(update_login_configuration_input_dict)
+update_login_configuration_input_from_dict = UpdateLoginConfigurationInput.from_dict(update_login_configuration_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

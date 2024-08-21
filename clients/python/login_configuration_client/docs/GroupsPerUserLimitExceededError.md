@@ -25,7 +25,7 @@ print GroupsPerUserLimitExceededError.to_json()
 # convert the object into a dict
 groups_per_user_limit_exceeded_error_dict = groups_per_user_limit_exceeded_error_instance.to_dict()
 # create an instance of GroupsPerUserLimitExceededError from a dict
-groups_per_user_limit_exceeded_error_form_dict = groups_per_user_limit_exceeded_error.from_dict(groups_per_user_limit_exceeded_error_dict)
+groups_per_user_limit_exceeded_error_from_dict = GroupsPerUserLimitExceededError.from_dict(groups_per_user_limit_exceeded_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

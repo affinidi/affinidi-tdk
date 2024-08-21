@@ -32,7 +32,7 @@ print IssuanceConfigDto.to_json()
 # convert the object into a dict
 issuance_config_dto_dict = issuance_config_dto_instance.to_dict()
 # create an instance of IssuanceConfigDto from a dict
-issuance_config_dto_form_dict = issuance_config_dto.from_dict(issuance_config_dto_dict)
+issuance_config_dto_from_dict = IssuanceConfigDto.from_dict(issuance_config_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

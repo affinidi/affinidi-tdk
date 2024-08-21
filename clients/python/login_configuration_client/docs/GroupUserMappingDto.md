@@ -22,7 +22,7 @@ print GroupUserMappingDto.to_json()
 # convert the object into a dict
 group_user_mapping_dto_dict = group_user_mapping_dto_instance.to_dict()
 # create an instance of GroupUserMappingDto from a dict
-group_user_mapping_dto_form_dict = group_user_mapping_dto.from_dict(group_user_mapping_dto_dict)
+group_user_mapping_dto_from_dict = GroupUserMappingDto.from_dict(group_user_mapping_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

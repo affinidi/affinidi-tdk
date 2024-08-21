@@ -22,7 +22,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "poetry publish"
+        "command": "poetry publish --skip-existing"
       }
     },
     "tags": []

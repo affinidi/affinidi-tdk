@@ -25,7 +25,7 @@ print OperationForbiddenError.to_json()
 # convert the object into a dict
 operation_forbidden_error_dict = operation_forbidden_error_instance.to_dict()
 # create an instance of OperationForbiddenError from a dict
-operation_forbidden_error_form_dict = operation_forbidden_error.from_dict(operation_forbidden_error_dict)
+operation_forbidden_error_from_dict = OperationForbiddenError.from_dict(operation_forbidden_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

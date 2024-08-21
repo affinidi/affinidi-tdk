@@ -22,7 +22,7 @@ print GroupNames.to_json()
 # convert the object into a dict
 group_names_dict = group_names_instance.to_dict()
 # create an instance of GroupNames from a dict
-group_names_form_dict = group_names.from_dict(group_names_dict)
+group_names_from_dict = GroupNames.from_dict(group_names_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

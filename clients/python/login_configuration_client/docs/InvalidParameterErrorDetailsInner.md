@@ -24,7 +24,7 @@ print InvalidParameterErrorDetailsInner.to_json()
 # convert the object into a dict
 invalid_parameter_error_details_inner_dict = invalid_parameter_error_details_inner_instance.to_dict()
 # create an instance of InvalidParameterErrorDetailsInner from a dict
-invalid_parameter_error_details_inner_form_dict = invalid_parameter_error_details_inner.from_dict(invalid_parameter_error_details_inner_dict)
+invalid_parameter_error_details_inner_from_dict = InvalidParameterErrorDetailsInner.from_dict(invalid_parameter_error_details_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

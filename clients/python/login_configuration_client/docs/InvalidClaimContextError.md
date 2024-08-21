@@ -25,7 +25,7 @@ print InvalidClaimContextError.to_json()
 # convert the object into a dict
 invalid_claim_context_error_dict = invalid_claim_context_error_instance.to_dict()
 # create an instance of InvalidClaimContextError from a dict
-invalid_claim_context_error_form_dict = invalid_claim_context_error.from_dict(invalid_claim_context_error_dict)
+invalid_claim_context_error_from_dict = InvalidClaimContextError.from_dict(invalid_claim_context_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

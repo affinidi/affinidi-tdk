@@ -22,7 +22,7 @@ print WalletDtoKeysInner.to_json()
 # convert the object into a dict
 wallet_dto_keys_inner_dict = wallet_dto_keys_inner_instance.to_dict()
 # create an instance of WalletDtoKeysInner from a dict
-wallet_dto_keys_inner_form_dict = wallet_dto_keys_inner.from_dict(wallet_dto_keys_inner_dict)
+wallet_dto_keys_inner_from_dict = WalletDtoKeysInner.from_dict(wallet_dto_keys_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

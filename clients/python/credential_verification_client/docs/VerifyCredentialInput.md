@@ -24,7 +24,7 @@ print VerifyCredentialInput.to_json()
 # convert the object into a dict
 verify_credential_input_dict = verify_credential_input_instance.to_dict()
 # create an instance of VerifyCredentialInput from a dict
-verify_credential_input_form_dict = verify_credential_input.from_dict(verify_credential_input_dict)
+verify_credential_input_from_dict = VerifyCredentialInput.from_dict(verify_credential_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

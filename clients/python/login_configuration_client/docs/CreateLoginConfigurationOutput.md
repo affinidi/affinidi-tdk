@@ -29,7 +29,7 @@ print CreateLoginConfigurationOutput.to_json()
 # convert the object into a dict
 create_login_configuration_output_dict = create_login_configuration_output_instance.to_dict()
 # create an instance of CreateLoginConfigurationOutput from a dict
-create_login_configuration_output_form_dict = create_login_configuration_output.from_dict(create_login_configuration_output_dict)
+create_login_configuration_output_from_dict = CreateLoginConfigurationOutput.from_dict(create_login_configuration_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

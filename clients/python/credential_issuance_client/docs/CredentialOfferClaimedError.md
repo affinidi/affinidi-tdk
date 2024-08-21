@@ -25,7 +25,7 @@ print CredentialOfferClaimedError.to_json()
 # convert the object into a dict
 credential_offer_claimed_error_dict = credential_offer_claimed_error_instance.to_dict()
 # create an instance of CredentialOfferClaimedError from a dict
-credential_offer_claimed_error_form_dict = credential_offer_claimed_error.from_dict(credential_offer_claimed_error_dict)
+credential_offer_claimed_error_from_dict = CredentialOfferClaimedError.from_dict(credential_offer_claimed_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ print CreateProjectScopedTokenOutput.to_json()
 # convert the object into a dict
 create_project_scoped_token_output_dict = create_project_scoped_token_output_instance.to_dict()
 # create an instance of CreateProjectScopedTokenOutput from a dict
-create_project_scoped_token_output_form_dict = create_project_scoped_token_output.from_dict(create_project_scoped_token_output_dict)
+create_project_scoped_token_output_from_dict = CreateProjectScopedTokenOutput.from_dict(create_project_scoped_token_output_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

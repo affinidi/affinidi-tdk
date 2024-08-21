@@ -25,7 +25,7 @@ print TokenPrivateKeyAuthenticationMethodDto.to_json()
 # convert the object into a dict
 token_private_key_authentication_method_dto_dict = token_private_key_authentication_method_dto_instance.to_dict()
 # create an instance of TokenPrivateKeyAuthenticationMethodDto from a dict
-token_private_key_authentication_method_dto_form_dict = token_private_key_authentication_method_dto.from_dict(token_private_key_authentication_method_dto_dict)
+token_private_key_authentication_method_dto_from_dict = TokenPrivateKeyAuthenticationMethodDto.from_dict(token_private_key_authentication_method_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -27,7 +27,7 @@ print CreateIssuanceConfigInput.to_json()
 # convert the object into a dict
 create_issuance_config_input_dict = create_issuance_config_input_instance.to_dict()
 # create an instance of CreateIssuanceConfigInput from a dict
-create_issuance_config_input_form_dict = create_issuance_config_input.from_dict(create_issuance_config_input_dict)
+create_issuance_config_input_from_dict = CreateIssuanceConfigInput.from_dict(create_issuance_config_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

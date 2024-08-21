@@ -21,7 +21,7 @@ print TokenList.to_json()
 # convert the object into a dict
 token_list_dict = token_list_instance.to_dict()
 # create an instance of TokenList from a dict
-token_list_form_dict = token_list.from_dict(token_list_dict)
+token_list_from_dict = TokenList.from_dict(token_list_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,7 +20,7 @@ print W3cCredentialCredentialSubject.to_json()
 # convert the object into a dict
 w3c_credential_credential_subject_dict = w3c_credential_credential_subject_instance.to_dict()
 # create an instance of W3cCredentialCredentialSubject from a dict
-w3c_credential_credential_subject_form_dict = w3c_credential_credential_subject.from_dict(w3c_credential_credential_subject_dict)
+w3c_credential_credential_subject_from_dict = W3cCredentialCredentialSubject.from_dict(w3c_credential_credential_subject_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,7 +23,7 @@ print AwsExchangeCredentialsProjectToken.to_json()
 # convert the object into a dict
 aws_exchange_credentials_project_token_dict = aws_exchange_credentials_project_token_instance.to_dict()
 # create an instance of AwsExchangeCredentialsProjectToken from a dict
-aws_exchange_credentials_project_token_form_dict = aws_exchange_credentials_project_token.from_dict(aws_exchange_credentials_project_token_dict)
+aws_exchange_credentials_project_token_from_dict = AwsExchangeCredentialsProjectToken.from_dict(aws_exchange_credentials_project_token_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,7 +5,7 @@ description = "Iam"
 authors = ["Affinidi <info@affinidi.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+repository = "https://github.com/affinidi.com/affinidi-tdk"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Iam"]
 include = ["affinidi_tdk_iam_client/py.typed"]
 

@@ -24,7 +24,7 @@ print W3cCredentialStatus.to_json()
 # convert the object into a dict
 w3c_credential_status_dict = w3c_credential_status_instance.to_dict()
 # create an instance of W3cCredentialStatus from a dict
-w3c_credential_status_form_dict = w3c_credential_status.from_dict(w3c_credential_status_dict)
+w3c_credential_status_from_dict = W3cCredentialStatus.from_dict(w3c_credential_status_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

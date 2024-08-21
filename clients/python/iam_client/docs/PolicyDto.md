@@ -26,7 +26,7 @@ print PolicyDto.to_json()
 # convert the object into a dict
 policy_dto_dict = policy_dto_instance.to_dict()
 # create an instance of PolicyDto from a dict
-policy_dto_form_dict = policy_dto.from_dict(policy_dto_dict)
+policy_dto_from_dict = PolicyDto.from_dict(policy_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,7 +21,7 @@ print DeferredCredentialInput.to_json()
 # convert the object into a dict
 deferred_credential_input_dict = deferred_credential_input_instance.to_dict()
 # create an instance of DeferredCredentialInput from a dict
-deferred_credential_input_form_dict = deferred_credential_input.from_dict(deferred_credential_input_dict)
+deferred_credential_input_from_dict = DeferredCredentialInput.from_dict(deferred_credential_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
