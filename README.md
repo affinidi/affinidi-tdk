@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements]](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
+The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
 ## How do I use Affinidi TDK?
 
@@ -11,7 +11,7 @@ The Affinidi TDK provides three type of modules:
 
 - [Clients](clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
 - [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
-- [Libraries](libraries), which are high-level abstractions that combine logic and data to perform necessary business logic functionalities.
+- [Libraries](libs), which are high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
 Each module has its own README that you can check to better understand how to integrate it into your application.
 
@@ -27,15 +27,15 @@ The Affinidi TDK offers the following modules and support to programming languag
 |[auth-provider](packages/auth-provider/)           |   🟢                  |     🟢                |        🔴            |
 |[common](packages/common/)                         |   🟢                  |     🟢                |        🔴            |
 |**Packages**                                       |                       |                       |                      |
-|credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/) | [🟢 Link](clients/python/credential-issuance-client/) | [🟡 Link](clients/typescript/credential-issuance-client/) |
-|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/typescript/credential-verification-client/) | [🟡 Link](clients/typescript/credential-verification-client/) |  
-|iam-client                     | [🟢 Link](clients/typescript/iam-client/) | [🟢 Link](clients/typescript/iam-client/) | [🟡 Link](clients/typescript/iam-client/) |
-|iota-client                    | [🟢 Link](clients/typescript/iota-client/) | [🟢 Link](clients/typescript/iota-client/) | [🟡 Link](clients/typescript/iota-client/) |
-|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟢 Link](clients/typescript/login-configuration-client/) | [🟡 Link](clients/typescript/login-configuration-client/) |
-|wallets-client                 | [🟢 Link](clients/typescript/wallets-client/) | [🟢 Link](clients/typescript/wallets-client/) | [🟡 Link](clients/typescript/wallets-client/) |
+|credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/) | [🟢 Link](clients/python/credential_issuance_client/) | [🟡 Link](clients/dart/credential_issuance_client/) |
+|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) |  
+|iam-client                     | [🟢 Link](clients/typescript/iam-client/) | [🟢 Link](clients/python/iam_client/) | [🟡 Link](clients/dart/iam_client/) |
+|iota-client                    | [🟢 Link](clients/typescript/iota-client/) | [🟢 Link](clients/python/iota_client/) | [🟡 Link](clients/dart/iota_client/) |
+|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟢 Link](clients/python/login_configuration_client/) | [🟡 Link](clients/dart/login_configuration_client/) |
+|wallets-client                 | [🟢 Link](clients/typescript/wallets-client/) | [🟢 Link](clients/python/wallets_client/) | [🟡 Link](clients/dart/wallets_client/) |
 |**Libraries**                                       |                       |                       |                      |
-|[iota-browser](libraries/iota-browser/)            |   🟢                  |     🔴                |        🔴            |
-|[iota-core](libraries/iota-browser/)               |   🟢                  |     🟢                |        🔴            |
+|[iota-browser](libs/iota-browser/)            |   🟢                  |     🔴                |        🔴            |
+|[iota-core](libs/iota-core/)               |   🟢                  |     🟢                |        🔴            |
 
 <br />
 🟢 Supported <br />
@@ -45,6 +45,14 @@ The Affinidi TDK offers the following modules and support to programming languag
 ## Documentation
 
 Head over to our [Documentation site](https://docs.affinidi.com/dev-tools/affinidi-tdk) to know how to get started with Affinidi TDK.
+
+Use [this document](https://docs.affinidi.com/dev-tools/affinidi-tdk/#working-with-the-affinidi-tdk) to learn more about how to work with Affinidi TDK, including generating the Authorisation Token and calling the methods.
+
+To learn how to integrate Affinidi TDK and use the different modules into your application, you can explore the following:
+
+- [Affinidi TDK Clients](https://docs.affinidi.com/dev-tools/affinidi-tdk/clients/)
+- [Affinidi TDK Libraries](https://docs.affinidi.com/dev-tools/affinidi-tdk/libraries/)
+- [Affinidi TDK Packages](https://docs.affinidi.com/dev-tools/affinidi-tdk/packages/)
 
 ## Support & feedback
 
