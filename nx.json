@@ -10,6 +10,7 @@
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "release": {
+    "projects": ["*"],
     "projectsRelationship": "independent",
     "version": {
       "conventionalCommits": true
