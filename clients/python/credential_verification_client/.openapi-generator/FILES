@@ -97,6 +97,7 @@ docs/W3cPresentation.md
 docs/W3cPresentationContext.md
 docs/W3cPresentationContextOneOfInner.md
 docs/W3cProof.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

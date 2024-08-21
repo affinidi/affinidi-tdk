@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/iam-client-python",
+  "name": "@affinidi-tdk/credential-verification-client-python",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
@@ -15,7 +15,7 @@
     "set-version": {
       "executor": "@affinidi-tdk/nx-tdk-tools:set-version",
       "options": {
-        "packageName": "iam_client"
+        "packageName": "credential_verification_client"
       }
     },
     "nx-release-publish": {
