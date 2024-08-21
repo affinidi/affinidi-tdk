@@ -43,4 +43,4 @@ jobs:
       - name: install python tools
         run: |
           pip install poetry
-      - run: npx nx affected -t build --parallel=3
+      - run: npx nx affected -t build --parallel=1
