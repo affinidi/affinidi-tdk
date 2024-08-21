@@ -1,3 +1,15 @@
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.19.0...@affinidi-tdk/credential-verification-client-v1.20.0) (2024-08-21)
+
+
+### Bug Fixes
+
+* release non js packages by default ([#203](https://github.com/affinidi/affinidi-tdk/issues/203)) ([b437163](https://github.com/affinidi/affinidi-tdk/commit/b43716355e41d4d67095d82be7f21313a6f20e85))
+
+
+### Features
+
+* update client all ([#202](https://github.com/affinidi/affinidi-tdk/issues/202)) ([a77856f](https://github.com/affinidi/affinidi-tdk/commit/a77856f1aedefa9d988d1f3ac94c8ff65b88b497))
+
 # [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-verification-client-v1.18.0...@affinidi-tdk/credential-verification-client-v1.19.0) (2024-08-20)
 
 
