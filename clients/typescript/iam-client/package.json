@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iam-client",
-  "version": "1.21.0",
+  "version": "1.0.0",
   "description": "Affinidi TDK typescript client for Affinidi IAM",
   "author": "Affinidi",
   "repository": {
