@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/credential-issuance-client-python",
+  "name": "affinidi_tdk/credential-issuance-client-python",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",

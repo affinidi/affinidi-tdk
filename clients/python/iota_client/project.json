@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/iota-client-python",
+  "name": "affinidi_tdk/iota-client-python",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
