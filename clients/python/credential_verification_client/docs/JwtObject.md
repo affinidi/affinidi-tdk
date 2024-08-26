@@ -21,7 +21,7 @@ print JwtObject.to_json()
 # convert the object into a dict
 jwt_object_dict = jwt_object_instance.to_dict()
 # create an instance of JwtObject from a dict
-jwt_object_form_dict = jwt_object.from_dict(jwt_object_dict)
+jwt_object_from_dict = JwtObject.from_dict(jwt_object_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

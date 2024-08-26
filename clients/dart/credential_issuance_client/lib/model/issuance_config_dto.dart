@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -99,7 +99,7 @@ class IssuanceConfigDto {
   ///
   String? issuerUri;
 
-  List<IssuanceConfigDtoCredentialSupportedInner> credentialSupported;
+  List<CredentialSupportedObject> credentialSupported;
 
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
@@ -231,7 +231,7 @@ class IssuanceConfigDto {
         cNonceDuration: mapValueOfType<int>(json, r'cNonceDuration'),
         format: IssuanceConfigDtoFormatEnum.fromJson(json[r'format']),
         issuerUri: mapValueOfType<String>(json, r'issuerUri'),
-        credentialSupported: IssuanceConfigDtoCredentialSupportedInner.listFromJson(json[r'credentialSupported']),
+        credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
         version: mapValueOfType<int>(json, r'version'),
       );

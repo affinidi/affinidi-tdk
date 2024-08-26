@@ -25,7 +25,7 @@ print CreateProjectNetworkError.to_json()
 # convert the object into a dict
 create_project_network_error_dict = create_project_network_error_instance.to_dict()
 # create an instance of CreateProjectNetworkError from a dict
-create_project_network_error_form_dict = create_project_network_error.from_dict(create_project_network_error_dict)
+create_project_network_error_from_dict = CreateProjectNetworkError.from_dict(create_project_network_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

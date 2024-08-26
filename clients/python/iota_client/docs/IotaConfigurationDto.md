@@ -30,7 +30,7 @@ print IotaConfigurationDto.to_json()
 # convert the object into a dict
 iota_configuration_dto_dict = iota_configuration_dto_instance.to_dict()
 # create an instance of IotaConfigurationDto from a dict
-iota_configuration_dto_form_dict = iota_configuration_dto.from_dict(iota_configuration_dto_dict)
+iota_configuration_dto_from_dict = IotaConfigurationDto.from_dict(iota_configuration_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

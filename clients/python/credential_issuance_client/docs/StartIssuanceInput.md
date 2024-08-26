@@ -24,7 +24,7 @@ print StartIssuanceInput.to_json()
 # convert the object into a dict
 start_issuance_input_dict = start_issuance_input_instance.to_dict()
 # create an instance of StartIssuanceInput from a dict
-start_issuance_input_form_dict = start_issuance_input.from_dict(start_issuance_input_dict)
+start_issuance_input_from_dict = StartIssuanceInput.from_dict(start_issuance_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

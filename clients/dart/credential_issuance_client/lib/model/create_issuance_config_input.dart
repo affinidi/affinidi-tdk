@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -56,7 +56,7 @@ class CreateIssuanceConfigInput {
   /// String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
   CreateIssuanceConfigInputFormatEnum? format;
 
-  List<CreateIssuanceConfigInputCredentialSupportedInner> credentialSupported;
+  List<CredentialSupportedObject> credentialSupported;
 
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
@@ -137,7 +137,7 @@ class CreateIssuanceConfigInput {
         issuerWalletId: mapValueOfType<String>(json, r'issuerWalletId')!,
         credentialOfferDuration: mapValueOfType<int>(json, r'credentialOfferDuration'),
         format: CreateIssuanceConfigInputFormatEnum.fromJson(json[r'format']),
-        credentialSupported: CreateIssuanceConfigInputCredentialSupportedInner.listFromJson(json[r'credentialSupported']),
+        credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
       );
     }

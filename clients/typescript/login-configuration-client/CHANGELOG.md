@@ -1,3 +1,50 @@
+# [1.23.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.22.0...@affinidi-tdk/login-configuration-client-v1.23.0) (2024-08-21)
+
+
+### Features
+
+* update client all ([#204](https://github.com/affinidi/affinidi-tdk/issues/204)) ([42a4ec1](https://github.com/affinidi/affinidi-tdk/commit/42a4ec1a7fec0504acff6a0da12883b5e5c07309))
+
+# [1.22.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.21.0...@affinidi-tdk/login-configuration-client-v1.22.0) (2024-08-21)
+
+
+### Bug Fixes
+
+* release non js packages by default ([#203](https://github.com/affinidi/affinidi-tdk/issues/203)) ([b437163](https://github.com/affinidi/affinidi-tdk/commit/b43716355e41d4d67095d82be7f21313a6f20e85))
+
+
+### Features
+
+* update client all ([#202](https://github.com/affinidi/affinidi-tdk/issues/202)) ([a77856f](https://github.com/affinidi/affinidi-tdk/commit/a77856f1aedefa9d988d1f3ac94c8ff65b88b497))
+
+# [1.21.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.20.0...@affinidi-tdk/login-configuration-client-v1.21.0) (2024-08-20)
+
+
+### Features
+
+* python client package releases ([#195](https://github.com/affinidi/affinidi-tdk/issues/195)) ([3444422](https://github.com/affinidi/affinidi-tdk/commit/3444422ee4e3b9820ac5bd35852a2f617a9b429c))
+
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.19.0...@affinidi-tdk/login-configuration-client-v1.20.0) (2024-08-19)
+
+
+### Features
+
+* update client cis ([#191](https://github.com/affinidi/affinidi-tdk/issues/191)) ([fb03790](https://github.com/affinidi/affinidi-tdk/commit/fb03790a8d55030abef6517a728fbc6acc2c4288))
+
+# [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.18.0...@affinidi-tdk/login-configuration-client-v1.19.0) (2024-08-14)
+
+
+### Features
+
+* update client all ([#185](https://github.com/affinidi/affinidi-tdk/issues/185)) ([edcc30e](https://github.com/affinidi/affinidi-tdk/commit/edcc30e0385acb92dce1460be14aa6ead46d1036))
+
+# [1.18.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.17.0...@affinidi-tdk/login-configuration-client-v1.18.0) (2024-08-13)
+
+
+### Features
+
+* update client all ([#182](https://github.com/affinidi/affinidi-tdk/issues/182)) ([658837e](https://github.com/affinidi/affinidi-tdk/commit/658837e142a6adbf363da99afa6faa7d6907384b))
+
 # [1.17.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.16.1...@affinidi-tdk/login-configuration-client-v1.17.0) (2024-08-05)
 
 

@@ -26,7 +26,7 @@ print SignCredentialInputDto.to_json()
 # convert the object into a dict
 sign_credential_input_dto_dict = sign_credential_input_dto_instance.to_dict()
 # create an instance of SignCredentialInputDto from a dict
-sign_credential_input_dto_form_dict = sign_credential_input_dto.from_dict(sign_credential_input_dto_dict)
+sign_credential_input_dto_from_dict = SignCredentialInputDto.from_dict(sign_credential_input_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

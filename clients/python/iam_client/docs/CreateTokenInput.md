@@ -23,7 +23,7 @@ print CreateTokenInput.to_json()
 # convert the object into a dict
 create_token_input_dict = create_token_input_instance.to_dict()
 # create an instance of CreateTokenInput from a dict
-create_token_input_form_dict = create_token_input.from_dict(create_token_input_dict)
+create_token_input_from_dict = CreateTokenInput.from_dict(create_token_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

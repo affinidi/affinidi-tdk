@@ -25,7 +25,7 @@ print GenerateCredentials400Response.to_json()
 # convert the object into a dict
 generate_credentials400_response_dict = generate_credentials400_response_instance.to_dict()
 # create an instance of GenerateCredentials400Response from a dict
-generate_credentials400_response_form_dict = generate_credentials400_response.from_dict(generate_credentials400_response_dict)
+generate_credentials400_response_from_dict = GenerateCredentials400Response.from_dict(generate_credentials400_response_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,7 +21,7 @@ print SignJwtTokenOK.to_json()
 # convert the object into a dict
 sign_jwt_token_ok_dict = sign_jwt_token_ok_instance.to_dict()
 # create an instance of SignJwtTokenOK from a dict
-sign_jwt_token_ok_form_dict = sign_jwt_token_ok.from_dict(sign_jwt_token_ok_dict)
+sign_jwt_token_ok_from_dict = SignJwtTokenOK.from_dict(sign_jwt_token_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

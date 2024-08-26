@@ -24,7 +24,7 @@ print CredentialProof.to_json()
 # convert the object into a dict
 credential_proof_dict = credential_proof_instance.to_dict()
 # create an instance of CredentialProof from a dict
-credential_proof_form_dict = credential_proof.from_dict(credential_proof_dict)
+credential_proof_from_dict = CredentialProof.from_dict(credential_proof_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

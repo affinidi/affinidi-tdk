@@ -20,7 +20,7 @@ print W3cPresentationContext.to_json()
 # convert the object into a dict
 w3c_presentation_context_dict = w3c_presentation_context_instance.to_dict()
 # create an instance of W3cPresentationContext from a dict
-w3c_presentation_context_form_dict = w3c_presentation_context.from_dict(w3c_presentation_context_dict)
+w3c_presentation_context_from_dict = W3cPresentationContext.from_dict(w3c_presentation_context_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

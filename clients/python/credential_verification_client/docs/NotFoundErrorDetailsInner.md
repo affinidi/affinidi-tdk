@@ -24,7 +24,7 @@ print NotFoundErrorDetailsInner.to_json()
 # convert the object into a dict
 not_found_error_details_inner_dict = not_found_error_details_inner_instance.to_dict()
 # create an instance of NotFoundErrorDetailsInner from a dict
-not_found_error_details_inner_form_dict = not_found_error_details_inner.from_dict(not_found_error_details_inner_dict)
+not_found_error_details_inner_from_dict = NotFoundErrorDetailsInner.from_dict(not_found_error_details_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -25,7 +25,7 @@ print IotaConfigurationDtoClientMetadata.to_json()
 # convert the object into a dict
 iota_configuration_dto_client_metadata_dict = iota_configuration_dto_client_metadata_instance.to_dict()
 # create an instance of IotaConfigurationDtoClientMetadata from a dict
-iota_configuration_dto_client_metadata_form_dict = iota_configuration_dto_client_metadata.from_dict(iota_configuration_dto_client_metadata_dict)
+iota_configuration_dto_client_metadata_from_dict = IotaConfigurationDtoClientMetadata.from_dict(iota_configuration_dto_client_metadata_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

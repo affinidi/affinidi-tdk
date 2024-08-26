@@ -22,7 +22,7 @@ print ListLoggedConsentsOK.to_json()
 # convert the object into a dict
 list_logged_consents_ok_dict = list_logged_consents_ok_instance.to_dict()
 # create an instance of ListLoggedConsentsOK from a dict
-list_logged_consents_ok_form_dict = list_logged_consents_ok.from_dict(list_logged_consents_ok_dict)
+list_logged_consents_ok_from_dict = ListLoggedConsentsOK.from_dict(list_logged_consents_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

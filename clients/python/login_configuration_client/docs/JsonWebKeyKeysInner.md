@@ -37,7 +37,7 @@ print JsonWebKeyKeysInner.to_json()
 # convert the object into a dict
 json_web_key_keys_inner_dict = json_web_key_keys_inner_instance.to_dict()
 # create an instance of JsonWebKeyKeysInner from a dict
-json_web_key_keys_inner_form_dict = json_web_key_keys_inner.from_dict(json_web_key_keys_inner_dict)
+json_web_key_keys_inner_from_dict = JsonWebKeyKeysInner.from_dict(json_web_key_keys_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

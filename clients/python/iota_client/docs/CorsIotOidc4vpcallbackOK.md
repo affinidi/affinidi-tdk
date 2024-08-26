@@ -21,7 +21,7 @@ print CorsIotOidc4vpcallbackOK.to_json()
 # convert the object into a dict
 cors_iot_oidc4vpcallback_ok_dict = cors_iot_oidc4vpcallback_ok_instance.to_dict()
 # create an instance of CorsIotOidc4vpcallbackOK from a dict
-cors_iot_oidc4vpcallback_ok_form_dict = cors_iot_oidc4vpcallback_ok.from_dict(cors_iot_oidc4vpcallback_ok_dict)
+cors_iot_oidc4vpcallback_ok_from_dict = CorsIotOidc4vpcallbackOK.from_dict(cors_iot_oidc4vpcallback_ok_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

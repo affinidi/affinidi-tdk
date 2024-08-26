@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -61,6 +61,7 @@ part 'model/invalid_claim_context_error.dart';
 part 'model/invalid_groups_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_parameter_error_details_inner.dart';
+part 'model/invalid_vp_token_creation_time_error.dart';
 part 'model/json_web_key.dart';
 part 'model/json_web_key_keys_inner.dart';
 part 'model/list_login_configuration_output.dart';

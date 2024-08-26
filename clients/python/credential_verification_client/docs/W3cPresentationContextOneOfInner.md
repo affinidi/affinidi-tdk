@@ -20,7 +20,7 @@ print W3cPresentationContextOneOfInner.to_json()
 # convert the object into a dict
 w3c_presentation_context_one_of_inner_dict = w3c_presentation_context_one_of_inner_instance.to_dict()
 # create an instance of W3cPresentationContextOneOfInner from a dict
-w3c_presentation_context_one_of_inner_form_dict = w3c_presentation_context_one_of_inner.from_dict(w3c_presentation_context_one_of_inner_dict)
+w3c_presentation_context_one_of_inner_from_dict = W3cPresentationContextOneOfInner.from_dict(w3c_presentation_context_one_of_inner_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

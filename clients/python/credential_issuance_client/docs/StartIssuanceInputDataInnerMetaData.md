@@ -23,7 +23,7 @@ print StartIssuanceInputDataInnerMetaData.to_json()
 # convert the object into a dict
 start_issuance_input_data_inner_meta_data_dict = start_issuance_input_data_inner_meta_data_instance.to_dict()
 # create an instance of StartIssuanceInputDataInnerMetaData from a dict
-start_issuance_input_data_inner_meta_data_form_dict = start_issuance_input_data_inner_meta_data.from_dict(start_issuance_input_data_inner_meta_data_dict)
+start_issuance_input_data_inner_meta_data_from_dict = StartIssuanceInputDataInnerMetaData.from_dict(start_issuance_input_data_inner_meta_data_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

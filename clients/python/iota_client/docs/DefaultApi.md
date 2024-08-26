@@ -8,7 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 # **list_logged_consents**
 
-> ListLoggedConsentsOK list_logged_consents(user_id=user_id, limit=limit, exclusive_start_key=exclusive_start_key)
+> ListLoggedConsentsOK list_logged_consents(configuration_id=configuration_id, user_id=user_id, limit=limit, exclusive_start_key=exclusive_start_key)
 
 returns a list of logged consents for the project
 
@@ -45,12 +45,13 @@ configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.DefaultApi(api_client)
+    configuration_id = 'configuration_id_example' # str |  (optional)
     user_id = 'user_id_example' # str |  (optional)
     limit = 56 # int | Maximum number of records to fetch in a list (optional)
     exclusive_start_key = 'exclusive_start_key_example' # str | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
 
     try:
-        api_response = api_instance.list_logged_consents(user_id=user_id, limit=limit, exclusive_start_key=exclusive_start_key)
+        api_response = api_instance.list_logged_consents(configuration_id=configuration_id, user_id=user_id, limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of DefaultApi->list_logged_consents:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,6 +62,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 | Name                    | Type    | Description                                                                                                                                                    | Notes      |
 | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **configuration_id**    | **str** |                                                                                                                                                                | [optional] |
 | **user_id**             | **str** |                                                                                                                                                                | [optional] |
 | **limit**               | **int** | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
 | **exclusive_start_key** | **str** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |

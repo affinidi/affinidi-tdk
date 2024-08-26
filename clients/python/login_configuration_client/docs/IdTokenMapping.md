@@ -22,7 +22,7 @@ print IdTokenMapping.to_json()
 # convert the object into a dict
 id_token_mapping_dict = id_token_mapping_instance.to_dict()
 # create an instance of IdTokenMapping from a dict
-id_token_mapping_form_dict = id_token_mapping.from_dict(id_token_mapping_dict)
+id_token_mapping_from_dict = IdTokenMapping.from_dict(id_token_mapping_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

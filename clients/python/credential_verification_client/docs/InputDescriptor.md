@@ -26,7 +26,7 @@ print InputDescriptor.to_json()
 # convert the object into a dict
 input_descriptor_dict = input_descriptor_instance.to_dict()
 # create an instance of InputDescriptor from a dict
-input_descriptor_form_dict = input_descriptor.from_dict(input_descriptor_dict)
+input_descriptor_from_dict = InputDescriptor.from_dict(input_descriptor_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

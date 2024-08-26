@@ -25,7 +25,7 @@ print PrincipalDoesNotBelongToProjectError.to_json()
 # convert the object into a dict
 principal_does_not_belong_to_project_error_dict = principal_does_not_belong_to_project_error_instance.to_dict()
 # create an instance of PrincipalDoesNotBelongToProjectError from a dict
-principal_does_not_belong_to_project_error_form_dict = principal_does_not_belong_to_project_error.from_dict(principal_does_not_belong_to_project_error_dict)
+principal_does_not_belong_to_project_error_from_dict = PrincipalDoesNotBelongToProjectError.from_dict(principal_does_not_belong_to_project_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

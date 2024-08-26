@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_login_configuration_client/__init__.py
 affinidi_tdk_login_configuration_client/api/__init__.py
 affinidi_tdk_login_configuration_client/api/allow_list_api.py
@@ -43,6 +44,7 @@ affinidi_tdk_login_configuration_client/models/invalid_claim_context_error.py
 affinidi_tdk_login_configuration_client/models/invalid_groups_error.py
 affinidi_tdk_login_configuration_client/models/invalid_parameter_error.py
 affinidi_tdk_login_configuration_client/models/invalid_parameter_error_details_inner.py
+affinidi_tdk_login_configuration_client/models/invalid_vp_token_creation_time_error.py
 affinidi_tdk_login_configuration_client/models/json_web_key.py
 affinidi_tdk_login_configuration_client/models/json_web_key_keys_inner.py
 affinidi_tdk_login_configuration_client/models/list_login_configuration_output.py
@@ -106,6 +108,7 @@ docs/InvalidClaimContextError.md
 docs/InvalidGroupsError.md
 docs/InvalidParameterError.md
 docs/InvalidParameterErrorDetailsInner.md
+docs/InvalidVPTokenCreationTimeError.md
 docs/JsonWebKey.md
 docs/JsonWebKeyKeysInner.md
 docs/ListLoginConfigurationOutput.md
@@ -133,6 +136,7 @@ docs/TokenEndpointAuthMethod.md
 docs/UnauthorizedError.md
 docs/UpdateLoginConfigurationInput.md
 docs/VPTokenValidationError.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

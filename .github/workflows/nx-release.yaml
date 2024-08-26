@@ -23,9 +23,8 @@ jobs:
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
-      contents: read    
-    needs:
-      - security
+      contents: read
+    needs: ['security']
     steps:
       - name: Generate token from app token #https://github.com/tibdex/github-app-token
         id: generate_token
@@ -51,7 +50,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@affinidi-tdk'
       - run: npm ci
-
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx run-many  -t semantic-release --parallel=false
@@ -59,35 +57,67 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
-      - name: build
-        run: |
-          npx nx run-many -t build
+  publish:
+    concurrency: publish
+    runs-on: ubuntu-latest
+    environment: main
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
+      contents: read
+    needs: ['release']
+    steps:
+      - name: Generate token from app token #https://github.com/tibdex/github-app-token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
+          private_key: ${{ secrets.RELEASE_BOT_PKEY }}
 
-      - name: package
-        run: |
-          npx nx run-many -t package 
-      
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@affinidi-tdk'
+      - run: npm ci
+
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.x'
 
-      - name:  install twine for pypi releases
+      - name: install python tools
         run: |
           pip install twine
+          pip install poetry
 
       - name: Mint pypi token
         id: mint
         uses: tschm/token-mint-action@v1.0.3
 
-      # Publish to npm with new nx release publish functionality
+      - name: Set version for non-js client packages
+        run: npx nx run-many -t set-version
+
+      - name: build
+        run: |
+          npx nx run-many -t build
+      - name: package
+        run: |
+          npx nx run-many -t package
+      # Publish to npm,pypi  with new nx release publish functionality
       - run: |
           npx nx release publish --verbose
-        name: release
+        name: publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this 
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           TWINE_USERNAME: '__token__'
           TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
+          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}

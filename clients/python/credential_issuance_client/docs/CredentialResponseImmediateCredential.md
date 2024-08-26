@@ -20,7 +20,7 @@ print CredentialResponseImmediateCredential.to_json()
 # convert the object into a dict
 credential_response_immediate_credential_dict = credential_response_immediate_credential_instance.to_dict()
 # create an instance of CredentialResponseImmediateCredential from a dict
-credential_response_immediate_credential_form_dict = credential_response_immediate_credential.from_dict(credential_response_immediate_credential_dict)
+credential_response_immediate_credential_from_dict = CredentialResponseImmediateCredential.from_dict(credential_response_immediate_credential_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

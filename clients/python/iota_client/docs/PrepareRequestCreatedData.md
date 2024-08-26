@@ -22,7 +22,7 @@ print PrepareRequestCreatedData.to_json()
 # convert the object into a dict
 prepare_request_created_data_dict = prepare_request_created_data_instance.to_dict()
 # create an instance of PrepareRequestCreatedData from a dict
-prepare_request_created_data_form_dict = prepare_request_created_data.from_dict(prepare_request_created_data_dict)
+prepare_request_created_data_from_dict = PrepareRequestCreatedData.from_dict(prepare_request_created_data_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

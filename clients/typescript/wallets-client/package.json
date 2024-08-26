@@ -1,11 +1,11 @@
 {
   "name": "@affinidi-tdk/wallets-client",
-  "version": "1.14.0",
+  "version": "1.20.0",
   "description": "Affinidi TDK typescript client for Affinidi WALLETS",
   "author": "Affinidi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/wallets-client"
+    "url": "https://github.com/affinidi.com/affinidi-tdk/tree/main/clients/typescript/wallets-client"
   },
   "keywords": [
     "affinidi-tdk",

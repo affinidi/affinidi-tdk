@@ -34,7 +34,7 @@ print LoginConfigurationObject.to_json()
 # convert the object into a dict
 login_configuration_object_dict = login_configuration_object_instance.to_dict()
 # create an instance of LoginConfigurationObject from a dict
-login_configuration_object_form_dict = login_configuration_object.from_dict(login_configuration_object_dict)
+login_configuration_object_from_dict = LoginConfigurationObject.from_dict(login_configuration_object_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -25,7 +25,7 @@ print ActionForbiddenError.to_json()
 # convert the object into a dict
 action_forbidden_error_dict = action_forbidden_error_instance.to_dict()
 # create an instance of ActionForbiddenError from a dict
-action_forbidden_error_form_dict = action_forbidden_error.from_dict(action_forbidden_error_dict)
+action_forbidden_error_from_dict = ActionForbiddenError.from_dict(action_forbidden_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

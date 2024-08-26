@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_iam_client/__init__.py
 affinidi_tdk_iam_client/api/__init__.py
 affinidi_tdk_iam_client/api/consumer_auth_api.py
@@ -103,6 +104,7 @@ docs/UserDto.md
 docs/UserList.md
 docs/WellKnownApi.md
 docs/WhoamiDto.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

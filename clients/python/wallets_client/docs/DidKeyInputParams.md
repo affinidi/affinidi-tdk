@@ -25,7 +25,7 @@ print DidKeyInputParams.to_json()
 # convert the object into a dict
 did_key_input_params_dict = did_key_input_params_instance.to_dict()
 # create an instance of DidKeyInputParams from a dict
-did_key_input_params_form_dict = did_key_input_params.from_dict(did_key_input_params_dict)
+did_key_input_params_from_dict = DidKeyInputParams.from_dict(did_key_input_params_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -22,7 +22,7 @@ print UpdateTokenInput.to_json()
 # convert the object into a dict
 update_token_input_dict = update_token_input_instance.to_dict()
 # create an instance of UpdateTokenInput from a dict
-update_token_input_form_dict = update_token_input.from_dict(update_token_input_dict)
+update_token_input_from_dict = UpdateTokenInput.from_dict(update_token_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

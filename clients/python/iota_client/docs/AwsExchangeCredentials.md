@@ -21,7 +21,7 @@ print AwsExchangeCredentials.to_json()
 # convert the object into a dict
 aws_exchange_credentials_dict = aws_exchange_credentials_instance.to_dict()
 # create an instance of AwsExchangeCredentials from a dict
-aws_exchange_credentials_form_dict = aws_exchange_credentials.from_dict(aws_exchange_credentials_dict)
+aws_exchange_credentials_from_dict = AwsExchangeCredentials.from_dict(aws_exchange_credentials_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

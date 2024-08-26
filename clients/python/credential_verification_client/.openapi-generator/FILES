@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_credential_verification_client/__init__.py
 affinidi_tdk_credential_verification_client/api/__init__.py
 affinidi_tdk_credential_verification_client/api/default_api.py
@@ -97,6 +98,7 @@ docs/W3cPresentation.md
 docs/W3cPresentationContext.md
 docs/W3cPresentationContextOneOfInner.md
 docs/W3cProof.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

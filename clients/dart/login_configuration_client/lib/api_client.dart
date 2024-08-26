@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -236,6 +236,8 @@ class ApiClient {
           return InvalidParameterError.fromJson(value);
         case 'InvalidParameterErrorDetailsInner':
           return InvalidParameterErrorDetailsInner.fromJson(value);
+        case 'InvalidVPTokenCreationTimeError':
+          return InvalidVPTokenCreationTimeError.fromJson(value);
         case 'JsonWebKey':
           return JsonWebKey.fromJson(value);
         case 'JsonWebKeyKeysInner':

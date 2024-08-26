@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -188,14 +188,20 @@ class ApiClient {
           return AwsExchangeCredentials.fromJson(value);
         case 'AwsExchangeCredentialsOK':
           return AwsExchangeCredentialsOK.fromJson(value);
-        case 'AwsExchangeCredentialsOKCredentials':
-          return AwsExchangeCredentialsOKCredentials.fromJson(value);
+        case 'AwsExchangeCredentialsProjectToken':
+          return AwsExchangeCredentialsProjectToken.fromJson(value);
+        case 'AwsExchangeCredentialsProjectTokenOK':
+          return AwsExchangeCredentialsProjectTokenOK.fromJson(value);
+        case 'AwsExchangeCredentialsProjectTokenOKCredentials':
+          return AwsExchangeCredentialsProjectTokenOKCredentials.fromJson(value);
         case 'CallbackInput':
           return CallbackInput.fromJson(value);
         case 'ConsentDto':
           return ConsentDto.fromJson(value);
         case 'CorsAwsExchangeCredentialsOK':
           return CorsAwsExchangeCredentialsOK.fromJson(value);
+        case 'CorsAwsExchangeCredentialsProjectTokenOK':
+          return CorsAwsExchangeCredentialsProjectTokenOK.fromJson(value);
         case 'CorsIotOidc4vpcallbackOK':
           return CorsIotOidc4vpcallbackOK.fromJson(value);
         case 'CreateIotaConfigurationInput':

@@ -13,6 +13,8 @@ wallet dto
 | **did_document** | **object**                                            | did document of the wallet        | [optional] |
 | **ari**          | **str**                                               | ARI of the wallet                 | [optional] |
 | **keys**         | [**List[WalletDtoKeysInner]**](WalletDtoKeysInner.md) |                                   | [optional] |
+| **created_at**   | **str**                                               |                                   | [optional] |
+| **modified_at**  | **str**                                               |                                   | [optional] |
 
 ## Example
 
@@ -29,7 +31,7 @@ print WalletDto.to_json()
 # convert the object into a dict
 wallet_dto_dict = wallet_dto_instance.to_dict()
 # create an instance of WalletDto from a dict
-wallet_dto_form_dict = wallet_dto.from_dict(wallet_dto_dict)
+wallet_dto_from_dict = WalletDto.from_dict(wallet_dto_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

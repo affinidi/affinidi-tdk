@@ -25,7 +25,7 @@ print VPTokenValidationError.to_json()
 # convert the object into a dict
 vp_token_validation_error_dict = vp_token_validation_error_instance.to_dict()
 # create an instance of VPTokenValidationError from a dict
-vp_token_validation_error_form_dict = vp_token_validation_error.from_dict(vp_token_validation_error_dict)
+vp_token_validation_error_from_dict = VPTokenValidationError.from_dict(vp_token_validation_error_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

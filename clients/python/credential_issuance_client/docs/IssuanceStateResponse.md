@@ -22,7 +22,7 @@ print IssuanceStateResponse.to_json()
 # convert the object into a dict
 issuance_state_response_dict = issuance_state_response_instance.to_dict()
 # create an instance of IssuanceStateResponse from a dict
-issuance_state_response_form_dict = issuance_state_response.from_dict(issuance_state_response_dict)
+issuance_state_response_from_dict = IssuanceStateResponse.from_dict(issuance_state_response_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

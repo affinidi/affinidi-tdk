@@ -22,7 +22,7 @@ print BlockedUsers.to_json()
 # convert the object into a dict
 blocked_users_dict = blocked_users_instance.to_dict()
 # create an instance of BlockedUsers from a dict
-blocked_users_form_dict = blocked_users.from_dict(blocked_users_dict)
+blocked_users_from_dict = BlockedUsers.from_dict(blocked_users_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,11 +1,11 @@
 {
   "name": "@affinidi-tdk/iota-client",
-  "version": "1.11.0",
+  "version": "1.17.0",
   "description": "Affinidi TDK typescript client for Affinidi IOTA",
   "author": "Affinidi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iota-client"
+    "url": "https://github.com/affinidi.com/affinidi-tdk/tree/main/clients/typescript/iota-client"
   },
   "keywords": [
     "affinidi-tdk",

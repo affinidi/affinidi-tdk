@@ -24,7 +24,7 @@ print LoginSessionForIDPInput.to_json()
 # convert the object into a dict
 login_session_for_idp_input_dict = login_session_for_idp_input_instance.to_dict()
 # create an instance of LoginSessionForIDPInput from a dict
-login_session_for_idp_input_form_dict = login_session_for_idp_input.from_dict(login_session_for_idp_input_dict)
+login_session_for_idp_input_from_dict = LoginSessionForIDPInput.from_dict(login_session_for_idp_input_dict)
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

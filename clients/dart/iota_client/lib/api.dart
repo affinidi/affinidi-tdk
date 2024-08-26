@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -37,10 +37,13 @@ part 'api/pex_query_api.dart';
 part 'model/already_exists_error.dart';
 part 'model/aws_exchange_credentials.dart';
 part 'model/aws_exchange_credentials_ok.dart';
-part 'model/aws_exchange_credentials_ok_credentials.dart';
+part 'model/aws_exchange_credentials_project_token.dart';
+part 'model/aws_exchange_credentials_project_token_ok.dart';
+part 'model/aws_exchange_credentials_project_token_ok_credentials.dart';
 part 'model/callback_input.dart';
 part 'model/consent_dto.dart';
 part 'model/cors_aws_exchange_credentials_ok.dart';
+part 'model/cors_aws_exchange_credentials_project_token_ok.dart';
 part 'model/cors_iot_oidc4vpcallback_ok.dart';
 part 'model/create_iota_configuration_input.dart';
 part 'model/create_pex_query_input.dart';

@@ -2,6 +2,7 @@
 .gitignore
 .travis.yml
 README.md
+README.md
 affinidi_tdk_iota_client/__init__.py
 affinidi_tdk_iota_client/api/__init__.py
 affinidi_tdk_iota_client/api/callback_api.py
@@ -17,10 +18,13 @@ affinidi_tdk_iota_client/models/__init__.py
 affinidi_tdk_iota_client/models/already_exists_error.py
 affinidi_tdk_iota_client/models/aws_exchange_credentials.py
 affinidi_tdk_iota_client/models/aws_exchange_credentials_ok.py
-affinidi_tdk_iota_client/models/aws_exchange_credentials_ok_credentials.py
+affinidi_tdk_iota_client/models/aws_exchange_credentials_project_token.py
+affinidi_tdk_iota_client/models/aws_exchange_credentials_project_token_ok.py
+affinidi_tdk_iota_client/models/aws_exchange_credentials_project_token_ok_credentials.py
 affinidi_tdk_iota_client/models/callback_input.py
 affinidi_tdk_iota_client/models/consent_dto.py
 affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_ok.py
+affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_project_token_ok.py
 affinidi_tdk_iota_client/models/cors_iot_oidc4vpcallback_ok.py
 affinidi_tdk_iota_client/models/create_iota_configuration_input.py
 affinidi_tdk_iota_client/models/create_pex_query_input.py
@@ -49,12 +53,15 @@ affinidi_tdk_iota_client/rest.py
 docs/AlreadyExistsError.md
 docs/AwsExchangeCredentials.md
 docs/AwsExchangeCredentialsOK.md
-docs/AwsExchangeCredentialsOKCredentials.md
+docs/AwsExchangeCredentialsProjectToken.md
+docs/AwsExchangeCredentialsProjectTokenOK.md
+docs/AwsExchangeCredentialsProjectTokenOKCredentials.md
 docs/CallbackApi.md
 docs/CallbackInput.md
 docs/ConfigurationsApi.md
 docs/ConsentDto.md
 docs/CorsAwsExchangeCredentialsOK.md
+docs/CorsAwsExchangeCredentialsProjectTokenOK.md
 docs/CorsIotOidc4vpcallbackOK.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
@@ -81,6 +88,7 @@ docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
+project.json
 pyproject.toml
 requirements.txt
 setup.cfg

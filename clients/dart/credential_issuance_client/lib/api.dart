@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -42,7 +42,6 @@ part 'model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 part 'model/create_credential_input.dart';
 part 'model/create_issuance_config400_response.dart';
 part 'model/create_issuance_config_input.dart';
-part 'model/create_issuance_config_input_credential_supported_inner.dart';
 part 'model/credential_issuance_id_exist_error.dart';
 part 'model/credential_offer_claimed_error.dart';
 part 'model/credential_offer_expired_error.dart';
@@ -57,6 +56,7 @@ part 'model/credential_response_immediate.dart';
 part 'model/credential_response_immediate_c_nonce_expires_in.dart';
 part 'model/credential_response_immediate_credential.dart';
 part 'model/credential_subject_not_valid_error.dart';
+part 'model/credential_supported_object.dart';
 part 'model/deferred_credential_input.dart';
 part 'model/generate_credentials400_response.dart';
 part 'model/get_credential_offer400_response.dart';
@@ -67,7 +67,6 @@ part 'model/invalid_jwt_token_error.dart';
 part 'model/invalid_parameter_error.dart';
 part 'model/invalid_proof_error.dart';
 part 'model/issuance_config_dto.dart';
-part 'model/issuance_config_dto_credential_supported_inner.dart';
 part 'model/issuance_config_list_response.dart';
 part 'model/issuance_config_mini_dto.dart';
 part 'model/issuance_state_response.dart';
@@ -82,9 +81,13 @@ part 'model/start_issuance_input.dart';
 part 'model/start_issuance_input_data_inner.dart';
 part 'model/start_issuance_input_data_inner_meta_data.dart';
 part 'model/start_issuance_response.dart';
+part 'model/supported_credential_metadata.dart';
+part 'model/supported_credential_metadata_display_inner.dart';
+part 'model/supported_credential_metadata_display_inner_logo.dart';
 part 'model/update_issuance_config_input.dart';
 part 'model/vc_claimed_error.dart';
 part 'model/well_known_open_id_credential_issuer_response.dart';
+part 'model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from
