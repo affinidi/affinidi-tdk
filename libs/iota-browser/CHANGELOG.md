@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.11.0...@affinidi-tdk/iota-browser-v1.11.1) (2024-08-28)
+
+
+### Bug Fixes
+
+* reconnection issue on inactivity disconnect ([#215](https://github.com/affinidi/affinidi-tdk/issues/215)) ([5df7a71](https://github.com/affinidi/affinidi-tdk/commit/5df7a7114a8c1603103bd7e53d4630731be9241d))
+
 # [1.11.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.10.0...@affinidi-tdk/iota-browser-v1.11.0) (2024-08-21)
 
 
