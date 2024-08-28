@@ -19,7 +19,12 @@ import {
   IotaErrorCode,
   newIotaError,
 } from '../validators/error'
-import { EnvironmentUtils, Logger } from '@affinidi-tdk/common/helpers'
+import {
+  Environment,
+  EnvironmentUtils,
+  Logger,
+} from '@affinidi-tdk/common/helpers'
+import { once } from 'events'
 
 export interface IotaCredentials {
   readonly credentials: Credentials
@@ -112,6 +117,9 @@ export class ChannelProvider {
         this.iotaClient = await this.startMqttClient(this.iotaConfigBuilder)
         await this.subscribeToTopic(this.iotaClient, this.topicName)
       } catch {
+        if (this.iotaClient) {
+          this.iotaClient.stop()
+        }
         throw newIotaError(
           IotaErrorCode.UNABLE_TO_CONNECT_WITH_PROVIDED_CREDENTIALS,
         )
@@ -150,7 +158,47 @@ export class ChannelProvider {
     Logger.debug('Starting mqtt client')
     const config = iotaConfigBuilder.build()
     const client = new mqtt5.Mqtt5Client(config)
+
+    client.on(
+      'messageReceived',
+      (eventData: mqtt5.MessageReceivedEvent): void => {
+        Logger.debug(
+          'Message Received event: ' + JSON.stringify(eventData.message),
+        )
+        if (eventData.message.payload) {
+          Logger.debug(
+            '  with payload: ' + toUtf8(eventData.message.payload as Buffer),
+          )
+        }
+      },
+    )
+
+    if (EnvironmentUtils.fetchEnvironment() != Environment.PRODUCTION) {
+      this.addDebugListeners(client)
+    }
+
+    const attemptingConnect = once(client, 'attemptingConnect')
+    const connectionSuccess = once(client, 'connectionSuccess')
+
     client.start()
+
+    await attemptingConnect
+    await connectionSuccess
+
+    // Keep this listener after first connection so that we dont subscribe twice
+    client.on(
+      'connectionSuccess',
+      (eventData: mqtt5.ConnectionSuccessEvent) => {
+        Logger.debug('Connection Success event')
+        Logger.debug('Connack: ' + JSON.stringify(eventData.connack))
+        Logger.debug('Settings: ' + JSON.stringify(eventData.settings))
+        if (this.topicName) {
+          Logger.debug('Connection re-established, re-subscribing to topic')
+          this.subscribeToTopic(client, this.topicName)
+        }
+      },
+    )
+
     Logger.debug('Mqtt client started')
     return client
   }
@@ -164,7 +212,8 @@ export class ChannelProvider {
         },
       ],
     }
-    await client.subscribe(packet)
+    const suback = await client.subscribe(packet)
+    Logger.debug('Suback result:', suback)
     Logger.debug('Subscribed to topic', topicName)
   }
 
@@ -260,6 +309,43 @@ export class ChannelProvider {
       .then((request) => callback(null, request))
       .catch((error) => callback(error, null))
   }
+
+  private addDebugListeners(client: mqtt5.Mqtt5Client) {
+    client.on('error', (error) => {
+      Logger.debug('Error event: ' + error.toString())
+    })
+
+    client.on('info', (info) => {
+      Logger.debug('Info event: ' + info.toString())
+    })
+
+    client.on(
+      'attemptingConnect',
+      (eventData: mqtt5.AttemptingConnectEvent) => {
+        Logger.debug('Attempting Connect event', JSON.stringify(eventData))
+      },
+    )
+
+    client.on(
+      'connectionFailure',
+      (eventData: mqtt5.ConnectionFailureEvent) => {
+        Logger.debug('Connection failure event: ' + eventData.error.toString())
+      },
+    )
+
+    client.on('disconnection', (eventData: mqtt5.DisconnectionEvent) => {
+      Logger.debug('Disconnection event: ' + eventData.error.toString())
+      if (eventData.disconnect !== undefined) {
+        Logger.debug(
+          'Disconnect packet: ' + JSON.stringify(eventData.disconnect),
+        )
+      }
+    })
+
+    client.on('stopped', (eventData: mqtt5.StoppedEvent) => {
+      Logger.debug('Stopped event', JSON.stringify(eventData))
+    })
+  }
 }
 
 class CustomCredentialsProvider {
@@ -281,6 +367,7 @@ class CustomCredentialsProvider {
   }
 
   async refreshCredentials(): Promise<void> {
+    // Logger.debug('Attempting To Refresh Credentials')
     // TODO
     return Promise.resolve()
   }
