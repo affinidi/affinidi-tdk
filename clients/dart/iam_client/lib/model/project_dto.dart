@@ -15,6 +15,7 @@ class ProjectDto {
   ProjectDto({
     required this.id,
     required this.name,
+    this.ownerId,
     this.description,
     this.createdAt,
     this.updatedAt,
@@ -23,6 +24,14 @@ class ProjectDto {
   String id;
 
   String name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? ownerId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -54,6 +63,7 @@ class ProjectDto {
   bool operator ==(Object other) => identical(this, other) || other is ProjectDto &&
     other.id == id &&
     other.name == name &&
+    other.ownerId == ownerId &&
     other.description == description &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
@@ -63,17 +73,23 @@ class ProjectDto {
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
     (name.hashCode) +
+    (ownerId == null ? 0 : ownerId!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProjectDto[id=$id, name=$name, description=$description, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'ProjectDto[id=$id, name=$name, ownerId=$ownerId, description=$description, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
       json[r'name'] = this.name;
+    if (this.ownerId != null) {
+      json[r'ownerId'] = this.ownerId;
+    } else {
+      json[r'ownerId'] = null;
+    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -113,6 +129,7 @@ class ProjectDto {
       return ProjectDto(
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
+        ownerId: mapValueOfType<String>(json, r'ownerId'),
         description: mapValueOfType<String>(json, r'description'),
         createdAt: mapValueOfType<String>(json, r'createdAt'),
         updatedAt: mapValueOfType<String>(json, r'updatedAt'),

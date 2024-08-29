@@ -20,14 +20,14 @@ import json
 
 
 from typing import Any, Dict, List, Optional, Union
-from pydantic import BaseModel, Field, StrictStr, confloat, conint, conlist, validator
+from pydantic import BaseModel, Field, StrictStr, confloat, conint, conlist, constr, validator
 from affinidi_tdk_credential_issuance_client.models.credential_supported_object import CredentialSupportedObject
 
 class CreateIssuanceConfigInput(BaseModel):
     """
     CreateIssuanceConfigInput
     """
-    name: Optional[StrictStr] = None
+    name: Optional[constr(strict=True)] = None
     description: Optional[StrictStr] = None
     issuer_wallet_id: StrictStr = Field(default=..., alias="issuerWalletId", description="Issuer Wallet id")
     credential_offer_duration: Optional[Union[confloat(le=604801, ge=1, multiple_of=1, strict=True), conint(le=604801, ge=1, strict=True)]] = Field(default=None, alias="credentialOfferDuration", description="credential offer duration in second")
@@ -35,6 +35,16 @@ class CreateIssuanceConfigInput(BaseModel):
     credential_supported: conlist(CredentialSupportedObject) = Field(default=..., alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(default=None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
     __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "credentialSupported", "issuerMetadata"]
+
+    @validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^(?!\s*$).+", value):
+            raise ValueError(r"must validate the regular expression /^(?!\s*$).+/")
+        return value
 
     @validator('format')
     def format_validate_enum(cls, value):

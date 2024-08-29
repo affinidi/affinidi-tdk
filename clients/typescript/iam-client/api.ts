@@ -759,6 +759,12 @@ export interface ProjectDto {
    * @type {string}
    * @memberof ProjectDto
    */
+  ownerId?: string
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectDto
+   */
   description?: string
   /**
    * creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
