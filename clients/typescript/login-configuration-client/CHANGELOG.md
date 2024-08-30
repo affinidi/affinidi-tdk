@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.23.0...@affinidi-tdk/login-configuration-client-v1.24.0) (2024-08-30)
+
+
+### Features
+
+* update iam client ([5a38c85](https://github.com/affinidi/affinidi-tdk/commit/5a38c8532ad30e5ac353b2fc6dbad361e977f847))
+
 # [1.23.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.22.0...@affinidi-tdk/login-configuration-client-v1.23.0) (2024-08-21)
 
 
