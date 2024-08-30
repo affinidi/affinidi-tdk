@@ -28,10 +28,11 @@ class ProjectDto(BaseModel):
     """
     id: StrictStr = Field(...)
     name: StrictStr = Field(...)
+    owner_id: Optional[StrictStr] = Field(default=None, alias="ownerId")
     description: Optional[StrictStr] = None
     created_at: Optional[StrictStr] = Field(default=None, alias="createdAt", description="creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13")
     updated_at: Optional[StrictStr] = Field(default=None, alias="updatedAt", description="last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13")
-    __properties = ["id", "name", "description", "createdAt", "updatedAt"]
+    __properties = ["id", "name", "ownerId", "description", "createdAt", "updatedAt"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,6 +72,7 @@ class ProjectDto(BaseModel):
         _obj = ProjectDto.parse_obj({
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "owner_id": obj.get("ownerId"),
             "description": obj.get("description"),
             "created_at": obj.get("createdAt"),
             "updated_at": obj.get("updatedAt")
