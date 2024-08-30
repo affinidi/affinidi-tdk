@@ -208,6 +208,8 @@ class ApiClient {
           return CreateIotaConfigurationInput.fromJson(value);
         case 'CreatePexQueryInput':
           return CreatePexQueryInput.fromJson(value);
+        case 'DeletePexQueriesInput':
+          return DeletePexQueriesInput.fromJson(value);
         case 'GetIotaConfigurationMetaDataOK':
           return GetIotaConfigurationMetaDataOK.fromJson(value);
         case 'InvalidParameterError':
@@ -240,6 +242,10 @@ class ApiClient {
           return PrepareRequestCreatedData.fromJson(value);
         case 'ResourceLimitExceededError':
           return ResourceLimitExceededError.fromJson(value);
+        case 'SavePexQueriesUpdateInput':
+          return SavePexQueriesUpdateInput.fromJson(value);
+        case 'SavePexQueriesUpdateInputQueriesInner':
+          return SavePexQueriesUpdateInputQueriesInner.fromJson(value);
         case 'UpdateConfigurationByIdInput':
           return UpdateConfigurationByIdInput.fromJson(value);
         case 'UpdateConfigurationByIdOK':
