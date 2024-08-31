@@ -18,6 +18,7 @@ doc/CorsIotOidc4vpcallbackOK.md
 doc/CreateIotaConfigurationInput.md
 doc/CreatePexQueryInput.md
 doc/DefaultApi.md
+doc/DeletePexQueriesInput.md
 doc/GetIotaConfigurationMetaDataOK.md
 doc/InvalidParameterError.md
 doc/InvalidParameterErrorDetailsInner.md
@@ -36,6 +37,8 @@ doc/PrepareRequest.md
 doc/PrepareRequestCreated.md
 doc/PrepareRequestCreatedData.md
 doc/ResourceLimitExceededError.md
+doc/SavePexQueriesUpdateInput.md
+doc/SavePexQueriesUpdateInputQueriesInner.md
 doc/UpdateConfigurationByIdInput.md
 doc/UpdateConfigurationByIdOK.md
 doc/UpdatePexQueryInput.md
@@ -67,6 +70,7 @@ lib/model/cors_aws_exchange_credentials_project_token_ok.dart
 lib/model/cors_iot_oidc4vpcallback_ok.dart
 lib/model/create_iota_configuration_input.dart
 lib/model/create_pex_query_input.dart
+lib/model/delete_pex_queries_input.dart
 lib/model/get_iota_configuration_meta_data_ok.dart
 lib/model/invalid_parameter_error.dart
 lib/model/invalid_parameter_error_details_inner.dart
@@ -83,8 +87,13 @@ lib/model/prepare_request.dart
 lib/model/prepare_request_created.dart
 lib/model/prepare_request_created_data.dart
 lib/model/resource_limit_exceeded_error.dart
+lib/model/save_pex_queries_update_input.dart
+lib/model/save_pex_queries_update_input_queries_inner.dart
 lib/model/update_configuration_by_id_input.dart
 lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
+test/delete_pex_queries_input_test.dart
+test/save_pex_queries_update_input_queries_inner_test.dart
+test/save_pex_queries_update_input_test.dart
