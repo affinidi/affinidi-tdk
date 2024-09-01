@@ -2,10 +2,12 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                                                  | HTTP request                                        | Description |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials)                         | **POST** /v1/aws-exchange-credentials               |             |
-| [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsExchangeCredentialsProjectToken) | **POST** /v1/aws-exchange-credentials/project-token |             |
+| Method                                                                                  | HTTP request                                                 | Description         |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------- |
+| [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials)                         | **POST** /v1/aws-exchange-credentials                        |                     |
+| [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsExchangeCredentialsProjectToken) | **POST** /v1/aws-exchange-credentials/project-token          |                     |
+| [**deletePexQueries**](IotaApi.md#deletePexQueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
+| [**savePexQueries**](IotaApi.md#savePexQueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |                     |
 
 <a name="awsExchangeCredentials"></a>
 
@@ -51,6 +53,63 @@ No authorization required
 ### Return type
 
 [**AwsExchangeCredentialsOK**](../Models/AwsExchangeCredentialsOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="deletePexQueries"></a>
+
+# **deletePexQueries**
+
+> deletePexQueries(configurationId)
+
+deletes pex queries
+
+    deletes pex queries
+
+### Parameters
+
+| Name                | Type       | Description          | Notes             |
+| ------------------- | ---------- | -------------------- | ----------------- |
+| **configurationId** | **String** | iotaConfiguration Id | [default to null] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="savePexQueries"></a>
+
+# **savePexQueries**
+
+> Object savePexQueries(configurationId, SavePexQueriesUpdateInput)
+
+    saves all pex queries
+
+### Parameters
+
+| Name                          | Type                                                                    | Description          | Notes             |
+| ----------------------------- | ----------------------------------------------------------------------- | -------------------- | ----------------- |
+| **configurationId**           | **String**                                                              | iotaConfiguration Id | [default to null] |
+| **SavePexQueriesUpdateInput** | [**SavePexQueriesUpdateInput**](../Models/SavePexQueriesUpdateInput.md) | SavePexQueriesInput  |                   |
+
+### Return type
+
+**Object**
 
 ### Authorization
 

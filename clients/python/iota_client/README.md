@@ -95,6 +95,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | _DefaultApi_        | [**list_logged_consents**](docs/DefaultApi.md#list_logged_consents)                                  | **GET** /v1/logged-consents                                                |
 | _IotaApi_           | [**aws_exchange_credentials**](docs/IotaApi.md#aws_exchange_credentials)                             | **POST** /v1/aws-exchange-credentials                                      |
 | _IotaApi_           | [**aws_exchange_credentials_project_token**](docs/IotaApi.md#aws_exchange_credentials_project_token) | **POST** /v1/aws-exchange-credentials/project-token                        |
+| _IotaApi_           | [**delete_pex_queries**](docs/IotaApi.md#delete_pex_queries)                                         | **POST** /v1/configurations/{configurationId}/delete-queries               | deletes pex queries                      |
+| _IotaApi_           | [**save_pex_queries**](docs/IotaApi.md#save_pex_queries)                                             | **POST** /v1/configurations/{configurationId}/save-queries                 |
 | _PexQueryApi_       | [**create_pex_query**](docs/PexQueryApi.md#create_pex_query)                                         | **POST** /v1/configurations/{configurationId}/pex-queries                  |
 | _PexQueryApi_       | [**delete_pex_query_by_id**](docs/PexQueryApi.md#delete_pex_query_by_id)                             | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
 | _PexQueryApi_       | [**get_pex_query_by_id**](docs/PexQueryApi.md#get_pex_query_by_id)                                   | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
@@ -116,6 +118,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
 - [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](docs/CreatePexQueryInput.md)
+- [DeletePexQueriesInput](docs/DeletePexQueriesInput.md)
 - [GetIotaConfigurationMetaDataOK](docs/GetIotaConfigurationMetaDataOK.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
@@ -132,6 +135,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [PrepareRequestCreated](docs/PrepareRequestCreated.md)
 - [PrepareRequestCreatedData](docs/PrepareRequestCreatedData.md)
 - [ResourceLimitExceededError](docs/ResourceLimitExceededError.md)
+- [SavePexQueriesUpdateInput](docs/SavePexQueriesUpdateInput.md)
+- [SavePexQueriesUpdateInputQueriesInner](docs/SavePexQueriesUpdateInputQueriesInner.md)
 - [UpdateConfigurationByIdInput](docs/UpdateConfigurationByIdInput.md)
 - [UpdateConfigurationByIdOK](docs/UpdateConfigurationByIdOK.md)
 - [UpdatePexQueryInput](docs/UpdatePexQueryInput.md)
