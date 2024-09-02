@@ -101,7 +101,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_delete_pex_queries_input.py
-test/test_save_pex_queries_update_input.py
-test/test_save_pex_queries_update_input_queries_inner.py
 tox.ini

@@ -94,6 +94,3 @@ lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/delete_pex_queries_input_test.dart
-test/save_pex_queries_update_input_queries_inner_test.dart
-test/save_pex_queries_update_input_test.dart
