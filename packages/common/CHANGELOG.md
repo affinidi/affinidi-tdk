@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.14.0...@affinidi-tdk/common-v1.15.0) (2024-09-02)
+
+
+### Features
+
+* update client all ([#220](https://github.com/affinidi/affinidi-tdk/issues/220)) ([181d837](https://github.com/affinidi/affinidi-tdk/commit/181d837d8c2b292a8509ee96e39f4d547a0ce530))
+
 # [1.14.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.13.0...@affinidi-tdk/common-v1.14.0) (2024-08-30)
 
 
