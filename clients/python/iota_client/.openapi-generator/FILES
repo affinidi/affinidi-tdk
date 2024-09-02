@@ -28,6 +28,7 @@ affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_project_token_ok.p
 affinidi_tdk_iota_client/models/cors_iot_oidc4vpcallback_ok.py
 affinidi_tdk_iota_client/models/create_iota_configuration_input.py
 affinidi_tdk_iota_client/models/create_pex_query_input.py
+affinidi_tdk_iota_client/models/delete_pex_queries_input.py
 affinidi_tdk_iota_client/models/get_iota_configuration_meta_data_ok.py
 affinidi_tdk_iota_client/models/invalid_parameter_error.py
 affinidi_tdk_iota_client/models/invalid_parameter_error_details_inner.py
@@ -44,6 +45,8 @@ affinidi_tdk_iota_client/models/prepare_request.py
 affinidi_tdk_iota_client/models/prepare_request_created.py
 affinidi_tdk_iota_client/models/prepare_request_created_data.py
 affinidi_tdk_iota_client/models/resource_limit_exceeded_error.py
+affinidi_tdk_iota_client/models/save_pex_queries_update_input.py
+affinidi_tdk_iota_client/models/save_pex_queries_update_input_queries_inner.py
 affinidi_tdk_iota_client/models/update_configuration_by_id_input.py
 affinidi_tdk_iota_client/models/update_configuration_by_id_ok.py
 affinidi_tdk_iota_client/models/update_pex_query_input.py
@@ -66,6 +69,7 @@ docs/CorsIotOidc4vpcallbackOK.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
 docs/DefaultApi.md
+docs/DeletePexQueriesInput.md
 docs/GetIotaConfigurationMetaDataOK.md
 docs/InvalidParameterError.md
 docs/InvalidParameterErrorDetailsInner.md
@@ -84,6 +88,8 @@ docs/PrepareRequest.md
 docs/PrepareRequestCreated.md
 docs/PrepareRequestCreatedData.md
 docs/ResourceLimitExceededError.md
+docs/SavePexQueriesUpdateInput.md
+docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
 docs/UpdatePexQueryInput.md
@@ -95,4 +101,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_delete_pex_queries_input.py
+test/test_save_pex_queries_update_input.py
+test/test_save_pex_queries_update_input_queries_inner.py
 tox.ini

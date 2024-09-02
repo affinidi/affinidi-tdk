@@ -16,6 +16,7 @@ Models/CorsAwsExchangeCredentialsProjectTokenOK.md
 Models/CorsIotOidc4vpcallbackOK.md
 Models/CreateIotaConfigurationInput.md
 Models/CreatePexQueryInput.md
+Models/DeletePexQueriesInput.md
 Models/GetIotaConfigurationMetaDataOK.md
 Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
@@ -32,6 +33,8 @@ Models/PrepareRequest.md
 Models/PrepareRequestCreated.md
 Models/PrepareRequestCreated_data.md
 Models/ResourceLimitExceededError.md
+Models/SavePexQueriesUpdateInput.md
+Models/SavePexQueriesUpdateInput_queries_inner.md
 Models/UpdateConfigurationByIdInput.md
 Models/UpdateConfigurationByIdOK.md
 Models/UpdatePexQueryInput.md

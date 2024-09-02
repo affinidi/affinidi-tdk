@@ -123,4 +123,116 @@ class IotaApi {
     }
     return null;
   }
+
+  /// deletes pex queries
+  ///
+  /// deletes pex queries
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] configurationId (required):
+  ///   iotaConfiguration Id
+  Future<Response> deletePexQueriesWithHttpInfo(String configurationId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/configurations/{configurationId}/delete-queries'
+      .replaceAll('{configurationId}', configurationId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// deletes pex queries
+  ///
+  /// deletes pex queries
+  ///
+  /// Parameters:
+  ///
+  /// * [String] configurationId (required):
+  ///   iotaConfiguration Id
+  Future<void> deletePexQueries(String configurationId,) async {
+    final response = await deletePexQueriesWithHttpInfo(configurationId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// saves all pex queries
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] configurationId (required):
+  ///   iotaConfiguration Id
+  ///
+  /// * [SavePexQueriesUpdateInput] savePexQueriesUpdateInput (required):
+  ///   SavePexQueriesInput
+  Future<Response> savePexQueriesWithHttpInfo(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/configurations/{configurationId}/save-queries'
+      .replaceAll('{configurationId}', configurationId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = savePexQueriesUpdateInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// saves all pex queries
+  ///
+  /// Parameters:
+  ///
+  /// * [String] configurationId (required):
+  ///   iotaConfiguration Id
+  ///
+  /// * [SavePexQueriesUpdateInput] savePexQueriesUpdateInput (required):
+  ///   SavePexQueriesInput
+  Future<Object?> savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput,) async {
+    final response = await savePexQueriesWithHttpInfo(configurationId, savePexQueriesUpdateInput,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
+  }
 }
