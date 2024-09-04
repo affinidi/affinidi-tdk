@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.25.0...@affinidi-tdk/login-configuration-client-v1.25.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* credentials issue with aws iot dependency ([#223](https://github.com/affinidi/affinidi-tdk/issues/223)) ([722c980](https://github.com/affinidi/affinidi-tdk/commit/722c980bb7ac2f7c47d738dce4db762ac12736ed))
+
 # [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.24.0...@affinidi-tdk/login-configuration-client-v1.25.0) (2024-09-02)
 
 
