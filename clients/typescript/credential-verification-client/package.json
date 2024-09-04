@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/credential-verification-client",
-  "version": "1.23.0",
+  "version": "1.23.1",
   "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL VERIFICATION",
   "author": "Affinidi",
   "repository": {
