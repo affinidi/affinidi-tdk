@@ -173,6 +173,7 @@ class ConsumerAuthApi:
 
         _response_types_map = {
             '200': "ConsumerAuthTokenEndpointOutput",
+            '400': "InvalidDidError",
             '403': "UnauthorizedError",
             '500': "UnexpectedError",
         }

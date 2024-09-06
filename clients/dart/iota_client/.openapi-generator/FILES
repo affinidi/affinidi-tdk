@@ -15,6 +15,7 @@ doc/ConsentDto.md
 doc/CorsAwsExchangeCredentialsOK.md
 doc/CorsAwsExchangeCredentialsProjectTokenOK.md
 doc/CorsIotOidc4vpcallbackOK.md
+doc/CorsIotaExchangeCredentialsOK.md
 doc/CreateIotaConfigurationInput.md
 doc/CreatePexQueryInput.md
 doc/DefaultApi.md
@@ -25,6 +26,9 @@ doc/InvalidParameterErrorDetailsInner.md
 doc/IotaApi.md
 doc/IotaConfigurationDto.md
 doc/IotaConfigurationDtoClientMetadata.md
+doc/IotaExchangeCredentials.md
+doc/IotaExchangeCredentialsOK.md
+doc/IotaExchangeCredentialsOKCredentials.md
 doc/ListConfigurationOK.md
 doc/ListLoggedConsentsOK.md
 doc/ListPexQueriesOK.md
@@ -68,6 +72,7 @@ lib/model/consent_dto.dart
 lib/model/cors_aws_exchange_credentials_ok.dart
 lib/model/cors_aws_exchange_credentials_project_token_ok.dart
 lib/model/cors_iot_oidc4vpcallback_ok.dart
+lib/model/cors_iota_exchange_credentials_ok.dart
 lib/model/create_iota_configuration_input.dart
 lib/model/create_pex_query_input.dart
 lib/model/delete_pex_queries_input.dart
@@ -76,6 +81,9 @@ lib/model/invalid_parameter_error.dart
 lib/model/invalid_parameter_error_details_inner.dart
 lib/model/iota_configuration_dto.dart
 lib/model/iota_configuration_dto_client_metadata.dart
+lib/model/iota_exchange_credentials.dart
+lib/model/iota_exchange_credentials_ok.dart
+lib/model/iota_exchange_credentials_ok_credentials.dart
 lib/model/list_configuration_ok.dart
 lib/model/list_logged_consents_ok.dart
 lib/model/list_pex_queries_ok.dart
@@ -94,6 +102,7 @@ lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/delete_pex_queries_input_test.dart
-test/save_pex_queries_update_input_queries_inner_test.dart
-test/save_pex_queries_update_input_test.dart
+test/cors_iota_exchange_credentials_ok_test.dart
+test/iota_exchange_credentials_ok_credentials_test.dart
+test/iota_exchange_credentials_ok_test.dart
+test/iota_exchange_credentials_test.dart
