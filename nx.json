@@ -1,7 +1,8 @@
 {
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false,
+      "analyzePackageJson": false
     }
   },
   "workspaceLayout": {

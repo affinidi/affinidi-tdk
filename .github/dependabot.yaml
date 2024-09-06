@@ -5,7 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+  - package-ecosystem: 'pip' # see documentation for possible values
+    directory: '/' # location of package manifests
+    schedule:
+      interval: 'weekly'
+  - package-ecosystem: pub # see documentation for possible values
+    directory: '/' # location of package manifests
+    schedule:
+      interval: 'weekly'
