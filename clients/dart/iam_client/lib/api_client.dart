@@ -202,6 +202,10 @@ class ApiClient {
           return CreateTokenInput.fromJson(value);
         case 'GetWellKnownDidOK':
           return GetWellKnownDidOK.fromJson(value);
+        case 'InvalidDIDError':
+          return InvalidDIDError.fromJson(value);
+        case 'InvalidDidError':
+          return InvalidDidError.fromJson(value);
         case 'InvalidJwtTokenError':
           return InvalidJwtTokenError.fromJson(value);
         case 'InvalidParameterError':
@@ -224,6 +228,8 @@ class ApiClient {
           return ProjectDto.fromJson(value);
         case 'ProjectList':
           return ProjectList.fromJson(value);
+        case 'PublicKeyCannotBeResolvedFromDidError':
+          return PublicKeyCannotBeResolvedFromDidError.fromJson(value);
         case 'ServiceErrorResponse':
           return ServiceErrorResponse.fromJson(value);
         case 'ServiceErrorResponseDetailsInner':

@@ -13,6 +13,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**awsExchangeCredentials**](IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                        |
 | [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token          |
 | [**deletePexQueries**](IotaApi.md#deletepexqueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
+| [**iotaExchangeCredentials**](IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                            |
 | [**savePexQueries**](IotaApi.md#savepexqueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |
 
 # **awsExchangeCredentials**
@@ -60,7 +61,7 @@ No authorization required
 
 # **awsExchangeCredentialsProjectToken**
 
-> AwsExchangeCredentialsOK awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken)
+> IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken)
 
 It exchanges project token into cognito
 
@@ -92,7 +93,7 @@ try {
 
 ### Return type
 
-[**AwsExchangeCredentialsOK**](AwsExchangeCredentialsOK.md)
+[**IotaExchangeCredentialsOK**](IotaExchangeCredentialsOK.md)
 
 ### Authorization
 
@@ -149,6 +150,49 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **iotaExchangeCredentials**
+
+> IotaExchangeCredentialsOK iotaExchangeCredentials(iotaExchangeCredentials)
+
+It exchanges limited token into cognito sts identity credentials
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iota_client/api.dart';
+
+final api_instance = IotaApi();
+final iotaExchangeCredentials = IotaExchangeCredentials(); // IotaExchangeCredentials | IotaAwsExchangeCredentials
+
+try {
+    final result = api_instance.iotaExchangeCredentials(iotaExchangeCredentials);
+    print(result);
+} catch (e) {
+    print('Exception when calling IotaApi->iotaExchangeCredentials: $e\n');
+}
+```
+
+### Parameters
+
+| Name                        | Type                                                      | Description                | Notes |
+| --------------------------- | --------------------------------------------------------- | -------------------------- | ----- |
+| **iotaExchangeCredentials** | [**IotaExchangeCredentials**](IotaExchangeCredentials.md) | IotaAwsExchangeCredentials |
+
+### Return type
+
+[**IotaExchangeCredentialsOK**](IotaExchangeCredentialsOK.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
