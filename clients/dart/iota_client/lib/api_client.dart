@@ -204,6 +204,8 @@ class ApiClient {
           return CorsAwsExchangeCredentialsProjectTokenOK.fromJson(value);
         case 'CorsIotOidc4vpcallbackOK':
           return CorsIotOidc4vpcallbackOK.fromJson(value);
+        case 'CorsIotaExchangeCredentialsOK':
+          return CorsIotaExchangeCredentialsOK.fromJson(value);
         case 'CreateIotaConfigurationInput':
           return CreateIotaConfigurationInput.fromJson(value);
         case 'CreatePexQueryInput':
@@ -220,6 +222,12 @@ class ApiClient {
           return IotaConfigurationDto.fromJson(value);
         case 'IotaConfigurationDtoClientMetadata':
           return IotaConfigurationDtoClientMetadata.fromJson(value);
+        case 'IotaExchangeCredentials':
+          return IotaExchangeCredentials.fromJson(value);
+        case 'IotaExchangeCredentialsOK':
+          return IotaExchangeCredentialsOK.fromJson(value);
+        case 'IotaExchangeCredentialsOKCredentials':
+          return IotaExchangeCredentialsOKCredentials.fromJson(value);
         case 'ListConfigurationOK':
           return ListConfigurationOK.fromJson(value);
         case 'ListLoggedConsentsOK':

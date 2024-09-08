@@ -14,6 +14,7 @@ Models/ConsentDto.md
 Models/CorsAwsExchangeCredentialsOK.md
 Models/CorsAwsExchangeCredentialsProjectTokenOK.md
 Models/CorsIotOidc4vpcallbackOK.md
+Models/CorsIotaExchangeCredentialsOK.md
 Models/CreateIotaConfigurationInput.md
 Models/CreatePexQueryInput.md
 Models/DeletePexQueriesInput.md
@@ -22,6 +23,9 @@ Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
 Models/IotaConfigurationDto.md
 Models/IotaConfigurationDto_clientMetadata.md
+Models/IotaExchangeCredentials.md
+Models/IotaExchangeCredentialsOK.md
+Models/IotaExchangeCredentialsOK_credentials.md
 Models/ListConfigurationOK.md
 Models/ListLoggedConsentsOK.md
 Models/ListPexQueriesOK.md
