@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.23.1...@affinidi-tdk/auth-provider-v1.23.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* pipeline improvments ([#226](https://github.com/affinidi/affinidi-tdk/issues/226)) ([bbea15f](https://github.com/affinidi/affinidi-tdk/commit/bbea15ff2138c5e031b7f4d193ab5d83044273fb))
+
 ## [1.23.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.23.0...@affinidi-tdk/auth-provider-v1.23.1) (2024-09-04)
 
 
