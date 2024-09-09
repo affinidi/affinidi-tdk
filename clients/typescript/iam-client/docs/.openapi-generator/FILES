@@ -14,6 +14,8 @@ Models/CreateProjectInput.md
 Models/CreateProjectScopedTokenInput.md
 Models/CreateProjectScopedTokenOutput.md
 Models/CreateTokenInput.md
+Models/InvalidDIDError.md
+Models/InvalidDidError.md
 Models/InvalidJwtTokenError.md
 Models/InvalidParameterError.md
 Models/JsonWebKeyDto.md
@@ -25,6 +27,7 @@ Models/PrincipalCannotBeDeletedError.md
 Models/PrincipalDoesNotBelongToProjectError.md
 Models/ProjectDto.md
 Models/ProjectList.md
+Models/PublicKeyCannotBeResolvedFromDidError.md
 Models/ServiceErrorResponse.md
 Models/ServiceErrorResponse_details_inner.md
 Models/TokenAuthenticationMethodDto.md

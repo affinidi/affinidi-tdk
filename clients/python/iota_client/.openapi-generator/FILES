@@ -26,6 +26,7 @@ affinidi_tdk_iota_client/models/consent_dto.py
 affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_ok.py
 affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_project_token_ok.py
 affinidi_tdk_iota_client/models/cors_iot_oidc4vpcallback_ok.py
+affinidi_tdk_iota_client/models/cors_iota_exchange_credentials_ok.py
 affinidi_tdk_iota_client/models/create_iota_configuration_input.py
 affinidi_tdk_iota_client/models/create_pex_query_input.py
 affinidi_tdk_iota_client/models/delete_pex_queries_input.py
@@ -34,6 +35,9 @@ affinidi_tdk_iota_client/models/invalid_parameter_error.py
 affinidi_tdk_iota_client/models/invalid_parameter_error_details_inner.py
 affinidi_tdk_iota_client/models/iota_configuration_dto.py
 affinidi_tdk_iota_client/models/iota_configuration_dto_client_metadata.py
+affinidi_tdk_iota_client/models/iota_exchange_credentials.py
+affinidi_tdk_iota_client/models/iota_exchange_credentials_ok.py
+affinidi_tdk_iota_client/models/iota_exchange_credentials_ok_credentials.py
 affinidi_tdk_iota_client/models/list_configuration_ok.py
 affinidi_tdk_iota_client/models/list_logged_consents_ok.py
 affinidi_tdk_iota_client/models/list_pex_queries_ok.py
@@ -66,6 +70,7 @@ docs/ConsentDto.md
 docs/CorsAwsExchangeCredentialsOK.md
 docs/CorsAwsExchangeCredentialsProjectTokenOK.md
 docs/CorsIotOidc4vpcallbackOK.md
+docs/CorsIotaExchangeCredentialsOK.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
 docs/DefaultApi.md
@@ -76,6 +81,9 @@ docs/InvalidParameterErrorDetailsInner.md
 docs/IotaApi.md
 docs/IotaConfigurationDto.md
 docs/IotaConfigurationDtoClientMetadata.md
+docs/IotaExchangeCredentials.md
+docs/IotaExchangeCredentialsOK.md
+docs/IotaExchangeCredentialsOKCredentials.md
 docs/ListConfigurationOK.md
 docs/ListLoggedConsentsOK.md
 docs/ListPexQueriesOK.md
@@ -101,7 +109,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_delete_pex_queries_input.py
-test/test_save_pex_queries_update_input.py
-test/test_save_pex_queries_update_input_queries_inner.py
+test/test_cors_iota_exchange_credentials_ok.py
+test/test_iota_exchange_credentials.py
+test/test_iota_exchange_credentials_ok.py
+test/test_iota_exchange_credentials_ok_credentials.py
 tox.ini

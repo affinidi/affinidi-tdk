@@ -304,6 +304,122 @@ export interface GetWellKnownDidOK {
 /**
  *
  * @export
+ * @interface InvalidDIDError
+ */
+export interface InvalidDIDError {
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDIDError
+   */
+  name: InvalidDIDErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDIDError
+   */
+  message: InvalidDIDErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof InvalidDIDError
+   */
+  httpStatusCode: InvalidDIDErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDIDError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof InvalidDIDError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const InvalidDIDErrorNameEnum = {
+  InvalidDidError: 'InvalidDIDError',
+} as const
+
+export type InvalidDIDErrorNameEnum =
+  (typeof InvalidDIDErrorNameEnum)[keyof typeof InvalidDIDErrorNameEnum]
+export const InvalidDIDErrorMessageEnum = {
+  UnableToResolveDidMethodInvalidPublicKey:
+    'unable to resolve DID method. Invalid public key',
+} as const
+
+export type InvalidDIDErrorMessageEnum =
+  (typeof InvalidDIDErrorMessageEnum)[keyof typeof InvalidDIDErrorMessageEnum]
+export const InvalidDIDErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type InvalidDIDErrorHttpStatusCodeEnum =
+  (typeof InvalidDIDErrorHttpStatusCodeEnum)[keyof typeof InvalidDIDErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
+ * @interface InvalidDidError
+ */
+export interface InvalidDidError {
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDidError
+   */
+  name: InvalidDidErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDidError
+   */
+  message: InvalidDidErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof InvalidDidError
+   */
+  httpStatusCode: InvalidDidErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof InvalidDidError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof InvalidDidError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const InvalidDidErrorNameEnum = {
+  InvalidDidError: 'InvalidDidError',
+} as const
+
+export type InvalidDidErrorNameEnum =
+  (typeof InvalidDidErrorNameEnum)[keyof typeof InvalidDidErrorNameEnum]
+export const InvalidDidErrorMessageEnum = {
+  UnableToResolveDidMethodInvalidPublicKey:
+    'Unable to resolve DID method. Invalid public key',
+} as const
+
+export type InvalidDidErrorMessageEnum =
+  (typeof InvalidDidErrorMessageEnum)[keyof typeof InvalidDidErrorMessageEnum]
+export const InvalidDidErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type InvalidDidErrorHttpStatusCodeEnum =
+  (typeof InvalidDidErrorHttpStatusCodeEnum)[keyof typeof InvalidDidErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface InvalidJwtTokenError
  */
 export interface InvalidJwtTokenError {
@@ -792,6 +908,65 @@ export interface ProjectList {
    */
   projects: Array<ProjectDto>
 }
+/**
+ *
+ * @export
+ * @interface PublicKeyCannotBeResolvedFromDidError
+ */
+export interface PublicKeyCannotBeResolvedFromDidError {
+  /**
+   *
+   * @type {string}
+   * @memberof PublicKeyCannotBeResolvedFromDidError
+   */
+  name: PublicKeyCannotBeResolvedFromDidErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof PublicKeyCannotBeResolvedFromDidError
+   */
+  message: PublicKeyCannotBeResolvedFromDidErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof PublicKeyCannotBeResolvedFromDidError
+   */
+  httpStatusCode: PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof PublicKeyCannotBeResolvedFromDidError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof PublicKeyCannotBeResolvedFromDidError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const PublicKeyCannotBeResolvedFromDidErrorNameEnum = {
+  PublicKeyCannotBeResolvedFromDidError:
+    'PublicKeyCannotBeResolvedFromDidError',
+} as const
+
+export type PublicKeyCannotBeResolvedFromDidErrorNameEnum =
+  (typeof PublicKeyCannotBeResolvedFromDidErrorNameEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorNameEnum]
+export const PublicKeyCannotBeResolvedFromDidErrorMessageEnum = {
+  UnableToResolveDidMethodInvalidPublicKey:
+    'Unable to resolve DID method. Invalid public key',
+} as const
+
+export type PublicKeyCannotBeResolvedFromDidErrorMessageEnum =
+  (typeof PublicKeyCannotBeResolvedFromDidErrorMessageEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorMessageEnum]
+export const PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum =
+  (typeof PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum]
+
 /**
  *
  * @export

@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials)                         | **POST** /v1/aws-exchange-credentials                        |                     |
 | [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsExchangeCredentialsProjectToken) | **POST** /v1/aws-exchange-credentials/project-token          |                     |
 | [**deletePexQueries**](IotaApi.md#deletePexQueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
+| [**iotaExchangeCredentials**](IotaApi.md#iotaExchangeCredentials)                       | **POST** /v1/exchange-credentials                            |                     |
 | [**savePexQueries**](IotaApi.md#savePexQueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |                     |
 
 <a name="awsExchangeCredentials"></a>
@@ -40,7 +41,7 @@ No authorization required
 
 # **awsExchangeCredentialsProjectToken**
 
-> AwsExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken)
+> IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken)
 
     It exchanges project token into cognito
 
@@ -52,7 +53,7 @@ No authorization required
 
 ### Return type
 
-[**AwsExchangeCredentialsOK**](../Models/AwsExchangeCredentialsOK.md)
+[**IotaExchangeCredentialsOK**](../Models/IotaExchangeCredentialsOK.md)
 
 ### Authorization
 
@@ -90,6 +91,33 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="iotaExchangeCredentials"></a>
+
+# **iotaExchangeCredentials**
+
+> IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials)
+
+    It exchanges limited token into cognito sts identity credentials
+
+### Parameters
+
+| Name                        | Type                                                                | Description                | Notes |
+| --------------------------- | ------------------------------------------------------------------- | -------------------------- | ----- |
+| **IotaExchangeCredentials** | [**IotaExchangeCredentials**](../Models/IotaExchangeCredentials.md) | IotaAwsExchangeCredentials |       |
+
+### Return type
+
+[**IotaExchangeCredentialsOK**](../Models/IotaExchangeCredentialsOK.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="savePexQueries"></a>
