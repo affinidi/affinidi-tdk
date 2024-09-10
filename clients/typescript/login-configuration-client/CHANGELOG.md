@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.25.2...@affinidi-tdk/login-configuration-client-v1.26.0) (2024-09-10)
+
+
+### Features
+
+* update all clients ([1633d0e](https://github.com/affinidi/affinidi-tdk/commit/1633d0e0fc2ad627fb4dddb5c4b15286a9a5bcbe))
+
 ## [1.25.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.25.1...@affinidi-tdk/login-configuration-client-v1.25.2) (2024-09-09)
 
 
