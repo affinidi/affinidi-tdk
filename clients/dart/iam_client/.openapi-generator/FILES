@@ -110,5 +110,3 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
-test/invalid_did_error_test.dart
-test/public_key_cannot_be_resolved_from_did_error_test.dart
