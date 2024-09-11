@@ -109,8 +109,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_cors_iota_exchange_credentials_ok.py
-test/test_iota_exchange_credentials.py
-test/test_iota_exchange_credentials_ok.py
-test/test_iota_exchange_credentials_ok_credentials.py
 tox.ini

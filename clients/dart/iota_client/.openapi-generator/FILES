@@ -102,7 +102,3 @@ lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/cors_iota_exchange_credentials_ok_test.dart
-test/iota_exchange_credentials_ok_credentials_test.dart
-test/iota_exchange_credentials_ok_test.dart
-test/iota_exchange_credentials_test.dart

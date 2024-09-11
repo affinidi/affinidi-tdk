@@ -117,6 +117,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_invalid_did_error.py
-test/test_public_key_cannot_be_resolved_from_did_error.py
 tox.ini
