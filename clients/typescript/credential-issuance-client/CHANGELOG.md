@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.24.0...@affinidi-tdk/credential-issuance-client-v1.25.0) (2024-09-12)
+
+
+### Features
+
+* add tsconfg.lib.json to client libraries ([b55e4c5](https://github.com/affinidi/affinidi-tdk/commit/b55e4c53426919b06f7a883370877f0c95f6501a))
+
 # [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.23.2...@affinidi-tdk/credential-issuance-client-v1.24.0) (2024-09-10)
 
 
