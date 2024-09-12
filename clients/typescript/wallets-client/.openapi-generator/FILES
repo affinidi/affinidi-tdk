@@ -10,3 +10,4 @@ package.json
 project.json
 tsconfig.esm.json
 tsconfig.json
+tsconfig.lib.json
