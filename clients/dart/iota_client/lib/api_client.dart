@@ -196,12 +196,20 @@ class ApiClient {
           return AwsExchangeCredentialsProjectTokenOKCredentials.fromJson(value);
         case 'CallbackInput':
           return CallbackInput.fromJson(value);
+        case 'CallbackResponseOK':
+          return CallbackResponseOK.fromJson(value);
+        case 'CallbackResponseOKRedirectResponse':
+          return CallbackResponseOKRedirectResponse.fromJson(value);
         case 'ConsentDto':
           return ConsentDto.fromJson(value);
         case 'CorsAwsExchangeCredentialsOK':
           return CorsAwsExchangeCredentialsOK.fromJson(value);
         case 'CorsAwsExchangeCredentialsProjectTokenOK':
           return CorsAwsExchangeCredentialsProjectTokenOK.fromJson(value);
+        case 'CorsFetchIotaVpResponseOK':
+          return CorsFetchIotaVpResponseOK.fromJson(value);
+        case 'CorsInitiateDataSharingRequestOK':
+          return CorsInitiateDataSharingRequestOK.fromJson(value);
         case 'CorsIotOidc4vpcallbackOK':
           return CorsIotOidc4vpcallbackOK.fromJson(value);
         case 'CorsIotaExchangeCredentialsOK':
@@ -212,8 +220,18 @@ class ApiClient {
           return CreatePexQueryInput.fromJson(value);
         case 'DeletePexQueriesInput':
           return DeletePexQueriesInput.fromJson(value);
+        case 'FetchIOTAVPResponseInput':
+          return FetchIOTAVPResponseInput.fromJson(value);
+        case 'FetchIOTAVPResponseOK':
+          return FetchIOTAVPResponseOK.fromJson(value);
         case 'GetIotaConfigurationMetaDataOK':
           return GetIotaConfigurationMetaDataOK.fromJson(value);
+        case 'InitiateDataSharingRequestInput':
+          return InitiateDataSharingRequestInput.fromJson(value);
+        case 'InitiateDataSharingRequestOK':
+          return InitiateDataSharingRequestOK.fromJson(value);
+        case 'InitiateDataSharingRequestOKData':
+          return InitiateDataSharingRequestOKData.fromJson(value);
         case 'InvalidParameterError':
           return InvalidParameterError.fromJson(value);
         case 'InvalidParameterErrorDetailsInner':

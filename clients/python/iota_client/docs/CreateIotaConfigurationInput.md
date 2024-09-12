@@ -2,16 +2,18 @@
 
 ## Properties
 
-| Name                          | Type                                                                            | Description                              | Notes      |
-| ----------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------- | ---------- |
-| **name**                      | **str**                                                                         | The name of the configuration            |
-| **description**               | **str**                                                                         | Description of the configuration         | [optional] |
-| **wallet_ari**                | **str**                                                                         | The wallet Ari that will be used to sign |
-| **iota_response_webhook_url** | **str**                                                                         | webhook to call when data is ready       | [optional] |
-| **enable_verification**       | **bool**                                                                        |                                          |
-| **enable_consent_audit_log**  | **bool**                                                                        |                                          |
-| **token_max_age**             | **float**                                                                       | token time to live in seconds            | [optional] |
-| **client_metadata**           | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |                                          |
+| Name                          | Type                                                                            | Description                                                                                                                                                                        | Notes                               |
+| ----------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| **name**                      | **str**                                                                         | The name of the configuration                                                                                                                                                      |
+| **description**               | **str**                                                                         | Description of the configuration                                                                                                                                                   | [optional]                          |
+| **wallet_ari**                | **str**                                                                         | The wallet Ari that will be used to sign                                                                                                                                           |
+| **iota_response_webhook_url** | **str**                                                                         | webhook to call when data is ready                                                                                                                                                 | [optional]                          |
+| **enable_verification**       | **bool**                                                                        |                                                                                                                                                                                    |
+| **enable_consent_audit_log**  | **bool**                                                                        |                                                                                                                                                                                    |
+| **token_max_age**             | **float**                                                                       | token time to live in seconds                                                                                                                                                      | [optional]                          |
+| **client_metadata**           | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |                                                                                                                                                                                    |
+| **mode**                      | **str**                                                                         | indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.                                  | [optional] [default to 'websocket'] |
+| **redirect_uris**             | **List[str]**                                                                   | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect. | [optional]                          |
 
 ## Example
 

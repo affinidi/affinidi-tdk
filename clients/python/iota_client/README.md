@@ -96,6 +96,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | _IotaApi_           | [**aws_exchange_credentials**](docs/IotaApi.md#aws_exchange_credentials)                             | **POST** /v1/aws-exchange-credentials                                      |
 | _IotaApi_           | [**aws_exchange_credentials_project_token**](docs/IotaApi.md#aws_exchange_credentials_project_token) | **POST** /v1/aws-exchange-credentials/project-token                        |
 | _IotaApi_           | [**delete_pex_queries**](docs/IotaApi.md#delete_pex_queries)                                         | **POST** /v1/configurations/{configurationId}/delete-queries               | deletes pex queries                      |
+| _IotaApi_           | [**fetch_iota_vp_response**](docs/IotaApi.md#fetch_iota_vp_response)                                 | **POST** /v1/fetch-iota-response                                           |
+| _IotaApi_           | [**initiate_data_sharing_request**](docs/IotaApi.md#initiate_data_sharing_request)                   | **POST** /v1/initiate-data-sharing-request                                 |
 | _IotaApi_           | [**iota_exchange_credentials**](docs/IotaApi.md#iota_exchange_credentials)                           | **POST** /v1/exchange-credentials                                          |
 | _IotaApi_           | [**save_pex_queries**](docs/IotaApi.md#save_pex_queries)                                             | **POST** /v1/configurations/{configurationId}/save-queries                 |
 | _PexQueryApi_       | [**create_pex_query**](docs/PexQueryApi.md#create_pex_query)                                         | **POST** /v1/configurations/{configurationId}/pex-queries                  |
@@ -113,15 +115,24 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [AwsExchangeCredentialsProjectTokenOK](docs/AwsExchangeCredentialsProjectTokenOK.md)
 - [AwsExchangeCredentialsProjectTokenOKCredentials](docs/AwsExchangeCredentialsProjectTokenOKCredentials.md)
 - [CallbackInput](docs/CallbackInput.md)
+- [CallbackResponseOK](docs/CallbackResponseOK.md)
+- [CallbackResponseOKRedirectResponse](docs/CallbackResponseOKRedirectResponse.md)
 - [ConsentDto](docs/ConsentDto.md)
 - [CorsAwsExchangeCredentialsOK](docs/CorsAwsExchangeCredentialsOK.md)
 - [CorsAwsExchangeCredentialsProjectTokenOK](docs/CorsAwsExchangeCredentialsProjectTokenOK.md)
+- [CorsFetchIotaVpResponseOK](docs/CorsFetchIotaVpResponseOK.md)
+- [CorsInitiateDataSharingRequestOK](docs/CorsInitiateDataSharingRequestOK.md)
 - [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
 - [CorsIotaExchangeCredentialsOK](docs/CorsIotaExchangeCredentialsOK.md)
 - [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](docs/CreatePexQueryInput.md)
 - [DeletePexQueriesInput](docs/DeletePexQueriesInput.md)
+- [FetchIOTAVPResponseInput](docs/FetchIOTAVPResponseInput.md)
+- [FetchIOTAVPResponseOK](docs/FetchIOTAVPResponseOK.md)
 - [GetIotaConfigurationMetaDataOK](docs/GetIotaConfigurationMetaDataOK.md)
+- [InitiateDataSharingRequestInput](docs/InitiateDataSharingRequestInput.md)
+- [InitiateDataSharingRequestOK](docs/InitiateDataSharingRequestOK.md)
+- [InitiateDataSharingRequestOKData](docs/InitiateDataSharingRequestOKData.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
 - [IotaConfigurationDto](docs/IotaConfigurationDto.md)
