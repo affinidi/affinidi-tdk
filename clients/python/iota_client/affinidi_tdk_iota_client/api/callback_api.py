@@ -22,9 +22,8 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field
 
-from typing import Any, Dict
-
 from affinidi_tdk_iota_client.models.callback_input import CallbackInput
+from affinidi_tdk_iota_client.models.callback_response_ok import CallbackResponseOK
 
 from affinidi_tdk_iota_client.api_client import ApiClient
 from affinidi_tdk_iota_client.api_response import ApiResponse
@@ -47,7 +46,7 @@ class CallbackApi:
         self.api_client = api_client
 
     @validate_arguments
-    def iot_oidc4_vp_callback(self, callback_input : Annotated[CallbackInput, Field(..., description="CallbackRequestInput")], **kwargs) -> object:  # noqa: E501
+    def iot_oidc4_vp_callback(self, callback_input : Annotated[CallbackInput, Field(..., description="CallbackRequestInput")], **kwargs) -> CallbackResponseOK:  # noqa: E501
         """Processes the callback for OIDC4VP flows  # noqa: E501
 
         This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors.   # noqa: E501
@@ -68,7 +67,7 @@ class CallbackApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: object
+        :rtype: CallbackResponseOK
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -111,7 +110,7 @@ class CallbackApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CallbackResponseOK, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -173,7 +172,7 @@ class CallbackApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "object",
+            '200': "CallbackResponseOK",
             '400': "InvalidParameterError",
             '403': "OperationForbiddenError",
         }

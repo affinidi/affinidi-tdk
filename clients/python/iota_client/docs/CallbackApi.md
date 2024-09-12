@@ -8,7 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 # **iot_oidc4_vp_callback**
 
-> object iot_oidc4_vp_callback(callback_input)
+> CallbackResponseOK iot_oidc4_vp_callback(callback_input)
 
 Processes the callback for OIDC4VP flows
 
@@ -21,6 +21,7 @@ import time
 import os
 import affinidi_tdk_iota_client
 from affinidi_tdk_iota_client.models.callback_input import CallbackInput
+from affinidi_tdk_iota_client.models.callback_response_ok import CallbackResponseOK
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
@@ -54,7 +55,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Return type
 
-**object**
+[**CallbackResponseOK**](CallbackResponseOK.md)
 
 ### Authorization
 
