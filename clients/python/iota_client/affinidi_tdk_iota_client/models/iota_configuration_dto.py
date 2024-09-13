@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import List, Optional, Union
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, validator
 from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
 
 class IotaConfigurationDto(BaseModel):
@@ -37,7 +37,19 @@ class IotaConfigurationDto(BaseModel):
     enable_verification: StrictBool = Field(default=..., alias="enableVerification")
     enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
-    __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata"]
+    mode: Optional[StrictStr] = Field(default='websocket', description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
+    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="the URLs that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.")
+    __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata", "mode", "redirectUris"]
+
+    @validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('redirect', 'websocket'):
+            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -87,7 +99,9 @@ class IotaConfigurationDto(BaseModel):
             "iota_response_webhook_url": obj.get("iotaResponseWebhookURL"),
             "enable_verification": obj.get("enableVerification"),
             "enable_consent_audit_log": obj.get("enableConsentAuditLog"),
-            "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None
+            "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "mode": obj.get("mode") if obj.get("mode") is not None else 'websocket',
+            "redirect_uris": obj.get("redirectUris")
         })
         return _obj
 

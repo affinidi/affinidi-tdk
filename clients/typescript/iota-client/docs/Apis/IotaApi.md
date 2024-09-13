@@ -7,6 +7,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**awsExchangeCredentials**](IotaApi.md#awsExchangeCredentials)                         | **POST** /v1/aws-exchange-credentials                        |                     |
 | [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsExchangeCredentialsProjectToken) | **POST** /v1/aws-exchange-credentials/project-token          |                     |
 | [**deletePexQueries**](IotaApi.md#deletePexQueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
+| [**fetchIotaVpResponse**](IotaApi.md#fetchIotaVpResponse)                               | **POST** /v1/fetch-iota-response                             |                     |
+| [**initiateDataSharingRequest**](IotaApi.md#initiateDataSharingRequest)                 | **POST** /v1/initiate-data-sharing-request                   |                     |
 | [**iotaExchangeCredentials**](IotaApi.md#iotaExchangeCredentials)                       | **POST** /v1/exchange-credentials                            |                     |
 | [**savePexQueries**](IotaApi.md#savePexQueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |                     |
 
@@ -91,6 +93,60 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="fetchIotaVpResponse"></a>
+
+# **fetchIotaVpResponse**
+
+> FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput)
+
+    This will get the final data response
+
+### Parameters
+
+| Name                         | Type                                                                  | Description              | Notes |
+| ---------------------------- | --------------------------------------------------------------------- | ------------------------ | ----- |
+| **FetchIOTAVPResponseInput** | [**FetchIOTAVPResponseInput**](../Models/FetchIOTAVPResponseInput.md) | FetchIOTAVPResponseInput |       |
+
+### Return type
+
+[**FetchIOTAVPResponseOK**](../Models/FetchIOTAVPResponseOK.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="initiateDataSharingRequest"></a>
+
+# **initiateDataSharingRequest**
+
+> InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput)
+
+    This will initiate data sharing request for the data sharing flow
+
+### Parameters
+
+| Name                                | Type                                                                                | Description                     | Notes |
+| ----------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------- | ----- |
+| **InitiateDataSharingRequestInput** | [**InitiateDataSharingRequestInput**](../Models/InitiateDataSharingRequestInput.md) | InitiateDataSharingRequestInput |       |
+
+### Return type
+
+[**InitiateDataSharingRequestOK**](../Models/InitiateDataSharingRequestOK.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="iotaExchangeCredentials"></a>

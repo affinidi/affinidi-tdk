@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-client",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "description": "Affinidi TDK typescript client for Affinidi IOTA",
   "author": "Affinidi",
   "repository": {

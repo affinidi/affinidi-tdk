@@ -175,6 +175,114 @@ class IotaApi {
     }
   }
 
+  /// This will get the final data response
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [FetchIOTAVPResponseInput] fetchIOTAVPResponseInput (required):
+  ///   FetchIOTAVPResponseInput
+  Future<Response> fetchIotaVpResponseWithHttpInfo(FetchIOTAVPResponseInput fetchIOTAVPResponseInput,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/fetch-iota-response';
+
+    // ignore: prefer_final_locals
+    Object? postBody = fetchIOTAVPResponseInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// This will get the final data response
+  ///
+  /// Parameters:
+  ///
+  /// * [FetchIOTAVPResponseInput] fetchIOTAVPResponseInput (required):
+  ///   FetchIOTAVPResponseInput
+  Future<FetchIOTAVPResponseOK?> fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput,) async {
+    final response = await fetchIotaVpResponseWithHttpInfo(fetchIOTAVPResponseInput,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FetchIOTAVPResponseOK',) as FetchIOTAVPResponseOK;
+    
+    }
+    return null;
+  }
+
+  /// This will initiate data sharing request for the data sharing flow
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [InitiateDataSharingRequestInput] initiateDataSharingRequestInput (required):
+  ///   InitiateDataSharingRequestInput
+  Future<Response> initiateDataSharingRequestWithHttpInfo(InitiateDataSharingRequestInput initiateDataSharingRequestInput,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/initiate-data-sharing-request';
+
+    // ignore: prefer_final_locals
+    Object? postBody = initiateDataSharingRequestInput;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// This will initiate data sharing request for the data sharing flow
+  ///
+  /// Parameters:
+  ///
+  /// * [InitiateDataSharingRequestInput] initiateDataSharingRequestInput (required):
+  ///   InitiateDataSharingRequestInput
+  Future<InitiateDataSharingRequestOK?> initiateDataSharingRequest(InitiateDataSharingRequestInput initiateDataSharingRequestInput,) async {
+    final response = await initiateDataSharingRequestWithHttpInfo(initiateDataSharingRequestInput,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'InitiateDataSharingRequestOK',) as InitiateDataSharingRequestOK;
+    
+    }
+    return null;
+  }
+
   /// It exchanges limited token into cognito sts identity credentials
   ///
   /// Note: This method returns the HTTP [Response].
