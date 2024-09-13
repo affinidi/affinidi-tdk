@@ -10,7 +10,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 # **iotOIDC4VPCallback**
 
-> Object iotOIDC4VPCallback(CallbackInput)
+> CallbackResponseOK iotOIDC4VPCallback(CallbackInput)
 
 Processes the callback for OIDC4VP flows
 
@@ -24,7 +24,7 @@ Processes the callback for OIDC4VP flows
 
 ### Return type
 
-**Object**
+[**CallbackResponseOK**](../Models/CallbackResponseOK.md)
 
 ### Authorization
 

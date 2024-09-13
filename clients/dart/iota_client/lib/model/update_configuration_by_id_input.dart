@@ -21,6 +21,8 @@ class UpdateConfigurationByIdInput {
     this.tokenMaxAge,
     this.description,
     this.clientMetadata,
+    this.mode,
+    this.redirectUri,
   });
 
   /// The name of the config
@@ -92,6 +94,18 @@ class UpdateConfigurationByIdInput {
   ///
   IotaConfigurationDtoClientMetadata? clientMetadata;
 
+  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  UpdateConfigurationByIdInputModeEnum? mode;
+
+  /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application. Required only if mode is Redirect.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redirectUri;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateConfigurationByIdInput &&
     other.name == name &&
@@ -101,7 +115,9 @@ class UpdateConfigurationByIdInput {
     other.enableConsentAuditLog == enableConsentAuditLog &&
     other.tokenMaxAge == tokenMaxAge &&
     other.description == description &&
-    other.clientMetadata == clientMetadata;
+    other.clientMetadata == clientMetadata &&
+    other.mode == mode &&
+    other.redirectUri == redirectUri;
 
   @override
   int get hashCode =>
@@ -113,10 +129,12 @@ class UpdateConfigurationByIdInput {
     (enableConsentAuditLog == null ? 0 : enableConsentAuditLog!.hashCode) +
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (clientMetadata == null ? 0 : clientMetadata!.hashCode);
+    (clientMetadata == null ? 0 : clientMetadata!.hashCode) +
+    (mode == null ? 0 : mode!.hashCode) +
+    (redirectUri == null ? 0 : redirectUri!.hashCode);
 
   @override
-  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, description=$description, clientMetadata=$clientMetadata]';
+  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, description=$description, clientMetadata=$clientMetadata, mode=$mode, redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -160,6 +178,16 @@ class UpdateConfigurationByIdInput {
     } else {
       json[r'clientMetadata'] = null;
     }
+    if (this.mode != null) {
+      json[r'mode'] = this.mode;
+    } else {
+      json[r'mode'] = null;
+    }
+    if (this.redirectUri != null) {
+      json[r'redirectUri'] = this.redirectUri;
+    } else {
+      json[r'redirectUri'] = null;
+    }
     return json;
   }
 
@@ -190,6 +218,8 @@ class UpdateConfigurationByIdInput {
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
         description: mapValueOfType<String>(json, r'description'),
         clientMetadata: IotaConfigurationDtoClientMetadata.fromJson(json[r'clientMetadata']),
+        mode: UpdateConfigurationByIdInputModeEnum.fromJson(json[r'mode']),
+        redirectUri: mapValueOfType<String>(json, r'redirectUri'),
       );
     }
     return null;
@@ -239,4 +269,78 @@ class UpdateConfigurationByIdInput {
   static const requiredKeys = <String>{
   };
 }
+
+/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+class UpdateConfigurationByIdInputModeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UpdateConfigurationByIdInputModeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const redirect = UpdateConfigurationByIdInputModeEnum._(r'redirect');
+  static const websocket = UpdateConfigurationByIdInputModeEnum._(r'websocket');
+
+  /// List of all possible values in this [enum][UpdateConfigurationByIdInputModeEnum].
+  static const values = <UpdateConfigurationByIdInputModeEnum>[
+    redirect,
+    websocket,
+  ];
+
+  static UpdateConfigurationByIdInputModeEnum? fromJson(dynamic value) => UpdateConfigurationByIdInputModeEnumTypeTransformer().decode(value);
+
+  static List<UpdateConfigurationByIdInputModeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateConfigurationByIdInputModeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UpdateConfigurationByIdInputModeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UpdateConfigurationByIdInputModeEnum] to String,
+/// and [decode] dynamic data back to [UpdateConfigurationByIdInputModeEnum].
+class UpdateConfigurationByIdInputModeEnumTypeTransformer {
+  factory UpdateConfigurationByIdInputModeEnumTypeTransformer() => _instance ??= const UpdateConfigurationByIdInputModeEnumTypeTransformer._();
+
+  const UpdateConfigurationByIdInputModeEnumTypeTransformer._();
+
+  String encode(UpdateConfigurationByIdInputModeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UpdateConfigurationByIdInputModeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UpdateConfigurationByIdInputModeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'redirect': return UpdateConfigurationByIdInputModeEnum.redirect;
+        case r'websocket': return UpdateConfigurationByIdInputModeEnum.websocket;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UpdateConfigurationByIdInputModeEnumTypeTransformer] instance.
+  static UpdateConfigurationByIdInputModeEnumTypeTransformer? _instance;
+}
+
 

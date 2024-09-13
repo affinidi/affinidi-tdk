@@ -20,25 +20,18 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, constr, validator
+from pydantic import BaseModel, Field, StrictStr
 
 class CallbackInput(BaseModel):
     """
     CallbackInput
     """
-    state: constr(strict=True) = Field(default=..., description="A string that must be a valid UUID (version 1-5).")
+    state: StrictStr = Field(default=..., description="A string that must be a valid UUID (version 1-5).")
     presentation_submission: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.")
     vp_token: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. Ensure to escape special characters properly..")
     error: Optional[StrictStr] = Field(default=None, description="The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied")
     error_description: Optional[StrictStr] = Field(default=None, description="Description of the error in a human readable format")
     __properties = ["state", "presentation_submission", "vp_token", "error", "error_description"]
-
-    @validator('state')
-    def state_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if not re.match(r"^[a-z]+-[a-z]+-\d+:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$", value):
-            raise ValueError(r"must validate the regular expression /^[a-z]+-[a-z]+-\d+:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/")
-        return value
 
     class Config:
         """Pydantic configuration"""
