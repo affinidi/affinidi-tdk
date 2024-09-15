@@ -127,13 +127,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_callback_response_ok.py
-test/test_callback_response_ok_redirect_response.py
-test/test_cors_fetch_iota_vp_response_ok.py
-test/test_cors_initiate_data_sharing_request_ok.py
-test/test_fetch_iotavp_response_input.py
-test/test_fetch_iotavp_response_ok.py
-test/test_initiate_data_sharing_request_input.py
-test/test_initiate_data_sharing_request_ok.py
-test/test_initiate_data_sharing_request_ok_data.py
 tox.ini
