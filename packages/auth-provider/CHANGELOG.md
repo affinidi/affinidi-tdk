@@ -1,3 +1,17 @@
+## [1.26.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.26.1...@affinidi-tdk/auth-provider-v1.26.2) (2024-09-15)
+
+
+### Bug Fixes
+
+* update package-lock ([#248](https://github.com/affinidi/affinidi-tdk/issues/248)) ([b0a24df](https://github.com/affinidi/affinidi-tdk/commit/b0a24df568584dd84d2efe135eb0de6a81773be0))
+
+## [1.26.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.26.0...@affinidi-tdk/auth-provider-v1.26.1) (2024-09-13)
+
+
+### Bug Fixes
+
+* revert parameter name ([#242](https://github.com/affinidi/affinidi-tdk/issues/242)) ([cf0a8e5](https://github.com/affinidi/affinidi-tdk/commit/cf0a8e5cede2f247379c8cd80fa91e4804237637))
+
 # [1.26.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.25.0...@affinidi-tdk/auth-provider-v1.26.0) (2024-09-13)
 
 

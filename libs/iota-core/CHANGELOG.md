@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.17.0...@affinidi-tdk/iota-core-v1.17.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* update package-lock ([#248](https://github.com/affinidi/affinidi-tdk/issues/248)) ([b0a24df](https://github.com/affinidi/affinidi-tdk/commit/b0a24df568584dd84d2efe135eb0de6a81773be0))
+
 # [1.17.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.16.0...@affinidi-tdk/iota-core-v1.17.0) (2024-09-13)
 
 

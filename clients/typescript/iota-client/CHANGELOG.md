@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.22.0...@affinidi-tdk/iota-client-v1.22.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* update package-lock ([#248](https://github.com/affinidi/affinidi-tdk/issues/248)) ([b0a24df](https://github.com/affinidi/affinidi-tdk/commit/b0a24df568584dd84d2efe135eb0de6a81773be0))
+
 # [1.22.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.21.0...@affinidi-tdk/iota-client-v1.22.0) (2024-09-13)
 
 

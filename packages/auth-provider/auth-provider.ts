@@ -37,7 +37,8 @@ export class AuthProvider {
   private readonly iotaInstance: Iota
 
   constructor(param: { [key: string]: string }) {
-    this.apiGatewayUrl = param?.apiGW ?? EnvironmentUtils.fetchApiGwUrl()
+    this.apiGatewayUrl =
+      param?.apiGatewayUrl ?? EnvironmentUtils.fetchApiGwUrl()
     this.tokenEndpoint =
       param?.tokenEndpoint ?? EnvironmentUtils.fetchElementsAuthTokenUrl()
 
