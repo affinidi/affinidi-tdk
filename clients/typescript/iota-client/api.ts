@@ -1429,27 +1429,12 @@ export interface UpdateConfigurationByIdInput {
    */
   clientMetadata?: IotaConfigurationDtoClientMetadata
   /**
-   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
-   * @type {string}
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
    * @memberof UpdateConfigurationByIdInput
    */
-  mode?: UpdateConfigurationByIdInputModeEnum
-  /**
-   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application. Required only if mode is Redirect.
-   * @type {string}
-   * @memberof UpdateConfigurationByIdInput
-   */
-  redirectUri?: string
+  redirectUris?: Array<string>
 }
-
-export const UpdateConfigurationByIdInputModeEnum = {
-  Redirect: 'redirect',
-  Websocket: 'websocket',
-} as const
-
-export type UpdateConfigurationByIdInputModeEnum =
-  (typeof UpdateConfigurationByIdInputModeEnum)[keyof typeof UpdateConfigurationByIdInputModeEnum]
-
 /**
  *
  * @export
