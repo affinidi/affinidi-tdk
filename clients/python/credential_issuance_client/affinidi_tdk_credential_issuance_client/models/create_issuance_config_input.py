@@ -52,8 +52,8 @@ class CreateIssuanceConfigInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ldp_vc', 'jwt_vc_json-ld'):
-            raise ValueError("must be one of enum values ('ldp_vc', 'jwt_vc_json-ld')")
+        if value not in ('ldp_vc', 'jwt_vc_json-ld', 'sd_jwt_vc_json-ld'):
+            raise ValueError("must be one of enum values ('ldp_vc', 'jwt_vc_json-ld', 'sd_jwt_vc_json-ld')")
         return value
 
     class Config:
