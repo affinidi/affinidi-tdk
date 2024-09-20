@@ -551,6 +551,12 @@ export interface FetchIOTAVPResponseInput {
    * @memberof FetchIOTAVPResponseInput
    */
   responseCode: string
+  /**
+   * The configuration ID
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  configurationId: string
 }
 /**
  *
@@ -640,7 +646,28 @@ export interface InitiateDataSharingRequestInput {
    * @memberof InitiateDataSharingRequestInput
    */
   redirectUri: string
+  /**
+   * id of the IOTA configuration used
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  configurationId: string
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  mode: InitiateDataSharingRequestInputModeEnum
 }
+
+export const InitiateDataSharingRequestInputModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type InitiateDataSharingRequestInputModeEnum =
+  (typeof InitiateDataSharingRequestInputModeEnum)[keyof typeof InitiateDataSharingRequestInputModeEnum]
+
 /**
  *
  * @export
@@ -1435,11 +1462,11 @@ export interface UpdateConfigurationByIdInput {
    */
   mode?: UpdateConfigurationByIdInputModeEnum
   /**
-   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application. Required only if mode is Redirect.
-   * @type {string}
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
    * @memberof UpdateConfigurationByIdInput
    */
-  redirectUri?: string
+  redirectUris?: Array<string>
 }
 
 export const UpdateConfigurationByIdInputModeEnum = {
@@ -2887,9 +2914,12 @@ export const IotaApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
-      // authentication bearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 
@@ -2944,9 +2974,12 @@ export const IotaApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
-      // authentication bearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 

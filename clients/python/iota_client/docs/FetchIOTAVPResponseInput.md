@@ -2,11 +2,12 @@
 
 ## Properties
 
-| Name               | Type    | Description        | Notes |
-| ------------------ | ------- | ------------------ | ----- |
-| **correlation_id** | **str** | The correlation ID |
-| **transaction_id** | **str** | The transaction ID |
-| **response_code**  | **str** | The response code. |
+| Name                 | Type    | Description          | Notes |
+| -------------------- | ------- | -------------------- | ----- |
+| **correlation_id**   | **str** | The correlation ID   |
+| **transaction_id**   | **str** | The transaction ID   |
+| **response_code**    | **str** | The response code.   |
+| **configuration_id** | **str** | The configuration ID |
 
 ## Example
 

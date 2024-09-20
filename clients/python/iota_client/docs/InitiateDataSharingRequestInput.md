@@ -2,13 +2,15 @@
 
 ## Properties
 
-| Name               | Type      | Description                                                                                                                                      | Notes      |
-| ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
-| **query_id**       | **str**   |                                                                                                                                                  |
-| **correlation_id** | **str**   |                                                                                                                                                  |
-| **token_max_age**  | **float** | token time to live in seconds                                                                                                                    | [optional] |
-| **nonce**          | **str**   | Random value used to prevent replay attacks                                                                                                      |
-| **redirect_uri**   | **str**   | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application. |
+| Name                 | Type      | Description                                                                                                                                       | Notes      |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **query_id**         | **str**   |                                                                                                                                                   |
+| **correlation_id**   | **str**   |                                                                                                                                                   |
+| **token_max_age**    | **float** | token time to live in seconds                                                                                                                     | [optional] |
+| **nonce**            | **str**   | Random value used to prevent replay attacks                                                                                                       |
+| **redirect_uri**     | **str**   | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.  |
+| **configuration_id** | **str**   | id of the IOTA configuration used                                                                                                                 |
+| **mode**             | **str**   | indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request. |
 
 ## Example
 
