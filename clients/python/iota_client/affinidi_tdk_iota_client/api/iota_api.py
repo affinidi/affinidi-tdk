@@ -615,7 +615,7 @@ class IotaApi:
                 _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
-        _auth_settings = ['bearerAuth']  # noqa: E501
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
 
         _response_types_map = {
             '200': "FetchIOTAVPResponseOK",
@@ -764,7 +764,7 @@ class IotaApi:
                 _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
-        _auth_settings = ['bearerAuth']  # noqa: E501
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
 
         _response_types_map = {
             '200': "InitiateDataSharingRequestOK",

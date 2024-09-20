@@ -18,6 +18,8 @@ class InitiateDataSharingRequestInput {
     this.tokenMaxAge,
     required this.nonce,
     required this.redirectUri,
+    required this.configurationId,
+    required this.mode,
   });
 
   String queryId;
@@ -39,13 +41,21 @@ class InitiateDataSharingRequestInput {
   /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.
   String redirectUri;
 
+  /// id of the IOTA configuration used
+  String configurationId;
+
+  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  InitiateDataSharingRequestInputModeEnum mode;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is InitiateDataSharingRequestInput &&
     other.queryId == queryId &&
     other.correlationId == correlationId &&
     other.tokenMaxAge == tokenMaxAge &&
     other.nonce == nonce &&
-    other.redirectUri == redirectUri;
+    other.redirectUri == redirectUri &&
+    other.configurationId == configurationId &&
+    other.mode == mode;
 
   @override
   int get hashCode =>
@@ -54,10 +64,12 @@ class InitiateDataSharingRequestInput {
     (correlationId.hashCode) +
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
     (nonce.hashCode) +
-    (redirectUri.hashCode);
+    (redirectUri.hashCode) +
+    (configurationId.hashCode) +
+    (mode.hashCode);
 
   @override
-  String toString() => 'InitiateDataSharingRequestInput[queryId=$queryId, correlationId=$correlationId, tokenMaxAge=$tokenMaxAge, nonce=$nonce, redirectUri=$redirectUri]';
+  String toString() => 'InitiateDataSharingRequestInput[queryId=$queryId, correlationId=$correlationId, tokenMaxAge=$tokenMaxAge, nonce=$nonce, redirectUri=$redirectUri, configurationId=$configurationId, mode=$mode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -70,6 +82,8 @@ class InitiateDataSharingRequestInput {
     }
       json[r'nonce'] = this.nonce;
       json[r'redirectUri'] = this.redirectUri;
+      json[r'configurationId'] = this.configurationId;
+      json[r'mode'] = this.mode;
     return json;
   }
 
@@ -97,6 +111,8 @@ class InitiateDataSharingRequestInput {
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
         nonce: mapValueOfType<String>(json, r'nonce')!,
         redirectUri: mapValueOfType<String>(json, r'redirectUri')!,
+        configurationId: mapValueOfType<String>(json, r'configurationId')!,
+        mode: InitiateDataSharingRequestInputModeEnum.fromJson(json[r'mode'])!,
       );
     }
     return null;
@@ -148,6 +164,82 @@ class InitiateDataSharingRequestInput {
     'correlationId',
     'nonce',
     'redirectUri',
+    'configurationId',
+    'mode',
   };
 }
+
+/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+class InitiateDataSharingRequestInputModeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const InitiateDataSharingRequestInputModeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const redirect = InitiateDataSharingRequestInputModeEnum._(r'redirect');
+  static const websocket = InitiateDataSharingRequestInputModeEnum._(r'websocket');
+
+  /// List of all possible values in this [enum][InitiateDataSharingRequestInputModeEnum].
+  static const values = <InitiateDataSharingRequestInputModeEnum>[
+    redirect,
+    websocket,
+  ];
+
+  static InitiateDataSharingRequestInputModeEnum? fromJson(dynamic value) => InitiateDataSharingRequestInputModeEnumTypeTransformer().decode(value);
+
+  static List<InitiateDataSharingRequestInputModeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InitiateDataSharingRequestInputModeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = InitiateDataSharingRequestInputModeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [InitiateDataSharingRequestInputModeEnum] to String,
+/// and [decode] dynamic data back to [InitiateDataSharingRequestInputModeEnum].
+class InitiateDataSharingRequestInputModeEnumTypeTransformer {
+  factory InitiateDataSharingRequestInputModeEnumTypeTransformer() => _instance ??= const InitiateDataSharingRequestInputModeEnumTypeTransformer._();
+
+  const InitiateDataSharingRequestInputModeEnumTypeTransformer._();
+
+  String encode(InitiateDataSharingRequestInputModeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a InitiateDataSharingRequestInputModeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  InitiateDataSharingRequestInputModeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'redirect': return InitiateDataSharingRequestInputModeEnum.redirect;
+        case r'websocket': return InitiateDataSharingRequestInputModeEnum.websocket;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [InitiateDataSharingRequestInputModeEnumTypeTransformer] instance.
+  static InitiateDataSharingRequestInputModeEnumTypeTransformer? _instance;
+}
+
 

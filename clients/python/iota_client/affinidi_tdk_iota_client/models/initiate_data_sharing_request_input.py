@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, validator
 
 class InitiateDataSharingRequestInput(BaseModel):
     """
@@ -31,7 +31,16 @@ class InitiateDataSharingRequestInput(BaseModel):
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="token time to live in seconds")
     nonce: StrictStr = Field(default=..., description="Random value used to prevent replay attacks")
     redirect_uri: StrictStr = Field(default=..., alias="redirectUri", description="the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.")
-    __properties = ["queryId", "correlationId", "tokenMaxAge", "nonce", "redirectUri"]
+    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="id of the IOTA configuration used")
+    mode: StrictStr = Field(default=..., description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
+    __properties = ["queryId", "correlationId", "tokenMaxAge", "nonce", "redirectUri", "configurationId", "mode"]
+
+    @validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('redirect', 'websocket'):
+            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +82,9 @@ class InitiateDataSharingRequestInput(BaseModel):
             "correlation_id": obj.get("correlationId"),
             "token_max_age": obj.get("tokenMaxAge"),
             "nonce": obj.get("nonce"),
-            "redirect_uri": obj.get("redirectUri")
+            "redirect_uri": obj.get("redirectUri"),
+            "configuration_id": obj.get("configurationId"),
+            "mode": obj.get("mode")
         })
         return _obj
 
