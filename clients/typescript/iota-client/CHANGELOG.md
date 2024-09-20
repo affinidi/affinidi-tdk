@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.22.1...@affinidi-tdk/iota-client-v1.23.0) (2024-09-20)
+
+
+### Features
+
+* update client ais ([#257](https://github.com/affinidi/affinidi-tdk/issues/257)) ([ad54841](https://github.com/affinidi/affinidi-tdk/commit/ad54841e7aec0944746c4a10639dac62471ead2c))
+
 ## [1.22.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-client-v1.22.0...@affinidi-tdk/iota-client-v1.22.1) (2024-09-15)
 
 
