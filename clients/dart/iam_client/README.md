@@ -107,7 +107,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateTokenInput](doc//CreateTokenInput.md)
 - [GetWellKnownDidOK](doc//GetWellKnownDidOK.md)
 - [InvalidDIDError](doc//InvalidDIDError.md)
-- [InvalidDidError](doc//InvalidDidError.md)
 - [InvalidJwtTokenError](doc//InvalidJwtTokenError.md)
 - [InvalidParameterError](doc//InvalidParameterError.md)
 - [JsonWebKeyDto](doc//JsonWebKeyDto.md)

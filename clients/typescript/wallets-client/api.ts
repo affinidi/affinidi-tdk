@@ -623,6 +623,7 @@ export interface SignCredentialInputDto {
 export const SignCredentialInputDtoCredentialFormatEnum = {
   LdpVc: 'ldp_vc',
   JwtVcJsonLd: 'jwt_vc_json-ld',
+  SdJwtVcJsonLd: 'sd_jwt_vc_json-ld',
 } as const
 
 export type SignCredentialInputDtoCredentialFormatEnum =

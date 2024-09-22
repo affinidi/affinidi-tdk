@@ -15,7 +15,6 @@ doc/CreateTokenInput.md
 doc/DefaultApi.md
 doc/GetWellKnownDidOK.md
 doc/InvalidDIDError.md
-doc/InvalidDidError.md
 doc/InvalidJwtTokenError.md
 doc/InvalidParameterError.md
 doc/JsonWebKeyDto.md
@@ -77,7 +76,6 @@ lib/model/create_project_scoped_token_input.dart
 lib/model/create_project_scoped_token_output.dart
 lib/model/create_token_input.dart
 lib/model/get_well_known_did_ok.dart
-lib/model/invalid_did_error.dart
 lib/model/invalid_did_error.dart
 lib/model/invalid_jwt_token_error.dart
 lib/model/invalid_parameter_error.dart
