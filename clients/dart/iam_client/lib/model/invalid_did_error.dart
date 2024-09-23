@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class InvalidDidError {
-  /// Returns a new [InvalidDidError] instance.
-  InvalidDidError({
+class InvalidDIDError {
+  /// Returns a new [InvalidDIDError] instance.
+  InvalidDIDError({
     required this.name,
     required this.message,
     required this.httpStatusCode,
@@ -20,18 +20,18 @@ class InvalidDidError {
     this.details = const [],
   });
 
-  InvalidDidErrorNameEnum name;
+  InvalidDIDErrorNameEnum name;
 
-  InvalidDidErrorMessageEnum message;
+  InvalidDIDErrorMessageEnum message;
 
-  InvalidDidErrorHttpStatusCodeEnum httpStatusCode;
+  InvalidDIDErrorHttpStatusCodeEnum httpStatusCode;
 
   String traceId;
 
   List<ServiceErrorResponseDetailsInner> details;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is InvalidDidError &&
+  bool operator ==(Object other) => identical(this, other) || other is InvalidDIDError &&
     other.name == name &&
     other.message == message &&
     other.httpStatusCode == httpStatusCode &&
@@ -48,7 +48,7 @@ class InvalidDidError {
     (details.hashCode);
 
   @override
-  String toString() => 'InvalidDidError[name=$name, message=$message, httpStatusCode=$httpStatusCode, traceId=$traceId, details=$details]';
+  String toString() => 'InvalidDIDError[name=$name, message=$message, httpStatusCode=$httpStatusCode, traceId=$traceId, details=$details]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -60,10 +60,10 @@ class InvalidDidError {
     return json;
   }
 
-  /// Returns a new [InvalidDidError] instance and imports its values from
+  /// Returns a new [InvalidDIDError] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static InvalidDidError? fromJson(dynamic value) {
+  static InvalidDIDError? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -72,16 +72,16 @@ class InvalidDidError {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "InvalidDidError[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "InvalidDidError[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "InvalidDIDError[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "InvalidDIDError[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return InvalidDidError(
-        name: InvalidDidErrorNameEnum.fromJson(json[r'name'])!,
-        message: InvalidDidErrorMessageEnum.fromJson(json[r'message'])!,
-        httpStatusCode: InvalidDidErrorHttpStatusCodeEnum.fromJson(json[r'httpStatusCode'])!,
+      return InvalidDIDError(
+        name: InvalidDIDErrorNameEnum.fromJson(json[r'name'])!,
+        message: InvalidDIDErrorMessageEnum.fromJson(json[r'message'])!,
+        httpStatusCode: InvalidDIDErrorHttpStatusCodeEnum.fromJson(json[r'httpStatusCode'])!,
         traceId: mapValueOfType<String>(json, r'traceId')!,
         details: ServiceErrorResponseDetailsInner.listFromJson(json[r'details']),
       );
@@ -89,11 +89,11 @@ class InvalidDidError {
     return null;
   }
 
-  static List<InvalidDidError> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <InvalidDidError>[];
+  static List<InvalidDIDError> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InvalidDIDError>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = InvalidDidError.fromJson(row);
+        final value = InvalidDIDError.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -102,12 +102,12 @@ class InvalidDidError {
     return result.toList(growable: growable);
   }
 
-  static Map<String, InvalidDidError> mapFromJson(dynamic json) {
-    final map = <String, InvalidDidError>{};
+  static Map<String, InvalidDIDError> mapFromJson(dynamic json) {
+    final map = <String, InvalidDIDError>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = InvalidDidError.fromJson(entry.value);
+        final value = InvalidDIDError.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,14 +116,14 @@ class InvalidDidError {
     return map;
   }
 
-  // maps a json object with a list of InvalidDidError-objects as value to a dart map
-  static Map<String, List<InvalidDidError>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<InvalidDidError>>{};
+  // maps a json object with a list of InvalidDIDError-objects as value to a dart map
+  static Map<String, List<InvalidDIDError>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<InvalidDIDError>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = InvalidDidError.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = InvalidDIDError.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -139,9 +139,9 @@ class InvalidDidError {
 }
 
 
-class InvalidDidErrorNameEnum {
+class InvalidDIDErrorNameEnum {
   /// Instantiate a new enum with the provided [value].
-  const InvalidDidErrorNameEnum._(this.value);
+  const InvalidDIDErrorNameEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -151,20 +151,20 @@ class InvalidDidErrorNameEnum {
 
   String toJson() => value;
 
-  static const invalidDidError = InvalidDidErrorNameEnum._(r'InvalidDidError');
+  static const invalidDIDError = InvalidDIDErrorNameEnum._(r'InvalidDIDError');
 
-  /// List of all possible values in this [enum][InvalidDidErrorNameEnum].
-  static const values = <InvalidDidErrorNameEnum>[
-    invalidDidError,
+  /// List of all possible values in this [enum][InvalidDIDErrorNameEnum].
+  static const values = <InvalidDIDErrorNameEnum>[
+    invalidDIDError,
   ];
 
-  static InvalidDidErrorNameEnum? fromJson(dynamic value) => InvalidDidErrorNameEnumTypeTransformer().decode(value);
+  static InvalidDIDErrorNameEnum? fromJson(dynamic value) => InvalidDIDErrorNameEnumTypeTransformer().decode(value);
 
-  static List<InvalidDidErrorNameEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <InvalidDidErrorNameEnum>[];
+  static List<InvalidDIDErrorNameEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InvalidDIDErrorNameEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = InvalidDidErrorNameEnum.fromJson(row);
+        final value = InvalidDIDErrorNameEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -174,16 +174,16 @@ class InvalidDidErrorNameEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [InvalidDidErrorNameEnum] to String,
-/// and [decode] dynamic data back to [InvalidDidErrorNameEnum].
-class InvalidDidErrorNameEnumTypeTransformer {
-  factory InvalidDidErrorNameEnumTypeTransformer() => _instance ??= const InvalidDidErrorNameEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [InvalidDIDErrorNameEnum] to String,
+/// and [decode] dynamic data back to [InvalidDIDErrorNameEnum].
+class InvalidDIDErrorNameEnumTypeTransformer {
+  factory InvalidDIDErrorNameEnumTypeTransformer() => _instance ??= const InvalidDIDErrorNameEnumTypeTransformer._();
 
-  const InvalidDidErrorNameEnumTypeTransformer._();
+  const InvalidDIDErrorNameEnumTypeTransformer._();
 
-  String encode(InvalidDidErrorNameEnum data) => data.value;
+  String encode(InvalidDIDErrorNameEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a InvalidDidErrorNameEnum.
+  /// Decodes a [dynamic value][data] to a InvalidDIDErrorNameEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -191,10 +191,10 @@ class InvalidDidErrorNameEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  InvalidDidErrorNameEnum? decode(dynamic data, {bool allowNull = true}) {
+  InvalidDIDErrorNameEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'InvalidDidError': return InvalidDidErrorNameEnum.invalidDidError;
+        case r'InvalidDIDError': return InvalidDIDErrorNameEnum.invalidDIDError;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -204,15 +204,15 @@ class InvalidDidErrorNameEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [InvalidDidErrorNameEnumTypeTransformer] instance.
-  static InvalidDidErrorNameEnumTypeTransformer? _instance;
+  /// Singleton [InvalidDIDErrorNameEnumTypeTransformer] instance.
+  static InvalidDIDErrorNameEnumTypeTransformer? _instance;
 }
 
 
 
-class InvalidDidErrorMessageEnum {
+class InvalidDIDErrorMessageEnum {
   /// Instantiate a new enum with the provided [value].
-  const InvalidDidErrorMessageEnum._(this.value);
+  const InvalidDIDErrorMessageEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -222,20 +222,20 @@ class InvalidDidErrorMessageEnum {
 
   String toJson() => value;
 
-  static const unableToResolveDIDMethodPeriodInvalidPublicKey = InvalidDidErrorMessageEnum._(r'Unable to resolve DID method. Invalid public key');
+  static const unableToResolveDIDMethodPeriodInvalidPublicKey = InvalidDIDErrorMessageEnum._(r'Unable to resolve DID method. Invalid public key');
 
-  /// List of all possible values in this [enum][InvalidDidErrorMessageEnum].
-  static const values = <InvalidDidErrorMessageEnum>[
+  /// List of all possible values in this [enum][InvalidDIDErrorMessageEnum].
+  static const values = <InvalidDIDErrorMessageEnum>[
     unableToResolveDIDMethodPeriodInvalidPublicKey,
   ];
 
-  static InvalidDidErrorMessageEnum? fromJson(dynamic value) => InvalidDidErrorMessageEnumTypeTransformer().decode(value);
+  static InvalidDIDErrorMessageEnum? fromJson(dynamic value) => InvalidDIDErrorMessageEnumTypeTransformer().decode(value);
 
-  static List<InvalidDidErrorMessageEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <InvalidDidErrorMessageEnum>[];
+  static List<InvalidDIDErrorMessageEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InvalidDIDErrorMessageEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = InvalidDidErrorMessageEnum.fromJson(row);
+        final value = InvalidDIDErrorMessageEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -245,16 +245,16 @@ class InvalidDidErrorMessageEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [InvalidDidErrorMessageEnum] to String,
-/// and [decode] dynamic data back to [InvalidDidErrorMessageEnum].
-class InvalidDidErrorMessageEnumTypeTransformer {
-  factory InvalidDidErrorMessageEnumTypeTransformer() => _instance ??= const InvalidDidErrorMessageEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [InvalidDIDErrorMessageEnum] to String,
+/// and [decode] dynamic data back to [InvalidDIDErrorMessageEnum].
+class InvalidDIDErrorMessageEnumTypeTransformer {
+  factory InvalidDIDErrorMessageEnumTypeTransformer() => _instance ??= const InvalidDIDErrorMessageEnumTypeTransformer._();
 
-  const InvalidDidErrorMessageEnumTypeTransformer._();
+  const InvalidDIDErrorMessageEnumTypeTransformer._();
 
-  String encode(InvalidDidErrorMessageEnum data) => data.value;
+  String encode(InvalidDIDErrorMessageEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a InvalidDidErrorMessageEnum.
+  /// Decodes a [dynamic value][data] to a InvalidDIDErrorMessageEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -262,10 +262,10 @@ class InvalidDidErrorMessageEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  InvalidDidErrorMessageEnum? decode(dynamic data, {bool allowNull = true}) {
+  InvalidDIDErrorMessageEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Unable to resolve DID method. Invalid public key': return InvalidDidErrorMessageEnum.unableToResolveDIDMethodPeriodInvalidPublicKey;
+        case r'Unable to resolve DID method. Invalid public key': return InvalidDIDErrorMessageEnum.unableToResolveDIDMethodPeriodInvalidPublicKey;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -275,15 +275,15 @@ class InvalidDidErrorMessageEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [InvalidDidErrorMessageEnumTypeTransformer] instance.
-  static InvalidDidErrorMessageEnumTypeTransformer? _instance;
+  /// Singleton [InvalidDIDErrorMessageEnumTypeTransformer] instance.
+  static InvalidDIDErrorMessageEnumTypeTransformer? _instance;
 }
 
 
 
-class InvalidDidErrorHttpStatusCodeEnum {
+class InvalidDIDErrorHttpStatusCodeEnum {
   /// Instantiate a new enum with the provided [value].
-  const InvalidDidErrorHttpStatusCodeEnum._(this.value);
+  const InvalidDIDErrorHttpStatusCodeEnum._(this.value);
 
   /// The underlying value of this enum member.
   final int value;
@@ -293,20 +293,20 @@ class InvalidDidErrorHttpStatusCodeEnum {
 
   int toJson() => value;
 
-  static const number400 = InvalidDidErrorHttpStatusCodeEnum._(400);
+  static const number400 = InvalidDIDErrorHttpStatusCodeEnum._(400);
 
-  /// List of all possible values in this [enum][InvalidDidErrorHttpStatusCodeEnum].
-  static const values = <InvalidDidErrorHttpStatusCodeEnum>[
+  /// List of all possible values in this [enum][InvalidDIDErrorHttpStatusCodeEnum].
+  static const values = <InvalidDIDErrorHttpStatusCodeEnum>[
     number400,
   ];
 
-  static InvalidDidErrorHttpStatusCodeEnum? fromJson(dynamic value) => InvalidDidErrorHttpStatusCodeEnumTypeTransformer().decode(value);
+  static InvalidDIDErrorHttpStatusCodeEnum? fromJson(dynamic value) => InvalidDIDErrorHttpStatusCodeEnumTypeTransformer().decode(value);
 
-  static List<InvalidDidErrorHttpStatusCodeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <InvalidDidErrorHttpStatusCodeEnum>[];
+  static List<InvalidDIDErrorHttpStatusCodeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <InvalidDIDErrorHttpStatusCodeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = InvalidDidErrorHttpStatusCodeEnum.fromJson(row);
+        final value = InvalidDIDErrorHttpStatusCodeEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -316,16 +316,16 @@ class InvalidDidErrorHttpStatusCodeEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [InvalidDidErrorHttpStatusCodeEnum] to int,
-/// and [decode] dynamic data back to [InvalidDidErrorHttpStatusCodeEnum].
-class InvalidDidErrorHttpStatusCodeEnumTypeTransformer {
-  factory InvalidDidErrorHttpStatusCodeEnumTypeTransformer() => _instance ??= const InvalidDidErrorHttpStatusCodeEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [InvalidDIDErrorHttpStatusCodeEnum] to int,
+/// and [decode] dynamic data back to [InvalidDIDErrorHttpStatusCodeEnum].
+class InvalidDIDErrorHttpStatusCodeEnumTypeTransformer {
+  factory InvalidDIDErrorHttpStatusCodeEnumTypeTransformer() => _instance ??= const InvalidDIDErrorHttpStatusCodeEnumTypeTransformer._();
 
-  const InvalidDidErrorHttpStatusCodeEnumTypeTransformer._();
+  const InvalidDIDErrorHttpStatusCodeEnumTypeTransformer._();
 
-  int encode(InvalidDidErrorHttpStatusCodeEnum data) => data.value;
+  int encode(InvalidDIDErrorHttpStatusCodeEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a InvalidDidErrorHttpStatusCodeEnum.
+  /// Decodes a [dynamic value][data] to a InvalidDIDErrorHttpStatusCodeEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -333,10 +333,10 @@ class InvalidDidErrorHttpStatusCodeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  InvalidDidErrorHttpStatusCodeEnum? decode(dynamic data, {bool allowNull = true}) {
+  InvalidDIDErrorHttpStatusCodeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 400: return InvalidDidErrorHttpStatusCodeEnum.number400;
+        case 400: return InvalidDIDErrorHttpStatusCodeEnum.number400;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -346,8 +346,8 @@ class InvalidDidErrorHttpStatusCodeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [InvalidDidErrorHttpStatusCodeEnumTypeTransformer] instance.
-  static InvalidDidErrorHttpStatusCodeEnumTypeTransformer? _instance;
+  /// Singleton [InvalidDIDErrorHttpStatusCodeEnumTypeTransformer] instance.
+  static InvalidDIDErrorHttpStatusCodeEnumTypeTransformer? _instance;
 }
 
 

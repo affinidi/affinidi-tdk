@@ -204,8 +204,6 @@ class ApiClient {
           return GetWellKnownDidOK.fromJson(value);
         case 'InvalidDIDError':
           return InvalidDIDError.fromJson(value);
-        case 'InvalidDidError':
-          return InvalidDidError.fromJson(value);
         case 'InvalidJwtTokenError':
           return InvalidJwtTokenError.fromJson(value);
         case 'InvalidParameterError':
