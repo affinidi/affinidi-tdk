@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.19.0...@affinidi-tdk/common-v1.20.0) (2024-09-23)
+
+
+### Features
+
+* update client ais ([#263](https://github.com/affinidi/affinidi-tdk/issues/263)) ([74dfb9d](https://github.com/affinidi/affinidi-tdk/commit/74dfb9d1a072a3bf4eb4555ecc2b7b211e6646c9))
+
 # [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.18.1...@affinidi-tdk/common-v1.19.0) (2024-09-20)
 
 
