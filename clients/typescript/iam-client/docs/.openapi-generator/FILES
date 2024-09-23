@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Apis/ConsumerAuthApi.md
 Apis/DefaultApi.md
 Apis/PoliciesApi.md
@@ -15,7 +16,6 @@ Models/CreateProjectScopedTokenInput.md
 Models/CreateProjectScopedTokenOutput.md
 Models/CreateTokenInput.md
 Models/InvalidDIDError.md
-Models/InvalidDidError.md
 Models/InvalidJwtTokenError.md
 Models/InvalidParameterError.md
 Models/JsonWebKeyDto.md
