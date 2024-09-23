@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Apis/AllowListApi.md
 Apis/ConfigurationApi.md
 Apis/DenyListApi.md

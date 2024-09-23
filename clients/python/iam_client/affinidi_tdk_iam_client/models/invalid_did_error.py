@@ -23,9 +23,9 @@ from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist, validator
 from affinidi_tdk_iam_client.models.service_error_response_details_inner import ServiceErrorResponseDetailsInner
 
-class InvalidDidError(BaseModel):
+class InvalidDIDError(BaseModel):
     """
-    InvalidDidError
+    InvalidDIDError
     """
     name: StrictStr = Field(...)
     message: StrictStr = Field(...)
@@ -37,8 +37,8 @@ class InvalidDidError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidDidError'):
-            raise ValueError("must be one of enum values ('InvalidDidError')")
+        if value not in ('InvalidDIDError'):
+            raise ValueError("must be one of enum values ('InvalidDIDError')")
         return value
 
     @validator('message')
@@ -69,8 +69,8 @@ class InvalidDidError(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> InvalidDidError:
-        """Create an instance of InvalidDidError from a JSON string"""
+    def from_json(cls, json_str: str) -> InvalidDIDError:
+        """Create an instance of InvalidDIDError from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -89,15 +89,15 @@ class InvalidDidError(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> InvalidDidError:
-        """Create an instance of InvalidDidError from a dict"""
+    def from_dict(cls, obj: dict) -> InvalidDIDError:
+        """Create an instance of InvalidDIDError from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return InvalidDidError.parse_obj(obj)
+            return InvalidDIDError.parse_obj(obj)
 
-        _obj = InvalidDidError.parse_obj({
+        _obj = InvalidDIDError.parse_obj({
             "name": obj.get("name"),
             "message": obj.get("message"),
             "http_status_code": obj.get("httpStatusCode"),
