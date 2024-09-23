@@ -13,43 +13,61 @@ part of openapi.api;
 class CallbackResponseOK {
   /// Returns a new [CallbackResponseOK] instance.
   CallbackResponseOK({
+    this.redirectUri,
+    this.responseCode,
     required this.message,
-    this.redirectResponse,
   });
 
-  /// A message to vault that flow is updated successfully
-  String message;
-
+  /// URL to which vault will redirect
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  CallbackResponseOKRedirectResponse? redirectResponse;
+  String? redirectUri;
+
+  /// Code which will be used along with transactionId to retrieve data
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? responseCode;
+
+  /// A message to vault that flow is updated successfully
+  String message;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CallbackResponseOK &&
-    other.message == message &&
-    other.redirectResponse == redirectResponse;
+    other.redirectUri == redirectUri &&
+    other.responseCode == responseCode &&
+    other.message == message;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (message.hashCode) +
-    (redirectResponse == null ? 0 : redirectResponse!.hashCode);
+    (redirectUri == null ? 0 : redirectUri!.hashCode) +
+    (responseCode == null ? 0 : responseCode!.hashCode) +
+    (message.hashCode);
 
   @override
-  String toString() => 'CallbackResponseOK[message=$message, redirectResponse=$redirectResponse]';
+  String toString() => 'CallbackResponseOK[redirectUri=$redirectUri, responseCode=$responseCode, message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'message'] = this.message;
-    if (this.redirectResponse != null) {
-      json[r'redirectResponse'] = this.redirectResponse;
+    if (this.redirectUri != null) {
+      json[r'redirect_uri'] = this.redirectUri;
     } else {
-      json[r'redirectResponse'] = null;
+      json[r'redirect_uri'] = null;
     }
+    if (this.responseCode != null) {
+      json[r'response_code'] = this.responseCode;
+    } else {
+      json[r'response_code'] = null;
+    }
+      json[r'message'] = this.message;
     return json;
   }
 
@@ -72,8 +90,9 @@ class CallbackResponseOK {
       }());
 
       return CallbackResponseOK(
+        redirectUri: mapValueOfType<String>(json, r'redirect_uri'),
+        responseCode: mapValueOfType<String>(json, r'response_code'),
         message: mapValueOfType<String>(json, r'message')!,
-        redirectResponse: CallbackResponseOKRedirectResponse.fromJson(json[r'redirectResponse']),
       );
     }
     return null;

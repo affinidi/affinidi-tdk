@@ -116,7 +116,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [AwsExchangeCredentialsProjectTokenOKCredentials](docs/AwsExchangeCredentialsProjectTokenOKCredentials.md)
 - [CallbackInput](docs/CallbackInput.md)
 - [CallbackResponseOK](docs/CallbackResponseOK.md)
-- [CallbackResponseOKRedirectResponse](docs/CallbackResponseOKRedirectResponse.md)
 - [ConsentDto](docs/ConsentDto.md)
 - [CorsAwsExchangeCredentialsOK](docs/CorsAwsExchangeCredentialsOK.md)
 - [CorsAwsExchangeCredentialsProjectTokenOK](docs/CorsAwsExchangeCredentialsProjectTokenOK.md)

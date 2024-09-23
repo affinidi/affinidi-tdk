@@ -11,7 +11,6 @@ doc/AwsExchangeCredentialsProjectTokenOKCredentials.md
 doc/CallbackApi.md
 doc/CallbackInput.md
 doc/CallbackResponseOK.md
-doc/CallbackResponseOKRedirectResponse.md
 doc/ConfigurationsApi.md
 doc/ConsentDto.md
 doc/CorsAwsExchangeCredentialsOK.md
@@ -78,7 +77,6 @@ lib/model/aws_exchange_credentials_project_token_ok.dart
 lib/model/aws_exchange_credentials_project_token_ok_credentials.dart
 lib/model/callback_input.dart
 lib/model/callback_response_ok.dart
-lib/model/callback_response_ok_redirect_response.dart
 lib/model/consent_dto.dart
 lib/model/cors_aws_exchange_credentials_ok.dart
 lib/model/cors_aws_exchange_credentials_project_token_ok.dart
