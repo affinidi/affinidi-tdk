@@ -235,36 +235,23 @@ export interface CallbackInput {
  */
 export interface CallbackResponseOK {
   /**
+   * URL to which vault will redirect
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  redirect_uri?: string
+  /**
+   * Code which will be used along with transactionId to retrieve data
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  response_code?: string
+  /**
    * A message to vault that flow is updated successfully
    * @type {string}
    * @memberof CallbackResponseOK
    */
   message: string
-  /**
-   *
-   * @type {CallbackResponseOKRedirectResponse}
-   * @memberof CallbackResponseOK
-   */
-  redirectResponse?: CallbackResponseOKRedirectResponse
-}
-/**
- *
- * @export
- * @interface CallbackResponseOKRedirectResponse
- */
-export interface CallbackResponseOKRedirectResponse {
-  /**
-   * the configured redirect url where vault will redirect
-   * @type {string}
-   * @memberof CallbackResponseOKRedirectResponse
-   */
-  redirectUri?: string
-  /**
-   * Code which will be used to retrieve data along with transactionId
-   * @type {string}
-   * @memberof CallbackResponseOKRedirectResponse
-   */
-  responseCode?: string
 }
 /**
  *
