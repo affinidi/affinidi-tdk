@@ -250,6 +250,7 @@ export interface CreateIssuanceConfigInput {
 export const CreateIssuanceConfigInputFormatEnum = {
   LdpVc: 'ldp_vc',
   JwtVcJsonLd: 'jwt_vc_json-ld',
+  SdJwtVcJsonLd: 'sd_jwt_vc_json-ld',
 } as const
 
 export type CreateIssuanceConfigInputFormatEnum =
@@ -1156,6 +1157,7 @@ export interface IssuanceConfigDto {
 export const IssuanceConfigDtoFormatEnum = {
   LdpVc: 'ldp_vc',
   JwtVcJsonLd: 'jwt_vc_json-ld',
+  SdJwtVcJsonLd: 'sd_jwt_vc_json-ld',
 } as const
 
 export type IssuanceConfigDtoFormatEnum =
@@ -1245,6 +1247,7 @@ export interface IssuanceConfigMiniDto {
 export const IssuanceConfigMiniDtoFormatEnum = {
   LdpVc: 'ldp_vc',
   JwtVcJsonLd: 'jwt_vc_json-ld',
+  SdJwtVcJsonLd: 'sd_jwt_vc_json-ld',
 } as const
 
 export type IssuanceConfigMiniDtoFormatEnum =
@@ -1792,6 +1795,7 @@ export interface UpdateIssuanceConfigInput {
 export const UpdateIssuanceConfigInputFormatEnum = {
   LdpVc: 'ldp_vc',
   JwtVcJsonLd: 'jwt_vc_json-ld',
+  SdJwtVcJsonLd: 'sd_jwt_vc_json-ld',
 } as const
 
 export type UpdateIssuanceConfigInputFormatEnum =

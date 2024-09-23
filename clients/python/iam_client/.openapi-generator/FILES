@@ -28,7 +28,6 @@ affinidi_tdk_iam_client/models/create_project_scoped_token_output.py
 affinidi_tdk_iam_client/models/create_token_input.py
 affinidi_tdk_iam_client/models/get_well_known_did_ok.py
 affinidi_tdk_iam_client/models/invalid_did_error.py
-affinidi_tdk_iam_client/models/invalid_did_error.py
 affinidi_tdk_iam_client/models/invalid_jwt_token_error.py
 affinidi_tdk_iam_client/models/invalid_parameter_error.py
 affinidi_tdk_iam_client/models/json_web_key_dto.py
@@ -74,7 +73,6 @@ docs/CreateTokenInput.md
 docs/DefaultApi.md
 docs/GetWellKnownDidOK.md
 docs/InvalidDIDError.md
-docs/InvalidDidError.md
 docs/InvalidJwtTokenError.md
 docs/InvalidParameterError.md
 docs/JsonWebKeyDto.md
