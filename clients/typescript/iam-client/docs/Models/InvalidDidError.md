@@ -1,4 +1,4 @@
-# InvalidDidError
+# InvalidDIDError
 
 ## Properties
 
