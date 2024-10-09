@@ -46,6 +46,13 @@
     "ts-node": "10.9.2",
     "typescript": "~5.4.5"
   },
+  "overrides": {
+    "@theunderscorer/nx-semantic-release": {
+      "@semantic-release/npm": {
+        "npm": "9.9.3"
+      }
+    }
+  },
   "workspaces": [
     "libs/*",
     "packages/*",
