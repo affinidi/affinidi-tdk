@@ -466,6 +466,12 @@ export interface CreateIotaConfigurationInput {
    * @memberof CreateIotaConfigurationInput
    */
   redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof CreateIotaConfigurationInput
+   */
+  enableIdvProviders?: boolean
 }
 
 export const CreateIotaConfigurationInputModeEnum = {
@@ -859,6 +865,12 @@ export interface IotaConfigurationDto {
    * @memberof IotaConfigurationDto
    */
   redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof IotaConfigurationDto
+   */
+  enableIdvProviders?: boolean
 }
 
 export const IotaConfigurationDtoModeEnum = {
@@ -1454,6 +1466,12 @@ export interface UpdateConfigurationByIdInput {
    * @memberof UpdateConfigurationByIdInput
    */
   redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  enableIdvProviders?: boolean
 }
 
 export const UpdateConfigurationByIdInputModeEnum = {
