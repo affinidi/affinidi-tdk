@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.28.0...@affinidi-tdk/iam-client-v1.29.0) (2024-09-23)
+
+
+### Features
+
+* update client all ([#275](https://github.com/affinidi/affinidi-tdk/issues/275)) ([1470b17](https://github.com/affinidi/affinidi-tdk/commit/1470b1721486daa45a48a334af54e4070a0b3a1b))
+
 # [1.28.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iam-client-v1.27.0...@affinidi-tdk/iam-client-v1.28.0) (2024-09-23)
 
 

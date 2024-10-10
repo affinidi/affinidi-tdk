@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.18.0...@affinidi-tdk/iota-browser-v1.19.0) (2024-09-23)
+
+
+### Features
+
+* update client all ([#275](https://github.com/affinidi/affinidi-tdk/issues/275)) ([1470b17](https://github.com/affinidi/affinidi-tdk/commit/1470b1721486daa45a48a334af54e4070a0b3a1b))
+
 # [1.18.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.17.0...@affinidi-tdk/iota-browser-v1.18.0) (2024-09-23)
 
 

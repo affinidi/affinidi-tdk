@@ -21,8 +21,9 @@ class UpdateConfigurationByIdInput {
     this.tokenMaxAge,
     this.description,
     this.clientMetadata,
-    this.mode = const UpdateConfigurationByIdInputModeEnum._('websocket'),
+    this.mode,
     this.redirectUris = const [],
+    this.enableIdvProviders,
   });
 
   /// The name of the config
@@ -95,10 +96,19 @@ class UpdateConfigurationByIdInput {
   IotaConfigurationDtoClientMetadata? clientMetadata;
 
   /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
-  UpdateConfigurationByIdInputModeEnum mode;
+  UpdateConfigurationByIdInputModeEnum? mode;
 
   /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
   List<String> redirectUris;
+
+  /// enables third party IDV provider verification for the given configuration
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enableIdvProviders;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateConfigurationByIdInput &&
@@ -111,7 +121,8 @@ class UpdateConfigurationByIdInput {
     other.description == description &&
     other.clientMetadata == clientMetadata &&
     other.mode == mode &&
-    _deepEquality.equals(other.redirectUris, redirectUris);
+    _deepEquality.equals(other.redirectUris, redirectUris) &&
+    other.enableIdvProviders == enableIdvProviders;
 
   @override
   int get hashCode =>
@@ -124,11 +135,12 @@ class UpdateConfigurationByIdInput {
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (clientMetadata == null ? 0 : clientMetadata!.hashCode) +
-    (mode.hashCode) +
-    (redirectUris.hashCode);
+    (mode == null ? 0 : mode!.hashCode) +
+    (redirectUris.hashCode) +
+    (enableIdvProviders == null ? 0 : enableIdvProviders!.hashCode);
 
   @override
-  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, description=$description, clientMetadata=$clientMetadata, mode=$mode, redirectUris=$redirectUris]';
+  String toString() => 'UpdateConfigurationByIdInput[name=$name, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, description=$description, clientMetadata=$clientMetadata, mode=$mode, redirectUris=$redirectUris, enableIdvProviders=$enableIdvProviders]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -172,8 +184,17 @@ class UpdateConfigurationByIdInput {
     } else {
       json[r'clientMetadata'] = null;
     }
+    if (this.mode != null) {
       json[r'mode'] = this.mode;
+    } else {
+      json[r'mode'] = null;
+    }
       json[r'redirectUris'] = this.redirectUris;
+    if (this.enableIdvProviders != null) {
+      json[r'enableIdvProviders'] = this.enableIdvProviders;
+    } else {
+      json[r'enableIdvProviders'] = null;
+    }
     return json;
   }
 
@@ -204,10 +225,11 @@ class UpdateConfigurationByIdInput {
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
         description: mapValueOfType<String>(json, r'description'),
         clientMetadata: IotaConfigurationDtoClientMetadata.fromJson(json[r'clientMetadata']),
-        mode: UpdateConfigurationByIdInputModeEnum.fromJson(json[r'mode']) ?? 'websocket',
+        mode: UpdateConfigurationByIdInputModeEnum.fromJson(json[r'mode']),
         redirectUris: json[r'redirectUris'] is Iterable
             ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        enableIdvProviders: mapValueOfType<bool>(json, r'enableIdvProviders'),
       );
     }
     return null;

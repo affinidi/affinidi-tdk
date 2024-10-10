@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-core",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "Affinidi Iota Framework core library primarily used in the backend",
   "author": "Affinidi",
   "repository": {
@@ -40,8 +40,8 @@
     "publish-pypi": "twine upload --verbose --skip-existing dist/python/*"
   },
   "dependencies": {
-    "@affinidi-tdk/common": "^1.1.1",
-    "@affinidi-tdk/iota-client": "^1.10.0",
+    "@affinidi-tdk/common": "^1.21.0",
+    "@affinidi-tdk/iota-client": "^1.14.0",
     "@aws-sdk/client-cognito-identity": "^3.590.0"
   },
   "devDependencies": {

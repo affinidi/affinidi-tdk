@@ -37,7 +37,8 @@ class CreateIotaConfigurationInput(BaseModel):
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
     mode: Optional[StrictStr] = Field(default='websocket', description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.")
-    __properties = ["name", "description", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata", "mode", "redirectUris"]
+    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="enables third party IDV provider verification for the given configuration")
+    __properties = ["name", "description", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
 
     @validator('mode')
     def mode_validate_enum(cls, value):
@@ -97,7 +98,8 @@ class CreateIotaConfigurationInput(BaseModel):
             "token_max_age": obj.get("tokenMaxAge"),
             "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "mode": obj.get("mode") if obj.get("mode") is not None else 'websocket',
-            "redirect_uris": obj.get("redirectUris")
+            "redirect_uris": obj.get("redirectUris"),
+            "enable_idv_providers": obj.get("enableIdvProviders")
         })
         return _obj
 
