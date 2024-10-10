@@ -24,7 +24,6 @@ import {
   EnvironmentUtils,
   Logger,
 } from '@affinidi-tdk/common/helpers'
-import { once } from 'events'
 
 export interface IotaCredentials {
   readonly credentials: Credentials
@@ -62,6 +61,27 @@ export type IotaChannelRequestCallbackFunction = (
   err: IotaError | null,
   data: IotaChannelRequest | null,
 ) => void
+
+type Mqtt5ClientEvent =
+  | 'info'
+  | 'error'
+  | 'connectionSuccess'
+  | 'connectionFailure'
+  | 'attemptingConnect'
+  | 'disconnection'
+  | 'messageReceived'
+  | 'stopped'
+
+interface Mqtt5ClientEventPayloads {
+  info: string
+  error: Error
+  connectionSuccess: void
+  connectionFailure: { error: Error }
+  stopped: void
+  attemptingConnect: void
+  disconnection: { error: Error }
+  messageReceived: { topicName: string; payload: Uint8Array }
+}
 
 export class ChannelProvider {
   iotEndpoint: string
@@ -152,6 +172,28 @@ export class ChannelProvider {
     return configBuilder
   }
 
+  private async once<K extends Mqtt5ClientEvent>(
+    client: mqtt5.Mqtt5Client,
+    event: K,
+  ): Promise<Mqtt5ClientEventPayloads[K]> {
+    return new Promise((resolve, reject) => {
+      const handler = (payload: Mqtt5ClientEventPayloads[K]) => {
+        client.off(event, handler as any) // Remove listener after event fires
+        resolve(payload) // Resolve with the correct type based on the event
+      }
+
+      client.once('error', (err: Error) => {
+        client.off(event, handler as any)
+        reject(err)
+      })
+
+      // NOTE: there is an interesting "argument type Mqtt5ClientEvent is not assignable to type stopped" TSC error
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore:next-line
+      client.on(event, handler as any)
+    })
+  }
+
   private async startMqttClient(
     iotaConfigBuilder: iot.AwsIotMqtt5ClientConfigBuilder,
   ): Promise<mqtt5.Mqtt5Client> {
@@ -177,8 +219,8 @@ export class ChannelProvider {
       this.addDebugListeners(client)
     }
 
-    const attemptingConnect = once(client, 'attemptingConnect')
-    const connectionSuccess = once(client, 'connectionSuccess')
+    const attemptingConnect = this.once(client, 'attemptingConnect')
+    const connectionSuccess = this.once(client, 'connectionSuccess')
 
     client.start()
 
