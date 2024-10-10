@@ -15,7 +15,6 @@ doc/CreateTokenInput.md
 doc/DefaultApi.md
 doc/GetWellKnownDidOK.md
 doc/InvalidDIDError.md
-doc/InvalidDidError.md
 doc/InvalidJwtTokenError.md
 doc/InvalidParameterError.md
 doc/JsonWebKeyDto.md
@@ -78,7 +77,6 @@ lib/model/create_project_scoped_token_output.dart
 lib/model/create_token_input.dart
 lib/model/get_well_known_did_ok.dart
 lib/model/invalid_did_error.dart
-lib/model/invalid_did_error.dart
 lib/model/invalid_jwt_token_error.dart
 lib/model/invalid_parameter_error.dart
 lib/model/json_web_key_dto.dart
@@ -110,5 +108,3 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
-test/invalid_did_error_test.dart
-test/public_key_cannot_be_resolved_from_did_error_test.dart

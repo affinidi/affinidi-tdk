@@ -13,6 +13,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**awsExchangeCredentials**](IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                        |
 | [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token          |
 | [**deletePexQueries**](IotaApi.md#deletepexqueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
+| [**fetchIotaVpResponse**](IotaApi.md#fetchiotavpresponse)                               | **POST** /v1/fetch-iota-response                             |
+| [**initiateDataSharingRequest**](IotaApi.md#initiatedatasharingrequest)                 | **POST** /v1/initiate-data-sharing-request                   |
 | [**iotaExchangeCredentials**](IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                            |
 | [**savePexQueries**](IotaApi.md#savepexqueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |
 
@@ -150,6 +152,100 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fetchIotaVpResponse**
+
+> FetchIOTAVPResponseOK fetchIotaVpResponse(fetchIOTAVPResponseInput)
+
+This will get the final data response
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iota_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = IotaApi();
+final fetchIOTAVPResponseInput = FetchIOTAVPResponseInput(); // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
+
+try {
+    final result = api_instance.fetchIotaVpResponse(fetchIOTAVPResponseInput);
+    print(result);
+} catch (e) {
+    print('Exception when calling IotaApi->fetchIotaVpResponse: $e\n');
+}
+```
+
+### Parameters
+
+| Name                         | Type                                                        | Description              | Notes |
+| ---------------------------- | ----------------------------------------------------------- | ------------------------ | ----- |
+| **fetchIOTAVPResponseInput** | [**FetchIOTAVPResponseInput**](FetchIOTAVPResponseInput.md) | FetchIOTAVPResponseInput |
+
+### Return type
+
+[**FetchIOTAVPResponseOK**](FetchIOTAVPResponseOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **initiateDataSharingRequest**
+
+> InitiateDataSharingRequestOK initiateDataSharingRequest(initiateDataSharingRequestInput)
+
+This will initiate data sharing request for the data sharing flow
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iota_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = IotaApi();
+final initiateDataSharingRequestInput = InitiateDataSharingRequestInput(); // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
+
+try {
+    final result = api_instance.initiateDataSharingRequest(initiateDataSharingRequestInput);
+    print(result);
+} catch (e) {
+    print('Exception when calling IotaApi->initiateDataSharingRequest: $e\n');
+}
+```
+
+### Parameters
+
+| Name                                | Type                                                                      | Description                     | Notes |
+| ----------------------------------- | ------------------------------------------------------------------------- | ------------------------------- | ----- |
+| **initiateDataSharingRequestInput** | [**InitiateDataSharingRequestInput**](InitiateDataSharingRequestInput.md) | InitiateDataSharingRequestInput |
+
+### Return type
+
+[**InitiateDataSharingRequestOK**](InitiateDataSharingRequestOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

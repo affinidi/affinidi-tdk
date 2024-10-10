@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import List, Optional, Union
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, validator
 from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
 
 class UpdateConfigurationByIdInput(BaseModel):
@@ -35,7 +35,20 @@ class UpdateConfigurationByIdInput(BaseModel):
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="token time to live in seconds")
     description: Optional[StrictStr] = Field(default=None, description="The description of the config")
     client_metadata: Optional[IotaConfigurationDtoClientMetadata] = Field(default=None, alias="clientMetadata")
-    __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "description", "clientMetadata"]
+    mode: Optional[StrictStr] = Field(default=None, description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
+    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.")
+    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="enables third party IDV provider verification for the given configuration")
+    __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "description", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
+
+    @validator('mode')
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('redirect', 'websocket'):
+            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -83,7 +96,10 @@ class UpdateConfigurationByIdInput(BaseModel):
             "enable_consent_audit_log": obj.get("enableConsentAuditLog"),
             "token_max_age": obj.get("tokenMaxAge"),
             "description": obj.get("description"),
-            "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None
+            "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "mode": obj.get("mode"),
+            "redirect_uris": obj.get("redirectUris"),
+            "enable_idv_providers": obj.get("enableIdvProviders")
         })
         return _obj
 

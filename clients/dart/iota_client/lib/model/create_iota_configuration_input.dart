@@ -21,6 +21,9 @@ class CreateIotaConfigurationInput {
     required this.enableConsentAuditLog,
     this.tokenMaxAge,
     required this.clientMetadata,
+    this.mode = const CreateIotaConfigurationInputModeEnum._('websocket'),
+    this.redirectUris = const [],
+    this.enableIdvProviders,
   });
 
   /// The name of the configuration
@@ -64,6 +67,21 @@ class CreateIotaConfigurationInput {
 
   IotaConfigurationDtoClientMetadata clientMetadata;
 
+  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  CreateIotaConfigurationInputModeEnum mode;
+
+  /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+  List<String> redirectUris;
+
+  /// enables third party IDV provider verification for the given configuration
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enableIdvProviders;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateIotaConfigurationInput &&
     other.name == name &&
@@ -73,7 +91,10 @@ class CreateIotaConfigurationInput {
     other.enableVerification == enableVerification &&
     other.enableConsentAuditLog == enableConsentAuditLog &&
     other.tokenMaxAge == tokenMaxAge &&
-    other.clientMetadata == clientMetadata;
+    other.clientMetadata == clientMetadata &&
+    other.mode == mode &&
+    _deepEquality.equals(other.redirectUris, redirectUris) &&
+    other.enableIdvProviders == enableIdvProviders;
 
   @override
   int get hashCode =>
@@ -85,10 +106,13 @@ class CreateIotaConfigurationInput {
     (enableVerification.hashCode) +
     (enableConsentAuditLog.hashCode) +
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
-    (clientMetadata.hashCode);
+    (clientMetadata.hashCode) +
+    (mode.hashCode) +
+    (redirectUris.hashCode) +
+    (enableIdvProviders == null ? 0 : enableIdvProviders!.hashCode);
 
   @override
-  String toString() => 'CreateIotaConfigurationInput[name=$name, description=$description, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata]';
+  String toString() => 'CreateIotaConfigurationInput[name=$name, description=$description, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata, mode=$mode, redirectUris=$redirectUris, enableIdvProviders=$enableIdvProviders]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -112,6 +136,13 @@ class CreateIotaConfigurationInput {
       json[r'tokenMaxAge'] = null;
     }
       json[r'clientMetadata'] = this.clientMetadata;
+      json[r'mode'] = this.mode;
+      json[r'redirectUris'] = this.redirectUris;
+    if (this.enableIdvProviders != null) {
+      json[r'enableIdvProviders'] = this.enableIdvProviders;
+    } else {
+      json[r'enableIdvProviders'] = null;
+    }
     return json;
   }
 
@@ -142,6 +173,11 @@ class CreateIotaConfigurationInput {
         enableConsentAuditLog: mapValueOfType<bool>(json, r'enableConsentAuditLog')!,
         tokenMaxAge: mapValueOfType<int>(json, r'tokenMaxAge'),
         clientMetadata: IotaConfigurationDtoClientMetadata.fromJson(json[r'clientMetadata'])!,
+        mode: CreateIotaConfigurationInputModeEnum.fromJson(json[r'mode']) ?? 'websocket',
+        redirectUris: json[r'redirectUris'] is Iterable
+            ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        enableIdvProviders: mapValueOfType<bool>(json, r'enableIdvProviders'),
       );
     }
     return null;
@@ -196,4 +232,78 @@ class CreateIotaConfigurationInput {
     'clientMetadata',
   };
 }
+
+/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+class CreateIotaConfigurationInputModeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreateIotaConfigurationInputModeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const redirect = CreateIotaConfigurationInputModeEnum._(r'redirect');
+  static const websocket = CreateIotaConfigurationInputModeEnum._(r'websocket');
+
+  /// List of all possible values in this [enum][CreateIotaConfigurationInputModeEnum].
+  static const values = <CreateIotaConfigurationInputModeEnum>[
+    redirect,
+    websocket,
+  ];
+
+  static CreateIotaConfigurationInputModeEnum? fromJson(dynamic value) => CreateIotaConfigurationInputModeEnumTypeTransformer().decode(value);
+
+  static List<CreateIotaConfigurationInputModeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateIotaConfigurationInputModeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreateIotaConfigurationInputModeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreateIotaConfigurationInputModeEnum] to String,
+/// and [decode] dynamic data back to [CreateIotaConfigurationInputModeEnum].
+class CreateIotaConfigurationInputModeEnumTypeTransformer {
+  factory CreateIotaConfigurationInputModeEnumTypeTransformer() => _instance ??= const CreateIotaConfigurationInputModeEnumTypeTransformer._();
+
+  const CreateIotaConfigurationInputModeEnumTypeTransformer._();
+
+  String encode(CreateIotaConfigurationInputModeEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreateIotaConfigurationInputModeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreateIotaConfigurationInputModeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'redirect': return CreateIotaConfigurationInputModeEnum.redirect;
+        case r'websocket': return CreateIotaConfigurationInputModeEnum.websocket;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreateIotaConfigurationInputModeEnumTypeTransformer] instance.
+  static CreateIotaConfigurationInputModeEnumTypeTransformer? _instance;
+}
+
 

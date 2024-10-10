@@ -1,3 +1,52 @@
+# [1.29.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.28.0...@affinidi-tdk/credential-issuance-client-v1.29.0) (2024-09-23)
+
+
+### Features
+
+* update client all ([#275](https://github.com/affinidi/affinidi-tdk/issues/275)) ([1470b17](https://github.com/affinidi/affinidi-tdk/commit/1470b1721486daa45a48a334af54e4070a0b3a1b))
+
+# [1.28.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.27.0...@affinidi-tdk/credential-issuance-client-v1.28.0) (2024-09-23)
+
+
+### Features
+
+* update client ais ([#263](https://github.com/affinidi/affinidi-tdk/issues/263)) ([74dfb9d](https://github.com/affinidi/affinidi-tdk/commit/74dfb9d1a072a3bf4eb4555ecc2b7b211e6646c9))
+
+# [1.27.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.26.1...@affinidi-tdk/credential-issuance-client-v1.27.0) (2024-09-20)
+
+
+### Features
+
+* update client ais ([#257](https://github.com/affinidi/affinidi-tdk/issues/257)) ([ad54841](https://github.com/affinidi/affinidi-tdk/commit/ad54841e7aec0944746c4a10639dac62471ead2c))
+
+## [1.26.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.26.0...@affinidi-tdk/credential-issuance-client-v1.26.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* update package-lock ([#248](https://github.com/affinidi/affinidi-tdk/issues/248)) ([b0a24df](https://github.com/affinidi/affinidi-tdk/commit/b0a24df568584dd84d2efe135eb0de6a81773be0))
+
+# [1.26.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.25.0...@affinidi-tdk/credential-issuance-client-v1.26.0) (2024-09-13)
+
+
+### Features
+
+* update client ais ([#240](https://github.com/affinidi/affinidi-tdk/issues/240)) ([f6461e0](https://github.com/affinidi/affinidi-tdk/commit/f6461e0e194ca40f70adbe2267a820851e04f9a0))
+
+# [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.24.0...@affinidi-tdk/credential-issuance-client-v1.25.0) (2024-09-12)
+
+
+### Features
+
+* add tsconfg.lib.json to client libraries ([b55e4c5](https://github.com/affinidi/affinidi-tdk/commit/b55e4c53426919b06f7a883370877f0c95f6501a))
+
+# [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.23.2...@affinidi-tdk/credential-issuance-client-v1.24.0) (2024-09-10)
+
+
+### Features
+
+* update all clients ([1633d0e](https://github.com/affinidi/affinidi-tdk/commit/1633d0e0fc2ad627fb4dddb5c4b15286a9a5bcbe))
+
 ## [1.23.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.23.1...@affinidi-tdk/credential-issuance-client-v1.23.2) (2024-09-09)
 
 

@@ -231,6 +231,31 @@ export interface CallbackInput {
 /**
  *
  * @export
+ * @interface CallbackResponseOK
+ */
+export interface CallbackResponseOK {
+  /**
+   * URL to which vault will redirect
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  redirect_uri?: string
+  /**
+   * Code which will be used along with transactionId to retrieve data
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  response_code?: string
+  /**
+   * A message to vault that flow is updated successfully
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  message: string
+}
+/**
+ *
+ * @export
  * @interface ConsentDto
  */
 export interface ConsentDto {
@@ -326,6 +351,32 @@ export interface CorsAwsExchangeCredentialsProjectTokenOK {
 /**
  *
  * @export
+ * @interface CorsFetchIotaVpResponseOK
+ */
+export interface CorsFetchIotaVpResponseOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsFetchIotaVpResponseOK
+   */
+  corsFetchIotaVpResponseOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsInitiateDataSharingRequestOK
+ */
+export interface CorsInitiateDataSharingRequestOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsInitiateDataSharingRequestOK
+   */
+  corsInitiateDataSharingRequestOk?: string
+}
+/**
+ *
+ * @export
  * @interface CorsIotOidc4vpcallbackOK
  */
 export interface CorsIotOidc4vpcallbackOK {
@@ -403,7 +454,34 @@ export interface CreateIotaConfigurationInput {
    * @memberof CreateIotaConfigurationInput
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof CreateIotaConfigurationInput
+   */
+  mode?: CreateIotaConfigurationInputModeEnum
+  /**
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
+   * @memberof CreateIotaConfigurationInput
+   */
+  redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof CreateIotaConfigurationInput
+   */
+  enableIdvProviders?: boolean
 }
+
+export const CreateIotaConfigurationInputModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type CreateIotaConfigurationInputModeEnum =
+  (typeof CreateIotaConfigurationInputModeEnum)[keyof typeof CreateIotaConfigurationInputModeEnum]
+
 /**
  *
  * @export
@@ -445,6 +523,64 @@ export interface DeletePexQueriesInput {
 /**
  *
  * @export
+ * @interface FetchIOTAVPResponseInput
+ */
+export interface FetchIOTAVPResponseInput {
+  /**
+   * The correlation ID
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  correlationId: string
+  /**
+   * The transaction ID
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  transactionId: string
+  /**
+   * The response code.
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  responseCode: string
+  /**
+   * The configuration ID
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  configurationId: string
+}
+/**
+ *
+ * @export
+ * @interface FetchIOTAVPResponseOK
+ */
+export interface FetchIOTAVPResponseOK {
+  [key: string]: any
+
+  /**
+   * A correlationId used for the flow
+   * @type {string}
+   * @memberof FetchIOTAVPResponseOK
+   */
+  correlationId?: string
+  /**
+   * A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.
+   * @type {string}
+   * @memberof FetchIOTAVPResponseOK
+   */
+  presentation_submission?: string
+  /**
+   * A string that must be a valid JSON object. Ensure to escape special characters properly..
+   * @type {string}
+   * @memberof FetchIOTAVPResponseOK
+   */
+  vp_token?: string
+}
+/**
+ *
+ * @export
  * @interface GetIotaConfigurationMetaDataOK
  */
 export interface GetIotaConfigurationMetaDataOK {
@@ -466,6 +602,102 @@ export interface GetIotaConfigurationMetaDataOK {
    * @memberof GetIotaConfigurationMetaDataOK
    */
   logo: string
+}
+/**
+ *
+ * @export
+ * @interface InitiateDataSharingRequestInput
+ */
+export interface InitiateDataSharingRequestInput {
+  /**
+   *
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  queryId: string
+  /**
+   *
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  correlationId: string
+  /**
+   * token time to live in seconds
+   * @type {number}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  tokenMaxAge?: number
+  /**
+   * Random value used to prevent replay attacks
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  nonce: string
+  /**
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  redirectUri: string
+  /**
+   * id of the IOTA configuration used
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  configurationId: string
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  mode: InitiateDataSharingRequestInputModeEnum
+}
+
+export const InitiateDataSharingRequestInputModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type InitiateDataSharingRequestInputModeEnum =
+  (typeof InitiateDataSharingRequestInputModeEnum)[keyof typeof InitiateDataSharingRequestInputModeEnum]
+
+/**
+ *
+ * @export
+ * @interface InitiateDataSharingRequestOK
+ */
+export interface InitiateDataSharingRequestOK {
+  /**
+   *
+   * @type {InitiateDataSharingRequestOKData}
+   * @memberof InitiateDataSharingRequestOK
+   */
+  data?: InitiateDataSharingRequestOKData
+}
+/**
+ *
+ * @export
+ * @interface InitiateDataSharingRequestOKData
+ */
+export interface InitiateDataSharingRequestOKData {
+  /**
+   *
+   * @type {string}
+   * @memberof InitiateDataSharingRequestOKData
+   */
+  jwt: string
+  /**
+   *
+   * @type {string}
+   * @memberof InitiateDataSharingRequestOKData
+   */
+  correlationId: string
+  /**
+   *
+   * @type {string}
+   * @memberof InitiateDataSharingRequestOKData
+   */
+  transactionId: string
 }
 /**
  *
@@ -621,7 +853,34 @@ export interface IotaConfigurationDto {
    * @memberof IotaConfigurationDto
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof IotaConfigurationDto
+   */
+  mode?: IotaConfigurationDtoModeEnum
+  /**
+   * the URLs that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
+   * @memberof IotaConfigurationDto
+   */
+  redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof IotaConfigurationDto
+   */
+  enableIdvProviders?: boolean
 }
+
+export const IotaConfigurationDtoModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type IotaConfigurationDtoModeEnum =
+  (typeof IotaConfigurationDtoModeEnum)[keyof typeof IotaConfigurationDtoModeEnum]
+
 /**
  * iota configuration client metadata
  * @export
@@ -1195,7 +1454,34 @@ export interface UpdateConfigurationByIdInput {
    * @memberof UpdateConfigurationByIdInput
    */
   clientMetadata?: IotaConfigurationDtoClientMetadata
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  mode?: UpdateConfigurationByIdInputModeEnum
+  /**
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  enableIdvProviders?: boolean
 }
+
+export const UpdateConfigurationByIdInputModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type UpdateConfigurationByIdInputModeEnum =
+  (typeof UpdateConfigurationByIdInputModeEnum)[keyof typeof UpdateConfigurationByIdInputModeEnum]
+
 /**
  *
  * @export
@@ -1364,7 +1650,10 @@ export const CallbackApiFp = function (configuration?: Configuration) {
       callbackInput: CallbackInput,
       options?: RawAxiosRequestConfig,
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<CallbackResponseOK>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.iotOIDC4VPCallback(
@@ -1408,7 +1697,7 @@ export const CallbackApiFactory = function (
     iotOIDC4VPCallback(
       callbackInput: CallbackInput,
       options?: RawAxiosRequestConfig,
-    ): AxiosPromise<object> {
+    ): AxiosPromise<CallbackResponseOK> {
       return localVarFp
         .iotOIDC4VPCallback(callbackInput, options)
         .then((request) => request(axios, basePath))
@@ -2599,6 +2888,126 @@ export const IotaApiAxiosParamCreator = function (
       }
     },
     /**
+     * This will get the final data response
+     * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchIotaVpResponse: async (
+      fetchIOTAVPResponseInput: FetchIOTAVPResponseInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'fetchIOTAVPResponseInput' is not null or undefined
+      assertParamExists(
+        'fetchIotaVpResponse',
+        'fetchIOTAVPResponseInput',
+        fetchIOTAVPResponseInput,
+      )
+      const localVarPath = `/v1/fetch-iota-response`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        fetchIOTAVPResponseInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * This will initiate data sharing request for the data sharing flow
+     * @param {InitiateDataSharingRequestInput} initiateDataSharingRequestInput InitiateDataSharingRequestInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    initiateDataSharingRequest: async (
+      initiateDataSharingRequestInput: InitiateDataSharingRequestInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'initiateDataSharingRequestInput' is not null or undefined
+      assertParamExists(
+        'initiateDataSharingRequest',
+        'initiateDataSharingRequestInput',
+        initiateDataSharingRequestInput,
+      )
+      const localVarPath = `/v1/initiate-data-sharing-request`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        initiateDataSharingRequestInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * It exchanges limited token into cognito sts identity credentials
      * @param {IotaExchangeCredentials} iotaExchangeCredentials IotaAwsExchangeCredentials
      * @param {*} [options] Override http request option.
@@ -2827,6 +3236,72 @@ export const IotaApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * This will get the final data response
+     * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async fetchIotaVpResponse(
+      fetchIOTAVPResponseInput: FetchIOTAVPResponseInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<FetchIOTAVPResponseOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.fetchIotaVpResponse(
+          fetchIOTAVPResponseInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['IotaApi.fetchIotaVpResponse']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * This will initiate data sharing request for the data sharing flow
+     * @param {InitiateDataSharingRequestInput} initiateDataSharingRequestInput InitiateDataSharingRequestInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async initiateDataSharingRequest(
+      initiateDataSharingRequestInput: InitiateDataSharingRequestInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<InitiateDataSharingRequestOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.initiateDataSharingRequest(
+          initiateDataSharingRequestInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['IotaApi.initiateDataSharingRequest']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * It exchanges limited token into cognito sts identity credentials
      * @param {IotaExchangeCredentials} iotaExchangeCredentials IotaAwsExchangeCredentials
      * @param {*} [options] Override http request option.
@@ -2952,6 +3427,34 @@ export const IotaApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * This will get the final data response
+     * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    fetchIotaVpResponse(
+      fetchIOTAVPResponseInput: FetchIOTAVPResponseInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<FetchIOTAVPResponseOK> {
+      return localVarFp
+        .fetchIotaVpResponse(fetchIOTAVPResponseInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * This will initiate data sharing request for the data sharing flow
+     * @param {InitiateDataSharingRequestInput} initiateDataSharingRequestInput InitiateDataSharingRequestInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    initiateDataSharingRequest(
+      initiateDataSharingRequestInput: InitiateDataSharingRequestInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<InitiateDataSharingRequestOK> {
+      return localVarFp
+        .initiateDataSharingRequest(initiateDataSharingRequestInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * It exchanges limited token into cognito sts identity credentials
      * @param {IotaExchangeCredentials} iotaExchangeCredentials IotaAwsExchangeCredentials
      * @param {*} [options] Override http request option.
@@ -3040,6 +3543,38 @@ export class IotaApi extends BaseAPI {
   ) {
     return IotaApiFp(this.configuration)
       .deletePexQueries(configurationId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * This will get the final data response
+   * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IotaApi
+   */
+  public fetchIotaVpResponse(
+    fetchIOTAVPResponseInput: FetchIOTAVPResponseInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return IotaApiFp(this.configuration)
+      .fetchIotaVpResponse(fetchIOTAVPResponseInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * This will initiate data sharing request for the data sharing flow
+   * @param {InitiateDataSharingRequestInput} initiateDataSharingRequestInput InitiateDataSharingRequestInput
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof IotaApi
+   */
+  public initiateDataSharingRequest(
+    initiateDataSharingRequestInput: InitiateDataSharingRequestInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return IotaApiFp(this.configuration)
+      .initiateDataSharingRequest(initiateDataSharingRequestInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

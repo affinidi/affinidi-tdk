@@ -51,7 +51,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenOutput](./Models/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](./Models/CreateTokenInput.md)
 - [InvalidDIDError](./Models/InvalidDIDError.md)
-- [InvalidDidError](./Models/InvalidDidError.md)
 - [InvalidJwtTokenError](./Models/InvalidJwtTokenError.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)
 - [JsonWebKeyDto](./Models/JsonWebKeyDto.md)
