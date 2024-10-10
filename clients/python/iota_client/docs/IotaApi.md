@@ -244,7 +244,7 @@ This will get the final data response
 
 ### Example
 
-- Bearer (JWT) Authentication (bearerAuth):
+- Api Key Authentication (ProjectTokenAuth):
 
 ```python
 import time
@@ -266,10 +266,11 @@ configuration = affinidi_tdk_iota_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = affinidi_tdk_iota_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
@@ -297,7 +298,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 
@@ -322,7 +323,7 @@ This will initiate data sharing request for the data sharing flow
 
 ### Example
 
-- Bearer (JWT) Authentication (bearerAuth):
+- Api Key Authentication (ProjectTokenAuth):
 
 ```python
 import time
@@ -344,10 +345,11 @@ configuration = affinidi_tdk_iota_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = affinidi_tdk_iota_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
@@ -375,7 +377,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

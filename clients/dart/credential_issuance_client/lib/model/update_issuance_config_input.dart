@@ -232,11 +232,13 @@ class UpdateIssuanceConfigInputFormatEnum {
 
   static const ldpVc = UpdateIssuanceConfigInputFormatEnum._(r'ldp_vc');
   static const jwtVcJsonLd = UpdateIssuanceConfigInputFormatEnum._(r'jwt_vc_json-ld');
+  static const sdJwtVcJsonLd = UpdateIssuanceConfigInputFormatEnum._(r'sd_jwt_vc_json-ld');
 
   /// List of all possible values in this [enum][UpdateIssuanceConfigInputFormatEnum].
   static const values = <UpdateIssuanceConfigInputFormatEnum>[
     ldpVc,
     jwtVcJsonLd,
+    sdJwtVcJsonLd,
   ];
 
   static UpdateIssuanceConfigInputFormatEnum? fromJson(dynamic value) => UpdateIssuanceConfigInputFormatEnumTypeTransformer().decode(value);
@@ -277,6 +279,7 @@ class UpdateIssuanceConfigInputFormatEnumTypeTransformer {
       switch (data) {
         case r'ldp_vc': return UpdateIssuanceConfigInputFormatEnum.ldpVc;
         case r'jwt_vc_json-ld': return UpdateIssuanceConfigInputFormatEnum.jwtVcJsonLd;
+        case r'sd_jwt_vc_json-ld': return UpdateIssuanceConfigInputFormatEnum.sdJwtVcJsonLd;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

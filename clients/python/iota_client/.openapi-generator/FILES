@@ -23,7 +23,6 @@ affinidi_tdk_iota_client/models/aws_exchange_credentials_project_token_ok.py
 affinidi_tdk_iota_client/models/aws_exchange_credentials_project_token_ok_credentials.py
 affinidi_tdk_iota_client/models/callback_input.py
 affinidi_tdk_iota_client/models/callback_response_ok.py
-affinidi_tdk_iota_client/models/callback_response_ok_redirect_response.py
 affinidi_tdk_iota_client/models/consent_dto.py
 affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_ok.py
 affinidi_tdk_iota_client/models/cors_aws_exchange_credentials_project_token_ok.py
@@ -75,7 +74,6 @@ docs/AwsExchangeCredentialsProjectTokenOKCredentials.md
 docs/CallbackApi.md
 docs/CallbackInput.md
 docs/CallbackResponseOK.md
-docs/CallbackResponseOKRedirectResponse.md
 docs/ConfigurationsApi.md
 docs/ConsentDto.md
 docs/CorsAwsExchangeCredentialsOK.md
@@ -127,13 +125,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_callback_response_ok.py
-test/test_callback_response_ok_redirect_response.py
-test/test_cors_fetch_iota_vp_response_ok.py
-test/test_cors_initiate_data_sharing_request_ok.py
-test/test_fetch_iotavp_response_input.py
-test/test_fetch_iotavp_response_ok.py
-test/test_initiate_data_sharing_request_input.py
-test/test_initiate_data_sharing_request_ok.py
-test/test_initiate_data_sharing_request_ok_data.py
 tox.ini

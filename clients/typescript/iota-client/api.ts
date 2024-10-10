@@ -235,36 +235,23 @@ export interface CallbackInput {
  */
 export interface CallbackResponseOK {
   /**
+   * URL to which vault will redirect
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  redirect_uri?: string
+  /**
+   * Code which will be used along with transactionId to retrieve data
+   * @type {string}
+   * @memberof CallbackResponseOK
+   */
+  response_code?: string
+  /**
    * A message to vault that flow is updated successfully
    * @type {string}
    * @memberof CallbackResponseOK
    */
   message: string
-  /**
-   *
-   * @type {CallbackResponseOKRedirectResponse}
-   * @memberof CallbackResponseOK
-   */
-  redirectResponse?: CallbackResponseOKRedirectResponse
-}
-/**
- *
- * @export
- * @interface CallbackResponseOKRedirectResponse
- */
-export interface CallbackResponseOKRedirectResponse {
-  /**
-   * the configured redirect url where vault will redirect
-   * @type {string}
-   * @memberof CallbackResponseOKRedirectResponse
-   */
-  redirectUri?: string
-  /**
-   * Code which will be used to retrieve data along with transactionId
-   * @type {string}
-   * @memberof CallbackResponseOKRedirectResponse
-   */
-  responseCode?: string
 }
 /**
  *
@@ -479,6 +466,12 @@ export interface CreateIotaConfigurationInput {
    * @memberof CreateIotaConfigurationInput
    */
   redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof CreateIotaConfigurationInput
+   */
+  enableIdvProviders?: boolean
 }
 
 export const CreateIotaConfigurationInputModeEnum = {
@@ -551,6 +544,12 @@ export interface FetchIOTAVPResponseInput {
    * @memberof FetchIOTAVPResponseInput
    */
   responseCode: string
+  /**
+   * The configuration ID
+   * @type {string}
+   * @memberof FetchIOTAVPResponseInput
+   */
+  configurationId: string
 }
 /**
  *
@@ -640,7 +639,28 @@ export interface InitiateDataSharingRequestInput {
    * @memberof InitiateDataSharingRequestInput
    */
   redirectUri: string
+  /**
+   * id of the IOTA configuration used
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  configurationId: string
+  /**
+   * indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  mode: InitiateDataSharingRequestInputModeEnum
 }
+
+export const InitiateDataSharingRequestInputModeEnum = {
+  Redirect: 'redirect',
+  Websocket: 'websocket',
+} as const
+
+export type InitiateDataSharingRequestInputModeEnum =
+  (typeof InitiateDataSharingRequestInputModeEnum)[keyof typeof InitiateDataSharingRequestInputModeEnum]
+
 /**
  *
  * @export
@@ -845,6 +865,12 @@ export interface IotaConfigurationDto {
    * @memberof IotaConfigurationDto
    */
   redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof IotaConfigurationDto
+   */
+  enableIdvProviders?: boolean
 }
 
 export const IotaConfigurationDtoModeEnum = {
@@ -1435,11 +1461,17 @@ export interface UpdateConfigurationByIdInput {
    */
   mode?: UpdateConfigurationByIdInputModeEnum
   /**
-   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application. Required only if mode is Redirect.
-   * @type {string}
+   * the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+   * @type {Array<string>}
    * @memberof UpdateConfigurationByIdInput
    */
-  redirectUri?: string
+  redirectUris?: Array<string>
+  /**
+   * enables third party IDV provider verification for the given configuration
+   * @type {boolean}
+   * @memberof UpdateConfigurationByIdInput
+   */
+  enableIdvProviders?: boolean
 }
 
 export const UpdateConfigurationByIdInputModeEnum = {
@@ -2887,9 +2919,12 @@ export const IotaApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
-      // authentication bearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 
@@ -2944,9 +2979,12 @@ export const IotaApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
-      // authentication bearerAuth required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 

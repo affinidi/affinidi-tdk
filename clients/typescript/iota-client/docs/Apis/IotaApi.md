@@ -115,7 +115,7 @@ null (empty response body)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ null (empty response body)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

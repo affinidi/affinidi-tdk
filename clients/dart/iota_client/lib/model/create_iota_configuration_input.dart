@@ -23,6 +23,7 @@ class CreateIotaConfigurationInput {
     required this.clientMetadata,
     this.mode = const CreateIotaConfigurationInputModeEnum._('websocket'),
     this.redirectUris = const [],
+    this.enableIdvProviders,
   });
 
   /// The name of the configuration
@@ -72,6 +73,15 @@ class CreateIotaConfigurationInput {
   /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
   List<String> redirectUris;
 
+  /// enables third party IDV provider verification for the given configuration
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enableIdvProviders;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateIotaConfigurationInput &&
     other.name == name &&
@@ -83,7 +93,8 @@ class CreateIotaConfigurationInput {
     other.tokenMaxAge == tokenMaxAge &&
     other.clientMetadata == clientMetadata &&
     other.mode == mode &&
-    _deepEquality.equals(other.redirectUris, redirectUris);
+    _deepEquality.equals(other.redirectUris, redirectUris) &&
+    other.enableIdvProviders == enableIdvProviders;
 
   @override
   int get hashCode =>
@@ -97,10 +108,11 @@ class CreateIotaConfigurationInput {
     (tokenMaxAge == null ? 0 : tokenMaxAge!.hashCode) +
     (clientMetadata.hashCode) +
     (mode.hashCode) +
-    (redirectUris.hashCode);
+    (redirectUris.hashCode) +
+    (enableIdvProviders == null ? 0 : enableIdvProviders!.hashCode);
 
   @override
-  String toString() => 'CreateIotaConfigurationInput[name=$name, description=$description, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata, mode=$mode, redirectUris=$redirectUris]';
+  String toString() => 'CreateIotaConfigurationInput[name=$name, description=$description, walletAri=$walletAri, iotaResponseWebhookURL=$iotaResponseWebhookURL, enableVerification=$enableVerification, enableConsentAuditLog=$enableConsentAuditLog, tokenMaxAge=$tokenMaxAge, clientMetadata=$clientMetadata, mode=$mode, redirectUris=$redirectUris, enableIdvProviders=$enableIdvProviders]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -126,6 +138,11 @@ class CreateIotaConfigurationInput {
       json[r'clientMetadata'] = this.clientMetadata;
       json[r'mode'] = this.mode;
       json[r'redirectUris'] = this.redirectUris;
+    if (this.enableIdvProviders != null) {
+      json[r'enableIdvProviders'] = this.enableIdvProviders;
+    } else {
+      json[r'enableIdvProviders'] = null;
+    }
     return json;
   }
 
@@ -160,6 +177,7 @@ class CreateIotaConfigurationInput {
         redirectUris: json[r'redirectUris'] is Iterable
             ? (json[r'redirectUris'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        enableIdvProviders: mapValueOfType<bool>(json, r'enableIdvProviders'),
       );
     }
     return null;

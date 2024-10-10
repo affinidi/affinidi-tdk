@@ -21,15 +21,15 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from affinidi_tdk_iota_client.models.callback_response_ok_redirect_response import CallbackResponseOKRedirectResponse
 
 class CallbackResponseOK(BaseModel):
     """
     CallbackResponseOK
     """
+    redirect_uri: Optional[StrictStr] = Field(default=None, description="URL to which vault will redirect")
+    response_code: Optional[StrictStr] = Field(default=None, description="Code which will be used along with transactionId to retrieve data")
     message: StrictStr = Field(default=..., description="A message to vault that flow is updated successfully")
-    redirect_response: Optional[CallbackResponseOKRedirectResponse] = Field(default=None, alias="redirectResponse")
-    __properties = ["message", "redirectResponse"]
+    __properties = ["redirect_uri", "response_code", "message"]
 
     class Config:
         """Pydantic configuration"""
@@ -55,9 +55,6 @@ class CallbackResponseOK(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of redirect_response
-        if self.redirect_response:
-            _dict['redirectResponse'] = self.redirect_response.to_dict()
         return _dict
 
     @classmethod
@@ -70,8 +67,9 @@ class CallbackResponseOK(BaseModel):
             return CallbackResponseOK.parse_obj(obj)
 
         _obj = CallbackResponseOK.parse_obj({
-            "message": obj.get("message"),
-            "redirect_response": CallbackResponseOKRedirectResponse.from_dict(obj.get("redirectResponse")) if obj.get("redirectResponse") is not None else None
+            "redirect_uri": obj.get("redirect_uri"),
+            "response_code": obj.get("response_code"),
+            "message": obj.get("message")
         })
         return _obj
 

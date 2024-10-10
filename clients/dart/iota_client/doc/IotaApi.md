@@ -166,12 +166,10 @@ This will get the final data response
 
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = IotaApi();
 final fetchIOTAVPResponseInput = FetchIOTAVPResponseInput(); // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
@@ -196,7 +194,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 
@@ -215,12 +213,10 @@ This will initiate data sharing request for the data sharing flow
 
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = IotaApi();
 final initiateDataSharingRequestInput = InitiateDataSharingRequestInput(); // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
@@ -245,7 +241,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

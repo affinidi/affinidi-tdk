@@ -11,7 +11,6 @@ doc/AwsExchangeCredentialsProjectTokenOKCredentials.md
 doc/CallbackApi.md
 doc/CallbackInput.md
 doc/CallbackResponseOK.md
-doc/CallbackResponseOKRedirectResponse.md
 doc/ConfigurationsApi.md
 doc/ConsentDto.md
 doc/CorsAwsExchangeCredentialsOK.md
@@ -78,7 +77,6 @@ lib/model/aws_exchange_credentials_project_token_ok.dart
 lib/model/aws_exchange_credentials_project_token_ok_credentials.dart
 lib/model/callback_input.dart
 lib/model/callback_response_ok.dart
-lib/model/callback_response_ok_redirect_response.dart
 lib/model/consent_dto.dart
 lib/model/cors_aws_exchange_credentials_ok.dart
 lib/model/cors_aws_exchange_credentials_project_token_ok.dart
@@ -120,12 +118,3 @@ lib/model/update_configuration_by_id_ok.dart
 lib/model/update_pex_query_input.dart
 lib/model/vp_token_validation_error.dart
 pubspec.yaml
-test/callback_response_ok_redirect_response_test.dart
-test/callback_response_ok_test.dart
-test/cors_fetch_iota_vp_response_ok_test.dart
-test/cors_initiate_data_sharing_request_ok_test.dart
-test/fetch_iotavp_response_input_test.dart
-test/fetch_iotavp_response_ok_test.dart
-test/initiate_data_sharing_request_input_test.dart
-test/initiate_data_sharing_request_ok_data_test.dart
-test/initiate_data_sharing_request_ok_test.dart

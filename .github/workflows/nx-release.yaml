@@ -106,7 +106,7 @@ jobs:
 
       - name: build
         run: |
-          npx nx run-many -t build
+          npx nx run-many -t build --parallel=false
       - name: package
         run: |
           npx nx run-many -t package

@@ -177,11 +177,13 @@ class SignCredentialInputDtoCredentialFormatEnum {
 
   static const ldpVc = SignCredentialInputDtoCredentialFormatEnum._(r'ldp_vc');
   static const jwtVcJsonLd = SignCredentialInputDtoCredentialFormatEnum._(r'jwt_vc_json-ld');
+  static const sdJwtVcJsonLd = SignCredentialInputDtoCredentialFormatEnum._(r'sd_jwt_vc_json-ld');
 
   /// List of all possible values in this [enum][SignCredentialInputDtoCredentialFormatEnum].
   static const values = <SignCredentialInputDtoCredentialFormatEnum>[
     ldpVc,
     jwtVcJsonLd,
+    sdJwtVcJsonLd,
   ];
 
   static SignCredentialInputDtoCredentialFormatEnum? fromJson(dynamic value) => SignCredentialInputDtoCredentialFormatEnumTypeTransformer().decode(value);
@@ -222,6 +224,7 @@ class SignCredentialInputDtoCredentialFormatEnumTypeTransformer {
       switch (data) {
         case r'ldp_vc': return SignCredentialInputDtoCredentialFormatEnum.ldpVc;
         case r'jwt_vc_json-ld': return SignCredentialInputDtoCredentialFormatEnum.jwtVcJsonLd;
+        case r'sd_jwt_vc_json-ld': return SignCredentialInputDtoCredentialFormatEnum.sdJwtVcJsonLd;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

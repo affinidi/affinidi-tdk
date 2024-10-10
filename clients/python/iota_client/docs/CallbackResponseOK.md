@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name                  | Type                                                                            | Description                                          | Notes      |
-| --------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------- | ---------- |
-| **message**           | **str**                                                                         | A message to vault that flow is updated successfully |
-| **redirect_response** | [**CallbackResponseOKRedirectResponse**](CallbackResponseOKRedirectResponse.md) |                                                      | [optional] |
+| Name              | Type    | Description                                                       | Notes      |
+| ----------------- | ------- | ----------------------------------------------------------------- | ---------- |
+| **redirect_uri**  | **str** | URL to which vault will redirect                                  | [optional] |
+| **response_code** | **str** | Code which will be used along with transactionId to retrieve data | [optional] |
+| **message**       | **str** | A message to vault that flow is updated successfully              |
 
 ## Example
 

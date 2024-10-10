@@ -198,8 +198,6 @@ class ApiClient {
           return CallbackInput.fromJson(value);
         case 'CallbackResponseOK':
           return CallbackResponseOK.fromJson(value);
-        case 'CallbackResponseOKRedirectResponse':
-          return CallbackResponseOKRedirectResponse.fromJson(value);
         case 'ConsentDto':
           return ConsentDto.fromJson(value);
         case 'CorsAwsExchangeCredentialsOK':

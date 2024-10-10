@@ -16,6 +16,7 @@ class FetchIOTAVPResponseInput {
     required this.correlationId,
     required this.transactionId,
     required this.responseCode,
+    required this.configurationId,
   });
 
   /// The correlation ID
@@ -27,27 +28,33 @@ class FetchIOTAVPResponseInput {
   /// The response code.
   String responseCode;
 
+  /// The configuration ID
+  String configurationId;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FetchIOTAVPResponseInput &&
     other.correlationId == correlationId &&
     other.transactionId == transactionId &&
-    other.responseCode == responseCode;
+    other.responseCode == responseCode &&
+    other.configurationId == configurationId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (correlationId.hashCode) +
     (transactionId.hashCode) +
-    (responseCode.hashCode);
+    (responseCode.hashCode) +
+    (configurationId.hashCode);
 
   @override
-  String toString() => 'FetchIOTAVPResponseInput[correlationId=$correlationId, transactionId=$transactionId, responseCode=$responseCode]';
+  String toString() => 'FetchIOTAVPResponseInput[correlationId=$correlationId, transactionId=$transactionId, responseCode=$responseCode, configurationId=$configurationId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'correlationId'] = this.correlationId;
       json[r'transactionId'] = this.transactionId;
       json[r'responseCode'] = this.responseCode;
+      json[r'configurationId'] = this.configurationId;
     return json;
   }
 
@@ -73,6 +80,7 @@ class FetchIOTAVPResponseInput {
         correlationId: mapValueOfType<String>(json, r'correlationId')!,
         transactionId: mapValueOfType<String>(json, r'transactionId')!,
         responseCode: mapValueOfType<String>(json, r'responseCode')!,
+        configurationId: mapValueOfType<String>(json, r'configurationId')!,
       );
     }
     return null;
@@ -123,6 +131,7 @@ class FetchIOTAVPResponseInput {
     'correlationId',
     'transactionId',
     'responseCode',
+    'configurationId',
   };
 }
 

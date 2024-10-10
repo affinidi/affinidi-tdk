@@ -1,3 +1,31 @@
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.19.0...@affinidi-tdk/iota-core-v1.20.0) (2024-09-23)
+
+
+### Features
+
+* update client all ([#275](https://github.com/affinidi/affinidi-tdk/issues/275)) ([1470b17](https://github.com/affinidi/affinidi-tdk/commit/1470b1721486daa45a48a334af54e4070a0b3a1b))
+
+# [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.18.0...@affinidi-tdk/iota-core-v1.19.0) (2024-09-23)
+
+
+### Features
+
+* update client ais ([#263](https://github.com/affinidi/affinidi-tdk/issues/263)) ([74dfb9d](https://github.com/affinidi/affinidi-tdk/commit/74dfb9d1a072a3bf4eb4555ecc2b7b211e6646c9))
+
+# [1.18.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.17.1...@affinidi-tdk/iota-core-v1.18.0) (2024-09-20)
+
+
+### Features
+
+* update client ais ([#257](https://github.com/affinidi/affinidi-tdk/issues/257)) ([ad54841](https://github.com/affinidi/affinidi-tdk/commit/ad54841e7aec0944746c4a10639dac62471ead2c))
+
+## [1.17.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.17.0...@affinidi-tdk/iota-core-v1.17.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* update package-lock ([#248](https://github.com/affinidi/affinidi-tdk/issues/248)) ([b0a24df](https://github.com/affinidi/affinidi-tdk/commit/b0a24df568584dd84d2efe135eb0de6a81773be0))
+
 # [1.17.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.16.0...@affinidi-tdk/iota-core-v1.17.0) (2024-09-13)
 
 

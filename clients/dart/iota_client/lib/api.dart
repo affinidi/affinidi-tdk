@@ -42,7 +42,6 @@ part 'model/aws_exchange_credentials_project_token_ok.dart';
 part 'model/aws_exchange_credentials_project_token_ok_credentials.dart';
 part 'model/callback_input.dart';
 part 'model/callback_response_ok.dart';
-part 'model/callback_response_ok_redirect_response.dart';
 part 'model/consent_dto.dart';
 part 'model/cors_aws_exchange_credentials_ok.dart';
 part 'model/cors_aws_exchange_credentials_project_token_ok.dart';

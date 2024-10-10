@@ -20,7 +20,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, constr
 
 class FetchIOTAVPResponseInput(BaseModel):
     """
@@ -28,8 +28,9 @@ class FetchIOTAVPResponseInput(BaseModel):
     """
     correlation_id: StrictStr = Field(default=..., alias="correlationId", description="The correlation ID")
     transaction_id: StrictStr = Field(default=..., alias="transactionId", description="The transaction ID")
-    response_code: StrictStr = Field(default=..., alias="responseCode", description="The response code.")
-    __properties = ["correlationId", "transactionId", "responseCode"]
+    response_code: constr(strict=True, max_length=255, min_length=1) = Field(default=..., alias="responseCode", description="The response code.")
+    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="The configuration ID")
+    __properties = ["correlationId", "transactionId", "responseCode", "configurationId"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,7 +70,8 @@ class FetchIOTAVPResponseInput(BaseModel):
         _obj = FetchIOTAVPResponseInput.parse_obj({
             "correlation_id": obj.get("correlationId"),
             "transaction_id": obj.get("transactionId"),
-            "response_code": obj.get("responseCode")
+            "response_code": obj.get("responseCode"),
+            "configuration_id": obj.get("configurationId")
         })
         return _obj
 
