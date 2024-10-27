@@ -227,6 +227,12 @@ export interface CallbackInput {
    * @memberof CallbackInput
    */
   error_description?: string
+  /**
+   * Specifies whether the Iota share triggered the creation of a Vault
+   * @type {boolean}
+   * @memberof CallbackInput
+   */
+  onboarded?: boolean
 }
 /**
  *
