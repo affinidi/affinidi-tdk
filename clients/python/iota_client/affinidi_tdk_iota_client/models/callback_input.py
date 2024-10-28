@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class CallbackInput(BaseModel):
     """
@@ -31,7 +31,8 @@ class CallbackInput(BaseModel):
     vp_token: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. Ensure to escape special characters properly..")
     error: Optional[StrictStr] = Field(default=None, description="The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied")
     error_description: Optional[StrictStr] = Field(default=None, description="Description of the error in a human readable format")
-    __properties = ["state", "presentation_submission", "vp_token", "error", "error_description"]
+    onboarded: Optional[StrictBool] = Field(default=None, description="Specifies whether the Iota share triggered the creation of a Vault")
+    __properties = ["state", "presentation_submission", "vp_token", "error", "error_description", "onboarded"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +74,8 @@ class CallbackInput(BaseModel):
             "presentation_submission": obj.get("presentation_submission"),
             "vp_token": obj.get("vp_token"),
             "error": obj.get("error"),
-            "error_description": obj.get("error_description")
+            "error_description": obj.get("error_description"),
+            "onboarded": obj.get("onboarded")
         })
         return _obj
 

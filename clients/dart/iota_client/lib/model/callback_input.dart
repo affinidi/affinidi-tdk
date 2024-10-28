@@ -18,6 +18,7 @@ class CallbackInput {
     this.vpToken,
     this.error,
     this.errorDescription,
+    this.onboarded,
   });
 
   /// A string that must be a valid UUID (version 1-5).
@@ -59,13 +60,23 @@ class CallbackInput {
   ///
   String? errorDescription;
 
+  /// Specifies whether the Iota share triggered the creation of a Vault
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? onboarded;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CallbackInput &&
     other.state == state &&
     other.presentationSubmission == presentationSubmission &&
     other.vpToken == vpToken &&
     other.error == error &&
-    other.errorDescription == errorDescription;
+    other.errorDescription == errorDescription &&
+    other.onboarded == onboarded;
 
   @override
   int get hashCode =>
@@ -74,10 +85,11 @@ class CallbackInput {
     (presentationSubmission == null ? 0 : presentationSubmission!.hashCode) +
     (vpToken == null ? 0 : vpToken!.hashCode) +
     (error == null ? 0 : error!.hashCode) +
-    (errorDescription == null ? 0 : errorDescription!.hashCode);
+    (errorDescription == null ? 0 : errorDescription!.hashCode) +
+    (onboarded == null ? 0 : onboarded!.hashCode);
 
   @override
-  String toString() => 'CallbackInput[state=$state, presentationSubmission=$presentationSubmission, vpToken=$vpToken, error=$error, errorDescription=$errorDescription]';
+  String toString() => 'CallbackInput[state=$state, presentationSubmission=$presentationSubmission, vpToken=$vpToken, error=$error, errorDescription=$errorDescription, onboarded=$onboarded]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -101,6 +113,11 @@ class CallbackInput {
       json[r'error_description'] = this.errorDescription;
     } else {
       json[r'error_description'] = null;
+    }
+    if (this.onboarded != null) {
+      json[r'onboarded'] = this.onboarded;
+    } else {
+      json[r'onboarded'] = null;
     }
     return json;
   }
@@ -129,6 +146,7 @@ class CallbackInput {
         vpToken: mapValueOfType<String>(json, r'vp_token'),
         error: mapValueOfType<String>(json, r'error'),
         errorDescription: mapValueOfType<String>(json, r'error_description'),
+        onboarded: mapValueOfType<bool>(json, r'onboarded'),
       );
     }
     return null;
