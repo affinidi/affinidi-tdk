@@ -2,13 +2,14 @@
 
 ## Properties
 
-| Name                        | Type    | Description                                                                                                        | Notes      |
-| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
-| **state**                   | **str** | A string that must be a valid UUID (version 1-5).                                                                  |
-| **presentation_submission** | **str** | A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard. | [optional] |
-| **vp_token**                | **str** | A string that must be a valid JSON object. Ensure to escape special characters properly..                          | [optional] |
-| **error**                   | **str** | The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied  | [optional] |
-| **error_description**       | **str** | Description of the error in a human readable format                                                                | [optional] |
+| Name                        | Type     | Description                                                                                                        | Notes      |
+| --------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **state**                   | **str**  | A string that must be a valid UUID (version 1-5).                                                                  |
+| **presentation_submission** | **str**  | A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard. | [optional] |
+| **vp_token**                | **str**  | A string that must be a valid JSON object. Ensure to escape special characters properly..                          | [optional] |
+| **error**                   | **str**  | The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied  | [optional] |
+| **error_description**       | **str**  | Description of the error in a human readable format                                                                | [optional] |
+| **onboarded**               | **bool** | Specifies whether the Iota share triggered the creation of a Vault                                                 | [optional] |
 
 ## Example
 
