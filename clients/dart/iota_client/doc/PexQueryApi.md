@@ -8,12 +8,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                      | HTTP request                                                          | Description |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------- |
+| Method                                                      | HTTP request                                                          | Description         |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- | ------------------- |
 | [**createPexQuery**](PexQueryApi.md#createpexquery)         | **POST** /v1/configurations/{configurationId}/pex-queries             |
+| [**deletePexQueries**](PexQueryApi.md#deletepexqueries)     | **POST** /v1/configurations/{configurationId}/delete-queries          | deletes pex queries |
 | [**deletePexQueryById**](PexQueryApi.md#deletepexquerybyid) | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId} |
 | [**getPexQueryById**](PexQueryApi.md#getpexquerybyid)       | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}    |
 | [**listPexQueries**](PexQueryApi.md#listpexqueries)         | **GET** /v1/configurations/{configurationId}/pex-queries              |
+| [**savePexQueries**](PexQueryApi.md#savepexqueries)         | **POST** /v1/configurations/{configurationId}/save-queries            |
 | [**updatePexQueryById**](PexQueryApi.md#updatepexquerybyid) | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}  |
 
 # **createPexQuery**
@@ -59,6 +61,54 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deletePexQueries**
+
+> deletePexQueries(configurationId)
+
+deletes pex queries
+
+deletes pex queries
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iota_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = PexQueryApi();
+final configurationId = configurationId_example; // String | iotaConfiguration Id
+
+try {
+    api_instance.deletePexQueries(configurationId);
+} catch (e) {
+    print('Exception when calling PexQueryApi->deletePexQueries: $e\n');
+}
+```
+
+### Parameters
+
+| Name                | Type       | Description          | Notes |
+| ------------------- | ---------- | -------------------- | ----- |
+| **configurationId** | **String** | iotaConfiguration Id |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -201,6 +251,55 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **savePexQueries**
+
+> Object savePexQueries(configurationId, savePexQueriesUpdateInput)
+
+saves all pex queries
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iota_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = PexQueryApi();
+final configurationId = configurationId_example; // String | iotaConfiguration Id
+final savePexQueriesUpdateInput = SavePexQueriesUpdateInput(); // SavePexQueriesUpdateInput | SavePexQueriesInput
+
+try {
+    final result = api_instance.savePexQueries(configurationId, savePexQueriesUpdateInput);
+    print(result);
+} catch (e) {
+    print('Exception when calling PexQueryApi->savePexQueries: $e\n');
+}
+```
+
+### Parameters
+
+| Name                          | Type                                                          | Description          | Notes |
+| ----------------------------- | ------------------------------------------------------------- | -------------------- | ----- |
+| **configurationId**           | **String**                                                    | iotaConfiguration Id |
+| **savePexQueriesUpdateInput** | [**SavePexQueriesUpdateInput**](SavePexQueriesUpdateInput.md) | SavePexQueriesInput  |
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
