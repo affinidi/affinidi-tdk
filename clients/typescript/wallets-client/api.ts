@@ -894,10 +894,10 @@ export interface WalletsListDto {
 }
 
 /**
- * DefaultApi - axios parameter creator
+ * RevocationApi - axios parameter creator
  * @export
  */
-export const DefaultApiAxiosParamCreator = function (
+export const RevocationApiAxiosParamCreator = function (
   configuration?: Configuration,
 ) {
   return {
@@ -962,126 +962,6 @@ export const DefaultApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
-  }
-}
-
-/**
- * DefaultApi - functional programming interface
- * @export
- */
-export const DefaultApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
-  return {
-    /**
-     * Get revocation status list as RevocationListCredential
-     * @param {string} projectId Description for projectId.
-     * @param {string} walletId Description for walletId.
-     * @param {string} statusId Description for statusId.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getRevocationCredentialStatus(
-      projectId: string,
-      walletId: string,
-      statusId: string,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string,
-      ) => AxiosPromise<GetRevocationListCredentialResultDto>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.getRevocationCredentialStatus(
-          projectId,
-          walletId,
-          statusId,
-          options,
-        )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['DefaultApi.getRevocationCredentialStatus']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
-  }
-}
-
-/**
- * DefaultApi - factory interface
- * @export
- */
-export const DefaultApiFactory = function (
-  configuration?: Configuration,
-  basePath?: string,
-  axios?: AxiosInstance,
-) {
-  const localVarFp = DefaultApiFp(configuration)
-  return {
-    /**
-     * Get revocation status list as RevocationListCredential
-     * @param {string} projectId Description for projectId.
-     * @param {string} walletId Description for walletId.
-     * @param {string} statusId Description for statusId.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getRevocationCredentialStatus(
-      projectId: string,
-      walletId: string,
-      statusId: string,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<GetRevocationListCredentialResultDto> {
-      return localVarFp
-        .getRevocationCredentialStatus(projectId, walletId, statusId, options)
-        .then((request) => request(axios, basePath))
-    },
-  }
-}
-
-/**
- * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
- */
-export class DefaultApi extends BaseAPI {
-  /**
-   * Get revocation status list as RevocationListCredential
-   * @param {string} projectId Description for projectId.
-   * @param {string} walletId Description for walletId.
-   * @param {string} statusId Description for statusId.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public getRevocationCredentialStatus(
-    projectId: string,
-    walletId: string,
-    statusId: string,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return DefaultApiFp(this.configuration)
-      .getRevocationCredentialStatus(projectId, walletId, statusId, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-}
-
-/**
- * RevocationApi - axios parameter creator
- * @export
- */
-export const RevocationApiAxiosParamCreator = function (
-  configuration?: Configuration,
-) {
-  return {
     /**
      * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
      * @summary Return revocation list credential.
@@ -1219,6 +1099,45 @@ export const RevocationApiFp = function (configuration?: Configuration) {
     RevocationApiAxiosParamCreator(configuration)
   return {
     /**
+     * Get revocation status list as RevocationListCredential
+     * @param {string} projectId Description for projectId.
+     * @param {string} walletId Description for walletId.
+     * @param {string} statusId Description for statusId.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getRevocationCredentialStatus(
+      projectId: string,
+      walletId: string,
+      statusId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<GetRevocationListCredentialResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getRevocationCredentialStatus(
+          projectId,
+          walletId,
+          statusId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['RevocationApi.getRevocationCredentialStatus']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
      * @summary Return revocation list credential.
      * @param {string} listId
@@ -1305,6 +1224,24 @@ export const RevocationApiFactory = function (
   const localVarFp = RevocationApiFp(configuration)
   return {
     /**
+     * Get revocation status list as RevocationListCredential
+     * @param {string} projectId Description for projectId.
+     * @param {string} walletId Description for walletId.
+     * @param {string} statusId Description for statusId.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getRevocationCredentialStatus(
+      projectId: string,
+      walletId: string,
+      statusId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<GetRevocationListCredentialResultDto> {
+      return localVarFp
+        .getRevocationCredentialStatus(projectId, walletId, statusId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
      * @summary Return revocation list credential.
      * @param {string} listId
@@ -1349,6 +1286,26 @@ export const RevocationApiFactory = function (
  * @extends {BaseAPI}
  */
 export class RevocationApi extends BaseAPI {
+  /**
+   * Get revocation status list as RevocationListCredential
+   * @param {string} projectId Description for projectId.
+   * @param {string} walletId Description for walletId.
+   * @param {string} statusId Description for statusId.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof RevocationApi
+   */
+  public getRevocationCredentialStatus(
+    projectId: string,
+    walletId: string,
+    statusId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return RevocationApiFp(this.configuration)
+      .getRevocationCredentialStatus(projectId, walletId, statusId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
    * @summary Return revocation list credential.
