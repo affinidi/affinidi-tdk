@@ -43,6 +43,21 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 # Configure API key authorization: ProjectTokenAuth
 configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
 
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
@@ -119,6 +134,21 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 # Configure API key authorization: ProjectTokenAuth
 configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
 
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
@@ -194,6 +224,21 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 
 # Configure API key authorization: ProjectTokenAuth
 configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
@@ -273,6 +318,21 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 # Configure API key authorization: ProjectTokenAuth
 configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
 
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
@@ -346,6 +406,21 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
 
 # Configure API key authorization: ProjectTokenAuth
 configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'

@@ -22,11 +22,12 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr, conint, constr
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from affinidi_tdk_iota_client.models.create_pex_query_input import CreatePexQueryInput
 from affinidi_tdk_iota_client.models.list_pex_queries_ok import ListPexQueriesOK
 from affinidi_tdk_iota_client.models.pex_query_dto import PexQueryDto
+from affinidi_tdk_iota_client.models.save_pex_queries_update_input import SavePexQueriesUpdateInput
 from affinidi_tdk_iota_client.models.update_pex_query_input import UpdatePexQueryInput
 
 from affinidi_tdk_iota_client.api_client import ApiClient
@@ -192,6 +193,144 @@ class PexQueryApi:
 
         return self.api_client.call_api(
             '/v1/configurations/{configurationId}/pex-queries', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def delete_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> None:  # noqa: E501
+        """deletes pex queries  # noqa: E501
+
+        deletes pex queries  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_pex_queries(configuration_id, async_req=True)
+        >>> result = thread.get()
+
+        :param configuration_id: iotaConfiguration Id (required)
+        :type configuration_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the delete_pex_queries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.delete_pex_queries_with_http_info(configuration_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def delete_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> ApiResponse:  # noqa: E501
+        """deletes pex queries  # noqa: E501
+
+        deletes pex queries  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_pex_queries_with_http_info(configuration_id, async_req=True)
+        >>> result = thread.get()
+
+        :param configuration_id: iotaConfiguration Id (required)
+        :type configuration_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'configuration_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_pex_queries" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['configuration_id'] is not None:
+            _path_params['configurationId'] = _params['configuration_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/v1/configurations/{configurationId}/delete-queries', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -642,6 +781,163 @@ class PexQueryApi:
 
         return self.api_client.call_api(
             '/v1/configurations/{configurationId}/pex-queries', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def save_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> object:  # noqa: E501
+        """save_pex_queries  # noqa: E501
+
+        saves all pex queries  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_pex_queries(configuration_id, save_pex_queries_update_input, async_req=True)
+        >>> result = thread.get()
+
+        :param configuration_id: iotaConfiguration Id (required)
+        :type configuration_id: str
+        :param save_pex_queries_update_input: SavePexQueriesInput (required)
+        :type save_pex_queries_update_input: SavePexQueriesUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the save_pex_queries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.save_pex_queries_with_http_info(configuration_id, save_pex_queries_update_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def save_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> ApiResponse:  # noqa: E501
+        """save_pex_queries  # noqa: E501
+
+        saves all pex queries  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_pex_queries_with_http_info(configuration_id, save_pex_queries_update_input, async_req=True)
+        >>> result = thread.get()
+
+        :param configuration_id: iotaConfiguration Id (required)
+        :type configuration_id: str
+        :param save_pex_queries_update_input: SavePexQueriesInput (required)
+        :type save_pex_queries_update_input: SavePexQueriesUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'configuration_id',
+            'save_pex_queries_update_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_pex_queries" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['configuration_id'] is not None:
+            _path_params['configurationId'] = _params['configuration_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['save_pex_queries_update_input'] is not None:
+            _body_params = _params['save_pex_queries_update_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "object",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/configurations/{configurationId}/save-queries', 'POST',
             _path_params,
             _query_params,
             _header_params,
