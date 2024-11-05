@@ -15,5 +15,6 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 | **vpToken**                | **String** | A string that must be a valid JSON object. Ensure to escape special characters properly..                          | [optional] |
 | **error**                  | **String** | The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied  | [optional] |
 | **errorDescription**       | **String** | Description of the error in a human readable format                                                                | [optional] |
+| **onboarded**              | **bool**   | Specifies whether the Iota share triggered the creation of a Vault                                                 | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

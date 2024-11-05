@@ -4,7 +4,6 @@ README.md
 analysis_options.yaml
 doc/CreateWalletInput.md
 doc/CreateWalletResponse.md
-doc/DefaultApi.md
 doc/DidKeyInputParams.md
 doc/DidWebInputParams.md
 doc/EntityNotFoundError.md
@@ -33,7 +32,6 @@ doc/WalletDto.md
 doc/WalletDtoKeysInner.md
 doc/WalletsListDto.md
 lib/api.dart
-lib/api/default_api.dart
 lib/api/revocation_api.dart
 lib/api/wallet_api.dart
 lib/api_client.dart

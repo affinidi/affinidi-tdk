@@ -8,15 +8,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                                                  | HTTP request                                                 | Description         |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------- |
-| [**awsExchangeCredentials**](IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                        |
-| [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token          |
-| [**deletePexQueries**](IotaApi.md#deletepexqueries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries | deletes pex queries |
-| [**fetchIotaVpResponse**](IotaApi.md#fetchiotavpresponse)                               | **POST** /v1/fetch-iota-response                             |
-| [**initiateDataSharingRequest**](IotaApi.md#initiatedatasharingrequest)                 | **POST** /v1/initiate-data-sharing-request                   |
-| [**iotaExchangeCredentials**](IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                            |
-| [**savePexQueries**](IotaApi.md#savepexqueries)                                         | **POST** /v1/configurations/{configurationId}/save-queries   |
+| Method                                                                                  | HTTP request                                        | Description |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| [**awsExchangeCredentials**](IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials               |
+| [**awsExchangeCredentialsProjectToken**](IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token |
+| [**fetchIotaVpResponse**](IotaApi.md#fetchiotavpresponse)                               | **POST** /v1/fetch-iota-response                    |
+| [**initiateDataSharingRequest**](IotaApi.md#initiatedatasharingrequest)                 | **POST** /v1/initiate-data-sharing-request          |
+| [**iotaExchangeCredentials**](IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                   |
 
 # **awsExchangeCredentials**
 
@@ -104,54 +102,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deletePexQueries**
-
-> deletePexQueries(configurationId)
-
-deletes pex queries
-
-deletes pex queries
-
-### Example
-
-```dart
-import 'package:affinidi_tdk_iota_client/api.dart';
-// TODO Configure API key authorization: ProjectTokenAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = IotaApi();
-final configurationId = configurationId_example; // String | iotaConfiguration Id
-
-try {
-    api_instance.deletePexQueries(configurationId);
-} catch (e) {
-    print('Exception when calling IotaApi->deletePexQueries: $e\n');
-}
-```
-
-### Parameters
-
-| Name                | Type       | Description          | Notes |
-| ------------------- | ---------- | -------------------- | ----- |
-| **configurationId** | **String** | iotaConfiguration Id |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ProjectTokenAuth](../README.md#ProjectTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -285,55 +235,6 @@ try {
 ### Authorization
 
 No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **savePexQueries**
-
-> Object savePexQueries(configurationId, savePexQueriesUpdateInput)
-
-saves all pex queries
-
-### Example
-
-```dart
-import 'package:affinidi_tdk_iota_client/api.dart';
-// TODO Configure API key authorization: ProjectTokenAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = IotaApi();
-final configurationId = configurationId_example; // String | iotaConfiguration Id
-final savePexQueriesUpdateInput = SavePexQueriesUpdateInput(); // SavePexQueriesUpdateInput | SavePexQueriesInput
-
-try {
-    final result = api_instance.savePexQueries(configurationId, savePexQueriesUpdateInput);
-    print(result);
-} catch (e) {
-    print('Exception when calling IotaApi->savePexQueries: $e\n');
-}
-```
-
-### Parameters
-
-| Name                          | Type                                                          | Description          | Notes |
-| ----------------------------- | ------------------------------------------------------------- | -------------------- | ----- |
-| **configurationId**           | **String**                                                    | iotaConfiguration Id |
-| **savePexQueriesUpdateInput** | [**SavePexQueriesUpdateInput**](SavePexQueriesUpdateInput.md) | SavePexQueriesInput  |
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

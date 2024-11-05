@@ -227,6 +227,12 @@ export interface CallbackInput {
    * @memberof CallbackInput
    */
   error_description?: string
+  /**
+   * Specifies whether the Iota share triggered the creation of a Vault
+   * @type {boolean}
+   * @memberof CallbackInput
+   */
+  onboarded?: boolean
 }
 /**
  *
@@ -2834,60 +2840,6 @@ export const IotaApiAxiosParamCreator = function (
       }
     },
     /**
-     * deletes pex queries
-     * @summary deletes pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletePexQueries: async (
-      configurationId: string,
-      options: RawAxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'configurationId' is not null or undefined
-      assertParamExists('deletePexQueries', 'configurationId', configurationId)
-      const localVarPath =
-        `/v1/configurations/{configurationId}/delete-queries`.replace(
-          `{${'configurationId'}}`,
-          encodeURIComponent(String(configurationId)),
-        )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration,
-      )
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * This will get the final data response
      * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
      * @param {*} [options] Override http request option.
@@ -3060,74 +3012,6 @@ export const IotaApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
-    /**
-     * saves all pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    savePexQueries: async (
-      configurationId: string,
-      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
-      options: RawAxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'configurationId' is not null or undefined
-      assertParamExists('savePexQueries', 'configurationId', configurationId)
-      // verify required parameter 'savePexQueriesUpdateInput' is not null or undefined
-      assertParamExists(
-        'savePexQueries',
-        'savePexQueriesUpdateInput',
-        savePexQueriesUpdateInput,
-      )
-      const localVarPath =
-        `/v1/configurations/{configurationId}/save-queries`.replace(
-          `{${'configurationId'}}`,
-          encodeURIComponent(String(configurationId)),
-        )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = {
-        method: 'POST',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication ProjectTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration,
-      )
-
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-      localVarRequestOptions.data = serializeDataIfNeeded(
-        savePexQueriesUpdateInput,
-        localVarRequestOptions,
-        configuration,
-      )
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
   }
 }
 
@@ -3194,37 +3078,6 @@ export const IotaApiFp = function (configuration?: Configuration) {
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['IotaApi.awsExchangeCredentialsProjectToken']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
-    /**
-     * deletes pex queries
-     * @summary deletes pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async deletePexQueries(
-      configurationId: string,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.deletePexQueries(
-          configurationId,
-          options,
-        )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['IotaApi.deletePexQueries']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -3334,38 +3187,6 @@ export const IotaApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
-    /**
-     * saves all pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async savePexQueries(
-      configurationId: string,
-      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>
-    > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.savePexQueries(
-        configurationId,
-        savePexQueriesUpdateInput,
-        options,
-      )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['IotaApi.savePexQueries']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
   }
 }
 
@@ -3412,21 +3233,6 @@ export const IotaApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
-     * deletes pex queries
-     * @summary deletes pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    deletePexQueries(
-      configurationId: string,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<void> {
-      return localVarFp
-        .deletePexQueries(configurationId, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
      * This will get the final data response
      * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
      * @param {*} [options] Override http request option.
@@ -3466,22 +3272,6 @@ export const IotaApiFactory = function (
     ): AxiosPromise<IotaExchangeCredentialsOK> {
       return localVarFp
         .iotaExchangeCredentials(iotaExchangeCredentials, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * saves all pex queries
-     * @param {string} configurationId iotaConfiguration Id
-     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    savePexQueries(
-      configurationId: string,
-      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<object> {
-      return localVarFp
-        .savePexQueries(configurationId, savePexQueriesUpdateInput, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -3530,23 +3320,6 @@ export class IotaApi extends BaseAPI {
   }
 
   /**
-   * deletes pex queries
-   * @summary deletes pex queries
-   * @param {string} configurationId iotaConfiguration Id
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof IotaApi
-   */
-  public deletePexQueries(
-    configurationId: string,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return IotaApiFp(this.configuration)
-      .deletePexQueries(configurationId, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
    * This will get the final data response
    * @param {FetchIOTAVPResponseInput} fetchIOTAVPResponseInput FetchIOTAVPResponseInput
    * @param {*} [options] Override http request option.
@@ -3591,24 +3364,6 @@ export class IotaApi extends BaseAPI {
   ) {
     return IotaApiFp(this.configuration)
       .iotaExchangeCredentials(iotaExchangeCredentials, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * saves all pex queries
-   * @param {string} configurationId iotaConfiguration Id
-   * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof IotaApi
-   */
-  public savePexQueries(
-    configurationId: string,
-    savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return IotaApiFp(this.configuration)
-      .savePexQueries(configurationId, savePexQueriesUpdateInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -3683,6 +3438,60 @@ export const PexQueryApiAxiosParamCreator = function (
         localVarRequestOptions,
         configuration,
       )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * deletes pex queries
+     * @summary deletes pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePexQueries: async (
+      configurationId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('deletePexQueries', 'configurationId', configurationId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/delete-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
 
       return {
         url: toPathString(localVarUrlObj),
@@ -3877,6 +3686,74 @@ export const PexQueryApiAxiosParamCreator = function (
       }
     },
     /**
+     * saves all pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    savePexQueries: async (
+      configurationId: string,
+      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('savePexQueries', 'configurationId', configurationId)
+      // verify required parameter 'savePexQueriesUpdateInput' is not null or undefined
+      assertParamExists(
+        'savePexQueries',
+        'savePexQueriesUpdateInput',
+        savePexQueriesUpdateInput,
+      )
+      const localVarPath =
+        `/v1/configurations/{configurationId}/save-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        savePexQueriesUpdateInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      *
      * @param {string} configurationId iotaConfiguration Id
      * @param {string} queryId pex-query Id
@@ -3997,6 +3874,37 @@ export const PexQueryApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * deletes pex queries
+     * @summary deletes pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletePexQueries(
+      configurationId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.deletePexQueries(
+          configurationId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['PexQueryApi.deletePexQueries']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      *
      * @param {string} configurationId iotaConfiguration Id
      * @param {string} queryId pex-query Id
@@ -4100,6 +4008,38 @@ export const PexQueryApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * saves all pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async savePexQueries(
+      configurationId: string,
+      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.savePexQueries(
+        configurationId,
+        savePexQueriesUpdateInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['PexQueryApi.savePexQueries']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      *
      * @param {string} configurationId iotaConfiguration Id
      * @param {string} queryId pex-query Id
@@ -4166,6 +4106,21 @@ export const PexQueryApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * deletes pex queries
+     * @summary deletes pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deletePexQueries(
+      configurationId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deletePexQueries(configurationId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      *
      * @param {string} configurationId iotaConfiguration Id
      * @param {string} queryId pex-query Id
@@ -4216,6 +4171,22 @@ export const PexQueryApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * saves all pex queries
+     * @param {string} configurationId iotaConfiguration Id
+     * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    savePexQueries(
+      configurationId: string,
+      savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<object> {
+      return localVarFp
+        .savePexQueries(configurationId, savePexQueriesUpdateInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      *
      * @param {string} configurationId iotaConfiguration Id
      * @param {string} queryId pex-query Id
@@ -4263,6 +4234,23 @@ export class PexQueryApi extends BaseAPI {
   ) {
     return PexQueryApiFp(this.configuration)
       .createPexQuery(configurationId, createPexQueryInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * deletes pex queries
+   * @summary deletes pex queries
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public deletePexQueries(
+    configurationId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .deletePexQueries(configurationId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -4319,6 +4307,24 @@ export class PexQueryApi extends BaseAPI {
   ) {
     return PexQueryApiFp(this.configuration)
       .listPexQueries(configurationId, limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * saves all pex queries
+   * @param {string} configurationId iotaConfiguration Id
+   * @param {SavePexQueriesUpdateInput} savePexQueriesUpdateInput SavePexQueriesInput
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof PexQueryApi
+   */
+  public savePexQueries(
+    configurationId: string,
+    savePexQueriesUpdateInput: SavePexQueriesUpdateInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return PexQueryApiFp(this.configuration)
+      .savePexQueries(configurationId, savePexQueriesUpdateInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
