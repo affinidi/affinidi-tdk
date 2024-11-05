@@ -348,7 +348,7 @@ conf = affinidi_tdk_login_configuration_client.Configuration(
         :return: The token for api key authentication.
         """
         if self.refresh_api_key_hook is not None:
-            self.refresh_api_key_hook(self)
+            return self.refresh_api_key_hook(self)
         key = self.api_key.get(identifier, self.api_key.get(alias) if alias is not None else None)
         if key:
             prefix = self.api_key_prefix.get(identifier)

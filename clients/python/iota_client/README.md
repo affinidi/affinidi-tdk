@@ -95,15 +95,15 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | _DefaultApi_        | [**list_logged_consents**](docs/DefaultApi.md#list_logged_consents)                                  | **GET** /v1/logged-consents                                                |
 | _IotaApi_           | [**aws_exchange_credentials**](docs/IotaApi.md#aws_exchange_credentials)                             | **POST** /v1/aws-exchange-credentials                                      |
 | _IotaApi_           | [**aws_exchange_credentials_project_token**](docs/IotaApi.md#aws_exchange_credentials_project_token) | **POST** /v1/aws-exchange-credentials/project-token                        |
-| _IotaApi_           | [**delete_pex_queries**](docs/IotaApi.md#delete_pex_queries)                                         | **POST** /v1/configurations/{configurationId}/delete-queries               | deletes pex queries                      |
 | _IotaApi_           | [**fetch_iota_vp_response**](docs/IotaApi.md#fetch_iota_vp_response)                                 | **POST** /v1/fetch-iota-response                                           |
 | _IotaApi_           | [**initiate_data_sharing_request**](docs/IotaApi.md#initiate_data_sharing_request)                   | **POST** /v1/initiate-data-sharing-request                                 |
 | _IotaApi_           | [**iota_exchange_credentials**](docs/IotaApi.md#iota_exchange_credentials)                           | **POST** /v1/exchange-credentials                                          |
-| _IotaApi_           | [**save_pex_queries**](docs/IotaApi.md#save_pex_queries)                                             | **POST** /v1/configurations/{configurationId}/save-queries                 |
 | _PexQueryApi_       | [**create_pex_query**](docs/PexQueryApi.md#create_pex_query)                                         | **POST** /v1/configurations/{configurationId}/pex-queries                  |
+| _PexQueryApi_       | [**delete_pex_queries**](docs/PexQueryApi.md#delete_pex_queries)                                     | **POST** /v1/configurations/{configurationId}/delete-queries               | deletes pex queries                      |
 | _PexQueryApi_       | [**delete_pex_query_by_id**](docs/PexQueryApi.md#delete_pex_query_by_id)                             | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
 | _PexQueryApi_       | [**get_pex_query_by_id**](docs/PexQueryApi.md#get_pex_query_by_id)                                   | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
 | _PexQueryApi_       | [**list_pex_queries**](docs/PexQueryApi.md#list_pex_queries)                                         | **GET** /v1/configurations/{configurationId}/pex-queries                   |
+| _PexQueryApi_       | [**save_pex_queries**](docs/PexQueryApi.md#save_pex_queries)                                         | **POST** /v1/configurations/{configurationId}/save-queries                 |
 | _PexQueryApi_       | [**update_pex_query_by_id**](docs/PexQueryApi.md#update_pex_query_by_id)                             | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |
 
 ## Documentation For Models
