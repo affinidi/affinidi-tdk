@@ -5,7 +5,7 @@
   "author": "Affinidi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/affinidi.com/affinidi-tdk/tree/main/clients/typescript/iam-client"
+    "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iam-client"
   },
   "keywords": [
     "affinidi-tdk",
