@@ -1,5 +1,4 @@
 .openapi-generator-ignore
-Apis/DefaultApi.md
 Apis/RevocationApi.md
 Apis/WalletApi.md
 Models/CreateWalletInput.md
