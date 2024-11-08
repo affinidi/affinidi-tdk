@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.28.0...@affinidi-tdk/wallets-client-v1.29.0) (2024-11-08)
+
+
+### Features
+
+* update client all ([#315](https://github.com/affinidi/affinidi-tdk/issues/315)) ([1e4a744](https://github.com/affinidi/affinidi-tdk/commit/1e4a744bb44ee589e79df15a36347d35ade23f26))
+
 # [1.28.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/wallets-client-v1.27.0...@affinidi-tdk/wallets-client-v1.28.0) (2024-09-23)
 
 
