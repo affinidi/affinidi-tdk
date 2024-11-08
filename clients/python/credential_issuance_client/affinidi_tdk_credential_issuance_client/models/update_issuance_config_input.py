@@ -35,7 +35,8 @@ class UpdateIssuanceConfigInput(BaseModel):
     issuer_uri: Optional[StrictStr] = Field(default=None, alias="issuerUri", description="Issuer URI")
     credential_supported: Optional[conlist(CredentialSupportedObject)] = Field(default=None, alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(default=None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
-    __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata"]
+    redirect_uri: Optional[StrictStr] = Field(default=None, alias="redirectUri", description="URI to be redirect to after issuance")
+    __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata", "redirectUri"]
 
     @validator('name')
     def name_validate_regular_expression(cls, value):
@@ -107,7 +108,8 @@ class UpdateIssuanceConfigInput(BaseModel):
             "format": obj.get("format"),
             "issuer_uri": obj.get("issuerUri"),
             "credential_supported": [CredentialSupportedObject.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
-            "issuer_metadata": obj.get("issuerMetadata")
+            "issuer_metadata": obj.get("issuerMetadata"),
+            "redirect_uri": obj.get("redirectUri")
         })
         return _obj
 

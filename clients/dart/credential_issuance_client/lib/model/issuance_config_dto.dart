@@ -25,6 +25,7 @@ class IssuanceConfigDto {
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
     this.version,
+    this.redirectUri,
   });
 
   ///
@@ -112,6 +113,15 @@ class IssuanceConfigDto {
   ///
   int? version;
 
+  /// Uri to be redirect to after issuance
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redirectUri;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is IssuanceConfigDto &&
     other.id == id &&
@@ -125,7 +135,8 @@ class IssuanceConfigDto {
     other.issuerUri == issuerUri &&
     _deepEquality.equals(other.credentialSupported, credentialSupported) &&
     _deepEquality.equals(other.issuerMetadata, issuerMetadata) &&
-    other.version == version;
+    other.version == version &&
+    other.redirectUri == redirectUri;
 
   @override
   int get hashCode =>
@@ -141,10 +152,11 @@ class IssuanceConfigDto {
     (issuerUri == null ? 0 : issuerUri!.hashCode) +
     (credentialSupported.hashCode) +
     (issuerMetadata.hashCode) +
-    (version == null ? 0 : version!.hashCode);
+    (version == null ? 0 : version!.hashCode) +
+    (redirectUri == null ? 0 : redirectUri!.hashCode);
 
   @override
-  String toString() => 'IssuanceConfigDto[id=$id, name=$name, description=$description, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version]';
+  String toString() => 'IssuanceConfigDto[id=$id, name=$name, description=$description, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version, redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -200,6 +212,11 @@ class IssuanceConfigDto {
     } else {
       json[r'version'] = null;
     }
+    if (this.redirectUri != null) {
+      json[r'redirectUri'] = this.redirectUri;
+    } else {
+      json[r'redirectUri'] = null;
+    }
     return json;
   }
 
@@ -234,6 +251,7 @@ class IssuanceConfigDto {
         credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
         version: mapValueOfType<int>(json, r'version'),
+        redirectUri: mapValueOfType<String>(json, r'redirectUri'),
       );
     }
     return null;
