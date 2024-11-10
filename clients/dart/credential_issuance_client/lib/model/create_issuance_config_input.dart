@@ -20,6 +20,7 @@ class CreateIssuanceConfigInput {
     this.format,
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
+    this.redirectUri,
   });
 
   ///
@@ -61,6 +62,15 @@ class CreateIssuanceConfigInput {
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
 
+  /// URI to be redirect to after issuance
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redirectUri;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateIssuanceConfigInput &&
     other.name == name &&
@@ -69,7 +79,8 @@ class CreateIssuanceConfigInput {
     other.credentialOfferDuration == credentialOfferDuration &&
     other.format == format &&
     _deepEquality.equals(other.credentialSupported, credentialSupported) &&
-    _deepEquality.equals(other.issuerMetadata, issuerMetadata);
+    _deepEquality.equals(other.issuerMetadata, issuerMetadata) &&
+    other.redirectUri == redirectUri;
 
   @override
   int get hashCode =>
@@ -80,10 +91,11 @@ class CreateIssuanceConfigInput {
     (credentialOfferDuration == null ? 0 : credentialOfferDuration!.hashCode) +
     (format == null ? 0 : format!.hashCode) +
     (credentialSupported.hashCode) +
-    (issuerMetadata.hashCode);
+    (issuerMetadata.hashCode) +
+    (redirectUri == null ? 0 : redirectUri!.hashCode);
 
   @override
-  String toString() => 'CreateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata]';
+  String toString() => 'CreateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -110,6 +122,11 @@ class CreateIssuanceConfigInput {
     }
       json[r'credentialSupported'] = this.credentialSupported;
       json[r'issuerMetadata'] = this.issuerMetadata;
+    if (this.redirectUri != null) {
+      json[r'redirectUri'] = this.redirectUri;
+    } else {
+      json[r'redirectUri'] = null;
+    }
     return json;
   }
 
@@ -139,6 +156,7 @@ class CreateIssuanceConfigInput {
         format: CreateIssuanceConfigInputFormatEnum.fromJson(json[r'format']),
         credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
+        redirectUri: mapValueOfType<String>(json, r'redirectUri'),
       );
     }
     return null;
