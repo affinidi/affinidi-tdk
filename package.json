@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/config-conventional": "^19.5.0",
     "@nx/eslint": "^19.0.0",
     "@nx/eslint-plugin": "^19.0.0",
     "@nx/jest": "20.0.8",
