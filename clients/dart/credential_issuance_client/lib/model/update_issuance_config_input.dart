@@ -21,6 +21,7 @@ class UpdateIssuanceConfigInput {
     this.issuerUri,
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
+    this.returnToUri,
   });
 
   ///
@@ -77,6 +78,15 @@ class UpdateIssuanceConfigInput {
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
 
+  /// URI to be return to after issuance
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? returnToUri;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateIssuanceConfigInput &&
     other.name == name &&
@@ -86,7 +96,8 @@ class UpdateIssuanceConfigInput {
     other.format == format &&
     other.issuerUri == issuerUri &&
     _deepEquality.equals(other.credentialSupported, credentialSupported) &&
-    _deepEquality.equals(other.issuerMetadata, issuerMetadata);
+    _deepEquality.equals(other.issuerMetadata, issuerMetadata) &&
+    other.returnToUri == returnToUri;
 
   @override
   int get hashCode =>
@@ -98,10 +109,11 @@ class UpdateIssuanceConfigInput {
     (format == null ? 0 : format!.hashCode) +
     (issuerUri == null ? 0 : issuerUri!.hashCode) +
     (credentialSupported.hashCode) +
-    (issuerMetadata.hashCode);
+    (issuerMetadata.hashCode) +
+    (returnToUri == null ? 0 : returnToUri!.hashCode);
 
   @override
-  String toString() => 'UpdateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata]';
+  String toString() => 'UpdateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, returnToUri=$returnToUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -137,6 +149,11 @@ class UpdateIssuanceConfigInput {
     }
       json[r'credentialSupported'] = this.credentialSupported;
       json[r'issuerMetadata'] = this.issuerMetadata;
+    if (this.returnToUri != null) {
+      json[r'returnToUri'] = this.returnToUri;
+    } else {
+      json[r'returnToUri'] = null;
+    }
     return json;
   }
 
@@ -167,6 +184,7 @@ class UpdateIssuanceConfigInput {
         issuerUri: mapValueOfType<String>(json, r'issuerUri'),
         credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
+        returnToUri: mapValueOfType<String>(json, r'returnToUri'),
       );
     }
     return null;

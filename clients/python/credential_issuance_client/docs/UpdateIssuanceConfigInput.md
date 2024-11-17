@@ -12,6 +12,7 @@
 | **issuer_uri**                | **str**                                                             | Issuer URI                                                                                                                                            | [optional] |
 | **credential_supported**      | [**List[CredentialSupportedObject]**](CredentialSupportedObject.md) |                                                                                                                                                       | [optional] |
 | **issuer_metadata**           | **Dict[str, object]**                                               | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] |
+| **return_to_uri**             | **str**                                                             | URI to be return to after issuance                                                                                                                    | [optional] |
 
 ## Example
 
