@@ -20,9 +20,23 @@ run inside [python virtual env](https://docs.python.org/3/library/venv.html)
 pip install affinidi_tdk_auth_provider
 ```
 
+## Java
+
+### Install Java package
+
+update dependencies (for eg: v1.29.0)
+
+```java
+<dependency>
+    <groupId>com.affinidi.tdk</groupId>
+    <artifactId>auth-provider</artifactId>
+    <version>1.29.0</version>
+    <scope>system</scope>
+    <systemPath>${pom.basedir}/libs/auth-provider/1.29.0/auth-provider-1.29.0.jar</systemPath>
+</dependency>
+```
 
 ## Usage
-
 
 ### Python package usage
 
@@ -62,7 +76,30 @@ const authProvider = new AuthProvider({
 const projectScopedToken = await authProvider.fetchProjectScopedToken()
 ```
 
-### Mnually Build JSII python package
+### Java package usage
+
+```java
+import com.affinidi.tdk.authprovider.*;
+
+    private static AuthProvider getAuthProvider() {
+        Map<String, String> params = new HashMap<>();
+        params.put("projectId", dotenv.get("PROJECT_ID"));
+        params.put("tokenId", dotenv.get("TOKEN_ID"));
+        params.put("keyId", dotenv.get("KEY_ID"));
+        params.put("privateKey", dotenv.get("PRIVATE_KEY").replace("\\n", System.getProperty("line.separator")));
+        params.put("passphrase", dotenv.get("PASSPHRASE"));
+
+        // Create an instance of AuthProvider
+        AuthProvider authProvider = new AuthProvider(params);
+        return authProvider;
+    }
+
+  AuthProvider authProvider = getAuthProvider();
+
+  String projectScopedToken = authProvider.fetchProjectScopedToken();
+```
+
+### Manually Build JSII python package
 
 This is step is required, as python package is not published to pypi.org yet
 
