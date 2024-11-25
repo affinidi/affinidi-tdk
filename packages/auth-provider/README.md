@@ -114,3 +114,27 @@ npm run package
 ```bash
 pip install dist/python/affinidi_tdk_auth_provider-0.1.4-py3-none-any.whl
 ```
+
+### Manually Build JSII java package
+
+This is step is required, as python package is not published to pypi.org yet
+
+```bash
+git clone git@github.com:affinidi/affinidi-tdk.git
+cd packages/auth-provider/
+npm i --prefix .
+npm run build
+npm run package
+```
+
+update dependencies (for eg: v1.29.0)
+
+```java
+<dependency>
+    <groupId>com.affinidi.tdk</groupId>
+    <artifactId>auth-provider</artifactId>
+    <version>1.29.0</version>
+    <scope>system</scope>
+    <systemPath>${pom.basedir}/libs/auth-provider/1.29.0/auth-provider-1.29.0.jar</systemPath>
+</dependency>
+```
