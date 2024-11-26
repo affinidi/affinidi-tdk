@@ -12,5 +12,6 @@
 | **issuerUri**               | **String**                               | Issuer URI                                                                                                                                            | [optional] [default to null] |
 | **credentialSupported**     | [**List**](CredentialSupportedObject.md) |                                                                                                                                                       | [optional] [default to null] |
 | **issuerMetadata**          | [**Map**](AnyType.md)                    | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] [default to null] |
+| **returnToUri**             | **String**                               | URI to be return to after issuance                                                                                                                    | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
