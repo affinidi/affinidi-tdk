@@ -11,6 +11,7 @@
 | **format**                    | **str**                                                             | String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type | [optional] |
 | **credential_supported**      | [**List[CredentialSupportedObject]**](CredentialSupportedObject.md) |                                                                                                                                                       |
 | **issuer_metadata**           | **Dict[str, object]**                                               | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] |
+| **return_uris**               | **List[str]**                                                       | List of allowed URIs to be returned to after issuance                                                                                                 | [optional] |
 
 ## Example
 

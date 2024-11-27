@@ -39,7 +39,8 @@ class IssuanceConfigDto(BaseModel):
     credential_supported: Optional[conlist(CredentialSupportedObject, min_items=1)] = Field(default=None, alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(default=None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
     version: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties = ["id", "name", "description", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata", "version"]
+    return_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="returnUris", description="List of allowed URIs to be returned to after issuance")
+    __properties = ["id", "name", "description", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata", "version", "returnUris"]
 
     @validator('format')
     def format_validate_enum(cls, value):
@@ -105,7 +106,8 @@ class IssuanceConfigDto(BaseModel):
             "issuer_uri": obj.get("issuerUri"),
             "credential_supported": [CredentialSupportedObject.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
             "issuer_metadata": obj.get("issuerMetadata"),
-            "version": obj.get("version")
+            "version": obj.get("version"),
+            "return_uris": obj.get("returnUris")
         })
         return _obj
 

@@ -34,7 +34,8 @@ class CreateIssuanceConfigInput(BaseModel):
     format: Optional[StrictStr] = Field(default=None, description="String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type")
     credential_supported: conlist(CredentialSupportedObject) = Field(default=..., alias="credentialSupported")
     issuer_metadata: Optional[Dict[str, Any]] = Field(default=None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
-    __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "credentialSupported", "issuerMetadata"]
+    return_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="returnUris", description="List of allowed URIs to be returned to after issuance")
+    __properties = ["name", "description", "issuerWalletId", "credentialOfferDuration", "format", "credentialSupported", "issuerMetadata", "returnUris"]
 
     @validator('name')
     def name_validate_regular_expression(cls, value):
@@ -105,7 +106,8 @@ class CreateIssuanceConfigInput(BaseModel):
             "credential_offer_duration": obj.get("credentialOfferDuration"),
             "format": obj.get("format"),
             "credential_supported": [CredentialSupportedObject.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
-            "issuer_metadata": obj.get("issuerMetadata")
+            "issuer_metadata": obj.get("issuerMetadata"),
+            "return_uris": obj.get("returnUris")
         })
         return _obj
 
