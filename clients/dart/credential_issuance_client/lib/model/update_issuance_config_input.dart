@@ -21,6 +21,7 @@ class UpdateIssuanceConfigInput {
     this.issuerUri,
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
+    this.returnUris = const [],
   });
 
   ///
@@ -77,6 +78,9 @@ class UpdateIssuanceConfigInput {
   /// Issuer public information wallet may want to show to user during consent confirmation
   Map<String, Object> issuerMetadata;
 
+  /// List of allowed URIs to be returned to after issuance
+  List<String> returnUris;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is UpdateIssuanceConfigInput &&
     other.name == name &&
@@ -86,7 +90,8 @@ class UpdateIssuanceConfigInput {
     other.format == format &&
     other.issuerUri == issuerUri &&
     _deepEquality.equals(other.credentialSupported, credentialSupported) &&
-    _deepEquality.equals(other.issuerMetadata, issuerMetadata);
+    _deepEquality.equals(other.issuerMetadata, issuerMetadata) &&
+    _deepEquality.equals(other.returnUris, returnUris);
 
   @override
   int get hashCode =>
@@ -98,10 +103,11 @@ class UpdateIssuanceConfigInput {
     (format == null ? 0 : format!.hashCode) +
     (issuerUri == null ? 0 : issuerUri!.hashCode) +
     (credentialSupported.hashCode) +
-    (issuerMetadata.hashCode);
+    (issuerMetadata.hashCode) +
+    (returnUris.hashCode);
 
   @override
-  String toString() => 'UpdateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata]';
+  String toString() => 'UpdateIssuanceConfigInput[name=$name, description=$description, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, returnUris=$returnUris]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -137,6 +143,7 @@ class UpdateIssuanceConfigInput {
     }
       json[r'credentialSupported'] = this.credentialSupported;
       json[r'issuerMetadata'] = this.issuerMetadata;
+      json[r'returnUris'] = this.returnUris;
     return json;
   }
 
@@ -167,6 +174,9 @@ class UpdateIssuanceConfigInput {
         issuerUri: mapValueOfType<String>(json, r'issuerUri'),
         credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
+        returnUris: json[r'returnUris'] is Iterable
+            ? (json[r'returnUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

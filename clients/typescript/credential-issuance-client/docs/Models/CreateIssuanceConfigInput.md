@@ -11,5 +11,6 @@
 | **format**                  | **String**                               | String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type | [optional] [default to null] |
 | **credentialSupported**     | [**List**](CredentialSupportedObject.md) |                                                                                                                                                       | [default to null]            |
 | **issuerMetadata**          | [**Map**](AnyType.md)                    | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] [default to null] |
+| **returnUris**              | **List**                                 | List of allowed URIs to be returned to after issuance                                                                                                 | [optional] [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

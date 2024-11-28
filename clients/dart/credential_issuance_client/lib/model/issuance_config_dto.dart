@@ -25,6 +25,7 @@ class IssuanceConfigDto {
     this.credentialSupported = const [],
     this.issuerMetadata = const {},
     this.version,
+    this.returnUris = const [],
   });
 
   ///
@@ -112,6 +113,9 @@ class IssuanceConfigDto {
   ///
   int? version;
 
+  /// List of allowed URIs to be returned to after issuance
+  List<String> returnUris;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is IssuanceConfigDto &&
     other.id == id &&
@@ -125,7 +129,8 @@ class IssuanceConfigDto {
     other.issuerUri == issuerUri &&
     _deepEquality.equals(other.credentialSupported, credentialSupported) &&
     _deepEquality.equals(other.issuerMetadata, issuerMetadata) &&
-    other.version == version;
+    other.version == version &&
+    _deepEquality.equals(other.returnUris, returnUris);
 
   @override
   int get hashCode =>
@@ -141,10 +146,11 @@ class IssuanceConfigDto {
     (issuerUri == null ? 0 : issuerUri!.hashCode) +
     (credentialSupported.hashCode) +
     (issuerMetadata.hashCode) +
-    (version == null ? 0 : version!.hashCode);
+    (version == null ? 0 : version!.hashCode) +
+    (returnUris.hashCode);
 
   @override
-  String toString() => 'IssuanceConfigDto[id=$id, name=$name, description=$description, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version]';
+  String toString() => 'IssuanceConfigDto[id=$id, name=$name, description=$description, issuerDid=$issuerDid, issuerWalletId=$issuerWalletId, credentialOfferDuration=$credentialOfferDuration, cNonceDuration=$cNonceDuration, format=$format, issuerUri=$issuerUri, credentialSupported=$credentialSupported, issuerMetadata=$issuerMetadata, version=$version, returnUris=$returnUris]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -200,6 +206,7 @@ class IssuanceConfigDto {
     } else {
       json[r'version'] = null;
     }
+      json[r'returnUris'] = this.returnUris;
     return json;
   }
 
@@ -234,6 +241,9 @@ class IssuanceConfigDto {
         credentialSupported: CredentialSupportedObject.listFromJson(json[r'credentialSupported']),
         issuerMetadata: mapCastOfType<String, Object>(json, r'issuerMetadata') ?? const {},
         version: mapValueOfType<int>(json, r'version'),
+        returnUris: json[r'returnUris'] is Iterable
+            ? (json[r'returnUris'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

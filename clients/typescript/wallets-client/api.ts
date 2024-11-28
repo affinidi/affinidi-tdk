@@ -259,7 +259,7 @@ export type InvalidDidParameterErrorNameEnum =
   (typeof InvalidDidParameterErrorNameEnum)[keyof typeof InvalidDidParameterErrorNameEnum]
 export const InvalidDidParameterErrorMessageEnum = {
   GivenDidInFieldToDidIsInvalidUseOnlyResolvableFormOfDid:
-    "Given did in field 'toDid' is invalid. Use only resolvable form of did.",
+    'Given did in field toDid is invalid. Use only resolvable form of did.',
 } as const
 
 export type InvalidDidParameterErrorMessageEnum =

@@ -245,6 +245,12 @@ export interface CreateIssuanceConfigInput {
    * @memberof CreateIssuanceConfigInput
    */
   issuerMetadata?: { [key: string]: any }
+  /**
+   * List of allowed URIs to be returned to after issuance
+   * @type {Array<string>}
+   * @memberof CreateIssuanceConfigInput
+   */
+  returnUris?: Array<string>
 }
 
 export const CreateIssuanceConfigInputFormatEnum = {
@@ -1152,6 +1158,12 @@ export interface IssuanceConfigDto {
    * @memberof IssuanceConfigDto
    */
   version?: number
+  /**
+   * List of allowed URIs to be returned to after issuance
+   * @type {Array<string>}
+   * @memberof IssuanceConfigDto
+   */
+  returnUris?: Array<string>
 }
 
 export const IssuanceConfigDtoFormatEnum = {
@@ -1790,6 +1802,12 @@ export interface UpdateIssuanceConfigInput {
    * @memberof UpdateIssuanceConfigInput
    */
   issuerMetadata?: { [key: string]: any }
+  /**
+   * List of allowed URIs to be returned to after issuance
+   * @type {Array<string>}
+   * @memberof UpdateIssuanceConfigInput
+   */
+  returnUris?: Array<string>
 }
 
 export const UpdateIssuanceConfigInputFormatEnum = {

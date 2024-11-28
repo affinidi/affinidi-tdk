@@ -44,8 +44,8 @@ class InvalidDidParameterError(BaseModel):
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Given did in field 'toDid' is invalid. Use only resolvable form of did.'):
-            raise ValueError("must be one of enum values ('Given did in field 'toDid' is invalid. Use only resolvable form of did.')")
+        if value not in ('Given did in field toDid is invalid. Use only resolvable form of did.'):
+            raise ValueError("must be one of enum values ('Given did in field toDid is invalid. Use only resolvable form of did.')")
         return value
 
     @validator('http_status_code')
