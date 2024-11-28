@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.30.0...@affinidi-tdk/credential-issuance-client-v1.31.0) (2024-11-28)
+
+
+### Features
+
+* update client all ([#343](https://github.com/affinidi/affinidi-tdk/issues/343)) ([76d0631](https://github.com/affinidi/affinidi-tdk/commit/76d06312563f90df9aa991c74d550d0d620852cf))
+
 # [1.30.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/credential-issuance-client-v1.29.0...@affinidi-tdk/credential-issuance-client-v1.30.0) (2024-11-08)
 
 
