@@ -67,24 +67,28 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Class              | Method                                                                                            | HTTP request                                                 | Description |
-| ------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------- |
-| _ConfigurationApi_ | [**createIssuanceConfig**](doc//ConfigurationApi.md#createissuanceconfig)                         | **POST** /v1/configurations                                  |
-| _ConfigurationApi_ | [**deleteIssuanceConfigById**](doc//ConfigurationApi.md#deleteissuanceconfigbyid)                 | **DELETE** /v1/configurations/{configurationId}              |
-| _ConfigurationApi_ | [**getIssuanceConfigById**](doc//ConfigurationApi.md#getissuanceconfigbyid)                       | **GET** /v1/configurations/{configurationId}                 |
-| _ConfigurationApi_ | [**getIssuanceConfigList**](doc//ConfigurationApi.md#getissuanceconfiglist)                       | **GET** /v1/configurations                                   |
-| _ConfigurationApi_ | [**updateIssuanceConfigById**](doc//ConfigurationApi.md#updateissuanceconfigbyid)                 | **PUT** /v1/configurations/{configurationId}                 |
-| _CredentialsApi_   | [**generateCredentials**](doc//CredentialsApi.md#generatecredentials)                             | **POST** /v1/{projectId}/credential                          |
-| _IssuanceApi_      | [**issuanceState**](doc//IssuanceApi.md#issuancestate)                                            | **GET** /v1/{projectId}/issuance/state/{issuanceId}          |
-| _IssuanceApi_      | [**listIssuance**](doc//IssuanceApi.md#listissuance)                                              | **GET** /v1/{projectId}/issuance                             |
-| _IssuanceApi_      | [**startIssuance**](doc//IssuanceApi.md#startissuance)                                            | **POST** /v1/{projectId}/issuance/start                      |
-| _OfferApi_         | [**getCredentialOffer**](doc//OfferApi.md#getcredentialoffer)                                     | **GET** /v1/{projectId}/offers/{issuanceId}                  |
-| _WellKnownApi_     | [**getWellKnownOpenIdCredentialIssuer**](doc//WellKnownApi.md#getwellknownopenidcredentialissuer) | **GET** /v1/{projectId}/.well-known/openid-credential-issuer |
+| Class              | Method                                                                                            | HTTP request                                                                            | Description                   |
+| ------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------- |
+| _ConfigurationApi_ | [**createIssuanceConfig**](doc//ConfigurationApi.md#createissuanceconfig)                         | **POST** /v1/configurations                                                             |
+| _ConfigurationApi_ | [**deleteIssuanceConfigById**](doc//ConfigurationApi.md#deleteissuanceconfigbyid)                 | **DELETE** /v1/configurations/{configurationId}                                         |
+| _ConfigurationApi_ | [**getIssuanceConfigById**](doc//ConfigurationApi.md#getissuanceconfigbyid)                       | **GET** /v1/configurations/{configurationId}                                            |
+| _ConfigurationApi_ | [**getIssuanceConfigList**](doc//ConfigurationApi.md#getissuanceconfiglist)                       | **GET** /v1/configurations                                                              |
+| _ConfigurationApi_ | [**updateIssuanceConfigById**](doc//ConfigurationApi.md#updateissuanceconfigbyid)                 | **PUT** /v1/configurations/{configurationId}                                            |
+| _CredentialsApi_   | [**generateCredentials**](doc//CredentialsApi.md#generatecredentials)                             | **POST** /v1/{projectId}/credential                                                     |
+| _DefaultApi_       | [**changeCredentialSatatus**](doc//DefaultApi.md#changecredentialsatatus)                         | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status.     |
+| _DefaultApi_       | [**getStatusList**](doc//DefaultApi.md#getstatuslist)                                             | **GET** /v1/{projectId}/status-list/{statusListId}                                      | Return status list credential |
+| _DefaultApi_       | [**listIssuanceDataRecords**](doc//DefaultApi.md#listissuancedatarecords)                         | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records                  |
+| _IssuanceApi_      | [**issuanceState**](doc//IssuanceApi.md#issuancestate)                                            | **GET** /v1/{projectId}/issuance/state/{issuanceId}                                     |
+| _IssuanceApi_      | [**listIssuance**](doc//IssuanceApi.md#listissuance)                                              | **GET** /v1/{projectId}/issuance                                                        |
+| _IssuanceApi_      | [**startIssuance**](doc//IssuanceApi.md#startissuance)                                            | **POST** /v1/{projectId}/issuance/start                                                 |
+| _OfferApi_         | [**getCredentialOffer**](doc//OfferApi.md#getcredentialoffer)                                     | **GET** /v1/{projectId}/offers/{issuanceId}                                             |
+| _WellKnownApi_     | [**getWellKnownOpenIdCredentialIssuer**](doc//WellKnownApi.md#getwellknownopenidcredentialissuer) | **GET** /v1/{projectId}/.well-known/openid-credential-issuer                            |
 
 ## Documentation For Models
 
 - [ActionForbiddenError](doc//ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](doc//ActionForbiddenErrorDetailsInner.md)
+- [ChangeCredentialStatusInput](doc//ChangeCredentialStatusInput.md)
 - [CorsGenerateCredentialsOK](doc//CorsGenerateCredentialsOK.md)
 - [CorsGetCredentialOfferOK](doc//CorsGetCredentialOfferOK.md)
 - [CorsGetWellKnownOpenIdCredentialIssuerOK](doc//CorsGetWellKnownOpenIdCredentialIssuerOK.md)
@@ -107,8 +111,11 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CredentialSubjectNotValidError](doc//CredentialSubjectNotValidError.md)
 - [CredentialSupportedObject](doc//CredentialSupportedObject.md)
 - [DeferredCredentialInput](doc//DeferredCredentialInput.md)
+- [FlowData](doc//FlowData.md)
+- [FlowDataStatusListsDetailsInner](doc//FlowDataStatusListsDetailsInner.md)
 - [GenerateCredentials400Response](doc//GenerateCredentials400Response.md)
 - [GetCredentialOffer400Response](doc//GetCredentialOffer400Response.md)
+- [GetStatusListResultDto](doc//GetStatusListResultDto.md)
 - [InvalidCredentialRequestError](doc//InvalidCredentialRequestError.md)
 - [InvalidCredentialTypeError](doc//InvalidCredentialTypeError.md)
 - [InvalidIssuerWalletError](doc//InvalidIssuerWalletError.md)
@@ -119,6 +126,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [IssuanceConfigListResponse](doc//IssuanceConfigListResponse.md)
 - [IssuanceConfigMiniDto](doc//IssuanceConfigMiniDto.md)
 - [IssuanceStateResponse](doc//IssuanceStateResponse.md)
+- [ListIssuanceRecordResponse](doc//ListIssuanceRecordResponse.md)
 - [ListIssuanceResponse](doc//ListIssuanceResponse.md)
 - [ListIssuanceResponseIssuancesInner](doc//ListIssuanceResponseIssuancesInner.md)
 - [MissingHolderDidError](doc//MissingHolderDidError.md)
@@ -129,6 +137,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [StartIssuanceInput](doc//StartIssuanceInput.md)
 - [StartIssuanceInputDataInner](doc//StartIssuanceInputDataInner.md)
 - [StartIssuanceInputDataInnerMetaData](doc//StartIssuanceInputDataInnerMetaData.md)
+- [StartIssuanceInputDataInnerStatusListDetailsInner](doc//StartIssuanceInputDataInnerStatusListDetailsInner.md)
 - [StartIssuanceResponse](doc//StartIssuanceResponse.md)
 - [SupportedCredentialMetadata](doc//SupportedCredentialMetadata.md)
 - [SupportedCredentialMetadataDisplayInner](doc//SupportedCredentialMetadataDisplayInner.md)

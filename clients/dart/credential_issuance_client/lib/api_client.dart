@@ -186,6 +186,8 @@ class ApiClient {
           return ActionForbiddenError.fromJson(value);
         case 'ActionForbiddenErrorDetailsInner':
           return ActionForbiddenErrorDetailsInner.fromJson(value);
+        case 'ChangeCredentialStatusInput':
+          return ChangeCredentialStatusInput.fromJson(value);
         case 'CorsGenerateCredentialsOK':
           return CorsGenerateCredentialsOK.fromJson(value);
         case 'CorsGetCredentialOfferOK':
@@ -230,10 +232,16 @@ class ApiClient {
           return CredentialSupportedObject.fromJson(value);
         case 'DeferredCredentialInput':
           return DeferredCredentialInput.fromJson(value);
+        case 'FlowData':
+          return FlowData.fromJson(value);
+        case 'FlowDataStatusListsDetailsInner':
+          return FlowDataStatusListsDetailsInner.fromJson(value);
         case 'GenerateCredentials400Response':
           return GenerateCredentials400Response.fromJson(value);
         case 'GetCredentialOffer400Response':
           return GetCredentialOffer400Response.fromJson(value);
+        case 'GetStatusListResultDto':
+          return GetStatusListResultDto.fromJson(value);
         case 'InvalidCredentialRequestError':
           return InvalidCredentialRequestError.fromJson(value);
         case 'InvalidCredentialTypeError':
@@ -254,6 +262,8 @@ class ApiClient {
           return IssuanceConfigMiniDto.fromJson(value);
         case 'IssuanceStateResponse':
           return IssuanceStateResponse.fromJson(value);
+        case 'ListIssuanceRecordResponse':
+          return ListIssuanceRecordResponse.fromJson(value);
         case 'ListIssuanceResponse':
           return ListIssuanceResponse.fromJson(value);
         case 'ListIssuanceResponseIssuancesInner':
@@ -274,6 +284,8 @@ class ApiClient {
           return StartIssuanceInputDataInner.fromJson(value);
         case 'StartIssuanceInputDataInnerMetaData':
           return StartIssuanceInputDataInnerMetaData.fromJson(value);
+        case 'StartIssuanceInputDataInnerStatusListDetailsInner':
+          return StartIssuanceInputDataInnerStatusListDetailsInner.fromJson(value);
         case 'StartIssuanceResponse':
           return StartIssuanceResponse.fromJson(value);
         case 'SupportedCredentialMetadata':
