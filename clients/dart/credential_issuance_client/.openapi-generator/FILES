@@ -4,6 +4,7 @@ README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
 doc/ActionForbiddenErrorDetailsInner.md
+doc/ChangeCredentialStatusInput.md
 doc/ConfigurationApi.md
 doc/CorsGenerateCredentialsOK.md
 doc/CorsGetCredentialOfferOK.md
@@ -27,9 +28,13 @@ doc/CredentialResponseImmediateCredential.md
 doc/CredentialSubjectNotValidError.md
 doc/CredentialSupportedObject.md
 doc/CredentialsApi.md
+doc/DefaultApi.md
 doc/DeferredCredentialInput.md
+doc/FlowData.md
+doc/FlowDataStatusListsDetailsInner.md
 doc/GenerateCredentials400Response.md
 doc/GetCredentialOffer400Response.md
+doc/GetStatusListResultDto.md
 doc/InvalidCredentialRequestError.md
 doc/InvalidCredentialTypeError.md
 doc/InvalidIssuerWalletError.md
@@ -41,6 +46,7 @@ doc/IssuanceConfigDto.md
 doc/IssuanceConfigListResponse.md
 doc/IssuanceConfigMiniDto.md
 doc/IssuanceStateResponse.md
+doc/ListIssuanceRecordResponse.md
 doc/ListIssuanceResponse.md
 doc/ListIssuanceResponseIssuancesInner.md
 doc/MissingHolderDidError.md
@@ -52,6 +58,7 @@ doc/StartIssuance400Response.md
 doc/StartIssuanceInput.md
 doc/StartIssuanceInputDataInner.md
 doc/StartIssuanceInputDataInnerMetaData.md
+doc/StartIssuanceInputDataInnerStatusListDetailsInner.md
 doc/StartIssuanceResponse.md
 doc/SupportedCredentialMetadata.md
 doc/SupportedCredentialMetadataDisplayInner.md
@@ -64,6 +71,7 @@ doc/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md
 lib/api.dart
 lib/api/configuration_api.dart
 lib/api/credentials_api.dart
+lib/api/default_api.dart
 lib/api/issuance_api.dart
 lib/api/offer_api.dart
 lib/api/well_known_api.dart
@@ -77,6 +85,7 @@ lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/action_forbidden_error.dart
 lib/model/action_forbidden_error_details_inner.dart
+lib/model/change_credential_status_input.dart
 lib/model/cors_generate_credentials_ok.dart
 lib/model/cors_get_credential_offer_ok.dart
 lib/model/cors_get_well_known_open_id_credential_issuer_ok.dart
@@ -99,8 +108,11 @@ lib/model/credential_response_immediate_credential.dart
 lib/model/credential_subject_not_valid_error.dart
 lib/model/credential_supported_object.dart
 lib/model/deferred_credential_input.dart
+lib/model/flow_data.dart
+lib/model/flow_data_status_lists_details_inner.dart
 lib/model/generate_credentials400_response.dart
 lib/model/get_credential_offer400_response.dart
+lib/model/get_status_list_result_dto.dart
 lib/model/invalid_credential_request_error.dart
 lib/model/invalid_credential_type_error.dart
 lib/model/invalid_issuer_wallet_error.dart
@@ -111,6 +123,7 @@ lib/model/issuance_config_dto.dart
 lib/model/issuance_config_list_response.dart
 lib/model/issuance_config_mini_dto.dart
 lib/model/issuance_state_response.dart
+lib/model/list_issuance_record_response.dart
 lib/model/list_issuance_response.dart
 lib/model/list_issuance_response_issuances_inner.dart
 lib/model/missing_holder_did_error.dart
@@ -121,6 +134,7 @@ lib/model/start_issuance400_response.dart
 lib/model/start_issuance_input.dart
 lib/model/start_issuance_input_data_inner.dart
 lib/model/start_issuance_input_data_inner_meta_data.dart
+lib/model/start_issuance_input_data_inner_status_list_details_inner.dart
 lib/model/start_issuance_response.dart
 lib/model/supported_credential_metadata.dart
 lib/model/supported_credential_metadata_display_inner.dart
@@ -130,3 +144,10 @@ lib/model/vc_claimed_error.dart
 lib/model/well_known_open_id_credential_issuer_response.dart
 lib/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart
 pubspec.yaml
+test/change_credential_status_input_test.dart
+test/default_api_test.dart
+test/flow_data_status_lists_details_inner_test.dart
+test/flow_data_test.dart
+test/get_status_list_result_dto_test.dart
+test/list_issuance_record_response_test.dart
+test/start_issuance_input_data_inner_status_list_details_inner_test.dart

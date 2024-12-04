@@ -16,7 +16,7 @@ class DefaultApi {
 
   final ApiClient apiClient;
 
-  /// returns a list of logged consents for the project
+  /// Lists all the logged consents for a project.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -27,7 +27,7 @@ class DefaultApi {
   /// * [String] userId:
   ///
   /// * [int] limit:
-  ///   Maximum number of records to fetch in a list
+  ///   The maximum number of records to fetch from the list of logged consents.
   ///
   /// * [String] exclusiveStartKey:
   ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
@@ -69,7 +69,7 @@ class DefaultApi {
     );
   }
 
-  /// returns a list of logged consents for the project
+  /// Lists all the logged consents for a project.
   ///
   /// Parameters:
   ///
@@ -78,7 +78,7 @@ class DefaultApi {
   /// * [String] userId:
   ///
   /// * [int] limit:
-  ///   Maximum number of records to fetch in a list
+  ///   The maximum number of records to fetch from the list of logged consents.
   ///
   /// * [String] exclusiveStartKey:
   ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.

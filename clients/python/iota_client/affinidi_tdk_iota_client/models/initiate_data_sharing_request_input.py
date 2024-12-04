@@ -26,13 +26,13 @@ class InitiateDataSharingRequestInput(BaseModel):
     """
     InitiateDataSharingRequestInput
     """
-    query_id: StrictStr = Field(default=..., alias="queryId")
-    correlation_id: StrictStr = Field(default=..., alias="correlationId")
-    token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="token time to live in seconds")
-    nonce: StrictStr = Field(default=..., description="Random value used to prevent replay attacks")
-    redirect_uri: StrictStr = Field(default=..., alias="redirectUri", description="the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.")
-    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="id of the IOTA configuration used")
-    mode: StrictStr = Field(default=..., description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
+    query_id: StrictStr = Field(default=..., alias="queryId", description="The ID of the query.")
+    correlation_id: StrictStr = Field(default=..., alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
+    token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
+    nonce: StrictStr = Field(default=..., description="A randomly generated value that is added in the request and response to prevent replay attacks.")
+    redirect_uri: StrictStr = Field(default=..., alias="redirectUri", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
+    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="ID of the Affinidi Iota Framework configuration.")
+    mode: StrictStr = Field(default=..., description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
     __properties = ["queryId", "correlationId", "tokenMaxAge", "nonce", "redirectUri", "configurationId", "mode"]
 
     @validator('mode')

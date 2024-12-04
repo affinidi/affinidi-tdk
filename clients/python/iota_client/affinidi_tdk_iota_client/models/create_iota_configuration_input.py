@@ -27,17 +27,17 @@ class CreateIotaConfigurationInput(BaseModel):
     """
     CreateIotaConfigurationInput
     """
-    name: StrictStr = Field(default=..., description="The name of the configuration")
-    description: Optional[StrictStr] = Field(default=None, description="Description of the configuration")
-    wallet_ari: StrictStr = Field(default=..., alias="walletAri", description="The wallet Ari that will be used to sign")
-    iota_response_webhook_url: Optional[StrictStr] = Field(default=None, alias="iotaResponseWebhookURL", description="webhook to call when data is ready")
-    enable_verification: StrictBool = Field(default=..., alias="enableVerification")
-    enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog")
-    token_max_age: Optional[Union[confloat(ge=1, strict=True), conint(ge=1, strict=True)]] = Field(default=None, alias="tokenMaxAge", description="token time to live in seconds")
+    name: StrictStr = Field(default=..., description="The name of the configuration to quickly identify the resource.")
+    description: Optional[StrictStr] = Field(default=None, description="An optional description of what the configuration is used for.")
+    wallet_ari: StrictStr = Field(default=..., alias="walletAri", description="The unique resource identifier of the Wallet used to sign the request token.")
+    iota_response_webhook_url: Optional[StrictStr] = Field(default=None, alias="iotaResponseWebhookURL", description="The webhook URL is used for callback when the data is ready.")
+    enable_verification: StrictBool = Field(default=..., alias="enableVerification", description="Cryptographically verifies the data shared by the user when enabled.")
+    enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog", description="Records the user's consent when they share their data, including the type of data shared when enabled.")
+    token_max_age: Optional[Union[confloat(ge=1, strict=True), conint(ge=1, strict=True)]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
-    mode: Optional[StrictStr] = Field(default='websocket', description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
-    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.")
-    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="enables third party IDV provider verification for the given configuration")
+    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
+    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
+    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
     __properties = ["name", "description", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
 
     @validator('mode')

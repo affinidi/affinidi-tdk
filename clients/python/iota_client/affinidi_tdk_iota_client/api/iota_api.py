@@ -56,7 +56,7 @@ class IotaApi:
     def aws_exchange_credentials(self, aws_exchange_credentials : Annotated[AwsExchangeCredentials, Field(..., description="AwsExchangeCredentials")], **kwargs) -> AwsExchangeCredentialsOK:  # noqa: E501
         """aws_exchange_credentials  # noqa: E501
 
-        It exchanges limited token into cognito  # noqa: E501
+        Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -86,7 +86,7 @@ class IotaApi:
     def aws_exchange_credentials_with_http_info(self, aws_exchange_credentials : Annotated[AwsExchangeCredentials, Field(..., description="AwsExchangeCredentials")], **kwargs) -> ApiResponse:  # noqa: E501
         """aws_exchange_credentials  # noqa: E501
 
-        It exchanges limited token into cognito  # noqa: E501
+        Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -205,7 +205,7 @@ class IotaApi:
     def aws_exchange_credentials_project_token(self, aws_exchange_credentials_project_token : Annotated[AwsExchangeCredentialsProjectToken, Field(..., description="AwsExchangeCredentialsProjectToken")], **kwargs) -> IotaExchangeCredentialsOK:  # noqa: E501
         """aws_exchange_credentials_project_token  # noqa: E501
 
-        It exchanges project token into cognito  # noqa: E501
+        Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -235,7 +235,7 @@ class IotaApi:
     def aws_exchange_credentials_project_token_with_http_info(self, aws_exchange_credentials_project_token : Annotated[AwsExchangeCredentialsProjectToken, Field(..., description="AwsExchangeCredentialsProjectToken")], **kwargs) -> ApiResponse:  # noqa: E501
         """aws_exchange_credentials_project_token  # noqa: E501
 
-        It exchanges project token into cognito  # noqa: E501
+        Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -354,7 +354,7 @@ class IotaApi:
     def fetch_iota_vp_response(self, fetch_iotavp_response_input : Annotated[FetchIOTAVPResponseInput, Field(..., description="FetchIOTAVPResponseInput")], **kwargs) -> FetchIOTAVPResponseOK:  # noqa: E501
         """fetch_iota_vp_response  # noqa: E501
 
-        This will get the final data response  # noqa: E501
+        Fetches the client's callback that contains the user's shared data in a Verifiable Presentation format after a successful data-sharing flow.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -384,7 +384,7 @@ class IotaApi:
     def fetch_iota_vp_response_with_http_info(self, fetch_iotavp_response_input : Annotated[FetchIOTAVPResponseInput, Field(..., description="FetchIOTAVPResponseInput")], **kwargs) -> ApiResponse:  # noqa: E501
         """fetch_iota_vp_response  # noqa: E501
 
-        This will get the final data response  # noqa: E501
+        Fetches the client's callback that contains the user's shared data in a Verifiable Presentation format after a successful data-sharing flow.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -480,6 +480,7 @@ class IotaApi:
             '200': "FetchIOTAVPResponseOK",
             '400': "InvalidParameterError",
             '403': "OperationForbiddenError",
+            '404': "NotFoundError",
         }
 
         return self.api_client.call_api(
@@ -503,7 +504,7 @@ class IotaApi:
     def initiate_data_sharing_request(self, initiate_data_sharing_request_input : Annotated[InitiateDataSharingRequestInput, Field(..., description="InitiateDataSharingRequestInput")], **kwargs) -> InitiateDataSharingRequestOK:  # noqa: E501
         """initiate_data_sharing_request  # noqa: E501
 
-        This will initiate data sharing request for the data sharing flow  # noqa: E501
+        Generates the request token for the Redirect mode to initiate the data-sharing flow.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -533,7 +534,7 @@ class IotaApi:
     def initiate_data_sharing_request_with_http_info(self, initiate_data_sharing_request_input : Annotated[InitiateDataSharingRequestInput, Field(..., description="InitiateDataSharingRequestInput")], **kwargs) -> ApiResponse:  # noqa: E501
         """initiate_data_sharing_request  # noqa: E501
 
-        This will initiate data sharing request for the data sharing flow  # noqa: E501
+        Generates the request token for the Redirect mode to initiate the data-sharing flow.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -652,7 +653,7 @@ class IotaApi:
     def iota_exchange_credentials(self, iota_exchange_credentials : Annotated[IotaExchangeCredentials, Field(..., description="IotaAwsExchangeCredentials")], **kwargs) -> IotaExchangeCredentialsOK:  # noqa: E501
         """iota_exchange_credentials  # noqa: E501
 
-        It exchanges limited token into cognito sts identity credentials  # noqa: E501
+        Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -682,7 +683,7 @@ class IotaApi:
     def iota_exchange_credentials_with_http_info(self, iota_exchange_credentials : Annotated[IotaExchangeCredentials, Field(..., description="IotaAwsExchangeCredentials")], **kwargs) -> ApiResponse:  # noqa: E501
         """iota_exchange_credentials  # noqa: E501
 
-        It exchanges limited token into cognito sts identity credentials  # noqa: E501
+        Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

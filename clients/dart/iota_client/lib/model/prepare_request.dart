@@ -24,9 +24,10 @@ class PrepareRequest {
 
   String queryId;
 
+  /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   String correlationId;
 
-  /// token time to live in seconds
+  /// This is the lifetime of the signed request token during the data-sharing flow.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

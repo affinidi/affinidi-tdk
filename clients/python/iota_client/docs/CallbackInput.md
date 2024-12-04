@@ -2,14 +2,14 @@
 
 ## Properties
 
-| Name                        | Type     | Description                                                                                                        | Notes      |
-| --------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
-| **state**                   | **str**  | A string that must be a valid UUID (version 1-5).                                                                  |
-| **presentation_submission** | **str**  | A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard. | [optional] |
-| **vp_token**                | **str**  | A string that must be a valid JSON object. Ensure to escape special characters properly..                          | [optional] |
-| **error**                   | **str**  | The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied  | [optional] |
-| **error_description**       | **str**  | Description of the error in a human readable format                                                                | [optional] |
-| **onboarded**               | **bool** | Specifies whether the Iota share triggered the creation of a Vault                                                 | [optional] |
+| Name                        | Type     | Description                                                                                                                                                                             | Notes      |
+| --------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **state**                   | **str**  | A randomly generated string that follows a valid UUID (version 1-5) format to validate the session.                                                                                     |
+| **presentation_submission** | **str**  | A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard. | [optional] |
+| **vp_token**                | **str**  | A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.                                     | [optional] |
+| **error**                   | **str**  | A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.      | [optional] |
+| **error_description**       | **str**  | A human-readable description that provides detailed information about the error.                                                                                                        | [optional] |
+| **onboarded**               | **bool** | It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User].                                                                            | [optional] |
 
 ## Example
 

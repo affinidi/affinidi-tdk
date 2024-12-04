@@ -17,7 +17,7 @@ class UpdatePexQueryInput {
     this.description,
   });
 
-  /// VP definition in JSON stringify format
+  /// The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -26,6 +26,7 @@ class UpdatePexQueryInput {
   ///
   String? vpDefinition;
 
+  /// An optional description of what the query is used for.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

@@ -28,8 +28,8 @@ class PrepareRequest(BaseModel):
     """
     connection_client_id: StrictStr = Field(default=..., alias="connectionClientId")
     query_id: StrictStr = Field(default=..., alias="queryId")
-    correlation_id: StrictStr = Field(default=..., alias="correlationId")
-    token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="token time to live in seconds")
+    correlation_id: StrictStr = Field(default=..., alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
+    token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
     audience: Optional[StrictStr] = None
     __properties = ["connectionClientId", "queryId", "correlationId", "tokenMaxAge", "audience"]
 

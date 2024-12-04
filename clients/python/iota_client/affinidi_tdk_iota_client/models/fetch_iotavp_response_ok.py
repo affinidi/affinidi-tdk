@@ -26,9 +26,9 @@ class FetchIOTAVPResponseOK(BaseModel):
     """
     FetchIOTAVPResponseOK
     """
-    correlation_id: Optional[StrictStr] = Field(default=None, alias="correlationId", description="A correlationId used for the flow")
-    presentation_submission: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.")
-    vp_token: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. Ensure to escape special characters properly..")
+    correlation_id: Optional[StrictStr] = Field(default=None, alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
+    presentation_submission: Optional[StrictStr] = Field(default=None, description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
+    vp_token: Optional[StrictStr] = Field(default=None, description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
     additional_properties: Dict[str, Any] = {}
     __properties = ["correlationId", "presentation_submission", "vp_token"]
 

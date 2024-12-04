@@ -14,7 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > AwsExchangeCredentialsOK aws_exchange_credentials(aws_exchange_credentials)
 
-It exchanges limited token into cognito
+Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
 
 ### Example
 
@@ -81,7 +81,7 @@ No authorization required
 
 > IotaExchangeCredentialsOK aws_exchange_credentials_project_token(aws_exchange_credentials_project_token)
 
-It exchanges project token into cognito
+Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
 
 ### Example
 
@@ -175,7 +175,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > FetchIOTAVPResponseOK fetch_iota_vp_response(fetch_iotavp_response_input)
 
-This will get the final data response
+Fetches the client's callback that contains the user's shared data in a Verifiable Presentation format after a successful data-sharing flow.
 
 ### Example
 
@@ -262,6 +262,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 | **200**     | FetchIOTAVPResponseOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError       | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **403**     | ForbiddenError        | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **404**     | NotFoundError         | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -269,7 +270,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > InitiateDataSharingRequestOK initiate_data_sharing_request(initiate_data_sharing_request_input)
 
-This will initiate data sharing request for the data sharing flow
+Generates the request token for the Redirect mode to initiate the data-sharing flow.
 
 ### Example
 
@@ -363,7 +364,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > IotaExchangeCredentialsOK iota_exchange_credentials(iota_exchange_credentials)
 
-It exchanges limited token into cognito sts identity credentials
+Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
 
 ### Example
 

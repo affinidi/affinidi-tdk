@@ -16,7 +16,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials)
 
-    It exchanges limited token into cognito
+    Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
 
 ### Parameters
 
@@ -43,7 +43,7 @@ No authorization required
 
 > IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken)
 
-    It exchanges project token into cognito
+    Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
 
 ### Parameters
 
@@ -70,7 +70,7 @@ No authorization required
 
 > FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput)
 
-    This will get the final data response
+    Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format after a successful data-sharing flow.
 
 ### Parameters
 
@@ -97,7 +97,7 @@ No authorization required
 
 > InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput)
 
-    This will initiate data sharing request for the data sharing flow
+    Generates the request token for the Redirect mode to initiate the data-sharing flow.
 
 ### Parameters
 
@@ -124,7 +124,7 @@ No authorization required
 
 > IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials)
 
-    It exchanges limited token into cognito sts identity credentials
+    Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
 
 ### Parameters
 

@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                              | HTTP request                                                          | Description         |
-| ------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------- |
+| Method                                                              | HTTP request                                                          | Description |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------- |
 | [**create_pex_query**](PexQueryApi.md#create_pex_query)             | **POST** /v1/configurations/{configurationId}/pex-queries             |
-| [**delete_pex_queries**](PexQueryApi.md#delete_pex_queries)         | **POST** /v1/configurations/{configurationId}/delete-queries          | deletes pex queries |
+| [**delete_pex_queries**](PexQueryApi.md#delete_pex_queries)         | **POST** /v1/configurations/{configurationId}/delete-queries          |
 | [**delete_pex_query_by_id**](PexQueryApi.md#delete_pex_query_by_id) | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId} |
 | [**get_pex_query_by_id**](PexQueryApi.md#get_pex_query_by_id)       | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}    |
 | [**list_pex_queries**](PexQueryApi.md#list_pex_queries)             | **GET** /v1/configurations/{configurationId}/pex-queries              |
@@ -15,6 +15,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 # **create_pex_query**
 
 > PexQueryDto create_pex_query(configuration_id, create_pex_query_input)
+
+Creates a new Presentation Definition in the configuration to query data.
 
 ### Example
 
@@ -65,7 +67,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
     create_pex_query_input = affinidi_tdk_iota_client.CreatePexQueryInput() # CreatePexQueryInput | CreatePexQuery
 
     try:
@@ -78,10 +80,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                       | Type                                              | Description          | Notes |
-| -------------------------- | ------------------------------------------------- | -------------------- | ----- |
-| **configuration_id**       | **str**                                           | iotaConfiguration Id |
-| **create_pex_query_input** | [**CreatePexQueryInput**](CreatePexQueryInput.md) | CreatePexQuery       |
+| Name                       | Type                                              | Description                                      | Notes |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configuration_id**       | **str**                                           | ID of the Affinidi Iota Framework configuration. |
+| **create_pex_query_input** | [**CreatePexQueryInput**](CreatePexQueryInput.md) | CreatePexQuery                                   |
 
 ### Return type
 
@@ -113,9 +115,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > delete_pex_queries(configuration_id)
 
-deletes pex queries
-
-deletes pex queries
+Deletes all Presentation Definition queries of a configuration.
 
 ### Example
 
@@ -164,10 +164,9 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
 
     try:
-        # deletes pex queries
         api_instance.delete_pex_queries(configuration_id)
     except Exception as e:
         print("Exception when calling PexQueryApi->delete_pex_queries: %s\n" % e)
@@ -175,9 +174,9 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -206,6 +205,8 @@ void (empty response body)
 
 > delete_pex_query_by_id(configuration_id, query_id)
 
+Deletes a Presentation Definition in the configuration by ID.
+
 ### Example
 
 - Api Key Authentication (ProjectTokenAuth):
@@ -253,8 +254,8 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
-    query_id = 'query_id_example' # str | pex-query Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
+    query_id = 'query_id_example' # str | The ID of the query.
 
     try:
         api_instance.delete_pex_query_by_id(configuration_id, query_id)
@@ -264,10 +265,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
-| **query_id**         | **str** | pex-query Id         |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
+| **query_id**         | **str** | The ID of the query.                             |
 
 ### Return type
 
@@ -296,6 +297,8 @@ void (empty response body)
 # **get_pex_query_by_id**
 
 > PexQueryDto get_pex_query_by_id(configuration_id, query_id)
+
+Retrieves a Presentation Definition in the configuration by ID.
 
 ### Example
 
@@ -345,8 +348,8 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
-    query_id = 'query_id_example' # str | pex-query Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
+    query_id = 'query_id_example' # str | The ID of the query.
 
     try:
         api_response = api_instance.get_pex_query_by_id(configuration_id, query_id)
@@ -358,10 +361,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
-| **query_id**         | **str** | pex-query Id         |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
+| **query_id**         | **str** | The ID of the query.                             |
 
 ### Return type
 
@@ -390,6 +393,8 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 # **list_pex_queries**
 
 > ListPexQueriesOK list_pex_queries(configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
+
+Lists all Presentation Definitions in the configuration.
 
 ### Example
 
@@ -439,7 +444,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
     limit = 56 # int | Maximum number of records to fetch in a list (optional)
     exclusive_start_key = 'exclusive_start_key_example' # str | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
 
@@ -455,7 +460,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 | Name                    | Type    | Description                                                                                                                                                    | Notes      |
 | ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **configuration_id**    | **str** | iotaConfiguration Id                                                                                                                                           |
+| **configuration_id**    | **str** | ID of the Affinidi Iota Framework configuration.                                                                                                               |
 | **limit**               | **int** | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
 | **exclusive_start_key** | **str** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |
 
@@ -487,7 +492,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > object save_pex_queries(configuration_id, save_pex_queries_update_input)
 
-saves all pex queries
+Saves all Presentation Definition queries of a configuration.
 
 ### Example
 
@@ -537,7 +542,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
     save_pex_queries_update_input = affinidi_tdk_iota_client.SavePexQueriesUpdateInput() # SavePexQueriesUpdateInput | SavePexQueriesInput
 
     try:
@@ -550,10 +555,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                              | Type                                                          | Description          | Notes |
-| --------------------------------- | ------------------------------------------------------------- | -------------------- | ----- |
-| **configuration_id**              | **str**                                                       | iotaConfiguration Id |
-| **save_pex_queries_update_input** | [**SavePexQueriesUpdateInput**](SavePexQueriesUpdateInput.md) | SavePexQueriesInput  |
+| Name                              | Type                                                          | Description                                      | Notes |
+| --------------------------------- | ------------------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configuration_id**              | **str**                                                       | ID of the Affinidi Iota Framework configuration. |
+| **save_pex_queries_update_input** | [**SavePexQueriesUpdateInput**](SavePexQueriesUpdateInput.md) | SavePexQueriesInput                              |
 
 ### Return type
 
@@ -581,6 +586,8 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 # **update_pex_query_by_id**
 
 > PexQueryDto update_pex_query_by_id(configuration_id, query_id, update_pex_query_input)
+
+Updates the Presentation Definition in the configuration by ID.
 
 ### Example
 
@@ -631,8 +638,8 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
-    query_id = 'query_id_example' # str | pex-query Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
+    query_id = 'query_id_example' # str | The ID of the query.
     update_pex_query_input = affinidi_tdk_iota_client.UpdatePexQueryInput() # UpdatePexQueryInput | UpdatePexQueryById
 
     try:
@@ -645,11 +652,11 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                       | Type                                              | Description          | Notes |
-| -------------------------- | ------------------------------------------------- | -------------------- | ----- |
-| **configuration_id**       | **str**                                           | iotaConfiguration Id |
-| **query_id**               | **str**                                           | pex-query Id         |
-| **update_pex_query_input** | [**UpdatePexQueryInput**](UpdatePexQueryInput.md) | UpdatePexQueryById   |
+| Name                       | Type                                              | Description                                      | Notes |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configuration_id**       | **str**                                           | ID of the Affinidi Iota Framework configuration. |
+| **query_id**               | **str**                                           | The ID of the query.                             |
+| **update_pex_query_input** | [**UpdatePexQueryInput**](UpdatePexQueryInput.md) | UpdatePexQueryById                               |
 
 ### Return type
 

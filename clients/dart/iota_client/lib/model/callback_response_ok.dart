@@ -18,7 +18,7 @@ class CallbackResponseOK {
     required this.message,
   });
 
-  /// URL to which vault will redirect
+  /// The URL to which Affinidi Vault will redirect the user.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -27,7 +27,7 @@ class CallbackResponseOK {
   ///
   String? redirectUri;
 
-  /// Code which will be used along with transactionId to retrieve data
+  /// A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +36,7 @@ class CallbackResponseOK {
   ///
   String? responseCode;
 
-  /// A message to vault that flow is updated successfully
+  /// A message to the Affinidi Vault indicating that the update was successful.
   String message;
 
   @override

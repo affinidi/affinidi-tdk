@@ -26,9 +26,9 @@ class SavePexQueriesUpdateInputQueriesInner(BaseModel):
     """
     SavePexQueriesUpdateInputQueriesInner
     """
-    query_id: StrictStr = Field(default=..., alias="queryId")
-    vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition")
-    description: Optional[StrictStr] = None
+    query_id: StrictStr = Field(default=..., alias="queryId", description="The ID of the query.")
+    vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.")
+    description: Optional[StrictStr] = Field(default=None, description="An optional description of what the query is used for.")
     __properties = ["queryId", "vpDefinition", "description"]
 
     class Config:

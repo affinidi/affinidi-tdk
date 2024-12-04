@@ -21,6 +21,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > IotaConfigurationDto createIotaConfiguration(createIotaConfigurationInput)
 
+Creates a new Affinidi Iota Framework configuration.
+
 ### Example
 
 ```dart
@@ -66,6 +68,8 @@ try {
 
 > deleteIotaConfigurationById(configurationId)
 
+Deletes an Affinidi Iota Framework configuration by ID.
+
 ### Example
 
 ```dart
@@ -76,7 +80,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | iotaConfiguration Id
+final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
     api_instance.deleteIotaConfigurationById(configurationId);
@@ -87,9 +91,9 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description          | Notes |
-| ------------------- | ---------- | -------------------- | ----- |
-| **configurationId** | **String** | iotaConfiguration Id |
+| Name                | Type       | Description                                      | Notes |
+| ------------------- | ---------- | ------------------------------------------------ | ----- |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -110,6 +114,8 @@ void (empty response body)
 
 > IotaConfigurationDto getIotaConfigurationById(configurationId)
 
+Retrieves the details of an Affinidi Iota Framework configuration.
+
 ### Example
 
 ```dart
@@ -120,7 +126,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | iotaConfiguration Id
+final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
     final result = api_instance.getIotaConfigurationById(configurationId);
@@ -132,9 +138,9 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description          | Notes |
-| ------------------- | ---------- | -------------------- | ----- |
-| **configurationId** | **String** | iotaConfiguration Id |
+| Name                | Type       | Description                                      | Notes |
+| ------------------- | ---------- | ------------------------------------------------ | ----- |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -155,14 +161,16 @@ try {
 
 > GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(projectId, configurationId)
 
+Retrieves the client metadata of an Affinidi Iota Framework configuration.
+
 ### Example
 
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
 
 final api_instance = ConfigurationsApi();
-final projectId = projectId_example; // String | project Id
-final configurationId = configurationId_example; // String | iotaConfiguration Id
+final projectId = projectId_example; // String | The ID of the project.
+final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
     final result = api_instance.getIotaConfigurationMetaData(projectId, configurationId);
@@ -174,10 +182,10 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description          | Notes |
-| ------------------- | ---------- | -------------------- | ----- |
-| **projectId**       | **String** | project Id           |
-| **configurationId** | **String** | iotaConfiguration Id |
+| Name                | Type       | Description                                      | Notes |
+| ------------------- | ---------- | ------------------------------------------------ | ----- |
+| **projectId**       | **String** | The ID of the project.                           |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -197,6 +205,8 @@ No authorization required
 # **listIotaConfigurations**
 
 > ListConfigurationOK listIotaConfigurations()
+
+List all Affinidi Iota Framework configurations.
 
 ### Example
 
@@ -240,6 +250,8 @@ This endpoint does not need any parameter.
 
 > IotaConfigurationDto updateIotaConfigurationById(configurationId, updateConfigurationByIdInput)
 
+Updates the details of an Affinidi Iota Framework configuration by ID.
+
 ### Example
 
 ```dart
@@ -250,7 +262,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | iotaConfiguration Id
+final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 final updateConfigurationByIdInput = UpdateConfigurationByIdInput(); // UpdateConfigurationByIdInput | UpdateConfigurationById
 
 try {
@@ -263,10 +275,10 @@ try {
 
 ### Parameters
 
-| Name                             | Type                                                                | Description             | Notes |
-| -------------------------------- | ------------------------------------------------------------------- | ----------------------- | ----- |
-| **configurationId**              | **String**                                                          | iotaConfiguration Id    |
-| **updateConfigurationByIdInput** | [**UpdateConfigurationByIdInput**](UpdateConfigurationByIdInput.md) | UpdateConfigurationById |
+| Name                             | Type                                                                | Description                                      | Notes |
+| -------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configurationId**              | **String**                                                          | ID of the Affinidi Iota Framework configuration. |
+| **updateConfigurationByIdInput** | [**UpdateConfigurationByIdInput**](UpdateConfigurationByIdInput.md) | UpdateConfigurationById                          |
 
 ### Return type
 
