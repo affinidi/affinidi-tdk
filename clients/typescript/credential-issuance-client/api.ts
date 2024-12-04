@@ -131,6 +131,25 @@ export interface ActionForbiddenErrorDetailsInner {
 /**
  *
  * @export
+ * @interface ChangeCredentialStatusInput
+ */
+export interface ChangeCredentialStatusInput {
+  /**
+   *
+   * @type {string}
+   * @memberof ChangeCredentialStatusInput
+   */
+  changeReason?: string
+  /**
+   *
+   * @type {string}
+   * @memberof ChangeCredentialStatusInput
+   */
+  issuanceFlowDataId?: string
+}
+/**
+ *
+ * @export
  * @interface CorsGenerateCredentialsOK
  */
 export interface CorsGenerateCredentialsOK {
@@ -718,6 +737,167 @@ export interface DeferredCredentialInput {
   transaction_id: string
 }
 /**
+ *
+ * @export
+ * @interface FlowData
+ */
+export interface FlowData {
+  /**
+   * [GEN] ISO 8601 string of the creation date/time the entity
+   * @type {string}
+   * @memberof FlowData
+   */
+  createdAt: string
+  /**
+   * [GEN] ISO 8601 string of the modification date/time the entity
+   * @type {string}
+   * @memberof FlowData
+   */
+  modifiedAt: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  id: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  projectId?: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  flowId: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  credentialTypeId: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  jsonLdContextUrl: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowData
+   */
+  jsonSchemaUrl: string
+  /**
+   * Id of configuration, used to issue VC.
+   * @type {string}
+   * @memberof FlowData
+   */
+  configurationId?: string
+  /**
+   * when credential was issued to the holder (holder invoked generateCredentials endpoint)
+   * @type {string}
+   * @memberof FlowData
+   */
+  issuedAt?: string
+  /**
+   * Id of wallet, used to issue VC.
+   * @type {string}
+   * @memberof FlowData
+   */
+  walletId?: string
+  /**
+   * Id of configuration with which VC was issued. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{configurationId}\"
+   * @type {string}
+   * @memberof FlowData
+   */
+  projectIdConfigurationId?: string
+  /**
+   * Id of wallet which issued VC. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{walletId}\"
+   * @type {string}
+   * @memberof FlowData
+   */
+  projectIdConfigurationIdWalletId?: string
+  /**
+   * VC.type value. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{credentialType}\"
+   * @type {string}
+   * @memberof FlowData
+   */
+  projectIdConfigurationIdCredentialType?: string
+  /**
+   *
+   * @type {Array<FlowDataStatusListsDetailsInner>}
+   * @memberof FlowData
+   */
+  statusListsDetails?: Array<FlowDataStatusListsDetailsInner>
+}
+/**
+ *
+ * @export
+ * @interface FlowDataStatusListsDetailsInner
+ */
+export interface FlowDataStatusListsDetailsInner {
+  /**
+   * Purpose of status list to which credential is added
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  statusListPurpose: FlowDataStatusListsDetailsInnerStatusListPurposeEnum
+  /**
+   * id of status list
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  statusListId: string
+  /**
+   * as usual it is a number, but all standards use a string
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  statusListIndex: string
+  /**
+   *
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  standard: FlowDataStatusListsDetailsInnerStandardEnum
+  /**
+   * indicates status is true or not. Default false.
+   * @type {boolean}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  isActive: boolean
+  /**
+   * text reasoning why the status is true (if true). Optional.
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  statusActivationReason?: string
+  /**
+   * ISO 8601 string of the modification date/time the status. Optional.
+   * @type {string}
+   * @memberof FlowDataStatusListsDetailsInner
+   */
+  statusActivatedAt?: string
+}
+
+export const FlowDataStatusListsDetailsInnerStatusListPurposeEnum = {
+  Revoked: 'REVOKED',
+} as const
+
+export type FlowDataStatusListsDetailsInnerStatusListPurposeEnum =
+  (typeof FlowDataStatusListsDetailsInnerStatusListPurposeEnum)[keyof typeof FlowDataStatusListsDetailsInnerStatusListPurposeEnum]
+export const FlowDataStatusListsDetailsInnerStandardEnum = {
+  RevocationList2020: 'RevocationList2020',
+  BitstringStatusListV1: 'BitstringStatusListV1',
+} as const
+
+export type FlowDataStatusListsDetailsInnerStandardEnum =
+  (typeof FlowDataStatusListsDetailsInnerStandardEnum)[keyof typeof FlowDataStatusListsDetailsInnerStandardEnum]
+
+/**
  * @type GenerateCredentials400Response
  * @export
  */
@@ -736,6 +916,19 @@ export type GetCredentialOffer400Response =
   | ProjectCredentialConfigNotExistError
   | VcClaimedError
 
+/**
+ * DTO contains revocation list credential
+ * @export
+ * @interface GetStatusListResultDto
+ */
+export interface GetStatusListResultDto {
+  /**
+   *
+   * @type {object}
+   * @memberof GetStatusListResultDto
+   */
+  revocationListCredential: object
+}
 /**
  *
  * @export
@@ -1296,6 +1489,25 @@ export type IssuanceStateResponseStatusEnum =
   (typeof IssuanceStateResponseStatusEnum)[keyof typeof IssuanceStateResponseStatusEnum]
 
 /**
+ * list of issuance data records
+ * @export
+ * @interface ListIssuanceRecordResponse
+ */
+export interface ListIssuanceRecordResponse {
+  /**
+   *
+   * @type {Array<FlowData>}
+   * @memberof ListIssuanceRecordResponse
+   */
+  flowData?: Array<FlowData>
+  /**
+   *
+   * @type {string}
+   * @memberof ListIssuanceRecordResponse
+   */
+  lastEvaluatedKey?: string
+}
+/**
  *
  * @export
  * @interface ListIssuanceResponse
@@ -1623,6 +1835,12 @@ export interface StartIssuanceInputDataInner {
    */
   credentialData: { [key: string]: any }
   /**
+   * Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
+   * @type {Array<StartIssuanceInputDataInnerStatusListDetailsInner>}
+   * @memberof StartIssuanceInputDataInner
+   */
+  statusListDetails?: Array<StartIssuanceInputDataInnerStatusListDetailsInner>
+  /**
    *
    * @type {StartIssuanceInputDataInnerMetaData}
    * @memberof StartIssuanceInputDataInner
@@ -1642,6 +1860,40 @@ export interface StartIssuanceInputDataInnerMetaData {
    */
   expirationDate: string
 }
+/**
+ *
+ * @export
+ * @interface StartIssuanceInputDataInnerStatusListDetailsInner
+ */
+export interface StartIssuanceInputDataInnerStatusListDetailsInner {
+  /**
+   *
+   * @type {string}
+   * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
+   */
+  purpose?: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
+   */
+  standard?: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
+}
+
+export const StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum = {
+  Revocable: 'REVOCABLE',
+} as const
+
+export type StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum =
+  (typeof StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum)[keyof typeof StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum]
+export const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum = {
+  RevocationList2020: 'RevocationList2020',
+  BitstringStatusListV1: 'BitstringStatusListV1',
+} as const
+
+export type StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum =
+  (typeof StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum)[keyof typeof StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum]
+
 /**
  *
  * @export
@@ -2819,6 +3071,431 @@ export class CredentialsApi extends BaseAPI {
   ) {
     return CredentialsApiFp(this.configuration)
       .generateCredentials(projectId, createCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * change credential status.
+     * @summary change credential status.
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeCredentialSatatus: async (
+      projectId: string,
+      configurationId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('changeCredentialSatatus', 'projectId', projectId)
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'changeCredentialSatatus',
+        'configurationId',
+        configurationId,
+      )
+      const localVarPath =
+        `/v1/{projectId}/configurations/{configurationId}/issuance/change-status/`
+          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Return status list credential
+     * @summary Return status list credential
+     * @param {string} projectId
+     * @param {string} statusListId id of the status list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStatusList: async (
+      projectId: string,
+      statusListId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('getStatusList', 'projectId', projectId)
+      // verify required parameter 'statusListId' is not null or undefined
+      assertParamExists('getStatusList', 'statusListId', statusListId)
+      const localVarPath = `/v1/{projectId}/status-list/{statusListId}`
+        .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+        .replace(
+          `{${'statusListId'}}`,
+          encodeURIComponent(String(statusListId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Retrieve a list of issuance data records.
+     * @summary List records
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listIssuanceDataRecords: async (
+      limit?: number,
+      exclusiveStartKey?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * change credential status.
+     * @summary change credential status.
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async changeCredentialSatatus(
+      projectId: string,
+      configurationId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FlowData>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.changeCredentialSatatus(
+          projectId,
+          configurationId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.changeCredentialSatatus']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Return status list credential
+     * @summary Return status list credential
+     * @param {string} projectId
+     * @param {string} statusListId id of the status list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getStatusList(
+      projectId: string,
+      statusListId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<GetStatusListResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getStatusList(
+        projectId,
+        statusListId,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.getStatusList']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Retrieve a list of issuance data records.
+     * @summary List records
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listIssuanceDataRecords(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListIssuanceRecordResponse>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listIssuanceDataRecords(
+          limit,
+          exclusiveStartKey,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.listIssuanceDataRecords']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = DefaultApiFp(configuration)
+  return {
+    /**
+     * change credential status.
+     * @summary change credential status.
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    changeCredentialSatatus(
+      projectId: string,
+      configurationId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<FlowData> {
+      return localVarFp
+        .changeCredentialSatatus(projectId, configurationId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Return status list credential
+     * @summary Return status list credential
+     * @param {string} projectId
+     * @param {string} statusListId id of the status list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getStatusList(
+      projectId: string,
+      statusListId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<GetStatusListResultDto> {
+      return localVarFp
+        .getStatusList(projectId, statusListId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Retrieve a list of issuance data records.
+     * @summary List records
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listIssuanceDataRecords(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListIssuanceRecordResponse> {
+      return localVarFp
+        .listIssuanceDataRecords(limit, exclusiveStartKey, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   * change credential status.
+   * @summary change credential status.
+   * @param {string} projectId project id
+   * @param {string} configurationId configuration id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public changeCredentialSatatus(
+    projectId: string,
+    configurationId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .changeCredentialSatatus(projectId, configurationId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Return status list credential
+   * @summary Return status list credential
+   * @param {string} projectId
+   * @param {string} statusListId id of the status list
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public getStatusList(
+    projectId: string,
+    statusListId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .getStatusList(projectId, statusListId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Retrieve a list of issuance data records.
+   * @summary List records
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public listIssuanceDataRecords(
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .listIssuanceDataRecords(limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
