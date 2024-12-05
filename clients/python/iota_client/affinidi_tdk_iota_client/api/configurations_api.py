@@ -52,6 +52,7 @@ class ConfigurationsApi:
     def create_iota_configuration(self, create_iota_configuration_input : Annotated[CreateIotaConfigurationInput, Field(..., description="CreateConfiguration")], **kwargs) -> IotaConfigurationDto:  # noqa: E501
         """create_iota_configuration  # noqa: E501
 
+        Creates a new Affinidi Iota Framework configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -81,6 +82,7 @@ class ConfigurationsApi:
     def create_iota_configuration_with_http_info(self, create_iota_configuration_input : Annotated[CreateIotaConfigurationInput, Field(..., description="CreateConfiguration")], **kwargs) -> ApiResponse:  # noqa: E501
         """create_iota_configuration  # noqa: E501
 
+        Creates a new Affinidi Iota Framework configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -198,16 +200,17 @@ class ConfigurationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> None:  # noqa: E501
+    def delete_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> None:  # noqa: E501
         """delete_iota_configuration_by_id  # noqa: E501
 
+        Deletes an Affinidi Iota Framework configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_iota_configuration_by_id(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -227,16 +230,17 @@ class ConfigurationsApi:
         return self.delete_iota_configuration_by_id_with_http_info(configuration_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> ApiResponse:  # noqa: E501
         """delete_iota_configuration_by_id  # noqa: E501
 
+        Deletes an Affinidi Iota Framework configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_iota_configuration_by_id_with_http_info(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -334,16 +338,17 @@ class ConfigurationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> IotaConfigurationDto:  # noqa: E501
+    def get_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> IotaConfigurationDto:  # noqa: E501
         """get_iota_configuration_by_id  # noqa: E501
 
+        Retrieves the details of an Affinidi Iota Framework configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_iota_configuration_by_id(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -363,16 +368,17 @@ class ConfigurationsApi:
         return self.get_iota_configuration_by_id_with_http_info(configuration_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> ApiResponse:  # noqa: E501
         """get_iota_configuration_by_id  # noqa: E501
 
+        Retrieves the details of an Affinidi Iota Framework configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_iota_configuration_by_id_with_http_info(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -475,18 +481,19 @@ class ConfigurationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_iota_configuration_meta_data(self, project_id : Annotated[StrictStr, Field(..., description="project Id")], configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> GetIotaConfigurationMetaDataOK:  # noqa: E501
+    def get_iota_configuration_meta_data(self, project_id : Annotated[StrictStr, Field(..., description="The ID of the project.")], configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> GetIotaConfigurationMetaDataOK:  # noqa: E501
         """get_iota_configuration_meta_data  # noqa: E501
 
+        Retrieves the client metadata of an Affinidi Iota Framework configuration.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_iota_configuration_meta_data(project_id, configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param project_id: project Id (required)
+        :param project_id: The ID of the project. (required)
         :type project_id: str
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -506,18 +513,19 @@ class ConfigurationsApi:
         return self.get_iota_configuration_meta_data_with_http_info(project_id, configuration_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_iota_configuration_meta_data_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project Id")], configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_iota_configuration_meta_data_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="The ID of the project.")], configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> ApiResponse:  # noqa: E501
         """get_iota_configuration_meta_data  # noqa: E501
 
+        Retrieves the client metadata of an Affinidi Iota Framework configuration.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_iota_configuration_meta_data_with_http_info(project_id, configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param project_id: project Id (required)
+        :param project_id: The ID of the project. (required)
         :type project_id: str
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -626,6 +634,7 @@ class ConfigurationsApi:
     def list_iota_configurations(self, **kwargs) -> ListConfigurationOK:  # noqa: E501
         """list_iota_configurations  # noqa: E501
 
+        List all Affinidi Iota Framework configurations.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -653,6 +662,7 @@ class ConfigurationsApi:
     def list_iota_configurations_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """list_iota_configurations  # noqa: E501
 
+        List all Affinidi Iota Framework configurations.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -755,16 +765,17 @@ class ConfigurationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], update_configuration_by_id_input : Annotated[UpdateConfigurationByIdInput, Field(..., description="UpdateConfigurationById")], **kwargs) -> IotaConfigurationDto:  # noqa: E501
+    def update_iota_configuration_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], update_configuration_by_id_input : Annotated[UpdateConfigurationByIdInput, Field(..., description="UpdateConfigurationById")], **kwargs) -> IotaConfigurationDto:  # noqa: E501
         """update_iota_configuration_by_id  # noqa: E501
 
+        Updates the details of an Affinidi Iota Framework configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_iota_configuration_by_id(configuration_id, update_configuration_by_id_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param update_configuration_by_id_input: UpdateConfigurationById (required)
         :type update_configuration_by_id_input: UpdateConfigurationByIdInput
@@ -786,16 +797,17 @@ class ConfigurationsApi:
         return self.update_iota_configuration_by_id_with_http_info(configuration_id, update_configuration_by_id_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], update_configuration_by_id_input : Annotated[UpdateConfigurationByIdInput, Field(..., description="UpdateConfigurationById")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_iota_configuration_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], update_configuration_by_id_input : Annotated[UpdateConfigurationByIdInput, Field(..., description="UpdateConfigurationById")], **kwargs) -> ApiResponse:  # noqa: E501
         """update_iota_configuration_by_id  # noqa: E501
 
+        Updates the details of an Affinidi Iota Framework configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_iota_configuration_by_id_with_http_info(configuration_id, update_configuration_by_id_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param update_configuration_by_id_input: UpdateConfigurationById (required)
         :type update_configuration_by_id_input: UpdateConfigurationByIdInput

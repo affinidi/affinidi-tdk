@@ -26,12 +26,12 @@ class CallbackInput(BaseModel):
     """
     CallbackInput
     """
-    state: StrictStr = Field(default=..., description="A string that must be a valid UUID (version 1-5).")
-    presentation_submission: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.")
-    vp_token: Optional[StrictStr] = Field(default=None, description="A string that must be a valid JSON object. Ensure to escape special characters properly..")
-    error: Optional[StrictStr] = Field(default=None, description="The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied")
-    error_description: Optional[StrictStr] = Field(default=None, description="Description of the error in a human readable format")
-    onboarded: Optional[StrictBool] = Field(default=None, description="Specifies whether the Iota share triggered the creation of a Vault")
+    state: StrictStr = Field(default=..., description="A randomly generated string that follows a valid UUID (version 1-5) format to validate the session.")
+    presentation_submission: Optional[StrictStr] = Field(default=None, description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
+    vp_token: Optional[StrictStr] = Field(default=None, description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
+    error: Optional[StrictStr] = Field(default=None, description="A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.")
+    error_description: Optional[StrictStr] = Field(default=None, description="A human-readable description that provides detailed information about the error.")
+    onboarded: Optional[StrictBool] = Field(default=None, description="It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User].")
     __properties = ["state", "presentation_submission", "vp_token", "error", "error_description", "onboarded"]
 
     class Config:

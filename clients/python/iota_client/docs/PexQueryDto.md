@@ -2,14 +2,14 @@
 
 ## Properties
 
-| Name                  | Type    | Description                            | Notes |
-| --------------------- | ------- | -------------------------------------- | ----- |
-| **ari**               | **str** |                                        |
-| **query_id**          | **str** |                                        |
-| **name**              | **str** |                                        |
-| **description**       | **str** |                                        |
-| **configuration_ari** | **str** |                                        |
-| **vp_definition**     | **str** | VP definition in JSON stringify format |
+| Name                  | Type    | Description                                                                                                                              | Notes |
+| --------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **ari**               | **str** | The unique resource identifier of the qeuery.                                                                                            |
+| **query_id**          | **str** | The ID of the query.                                                                                                                     |
+| **name**              | **str** | The name of the presentation definition to quickly identify the query.                                                                   |
+| **description**       | **str** | An optional description of what the query is used for.                                                                                   |
+| **configuration_ari** | **str** | The unique resource identifier of the related configuration where the query is defined.                                                  |
+| **vp_definition**     | **str** | The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format. |
 
 ## Example
 

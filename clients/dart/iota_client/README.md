@@ -63,9 +63,9 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Class               | Method                                                                                       | HTTP request                                                               | Description                              |
-| ------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
-| _CallbackApi_       | [**iotOIDC4VPCallback**](doc//CallbackApi.md#iotoidc4vpcallback)                             | **POST** /v1/callback                                                      | Processes the callback for OIDC4VP flows |
+| Class               | Method                                                                                       | HTTP request                                                               | Description |
+| ------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ----------- |
+| _CallbackApi_       | [**iotOIDC4VPCallback**](doc//CallbackApi.md#iotoidc4vpcallback)                             | **POST** /v1/callback                                                      |
 | _ConfigurationsApi_ | [**createIotaConfiguration**](doc//ConfigurationsApi.md#createiotaconfiguration)             | **POST** /v1/configurations                                                |
 | _ConfigurationsApi_ | [**deleteIotaConfigurationById**](doc//ConfigurationsApi.md#deleteiotaconfigurationbyid)     | **DELETE** /v1/configurations/{configurationId}                            |
 | _ConfigurationsApi_ | [**getIotaConfigurationById**](doc//ConfigurationsApi.md#getiotaconfigurationbyid)           | **GET** /v1/configurations/{configurationId}                               |
@@ -79,7 +79,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | _IotaApi_           | [**initiateDataSharingRequest**](doc//IotaApi.md#initiatedatasharingrequest)                 | **POST** /v1/initiate-data-sharing-request                                 |
 | _IotaApi_           | [**iotaExchangeCredentials**](doc//IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                                          |
 | _PexQueryApi_       | [**createPexQuery**](doc//PexQueryApi.md#createpexquery)                                     | **POST** /v1/configurations/{configurationId}/pex-queries                  |
-| _PexQueryApi_       | [**deletePexQueries**](doc//PexQueryApi.md#deletepexqueries)                                 | **POST** /v1/configurations/{configurationId}/delete-queries               | deletes pex queries                      |
+| _PexQueryApi_       | [**deletePexQueries**](doc//PexQueryApi.md#deletepexqueries)                                 | **POST** /v1/configurations/{configurationId}/delete-queries               |
 | _PexQueryApi_       | [**deletePexQueryById**](doc//PexQueryApi.md#deletepexquerybyid)                             | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
 | _PexQueryApi_       | [**getPexQueryById**](doc//PexQueryApi.md#getpexquerybyid)                                   | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
 | _PexQueryApi_       | [**listPexQueries**](doc//PexQueryApi.md#listpexqueries)                                     | **GET** /v1/configurations/{configurationId}/pex-queries                   |

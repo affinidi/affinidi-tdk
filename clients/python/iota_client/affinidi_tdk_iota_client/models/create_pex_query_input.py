@@ -26,9 +26,9 @@ class CreatePexQueryInput(BaseModel):
     """
     CreatePexQueryInput
     """
-    name: StrictStr = Field(...)
-    vp_definition: StrictStr = Field(default=..., alias="vpDefinition", description="VP definition in JSON stringify format")
-    description: Optional[StrictStr] = Field(default=None, description="Description of query")
+    name: StrictStr = Field(default=..., description="The name of the presentation definition to quickly identify the query.")
+    vp_definition: StrictStr = Field(default=..., alias="vpDefinition", description="The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.")
+    description: Optional[StrictStr] = Field(default=None, description="An optional description of what the query is used for.")
     __properties = ["name", "vpDefinition", "description"]
 
     class Config:

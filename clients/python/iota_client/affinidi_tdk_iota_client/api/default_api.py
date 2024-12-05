@@ -47,10 +47,10 @@ class DefaultApi:
         self.api_client = api_client
 
     @validate_arguments
-    def list_logged_consents(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListLoggedConsentsOK:  # noqa: E501
+    def list_logged_consents(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="The maximum number of records to fetch from the list of logged consents.")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListLoggedConsentsOK:  # noqa: E501
         """list_logged_consents  # noqa: E501
 
-        returns a list of logged consents for the project  # noqa: E501
+        Lists all the logged consents for a project.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -61,7 +61,7 @@ class DefaultApi:
         :type configuration_id: str
         :param user_id:
         :type user_id: str
-        :param limit: Maximum number of records to fetch in a list
+        :param limit: The maximum number of records to fetch from the list of logged consents.
         :type limit: int
         :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
         :type exclusive_start_key: str
@@ -83,10 +83,10 @@ class DefaultApi:
         return self.list_logged_consents_with_http_info(configuration_id, user_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_logged_consents_with_http_info(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_logged_consents_with_http_info(self, configuration_id : Optional[StrictStr] = None, user_id : Optional[StrictStr] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="The maximum number of records to fetch from the list of logged consents.")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_logged_consents  # noqa: E501
 
-        returns a list of logged consents for the project  # noqa: E501
+        Lists all the logged consents for a project.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -97,7 +97,7 @@ class DefaultApi:
         :type configuration_id: str
         :param user_id:
         :type user_id: str
-        :param limit: Maximum number of records to fetch in a list
+        :param limit: The maximum number of records to fetch from the list of logged consents.
         :type limit: int
         :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
         :type exclusive_start_key: str

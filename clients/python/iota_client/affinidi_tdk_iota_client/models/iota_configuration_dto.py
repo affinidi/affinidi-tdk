@@ -27,19 +27,19 @@ class IotaConfigurationDto(BaseModel):
     """
     IotaConfigurationDto
     """
-    ari: StrictStr = Field(default=..., description="The ARI of the config")
-    configuration_id: StrictStr = Field(default=..., alias="configurationId")
-    name: StrictStr = Field(default=..., description="The name of the config")
-    project_id: StrictStr = Field(default=..., alias="projectId")
-    wallet_ari: StrictStr = Field(default=..., alias="walletAri", description="The wallet Ari that will be used to sign")
-    token_max_age: Union[StrictFloat, StrictInt] = Field(default=..., alias="tokenMaxAge", description="token time to live in seconds")
-    iota_response_webhook_url: Optional[StrictStr] = Field(default=None, alias="iotaResponseWebhookURL", description="webhook to call when data is ready")
-    enable_verification: StrictBool = Field(default=..., alias="enableVerification")
-    enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog")
+    ari: StrictStr = Field(default=..., description="This is a unique resource identifier of the Affinidi Iota Framework configuration.")
+    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="ID of the Affinidi Iota Framework configuration.")
+    name: StrictStr = Field(default=..., description="The name of the configuration to quickly identify the resource.")
+    project_id: StrictStr = Field(default=..., alias="projectId", description="The ID of the project.")
+    wallet_ari: StrictStr = Field(default=..., alias="walletAri", description="The unique resource identifier of the Wallet used to sign the request token.")
+    token_max_age: Union[StrictFloat, StrictInt] = Field(default=..., alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
+    iota_response_webhook_url: Optional[StrictStr] = Field(default=None, alias="iotaResponseWebhookURL", description="The webhook URL is used for callback when the data is ready.")
+    enable_verification: StrictBool = Field(default=..., alias="enableVerification", description="Cryptographically verifies the data shared by the user when enabled.")
+    enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog", description="Records the consent the user gave when they shared their data, including the type of data shared.")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
-    mode: Optional[StrictStr] = Field(default='websocket', description="indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.")
-    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="the URLs that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.")
-    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="enables third party IDV provider verification for the given configuration")
+    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
+    redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
+    enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
     __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
 
     @validator('mode')

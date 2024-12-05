@@ -18,7 +18,7 @@ class FetchIOTAVPResponseOK {
     this.vpToken,
   });
 
-  /// A correlationId used for the flow
+  /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -27,7 +27,7 @@ class FetchIOTAVPResponseOK {
   ///
   String? correlationId;
 
-  /// A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.
+  /// A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,7 +36,7 @@ class FetchIOTAVPResponseOK {
   ///
   String? presentationSubmission;
 
-  /// A string that must be a valid JSON object. Ensure to escape special characters properly..
+  /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

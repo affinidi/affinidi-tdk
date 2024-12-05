@@ -26,10 +26,10 @@ class CreateIotaConfigurationInput {
     this.enableIdvProviders,
   });
 
-  /// The name of the configuration
+  /// The name of the configuration to quickly identify the resource.
   String name;
 
-  /// Description of the configuration
+  /// An optional description of what the configuration is used for.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -38,10 +38,10 @@ class CreateIotaConfigurationInput {
   ///
   String? description;
 
-  /// The wallet Ari that will be used to sign
+  /// The unique resource identifier of the Wallet used to sign the request token.
   String walletAri;
 
-  /// webhook to call when data is ready
+  /// The webhook URL is used for callback when the data is ready.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -50,11 +50,13 @@ class CreateIotaConfigurationInput {
   ///
   String? iotaResponseWebhookURL;
 
+  /// Cryptographically verifies the data shared by the user when enabled.
   bool enableVerification;
 
+  /// Records the user's consent when they share their data, including the type of data shared when enabled.
   bool enableConsentAuditLog;
 
-  /// token time to live in seconds
+  /// This is the lifetime of the signed request token during the data-sharing flow.
   ///
   /// Minimum value: 1
   ///
@@ -67,13 +69,13 @@ class CreateIotaConfigurationInput {
 
   IotaConfigurationDtoClientMetadata clientMetadata;
 
-  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   CreateIotaConfigurationInputModeEnum mode;
 
-  /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+  /// List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
   List<String> redirectUris;
 
-  /// enables third party IDV provider verification for the given configuration
+  /// Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -233,7 +235,7 @@ class CreateIotaConfigurationInput {
   };
 }
 
-/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+/// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
 class CreateIotaConfigurationInputModeEnum {
   /// Instantiate a new enum with the provided [value].
   const CreateIotaConfigurationInputModeEnum._(this.value);

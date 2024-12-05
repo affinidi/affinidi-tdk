@@ -21,10 +21,10 @@ class CallbackInput {
     this.onboarded,
   });
 
-  /// A string that must be a valid UUID (version 1-5).
+  /// A randomly generated string that follows a valid UUID (version 1-5) format to validate the session.
   String state;
 
-  /// A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard.
+  /// A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -33,7 +33,7 @@ class CallbackInput {
   ///
   String? presentationSubmission;
 
-  /// A string that must be a valid JSON object. Ensure to escape special characters properly..
+  /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -42,7 +42,7 @@ class CallbackInput {
   ///
   String? vpToken;
 
-  /// The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to access_denied
+  /// A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -51,7 +51,7 @@ class CallbackInput {
   ///
   String? error;
 
-  /// Description of the error in a human readable format
+  /// A human-readable description that provides detailed information about the error.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -60,7 +60,7 @@ class CallbackInput {
   ///
   String? errorDescription;
 
-  /// Specifies whether the Iota share triggered the creation of a Vault
+  /// It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User].
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

@@ -2,15 +2,15 @@
 
 ## Properties
 
-| Name                 | Type      | Description                                                                                                                                       | Notes      |
-| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **query_id**         | **str**   |                                                                                                                                                   |
-| **correlation_id**   | **str**   |                                                                                                                                                   |
-| **token_max_age**    | **float** | token time to live in seconds                                                                                                                     | [optional] |
-| **nonce**            | **str**   | Random value used to prevent replay attacks                                                                                                       |
-| **redirect_uri**     | **str**   | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.  |
-| **configuration_id** | **str**   | id of the IOTA configuration used                                                                                                                 |
-| **mode**             | **str**   | indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request. |
+| Name                 | Type      | Description                                                                                                                                      | Notes      |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **query_id**         | **str**   | The ID of the query.                                                                                                                             |
+| **correlation_id**   | **str**   | A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.                               |
+| **token_max_age**    | **float** | This is the lifetime of the signed request token during the data-sharing flow.                                                                   | [optional] |
+| **nonce**            | **str**   | A randomly generated value that is added in the request and response to prevent replay attacks.                                                  |
+| **redirect_uri**     | **str**   | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. |
+| **configuration_id** | **str**   | ID of the Affinidi Iota Framework configuration.                                                                                                 |
+| **mode**             | **str**   | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      |
 
 ## Example
 

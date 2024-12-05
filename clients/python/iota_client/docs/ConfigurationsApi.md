@@ -15,6 +15,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > IotaConfigurationDto create_iota_configuration(create_iota_configuration_input)
 
+Creates a new Affinidi Iota Framework configuration.
+
 ### Example
 
 - Api Key Authentication (ProjectTokenAuth):
@@ -109,6 +111,8 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > delete_iota_configuration_by_id(configuration_id)
 
+Deletes an Affinidi Iota Framework configuration by ID.
+
 ### Example
 
 - Api Key Authentication (ProjectTokenAuth):
@@ -156,7 +160,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.ConfigurationsApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
 
     try:
         api_instance.delete_iota_configuration_by_id(configuration_id)
@@ -166,9 +170,9 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -196,6 +200,8 @@ void (empty response body)
 # **get_iota_configuration_by_id**
 
 > IotaConfigurationDto get_iota_configuration_by_id(configuration_id)
+
+Retrieves the details of an Affinidi Iota Framework configuration.
 
 ### Example
 
@@ -245,7 +251,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.ConfigurationsApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
 
     try:
         api_response = api_instance.get_iota_configuration_by_id(configuration_id)
@@ -257,9 +263,9 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **configuration_id** | **str** | iotaConfiguration Id |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -289,6 +295,8 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 > GetIotaConfigurationMetaDataOK get_iota_configuration_meta_data(project_id, configuration_id)
 
+Retrieves the client metadata of an Affinidi Iota Framework configuration.
+
 ### Example
 
 ```python
@@ -310,8 +318,8 @@ configuration = affinidi_tdk_iota_client.Configuration(
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.ConfigurationsApi(api_client)
-    project_id = 'project_id_example' # str | project Id
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    project_id = 'project_id_example' # str | The ID of the project.
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
 
     try:
         api_response = api_instance.get_iota_configuration_meta_data(project_id, configuration_id)
@@ -323,10 +331,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                 | Type    | Description          | Notes |
-| -------------------- | ------- | -------------------- | ----- |
-| **project_id**       | **str** | project Id           |
-| **configuration_id** | **str** | iotaConfiguration Id |
+| Name                 | Type    | Description                                      | Notes |
+| -------------------- | ------- | ------------------------------------------------ | ----- |
+| **project_id**       | **str** | The ID of the project.                           |
+| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
 
 ### Return type
 
@@ -354,6 +362,8 @@ No authorization required
 # **list_iota_configurations**
 
 > ListConfigurationOK list_iota_configurations()
+
+List all Affinidi Iota Framework configurations.
 
 ### Example
 
@@ -443,6 +453,8 @@ This endpoint does not need any parameter.
 
 > IotaConfigurationDto update_iota_configuration_by_id(configuration_id, update_configuration_by_id_input)
 
+Updates the details of an Affinidi Iota Framework configuration by ID.
+
 ### Example
 
 - Api Key Authentication (ProjectTokenAuth):
@@ -492,7 +504,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.ConfigurationsApi(api_client)
-    configuration_id = 'configuration_id_example' # str | iotaConfiguration Id
+    configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
     update_configuration_by_id_input = affinidi_tdk_iota_client.UpdateConfigurationByIdInput() # UpdateConfigurationByIdInput | UpdateConfigurationById
 
     try:
@@ -505,10 +517,10 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-| Name                                 | Type                                                                | Description             | Notes |
-| ------------------------------------ | ------------------------------------------------------------------- | ----------------------- | ----- |
-| **configuration_id**                 | **str**                                                             | iotaConfiguration Id    |
-| **update_configuration_by_id_input** | [**UpdateConfigurationByIdInput**](UpdateConfigurationByIdInput.md) | UpdateConfigurationById |
+| Name                                 | Type                                                                | Description                                      | Notes |
+| ------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configuration_id**                 | **str**                                                             | ID of the Affinidi Iota Framework configuration. |
+| **update_configuration_by_id_input** | [**UpdateConfigurationByIdInput**](UpdateConfigurationByIdInput.md) | UpdateConfigurationById                          |
 
 ### Return type
 

@@ -12,7 +12,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > ListLoggedConsentsOK listLoggedConsents(configurationId, userId, limit, exclusiveStartKey)
 
-    returns a list of logged consents for the project
+    Lists all the logged consents for a project.
 
 ### Parameters
 
@@ -20,7 +20,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
 | **configurationId**   | **String**  |                                                                                                                                                                | [optional] [default to null] |
 | **userId**            | **String**  |                                                                                                                                                                | [optional] [default to null] |
-| **limit**             | **Integer** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to null] |
+| **limit**             | **Integer** | The maximum number of records to fetch from the list of logged consents.                                                                                       | [optional] [default to null] |
 | **exclusiveStartKey** | **String**  | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] [default to null] |
 
 ### Return type

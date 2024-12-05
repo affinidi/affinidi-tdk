@@ -2,11 +2,11 @@
 
 ## Properties
 
-| Name                        | Type    | Description                                                                                                        | Notes      |
-| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
-| **correlation_id**          | **str** | A correlationId used for the flow                                                                                  | [optional] |
-| **presentation_submission** | **str** | A string that must be a valid JSON object. The structure of presentation submission should follow OID4VP standard. | [optional] |
-| **vp_token**                | **str** | A string that must be a valid JSON object. Ensure to escape special characters properly..                          | [optional] |
+| Name                        | Type    | Description                                                                                                                                                                             | Notes      |
+| --------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **correlation_id**          | **str** | A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.                                                                      | [optional] |
+| **presentation_submission** | **str** | A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard. | [optional] |
+| **vp_token**                | **str** | A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.                                     | [optional] |
 
 ## Example
 

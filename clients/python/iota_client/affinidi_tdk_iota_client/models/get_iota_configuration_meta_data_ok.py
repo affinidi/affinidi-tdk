@@ -26,9 +26,9 @@ class GetIotaConfigurationMetaDataOK(BaseModel):
     """
     GetIotaConfigurationMetaDataOK
     """
-    name: StrictStr = Field(default=..., description="application name that will be displayed in consent page")
-    origin: StrictStr = Field(default=..., description="origin url that will be displayed in consent page")
-    logo: StrictStr = Field(default=..., description="logo url that will be displayed in consent page")
+    name: StrictStr = Field(default=..., description="The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website's name.")
+    origin: StrictStr = Field(default=..., description="The URL of the requester displayed on the consent page indicates the request's origin.")
+    logo: StrictStr = Field(default=..., description="The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.")
     __properties = ["name", "origin", "logo"]
 
     class Config:

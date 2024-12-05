@@ -26,8 +26,8 @@ class UpdatePexQueryInput(BaseModel):
     """
     UpdatePexQueryInput
     """
-    vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="VP definition in JSON stringify format")
-    description: Optional[StrictStr] = None
+    vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.")
+    description: Optional[StrictStr] = Field(default=None, description="An optional description of what the query is used for.")
     __properties = ["vpDefinition", "description"]
 
     class Config:
