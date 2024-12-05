@@ -22,7 +22,7 @@ If this Dart package is published to Github, add the following dependency to you
 ```
 dependencies:
   affinidi_tdk_login_configuration_client:
-    git: https://github.com/affinidi.com/affinidi-tdk.git
+    git: https://github.com/affinidi/affinidi-tdk.git
 ```
 
 ### Local
