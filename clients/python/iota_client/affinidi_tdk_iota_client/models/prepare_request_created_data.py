@@ -27,7 +27,7 @@ class PrepareRequestCreatedData(BaseModel):
     PrepareRequestCreatedData
     """
     jwt: StrictStr = Field(...)
-    correlation_id: StrictStr = Field(default=..., alias="correlationId")
+    correlation_id: StrictStr = Field(default=..., alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
     __properties = ["jwt", "correlationId"]
 
     class Config:

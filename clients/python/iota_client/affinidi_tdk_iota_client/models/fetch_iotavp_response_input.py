@@ -26,10 +26,10 @@ class FetchIOTAVPResponseInput(BaseModel):
     """
     FetchIOTAVPResponseInput
     """
-    correlation_id: StrictStr = Field(default=..., alias="correlationId", description="The correlation ID")
-    transaction_id: StrictStr = Field(default=..., alias="transactionId", description="The transaction ID")
-    response_code: constr(strict=True, max_length=255, min_length=1) = Field(default=..., alias="responseCode", description="The response code.")
-    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="The configuration ID")
+    correlation_id: StrictStr = Field(default=..., alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
+    transaction_id: StrictStr = Field(default=..., alias="transactionId", description="A unique, randomly generated identifier data-sharing request flow is initiated. This value is used with the response code to fetch the callback response data.")
+    response_code: constr(strict=True, max_length=255, min_length=1) = Field(default=..., alias="responseCode", description="A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.")
+    configuration_id: StrictStr = Field(default=..., alias="configurationId", description="ID of the Affinidi Iota Framework configuration.")
     __properties = ["correlationId", "transactionId", "responseCode", "configurationId"]
 
     class Config:

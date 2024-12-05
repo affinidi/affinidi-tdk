@@ -2,9 +2,9 @@
 
 ## Properties
 
-| Name          | Type    | Description                                                              | Notes |
-| ------------- | ------- | ------------------------------------------------------------------------ | ----- |
-| **assertion** | **str** | JWT signed with a machine token used to secure the web socket connection |
+| Name          | Type    | Description                                                                                                                                                               | Notes |
+| ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **assertion** | **str** | A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair&#39;s private key used to create the Personal Access Token (PAT). |
 
 ## Example
 

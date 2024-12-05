@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                      | HTTP request          | Description                              |
-| ----------------------------------------------------------- | --------------------- | ---------------------------------------- |
-| [**iotOIDC4VPCallback**](CallbackApi.md#iotOIDC4VPCallback) | **POST** /v1/callback | Processes the callback for OIDC4VP flows |
+| Method                                                      | HTTP request          | Description |
+| ----------------------------------------------------------- | --------------------- | ----------- |
+| [**iotOIDC4VPCallback**](CallbackApi.md#iotOIDC4VPCallback) | **POST** /v1/callback |             |
 
 <a name="iotOIDC4VPCallback"></a>
 
@@ -12,9 +12,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > CallbackResponseOK iotOIDC4VPCallback(CallbackInput)
 
-Processes the callback for OIDC4VP flows
-
-    This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction&#39;s completion or notifying of any errors.
+    It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.
 
 ### Parameters
 

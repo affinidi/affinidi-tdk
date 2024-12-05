@@ -16,7 +16,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > ListLoggedConsentsOK listLoggedConsents(configurationId, userId, limit, exclusiveStartKey)
 
-returns a list of logged consents for the project
+Lists all the logged consents for a project.
 
 ### Example
 
@@ -30,7 +30,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 final api_instance = DefaultApi();
 final configurationId = configurationId_example; // String |
 final userId = userId_example; // String |
-final limit = 56; // int | Maximum number of records to fetch in a list
+final limit = 56; // int | The maximum number of records to fetch from the list of logged consents.
 final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
@@ -47,7 +47,7 @@ try {
 | --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
 | **configurationId**   | **String** |                                                                                                                                                                | [optional] |
 | **userId**            | **String** |                                                                                                                                                                | [optional] |
-| **limit**             | **int**    | Maximum number of records to fetch in a list                                                                                                                   | [optional] |
+| **limit**             | **int**    | The maximum number of records to fetch from the list of logged consents.                                                                                       | [optional] |
 | **exclusiveStartKey** | **String** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] |
 
 ### Return type

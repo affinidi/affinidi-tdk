@@ -26,7 +26,7 @@ class UpdateConfigurationByIdInput {
     this.enableIdvProviders,
   });
 
-  /// The name of the config
+  /// The name of the configuration to quickly identify the resource.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,7 +35,7 @@ class UpdateConfigurationByIdInput {
   ///
   String? name;
 
-  /// The wallet Ari that will be used to sign
+  /// The unique resource identifier of the Wallet used to sign the request token.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,7 +44,7 @@ class UpdateConfigurationByIdInput {
   ///
   String? walletAri;
 
-  /// webhook to call when data is ready
+  /// The webhook URL is used for callback when the data is ready.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -53,6 +53,7 @@ class UpdateConfigurationByIdInput {
   ///
   String? iotaResponseWebhookURL;
 
+  /// Cryptographically verifies the data shared by the user when enabled.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -61,6 +62,7 @@ class UpdateConfigurationByIdInput {
   ///
   bool? enableVerification;
 
+  /// Records the user's consent when they share their data, including the type of data shared when enabled.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -69,7 +71,7 @@ class UpdateConfigurationByIdInput {
   ///
   bool? enableConsentAuditLog;
 
-  /// token time to live in seconds
+  /// This is the lifetime of the signed request token during the data-sharing flow.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -78,7 +80,7 @@ class UpdateConfigurationByIdInput {
   ///
   int? tokenMaxAge;
 
-  /// The description of the config
+  /// An optional description of what the configuration is used for.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -95,13 +97,13 @@ class UpdateConfigurationByIdInput {
   ///
   IotaConfigurationDtoClientMetadata? clientMetadata;
 
-  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   UpdateConfigurationByIdInputModeEnum? mode;
 
-  /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.Required only if mode is Redirect.
+  /// List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
   List<String> redirectUris;
 
-  /// enables third party IDV provider verification for the given configuration
+  /// Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -280,7 +282,7 @@ class UpdateConfigurationByIdInput {
   };
 }
 
-/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+/// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
 class UpdateConfigurationByIdInputModeEnum {
   /// Instantiate a new enum with the provided [value].
   const UpdateConfigurationByIdInputModeEnum._(this.value);

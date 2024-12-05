@@ -2,11 +2,11 @@
 
 ## Properties
 
-| Name              | Type    | Description                                                       | Notes      |
-| ----------------- | ------- | ----------------------------------------------------------------- | ---------- |
-| **redirect_uri**  | **str** | URL to which vault will redirect                                  | [optional] |
-| **response_code** | **str** | Code which will be used along with transactionId to retrieve data | [optional] |
-| **message**       | **str** | A message to vault that flow is updated successfully              |
+| Name              | Type    | Description                                                                                                                              | Notes      |
+| ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **redirect_uri**  | **str** | The URL to which Affinidi Vault will redirect the user.                                                                                  | [optional] |
+| **response_code** | **str** | A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data. | [optional] |
+| **message**       | **str** | A message to the Affinidi Vault indicating that the update was successful.                                                               |
 
 ## Example
 

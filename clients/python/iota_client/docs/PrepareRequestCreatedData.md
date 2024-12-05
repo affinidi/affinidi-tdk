@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name               | Type    | Description | Notes |
-| ------------------ | ------- | ----------- | ----- |
-| **jwt**            | **str** |             |
-| **correlation_id** | **str** |             |
+| Name               | Type    | Description                                                                                                        | Notes |
+| ------------------ | ------- | ------------------------------------------------------------------------------------------------------------------ | ----- |
+| **jwt**            | **str** |                                                                                                                    |
+| **correlation_id** | **str** | A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow. |
 
 ## Example
 

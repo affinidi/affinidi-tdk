@@ -18,13 +18,13 @@ class IotaConfigurationDtoClientMetadata {
     required this.logo,
   });
 
-  /// application name that will be displayed in consent page
+  /// The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website's name.
   String name;
 
-  /// origin url that will be displayed in consent page
+  /// The URL of the requester displayed on the consent page indicates the request's origin.
   String origin;
 
-  /// logo url that will be displayed in consent page
+  /// The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
   String logo;
 
   @override

@@ -2,14 +2,14 @@
 
 ## Properties
 
-| Name                | Type           | Description                                                                                                                                       | Notes                        |
-| ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| **queryId**         | **String**     |                                                                                                                                                   | [default to null]            |
-| **correlationId**   | **String**     |                                                                                                                                                   | [default to null]            |
-| **tokenMaxAge**     | **BigDecimal** | token time to live in seconds                                                                                                                     | [optional] [default to null] |
-| **nonce**           | **String**     | Random value used to prevent replay attacks                                                                                                       | [default to null]            |
-| **redirectUri**     | **String**     | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.  | [default to null]            |
-| **configurationId** | **String**     | id of the IOTA configuration used                                                                                                                 | [default to null]            |
-| **mode**            | **String**     | indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request. | [default to null]            |
+| Name                | Type           | Description                                                                                                                                      | Notes                        |
+| ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- |
+| **queryId**         | **String**     | The ID of the query.                                                                                                                             | [default to null]            |
+| **correlationId**   | **String**     | A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.                               | [default to null]            |
+| **tokenMaxAge**     | **BigDecimal** | This is the lifetime of the signed request token during the data-sharing flow.                                                                   | [optional] [default to null] |
+| **nonce**           | **String**     | A randomly generated value that is added in the request and response to prevent replay attacks.                                                  | [default to null]            |
+| **redirectUri**     | **String**     | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [default to null]            |
+| **configurationId** | **String**     | ID of the Affinidi Iota Framework configuration.                                                                                                 | [default to null]            |
+| **mode**            | **String**     | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      | [default to null]            |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

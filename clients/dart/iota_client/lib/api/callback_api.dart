@@ -16,9 +16,7 @@ class CallbackApi {
 
   final ApiClient apiClient;
 
-  /// Processes the callback for OIDC4VP flows
-  ///
-  /// This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors. 
+  /// It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -51,9 +49,7 @@ class CallbackApi {
     );
   }
 
-  /// Processes the callback for OIDC4VP flows
-  ///
-  /// This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors. 
+  /// It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
   ///
   /// Parameters:
   ///

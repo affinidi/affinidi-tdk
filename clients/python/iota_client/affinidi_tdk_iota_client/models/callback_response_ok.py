@@ -26,9 +26,9 @@ class CallbackResponseOK(BaseModel):
     """
     CallbackResponseOK
     """
-    redirect_uri: Optional[StrictStr] = Field(default=None, description="URL to which vault will redirect")
-    response_code: Optional[StrictStr] = Field(default=None, description="Code which will be used along with transactionId to retrieve data")
-    message: StrictStr = Field(default=..., description="A message to vault that flow is updated successfully")
+    redirect_uri: Optional[StrictStr] = Field(default=None, description="The URL to which Affinidi Vault will redirect the user.")
+    response_code: Optional[StrictStr] = Field(default=None, description="A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.")
+    message: StrictStr = Field(default=..., description="A message to the Affinidi Vault indicating that the update was successful.")
     __properties = ["redirect_uri", "response_code", "message"]
 
     class Config:

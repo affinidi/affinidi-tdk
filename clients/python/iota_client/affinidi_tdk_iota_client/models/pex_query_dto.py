@@ -26,12 +26,12 @@ class PexQueryDto(BaseModel):
     """
     PexQueryDto
     """
-    ari: StrictStr = Field(...)
-    query_id: StrictStr = Field(default=..., alias="queryId")
-    name: StrictStr = Field(...)
-    description: StrictStr = Field(...)
-    configuration_ari: StrictStr = Field(default=..., alias="configurationAri")
-    vp_definition: StrictStr = Field(default=..., alias="vpDefinition", description="VP definition in JSON stringify format")
+    ari: StrictStr = Field(default=..., description="The unique resource identifier of the qeuery.")
+    query_id: StrictStr = Field(default=..., alias="queryId", description="The ID of the query.")
+    name: StrictStr = Field(default=..., description="The name of the presentation definition to quickly identify the query.")
+    description: StrictStr = Field(default=..., description="An optional description of what the query is used for.")
+    configuration_ari: StrictStr = Field(default=..., alias="configurationAri", description="The unique resource identifier of the related configuration where the query is defined.")
+    vp_definition: StrictStr = Field(default=..., alias="vpDefinition", description="The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.")
     __properties = ["ari", "queryId", "name", "description", "configurationAri", "vpDefinition"]
 
     class Config:

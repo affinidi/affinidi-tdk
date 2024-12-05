@@ -51,16 +51,17 @@ class PexQueryApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_pex_query(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], create_pex_query_input : Annotated[CreatePexQueryInput, Field(..., description="CreatePexQuery")], **kwargs) -> PexQueryDto:  # noqa: E501
+    def create_pex_query(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], create_pex_query_input : Annotated[CreatePexQueryInput, Field(..., description="CreatePexQuery")], **kwargs) -> PexQueryDto:  # noqa: E501
         """create_pex_query  # noqa: E501
 
+        Creates a new Presentation Definition in the configuration to query data.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_pex_query(configuration_id, create_pex_query_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param create_pex_query_input: CreatePexQuery (required)
         :type create_pex_query_input: CreatePexQueryInput
@@ -82,16 +83,17 @@ class PexQueryApi:
         return self.create_pex_query_with_http_info(configuration_id, create_pex_query_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_pex_query_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], create_pex_query_input : Annotated[CreatePexQueryInput, Field(..., description="CreatePexQuery")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_pex_query_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], create_pex_query_input : Annotated[CreatePexQueryInput, Field(..., description="CreatePexQuery")], **kwargs) -> ApiResponse:  # noqa: E501
         """create_pex_query  # noqa: E501
 
+        Creates a new Presentation Definition in the configuration to query data.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_pex_query_with_http_info(configuration_id, create_pex_query_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param create_pex_query_input: CreatePexQuery (required)
         :type create_pex_query_input: CreatePexQueryInput
@@ -209,17 +211,17 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> None:  # noqa: E501
-        """deletes pex queries  # noqa: E501
+    def delete_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> None:  # noqa: E501
+        """delete_pex_queries  # noqa: E501
 
-        deletes pex queries  # noqa: E501
+        Deletes all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_pex_queries(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -239,17 +241,17 @@ class PexQueryApi:
         return self.delete_pex_queries_with_http_info(configuration_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], **kwargs) -> ApiResponse:  # noqa: E501
-        """deletes pex queries  # noqa: E501
+    def delete_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> ApiResponse:  # noqa: E501
+        """delete_pex_queries  # noqa: E501
 
-        deletes pex queries  # noqa: E501
+        Deletes all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_pex_queries_with_http_info(configuration_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -347,18 +349,19 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], **kwargs) -> None:  # noqa: E501
+    def delete_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], **kwargs) -> None:  # noqa: E501
         """delete_pex_query_by_id  # noqa: E501
 
+        Deletes a Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_pex_query_by_id(configuration_id, query_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -378,18 +381,19 @@ class PexQueryApi:
         return self.delete_pex_query_by_id_with_http_info(configuration_id, query_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], **kwargs) -> ApiResponse:  # noqa: E501
         """delete_pex_query_by_id  # noqa: E501
 
+        Deletes a Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.delete_pex_query_by_id_with_http_info(configuration_id, query_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -491,18 +495,19 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], **kwargs) -> PexQueryDto:  # noqa: E501
+    def get_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], **kwargs) -> PexQueryDto:  # noqa: E501
         """get_pex_query_by_id  # noqa: E501
 
+        Retrieves a Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_pex_query_by_id(configuration_id, query_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -522,18 +527,19 @@ class PexQueryApi:
         return self.get_pex_query_by_id_with_http_info(configuration_id, query_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], **kwargs) -> ApiResponse:  # noqa: E501
         """get_pex_query_by_id  # noqa: E501
 
+        Retrieves a Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_pex_query_by_id_with_http_info(configuration_id, query_id, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -640,16 +646,17 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListPexQueriesOK:  # noqa: E501
+    def list_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ListPexQueriesOK:  # noqa: E501
         """list_pex_queries  # noqa: E501
 
+        Lists all Presentation Definitions in the configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.list_pex_queries(configuration_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param limit: Maximum number of records to fetch in a list
         :type limit: int
@@ -673,16 +680,17 @@ class PexQueryApi:
         return self.list_pex_queries_with_http_info(configuration_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_pex_queries  # noqa: E501
 
+        Lists all Presentation Definitions in the configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.list_pex_queries_with_http_info(configuration_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param limit: Maximum number of records to fetch in a list
         :type limit: int
@@ -797,17 +805,17 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def save_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> object:  # noqa: E501
+    def save_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> object:  # noqa: E501
         """save_pex_queries  # noqa: E501
 
-        saves all pex queries  # noqa: E501
+        Saves all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.save_pex_queries(configuration_id, save_pex_queries_update_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param save_pex_queries_update_input: SavePexQueriesInput (required)
         :type save_pex_queries_update_input: SavePexQueriesUpdateInput
@@ -829,17 +837,17 @@ class PexQueryApi:
         return self.save_pex_queries_with_http_info(configuration_id, save_pex_queries_update_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def save_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> ApiResponse:  # noqa: E501
+    def save_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], save_pex_queries_update_input : Annotated[SavePexQueriesUpdateInput, Field(..., description="SavePexQueriesInput")], **kwargs) -> ApiResponse:  # noqa: E501
         """save_pex_queries  # noqa: E501
 
-        saves all pex queries  # noqa: E501
+        Saves all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.save_pex_queries_with_http_info(configuration_id, save_pex_queries_update_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
         :param save_pex_queries_update_input: SavePexQueriesInput (required)
         :type save_pex_queries_update_input: SavePexQueriesUpdateInput
@@ -954,18 +962,19 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], update_pex_query_input : Annotated[UpdatePexQueryInput, Field(..., description="UpdatePexQueryById")], **kwargs) -> PexQueryDto:  # noqa: E501
+    def update_pex_query_by_id(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], update_pex_query_input : Annotated[UpdatePexQueryInput, Field(..., description="UpdatePexQueryById")], **kwargs) -> PexQueryDto:  # noqa: E501
         """update_pex_query_by_id  # noqa: E501
 
+        Updates the Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_pex_query_by_id(configuration_id, query_id, update_pex_query_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param update_pex_query_input: UpdatePexQueryById (required)
         :type update_pex_query_input: UpdatePexQueryInput
@@ -987,18 +996,19 @@ class PexQueryApi:
         return self.update_pex_query_by_id_with_http_info(configuration_id, query_id, update_pex_query_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="iotaConfiguration Id")], query_id : Annotated[StrictStr, Field(..., description="pex-query Id")], update_pex_query_input : Annotated[UpdatePexQueryInput, Field(..., description="UpdatePexQueryById")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_pex_query_by_id_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], query_id : Annotated[StrictStr, Field(..., description="The ID of the query.")], update_pex_query_input : Annotated[UpdatePexQueryInput, Field(..., description="UpdatePexQueryById")], **kwargs) -> ApiResponse:  # noqa: E501
         """update_pex_query_by_id  # noqa: E501
 
+        Updates the Presentation Definition in the configuration by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_pex_query_by_id_with_http_info(configuration_id, query_id, update_pex_query_input, async_req=True)
         >>> result = thread.get()
 
-        :param configuration_id: iotaConfiguration Id (required)
+        :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
-        :param query_id: pex-query Id (required)
+        :param query_id: The ID of the query. (required)
         :type query_id: str
         :param update_pex_query_input: UpdatePexQueryById (required)
         :type update_pex_query_input: UpdatePexQueryInput
