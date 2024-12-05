@@ -2,7 +2,7 @@
 
 ### Service API Endpoints and Models
 
-Please check [the documentation for API Endpoints and Models](https://github.com/affinidi.com/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client/docs/README.md) for more details.
+Please check [the documentation for API Endpoints and Models](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client/docs/README.md) for more details.
 
 ### Usage
 
