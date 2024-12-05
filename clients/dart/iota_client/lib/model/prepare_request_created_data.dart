@@ -19,6 +19,7 @@ class PrepareRequestCreatedData {
 
   String jwt;
 
+  /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   String correlationId;
 
   @override

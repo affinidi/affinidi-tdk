@@ -2,17 +2,17 @@
 
 ## Properties
 
-| Name            | Type    | Description                                                                                                                                                     | Notes |
-| --------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **project_id**  | **str** |                                                                                                                                                                 |
-| **id**          | **str** | id of the record                                                                                                                                                |
-| **user_id**     | **str** | unique identifier of the user                                                                                                                                   |
-| **vc_type**     | **str** | VC type of shared vc. If the actual VC has several VC types (excluding base types as VerifiableCredential) then for each of the a separate record will be added |
-| **status**      | **str** |                                                                                                                                                                 |
-| **modified_at** | **str** |                                                                                                                                                                 |
-| **modified_by** | **str** |                                                                                                                                                                 |
-| **created_at**  | **str** |                                                                                                                                                                 |
-| **created_by**  | **str** |                                                                                                                                                                 |
+| Name            | Type    | Description                                                                                                                           | Notes |
+| --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **project_id**  | **str** | The ID of the project.                                                                                                                |
+| **id**          | **str** | Unique identifier for the record.                                                                                                     |
+| **user_id**     | **str** | Unique identifier for the user.                                                                                                       |
+| **vc_type**     | **str** | Type of the VC shared by the user. It creates a consent record for each VC type shared except for the base type VerifiableCredential. |
+| **status**      | **str** | Status of the consent.                                                                                                                |
+| **modified_at** | **str** |                                                                                                                                       |
+| **modified_by** | **str** |                                                                                                                                       |
+| **created_at**  | **str** |                                                                                                                                       |
+| **created_by**  | **str** |                                                                                                                                       |
 
 ## Example
 

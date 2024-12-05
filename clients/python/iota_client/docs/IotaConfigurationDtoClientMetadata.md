@@ -1,14 +1,14 @@
 # IotaConfigurationDtoClientMetadata
 
-iota configuration client metadata
+It contains information about the requester or verifier.
 
 ## Properties
 
-| Name       | Type    | Description                                             | Notes |
-| ---------- | ------- | ------------------------------------------------------- | ----- |
-| **name**   | **str** | application name that will be displayed in consent page |
-| **origin** | **str** | origin url that will be displayed in consent page       |
-| **logo**   | **str** | logo url that will be displayed in consent page         |
+| Name       | Type    | Description                                                                                                                             | Notes |
+| ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **name**   | **str** | The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website&#39;s name. |
+| **origin** | **str** | The URL of the requester displayed on the consent page indicates the request&#39;s origin.                                              |
+| **logo**   | **str** | The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.                      |
 
 ## Example
 

@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name              | Type    | Description                            | Notes      |
-| ----------------- | ------- | -------------------------------------- | ---------- |
-| **vp_definition** | **str** | VP definition in JSON stringify format | [optional] |
-| **description**   | **str** |                                        | [optional] |
+| Name              | Type    | Description                                                                                                                              | Notes      |
+| ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **vp_definition** | **str** | The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format. | [optional] |
+| **description**   | **str** | An optional description of what the query is used for.                                                                                   | [optional] |
 
 ## Example
 

@@ -19,9 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_credential_issuance_client.models.start_issuance_input_data_inner_meta_data import StartIssuanceInputDataInnerMetaData
+from affinidi_tdk_credential_issuance_client.models.start_issuance_input_data_inner_status_list_details_inner import StartIssuanceInputDataInnerStatusListDetailsInner
 
 class StartIssuanceInputDataInner(BaseModel):
     """
@@ -29,8 +30,9 @@ class StartIssuanceInputDataInner(BaseModel):
     """
     credential_type_id: StrictStr = Field(default=..., alias="credentialTypeId", description="It is a String that identifies a Credential that is being requested to be issued.")
     credential_data: Dict[str, Any] = Field(default=..., alias="credentialData", description="Object of data to be included in the issued credential ,should  match the credential type")
+    status_list_details: Optional[conlist(StartIssuanceInputDataInnerStatusListDetailsInner)] = Field(default=None, alias="statusListDetails", description="Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.")
     meta_data: Optional[StartIssuanceInputDataInnerMetaData] = Field(default=None, alias="metaData")
-    __properties = ["credentialTypeId", "credentialData", "metaData"]
+    __properties = ["credentialTypeId", "credentialData", "statusListDetails", "metaData"]
 
     class Config:
         """Pydantic configuration"""
@@ -56,6 +58,13 @@ class StartIssuanceInputDataInner(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in status_list_details (list)
+        _items = []
+        if self.status_list_details:
+            for _item in self.status_list_details:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['statusListDetails'] = _items
         # override the default output from pydantic by calling `to_dict()` of meta_data
         if self.meta_data:
             _dict['metaData'] = self.meta_data.to_dict()
@@ -73,6 +82,7 @@ class StartIssuanceInputDataInner(BaseModel):
         _obj = StartIssuanceInputDataInner.parse_obj({
             "credential_type_id": obj.get("credentialTypeId"),
             "credential_data": obj.get("credentialData"),
+            "status_list_details": [StartIssuanceInputDataInnerStatusListDetailsInner.from_dict(_item) for _item in obj.get("statusListDetails")] if obj.get("statusListDetails") is not None else None,
             "meta_data": StartIssuanceInputDataInnerMetaData.from_dict(obj.get("metaData")) if obj.get("metaData") is not None else None
         })
         return _obj

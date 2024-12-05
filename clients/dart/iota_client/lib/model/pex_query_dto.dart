@@ -21,17 +21,22 @@ class PexQueryDto {
     required this.vpDefinition,
   });
 
+  /// The unique resource identifier of the qeuery.
   String ari;
 
+  /// The ID of the query.
   String queryId;
 
+  /// The name of the presentation definition to quickly identify the query.
   String name;
 
+  /// An optional description of what the query is used for.
   String description;
 
+  /// The unique resource identifier of the related configuration where the query is defined.
   String configurationAri;
 
-  /// VP definition in JSON stringify format
+  /// The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
   String vpDefinition;
 
   @override

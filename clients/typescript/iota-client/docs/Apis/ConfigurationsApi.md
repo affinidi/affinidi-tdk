@@ -17,6 +17,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput)
 
+    Creates a new Affinidi Iota Framework configuration.
+
 ### Parameters
 
 | Name                             | Type                                                                          | Description         | Notes |
@@ -42,11 +44,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 > deleteIotaConfigurationById(configurationId)
 
+    Deletes an Affinidi Iota Framework configuration by ID.
+
 ### Parameters
 
-| Name                | Type       | Description          | Notes             |
-| ------------------- | ---------- | -------------------- | ----------------- |
-| **configurationId** | **String** | iotaConfiguration Id | [default to null] |
+| Name                | Type       | Description                                      | Notes             |
+| ------------------- | ---------- | ------------------------------------------------ | ----------------- |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. | [default to null] |
 
 ### Return type
 
@@ -67,11 +71,13 @@ null (empty response body)
 
 > IotaConfigurationDto getIotaConfigurationById(configurationId)
 
+    Retrieves the details of an Affinidi Iota Framework configuration.
+
 ### Parameters
 
-| Name                | Type       | Description          | Notes             |
-| ------------------- | ---------- | -------------------- | ----------------- |
-| **configurationId** | **String** | iotaConfiguration Id | [default to null] |
+| Name                | Type       | Description                                      | Notes             |
+| ------------------- | ---------- | ------------------------------------------------ | ----------------- |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. | [default to null] |
 
 ### Return type
 
@@ -92,12 +98,14 @@ null (empty response body)
 
 > GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(projectId, configurationId)
 
+    Retrieves the client metadata of an Affinidi Iota Framework configuration.
+
 ### Parameters
 
-| Name                | Type       | Description          | Notes             |
-| ------------------- | ---------- | -------------------- | ----------------- |
-| **projectId**       | **String** | project Id           | [default to null] |
-| **configurationId** | **String** | iotaConfiguration Id | [default to null] |
+| Name                | Type       | Description                                      | Notes             |
+| ------------------- | ---------- | ------------------------------------------------ | ----------------- |
+| **projectId**       | **String** | The ID of the project.                           | [default to null] |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. | [default to null] |
 
 ### Return type
 
@@ -117,6 +125,8 @@ No authorization required
 # **listIotaConfigurations**
 
 > ListConfigurationOK listIotaConfigurations()
+
+    List all Affinidi Iota Framework configurations.
 
 ### Parameters
 
@@ -141,12 +151,14 @@ This endpoint does not need any parameter.
 
 > IotaConfigurationDto updateIotaConfigurationById(configurationId, UpdateConfigurationByIdInput)
 
+    Updates the details of an Affinidi Iota Framework configuration by ID.
+
 ### Parameters
 
-| Name                             | Type                                                                          | Description             | Notes             |
-| -------------------------------- | ----------------------------------------------------------------------------- | ----------------------- | ----------------- |
-| **configurationId**              | **String**                                                                    | iotaConfiguration Id    | [default to null] |
-| **UpdateConfigurationByIdInput** | [**UpdateConfigurationByIdInput**](../Models/UpdateConfigurationByIdInput.md) | UpdateConfigurationById |                   |
+| Name                             | Type                                                                          | Description                                      | Notes             |
+| -------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------ | ----------------- |
+| **configurationId**              | **String**                                                                    | ID of the Affinidi Iota Framework configuration. | [default to null] |
+| **UpdateConfigurationByIdInput** | [**UpdateConfigurationByIdInput**](../Models/UpdateConfigurationByIdInput.md) | UpdateConfigurationById                          |                   |
 
 ### Return type
 

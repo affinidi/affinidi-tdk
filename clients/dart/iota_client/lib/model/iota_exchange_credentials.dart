@@ -16,7 +16,7 @@ class IotaExchangeCredentials {
     required this.assertion,
   });
 
-  /// JWT signed with a machine token used to secure the web socket connection
+  /// A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair's private key used to create the Personal Access Token (PAT).
   String assertion;
 
   @override

@@ -19,16 +19,16 @@ class FetchIOTAVPResponseInput {
     required this.configurationId,
   });
 
-  /// The correlation ID
+  /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   String correlationId;
 
-  /// The transaction ID
+  /// A unique, randomly generated identifier data-sharing request flow is initiated. This value is used with the response code to fetch the callback response data.
   String transactionId;
 
-  /// The response code.
+  /// A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.
   String responseCode;
 
-  /// The configuration ID
+  /// ID of the Affinidi Iota Framework configuration.
   String configurationId;
 
   @override

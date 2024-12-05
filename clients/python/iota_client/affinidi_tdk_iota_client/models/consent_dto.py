@@ -26,11 +26,11 @@ class ConsentDto(BaseModel):
     """
     ConsentDto
     """
-    project_id: StrictStr = Field(default=..., alias="projectId")
-    id: StrictStr = Field(default=..., description="id of the record")
-    user_id: StrictStr = Field(default=..., alias="userId", description="unique identifier of the user")
-    vc_type: StrictStr = Field(default=..., alias="vcType", description="VC type of shared vc. If the actual VC has several VC types (excluding base types as VerifiableCredential) then for each of the a separate record will be added")
-    status: StrictStr = Field(...)
+    project_id: StrictStr = Field(default=..., alias="projectId", description="The ID of the project.")
+    id: StrictStr = Field(default=..., description="Unique identifier for the record.")
+    user_id: StrictStr = Field(default=..., alias="userId", description="Unique identifier for the user.")
+    vc_type: StrictStr = Field(default=..., alias="vcType", description="Type of the VC shared by the user. It creates a consent record for each  VC type shared except for the base type VerifiableCredential.")
+    status: StrictStr = Field(default=..., description="Status of the consent.")
     modified_at: StrictStr = Field(default=..., alias="modifiedAt")
     modified_by: StrictStr = Field(default=..., alias="modifiedBy")
     created_at: StrictStr = Field(default=..., alias="createdAt")

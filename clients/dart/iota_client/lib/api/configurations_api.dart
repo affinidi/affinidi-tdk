@@ -16,7 +16,10 @@ class ConfigurationsApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /v1/configurations' operation and returns the [Response].
+  /// Creates a new Affinidi Iota Framework configuration.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [CreateIotaConfigurationInput] createIotaConfigurationInput (required):
@@ -46,6 +49,8 @@ class ConfigurationsApi {
     );
   }
 
+  /// Creates a new Affinidi Iota Framework configuration.
+  ///
   /// Parameters:
   ///
   /// * [CreateIotaConfigurationInput] createIotaConfigurationInput (required):
@@ -65,11 +70,14 @@ class ConfigurationsApi {
     return null;
   }
 
-  /// Performs an HTTP 'DELETE /v1/configurations/{configurationId}' operation and returns the [Response].
+  /// Deletes an Affinidi Iota Framework configuration by ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<Response> deleteIotaConfigurationByIdWithHttpInfo(String configurationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}'
@@ -96,10 +104,12 @@ class ConfigurationsApi {
     );
   }
 
+  /// Deletes an Affinidi Iota Framework configuration by ID.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<void> deleteIotaConfigurationById(String configurationId,) async {
     final response = await deleteIotaConfigurationByIdWithHttpInfo(configurationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -107,11 +117,14 @@ class ConfigurationsApi {
     }
   }
 
-  /// Performs an HTTP 'GET /v1/configurations/{configurationId}' operation and returns the [Response].
+  /// Retrieves the details of an Affinidi Iota Framework configuration.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<Response> getIotaConfigurationByIdWithHttpInfo(String configurationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}'
@@ -138,10 +151,12 @@ class ConfigurationsApi {
     );
   }
 
+  /// Retrieves the details of an Affinidi Iota Framework configuration.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<IotaConfigurationDto?> getIotaConfigurationById(String configurationId,) async {
     final response = await getIotaConfigurationByIdWithHttpInfo(configurationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -157,14 +172,17 @@ class ConfigurationsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /v1/projects/{projectId}/configurations/{configurationId}/metadata' operation and returns the [Response].
+  /// Retrieves the client metadata of an Affinidi Iota Framework configuration. 
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] projectId (required):
-  ///   project Id
+  ///   The ID of the project.
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<Response> getIotaConfigurationMetaDataWithHttpInfo(String projectId, String configurationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/projects/{projectId}/configurations/{configurationId}/metadata'
@@ -192,13 +210,15 @@ class ConfigurationsApi {
     );
   }
 
+  /// Retrieves the client metadata of an Affinidi Iota Framework configuration. 
+  ///
   /// Parameters:
   ///
   /// * [String] projectId (required):
-  ///   project Id
+  ///   The ID of the project.
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<GetIotaConfigurationMetaDataOK?> getIotaConfigurationMetaData(String projectId, String configurationId,) async {
     final response = await getIotaConfigurationMetaDataWithHttpInfo(projectId, configurationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -214,7 +234,9 @@ class ConfigurationsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /v1/configurations' operation and returns the [Response].
+  /// List all Affinidi Iota Framework configurations.
+  ///
+  /// Note: This method returns the HTTP [Response].
   Future<Response> listIotaConfigurationsWithHttpInfo() async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations';
@@ -240,6 +262,7 @@ class ConfigurationsApi {
     );
   }
 
+  /// List all Affinidi Iota Framework configurations.
   Future<ListConfigurationOK?> listIotaConfigurations() async {
     final response = await listIotaConfigurationsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -255,11 +278,14 @@ class ConfigurationsApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /v1/configurations/{configurationId}' operation and returns the [Response].
+  /// Updates the details of an Affinidi Iota Framework configuration by ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [UpdateConfigurationByIdInput] updateConfigurationByIdInput (required):
   ///   UpdateConfigurationById
@@ -289,10 +315,12 @@ class ConfigurationsApi {
     );
   }
 
+  /// Updates the details of an Affinidi Iota Framework configuration by ID.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [UpdateConfigurationByIdInput] updateConfigurationByIdInput (required):
   ///   UpdateConfigurationById

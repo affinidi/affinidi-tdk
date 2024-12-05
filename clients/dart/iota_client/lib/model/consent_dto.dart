@@ -24,17 +24,19 @@ class ConsentDto {
     required this.createdBy,
   });
 
+  /// The ID of the project.
   String projectId;
 
-  /// id of the record
+  /// Unique identifier for the record.
   String id;
 
-  /// unique identifier of the user
+  /// Unique identifier for the user.
   String userId;
 
-  /// VC type of shared vc. If the actual VC has several VC types (excluding base types as VerifiableCredential) then for each of the a separate record will be added
+  /// Type of the VC shared by the user. It creates a consent record for each  VC type shared except for the base type VerifiableCredential.
   String vcType;
 
+  /// Status of the consent.
   ConsentDtoStatusEnum status;
 
   String modifiedAt;
@@ -174,7 +176,7 @@ class ConsentDto {
   };
 }
 
-
+/// Status of the consent.
 class ConsentDtoStatusEnum {
   /// Instantiate a new enum with the provided [value].
   const ConsentDtoStatusEnum._(this.value);

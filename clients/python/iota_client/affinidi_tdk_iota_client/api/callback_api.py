@@ -47,9 +47,9 @@ class CallbackApi:
 
     @validate_arguments
     def iot_oidc4_vp_callback(self, callback_input : Annotated[CallbackInput, Field(..., description="CallbackRequestInput")], **kwargs) -> CallbackResponseOK:  # noqa: E501
-        """Processes the callback for OIDC4VP flows  # noqa: E501
+        """iot_oidc4_vp_callback  # noqa: E501
 
-        This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors.   # noqa: E501
+        It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -77,9 +77,9 @@ class CallbackApi:
 
     @validate_arguments
     def iot_oidc4_vp_callback_with_http_info(self, callback_input : Annotated[CallbackInput, Field(..., description="CallbackRequestInput")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Processes the callback for OIDC4VP flows  # noqa: E501
+        """iot_oidc4_vp_callback  # noqa: E501
 
-        This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors.   # noqa: E501
+        It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

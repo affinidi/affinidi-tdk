@@ -2,17 +2,15 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
-| Method                                                            | HTTP request          | Description                              |
-| ----------------------------------------------------------------- | --------------------- | ---------------------------------------- |
-| [**iot_oidc4_vp_callback**](CallbackApi.md#iot_oidc4_vp_callback) | **POST** /v1/callback | Processes the callback for OIDC4VP flows |
+| Method                                                            | HTTP request          | Description |
+| ----------------------------------------------------------------- | --------------------- | ----------- |
+| [**iot_oidc4_vp_callback**](CallbackApi.md#iot_oidc4_vp_callback) | **POST** /v1/callback |
 
 # **iot_oidc4_vp_callback**
 
 > CallbackResponseOK iot_oidc4_vp_callback(callback_input)
 
-Processes the callback for OIDC4VP flows
-
-This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors.
+It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.
 
 ### Example
 
@@ -39,7 +37,6 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     callback_input = affinidi_tdk_iota_client.CallbackInput() # CallbackInput | CallbackRequestInput
 
     try:
-        # Processes the callback for OIDC4VP flows
         api_response = api_instance.iot_oidc4_vp_callback(callback_input)
         print("The response of CallbackApi->iot_oidc4_vp_callback:\n")
         pprint(api_response)

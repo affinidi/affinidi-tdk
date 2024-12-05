@@ -22,11 +22,13 @@ class InitiateDataSharingRequestInput {
     required this.mode,
   });
 
+  /// The ID of the query.
   String queryId;
 
+  /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   String correlationId;
 
-  /// token time to live in seconds
+  /// This is the lifetime of the signed request token during the data-sharing flow.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -35,16 +37,16 @@ class InitiateDataSharingRequestInput {
   ///
   int? tokenMaxAge;
 
-  /// Random value used to prevent replay attacks
+  /// A randomly generated value that is added in the request and response to prevent replay attacks.
   String nonce;
 
-  /// the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.
+  /// List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
   String redirectUri;
 
-  /// id of the IOTA configuration used
+  /// ID of the Affinidi Iota Framework configuration.
   String configurationId;
 
-  /// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   InitiateDataSharingRequestInputModeEnum mode;
 
   @override
@@ -169,7 +171,7 @@ class InitiateDataSharingRequestInput {
   };
 }
 
-/// indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request.
+/// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
 class InitiateDataSharingRequestInputModeEnum {
   /// Instantiate a new enum with the provided [value].
   const InitiateDataSharingRequestInputModeEnum._(this.value);

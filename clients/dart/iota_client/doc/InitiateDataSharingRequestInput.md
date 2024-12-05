@@ -8,14 +8,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 ## Properties
 
-| Name                | Type       | Description                                                                                                                                       | Notes      |
-| ------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **queryId**         | **String** |                                                                                                                                                   |
-| **correlationId**   | **String** |                                                                                                                                                   |
-| **tokenMaxAge**     | **int**    | token time to live in seconds                                                                                                                     | [optional] |
-| **nonce**           | **String** | Random value used to prevent replay attacks                                                                                                       |
-| **redirectUri**     | **String** | the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.  |
-| **configurationId** | **String** | id of the IOTA configuration used                                                                                                                 |
-| **mode**            | **String** | indicates whether the flow is a WebSocket flow or a Redirect flow. This value is used in Vault to determine how to process the data flow request. |
+| Name                | Type       | Description                                                                                                                                      | Notes      |
+| ------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **queryId**         | **String** | The ID of the query.                                                                                                                             |
+| **correlationId**   | **String** | A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.                               |
+| **tokenMaxAge**     | **int**    | This is the lifetime of the signed request token during the data-sharing flow.                                                                   | [optional] |
+| **nonce**           | **String** | A randomly generated value that is added in the request and response to prevent replay attacks.                                                  |
+| **redirectUri**     | **String** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. |
+| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration.                                                                                                 |
+| **mode**            | **String** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

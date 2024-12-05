@@ -16,11 +16,14 @@ class PexQueryApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /v1/configurations/{configurationId}/pex-queries' operation and returns the [Response].
+  /// Creates a new Presentation Definition in the configuration to query data.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [CreatePexQueryInput] createPexQueryInput (required):
   ///   CreatePexQuery
@@ -50,10 +53,12 @@ class PexQueryApi {
     );
   }
 
+  /// Creates a new Presentation Definition in the configuration to query data.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [CreatePexQueryInput] createPexQueryInput (required):
   ///   CreatePexQuery
@@ -72,16 +77,14 @@ class PexQueryApi {
     return null;
   }
 
-  /// deletes pex queries
-  ///
-  /// deletes pex queries
+  /// Deletes all Presentation Definition queries of a configuration.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<Response> deletePexQueriesWithHttpInfo(String configurationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}/delete-queries'
@@ -108,14 +111,12 @@ class PexQueryApi {
     );
   }
 
-  /// deletes pex queries
-  ///
-  /// deletes pex queries
+  /// Deletes all Presentation Definition queries of a configuration.
   ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   Future<void> deletePexQueries(String configurationId,) async {
     final response = await deletePexQueriesWithHttpInfo(configurationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -123,14 +124,17 @@ class PexQueryApi {
     }
   }
 
-  /// Performs an HTTP 'DELETE /v1/configurations/{configurationId}/pex-queries/{queryId}' operation and returns the [Response].
+  /// Deletes a Presentation Definition in the configuration by ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   Future<Response> deletePexQueryByIdWithHttpInfo(String configurationId, String queryId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}/pex-queries/{queryId}'
@@ -158,13 +162,15 @@ class PexQueryApi {
     );
   }
 
+  /// Deletes a Presentation Definition in the configuration by ID.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   Future<void> deletePexQueryById(String configurationId, String queryId,) async {
     final response = await deletePexQueryByIdWithHttpInfo(configurationId, queryId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -172,14 +178,17 @@ class PexQueryApi {
     }
   }
 
-  /// Performs an HTTP 'GET /v1/configurations/{configurationId}/pex-queries/{queryId}' operation and returns the [Response].
+  /// Retrieves a Presentation Definition in the configuration by ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   Future<Response> getPexQueryByIdWithHttpInfo(String configurationId, String queryId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/configurations/{configurationId}/pex-queries/{queryId}'
@@ -207,13 +216,15 @@ class PexQueryApi {
     );
   }
 
+  /// Retrieves a Presentation Definition in the configuration by ID.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   Future<PexQueryDto?> getPexQueryById(String configurationId, String queryId,) async {
     final response = await getPexQueryByIdWithHttpInfo(configurationId, queryId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -229,11 +240,14 @@ class PexQueryApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /v1/configurations/{configurationId}/pex-queries' operation and returns the [Response].
+  /// Lists all Presentation Definitions in the configuration.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [int] limit:
   ///   Maximum number of records to fetch in a list
@@ -273,10 +287,12 @@ class PexQueryApi {
     );
   }
 
+  /// Lists all Presentation Definitions in the configuration.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [int] limit:
   ///   Maximum number of records to fetch in a list
@@ -298,14 +314,14 @@ class PexQueryApi {
     return null;
   }
 
-  /// saves all pex queries
+  /// Saves all Presentation Definition queries of a configuration.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [SavePexQueriesUpdateInput] savePexQueriesUpdateInput (required):
   ///   SavePexQueriesInput
@@ -335,12 +351,12 @@ class PexQueryApi {
     );
   }
 
-  /// saves all pex queries
+  /// Saves all Presentation Definition queries of a configuration.
   ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [SavePexQueriesUpdateInput] savePexQueriesUpdateInput (required):
   ///   SavePexQueriesInput
@@ -359,14 +375,17 @@ class PexQueryApi {
     return null;
   }
 
-  /// Performs an HTTP 'PATCH /v1/configurations/{configurationId}/pex-queries/{queryId}' operation and returns the [Response].
+  /// Updates the Presentation Definition in the configuration by ID.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   ///
   /// * [UpdatePexQueryInput] updatePexQueryInput (required):
   ///   UpdatePexQueryById
@@ -397,13 +416,15 @@ class PexQueryApi {
     );
   }
 
+  /// Updates the Presentation Definition in the configuration by ID.
+  ///
   /// Parameters:
   ///
   /// * [String] configurationId (required):
-  ///   iotaConfiguration Id
+  ///   ID of the Affinidi Iota Framework configuration.
   ///
   /// * [String] queryId (required):
-  ///   pex-query Id
+  ///   The ID of the query.
   ///
   /// * [UpdatePexQueryInput] updatePexQueryInput (required):
   ///   UpdatePexQueryById
