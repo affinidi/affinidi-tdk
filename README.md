@@ -28,10 +28,10 @@ The Affinidi TDK offers the following modules and support to programming languag
 |[common](packages/common/)                         |   🟢                  |     🟢                |        🔴            |
 |**Packages**                                       |                       |                       |                      |
 |credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/) | [🟢 Link](clients/python/credential_issuance_client/) | [🟡 Link](clients/dart/credential_issuance_client/) |
-|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) |  
+|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟡 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) |
 |iam-client                     | [🟢 Link](clients/typescript/iam-client/) | [🟢 Link](clients/python/iam_client/) | [🟡 Link](clients/dart/iam_client/) |
 |iota-client                    | [🟢 Link](clients/typescript/iota-client/) | [🟢 Link](clients/python/iota_client/) | [🟡 Link](clients/dart/iota_client/) |
-|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟢 Link](clients/python/login_configuration_client/) | [🟡 Link](clients/dart/login_configuration_client/) |
+|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟡 Link](clients/python/login_configuration_client/) | [🟡 Link](clients/dart/login_configuration_client/) |
 |wallets-client                 | [🟢 Link](clients/typescript/wallets-client/) | [🟢 Link](clients/python/wallets_client/) | [🟡 Link](clients/dart/wallets_client/) |
 |**Libraries**                                       |                       |                       |                      |
 |[iota-browser](libs/iota-browser/)            |   🟢                  |     🔴                |        🔴            |
