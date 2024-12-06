@@ -151,11 +151,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_change_credential_status_input.py
-test/test_default_api.py
-test/test_flow_data.py
-test/test_flow_data_status_lists_details_inner.py
-test/test_get_status_list_result_dto.py
-test/test_list_issuance_record_response.py
-test/test_start_issuance_input_data_inner_status_list_details_inner.py
 tox.ini
