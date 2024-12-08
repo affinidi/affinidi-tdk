@@ -24,8 +24,15 @@
     "versionFormat": "short",
     "targets": {
       "python": {
-        "distName": "affinidi_tdk_auth_provider",
+        "distName": "affinidi-tdk_auth-provider",
         "module": "affinidi_tdk_auth_provider"
+      },
+      "java": {
+        "package": "com.affinidi.tdk.authprovider",
+        "maven": {
+          "groupId": "com.affinidi.tdk",
+          "artifactId": "auth-provider"
+        }
       }
     }
   },
