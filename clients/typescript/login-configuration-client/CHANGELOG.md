@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.33.0...@affinidi-tdk/login-configuration-client-v1.34.0) (2024-12-09)
+
+
+### Features
+
+* FTL-18367 add packages for PHP ([#352](https://github.com/affinidi/affinidi-tdk/issues/352)) ([7cb15d5](https://github.com/affinidi/affinidi-tdk/commit/7cb15d5252e9d7444d8efd6deff4edcc833287cf))
+
 # [1.33.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/login-configuration-client-v1.32.0...@affinidi-tdk/login-configuration-client-v1.33.0) (2024-12-06)
 
 
