@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * Error Class Doc Comment
  *
  * @category Class
  * @description Error object
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'message' => 'string',
         'name' => 'string',
         'debug_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\ErrorDetail[]'
+        'details' => '\AffinidiTdk\Clients\CredentialVerification\Model\ErrorDetail[]'
     ];
 
     /**
@@ -464,7 +464,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\ErrorDetail[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\ErrorDetail[]|null
      */
     public function getDetails()
     {
@@ -474,7 +474,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\ErrorDetail[]|null $details Error details
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\ErrorDetail[]|null $details Error details
      *
      * @return self
      */

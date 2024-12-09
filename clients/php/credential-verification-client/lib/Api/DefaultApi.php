@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\CredentialVerification\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\CredentialVerification\ApiException;
+use AffinidiTdk\Clients\CredentialVerification\Configuration;
+use AffinidiTdk\Clients\CredentialVerification\HeaderSelector;
+use AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,12 +131,12 @@ class DefaultApi
      *
      * Verifying VC
      *
-     * @param  \OpenAPI\Client\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialVerification\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\VerifyCredentialOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput|\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError
      */
     public function verifyCredentials($verify_credential_input, string $contentType = self::contentTypes['verifyCredentials'][0])
     {
@@ -149,12 +149,12 @@ class DefaultApi
      *
      * Verifying VC
      *
-     * @param  \OpenAPI\Client\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialVerification\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\VerifyCredentialOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput|\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function verifyCredentialsWithHttpInfo($verify_credential_input, string $contentType = self::contentTypes['verifyCredentials'][0])
     {
@@ -185,11 +185,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\VerifyCredentialOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\VerifyCredentialOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -207,16 +207,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\VerifyCredentialOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -234,16 +234,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -261,7 +261,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -280,7 +280,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\VerifyCredentialOutput';
+            $returnType = '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -313,7 +313,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\VerifyCredentialOutput',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -321,7 +321,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -329,7 +329,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -344,7 +344,7 @@ class DefaultApi
      *
      * Verifying VC
      *
-     * @param  \OpenAPI\Client\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -365,7 +365,7 @@ class DefaultApi
      *
      * Verifying VC
      *
-     * @param  \OpenAPI\Client\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -373,7 +373,7 @@ class DefaultApi
      */
     public function verifyCredentialsAsyncWithHttpInfo($verify_credential_input, string $contentType = self::contentTypes['verifyCredentials'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\VerifyCredentialOutput';
+        $returnType = '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialOutput';
         $request = $this->verifyCredentialsRequest($verify_credential_input, $contentType);
 
         return $this->client
@@ -415,7 +415,7 @@ class DefaultApi
     /**
      * Create request for operation 'verifyCredentials'
      *
-     * @param  \OpenAPI\Client\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput $verify_credential_input VerifyCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -513,12 +513,12 @@ class DefaultApi
      *
      * Verifying VP
      *
-     * @param  \OpenAPI\Client\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyPresentation'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialVerification\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\VerifyPresentationOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput|\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError
      */
     public function verifyPresentation($verify_presentation_input, string $contentType = self::contentTypes['verifyPresentation'][0])
     {
@@ -531,12 +531,12 @@ class DefaultApi
      *
      * Verifying VP
      *
-     * @param  \OpenAPI\Client\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyPresentation'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialVerification\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\VerifyPresentationOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput|\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function verifyPresentationWithHttpInfo($verify_presentation_input, string $contentType = self::contentTypes['verifyPresentation'][0])
     {
@@ -567,11 +567,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\VerifyPresentationOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\VerifyPresentationOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -589,16 +589,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\VerifyPresentationOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -616,16 +616,16 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -643,7 +643,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -662,7 +662,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\VerifyPresentationOutput';
+            $returnType = '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -695,7 +695,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\VerifyPresentationOutput',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -703,7 +703,7 @@ class DefaultApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -711,7 +711,7 @@ class DefaultApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -726,7 +726,7 @@ class DefaultApi
      *
      * Verifying VP
      *
-     * @param  \OpenAPI\Client\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyPresentation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -747,7 +747,7 @@ class DefaultApi
      *
      * Verifying VP
      *
-     * @param  \OpenAPI\Client\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyPresentation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -755,7 +755,7 @@ class DefaultApi
      */
     public function verifyPresentationAsyncWithHttpInfo($verify_presentation_input, string $contentType = self::contentTypes['verifyPresentation'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\VerifyPresentationOutput';
+        $returnType = '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutput';
         $request = $this->verifyPresentationRequest($verify_presentation_input, $contentType);
 
         return $this->client
@@ -797,7 +797,7 @@ class DefaultApi
     /**
      * Create request for operation 'verifyPresentation'
      *
-     * @param  \OpenAPI\Client\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
+     * @param  \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationInput $verify_presentation_input VerifyPresentation (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verifyPresentation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

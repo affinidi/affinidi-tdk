@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * VerifyPresentationInput Class Doc Comment
  *
  * @category Class
  * @description Request model of /verify-vp
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class VerifyPresentationInput implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'verifiable_presentation' => '\OpenAPI\Client\Model\W3cPresentation',
-        'signed_presentation' => '\OpenAPI\Client\Model\W3cPresentation',
+        'verifiable_presentation' => '\AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation',
+        'signed_presentation' => '\AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation',
         'presentation_definition' => 'object',
         'presentation_submission' => 'object',
         'challenge' => 'string'
@@ -322,7 +322,7 @@ class VerifyPresentationInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets verifiable_presentation
      *
-     * @return \OpenAPI\Client\Model\W3cPresentation|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation|null
      */
     public function getVerifiablePresentation()
     {
@@ -332,7 +332,7 @@ class VerifyPresentationInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets verifiable_presentation
      *
-     * @param \OpenAPI\Client\Model\W3cPresentation|null $verifiable_presentation verifiable_presentation
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation|null $verifiable_presentation verifiable_presentation
      *
      * @return self
      */
@@ -349,7 +349,7 @@ class VerifyPresentationInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets signed_presentation
      *
-     * @return \OpenAPI\Client\Model\W3cPresentation|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation|null
      */
     public function getSignedPresentation()
     {
@@ -359,7 +359,7 @@ class VerifyPresentationInput implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets signed_presentation
      *
-     * @param \OpenAPI\Client\Model\W3cPresentation|null $signed_presentation signed_presentation
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentation|null $signed_presentation signed_presentation
      *
      * @return self
      */

@@ -32,12 +32,12 @@
   },
   "autoload": {
     "psr-4": {
-      "OpenAPI\\Client\\": "lib/"
+      "AffinidiTdk\\Clients\\CredentialVerification\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "OpenAPI\\Client\\Test\\": "test/"
+      "AffinidiTdk\\Clients\\CredentialVerification\\Test\\": "test/"
     }
   }
 }

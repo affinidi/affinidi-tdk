@@ -37,18 +37,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_issuance_config_input = new \OpenAPI\Client\Model\CreateIssuanceConfigInput(); // \OpenAPI\Client\Model\CreateIssuanceConfigInput | Request body of create configuration
+$create_issuance_config_input = new \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput(); // \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput | Request body of create configuration
 
 try {
     $result = $apiInstance->createIssuanceConfig($create_issuance_config_input);

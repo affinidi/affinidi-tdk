@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Wallets\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Wallets\ObjectSerializer;
 
 /**
  * CreateWalletResponse Class Doc Comment
  *
  * @category Class
  * @description wallet dto
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateWalletResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'wallet' => '\OpenAPI\Client\Model\WalletDto'
+        'wallet' => '\AffinidiTdk\Clients\Wallets\Model\WalletDto'
     ];
 
     /**
@@ -294,7 +294,7 @@ class CreateWalletResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets wallet
      *
-     * @return \OpenAPI\Client\Model\WalletDto|null
+     * @return \AffinidiTdk\Clients\Wallets\Model\WalletDto|null
      */
     public function getWallet()
     {
@@ -304,7 +304,7 @@ class CreateWalletResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets wallet
      *
-     * @param \OpenAPI\Client\Model\WalletDto|null $wallet wallet
+     * @param \AffinidiTdk\Clients\Wallets\Model\WalletDto|null $wallet wallet
      *
      * @return self
      */

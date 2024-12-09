@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * SupportedCredentialMetadataDisplayInner Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SupportedCredentialMetadataDisplayInner implements ModelInterface, ArrayAc
     protected static $openAPITypes = [
         'name' => 'string',
         'locale' => 'string',
-        'logo' => '\OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInnerLogo',
+        'logo' => '\AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInnerLogo',
         'background_color' => 'string',
         'text_color' => 'string'
     ];
@@ -394,7 +394,7 @@ class SupportedCredentialMetadataDisplayInner implements ModelInterface, ArrayAc
     /**
      * Gets logo
      *
-     * @return \OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInnerLogo|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInnerLogo|null
      */
     public function getLogo()
     {
@@ -404,7 +404,7 @@ class SupportedCredentialMetadataDisplayInner implements ModelInterface, ArrayAc
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInnerLogo|null $logo logo
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInnerLogo|null $logo logo
      *
      * @return self
      */

@@ -1,4 +1,4 @@
-# OpenAPI\Client\DefaultApi
+# AffinidiTdk\Clients\Iota\DefaultApi
 
 All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operat
 ## `listLoggedConsents()`
 
 ```php
-listLoggedConsents($configuration_id, $user_id, $limit, $exclusive_start_key): \OpenAPI\Client\Model\ListLoggedConsentsOK
+listLoggedConsents($configuration_id, $user_id, $limit, $exclusive_start_key): \AffinidiTdk\Clients\Iota\Model\ListLoggedConsentsOK
 ```
 
 Lists all the logged consents for a project.
@@ -22,12 +22,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListLoggedConsentsOK**](../Model/ListLoggedConsentsOK.md)
+[**\AffinidiTdk\Clients\Iota\Model\ListLoggedConsentsOK**](../Model/ListLoggedConsentsOK.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# OpenAPI\Client\TokensApi
+# AffinidiTdk\Clients\Iam\TokensApi
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
@@ -13,7 +13,7 @@ All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operat
 ## `createToken()`
 
 ```php
-createToken($create_token_input): \OpenAPI\Client\Model\TokenDto
+createToken($create_token_input): \AffinidiTdk\Clients\Iam\Model\TokenDto
 ```
 
 ### Example
@@ -24,18 +24,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_token_input = new \OpenAPI\Client\Model\CreateTokenInput(); // \OpenAPI\Client\Model\CreateTokenInput | CreateToken
+$create_token_input = new \AffinidiTdk\Clients\Iam\Model\CreateTokenInput(); // \AffinidiTdk\Clients\Iam\Model\CreateTokenInput | CreateToken
 
 try {
     $result = $apiInstance->createToken($create_token_input);
@@ -47,13 +47,13 @@ try {
 
 ### Parameters
 
-| Name                   | Type                                                                       | Description | Notes |
-| ---------------------- | -------------------------------------------------------------------------- | ----------- | ----- |
-| **create_token_input** | [**\OpenAPI\Client\Model\CreateTokenInput**](../Model/CreateTokenInput.md) | CreateToken |       |
+| Name                   | Type                                                                                | Description | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **create_token_input** | [**\AffinidiTdk\Clients\Iam\Model\CreateTokenInput**](../Model/CreateTokenInput.md) | CreateToken |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TokenDto**](../Model/TokenDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\TokenDto**](../Model/TokenDto.md)
 
 ### Authorization
 
@@ -82,12 +82,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -128,7 +128,7 @@ void (empty response body)
 ## `getToken()`
 
 ```php
-getToken($token_id): \OpenAPI\Client\Model\TokenDto
+getToken($token_id): \AffinidiTdk\Clients\Iam\Model\TokenDto
 ```
 
 ### Example
@@ -139,12 +139,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -168,7 +168,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TokenDto**](../Model/TokenDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\TokenDto**](../Model/TokenDto.md)
 
 ### Authorization
 
@@ -186,7 +186,7 @@ try {
 ## `listToken()`
 
 ```php
-listToken(): \OpenAPI\Client\Model\TokenList
+listToken(): \AffinidiTdk\Clients\Iam\Model\TokenList
 ```
 
 ### Example
@@ -197,12 +197,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -223,7 +223,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TokenList**](../Model/TokenList.md)
+[**\AffinidiTdk\Clients\Iam\Model\TokenList**](../Model/TokenList.md)
 
 ### Authorization
 
@@ -241,7 +241,7 @@ This endpoint does not need any parameter.
 ## `updateToken()`
 
 ```php
-updateToken($token_id, $update_token_input): \OpenAPI\Client\Model\TokenDto
+updateToken($token_id, $update_token_input): \AffinidiTdk\Clients\Iam\Model\TokenDto
 ```
 
 ### Example
@@ -252,19 +252,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\TokensApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $token_id = 'token_id_example'; // string
-$update_token_input = new \OpenAPI\Client\Model\UpdateTokenInput(); // \OpenAPI\Client\Model\UpdateTokenInput | UpdateToken
+$update_token_input = new \AffinidiTdk\Clients\Iam\Model\UpdateTokenInput(); // \AffinidiTdk\Clients\Iam\Model\UpdateTokenInput | UpdateToken
 
 try {
     $result = $apiInstance->updateToken($token_id, $update_token_input);
@@ -276,14 +276,14 @@ try {
 
 ### Parameters
 
-| Name                   | Type                                                                       | Description | Notes |
-| ---------------------- | -------------------------------------------------------------------------- | ----------- | ----- |
-| **token_id**           | **string**                                                                 |             |       |
-| **update_token_input** | [**\OpenAPI\Client\Model\UpdateTokenInput**](../Model/UpdateTokenInput.md) | UpdateToken |       |
+| Name                   | Type                                                                                | Description | Notes |
+| ---------------------- | ----------------------------------------------------------------------------------- | ----------- | ----- |
+| **token_id**           | **string**                                                                          |             |       |
+| **update_token_input** | [**\AffinidiTdk\Clients\Iam\Model\UpdateTokenInput**](../Model/UpdateTokenInput.md) | UpdateToken |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TokenDto**](../Model/TokenDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\TokenDto**](../Model/TokenDto.md)
 
 ### Authorization
 

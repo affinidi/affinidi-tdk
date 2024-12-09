@@ -1,4 +1,4 @@
-# OpenAPI\Client\ConfigurationApi
+# AffinidiTdk\Clients\LoginConfiguration\ConfigurationApi
 
 All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operation defines another base path.
 
@@ -14,7 +14,7 @@ All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operat
 ## `createLoginConfigurations()`
 
 ```php
-createLoginConfigurations($create_login_configuration_input): \OpenAPI\Client\Model\CreateLoginConfigurationOutput
+createLoginConfigurations($create_login_configuration_input): \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput
 ```
 
 Create a new login configuration
@@ -29,18 +29,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_login_configuration_input = new \OpenAPI\Client\Model\CreateLoginConfigurationInput(); // \OpenAPI\Client\Model\CreateLoginConfigurationInput | CreateLoginConfigurations
+$create_login_configuration_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput | CreateLoginConfigurations
 
 try {
     $result = $apiInstance->createLoginConfigurations($create_login_configuration_input);
@@ -52,13 +52,13 @@ try {
 
 ### Parameters
 
-| Name                                 | Type                                                                                                 | Description               | Notes      |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- | ------------------------- | ---------- |
-| **create_login_configuration_input** | [**\OpenAPI\Client\Model\CreateLoginConfigurationInput**](../Model/CreateLoginConfigurationInput.md) | CreateLoginConfigurations | [optional] |
+| Name                                 | Type                                                                                                                         | Description               | Notes      |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------- |
+| **create_login_configuration_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput**](../Model/CreateLoginConfigurationInput.md) | CreateLoginConfigurations | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CreateLoginConfigurationOutput**](../Model/CreateLoginConfigurationOutput.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput**](../Model/CreateLoginConfigurationOutput.md)
 
 ### Authorization
 
@@ -91,12 +91,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -137,7 +137,7 @@ void (empty response body)
 ## `getClientMetadataByClientId()`
 
 ```php
-getClientMetadataByClientId($client_id): \OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput
+getClientMetadataByClientId($client_id): \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput
 ```
 
 Get Client Metadata By OAuth 2.0 Client ID
@@ -152,7 +152,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -175,7 +175,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput**](../Model/LoginConfigurationClientMetadataOutput.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput**](../Model/LoginConfigurationClientMetadataOutput.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 ## `getLoginConfigurationsById()`
 
 ```php
-getLoginConfigurationsById($configuration_id): \OpenAPI\Client\Model\LoginConfigurationObject
+getLoginConfigurationsById($configuration_id): \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject
 ```
 
 Get login configuration by ID
@@ -208,12 +208,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -237,7 +237,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LoginConfigurationObject**](../Model/LoginConfigurationObject.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject**](../Model/LoginConfigurationObject.md)
 
 ### Authorization
 
@@ -255,7 +255,7 @@ try {
 ## `listLoginConfigurations()`
 
 ```php
-listLoginConfigurations($limit, $exclusive_start_key): \OpenAPI\Client\Model\ListLoginConfigurationOutput
+listLoginConfigurations($limit, $exclusive_start_key): \AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput
 ```
 
 List login configurations
@@ -270,12 +270,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -301,7 +301,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListLoginConfigurationOutput**](../Model/ListLoginConfigurationOutput.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput**](../Model/ListLoginConfigurationOutput.md)
 
 ### Authorization
 
@@ -319,7 +319,7 @@ try {
 ## `updateLoginConfigurationsById()`
 
 ```php
-updateLoginConfigurationsById($configuration_id, $update_login_configuration_input): \OpenAPI\Client\Model\LoginConfigurationObject
+updateLoginConfigurationsById($configuration_id, $update_login_configuration_input): \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject
 ```
 
 Update login configurations by ID
@@ -334,19 +334,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\ConfigurationApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\ConfigurationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $configuration_id = 'configuration_id_example'; // string | The id of the login configuration
-$update_login_configuration_input = new \OpenAPI\Client\Model\UpdateLoginConfigurationInput(); // \OpenAPI\Client\Model\UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
+$update_login_configuration_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
 
 try {
     $result = $apiInstance->updateLoginConfigurationsById($configuration_id, $update_login_configuration_input);
@@ -358,14 +358,14 @@ try {
 
 ### Parameters
 
-| Name                                 | Type                                                                                                 | Description                       | Notes      |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------- | ---------- |
-| **configuration_id**                 | **string**                                                                                           | The id of the login configuration |            |
-| **update_login_configuration_input** | [**\OpenAPI\Client\Model\UpdateLoginConfigurationInput**](../Model/UpdateLoginConfigurationInput.md) | UpdateLoginConfigurationsById     | [optional] |
+| Name                                 | Type                                                                                                                         | Description                       | Notes      |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ---------- |
+| **configuration_id**                 | **string**                                                                                                                   | The id of the login configuration |            |
+| **update_login_configuration_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput**](../Model/UpdateLoginConfigurationInput.md) | UpdateLoginConfigurationsById     | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LoginConfigurationObject**](../Model/LoginConfigurationObject.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject**](../Model/LoginConfigurationObject.md)
 
 ### Authorization
 

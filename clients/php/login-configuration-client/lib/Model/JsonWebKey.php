@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * JsonWebKey Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class JsonWebKey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keys' => '\OpenAPI\Client\Model\JsonWebKeyKeysInner[]'
+        'keys' => '\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKeyKeysInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class JsonWebKey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets keys
      *
-     * @return \OpenAPI\Client\Model\JsonWebKeyKeysInner[]|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKeyKeysInner[]|null
      */
     public function getKeys()
     {
@@ -303,7 +303,7 @@ class JsonWebKey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keys
      *
-     * @param \OpenAPI\Client\Model\JsonWebKeyKeysInner[]|null $keys The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired.
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKeyKeysInner[]|null $keys The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired.
      *
      * @return self
      */

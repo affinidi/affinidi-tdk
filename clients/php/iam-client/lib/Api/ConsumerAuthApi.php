@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iam\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iam\ApiException;
+use AffinidiTdk\Clients\Iam\Configuration;
+use AffinidiTdk\Clients\Iam\HeaderSelector;
+use AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * ConsumerAuthApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -128,12 +128,12 @@ class ConsumerAuthApi
      *
      * The Consumer OAuth 2.0 Token Endpoint
      *
-     * @param  \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consumerAuthTokenEndpoint'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput|\OpenAPI\Client\Model\InvalidDIDError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput|\AffinidiTdk\Clients\Iam\Model\InvalidDIDError|\AffinidiTdk\Clients\Iam\Model\UnauthorizedError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function consumerAuthTokenEndpoint($consumer_auth_token_endpoint_input, string $contentType = self::contentTypes['consumerAuthTokenEndpoint'][0])
     {
@@ -146,12 +146,12 @@ class ConsumerAuthApi
      *
      * The Consumer OAuth 2.0 Token Endpoint
      *
-     * @param  \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consumerAuthTokenEndpoint'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput|\OpenAPI\Client\Model\InvalidDIDError|\OpenAPI\Client\Model\UnauthorizedError|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput|\AffinidiTdk\Clients\Iam\Model\InvalidDIDError|\AffinidiTdk\Clients\Iam\Model\UnauthorizedError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function consumerAuthTokenEndpointWithHttpInfo($consumer_auth_token_endpoint_input, string $contentType = self::contentTypes['consumerAuthTokenEndpoint'][0])
     {
@@ -182,11 +182,11 @@ class ConsumerAuthApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -204,16 +204,16 @@ class ConsumerAuthApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidDIDError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\InvalidDIDError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidDIDError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\InvalidDIDError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -231,16 +231,16 @@ class ConsumerAuthApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidDIDError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\InvalidDIDError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\UnauthorizedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnauthorizedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnauthorizedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnauthorizedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -258,16 +258,16 @@ class ConsumerAuthApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnauthorizedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnauthorizedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -285,7 +285,7 @@ class ConsumerAuthApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -304,7 +304,7 @@ class ConsumerAuthApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -337,7 +337,7 @@ class ConsumerAuthApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput',
+                        '\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -345,7 +345,7 @@ class ConsumerAuthApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidDIDError',
+                        '\AffinidiTdk\Clients\Iam\Model\InvalidDIDError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -353,7 +353,7 @@ class ConsumerAuthApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnauthorizedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnauthorizedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -361,7 +361,7 @@ class ConsumerAuthApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -376,7 +376,7 @@ class ConsumerAuthApi
      *
      * The Consumer OAuth 2.0 Token Endpoint
      *
-     * @param  \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consumerAuthTokenEndpoint'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -397,7 +397,7 @@ class ConsumerAuthApi
      *
      * The Consumer OAuth 2.0 Token Endpoint
      *
-     * @param  \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consumerAuthTokenEndpoint'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -405,7 +405,7 @@ class ConsumerAuthApi
      */
     public function consumerAuthTokenEndpointAsyncWithHttpInfo($consumer_auth_token_endpoint_input, string $contentType = self::contentTypes['consumerAuthTokenEndpoint'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput';
         $request = $this->consumerAuthTokenEndpointRequest($consumer_auth_token_endpoint_input, $contentType);
 
         return $this->client
@@ -447,7 +447,7 @@ class ConsumerAuthApi
     /**
      * Create request for operation 'consumerAuthTokenEndpoint'
      *
-     * @param  \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput $consumer_auth_token_endpoint_input ConsumerAuthTokenEndpoint (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['consumerAuthTokenEndpoint'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

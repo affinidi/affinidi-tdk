@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\CredentialIssuance\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\CredentialIssuance\ApiException;
+use AffinidiTdk\Clients\CredentialIssuance\Configuration;
+use AffinidiTdk\Clients\CredentialIssuance\HeaderSelector;
+use AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * ConfigurationApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,12 +138,12 @@ class ConfigurationApi
     /**
      * Operation createIssuanceConfig
      *
-     * @param  \OpenAPI\Client\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIssuanceConfig'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\CreateIssuanceConfig400Response
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response
      */
     public function createIssuanceConfig($create_issuance_config_input, string $contentType = self::contentTypes['createIssuanceConfig'][0])
     {
@@ -154,12 +154,12 @@ class ConfigurationApi
     /**
      * Operation createIssuanceConfigWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIssuanceConfig'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\CreateIssuanceConfig400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createIssuanceConfigWithHttpInfo($create_issuance_config_input, string $contentType = self::contentTypes['createIssuanceConfig'][0])
     {
@@ -190,11 +190,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\IssuanceConfigDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IssuanceConfigDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,16 +212,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IssuanceConfigDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\CreateIssuanceConfig400Response' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\CreateIssuanceConfig400Response' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -239,7 +239,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CreateIssuanceConfig400Response', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -258,7 +258,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -291,7 +291,7 @@ class ConfigurationApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IssuanceConfigDto',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -299,7 +299,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CreateIssuanceConfig400Response',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfig400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -312,7 +312,7 @@ class ConfigurationApi
     /**
      * Operation createIssuanceConfigAsync
      *
-     * @param  \OpenAPI\Client\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIssuanceConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -331,7 +331,7 @@ class ConfigurationApi
     /**
      * Operation createIssuanceConfigAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIssuanceConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -339,7 +339,7 @@ class ConfigurationApi
      */
     public function createIssuanceConfigAsyncWithHttpInfo($create_issuance_config_input, string $contentType = self::contentTypes['createIssuanceConfig'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
         $request = $this->createIssuanceConfigRequest($create_issuance_config_input, $contentType);
 
         return $this->client
@@ -381,7 +381,7 @@ class ConfigurationApi
     /**
      * Create request for operation 'createIssuanceConfig'
      *
-     * @param  \OpenAPI\Client\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateIssuanceConfigInput $create_issuance_config_input Request body of create configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIssuanceConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -480,7 +480,7 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -495,7 +495,7 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -533,7 +533,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -541,7 +541,7 @@ class ConfigurationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -710,9 +710,9 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError
      */
     public function getIssuanceConfigById($configuration_id, string $contentType = self::contentTypes['getIssuanceConfigById'][0])
     {
@@ -726,9 +726,9 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuanceConfigByIdWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getIssuanceConfigById'][0])
     {
@@ -759,11 +759,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IssuanceConfigDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IssuanceConfigDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -781,16 +781,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IssuanceConfigDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -808,16 +808,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -835,7 +835,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -854,7 +854,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -887,7 +887,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IssuanceConfigDto',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -895,7 +895,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -903,7 +903,7 @@ class ConfigurationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -943,7 +943,7 @@ class ConfigurationApi
      */
     public function getIssuanceConfigByIdAsyncWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getIssuanceConfigById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
         $request = $this->getIssuanceConfigByIdRequest($configuration_id, $contentType);
 
         return $this->client
@@ -1084,9 +1084,9 @@ class ConfigurationApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIssuanceConfigList'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IssuanceConfigListResponse
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse
      */
     public function getIssuanceConfigList(string $contentType = self::contentTypes['getIssuanceConfigList'][0])
     {
@@ -1099,9 +1099,9 @@ class ConfigurationApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIssuanceConfigList'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IssuanceConfigListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIssuanceConfigListWithHttpInfo(string $contentType = self::contentTypes['getIssuanceConfigList'][0])
     {
@@ -1132,11 +1132,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IssuanceConfigListResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IssuanceConfigListResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1154,7 +1154,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IssuanceConfigListResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1173,7 +1173,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IssuanceConfigListResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1206,7 +1206,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IssuanceConfigListResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1244,7 +1244,7 @@ class ConfigurationApi
      */
     public function getIssuanceConfigListAsyncWithHttpInfo(string $contentType = self::contentTypes['getIssuanceConfigList'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IssuanceConfigListResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigListResponse';
         $request = $this->getIssuanceConfigListRequest($contentType);
 
         return $this->client
@@ -1368,12 +1368,12 @@ class ConfigurationApi
      * Operation updateIssuanceConfigById
      *
      * @param  string $configuration_id The id of the issuance configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError
      */
     public function updateIssuanceConfigById($configuration_id, $update_issuance_config_input, string $contentType = self::contentTypes['updateIssuanceConfigById'][0])
     {
@@ -1385,12 +1385,12 @@ class ConfigurationApi
      * Operation updateIssuanceConfigByIdWithHttpInfo
      *
      * @param  string $configuration_id The id of the issuance configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIssuanceConfigById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IssuanceConfigDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateIssuanceConfigByIdWithHttpInfo($configuration_id, $update_issuance_config_input, string $contentType = self::contentTypes['updateIssuanceConfigById'][0])
     {
@@ -1421,11 +1421,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IssuanceConfigDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IssuanceConfigDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1443,16 +1443,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IssuanceConfigDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1470,16 +1470,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1497,7 +1497,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1516,7 +1516,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1549,7 +1549,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IssuanceConfigDto',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1557,7 +1557,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1565,7 +1565,7 @@ class ConfigurationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1579,7 +1579,7 @@ class ConfigurationApi
      * Operation updateIssuanceConfigByIdAsync
      *
      * @param  string $configuration_id The id of the issuance configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIssuanceConfigById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1599,7 +1599,7 @@ class ConfigurationApi
      * Operation updateIssuanceConfigByIdAsyncWithHttpInfo
      *
      * @param  string $configuration_id The id of the issuance configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIssuanceConfigById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1607,7 +1607,7 @@ class ConfigurationApi
      */
     public function updateIssuanceConfigByIdAsyncWithHttpInfo($configuration_id, $update_issuance_config_input, string $contentType = self::contentTypes['updateIssuanceConfigById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IssuanceConfigDto';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceConfigDto';
         $request = $this->updateIssuanceConfigByIdRequest($configuration_id, $update_issuance_config_input, $contentType);
 
         return $this->client
@@ -1650,7 +1650,7 @@ class ConfigurationApi
      * Create request for operation 'updateIssuanceConfigById'
      *
      * @param  string $configuration_id The id of the issuance configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\UpdateIssuanceConfigInput $update_issuance_config_input Request body of update configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIssuanceConfigById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

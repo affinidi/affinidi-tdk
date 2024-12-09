@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * VerifyCredentialInput Class Doc Comment
  *
  * @category Class
  * @description Request model of /verify-vcs
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class VerifyCredentialInput implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'verifiable_credentials' => '\OpenAPI\Client\Model\W3cCredential[]',
-        'issuer_did_document' => '\OpenAPI\Client\Model\FreeFormObject'
+        'verifiable_credentials' => '\AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[]',
+        'issuer_did_document' => '\AffinidiTdk\Clients\CredentialVerification\Model\FreeFormObject'
     ];
 
     /**
@@ -308,7 +308,7 @@ class VerifyCredentialInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets verifiable_credentials
      *
-     * @return \OpenAPI\Client\Model\W3cCredential[]
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[]
      */
     public function getVerifiableCredentials()
     {
@@ -318,7 +318,7 @@ class VerifyCredentialInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets verifiable_credentials
      *
-     * @param \OpenAPI\Client\Model\W3cCredential[] $verifiable_credentials List of VCs
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[] $verifiable_credentials List of VCs
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class VerifyCredentialInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets issuer_did_document
      *
-     * @return \OpenAPI\Client\Model\FreeFormObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\FreeFormObject|null
      */
     public function getIssuerDidDocument()
     {
@@ -350,7 +350,7 @@ class VerifyCredentialInput implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets issuer_did_document
      *
-     * @param \OpenAPI\Client\Model\FreeFormObject|null $issuer_did_document issuer_did_document
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\FreeFormObject|null $issuer_did_document issuer_did_document
      *
      * @return self
      */

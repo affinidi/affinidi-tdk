@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * Format Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,12 +58,12 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'jwt' => '\OpenAPI\Client\Model\JwtObject',
-        'jwt_vc' => '\OpenAPI\Client\Model\JwtObject',
-        'jwt_vp' => '\OpenAPI\Client\Model\JwtObject',
-        'ldp' => '\OpenAPI\Client\Model\LdpObject',
-        'ldp_vc' => '\OpenAPI\Client\Model\LdpObject',
-        'ldp_vp' => '\OpenAPI\Client\Model\LdpObject'
+        'jwt' => '\AffinidiTdk\Clients\CredentialVerification\Model\JwtObject',
+        'jwt_vc' => '\AffinidiTdk\Clients\CredentialVerification\Model\JwtObject',
+        'jwt_vp' => '\AffinidiTdk\Clients\CredentialVerification\Model\JwtObject',
+        'ldp' => '\AffinidiTdk\Clients\CredentialVerification\Model\LdpObject',
+        'ldp_vc' => '\AffinidiTdk\Clients\CredentialVerification\Model\LdpObject',
+        'ldp_vp' => '\AffinidiTdk\Clients\CredentialVerification\Model\LdpObject'
     ];
 
     /**
@@ -328,7 +328,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets jwt
      *
-     * @return \OpenAPI\Client\Model\JwtObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null
      */
     public function getJwt()
     {
@@ -338,7 +338,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets jwt
      *
-     * @param \OpenAPI\Client\Model\JwtObject|null $jwt jwt
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null $jwt jwt
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets jwt_vc
      *
-     * @return \OpenAPI\Client\Model\JwtObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null
      */
     public function getJwtVc()
     {
@@ -365,7 +365,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets jwt_vc
      *
-     * @param \OpenAPI\Client\Model\JwtObject|null $jwt_vc jwt_vc
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null $jwt_vc jwt_vc
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets jwt_vp
      *
-     * @return \OpenAPI\Client\Model\JwtObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null
      */
     public function getJwtVp()
     {
@@ -392,7 +392,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets jwt_vp
      *
-     * @param \OpenAPI\Client\Model\JwtObject|null $jwt_vp jwt_vp
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\JwtObject|null $jwt_vp jwt_vp
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ldp
      *
-     * @return \OpenAPI\Client\Model\LdpObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null
      */
     public function getLdp()
     {
@@ -419,7 +419,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ldp
      *
-     * @param \OpenAPI\Client\Model\LdpObject|null $ldp ldp
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null $ldp ldp
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ldp_vc
      *
-     * @return \OpenAPI\Client\Model\LdpObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null
      */
     public function getLdpVc()
     {
@@ -446,7 +446,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ldp_vc
      *
-     * @param \OpenAPI\Client\Model\LdpObject|null $ldp_vc ldp_vc
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null $ldp_vc ldp_vc
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ldp_vp
      *
-     * @return \OpenAPI\Client\Model\LdpObject|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null
      */
     public function getLdpVp()
     {
@@ -473,7 +473,7 @@ class Format implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ldp_vp
      *
-     * @param \OpenAPI\Client\Model\LdpObject|null $ldp_vp ldp_vp
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\LdpObject|null $ldp_vp ldp_vp
      *
      * @return self
      */

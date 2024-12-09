@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * ProjectList Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ProjectList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'projects' => '\OpenAPI\Client\Model\ProjectDto[]'
+        'projects' => '\AffinidiTdk\Clients\Iam\Model\ProjectDto[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class ProjectList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets projects
      *
-     * @return \OpenAPI\Client\Model\ProjectDto[]
+     * @return \AffinidiTdk\Clients\Iam\Model\ProjectDto[]
      */
     public function getProjects()
     {
@@ -306,7 +306,7 @@ class ProjectList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets projects
      *
-     * @param \OpenAPI\Client\Model\ProjectDto[] $projects projects
+     * @param \AffinidiTdk\Clients\Iam\Model\ProjectDto[] $projects projects
      *
      * @return self
      */

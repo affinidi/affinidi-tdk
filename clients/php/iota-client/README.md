@@ -37,12 +37,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\CallbackApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\CallbackApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$callback_input = new \OpenAPI\Client\Model\CallbackInput(); // \OpenAPI\Client\Model\CallbackInput | CallbackRequestInput
+$callback_input = new \AffinidiTdk\Clients\Iota\Model\CallbackInput(); // \AffinidiTdk\Clients\Iota\Model\CallbackInput | CallbackRequestInput
 
 try {
     $result = $apiInstance->iotOIDC4VPCallback($callback_input);

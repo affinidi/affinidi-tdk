@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iota\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * OperationForbiddenError Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class OperationForbiddenError implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\Iota\Model\InvalidParameterErrorDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class OperationForbiddenError implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\Iota\Model\InvalidParameterErrorDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class OperationForbiddenError implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\Iota\Model\InvalidParameterErrorDetailsInner[]|null $details details
      *
      * @return self
      */

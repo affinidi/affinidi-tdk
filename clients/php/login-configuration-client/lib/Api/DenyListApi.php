@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\LoginConfiguration\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\LoginConfiguration\ApiException;
+use AffinidiTdk\Clients\LoginConfiguration\Configuration;
+use AffinidiTdk\Clients\LoginConfiguration\HeaderSelector;
+use AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * DenyListApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,10 +141,10 @@ class DenyListApi
     /**
      * Operation blockGroups
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -156,10 +156,10 @@ class DenyListApi
     /**
      * Operation blockGroupsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -197,7 +197,7 @@ class DenyListApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidGroupsError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidGroupsError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -210,7 +210,7 @@ class DenyListApi
     /**
      * Operation blockGroupsAsync
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -229,7 +229,7 @@ class DenyListApi
     /**
      * Operation blockGroupsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -266,7 +266,7 @@ class DenyListApi
     /**
      * Create request for operation 'blockGroups'
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -356,10 +356,10 @@ class DenyListApi
     /**
      * Operation blockUsers
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -371,10 +371,10 @@ class DenyListApi
     /**
      * Operation blockUsersWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -417,7 +417,7 @@ class DenyListApi
     /**
      * Operation blockUsersAsync
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -436,7 +436,7 @@ class DenyListApi
     /**
      * Operation blockUsersAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -473,7 +473,7 @@ class DenyListApi
     /**
      * Create request for operation 'blockUsers'
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -566,9 +566,9 @@ class DenyListApi
      * @param  string $page_token page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBlockedGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupNames
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames
      */
     public function listBlockedGroups($page_token = null, string $contentType = self::contentTypes['listBlockedGroups'][0])
     {
@@ -582,9 +582,9 @@ class DenyListApi
      * @param  string $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBlockedGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupNames, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBlockedGroupsWithHttpInfo($page_token = null, string $contentType = self::contentTypes['listBlockedGroups'][0])
     {
@@ -615,11 +615,11 @@ class DenyListApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\GroupNames' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GroupNames' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -637,7 +637,7 @@ class DenyListApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GroupNames', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -656,7 +656,7 @@ class DenyListApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\GroupNames';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -689,7 +689,7 @@ class DenyListApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GroupNames',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -729,7 +729,7 @@ class DenyListApi
      */
     public function listBlockedGroupsAsyncWithHttpInfo($page_token = null, string $contentType = self::contentTypes['listBlockedGroups'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GroupNames';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames';
         $request = $this->listBlockedGroupsRequest($page_token, $contentType);
 
         return $this->client
@@ -866,9 +866,9 @@ class DenyListApi
      * @param  string $page_token page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBlockedUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BlockedUsers
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers
      */
     public function listBlockedUsers($page_token = null, string $contentType = self::contentTypes['listBlockedUsers'][0])
     {
@@ -882,9 +882,9 @@ class DenyListApi
      * @param  string $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBlockedUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BlockedUsers, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBlockedUsersWithHttpInfo($page_token = null, string $contentType = self::contentTypes['listBlockedUsers'][0])
     {
@@ -915,11 +915,11 @@ class DenyListApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\BlockedUsers' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\BlockedUsers' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -937,7 +937,7 @@ class DenyListApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BlockedUsers', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -956,7 +956,7 @@ class DenyListApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\BlockedUsers';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -989,7 +989,7 @@ class DenyListApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\BlockedUsers',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1029,7 +1029,7 @@ class DenyListApi
      */
     public function listBlockedUsersAsyncWithHttpInfo($page_token = null, string $contentType = self::contentTypes['listBlockedUsers'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\BlockedUsers';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers';
         $request = $this->listBlockedUsersRequest($page_token, $contentType);
 
         return $this->client
@@ -1163,10 +1163,10 @@ class DenyListApi
     /**
      * Operation unblockGroups
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1178,10 +1178,10 @@ class DenyListApi
     /**
      * Operation unblockGroupsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockGroups'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1219,7 +1219,7 @@ class DenyListApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidGroupsError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidGroupsError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1232,7 +1232,7 @@ class DenyListApi
     /**
      * Operation unblockGroupsAsync
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1251,7 +1251,7 @@ class DenyListApi
     /**
      * Operation unblockGroupsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1288,7 +1288,7 @@ class DenyListApi
     /**
      * Create request for operation 'unblockGroups'
      *
-     * @param  \OpenAPI\Client\Model\GroupNamesInput $group_names_input List of group names as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput $group_names_input List of group names as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1378,10 +1378,10 @@ class DenyListApi
     /**
      * Operation unblockUsers
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1393,10 +1393,10 @@ class DenyListApi
     /**
      * Operation unblockUsersWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockUsers'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1439,7 +1439,7 @@ class DenyListApi
     /**
      * Operation unblockUsersAsync
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1458,7 +1458,7 @@ class DenyListApi
     /**
      * Operation unblockUsersAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1495,7 +1495,7 @@ class DenyListApi
     /**
      * Create request for operation 'unblockUsers'
      *
-     * @param  \OpenAPI\Client\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput $blocked_users_input List of blocked users as input (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

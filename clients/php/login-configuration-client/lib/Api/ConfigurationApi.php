@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\LoginConfiguration\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\LoginConfiguration\ApiException;
+use AffinidiTdk\Clients\LoginConfiguration\Configuration;
+use AffinidiTdk\Clients\LoginConfiguration\HeaderSelector;
+use AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * ConfigurationApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -143,12 +143,12 @@ class ConfigurationApi
      *
      * Create a new login configuration
      *
-     * @param  \OpenAPI\Client\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CreateLoginConfigurationOutput|\OpenAPI\Client\Model\CreateLoginConfigurations400Response|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\ResourceCreationError
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError|\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError
      */
     public function createLoginConfigurations($create_login_configuration_input = null, string $contentType = self::contentTypes['createLoginConfigurations'][0])
     {
@@ -161,12 +161,12 @@ class ConfigurationApi
      *
      * Create a new login configuration
      *
-     * @param  \OpenAPI\Client\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CreateLoginConfigurationOutput|\OpenAPI\Client\Model\CreateLoginConfigurations400Response|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\ResourceCreationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError|\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createLoginConfigurationsWithHttpInfo($create_login_configuration_input = null, string $contentType = self::contentTypes['createLoginConfigurations'][0])
     {
@@ -197,11 +197,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\CreateLoginConfigurationOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\CreateLoginConfigurationOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -219,16 +219,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CreateLoginConfigurationOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\CreateLoginConfigurations400Response' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\CreateLoginConfigurations400Response' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -246,16 +246,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CreateLoginConfigurations400Response', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -273,16 +273,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 424:
-                    if ('\OpenAPI\Client\Model\ResourceCreationError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ResourceCreationError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -300,7 +300,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ResourceCreationError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -319,7 +319,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\CreateLoginConfigurationOutput';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -352,7 +352,7 @@ class ConfigurationApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CreateLoginConfigurationOutput',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -360,7 +360,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CreateLoginConfigurations400Response',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurations400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -368,7 +368,7 @@ class ConfigurationApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -376,7 +376,7 @@ class ConfigurationApi
                 case 424:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ResourceCreationError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ResourceCreationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class ConfigurationApi
      *
      * Create a new login configuration
      *
-     * @param  \OpenAPI\Client\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -412,7 +412,7 @@ class ConfigurationApi
      *
      * Create a new login configuration
      *
-     * @param  \OpenAPI\Client\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -420,7 +420,7 @@ class ConfigurationApi
      */
     public function createLoginConfigurationsAsyncWithHttpInfo($create_login_configuration_input = null, string $contentType = self::contentTypes['createLoginConfigurations'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CreateLoginConfigurationOutput';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationOutput';
         $request = $this->createLoginConfigurationsRequest($create_login_configuration_input, $contentType);
 
         return $this->client
@@ -462,7 +462,7 @@ class ConfigurationApi
     /**
      * Create request for operation 'createLoginConfigurations'
      *
-     * @param  \OpenAPI\Client\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\CreateLoginConfigurationInput $create_login_configuration_input CreateLoginConfigurations (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginConfigurations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -557,7 +557,7 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the login configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -574,7 +574,7 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the login configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -612,7 +612,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -620,7 +620,7 @@ class ConfigurationApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -795,9 +795,9 @@ class ConfigurationApi
      * @param  string $client_id OAuth 2.0 Client ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientMetadataByClientId'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError
      */
     public function getClientMetadataByClientId($client_id, string $contentType = self::contentTypes['getClientMetadataByClientId'][0])
     {
@@ -813,9 +813,9 @@ class ConfigurationApi
      * @param  string $client_id OAuth 2.0 Client ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientMetadataByClientId'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getClientMetadataByClientIdWithHttpInfo($client_id, string $contentType = self::contentTypes['getClientMetadataByClientId'][0])
     {
@@ -846,11 +846,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -868,16 +868,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -895,16 +895,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -922,7 +922,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -941,7 +941,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -974,7 +974,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -982,7 +982,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -990,7 +990,7 @@ class ConfigurationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1034,7 +1034,7 @@ class ConfigurationApi
      */
     public function getClientMetadataByClientIdAsyncWithHttpInfo($client_id, string $contentType = self::contentTypes['getClientMetadataByClientId'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\LoginConfigurationClientMetadataOutput';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataOutput';
         $request = $this->getClientMetadataByClientIdRequest($client_id, $contentType);
 
         return $this->client
@@ -1173,9 +1173,9 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the login configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginConfigurationObject|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError
      */
     public function getLoginConfigurationsById($configuration_id, string $contentType = self::contentTypes['getLoginConfigurationsById'][0])
     {
@@ -1191,9 +1191,9 @@ class ConfigurationApi
      * @param  string $configuration_id The id of the login configuration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginConfigurationObject|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLoginConfigurationsByIdWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getLoginConfigurationsById'][0])
     {
@@ -1224,11 +1224,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\LoginConfigurationObject' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\LoginConfigurationObject' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1246,16 +1246,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\LoginConfigurationObject', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1273,16 +1273,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1300,7 +1300,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1319,7 +1319,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\LoginConfigurationObject';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1352,7 +1352,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\LoginConfigurationObject',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1360,7 +1360,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1368,7 +1368,7 @@ class ConfigurationApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1412,7 +1412,7 @@ class ConfigurationApi
      */
     public function getLoginConfigurationsByIdAsyncWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getLoginConfigurationsById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\LoginConfigurationObject';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject';
         $request = $this->getLoginConfigurationsByIdRequest($configuration_id, $contentType);
 
         return $this->client
@@ -1557,9 +1557,9 @@ class ConfigurationApi
      * @param  string $exclusive_start_key The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLoginConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListLoginConfigurationOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError
      */
     public function listLoginConfigurations($limit = null, $exclusive_start_key = null, string $contentType = self::contentTypes['listLoginConfigurations'][0])
     {
@@ -1576,9 +1576,9 @@ class ConfigurationApi
      * @param  string $exclusive_start_key The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLoginConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListLoginConfigurationOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLoginConfigurationsWithHttpInfo($limit = null, $exclusive_start_key = null, string $contentType = self::contentTypes['listLoginConfigurations'][0])
     {
@@ -1609,11 +1609,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListLoginConfigurationOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListLoginConfigurationOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1631,16 +1631,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListLoginConfigurationOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1658,16 +1658,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1685,7 +1685,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1704,7 +1704,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListLoginConfigurationOutput';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1737,7 +1737,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListLoginConfigurationOutput',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1745,7 +1745,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1753,7 +1753,7 @@ class ConfigurationApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1799,7 +1799,7 @@ class ConfigurationApi
      */
     public function listLoginConfigurationsAsyncWithHttpInfo($limit = null, $exclusive_start_key = null, string $contentType = self::contentTypes['listLoginConfigurations'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListLoginConfigurationOutput';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\ListLoginConfigurationOutput';
         $request = $this->listLoginConfigurationsRequest($limit, $exclusive_start_key, $contentType);
 
         return $this->client
@@ -1956,12 +1956,12 @@ class ConfigurationApi
      * Update login configurations by ID
      *
      * @param  string $configuration_id The id of the login configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginConfigurationObject|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError
      */
     public function updateLoginConfigurationsById($configuration_id, $update_login_configuration_input = null, string $contentType = self::contentTypes['updateLoginConfigurationsById'][0])
     {
@@ -1975,12 +1975,12 @@ class ConfigurationApi
      * Update login configurations by ID
      *
      * @param  string $configuration_id The id of the login configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLoginConfigurationsById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginConfigurationObject|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject|\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError|\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLoginConfigurationsByIdWithHttpInfo($configuration_id, $update_login_configuration_input = null, string $contentType = self::contentTypes['updateLoginConfigurationsById'][0])
     {
@@ -2011,11 +2011,11 @@ class ConfigurationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\LoginConfigurationObject' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\LoginConfigurationObject' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2033,16 +2033,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\LoginConfigurationObject', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2060,16 +2060,16 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2087,7 +2087,7 @@ class ConfigurationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2106,7 +2106,7 @@ class ConfigurationApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\LoginConfigurationObject';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2139,7 +2139,7 @@ class ConfigurationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\LoginConfigurationObject',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2147,7 +2147,7 @@ class ConfigurationApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2155,7 +2155,7 @@ class ConfigurationApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2171,7 +2171,7 @@ class ConfigurationApi
      * Update login configurations by ID
      *
      * @param  string $configuration_id The id of the login configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLoginConfigurationsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2193,7 +2193,7 @@ class ConfigurationApi
      * Update login configurations by ID
      *
      * @param  string $configuration_id The id of the login configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLoginConfigurationsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2201,7 +2201,7 @@ class ConfigurationApi
      */
     public function updateLoginConfigurationsByIdAsyncWithHttpInfo($configuration_id, $update_login_configuration_input = null, string $contentType = self::contentTypes['updateLoginConfigurationsById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\LoginConfigurationObject';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationObject';
         $request = $this->updateLoginConfigurationsByIdRequest($configuration_id, $update_login_configuration_input, $contentType);
 
         return $this->client
@@ -2244,7 +2244,7 @@ class ConfigurationApi
      * Create request for operation 'updateLoginConfigurationsById'
      *
      * @param  string $configuration_id The id of the login configuration (required)
-     * @param  \OpenAPI\Client\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
+     * @param  \AffinidiTdk\Clients\LoginConfiguration\Model\UpdateLoginConfigurationInput $update_login_configuration_input UpdateLoginConfigurationsById (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLoginConfigurationsById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

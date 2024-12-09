@@ -37,12 +37,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\ConsumerAuthApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\ConsumerAuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consumer_auth_token_endpoint_input = new \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput(); // \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+$consumer_auth_token_endpoint_input = new \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput(); // \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
 
 try {
     $result = $apiInstance->consumerAuthTokenEndpoint($consumer_auth_token_endpoint_input);

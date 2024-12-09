@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Wallets\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Wallets\ObjectSerializer;
 
 /**
  * SignCredentialInputDto Class Doc Comment
  *
  * @category Class
  * @description DTO contains params to sign credential
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class SignCredentialInputDto implements ModelInterface, ArrayAccess, \JsonSerial
         'unsigned_credential' => 'object',
         'revocable' => 'bool',
         'credential_format' => 'string',
-        'unsigned_credential_params' => '\OpenAPI\Client\Model\SignCredentialInputDtoUnsignedCredentialParams'
+        'unsigned_credential_params' => '\AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDtoUnsignedCredentialParams'
     ];
 
     /**
@@ -432,7 +432,7 @@ class SignCredentialInputDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets unsigned_credential_params
      *
-     * @return \OpenAPI\Client\Model\SignCredentialInputDtoUnsignedCredentialParams|null
+     * @return \AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDtoUnsignedCredentialParams|null
      */
     public function getUnsignedCredentialParams()
     {
@@ -442,7 +442,7 @@ class SignCredentialInputDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets unsigned_credential_params
      *
-     * @param \OpenAPI\Client\Model\SignCredentialInputDtoUnsignedCredentialParams|null $unsigned_credential_params unsigned_credential_params
+     * @param \AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDtoUnsignedCredentialParams|null $unsigned_credential_params unsigned_credential_params
      *
      * @return self
      */

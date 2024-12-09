@@ -1,4 +1,4 @@
-# OpenAPI\Client\DefaultApi
+# AffinidiTdk\Clients\CredentialIssuance\DefaultApi
 
 All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operation defines another base path.
 
@@ -11,7 +11,7 @@ All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operat
 ## `changeCredentialSatatus()`
 
 ```php
-changeCredentialSatatus($project_id, $configuration_id): \OpenAPI\Client\Model\FlowData
+changeCredentialSatatus($project_id, $configuration_id): \AffinidiTdk\Clients\CredentialIssuance\Model\FlowData
 ```
 
 change credential status.
@@ -26,12 +26,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FlowData**](../Model/FlowData.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\FlowData**](../Model/FlowData.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `getStatusList()`
 
 ```php
-getStatusList($project_id, $status_list_id): \OpenAPI\Client\Model\GetStatusListResultDto
+getStatusList($project_id, $status_list_id): \AffinidiTdk\Clients\CredentialIssuance\Model\GetStatusListResultDto
 ```
 
 Return status list credential
@@ -90,7 +90,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -115,7 +115,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetStatusListResultDto**](../Model/GetStatusListResultDto.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\GetStatusListResultDto**](../Model/GetStatusListResultDto.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ No authorization required
 ## `listIssuanceDataRecords()`
 
 ```php
-listIssuanceDataRecords($limit, $exclusive_start_key): \OpenAPI\Client\Model\ListIssuanceRecordResponse
+listIssuanceDataRecords($limit, $exclusive_start_key): \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse
 ```
 
 List records
@@ -148,7 +148,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -173,7 +173,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListIssuanceRecordResponse**](../Model/ListIssuanceRecordResponse.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse**](../Model/ListIssuanceRecordResponse.md)
 
 ### Authorization
 

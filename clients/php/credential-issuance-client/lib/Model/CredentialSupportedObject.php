@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialSupportedObject Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class CredentialSupportedObject implements ModelInterface, ArrayAccess, \JsonSer
         'credential_type_id' => 'string',
         'json_schema_url' => 'string',
         'json_ld_context_url' => 'string',
-        'metadata' => '\OpenAPI\Client\Model\SupportedCredentialMetadata'
+        'metadata' => '\AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadata'
     ];
 
     /**
@@ -422,7 +422,7 @@ class CredentialSupportedObject implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets metadata
      *
-     * @return \OpenAPI\Client\Model\SupportedCredentialMetadata|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadata|null
      */
     public function getMetadata()
     {
@@ -432,7 +432,7 @@ class CredentialSupportedObject implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets metadata
      *
-     * @param \OpenAPI\Client\Model\SupportedCredentialMetadata|null $metadata metadata
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadata|null $metadata metadata
      *
      * @return self
      */
