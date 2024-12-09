@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.19.0...@affinidi-tdk/iota-browser-v1.20.0) (2024-12-09)
+
+
+### Features
+
+* FTL-18367 add packages for PHP ([#352](https://github.com/affinidi/affinidi-tdk/issues/352)) ([7cb15d5](https://github.com/affinidi/affinidi-tdk/commit/7cb15d5252e9d7444d8efd6deff4edcc833287cf))
+
 # [1.19.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.18.0...@affinidi-tdk/iota-browser-v1.19.0) (2024-09-23)
 
 
