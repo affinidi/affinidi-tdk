@@ -935,6 +935,8 @@ class DefaultApi
      *
      * List records
      *
+     * @param  string $project_id Affinidi project id (required)
+     * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  int $limit Maximum number of records to fetch in a list (optional, default to 10)
      * @param  string $exclusive_start_key exclusiveStartKey for retrieving the next batch of data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuanceDataRecords'] to see the possible values for this operation
@@ -943,9 +945,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError
      */
-    public function listIssuanceDataRecords($limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
+    public function listIssuanceDataRecords($project_id, $configuration_id, $limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
     {
-        list($response) = $this->listIssuanceDataRecordsWithHttpInfo($limit, $exclusive_start_key, $contentType);
+        list($response) = $this->listIssuanceDataRecordsWithHttpInfo($project_id, $configuration_id, $limit, $exclusive_start_key, $contentType);
         return $response;
     }
 
@@ -954,6 +956,8 @@ class DefaultApi
      *
      * List records
      *
+     * @param  string $project_id Affinidi project id (required)
+     * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  int $limit Maximum number of records to fetch in a list (optional, default to 10)
      * @param  string $exclusive_start_key exclusiveStartKey for retrieving the next batch of data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuanceDataRecords'] to see the possible values for this operation
@@ -962,9 +966,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listIssuanceDataRecordsWithHttpInfo($limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
+    public function listIssuanceDataRecordsWithHttpInfo($project_id, $configuration_id, $limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
     {
-        $request = $this->listIssuanceDataRecordsRequest($limit, $exclusive_start_key, $contentType);
+        $request = $this->listIssuanceDataRecordsRequest($project_id, $configuration_id, $limit, $exclusive_start_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1150,6 +1154,8 @@ class DefaultApi
      *
      * List records
      *
+     * @param  string $project_id Affinidi project id (required)
+     * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  int $limit Maximum number of records to fetch in a list (optional, default to 10)
      * @param  string $exclusive_start_key exclusiveStartKey for retrieving the next batch of data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuanceDataRecords'] to see the possible values for this operation
@@ -1157,9 +1163,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIssuanceDataRecordsAsync($limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
+    public function listIssuanceDataRecordsAsync($project_id, $configuration_id, $limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
     {
-        return $this->listIssuanceDataRecordsAsyncWithHttpInfo($limit, $exclusive_start_key, $contentType)
+        return $this->listIssuanceDataRecordsAsyncWithHttpInfo($project_id, $configuration_id, $limit, $exclusive_start_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1172,6 +1178,8 @@ class DefaultApi
      *
      * List records
      *
+     * @param  string $project_id Affinidi project id (required)
+     * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  int $limit Maximum number of records to fetch in a list (optional, default to 10)
      * @param  string $exclusive_start_key exclusiveStartKey for retrieving the next batch of data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuanceDataRecords'] to see the possible values for this operation
@@ -1179,10 +1187,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIssuanceDataRecordsAsyncWithHttpInfo($limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
+    public function listIssuanceDataRecordsAsyncWithHttpInfo($project_id, $configuration_id, $limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
     {
         $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse';
-        $request = $this->listIssuanceDataRecordsRequest($limit, $exclusive_start_key, $contentType);
+        $request = $this->listIssuanceDataRecordsRequest($project_id, $configuration_id, $limit, $exclusive_start_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1223,6 +1231,8 @@ class DefaultApi
     /**
      * Create request for operation 'listIssuanceDataRecords'
      *
+     * @param  string $project_id Affinidi project id (required)
+     * @param  string $configuration_id The id of the issuance configuration (required)
      * @param  int $limit Maximum number of records to fetch in a list (optional, default to 10)
      * @param  string $exclusive_start_key exclusiveStartKey for retrieving the next batch of data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuanceDataRecords'] to see the possible values for this operation
@@ -1230,8 +1240,22 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listIssuanceDataRecordsRequest($limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
+    public function listIssuanceDataRecordsRequest($project_id, $configuration_id, $limit = 10, $exclusive_start_key = null, string $contentType = self::contentTypes['listIssuanceDataRecords'][0])
     {
+
+        // verify the required parameter 'project_id' is set
+        if ($project_id === null || (is_array($project_id) && count($project_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $project_id when calling listIssuanceDataRecords'
+            );
+        }
+
+        // verify the required parameter 'configuration_id' is set
+        if ($configuration_id === null || (is_array($configuration_id) && count($configuration_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $configuration_id when calling listIssuanceDataRecords'
+            );
+        }
 
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling DefaultApi.listIssuanceDataRecords, must be smaller than or equal to 100.');
@@ -1272,6 +1296,22 @@ class DefaultApi
         ) ?? []);
 
 
+        // path params
+        if ($project_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'projectId' . '}',
+                ObjectSerializer::toPathValue($project_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($configuration_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'configurationId' . '}',
+                ObjectSerializer::toPathValue($configuration_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1305,6 +1345,11 @@ class DefaultApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('authorization');
+        if ($apiKey !== null) {
+            $headers['authorization'] = $apiKey;
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
