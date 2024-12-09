@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * UserList Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UserList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'records' => '\OpenAPI\Client\Model\UserDto[]'
+        'records' => '\AffinidiTdk\Clients\Iam\Model\UserDto[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class UserList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets records
      *
-     * @return \OpenAPI\Client\Model\UserDto[]
+     * @return \AffinidiTdk\Clients\Iam\Model\UserDto[]
      */
     public function getRecords()
     {
@@ -306,7 +306,7 @@ class UserList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets records
      *
-     * @param \OpenAPI\Client\Model\UserDto[] $records records
+     * @param \AffinidiTdk\Clients\Iam\Model\UserDto[] $records records
      *
      * @return self
      */

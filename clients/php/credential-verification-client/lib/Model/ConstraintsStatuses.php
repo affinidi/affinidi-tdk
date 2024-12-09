@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * ConstraintsStatuses Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'active' => '\OpenAPI\Client\Model\PdStatus',
-        'suspended' => '\OpenAPI\Client\Model\PdStatus',
-        'revoked' => '\OpenAPI\Client\Model\PdStatus'
+        'active' => '\AffinidiTdk\Clients\CredentialVerification\Model\PdStatus',
+        'suspended' => '\AffinidiTdk\Clients\CredentialVerification\Model\PdStatus',
+        'revoked' => '\AffinidiTdk\Clients\CredentialVerification\Model\PdStatus'
     ];
 
     /**
@@ -307,7 +307,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets active
      *
-     * @return \OpenAPI\Client\Model\PdStatus|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null
      */
     public function getActive()
     {
@@ -317,7 +317,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets active
      *
-     * @param \OpenAPI\Client\Model\PdStatus|null $active active
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null $active active
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets suspended
      *
-     * @return \OpenAPI\Client\Model\PdStatus|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null
      */
     public function getSuspended()
     {
@@ -344,7 +344,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets suspended
      *
-     * @param \OpenAPI\Client\Model\PdStatus|null $suspended suspended
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null $suspended suspended
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets revoked
      *
-     * @return \OpenAPI\Client\Model\PdStatus|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null
      */
     public function getRevoked()
     {
@@ -371,7 +371,7 @@ class ConstraintsStatuses implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets revoked
      *
-     * @param \OpenAPI\Client\Model\PdStatus|null $revoked revoked
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\PdStatus|null $revoked revoked
      *
      * @return self
      */

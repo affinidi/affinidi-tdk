@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * W3cPresentation Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,12 +58,12 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'at_context' => '\OpenAPI\Client\Model\W3cPresentationContext',
+        'at_context' => '\AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentationContext',
         'id' => 'string',
         'type' => 'string[]',
         'holder' => 'object',
-        'verifiable_credential' => '\OpenAPI\Client\Model\W3cCredential[]',
-        'presentation_submission' => '\OpenAPI\Client\Model\PresentationSubmission',
+        'verifiable_credential' => '\AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[]',
+        'presentation_submission' => '\AffinidiTdk\Clients\CredentialVerification\Model\PresentationSubmission',
         'proof' => 'object'
     ];
 
@@ -350,7 +350,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets at_context
      *
-     * @return \OpenAPI\Client\Model\W3cPresentationContext
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentationContext
      */
     public function getAtContext()
     {
@@ -360,7 +360,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets at_context
      *
-     * @param \OpenAPI\Client\Model\W3cPresentationContext $at_context at_context
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\W3cPresentationContext $at_context at_context
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets verifiable_credential
      *
-     * @return \OpenAPI\Client\Model\W3cCredential[]
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[]
      */
     public function getVerifiableCredential()
     {
@@ -475,7 +475,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets verifiable_credential
      *
-     * @param \OpenAPI\Client\Model\W3cCredential[] $verifiable_credential verifiable_credential
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\W3cCredential[] $verifiable_credential verifiable_credential
      *
      * @return self
      */
@@ -492,7 +492,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets presentation_submission
      *
-     * @return \OpenAPI\Client\Model\PresentationSubmission|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\PresentationSubmission|null
      */
     public function getPresentationSubmission()
     {
@@ -502,7 +502,7 @@ class W3cPresentation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets presentation_submission
      *
-     * @param \OpenAPI\Client\Model\PresentationSubmission|null $presentation_submission presentation_submission
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\PresentationSubmission|null $presentation_submission presentation_submission
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Wallets\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Wallets\ObjectSerializer;
 
 /**
  * SignCredential400Response Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class SignCredential400Response implements ModelInterface, ArrayAccess, \JsonSer
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\Wallets\Model\ServiceErrorResponseDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class SignCredential400Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\Wallets\Model\ServiceErrorResponseDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class SignCredential400Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\Wallets\Model\ServiceErrorResponseDetailsInner[]|null $details details
      *
      * @return self
      */

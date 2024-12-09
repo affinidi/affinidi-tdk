@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iota\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * IotaConfigurationDto Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,7 +67,7 @@ class IotaConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerializ
         'iota_response_webhook_url' => 'string',
         'enable_verification' => 'bool',
         'enable_consent_audit_log' => 'bool',
-        'client_metadata' => '\OpenAPI\Client\Model\IotaConfigurationDtoClientMetadata',
+        'client_metadata' => '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDtoClientMetadata',
         'mode' => 'string',
         'redirect_uris' => 'string[]',
         'enable_idv_providers' => 'bool'
@@ -671,7 +671,7 @@ class IotaConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets client_metadata
      *
-     * @return \OpenAPI\Client\Model\IotaConfigurationDtoClientMetadata
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDtoClientMetadata
      */
     public function getClientMetadata()
     {
@@ -681,7 +681,7 @@ class IotaConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets client_metadata
      *
-     * @param \OpenAPI\Client\Model\IotaConfigurationDtoClientMetadata $client_metadata client_metadata
+     * @param \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDtoClientMetadata $client_metadata client_metadata
      *
      * @return self
      */

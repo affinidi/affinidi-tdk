@@ -1,4 +1,4 @@
-# OpenAPI\Client\StsApi
+# AffinidiTdk\Clients\Iam\StsApi
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
@@ -10,7 +10,7 @@ All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operat
 ## `createProjectScopedToken()`
 
 ```php
-createProjectScopedToken($create_project_scoped_token_input): \OpenAPI\Client\Model\CreateProjectScopedTokenOutput
+createProjectScopedToken($create_project_scoped_token_input): \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput
 ```
 
 ### Example
@@ -21,18 +21,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\StsApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\StsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_project_scoped_token_input = new \OpenAPI\Client\Model\CreateProjectScopedTokenInput(); // \OpenAPI\Client\Model\CreateProjectScopedTokenInput | CreateProjectScopedToken
+$create_project_scoped_token_input = new \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput(); // \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput | CreateProjectScopedToken
 
 try {
     $result = $apiInstance->createProjectScopedToken($create_project_scoped_token_input);
@@ -44,13 +44,13 @@ try {
 
 ### Parameters
 
-| Name                                  | Type                                                                                                 | Description              | Notes |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------ | ----- |
-| **create_project_scoped_token_input** | [**\OpenAPI\Client\Model\CreateProjectScopedTokenInput**](../Model/CreateProjectScopedTokenInput.md) | CreateProjectScopedToken |       |
+| Name                                  | Type                                                                                                          | Description              | Notes |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------ | ----- |
+| **create_project_scoped_token_input** | [**\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput**](../Model/CreateProjectScopedTokenInput.md) | CreateProjectScopedToken |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CreateProjectScopedTokenOutput**](../Model/CreateProjectScopedTokenOutput.md)
+[**\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput**](../Model/CreateProjectScopedTokenOutput.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ try {
 ## `whoami()`
 
 ```php
-whoami(): \OpenAPI\Client\Model\WhoamiDto
+whoami(): \AffinidiTdk\Clients\Iam\Model\WhoamiDto
 ```
 
 ### Example
@@ -79,12 +79,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: UserTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\StsApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\StsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -105,7 +105,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\WhoamiDto**](../Model/WhoamiDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\WhoamiDto**](../Model/WhoamiDto.md)
 
 ### Authorization
 

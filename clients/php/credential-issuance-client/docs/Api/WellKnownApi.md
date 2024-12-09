@@ -1,4 +1,4 @@
-# OpenAPI\Client\WellKnownApi
+# AffinidiTdk\Clients\CredentialIssuance\WellKnownApi
 
 All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operat
 ## `getWellKnownOpenIdCredentialIssuer()`
 
 ```php
-getWellKnownOpenIdCredentialIssuer($project_id): \OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse
+getWellKnownOpenIdCredentialIssuer($project_id): \AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse
 ```
 
 ### Example
@@ -20,7 +20,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\WellKnownApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\WellKnownApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -43,7 +43,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse**](../Model/WellKnownOpenIdCredentialIssuerResponse.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse**](../Model/WellKnownOpenIdCredentialIssuerResponse.md)
 
 ### Authorization
 

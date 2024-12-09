@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * StartIssuanceInput Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class StartIssuanceInput implements ModelInterface, ArrayAccess, \JsonSerializab
         'claim_mode' => 'string',
         'holder_did' => 'string',
         'issuance_id' => 'string',
-        'data' => '\OpenAPI\Client\Model\StartIssuanceInputDataInner[]'
+        'data' => '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInner[]'
     ];
 
     /**
@@ -443,7 +443,7 @@ class StartIssuanceInput implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\StartIssuanceInputDataInner[]
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInner[]
      */
     public function getData()
     {
@@ -453,7 +453,7 @@ class StartIssuanceInput implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\StartIssuanceInputDataInner[] $data data
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInner[] $data data
      *
      * @return self
      */

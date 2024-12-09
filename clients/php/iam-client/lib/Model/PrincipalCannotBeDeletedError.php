@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * PrincipalCannotBeDeletedError Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class PrincipalCannotBeDeletedError implements ModelInterface, ArrayAccess, \Jso
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\Iam\Model\ServiceErrorResponseDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class PrincipalCannotBeDeletedError implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\Iam\Model\ServiceErrorResponseDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class PrincipalCannotBeDeletedError implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\Iam\Model\ServiceErrorResponseDetailsInner[]|null $details details
      *
      * @return self
      */

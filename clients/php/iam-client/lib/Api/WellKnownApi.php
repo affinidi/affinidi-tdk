@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iam\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iam\ApiException;
+use AffinidiTdk\Clients\Iam\Configuration;
+use AffinidiTdk\Clients\Iam\HeaderSelector;
+use AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * WellKnownApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,9 +131,9 @@ class WellKnownApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownDid'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetWellKnownDidOK|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function getWellKnownDid(string $contentType = self::contentTypes['getWellKnownDid'][0])
     {
@@ -146,9 +146,9 @@ class WellKnownApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownDid'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetWellKnownDidOK|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWellKnownDidWithHttpInfo(string $contentType = self::contentTypes['getWellKnownDid'][0])
     {
@@ -179,11 +179,11 @@ class WellKnownApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\GetWellKnownDidOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GetWellKnownDidOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -201,16 +201,16 @@ class WellKnownApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetWellKnownDidOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -228,7 +228,7 @@ class WellKnownApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -247,7 +247,7 @@ class WellKnownApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\GetWellKnownDidOK';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -280,7 +280,7 @@ class WellKnownApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetWellKnownDidOK',
+                        '\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -288,7 +288,7 @@ class WellKnownApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -326,7 +326,7 @@ class WellKnownApi
      */
     public function getWellKnownDidAsyncWithHttpInfo(string $contentType = self::contentTypes['getWellKnownDid'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GetWellKnownDidOK';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK';
         $request = $this->getWellKnownDidRequest($contentType);
 
         return $this->client
@@ -446,9 +446,9 @@ class WellKnownApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownJwks'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\JsonWebKeySetDto|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function getWellKnownJwks(string $contentType = self::contentTypes['getWellKnownJwks'][0])
     {
@@ -461,9 +461,9 @@ class WellKnownApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownJwks'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\JsonWebKeySetDto|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWellKnownJwksWithHttpInfo(string $contentType = self::contentTypes['getWellKnownJwks'][0])
     {
@@ -494,11 +494,11 @@ class WellKnownApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\JsonWebKeySetDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\JsonWebKeySetDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -516,16 +516,16 @@ class WellKnownApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\JsonWebKeySetDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -543,7 +543,7 @@ class WellKnownApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -562,7 +562,7 @@ class WellKnownApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\JsonWebKeySetDto';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -595,7 +595,7 @@ class WellKnownApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\JsonWebKeySetDto',
+                        '\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -603,7 +603,7 @@ class WellKnownApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -641,7 +641,7 @@ class WellKnownApi
      */
     public function getWellKnownJwksAsyncWithHttpInfo(string $contentType = self::contentTypes['getWellKnownJwks'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\JsonWebKeySetDto';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto';
         $request = $this->getWellKnownJwksRequest($contentType);
 
         return $this->client

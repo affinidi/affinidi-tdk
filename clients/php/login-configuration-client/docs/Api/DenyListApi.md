@@ -1,4 +1,4 @@
-# OpenAPI\Client\DenyListApi
+# AffinidiTdk\Clients\LoginConfiguration\DenyListApi
 
 All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operation defines another base path.
 
@@ -27,18 +27,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$group_names_input = new \OpenAPI\Client\Model\GroupNamesInput(); // \OpenAPI\Client\Model\GroupNamesInput | List of group names as input
+$group_names_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput | List of group names as input
 
 try {
     $apiInstance->blockGroups($group_names_input);
@@ -49,9 +49,9 @@ try {
 
 ### Parameters
 
-| Name                  | Type                                                                     | Description                  | Notes      |
-| --------------------- | ------------------------------------------------------------------------ | ---------------------------- | ---------- |
-| **group_names_input** | [**\OpenAPI\Client\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
+| Name                  | Type                                                                                             | Description                  | Notes      |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| **group_names_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
 
 ### Return type
 
@@ -86,18 +86,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$blocked_users_input = new \OpenAPI\Client\Model\BlockedUsersInput(); // \OpenAPI\Client\Model\BlockedUsersInput | List of blocked users as input
+$blocked_users_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput | List of blocked users as input
 
 try {
     $apiInstance->blockUsers($blocked_users_input);
@@ -108,9 +108,9 @@ try {
 
 ### Parameters
 
-| Name                    | Type                                                                         | Description                    | Notes      |
-| ----------------------- | ---------------------------------------------------------------------------- | ------------------------------ | ---------- |
-| **blocked_users_input** | [**\OpenAPI\Client\Model\BlockedUsersInput**](../Model/BlockedUsersInput.md) | List of blocked users as input | [optional] |
+| Name                    | Type                                                                                                 | Description                    | Notes      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
+| **blocked_users_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput**](../Model/BlockedUsersInput.md) | List of blocked users as input | [optional] |
 
 ### Return type
 
@@ -132,7 +132,7 @@ void (empty response body)
 ## `listBlockedGroups()`
 
 ```php
-listBlockedGroups($page_token): \OpenAPI\Client\Model\GroupNames
+listBlockedGroups($page_token): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames
 ```
 
 Get Blocked Groups
@@ -145,12 +145,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -174,7 +174,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupNames**](../Model/GroupNames.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames**](../Model/GroupNames.md)
 
 ### Authorization
 
@@ -192,7 +192,7 @@ try {
 ## `listBlockedUsers()`
 
 ```php
-listBlockedUsers($page_token): \OpenAPI\Client\Model\BlockedUsers
+listBlockedUsers($page_token): \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers
 ```
 
 Get List of Blocked Users
@@ -205,12 +205,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -234,7 +234,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BlockedUsers**](../Model/BlockedUsers.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsers**](../Model/BlockedUsers.md)
 
 ### Authorization
 
@@ -265,18 +265,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$group_names_input = new \OpenAPI\Client\Model\GroupNamesInput(); // \OpenAPI\Client\Model\GroupNamesInput | List of group names as input
+$group_names_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput | List of group names as input
 
 try {
     $apiInstance->unblockGroups($group_names_input);
@@ -287,9 +287,9 @@ try {
 
 ### Parameters
 
-| Name                  | Type                                                                     | Description                  | Notes      |
-| --------------------- | ------------------------------------------------------------------------ | ---------------------------- | ---------- |
-| **group_names_input** | [**\OpenAPI\Client\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
+| Name                  | Type                                                                                             | Description                  | Notes      |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| **group_names_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
 
 ### Return type
 
@@ -324,18 +324,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DenyListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\DenyListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$blocked_users_input = new \OpenAPI\Client\Model\BlockedUsersInput(); // \OpenAPI\Client\Model\BlockedUsersInput | List of blocked users as input
+$blocked_users_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput | List of blocked users as input
 
 try {
     $apiInstance->unblockUsers($blocked_users_input);
@@ -346,9 +346,9 @@ try {
 
 ### Parameters
 
-| Name                    | Type                                                                         | Description                    | Notes      |
-| ----------------------- | ---------------------------------------------------------------------------- | ------------------------------ | ---------- |
-| **blocked_users_input** | [**\OpenAPI\Client\Model\BlockedUsersInput**](../Model/BlockedUsersInput.md) | List of blocked users as input | [optional] |
+| Name                    | Type                                                                                                 | Description                    | Notes      |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------ | ---------- |
+| **blocked_users_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\BlockedUsersInput**](../Model/BlockedUsersInput.md) | List of blocked users as input | [optional] |
 
 ### Return type
 

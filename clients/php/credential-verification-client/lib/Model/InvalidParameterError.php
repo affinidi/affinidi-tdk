@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * InvalidParameterError Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class InvalidParameterError implements ModelInterface, ArrayAccess, \JsonSeriali
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\NotFoundErrorDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\CredentialVerification\Model\NotFoundErrorDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class InvalidParameterError implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\NotFoundErrorDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\NotFoundErrorDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class InvalidParameterError implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\NotFoundErrorDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\NotFoundErrorDetailsInner[]|null $details details
      *
      * @return self
      */

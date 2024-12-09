@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * OIDCConfig Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'claims_supported' => 'string[]',
         'code_challenge_methods_supported' => 'string[]',
         'credentials_endpoint_draft_00' => 'string',
-        'credentials_supported_draft_00' => '\OpenAPI\Client\Model\OIDCConfigCredentialsSupportedDraft00Inner[]',
+        'credentials_supported_draft_00' => '\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfigCredentialsSupportedDraft00Inner[]',
         'end_session_endpoint' => 'string',
         'frontchannel_logout_session_supported' => 'bool',
         'frontchannel_logout_supported' => 'bool',
@@ -719,7 +719,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets credentials_supported_draft_00
      *
-     * @return \OpenAPI\Client\Model\OIDCConfigCredentialsSupportedDraft00Inner[]|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfigCredentialsSupportedDraft00Inner[]|null
      */
     public function getCredentialsSupportedDraft00()
     {
@@ -729,7 +729,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credentials_supported_draft_00
      *
-     * @param \OpenAPI\Client\Model\OIDCConfigCredentialsSupportedDraft00Inner[]|null $credentials_supported_draft_00 OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable  Credentials supported by this authorization server.
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfigCredentialsSupportedDraft00Inner[]|null $credentials_supported_draft_00 OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable  Credentials supported by this authorization server.
      *
      * @return self
      */

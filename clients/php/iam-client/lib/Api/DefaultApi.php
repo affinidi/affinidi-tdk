@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iam\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iam\ApiException;
+use AffinidiTdk\Clients\Iam\Configuration;
+use AffinidiTdk\Clients\Iam\HeaderSelector;
+use AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -156,7 +156,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyDelete'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -171,7 +171,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyDelete'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -365,7 +365,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -380,7 +380,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -574,7 +574,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPatch'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -589,7 +589,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPatch'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -783,7 +783,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -798,7 +798,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -992,7 +992,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPut'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1007,7 +1007,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1AuthProxyPut'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1201,7 +1201,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyDelete'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1216,7 +1216,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyDelete'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1410,7 +1410,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1425,7 +1425,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1619,7 +1619,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPatch'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1634,7 +1634,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPatch'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1828,7 +1828,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1843,7 +1843,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2037,7 +2037,7 @@ class DefaultApi
      * @param  string $proxy proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPut'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2052,7 +2052,7 @@ class DefaultApi
      * @param  string $proxy (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1IdpProxyPut'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */

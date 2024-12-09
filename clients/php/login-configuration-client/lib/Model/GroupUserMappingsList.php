@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * GroupUserMappingsList Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GroupUserMappingsList implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'users' => '\OpenAPI\Client\Model\GroupUserMappingDto[]',
+        'users' => '\AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingDto[]',
         'last_evaluated_key' => 'string',
         'total_user_count' => 'float'
     ];
@@ -307,7 +307,7 @@ class GroupUserMappingsList implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets users
      *
-     * @return \OpenAPI\Client\Model\GroupUserMappingDto[]|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingDto[]|null
      */
     public function getUsers()
     {
@@ -317,7 +317,7 @@ class GroupUserMappingsList implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets users
      *
-     * @param \OpenAPI\Client\Model\GroupUserMappingDto[]|null $users users
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingDto[]|null $users users
      *
      * @return self
      */

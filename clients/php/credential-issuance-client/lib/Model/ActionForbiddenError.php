@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * ActionForbiddenError Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ActionForbiddenError implements ModelInterface, ArrayAccess, \JsonSerializ
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\ActionForbiddenErrorDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenErrorDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class ActionForbiddenError implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\ActionForbiddenErrorDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenErrorDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class ActionForbiddenError implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\ActionForbiddenErrorDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenErrorDetailsInner[]|null $details details
      *
      * @return self
      */

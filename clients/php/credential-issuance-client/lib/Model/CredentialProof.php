@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialProof Class Doc Comment
  *
  * @category Class
  * @description Object containing the proof of possession of the cryptographic key material the issued Credential would be bound to.
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

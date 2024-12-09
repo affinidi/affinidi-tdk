@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode Class Doc Comment
  *
  * @category Class
  * @description Grant type for &#x60;pre-authorized_code&#x60; flow
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
       */
     protected static $openAPITypes = [
         'pre_authorized_code' => 'string',
-        'tx_code' => '\OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode'
+        'tx_code' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode'
     ];
 
     /**
@@ -331,7 +331,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
     /**
      * Gets tx_code
      *
-     * @return \OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode|null
      */
     public function getTxCode()
     {
@@ -341,7 +341,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode 
     /**
      * Sets tx_code
      *
-     * @param \OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode|null $tx_code tx_code
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode|null $tx_code tx_code
      *
      * @return self
      */

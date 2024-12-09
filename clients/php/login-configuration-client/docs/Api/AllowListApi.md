@@ -1,4 +1,4 @@
-# OpenAPI\Client\AllowListApi
+# AffinidiTdk\Clients\LoginConfiguration\AllowListApi
 
 All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operation defines another base path.
 
@@ -24,18 +24,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\AllowListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\AllowListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$group_names_input = new \OpenAPI\Client\Model\GroupNamesInput(); // \OpenAPI\Client\Model\GroupNamesInput | List of group names as input
+$group_names_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput | List of group names as input
 
 try {
     $apiInstance->allowGroups($group_names_input);
@@ -46,9 +46,9 @@ try {
 
 ### Parameters
 
-| Name                  | Type                                                                     | Description                  | Notes      |
-| --------------------- | ------------------------------------------------------------------------ | ---------------------------- | ---------- |
-| **group_names_input** | [**\OpenAPI\Client\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
+| Name                  | Type                                                                                             | Description                  | Notes      |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| **group_names_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
 
 ### Return type
 
@@ -83,18 +83,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\AllowListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\AllowListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$group_names_input = new \OpenAPI\Client\Model\GroupNamesInput(); // \OpenAPI\Client\Model\GroupNamesInput | List of group names as input
+$group_names_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput | List of group names as input
 
 try {
     $apiInstance->disallowGroups($group_names_input);
@@ -105,9 +105,9 @@ try {
 
 ### Parameters
 
-| Name                  | Type                                                                     | Description                  | Notes      |
-| --------------------- | ------------------------------------------------------------------------ | ---------------------------- | ---------- |
-| **group_names_input** | [**\OpenAPI\Client\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
+| Name                  | Type                                                                                             | Description                  | Notes      |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ---------- |
+| **group_names_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNamesInput**](../Model/GroupNamesInput.md) | List of group names as input | [optional] |
 
 ### Return type
 
@@ -129,7 +129,7 @@ void (empty response body)
 ## `listAllowedGroups()`
 
 ```php
-listAllowedGroups($page_token): \OpenAPI\Client\Model\GroupNames
+listAllowedGroups($page_token): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames
 ```
 
 Get Allowed Groups
@@ -142,12 +142,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\AllowListApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\AllowListApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -171,7 +171,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupNames**](../Model/GroupNames.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupNames**](../Model/GroupNames.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * CredentialRequirements Class Doc Comment
  *
  * @category Class
  * @description Requirements of the VC
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CredentialRequirements implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'type' => 'string[]',
-        'constraints' => '\OpenAPI\Client\Model\CredentialRequirementsConstraints'
+        'constraints' => '\AffinidiTdk\Clients\CredentialVerification\Model\CredentialRequirementsConstraints'
     ];
 
     /**
@@ -331,7 +331,7 @@ class CredentialRequirements implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets constraints
      *
-     * @return \OpenAPI\Client\Model\CredentialRequirementsConstraints|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\CredentialRequirementsConstraints|null
      */
     public function getConstraints()
     {
@@ -341,7 +341,7 @@ class CredentialRequirements implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets constraints
      *
-     * @param \OpenAPI\Client\Model\CredentialRequirementsConstraints|null $constraints constraints
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\CredentialRequirementsConstraints|null $constraints constraints
      *
      * @return self
      */

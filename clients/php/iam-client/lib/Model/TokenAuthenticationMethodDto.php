@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * TokenAuthenticationMethodDto Class Doc Comment
  *
  * @category Class
  * @description How the Token will be authenticate against our Authorization Server
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TokenAuthenticationMethodDto implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'type' => 'string',
         'signing_algorithm' => 'string',
-        'public_key_info' => '\OpenAPI\Client\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo'
+        'public_key_info' => '\AffinidiTdk\Clients\Iam\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo'
     ];
 
     /**
@@ -441,7 +441,7 @@ class TokenAuthenticationMethodDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets public_key_info
      *
-     * @return \OpenAPI\Client\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
+     * @return \AffinidiTdk\Clients\Iam\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
      */
     public function getPublicKeyInfo()
     {
@@ -451,7 +451,7 @@ class TokenAuthenticationMethodDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets public_key_info
      *
-     * @param \OpenAPI\Client\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo $public_key_info public_key_info
+     * @param \AffinidiTdk\Clients\Iam\Model\TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo $public_key_info public_key_info
      *
      * @return self
      */

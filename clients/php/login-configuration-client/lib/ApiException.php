@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client;
+namespace AffinidiTdk\Clients\LoginConfiguration;
 
 use \Exception;
 
@@ -34,7 +34,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

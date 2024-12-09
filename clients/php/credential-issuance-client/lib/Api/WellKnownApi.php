@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\CredentialIssuance\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\CredentialIssuance\ApiException;
+use AffinidiTdk\Clients\CredentialIssuance\Configuration;
+use AffinidiTdk\Clients\CredentialIssuance\HeaderSelector;
+use AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * WellKnownApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -129,9 +129,9 @@ class WellKnownApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownOpenIdCredentialIssuer'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse
      */
     public function getWellKnownOpenIdCredentialIssuer($project_id, string $contentType = self::contentTypes['getWellKnownOpenIdCredentialIssuer'][0])
     {
@@ -145,9 +145,9 @@ class WellKnownApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWellKnownOpenIdCredentialIssuer'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWellKnownOpenIdCredentialIssuerWithHttpInfo($project_id, string $contentType = self::contentTypes['getWellKnownOpenIdCredentialIssuer'][0])
     {
@@ -178,11 +178,11 @@ class WellKnownApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -200,7 +200,7 @@ class WellKnownApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -219,7 +219,7 @@ class WellKnownApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -252,7 +252,7 @@ class WellKnownApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -292,7 +292,7 @@ class WellKnownApi
      */
     public function getWellKnownOpenIdCredentialIssuerAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['getWellKnownOpenIdCredentialIssuer'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\WellKnownOpenIdCredentialIssuerResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\WellKnownOpenIdCredentialIssuerResponse';
         $request = $this->getWellKnownOpenIdCredentialIssuerRequest($project_id, $contentType);
 
         return $this->client

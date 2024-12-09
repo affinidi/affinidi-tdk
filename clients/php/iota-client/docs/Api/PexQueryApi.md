@@ -1,4 +1,4 @@
-# OpenAPI\Client\PexQueryApi
+# AffinidiTdk\Clients\Iota\PexQueryApi
 
 All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operation defines another base path.
 
@@ -15,7 +15,7 @@ All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operat
 ## `createPexQuery()`
 
 ```php
-createPexQuery($configuration_id, $create_pex_query_input): \OpenAPI\Client\Model\PexQueryDto
+createPexQuery($configuration_id, $create_pex_query_input): \AffinidiTdk\Clients\Iota\Model\PexQueryDto
 ```
 
 Creates a new Presentation Definition in the configuration to query data.
@@ -28,19 +28,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $configuration_id = 'configuration_id_example'; // string | ID of the Affinidi Iota Framework configuration.
-$create_pex_query_input = new \OpenAPI\Client\Model\CreatePexQueryInput(); // \OpenAPI\Client\Model\CreatePexQueryInput | CreatePexQuery
+$create_pex_query_input = new \AffinidiTdk\Clients\Iota\Model\CreatePexQueryInput(); // \AffinidiTdk\Clients\Iota\Model\CreatePexQueryInput | CreatePexQuery
 
 try {
     $result = $apiInstance->createPexQuery($configuration_id, $create_pex_query_input);
@@ -52,14 +52,14 @@ try {
 
 ### Parameters
 
-| Name                       | Type                                                                             | Description                                      | Notes |
-| -------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------ | ----- |
-| **configuration_id**       | **string**                                                                       | ID of the Affinidi Iota Framework configuration. |       |
-| **create_pex_query_input** | [**\OpenAPI\Client\Model\CreatePexQueryInput**](../Model/CreatePexQueryInput.md) | CreatePexQuery                                   |       |
+| Name                       | Type                                                                                       | Description                                      | Notes |
+| -------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----- |
+| **configuration_id**       | **string**                                                                                 | ID of the Affinidi Iota Framework configuration. |       |
+| **create_pex_query_input** | [**\AffinidiTdk\Clients\Iota\Model\CreatePexQueryInput**](../Model/CreatePexQueryInput.md) | CreatePexQuery                                   |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PexQueryDto**](../Model/PexQueryDto.md)
+[**\AffinidiTdk\Clients\Iota\Model\PexQueryDto**](../Model/PexQueryDto.md)
 
 ### Authorization
 
@@ -90,12 +90,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -149,12 +149,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -197,7 +197,7 @@ void (empty response body)
 ## `getPexQueryById()`
 
 ```php
-getPexQueryById($configuration_id, $query_id): \OpenAPI\Client\Model\PexQueryDto
+getPexQueryById($configuration_id, $query_id): \AffinidiTdk\Clients\Iota\Model\PexQueryDto
 ```
 
 Retrieves a Presentation Definition in the configuration by ID.
@@ -210,12 +210,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -241,7 +241,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PexQueryDto**](../Model/PexQueryDto.md)
+[**\AffinidiTdk\Clients\Iota\Model\PexQueryDto**](../Model/PexQueryDto.md)
 
 ### Authorization
 
@@ -259,7 +259,7 @@ try {
 ## `listPexQueries()`
 
 ```php
-listPexQueries($configuration_id, $limit, $exclusive_start_key): \OpenAPI\Client\Model\ListPexQueriesOK
+listPexQueries($configuration_id, $limit, $exclusive_start_key): \AffinidiTdk\Clients\Iota\Model\ListPexQueriesOK
 ```
 
 Lists all Presentation Definitions in the configuration.
@@ -272,12 +272,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -305,7 +305,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListPexQueriesOK**](../Model/ListPexQueriesOK.md)
+[**\AffinidiTdk\Clients\Iota\Model\ListPexQueriesOK**](../Model/ListPexQueriesOK.md)
 
 ### Authorization
 
@@ -336,19 +336,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $configuration_id = 'configuration_id_example'; // string | ID of the Affinidi Iota Framework configuration.
-$save_pex_queries_update_input = new \OpenAPI\Client\Model\SavePexQueriesUpdateInput(); // \OpenAPI\Client\Model\SavePexQueriesUpdateInput | SavePexQueriesInput
+$save_pex_queries_update_input = new \AffinidiTdk\Clients\Iota\Model\SavePexQueriesUpdateInput(); // \AffinidiTdk\Clients\Iota\Model\SavePexQueriesUpdateInput | SavePexQueriesInput
 
 try {
     $result = $apiInstance->savePexQueries($configuration_id, $save_pex_queries_update_input);
@@ -360,10 +360,10 @@ try {
 
 ### Parameters
 
-| Name                              | Type                                                                                         | Description                                      | Notes |
-| --------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----- |
-| **configuration_id**              | **string**                                                                                   | ID of the Affinidi Iota Framework configuration. |       |
-| **save_pex_queries_update_input** | [**\OpenAPI\Client\Model\SavePexQueriesUpdateInput**](../Model/SavePexQueriesUpdateInput.md) | SavePexQueriesInput                              |       |
+| Name                              | Type                                                                                                   | Description                                      | Notes |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----- |
+| **configuration_id**              | **string**                                                                                             | ID of the Affinidi Iota Framework configuration. |       |
+| **save_pex_queries_update_input** | [**\AffinidiTdk\Clients\Iota\Model\SavePexQueriesUpdateInput**](../Model/SavePexQueriesUpdateInput.md) | SavePexQueriesInput                              |       |
 
 ### Return type
 
@@ -385,7 +385,7 @@ try {
 ## `updatePexQueryById()`
 
 ```php
-updatePexQueryById($configuration_id, $query_id, $update_pex_query_input): \OpenAPI\Client\Model\PexQueryDto
+updatePexQueryById($configuration_id, $query_id, $update_pex_query_input): \AffinidiTdk\Clients\Iota\Model\PexQueryDto
 ```
 
 Updates the Presentation Definition in the configuration by ID.
@@ -398,12 +398,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iota\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PexQueryApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\PexQueryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -411,7 +411,7 @@ $apiInstance = new OpenAPI\Client\Api\PexQueryApi(
 );
 $configuration_id = 'configuration_id_example'; // string | ID of the Affinidi Iota Framework configuration.
 $query_id = 'query_id_example'; // string | The ID of the query.
-$update_pex_query_input = new \OpenAPI\Client\Model\UpdatePexQueryInput(); // \OpenAPI\Client\Model\UpdatePexQueryInput | UpdatePexQueryById
+$update_pex_query_input = new \AffinidiTdk\Clients\Iota\Model\UpdatePexQueryInput(); // \AffinidiTdk\Clients\Iota\Model\UpdatePexQueryInput | UpdatePexQueryById
 
 try {
     $result = $apiInstance->updatePexQueryById($configuration_id, $query_id, $update_pex_query_input);
@@ -423,15 +423,15 @@ try {
 
 ### Parameters
 
-| Name                       | Type                                                                             | Description                                      | Notes |
-| -------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------ | ----- |
-| **configuration_id**       | **string**                                                                       | ID of the Affinidi Iota Framework configuration. |       |
-| **query_id**               | **string**                                                                       | The ID of the query.                             |       |
-| **update_pex_query_input** | [**\OpenAPI\Client\Model\UpdatePexQueryInput**](../Model/UpdatePexQueryInput.md) | UpdatePexQueryById                               |       |
+| Name                       | Type                                                                                       | Description                                      | Notes |
+| -------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------ | ----- |
+| **configuration_id**       | **string**                                                                                 | ID of the Affinidi Iota Framework configuration. |       |
+| **query_id**               | **string**                                                                                 | The ID of the query.                             |       |
+| **update_pex_query_input** | [**\AffinidiTdk\Clients\Iota\Model\UpdatePexQueryInput**](../Model/UpdatePexQueryInput.md) | UpdatePexQueryById                               |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PexQueryDto**](../Model/PexQueryDto.md)
+[**\AffinidiTdk\Clients\Iota\Model\PexQueryDto**](../Model/PexQueryDto.md)
 
 ### Authorization
 
