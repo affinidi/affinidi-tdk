@@ -310,6 +310,9 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
     {
         $invalidProperties = [];
 
+        if ($this->container['purpose'] === null) {
+            $invalidProperties[] = "'purpose' can't be null";
+        }
         $allowedValues = $this->getPurposeAllowableValues();
         if (!is_null($this->container['purpose']) && !in_array($this->container['purpose'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -319,6 +322,9 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
             );
         }
 
+        if ($this->container['standard'] === null) {
+            $invalidProperties[] = "'standard' can't be null";
+        }
         $allowedValues = $this->getStandardAllowableValues();
         if (!is_null($this->container['standard']) && !in_array($this->container['standard'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -346,7 +352,7 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
     /**
      * Gets purpose
      *
-     * @return string|null
+     * @return string
      */
     public function getPurpose()
     {
@@ -356,7 +362,7 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
     /**
      * Sets purpose
      *
-     * @param string|null $purpose purpose
+     * @param string $purpose purpose
      *
      * @return self
      */
@@ -383,7 +389,7 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
     /**
      * Gets standard
      *
-     * @return string|null
+     * @return string
      */
     public function getStandard()
     {
@@ -393,7 +399,7 @@ class StartIssuanceInputDataInnerStatusListDetailsInner implements ModelInterfac
     /**
      * Sets standard
      *
-     * @param string|null $standard standard
+     * @param string $standard standard
      *
      * @return self
      */
