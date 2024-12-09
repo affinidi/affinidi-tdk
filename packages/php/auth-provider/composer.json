@@ -11,5 +11,7 @@
         "psr-4": {
             "AuthProvider\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
