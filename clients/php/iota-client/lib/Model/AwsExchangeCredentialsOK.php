@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iota\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * AwsExchangeCredentialsOK Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class AwsExchangeCredentialsOK implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'connection_client_id' => 'string',
-        'credentials' => '\OpenAPI\Client\Model\AwsExchangeCredentialsProjectTokenOKCredentials'
+        'credentials' => '\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectTokenOKCredentials'
     ];
 
     /**
@@ -333,7 +333,7 @@ class AwsExchangeCredentialsOK implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets credentials
      *
-     * @return \OpenAPI\Client\Model\AwsExchangeCredentialsProjectTokenOKCredentials
+     * @return \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectTokenOKCredentials
      */
     public function getCredentials()
     {
@@ -343,7 +343,7 @@ class AwsExchangeCredentialsOK implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets credentials
      *
-     * @param \OpenAPI\Client\Model\AwsExchangeCredentialsProjectTokenOKCredentials $credentials credentials
+     * @param \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectTokenOKCredentials $credentials credentials
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * FlowData Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -72,7 +72,7 @@ class FlowData implements ModelInterface, ArrayAccess, \JsonSerializable
         'project_id_configuration_id' => 'string',
         'project_id_configuration_id_wallet_id' => 'string',
         'project_id_configuration_id_credential_type' => 'string',
-        'status_lists_details' => '\OpenAPI\Client\Model\FlowDataStatusListsDetailsInner[]'
+        'status_lists_details' => '\AffinidiTdk\Clients\CredentialIssuance\Model\FlowDataStatusListsDetailsInner[]'
     ];
 
     /**
@@ -790,7 +790,7 @@ class FlowData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status_lists_details
      *
-     * @return \OpenAPI\Client\Model\FlowDataStatusListsDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\FlowDataStatusListsDetailsInner[]|null
      */
     public function getStatusListsDetails()
     {
@@ -800,7 +800,7 @@ class FlowData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status_lists_details
      *
-     * @param \OpenAPI\Client\Model\FlowDataStatusListsDetailsInner[]|null $status_lists_details status_lists_details
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\FlowDataStatusListsDetailsInner[]|null $status_lists_details status_lists_details
      *
      * @return self
      */

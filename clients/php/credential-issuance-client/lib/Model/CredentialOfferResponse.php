@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialOfferResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CredentialOfferResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'credential_issuer' => 'string',
         'credential_configuration_ids' => 'string[]',
-        'grants' => '\OpenAPI\Client\Model\CredentialOfferResponseGrants'
+        'grants' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrants'
     ];
 
     /**
@@ -370,7 +370,7 @@ class CredentialOfferResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets grants
      *
-     * @return \OpenAPI\Client\Model\CredentialOfferResponseGrants
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrants
      */
     public function getGrants()
     {
@@ -380,7 +380,7 @@ class CredentialOfferResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets grants
      *
-     * @param \OpenAPI\Client\Model\CredentialOfferResponseGrants $grants grants
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrants $grants grants
      *
      * @return self
      */

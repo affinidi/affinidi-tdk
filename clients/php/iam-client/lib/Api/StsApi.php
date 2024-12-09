@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iam\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iam\ApiException;
+use AffinidiTdk\Clients\Iam\Configuration;
+use AffinidiTdk\Clients\Iam\HeaderSelector;
+use AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * StsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -129,12 +129,12 @@ class StsApi
     /**
      * Operation createProjectScopedToken
      *
-     * @param  \OpenAPI\Client\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProjectScopedToken'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CreateProjectScopedTokenOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function createProjectScopedToken($create_project_scoped_token_input, string $contentType = self::contentTypes['createProjectScopedToken'][0])
     {
@@ -145,12 +145,12 @@ class StsApi
     /**
      * Operation createProjectScopedTokenWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProjectScopedToken'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CreateProjectScopedTokenOutput|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProjectScopedTokenWithHttpInfo($create_project_scoped_token_input, string $contentType = self::contentTypes['createProjectScopedToken'][0])
     {
@@ -181,11 +181,11 @@ class StsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\CreateProjectScopedTokenOutput' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\CreateProjectScopedTokenOutput' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -203,16 +203,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CreateProjectScopedTokenOutput', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -230,16 +230,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -257,16 +257,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -284,7 +284,7 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -303,7 +303,7 @@ class StsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\CreateProjectScopedTokenOutput';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -336,7 +336,7 @@ class StsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CreateProjectScopedTokenOutput',
+                        '\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -344,7 +344,7 @@ class StsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -352,7 +352,7 @@ class StsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PrincipalDoesNotBelongToProjectError',
+                        '\AffinidiTdk\Clients\Iam\Model\PrincipalDoesNotBelongToProjectError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -360,7 +360,7 @@ class StsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -373,7 +373,7 @@ class StsApi
     /**
      * Operation createProjectScopedTokenAsync
      *
-     * @param  \OpenAPI\Client\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProjectScopedToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -392,7 +392,7 @@ class StsApi
     /**
      * Operation createProjectScopedTokenAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProjectScopedToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -400,7 +400,7 @@ class StsApi
      */
     public function createProjectScopedTokenAsyncWithHttpInfo($create_project_scoped_token_input, string $contentType = self::contentTypes['createProjectScopedToken'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CreateProjectScopedTokenOutput';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenOutput';
         $request = $this->createProjectScopedTokenRequest($create_project_scoped_token_input, $contentType);
 
         return $this->client
@@ -442,7 +442,7 @@ class StsApi
     /**
      * Create request for operation 'createProjectScopedToken'
      *
-     * @param  \OpenAPI\Client\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\CreateProjectScopedTokenInput $create_project_scoped_token_input CreateProjectScopedToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProjectScopedToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -540,9 +540,9 @@ class StsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['whoami'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WhoamiDto|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\WhoamiDto|\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError|\AffinidiTdk\Clients\Iam\Model\NotFoundError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function whoami(string $contentType = self::contentTypes['whoami'][0])
     {
@@ -555,9 +555,9 @@ class StsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['whoami'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WhoamiDto|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\WhoamiDto|\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError|\AffinidiTdk\Clients\Iam\Model\NotFoundError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function whoamiWithHttpInfo(string $contentType = self::contentTypes['whoami'][0])
     {
@@ -588,11 +588,11 @@ class StsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\WhoamiDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\WhoamiDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\WhoamiDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\WhoamiDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -610,16 +610,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WhoamiDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\WhoamiDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -637,16 +637,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -664,16 +664,16 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -691,7 +691,7 @@ class StsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -710,7 +710,7 @@ class StsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\WhoamiDto';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\WhoamiDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -743,7 +743,7 @@ class StsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\WhoamiDto',
+                        '\AffinidiTdk\Clients\Iam\Model\WhoamiDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -751,7 +751,7 @@ class StsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\Iam\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -759,7 +759,7 @@ class StsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\Iam\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -767,7 +767,7 @@ class StsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -805,7 +805,7 @@ class StsApi
      */
     public function whoamiAsyncWithHttpInfo(string $contentType = self::contentTypes['whoami'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\WhoamiDto';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\WhoamiDto';
         $request = $this->whoamiRequest($contentType);
 
         return $this->client

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * JsonWebKeySetDto Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class JsonWebKeySetDto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keys' => '\OpenAPI\Client\Model\JsonWebKeyDto[]'
+        'keys' => '\AffinidiTdk\Clients\Iam\Model\JsonWebKeyDto[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class JsonWebKeySetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets keys
      *
-     * @return \OpenAPI\Client\Model\JsonWebKeyDto[]
+     * @return \AffinidiTdk\Clients\Iam\Model\JsonWebKeyDto[]
      */
     public function getKeys()
     {
@@ -310,7 +310,7 @@ class JsonWebKeySetDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keys
      *
-     * @param \OpenAPI\Client\Model\JsonWebKeyDto[] $keys keys
+     * @param \AffinidiTdk\Clients\Iam\Model\JsonWebKeyDto[] $keys keys
      *
      * @return self
      */

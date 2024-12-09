@@ -1,4 +1,4 @@
-# OpenAPI\Client\PoliciesApi
+# AffinidiTdk\Clients\Iam\PoliciesApi
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
@@ -10,7 +10,7 @@ All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operat
 ## `getPolicies()`
 
 ```php
-getPolicies($principal_id, $principal_type): \OpenAPI\Client\Model\PolicyDto
+getPolicies($principal_id, $principal_type): \AffinidiTdk\Clients\Iam\Model\PolicyDto
 ```
 
 ### Example
@@ -21,12 +21,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PoliciesApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\PoliciesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -52,7 +52,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PolicyDto**](../Model/PolicyDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\PolicyDto**](../Model/PolicyDto.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ try {
 ## `updatePolicies()`
 
 ```php
-updatePolicies($principal_id, $principal_type, $policy_dto): \OpenAPI\Client\Model\PolicyDto
+updatePolicies($principal_id, $principal_type, $policy_dto): \AffinidiTdk\Clients\Iam\Model\PolicyDto
 ```
 
 ### Example
@@ -81,12 +81,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\PoliciesApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\PoliciesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -94,7 +94,7 @@ $apiInstance = new OpenAPI\Client\Api\PoliciesApi(
 );
 $principal_id = 'principal_id_example'; // string
 $principal_type = 'principal_type_example'; // string
-$policy_dto = new \OpenAPI\Client\Model\PolicyDto(); // \OpenAPI\Client\Model\PolicyDto | UpdatePolicies
+$policy_dto = new \AffinidiTdk\Clients\Iam\Model\PolicyDto(); // \AffinidiTdk\Clients\Iam\Model\PolicyDto | UpdatePolicies
 
 try {
     $result = $apiInstance->updatePolicies($principal_id, $principal_type, $policy_dto);
@@ -106,15 +106,15 @@ try {
 
 ### Parameters
 
-| Name               | Type                                                         | Description    | Notes |
-| ------------------ | ------------------------------------------------------------ | -------------- | ----- |
-| **principal_id**   | **string**                                                   |                |       |
-| **principal_type** | **string**                                                   |                |       |
-| **policy_dto**     | [**\OpenAPI\Client\Model\PolicyDto**](../Model/PolicyDto.md) | UpdatePolicies |       |
+| Name               | Type                                                                  | Description    | Notes |
+| ------------------ | --------------------------------------------------------------------- | -------------- | ----- |
+| **principal_id**   | **string**                                                            |                |       |
+| **principal_type** | **string**                                                            |                |       |
+| **policy_dto**     | [**\AffinidiTdk\Clients\Iam\Model\PolicyDto**](../Model/PolicyDto.md) | UpdatePolicies |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PolicyDto**](../Model/PolicyDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\PolicyDto**](../Model/PolicyDto.md)
 
 ### Authorization
 

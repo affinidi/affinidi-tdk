@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * Constraints Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'limit_disclosure' => 'string',
-        'statuses' => '\OpenAPI\Client\Model\ConstraintsStatuses',
-        'fields' => '\OpenAPI\Client\Model\Field[]',
+        'statuses' => '\AffinidiTdk\Clients\CredentialVerification\Model\ConstraintsStatuses',
+        'fields' => '\AffinidiTdk\Clients\CredentialVerification\Model\Field[]',
         'subject_is_issuer' => 'string',
-        'is_holder' => '\OpenAPI\Client\Model\HolderSubject[]',
-        'same_subject' => '\OpenAPI\Client\Model\HolderSubject[]'
+        'is_holder' => '\AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]',
+        'same_subject' => '\AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]'
     ];
 
     /**
@@ -413,7 +413,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets statuses
      *
-     * @return \OpenAPI\Client\Model\ConstraintsStatuses|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\ConstraintsStatuses|null
      */
     public function getStatuses()
     {
@@ -423,7 +423,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets statuses
      *
-     * @param \OpenAPI\Client\Model\ConstraintsStatuses|null $statuses statuses
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\ConstraintsStatuses|null $statuses statuses
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fields
      *
-     * @return \OpenAPI\Client\Model\Field[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\Field[]|null
      */
     public function getFields()
     {
@@ -450,7 +450,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fields
      *
-     * @param \OpenAPI\Client\Model\Field[]|null $fields fields
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\Field[]|null $fields fields
      *
      * @return self
      */
@@ -504,7 +504,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_holder
      *
-     * @return \OpenAPI\Client\Model\HolderSubject[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]|null
      */
     public function getIsHolder()
     {
@@ -514,7 +514,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_holder
      *
-     * @param \OpenAPI\Client\Model\HolderSubject[]|null $is_holder is_holder
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]|null $is_holder is_holder
      *
      * @return self
      */
@@ -531,7 +531,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets same_subject
      *
-     * @return \OpenAPI\Client\Model\HolderSubject[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]|null
      */
     public function getSameSubject()
     {
@@ -541,7 +541,7 @@ class Constraints implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets same_subject
      *
-     * @param \OpenAPI\Client\Model\HolderSubject[]|null $same_subject same_subject
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\HolderSubject[]|null $same_subject same_subject
      *
      * @return self
      */

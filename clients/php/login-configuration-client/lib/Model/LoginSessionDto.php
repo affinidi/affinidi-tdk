@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * LoginSessionDto Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class LoginSessionDto implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'authorization_request' => '\OpenAPI\Client\Model\LoginSessionDtoAuthorizationRequest'
+        'authorization_request' => '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginSessionDtoAuthorizationRequest'
     ];
 
     /**
@@ -333,7 +333,7 @@ class LoginSessionDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets authorization_request
      *
-     * @return \OpenAPI\Client\Model\LoginSessionDtoAuthorizationRequest
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\LoginSessionDtoAuthorizationRequest
      */
     public function getAuthorizationRequest()
     {
@@ -343,7 +343,7 @@ class LoginSessionDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets authorization_request
      *
-     * @param \OpenAPI\Client\Model\LoginSessionDtoAuthorizationRequest $authorization_request authorization_request
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\LoginSessionDtoAuthorizationRequest $authorization_request authorization_request
      *
      * @return self
      */

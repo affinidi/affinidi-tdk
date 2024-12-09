@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * VerifyPresentationOutput Class Doc Comment
  *
  * @category Class
  * @description Response model of /verify-vp
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class VerifyPresentationOutput implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'errors' => '\OpenAPI\Client\Model\VerifyPresentationOutputErrors',
+        'errors' => '\AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutputErrors',
         'is_valid' => 'bool'
     ];
 
@@ -307,7 +307,7 @@ class VerifyPresentationOutput implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets errors
      *
-     * @return \OpenAPI\Client\Model\VerifyPresentationOutputErrors
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutputErrors
      */
     public function getErrors()
     {
@@ -317,7 +317,7 @@ class VerifyPresentationOutput implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\VerifyPresentationOutputErrors $errors errors
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\VerifyPresentationOutputErrors $errors errors
      *
      * @return self
      */

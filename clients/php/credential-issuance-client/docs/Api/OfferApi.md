@@ -1,4 +1,4 @@
-# OpenAPI\Client\OfferApi
+# AffinidiTdk\Clients\CredentialIssuance\OfferApi
 
 All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operat
 ## `getCredentialOffer()`
 
 ```php
-getCredentialOffer($project_id, $issuance_id): \OpenAPI\Client\Model\CredentialOfferResponse
+getCredentialOffer($project_id, $issuance_id): \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponse
 ```
 
 Endpoint used to return Credential Offer details, used with `credential_offer_uri` response
@@ -22,7 +22,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\OfferApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\OfferApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -47,7 +47,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CredentialOfferResponse**](../Model/CredentialOfferResponse.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponse**](../Model/CredentialOfferResponse.md)
 
 ### Authorization
 

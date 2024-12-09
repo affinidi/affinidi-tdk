@@ -1,4 +1,4 @@
-# OpenAPI\Client\GroupApi
+# AffinidiTdk\Clients\LoginConfiguration\GroupApi
 
 All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operation defines another base path.
 
@@ -15,7 +15,7 @@ All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operat
 ## `addUserToGroup()`
 
 ```php
-addUserToGroup($group_name, $add_user_to_group_input): \OpenAPI\Client\Model\GroupUserMappingDto
+addUserToGroup($group_name, $add_user_to_group_input): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingDto
 ```
 
 ### Example
@@ -26,19 +26,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $group_name = 'group_name_example'; // string
-$add_user_to_group_input = new \OpenAPI\Client\Model\AddUserToGroupInput(); // \OpenAPI\Client\Model\AddUserToGroupInput | AddUserToGroup
+$add_user_to_group_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\AddUserToGroupInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\AddUserToGroupInput | AddUserToGroup
 
 try {
     $result = $apiInstance->addUserToGroup($group_name, $add_user_to_group_input);
@@ -50,14 +50,14 @@ try {
 
 ### Parameters
 
-| Name                        | Type                                                                             | Description    | Notes |
-| --------------------------- | -------------------------------------------------------------------------------- | -------------- | ----- |
-| **group_name**              | **string**                                                                       |                |       |
-| **add_user_to_group_input** | [**\OpenAPI\Client\Model\AddUserToGroupInput**](../Model/AddUserToGroupInput.md) | AddUserToGroup |       |
+| Name                        | Type                                                                                                     | Description    | Notes |
+| --------------------------- | -------------------------------------------------------------------------------------------------------- | -------------- | ----- |
+| **group_name**              | **string**                                                                                               |                |       |
+| **add_user_to_group_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\AddUserToGroupInput**](../Model/AddUserToGroupInput.md) | AddUserToGroup |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupUserMappingDto**](../Model/GroupUserMappingDto.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingDto**](../Model/GroupUserMappingDto.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `createGroup()`
 
 ```php
-createGroup($create_group_input): \OpenAPI\Client\Model\GroupDto
+createGroup($create_group_input): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupDto
 ```
 
 ### Example
@@ -86,18 +86,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_group_input = new \OpenAPI\Client\Model\CreateGroupInput(); // \OpenAPI\Client\Model\CreateGroupInput | CreateGroup
+$create_group_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\CreateGroupInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\CreateGroupInput | CreateGroup
 
 try {
     $result = $apiInstance->createGroup($create_group_input);
@@ -109,13 +109,13 @@ try {
 
 ### Parameters
 
-| Name                   | Type                                                                       | Description | Notes |
-| ---------------------- | -------------------------------------------------------------------------- | ----------- | ----- |
-| **create_group_input** | [**\OpenAPI\Client\Model\CreateGroupInput**](../Model/CreateGroupInput.md) | CreateGroup |       |
+| Name                   | Type                                                                                               | Description | Notes |
+| ---------------------- | -------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **create_group_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\CreateGroupInput**](../Model/CreateGroupInput.md) | CreateGroup |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupDto**](../Model/GroupDto.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupDto**](../Model/GroupDto.md)
 
 ### Authorization
 
@@ -144,12 +144,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -190,7 +190,7 @@ void (empty response body)
 ## `getGroupById()`
 
 ```php
-getGroupById($group_name): \OpenAPI\Client\Model\GroupDto
+getGroupById($group_name): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupDto
 ```
 
 ### Example
@@ -201,12 +201,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -230,7 +230,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupDto**](../Model/GroupDto.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupDto**](../Model/GroupDto.md)
 
 ### Authorization
 
@@ -248,7 +248,7 @@ try {
 ## `listGroupUserMappings()`
 
 ```php
-listGroupUserMappings($group_name, $limit, $exclusive_start_key, $sort_order): \OpenAPI\Client\Model\GroupUserMappingsList
+listGroupUserMappings($group_name, $limit, $exclusive_start_key, $sort_order): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingsList
 ```
 
 ### Example
@@ -259,12 +259,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -294,7 +294,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupUserMappingsList**](../Model/GroupUserMappingsList.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupUserMappingsList**](../Model/GroupUserMappingsList.md)
 
 ### Authorization
 
@@ -312,7 +312,7 @@ try {
 ## `listGroups()`
 
 ```php
-listGroups(): \OpenAPI\Client\Model\GroupsList
+listGroups(): \AffinidiTdk\Clients\LoginConfiguration\Model\GroupsList
 ```
 
 ### Example
@@ -323,12 +323,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -349,7 +349,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupsList**](../Model/GroupsList.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GroupsList**](../Model/GroupsList.md)
 
 ### Authorization
 
@@ -378,19 +378,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\LoginConfiguration\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\GroupApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $group_name = 'group_name_example'; // string
-$remove_user_from_group_input = new \OpenAPI\Client\Model\RemoveUserFromGroupInput(); // \OpenAPI\Client\Model\RemoveUserFromGroupInput | Remove user from group
+$remove_user_from_group_input = new \AffinidiTdk\Clients\LoginConfiguration\Model\RemoveUserFromGroupInput(); // \AffinidiTdk\Clients\LoginConfiguration\Model\RemoveUserFromGroupInput | Remove user from group
 
 try {
     $apiInstance->removeUserFromGroup($group_name, $remove_user_from_group_input);
@@ -401,10 +401,10 @@ try {
 
 ### Parameters
 
-| Name                             | Type                                                                                       | Description            | Notes |
-| -------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------- | ----- |
-| **group_name**                   | **string**                                                                                 |                        |       |
-| **remove_user_from_group_input** | [**\OpenAPI\Client\Model\RemoveUserFromGroupInput**](../Model/RemoveUserFromGroupInput.md) | Remove user from group |       |
+| Name                             | Type                                                                                                               | Description            | Notes |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----- |
+| **group_name**                   | **string**                                                                                                         |                        |       |
+| **remove_user_from_group_input** | [**\AffinidiTdk\Clients\LoginConfiguration\Model\RemoveUserFromGroupInput**](../Model/RemoveUserFromGroupInput.md) | Remove user from group |       |
 
 ### Return type
 

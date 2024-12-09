@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\LoginConfiguration\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\LoginConfiguration\ApiException;
+use AffinidiTdk\Clients\LoginConfiguration\Configuration;
+use AffinidiTdk\Clients\LoginConfiguration\HeaderSelector;
+use AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * IdpApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -149,7 +149,7 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2AuthGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -166,7 +166,7 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2AuthGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -366,7 +366,7 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2RevokePost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -383,7 +383,7 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2RevokePost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -583,7 +583,7 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2SessionsLogoutGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -600,7 +600,7 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2SessionsLogoutGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -800,9 +800,9 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2TokenPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OAuth2Token
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token
      */
     public function v1LoginProjectProjectIdOauth2TokenPost($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdOauth2TokenPost'][0])
     {
@@ -818,9 +818,9 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdOauth2TokenPost'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OAuth2Token, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1LoginProjectProjectIdOauth2TokenPostWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdOauth2TokenPost'][0])
     {
@@ -851,11 +851,11 @@ class IdpApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\OAuth2Token' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OAuth2Token' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -873,7 +873,7 @@ class IdpApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OAuth2Token', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -892,7 +892,7 @@ class IdpApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\OAuth2Token';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -925,7 +925,7 @@ class IdpApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OAuth2Token',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -969,7 +969,7 @@ class IdpApi
      */
     public function v1LoginProjectProjectIdOauth2TokenPostAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdOauth2TokenPost'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\OAuth2Token';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token';
         $request = $this->v1LoginProjectProjectIdOauth2TokenPostRequest($project_id, $contentType);
 
         return $this->client
@@ -1108,9 +1108,9 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdUserinfoGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetUserInfo
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo
      */
     public function v1LoginProjectProjectIdUserinfoGet($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdUserinfoGet'][0])
     {
@@ -1126,9 +1126,9 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdUserinfoGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetUserInfo, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1LoginProjectProjectIdUserinfoGetWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdUserinfoGet'][0])
     {
@@ -1159,11 +1159,11 @@ class IdpApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\GetUserInfo' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GetUserInfo' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1181,7 +1181,7 @@ class IdpApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetUserInfo', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1200,7 +1200,7 @@ class IdpApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\GetUserInfo';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1233,7 +1233,7 @@ class IdpApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetUserInfo',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1277,7 +1277,7 @@ class IdpApi
      */
     public function v1LoginProjectProjectIdUserinfoGetAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdUserinfoGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GetUserInfo';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo';
         $request = $this->v1LoginProjectProjectIdUserinfoGetRequest($project_id, $contentType);
 
         return $this->client
@@ -1416,9 +1416,9 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdWellKnownJwksJsonGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\JsonWebKey
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey
      */
     public function v1LoginProjectProjectIdWellKnownJwksJsonGet($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownJwksJsonGet'][0])
     {
@@ -1434,9 +1434,9 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdWellKnownJwksJsonGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\JsonWebKey, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1LoginProjectProjectIdWellKnownJwksJsonGetWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownJwksJsonGet'][0])
     {
@@ -1467,11 +1467,11 @@ class IdpApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\JsonWebKey' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\JsonWebKey' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1489,7 +1489,7 @@ class IdpApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\JsonWebKey', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1508,7 +1508,7 @@ class IdpApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\JsonWebKey';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1541,7 +1541,7 @@ class IdpApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\JsonWebKey',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1585,7 +1585,7 @@ class IdpApi
      */
     public function v1LoginProjectProjectIdWellKnownJwksJsonGetAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownJwksJsonGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\JsonWebKey';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey';
         $request = $this->v1LoginProjectProjectIdWellKnownJwksJsonGetRequest($project_id, $contentType);
 
         return $this->client
@@ -1724,9 +1724,9 @@ class IdpApi
      * @param  string $project_id project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\OIDCConfig
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig
      */
     public function v1LoginProjectProjectIdWellKnownOpenidConfigurationGet($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'][0])
     {
@@ -1742,9 +1742,9 @@ class IdpApi
      * @param  string $project_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\LoginConfiguration\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\OIDCConfig, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig, HTTP status code, HTTP response headers (array of strings)
      */
     public function v1LoginProjectProjectIdWellKnownOpenidConfigurationGetWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'][0])
     {
@@ -1775,11 +1775,11 @@ class IdpApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\OIDCConfig' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OIDCConfig' !== 'string') {
+                        if ('\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1797,7 +1797,7 @@ class IdpApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OIDCConfig', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1816,7 +1816,7 @@ class IdpApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\OIDCConfig';
+            $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1849,7 +1849,7 @@ class IdpApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OIDCConfig',
+                        '\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1893,7 +1893,7 @@ class IdpApi
      */
     public function v1LoginProjectProjectIdWellKnownOpenidConfigurationGetAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['v1LoginProjectProjectIdWellKnownOpenidConfigurationGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\OIDCConfig';
+        $returnType = '\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig';
         $request = $this->v1LoginProjectProjectIdWellKnownOpenidConfigurationGetRequest($project_id, $contentType);
 
         return $this->client

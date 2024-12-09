@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\CredentialIssuance\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\CredentialIssuance\ApiException;
+use AffinidiTdk\Clients\CredentialIssuance\Configuration;
+use AffinidiTdk\Clients\CredentialIssuance\HeaderSelector;
+use AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -127,12 +127,12 @@ class CredentialsApi
      * Operation generateCredentials
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CredentialResponse|\OpenAPI\Client\Model\GenerateCredentials400Response|\OpenAPI\Client\Model\InvalidJwtTokenError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError
      */
     public function generateCredentials($project_id, $create_credential_input, string $contentType = self::contentTypes['generateCredentials'][0])
     {
@@ -144,12 +144,12 @@ class CredentialsApi
      * Operation generateCredentialsWithHttpInfo
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CredentialResponse|\OpenAPI\Client\Model\GenerateCredentials400Response|\OpenAPI\Client\Model\InvalidJwtTokenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateCredentialsWithHttpInfo($project_id, $create_credential_input, string $contentType = self::contentTypes['generateCredentials'][0])
     {
@@ -180,11 +180,11 @@ class CredentialsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\CredentialResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\CredentialResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -202,16 +202,16 @@ class CredentialsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CredentialResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\GenerateCredentials400Response' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GenerateCredentials400Response' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -229,16 +229,16 @@ class CredentialsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GenerateCredentials400Response', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\OpenAPI\Client\Model\InvalidJwtTokenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidJwtTokenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -256,7 +256,7 @@ class CredentialsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidJwtTokenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -275,7 +275,7 @@ class CredentialsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\CredentialResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -308,7 +308,7 @@ class CredentialsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CredentialResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -316,7 +316,7 @@ class CredentialsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GenerateCredentials400Response',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\GenerateCredentials400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -324,7 +324,7 @@ class CredentialsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidJwtTokenError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidJwtTokenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -338,7 +338,7 @@ class CredentialsApi
      * Operation generateCredentialsAsync
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -358,7 +358,7 @@ class CredentialsApi
      * Operation generateCredentialsAsyncWithHttpInfo
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -366,7 +366,7 @@ class CredentialsApi
      */
     public function generateCredentialsAsyncWithHttpInfo($project_id, $create_credential_input, string $contentType = self::contentTypes['generateCredentials'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CredentialResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse';
         $request = $this->generateCredentialsRequest($project_id, $create_credential_input, $contentType);
 
         return $this->client
@@ -409,7 +409,7 @@ class CredentialsApi
      * Create request for operation 'generateCredentials'
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput $create_credential_input Request body to issue credentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * TokenList Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class TokenList implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'tokens' => '\OpenAPI\Client\Model\TokenDto[]'
+        'tokens' => '\AffinidiTdk\Clients\Iam\Model\TokenDto[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class TokenList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tokens
      *
-     * @return \OpenAPI\Client\Model\TokenDto[]
+     * @return \AffinidiTdk\Clients\Iam\Model\TokenDto[]
      */
     public function getTokens()
     {
@@ -306,7 +306,7 @@ class TokenList implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tokens
      *
-     * @param \OpenAPI\Client\Model\TokenDto[] $tokens tokens
+     * @param \AffinidiTdk\Clients\Iam\Model\TokenDto[] $tokens tokens
      *
      * @return self
      */

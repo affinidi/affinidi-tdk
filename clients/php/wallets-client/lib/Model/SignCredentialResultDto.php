@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Wallets\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Wallets\ObjectSerializer;
 
 /**
  * SignCredentialResultDto Class Doc Comment
  *
  * @category Class
  * @description DTO contains signed credential
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Wallets
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class SignCredentialResultDto implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'signed_credential' => '\OpenAPI\Client\Model\SignCredentialResultDtoSignedCredential'
+        'signed_credential' => '\AffinidiTdk\Clients\Wallets\Model\SignCredentialResultDtoSignedCredential'
     ];
 
     /**
@@ -297,7 +297,7 @@ class SignCredentialResultDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets signed_credential
      *
-     * @return \OpenAPI\Client\Model\SignCredentialResultDtoSignedCredential
+     * @return \AffinidiTdk\Clients\Wallets\Model\SignCredentialResultDtoSignedCredential
      */
     public function getSignedCredential()
     {
@@ -307,7 +307,7 @@ class SignCredentialResultDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets signed_credential
      *
-     * @param \OpenAPI\Client\Model\SignCredentialResultDtoSignedCredential $signed_credential signed_credential
+     * @param \AffinidiTdk\Clients\Wallets\Model\SignCredentialResultDtoSignedCredential $signed_credential signed_credential
      *
      * @return self
      */

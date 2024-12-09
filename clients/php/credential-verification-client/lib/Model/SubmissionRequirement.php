@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * SubmissionRequirement Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class SubmissionRequirement implements ModelInterface, ArrayAccess, \JsonSeriali
         'min' => 'int',
         'max' => 'int',
         'from' => 'string',
-        'from_nested' => '\OpenAPI\Client\Model\SubmissionRequirement[]'
+        'from_nested' => '\AffinidiTdk\Clients\CredentialVerification\Model\SubmissionRequirement[]'
     ];
 
     /**
@@ -568,7 +568,7 @@ class SubmissionRequirement implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets from_nested
      *
-     * @return \OpenAPI\Client\Model\SubmissionRequirement[]|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\SubmissionRequirement[]|null
      */
     public function getFromNested()
     {
@@ -578,7 +578,7 @@ class SubmissionRequirement implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets from_nested
      *
-     * @param \OpenAPI\Client\Model\SubmissionRequirement[]|null $from_nested from_nested
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\SubmissionRequirement[]|null $from_nested from_nested
      *
      * @return self
      */

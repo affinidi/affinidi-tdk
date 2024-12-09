@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialOfferResponseGrants Class Doc Comment
  *
  * @category Class
  * @description Object indicating to the Wallet the Grant Types the Credential Issuer&#39;s Authorization Server is prepared to process for this Credential Offer.
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CredentialOfferResponseGrants implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'urnietfparamsoauthgrant_typepre_authorized_code' => '\OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode'
+        'urnietfparamsoauthgrant_typepre_authorized_code' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode'
     ];
 
     /**
@@ -297,7 +297,7 @@ class CredentialOfferResponseGrants implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets urnietfparamsoauthgrant_typepre_authorized_code
      *
-     * @return \OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
      */
     public function getUrnietfparamsoauthgrantTypepreAuthorizedCode()
     {
@@ -307,7 +307,7 @@ class CredentialOfferResponseGrants implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets urnietfparamsoauthgrant_typepre_authorized_code
      *
-     * @param \OpenAPI\Client\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode $urnietfparamsoauthgrant_typepre_authorized_code urnietfparamsoauthgrant_typepre_authorized_code
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode $urnietfparamsoauthgrant_typepre_authorized_code urnietfparamsoauthgrant_typepre_authorized_code
      *
      * @return self
      */
