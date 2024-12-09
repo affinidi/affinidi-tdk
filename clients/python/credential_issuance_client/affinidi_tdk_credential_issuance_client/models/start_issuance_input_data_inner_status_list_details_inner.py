@@ -19,23 +19,20 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr, validator
+
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class StartIssuanceInputDataInnerStatusListDetailsInner(BaseModel):
     """
     StartIssuanceInputDataInnerStatusListDetailsInner
     """
-    purpose: Optional[StrictStr] = None
-    standard: Optional[StrictStr] = None
+    purpose: StrictStr = Field(...)
+    standard: StrictStr = Field(...)
     __properties = ["purpose", "standard"]
 
     @validator('purpose')
     def purpose_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in ('REVOCABLE'):
             raise ValueError("must be one of enum values ('REVOCABLE')")
         return value
@@ -43,9 +40,6 @@ class StartIssuanceInputDataInnerStatusListDetailsInner(BaseModel):
     @validator('standard')
     def standard_validate_enum(cls, value):
         """Validates the enum"""
-        if value is None:
-            return value
-
         if value not in ('RevocationList2020', 'BitstringStatusListV1'):
             raise ValueError("must be one of enum values ('RevocationList2020', 'BitstringStatusListV1')")
         return value

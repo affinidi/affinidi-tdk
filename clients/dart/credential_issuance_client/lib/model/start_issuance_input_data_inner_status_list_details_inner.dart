@@ -13,13 +13,13 @@ part of openapi.api;
 class StartIssuanceInputDataInnerStatusListDetailsInner {
   /// Returns a new [StartIssuanceInputDataInnerStatusListDetailsInner] instance.
   StartIssuanceInputDataInnerStatusListDetailsInner({
-    this.purpose,
-    this.standard,
+    required this.purpose,
+    required this.standard,
   });
 
-  StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum? purpose;
+  StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum purpose;
 
-  StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum? standard;
+  StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum standard;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StartIssuanceInputDataInnerStatusListDetailsInner &&
@@ -29,24 +29,16 @@ class StartIssuanceInputDataInnerStatusListDetailsInner {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (purpose == null ? 0 : purpose!.hashCode) +
-    (standard == null ? 0 : standard!.hashCode);
+    (purpose.hashCode) +
+    (standard.hashCode);
 
   @override
   String toString() => 'StartIssuanceInputDataInnerStatusListDetailsInner[purpose=$purpose, standard=$standard]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.purpose != null) {
       json[r'purpose'] = this.purpose;
-    } else {
-      json[r'purpose'] = null;
-    }
-    if (this.standard != null) {
       json[r'standard'] = this.standard;
-    } else {
-      json[r'standard'] = null;
-    }
     return json;
   }
 
@@ -69,8 +61,8 @@ class StartIssuanceInputDataInnerStatusListDetailsInner {
       }());
 
       return StartIssuanceInputDataInnerStatusListDetailsInner(
-        purpose: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum.fromJson(json[r'purpose']),
-        standard: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum.fromJson(json[r'standard']),
+        purpose: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum.fromJson(json[r'purpose'])!,
+        standard: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum.fromJson(json[r'standard'])!,
       );
     }
     return null;
@@ -118,6 +110,8 @@ class StartIssuanceInputDataInnerStatusListDetailsInner {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'purpose',
+    'standard',
   };
 }
 

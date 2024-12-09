@@ -133,7 +133,7 @@ No authorization required
 ## `listIssuanceDataRecords()`
 
 ```php
-listIssuanceDataRecords($limit, $exclusive_start_key): \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse
+listIssuanceDataRecords($project_id, $configuration_id, $limit, $exclusive_start_key): \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceRecordResponse
 ```
 
 List records
@@ -147,17 +147,25 @@ Retrieve a list of issuance data records.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ProjectTokenAuth
+$config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+
 
 $apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
+$project_id = 'project_id_example'; // string | Affinidi project id
+$configuration_id = 'configuration_id_example'; // string | The id of the issuance configuration
 $limit = 10; // int | Maximum number of records to fetch in a list
 $exclusive_start_key = 'exclusive_start_key_example'; // string | exclusiveStartKey for retrieving the next batch of data.
 
 try {
-    $result = $apiInstance->listIssuanceDataRecords($limit, $exclusive_start_key);
+    $result = $apiInstance->listIssuanceDataRecords($project_id, $configuration_id, $limit, $exclusive_start_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->listIssuanceDataRecords: ', $e->getMessage(), PHP_EOL;
@@ -168,6 +176,8 @@ try {
 
 | Name                    | Type       | Description                                              | Notes                      |
 | ----------------------- | ---------- | -------------------------------------------------------- | -------------------------- |
+| **project_id**          | **string** | Affinidi project id                                      |                            |
+| **configuration_id**    | **string** | The id of the issuance configuration                     |                            |
 | **limit**               | **int**    | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusive_start_key** | **string** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
 
@@ -177,7 +187,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ProjectTokenAuth](../../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

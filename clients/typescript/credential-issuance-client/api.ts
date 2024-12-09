@@ -1871,13 +1871,13 @@ export interface StartIssuanceInputDataInnerStatusListDetailsInner {
    * @type {string}
    * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
    */
-  purpose?: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum
+  purpose: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum
   /**
    *
    * @type {string}
    * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
    */
-  standard?: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
+  standard: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
 }
 
 export const StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum = {
@@ -3202,17 +3202,35 @@ export const DefaultApiAxiosParamCreator = function (
     /**
      * Retrieve a list of issuance data records.
      * @summary List records
+     * @param {string} projectId Affinidi project id
+     * @param {string} configurationId The id of the issuance configuration
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listIssuanceDataRecords: async (
+      projectId: string,
+      configurationId: string,
       limit?: number,
       exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
-      const localVarPath = `/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records`
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('listIssuanceDataRecords', 'projectId', projectId)
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'listIssuanceDataRecords',
+        'configurationId',
+        configurationId,
+      )
+      const localVarPath =
+        `/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records`
+          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3227,6 +3245,13 @@ export const DefaultApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       if (limit !== undefined) {
         localVarQueryParameter['limit'] = limit
@@ -3333,12 +3358,16 @@ export const DefaultApiFp = function (configuration?: Configuration) {
     /**
      * Retrieve a list of issuance data records.
      * @summary List records
+     * @param {string} projectId Affinidi project id
+     * @param {string} configurationId The id of the issuance configuration
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listIssuanceDataRecords(
+      projectId: string,
+      configurationId: string,
       limit?: number,
       exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
@@ -3350,6 +3379,8 @@ export const DefaultApiFp = function (configuration?: Configuration) {
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.listIssuanceDataRecords(
+          projectId,
+          configurationId,
           limit,
           exclusiveStartKey,
           options,
@@ -3418,18 +3449,28 @@ export const DefaultApiFactory = function (
     /**
      * Retrieve a list of issuance data records.
      * @summary List records
+     * @param {string} projectId Affinidi project id
+     * @param {string} configurationId The id of the issuance configuration
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listIssuanceDataRecords(
+      projectId: string,
+      configurationId: string,
       limit?: number,
       exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<ListIssuanceRecordResponse> {
       return localVarFp
-        .listIssuanceDataRecords(limit, exclusiveStartKey, options)
+        .listIssuanceDataRecords(
+          projectId,
+          configurationId,
+          limit,
+          exclusiveStartKey,
+          options,
+        )
         .then((request) => request(axios, basePath))
     },
   }
@@ -3483,6 +3524,8 @@ export class DefaultApi extends BaseAPI {
   /**
    * Retrieve a list of issuance data records.
    * @summary List records
+   * @param {string} projectId Affinidi project id
+   * @param {string} configurationId The id of the issuance configuration
    * @param {number} [limit] Maximum number of records to fetch in a list
    * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
    * @param {*} [options] Override http request option.
@@ -3490,12 +3533,20 @@ export class DefaultApi extends BaseAPI {
    * @memberof DefaultApi
    */
   public listIssuanceDataRecords(
+    projectId: string,
+    configurationId: string,
     limit?: number,
     exclusiveStartKey?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return DefaultApiFp(this.configuration)
-      .listIssuanceDataRecords(limit, exclusiveStartKey, options)
+      .listIssuanceDataRecords(
+        projectId,
+        configurationId,
+        limit,
+        exclusiveStartKey,
+        options,
+      )
       .then((request) => request(this.axios, this.basePath))
   }
 }

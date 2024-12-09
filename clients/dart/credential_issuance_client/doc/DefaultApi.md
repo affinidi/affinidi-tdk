@@ -114,7 +114,7 @@ No authorization required
 
 # **listIssuanceDataRecords**
 
-> ListIssuanceRecordResponse listIssuanceDataRecords(limit, exclusiveStartKey)
+> ListIssuanceRecordResponse listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey)
 
 List records
 
@@ -124,13 +124,19 @@ Retrieve a list of issuance data records.
 
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
+final projectId = projectId_example; // String | Affinidi project id
+final configurationId = configurationId_example; // String | The id of the issuance configuration
 final limit = 56; // int | Maximum number of records to fetch in a list
 final exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
 
 try {
-    final result = api_instance.listIssuanceDataRecords(limit, exclusiveStartKey);
+    final result = api_instance.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->listIssuanceDataRecords: $e\n');
@@ -141,6 +147,8 @@ try {
 
 | Name                  | Type       | Description                                              | Notes                      |
 | --------------------- | ---------- | -------------------------------------------------------- | -------------------------- |
+| **projectId**         | **String** | Affinidi project id                                      |
+| **configurationId**   | **String** | The id of the issuance configuration                     |
 | **limit**             | **int**    | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusiveStartKey** | **String** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
 
@@ -150,7 +158,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

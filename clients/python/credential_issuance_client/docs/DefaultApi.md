@@ -179,13 +179,15 @@ No authorization required
 
 # **list_issuance_data_records**
 
-> ListIssuanceRecordResponse list_issuance_data_records(limit=limit, exclusive_start_key=exclusive_start_key)
+> ListIssuanceRecordResponse list_issuance_data_records(project_id, configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
 
 List records
 
 Retrieve a list of issuance data records.
 
 ### Example
+
+- Api Key Authentication (ProjectTokenAuth):
 
 ```python
 import time
@@ -201,17 +203,44 @@ configuration = affinidi_tdk_credential_issuance_client.Configuration(
     host = "https://apse1.api.affinidi.io/cis"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_credential_issuance_client.DefaultApi(api_client)
+    project_id = 'project_id_example' # str | Affinidi project id
+    configuration_id = 'configuration_id_example' # str | The id of the issuance configuration
     limit = 10 # int | Maximum number of records to fetch in a list (optional) (default to 10)
     exclusive_start_key = 'exclusive_start_key_example' # str | exclusiveStartKey for retrieving the next batch of data. (optional)
 
     try:
         # List records
-        api_response = api_instance.list_issuance_data_records(limit=limit, exclusive_start_key=exclusive_start_key)
+        api_response = api_instance.list_issuance_data_records(project_id, configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of DefaultApi->list_issuance_data_records:\n")
         pprint(api_response)
     except Exception as e:
@@ -222,6 +251,8 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 | Name                    | Type    | Description                                              | Notes                      |
 | ----------------------- | ------- | -------------------------------------------------------- | -------------------------- |
+| **project_id**          | **str** | Affinidi project id                                      |
+| **configuration_id**    | **str** | The id of the issuance configuration                     |
 | **limit**               | **int** | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusive_start_key** | **str** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
 
@@ -231,7 +262,7 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 ### Authorization
 
-No authorization required
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

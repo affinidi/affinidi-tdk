@@ -154,14 +154,22 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  ///
+  /// * [String] configurationId (required):
+  ///   The id of the issuance configuration
+  ///
   /// * [int] limit:
   ///   Maximum number of records to fetch in a list
   ///
   /// * [String] exclusiveStartKey:
   ///   exclusiveStartKey for retrieving the next batch of data.
-  Future<Response> listIssuanceDataRecordsWithHttpInfo({ int? limit, String? exclusiveStartKey, }) async {
+  Future<Response> listIssuanceDataRecordsWithHttpInfo(String projectId, String configurationId, { int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records';
+    final path = r'/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records'
+      .replaceAll('{projectId}', projectId)
+      .replaceAll('{configurationId}', configurationId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -197,13 +205,19 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [String] projectId (required):
+  ///   Affinidi project id
+  ///
+  /// * [String] configurationId (required):
+  ///   The id of the issuance configuration
+  ///
   /// * [int] limit:
   ///   Maximum number of records to fetch in a list
   ///
   /// * [String] exclusiveStartKey:
   ///   exclusiveStartKey for retrieving the next batch of data.
-  Future<ListIssuanceRecordResponse?> listIssuanceDataRecords({ int? limit, String? exclusiveStartKey, }) async {
-    final response = await listIssuanceDataRecordsWithHttpInfo( limit: limit, exclusiveStartKey: exclusiveStartKey, );
+  Future<ListIssuanceRecordResponse?> listIssuanceDataRecords(String projectId, String configurationId, { int? limit, String? exclusiveStartKey, }) async {
+    final response = await listIssuanceDataRecordsWithHttpInfo(projectId, configurationId,  limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
