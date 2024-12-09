@@ -1,4 +1,4 @@
-# OpenAPI\Client\WalletApi
+# AffinidiTdk\Clients\Wallets\WalletApi
 
 All URIs are relative to https://apse1.api.affinidi.io/cwe, except if the operation defines another base path.
 
@@ -15,7 +15,7 @@ All URIs are relative to https://apse1.api.affinidi.io/cwe, except if the operat
 ## `createWallet()`
 
 ```php
-createWallet($create_wallet_input): \OpenAPI\Client\Model\CreateWalletResponse
+createWallet($create_wallet_input): \AffinidiTdk\Clients\Wallets\Model\CreateWalletResponse
 ```
 
 creates a wallet
@@ -28,18 +28,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_wallet_input = new \OpenAPI\Client\Model\CreateWalletInput(); // \OpenAPI\Client\Model\CreateWalletInput | CreateWallet
+$create_wallet_input = new \AffinidiTdk\Clients\Wallets\Model\CreateWalletInput(); // \AffinidiTdk\Clients\Wallets\Model\CreateWalletInput | CreateWallet
 
 try {
     $result = $apiInstance->createWallet($create_wallet_input);
@@ -51,13 +51,13 @@ try {
 
 ### Parameters
 
-| Name                    | Type                                                                         | Description  | Notes      |
-| ----------------------- | ---------------------------------------------------------------------------- | ------------ | ---------- |
-| **create_wallet_input** | [**\OpenAPI\Client\Model\CreateWalletInput**](../Model/CreateWalletInput.md) | CreateWallet | [optional] |
+| Name                    | Type                                                                                      | Description  | Notes      |
+| ----------------------- | ----------------------------------------------------------------------------------------- | ------------ | ---------- |
+| **create_wallet_input** | [**\AffinidiTdk\Clients\Wallets\Model\CreateWalletInput**](../Model/CreateWalletInput.md) | CreateWallet | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CreateWalletResponse**](../Model/CreateWalletResponse.md)
+[**\AffinidiTdk\Clients\Wallets\Model\CreateWalletResponse**](../Model/CreateWalletResponse.md)
 
 ### Authorization
 
@@ -88,12 +88,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -134,7 +134,7 @@ void (empty response body)
 ## `getWallet()`
 
 ```php
-getWallet($wallet_id): \OpenAPI\Client\Model\WalletDto
+getWallet($wallet_id): \AffinidiTdk\Clients\Wallets\Model\WalletDto
 ```
 
 get wallet details using wallet Id.
@@ -147,12 +147,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -176,7 +176,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\WalletDto**](../Model/WalletDto.md)
+[**\AffinidiTdk\Clients\Wallets\Model\WalletDto**](../Model/WalletDto.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ try {
 ## `listWallets()`
 
 ```php
-listWallets($did_type): \OpenAPI\Client\Model\WalletsListDto
+listWallets($did_type): \AffinidiTdk\Clients\Wallets\Model\WalletsListDto
 ```
 
 lists all wallets
@@ -207,12 +207,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -236,7 +236,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\WalletsListDto**](../Model/WalletsListDto.md)
+[**\AffinidiTdk\Clients\Wallets\Model\WalletsListDto**](../Model/WalletsListDto.md)
 
 ### Authorization
 
@@ -254,7 +254,7 @@ try {
 ## `signCredential()`
 
 ```php
-signCredential($wallet_id, $sign_credential_input_dto): \OpenAPI\Client\Model\SignCredentialResultDto
+signCredential($wallet_id, $sign_credential_input_dto): \AffinidiTdk\Clients\Wallets\Model\SignCredentialResultDto
 ```
 
 signs credential with the wallet
@@ -267,19 +267,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $wallet_id = 'wallet_id_example'; // string | id of the wallet
-$sign_credential_input_dto = new \OpenAPI\Client\Model\SignCredentialInputDto(); // \OpenAPI\Client\Model\SignCredentialInputDto | SignCredential
+$sign_credential_input_dto = new \AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDto(); // \AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDto | SignCredential
 
 try {
     $result = $apiInstance->signCredential($wallet_id, $sign_credential_input_dto);
@@ -291,14 +291,14 @@ try {
 
 ### Parameters
 
-| Name                          | Type                                                                                   | Description      | Notes |
-| ----------------------------- | -------------------------------------------------------------------------------------- | ---------------- | ----- |
-| **wallet_id**                 | **string**                                                                             | id of the wallet |       |
-| **sign_credential_input_dto** | [**\OpenAPI\Client\Model\SignCredentialInputDto**](../Model/SignCredentialInputDto.md) | SignCredential   |       |
+| Name                          | Type                                                                                                | Description      | Notes |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- | ---------------- | ----- |
+| **wallet_id**                 | **string**                                                                                          | id of the wallet |       |
+| **sign_credential_input_dto** | [**\AffinidiTdk\Clients\Wallets\Model\SignCredentialInputDto**](../Model/SignCredentialInputDto.md) | SignCredential   |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SignCredentialResultDto**](../Model/SignCredentialResultDto.md)
+[**\AffinidiTdk\Clients\Wallets\Model\SignCredentialResultDto**](../Model/SignCredentialResultDto.md)
 
 ### Authorization
 
@@ -316,7 +316,7 @@ try {
 ## `signJwtToken()`
 
 ```php
-signJwtToken($wallet_id, $sign_jwt_token): \OpenAPI\Client\Model\SignJwtTokenOK
+signJwtToken($wallet_id, $sign_jwt_token): \AffinidiTdk\Clients\Wallets\Model\SignJwtTokenOK
 ```
 
 signs a jwt token with the wallet
@@ -329,19 +329,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $wallet_id = 'wallet_id_example'; // string | id of the wallet.
-$sign_jwt_token = new \OpenAPI\Client\Model\SignJwtToken(); // \OpenAPI\Client\Model\SignJwtToken | SignJwtToken
+$sign_jwt_token = new \AffinidiTdk\Clients\Wallets\Model\SignJwtToken(); // \AffinidiTdk\Clients\Wallets\Model\SignJwtToken | SignJwtToken
 
 try {
     $result = $apiInstance->signJwtToken($wallet_id, $sign_jwt_token);
@@ -353,14 +353,14 @@ try {
 
 ### Parameters
 
-| Name               | Type                                                               | Description       | Notes |
-| ------------------ | ------------------------------------------------------------------ | ----------------- | ----- |
-| **wallet_id**      | **string**                                                         | id of the wallet. |       |
-| **sign_jwt_token** | [**\OpenAPI\Client\Model\SignJwtToken**](../Model/SignJwtToken.md) | SignJwtToken      |       |
+| Name               | Type                                                                            | Description       | Notes |
+| ------------------ | ------------------------------------------------------------------------------- | ----------------- | ----- |
+| **wallet_id**      | **string**                                                                      | id of the wallet. |       |
+| **sign_jwt_token** | [**\AffinidiTdk\Clients\Wallets\Model\SignJwtToken**](../Model/SignJwtToken.md) | SignJwtToken      |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SignJwtTokenOK**](../Model/SignJwtTokenOK.md)
+[**\AffinidiTdk\Clients\Wallets\Model\SignJwtTokenOK**](../Model/SignJwtTokenOK.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ try {
 ## `updateWallet()`
 
 ```php
-updateWallet($wallet_id, $update_wallet_input): \OpenAPI\Client\Model\WalletDto
+updateWallet($wallet_id, $update_wallet_input): \AffinidiTdk\Clients\Wallets\Model\WalletDto
 ```
 
 update wallet details using wallet Id.
@@ -391,19 +391,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\Wallets\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\WalletApi(
+$apiInstance = new AffinidiTdk\Clients\Wallets\Api\WalletApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $wallet_id = 'wallet_id_example'; // string | id of the wallet
-$update_wallet_input = new \OpenAPI\Client\Model\UpdateWalletInput(); // \OpenAPI\Client\Model\UpdateWalletInput | UpdateWallet
+$update_wallet_input = new \AffinidiTdk\Clients\Wallets\Model\UpdateWalletInput(); // \AffinidiTdk\Clients\Wallets\Model\UpdateWalletInput | UpdateWallet
 
 try {
     $result = $apiInstance->updateWallet($wallet_id, $update_wallet_input);
@@ -415,14 +415,14 @@ try {
 
 ### Parameters
 
-| Name                    | Type                                                                         | Description      | Notes |
-| ----------------------- | ---------------------------------------------------------------------------- | ---------------- | ----- |
-| **wallet_id**           | **string**                                                                   | id of the wallet |       |
-| **update_wallet_input** | [**\OpenAPI\Client\Model\UpdateWalletInput**](../Model/UpdateWalletInput.md) | UpdateWallet     |       |
+| Name                    | Type                                                                                      | Description      | Notes |
+| ----------------------- | ----------------------------------------------------------------------------------------- | ---------------- | ----- |
+| **wallet_id**           | **string**                                                                                | id of the wallet |       |
+| **update_wallet_input** | [**\AffinidiTdk\Clients\Wallets\Model\UpdateWalletInput**](../Model/UpdateWalletInput.md) | UpdateWallet     |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\WalletDto**](../Model/WalletDto.md)
+[**\AffinidiTdk\Clients\Wallets\Model\WalletDto**](../Model/WalletDto.md)
 
 ### Authorization
 

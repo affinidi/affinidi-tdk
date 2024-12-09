@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * ServiceErrorResponse Class Doc Comment
  *
  * @category Class
  * @description Service Error Response
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class ServiceErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'debug_id' => 'string',
         'name' => 'string',
         'code' => 'string',
-        'details' => '\OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\LoginConfiguration\Model\ServiceErrorResponseDetailsInner[]'
     ];
 
     /**
@@ -405,7 +405,7 @@ class ServiceErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\ServiceErrorResponseDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -415,7 +415,7 @@ class ServiceErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\ServiceErrorResponseDetailsInner[]|null $details error details
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\ServiceErrorResponseDetailsInner[]|null $details error details
      *
      * @return self
      */

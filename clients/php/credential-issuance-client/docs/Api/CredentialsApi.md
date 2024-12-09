@@ -1,4 +1,4 @@
-# OpenAPI\Client\CredentialsApi
+# AffinidiTdk\Clients\CredentialIssuance\CredentialsApi
 
 All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/cis, except if the operat
 ## `generateCredentials()`
 
 ```php
-generateCredentials($project_id, $create_credential_input): \OpenAPI\Client\Model\CredentialResponse
+generateCredentials($project_id, $create_credential_input): \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse
 ```
 
 Issue credential for end user upon presentation a valid access token. Since we don't immediate issue credential It's expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
@@ -22,17 +22,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = AffinidiTdk\Clients\CredentialIssuance\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\CredentialsApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialIssuance\Api\CredentialsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $project_id = 'project_id_example'; // string | Affinidi project id
-$create_credential_input = new \OpenAPI\Client\Model\CreateCredentialInput(); // \OpenAPI\Client\Model\CreateCredentialInput | Request body to issue credentials
+$create_credential_input = new \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput(); // \AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput | Request body to issue credentials
 
 try {
     $result = $apiInstance->generateCredentials($project_id, $create_credential_input);
@@ -44,14 +44,14 @@ try {
 
 ### Parameters
 
-| Name                        | Type                                                                                 | Description                       | Notes |
-| --------------------------- | ------------------------------------------------------------------------------------ | --------------------------------- | ----- |
-| **project_id**              | **string**                                                                           | Affinidi project id               |       |
-| **create_credential_input** | [**\OpenAPI\Client\Model\CreateCredentialInput**](../Model/CreateCredentialInput.md) | Request body to issue credentials |       |
+| Name                        | Type                                                                                                         | Description                       | Notes |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------- | ----- |
+| **project_id**              | **string**                                                                                                   | Affinidi project id               |       |
+| **create_credential_input** | [**\AffinidiTdk\Clients\CredentialIssuance\Model\CreateCredentialInput**](../Model/CreateCredentialInput.md) | Request body to issue credentials |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CredentialResponse**](../Model/CredentialResponse.md)
+[**\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponse**](../Model/CredentialResponse.md)
 
 ### Authorization
 

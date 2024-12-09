@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * StartIssuanceInputDataInner Class Doc Comment
  *
  * @category Class
  * @description Data to be included in issued credential
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class StartIssuanceInputDataInner implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'credential_type_id' => 'string',
         'credential_data' => 'array<string,mixed>',
-        'status_list_details' => '\OpenAPI\Client\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]',
-        'meta_data' => '\OpenAPI\Client\Model\StartIssuanceInputDataInnerMetaData'
+        'status_list_details' => '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]',
+        'meta_data' => '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerMetaData'
     ];
 
     /**
@@ -375,7 +375,7 @@ class StartIssuanceInputDataInner implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets status_list_details
      *
-     * @return \OpenAPI\Client\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]|null
      */
     public function getStatusListDetails()
     {
@@ -385,7 +385,7 @@ class StartIssuanceInputDataInner implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets status_list_details
      *
-     * @param \OpenAPI\Client\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]|null $status_list_details Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerStatusListDetailsInner[]|null $status_list_details Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class StartIssuanceInputDataInner implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets meta_data
      *
-     * @return \OpenAPI\Client\Model\StartIssuanceInputDataInnerMetaData|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerMetaData|null
      */
     public function getMetaData()
     {
@@ -412,7 +412,7 @@ class StartIssuanceInputDataInner implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets meta_data
      *
-     * @param \OpenAPI\Client\Model\StartIssuanceInputDataInnerMetaData|null $meta_data meta_data
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInputDataInnerMetaData|null $meta_data meta_data
      *
      * @return self
      */

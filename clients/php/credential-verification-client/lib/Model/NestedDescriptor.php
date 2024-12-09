@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * NestedDescriptor Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class NestedDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'path' => 'string',
-        'path_nested' => '\OpenAPI\Client\Model\NestedDescriptor',
+        'path_nested' => '\AffinidiTdk\Clients\CredentialVerification\Model\NestedDescriptor',
         'format' => 'string'
     ];
 
@@ -374,7 +374,7 @@ class NestedDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets path_nested
      *
-     * @return \OpenAPI\Client\Model\NestedDescriptor|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\NestedDescriptor|null
      */
     public function getPathNested()
     {
@@ -384,7 +384,7 @@ class NestedDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path_nested
      *
-     * @param \OpenAPI\Client\Model\NestedDescriptor|null $path_nested path_nested
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\NestedDescriptor|null $path_nested path_nested
      *
      * @return self
      */

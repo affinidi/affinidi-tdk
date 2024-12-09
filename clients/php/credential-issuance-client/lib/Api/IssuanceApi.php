@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\CredentialIssuance\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\CredentialIssuance\ApiException;
+use AffinidiTdk\Clients\CredentialIssuance\Configuration;
+use AffinidiTdk\Clients\CredentialIssuance\HeaderSelector;
+use AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * IssuanceApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,9 +136,9 @@ class IssuanceApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['issuanceState'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IssuanceStateResponse|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError
      */
     public function issuanceState($issuance_id, $project_id, string $contentType = self::contentTypes['issuanceState'][0])
     {
@@ -153,9 +153,9 @@ class IssuanceApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['issuanceState'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IssuanceStateResponse|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\ActionForbiddenError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError|\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function issuanceStateWithHttpInfo($issuance_id, $project_id, string $contentType = self::contentTypes['issuanceState'][0])
     {
@@ -186,11 +186,11 @@ class IssuanceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IssuanceStateResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IssuanceStateResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -208,16 +208,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IssuanceStateResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -235,16 +235,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -262,16 +262,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -289,7 +289,7 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -308,7 +308,7 @@ class IssuanceApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IssuanceStateResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -341,7 +341,7 @@ class IssuanceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IssuanceStateResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -349,7 +349,7 @@ class IssuanceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -357,7 +357,7 @@ class IssuanceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -365,7 +365,7 @@ class IssuanceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class IssuanceApi
      */
     public function issuanceStateAsyncWithHttpInfo($issuance_id, $project_id, string $contentType = self::contentTypes['issuanceState'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IssuanceStateResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\IssuanceStateResponse';
         $request = $this->issuanceStateRequest($issuance_id, $project_id, $contentType);
 
         return $this->client
@@ -565,9 +565,9 @@ class IssuanceApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuance'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListIssuanceResponse|\OpenAPI\Client\Model\ActionForbiddenError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError
      */
     public function listIssuance($project_id, string $contentType = self::contentTypes['listIssuance'][0])
     {
@@ -581,9 +581,9 @@ class IssuanceApi
      * @param  string $project_id Affinidi project id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIssuance'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListIssuanceResponse|\OpenAPI\Client\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listIssuanceWithHttpInfo($project_id, string $contentType = self::contentTypes['listIssuance'][0])
     {
@@ -614,11 +614,11 @@ class IssuanceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListIssuanceResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListIssuanceResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -636,16 +636,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListIssuanceResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -663,7 +663,7 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -682,7 +682,7 @@ class IssuanceApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListIssuanceResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -715,7 +715,7 @@ class IssuanceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListIssuanceResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -723,7 +723,7 @@ class IssuanceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -763,7 +763,7 @@ class IssuanceApi
      */
     public function listIssuanceAsyncWithHttpInfo($project_id, string $contentType = self::contentTypes['listIssuance'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListIssuanceResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponse';
         $request = $this->listIssuanceRequest($project_id, $contentType);
 
         return $this->client
@@ -903,12 +903,12 @@ class IssuanceApi
      * Operation startIssuance
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startIssuance'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StartIssuanceResponse|\OpenAPI\Client\Model\StartIssuance400Response|\OpenAPI\Client\Model\ActionForbiddenError
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError
      */
     public function startIssuance($project_id, $start_issuance_input, string $contentType = self::contentTypes['startIssuance'][0])
     {
@@ -920,12 +920,12 @@ class IssuanceApi
      * Operation startIssuanceWithHttpInfo
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startIssuance'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\CredentialIssuance\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StartIssuanceResponse|\OpenAPI\Client\Model\StartIssuance400Response|\OpenAPI\Client\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse|\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response|\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function startIssuanceWithHttpInfo($project_id, $start_issuance_input, string $contentType = self::contentTypes['startIssuance'][0])
     {
@@ -956,11 +956,11 @@ class IssuanceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\StartIssuanceResponse' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\StartIssuanceResponse' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -978,16 +978,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\StartIssuanceResponse', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\StartIssuance400Response' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\StartIssuance400Response' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1005,16 +1005,16 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\StartIssuance400Response', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\ActionForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ActionForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1032,7 +1032,7 @@ class IssuanceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ActionForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1051,7 +1051,7 @@ class IssuanceApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\StartIssuanceResponse';
+            $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1084,7 +1084,7 @@ class IssuanceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StartIssuanceResponse',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1092,7 +1092,7 @@ class IssuanceApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StartIssuance400Response',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuance400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1100,7 +1100,7 @@ class IssuanceApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ActionForbiddenError',
+                        '\AffinidiTdk\Clients\CredentialIssuance\Model\ActionForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1114,7 +1114,7 @@ class IssuanceApi
      * Operation startIssuanceAsync
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startIssuance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1134,7 +1134,7 @@ class IssuanceApi
      * Operation startIssuanceAsyncWithHttpInfo
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startIssuance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1142,7 +1142,7 @@ class IssuanceApi
      */
     public function startIssuanceAsyncWithHttpInfo($project_id, $start_issuance_input, string $contentType = self::contentTypes['startIssuance'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\StartIssuanceResponse';
+        $returnType = '\AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceResponse';
         $request = $this->startIssuanceRequest($project_id, $start_issuance_input, $contentType);
 
         return $this->client
@@ -1185,7 +1185,7 @@ class IssuanceApi
      * Create request for operation 'startIssuance'
      *
      * @param  string $project_id Affinidi project id (required)
-     * @param  \OpenAPI\Client\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
+     * @param  \AffinidiTdk\Clients\CredentialIssuance\Model\StartIssuanceInput $start_issuance_input Request body to start issuance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startIssuance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

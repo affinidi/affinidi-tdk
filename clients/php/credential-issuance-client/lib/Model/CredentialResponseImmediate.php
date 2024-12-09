@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialResponseImmediate Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class CredentialResponseImmediate implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'credential' => '\OpenAPI\Client\Model\CredentialResponseImmediateCredential',
+        'credential' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential',
         'c_nonce' => 'string',
-        'c_nonce_expires_in' => '\OpenAPI\Client\Model\CredentialResponseImmediateCNonceExpiresIn'
+        'c_nonce_expires_in' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCNonceExpiresIn'
     ];
 
     /**
@@ -316,7 +316,7 @@ class CredentialResponseImmediate implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets credential
      *
-     * @return \OpenAPI\Client\Model\CredentialResponseImmediateCredential
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential
      */
     public function getCredential()
     {
@@ -326,7 +326,7 @@ class CredentialResponseImmediate implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets credential
      *
-     * @param \OpenAPI\Client\Model\CredentialResponseImmediateCredential $credential credential
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential $credential credential
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class CredentialResponseImmediate implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets c_nonce_expires_in
      *
-     * @return \OpenAPI\Client\Model\CredentialResponseImmediateCNonceExpiresIn
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCNonceExpiresIn
      */
     public function getCNonceExpiresIn()
     {
@@ -380,7 +380,7 @@ class CredentialResponseImmediate implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets c_nonce_expires_in
      *
-     * @param \OpenAPI\Client\Model\CredentialResponseImmediateCNonceExpiresIn $c_nonce_expires_in c_nonce_expires_in
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCNonceExpiresIn $c_nonce_expires_in c_nonce_expires_in
      *
      * @return self
      */

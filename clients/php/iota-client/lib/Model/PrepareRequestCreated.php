@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iota\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * PrepareRequestCreated Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class PrepareRequestCreated implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\OpenAPI\Client\Model\PrepareRequestCreatedData'
+        'data' => '\AffinidiTdk\Clients\Iota\Model\PrepareRequestCreatedData'
     ];
 
     /**
@@ -296,7 +296,7 @@ class PrepareRequestCreated implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\PrepareRequestCreatedData
+     * @return \AffinidiTdk\Clients\Iota\Model\PrepareRequestCreatedData
      */
     public function getData()
     {
@@ -306,7 +306,7 @@ class PrepareRequestCreated implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\PrepareRequestCreatedData $data data
+     * @param \AffinidiTdk\Clients\Iota\Model\PrepareRequestCreatedData $data data
      *
      * @return self
      */

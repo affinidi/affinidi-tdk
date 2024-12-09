@@ -1,4 +1,4 @@
-# OpenAPI\Client\IdpApi
+# AffinidiTdk\Clients\LoginConfiguration\IdpApi
 
 All URIs are relative to https://apse1.api.affinidi.io/vpa, except if the operation defines another base path.
 
@@ -30,7 +30,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -85,7 +85,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -140,7 +140,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -180,7 +180,7 @@ No authorization required
 ## `v1LoginProjectProjectIdOauth2TokenPost()`
 
 ```php
-v1LoginProjectProjectIdOauth2TokenPost($project_id): \OpenAPI\Client\Model\OAuth2Token
+v1LoginProjectProjectIdOauth2TokenPost($project_id): \AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token
 ```
 
 The OAuth 2.0 Token Endpoint
@@ -195,7 +195,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -218,7 +218,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\OAuth2Token**](../Model/OAuth2Token.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\OAuth2Token**](../Model/OAuth2Token.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ No authorization required
 ## `v1LoginProjectProjectIdUserinfoGet()`
 
 ```php
-v1LoginProjectProjectIdUserinfoGet($project_id): \OpenAPI\Client\Model\GetUserInfo
+v1LoginProjectProjectIdUserinfoGet($project_id): \AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo
 ```
 
 OpenID Connect Userinfo
@@ -251,7 +251,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -274,7 +274,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetUserInfo**](../Model/GetUserInfo.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\GetUserInfo**](../Model/GetUserInfo.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ No authorization required
 ## `v1LoginProjectProjectIdWellKnownJwksJsonGet()`
 
 ```php
-v1LoginProjectProjectIdWellKnownJwksJsonGet($project_id): \OpenAPI\Client\Model\JsonWebKey
+v1LoginProjectProjectIdWellKnownJwksJsonGet($project_id): \AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey
 ```
 
 Discover Well-Known JSON Web Keys
@@ -307,7 +307,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -330,7 +330,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\JsonWebKey**](../Model/JsonWebKey.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\JsonWebKey**](../Model/JsonWebKey.md)
 
 ### Authorization
 
@@ -348,7 +348,7 @@ No authorization required
 ## `v1LoginProjectProjectIdWellKnownOpenidConfigurationGet()`
 
 ```php
-v1LoginProjectProjectIdWellKnownOpenidConfigurationGet($project_id): \OpenAPI\Client\Model\OIDCConfig
+v1LoginProjectProjectIdWellKnownOpenidConfigurationGet($project_id): \AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig
 ```
 
 OpenID Connect Discovery
@@ -363,7 +363,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\IdpApi(
+$apiInstance = new AffinidiTdk\Clients\LoginConfiguration\Api\IdpApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -386,7 +386,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\OIDCConfig**](../Model/OIDCConfig.md)
+[**\AffinidiTdk\Clients\LoginConfiguration\Model\OIDCConfig**](../Model/OIDCConfig.md)
 
 ### Authorization
 

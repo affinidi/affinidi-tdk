@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iam\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iam\ApiException;
+use AffinidiTdk\Clients\Iam\Configuration;
+use AffinidiTdk\Clients\Iam\HeaderSelector;
+use AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * PoliciesApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -133,9 +133,9 @@ class PoliciesApi
      * @param  string $principal_type principal_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPolicies'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PolicyDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\PolicyDto|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\NotFoundError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function getPolicies($principal_id, $principal_type, string $contentType = self::contentTypes['getPolicies'][0])
     {
@@ -150,9 +150,9 @@ class PoliciesApi
      * @param  string $principal_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPolicies'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PolicyDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\NotFoundError|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\PolicyDto|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\NotFoundError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPoliciesWithHttpInfo($principal_id, $principal_type, string $contentType = self::contentTypes['getPolicies'][0])
     {
@@ -183,11 +183,11 @@ class PoliciesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\PolicyDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\PolicyDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\PolicyDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\PolicyDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -205,16 +205,16 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PolicyDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\PolicyDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -232,16 +232,16 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -259,16 +259,16 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -286,7 +286,7 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -305,7 +305,7 @@ class PoliciesApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\PolicyDto';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\PolicyDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -338,7 +338,7 @@ class PoliciesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PolicyDto',
+                        '\AffinidiTdk\Clients\Iam\Model\PolicyDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -346,7 +346,7 @@ class PoliciesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -354,7 +354,7 @@ class PoliciesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\Iam\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -362,7 +362,7 @@ class PoliciesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -404,7 +404,7 @@ class PoliciesApi
      */
     public function getPoliciesAsyncWithHttpInfo($principal_id, $principal_type, string $contentType = self::contentTypes['getPolicies'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PolicyDto';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\PolicyDto';
         $request = $this->getPoliciesRequest($principal_id, $principal_type, $contentType);
 
         return $this->client
@@ -562,12 +562,12 @@ class PoliciesApi
      *
      * @param  string $principal_id principal_id (required)
      * @param  string $principal_type principal_type (required)
-     * @param  \OpenAPI\Client\Model\PolicyDto $policy_dto UpdatePolicies (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\PolicyDto $policy_dto UpdatePolicies (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePolicies'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PolicyDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\UnexpectedError
+     * @return \AffinidiTdk\Clients\Iam\Model\PolicyDto|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError
      */
     public function updatePolicies($principal_id, $principal_type, $policy_dto, string $contentType = self::contentTypes['updatePolicies'][0])
     {
@@ -580,12 +580,12 @@ class PoliciesApi
      *
      * @param  string $principal_id (required)
      * @param  string $principal_type (required)
-     * @param  \OpenAPI\Client\Model\PolicyDto $policy_dto UpdatePolicies (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\PolicyDto $policy_dto UpdatePolicies (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePolicies'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iam\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PolicyDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iam\Model\PolicyDto|\AffinidiTdk\Clients\Iam\Model\InvalidParameterError|\AffinidiTdk\Clients\Iam\Model\UnexpectedError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePoliciesWithHttpInfo($principal_id, $principal_type, $policy_dto, string $contentType = self::contentTypes['updatePolicies'][0])
     {
@@ -616,11 +616,11 @@ class PoliciesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\PolicyDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\PolicyDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\PolicyDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\PolicyDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -638,16 +638,16 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PolicyDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\PolicyDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -665,16 +665,16 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 500:
-                    if ('\OpenAPI\Client\Model\UnexpectedError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnexpectedError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iam\Model\UnexpectedError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -692,7 +692,7 @@ class PoliciesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnexpectedError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iam\Model\UnexpectedError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -711,7 +711,7 @@ class PoliciesApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\PolicyDto';
+            $returnType = '\AffinidiTdk\Clients\Iam\Model\PolicyDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -744,7 +744,7 @@ class PoliciesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PolicyDto',
+                        '\AffinidiTdk\Clients\Iam\Model\PolicyDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -752,7 +752,7 @@ class PoliciesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iam\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -760,7 +760,7 @@ class PoliciesApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnexpectedError',
+                        '\AffinidiTdk\Clients\Iam\Model\UnexpectedError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -775,7 +775,7 @@ class PoliciesApi
      *
      * @param  string $principal_id (required)
      * @param  string $principal_type (required)
-     * @param  \OpenAPI\Client\Model\PolicyDto $policy_dto UpdatePolicies (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\PolicyDto $policy_dto UpdatePolicies (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePolicies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -796,7 +796,7 @@ class PoliciesApi
      *
      * @param  string $principal_id (required)
      * @param  string $principal_type (required)
-     * @param  \OpenAPI\Client\Model\PolicyDto $policy_dto UpdatePolicies (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\PolicyDto $policy_dto UpdatePolicies (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePolicies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -804,7 +804,7 @@ class PoliciesApi
      */
     public function updatePoliciesAsyncWithHttpInfo($principal_id, $principal_type, $policy_dto, string $contentType = self::contentTypes['updatePolicies'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PolicyDto';
+        $returnType = '\AffinidiTdk\Clients\Iam\Model\PolicyDto';
         $request = $this->updatePoliciesRequest($principal_id, $principal_type, $policy_dto, $contentType);
 
         return $this->client
@@ -848,7 +848,7 @@ class PoliciesApi
      *
      * @param  string $principal_id (required)
      * @param  string $principal_type (required)
-     * @param  \OpenAPI\Client\Model\PolicyDto $policy_dto UpdatePolicies (required)
+     * @param  \AffinidiTdk\Clients\Iam\Model\PolicyDto $policy_dto UpdatePolicies (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePolicies'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

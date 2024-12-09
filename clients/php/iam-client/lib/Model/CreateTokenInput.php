@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\Iam\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\Iam\ObjectSerializer;
 
 /**
  * CreateTokenInput Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iam
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateTokenInput implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'authentication_method' => '\OpenAPI\Client\Model\TokenAuthenticationMethodDto',
+        'authentication_method' => '\AffinidiTdk\Clients\Iam\Model\TokenAuthenticationMethodDto',
         'description' => 'string'
     ];
 
@@ -349,7 +349,7 @@ class CreateTokenInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets authentication_method
      *
-     * @return \OpenAPI\Client\Model\TokenAuthenticationMethodDto
+     * @return \AffinidiTdk\Clients\Iam\Model\TokenAuthenticationMethodDto
      */
     public function getAuthenticationMethod()
     {
@@ -359,7 +359,7 @@ class CreateTokenInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets authentication_method
      *
-     * @param \OpenAPI\Client\Model\TokenAuthenticationMethodDto $authentication_method authentication_method
+     * @param \AffinidiTdk\Clients\Iam\Model\TokenAuthenticationMethodDto $authentication_method authentication_method
      *
      * @return self
      */

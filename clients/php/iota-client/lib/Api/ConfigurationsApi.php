@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iota\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iota\ApiException;
+use AffinidiTdk\Clients\Iota\Configuration;
+use AffinidiTdk\Clients\Iota\HeaderSelector;
+use AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * ConfigurationsApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,12 +141,12 @@ class ConfigurationsApi
     /**
      * Operation createIotaConfiguration
      *
-     * @param  \OpenAPI\Client\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIotaConfiguration'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\AlreadyExistsError|\OpenAPI\Client\Model\ResourceLimitExceededError
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError|\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError
      */
     public function createIotaConfiguration($create_iota_configuration_input, string $contentType = self::contentTypes['createIotaConfiguration'][0])
     {
@@ -157,12 +157,12 @@ class ConfigurationsApi
     /**
      * Operation createIotaConfigurationWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIotaConfiguration'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\AlreadyExistsError|\OpenAPI\Client\Model\ResourceLimitExceededError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError|\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createIotaConfigurationWithHttpInfo($create_iota_configuration_input, string $contentType = self::contentTypes['createIotaConfiguration'][0])
     {
@@ -193,11 +193,11 @@ class ConfigurationsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\IotaConfigurationDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IotaConfigurationDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -215,16 +215,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IotaConfigurationDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -242,16 +242,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -269,16 +269,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 409:
-                    if ('\OpenAPI\Client\Model\AlreadyExistsError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\AlreadyExistsError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -296,16 +296,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AlreadyExistsError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\ResourceLimitExceededError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ResourceLimitExceededError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -323,7 +323,7 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ResourceLimitExceededError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -342,7 +342,7 @@ class ConfigurationsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -375,7 +375,7 @@ class ConfigurationsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IotaConfigurationDto',
+                        '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -383,7 +383,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -391,7 +391,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -399,7 +399,7 @@ class ConfigurationsApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AlreadyExistsError',
+                        '\AffinidiTdk\Clients\Iota\Model\AlreadyExistsError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -407,7 +407,7 @@ class ConfigurationsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ResourceLimitExceededError',
+                        '\AffinidiTdk\Clients\Iota\Model\ResourceLimitExceededError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -420,7 +420,7 @@ class ConfigurationsApi
     /**
      * Operation createIotaConfigurationAsync
      *
-     * @param  \OpenAPI\Client\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIotaConfiguration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -439,7 +439,7 @@ class ConfigurationsApi
     /**
      * Operation createIotaConfigurationAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIotaConfiguration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -447,7 +447,7 @@ class ConfigurationsApi
      */
     public function createIotaConfigurationAsyncWithHttpInfo($create_iota_configuration_input, string $contentType = self::contentTypes['createIotaConfiguration'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
         $request = $this->createIotaConfigurationRequest($create_iota_configuration_input, $contentType);
 
         return $this->client
@@ -489,7 +489,7 @@ class ConfigurationsApi
     /**
      * Create request for operation 'createIotaConfiguration'
      *
-     * @param  \OpenAPI\Client\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\CreateIotaConfigurationInput $create_iota_configuration_input CreateConfiguration (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createIotaConfiguration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -588,7 +588,7 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -603,7 +603,7 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -641,7 +641,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -649,7 +649,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -818,9 +818,9 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError
      */
     public function getIotaConfigurationById($configuration_id, string $contentType = self::contentTypes['getIotaConfigurationById'][0])
     {
@@ -834,9 +834,9 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIotaConfigurationByIdWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getIotaConfigurationById'][0])
     {
@@ -867,11 +867,11 @@ class ConfigurationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IotaConfigurationDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IotaConfigurationDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -889,16 +889,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IotaConfigurationDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -916,16 +916,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -943,16 +943,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -970,7 +970,7 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -989,7 +989,7 @@ class ConfigurationsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1022,7 +1022,7 @@ class ConfigurationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IotaConfigurationDto',
+                        '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1030,7 +1030,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1038,7 +1038,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1046,7 +1046,7 @@ class ConfigurationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\Iota\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1086,7 +1086,7 @@ class ConfigurationsApi
      */
     public function getIotaConfigurationByIdAsyncWithHttpInfo($configuration_id, string $contentType = self::contentTypes['getIotaConfigurationById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
         $request = $this->getIotaConfigurationByIdRequest($configuration_id, $contentType);
 
         return $this->client
@@ -1229,9 +1229,9 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIotaConfigurationMetaData'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function getIotaConfigurationMetaData($project_id, $configuration_id, string $contentType = self::contentTypes['getIotaConfigurationMetaData'][0])
     {
@@ -1246,9 +1246,9 @@ class ConfigurationsApi
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIotaConfigurationMetaData'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getIotaConfigurationMetaDataWithHttpInfo($project_id, $configuration_id, string $contentType = self::contentTypes['getIotaConfigurationMetaData'][0])
     {
@@ -1279,11 +1279,11 @@ class ConfigurationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1301,16 +1301,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1328,16 +1328,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1355,7 +1355,7 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1374,7 +1374,7 @@ class ConfigurationsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1407,7 +1407,7 @@ class ConfigurationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK',
+                        '\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1415,7 +1415,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1423,7 +1423,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1465,7 +1465,7 @@ class ConfigurationsApi
      */
     public function getIotaConfigurationMetaDataAsyncWithHttpInfo($project_id, $configuration_id, string $contentType = self::contentTypes['getIotaConfigurationMetaData'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GetIotaConfigurationMetaDataOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\GetIotaConfigurationMetaDataOK';
         $request = $this->getIotaConfigurationMetaDataRequest($project_id, $configuration_id, $contentType);
 
         return $this->client
@@ -1617,9 +1617,9 @@ class ConfigurationsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIotaConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListConfigurationOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\ListConfigurationOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function listIotaConfigurations(string $contentType = self::contentTypes['listIotaConfigurations'][0])
     {
@@ -1632,9 +1632,9 @@ class ConfigurationsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listIotaConfigurations'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListConfigurationOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\ListConfigurationOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listIotaConfigurationsWithHttpInfo(string $contentType = self::contentTypes['listIotaConfigurations'][0])
     {
@@ -1665,11 +1665,11 @@ class ConfigurationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListConfigurationOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListConfigurationOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1687,16 +1687,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListConfigurationOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1714,16 +1714,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1741,7 +1741,7 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1760,7 +1760,7 @@ class ConfigurationsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListConfigurationOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1793,7 +1793,7 @@ class ConfigurationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListConfigurationOK',
+                        '\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1801,7 +1801,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1809,7 +1809,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1847,7 +1847,7 @@ class ConfigurationsApi
      */
     public function listIotaConfigurationsAsyncWithHttpInfo(string $contentType = self::contentTypes['listIotaConfigurations'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListConfigurationOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\ListConfigurationOK';
         $request = $this->listIotaConfigurationsRequest($contentType);
 
         return $this->client
@@ -1971,12 +1971,12 @@ class ConfigurationsApi
      * Operation updateIotaConfigurationById
      *
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
-     * @param  \OpenAPI\Client\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError
      */
     public function updateIotaConfigurationById($configuration_id, $update_configuration_by_id_input, string $contentType = self::contentTypes['updateIotaConfigurationById'][0])
     {
@@ -1988,12 +1988,12 @@ class ConfigurationsApi
      * Operation updateIotaConfigurationByIdWithHttpInfo
      *
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
-     * @param  \OpenAPI\Client\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIotaConfigurationById'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IotaConfigurationDto|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateIotaConfigurationByIdWithHttpInfo($configuration_id, $update_configuration_by_id_input, string $contentType = self::contentTypes['updateIotaConfigurationById'][0])
     {
@@ -2024,11 +2024,11 @@ class ConfigurationsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IotaConfigurationDto' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IotaConfigurationDto' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2046,16 +2046,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IotaConfigurationDto', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2073,16 +2073,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2100,16 +2100,16 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2127,7 +2127,7 @@ class ConfigurationsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2146,7 +2146,7 @@ class ConfigurationsApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2179,7 +2179,7 @@ class ConfigurationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IotaConfigurationDto',
+                        '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2187,7 +2187,7 @@ class ConfigurationsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2195,7 +2195,7 @@ class ConfigurationsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2203,7 +2203,7 @@ class ConfigurationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\Iota\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2217,7 +2217,7 @@ class ConfigurationsApi
      * Operation updateIotaConfigurationByIdAsync
      *
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
-     * @param  \OpenAPI\Client\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIotaConfigurationById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2237,7 +2237,7 @@ class ConfigurationsApi
      * Operation updateIotaConfigurationByIdAsyncWithHttpInfo
      *
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
-     * @param  \OpenAPI\Client\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIotaConfigurationById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2245,7 +2245,7 @@ class ConfigurationsApi
      */
     public function updateIotaConfigurationByIdAsyncWithHttpInfo($configuration_id, $update_configuration_by_id_input, string $contentType = self::contentTypes['updateIotaConfigurationById'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IotaConfigurationDto';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaConfigurationDto';
         $request = $this->updateIotaConfigurationByIdRequest($configuration_id, $update_configuration_by_id_input, $contentType);
 
         return $this->client
@@ -2288,7 +2288,7 @@ class ConfigurationsApi
      * Create request for operation 'updateIotaConfigurationById'
      *
      * @param  string $configuration_id ID of the Affinidi Iota Framework configuration. (required)
-     * @param  \OpenAPI\Client\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\UpdateConfigurationByIdInput $update_configuration_by_id_input UpdateConfigurationById (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateIotaConfigurationById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * CredentialResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class CredentialResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'credential' => '\OpenAPI\Client\Model\CredentialResponseImmediateCredential',
+        'credential' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential',
         'c_nonce' => 'string',
         'c_nonce_expires_in' => 'float',
         'transaction_id' => 'string'
@@ -326,7 +326,7 @@ class CredentialResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets credential
      *
-     * @return \OpenAPI\Client\Model\CredentialResponseImmediateCredential
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential
      */
     public function getCredential()
     {
@@ -336,7 +336,7 @@ class CredentialResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets credential
      *
-     * @param \OpenAPI\Client\Model\CredentialResponseImmediateCredential $credential credential
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialResponseImmediateCredential $credential credential
      *
      * @return self
      */

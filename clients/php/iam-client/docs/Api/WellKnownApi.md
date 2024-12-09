@@ -1,4 +1,4 @@
-# OpenAPI\Client\WellKnownApi
+# AffinidiTdk\Clients\Iam\WellKnownApi
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
@@ -10,7 +10,7 @@ All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operat
 ## `getWellKnownDid()`
 
 ```php
-getWellKnownDid(): \OpenAPI\Client\Model\GetWellKnownDidOK
+getWellKnownDid(): \AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK
 ```
 
 ### Example
@@ -21,7 +21,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\WellKnownApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\WellKnownApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetWellKnownDidOK**](../Model/GetWellKnownDidOK.md)
+[**\AffinidiTdk\Clients\Iam\Model\GetWellKnownDidOK**](../Model/GetWellKnownDidOK.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ No authorization required
 ## `getWellKnownJwks()`
 
 ```php
-getWellKnownJwks(): \OpenAPI\Client\Model\JsonWebKeySetDto
+getWellKnownJwks(): \AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto
 ```
 
 ### Example
@@ -70,7 +70,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\WellKnownApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\WellKnownApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -90,7 +90,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\JsonWebKeySetDto**](../Model/JsonWebKeySetDto.md)
+[**\AffinidiTdk\Clients\Iam\Model\JsonWebKeySetDto**](../Model/JsonWebKeySetDto.md)
 
 ### Authorization
 

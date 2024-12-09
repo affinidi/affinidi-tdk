@@ -1,4 +1,4 @@
-# OpenAPI\Client\CallbackApi
+# AffinidiTdk\Clients\Iota\CallbackApi
 
 All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/ais, except if the operat
 ## `iotOIDC4VPCallback()`
 
 ```php
-iotOIDC4VPCallback($callback_input): \OpenAPI\Client\Model\CallbackResponseOK
+iotOIDC4VPCallback($callback_input): \AffinidiTdk\Clients\Iota\Model\CallbackResponseOK
 ```
 
 It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.
@@ -22,12 +22,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\CallbackApi(
+$apiInstance = new AffinidiTdk\Clients\Iota\Api\CallbackApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$callback_input = new \OpenAPI\Client\Model\CallbackInput(); // \OpenAPI\Client\Model\CallbackInput | CallbackRequestInput
+$callback_input = new \AffinidiTdk\Clients\Iota\Model\CallbackInput(); // \AffinidiTdk\Clients\Iota\Model\CallbackInput | CallbackRequestInput
 
 try {
     $result = $apiInstance->iotOIDC4VPCallback($callback_input);
@@ -39,13 +39,13 @@ try {
 
 ### Parameters
 
-| Name               | Type                                                                 | Description          | Notes |
-| ------------------ | -------------------------------------------------------------------- | -------------------- | ----- |
-| **callback_input** | [**\OpenAPI\Client\Model\CallbackInput**](../Model/CallbackInput.md) | CallbackRequestInput |       |
+| Name               | Type                                                                           | Description          | Notes |
+| ------------------ | ------------------------------------------------------------------------------ | -------------------- | ----- |
+| **callback_input** | [**\AffinidiTdk\Clients\Iota\Model\CallbackInput**](../Model/CallbackInput.md) | CallbackRequestInput |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CallbackResponseOK**](../Model/CallbackResponseOK.md)
+[**\AffinidiTdk\Clients\Iota\Model\CallbackResponseOK**](../Model/CallbackResponseOK.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * ListIssuanceResponse Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListIssuanceResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'issuances' => '\OpenAPI\Client\Model\ListIssuanceResponseIssuancesInner[]'
+        'issuances' => '\AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponseIssuancesInner[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class ListIssuanceResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets issuances
      *
-     * @return \OpenAPI\Client\Model\ListIssuanceResponseIssuancesInner[]
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponseIssuancesInner[]
      */
     public function getIssuances()
     {
@@ -306,7 +306,7 @@ class ListIssuanceResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets issuances
      *
-     * @param \OpenAPI\Client\Model\ListIssuanceResponseIssuancesInner[] $issuances The list of all issuances for the Project
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\ListIssuanceResponseIssuancesInner[] $issuances The list of all issuances for the Project
      *
      * @return self
      */

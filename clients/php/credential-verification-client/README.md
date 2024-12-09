@@ -37,18 +37,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: ProjectTokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+$config = AffinidiTdk\Clients\CredentialVerification\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+// $config = AffinidiTdk\Clients\CredentialVerification\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+$apiInstance = new AffinidiTdk\Clients\CredentialVerification\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$verify_credential_input = new \OpenAPI\Client\Model\VerifyCredentialInput(); // \OpenAPI\Client\Model\VerifyCredentialInput | VerifyCredentials
+$verify_credential_input = new \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput(); // \AffinidiTdk\Clients\CredentialVerification\Model\VerifyCredentialInput | VerifyCredentials
 
 try {
     $result = $apiInstance->verifyCredentials($verify_credential_input);

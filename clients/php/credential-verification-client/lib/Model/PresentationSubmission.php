@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * PresentationSubmission Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PresentationSubmission implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'id' => 'string',
         'definition_id' => 'string',
-        'descriptor_map' => '\OpenAPI\Client\Model\Descriptor[]'
+        'descriptor_map' => '\AffinidiTdk\Clients\CredentialVerification\Model\Descriptor[]'
     ];
 
     /**
@@ -370,7 +370,7 @@ class PresentationSubmission implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets descriptor_map
      *
-     * @return \OpenAPI\Client\Model\Descriptor[]
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\Descriptor[]
      */
     public function getDescriptorMap()
     {
@@ -380,7 +380,7 @@ class PresentationSubmission implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets descriptor_map
      *
-     * @param \OpenAPI\Client\Model\Descriptor[] $descriptor_map descriptor_map
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\Descriptor[] $descriptor_map descriptor_map
      *
      * @return self
      */

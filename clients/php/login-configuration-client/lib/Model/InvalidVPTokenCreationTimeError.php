@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * InvalidVPTokenCreationTimeError Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class InvalidVPTokenCreationTimeError implements ModelInterface, ArrayAccess, \J
         'message' => 'string',
         'http_status_code' => 'float',
         'trace_id' => 'string',
-        'details' => '\OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]'
+        'details' => '\AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterErrorDetailsInner[]'
     ];
 
     /**
@@ -537,7 +537,7 @@ class InvalidVPTokenCreationTimeError implements ModelInterface, ArrayAccess, \J
     /**
      * Gets details
      *
-     * @return \OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterErrorDetailsInner[]|null
      */
     public function getDetails()
     {
@@ -547,7 +547,7 @@ class InvalidVPTokenCreationTimeError implements ModelInterface, ArrayAccess, \J
     /**
      * Sets details
      *
-     * @param \OpenAPI\Client\Model\InvalidParameterErrorDetailsInner[]|null $details details
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\InvalidParameterErrorDetailsInner[]|null $details details
      *
      * @return self
      */

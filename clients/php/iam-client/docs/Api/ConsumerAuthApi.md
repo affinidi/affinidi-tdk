@@ -1,4 +1,4 @@
-# OpenAPI\Client\ConsumerAuthApi
+# AffinidiTdk\Clients\Iam\ConsumerAuthApi
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
@@ -9,7 +9,7 @@ All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operat
 ## `consumerAuthTokenEndpoint()`
 
 ```php
-consumerAuthTokenEndpoint($consumer_auth_token_endpoint_input): \OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput
+consumerAuthTokenEndpoint($consumer_auth_token_endpoint_input): \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput
 ```
 
 The Consumer OAuth 2.0 Token Endpoint
@@ -24,12 +24,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\ConsumerAuthApi(
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\ConsumerAuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$consumer_auth_token_endpoint_input = new \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput(); // \OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+$consumer_auth_token_endpoint_input = new \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput(); // \AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
 
 try {
     $result = $apiInstance->consumerAuthTokenEndpoint($consumer_auth_token_endpoint_input);
@@ -41,13 +41,13 @@ try {
 
 ### Parameters
 
-| Name                                   | Type                                                                                                   | Description               | Notes |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------- | ----- |
-| **consumer_auth_token_endpoint_input** | [**\OpenAPI\Client\Model\ConsumerAuthTokenEndpointInput**](../Model/ConsumerAuthTokenEndpointInput.md) | ConsumerAuthTokenEndpoint |       |
+| Name                                   | Type                                                                                                            | Description               | Notes |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------- | ----- |
+| **consumer_auth_token_endpoint_input** | [**\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointInput**](../Model/ConsumerAuthTokenEndpointInput.md) | ConsumerAuthTokenEndpoint |       |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ConsumerAuthTokenEndpointOutput**](../Model/ConsumerAuthTokenEndpointOutput.md)
+[**\AffinidiTdk\Clients\Iam\Model\ConsumerAuthTokenEndpointOutput**](../Model/ConsumerAuthTokenEndpointOutput.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * SupportedCredentialMetadata Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SupportedCredentialMetadata implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display' => '\OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInner[]'
+        'display' => '\AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class SupportedCredentialMetadata implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets display
      *
-     * @return \OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInner[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInner[]|null
      */
     public function getDisplay()
     {
@@ -303,7 +303,7 @@ class SupportedCredentialMetadata implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets display
      *
-     * @param \OpenAPI\Client\Model\SupportedCredentialMetadataDisplayInner[]|null $display display
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\SupportedCredentialMetadataDisplayInner[]|null $display display
      *
      * @return self
      */

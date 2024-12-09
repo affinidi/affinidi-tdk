@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\LoginConfiguration\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\LoginConfiguration\ObjectSerializer;
 
 /**
  * CreateLoginConfigurationInput Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\LoginConfiguration
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,12 +64,12 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
         'post_logout_redirect_uris' => 'string[]',
         'vp_definition' => 'string',
         'presentation_definition' => 'object',
-        'id_token_mapping' => '\OpenAPI\Client\Model\IdTokenMapping',
-        'client_metadata' => '\OpenAPI\Client\Model\LoginConfigurationClientMetadataInput',
+        'id_token_mapping' => '\AffinidiTdk\Clients\LoginConfiguration\Model\IdTokenMapping',
+        'client_metadata' => '\AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataInput',
         'claim_format' => 'string',
         'fail_on_mapping_conflict' => 'bool',
         'scope' => 'string',
-        'token_endpoint_auth_method' => '\OpenAPI\Client\Model\TokenEndpointAuthMethod'
+        'token_endpoint_auth_method' => '\AffinidiTdk\Clients\LoginConfiguration\Model\TokenEndpointAuthMethod'
     ];
 
     /**
@@ -562,7 +562,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets id_token_mapping
      *
-     * @return \OpenAPI\Client\Model\IdTokenMapping|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\IdTokenMapping|null
      */
     public function getIdTokenMapping()
     {
@@ -572,7 +572,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets id_token_mapping
      *
-     * @param \OpenAPI\Client\Model\IdTokenMapping|null $id_token_mapping id_token_mapping
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\IdTokenMapping|null $id_token_mapping id_token_mapping
      *
      * @return self
      */
@@ -589,7 +589,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets client_metadata
      *
-     * @return \OpenAPI\Client\Model\LoginConfigurationClientMetadataInput|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataInput|null
      */
     public function getClientMetadata()
     {
@@ -599,7 +599,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets client_metadata
      *
-     * @param \OpenAPI\Client\Model\LoginConfigurationClientMetadataInput|null $client_metadata client_metadata
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\LoginConfigurationClientMetadataInput|null $client_metadata client_metadata
      *
      * @return self
      */
@@ -707,7 +707,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets token_endpoint_auth_method
      *
-     * @return \OpenAPI\Client\Model\TokenEndpointAuthMethod|null
+     * @return \AffinidiTdk\Clients\LoginConfiguration\Model\TokenEndpointAuthMethod|null
      */
     public function getTokenEndpointAuthMethod()
     {
@@ -717,7 +717,7 @@ class CreateLoginConfigurationInput implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets token_endpoint_auth_method
      *
-     * @param \OpenAPI\Client\Model\TokenEndpointAuthMethod|null $token_endpoint_auth_method token_endpoint_auth_method
+     * @param \AffinidiTdk\Clients\LoginConfiguration\Model\TokenEndpointAuthMethod|null $token_endpoint_auth_method token_endpoint_auth_method
      *
      * @return self
      */

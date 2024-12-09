@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * IssuanceConfigDto Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,7 +67,7 @@ class IssuanceConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'c_nonce_duration' => 'float',
         'format' => 'string',
         'issuer_uri' => 'string',
-        'credential_supported' => '\OpenAPI\Client\Model\CredentialSupportedObject[]',
+        'credential_supported' => '\AffinidiTdk\Clients\CredentialIssuance\Model\CredentialSupportedObject[]',
         'issuer_metadata' => 'array<string,mixed>',
         'version' => 'float',
         'return_uris' => 'string[]'
@@ -660,7 +660,7 @@ class IssuanceConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets credential_supported
      *
-     * @return \OpenAPI\Client\Model\CredentialSupportedObject[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialSupportedObject[]|null
      */
     public function getCredentialSupported()
     {
@@ -670,7 +670,7 @@ class IssuanceConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets credential_supported
      *
-     * @param \OpenAPI\Client\Model\CredentialSupportedObject[]|null $credential_supported credential_supported
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\CredentialSupportedObject[]|null $credential_supported credential_supported
      *
      * @return self
      */

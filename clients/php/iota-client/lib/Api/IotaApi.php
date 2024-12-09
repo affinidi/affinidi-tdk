@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace AffinidiTdk\Clients\Iota\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\ObjectSerializer;
+use AffinidiTdk\Clients\Iota\ApiException;
+use AffinidiTdk\Clients\Iota\Configuration;
+use AffinidiTdk\Clients\Iota\HeaderSelector;
+use AffinidiTdk\Clients\Iota\ObjectSerializer;
 
 /**
  * IotaApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\Iota
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,12 +138,12 @@ class IotaApi
     /**
      * Operation awsExchangeCredentials
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AwsExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function awsExchangeCredentials($aws_exchange_credentials, string $contentType = self::contentTypes['awsExchangeCredentials'][0])
     {
@@ -154,12 +154,12 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AwsExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function awsExchangeCredentialsWithHttpInfo($aws_exchange_credentials, string $contentType = self::contentTypes['awsExchangeCredentials'][0])
     {
@@ -190,11 +190,11 @@ class IotaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\AwsExchangeCredentialsOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\AwsExchangeCredentialsOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -212,16 +212,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\AwsExchangeCredentialsOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -239,16 +239,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -266,7 +266,7 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -285,7 +285,7 @@ class IotaApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\AwsExchangeCredentialsOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -318,7 +318,7 @@ class IotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AwsExchangeCredentialsOK',
+                        '\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -326,7 +326,7 @@ class IotaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -334,7 +334,7 @@ class IotaApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -347,7 +347,7 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsAsync
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -366,7 +366,7 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -374,7 +374,7 @@ class IotaApi
      */
     public function awsExchangeCredentialsAsyncWithHttpInfo($aws_exchange_credentials, string $contentType = self::contentTypes['awsExchangeCredentials'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AwsExchangeCredentialsOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsOK';
         $request = $this->awsExchangeCredentialsRequest($aws_exchange_credentials, $contentType);
 
         return $this->client
@@ -416,7 +416,7 @@ class IotaApi
     /**
      * Create request for operation 'awsExchangeCredentials'
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentials $aws_exchange_credentials AwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -507,12 +507,12 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsProjectToken
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentialsProjectToken'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IotaExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function awsExchangeCredentialsProjectToken($aws_exchange_credentials_project_token, string $contentType = self::contentTypes['awsExchangeCredentialsProjectToken'][0])
     {
@@ -523,12 +523,12 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsProjectTokenWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentialsProjectToken'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IotaExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function awsExchangeCredentialsProjectTokenWithHttpInfo($aws_exchange_credentials_project_token, string $contentType = self::contentTypes['awsExchangeCredentialsProjectToken'][0])
     {
@@ -559,11 +559,11 @@ class IotaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IotaExchangeCredentialsOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IotaExchangeCredentialsOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -581,16 +581,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IotaExchangeCredentialsOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -608,16 +608,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -635,7 +635,7 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -654,7 +654,7 @@ class IotaApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IotaExchangeCredentialsOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -687,7 +687,7 @@ class IotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IotaExchangeCredentialsOK',
+                        '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -695,7 +695,7 @@ class IotaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -703,7 +703,7 @@ class IotaApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -716,7 +716,7 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsProjectTokenAsync
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentialsProjectToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -735,7 +735,7 @@ class IotaApi
     /**
      * Operation awsExchangeCredentialsProjectTokenAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentialsProjectToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -743,7 +743,7 @@ class IotaApi
      */
     public function awsExchangeCredentialsProjectTokenAsyncWithHttpInfo($aws_exchange_credentials_project_token, string $contentType = self::contentTypes['awsExchangeCredentialsProjectToken'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IotaExchangeCredentialsOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK';
         $request = $this->awsExchangeCredentialsProjectTokenRequest($aws_exchange_credentials_project_token, $contentType);
 
         return $this->client
@@ -785,7 +785,7 @@ class IotaApi
     /**
      * Create request for operation 'awsExchangeCredentialsProjectToken'
      *
-     * @param  \OpenAPI\Client\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\AwsExchangeCredentialsProjectToken $aws_exchange_credentials_project_token AwsExchangeCredentialsProjectToken (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['awsExchangeCredentialsProjectToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -881,12 +881,12 @@ class IotaApi
     /**
      * Operation fetchIotaVpResponse
      *
-     * @param  \OpenAPI\Client\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchIotaVpResponse'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FetchIOTAVPResponseOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError
+     * @return \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError
      */
     public function fetchIotaVpResponse($fetch_iotavp_response_input, string $contentType = self::contentTypes['fetchIotaVpResponse'][0])
     {
@@ -897,12 +897,12 @@ class IotaApi
     /**
      * Operation fetchIotaVpResponseWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchIotaVpResponse'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FetchIOTAVPResponseOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError|\OpenAPI\Client\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError|\AffinidiTdk\Clients\Iota\Model\NotFoundError, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchIotaVpResponseWithHttpInfo($fetch_iotavp_response_input, string $contentType = self::contentTypes['fetchIotaVpResponse'][0])
     {
@@ -933,11 +933,11 @@ class IotaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\FetchIOTAVPResponseOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\FetchIOTAVPResponseOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -955,16 +955,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\FetchIOTAVPResponseOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -982,16 +982,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1009,16 +1009,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\OpenAPI\Client\Model\NotFoundError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NotFoundError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\NotFoundError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1036,7 +1036,7 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NotFoundError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\NotFoundError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1055,7 +1055,7 @@ class IotaApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\FetchIOTAVPResponseOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1088,7 +1088,7 @@ class IotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FetchIOTAVPResponseOK',
+                        '\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1096,7 +1096,7 @@ class IotaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1104,7 +1104,7 @@ class IotaApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1112,7 +1112,7 @@ class IotaApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NotFoundError',
+                        '\AffinidiTdk\Clients\Iota\Model\NotFoundError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1125,7 +1125,7 @@ class IotaApi
     /**
      * Operation fetchIotaVpResponseAsync
      *
-     * @param  \OpenAPI\Client\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchIotaVpResponse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1144,7 +1144,7 @@ class IotaApi
     /**
      * Operation fetchIotaVpResponseAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchIotaVpResponse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1152,7 +1152,7 @@ class IotaApi
      */
     public function fetchIotaVpResponseAsyncWithHttpInfo($fetch_iotavp_response_input, string $contentType = self::contentTypes['fetchIotaVpResponse'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FetchIOTAVPResponseOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseOK';
         $request = $this->fetchIotaVpResponseRequest($fetch_iotavp_response_input, $contentType);
 
         return $this->client
@@ -1194,7 +1194,7 @@ class IotaApi
     /**
      * Create request for operation 'fetchIotaVpResponse'
      *
-     * @param  \OpenAPI\Client\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\FetchIOTAVPResponseInput $fetch_iotavp_response_input FetchIOTAVPResponseInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchIotaVpResponse'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1290,12 +1290,12 @@ class IotaApi
     /**
      * Operation initiateDataSharingRequest
      *
-     * @param  \OpenAPI\Client\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateDataSharingRequest'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\InitiateDataSharingRequestOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function initiateDataSharingRequest($initiate_data_sharing_request_input, string $contentType = self::contentTypes['initiateDataSharingRequest'][0])
     {
@@ -1306,12 +1306,12 @@ class IotaApi
     /**
      * Operation initiateDataSharingRequestWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateDataSharingRequest'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\InitiateDataSharingRequestOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function initiateDataSharingRequestWithHttpInfo($initiate_data_sharing_request_input, string $contentType = self::contentTypes['initiateDataSharingRequest'][0])
     {
@@ -1342,11 +1342,11 @@ class IotaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\InitiateDataSharingRequestOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InitiateDataSharingRequestOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1364,16 +1364,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InitiateDataSharingRequestOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1391,16 +1391,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1418,7 +1418,7 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1437,7 +1437,7 @@ class IotaApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\InitiateDataSharingRequestOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1470,7 +1470,7 @@ class IotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InitiateDataSharingRequestOK',
+                        '\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1478,7 +1478,7 @@ class IotaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1486,7 +1486,7 @@ class IotaApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1499,7 +1499,7 @@ class IotaApi
     /**
      * Operation initiateDataSharingRequestAsync
      *
-     * @param  \OpenAPI\Client\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateDataSharingRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1518,7 +1518,7 @@ class IotaApi
     /**
      * Operation initiateDataSharingRequestAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateDataSharingRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1526,7 +1526,7 @@ class IotaApi
      */
     public function initiateDataSharingRequestAsyncWithHttpInfo($initiate_data_sharing_request_input, string $contentType = self::contentTypes['initiateDataSharingRequest'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\InitiateDataSharingRequestOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestOK';
         $request = $this->initiateDataSharingRequestRequest($initiate_data_sharing_request_input, $contentType);
 
         return $this->client
@@ -1568,7 +1568,7 @@ class IotaApi
     /**
      * Create request for operation 'initiateDataSharingRequest'
      *
-     * @param  \OpenAPI\Client\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\InitiateDataSharingRequestInput $initiate_data_sharing_request_input InitiateDataSharingRequestInput (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateDataSharingRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1664,12 +1664,12 @@ class IotaApi
     /**
      * Operation iotaExchangeCredentials
      *
-     * @param  \OpenAPI\Client\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['iotaExchangeCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IotaExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError
+     * @return \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError
      */
     public function iotaExchangeCredentials($iota_exchange_credentials, string $contentType = self::contentTypes['iotaExchangeCredentials'][0])
     {
@@ -1680,12 +1680,12 @@ class IotaApi
     /**
      * Operation iotaExchangeCredentialsWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['iotaExchangeCredentials'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \AffinidiTdk\Clients\Iota\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IotaExchangeCredentialsOK|\OpenAPI\Client\Model\InvalidParameterError|\OpenAPI\Client\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK|\AffinidiTdk\Clients\Iota\Model\InvalidParameterError|\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError, HTTP status code, HTTP response headers (array of strings)
      */
     public function iotaExchangeCredentialsWithHttpInfo($iota_exchange_credentials, string $contentType = self::contentTypes['iotaExchangeCredentials'][0])
     {
@@ -1716,11 +1716,11 @@ class IotaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\IotaExchangeCredentialsOK' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\IotaExchangeCredentialsOK' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1738,16 +1738,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\IotaExchangeCredentialsOK', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\OpenAPI\Client\Model\InvalidParameterError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\InvalidParameterError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\InvalidParameterError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1765,16 +1765,16 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InvalidParameterError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('\OpenAPI\Client\Model\OperationForbiddenError' === '\SplFileObject') {
+                    if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\OperationForbiddenError' !== 'string') {
+                        if ('\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1792,7 +1792,7 @@ class IotaApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\OperationForbiddenError', []),
+                        ObjectSerializer::deserialize($content, '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1811,7 +1811,7 @@ class IotaApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\IotaExchangeCredentialsOK';
+            $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1844,7 +1844,7 @@ class IotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IotaExchangeCredentialsOK',
+                        '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1852,7 +1852,7 @@ class IotaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InvalidParameterError',
+                        '\AffinidiTdk\Clients\Iota\Model\InvalidParameterError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1860,7 +1860,7 @@ class IotaApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\OperationForbiddenError',
+                        '\AffinidiTdk\Clients\Iota\Model\OperationForbiddenError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1873,7 +1873,7 @@ class IotaApi
     /**
      * Operation iotaExchangeCredentialsAsync
      *
-     * @param  \OpenAPI\Client\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['iotaExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1892,7 +1892,7 @@ class IotaApi
     /**
      * Operation iotaExchangeCredentialsAsyncWithHttpInfo
      *
-     * @param  \OpenAPI\Client\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['iotaExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1900,7 +1900,7 @@ class IotaApi
      */
     public function iotaExchangeCredentialsAsyncWithHttpInfo($iota_exchange_credentials, string $contentType = self::contentTypes['iotaExchangeCredentials'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IotaExchangeCredentialsOK';
+        $returnType = '\AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentialsOK';
         $request = $this->iotaExchangeCredentialsRequest($iota_exchange_credentials, $contentType);
 
         return $this->client
@@ -1942,7 +1942,7 @@ class IotaApi
     /**
      * Create request for operation 'iotaExchangeCredentials'
      *
-     * @param  \OpenAPI\Client\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
+     * @param  \AffinidiTdk\Clients\Iota\Model\IotaExchangeCredentials $iota_exchange_credentials IotaAwsExchangeCredentials (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['iotaExchangeCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

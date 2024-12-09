@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialIssuance\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialIssuance\ObjectSerializer;
 
 /**
  * ListIssuanceRecordResponse Class Doc Comment
  *
  * @category Class
  * @description list of issuance data records
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialIssuance
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListIssuanceRecordResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'flow_data' => '\OpenAPI\Client\Model\FlowData[]',
+        'flow_data' => '\AffinidiTdk\Clients\CredentialIssuance\Model\FlowData[]',
         'last_evaluated_key' => 'string'
     ];
 
@@ -301,7 +301,7 @@ class ListIssuanceRecordResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets flow_data
      *
-     * @return \OpenAPI\Client\Model\FlowData[]|null
+     * @return \AffinidiTdk\Clients\CredentialIssuance\Model\FlowData[]|null
      */
     public function getFlowData()
     {
@@ -311,7 +311,7 @@ class ListIssuanceRecordResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets flow_data
      *
-     * @param \OpenAPI\Client\Model\FlowData[]|null $flow_data flow_data
+     * @param \AffinidiTdk\Clients\CredentialIssuance\Model\FlowData[]|null $flow_data flow_data
      *
      * @return self
      */

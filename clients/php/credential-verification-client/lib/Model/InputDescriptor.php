@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace AffinidiTdk\Clients\CredentialVerification\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \AffinidiTdk\Clients\CredentialVerification\ObjectSerializer;
 
 /**
  * InputDescriptor Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  AffinidiTdk\Clients\CredentialVerification
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class InputDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'constraints' => '\OpenAPI\Client\Model\Constraints',
+        'constraints' => '\AffinidiTdk\Clients\CredentialVerification\Model\Constraints',
         'name' => 'string',
         'purpose' => 'string',
-        'format' => '\OpenAPI\Client\Model\Format',
+        'format' => '\AffinidiTdk\Clients\CredentialVerification\Model\Format',
         'group' => 'string[]'
     ];
 
@@ -361,7 +361,7 @@ class InputDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets constraints
      *
-     * @return \OpenAPI\Client\Model\Constraints
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\Constraints
      */
     public function getConstraints()
     {
@@ -371,7 +371,7 @@ class InputDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets constraints
      *
-     * @param \OpenAPI\Client\Model\Constraints $constraints constraints
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\Constraints $constraints constraints
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class InputDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets format
      *
-     * @return \OpenAPI\Client\Model\Format|null
+     * @return \AffinidiTdk\Clients\CredentialVerification\Model\Format|null
      */
     public function getFormat()
     {
@@ -452,7 +452,7 @@ class InputDescriptor implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets format
      *
-     * @param \OpenAPI\Client\Model\Format|null $format format
+     * @param \AffinidiTdk\Clients\CredentialVerification\Model\Format|null $format format
      *
      * @return self
      */
