@@ -72,7 +72,7 @@ No authorization required
 
 # **listIssuanceDataRecords**
 
-> ListIssuanceRecordResponse listIssuanceDataRecords(limit, exclusiveStartKey)
+> ListIssuanceRecordResponse listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey)
 
 List records
 
@@ -82,6 +82,8 @@ List records
 
 | Name                  | Type        | Description                                              | Notes                        |
 | --------------------- | ----------- | -------------------------------------------------------- | ---------------------------- |
+| **projectId**         | **String**  | Affinidi project id                                      | [default to null]            |
+| **configurationId**   | **String**  | The id of the issuance configuration                     | [default to null]            |
 | **limit**             | **Integer** | Maximum number of records to fetch in a list             | [optional] [default to 10]   |
 | **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data. | [optional] [default to null] |
 
@@ -91,7 +93,7 @@ List records
 
 ### Authorization
 
-No authorization required
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
 
 ### HTTP request headers
 

@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name         | Type    | Description | Notes      |
-| ------------ | ------- | ----------- | ---------- |
-| **purpose**  | **str** |             | [optional] |
-| **standard** | **str** |             | [optional] |
+| Name         | Type    | Description | Notes |
+| ------------ | ------- | ----------- | ----- |
+| **purpose**  | **str** |             |
+| **standard** | **str** |             |
 
 ## Example
 
