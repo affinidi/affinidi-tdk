@@ -132,16 +132,25 @@ class Configuration
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
+    /** @var callable|null */
+    protected $apiKeyRefreshCallback;
+
     /**
      * Sets API key
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      * @param string $key              API key or token
+     * @param callable|null $callback Optional hook for retrieving the API key with
      *
      * @return $this
      */
-    public function setApiKey($apiKeyIdentifier, $key)
+    public function setApiKey($apiKeyIdentifier, $key, callable|null $callback = null)
     {
+        if ($callback && is_callable($callback)) {
+            // Set the callback if provided
+            $this->apiKeyRefreshCallback = $callback;
+        }
+
         $this->apiKeys[$apiKeyIdentifier] = $key;
         return $this;
     }
@@ -155,6 +164,10 @@ class Configuration
      */
     public function getApiKey($apiKeyIdentifier)
     {
+        if ($this->apiKeyRefreshCallback) {
+            $this->apiKeys[$apiKeyIdentifier] = ($this->apiKeyRefreshCallback)();
+        }
+
         return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
     }
 
