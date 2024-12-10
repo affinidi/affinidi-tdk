@@ -58,6 +58,8 @@ part 'model/principal_cannot_be_deleted_error.dart';
 part 'model/principal_does_not_belong_to_project_error.dart';
 part 'model/project_dto.dart';
 part 'model/project_list.dart';
+part 'model/project_with_policy_dto.dart';
+part 'model/project_with_policy_list.dart';
 part 'model/public_key_cannot_be_resolved_from_did_error.dart';
 part 'model/service_error_response.dart';
 part 'model/service_error_response_details_inner.dart';

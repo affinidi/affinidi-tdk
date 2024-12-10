@@ -83,6 +83,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | _TokensApi_       | [**createToken**](docs/Api/TokensApi.md#createtoken)                                   | **POST** /v1/tokens                              |
 | _TokensApi_       | [**deleteToken**](docs/Api/TokensApi.md#deletetoken)                                   | **DELETE** /v1/tokens/{tokenId}                  |
 | _TokensApi_       | [**getToken**](docs/Api/TokensApi.md#gettoken)                                         | **GET** /v1/tokens/{tokenId}                     |
+| _TokensApi_       | [**listProjectsOfToken**](docs/Api/TokensApi.md#listprojectsoftoken)                   | **GET** /v1/tokens/{tokenId}/projects            |
 | _TokensApi_       | [**listToken**](docs/Api/TokensApi.md#listtoken)                                       | **GET** /v1/tokens                               |
 | _TokensApi_       | [**updateToken**](docs/Api/TokensApi.md#updatetoken)                                   | **PATCH** /v1/tokens/{tokenId}                   |
 | _WellKnownApi_    | [**getWellKnownDid**](docs/Api/WellKnownApi.md#getwellknowndid)                        | **GET** /.well-known/did.json                    |
@@ -112,6 +113,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [PrincipalDoesNotBelongToProjectError](docs/Model/PrincipalDoesNotBelongToProjectError.md)
 - [ProjectDto](docs/Model/ProjectDto.md)
 - [ProjectList](docs/Model/ProjectList.md)
+- [ProjectWithPolicyDto](docs/Model/ProjectWithPolicyDto.md)
+- [ProjectWithPolicyList](docs/Model/ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](docs/Model/PublicKeyCannotBeResolvedFromDidError.md)
 - [ServiceErrorResponse](docs/Model/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](docs/Model/ServiceErrorResponseDetailsInner.md)
