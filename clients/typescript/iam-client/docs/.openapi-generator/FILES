@@ -27,6 +27,8 @@ Models/PrincipalCannotBeDeletedError.md
 Models/PrincipalDoesNotBelongToProjectError.md
 Models/ProjectDto.md
 Models/ProjectList.md
+Models/ProjectWithPolicyDto.md
+Models/ProjectWithPolicyList.md
 Models/PublicKeyCannotBeResolvedFromDidError.md
 Models/ServiceErrorResponse.md
 Models/ServiceErrorResponse_details_inner.md

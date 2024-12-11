@@ -2,13 +2,14 @@
 
 All URIs are relative to https://apse1.api.affinidi.io/iam, except if the operation defines another base path.
 
-| Method                                        | HTTP request                    | Description |
-| --------------------------------------------- | ------------------------------- | ----------- |
-| [**createToken()**](TokensApi.md#createToken) | **POST** /v1/tokens             |             |
-| [**deleteToken()**](TokensApi.md#deleteToken) | **DELETE** /v1/tokens/{tokenId} |             |
-| [**getToken()**](TokensApi.md#getToken)       | **GET** /v1/tokens/{tokenId}    |             |
-| [**listToken()**](TokensApi.md#listToken)     | **GET** /v1/tokens              |             |
-| [**updateToken()**](TokensApi.md#updateToken) | **PATCH** /v1/tokens/{tokenId}  |             |
+| Method                                                        | HTTP request                          | Description |
+| ------------------------------------------------------------- | ------------------------------------- | ----------- |
+| [**createToken()**](TokensApi.md#createToken)                 | **POST** /v1/tokens                   |             |
+| [**deleteToken()**](TokensApi.md#deleteToken)                 | **DELETE** /v1/tokens/{tokenId}       |             |
+| [**getToken()**](TokensApi.md#getToken)                       | **GET** /v1/tokens/{tokenId}          |             |
+| [**listProjectsOfToken()**](TokensApi.md#listProjectsOfToken) | **GET** /v1/tokens/{tokenId}/projects |             |
+| [**listToken()**](TokensApi.md#listToken)                     | **GET** /v1/tokens                    |             |
+| [**updateToken()**](TokensApi.md#updateToken)                 | **PATCH** /v1/tokens/{tokenId}        |             |
 
 ## `createToken()`
 
@@ -169,6 +170,68 @@ try {
 ### Return type
 
 [**\AffinidiTdk\Clients\Iam\Model\TokenDto**](../Model/TokenDto.md)
+
+### Authorization
+
+[UserTokenAuth](../../README.md#UserTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listProjectsOfToken()`
+
+```php
+listProjectsOfToken($token_id, $limit, $exclusive_start_key): \AffinidiTdk\Clients\Iam\Model\ProjectWithPolicyList
+```
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: UserTokenAuth
+$config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = AffinidiTdk\Clients\Iam\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+
+
+$apiInstance = new AffinidiTdk\Clients\Iam\Api\TokensApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$token_id = 'token_id_example'; // string
+$limit = 56; // int | Maximum number of records to fetch in a list
+$exclusive_start_key = 'exclusive_start_key_example'; // string | exclusiveStartKey for retrieving the next batch of data.
+
+try {
+    $result = $apiInstance->listProjectsOfToken($token_id, $limit, $exclusive_start_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TokensApi->listProjectsOfToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name                    | Type       | Description                                              | Notes      |
+| ----------------------- | ---------- | -------------------------------------------------------- | ---------- |
+| **token_id**            | **string** |                                                          |            |
+| **limit**               | **int**    | Maximum number of records to fetch in a list             | [optional] |
+| **exclusive_start_key** | **string** | exclusiveStartKey for retrieving the next batch of data. | [optional] |
+
+### Return type
+
+[**\AffinidiTdk\Clients\Iam\Model\ProjectWithPolicyList**](../Model/ProjectWithPolicyList.md)
 
 ### Authorization
 

@@ -32,6 +32,8 @@ docs/Model/PrincipalCannotBeDeletedError.md
 docs/Model/PrincipalDoesNotBelongToProjectError.md
 docs/Model/ProjectDto.md
 docs/Model/ProjectList.md
+docs/Model/ProjectWithPolicyDto.md
+docs/Model/ProjectWithPolicyList.md
 docs/Model/PublicKeyCannotBeResolvedFromDidError.md
 docs/Model/ServiceErrorResponse.md
 docs/Model/ServiceErrorResponseDetailsInner.md
@@ -84,6 +86,8 @@ lib/Model/PrincipalCannotBeDeletedError.php
 lib/Model/PrincipalDoesNotBelongToProjectError.php
 lib/Model/ProjectDto.php
 lib/Model/ProjectList.php
+lib/Model/ProjectWithPolicyDto.php
+lib/Model/ProjectWithPolicyList.php
 lib/Model/PublicKeyCannotBeResolvedFromDidError.php
 lib/Model/ServiceErrorResponse.php
 lib/Model/ServiceErrorResponseDetailsInner.php
@@ -105,3 +109,5 @@ lib/Model/UserList.php
 lib/Model/WhoamiDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ProjectWithPolicyDtoTest.php
+test/Model/ProjectWithPolicyListTest.php
