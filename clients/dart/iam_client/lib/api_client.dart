@@ -226,6 +226,10 @@ class ApiClient {
           return ProjectDto.fromJson(value);
         case 'ProjectList':
           return ProjectList.fromJson(value);
+        case 'ProjectWithPolicyDto':
+          return ProjectWithPolicyDto.fromJson(value);
+        case 'ProjectWithPolicyList':
+          return ProjectWithPolicyList.fromJson(value);
         case 'PublicKeyCannotBeResolvedFromDidError':
           return PublicKeyCannotBeResolvedFromDidError.fromJson(value);
         case 'ServiceErrorResponse':
