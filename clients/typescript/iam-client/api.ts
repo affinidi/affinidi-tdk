@@ -853,6 +853,50 @@ export interface ProjectList {
 /**
  *
  * @export
+ * @interface ProjectWithPolicyDto
+ */
+export interface ProjectWithPolicyDto {
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyDto
+   */
+  id: string
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyDto
+   */
+  name: string
+  /**
+   *
+   * @type {PolicyDto}
+   * @memberof ProjectWithPolicyDto
+   */
+  policy: PolicyDto
+}
+/**
+ *
+ * @export
+ * @interface ProjectWithPolicyList
+ */
+export interface ProjectWithPolicyList {
+  /**
+   *
+   * @type {Array<ProjectWithPolicyDto>}
+   * @memberof ProjectWithPolicyList
+   */
+  projects: Array<ProjectWithPolicyDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyList
+   */
+  lastEvaluatedKey?: string
+}
+/**
+ *
+ * @export
  * @interface PublicKeyCannotBeResolvedFromDidError
  */
 export interface PublicKeyCannotBeResolvedFromDidError {
@@ -4080,6 +4124,70 @@ export const TokensApiAxiosParamCreator = function (
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProjectsOfToken: async (
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'tokenId' is not null or undefined
+      assertParamExists('listProjectsOfToken', 'tokenId', tokenId)
+      const localVarPath = `/v1/tokens/{tokenId}/projects`.replace(
+        `{${'tokenId'}}`,
+        encodeURIComponent(String(tokenId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4284,6 +4392,45 @@ export const TokensApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listProjectsOfToken(
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ProjectWithPolicyList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listProjectsOfToken(
+          tokenId,
+          limit,
+          exclusiveStartKey,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['TokensApi.listProjectsOfToken']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4397,6 +4544,24 @@ export const TokensApiFactory = function (
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProjectsOfToken(
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProjectWithPolicyList> {
+      return localVarFp
+        .listProjectsOfToken(tokenId, limit, exclusiveStartKey, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4470,6 +4635,26 @@ export class TokensApi extends BaseAPI {
   public getToken(tokenId: string, options?: RawAxiosRequestConfig) {
     return TokensApiFp(this.configuration)
       .getToken(tokenId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} tokenId
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public listProjectsOfToken(
+    tokenId: string,
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return TokensApiFp(this.configuration)
+      .listProjectsOfToken(tokenId, limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

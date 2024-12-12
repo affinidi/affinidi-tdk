@@ -32,6 +32,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | _TokensApi_       | [**createToken**](Apis/TokensApi.md#createtoken)                                   | **POST** /v1/tokens                              |                                       |
 | _TokensApi_       | [**deleteToken**](Apis/TokensApi.md#deletetoken)                                   | **DELETE** /v1/tokens/{tokenId}                  |                                       |
 | _TokensApi_       | [**getToken**](Apis/TokensApi.md#gettoken)                                         | **GET** /v1/tokens/{tokenId}                     |                                       |
+| _TokensApi_       | [**listProjectsOfToken**](Apis/TokensApi.md#listprojectsoftoken)                   | **GET** /v1/tokens/{tokenId}/projects            |                                       |
 | _TokensApi_       | [**listToken**](Apis/TokensApi.md#listtoken)                                       | **GET** /v1/tokens                               |                                       |
 | _TokensApi_       | [**updateToken**](Apis/TokensApi.md#updatetoken)                                   | **PATCH** /v1/tokens/{tokenId}                   |                                       |
 | _WellKnownApi_    | [**getWellKnownDid**](Apis/WellKnownApi.md#getwellknowndid)                        | **GET** /.well-known/did.json                    |                                       |
@@ -62,6 +63,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [PrincipalDoesNotBelongToProjectError](./Models/PrincipalDoesNotBelongToProjectError.md)
 - [ProjectDto](./Models/ProjectDto.md)
 - [ProjectList](./Models/ProjectList.md)
+- [ProjectWithPolicyDto](./Models/ProjectWithPolicyDto.md)
+- [ProjectWithPolicyList](./Models/ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](./Models/PublicKeyCannotBeResolvedFromDidError.md)
 - [ServiceErrorResponse](./Models/ServiceErrorResponse.md)
 - [ServiceErrorResponse_details_inner](./Models/ServiceErrorResponse_details_inner.md)

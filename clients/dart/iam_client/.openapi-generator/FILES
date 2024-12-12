@@ -27,6 +27,8 @@ doc/PrincipalCannotBeDeletedError.md
 doc/PrincipalDoesNotBelongToProjectError.md
 doc/ProjectDto.md
 doc/ProjectList.md
+doc/ProjectWithPolicyDto.md
+doc/ProjectWithPolicyList.md
 doc/ProjectsApi.md
 doc/PublicKeyCannotBeResolvedFromDidError.md
 doc/ServiceErrorResponse.md
@@ -88,6 +90,8 @@ lib/model/principal_cannot_be_deleted_error.dart
 lib/model/principal_does_not_belong_to_project_error.dart
 lib/model/project_dto.dart
 lib/model/project_list.dart
+lib/model/project_with_policy_dto.dart
+lib/model/project_with_policy_list.dart
 lib/model/public_key_cannot_be_resolved_from_did_error.dart
 lib/model/service_error_response.dart
 lib/model/service_error_response_details_inner.dart
@@ -108,3 +112,5 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
+test/project_with_policy_dto_test.dart
+test/project_with_policy_list_test.dart
