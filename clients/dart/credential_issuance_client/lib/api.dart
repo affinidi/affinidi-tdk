@@ -64,7 +64,6 @@ part 'model/flow_data.dart';
 part 'model/flow_data_status_lists_details_inner.dart';
 part 'model/generate_credentials400_response.dart';
 part 'model/get_credential_offer400_response.dart';
-part 'model/get_status_list_result_dto.dart';
 part 'model/invalid_credential_request_error.dart';
 part 'model/invalid_credential_type_error.dart';
 part 'model/invalid_issuer_wallet_error.dart';

@@ -2,15 +2,14 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                                     | HTTP request                                                                            | Description                   |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------- |
-| [**change_credential_satatus**](DefaultApi.md#change_credential_satatus)   | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status.     |
-| [**get_status_list**](DefaultApi.md#get_status_list)                       | **GET** /v1/{projectId}/status-list/{statusListId}                                      | Return status list credential |
-| [**list_issuance_data_records**](DefaultApi.md#list_issuance_data_records) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records                  |
+| Method                                                                     | HTTP request                                                                            | Description               |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------- |
+| [**change_credential_status**](DefaultApi.md#change_credential_status)     | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status. |
+| [**list_issuance_data_records**](DefaultApi.md#list_issuance_data_records) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records              |
 
-# **change_credential_satatus**
+# **change_credential_status**
 
-> FlowData change_credential_satatus(project_id, configuration_id)
+> FlowData change_credential_status(project_id, configuration_id)
 
 change credential status.
 
@@ -69,11 +68,11 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
     try:
         # change credential status.
-        api_response = api_instance.change_credential_satatus(project_id, configuration_id)
-        print("The response of DefaultApi->change_credential_satatus:\n")
+        api_response = api_instance.change_credential_status(project_id, configuration_id)
+        print("The response of DefaultApi->change_credential_status:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->change_credential_satatus: %s\n" % e)
+        print("Exception when calling DefaultApi->change_credential_status: %s\n" % e)
 ```
 
 ### Parameters
@@ -103,77 +102,6 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 | **200**     | updated credential entity | -                |
 | **400**     | BadRequestError           | -                |
 | **404**     | NotFoundError             | -                |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_status_list**
-
-> GetStatusListResultDto get_status_list(project_id, status_list_id)
-
-Return status list credential
-
-Return status list credential
-
-### Example
-
-```python
-import time
-import os
-import affinidi_tdk_credential_issuance_client
-from affinidi_tdk_credential_issuance_client.models.get_status_list_result_dto import GetStatusListResultDto
-from affinidi_tdk_credential_issuance_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cis
-# See configuration.py for a list of all supported configuration parameters.
-configuration = affinidi_tdk_credential_issuance_client.Configuration(
-    host = "https://apse1.api.affinidi.io/cis"
-)
-
-
-# Enter a context with an instance of the API client
-with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = affinidi_tdk_credential_issuance_client.DefaultApi(api_client)
-    project_id = 'project_id_example' # str |
-    status_list_id = 'status_list_id_example' # str | id of the status list
-
-    try:
-        # Return status list credential
-        api_response = api_instance.get_status_list(project_id, status_list_id)
-        print("The response of DefaultApi->get_status_list:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_status_list: %s\n" % e)
-```
-
-### Parameters
-
-| Name               | Type    | Description           | Notes |
-| ------------------ | ------- | --------------------- | ----- |
-| **project_id**     | **str** |                       |
-| **status_list_id** | **str** | id of the status list |
-
-### Return type
-
-[**GetStatusListResultDto**](GetStatusListResultDto.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description                     | Response headers |
-| ----------- | ------------------------------- | ---------------- |
-| **200**     | GetRevocationCredentialStatusOK | -                |
-| **400**     | BadRequestError                 | -                |
-| **404**     | NotFoundError                   | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -2,17 +2,16 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                               | HTTP request                                                                            | Description                   |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------- |
-| [**changeCredentialSatatus**](DefaultApi.md#changeCredentialSatatus) | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status.     |
-| [**getStatusList**](DefaultApi.md#getStatusList)                     | **GET** /v1/{projectId}/status-list/{statusListId}                                      | Return status list credential |
-| [**listIssuanceDataRecords**](DefaultApi.md#listIssuanceDataRecords) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records                  |
+| Method                                                               | HTTP request                                                                            | Description               |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------- |
+| [**changeCredentialStatus**](DefaultApi.md#changeCredentialStatus)   | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status. |
+| [**listIssuanceDataRecords**](DefaultApi.md#listIssuanceDataRecords) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records              |
 
-<a name="changeCredentialSatatus"></a>
+<a name="changeCredentialStatus"></a>
 
-# **changeCredentialSatatus**
+# **changeCredentialStatus**
 
-> FlowData changeCredentialSatatus(projectId, configurationId)
+> FlowData changeCredentialStatus(projectId, configurationId)
 
 change credential status.
 
@@ -32,36 +31,6 @@ change credential status.
 ### Authorization
 
 [ProjectTokenAuth](../README.md#ProjectTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-<a name="getStatusList"></a>
-
-# **getStatusList**
-
-> GetStatusListResultDto getStatusList(projectId, statusListId)
-
-Return status list credential
-
-    Return status list credential
-
-### Parameters
-
-| Name             | Type       | Description           | Notes             |
-| ---------------- | ---------- | --------------------- | ----------------- |
-| **projectId**    | **String** |                       | [default to null] |
-| **statusListId** | **String** | id of the status list | [default to null] |
-
-### Return type
-
-[**GetStatusListResultDto**](../Models/GetStatusListResultDto.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 
