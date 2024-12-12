@@ -29,7 +29,7 @@ class DefaultApi {
   ///
   /// * [String] configurationId (required):
   ///   configuration id
-  Future<Response> changeCredentialSatatusWithHttpInfo(String projectId, String configurationId,) async {
+  Future<Response> changeCredentialStatusWithHttpInfo(String projectId, String configurationId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/{projectId}/configurations/{configurationId}/issuance/change-status'
       .replaceAll('{projectId}', projectId)
@@ -67,8 +67,8 @@ class DefaultApi {
   ///
   /// * [String] configurationId (required):
   ///   configuration id
-  Future<FlowData?> changeCredentialSatatus(String projectId, String configurationId,) async {
-    final response = await changeCredentialSatatusWithHttpInfo(projectId, configurationId,);
+  Future<FlowData?> changeCredentialStatus(String projectId, String configurationId,) async {
+    final response = await changeCredentialStatusWithHttpInfo(projectId, configurationId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -77,70 +77,6 @@ class DefaultApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FlowData',) as FlowData;
-    
-    }
-    return null;
-  }
-
-  /// Return status list credential
-  ///
-  /// Return status list credential
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] projectId (required):
-  ///
-  /// * [String] statusListId (required):
-  ///   id of the status list
-  Future<Response> getStatusListWithHttpInfo(String projectId, String statusListId,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/v1/{projectId}/status-list/{statusListId}'
-      .replaceAll('{projectId}', projectId)
-      .replaceAll('{statusListId}', statusListId);
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'GET',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// Return status list credential
-  ///
-  /// Return status list credential
-  ///
-  /// Parameters:
-  ///
-  /// * [String] projectId (required):
-  ///
-  /// * [String] statusListId (required):
-  ///   id of the status list
-  Future<GetStatusListResultDto?> getStatusList(String projectId, String statusListId,) async {
-    final response = await getStatusListWithHttpInfo(projectId, statusListId,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetStatusListResultDto',) as GetStatusListResultDto;
     
     }
     return null;

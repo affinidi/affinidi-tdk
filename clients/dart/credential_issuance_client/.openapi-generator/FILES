@@ -34,7 +34,6 @@ doc/FlowData.md
 doc/FlowDataStatusListsDetailsInner.md
 doc/GenerateCredentials400Response.md
 doc/GetCredentialOffer400Response.md
-doc/GetStatusListResultDto.md
 doc/InvalidCredentialRequestError.md
 doc/InvalidCredentialTypeError.md
 doc/InvalidIssuerWalletError.md
@@ -112,7 +111,6 @@ lib/model/flow_data.dart
 lib/model/flow_data_status_lists_details_inner.dart
 lib/model/generate_credentials400_response.dart
 lib/model/get_credential_offer400_response.dart
-lib/model/get_status_list_result_dto.dart
 lib/model/invalid_credential_request_error.dart
 lib/model/invalid_credential_type_error.dart
 lib/model/invalid_issuer_wallet_error.dart
