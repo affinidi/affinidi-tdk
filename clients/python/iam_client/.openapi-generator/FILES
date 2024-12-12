@@ -1,6 +1,5 @@
 .github/workflows/python.yml
 .gitignore
-.travis.yml
 README.md
 README.md
 affinidi_tdk_iam_client/__init__.py
@@ -39,6 +38,8 @@ affinidi_tdk_iam_client/models/principal_cannot_be_deleted_error.py
 affinidi_tdk_iam_client/models/principal_does_not_belong_to_project_error.py
 affinidi_tdk_iam_client/models/project_dto.py
 affinidi_tdk_iam_client/models/project_list.py
+affinidi_tdk_iam_client/models/project_with_policy_dto.py
+affinidi_tdk_iam_client/models/project_with_policy_list.py
 affinidi_tdk_iam_client/models/public_key_cannot_be_resolved_from_did_error.py
 affinidi_tdk_iam_client/models/service_error_response.py
 affinidi_tdk_iam_client/models/service_error_response_details_inner.py
@@ -85,6 +86,8 @@ docs/PrincipalCannotBeDeletedError.md
 docs/PrincipalDoesNotBelongToProjectError.md
 docs/ProjectDto.md
 docs/ProjectList.md
+docs/ProjectWithPolicyDto.md
+docs/ProjectWithPolicyList.md
 docs/ProjectsApi.md
 docs/PublicKeyCannotBeResolvedFromDidError.md
 docs/ServiceErrorResponse.md
@@ -115,4 +118,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_project_with_policy_dto.py
+test/test_project_with_policy_list.py
 tox.ini

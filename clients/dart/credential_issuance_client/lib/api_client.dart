@@ -240,8 +240,6 @@ class ApiClient {
           return GenerateCredentials400Response.fromJson(value);
         case 'GetCredentialOffer400Response':
           return GetCredentialOffer400Response.fromJson(value);
-        case 'GetStatusListResultDto':
-          return GetStatusListResultDto.fromJson(value);
         case 'InvalidCredentialRequestError':
           return InvalidCredentialRequestError.fromJson(value);
         case 'InvalidCredentialTypeError':

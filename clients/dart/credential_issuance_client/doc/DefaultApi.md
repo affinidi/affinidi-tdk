@@ -8,15 +8,14 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                               | HTTP request                                                                            | Description                   |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------- |
-| [**changeCredentialSatatus**](DefaultApi.md#changecredentialsatatus) | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status.     |
-| [**getStatusList**](DefaultApi.md#getstatuslist)                     | **GET** /v1/{projectId}/status-list/{statusListId}                                      | Return status list credential |
-| [**listIssuanceDataRecords**](DefaultApi.md#listissuancedatarecords) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records                  |
+| Method                                                               | HTTP request                                                                            | Description               |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------- |
+| [**changeCredentialStatus**](DefaultApi.md#changecredentialstatus)   | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status. |
+| [**listIssuanceDataRecords**](DefaultApi.md#listissuancedatarecords) | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records              |
 
-# **changeCredentialSatatus**
+# **changeCredentialStatus**
 
-> FlowData changeCredentialSatatus(projectId, configurationId)
+> FlowData changeCredentialStatus(projectId, configurationId)
 
 change credential status.
 
@@ -36,10 +35,10 @@ final projectId = projectId_example; // String | project id
 final configurationId = configurationId_example; // String | configuration id
 
 try {
-    final result = api_instance.changeCredentialSatatus(projectId, configurationId);
+    final result = api_instance.changeCredentialStatus(projectId, configurationId);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->changeCredentialSatatus: $e\n');
+    print('Exception when calling DefaultApi->changeCredentialStatus: $e\n');
 }
 ```
 
@@ -57,53 +56,6 @@ try {
 ### Authorization
 
 [ProjectTokenAuth](../README.md#ProjectTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getStatusList**
-
-> GetStatusListResultDto getStatusList(projectId, statusListId)
-
-Return status list credential
-
-Return status list credential
-
-### Example
-
-```dart
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
-
-final api_instance = DefaultApi();
-final projectId = projectId_example; // String |
-final statusListId = statusListId_example; // String | id of the status list
-
-try {
-    final result = api_instance.getStatusList(projectId, statusListId);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getStatusList: $e\n');
-}
-```
-
-### Parameters
-
-| Name             | Type       | Description           | Notes |
-| ---------------- | ---------- | --------------------- | ----- |
-| **projectId**    | **String** |                       |
-| **statusListId** | **String** | id of the status list |
-
-### Return type
-
-[**GetStatusListResultDto**](GetStatusListResultDto.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 

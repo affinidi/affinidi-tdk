@@ -280,6 +280,7 @@ void (empty response body)
 | **204**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
 | **409**     | ConflictError   | -                |
 | **500**     | UnexpectedError | -                |
 

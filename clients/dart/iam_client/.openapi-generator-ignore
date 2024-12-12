@@ -34,3 +34,5 @@ github
 travis.yaml
 git_push.sh
 .gitlab-ci.yml
+.travis.yml
+composer.json
