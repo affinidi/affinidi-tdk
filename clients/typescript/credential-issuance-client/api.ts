@@ -917,19 +917,6 @@ export type GetCredentialOffer400Response =
   | VcClaimedError
 
 /**
- * DTO contains revocation list credential
- * @export
- * @interface GetStatusListResultDto
- */
-export interface GetStatusListResultDto {
-  /**
-   *
-   * @type {object}
-   * @memberof GetStatusListResultDto
-   */
-  revocationListCredential: object
-}
-/**
  *
  * @export
  * @interface InvalidCredentialRequestError
@@ -3088,21 +3075,29 @@ export const DefaultApiAxiosParamCreator = function (
      * @summary change credential status.
      * @param {string} projectId project id
      * @param {string} configurationId configuration id
+     * @param {ChangeCredentialStatusInput} changeCredentialStatusInput Request body for changing credential status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changeCredentialSatatus: async (
+    changeCredentialStatus: async (
       projectId: string,
       configurationId: string,
+      changeCredentialStatusInput: ChangeCredentialStatusInput,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'projectId' is not null or undefined
-      assertParamExists('changeCredentialSatatus', 'projectId', projectId)
+      assertParamExists('changeCredentialStatus', 'projectId', projectId)
       // verify required parameter 'configurationId' is not null or undefined
       assertParamExists(
-        'changeCredentialSatatus',
+        'changeCredentialStatus',
         'configurationId',
         configurationId,
+      )
+      // verify required parameter 'changeCredentialStatusInput' is not null or undefined
+      assertParamExists(
+        'changeCredentialStatus',
+        'changeCredentialStatusInput',
+        changeCredentialStatusInput,
       )
       const localVarPath =
         `/v1/{projectId}/configurations/{configurationId}/issuance/change-status`
@@ -3133,57 +3128,7 @@ export const DefaultApiAxiosParamCreator = function (
         configuration,
       )
 
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * Return status list credential
-     * @summary Return status list credential
-     * @param {string} projectId
-     * @param {string} statusListId id of the status list
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getStatusList: async (
-      projectId: string,
-      statusListId: string,
-      options: RawAxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'projectId' is not null or undefined
-      assertParamExists('getStatusList', 'projectId', projectId)
-      // verify required parameter 'statusListId' is not null or undefined
-      assertParamExists('getStatusList', 'statusListId', statusListId)
-      const localVarPath = `/v1/{projectId}/status-list/{statusListId}`
-        .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
-        .replace(
-          `{${'statusListId'}}`,
-          encodeURIComponent(String(statusListId)),
-        )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = {
-        method: 'GET',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3193,6 +3138,11 @@ export const DefaultApiAxiosParamCreator = function (
         ...headersFromBaseOptions,
         ...options.headers,
       }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        changeCredentialStatusInput,
+        localVarRequestOptions,
+        configuration,
+      )
 
       return {
         url: toPathString(localVarUrlObj),
@@ -3290,61 +3240,28 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      * @summary change credential status.
      * @param {string} projectId project id
      * @param {string} configurationId configuration id
+     * @param {ChangeCredentialStatusInput} changeCredentialStatusInput Request body for changing credential status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async changeCredentialSatatus(
+    async changeCredentialStatus(
       projectId: string,
       configurationId: string,
+      changeCredentialStatusInput: ChangeCredentialStatusInput,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<FlowData>
     > {
       const localVarAxiosArgs =
-        await localVarAxiosParamCreator.changeCredentialSatatus(
+        await localVarAxiosParamCreator.changeCredentialStatus(
           projectId,
           configurationId,
+          changeCredentialStatusInput,
           options,
         )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
-        operationServerMap['DefaultApi.changeCredentialSatatus']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
-    /**
-     * Return status list credential
-     * @summary Return status list credential
-     * @param {string} projectId
-     * @param {string} statusListId id of the status list
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getStatusList(
-      projectId: string,
-      statusListId: string,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string,
-      ) => AxiosPromise<GetStatusListResultDto>
-    > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getStatusList(
-        projectId,
-        statusListId,
-        options,
-      )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['DefaultApi.getStatusList']?.[
+        operationServerMap['DefaultApi.changeCredentialStatus']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -3417,33 +3334,23 @@ export const DefaultApiFactory = function (
      * @summary change credential status.
      * @param {string} projectId project id
      * @param {string} configurationId configuration id
+     * @param {ChangeCredentialStatusInput} changeCredentialStatusInput Request body for changing credential status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    changeCredentialSatatus(
+    changeCredentialStatus(
       projectId: string,
       configurationId: string,
+      changeCredentialStatusInput: ChangeCredentialStatusInput,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<FlowData> {
       return localVarFp
-        .changeCredentialSatatus(projectId, configurationId, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
-     * Return status list credential
-     * @summary Return status list credential
-     * @param {string} projectId
-     * @param {string} statusListId id of the status list
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getStatusList(
-      projectId: string,
-      statusListId: string,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<GetStatusListResultDto> {
-      return localVarFp
-        .getStatusList(projectId, statusListId, options)
+        .changeCredentialStatus(
+          projectId,
+          configurationId,
+          changeCredentialStatusInput,
+          options,
+        )
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3488,36 +3395,24 @@ export class DefaultApi extends BaseAPI {
    * @summary change credential status.
    * @param {string} projectId project id
    * @param {string} configurationId configuration id
+   * @param {ChangeCredentialStatusInput} changeCredentialStatusInput Request body for changing credential status
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DefaultApi
    */
-  public changeCredentialSatatus(
+  public changeCredentialStatus(
     projectId: string,
     configurationId: string,
+    changeCredentialStatusInput: ChangeCredentialStatusInput,
     options?: RawAxiosRequestConfig,
   ) {
     return DefaultApiFp(this.configuration)
-      .changeCredentialSatatus(projectId, configurationId, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
-  /**
-   * Return status list credential
-   * @summary Return status list credential
-   * @param {string} projectId
-   * @param {string} statusListId id of the status list
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public getStatusList(
-    projectId: string,
-    statusListId: string,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return DefaultApiFp(this.configuration)
-      .getStatusList(projectId, statusListId, options)
+      .changeCredentialStatus(
+        projectId,
+        configurationId,
+        changeCredentialStatusInput,
+        options,
+      )
       .then((request) => request(this.axios, this.basePath))
   }
 
