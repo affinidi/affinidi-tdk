@@ -1,5 +1,4 @@
 .gitignore
-.travis.yml
 README.md
 analysis_options.yaml
 doc/CreateWalletInput.md

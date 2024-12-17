@@ -1,6 +1,5 @@
 .github/workflows/python.yml
 .gitignore
-.travis.yml
 README.md
 README.md
 affinidi_tdk_credential_issuance_client/__init__.py
@@ -45,7 +44,6 @@ affinidi_tdk_credential_issuance_client/models/flow_data.py
 affinidi_tdk_credential_issuance_client/models/flow_data_status_lists_details_inner.py
 affinidi_tdk_credential_issuance_client/models/generate_credentials400_response.py
 affinidi_tdk_credential_issuance_client/models/get_credential_offer400_response.py
-affinidi_tdk_credential_issuance_client/models/get_status_list_result_dto.py
 affinidi_tdk_credential_issuance_client/models/invalid_credential_request_error.py
 affinidi_tdk_credential_issuance_client/models/invalid_credential_type_error.py
 affinidi_tdk_credential_issuance_client/models/invalid_issuer_wallet_error.py
@@ -110,7 +108,6 @@ docs/FlowData.md
 docs/FlowDataStatusListsDetailsInner.md
 docs/GenerateCredentials400Response.md
 docs/GetCredentialOffer400Response.md
-docs/GetStatusListResultDto.md
 docs/InvalidCredentialRequestError.md
 docs/InvalidCredentialTypeError.md
 docs/InvalidIssuerWalletError.md

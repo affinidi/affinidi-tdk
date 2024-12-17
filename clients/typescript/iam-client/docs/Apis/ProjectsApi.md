@@ -91,11 +91,14 @@ null (empty response body)
 
 # **listPrincipalsOfProject**
 
-> UserList listPrincipalsOfProject()
+> UserList listPrincipalsOfProject(limit, exclusiveStartKey)
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                  | Type        | Description                                                                                                                                                    | Notes                        |
+| --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| **limit**             | **Integer** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100]  |
+| **exclusiveStartKey** | **String**  | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] [default to null] |
 
 ### Return type
 
@@ -114,11 +117,14 @@ This endpoint does not need any parameter.
 
 # **listProject**
 
-> ProjectList listProject()
+> ProjectList listProject(limit, exclusiveStartKey)
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                  | Type        | Description                                                                                                                                                    | Notes                        |
+| --------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| **limit**             | **Integer** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100]  |
+| **exclusiveStartKey** | **String**  | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional] [default to null] |
 
 ### Return type
 

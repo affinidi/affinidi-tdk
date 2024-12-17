@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, conlist
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_iam_client.models.user_dto import UserDto
 
 class UserList(BaseModel):
@@ -28,7 +28,8 @@ class UserList(BaseModel):
     UserList
     """
     records: conlist(UserDto) = Field(...)
-    __properties = ["records"]
+    last_evaluated_key: Optional[StrictStr] = Field(default=None, alias="lastEvaluatedKey")
+    __properties = ["records", "lastEvaluatedKey"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +74,8 @@ class UserList(BaseModel):
             return UserList.parse_obj(obj)
 
         _obj = UserList.parse_obj({
-            "records": [UserDto.from_dict(_item) for _item in obj.get("records")] if obj.get("records") is not None else None
+            "records": [UserDto.from_dict(_item) for _item in obj.get("records")] if obj.get("records") is not None else None,
+            "last_evaluated_key": obj.get("lastEvaluatedKey")
         })
         return _obj
 

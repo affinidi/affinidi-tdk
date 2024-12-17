@@ -24,8 +24,8 @@ from pydantic import Field, StrictStr, conint, constr
 
 from typing import Optional
 
+from affinidi_tdk_credential_issuance_client.models.change_credential_status_input import ChangeCredentialStatusInput
 from affinidi_tdk_credential_issuance_client.models.flow_data import FlowData
-from affinidi_tdk_credential_issuance_client.models.get_status_list_result_dto import GetStatusListResultDto
 from affinidi_tdk_credential_issuance_client.models.list_issuance_record_response import ListIssuanceRecordResponse
 
 from affinidi_tdk_credential_issuance_client.api_client import ApiClient
@@ -49,20 +49,22 @@ class DefaultApi:
         self.api_client = api_client
 
     @validate_arguments
-    def change_credential_satatus(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], **kwargs) -> FlowData:  # noqa: E501
+    def change_credential_status(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], change_credential_status_input : Annotated[ChangeCredentialStatusInput, Field(..., description="Request body for changing credential status")], **kwargs) -> FlowData:  # noqa: E501
         """change credential status.  # noqa: E501
 
         change credential status.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.change_credential_satatus(project_id, configuration_id, async_req=True)
+        >>> thread = api.change_credential_status(project_id, configuration_id, change_credential_status_input, async_req=True)
         >>> result = thread.get()
 
         :param project_id: project id (required)
         :type project_id: str
         :param configuration_id: configuration id (required)
         :type configuration_id: str
+        :param change_credential_status_input: Request body for changing credential status (required)
+        :type change_credential_status_input: ChangeCredentialStatusInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -76,25 +78,27 @@ class DefaultApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the change_credential_satatus_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the change_credential_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.change_credential_satatus_with_http_info(project_id, configuration_id, **kwargs)  # noqa: E501
+        return self.change_credential_status_with_http_info(project_id, configuration_id, change_credential_status_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def change_credential_satatus_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def change_credential_status_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], change_credential_status_input : Annotated[ChangeCredentialStatusInput, Field(..., description="Request body for changing credential status")], **kwargs) -> ApiResponse:  # noqa: E501
         """change credential status.  # noqa: E501
 
         change credential status.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.change_credential_satatus_with_http_info(project_id, configuration_id, async_req=True)
+        >>> thread = api.change_credential_status_with_http_info(project_id, configuration_id, change_credential_status_input, async_req=True)
         >>> result = thread.get()
 
         :param project_id: project id (required)
         :type project_id: str
         :param configuration_id: configuration id (required)
         :type configuration_id: str
+        :param change_credential_status_input: Request body for changing credential status (required)
+        :type change_credential_status_input: ChangeCredentialStatusInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -124,7 +128,8 @@ class DefaultApi:
 
         _all_params = [
             'project_id',
-            'configuration_id'
+            'configuration_id',
+            'change_credential_status_input'
         ]
         _all_params.extend(
             [
@@ -143,7 +148,7 @@ class DefaultApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method change_credential_satatus" % _key
+                    " to method change_credential_status" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -168,9 +173,19 @@ class DefaultApi:
         _files = {}
         # process the body parameter
         _body_params = None
+        if _params['change_credential_status_input'] is not None:
+            _body_params = _params['change_credential_status_input']
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['ProjectTokenAuth']  # noqa: E501
@@ -183,156 +198,6 @@ class DefaultApi:
 
         return self.api_client.call_api(
             '/v1/{projectId}/configurations/{configurationId}/issuance/change-status', 'POST',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def get_status_list(self, project_id : StrictStr, status_list_id : Annotated[StrictStr, Field(..., description="id of the status list")], **kwargs) -> GetStatusListResultDto:  # noqa: E501
-        """Return status list credential  # noqa: E501
-
-        Return status list credential  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_status_list(project_id, status_list_id, async_req=True)
-        >>> result = thread.get()
-
-        :param project_id: (required)
-        :type project_id: str
-        :param status_list_id: id of the status list (required)
-        :type status_list_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: GetStatusListResultDto
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the get_status_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.get_status_list_with_http_info(project_id, status_list_id, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def get_status_list_with_http_info(self, project_id : StrictStr, status_list_id : Annotated[StrictStr, Field(..., description="id of the status list")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Return status list credential  # noqa: E501
-
-        Return status list credential  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_status_list_with_http_info(project_id, status_list_id, async_req=True)
-        >>> result = thread.get()
-
-        :param project_id: (required)
-        :type project_id: str
-        :param status_list_id: id of the status list (required)
-        :type status_list_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(GetStatusListResultDto, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'project_id',
-            'status_list_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_status_list" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['project_id'] is not None:
-            _path_params['projectId'] = _params['project_id']
-
-        if _params['status_list_id'] is not None:
-            _path_params['statusListId'] = _params['status_list_id']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = []  # noqa: E501
-
-        _response_types_map = {
-            '200': "GetStatusListResultDto",
-            '400': "InvalidParameterError",
-            '404': "NotFoundError",
-        }
-
-        return self.api_client.call_api(
-            '/v1/{projectId}/status-list/{statusListId}', 'GET',
             _path_params,
             _query_params,
             _header_params,

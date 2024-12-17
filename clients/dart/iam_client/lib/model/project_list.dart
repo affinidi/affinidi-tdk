@@ -14,25 +14,41 @@ class ProjectList {
   /// Returns a new [ProjectList] instance.
   ProjectList({
     this.projects = const [],
+    this.lastEvaluatedKey,
   });
 
   List<ProjectDto> projects;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastEvaluatedKey;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProjectList &&
-    _deepEquality.equals(other.projects, projects);
+    _deepEquality.equals(other.projects, projects) &&
+    other.lastEvaluatedKey == lastEvaluatedKey;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (projects.hashCode);
+    (projects.hashCode) +
+    (lastEvaluatedKey == null ? 0 : lastEvaluatedKey!.hashCode);
 
   @override
-  String toString() => 'ProjectList[projects=$projects]';
+  String toString() => 'ProjectList[projects=$projects, lastEvaluatedKey=$lastEvaluatedKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'projects'] = this.projects;
+    if (this.lastEvaluatedKey != null) {
+      json[r'lastEvaluatedKey'] = this.lastEvaluatedKey;
+    } else {
+      json[r'lastEvaluatedKey'] = null;
+    }
     return json;
   }
 
@@ -56,6 +72,7 @@ class ProjectList {
 
       return ProjectList(
         projects: ProjectDto.listFromJson(json[r'projects']),
+        lastEvaluatedKey: mapValueOfType<String>(json, r'lastEvaluatedKey'),
       );
     }
     return null;

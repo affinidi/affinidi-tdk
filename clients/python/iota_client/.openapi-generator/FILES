@@ -1,6 +1,5 @@
 .github/workflows/python.yml
 .gitignore
-.travis.yml
 README.md
 README.md
 affinidi_tdk_iota_client/__init__.py

@@ -226,6 +226,10 @@ class ApiClient {
           return ProjectDto.fromJson(value);
         case 'ProjectList':
           return ProjectList.fromJson(value);
+        case 'ProjectWithPolicyDto':
+          return ProjectWithPolicyDto.fromJson(value);
+        case 'ProjectWithPolicyList':
+          return ProjectWithPolicyList.fromJson(value);
         case 'PublicKeyCannotBeResolvedFromDidError':
           return PublicKeyCannotBeResolvedFromDidError.fromJson(value);
         case 'ServiceErrorResponse':
@@ -246,8 +250,8 @@ class ApiClient {
           return TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.fromJson(value);
         case 'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1':
           return TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.fromJson(value);
-        case 'TypedPricipalId':
-          return TypedPricipalId.fromJson(value);
+        case 'TypedPrincipalId':
+          return TypedPrincipalId.fromJson(value);
         case 'UnauthorizedError':
           return UnauthorizedError.fromJson(value);
         case 'UnexpectedError':
