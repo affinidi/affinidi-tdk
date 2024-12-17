@@ -14,25 +14,41 @@ class TokenList {
   /// Returns a new [TokenList] instance.
   TokenList({
     this.tokens = const [],
+    this.lastEvaluatedKey,
   });
 
   List<TokenDto> tokens;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastEvaluatedKey;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is TokenList &&
-    _deepEquality.equals(other.tokens, tokens);
+    _deepEquality.equals(other.tokens, tokens) &&
+    other.lastEvaluatedKey == lastEvaluatedKey;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (tokens.hashCode);
+    (tokens.hashCode) +
+    (lastEvaluatedKey == null ? 0 : lastEvaluatedKey!.hashCode);
 
   @override
-  String toString() => 'TokenList[tokens=$tokens]';
+  String toString() => 'TokenList[tokens=$tokens, lastEvaluatedKey=$lastEvaluatedKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'tokens'] = this.tokens;
+    if (this.lastEvaluatedKey != null) {
+      json[r'lastEvaluatedKey'] = this.lastEvaluatedKey;
+    } else {
+      json[r'lastEvaluatedKey'] = null;
+    }
     return json;
   }
 
@@ -56,6 +72,7 @@ class TokenList {
 
       return TokenList(
         tokens: TokenDto.listFromJson(json[r'tokens']),
+        lastEvaluatedKey: mapValueOfType<String>(json, r'lastEvaluatedKey'),
       );
     }
     return null;

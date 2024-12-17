@@ -280,6 +280,7 @@ void (empty response body)
 | **204**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
 | **409**     | ConflictError   | -                |
 | **500**     | UnexpectedError | -                |
 
@@ -287,7 +288,7 @@ void (empty response body)
 
 # **list_principals_of_project**
 
-> UserList list_principals_of_project()
+> UserList list_principals_of_project(limit=limit, exclusive_start_key=exclusive_start_key)
 
 ### Example
 
@@ -337,9 +338,11 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iam_client.ProjectsApi(api_client)
+    limit = 100 # int | Maximum number of records to fetch in a list (optional) (default to 100)
+    exclusive_start_key = 'exclusive_start_key_example' # str | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
 
     try:
-        api_response = api_instance.list_principals_of_project()
+        api_response = api_instance.list_principals_of_project(limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of ProjectsApi->list_principals_of_project:\n")
         pprint(api_response)
     except Exception as e:
@@ -348,7 +351,10 @@ with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                    | Type    | Description                                                                                                                                                    | Notes                       |
+| ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **limit**               | **int** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100] |
+| **exclusive_start_key** | **str** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional]                  |
 
 ### Return type
 
@@ -376,7 +382,7 @@ This endpoint does not need any parameter.
 
 # **list_project**
 
-> ProjectList list_project()
+> ProjectList list_project(limit=limit, exclusive_start_key=exclusive_start_key)
 
 ### Example
 
@@ -426,9 +432,11 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iam_client.ProjectsApi(api_client)
+    limit = 100 # int | Maximum number of records to fetch in a list (optional) (default to 100)
+    exclusive_start_key = 'exclusive_start_key_example' # str | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
 
     try:
-        api_response = api_instance.list_project()
+        api_response = api_instance.list_project(limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of ProjectsApi->list_project:\n")
         pprint(api_response)
     except Exception as e:
@@ -437,7 +445,10 @@ with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                    | Type    | Description                                                                                                                                                    | Notes                       |
+| ----------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **limit**               | **int** | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100] |
+| **exclusive_start_key** | **str** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional]                  |
 
 ### Return type
 

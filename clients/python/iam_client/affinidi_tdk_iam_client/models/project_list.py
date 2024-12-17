@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, conlist
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_iam_client.models.project_dto import ProjectDto
 
 class ProjectList(BaseModel):
@@ -28,7 +28,8 @@ class ProjectList(BaseModel):
     ProjectList
     """
     projects: conlist(ProjectDto) = Field(...)
-    __properties = ["projects"]
+    last_evaluated_key: Optional[StrictStr] = Field(default=None, alias="lastEvaluatedKey")
+    __properties = ["projects", "lastEvaluatedKey"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +74,8 @@ class ProjectList(BaseModel):
             return ProjectList.parse_obj(obj)
 
         _obj = ProjectList.parse_obj({
-            "projects": [ProjectDto.from_dict(_item) for _item in obj.get("projects")] if obj.get("projects") is not None else None
+            "projects": [ProjectDto.from_dict(_item) for _item in obj.get("projects")] if obj.get("projects") is not None else None,
+            "last_evaluated_key": obj.get("lastEvaluatedKey")
         })
         return _obj
 

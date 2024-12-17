@@ -2,9 +2,10 @@
 
 ## Properties
 
-| Name       | Type                              | Description | Notes |
-| ---------- | --------------------------------- | ----------- | ----- |
-| **tokens** | [**List[TokenDto]**](TokenDto.md) |             |
+| Name                   | Type                              | Description | Notes      |
+| ---------------------- | --------------------------------- | ----------- | ---------- |
+| **tokens**             | [**List[TokenDto]**](TokenDto.md) |             |
+| **last_evaluated_key** | **str**                           |             | [optional] |
 
 ## Example
 

@@ -153,10 +153,20 @@ class TokensApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /v1/tokens' operation and returns the [Response].
-  Future<Response> listTokenWithHttpInfo() async {
+  /// Performs an HTTP 'GET /v1/tokens/{tokenId}/projects' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] tokenId (required):
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<Response> listProjectsOfTokenWithHttpInfo(String tokenId, { int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/tokens';
+    final path = r'/v1/tokens/{tokenId}/projects'
+      .replaceAll('{tokenId}', tokenId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -164,6 +174,13 @@ class TokensApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (exclusiveStartKey != null) {
+      queryParams.addAll(_queryParams('', 'exclusiveStartKey', exclusiveStartKey));
+    }
 
     const contentTypes = <String>[];
 
@@ -179,8 +196,79 @@ class TokensApi {
     );
   }
 
-  Future<TokenList?> listToken() async {
-    final response = await listTokenWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [String] tokenId (required):
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<ProjectWithPolicyList?> listProjectsOfToken(String tokenId, { int? limit, String? exclusiveStartKey, }) async {
+    final response = await listProjectsOfTokenWithHttpInfo(tokenId,  limit: limit, exclusiveStartKey: exclusiveStartKey, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectWithPolicyList',) as ProjectWithPolicyList;
+    
+    }
+    return null;
+  }
+
+  /// Performs an HTTP 'GET /v1/tokens' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<Response> listTokenWithHttpInfo({ int? limit, String? exclusiveStartKey, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/tokens';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (exclusiveStartKey != null) {
+      queryParams.addAll(_queryParams('', 'exclusiveStartKey', exclusiveStartKey));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<TokenList?> listToken({ int? limit, String? exclusiveStartKey, }) async {
+    final response = await listTokenWithHttpInfo( limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

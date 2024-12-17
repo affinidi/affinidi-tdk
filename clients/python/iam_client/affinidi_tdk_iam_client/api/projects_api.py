@@ -20,7 +20,9 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictStr, conint, constr
+
+from typing import Optional
 
 from affinidi_tdk_iam_client.models.add_user_to_project_input import AddUserToProjectInput
 from affinidi_tdk_iam_client.models.create_project_input import CreateProjectInput
@@ -484,15 +486,19 @@ class ProjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_principals_of_project(self, **kwargs) -> UserList:  # noqa: E501
+    def list_principals_of_project(self, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> UserList:  # noqa: E501
         """list_principals_of_project  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_principals_of_project(async_req=True)
+        >>> thread = api.list_principals_of_project(limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param limit: Maximum number of records to fetch in a list
+        :type limit: int
+        :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        :type exclusive_start_key: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -508,18 +514,22 @@ class ProjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_principals_of_project_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_principals_of_project_with_http_info(**kwargs)  # noqa: E501
+        return self.list_principals_of_project_with_http_info(limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_principals_of_project_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_principals_of_project_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_principals_of_project  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_principals_of_project_with_http_info(async_req=True)
+        >>> thread = api.list_principals_of_project_with_http_info(limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param limit: Maximum number of records to fetch in a list
+        :type limit: int
+        :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        :type exclusive_start_key: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -548,6 +558,8 @@ class ProjectsApi:
         _params = locals()
 
         _all_params = [
+            'limit',
+            'exclusive_start_key'
         ]
         _all_params.extend(
             [
@@ -578,6 +590,12 @@ class ProjectsApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('exclusive_start_key') is not None:  # noqa: E501
+            _query_params.append(('exclusiveStartKey', _params['exclusive_start_key']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -617,15 +635,19 @@ class ProjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_project(self, **kwargs) -> ProjectList:  # noqa: E501
+    def list_project(self, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ProjectList:  # noqa: E501
         """list_project  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_project(async_req=True)
+        >>> thread = api.list_project(limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param limit: Maximum number of records to fetch in a list
+        :type limit: int
+        :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        :type exclusive_start_key: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -641,18 +663,22 @@ class ProjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_project_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_project_with_http_info(**kwargs)  # noqa: E501
+        return self.list_project_with_http_info(limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_project_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_project_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_project  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_project_with_http_info(async_req=True)
+        >>> thread = api.list_project_with_http_info(limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
+        :param limit: Maximum number of records to fetch in a list
+        :type limit: int
+        :param exclusive_start_key: The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        :type exclusive_start_key: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -681,6 +707,8 @@ class ProjectsApi:
         _params = locals()
 
         _all_params = [
+            'limit',
+            'exclusive_start_key'
         ]
         _all_params.extend(
             [
@@ -711,6 +739,12 @@ class ProjectsApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('exclusive_start_key') is not None:  # noqa: E501
+            _query_params.append(('exclusiveStartKey', _params['exclusive_start_key']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

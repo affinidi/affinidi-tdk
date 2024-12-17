@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, conlist
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_iam_client.models.token_dto import TokenDto
 
 class TokenList(BaseModel):
@@ -28,7 +28,8 @@ class TokenList(BaseModel):
     TokenList
     """
     tokens: conlist(TokenDto) = Field(...)
-    __properties = ["tokens"]
+    last_evaluated_key: Optional[StrictStr] = Field(default=None, alias="lastEvaluatedKey")
+    __properties = ["tokens", "lastEvaluatedKey"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +74,8 @@ class TokenList(BaseModel):
             return TokenList.parse_obj(obj)
 
         _obj = TokenList.parse_obj({
-            "tokens": [TokenDto.from_dict(_item) for _item in obj.get("tokens")] if obj.get("tokens") is not None else None
+            "tokens": [TokenDto.from_dict(_item) for _item in obj.get("tokens")] if obj.get("tokens") is not None else None,
+            "last_evaluated_key": obj.get("lastEvaluatedKey")
         })
         return _obj
 

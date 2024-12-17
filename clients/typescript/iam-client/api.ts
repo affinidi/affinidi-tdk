@@ -849,6 +849,56 @@ export interface ProjectList {
    * @memberof ProjectList
    */
   projects: Array<ProjectDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectList
+   */
+  lastEvaluatedKey?: string
+}
+/**
+ *
+ * @export
+ * @interface ProjectWithPolicyDto
+ */
+export interface ProjectWithPolicyDto {
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyDto
+   */
+  id: string
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyDto
+   */
+  name: string
+  /**
+   *
+   * @type {PolicyDto}
+   * @memberof ProjectWithPolicyDto
+   */
+  policy: PolicyDto
+}
+/**
+ *
+ * @export
+ * @interface ProjectWithPolicyList
+ */
+export interface ProjectWithPolicyList {
+  /**
+   *
+   * @type {Array<ProjectWithPolicyDto>}
+   * @memberof ProjectWithPolicyList
+   */
+  projects: Array<ProjectWithPolicyDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectWithPolicyList
+   */
+  lastEvaluatedKey?: string
 }
 /**
  *
@@ -1034,6 +1084,12 @@ export interface TokenList {
    * @memberof TokenList
    */
   tokens: Array<TokenDto>
+  /**
+   *
+   * @type {string}
+   * @memberof TokenList
+   */
+  lastEvaluatedKey?: string
 }
 /**
  * Private Key JWT Authentication of Client with `private_key_jwt` oAuth Method
@@ -1115,13 +1171,13 @@ export interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
 /**
  *
  * @export
- * @interface TypedPricipalId
+ * @interface TypedPrincipalId
  */
-export interface TypedPricipalId {
+export interface TypedPrincipalId {
   /**
    *
    * @type {string}
-   * @memberof TypedPricipalId
+   * @memberof TypedPrincipalId
    */
   principalId: string
 }
@@ -1345,6 +1401,12 @@ export interface UserList {
    * @memberof UserList
    */
   records: Array<UserDto>
+  /**
+   *
+   * @type {string}
+   * @memberof UserList
+   */
+  lastEvaluatedKey?: string
 }
 /**
  *
@@ -3107,10 +3169,14 @@ export const ProjectsApiAxiosParamCreator = function (
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPrincipalsOfProject: async (
+      limit?: number,
+      exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/projects/principals`
@@ -3136,6 +3202,14 @@ export const ProjectsApiAxiosParamCreator = function (
         configuration,
       )
 
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3152,10 +3226,14 @@ export const ProjectsApiAxiosParamCreator = function (
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listProject: async (
+      limit?: number,
+      exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/projects`
@@ -3180,6 +3258,14 @@ export const ProjectsApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3366,16 +3452,24 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listPrincipalsOfProject(
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserList>
     > {
       const localVarAxiosArgs =
-        await localVarAxiosParamCreator.listPrincipalsOfProject(options)
+        await localVarAxiosParamCreator.listPrincipalsOfProject(
+          limit,
+          exclusiveStartKey,
+          options,
+        )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['ProjectsApi.listPrincipalsOfProject']?.[
@@ -3391,16 +3485,23 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listProject(
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectList>
     > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.listProject(options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listProject(
+        limit,
+        exclusiveStartKey,
+        options,
+      )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['ProjectsApi.listProject']?.[
@@ -3506,24 +3607,34 @@ export const ProjectsApiFactory = function (
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listPrincipalsOfProject(
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<UserList> {
       return localVarFp
-        .listPrincipalsOfProject(options)
+        .listPrincipalsOfProject(limit, exclusiveStartKey, options)
         .then((request) => request(axios, basePath))
     },
     /**
      *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listProject(options?: RawAxiosRequestConfig): AxiosPromise<ProjectList> {
+    listProject(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProjectList> {
       return localVarFp
-        .listProject(options)
+        .listProject(limit, exclusiveStartKey, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3604,25 +3715,37 @@ export class ProjectsApi extends BaseAPI {
 
   /**
    *
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof ProjectsApi
    */
-  public listPrincipalsOfProject(options?: RawAxiosRequestConfig) {
+  public listPrincipalsOfProject(
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
     return ProjectsApiFp(this.configuration)
-      .listPrincipalsOfProject(options)
+      .listPrincipalsOfProject(limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    *
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof ProjectsApi
    */
-  public listProject(options?: RawAxiosRequestConfig) {
+  public listProject(
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
     return ProjectsApiFp(this.configuration)
-      .listProject(options)
+      .listProject(limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -4080,10 +4203,78 @@ export const TokensApiAxiosParamCreator = function (
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProjectsOfToken: async (
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'tokenId' is not null or undefined
+      assertParamExists('listProjectsOfToken', 'tokenId', tokenId)
+      const localVarPath = `/v1/tokens/{tokenId}/projects`.replace(
+        `{${'tokenId'}}`,
+        encodeURIComponent(String(tokenId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listToken: async (
+      limit?: number,
+      exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/tokens`
@@ -4108,6 +4299,14 @@ export const TokensApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4284,16 +4483,62 @@ export const TokensApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listProjectsOfToken(
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ProjectWithPolicyList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listProjectsOfToken(
+          tokenId,
+          limit,
+          exclusiveStartKey,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['TokensApi.listProjectsOfToken']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listToken(
+      limit?: number,
+      exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<TokenList>
     > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.listToken(options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listToken(
+        limit,
+        exclusiveStartKey,
+        options,
+      )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['TokensApi.listToken']?.[
@@ -4397,12 +4642,36 @@ export const TokensApiFactory = function (
     },
     /**
      *
+     * @param {string} tokenId
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    listToken(options?: RawAxiosRequestConfig): AxiosPromise<TokenList> {
+    listProjectsOfToken(
+      tokenId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProjectWithPolicyList> {
       return localVarFp
-        .listToken(options)
+        .listProjectsOfToken(tokenId, limit, exclusiveStartKey, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listToken(
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<TokenList> {
+      return localVarFp
+        .listToken(limit, exclusiveStartKey, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -4475,13 +4744,39 @@ export class TokensApi extends BaseAPI {
 
   /**
    *
+   * @param {string} tokenId
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof TokensApi
    */
-  public listToken(options?: RawAxiosRequestConfig) {
+  public listProjectsOfToken(
+    tokenId: string,
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
     return TokensApiFp(this.configuration)
-      .listToken(options)
+      .listProjectsOfToken(tokenId, limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof TokensApi
+   */
+  public listToken(
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return TokensApiFp(this.configuration)
+      .listToken(limit, exclusiveStartKey, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

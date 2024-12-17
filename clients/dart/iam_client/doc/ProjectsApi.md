@@ -154,7 +154,7 @@ void (empty response body)
 
 # **listPrincipalsOfProject**
 
-> UserList listPrincipalsOfProject()
+> UserList listPrincipalsOfProject(limit, exclusiveStartKey)
 
 ### Example
 
@@ -166,9 +166,11 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectsApi();
+final limit = 56; // int | Maximum number of records to fetch in a list
+final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listPrincipalsOfProject();
+    final result = api_instance.listPrincipalsOfProject(limit, exclusiveStartKey);
     print(result);
 } catch (e) {
     print('Exception when calling ProjectsApi->listPrincipalsOfProject: $e\n');
@@ -177,7 +179,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                  | Type       | Description                                                                                                                                                    | Notes                       |
+| --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **limit**             | **int**    | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100] |
+| **exclusiveStartKey** | **String** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional]                  |
 
 ### Return type
 
@@ -196,7 +201,7 @@ This endpoint does not need any parameter.
 
 # **listProject**
 
-> ProjectList listProject()
+> ProjectList listProject(limit, exclusiveStartKey)
 
 ### Example
 
@@ -208,9 +213,11 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ProjectsApi();
+final limit = 56; // int | Maximum number of records to fetch in a list
+final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listProject();
+    final result = api_instance.listProject(limit, exclusiveStartKey);
     print(result);
 } catch (e) {
     print('Exception when calling ProjectsApi->listProject: $e\n');
@@ -219,7 +226,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name                  | Type       | Description                                                                                                                                                    | Notes                       |
+| --------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **limit**             | **int**    | Maximum number of records to fetch in a list                                                                                                                   | [optional] [default to 100] |
+| **exclusiveStartKey** | **String** | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. | [optional]                  |
 
 ### Return type
 
