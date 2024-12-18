@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name                      | Type    | Description | Notes      |
-| ------------------------- | ------- | ----------- | ---------- |
-| **change_reason**         | **str** |             | [optional] |
-| **issuance_flow_data_id** | **str** |             | [optional] |
+| Name                      | Type    | Description           | Notes      |
+| ------------------------- | ------- | --------------------- | ---------- |
+| **change_reason**         | **str** | reason for revocation | [optional] |
+| **issuance_flow_data_id** | **str** |                       | [optional] |
 
 ## Example
 

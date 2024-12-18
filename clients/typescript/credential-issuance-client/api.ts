@@ -135,11 +135,11 @@ export interface ActionForbiddenErrorDetailsInner {
  */
 export interface ChangeCredentialStatusInput {
   /**
-   *
+   * reason for revocation
    * @type {string}
    * @memberof ChangeCredentialStatusInput
    */
-  changeReason?: string
+  changeReason?: ChangeCredentialStatusInputChangeReasonEnum
   /**
    *
    * @type {string}
@@ -147,6 +147,15 @@ export interface ChangeCredentialStatusInput {
    */
   issuanceFlowDataId?: string
 }
+
+export const ChangeCredentialStatusInputChangeReasonEnum = {
+  InvalidCredential: 'INVALID_CREDENTIAL',
+  CompromisedIssuer: 'COMPROMISED_ISSUER',
+} as const
+
+export type ChangeCredentialStatusInputChangeReasonEnum =
+  (typeof ChangeCredentialStatusInputChangeReasonEnum)[keyof typeof ChangeCredentialStatusInputChangeReasonEnum]
+
 /**
  *
  * @export

@@ -17,13 +17,8 @@ class ChangeCredentialStatusInput {
     this.issuanceFlowDataId,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? changeReason;
+  /// reason for revocation
+  ChangeCredentialStatusInputChangeReasonEnum? changeReason;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -81,7 +76,7 @@ class ChangeCredentialStatusInput {
       }());
 
       return ChangeCredentialStatusInput(
-        changeReason: mapValueOfType<String>(json, r'changeReason'),
+        changeReason: ChangeCredentialStatusInputChangeReasonEnum.fromJson(json[r'changeReason']),
         issuanceFlowDataId: mapValueOfType<String>(json, r'issuanceFlowDataId'),
       );
     }
@@ -132,4 +127,78 @@ class ChangeCredentialStatusInput {
   static const requiredKeys = <String>{
   };
 }
+
+/// reason for revocation
+class ChangeCredentialStatusInputChangeReasonEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ChangeCredentialStatusInputChangeReasonEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const INVALID_CREDENTIAL = ChangeCredentialStatusInputChangeReasonEnum._(r'INVALID_CREDENTIAL');
+  static const COMPROMISED_ISSUER = ChangeCredentialStatusInputChangeReasonEnum._(r'COMPROMISED_ISSUER');
+
+  /// List of all possible values in this [enum][ChangeCredentialStatusInputChangeReasonEnum].
+  static const values = <ChangeCredentialStatusInputChangeReasonEnum>[
+    INVALID_CREDENTIAL,
+    COMPROMISED_ISSUER,
+  ];
+
+  static ChangeCredentialStatusInputChangeReasonEnum? fromJson(dynamic value) => ChangeCredentialStatusInputChangeReasonEnumTypeTransformer().decode(value);
+
+  static List<ChangeCredentialStatusInputChangeReasonEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ChangeCredentialStatusInputChangeReasonEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ChangeCredentialStatusInputChangeReasonEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ChangeCredentialStatusInputChangeReasonEnum] to String,
+/// and [decode] dynamic data back to [ChangeCredentialStatusInputChangeReasonEnum].
+class ChangeCredentialStatusInputChangeReasonEnumTypeTransformer {
+  factory ChangeCredentialStatusInputChangeReasonEnumTypeTransformer() => _instance ??= const ChangeCredentialStatusInputChangeReasonEnumTypeTransformer._();
+
+  const ChangeCredentialStatusInputChangeReasonEnumTypeTransformer._();
+
+  String encode(ChangeCredentialStatusInputChangeReasonEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ChangeCredentialStatusInputChangeReasonEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ChangeCredentialStatusInputChangeReasonEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'INVALID_CREDENTIAL': return ChangeCredentialStatusInputChangeReasonEnum.INVALID_CREDENTIAL;
+        case r'COMPROMISED_ISSUER': return ChangeCredentialStatusInputChangeReasonEnum.COMPROMISED_ISSUER;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ChangeCredentialStatusInputChangeReasonEnumTypeTransformer] instance.
+  static ChangeCredentialStatusInputChangeReasonEnumTypeTransformer? _instance;
+}
+
 
