@@ -16,6 +16,8 @@ class FetchIOTAVPResponseOK {
     this.correlationId,
     this.presentationSubmission,
     this.vpToken,
+    this.presentationSubmission,
+    this.vpToken,
   });
 
   /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
@@ -45,9 +47,29 @@ class FetchIOTAVPResponseOK {
   ///
   String? vpToken;
 
+  /// A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? presentationSubmission;
+
+  /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? vpToken;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FetchIOTAVPResponseOK &&
     other.correlationId == correlationId &&
+    other.presentationSubmission == presentationSubmission &&
+    other.vpToken == vpToken &&
     other.presentationSubmission == presentationSubmission &&
     other.vpToken == vpToken;
 
@@ -56,10 +78,12 @@ class FetchIOTAVPResponseOK {
     // ignore: unnecessary_parenthesis
     (correlationId == null ? 0 : correlationId!.hashCode) +
     (presentationSubmission == null ? 0 : presentationSubmission!.hashCode) +
+    (vpToken == null ? 0 : vpToken!.hashCode) +
+    (presentationSubmission == null ? 0 : presentationSubmission!.hashCode) +
     (vpToken == null ? 0 : vpToken!.hashCode);
 
   @override
-  String toString() => 'FetchIOTAVPResponseOK[correlationId=$correlationId, presentationSubmission=$presentationSubmission, vpToken=$vpToken]';
+  String toString() => 'FetchIOTAVPResponseOK[correlationId=$correlationId, presentationSubmission=$presentationSubmission, vpToken=$vpToken, presentationSubmission=$presentationSubmission, vpToken=$vpToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -77,6 +101,16 @@ class FetchIOTAVPResponseOK {
       json[r'vp_token'] = this.vpToken;
     } else {
       json[r'vp_token'] = null;
+    }
+    if (this.presentationSubmission != null) {
+      json[r'presentationSubmission'] = this.presentationSubmission;
+    } else {
+      json[r'presentationSubmission'] = null;
+    }
+    if (this.vpToken != null) {
+      json[r'vpToken'] = this.vpToken;
+    } else {
+      json[r'vpToken'] = null;
     }
     return json;
   }
@@ -103,6 +137,8 @@ class FetchIOTAVPResponseOK {
         correlationId: mapValueOfType<String>(json, r'correlationId'),
         presentationSubmission: mapValueOfType<String>(json, r'presentation_submission'),
         vpToken: mapValueOfType<String>(json, r'vp_token'),
+        presentationSubmission: mapValueOfType<String>(json, r'presentationSubmission'),
+        vpToken: mapValueOfType<String>(json, r'vpToken'),
       );
     }
     return null;

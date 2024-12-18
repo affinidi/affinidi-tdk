@@ -118,7 +118,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_project_with_policy_dto.py
-test/test_project_with_policy_list.py
-test/test_typed_principal_id.py
 tox.ini
