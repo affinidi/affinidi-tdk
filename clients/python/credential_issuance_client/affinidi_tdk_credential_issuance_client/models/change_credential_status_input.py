@@ -20,15 +20,25 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class ChangeCredentialStatusInput(BaseModel):
     """
     ChangeCredentialStatusInput
     """
-    change_reason: Optional[StrictStr] = Field(default=None, alias="changeReason")
-    issuance_flow_data_id: Optional[StrictStr] = Field(default=None, alias="issuanceFlowDataId")
-    __properties = ["changeReason", "issuanceFlowDataId"]
+    change_reason: Optional[StrictStr] = Field(default=None, alias="changeReason", description="reason for revocation")
+    issuance_record_id: Optional[StrictStr] = Field(default=None, alias="issuanceRecordId")
+    __properties = ["changeReason", "issuanceRecordId"]
+
+    @validator('change_reason')
+    def change_reason_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('INVALID_CREDENTIAL', 'COMPROMISED_ISSUER'):
+            raise ValueError("must be one of enum values ('INVALID_CREDENTIAL', 'COMPROMISED_ISSUER')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +77,7 @@ class ChangeCredentialStatusInput(BaseModel):
 
         _obj = ChangeCredentialStatusInput.parse_obj({
             "change_reason": obj.get("changeReason"),
-            "issuance_flow_data_id": obj.get("issuanceFlowDataId")
+            "issuance_record_id": obj.get("issuanceRecordId")
         })
         return _obj
 
