@@ -111,6 +111,3 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
-test/project_with_policy_dto_test.dart
-test/project_with_policy_list_test.dart
-test/typed_principal_id_test.dart
