@@ -31,7 +31,6 @@ Models/CredentialSupportedObject.md
 Models/DeferredCredentialInput.md
 Models/FlowData.md
 Models/FlowData_statusListsDetails_inner.md
-Models/GetStatusListResultDto.md
 Models/InvalidCredentialRequestError.md
 Models/InvalidCredentialTypeError.md
 Models/InvalidIssuerWalletError.md

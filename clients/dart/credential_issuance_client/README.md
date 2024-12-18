@@ -67,17 +67,16 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Class              | Method                                                                                            | HTTP request                                                                            | Description                   |
-| ------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------- |
+| Class              | Method                                                                                            | HTTP request                                                                            | Description               |
+| ------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------- |
 | _ConfigurationApi_ | [**createIssuanceConfig**](doc//ConfigurationApi.md#createissuanceconfig)                         | **POST** /v1/configurations                                                             |
 | _ConfigurationApi_ | [**deleteIssuanceConfigById**](doc//ConfigurationApi.md#deleteissuanceconfigbyid)                 | **DELETE** /v1/configurations/{configurationId}                                         |
 | _ConfigurationApi_ | [**getIssuanceConfigById**](doc//ConfigurationApi.md#getissuanceconfigbyid)                       | **GET** /v1/configurations/{configurationId}                                            |
 | _ConfigurationApi_ | [**getIssuanceConfigList**](doc//ConfigurationApi.md#getissuanceconfiglist)                       | **GET** /v1/configurations                                                              |
 | _ConfigurationApi_ | [**updateIssuanceConfigById**](doc//ConfigurationApi.md#updateissuanceconfigbyid)                 | **PUT** /v1/configurations/{configurationId}                                            |
 | _CredentialsApi_   | [**generateCredentials**](doc//CredentialsApi.md#generatecredentials)                             | **POST** /v1/{projectId}/credential                                                     |
-| _DefaultApi_       | [**changeCredentialSatatus**](doc//DefaultApi.md#changecredentialsatatus)                         | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status.     |
-| _DefaultApi_       | [**getStatusList**](doc//DefaultApi.md#getstatuslist)                                             | **GET** /v1/{projectId}/status-list/{statusListId}                                      | Return status list credential |
-| _DefaultApi_       | [**listIssuanceDataRecords**](doc//DefaultApi.md#listissuancedatarecords)                         | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records                  |
+| _DefaultApi_       | [**changeCredentialStatus**](doc//DefaultApi.md#changecredentialstatus)                           | **POST** /v1/{projectId}/configurations/{configurationId}/issuance/change-status        | change credential status. |
+| _DefaultApi_       | [**listIssuanceDataRecords**](doc//DefaultApi.md#listissuancedatarecords)                         | **GET** /v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records | List records              |
 | _IssuanceApi_      | [**issuanceState**](doc//IssuanceApi.md#issuancestate)                                            | **GET** /v1/{projectId}/issuance/state/{issuanceId}                                     |
 | _IssuanceApi_      | [**listIssuance**](doc//IssuanceApi.md#listissuance)                                              | **GET** /v1/{projectId}/issuance                                                        |
 | _IssuanceApi_      | [**startIssuance**](doc//IssuanceApi.md#startissuance)                                            | **POST** /v1/{projectId}/issuance/start                                                 |
@@ -115,7 +114,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [FlowDataStatusListsDetailsInner](doc//FlowDataStatusListsDetailsInner.md)
 - [GenerateCredentials400Response](doc//GenerateCredentials400Response.md)
 - [GetCredentialOffer400Response](doc//GetCredentialOffer400Response.md)
-- [GetStatusListResultDto](doc//GetStatusListResultDto.md)
 - [InvalidCredentialRequestError](doc//InvalidCredentialRequestError.md)
 - [InvalidCredentialTypeError](doc//InvalidCredentialTypeError.md)
 - [InvalidIssuerWalletError](doc//InvalidIssuerWalletError.md)

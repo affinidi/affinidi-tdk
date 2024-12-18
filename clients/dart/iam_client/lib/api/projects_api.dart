@@ -157,7 +157,14 @@ class ProjectsApi {
   }
 
   /// Performs an HTTP 'GET /v1/projects/principals' operation and returns the [Response].
-  Future<Response> listPrincipalsOfProjectWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<Response> listPrincipalsOfProjectWithHttpInfo({ int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/projects/principals';
 
@@ -167,6 +174,13 @@ class ProjectsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (exclusiveStartKey != null) {
+      queryParams.addAll(_queryParams('', 'exclusiveStartKey', exclusiveStartKey));
+    }
 
     const contentTypes = <String>[];
 
@@ -182,8 +196,15 @@ class ProjectsApi {
     );
   }
 
-  Future<UserList?> listPrincipalsOfProject() async {
-    final response = await listPrincipalsOfProjectWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<UserList?> listPrincipalsOfProject({ int? limit, String? exclusiveStartKey, }) async {
+    final response = await listPrincipalsOfProjectWithHttpInfo( limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -198,7 +219,14 @@ class ProjectsApi {
   }
 
   /// Performs an HTTP 'GET /v1/projects' operation and returns the [Response].
-  Future<Response> listProjectWithHttpInfo() async {
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<Response> listProjectWithHttpInfo({ int? limit, String? exclusiveStartKey, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/projects';
 
@@ -208,6 +236,13 @@ class ProjectsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (exclusiveStartKey != null) {
+      queryParams.addAll(_queryParams('', 'exclusiveStartKey', exclusiveStartKey));
+    }
 
     const contentTypes = <String>[];
 
@@ -223,8 +258,15 @@ class ProjectsApi {
     );
   }
 
-  Future<ProjectList?> listProject() async {
-    final response = await listProjectWithHttpInfo();
+  /// Parameters:
+  ///
+  /// * [int] limit:
+  ///   Maximum number of records to fetch in a list
+  ///
+  /// * [String] exclusiveStartKey:
+  ///   The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  Future<ProjectList?> listProject({ int? limit, String? exclusiveStartKey, }) async {
+    final response = await listProjectWithHttpInfo( limit: limit, exclusiveStartKey: exclusiveStartKey, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

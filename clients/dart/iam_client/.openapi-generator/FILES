@@ -1,5 +1,4 @@
 .gitignore
-.travis.yml
 README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
@@ -27,6 +26,8 @@ doc/PrincipalCannotBeDeletedError.md
 doc/PrincipalDoesNotBelongToProjectError.md
 doc/ProjectDto.md
 doc/ProjectList.md
+doc/ProjectWithPolicyDto.md
+doc/ProjectWithPolicyList.md
 doc/ProjectsApi.md
 doc/PublicKeyCannotBeResolvedFromDidError.md
 doc/ServiceErrorResponse.md
@@ -40,7 +41,7 @@ doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.md
 doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.md
 doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.md
 doc/TokensApi.md
-doc/TypedPricipalId.md
+doc/TypedPrincipalId.md
 doc/UnauthorizedError.md
 doc/UnexpectedError.md
 doc/UpdateProjectInput.md
@@ -88,6 +89,8 @@ lib/model/principal_cannot_be_deleted_error.dart
 lib/model/principal_does_not_belong_to_project_error.dart
 lib/model/project_dto.dart
 lib/model/project_list.dart
+lib/model/project_with_policy_dto.dart
+lib/model/project_with_policy_list.dart
 lib/model/public_key_cannot_be_resolved_from_did_error.dart
 lib/model/service_error_response.dart
 lib/model/service_error_response_details_inner.dart
@@ -98,7 +101,7 @@ lib/model/token_private_key_authentication_method_dto.dart
 lib/model/token_private_key_authentication_method_dto_public_key_info.dart
 lib/model/token_private_key_authentication_method_dto_public_key_info_one_of.dart
 lib/model/token_private_key_authentication_method_dto_public_key_info_one_of1.dart
-lib/model/typed_pricipal_id.dart
+lib/model/typed_principal_id.dart
 lib/model/unauthorized_error.dart
 lib/model/unexpected_error.dart
 lib/model/update_project_input.dart
@@ -108,3 +111,6 @@ lib/model/user_dto.dart
 lib/model/user_list.dart
 lib/model/whoami_dto.dart
 pubspec.yaml
+test/project_with_policy_dto_test.dart
+test/project_with_policy_list_test.dart
+test/typed_principal_id_test.dart

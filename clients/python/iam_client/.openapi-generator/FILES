@@ -1,6 +1,5 @@
 .github/workflows/python.yml
 .gitignore
-.travis.yml
 README.md
 README.md
 affinidi_tdk_iam_client/__init__.py
@@ -39,6 +38,8 @@ affinidi_tdk_iam_client/models/principal_cannot_be_deleted_error.py
 affinidi_tdk_iam_client/models/principal_does_not_belong_to_project_error.py
 affinidi_tdk_iam_client/models/project_dto.py
 affinidi_tdk_iam_client/models/project_list.py
+affinidi_tdk_iam_client/models/project_with_policy_dto.py
+affinidi_tdk_iam_client/models/project_with_policy_list.py
 affinidi_tdk_iam_client/models/public_key_cannot_be_resolved_from_did_error.py
 affinidi_tdk_iam_client/models/service_error_response.py
 affinidi_tdk_iam_client/models/service_error_response_details_inner.py
@@ -49,7 +50,7 @@ affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto.py
 affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto_public_key_info.py
 affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto_public_key_info_one_of.py
 affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto_public_key_info_one_of1.py
-affinidi_tdk_iam_client/models/typed_pricipal_id.py
+affinidi_tdk_iam_client/models/typed_principal_id.py
 affinidi_tdk_iam_client/models/unauthorized_error.py
 affinidi_tdk_iam_client/models/unexpected_error.py
 affinidi_tdk_iam_client/models/update_project_input.py
@@ -85,6 +86,8 @@ docs/PrincipalCannotBeDeletedError.md
 docs/PrincipalDoesNotBelongToProjectError.md
 docs/ProjectDto.md
 docs/ProjectList.md
+docs/ProjectWithPolicyDto.md
+docs/ProjectWithPolicyList.md
 docs/ProjectsApi.md
 docs/PublicKeyCannotBeResolvedFromDidError.md
 docs/ServiceErrorResponse.md
@@ -98,7 +101,7 @@ docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.md
 docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.md
 docs/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.md
 docs/TokensApi.md
-docs/TypedPricipalId.md
+docs/TypedPrincipalId.md
 docs/UnauthorizedError.md
 docs/UnexpectedError.md
 docs/UpdateProjectInput.md
@@ -115,4 +118,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_project_with_policy_dto.py
+test/test_project_with_policy_list.py
+test/test_typed_principal_id.py
 tox.ini

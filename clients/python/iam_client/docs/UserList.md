@@ -2,9 +2,10 @@
 
 ## Properties
 
-| Name        | Type                            | Description | Notes |
-| ----------- | ------------------------------- | ----------- | ----- |
-| **records** | [**List[UserDto]**](UserDto.md) |             |
+| Name                   | Type                            | Description | Notes      |
+| ---------------------- | ------------------------------- | ----------- | ---------- |
+| **records**            | [**List[UserDto]**](UserDto.md) |             |
+| **last_evaluated_key** | **str**                         |             | [optional] |
 
 ## Example
 

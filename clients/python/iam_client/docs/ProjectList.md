@@ -2,9 +2,10 @@
 
 ## Properties
 
-| Name         | Type                                  | Description | Notes |
-| ------------ | ------------------------------------- | ----------- | ----- |
-| **projects** | [**List[ProjectDto]**](ProjectDto.md) |             |
+| Name                   | Type                                  | Description | Notes      |
+| ---------------------- | ------------------------------------- | ----------- | ---------- |
+| **projects**           | [**List[ProjectDto]**](ProjectDto.md) |             |
+| **last_evaluated_key** | **str**                               |             | [optional] |
 
 ## Example
 

@@ -89,6 +89,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | _TokensApi_       | [**createToken**](doc//TokensApi.md#createtoken)                                   | **POST** /v1/tokens                              |
 | _TokensApi_       | [**deleteToken**](doc//TokensApi.md#deletetoken)                                   | **DELETE** /v1/tokens/{tokenId}                  |
 | _TokensApi_       | [**getToken**](doc//TokensApi.md#gettoken)                                         | **GET** /v1/tokens/{tokenId}                     |
+| _TokensApi_       | [**listProjectsOfToken**](doc//TokensApi.md#listprojectsoftoken)                   | **GET** /v1/tokens/{tokenId}/projects            |
 | _TokensApi_       | [**listToken**](doc//TokensApi.md#listtoken)                                       | **GET** /v1/tokens                               |
 | _TokensApi_       | [**updateToken**](doc//TokensApi.md#updatetoken)                                   | **PATCH** /v1/tokens/{tokenId}                   |
 | _WellKnownApi_    | [**getWellKnownDid**](doc//WellKnownApi.md#getwellknowndid)                        | **GET** /.well-known/did.json                    |
@@ -118,6 +119,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [PrincipalDoesNotBelongToProjectError](doc//PrincipalDoesNotBelongToProjectError.md)
 - [ProjectDto](doc//ProjectDto.md)
 - [ProjectList](doc//ProjectList.md)
+- [ProjectWithPolicyDto](doc//ProjectWithPolicyDto.md)
+- [ProjectWithPolicyList](doc//ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](doc//PublicKeyCannotBeResolvedFromDidError.md)
 - [ServiceErrorResponse](doc//ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](doc//ServiceErrorResponseDetailsInner.md)
@@ -128,7 +131,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo](doc//TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.md)
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf](doc//TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.md)
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1](doc//TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.md)
-- [TypedPricipalId](doc//TypedPricipalId.md)
+- [TypedPrincipalId](doc//TypedPrincipalId.md)
 - [UnauthorizedError](doc//UnauthorizedError.md)
 - [UnexpectedError](doc//UnexpectedError.md)
 - [UpdateProjectInput](doc//UpdateProjectInput.md)
