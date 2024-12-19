@@ -17,7 +17,9 @@ affinidi_tdk_credential_issuance_client/exceptions.py
 affinidi_tdk_credential_issuance_client/models/__init__.py
 affinidi_tdk_credential_issuance_client/models/action_forbidden_error.py
 affinidi_tdk_credential_issuance_client/models/action_forbidden_error_details_inner.py
+affinidi_tdk_credential_issuance_client/models/change_credential_status400_response.py
 affinidi_tdk_credential_issuance_client/models/change_credential_status_input.py
+affinidi_tdk_credential_issuance_client/models/change_status_forbidden_error.py
 affinidi_tdk_credential_issuance_client/models/cors_generate_credentials_ok.py
 affinidi_tdk_credential_issuance_client/models/cors_get_credential_offer_ok.py
 affinidi_tdk_credential_issuance_client/models/cors_get_well_known_open_id_credential_issuer_ok.py
@@ -61,6 +63,7 @@ affinidi_tdk_credential_issuance_client/models/missing_holder_did_error.py
 affinidi_tdk_credential_issuance_client/models/not_found_error.py
 affinidi_tdk_credential_issuance_client/models/project_credential_config_exist_error.py
 affinidi_tdk_credential_issuance_client/models/project_credential_config_not_exist_error.py
+affinidi_tdk_credential_issuance_client/models/revocation_forbidden_error.py
 affinidi_tdk_credential_issuance_client/models/start_issuance400_response.py
 affinidi_tdk_credential_issuance_client/models/start_issuance_input.py
 affinidi_tdk_credential_issuance_client/models/start_issuance_input_data_inner.py
@@ -78,7 +81,9 @@ affinidi_tdk_credential_issuance_client/py.typed
 affinidi_tdk_credential_issuance_client/rest.py
 docs/ActionForbiddenError.md
 docs/ActionForbiddenErrorDetailsInner.md
+docs/ChangeCredentialStatus400Response.md
 docs/ChangeCredentialStatusInput.md
+docs/ChangeStatusForbiddenError.md
 docs/ConfigurationApi.md
 docs/CorsGenerateCredentialsOK.md
 docs/CorsGetCredentialOfferOK.md
@@ -127,6 +132,7 @@ docs/NotFoundError.md
 docs/OfferApi.md
 docs/ProjectCredentialConfigExistError.md
 docs/ProjectCredentialConfigNotExistError.md
+docs/RevocationForbiddenError.md
 docs/StartIssuance400Response.md
 docs/StartIssuanceInput.md
 docs/StartIssuanceInputDataInner.md
@@ -148,4 +154,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_change_credential_status400_response.py
+test/test_change_status_forbidden_error.py
+test/test_revocation_forbidden_error.py
 tox.ini

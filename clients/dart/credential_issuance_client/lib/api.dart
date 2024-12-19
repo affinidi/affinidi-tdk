@@ -37,7 +37,9 @@ part 'api/well_known_api.dart';
 
 part 'model/action_forbidden_error.dart';
 part 'model/action_forbidden_error_details_inner.dart';
+part 'model/change_credential_status400_response.dart';
 part 'model/change_credential_status_input.dart';
+part 'model/change_status_forbidden_error.dart';
 part 'model/cors_generate_credentials_ok.dart';
 part 'model/cors_get_credential_offer_ok.dart';
 part 'model/cors_get_well_known_open_id_credential_issuer_ok.dart';
@@ -81,6 +83,7 @@ part 'model/missing_holder_did_error.dart';
 part 'model/not_found_error.dart';
 part 'model/project_credential_config_exist_error.dart';
 part 'model/project_credential_config_not_exist_error.dart';
+part 'model/revocation_forbidden_error.dart';
 part 'model/start_issuance400_response.dart';
 part 'model/start_issuance_input.dart';
 part 'model/start_issuance_input_data_inner.dart';
