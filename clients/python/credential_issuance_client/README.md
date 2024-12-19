@@ -127,7 +127,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 - [ActionForbiddenError](docs/ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](docs/ActionForbiddenErrorDetailsInner.md)
+- [ChangeCredentialStatus400Response](docs/ChangeCredentialStatus400Response.md)
 - [ChangeCredentialStatusInput](docs/ChangeCredentialStatusInput.md)
+- [ChangeStatusForbiddenError](docs/ChangeStatusForbiddenError.md)
 - [CorsGenerateCredentialsOK](docs/CorsGenerateCredentialsOK.md)
 - [CorsGetCredentialOfferOK](docs/CorsGetCredentialOfferOK.md)
 - [CorsGetWellKnownOpenIdCredentialIssuerOK](docs/CorsGetWellKnownOpenIdCredentialIssuerOK.md)
@@ -171,6 +173,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [NotFoundError](docs/NotFoundError.md)
 - [ProjectCredentialConfigExistError](docs/ProjectCredentialConfigExistError.md)
 - [ProjectCredentialConfigNotExistError](docs/ProjectCredentialConfigNotExistError.md)
+- [RevocationForbiddenError](docs/RevocationForbiddenError.md)
 - [StartIssuance400Response](docs/StartIssuance400Response.md)
 - [StartIssuanceInput](docs/StartIssuanceInput.md)
 - [StartIssuanceInputDataInner](docs/StartIssuanceInputDataInner.md)
