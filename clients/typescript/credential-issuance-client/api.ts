@@ -129,6 +129,14 @@ export interface ActionForbiddenErrorDetailsInner {
   location?: string
 }
 /**
+ * @type ChangeCredentialStatus400Response
+ * @export
+ */
+export type ChangeCredentialStatus400Response =
+  | ChangeStatusForbiddenError
+  | InvalidParameterError
+
+/**
  *
  * @export
  * @interface ChangeCredentialStatusInput
@@ -155,6 +163,63 @@ export const ChangeCredentialStatusInputChangeReasonEnum = {
 
 export type ChangeCredentialStatusInputChangeReasonEnum =
   (typeof ChangeCredentialStatusInputChangeReasonEnum)[keyof typeof ChangeCredentialStatusInputChangeReasonEnum]
+
+/**
+ *
+ * @export
+ * @interface ChangeStatusForbiddenError
+ */
+export interface ChangeStatusForbiddenError {
+  /**
+   *
+   * @type {string}
+   * @memberof ChangeStatusForbiddenError
+   */
+  name: ChangeStatusForbiddenErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof ChangeStatusForbiddenError
+   */
+  message: ChangeStatusForbiddenErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof ChangeStatusForbiddenError
+   */
+  httpStatusCode: ChangeStatusForbiddenErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof ChangeStatusForbiddenError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof ChangeStatusForbiddenError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const ChangeStatusForbiddenErrorNameEnum = {
+  ChangeStatusForbiddenError: 'ChangeStatusForbiddenError',
+} as const
+
+export type ChangeStatusForbiddenErrorNameEnum =
+  (typeof ChangeStatusForbiddenErrorNameEnum)[keyof typeof ChangeStatusForbiddenErrorNameEnum]
+export const ChangeStatusForbiddenErrorMessageEnum = {
+  RelatedVcStatusCannotBeChanged: 'Related VC status cannot be changed',
+} as const
+
+export type ChangeStatusForbiddenErrorMessageEnum =
+  (typeof ChangeStatusForbiddenErrorMessageEnum)[keyof typeof ChangeStatusForbiddenErrorMessageEnum]
+export const ChangeStatusForbiddenErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type ChangeStatusForbiddenErrorHttpStatusCodeEnum =
+  (typeof ChangeStatusForbiddenErrorHttpStatusCodeEnum)[keyof typeof ChangeStatusForbiddenErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -1758,6 +1823,63 @@ export const ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum = {
 
 export type ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum =
   (typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum)[keyof typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
+ * @interface RevocationForbiddenError
+ */
+export interface RevocationForbiddenError {
+  /**
+   *
+   * @type {string}
+   * @memberof RevocationForbiddenError
+   */
+  name: RevocationForbiddenErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof RevocationForbiddenError
+   */
+  message: RevocationForbiddenErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof RevocationForbiddenError
+   */
+  httpStatusCode: RevocationForbiddenErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof RevocationForbiddenError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ActionForbiddenErrorDetailsInner>}
+   * @memberof RevocationForbiddenError
+   */
+  details?: Array<ActionForbiddenErrorDetailsInner>
+}
+
+export const RevocationForbiddenErrorNameEnum = {
+  RevocationForbiddenError: 'RevocationForbiddenError',
+} as const
+
+export type RevocationForbiddenErrorNameEnum =
+  (typeof RevocationForbiddenErrorNameEnum)[keyof typeof RevocationForbiddenErrorNameEnum]
+export const RevocationForbiddenErrorMessageEnum = {
+  RelatedVcHasNotBeenClaimedYet: 'Related VC has not been claimed yet',
+} as const
+
+export type RevocationForbiddenErrorMessageEnum =
+  (typeof RevocationForbiddenErrorMessageEnum)[keyof typeof RevocationForbiddenErrorMessageEnum]
+export const RevocationForbiddenErrorHttpStatusCodeEnum = {
+  NUMBER_400: 400,
+} as const
+
+export type RevocationForbiddenErrorHttpStatusCodeEnum =
+  (typeof RevocationForbiddenErrorHttpStatusCodeEnum)[keyof typeof RevocationForbiddenErrorHttpStatusCodeEnum]
 
 /**
  * @type StartIssuance400Response
