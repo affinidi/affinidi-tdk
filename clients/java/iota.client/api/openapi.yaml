@@ -1,0 +1,3350 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: info@affinidi.com
+    name: Affinidi
+    url: https://github.com/affinidi/affinidi-tdk
+  license:
+    name: Apache-2.0
+    url: https://github.com/affinidi/affinidi-tdk/blob/main/LICENSE
+  title: IotaService
+  version: 1.0.0
+externalDocs:
+  description: Affinidi Documentation Website
+  url: https://docs.affinidi.com/dev-tools/affinidi-tdk/clients/iota-framework
+servers:
+  - url: https://apse1.api.affinidi.io/ais
+security:
+  - AwsSigV4: []
+  - ProjectTokenAuth: []
+tags:
+  - description: CORS Definitions
+    name: cors
+paths:
+  /v1/aws-exchange-credentials/project-token:
+    post:
+      description:
+        Exchange a Project Scoped Token into an identity credential directly
+        to initiate a secure WebSocket connection. This method is used only in WebSocket
+        data-sharing mode.
+      operationId: awsExchangeCredentialsProjectToken
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/AwsExchangeCredentialsProjectToken'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IotaExchangeCredentialsOK'
+          description: IotaExchangeCredentialsOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - iota
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/aws-exchange-credentials:
+    post:
+      description:
+        Exchange a limited-scoped token into a Cognito credential to generate
+        the identity credential. The identity credential initiates the secure WebSocket
+        connection from the client. This method is used only in WebSocket data-sharing
+        mode.
+      operationId: awsExchangeCredentials
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/AwsExchangeCredentials'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsExchangeCredentialsOK'
+          description: AwsExchangeCredentialsOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security: []
+      tags:
+        - iota
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/exchange-credentials:
+    post:
+      description:
+        Exchange a limited-scoped token into an identity credential directly
+        to initiate a secure WebSocket connection. This method is used only in WebSocket
+        data-sharing mode.
+      operationId: iotaExchangeCredentials
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/IotaExchangeCredentials'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IotaExchangeCredentialsOK'
+          description: IotaExchangeCredentialsOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security: []
+      tags:
+        - iota
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/callback:
+    post:
+      description: |
+        It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred.
+      operationId: iotOIDC4VPCallback
+      requestBody:
+        $ref: '#/components/requestBodies/CallbackRequestInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallbackResponseOK'
+          description: CallbackResponseOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security: []
+      tags:
+        - callback
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/configurations:
+    get:
+      description: List all Affinidi Iota Framework configurations.
+      operationId: listIotaConfigurations
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConfigurationOK'
+          description: ListConfigurationOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - configurations
+      x-accepts:
+        - application/json
+    post:
+      description: Creates a new Affinidi Iota Framework configuration.
+      operationId: createIotaConfiguration
+      requestBody:
+        $ref: '#/components/requestBodies/CreateConfiguration'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IotaConfigurationDto'
+          description: CreateConfigurationOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlreadyExistsError'
+          description: ConflictError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceLimitExceededError'
+          description: UnprocessableEntity
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - configurations
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/configurations/{configurationId}:
+    delete:
+      description: Deletes an Affinidi Iota Framework configuration by ID.
+      operationId: deleteIotaConfigurationById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - configurations
+      x-accepts:
+        - application/json
+    get:
+      description: Retrieves the details of an Affinidi Iota Framework configuration.
+      operationId: getIotaConfigurationById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IotaConfigurationDto'
+          description: GetConfigurationByIdOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - configurations
+      x-accepts:
+        - application/json
+    patch:
+      description:
+        Updates the details of an Affinidi Iota Framework configuration
+        by ID.
+      operationId: updateIotaConfigurationById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateConfigurationById'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IotaConfigurationDto'
+          description: UpdateConfigurationByIdOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - configurations
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/projects/{projectId}/configurations/{configurationId}/metadata:
+    get:
+      description: |
+        Retrieves the client metadata of an Affinidi Iota Framework configuration.
+      operationId: getIotaConfigurationMetaData
+      parameters:
+        - description: The ID of the project.
+          explode: false
+          in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetIotaConfigurationMetaDataOK'
+          description: GetIotaConfigurationMetaDataOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security: []
+      tags:
+        - configurations
+      x-accepts:
+        - application/json
+  /v1/configurations/{configurationId}/pex-queries:
+    get:
+      description: Lists all Presentation Definitions in the configuration.
+      operationId: listPexQueries
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: Maximum number of records to fetch in a list
+          explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+          style: form
+        - description:
+            The base64url encoded key of the first item that this operation
+            will evaluate (it is not returned). Use the value that was returned in the
+            previous operation.
+          explode: true
+          in: query
+          name: exclusiveStartKey
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPexQueriesOK'
+          description: ListPexQueriesOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-accepts:
+        - application/json
+    post:
+      description:
+        Creates a new Presentation Definition in the configuration to query
+        data.
+      operationId: createPexQuery
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePexQuery'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PexQueryDto'
+          description: CreatePexQueryOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlreadyExistsError'
+          description: ConflictError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceLimitExceededError'
+          description: UnprocessableEntity
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/configurations/{configurationId}/pex-queries/{queryId}:
+    delete:
+      description: Deletes a Presentation Definition in the configuration by ID.
+      operationId: deletePexQueryById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: The ID of the query.
+          explode: false
+          in: path
+          name: queryId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-accepts:
+        - application/json
+    get:
+      description: Retrieves a Presentation Definition in the configuration by ID.
+      operationId: getPexQueryById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: The ID of the query.
+          explode: false
+          in: path
+          name: queryId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PexQueryDto'
+          description: GetPexQueryByIdOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-accepts:
+        - application/json
+    patch:
+      description: Updates the Presentation Definition in the configuration by ID.
+      operationId: updatePexQueryById
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: The ID of the query.
+          explode: false
+          in: path
+          name: queryId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePexQueryById'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PexQueryDto'
+          description: UpdatePexQueryByIdOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/logged-consents:
+    get:
+      description: Lists all the logged consents for a project.
+      operationId: listLoggedConsents
+      parameters:
+        - explode: true
+          in: query
+          name: configurationId
+          required: false
+          schema:
+            description: To list all the logged consents by configuration ID.
+            type: string
+          style: form
+        - explode: true
+          in: query
+          name: userId
+          required: false
+          schema:
+            description: To list all the logged consents by user ID.
+            type: string
+          style: form
+        - description:
+            The maximum number of records to fetch from the list of logged
+            consents.
+          explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+          style: form
+        - description:
+            The base64url encoded key of the first item that this operation
+            will evaluate (it is not returned). Use the value that was returned in the
+            previous operation.
+          explode: true
+          in: query
+          name: exclusiveStartKey
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLoggedConsentsOK'
+          description: ListLoggedConsentsOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security:
+        - ProjectTokenAuth: []
+      tags: []
+      x-accepts:
+        - application/json
+  /v1/configurations/{configurationId}/delete-queries:
+    post:
+      description: Deletes all Presentation Definition queries of a configuration.
+      operationId: deletePexQueries
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/DeletePexQueriesInput'
+      responses:
+        '200':
+          $ref: '#/components/responses/BulkDeleteResponseOK'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-accepts:
+        - application/json
+  /v1/configurations/{configurationId}/save-queries:
+    post:
+      description: Saves all Presentation Definition queries of a configuration.
+      operationId: savePexQueries
+      parameters:
+        - description: ID of the Affinidi Iota Framework configuration.
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/SavePexQueriesInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavePexQueriesResponseOK'
+          description: SavePexQueriesResponseOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - pex-query
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/initiate-data-sharing-request:
+    post:
+      description:
+        Generates the request token for the Redirect mode to initiate the
+        data-sharing flow.
+      operationId: initiateDataSharingRequest
+      parameters: []
+      requestBody:
+        $ref: '#/components/requestBodies/InitiateDataSharingRequestInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiateDataSharingRequestOK'
+          description: InitiateDataSharingRequestOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - iota
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/fetch-iota-response:
+    post:
+      description:
+        Fetches the client's callback that contains the user's shared data
+        in a Verifiable Presentation format after a successful data-sharing flow.
+      operationId: fetchIotaVpResponse
+      requestBody:
+        $ref: '#/components/requestBodies/FetchIOTAVPResponseInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchIOTAVPResponseOK'
+          description: FetchIOTAVPResponseOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationForbiddenError'
+          description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - iota
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+components:
+  examples: {}
+  headers:
+    Access-Control-Allow-Origin:
+      explode: false
+      schema:
+        type: string
+      style: simple
+    Access-Control-Allow-Methods:
+      explode: false
+      schema:
+        type: string
+      style: simple
+    Access-Control-Allow-Headers:
+      explode: false
+      schema:
+        type: string
+      style: simple
+  requestBodies:
+    AwsExchangeCredentials:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AwsExchangeCredentials'
+      description: AwsExchangeCredentials
+      required: true
+    IotaExchangeCredentials:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IotaExchangeCredentials'
+      description: IotaAwsExchangeCredentials
+      required: true
+    AwsExchangeCredentialsProjectToken:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AwsExchangeCredentialsProjectToken'
+      description: AwsExchangeCredentialsProjectToken
+      required: true
+    CallbackRequestInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CallbackInput'
+      description: CallbackRequestInput
+      required: true
+    CreateConfiguration:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateIotaConfigurationInput'
+      description: CreateConfiguration
+      required: true
+    UpdateConfigurationById:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateConfigurationByIdInput'
+      description: UpdateConfigurationById
+      required: true
+    CreatePexQuery:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePexQueryInput'
+      description: CreatePexQuery
+      required: true
+    UpdatePexQueryById:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdatePexQueryInput'
+      description: UpdatePexQueryById
+      required: true
+    PrepareRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrepareRequest'
+      description: PrepareRequest
+      required: true
+    SavePexQueriesInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SavePexQueriesUpdateInput'
+      description: SavePexQueriesInput
+      required: true
+    PexQueriesDeleteObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SavePexQueriesUpdateInput'
+      description: PexQueriesDeleteObject
+      required: true
+    InitiateDataSharingRequestInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateDataSharingRequestInput'
+      description: InitiateDataSharingRequestInput
+      required: true
+    FetchIOTAVPResponseInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FetchIOTAVPResponseInput'
+      description: FetchIOTAVPResponseInput
+      required: true
+  responses:
+    AwsExchangeCredentialsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AwsExchangeCredentialsOK'
+      description: AwsExchangeCredentialsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IotaExchangeCredentialsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IotaExchangeCredentialsOK'
+      description: IotaExchangeCredentialsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CallbackResponseOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CallbackResponseOK'
+      description: CallbackResponseOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsExchangeCredentialsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsAwsExchangeCredentialsOK'
+      description: CorsAwsExchangeCredentialsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateConfigurationOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IotaConfigurationDto'
+      description: CreateConfigurationOK
+    ListConfigurationOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListConfigurationOK'
+      description: ListConfigurationOK
+    GetConfigurationByIdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IotaConfigurationDto'
+      description: GetConfigurationByIdOK
+    UpdateConfigurationByIdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IotaConfigurationDto'
+      description: UpdateConfigurationByIdOK
+    CreatePexQueryOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PexQueryDto'
+      description: CreatePexQueryOK
+    ListPexQueriesOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListPexQueriesOK'
+      description: ListPexQueriesOK
+    GetPexQueryByIdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PexQueryDto'
+      description: GetPexQueryByIdOK
+    UpdatePexQueryByIdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PexQueryDto'
+      description: UpdatePexQueryByIdOK
+    PrepareRequestCreated:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrepareRequestCreated'
+      description: PrepareRequestCreated
+    ListLoggedConsentsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListLoggedConsentsOK'
+      description: ListLoggedConsentsOK
+    GetIotaConfigurationMetaDataOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetIotaConfigurationMetaDataOK'
+      description: GetIotaConfigurationMetaDataOK
+    CorsIotOidc4vpcallbackOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsIotOidc4vpcallbackOK'
+      description: CorsIotOidc4vpcallbackOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    SavePexQueriesResponseOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SavePexQueriesResponseOK'
+      description: SavePexQueriesResponseOK
+    CorsAwsExchangeCredentialsProjectTokenOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsAwsExchangeCredentialsProjectTokenOK'
+      description: CorsAwsExchangeCredentialsProjectTokenOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsIotaExchangeCredentialsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsIotaExchangeCredentialsOK'
+      description: CorsIotaExchangeCredentialsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    InitiateDataSharingRequestOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitiateDataSharingRequestOK'
+      description: InitiateDataSharingRequestOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    FetchIOTAVPResponseOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FetchIOTAVPResponseOK'
+      description: FetchIOTAVPResponseOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsInitiateDataSharingRequestOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsInitiateDataSharingRequestOK'
+      description: CorsInitiateDataSharingRequestOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsFetchIotaVpResponseOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsFetchIotaVpResponseOK'
+      description: CorsFetchIotaVpResponseOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsExchangeCredentialsProjectTokenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsExchangeCredentialsProjectTokenForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsExchangeCredentialsProjectTokenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsExchangeCredentialsProjectTokenForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsExchangeCredentialsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsExchangeCredentialsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsExchangeCredentialsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsExchangeCredentialsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IotaExchangeCredentialsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IotaExchangeCredentialsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsIotaExchangeCredentialsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsIotaExchangeCredentialsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IotOidc4vpcallbackBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IotOidc4vpcallbackForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsIotOidc4vpcallbackBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsIotOidc4vpcallbackForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateIotaConfigurationBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    CreateIotaConfigurationForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    CreateIotaConfigurationConflictError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AlreadyExistsError'
+      description: ConflictError
+    CreateIotaConfigurationUnprocessableEntity:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceLimitExceededError'
+      description: UnprocessableEntity
+    ListIotaConfigurationsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    ListIotaConfigurationsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    GetIotaConfigurationByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    GetIotaConfigurationByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    GetIotaConfigurationByIdNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    DeleteIotaConfigurationByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    DeleteIotaConfigurationByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    UpdateIotaConfigurationByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    UpdateIotaConfigurationByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    UpdateIotaConfigurationByIdNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    GetIotaConfigurationMetaDataBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    GetIotaConfigurationMetaDataForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    CreatePexQueryBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    CreatePexQueryForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    CreatePexQueryNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    CreatePexQueryConflictError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AlreadyExistsError'
+      description: ConflictError
+    CreatePexQueryUnprocessableEntity:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceLimitExceededError'
+      description: UnprocessableEntity
+    ListPexQueriesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    ListPexQueriesForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    ListPexQueriesNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    GetPexQueryByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    GetPexQueryByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    GetPexQueryByIdNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    DeletePexQueryByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    DeletePexQueryByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    DeletePexQueryByIdNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    UpdatePexQueryByIdBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    UpdatePexQueryByIdForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    UpdatePexQueryByIdNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+    PrepareRequestBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    PrepareRequestForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    ListLoggedConsentsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    ListLoggedConsentsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    DeletePexQueriesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    DeletePexQueriesForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    SavePexQueriesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    SavePexQueriesForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+    InitiateDataSharingRequestBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    InitiateDataSharingRequestForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsInitiateDataSharingRequestBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsInitiateDataSharingRequestForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    FetchIotaVpResponseBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    FetchIotaVpResponseForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    FetchIotaVpResponseNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsFetchIotaVpResponseBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsFetchIotaVpResponseForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationForbiddenError'
+      description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+  schemas:
+    InvalidParameterError:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        name: InvalidParameterError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Invalid parameter: ${param}.'
+        httpStatusCode: 0.8008281904610115
+      properties:
+        name:
+          enum:
+            - InvalidParameterError
+          type: string
+        message:
+          enum:
+            - 'Invalid parameter: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 400
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    OperationForbiddenError:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        name: OperationForbiddenError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Operation forbidden: ${param}.'
+        httpStatusCode: 6.027456183070403
+      properties:
+        name:
+          enum:
+            - OperationForbiddenError
+          type: string
+        message:
+          enum:
+            - 'Operation forbidden: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 403
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    AwsExchangeCredentialsProjectTokenOK:
+      additionalProperties: false
+      properties:
+        connectionClientId:
+          type: string
+        credentials:
+          $ref: '#/components/schemas/AwsExchangeCredentialsProjectTokenOK_credentials'
+      required:
+        - connectionClientId
+        - credentials
+      type: object
+    AwsExchangeCredentialsOK:
+      additionalProperties: false
+      example:
+        credentials:
+          identityId: identityId
+          token: token
+        connectionClientId: connectionClientId
+      properties:
+        connectionClientId:
+          type: string
+        credentials:
+          $ref: '#/components/schemas/AwsExchangeCredentialsProjectTokenOK_credentials'
+      required:
+        - connectionClientId
+        - credentials
+      type: object
+    IotaExchangeCredentialsOK:
+      additionalProperties: false
+      example:
+        credentials:
+          accessKeyId: accessKeyId
+          secretKey: secretKey
+          sessionToken: sessionToken
+          expiration: expiration
+        connectionClientId: connectionClientId
+      properties:
+        connectionClientId:
+          type: string
+        credentials:
+          $ref: '#/components/schemas/IotaExchangeCredentialsOK_credentials'
+      required:
+        - connectionClientId
+        - credentials
+      type: object
+    CallbackInput:
+      additionalProperties: false
+      example:
+        onboarded: true
+        vp_token: vp_token
+        error_description: error_description
+        state: state
+        error: error
+        presentation_submission: presentation_submission
+      properties:
+        state:
+          description:
+            A randomly generated string that follows a valid UUID (version
+            1-5) format to validate the session.
+          type: string
+        presentation_submission:
+          description:
+            A JSON string format that describes the link between the Verifiable
+            Presentation and Presentation Definition for the verifier. The presentation
+            submission follows the OID4VP standard.
+          type: string
+        vp_token:
+          description:
+            A JSON string format containing the data the user consented
+            to share in a Verifiable Presentation format. The VP Token follows the
+            OID4VP standard.
+          type: string
+        error:
+          description:
+            "A short string indicating the error code reported by the service.\
+            \ It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied).\
+            \ The default is access_denied."
+          type: string
+        error_description:
+          description:
+            A human-readable description that provides detailed information
+            about the error.
+          type: string
+        onboarded:
+          description:
+            "It specifies whether the data sharing flow triggered an onboarding\
+            \ process to the Affinidi Vault [New User]."
+          type: boolean
+      required:
+        - state
+      type: object
+    CallbackResponseOK:
+      additionalProperties: false
+      example:
+        response_code: response_code
+        redirect_uri: redirect_uri
+        message: message
+      properties:
+        redirect_uri:
+          description: The URL to which Affinidi Vault will redirect the user.
+          type: string
+        response_code:
+          description:
+            A unique identifier to fetch the callback response data. Send
+            this value together with the transactionId to successfully fetch the data.
+          type: string
+        message:
+          description:
+            A message to the Affinidi Vault indicating that the update
+            was successful.
+          type: string
+      required:
+        - message
+      type: object
+    BulkDeleteResponseOK:
+      additionalProperties: false
+      properties: {}
+      type: object
+    BulkSaveResponseOK:
+      additionalProperties: false
+      properties: {}
+      type: object
+    SavePexQueriesResponseOK:
+      additionalProperties: false
+      properties: {}
+      type: object
+    InitiateDataSharingRequestOK:
+      additionalProperties: false
+      example:
+        data:
+          jwt: jwt
+          correlationId: correlationId
+          transactionId: transactionId
+      properties:
+        data:
+          $ref: '#/components/schemas/InitiateDataSharingRequestOK_data'
+      type: object
+    FetchIOTAVPResponseOK:
+      additionalProperties: true
+      example:
+        vp_token: vp_token
+        correlationId: correlationId
+        presentationSubmission: presentationSubmission
+        vpToken: vpToken
+        presentation_submission: presentation_submission
+      properties:
+        correlationId:
+          description:
+            "A unique, randomly generated identifier that correlates the\
+            \ request and response in the data-sharing request flow."
+          type: string
+        presentation_submission:
+          deprecated: true
+          description:
+            A JSON string format that describes the link between the Verifiable
+            Presentation and Presentation Definition for the verifier. The presentation
+            submission follows the OID4VP standard.
+          type: string
+        vp_token:
+          deprecated: true
+          description:
+            A JSON string format containing the data the user consented
+            to share in a Verifiable Presentation format. The VP Token follows the
+            OID4VP standard.
+          type: string
+        presentationSubmission:
+          description:
+            A JSON string format that describes the link between the Verifiable
+            Presentation and Presentation Definition for the verifier. The presentation
+            submission follows the OID4VP standard.
+          type: string
+        vpToken:
+          description:
+            A JSON string format containing the data the user consented
+            to share in a Verifiable Presentation format. The VP Token follows the
+            OID4VP standard.
+          type: string
+      type: object
+    AwsExchangeCredentials:
+      additionalProperties: false
+      example:
+        assertion: assertion
+      properties:
+        assertion:
+          description:
+            A valid JSON Web Token (JWT) that secures the WebSocket connection.
+            The JWT is signed with the key pair's private key used to create the Personal
+            Access Token (PAT).
+          type: string
+      required:
+        - assertion
+      type: object
+    IotaExchangeCredentials:
+      additionalProperties: false
+      example:
+        assertion: assertion
+      properties:
+        assertion:
+          description:
+            A valid JSON Web Token (JWT) that secures the WebSocket connection.
+            The JWT is signed with the key pair's private key used to create the Personal
+            Access Token (PAT).
+          type: string
+      required:
+        - assertion
+      type: object
+    AwsExchangeCredentialsProjectToken:
+      additionalProperties: false
+      example:
+        sessionId: sessionId
+        configurationId: configurationId
+        did: did
+      properties:
+        sessionId:
+          description: ID of the session generated by a client.
+          type: string
+        configurationId:
+          description: ID of the Affinidi Iota Framework configuration.
+          type: string
+        did:
+          description: The Decentalised Identifier (DID) of the user.
+          type: string
+      required:
+        - configurationId
+        - did
+        - sessionId
+      type: object
+    CorsAwsExchangeCredentialsOK:
+      additionalProperties: false
+      properties:
+        corsAwsExchangeCredentialsOk:
+          type: string
+      type: object
+    VPTokenValidationError:
+      additionalProperties: false
+      properties:
+        name:
+          enum:
+            - VPTokenValidationError
+          type: string
+        message:
+          enum:
+            - VP token validation ended with an error
+          type: string
+        httpStatusCode:
+          enum:
+            - 400
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    IotaConfigurationDto:
+      additionalProperties: false
+      example:
+        clientMetadata:
+          origin: origin
+          name: name
+          logo: logo
+        enableConsentAuditLog: true
+        walletAri: walletAri
+        redirectUris:
+          - redirectUris
+          - redirectUris
+        mode: websocket
+        enableIdvProviders: true
+        iotaResponseWebhookURL: iotaResponseWebhookURL
+        name: name
+        ari: ari
+        configurationId: configurationId
+        projectId: projectId
+        enableVerification: true
+        tokenMaxAge: 0.8008281904610115
+      properties:
+        ari:
+          description:
+            This is a unique resource identifier of the Affinidi Iota Framework
+            configuration.
+          type: string
+        configurationId:
+          description: ID of the Affinidi Iota Framework configuration.
+          type: string
+        name:
+          description: The name of the configuration to quickly identify the resource.
+          type: string
+        projectId:
+          description: The ID of the project.
+          type: string
+        walletAri:
+          description:
+            The unique resource identifier of the Wallet used to sign the
+            request token.
+          type: string
+        tokenMaxAge:
+          description:
+            This is the lifetime of the signed request token during the
+            data-sharing flow.
+          type: number
+        iotaResponseWebhookURL:
+          description: The webhook URL is used for callback when the data is ready.
+          type: string
+        enableVerification:
+          description:
+            Cryptographically verifies the data shared by the user when
+            enabled.
+          type: boolean
+        enableConsentAuditLog:
+          description:
+            "Records the consent the user gave when they shared their data,\
+            \ including the type of data shared."
+          type: boolean
+        clientMetadata:
+          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+        mode:
+          default: websocket
+          description:
+            Determines whether to handle the data-sharing request using
+            the WebSocket or Redirect flow.
+          enum:
+            - redirect
+            - websocket
+          type: string
+        redirectUris:
+          description:
+            "List of allowed URLs to redirect users, including the response\
+            \ from the request. This is required if the selected data-sharing mode\
+            \ is Redirect."
+          items:
+            type: string
+          type: array
+        enableIdvProviders:
+          description:
+            Enables identity verification from user with a 3rd-party provider
+            when a verified identity document is not found.
+          type: boolean
+      required:
+        - ari
+        - clientMetadata
+        - configurationId
+        - enableConsentAuditLog
+        - enableVerification
+        - name
+        - projectId
+        - tokenMaxAge
+        - walletAri
+      type: object
+    CreateIotaConfigurationInput:
+      additionalProperties: false
+      example:
+        mode: websocket
+        clientMetadata:
+          origin: origin
+          name: name
+          logo: logo
+        enableIdvProviders: true
+        enableConsentAuditLog: true
+        iotaResponseWebhookURL: iotaResponseWebhookURL
+        name: name
+        description: description
+        walletAri: walletAri
+        enableVerification: true
+        redirectUris:
+          - redirectUris
+          - redirectUris
+        tokenMaxAge: 1.0800828190461012
+      properties:
+        name:
+          description: The name of the configuration to quickly identify the resource.
+          type: string
+        description:
+          description: An optional description of what the configuration is used for.
+          type: string
+        walletAri:
+          description:
+            The unique resource identifier of the Wallet used to sign the
+            request token.
+          type: string
+        iotaResponseWebhookURL:
+          description: The webhook URL is used for callback when the data is ready.
+          type: string
+        enableVerification:
+          description:
+            Cryptographically verifies the data shared by the user when
+            enabled.
+          type: boolean
+        enableConsentAuditLog:
+          description:
+            "Records the user's consent when they share their data, including\
+            \ the type of data shared when enabled."
+          type: boolean
+        tokenMaxAge:
+          description:
+            This is the lifetime of the signed request token during the
+            data-sharing flow.
+          minimum: 1
+          type: number
+        clientMetadata:
+          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+        mode:
+          default: websocket
+          description:
+            Determines whether to handle the data-sharing request using
+            the WebSocket or Redirect flow.
+          enum:
+            - redirect
+            - websocket
+          type: string
+        redirectUris:
+          description:
+            "List of allowed URLs to redirect users, including the response\
+            \ from the request. This is required if the selected data-sharing mode\
+            \ is Redirect."
+          items:
+            type: string
+          type: array
+        enableIdvProviders:
+          description:
+            Enables identity verification from user with a 3rd-party provider
+            when a verified identity document is not found.
+          type: boolean
+      required:
+        - clientMetadata
+        - enableConsentAuditLog
+        - enableVerification
+        - name
+        - walletAri
+      type: object
+    ListConfigurationOK:
+      additionalProperties: false
+      example:
+        configurations:
+          - clientMetadata:
+              origin: origin
+              name: name
+              logo: logo
+            enableConsentAuditLog: true
+            walletAri: walletAri
+            redirectUris:
+              - redirectUris
+              - redirectUris
+            mode: websocket
+            enableIdvProviders: true
+            iotaResponseWebhookURL: iotaResponseWebhookURL
+            name: name
+            ari: ari
+            configurationId: configurationId
+            projectId: projectId
+            enableVerification: true
+            tokenMaxAge: 0.8008281904610115
+          - clientMetadata:
+              origin: origin
+              name: name
+              logo: logo
+            enableConsentAuditLog: true
+            walletAri: walletAri
+            redirectUris:
+              - redirectUris
+              - redirectUris
+            mode: websocket
+            enableIdvProviders: true
+            iotaResponseWebhookURL: iotaResponseWebhookURL
+            name: name
+            ari: ari
+            configurationId: configurationId
+            projectId: projectId
+            enableVerification: true
+            tokenMaxAge: 0.8008281904610115
+      properties:
+        configurations:
+          items:
+            $ref: '#/components/schemas/IotaConfigurationDto'
+          type: array
+      required:
+        - configurations
+      type: object
+    UpdateConfigurationByIdInput:
+      additionalProperties: false
+      example:
+        mode: redirect
+        clientMetadata:
+          origin: origin
+          name: name
+          logo: logo
+        enableIdvProviders: true
+        enableConsentAuditLog: true
+        iotaResponseWebhookURL: iotaResponseWebhookURL
+        name: name
+        description: description
+        walletAri: walletAri
+        enableVerification: true
+        redirectUris:
+          - redirectUris
+          - redirectUris
+        tokenMaxAge: 0.8008281904610115
+      properties:
+        name:
+          description: The name of the configuration to quickly identify the resource.
+          type: string
+        walletAri:
+          description:
+            The unique resource identifier of the Wallet used to sign the
+            request token.
+          type: string
+        iotaResponseWebhookURL:
+          description: The webhook URL is used for callback when the data is ready.
+          type: string
+        enableVerification:
+          description:
+            Cryptographically verifies the data shared by the user when
+            enabled.
+          type: boolean
+        enableConsentAuditLog:
+          description:
+            "Records the user's consent when they share their data, including\
+            \ the type of data shared when enabled."
+          type: boolean
+        tokenMaxAge:
+          description:
+            This is the lifetime of the signed request token during the
+            data-sharing flow.
+          type: number
+        description:
+          description: An optional description of what the configuration is used for.
+          type: string
+        clientMetadata:
+          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+        mode:
+          description:
+            Determines whether to handle the data-sharing request using
+            the WebSocket or Redirect flow.
+          enum:
+            - redirect
+            - websocket
+          type: string
+        redirectUris:
+          description:
+            "List of allowed URLs to redirect users, including the response\
+            \ from the request. This is required if the selected data-sharing mode\
+            \ is Redirect."
+          items:
+            type: string
+          type: array
+        enableIdvProviders:
+          description:
+            Enables identity verification from user with a 3rd-party provider
+            when a verified identity document is not found.
+          type: boolean
+      type: object
+    UpdateConfigurationByIdOK:
+      additionalProperties: false
+      properties:
+        updateConfigurationByIdOk:
+          type: string
+      type: object
+    CreatePexQueryInput:
+      additionalProperties: false
+      example:
+        vpDefinition: vpDefinition
+        name: name
+        description: description
+      properties:
+        name:
+          description:
+            The name of the presentation definition to quickly identify
+            the query.
+          type: string
+        vpDefinition:
+          description:
+            The presentation definition describing the data requirement
+            that must be satisfied by the user. The value is in a JSON stringify format.
+          type: string
+        description:
+          description: An optional description of what the query is used for.
+          type: string
+      required:
+        - name
+        - vpDefinition
+      type: object
+    PexQueryDto:
+      additionalProperties: false
+      example:
+        vpDefinition: vpDefinition
+        name: name
+        ari: ari
+        description: description
+        configurationAri: configurationAri
+        queryId: queryId
+      properties:
+        ari:
+          description: The unique resource identifier of the qeuery.
+          type: string
+        queryId:
+          description: The ID of the query.
+          type: string
+        name:
+          description:
+            The name of the presentation definition to quickly identify
+            the query.
+          type: string
+        description:
+          description: An optional description of what the query is used for.
+          type: string
+        configurationAri:
+          description:
+            The unique resource identifier of the related configuration
+            where the query is defined.
+          type: string
+        vpDefinition:
+          description:
+            The presentation definition describing the data requirement
+            that must be satisfied by the user. The value is in a JSON stringify format.
+          type: string
+      required:
+        - ari
+        - configurationAri
+        - description
+        - name
+        - queryId
+        - vpDefinition
+      type: object
+    SavePexQueriesUpdateInput:
+      additionalProperties: false
+      example:
+        queries:
+          - vpDefinition: vpDefinition
+            description: description
+            queryId: queryId
+          - vpDefinition: vpDefinition
+            description: description
+            queryId: queryId
+          - vpDefinition: vpDefinition
+            description: description
+            queryId: queryId
+          - vpDefinition: vpDefinition
+            description: description
+            queryId: queryId
+          - vpDefinition: vpDefinition
+            description: description
+            queryId: queryId
+      properties:
+        queries:
+          items:
+            $ref: '#/components/schemas/SavePexQueriesUpdateInput_queries_inner'
+          maxItems: 25
+          type: array
+      type: object
+    DeletePexQueriesInput:
+      additionalProperties: false
+      properties:
+        queryIds:
+          items:
+            type: string
+          maxItems: 25
+          type: array
+      required:
+        - queryIds
+      type: object
+    InitiateDataSharingRequestInput:
+      additionalProperties: false
+      example:
+        redirectUri: redirectUri
+        mode: redirect
+        correlationId: correlationId
+        configurationId: configurationId
+        nonce: nonce
+        queryId: queryId
+        tokenMaxAge: 0.8008281904610115
+      properties:
+        queryId:
+          description: The ID of the query.
+          type: string
+        correlationId:
+          description:
+            "A unique, randomly generated identifier that correlates the\
+            \ request and response in the data-sharing request flow."
+          type: string
+        tokenMaxAge:
+          description:
+            This is the lifetime of the signed request token during the
+            data-sharing flow.
+          type: number
+        nonce:
+          description:
+            A randomly generated value that is added in the request and
+            response to prevent replay attacks.
+          type: string
+        redirectUri:
+          description:
+            "List of allowed URLs to redirect users, including the response\
+            \ from the request. This is required if the selected data-sharing mode\
+            \ is Redirect."
+          type: string
+        configurationId:
+          description: ID of the Affinidi Iota Framework configuration.
+          type: string
+        mode:
+          description:
+            Determines whether to handle the data-sharing request using
+            the WebSocket or Redirect flow.
+          enum:
+            - redirect
+            - websocket
+          type: string
+      required:
+        - configurationId
+        - correlationId
+        - mode
+        - nonce
+        - queryId
+        - redirectUri
+      type: object
+    FetchIOTAVPResponseInput:
+      additionalProperties: false
+      example:
+        correlationId: correlationId
+        configurationId: configurationId
+        transactionId: transactionId
+        responseCode: responseCode
+      properties:
+        correlationId:
+          description:
+            "A unique, randomly generated identifier that correlates the\
+            \ request and response in the data-sharing request flow."
+          type: string
+        transactionId:
+          description:
+            "A unique, randomly generated identifier data-sharing request\
+            \ flow is initiated. This value is used with the response code to fetch\
+            \ the callback response data."
+          type: string
+        responseCode:
+          description:
+            A unique identifier to fetch the callback response data. Send
+            this value together with the transactionId to successfully fetch the data.
+          maxLength: 255
+          minLength: 1
+          type: string
+        configurationId:
+          description: ID of the Affinidi Iota Framework configuration.
+          type: string
+      required:
+        - configurationId
+        - correlationId
+        - responseCode
+        - transactionId
+      type: object
+    ListPexQueriesOK:
+      additionalProperties: false
+      example:
+        pexQueries:
+          - vpDefinition: vpDefinition
+            name: name
+            ari: ari
+            description: description
+            configurationAri: configurationAri
+            queryId: queryId
+          - vpDefinition: vpDefinition
+            name: name
+            ari: ari
+            description: description
+            configurationAri: configurationAri
+            queryId: queryId
+        lastEvaluatedKey: lastEvaluatedKey
+      properties:
+        pexQueries:
+          items:
+            $ref: '#/components/schemas/PexQueryDto'
+          type: array
+        lastEvaluatedKey:
+          type: string
+      required:
+        - pexQueries
+      type: object
+    UpdatePexQueryInput:
+      additionalProperties: false
+      example:
+        vpDefinition: vpDefinition
+        description: description
+      properties:
+        vpDefinition:
+          description:
+            The presentation definition describing the data requirement
+            that must be satisfied by the user. The value is in a JSON stringify format.
+          type: string
+        description:
+          description: An optional description of what the query is used for.
+          type: string
+      type: object
+    NotFoundError:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        name: NotFoundError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Not found: ${param}.'
+        httpStatusCode: 0.8008281904610115
+      properties:
+        name:
+          enum:
+            - NotFoundError
+          type: string
+        message:
+          enum:
+            - 'Not found: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 404
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    MessagePublishingError:
+      additionalProperties: false
+      properties:
+        name:
+          enum:
+            - MessagePublishingError
+          type: string
+        message:
+          enum:
+            - Not able to publish messages to topic
+          type: string
+        httpStatusCode:
+          enum:
+            - 500
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    AlreadyExistsError:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        name: AlreadyExistsError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Already exists: ${param}.'
+        httpStatusCode: 0.8008281904610115
+      properties:
+        name:
+          enum:
+            - AlreadyExistsError
+          type: string
+        message:
+          enum:
+            - 'Already exists: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 409
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    PrepareRequest:
+      additionalProperties: false
+      properties:
+        connectionClientId:
+          type: string
+        queryId:
+          type: string
+        correlationId:
+          description:
+            "A unique, randomly generated identifier that correlates the\
+            \ request and response in the data-sharing request flow."
+          type: string
+        tokenMaxAge:
+          description:
+            This is the lifetime of the signed request token during the
+            data-sharing flow.
+          type: number
+        audience:
+          type: string
+      required:
+        - connectionClientId
+        - correlationId
+        - queryId
+      type: object
+    PrepareRequestCreated:
+      additionalProperties: false
+      properties:
+        data:
+          $ref: '#/components/schemas/PrepareRequestCreated_data'
+      required:
+        - data
+      type: object
+    ConsentDto:
+      additionalProperties: false
+      example:
+        vcType: vcType
+        createdAt: createdAt
+        createdBy: createdBy
+        modifiedAt: modifiedAt
+        modifiedBy: modifiedBy
+        id: id
+        projectId: projectId
+        userId: userId
+        status: GIVEN
+      properties:
+        projectId:
+          description: The ID of the project.
+          type: string
+        id:
+          description: Unique identifier for the record.
+          type: string
+        userId:
+          description: Unique identifier for the user.
+          type: string
+        vcType:
+          description:
+            Type of the VC shared by the user. It creates a consent record
+            for each  VC type shared except for the base type VerifiableCredential.
+          type: string
+        status:
+          description: Status of the consent.
+          enum:
+            - GIVEN
+          type: string
+        modifiedAt:
+          type: string
+        modifiedBy:
+          type: string
+        createdAt:
+          type: string
+        createdBy:
+          type: string
+      required:
+        - createdAt
+        - createdBy
+        - id
+        - modifiedAt
+        - modifiedBy
+        - projectId
+        - status
+        - userId
+        - vcType
+      type: object
+    ListLoggedConsentsOK:
+      additionalProperties: false
+      example:
+        consents:
+          - vcType: vcType
+            createdAt: createdAt
+            createdBy: createdBy
+            modifiedAt: modifiedAt
+            modifiedBy: modifiedBy
+            id: id
+            projectId: projectId
+            userId: userId
+            status: GIVEN
+          - vcType: vcType
+            createdAt: createdAt
+            createdBy: createdBy
+            modifiedAt: modifiedAt
+            modifiedBy: modifiedBy
+            id: id
+            projectId: projectId
+            userId: userId
+            status: GIVEN
+        lastEvaluatedKey: lastEvaluatedKey
+      properties:
+        consents:
+          items:
+            $ref: '#/components/schemas/ConsentDto'
+          type: array
+        lastEvaluatedKey:
+          type: string
+      required:
+        - consents
+      type: object
+    ResourceLimitExceededError:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        name: ResourceLimitExceededError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Resource limit exceeded: ${param}.'
+        httpStatusCode: 6.027456183070403
+      properties:
+        name:
+          enum:
+            - ResourceLimitExceededError
+          type: string
+        message:
+          enum:
+            - 'Resource limit exceeded: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 422
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    GetIotaConfigurationMetaDataOK:
+      additionalProperties: false
+      example:
+        origin: origin
+        name: name
+        logo: logo
+      properties:
+        name:
+          description:
+            The name displayed on the consent page indicates who is requesting
+            data from the user. It can be the application or website's name.
+          type: string
+        origin:
+          description:
+            The URL of the requester displayed on the consent page indicates
+            the request's origin.
+          type: string
+        logo:
+          description:
+            "The logo of the requester displayed on the consent page, allowing\
+            \ users to easily recognise who requests the data."
+          type: string
+      required:
+        - logo
+        - name
+        - origin
+      type: object
+    CorsIotOidc4vpcallbackOK:
+      additionalProperties: false
+      properties:
+        corsIotOidc4vpcallbackOk:
+          type: string
+      type: object
+    CorsAwsExchangeCredentialsProjectTokenOK:
+      additionalProperties: false
+      properties:
+        corsAwsExchangeCredentialsProjectTokenOk:
+          type: string
+      type: object
+    CorsIotaExchangeCredentialsOK:
+      additionalProperties: false
+      properties:
+        corsIotaExchangeCredentialsOk:
+          type: string
+      type: object
+    CorsInitiateDataSharingRequestOK:
+      additionalProperties: false
+      properties:
+        corsInitiateDataSharingRequestOk:
+          type: string
+      type: object
+    CorsFetchIotaVpResponseOK:
+      additionalProperties: false
+      properties:
+        corsFetchIotaVpResponseOk:
+          type: string
+      type: object
+    InvalidParameterError_details_inner:
+      additionalProperties: false
+      example:
+        issue: issue
+        field: field
+        location: location
+        value: value
+      properties:
+        issue:
+          type: string
+        field:
+          type: string
+        value:
+          type: string
+        location:
+          type: string
+      required:
+        - issue
+      type: object
+    AwsExchangeCredentialsProjectTokenOK_credentials:
+      example:
+        identityId: identityId
+        token: token
+      properties:
+        identityId:
+          type: string
+        token:
+          type: string
+      required:
+        - identityId
+        - token
+      type: object
+    IotaExchangeCredentialsOK_credentials:
+      example:
+        accessKeyId: accessKeyId
+        secretKey: secretKey
+        sessionToken: sessionToken
+        expiration: expiration
+      properties:
+        accessKeyId:
+          type: string
+        secretKey:
+          type: string
+        sessionToken:
+          type: string
+        expiration:
+          type: string
+      required:
+        - accessKeyId
+        - expiration
+        - secretKey
+        - sessionToken
+      type: object
+    InitiateDataSharingRequestOK_data:
+      additionalProperties: false
+      example:
+        jwt: jwt
+        correlationId: correlationId
+        transactionId: transactionId
+      properties:
+        jwt:
+          type: string
+        correlationId:
+          type: string
+        transactionId:
+          type: string
+      required:
+        - correlationId
+        - jwt
+        - transactionId
+      type: object
+    IotaConfigurationDto_clientMetadata:
+      additionalProperties: true
+      description: It contains information about the requester or verifier.
+      example:
+        origin: origin
+        name: name
+        logo: logo
+      properties:
+        name:
+          description:
+            The name displayed on the consent page indicates who is requesting
+            data from the user. It can be the application or website's name.
+          type: string
+        origin:
+          description:
+            The URL of the requester displayed on the consent page indicates
+            the request's origin.
+          type: string
+        logo:
+          description:
+            "The logo of the requester displayed on the consent page, allowing\
+            \ users to easily recognise who requests the data."
+          type: string
+      required:
+        - logo
+        - name
+        - origin
+      type: object
+    SavePexQueriesUpdateInput_queries_inner:
+      additionalProperties: false
+      example:
+        vpDefinition: vpDefinition
+        description: description
+        queryId: queryId
+      properties:
+        queryId:
+          description: The ID of the query.
+          type: string
+        vpDefinition:
+          description:
+            The presentation definition describing the data requirement
+            that must be satisfied by the user. The value is in a JSON stringify format.
+          type: string
+        description:
+          description: An optional description of what the query is used for.
+          type: string
+      required:
+        - queryId
+      type: object
+    PrepareRequestCreated_data:
+      additionalProperties: false
+      properties:
+        jwt:
+          type: string
+        correlationId:
+          description:
+            "A unique, randomly generated identifier that correlates the\
+            \ request and response in the data-sharing request flow."
+          type: string
+      required:
+        - correlationId
+        - jwt
+      type: object
+  securitySchemes:
+    AwsSigV4:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: awsSigv4
+    ApiKey:
+      in: header
+      name: x-api-key
+      type: apiKey
+      x-amazon-apigateway-api-key-source: HEADER
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+    ConsumerTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: custom
+      x-amazon-apigateway-authorizer:
+        type: request
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ConsumerTokenAuthorizerLambda91B1796B-QT4lOBGrUdPH:live-alias/invocations
+        authorizerResultTtlInSeconds: 0
+    UserTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+    ProjectTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: custom
+      x-amazon-apigateway-authorizer:
+        type: request
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ProjectTokenAuthorizerC83BEF45-elvJgVdbp078:live-alias/invocations
+        authorizerResultTtlInSeconds: 0
+    HeritageTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: custom
+      x-amazon-apigateway-authorizer:
+        type: request
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-HeritageTokenAuthorizerLambda7CAC4A4B-JZgFL3pblycx:live-alias/invocations
+        authorizerResultTtlInSeconds: 0
+x-amazon-apigateway-request-validators:
+  basic:
+    validateRequestBody: true
+    validateRequestParameters: true
+x-amazon-apigateway-request-validator: basic
+x-affinidi-default-cors-operation:
+  x-amazon-apigateway-integration:
+    type: mock
+    requestTemplates:
+      application/json: |-
+        {
+        "statusCode" : 200
+        }
+    responses:
+      default:
+        statusCode: 200
+        responseParameters:
+          method.response.header.Access-Control-Allow-Headers:
+            "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-amz-security-token,Access-Control-Allow-Headers,\
+            \ Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method,\
+            \ Access-Control-Request-Headers, Authorization, X-Amz-Content-Sha256,\
+            \ X-Amz-Date, X-Amz-Security-Token'"
+          method.response.header.Access-Control-Allow-Methods: "'*'"
+          method.response.header.Access-Control-Allow-Origin: "'*'"
+        responseTemplates:
+          application/json: '{}'
+x-affinidi-cors-response-headers:
+  Access-Control-Allow-Origin:
+    $ref: '#/components/headers/Access-Control-Allow-Origin'
+  Access-Control-Allow-Methods:
+    $ref: '#/components/headers/Access-Control-Allow-Methods'
+  Access-Control-Allow-Headers:
+    $ref: '#/components/headers/Access-Control-Allow-Headers'
