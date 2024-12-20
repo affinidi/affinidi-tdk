@@ -186,8 +186,12 @@ class ApiClient {
           return ActionForbiddenError.fromJson(value);
         case 'ActionForbiddenErrorDetailsInner':
           return ActionForbiddenErrorDetailsInner.fromJson(value);
+        case 'ChangeCredentialStatus400Response':
+          return ChangeCredentialStatus400Response.fromJson(value);
         case 'ChangeCredentialStatusInput':
           return ChangeCredentialStatusInput.fromJson(value);
+        case 'ChangeStatusForbiddenError':
+          return ChangeStatusForbiddenError.fromJson(value);
         case 'CorsGenerateCredentialsOK':
           return CorsGenerateCredentialsOK.fromJson(value);
         case 'CorsGetCredentialOfferOK':
@@ -274,6 +278,8 @@ class ApiClient {
           return ProjectCredentialConfigExistError.fromJson(value);
         case 'ProjectCredentialConfigNotExistError':
           return ProjectCredentialConfigNotExistError.fromJson(value);
+        case 'RevocationForbiddenError':
+          return RevocationForbiddenError.fromJson(value);
         case 'StartIssuance400Response':
           return StartIssuance400Response.fromJson(value);
         case 'StartIssuanceInput':
