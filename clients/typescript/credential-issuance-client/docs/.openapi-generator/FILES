@@ -8,6 +8,7 @@ Apis/WellKnownApi.md
 Models/ActionForbiddenError.md
 Models/ActionForbiddenError_details_inner.md
 Models/ChangeCredentialStatusInput.md
+Models/ChangeStatusForbiddenError.md
 Models/CorsGenerateCredentialsOK.md
 Models/CorsGetCredentialOfferOK.md
 Models/CorsGetWellKnownOpenIdCredentialIssuerOK.md
@@ -48,6 +49,7 @@ Models/MissingHolderDidError.md
 Models/NotFoundError.md
 Models/ProjectCredentialConfigExistError.md
 Models/ProjectCredentialConfigNotExistError.md
+Models/RevocationForbiddenError.md
 Models/StartIssuanceInput.md
 Models/StartIssuanceInput_data_inner.md
 Models/StartIssuanceInput_data_inner_metaData.md
@@ -60,6 +62,7 @@ Models/UpdateIssuanceConfigInput.md
 Models/VcClaimedError.md
 Models/WellKnownOpenIdCredentialIssuerResponse.md
 Models/WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner.md
+Models/changeCredentialStatus_400_response.md
 Models/createIssuanceConfig_400_response.md
 Models/generateCredentials_400_response.md
 Models/getCredentialOffer_400_response.md
