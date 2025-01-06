@@ -49,7 +49,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * Private Key JWT Authentication of Client with &#x60;private_key_jwt&#x60; oAuth Method
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-06T23:18:11.346233952Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UpdateTokenPrivateKeyAuthenticationMethodDto {
   /**
    * Gets or Sets type

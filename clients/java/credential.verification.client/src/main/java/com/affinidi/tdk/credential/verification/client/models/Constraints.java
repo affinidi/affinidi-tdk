@@ -53,7 +53,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * Constraints
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:28.162527459Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-06T23:18:38.817927930Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Constraints {
   /**
    * Gets or Sets limitDisclosure

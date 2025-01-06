@@ -51,7 +51,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * FlowData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-06T23:17:40.007393468Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FlowData {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)

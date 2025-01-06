@@ -49,7 +49,7 @@ import com.affinidi.tdk.wallets.client.JSON;
 /**
  * DTO contains params to sign credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:51.319891501Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-06T23:19:06.918758232Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignCredentialInputDto {
   public static final String SERIALIZED_NAME_UNSIGNED_CREDENTIAL = "unsignedCredential";
   @SerializedName(SERIALIZED_NAME_UNSIGNED_CREDENTIAL)

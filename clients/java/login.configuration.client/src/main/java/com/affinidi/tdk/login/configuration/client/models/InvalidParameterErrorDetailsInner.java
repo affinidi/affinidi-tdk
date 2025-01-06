@@ -48,7 +48,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * InvalidParameterErrorDetailsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:11.939827540Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-06T23:17:04.325368887Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class InvalidParameterErrorDetailsInner {
   public static final String SERIALIZED_NAME_ISSUE = "issue";
   @SerializedName(SERIALIZED_NAME_ISSUE)
