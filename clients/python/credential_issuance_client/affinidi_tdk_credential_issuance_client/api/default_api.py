@@ -192,7 +192,7 @@ class DefaultApi:
 
         _response_types_map = {
             '200': "FlowData",
-            '400': "InvalidParameterError",
+            '400': "ChangeCredentialStatus400Response",
             '404': "NotFoundError",
         }
 
