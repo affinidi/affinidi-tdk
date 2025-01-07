@@ -1,6 +1,6 @@
-import { EnvironmentUtils } from '@affinidi-tdk/common'
 import { v4 as uuidv4 } from 'uuid'
 import { Iota, Jwt, ProjectScopedToken } from './helpers'
+import { EnvironmentUtils } from '@affinidi-tdk/common'
 
 export interface IotaTokenOutput {
   readonly iotaJwt: string
