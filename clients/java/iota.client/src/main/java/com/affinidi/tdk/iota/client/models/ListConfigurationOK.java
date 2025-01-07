@@ -51,7 +51,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * ListConfigurationOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-07T23:19:10.213290169Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListConfigurationOK {
   public static final String SERIALIZED_NAME_CONFIGURATIONS = "configurations";
   @SerializedName(SERIALIZED_NAME_CONFIGURATIONS)

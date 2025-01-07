@@ -52,7 +52,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * InvalidJwtTokenError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-07T23:17:48.244075726Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class InvalidJwtTokenError {
   /**
    * Gets or Sets name

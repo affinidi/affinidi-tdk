@@ -50,7 +50,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * JwtObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:28.162527459Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-07T23:18:15.989400204Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class JwtObject {
   public static final String SERIALIZED_NAME_ALG = "alg";
   @SerializedName(SERIALIZED_NAME_ALG)

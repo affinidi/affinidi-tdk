@@ -41,7 +41,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * Direct Post Response URI endpoint result
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:11.939827540Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-07T23:16:44.122226798Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginSessionAcceptResponseOutput {
   public LoginSessionAcceptResponseOutput() {
   }
