@@ -19,8 +19,8 @@ class AuthProvider {
       required this.privateKey,
       this.keyId,
       this.passphrase})
-      : apiGatewayUrl = EnvironmentUtils.fetchApiGwUrl(),
-        tokenEndpoint = EnvironmentUtils.fetchElementsAuthTokenUrl();
+      : apiGatewayUrl = Environment.fetchApiGwUrl(),
+        tokenEndpoint = Environment.fetchElementsAuthTokenUrl();
 
   AuthProvider.withEnv(
       {required this.projectId,

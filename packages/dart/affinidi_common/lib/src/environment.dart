@@ -1,57 +1,92 @@
-enum Environment {
+enum EnvironmentType {
   local('local'),
   development('dev'),
   production('prod');
 
   final String value;
-  const Environment(this.value);
+  const EnvironmentType(this.value);
 }
 
-const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
+class Environment {
+  final String environmentName;
+  final String apiGwUrl;
+  final String elementsAuthTokenUrl;
+  final String iotUrl;
+  final String webVaultUrl;
+  final String consumerAudienceUrl;
 
-const envToApiGwUrl = {
-  Environment.local: 'https://apse1.dev.api.affinidi.io',
-  Environment.development: 'https://apse1.dev.api.affinidi.io',
-  Environment.production: 'https://apse1.api.affinidi.io',
-};
+  const Environment._({
+    required this.environmentName,
+    required this.apiGwUrl,
+    required this.elementsAuthTokenUrl,
+    required this.iotUrl,
+    required this.webVaultUrl,
+    required this.consumerAudienceUrl,
+  });
 
-const envToElementsAuthTokenUrl = {
-  Environment.local:
-      'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-  Environment.development:
-      'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-  Environment.production:
-      'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
-};
+  static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
 
-const envToIotUrl = {
-  Environment.local: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-  Environment.development:
-      'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-  Environment.production: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
-};
+  static final environments = {
+    EnvironmentType.local: Environment._(
+      environmentName: EnvironmentType.local.value,
+      apiGwUrl: 'https://apse1.dev.api.affinidi.io',
+      elementsAuthTokenUrl:
+          'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
+      iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+      webVaultUrl: 'http://localhost:3001',
+      consumerAudienceUrl:
+          'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+    ),
+    EnvironmentType.development: Environment._(
+      environmentName: EnvironmentType.development.value,
+      apiGwUrl: 'https://apse1.dev.api.affinidi.io',
+      elementsAuthTokenUrl:
+          'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
+      iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+      webVaultUrl: 'https://vault.dev.affinidi.com',
+      consumerAudienceUrl:
+          'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+    ),
+    EnvironmentType.production: Environment._(
+      environmentName: EnvironmentType.production.value,
+      apiGwUrl: 'https://apse1.api.affinidi.io',
+      elementsAuthTokenUrl:
+          'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
+      iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
+      webVaultUrl: 'https://vault.affinidi.com',
+      consumerAudienceUrl:
+          'https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token',
+    ),
+  };
 
-class EnvironmentUtils {
   static Environment fetchEnvironment() {
-    const envValue = String.fromEnvironment(enviromentVariableName);
-    return Environment.values.firstWhere(
+    final envValue = String.fromEnvironment(enviromentVariableName);
+    final environmentType = EnvironmentType.values.firstWhere(
       (e) => e.value == envValue,
-      orElse: () => Environment.production,
+      orElse: () => EnvironmentType.production,
     );
+
+    return environments[environmentType] ??
+        environments[EnvironmentType.production]!;
   }
 
   static String fetchApiGwUrl([Environment? env]) {
     env ??= fetchEnvironment();
-    return envToApiGwUrl[env]!;
+    return env.apiGwUrl;
   }
 
   static String fetchElementsAuthTokenUrl([Environment? env]) {
     env ??= fetchEnvironment();
-    return envToElementsAuthTokenUrl[env]!;
+    return env.elementsAuthTokenUrl;
   }
 
   static String fetchIotUrl([Environment? env]) {
     env ??= fetchEnvironment();
-    return envToIotUrl[env]!;
+    return env.iotUrl;
+  }
+
+  static String fetchConsumerAudienceUrl([Environment? env]) {
+    env ??= fetchEnvironment();
+    return env.consumerAudienceUrl;
   }
 }
