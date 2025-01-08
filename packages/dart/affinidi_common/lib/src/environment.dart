@@ -26,7 +26,7 @@ class Environment {
 
   static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
 
-  static final _environments = {
+  static final environments = {
     EnvironmentType.local: Environment._(
       environmentName: EnvironmentType.local.value,
       apiGwUrl: 'https://apse1.dev.api.affinidi.io',
@@ -66,8 +66,8 @@ class Environment {
       orElse: () => EnvironmentType.production,
     );
 
-    return _environments[environmentType] ??
-        _environments[EnvironmentType.production]!;
+    return environments[environmentType] ??
+        environments[EnvironmentType.production]!;
   }
 
   static String fetchApiGwUrl([Environment? env]) {
