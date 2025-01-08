@@ -15,7 +15,7 @@ class Environment {
   final String webVaultUrl;
   final String consumerAudienceUrl;
 
-  const Environment({
+  const Environment._({
     required this.environmentName,
     required this.apiGwUrl,
     required this.elementsAuthTokenUrl,
@@ -26,8 +26,8 @@ class Environment {
 
   static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
 
-  static final environments = {
-    EnvironmentType.local: Environment(
+  static final _environments = {
+    EnvironmentType.local: Environment._(
       environmentName: EnvironmentType.local.value,
       apiGwUrl: 'https://apse1.dev.api.affinidi.io',
       elementsAuthTokenUrl:
@@ -37,7 +37,7 @@ class Environment {
       consumerAudienceUrl:
           'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
     ),
-    EnvironmentType.development: Environment(
+    EnvironmentType.development: Environment._(
       environmentName: EnvironmentType.development.value,
       apiGwUrl: 'https://apse1.dev.api.affinidi.io',
       elementsAuthTokenUrl:
@@ -47,7 +47,7 @@ class Environment {
       consumerAudienceUrl:
           'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
     ),
-    EnvironmentType.production: Environment(
+    EnvironmentType.production: Environment._(
       environmentName: EnvironmentType.production.value,
       apiGwUrl: 'https://apse1.api.affinidi.io',
       elementsAuthTokenUrl:
@@ -66,8 +66,8 @@ class Environment {
       orElse: () => EnvironmentType.production,
     );
 
-    return environments[environmentType] ??
-        environments[EnvironmentType.production]!;
+    return _environments[environmentType] ??
+        _environments[EnvironmentType.production]!;
   }
 
   static String fetchApiGwUrl([Environment? env]) {
