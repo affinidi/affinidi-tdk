@@ -2,19 +2,13 @@ import 'dart:core';
 
 import 'package:affinidi_common/affinidi_common.dart';
 
-const envToWebVaultUrlMap = {
-  Environment.local: 'http://localhost:3001',
-  Environment.development: 'https://vault.dev.affinidi.com',
-  Environment.production: 'https://vault.affinidi.com',
-};
-
 const String sharePath = '/login';
 const String claimPath = '/claim';
 
 class VaultUtils {
   static String fetchWebVaultUrl([Environment? env]) {
     env ??= Environment.fetchEnvironment();
-    return envToWebVaultUrlMap[env]!;
+    return env.webVaultUrl;
   }
 
   static String buildShareLink(String request, String clientId,
