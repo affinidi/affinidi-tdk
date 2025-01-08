@@ -1,7 +1,7 @@
 enum EnvironmentType {
   local('local'),
-  development('development'),
-  production('production');
+  development('dev'),
+  production('prod');
 
   final String value;
   const EnvironmentType(this.value);

@@ -58,6 +58,24 @@ void main() {
       expect(Environment.fetchIotUrl(),
           equals('a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com'));
     });
+
+    test('Consumer Audience URLs are correct', () {
+      expect(
+          Environment.fetchConsumerAudienceUrl(local),
+          equals(
+              'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+      expect(
+          Environment.fetchConsumerAudienceUrl(development),
+          equals(
+              'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+      expect(Environment.fetchConsumerAudienceUrl(production),
+          equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+    });
+
+    test('Consumer Audience URL defaults to prod', () {
+      expect(Environment.fetchConsumerAudienceUrl(),
+          equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+    });
   });
 
   group('Vault Utils Tests', () {
@@ -68,6 +86,11 @@ void main() {
           equals('https://vault.dev.affinidi.com'));
       expect(VaultUtils.fetchWebVaultUrl(production),
           equals('https://vault.affinidi.com'));
+    });
+
+    test('Web Vault URL defaults to prod', () {
+      expect(
+          VaultUtils.fetchWebVaultUrl(), equals('https://vault.affinidi.com'));
     });
 
     test('buildShareLink constructs correct URL', () {
@@ -85,11 +108,6 @@ void main() {
           VaultUtils.buildClaimLink(credentialOfferUri),
           equals(
               'https://vault.affinidi.com/claim?credential_offer_uri=test%2Fcredential%2Furi'));
-    });
-
-    test('Web Vault URL defaults to prod', () {
-      expect(
-          VaultUtils.fetchWebVaultUrl(), equals('https://vault.affinidi.com'));
     });
   });
 }
