@@ -4,53 +4,52 @@ import 'package:test/test.dart';
 void main() {
   group('Environment Tests', () {
     test('fetchEnvironment returns production by default', () {
-      expect(
-          EnvironmentUtils.fetchEnvironment(), equals(Environment.production));
+      expect(Environment.fetchEnvironment(), equals(Environment.production));
     });
 
     test('API Gateway URLs are correct', () {
-      expect(EnvironmentUtils.fetchApiGwUrl(Environment.local),
+      expect(Environment.fetchApiGwUrl(Environment.local),
           equals('https://apse1.dev.api.affinidi.io'));
-      expect(EnvironmentUtils.fetchApiGwUrl(Environment.development),
+      expect(Environment.fetchApiGwUrl(Environment.development),
           equals('https://apse1.dev.api.affinidi.io'));
-      expect(EnvironmentUtils.fetchApiGwUrl(Environment.production),
+      expect(Environment.fetchApiGwUrl(Environment.production),
           equals('https://apse1.api.affinidi.io'));
     });
 
     test('API Gateway URL defaults to prod', () {
-      expect(EnvironmentUtils.fetchApiGwUrl(),
-          equals('https://apse1.api.affinidi.io'));
+      expect(
+          Environment.fetchApiGwUrl(), equals('https://apse1.api.affinidi.io'));
     });
 
     test('Elements Auth Token URLs are correct', () {
       expect(
-          EnvironmentUtils.fetchElementsAuthTokenUrl(Environment.local),
+          Environment.fetchElementsAuthTokenUrl(Environment.local),
           equals(
               'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
       expect(
-          EnvironmentUtils.fetchElementsAuthTokenUrl(Environment.development),
+          Environment.fetchElementsAuthTokenUrl(Environment.development),
           equals(
               'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
-      expect(EnvironmentUtils.fetchElementsAuthTokenUrl(Environment.production),
+      expect(Environment.fetchElementsAuthTokenUrl(Environment.production),
           equals('https://apse1.auth.developer.affinidi.io/auth/oauth2/token'));
     });
 
     test('Elements Auth Token URL defaults to prod', () {
-      expect(EnvironmentUtils.fetchElementsAuthTokenUrl(),
+      expect(Environment.fetchElementsAuthTokenUrl(),
           equals('https://apse1.auth.developer.affinidi.io/auth/oauth2/token'));
     });
 
     test('IoT URLs are correct', () {
-      expect(EnvironmentUtils.fetchIotUrl(Environment.local),
+      expect(Environment.fetchIotUrl(Environment.local),
           equals('a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'));
-      expect(EnvironmentUtils.fetchIotUrl(Environment.development),
+      expect(Environment.fetchIotUrl(Environment.development),
           equals('a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'));
-      expect(EnvironmentUtils.fetchIotUrl(Environment.production),
+      expect(Environment.fetchIotUrl(Environment.production),
           equals('a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com'));
     });
 
     test('IoT URL defaults to prod', () {
-      expect(EnvironmentUtils.fetchIotUrl(),
+      expect(Environment.fetchIotUrl(),
           equals('a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com'));
     });
   });

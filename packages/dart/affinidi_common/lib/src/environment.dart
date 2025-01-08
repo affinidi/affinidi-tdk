@@ -1,57 +1,69 @@
-enum Environment {
-  local('local'),
-  development('dev'),
-  production('prod');
-
-  final String value;
-  const Environment(this.value);
-}
-
 const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
 
-const envToApiGwUrl = {
-  Environment.local: 'https://apse1.dev.api.affinidi.io',
-  Environment.development: 'https://apse1.dev.api.affinidi.io',
-  Environment.production: 'https://apse1.api.affinidi.io',
-};
+class Environment {
+  final String environmentName;
+  final String apiGwUrl;
+  final String elementsAuthTokenUrl;
+  final String iotUrl;
+  final String consumerAudienceUrl;
 
-const envToElementsAuthTokenUrl = {
-  Environment.local:
-      'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-  Environment.development:
-      'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-  Environment.production:
-      'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
-};
+  const Environment({
+    required this.environmentName,
+    required this.apiGwUrl,
+    required this.elementsAuthTokenUrl,
+    required this.iotUrl,
+    required this.consumerAudienceUrl,
+  });
 
-const envToIotUrl = {
-  Environment.local: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-  Environment.development:
-      'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-  Environment.production: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
-};
+  static const local = Environment(
+    environmentName: 'local',
+    apiGwUrl: 'https://apse1.dev.api.affinidi.io',
+    elementsAuthTokenUrl:
+        'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
+    iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+    consumerAudienceUrl:
+        'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+  );
 
-class EnvironmentUtils {
+  static const development = Environment(
+    environmentName: 'dev',
+    apiGwUrl: 'https://apse1.dev.api.affinidi.io',
+    elementsAuthTokenUrl:
+        'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
+    iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+    consumerAudienceUrl:
+        'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+  );
+
+  static const production = Environment(
+    environmentName: 'prod',
+    apiGwUrl: 'https://apse1.api.affinidi.io',
+    elementsAuthTokenUrl:
+        'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
+    iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
+    consumerAudienceUrl:
+        'https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token',
+  );
+
   static Environment fetchEnvironment() {
     const envValue = String.fromEnvironment(enviromentVariableName);
-    return Environment.values.firstWhere(
-      (e) => e.value == envValue,
-      orElse: () => Environment.production,
+    return environments.firstWhere(
+      (e) => e.environmentName == envValue,
+      orElse: () => production,
     );
   }
 
+  static List<Environment> get environments => [local, development, production];
+
   static String fetchApiGwUrl([Environment? env]) {
-    env ??= fetchEnvironment();
-    return envToApiGwUrl[env]!;
+    return (env ?? fetchEnvironment()).apiGwUrl;
   }
 
   static String fetchElementsAuthTokenUrl([Environment? env]) {
-    env ??= fetchEnvironment();
-    return envToElementsAuthTokenUrl[env]!;
+    return (env ?? fetchEnvironment()).elementsAuthTokenUrl;
   }
 
   static String fetchIotUrl([Environment? env]) {
-    env ??= fetchEnvironment();
-    return envToIotUrl[env]!;
+    return (env ?? fetchEnvironment()).iotUrl;
   }
 }

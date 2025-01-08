@@ -13,7 +13,7 @@ const String claimPath = '/claim';
 
 class VaultUtils {
   static String fetchWebVaultUrl([Environment? env]) {
-    env ??= EnvironmentUtils.fetchEnvironment();
+    env ??= Environment.fetchEnvironment();
     return envToWebVaultUrlMap[env]!;
   }
 
