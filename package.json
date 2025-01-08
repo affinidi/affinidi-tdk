@@ -20,6 +20,7 @@
     "trust"
   ],
   "devDependencies": {
+    "yaml": "^2.7.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@nx/eslint": "^19.0.0",
@@ -31,7 +32,7 @@
     "@swc/cli": "~0.3.12",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
-    "@theunderscorer/nx-semantic-release": "^2.11.0",
+    "@theunderscorer/nx-semantic-release": "^2.12.0",
     "@types/jest": "^29.5.12",
     "@types/node": "20.12.7",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
