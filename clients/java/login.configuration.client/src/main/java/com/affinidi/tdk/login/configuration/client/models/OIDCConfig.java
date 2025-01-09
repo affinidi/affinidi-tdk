@@ -51,7 +51,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * OIDCConfig
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T11:15:01.260700966Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OIDCConfig {
   public static final String SERIALIZED_NAME_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION_ENDPOINT)

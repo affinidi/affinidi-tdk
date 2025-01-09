@@ -48,7 +48,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * UserDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T11:15:59.636376607Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserDto {
   public static final String SERIALIZED_NAME_PRINCIPAL_ID = "principalId";
   @SerializedName(SERIALIZED_NAME_PRINCIPAL_ID)

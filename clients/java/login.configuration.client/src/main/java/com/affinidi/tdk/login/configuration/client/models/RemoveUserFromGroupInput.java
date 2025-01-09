@@ -48,7 +48,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * input used to remove a user from a group
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T11:15:01.260700966Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RemoveUserFromGroupInput {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)

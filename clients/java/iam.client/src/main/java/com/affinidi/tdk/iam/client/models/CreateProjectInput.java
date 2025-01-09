@@ -48,7 +48,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * CreateProjectInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T11:15:59.636376607Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateProjectInput {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
