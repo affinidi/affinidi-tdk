@@ -48,7 +48,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * NestedDescriptor
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:18:00.769333940Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class NestedDescriptor {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

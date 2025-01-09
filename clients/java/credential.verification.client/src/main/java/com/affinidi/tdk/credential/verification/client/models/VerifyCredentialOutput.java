@@ -50,7 +50,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * Response model of /verify-vcs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:18:00.769333940Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VerifyCredentialOutput {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)

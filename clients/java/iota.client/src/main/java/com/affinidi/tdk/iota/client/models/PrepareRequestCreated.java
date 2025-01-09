@@ -49,7 +49,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * PrepareRequestCreated
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:18:53.144419621Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PrepareRequestCreated {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)

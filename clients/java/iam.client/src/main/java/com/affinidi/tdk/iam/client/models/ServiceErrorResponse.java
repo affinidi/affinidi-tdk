@@ -52,7 +52,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * ServiceErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:17:34.093314663Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ServiceErrorResponse {
   public static final String SERIALIZED_NAME_DEBUG_ID = "debugId";
   @SerializedName(SERIALIZED_NAME_DEBUG_ID)

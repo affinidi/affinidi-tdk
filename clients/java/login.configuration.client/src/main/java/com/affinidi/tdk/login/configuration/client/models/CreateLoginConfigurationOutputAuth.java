@@ -48,7 +48,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * OIDC Auth Credentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:16:36.359454588Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationOutputAuth {
   public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
   @SerializedName(SERIALIZED_NAME_CLIENT_ID)

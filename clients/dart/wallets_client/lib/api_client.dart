@@ -11,10 +11,11 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://apse1.api.affinidi.io/cwe', this.authentication,});
+  ApiClient({this.basePath = 'https://apse1.api.affinidi.io/cwe', this.authentication, this.authTokenHook,});
 
   final String basePath;
   final Authentication? authentication;
+  final Future<String?> Function()? authTokenHook;
 
   var _client = Client();
   final _defaultHeaderMap = <String, String>{};
@@ -47,6 +48,14 @@ class ApiClient {
     String? contentType,
   ) async {
     await authentication?.applyToParams(queryParams, headerParams);
+
+    // NOTE: If authTokenHook is provided -> use it for Authorization to set API key
+    if (authTokenHook != null) {
+      final apiKey = await authTokenHook!();
+      if (apiKey != null) {
+        headerParams['Authorization'] = 'Bearer $apiKey';
+      }
+    }
 
     headerParams.addAll(_defaultHeaderMap);
     if (contentType != null) {

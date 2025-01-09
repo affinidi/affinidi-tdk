@@ -48,7 +48,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * CorsGetWellKnownOpenIdCredentialIssuerOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:17:05.496699084Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsGetWellKnownOpenIdCredentialIssuerOK {
   public static final String SERIALIZED_NAME_CORS_GET_WELL_KNOWN_OPEN_ID_CREDENTIAL_ISSUER_OK = "corsGetWellKnownOpenIdCredentialIssuerOk";
   @SerializedName(SERIALIZED_NAME_CORS_GET_WELL_KNOWN_OPEN_ID_CREDENTIAL_ISSUER_OK)

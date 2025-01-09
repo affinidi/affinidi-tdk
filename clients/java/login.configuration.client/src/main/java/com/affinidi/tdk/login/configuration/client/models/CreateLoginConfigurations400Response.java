@@ -64,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.affinidi.tdk.login.configuration.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T23:16:36.359454588Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurations400Response extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CreateLoginConfigurations400Response.class.getName());
 
