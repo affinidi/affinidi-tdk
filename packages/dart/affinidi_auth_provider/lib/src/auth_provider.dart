@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:affinidi_auth_provider/src/jwt_helper.dart';
 import 'package:affinidi_common/affinidi_common.dart';
-import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 class AuthProvider {
   final String projectId;
@@ -35,37 +36,14 @@ class AuthProvider {
     return await _getProjectScopedToken(audience: tokenEndpoint);
   }
 
-  Future<String> _signPayload({
-    required String audience,
-  }) async {
-    final issueTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-    final algorithm = JWTAlgorithm.RS256;
-
-    final jwt = JWT(
-      {
-        'iss': tokenId,
-        'sub': tokenId,
-        'aud': audience,
-        'jti': '${DateTime.now()}${DateTime.now().millisecondsSinceEpoch}',
-        'exp': issueTimeInSeconds + 5 * 60,
-        'iat': issueTimeInSeconds,
-      },
-      header: {
-        'alg': algorithm.name,
-        if (keyId != null) 'kid': keyId,
-      },
-    );
-
-    final token = jwt.sign(
-      RSAPrivateKey(privateKey),
-      algorithm: algorithm,
-    );
-
-    return token;
-  }
-
   Future<String> _getUserAccessToken({required String audience}) async {
-    final token = await _signPayload(audience: audience);
+    final token = JWTHelper.signPayload(
+      audience: audience,
+      tokenId: tokenId,
+      privateKey: privateKey,
+      keyId: keyId,
+      passphrase: passphrase,
+    );
 
     final response = await http.post(
       Uri.parse(audience),
@@ -108,5 +86,30 @@ class AuthProvider {
 
     final data = jsonDecode(response.body);
     return data['accessToken'];
+  }
+
+  ({String iotaJwt, String iotaSessionId}) createIotaToken({
+    required String iotaConfigId,
+    required String did,
+    String? iotaSessionId,
+  }) {
+    final sessionId = iotaSessionId ?? Uuid().v4();
+
+    return (
+      iotaJwt: JWTHelper.signPayload(
+        audience: did,
+        tokenId: 'token/$tokenId',
+        privateKey: privateKey,
+        keyId: keyId,
+        passphrase: passphrase,
+        additionalPayload: {
+          'project_id': projectId,
+          'iota_configuration_id': iotaConfigId,
+          'iota_session_id': iotaSessionId,
+          'scope': 'iota_channel',
+        },
+      ),
+      iotaSessionId: sessionId,
+    );
   }
 }
