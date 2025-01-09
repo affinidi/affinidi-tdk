@@ -49,7 +49,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * Object indicating to the Wallet the Grant Types the Credential Issuer&#39;s Authorization Server is prepared to process for this Credential Offer.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:43:35.645084532Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponseGrants {
   public static final String SERIALIZED_NAME_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
   @SerializedName(SERIALIZED_NAME_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)

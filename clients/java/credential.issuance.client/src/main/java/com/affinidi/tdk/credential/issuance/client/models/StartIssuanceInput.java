@@ -51,7 +51,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * StartIssuanceInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:43:35.645084532Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).

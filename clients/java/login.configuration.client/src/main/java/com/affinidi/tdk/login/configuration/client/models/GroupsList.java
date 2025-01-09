@@ -51,7 +51,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * GroupsList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:11.939827540Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:43:03.703234180Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GroupsList {
   public static final String SERIALIZED_NAME_GROUPS = "groups";
   @SerializedName(SERIALIZED_NAME_GROUPS)

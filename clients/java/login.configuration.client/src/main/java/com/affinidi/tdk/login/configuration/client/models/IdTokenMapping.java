@@ -44,7 +44,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * Fields name/path mapping between the vp_token and the id_token
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:11.939827540Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:43:03.703234180Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IdTokenMapping extends ArrayList<IdTokenMappingInner> {
   public IdTokenMapping() {
   }

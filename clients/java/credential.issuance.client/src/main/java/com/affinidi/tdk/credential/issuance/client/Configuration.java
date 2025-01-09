@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.credential.issuance.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:43:35.645084532Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Configuration {
     public static final String VERSION = "1.0.0";
 

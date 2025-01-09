@@ -51,7 +51,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * UserList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-09T10:44:06.475516673Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UserList {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
