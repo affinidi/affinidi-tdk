@@ -14,6 +14,7 @@ class Environment {
   final String iotUrl;
   final String webVaultUrl;
   final String consumerAudienceUrl;
+  final String consumerCisUrl;
 
   const Environment._({
     required this.environmentName,
@@ -22,6 +23,7 @@ class Environment {
     required this.iotUrl,
     required this.webVaultUrl,
     required this.consumerAudienceUrl,
+    required this.consumerCisUrl,
   });
 
   static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
@@ -36,6 +38,7 @@ class Environment {
       webVaultUrl: 'http://localhost:3001',
       consumerAudienceUrl:
           'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+      consumerCisUrl: 'https://apse1.dev.api.affinidi.io/cis',
     ),
     EnvironmentType.development: Environment._(
       environmentName: EnvironmentType.development.value,
@@ -46,6 +49,7 @@ class Environment {
       webVaultUrl: 'https://vault.dev.affinidi.com',
       consumerAudienceUrl:
           'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token',
+      consumerCisUrl: 'https://apse1.dev.api.affinidi.io/cis',
     ),
     EnvironmentType.production: Environment._(
       environmentName: EnvironmentType.production.value,
@@ -56,6 +60,7 @@ class Environment {
       webVaultUrl: 'https://vault.affinidi.com',
       consumerAudienceUrl:
           'https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token',
+      consumerCisUrl: 'https://apse1.api.affinidi.io/cis',
     ),
   };
 
@@ -88,5 +93,10 @@ class Environment {
   static String fetchConsumerAudienceUrl([Environment? env]) {
     env ??= fetchEnvironment();
     return env.consumerAudienceUrl;
+  }
+
+  static String fetchConsumerCisUrl([Environment? env]) {
+    env ??= fetchEnvironment();
+    return env.consumerCisUrl;
   }
 }
