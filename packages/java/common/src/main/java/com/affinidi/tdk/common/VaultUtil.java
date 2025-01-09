@@ -1,4 +1,4 @@
-package com.affinidi.common;
+package com.affinidi.tdk.common;
 
 import java.net.URI;
 import java.util.logging.Logger;

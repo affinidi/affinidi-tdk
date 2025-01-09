@@ -1,4 +1,4 @@
-package com.affinidi.authProvider.types;
+package com.affinidi.tdk.authProvider.helper;
 
 public class SignPayload {
     private String tokenId;

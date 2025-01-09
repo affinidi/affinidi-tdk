@@ -1,4 +1,4 @@
-package com.affinidi.common;
+package com.affinidi.tdk.common;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

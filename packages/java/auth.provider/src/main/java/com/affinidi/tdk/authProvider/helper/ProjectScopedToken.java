@@ -1,4 +1,5 @@
-package com.affinidi.authProvider.types;
+package com.affinidi.tdk.authProvider.helper;
+
 
 public class ProjectScopedToken extends SignPayload{
     private String apiGatewayUrl;
@@ -15,5 +16,4 @@ public class ProjectScopedToken extends SignPayload{
         this.projectId = projectId;
     }
     private String projectId;
-
 }

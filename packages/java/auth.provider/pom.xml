@@ -3,18 +3,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.affinidi</groupId>
-  <artifactId>java-tdk</artifactId>
+  <packaging>jar</packaging>
+  <groupId>com.affinidi.tdk</groupId>
+  <artifactId>auth.provider</artifactId>
   <version>1.0</version>
-
-  <name>java-tdk</name>
+  <name>auth.provider</name>
   <url>https://github.com/affinidi/affinidi-tdk</url>
+  <licenses>
+      <license>
+          <name>Apache-2.0</name>
+          <url>https://github.com/affinidi/affinidi-tdk/blob/main/LICENSE</url>
+          <distribution>repo</distribution>
+      </license>
+  </licenses>
+
+  <developers>
+      <developer>
+          <name>Affinidi</name>
+          <email>...</email>
+          <organization>Affinidi</organization>
+          <organizationUrl>https://affinidi.com</organizationUrl>
+      </developer>
+  </developers>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
 
   <dependencies>

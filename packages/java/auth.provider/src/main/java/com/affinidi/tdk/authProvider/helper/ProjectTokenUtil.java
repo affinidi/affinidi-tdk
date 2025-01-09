@@ -1,7 +1,4 @@
-package com.affinidi.authProvider.helper;
-
-import com.affinidi.authProvider.types.ProjectScopedToken;
-import com.affinidi.authProvider.types.SignPayload;
+package com.affinidi.tdk.authProvider.helper;
 
 public class ProjectTokenUtil {
 
