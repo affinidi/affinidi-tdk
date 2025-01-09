@@ -52,7 +52,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * VPTokenValidationError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VPTokenValidationError {
   /**
    * Gets or Sets name

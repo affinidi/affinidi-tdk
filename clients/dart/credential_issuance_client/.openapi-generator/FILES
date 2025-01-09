@@ -147,6 +147,3 @@ lib/model/vc_claimed_error.dart
 lib/model/well_known_open_id_credential_issuer_response.dart
 lib/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart
 pubspec.yaml
-test/change_credential_status400_response_test.dart
-test/change_status_forbidden_error_test.dart
-test/revocation_forbidden_error_test.dart
