@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:affinidi_auth_provider/src/jwt_helper.dart';
 import 'package:affinidi_common/affinidi_common.dart';
 import 'package:http/http.dart' as http;
@@ -32,8 +33,28 @@ class AuthProvider {
       required this.apiGatewayUrl,
       required this.tokenEndpoint});
 
+  ECPublicKey? publicKey;
+  String? projectScopedToken;
+
+  Future<bool> _shouldFetchToken() async {
+    if (projectScopedToken == null) {
+      return true;
+    }
+    publicKey ??= await JWTHelper.fetchPublicKey(apiGatewayUrl);
+    try {
+      JWT.verify(projectScopedToken!, publicKey!);
+      return false;
+    } on JWTExpiredException {
+      return true;
+    }
+  }
+
   Future<String> fetchProjectScopedToken() async {
-    return await _getProjectScopedToken(audience: tokenEndpoint);
+    if (await _shouldFetchToken()) {
+      projectScopedToken =
+          await _getProjectScopedToken(audience: tokenEndpoint);
+    }
+    return projectScopedToken!;
   }
 
   Future<String> _getUserAccessToken({required String audience}) async {
