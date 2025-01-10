@@ -76,6 +76,20 @@ void main() {
       expect(Environment.fetchConsumerAudienceUrl(),
           equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
     });
+
+    test('Consumer CIS URLs are correct', () {
+      expect(Environment.fetchConsumerCisUrl(local),
+          equals('https://apse1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(development),
+          equals('https://apse1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(production),
+          equals('https://apse1.api.affinidi.io/cis'));
+    });
+
+    test('Consumer CIS URL defaults to prod', () {
+      expect(Environment.fetchConsumerCisUrl(),
+          equals('https://apse1.api.affinidi.io/cis'));
+    });
   });
 
   group('Vault Utils Tests', () {
