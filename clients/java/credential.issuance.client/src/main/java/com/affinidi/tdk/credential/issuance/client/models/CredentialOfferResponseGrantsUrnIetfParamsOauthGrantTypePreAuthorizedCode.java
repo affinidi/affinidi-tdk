@@ -49,7 +49,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * Grant type for &#x60;pre-authorized_code&#x60; flow
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:39:39.588401761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode {
   public static final String SERIALIZED_NAME_PRE_AUTHORIZED_CODE = "pre-authorized_code";
   @SerializedName(SERIALIZED_NAME_PRE_AUTHORIZED_CODE)

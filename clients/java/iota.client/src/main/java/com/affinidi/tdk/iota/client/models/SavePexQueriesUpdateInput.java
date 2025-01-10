@@ -51,7 +51,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * SavePexQueriesUpdateInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:41:25.114713417Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SavePexQueriesUpdateInput {
   public static final String SERIALIZED_NAME_QUERIES = "queries";
   @SerializedName(SERIALIZED_NAME_QUERIES)

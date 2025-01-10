@@ -50,7 +50,7 @@ import com.affinidi.tdk.wallets.client.JSON;
 /**
  * unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \&quot;unsignedCredential\&quot; is given
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:40:58.158206400Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignCredentialInputDtoUnsignedCredentialParams {
   public static final String SERIALIZED_NAME_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   @SerializedName(SERIALIZED_NAME_JSON_LD_CONTEXT_URL)

@@ -50,7 +50,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * JsonWebKeyKeysInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:39:10.837623782Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class JsonWebKeyKeysInner {
   public static final String SERIALIZED_NAME_ALG = "alg";
   @SerializedName(SERIALIZED_NAME_ALG)
