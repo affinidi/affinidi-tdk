@@ -154,7 +154,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_change_credential_status400_response.py
-test/test_change_status_forbidden_error.py
-test/test_revocation_forbidden_error.py
 tox.ini
