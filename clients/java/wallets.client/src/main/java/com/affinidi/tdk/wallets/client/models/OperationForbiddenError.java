@@ -52,7 +52,7 @@ import com.affinidi.tdk.wallets.client.JSON;
 /**
  * OperationForbiddenError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T11:25:21.403465150Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OperationForbiddenError {
   /**
    * Gets or Sets name

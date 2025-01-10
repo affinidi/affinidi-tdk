@@ -48,7 +48,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * IotaExchangeCredentialsOKCredentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T11:25:48.853002990Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IotaExchangeCredentialsOKCredentials {
   public static final String SERIALIZED_NAME_ACCESS_KEY_ID = "accessKeyId";
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY_ID)

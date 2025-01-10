@@ -48,7 +48,7 @@ import com.affinidi.tdk.wallets.client.JSON;
 /**
  * DTO contains parts of JWT to be signed
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T11:25:21.403465150Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignJwtToken {
   public static final String SERIALIZED_NAME_HEADER = "header";
   @SerializedName(SERIALIZED_NAME_HEADER)

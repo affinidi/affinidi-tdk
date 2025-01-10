@@ -52,7 +52,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * Request model of /verify-vcs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T11:24:56.398119208Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VerifyCredentialInput {
   public static final String SERIALIZED_NAME_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
   @SerializedName(SERIALIZED_NAME_VERIFIABLE_CREDENTIALS)

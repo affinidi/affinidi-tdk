@@ -48,7 +48,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * PdStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T11:24:56.398119208Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PdStatus {
   /**
    * Gets or Sets directive
