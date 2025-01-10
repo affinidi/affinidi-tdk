@@ -52,7 +52,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * CredentialSubjectNotValidError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:24:53.212637688Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialSubjectNotValidError {
   /**
    * Gets or Sets name

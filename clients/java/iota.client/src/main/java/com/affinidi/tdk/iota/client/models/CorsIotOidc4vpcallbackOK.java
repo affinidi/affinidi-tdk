@@ -48,7 +48,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * CorsIotOidc4vpcallbackOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:26:37.893308209Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsIotOidc4vpcallbackOK {
   public static final String SERIALIZED_NAME_CORS_IOT_OIDC4VPCALLBACK_OK = "corsIotOidc4vpcallbackOk";
   @SerializedName(SERIALIZED_NAME_CORS_IOT_OIDC4VPCALLBACK_OK)

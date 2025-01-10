@@ -1,0 +1,2673 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: info@affinidi.com
+    name: Affinidi
+    url: https://github.com/affinidi/affinidi-tdk
+  license:
+    name: Apache-2.0
+    url: https://github.com/affinidi/affinidi-tdk/blob/main/LICENSE
+  title: VaultFileSystem
+  version: 1.0.0
+externalDocs:
+  description: Affinidi Documentation Website
+  url: https://docs.affinidi.com/dev-tools/affinidi-tdk/clients
+servers:
+  - url: https://api.vault.affinidi.com/vfs
+security:
+  - AwsSigV4: []
+tags:
+  - description: CORS Definitions
+    name: cors
+  - description: Operations with files manipulations
+    name: files
+  - description: Operations with nodes manipulations
+    name: nodes
+  - description: Operations with profiles data manipulations
+    name: profile-data
+paths:
+  /v1/config:
+    get:
+      description:
+        "Retrieves the user profile name and the maximum number of profiles,\
+        \ with default values set to 'default' and 1, respectively."
+      operationId: getConfig
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConfigOK'
+          description: GetConfigOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - AwsSigV4: []
+      tags:
+        - config
+      x-accepts:
+        - application/json
+  /v1/scanned-files/{scannedFileJobId}:
+    get:
+      description: Get the details of a scanned file using the textract jobId
+      operationId: getScannedFileInfo
+      parameters:
+        - description: Scanned file jobId.
+          explode: false
+          in: path
+          name: scannedFileJobId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description:
+            The base64url encoded key of the first item that this operation
+            will evaluate (it is not returned). Use the value that was returned in the
+            previous operation.
+          explode: true
+          in: query
+          name: exclusiveStartKey
+          required: false
+          schema:
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetScannedFileInfoOK'
+          description: GetScannedFileInfoOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - files
+      x-accepts:
+        - application/json
+  /v1/scanned-files/:
+    get:
+      description:
+        "List all the the scanned files with all the details, e.g. status\
+        \ and jobId"
+      operationId: listScannedFiles
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListScannedFilesOK'
+          description: ListScannedFilesOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - files
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}:
+    delete:
+      description:
+        "Mark a node and any attached files for deletion. If the node is\
+        \ a folder, perform the same action for all its children if the profile type\
+        \ is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN\
+        \ node."
+      operationId: deleteNode
+      parameters:
+        - explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteNodeDto'
+          description: DeleteNodeOk
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+    get:
+      description: Gets detailed information about the node
+      operationId: getDetailedNodeInfo
+      parameters:
+        - explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+        - description:
+            "A base64url encoded data encryption key, encrypted using VFS\
+            \ public key. getUrl will not be returned if dek is not provided"
+          explode: true
+          in: query
+          name: dek
+          required: false
+          schema:
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDetailedNodeInfoOK'
+          description: GetDetailedNodeInfoOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+    patch:
+      description: Updates a node
+      operationId: updateNode
+      parameters:
+        - description: Description for nodeId.
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateNodeInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeDto'
+          description: UpdateNodeOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/move:
+    post:
+      description: Moves a node from source to destination along with the hierarchy
+      operationId: moveNode
+      parameters:
+        - explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/MoveNodeInput'
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveNodeDto'
+          description: UpdateNodeOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/remove/{nodeIdToRemove}:
+    delete:
+      description:
+        "Permanently delete a node from TRASH_BIN, if the node is not in\
+        \ the TRASH_BIN it cannot delete."
+      operationId: permanentlyDeleteNode
+      parameters:
+        - description: nodeId of the TRASH_BIN
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+        - description: nodeId of the node to be deleted from TRASH_BIN
+          explode: false
+          in: path
+          name: nodeIdToRemove
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      responses:
+        '202':
+          description: Permanently deleted
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/restore/{nodeIdToRestore}:
+    post:
+      description: Restore node marked for deletion from TRASH_BIN
+      operationId: restoreNodeFromTrashbin
+      parameters:
+        - description: nodeId of the TRASH_BIN
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+        - description: nodeId of the node to be restored from TRASH_BIN
+          explode: false
+          in: path
+          name: nodeIdToRestore
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/RestoreNodeFromTrashbinInput'
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveNodeDto'
+          description: RestoreNodeOk
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/file/scan:
+    post:
+      description:
+        Start a scan of the file under this node and provide a textract
+        job
+      operationId: startFileScan
+      parameters:
+        - description: Description for nodeId.
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/StartFileScanInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartFileScanOK'
+          description: StartFileScanOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - files
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/profile-data:
+    patch:
+      description: Updates the profile with the given data
+      operationId: updateProfileData
+      parameters:
+        - explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateProfileDataInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateProfileDataOK'
+          description: UpdateSchemaOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - profile-data
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes:
+    get:
+      description: lists children of the root node for the consumer
+      operationId: listRootNodeChildren
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRootNodeChildrenOK'
+          description: ListRootNodeChildrenOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+    post:
+      description: creates node
+      operationId: createNode
+      requestBody:
+        $ref: '#/components/requestBodies/CreateNodeInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNodeOK'
+          description: CreateNodeOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/nodes/init:
+    post:
+      deprecated: true
+      description: 'Initialize root node, and TRASH_BIN'
+      operationId: initNodes
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitNodesOK'
+          description: InitNodesOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+  /v1/nodes/{nodeId}/children:
+    get:
+      description: lists children of the node
+      operationId: listNodeChildren
+      parameters:
+        - description: Description for nodeId.
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: Maximum number of records to fetch in a list
+          explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            default: 10
+            maximum: 100
+            minimum: 1
+            type: integer
+          style: form
+        - description: exclusiveStartKey for retrieving the next batch of data.
+          explode: true
+          in: query
+          name: exclusiveStartKey
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNodeChildrenOK'
+          description: ListNodeChildrenOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-accepts:
+        - application/json
+components:
+  examples: {}
+  headers:
+    Access-Control-Allow-Origin:
+      explode: false
+      schema:
+        type: string
+      style: simple
+    Access-Control-Allow-Methods:
+      explode: false
+      schema:
+        type: string
+      style: simple
+    Access-Control-Allow-Headers:
+      explode: false
+      schema:
+        type: string
+      style: simple
+  requestBodies:
+    StartFileScanInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StartFileScanInput'
+      description: StartFileScan
+      required: true
+    CreateNodeInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateNodeInput'
+      description: CreateNode
+      required: true
+    MoveNodeInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MoveNodeInput'
+      description: MoveNode
+      required: true
+    UpdateNodeInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateNodeInput'
+      description: UpdateNodeInput
+      required: true
+    UpdateProfileDataInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateProfileDataInput'
+      description: Updates the schema with the given data
+      required: true
+    RestoreNodeFromTrashbinInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestoreNodeFromTrashbin'
+      description: RestoreNodeFromTrashbin
+      required: true
+  responses:
+    GetWellKnownJwksOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JsonWebKeySetDto'
+      description: List of JWK used by the services as JWKS
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsCredentialExchangeOperationOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AwsCredentialExchangeOperationOK'
+      description: AwsCredentialExchangeOperationOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetDetailedNodeInfoOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetDetailedNodeInfoOK'
+      description: GetDetailedNodeInfoOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateNodeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateNodeOK'
+      description: CreateNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    UpdateProfileDataOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateProfileDataOK'
+      description: UpdateSchemaOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    QueryProfileDataOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QueryProfileDataOK'
+      description: QueryProfileDataOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    UpdateNodeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NodeDto'
+      description: UpdateNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    MoveNodeOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MoveNodeDto'
+      description: UpdateNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    DeleteNodeOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeleteNodeDto'
+      description: DeleteNodeOk
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    RestoreNodeFromTrashbinOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MoveNodeDto'
+      description: RestoreNodeOk
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetConfigOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetConfigOK'
+      description: GetConfigOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    InitNodesOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InitNodesOK'
+      description: InitNodesOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListRootNodeChildrenOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListRootNodeChildrenOK'
+      description: ListRootNodeChildrenOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListNodeChildrenOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListNodeChildrenOK'
+      description: ListNodeChildrenOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    StartFileScanOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StartFileScanOK'
+      description: StartFileScanOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetScannedFileInfoOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetScannedFileInfoOK'
+      description: GetScannedFileInfoOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListScannedFilesOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListScannedFilesOK'
+      description: ListScannedFilesOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListScannedFilesOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsListScannedFilesOK'
+      description: CorsListScannedFilesOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsDeleteNodeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsDeleteNodeOK'
+      description: CorsDeleteNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsStartFileScanOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsStartFileScanOK'
+      description: CorsStartFileScanOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsInitNodesOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsInitNodesOK'
+      description: CorsInitNodesOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListNodeChildrenOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsListNodeChildrenOK'
+      description: CorsListNodeChildrenOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsCredentialExchangeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsAwsCredentialExchangeOK'
+      description: CorsAwsCredentialExchangeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetConfigOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetConfigOK'
+      description: CorsGetConfigOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetScannedFileInfoOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetScannedFileInfoOK'
+      description: CorsGetScannedFileInfoOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsUpdateProfileDataOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsUpdateProfileDataOK'
+      description: CorsUpdateProfileDataOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListRootNodeChildrenOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsListRootNodeChildrenOK'
+      description: CorsListRootNodeChildrenOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetWellKnownJwksOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetWellKnownJwksOK'
+      description: CorsGetWellKnownJwksOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsMoveNodeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsMoveNodeOK'
+      description: CorsMoveNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsPermanentlyDeleteNodeOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsPermanentlyDeleteNodeOK'
+      description: CorsPermanentlyDeleteNodeOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsRestoreNodeFromTrashbinOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsRestoreNodeFromTrashbinOK'
+      description: CorsRestoreNodeFromTrashbinOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    AwsCredentialExchangeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsAwsCredentialExchangeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetConfigBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetConfigBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetScannedFileInfoBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetScannedFileInfoBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListScannedFilesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListScannedFilesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    DeleteNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetDetailedNodeInfoBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    UpdateNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsDeleteNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    MoveNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsMoveNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    PermanentlyDeleteNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsPermanentlyDeleteNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    RestoreNodeFromTrashbinBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsRestoreNodeFromTrashbinBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    StartFileScanBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsStartFileScanBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    UpdateProfileDataBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    QueryProfileDataBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsUpdateProfileDataBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListRootNodeChildrenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateNodeBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListRootNodeChildrenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    InitNodesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsInitNodesBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListNodeChildrenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListNodeChildrenBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetWellKnownJwksBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetWellKnownJwksUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetWellKnownJwksBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+  schemas:
+    JsonWebKeyDto:
+      additionalProperties: false
+      properties:
+        kid:
+          type: string
+        kty:
+          type: string
+        'n':
+          type: string
+        e:
+          type: string
+        x:
+          type: string
+        'y':
+          type: string
+        crv:
+          type: string
+        alg:
+          type: string
+        use:
+          type: string
+      required:
+        - alg
+        - kid
+        - kty
+        - use
+      type: object
+    JsonWebKeySetDto:
+      additionalProperties: false
+      properties:
+        keys:
+          items:
+            $ref: '#/components/schemas/JsonWebKeyDto'
+          minItems: 1
+          type: array
+      required:
+        - keys
+      type: object
+    InvalidParameterError:
+      additionalProperties: false
+      description: Some of the parameters are invalid
+      example:
+        traceId: traceId
+        name: InvalidParameterError
+        details:
+          - issue: issue
+            field: field
+            location: location
+            value: value
+          - issue: issue
+            field: field
+            location: location
+            value: value
+        message: 'Invalid parameter: ${param}.'
+        httpStatusCode: 6.027456183070403
+      properties:
+        name:
+          enum:
+            - InvalidParameterError
+          type: string
+        message:
+          enum:
+            - 'Invalid parameter: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 400
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    AwsCredentialExchangeOperationOK:
+      additionalProperties: false
+      properties:
+        token:
+          type: string
+        identityId:
+          type: string
+      required:
+        - identityId
+        - token
+      type: object
+    GetConfigOK:
+      additionalProperties: false
+      example:
+        profileName: profileName
+        maximumProfiles: 0.8008281904610115
+      properties:
+        profileName:
+          type: string
+        maximumProfiles:
+          type: number
+      required:
+        - maximumProfiles
+        - profileName
+      type: object
+    NodeType:
+      description: type of the Node
+      enum:
+        - VC_ROOT
+        - VC
+        - FILE
+        - FOLDER
+        - PROFILE
+        - ROOT_ELEMENT
+        - TRASH_BIN
+      type: string
+    EdekInfo:
+      additionalProperties: false
+      description:
+        "A base64 encoded data encryption key, encrypted with consumer\
+        \ DEKEK, required for node types [FILE, PROFILE]"
+      example:
+        dekekId: dekekId
+        edek: edek
+      properties:
+        edek:
+          type: string
+        dekekId:
+          type: string
+      required:
+        - dekekId
+        - edek
+      type: object
+    NodeStatus:
+      description:
+        "status of current node. INITIALIZED status is used for PROFILE/FILE\
+        \ node that was just created, before file was uploaded in s3 CREATED status\
+        \ is used, when the file for node is uploaded in s3. HIDDEN and DELETED statuses\
+        \ are used for deletion of Nodes"
+      enum:
+        - NOT_SET
+        - HIDDEN
+        - DELETED
+        - INITIALIZED
+        - CREATED
+      type: string
+    NodeDto:
+      additionalProperties: false
+      example:
+        profileCount: 6.027456183070403
+        schema: schema
+        metadata: metadata
+        consumerId: consumerId
+        modifiedAt: modifiedAt
+        link: link
+        description: description
+        parentNodeId: parentNodeId
+        consumedFileStorage: 5.637376656633329
+        folderCount: 1.4658129805029452
+        type: VC_ROOT
+        fileCount: 0.8008281904610115
+        vcCount: 5.962133916683182
+        createdAt: createdAt
+        createdBy: createdBy
+        profileId: profileId
+        edekInfo:
+          dekekId: dekekId
+          edek: edek
+        name: name
+        modifiedBy: modifiedBy
+        nodeId: nodeId
+        status: NOT_SET
+      properties:
+        nodeId:
+          description: A unique identifier of current node
+          type: string
+        status:
+          $ref: '#/components/schemas/NodeStatus'
+        fileCount:
+          description: number of files in current node
+          type: number
+        profileCount:
+          description: number of profiles in current node
+          type: number
+        folderCount:
+          description: number of folders in current node
+          type: number
+        vcCount:
+          description: number of vcCount in current node
+          type: number
+        name:
+          description: display name of current node
+          type: string
+        consumerId:
+          description: unique identifier for consumer
+          type: string
+        parentNodeId:
+          description: parent node path
+          type: string
+        profileId:
+          description:
+            "A unique identifier of profile, under which current node is\
+            \ created"
+          type: string
+        createdAt:
+          description: creation date/time of the node
+          type: string
+        modifiedAt:
+          description: modification date/time of the node
+          type: string
+        createdBy:
+          description: Identifier of the user who created the node
+          type: string
+        modifiedBy:
+          description: Identifier of the user who last updated the node
+          type: string
+        description:
+          description: Description of the node
+          type: string
+        type:
+          $ref: '#/components/schemas/NodeType'
+        link:
+          description: 'id of the file, used for FILE node only'
+          type: string
+        schema:
+          description: 'name of the schema, used for PROFILE node only'
+          type: string
+        consumedFileStorage:
+          description:
+            "amount of bytes used by the stored data, used for ROOT_ELEMENT\
+            \ only for now"
+          type: number
+        edekInfo:
+          $ref: '#/components/schemas/EdekInfo'
+        metadata:
+          description: A JSON string format containing metadata of the node
+          type: string
+      required:
+        - consumerId
+        - createdAt
+        - createdBy
+        - description
+        - modifiedAt
+        - modifiedBy
+        - name
+        - nodeId
+        - parentNodeId
+        - profileId
+        - status
+        - type
+      type: object
+    MoveNodeDto:
+      additionalProperties: false
+      example:
+        newNodeId: newNodeId
+      properties:
+        newNodeId:
+          type: string
+      type: object
+    DeleteNodeDto:
+      additionalProperties: false
+      example:
+        newNodeId: newNodeId
+      properties:
+        newNodeId:
+          type: string
+      type: object
+    ConsumerMetadataDto:
+      additionalProperties: false
+      example:
+        profileCount: 1.4658129805029452
+        consumerId: consumerId
+        modifiedAt: modifiedAt
+        description: description
+        consumedFileStorage: 5.962133916683182
+        folderCount: 6.027456183070403
+        type: VC_ROOT
+        fileCount: 0.8008281904610115
+        createdAt: createdAt
+        createdBy: createdBy
+        name: name
+        modifiedBy: modifiedBy
+        nodeId: nodeId
+        status: NOT_SET
+      properties:
+        nodeId:
+          type: string
+        status:
+          $ref: '#/components/schemas/NodeStatus'
+        fileCount:
+          type: number
+        folderCount:
+          type: number
+        profileCount:
+          type: number
+        name:
+          type: string
+        consumerId:
+          type: string
+        createdAt:
+          description: '[GEN] ISO 8601 string of the creation date/time the entity'
+          type: string
+        modifiedAt:
+          description: '[GEN] ISO 8601 string of the modification date/time the entity'
+          type: string
+        createdBy:
+          description: '[GEN] Identifier of the user who created the entity'
+          type: string
+        modifiedBy:
+          description: '[GEN] Identifier of the user who last updated the entity'
+          type: string
+        description:
+          description: Description of the node
+          type: string
+        type:
+          $ref: '#/components/schemas/NodeType'
+        consumedFileStorage:
+          description: Tracks the amount of bytes used by the stored data.
+          type: number
+      required:
+        - consumedFileStorage
+        - consumerId
+        - createdAt
+        - createdBy
+        - description
+        - modifiedAt
+        - modifiedBy
+        - name
+        - nodeId
+        - status
+        - type
+      type: object
+    InitNodesOK:
+      additionalProperties: false
+      example:
+        consumerMetadata:
+          profileCount: 1.4658129805029452
+          consumerId: consumerId
+          modifiedAt: modifiedAt
+          description: description
+          consumedFileStorage: 5.962133916683182
+          folderCount: 6.027456183070403
+          type: VC_ROOT
+          fileCount: 0.8008281904610115
+          createdAt: createdAt
+          createdBy: createdBy
+          name: name
+          modifiedBy: modifiedBy
+          nodeId: nodeId
+          status: NOT_SET
+        defaultProfile:
+          profileCount: 6.027456183070403
+          schema: schema
+          metadata: metadata
+          consumerId: consumerId
+          modifiedAt: modifiedAt
+          link: link
+          description: description
+          parentNodeId: parentNodeId
+          consumedFileStorage: 5.637376656633329
+          folderCount: 1.4658129805029452
+          type: VC_ROOT
+          fileCount: 0.8008281904610115
+          vcCount: 5.962133916683182
+          createdAt: createdAt
+          createdBy: createdBy
+          profileId: profileId
+          edekInfo:
+            dekekId: dekekId
+            edek: edek
+          name: name
+          modifiedBy: modifiedBy
+          nodeId: nodeId
+          status: NOT_SET
+      properties:
+        consumerMetadata:
+          $ref: '#/components/schemas/ConsumerMetadataDto'
+        defaultProfile:
+          $ref: '#/components/schemas/NodeDto'
+      type: object
+    ListRootNodeChildrenOK:
+      additionalProperties: false
+      example:
+        nodes:
+          - profileCount: 6.027456183070403
+            schema: schema
+            metadata: metadata
+            consumerId: consumerId
+            modifiedAt: modifiedAt
+            link: link
+            description: description
+            parentNodeId: parentNodeId
+            consumedFileStorage: 5.637376656633329
+            folderCount: 1.4658129805029452
+            type: VC_ROOT
+            fileCount: 0.8008281904610115
+            vcCount: 5.962133916683182
+            createdAt: createdAt
+            createdBy: createdBy
+            profileId: profileId
+            edekInfo:
+              dekekId: dekekId
+              edek: edek
+            name: name
+            modifiedBy: modifiedBy
+            nodeId: nodeId
+            status: NOT_SET
+          - profileCount: 6.027456183070403
+            schema: schema
+            metadata: metadata
+            consumerId: consumerId
+            modifiedAt: modifiedAt
+            link: link
+            description: description
+            parentNodeId: parentNodeId
+            consumedFileStorage: 5.637376656633329
+            folderCount: 1.4658129805029452
+            type: VC_ROOT
+            fileCount: 0.8008281904610115
+            vcCount: 5.962133916683182
+            createdAt: createdAt
+            createdBy: createdBy
+            profileId: profileId
+            edekInfo:
+              dekekId: dekekId
+              edek: edek
+            name: name
+            modifiedBy: modifiedBy
+            nodeId: nodeId
+            status: NOT_SET
+      properties:
+        nodes:
+          items:
+            $ref: '#/components/schemas/NodeDto'
+          type: array
+      type: object
+    CreateNodeInput:
+      additionalProperties: false
+      example:
+        metadata: metadata
+        edekInfo:
+          dekekId: dekekId
+          edek: edek
+        name: name
+        description: description
+        parentNodeId: parentNodeId
+        dek: dek
+        type: VC_ROOT
+      properties:
+        name:
+          description: Name of the item
+          maxLength: 128
+          type: string
+        type:
+          $ref: '#/components/schemas/NodeType'
+        description:
+          description: description of profile if creating a new profile
+          type: string
+        parentNodeId:
+          description: 'parent node id, if not provided then root element is used'
+          type: string
+        edekInfo:
+          $ref: '#/components/schemas/EdekInfo'
+        dek:
+          description:
+            "A base64 encoded data encryption key, encrypted using VFS\
+            \ public key, required for node types [FILE, PROFILE]"
+          type: string
+        metadata:
+          description: metadata of the node in stringified json format
+          type: string
+      required:
+        - name
+        - type
+      type: object
+    MoveNodeInput:
+      additionalProperties: false
+      example:
+        destinationNodeId: destinationNodeId
+        resolveNameConflictsAutomatically: false
+      properties:
+        destinationNodeId:
+          description: Parent to which current node should be moved
+          type: string
+        resolveNameConflictsAutomatically:
+          default: false
+          description:
+            "automatically update the name of Node if target Node has children\
+            \ with the same name. If not provided, name won't be updated automatically"
+          type: boolean
+      required:
+        - destinationNodeId
+      type: object
+    RestoreNodeFromTrashbin:
+      additionalProperties: false
+      example:
+        restoreToProfileId: restoreToProfileId
+      properties:
+        restoreToProfileId:
+          description:
+            "The base64 encoded nodeId of the profile which is base64 encoded,\
+            \ to which node will be restored"
+          type: string
+      type: object
+    GetDetailedNodeInfoOK:
+      allOf:
+        - $ref: '#/components/schemas/NodeDto'
+        - additionalProperties: false
+          properties:
+            getUrl:
+              type: string
+          type: object
+      example:
+        profileCount: 6.027456183070403
+        schema: schema
+        metadata: metadata
+        consumerId: consumerId
+        modifiedAt: modifiedAt
+        link: link
+        description: description
+        parentNodeId: parentNodeId
+        consumedFileStorage: 5.637376656633329
+        folderCount: 1.4658129805029452
+        type: VC_ROOT
+        fileCount: 0.8008281904610115
+        vcCount: 5.962133916683182
+        createdAt: createdAt
+        getUrl: getUrl
+        createdBy: createdBy
+        profileId: profileId
+        edekInfo:
+          dekekId: dekekId
+          edek: edek
+        name: name
+        modifiedBy: modifiedBy
+        nodeId: nodeId
+        status: NOT_SET
+    CreateNodeOK:
+      additionalProperties: false
+      example:
+        link: link
+        fields:
+          key: ''
+        nodeId: nodeId
+        url: url
+      properties:
+        nodeId:
+          type: string
+        url:
+          type: string
+        link:
+          type: string
+        fields:
+          additionalProperties: true
+          type: object
+      required:
+        - nodeId
+      type: object
+    UpdateNodeInput:
+      additionalProperties: false
+      example:
+        metadata: metadata
+        name: name
+        description: description
+      properties:
+        name:
+          description: Name of the node
+          maxLength: 128
+          type: string
+        description:
+          description: Description of the node
+          type: string
+        metadata:
+          description: metadata of the node in stringified json format
+          type: string
+      type: object
+    ListNodeChildrenOK:
+      additionalProperties: false
+      example:
+        nodes:
+          - profileCount: 6.027456183070403
+            schema: schema
+            metadata: metadata
+            consumerId: consumerId
+            modifiedAt: modifiedAt
+            link: link
+            description: description
+            parentNodeId: parentNodeId
+            consumedFileStorage: 5.637376656633329
+            folderCount: 1.4658129805029452
+            type: VC_ROOT
+            fileCount: 0.8008281904610115
+            vcCount: 5.962133916683182
+            createdAt: createdAt
+            createdBy: createdBy
+            profileId: profileId
+            edekInfo:
+              dekekId: dekekId
+              edek: edek
+            name: name
+            modifiedBy: modifiedBy
+            nodeId: nodeId
+            status: NOT_SET
+          - profileCount: 6.027456183070403
+            schema: schema
+            metadata: metadata
+            consumerId: consumerId
+            modifiedAt: modifiedAt
+            link: link
+            description: description
+            parentNodeId: parentNodeId
+            consumedFileStorage: 5.637376656633329
+            folderCount: 1.4658129805029452
+            type: VC_ROOT
+            fileCount: 0.8008281904610115
+            vcCount: 5.962133916683182
+            createdAt: createdAt
+            createdBy: createdBy
+            profileId: profileId
+            edekInfo:
+              dekekId: dekekId
+              edek: edek
+            name: name
+            modifiedBy: modifiedBy
+            nodeId: nodeId
+            status: NOT_SET
+        lastEvaluatedKey: lastEvaluatedKey
+      properties:
+        nodes:
+          items:
+            $ref: '#/components/schemas/NodeDto'
+          type: array
+        lastEvaluatedKey:
+          type: string
+      type: object
+    StartFileScanInput:
+      additionalProperties: false
+      example:
+        dek: dek
+      properties:
+        dek:
+          description:
+            "A base64 encoded data encryption key, encrypted using VFS\
+            \ public key. This is important as this is used when starting document\
+            \ scan and also while uploading the file to s3"
+          type: string
+      required:
+        - dek
+      type: object
+    StartFileScanOK:
+      additionalProperties: false
+      example:
+        jobId: jobId
+        status: STARTED
+      properties:
+        jobId:
+          type: string
+        status:
+          enum:
+            - STARTED
+            - FAILED
+            - COMPLETED
+          type: string
+      required:
+        - jobId
+        - status
+      type: object
+    UpdateProfileDataInput:
+      additionalProperties: false
+      example:
+        data: '{}'
+        dek: dek
+      properties:
+        dek:
+          description:
+            "A base64 encoded data encryption key, encrypted using VFS\
+            \ public key. This is used to get profile data from s3"
+          type: string
+        data:
+          type: object
+      required:
+        - data
+        - dek
+      type: object
+    UpdateProfileDataOK:
+      additionalProperties: false
+      example:
+        data: '{}'
+      properties:
+        data:
+          type: object
+      type: object
+    QueryProfileDataOK:
+      additionalProperties: false
+      properties:
+        data:
+          type: object
+      type: object
+    GetScannedFileInfoOK:
+      additionalProperties: false
+      example:
+        jobId: jobId
+        createdAt: createdAt
+        data: '{}'
+        profileId: profileId
+        exclusiveStartKey: exclusiveStartKey
+        name: name
+        nodeId: nodeId
+        status: status
+      properties:
+        data:
+          type: object
+        jobId:
+          description: 'A unique, randomly generated idetifier'
+          type: string
+        status:
+          description: Status of the file scanning once initiated
+          type: string
+        profileId:
+          description: 'A unique, randomly generated identifier'
+          type: string
+        exclusiveStartKey:
+          description:
+            The base64url encoded key of the first item that this operation
+            will evaluate (it is not returned). Use the value that was returned in
+            the previous operation.
+          type: string
+        nodeId:
+          description: 'A unique, randomly generated identifier'
+          type: string
+        createdAt:
+          type: string
+        name:
+          type: string
+      required:
+        - createdAt
+        - data
+        - jobId
+        - name
+        - nodeId
+        - profileId
+        - status
+      type: object
+    ListScannedFilesOK:
+      additionalProperties: false
+      example:
+        scannedFiles:
+          - jobId: jobId
+            createdAt: createdAt
+            profileId: profileId
+            name: name
+            nodeId: nodeId
+            status: status
+          - jobId: jobId
+            createdAt: createdAt
+            profileId: profileId
+            name: name
+            nodeId: nodeId
+            status: status
+      properties:
+        scannedFiles:
+          items:
+            $ref: '#/components/schemas/ListScannedFilesOK_scannedFiles_inner'
+          type: array
+      required:
+        - scannedFiles
+      type: object
+    CorsListScannedFilesOK:
+      additionalProperties: false
+      properties:
+        corsListScannedFilesOk:
+          type: string
+      type: object
+    CorsDeleteNodeOK:
+      additionalProperties: false
+      properties:
+        corsDeleteNodeOk:
+          type: string
+      type: object
+    CorsStartFileScanOK:
+      additionalProperties: false
+      properties:
+        corsStartFileScanOk:
+          type: string
+      type: object
+    CorsInitNodesOK:
+      additionalProperties: false
+      properties:
+        corsInitNodesOk:
+          type: string
+      type: object
+    CorsListNodeChildrenOK:
+      additionalProperties: false
+      properties:
+        corsListNodeChildrenOk:
+          type: string
+      type: object
+    CorsAwsCredentialExchangeOK:
+      additionalProperties: false
+      properties:
+        corsAwsCredentialExchangeOk:
+          type: string
+      type: object
+    CorsGetConfigOK:
+      additionalProperties: false
+      properties:
+        corsGetConfigOk:
+          type: string
+      type: object
+    CorsGetScannedFileInfoOK:
+      additionalProperties: false
+      properties:
+        corsGetScannedFileInfoOk:
+          type: string
+      type: object
+    CorsUpdateProfileDataOK:
+      additionalProperties: false
+      properties:
+        corsUpdateProfileDataOk:
+          type: string
+      type: object
+    NotFoundError:
+      additionalProperties: false
+      properties:
+        name:
+          enum:
+            - NotFoundError
+          type: string
+        message:
+          enum:
+            - 'Not found: ${param}.'
+          type: string
+        httpStatusCode:
+          enum:
+            - 404
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    CorsListRootNodeChildrenOK:
+      additionalProperties: false
+      properties:
+        corsListRootNodeChildrenOk:
+          type: string
+      type: object
+    UnexpectedError:
+      additionalProperties: false
+      properties:
+        name:
+          enum:
+            - UnexpectedError
+          type: string
+        message:
+          enum:
+            - Unexpected Error Occurred.
+          type: string
+        httpStatusCode:
+          enum:
+            - 500
+          type: number
+        traceId:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/InvalidParameterError_details_inner'
+          type: array
+      required:
+        - httpStatusCode
+        - message
+        - name
+        - traceId
+      type: object
+    CorsGetWellKnownJwksOK:
+      additionalProperties: false
+      properties:
+        corsGetWellKnownJwksOk:
+          type: string
+      type: object
+    CorsMoveNodeOK:
+      additionalProperties: false
+      properties:
+        corsMoveNodeOk:
+          type: string
+      type: object
+    CorsPermanentlyDeleteNodeOK:
+      additionalProperties: false
+      properties:
+        corsPermanentlyDeleteNodeOk:
+          type: string
+      type: object
+    CorsRestoreNodeFromTrashbinOK:
+      additionalProperties: false
+      properties:
+        corsRestoreNodeFromTrashbinOk:
+          type: string
+      type: object
+    InvalidParameterError_details_inner:
+      additionalProperties: false
+      example:
+        issue: issue
+        field: field
+        location: location
+        value: value
+      properties:
+        issue:
+          type: string
+        field:
+          type: string
+        value:
+          type: string
+        location:
+          type: string
+      required:
+        - issue
+      type: object
+    ListScannedFilesOK_scannedFiles_inner:
+      example:
+        jobId: jobId
+        createdAt: createdAt
+        profileId: profileId
+        name: name
+        nodeId: nodeId
+        status: status
+      properties:
+        jobId:
+          description: 'A unique, randomly generated identifier'
+          type: string
+        status:
+          description: The Status of the listed files
+          type: string
+        profileId:
+          description: 'A unique, randomly generated identifier'
+          type: string
+        nodeId:
+          type: string
+        createdAt:
+          type: string
+        name:
+          type: string
+      required:
+        - createdAt
+        - jobId
+        - name
+        - nodeId
+        - profileId
+        - status
+      type: object
+  securitySchemes:
+    AwsSigV4:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: awsSigv4
+    ApiKey:
+      in: header
+      name: x-api-key
+      type: apiKey
+      x-amazon-apigateway-api-key-source: HEADER
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+    ConsumerTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: custom
+      x-amazon-apigateway-authorizer:
+        type: request
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ConsumerTokenAuthorizerLambda91B1796B-QT4lOBGrUdPH:live-alias/invocations
+        authorizerResultTtlInSeconds: 0
+    UserTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+    ProjectTokenAuth:
+      in: header
+      name: authorization
+      type: apiKey
+      x-amazon-apigateway-authtype: custom
+      x-amazon-apigateway-authorizer:
+        type: request
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ProjectTokenAuthorizerC83BEF45-elvJgVdbp078:live-alias/invocations
+        authorizerResultTtlInSeconds: 0
+x-amazon-apigateway-request-validators:
+  basic:
+    validateRequestBody: true
+    validateRequestParameters: true
+x-amazon-apigateway-request-validator: basic
+x-affinidi-default-cors-operation:
+  x-amazon-apigateway-integration:
+    type: mock
+    requestTemplates:
+      application/json: |-
+        {
+        "statusCode" : 200
+        }
+    responses:
+      default:
+        statusCode: 200
+        responseParameters:
+          method.response.header.Access-Control-Allow-Headers:
+            "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-amz-security-token,Access-Control-Allow-Headers,\
+            \ Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method,\
+            \ Access-Control-Request-Headers, Authorization'"
+          method.response.header.Access-Control-Allow-Methods: "'*'"
+          method.response.header.Access-Control-Allow-Origin: "'*'"
+        responseTemplates:
+          application/json: '{}'
+x-affinidi-cors-response-headers:
+  Access-Control-Allow-Origin:
+    $ref: '#/components/headers/Access-Control-Allow-Origin'
+  Access-Control-Allow-Methods:
+    $ref: '#/components/headers/Access-Control-Allow-Methods'
+  Access-Control-Allow-Headers:
+    $ref: '#/components/headers/Access-Control-Allow-Headers'

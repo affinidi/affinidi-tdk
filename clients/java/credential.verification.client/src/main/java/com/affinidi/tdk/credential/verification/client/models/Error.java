@@ -51,7 +51,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * Error object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:25:46.248992213Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Error {
   public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
   @SerializedName(SERIALIZED_NAME_ERROR_CODE)

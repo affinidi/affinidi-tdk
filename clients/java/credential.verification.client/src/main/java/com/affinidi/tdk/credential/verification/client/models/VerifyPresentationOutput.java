@@ -49,7 +49,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * Response model of /verify-vp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:25:46.248992213Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VerifyPresentationOutput {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)

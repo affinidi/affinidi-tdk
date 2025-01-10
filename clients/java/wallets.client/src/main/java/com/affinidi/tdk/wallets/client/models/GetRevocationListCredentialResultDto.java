@@ -48,7 +48,7 @@ import com.affinidi.tdk.wallets.client.JSON;
 /**
  * DTO contains revocation list credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:26:11.452580855Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GetRevocationListCredentialResultDto {
   public static final String SERIALIZED_NAME_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
   @SerializedName(SERIALIZED_NAME_REVOCATION_LIST_CREDENTIAL)

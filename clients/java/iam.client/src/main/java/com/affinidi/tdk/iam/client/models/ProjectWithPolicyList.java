@@ -51,7 +51,7 @@ import com.affinidi.tdk.iam.client.JSON;
 /**
  * ProjectWithPolicyList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-10T09:25:20.763428910Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProjectWithPolicyList {
   public static final String SERIALIZED_NAME_PROJECTS = "projects";
   @SerializedName(SERIALIZED_NAME_PROJECTS)
