@@ -57,7 +57,7 @@ import com.affinidi.tdk.credential.verification.client.JSON;
 /**
  * W3cCredential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-12T23:19:17.783863283Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class W3cCredential {
   public static final String SERIALIZED_NAME_AT_CONTEXT = "@context";
   @SerializedName(SERIALIZED_NAME_AT_CONTEXT)

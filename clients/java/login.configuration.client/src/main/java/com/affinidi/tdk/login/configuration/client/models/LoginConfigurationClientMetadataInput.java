@@ -48,7 +48,7 @@ import com.affinidi.tdk.login.configuration.client.JSON;
 /**
  * login configuration client metadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-12T23:17:53.924573167Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginConfigurationClientMetadataInput {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)

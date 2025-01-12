@@ -48,7 +48,7 @@ import com.affinidi.tdk.iota.client.JSON;
 /**
  * AwsExchangeCredentialsProjectToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-12T23:20:09.722158526Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AwsExchangeCredentialsProjectToken {
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)

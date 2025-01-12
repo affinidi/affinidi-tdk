@@ -51,7 +51,7 @@ import com.affinidi.tdk.credential.issuance.client.JSON;
 /**
  * ListIssuanceResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-12T23:18:23.994139390Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListIssuanceResponse {
   public static final String SERIALIZED_NAME_ISSUANCES = "issuances";
   @SerializedName(SERIALIZED_NAME_ISSUANCES)
