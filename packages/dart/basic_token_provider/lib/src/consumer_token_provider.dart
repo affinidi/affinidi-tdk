@@ -20,14 +20,15 @@ class ConsumerTokenProvider {
       'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token';
   static const secondsBetweenApiAuthRefresh = 300;
 
-  Future<String> getToken() async {
+  Future<String> getToken(String seed) async {
     ///
     /// you would never do this for real, loading from a const but this is a DEMO!!!!!
     ///
 
-    final mn = Mnemonic.fromSentence(walletSeedMnemonic, Language.english);
+    // final mn = Mnemonic.fromSentence(walletSeedMnemonic, Language.english);
 
-    var master = BIP32.fromSeed(Uint8List.fromList(mn.entropy));
+    Uint8List seedBytes = Uint8List.fromList(utf8.encode(seed));
+    var master = BIP32.fromSeed(seedBytes);
 
     var key = master.derivePath(etheriumIdentityKey);
     var myDiD = _getDID(key.privateKey!);

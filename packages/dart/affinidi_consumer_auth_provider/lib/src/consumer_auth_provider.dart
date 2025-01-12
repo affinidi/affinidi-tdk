@@ -8,8 +8,8 @@ class ConsumerAuthProvider {
   ConsumerTokenProvider tokenProvider = ConsumerTokenProvider();
 
   Future<String> fetchConsumerToken({
-    required String walletSeed,
-    required String walletPassword,
+    required String encryptedSeed,
+    required String encryptionKey,
   }) async {
     try {
       final aud = Environment.fetchConsumerAudienceUrl();
@@ -27,7 +27,7 @@ class ConsumerAuthProvider {
       );
 
       final payload = jsonDecode(assertion);
-      final token = await apiService.post(
+      final token = await http.post(
         endpoint: aud,
         data: payload,
       );
@@ -35,8 +35,10 @@ class ConsumerAuthProvider {
       return token;
     */
 
+      // decrypt encryptedSeed using encryptionKey to get walletSeed, use AES256 symmetric encryption
+
       // DEMO purpose only
-      final token = await tokenProvider.getToken();
+      final token = await tokenProvider.getToken('walletSeed');
       return token;
     } catch (e) {
       print('Failed to fetch consumer token: $e');
