@@ -4,7 +4,7 @@ CredentialIssuanceService
 
 - API version: 1.0.0
 
-- Build date: 2025-01-13T09:21:17.954698072Z[Etc/UTC]
+- Build date: 2025-01-13T23:17:27.806274724Z[Etc/UTC]
 
 - Generator version: 7.9.0
 

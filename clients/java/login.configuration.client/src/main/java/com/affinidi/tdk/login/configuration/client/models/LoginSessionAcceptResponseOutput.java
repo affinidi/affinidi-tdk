@@ -28,7 +28,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:16:55.717545085Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginSessionAcceptResponseOutput extends HashMap<String, Object> {
   public LoginSessionAcceptResponseOutput() {
 

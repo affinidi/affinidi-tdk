@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
   GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:16:55.717545085Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GroupUserMappingsList {
   public static final String JSON_PROPERTY_USERS = "users";
   private List<GroupUserMappingDto> users = new ArrayList<>();

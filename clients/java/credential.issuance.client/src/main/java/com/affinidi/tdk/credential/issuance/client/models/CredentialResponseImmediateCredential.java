@@ -29,7 +29,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("CredentialResponseImmediate_credential")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:17:27.806274724Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialResponseImmediateCredential {
   public CredentialResponseImmediateCredential() {
   }

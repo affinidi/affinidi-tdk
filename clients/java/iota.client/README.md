@@ -4,7 +4,7 @@ IotaService
 
 - API version: 1.0.0
 
-- Build date: 2025-01-13T09:23:09.759834929Z[Etc/UTC]
+- Build date: 2025-01-13T23:19:15.960827630Z[Etc/UTC]
 
 - Generator version: 7.9.0
 

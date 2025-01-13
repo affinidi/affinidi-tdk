@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   PrepareRequest.JSON_PROPERTY_TOKEN_MAX_AGE,
   PrepareRequest.JSON_PROPERTY_AUDIENCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:19:15.960827630Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PrepareRequest {
   public static final String JSON_PROPERTY_CONNECTION_CLIENT_ID = "connectionClientId";
   private String connectionClientId;

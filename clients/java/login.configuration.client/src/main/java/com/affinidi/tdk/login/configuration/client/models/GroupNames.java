@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   GroupNames.JSON_PROPERTY_GROUP_NAMES,
   GroupNames.JSON_PROPERTY_PAGE_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:16:55.717545085Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GroupNames {
   public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
   private List<String> groupNames = new ArrayList<>();

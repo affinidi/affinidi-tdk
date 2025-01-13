@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   Format.JSON_PROPERTY_LDP_VC,
   Format.JSON_PROPERTY_LDP_VP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:18:22.792536929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Format {
   public static final String JSON_PROPERTY_JWT = "jwt";
   private JwtObject jwt;

@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   ErrorOAuth2.JSON_PROPERTY_ERROR_HINT,
   ErrorOAuth2.JSON_PROPERTY_STATUS_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T23:16:55.717545085Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ErrorOAuth2 {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
