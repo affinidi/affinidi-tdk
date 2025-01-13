@@ -1,6 +1,11 @@
 package com.affinidi.tdk.authProvider;
 
+import java.util.UUID;
+
+import com.affinidi.tdk.authProvider.helper.JwtUtil;
+import com.affinidi.tdk.authProvider.type.IotaJwtOutput;
 import com.affinidi.tdk.common.EnvironmentUtil;
+
 
 public class AuthProvider {
     
@@ -25,13 +30,16 @@ public class AuthProvider {
         this.tokenEndPoint = eUtil.getElementAuthTokenUrlForEnvironment();
     }
 
-    public boolean shouldRefreshToken(){
-        // TODO Implement shouldRefreshToken
-            return false;
+    public boolean shouldRefreshToken() {
+        if(this.projectScopeToken == null){
+            return true;
+        }
+        return !(JwtUtil.validProjectTokenPresent(this.projectScopeToken, this.apiGatewayUrl));
     }
 
     public String fetchProjectScopedToken(){
         boolean tokenFetchRequired = shouldRefreshToken();
+
         if(tokenFetchRequired){
             this.projectScopeToken = fetchProjectScopedToken(apiGatewayUrl, projectId, tokenId, apiGatewayUrl, privateKey, passphrase, keyId);
         }
@@ -48,6 +56,16 @@ public class AuthProvider {
                                                      
         // TODO Implement fetchProjectScopedToken
         return null;
+    }
+
+    public IotaJwtOutput signIotaJwt(String iotaConfigId, String did, String iotaSessionId) throws Exception {
+
+        String iotaTokenId = "token/"+tokenId;
+        String iotaSessionID = (iotaSessionId != null) ? iotaSessionId : UUID.randomUUID().toString();
+
+        String iotaJwt =  JwtUtil.signIotaPayload(iotaTokenId, did, privateKey, passphrase, keyId, projectId, iotaConfigId, iotaSessionID);
+
+        return new IotaJwtOutput(iotaSessionID, iotaJwt);
     }
 
     public static class Configurations{
@@ -84,7 +102,6 @@ public class AuthProvider {
             }
             return new AuthProvider(this);
         }
-
     }
 
     public String getProjectId() {
@@ -106,7 +123,6 @@ public class AuthProvider {
     public String getPassphrase() {
         return passphrase;
     }
-
 
     public String getApiGatewayUrl() {
         return apiGatewayUrl;
