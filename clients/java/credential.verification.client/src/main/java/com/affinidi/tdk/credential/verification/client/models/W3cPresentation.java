@@ -14,80 +14,68 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.PresentationSubmission;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
 import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * W3cPresentation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  W3cPresentation.JSON_PROPERTY_AT_CONTEXT,
+  W3cPresentation.JSON_PROPERTY_ID,
+  W3cPresentation.JSON_PROPERTY_TYPE,
+  W3cPresentation.JSON_PROPERTY_HOLDER,
+  W3cPresentation.JSON_PROPERTY_VERIFIABLE_CREDENTIAL,
+  W3cPresentation.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  W3cPresentation.JSON_PROPERTY_PROOF
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:54:28.383763662Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class W3cPresentation {
-  public static final String SERIALIZED_NAME_AT_CONTEXT = "@context";
-  @SerializedName(SERIALIZED_NAME_AT_CONTEXT)
+  public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
   private W3cPresentationContext atContext;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String JSON_PROPERTY_ID = "id";
+  private JsonNullable<String> id = JsonNullable.<String>undefined();
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private List<String> type = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_HOLDER = "holder";
-  @SerializedName(SERIALIZED_NAME_HOLDER)
+  public static final String JSON_PROPERTY_HOLDER = "holder";
   private Object holder;
 
-  public static final String SERIALIZED_NAME_VERIFIABLE_CREDENTIAL = "verifiableCredential";
-  @SerializedName(SERIALIZED_NAME_VERIFIABLE_CREDENTIAL)
+  public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIAL = "verifiableCredential";
   private List<W3cCredential> verifiableCredential = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_PRESENTATION_SUBMISSION = "presentation_submission";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_SUBMISSION)
+  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
   private PresentationSubmission presentationSubmission;
 
-  public static final String SERIALIZED_NAME_PROOF = "proof";
-  @SerializedName(SERIALIZED_NAME_PROOF)
+  public static final String JSON_PROPERTY_PROOF = "proof";
   private Object proof;
 
   public W3cPresentation() {
   }
 
   public W3cPresentation atContext(W3cPresentationContext atContext) {
+    
     this.atContext = atContext;
     return this;
   }
@@ -97,17 +85,23 @@ public class W3cPresentation {
    * @return atContext
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public W3cPresentationContext getAtContext() {
     return atContext;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAtContext(W3cPresentationContext atContext) {
     this.atContext = atContext;
   }
 
-
   public W3cPresentation id(String id) {
-    this.id = id;
+    this.id = JsonNullable.<String>of(id);
+    
     return this;
   }
 
@@ -116,16 +110,30 @@ public class W3cPresentation {
    * @return id
    */
   @javax.annotation.Nullable
+  @JsonIgnore
+
   public String getId() {
-    return id;
+        return id.orElse(null);
   }
 
-  public void setId(String id) {
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getId_JsonNullable() {
+    return id;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ID)
+  public void setId_JsonNullable(JsonNullable<String> id) {
     this.id = id;
   }
 
+  public void setId(String id) {
+    this.id = JsonNullable.<String>of(id);
+  }
 
   public W3cPresentation type(List<String> type) {
+    
     this.type = type;
     return this;
   }
@@ -143,16 +151,22 @@ public class W3cPresentation {
    * @return type
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getType() {
     return type;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(List<String> type) {
     this.type = type;
   }
 
-
   public W3cPresentation holder(Object holder) {
+    
     this.holder = holder;
     return this;
   }
@@ -162,16 +176,22 @@ public class W3cPresentation {
    * @return holder
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Object getHolder() {
     return holder;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHolder(Object holder) {
     this.holder = holder;
   }
 
-
   public W3cPresentation verifiableCredential(List<W3cCredential> verifiableCredential) {
+    
     this.verifiableCredential = verifiableCredential;
     return this;
   }
@@ -189,16 +209,22 @@ public class W3cPresentation {
    * @return verifiableCredential
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<W3cCredential> getVerifiableCredential() {
     return verifiableCredential;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVerifiableCredential(List<W3cCredential> verifiableCredential) {
     this.verifiableCredential = verifiableCredential;
   }
 
-
   public W3cPresentation presentationSubmission(PresentationSubmission presentationSubmission) {
+    
     this.presentationSubmission = presentationSubmission;
     return this;
   }
@@ -208,16 +234,22 @@ public class W3cPresentation {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public PresentationSubmission getPresentationSubmission() {
     return presentationSubmission;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(PresentationSubmission presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-
   public W3cPresentation proof(Object proof) {
+    
     this.proof = proof;
     return this;
   }
@@ -227,15 +259,19 @@ public class W3cPresentation {
    * @return proof
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Object getProof() {
     return proof;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProof(Object proof) {
     this.proof = proof;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -247,7 +283,7 @@ public class W3cPresentation {
     }
     W3cPresentation w3cPresentation = (W3cPresentation) o;
     return Objects.equals(this.atContext, w3cPresentation.atContext) &&
-        Objects.equals(this.id, w3cPresentation.id) &&
+        equalsNullable(this.id, w3cPresentation.id) &&
         Objects.equals(this.type, w3cPresentation.type) &&
         Objects.equals(this.holder, w3cPresentation.holder) &&
         Objects.equals(this.verifiableCredential, w3cPresentation.verifiableCredential) &&
@@ -261,7 +297,7 @@ public class W3cPresentation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(atContext, id, type, holder, verifiableCredential, presentationSubmission, proof);
+    return Objects.hash(atContext, hashCodeNullable(id), type, holder, verifiableCredential, presentationSubmission, proof);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -297,132 +333,104 @@ public class W3cPresentation {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("@context");
-    openapiFields.add("id");
-    openapiFields.add("type");
-    openapiFields.add("holder");
-    openapiFields.add("verifiableCredential");
-    openapiFields.add("presentation_submission");
-    openapiFields.add("proof");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("@context");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("holder");
-    openapiRequiredFields.add("verifiableCredential");
-    openapiRequiredFields.add("proof");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to W3cPresentation
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!W3cPresentation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in W3cPresentation is not found in the empty JSON string", W3cPresentation.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!W3cPresentation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `W3cPresentation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : W3cPresentation.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `@context`
-      W3cPresentationContext.validateJsonElement(jsonObj.get("@context"));
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("type") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("type").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be an array in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("verifiableCredential").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `verifiableCredential` to be an array in the JSON string but got `%s`", jsonObj.get("verifiableCredential").toString()));
-      }
-
-      JsonArray jsonArrayverifiableCredential = jsonObj.getAsJsonArray("verifiableCredential");
-      // validate the required field `verifiableCredential` (array)
-      for (int i = 0; i < jsonArrayverifiableCredential.size(); i++) {
-        W3cCredential.validateJsonElement(jsonArrayverifiableCredential.get(i));
-      };
-      // validate the optional field `presentation_submission`
-      if (jsonObj.get("presentation_submission") != null && !jsonObj.get("presentation_submission").isJsonNull()) {
-        PresentationSubmission.validateJsonElement(jsonObj.get("presentation_submission"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!W3cPresentation.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'W3cPresentation' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<W3cPresentation> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(W3cPresentation.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<W3cPresentation>() {
-           @Override
-           public void write(JsonWriter out, W3cPresentation value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public W3cPresentation read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `@context` to the URL query string
+    if (getAtContext() != null) {
+      joiner.add(getAtContext().toUrlQueryString(prefix + "@context" + suffix));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      for (int i = 0; i < getType().size(); i++) {
+        try {
+          joiner.add(String.format("%stype%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getType().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `holder` to the URL query string
+    if (getHolder() != null) {
+      try {
+        joiner.add(String.format("%sholder%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolder()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `verifiableCredential` to the URL query string
+    if (getVerifiableCredential() != null) {
+      for (int i = 0; i < getVerifiableCredential().size(); i++) {
+        if (getVerifiableCredential().get(i) != null) {
+          joiner.add(getVerifiableCredential().get(i).toUrlQueryString(String.format("%sverifiableCredential%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `presentation_submission` to the URL query string
+    if (getPresentationSubmission() != null) {
+      joiner.add(getPresentationSubmission().toUrlQueryString(prefix + "presentation_submission" + suffix));
+    }
+
+    // add `proof` to the URL query string
+    if (getProof() != null) {
+      try {
+        joiner.add(String.format("%sproof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProof()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of W3cPresentation given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of W3cPresentation
-   * @throws IOException if the JSON string is invalid with respect to W3cPresentation
-   */
-  public static W3cPresentation fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, W3cPresentation.class);
-  }
-
-  /**
-   * Convert an instance of W3cPresentation to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

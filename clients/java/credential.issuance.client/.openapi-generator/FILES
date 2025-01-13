@@ -80,16 +80,13 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/affinidi/tdk/credential/issuance/client/ApiCallback.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ApiClient.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ApiException.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/ApiResponse.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/BaseApi.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/Configuration.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/GzipRequestInterceptor.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/JSON.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/Pair.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/ProgressRequestBody.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/ProgressResponseBody.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/StringUtil.java
@@ -103,7 +100,6 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/auth/ApiKeyAuth.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/auth/HttpBasicAuth.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/auth/HttpBearerAuth.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/AbstractOpenApiSchema.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenErrorDetailsInner.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ChangeCredentialStatus400Response.java

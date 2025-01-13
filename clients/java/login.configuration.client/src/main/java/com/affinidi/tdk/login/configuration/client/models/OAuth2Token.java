@@ -14,70 +14,54 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * OAuth2Token
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  OAuth2Token.JSON_PROPERTY_ACCESS_TOKEN,
+  OAuth2Token.JSON_PROPERTY_EXPIRES_IN,
+  OAuth2Token.JSON_PROPERTY_ID_TOKEN,
+  OAuth2Token.JSON_PROPERTY_REFRESH_TOKEN,
+  OAuth2Token.JSON_PROPERTY_SCOPE,
+  OAuth2Token.JSON_PROPERTY_TOKEN_TYPE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:52:57.548212817Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OAuth2Token {
-  public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";
-  @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)
+  public static final String JSON_PROPERTY_ACCESS_TOKEN = "access_token";
   private String accessToken;
 
-  public static final String SERIALIZED_NAME_EXPIRES_IN = "expires_in";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
+  public static final String JSON_PROPERTY_EXPIRES_IN = "expires_in";
   private Integer expiresIn;
 
-  public static final String SERIALIZED_NAME_ID_TOKEN = "id_token";
-  @SerializedName(SERIALIZED_NAME_ID_TOKEN)
+  public static final String JSON_PROPERTY_ID_TOKEN = "id_token";
   private Integer idToken;
 
-  public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
-  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
+  public static final String JSON_PROPERTY_REFRESH_TOKEN = "refresh_token";
   private String refreshToken;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
+  public static final String JSON_PROPERTY_SCOPE = "scope";
   private String scope;
 
-  public static final String SERIALIZED_NAME_TOKEN_TYPE = "token_type";
-  @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
+  public static final String JSON_PROPERTY_TOKEN_TYPE = "token_type";
   private String tokenType;
 
   public OAuth2Token() {
   }
 
   public OAuth2Token accessToken(String accessToken) {
+    
     this.accessToken = accessToken;
     return this;
   }
@@ -87,16 +71,22 @@ public class OAuth2Token {
    * @return accessToken
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getAccessToken() {
     return accessToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
 
-
   public OAuth2Token expiresIn(Integer expiresIn) {
+    
     this.expiresIn = expiresIn;
     return this;
   }
@@ -106,16 +96,22 @@ public class OAuth2Token {
    * @return expiresIn
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getExpiresIn() {
     return expiresIn;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExpiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
-
   public OAuth2Token idToken(Integer idToken) {
+    
     this.idToken = idToken;
     return this;
   }
@@ -125,16 +121,22 @@ public class OAuth2Token {
    * @return idToken
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getIdToken() {
     return idToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIdToken(Integer idToken) {
     this.idToken = idToken;
   }
 
-
   public OAuth2Token refreshToken(String refreshToken) {
+    
     this.refreshToken = refreshToken;
     return this;
   }
@@ -144,16 +146,22 @@ public class OAuth2Token {
    * @return refreshToken
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getRefreshToken() {
     return refreshToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRefreshToken(String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
-
   public OAuth2Token scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -163,16 +171,22 @@ public class OAuth2Token {
    * @return scope
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getScope() {
     return scope;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(String scope) {
     this.scope = scope;
   }
 
-
   public OAuth2Token tokenType(String tokenType) {
+    
     this.tokenType = tokenType;
     return this;
   }
@@ -182,15 +196,19 @@ public class OAuth2Token {
    * @return tokenType
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getTokenType() {
     return tokenType;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenType(String tokenType) {
     this.tokenType = tokenType;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -239,106 +257,100 @@ public class OAuth2Token {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("access_token");
-    openapiFields.add("expires_in");
-    openapiFields.add("id_token");
-    openapiFields.add("refresh_token");
-    openapiFields.add("scope");
-    openapiFields.add("token_type");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to OAuth2Token
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!OAuth2Token.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OAuth2Token is not found in the empty JSON string", OAuth2Token.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!OAuth2Token.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OAuth2Token` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("access_token") != null && !jsonObj.get("access_token").isJsonNull()) && !jsonObj.get("access_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_token").toString()));
-      }
-      if ((jsonObj.get("refresh_token") != null && !jsonObj.get("refresh_token").isJsonNull()) && !jsonObj.get("refresh_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
-      }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-      if ((jsonObj.get("token_type") != null && !jsonObj.get("token_type").isJsonNull()) && !jsonObj.get("token_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_type").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OAuth2Token.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OAuth2Token' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OAuth2Token> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OAuth2Token.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<OAuth2Token>() {
-           @Override
-           public void write(JsonWriter out, OAuth2Token value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public OAuth2Token read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `access_token` to the URL query string
+    if (getAccessToken() != null) {
+      try {
+        joiner.add(String.format("%saccess_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expires_in` to the URL query string
+    if (getExpiresIn() != null) {
+      try {
+        joiner.add(String.format("%sexpires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `id_token` to the URL query string
+    if (getIdToken() != null) {
+      try {
+        joiner.add(String.format("%sid_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `refresh_token` to the URL query string
+    if (getRefreshToken() != null) {
+      try {
+        joiner.add(String.format("%srefresh_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRefreshToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `scope` to the URL query string
+    if (getScope() != null) {
+      try {
+        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `token_type` to the URL query string
+    if (getTokenType() != null) {
+      try {
+        joiner.add(String.format("%stoken_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of OAuth2Token given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of OAuth2Token
-   * @throws IOException if the JSON string is invalid with respect to OAuth2Token
-   */
-  public static OAuth2Token fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OAuth2Token.class);
-  }
-
-  /**
-   * Convert an instance of OAuth2Token to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

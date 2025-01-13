@@ -14,58 +14,42 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * AwsExchangeCredentialsProjectToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  AwsExchangeCredentialsProjectToken.JSON_PROPERTY_SESSION_ID,
+  AwsExchangeCredentialsProjectToken.JSON_PROPERTY_CONFIGURATION_ID,
+  AwsExchangeCredentialsProjectToken.JSON_PROPERTY_DID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:55:24.771756228Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AwsExchangeCredentialsProjectToken {
-  public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
-  @SerializedName(SERIALIZED_NAME_SESSION_ID)
+  public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   private String sessionId;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_ID = "configurationId";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_ID)
+  public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
   private String configurationId;
 
-  public static final String SERIALIZED_NAME_DID = "did";
-  @SerializedName(SERIALIZED_NAME_DID)
+  public static final String JSON_PROPERTY_DID = "did";
   private String did;
 
   public AwsExchangeCredentialsProjectToken() {
   }
 
   public AwsExchangeCredentialsProjectToken sessionId(String sessionId) {
+    
     this.sessionId = sessionId;
     return this;
   }
@@ -75,16 +59,22 @@ public class AwsExchangeCredentialsProjectToken {
    * @return sessionId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getSessionId() {
     return sessionId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSessionId(String sessionId) {
     this.sessionId = sessionId;
   }
 
-
   public AwsExchangeCredentialsProjectToken configurationId(String configurationId) {
+    
     this.configurationId = configurationId;
     return this;
   }
@@ -94,16 +84,22 @@ public class AwsExchangeCredentialsProjectToken {
    * @return configurationId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getConfigurationId() {
     return configurationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(String configurationId) {
     this.configurationId = configurationId;
   }
 
-
   public AwsExchangeCredentialsProjectToken did(String did) {
+    
     this.did = did;
     return this;
   }
@@ -113,15 +109,19 @@ public class AwsExchangeCredentialsProjectToken {
    * @return did
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getDid() {
     return did;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDid(String did) {
     this.did = did;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,110 +164,70 @@ public class AwsExchangeCredentialsProjectToken {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("sessionId");
-    openapiFields.add("configurationId");
-    openapiFields.add("did");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sessionId");
-    openapiRequiredFields.add("configurationId");
-    openapiRequiredFields.add("did");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AwsExchangeCredentialsProjectToken
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!AwsExchangeCredentialsProjectToken.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AwsExchangeCredentialsProjectToken is not found in the empty JSON string", AwsExchangeCredentialsProjectToken.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AwsExchangeCredentialsProjectToken.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AwsExchangeCredentialsProjectToken` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AwsExchangeCredentialsProjectToken.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("sessionId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sessionId").toString()));
-      }
-      if (!jsonObj.get("configurationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `configurationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configurationId").toString()));
-      }
-      if (!jsonObj.get("did").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `did` to be a primitive type in the JSON string but got `%s`", jsonObj.get("did").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AwsExchangeCredentialsProjectToken.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AwsExchangeCredentialsProjectToken' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AwsExchangeCredentialsProjectToken> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AwsExchangeCredentialsProjectToken.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<AwsExchangeCredentialsProjectToken>() {
-           @Override
-           public void write(JsonWriter out, AwsExchangeCredentialsProjectToken value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public AwsExchangeCredentialsProjectToken read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `sessionId` to the URL query string
+    if (getSessionId() != null) {
+      try {
+        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `configurationId` to the URL query string
+    if (getConfigurationId() != null) {
+      try {
+        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `did` to the URL query string
+    if (getDid() != null) {
+      try {
+        joiner.add(String.format("%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of AwsExchangeCredentialsProjectToken given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of AwsExchangeCredentialsProjectToken
-   * @throws IOException if the JSON string is invalid with respect to AwsExchangeCredentialsProjectToken
-   */
-  public static AwsExchangeCredentialsProjectToken fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AwsExchangeCredentialsProjectToken.class);
-  }
-
-  /**
-   * Convert an instance of AwsExchangeCredentialsProjectToken to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

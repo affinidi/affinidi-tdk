@@ -12,9 +12,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 | [**v1LoginProjectProjectIdWellKnownJwksJsonGet**](IdpApi.md#v1LoginProjectProjectIdWellKnownJwksJsonGet)                       | **GET** /v1/login/project/{projectId}/.well-known/jwks.json            | Discover Well-Known JSON Web Keys                     |
 | [**v1LoginProjectProjectIdWellKnownOpenidConfigurationGet**](IdpApi.md#v1LoginProjectProjectIdWellKnownOpenidConfigurationGet) | **GET** /v1/login/project/{projectId}/.well-known/openid-configuration | OpenID Connect Discovery                              |
 
-<a id="v1LoginProjectProjectIdOauth2AuthGet"></a>
-
-# **v1LoginProjectProjectIdOauth2AuthGet**
+## v1LoginProjectProjectIdOauth2AuthGet
 
 > v1LoginProjectProjectIdOauth2AuthGet(projectId)
 
@@ -33,22 +31,22 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      apiInstance.v1LoginProjectProjectIdOauth2AuthGet(projectId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2AuthGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            apiInstance.v1LoginProjectProjectIdOauth2AuthGet(projectId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2AuthGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -71,9 +69,7 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-<a id="v1LoginProjectProjectIdOauth2RevokePost"></a>
-
-# **v1LoginProjectProjectIdOauth2RevokePost**
+## v1LoginProjectProjectIdOauth2RevokePost
 
 > v1LoginProjectProjectIdOauth2RevokePost(projectId)
 
@@ -92,22 +88,22 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      apiInstance.v1LoginProjectProjectIdOauth2RevokePost(projectId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2RevokePost");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            apiInstance.v1LoginProjectProjectIdOauth2RevokePost(projectId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2RevokePost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -136,9 +132,7 @@ No authorization required
 | ----------- | ----------- | ---------------- |
 | **200**     | Ok          | -                |
 
-<a id="v1LoginProjectProjectIdOauth2SessionsLogoutGet"></a>
-
-# **v1LoginProjectProjectIdOauth2SessionsLogoutGet**
+## v1LoginProjectProjectIdOauth2SessionsLogoutGet
 
 > v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId)
 
@@ -157,22 +151,22 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      apiInstance.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2SessionsLogoutGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            apiInstance.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2SessionsLogoutGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -201,9 +195,7 @@ No authorization required
 | ----------- | ----------- | ---------------- |
 | **200**     | Ok          | -                |
 
-<a id="v1LoginProjectProjectIdOauth2TokenPost"></a>
-
-# **v1LoginProjectProjectIdOauth2TokenPost**
+## v1LoginProjectProjectIdOauth2TokenPost
 
 > OAuth2Token v1LoginProjectProjectIdOauth2TokenPost(projectId)
 
@@ -222,23 +214,23 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      OAuth2Token result = apiInstance.v1LoginProjectProjectIdOauth2TokenPost(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2TokenPost");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            OAuth2Token result = apiInstance.v1LoginProjectProjectIdOauth2TokenPost(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdOauth2TokenPost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -267,9 +259,7 @@ No authorization required
 | ----------- | ------------------- | ---------------- |
 | **200**     | Successful response | -                |
 
-<a id="v1LoginProjectProjectIdUserinfoGet"></a>
-
-# **v1LoginProjectProjectIdUserinfoGet**
+## v1LoginProjectProjectIdUserinfoGet
 
 > GetUserInfo v1LoginProjectProjectIdUserinfoGet(projectId)
 
@@ -288,23 +278,23 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      GetUserInfo result = apiInstance.v1LoginProjectProjectIdUserinfoGet(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdUserinfoGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            GetUserInfo result = apiInstance.v1LoginProjectProjectIdUserinfoGet(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdUserinfoGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -333,9 +323,7 @@ No authorization required
 | ----------- | ------------------- | ---------------- |
 | **200**     | Successful response | -                |
 
-<a id="v1LoginProjectProjectIdWellKnownJwksJsonGet"></a>
-
-# **v1LoginProjectProjectIdWellKnownJwksJsonGet**
+## v1LoginProjectProjectIdWellKnownJwksJsonGet
 
 > JsonWebKey v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId)
 
@@ -354,23 +342,23 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      JsonWebKey result = apiInstance.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdWellKnownJwksJsonGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            JsonWebKey result = apiInstance.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdWellKnownJwksJsonGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -399,9 +387,7 @@ No authorization required
 | ----------- | ------------------- | ---------------- |
 | **200**     | Successful response | -                |
 
-<a id="v1LoginProjectProjectIdWellKnownOpenidConfigurationGet"></a>
-
-# **v1LoginProjectProjectIdWellKnownOpenidConfigurationGet**
+## v1LoginProjectProjectIdWellKnownOpenidConfigurationGet
 
 > OIDCConfig v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId)
 
@@ -420,23 +406,23 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.IdpApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    IdpApi apiInstance = new IdpApi(defaultClient);
-    String projectId = "projectId_example"; // String |
-    try {
-      OIDCConfig result = apiInstance.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdWellKnownOpenidConfigurationGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IdpApi apiInstance = new IdpApi(defaultClient);
+        String projectId = "projectId_example"; // String |
+        try {
+            OIDCConfig result = apiInstance.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IdpApi#v1LoginProjectProjectIdWellKnownOpenidConfigurationGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

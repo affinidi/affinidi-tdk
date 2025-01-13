@@ -14,85 +14,70 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.wallets.client.models.WalletDtoKeysInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.wallets.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * wallet dto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  WalletDto.JSON_PROPERTY_ID,
+  WalletDto.JSON_PROPERTY_DID,
+  WalletDto.JSON_PROPERTY_NAME,
+  WalletDto.JSON_PROPERTY_DESCRIPTION,
+  WalletDto.JSON_PROPERTY_DID_DOCUMENT,
+  WalletDto.JSON_PROPERTY_ARI,
+  WalletDto.JSON_PROPERTY_KEYS,
+  WalletDto.JSON_PROPERTY_CREATED_AT,
+  WalletDto.JSON_PROPERTY_MODIFIED_AT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:54:55.179705361Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class WalletDto {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_DID = "did";
-  @SerializedName(SERIALIZED_NAME_DID)
+  public static final String JSON_PROPERTY_DID = "did";
   private String did;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_DID_DOCUMENT = "didDocument";
-  @SerializedName(SERIALIZED_NAME_DID_DOCUMENT)
+  public static final String JSON_PROPERTY_DID_DOCUMENT = "didDocument";
   private Object didDocument;
 
-  public static final String SERIALIZED_NAME_ARI = "ari";
-  @SerializedName(SERIALIZED_NAME_ARI)
+  public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
-  public static final String SERIALIZED_NAME_KEYS = "keys";
-  @SerializedName(SERIALIZED_NAME_KEYS)
+  public static final String JSON_PROPERTY_KEYS = "keys";
   private List<WalletDtoKeysInner> keys = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   private String createdAt;
 
-  public static final String SERIALIZED_NAME_MODIFIED_AT = "modifiedAt";
-  @SerializedName(SERIALIZED_NAME_MODIFIED_AT)
+  public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
   private String modifiedAt;
 
   public WalletDto() {
   }
 
   public WalletDto id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -102,16 +87,22 @@ public class WalletDto {
    * @return id
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(String id) {
     this.id = id;
   }
 
-
   public WalletDto did(String did) {
+    
     this.did = did;
     return this;
   }
@@ -121,16 +112,22 @@ public class WalletDto {
    * @return did
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDid() {
     return did;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDid(String did) {
     this.did = did;
   }
 
-
   public WalletDto name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -140,16 +137,22 @@ public class WalletDto {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public WalletDto description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -159,16 +162,22 @@ public class WalletDto {
    * @return description
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDescription() {
     return description;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public WalletDto didDocument(Object didDocument) {
+    
     this.didDocument = didDocument;
     return this;
   }
@@ -178,16 +187,22 @@ public class WalletDto {
    * @return didDocument
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Object getDidDocument() {
     return didDocument;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDidDocument(Object didDocument) {
     this.didDocument = didDocument;
   }
 
-
   public WalletDto ari(String ari) {
+    
     this.ari = ari;
     return this;
   }
@@ -197,16 +212,22 @@ public class WalletDto {
    * @return ari
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getAri() {
     return ari;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAri(String ari) {
     this.ari = ari;
   }
 
-
   public WalletDto keys(List<WalletDtoKeysInner> keys) {
+    
     this.keys = keys;
     return this;
   }
@@ -224,16 +245,22 @@ public class WalletDto {
    * @return keys
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<WalletDtoKeysInner> getKeys() {
     return keys;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeys(List<WalletDtoKeysInner> keys) {
     this.keys = keys;
   }
 
-
   public WalletDto createdAt(String createdAt) {
+    
     this.createdAt = createdAt;
     return this;
   }
@@ -243,16 +270,22 @@ public class WalletDto {
    * @return createdAt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCreatedAt() {
     return createdAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
 
-
   public WalletDto modifiedAt(String modifiedAt) {
+    
     this.modifiedAt = modifiedAt;
     return this;
   }
@@ -262,15 +295,19 @@ public class WalletDto {
    * @return modifiedAt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getModifiedAt() {
     return modifiedAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setModifiedAt(String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -325,132 +362,130 @@ public class WalletDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("did");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("didDocument");
-    openapiFields.add("ari");
-    openapiFields.add("keys");
-    openapiFields.add("createdAt");
-    openapiFields.add("modifiedAt");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to WalletDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!WalletDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in WalletDto is not found in the empty JSON string", WalletDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!WalletDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `WalletDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("did") != null && !jsonObj.get("did").isJsonNull()) && !jsonObj.get("did").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `did` to be a primitive type in the JSON string but got `%s`", jsonObj.get("did").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("ari") != null && !jsonObj.get("ari").isJsonNull()) && !jsonObj.get("ari").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ari` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ari").toString()));
-      }
-      if (jsonObj.get("keys") != null && !jsonObj.get("keys").isJsonNull()) {
-        JsonArray jsonArraykeys = jsonObj.getAsJsonArray("keys");
-        if (jsonArraykeys != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("keys").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `keys` to be an array in the JSON string but got `%s`", jsonObj.get("keys").toString()));
-          }
-
-          // validate the optional field `keys` (array)
-          for (int i = 0; i < jsonArraykeys.size(); i++) {
-            WalletDtoKeysInner.validateJsonElement(jsonArraykeys.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
-      }
-      if ((jsonObj.get("modifiedAt") != null && !jsonObj.get("modifiedAt").isJsonNull()) && !jsonObj.get("modifiedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `modifiedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifiedAt").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!WalletDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'WalletDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<WalletDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(WalletDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<WalletDto>() {
-           @Override
-           public void write(JsonWriter out, WalletDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public WalletDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `did` to the URL query string
+    if (getDid() != null) {
+      try {
+        joiner.add(String.format("%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `didDocument` to the URL query string
+    if (getDidDocument() != null) {
+      try {
+        joiner.add(String.format("%sdidDocument%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidDocument()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `ari` to the URL query string
+    if (getAri() != null) {
+      try {
+        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `keys` to the URL query string
+    if (getKeys() != null) {
+      for (int i = 0; i < getKeys().size(); i++) {
+        if (getKeys().get(i) != null) {
+          joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `createdAt` to the URL query string
+    if (getCreatedAt() != null) {
+      try {
+        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `modifiedAt` to the URL query string
+    if (getModifiedAt() != null) {
+      try {
+        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of WalletDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of WalletDto
-   * @throws IOException if the JSON string is invalid with respect to WalletDto
-   */
-  public static WalletDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, WalletDto.class);
-  }
-
-  /**
-   * Convert an instance of WalletDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

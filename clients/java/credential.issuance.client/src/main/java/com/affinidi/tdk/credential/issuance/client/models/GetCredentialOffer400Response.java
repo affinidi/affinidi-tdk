@@ -14,397 +14,420 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenErrorDetailsInner;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferClaimedError;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferExpiredError;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
 import com.affinidi.tdk.credential.issuance.client.models.ProjectCredentialConfigNotExistError;
 import com.affinidi.tdk.credential.issuance.client.models.VcClaimedError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * GetCredentialOffer400Response
+ */
+@JsonPropertyOrder({
+  GetCredentialOffer400Response.JSON_PROPERTY_NAME,
+  GetCredentialOffer400Response.JSON_PROPERTY_MESSAGE,
+  GetCredentialOffer400Response.JSON_PROPERTY_HTTP_STATUS_CODE,
+  GetCredentialOffer400Response.JSON_PROPERTY_TRACE_ID,
+  GetCredentialOffer400Response.JSON_PROPERTY_DETAILS
+})
+@JsonTypeName("getCredentialOffer_400_response")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:53:29.633342755Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class GetCredentialOffer400Response {
+  /**
+   * Gets or Sets name
+   */
+  public enum NameEnum {
+    VC_CLAIMED_ERROR("VcClaimedError");
 
+    private String value;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class GetCredentialOffer400Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(GetCredentialOffer400Response.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!GetCredentialOffer400Response.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'GetCredentialOffer400Response' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidParameterError> adapterInvalidParameterError = gson.getDelegateAdapter(this, TypeToken.get(InvalidParameterError.class));
-            final TypeAdapter<ProjectCredentialConfigNotExistError> adapterProjectCredentialConfigNotExistError = gson.getDelegateAdapter(this, TypeToken.get(ProjectCredentialConfigNotExistError.class));
-            final TypeAdapter<CredentialOfferExpiredError> adapterCredentialOfferExpiredError = gson.getDelegateAdapter(this, TypeToken.get(CredentialOfferExpiredError.class));
-            final TypeAdapter<CredentialOfferClaimedError> adapterCredentialOfferClaimedError = gson.getDelegateAdapter(this, TypeToken.get(CredentialOfferClaimedError.class));
-            final TypeAdapter<VcClaimedError> adapterVcClaimedError = gson.getDelegateAdapter(this, TypeToken.get(VcClaimedError.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<GetCredentialOffer400Response>() {
-                @Override
-                public void write(JsonWriter out, GetCredentialOffer400Response value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `InvalidParameterError`
-                    if (value.getActualInstance() instanceof InvalidParameterError) {
-                        JsonElement element = adapterInvalidParameterError.toJsonTree((InvalidParameterError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `ProjectCredentialConfigNotExistError`
-                    if (value.getActualInstance() instanceof ProjectCredentialConfigNotExistError) {
-                        JsonElement element = adapterProjectCredentialConfigNotExistError.toJsonTree((ProjectCredentialConfigNotExistError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `CredentialOfferExpiredError`
-                    if (value.getActualInstance() instanceof CredentialOfferExpiredError) {
-                        JsonElement element = adapterCredentialOfferExpiredError.toJsonTree((CredentialOfferExpiredError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `CredentialOfferClaimedError`
-                    if (value.getActualInstance() instanceof CredentialOfferClaimedError) {
-                        JsonElement element = adapterCredentialOfferClaimedError.toJsonTree((CredentialOfferClaimedError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `VcClaimedError`
-                    if (value.getActualInstance() instanceof VcClaimedError) {
-                        JsonElement element = adapterVcClaimedError.toJsonTree((VcClaimedError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError");
-                }
-
-                @Override
-                public GetCredentialOffer400Response read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize InvalidParameterError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidParameterError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidParameterError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidParameterError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidParameterError'", e);
-                    }
-                    // deserialize ProjectCredentialConfigNotExistError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        ProjectCredentialConfigNotExistError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterProjectCredentialConfigNotExistError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'ProjectCredentialConfigNotExistError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProjectCredentialConfigNotExistError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'ProjectCredentialConfigNotExistError'", e);
-                    }
-                    // deserialize CredentialOfferExpiredError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialOfferExpiredError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialOfferExpiredError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialOfferExpiredError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialOfferExpiredError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialOfferExpiredError'", e);
-                    }
-                    // deserialize CredentialOfferClaimedError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialOfferClaimedError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialOfferClaimedError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialOfferClaimedError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialOfferClaimedError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialOfferClaimedError'", e);
-                    }
-                    // deserialize VcClaimedError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        VcClaimedError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterVcClaimedError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'VcClaimedError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VcClaimedError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'VcClaimedError'", e);
-                    }
-
-                    if (match == 1) {
-                        GetCredentialOffer400Response ret = new GetCredentialOffer400Response();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for GetCredentialOffer400Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    NameEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public GetCredentialOffer400Response() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public GetCredentialOffer400Response(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("InvalidParameterError", InvalidParameterError.class);
-        schemas.put("ProjectCredentialConfigNotExistError", ProjectCredentialConfigNotExistError.class);
-        schemas.put("CredentialOfferExpiredError", CredentialOfferExpiredError.class);
-        schemas.put("CredentialOfferClaimedError", CredentialOfferClaimedError.class);
-        schemas.put("VcClaimedError", VcClaimedError.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return GetCredentialOffer400Response.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    @JsonCreator
+    public static NameEnum fromValue(String value) {
+      for (NameEnum b : NameEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private NameEnum name;
+
+  /**
+   * Gets or Sets message
+   */
+  public enum MessageEnum {
+    THE_REQUESTED_VC_HAS_ALREADY_BEEN_CLAIMED_BY_THE_USER("The requested VC has already been claimed by the user");
+
+    private String value;
+
+    MessageEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidParameterError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ProjectCredentialConfigNotExistError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CredentialOfferExpiredError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CredentialOfferClaimedError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof VcClaimedError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError");
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError
-     *
-     * @return The actual instance (CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError)
-     */
-    @SuppressWarnings("unchecked")
+    @JsonCreator
+    public static MessageEnum fromValue(String value) {
+      for (MessageEnum b : MessageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private MessageEnum message;
+
+  /**
+   * Gets or Sets httpStatusCode
+   */
+  public enum HttpStatusCodeEnum {
+    NUMBER_400(new BigDecimal("400"));
+
+    private BigDecimal value;
+
+    HttpStatusCodeEnum(BigDecimal value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public BigDecimal getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `InvalidParameterError`. If the actual instance is not `InvalidParameterError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidParameterError`
-     * @throws ClassCastException if the instance is not `InvalidParameterError`
-     */
-    public InvalidParameterError getInvalidParameterError() throws ClassCastException {
-        return (InvalidParameterError)super.getActualInstance();
+    @JsonCreator
+    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+      for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `ProjectCredentialConfigNotExistError`. If the actual instance is not `ProjectCredentialConfigNotExistError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProjectCredentialConfigNotExistError`
-     * @throws ClassCastException if the instance is not `ProjectCredentialConfigNotExistError`
-     */
-    public ProjectCredentialConfigNotExistError getProjectCredentialConfigNotExistError() throws ClassCastException {
-        return (ProjectCredentialConfigNotExistError)super.getActualInstance();
+  }
+
+  public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  private HttpStatusCodeEnum httpStatusCode;
+
+  public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  private String traceId;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private List<ActionForbiddenErrorDetailsInner> details = new ArrayList<>();
+
+  public GetCredentialOffer400Response() {
+  }
+
+  public GetCredentialOffer400Response name(NameEnum name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public NameEnum getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setName(NameEnum name) {
+    this.name = name;
+  }
+
+  public GetCredentialOffer400Response message(MessageEnum message) {
+    
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public MessageEnum getMessage() {
+    return message;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMessage(MessageEnum message) {
+    this.message = message;
+  }
+
+  public GetCredentialOffer400Response httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    
+    this.httpStatusCode = httpStatusCode;
+    return this;
+  }
+
+  /**
+   * Get httpStatusCode
+   * @return httpStatusCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public HttpStatusCodeEnum getHttpStatusCode() {
+    return httpStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    this.httpStatusCode = httpStatusCode;
+  }
+
+  public GetCredentialOffer400Response traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+  /**
+   * Get traceId
+   * @return traceId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+  public GetCredentialOffer400Response details(List<ActionForbiddenErrorDetailsInner> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public GetCredentialOffer400Response addDetailsItem(ActionForbiddenErrorDetailsInner detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
     }
-    /**
-     * Get the actual instance of `CredentialOfferExpiredError`. If the actual instance is not `CredentialOfferExpiredError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialOfferExpiredError`
-     * @throws ClassCastException if the instance is not `CredentialOfferExpiredError`
-     */
-    public CredentialOfferExpiredError getCredentialOfferExpiredError() throws ClassCastException {
-        return (CredentialOfferExpiredError)super.getActualInstance();
+    this.details.add(detailsItem);
+    return this;
+  }
+
+  /**
+   * Get details
+   * @return details
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ActionForbiddenErrorDetailsInner> getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(List<ActionForbiddenErrorDetailsInner> details) {
+    this.details = details;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `CredentialOfferClaimedError`. If the actual instance is not `CredentialOfferClaimedError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialOfferClaimedError`
-     * @throws ClassCastException if the instance is not `CredentialOfferClaimedError`
-     */
-    public CredentialOfferClaimedError getCredentialOfferClaimedError() throws ClassCastException {
-        return (CredentialOfferClaimedError)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `VcClaimedError`. If the actual instance is not `VcClaimedError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `VcClaimedError`
-     * @throws ClassCastException if the instance is not `VcClaimedError`
-     */
-    public VcClaimedError getVcClaimedError() throws ClassCastException {
-        return (VcClaimedError)super.getActualInstance();
+    GetCredentialOffer400Response getCredentialOffer400Response = (GetCredentialOffer400Response) o;
+    return Objects.equals(this.name, getCredentialOffer400Response.name) &&
+        Objects.equals(this.message, getCredentialOffer400Response.message) &&
+        Objects.equals(this.httpStatusCode, getCredentialOffer400Response.httpStatusCode) &&
+        Objects.equals(this.traceId, getCredentialOffer400Response.traceId) &&
+        Objects.equals(this.details, getCredentialOffer400Response.details);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, message, httpStatusCode, traceId, details);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class GetCredentialOffer400Response {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to GetCredentialOffer400Response
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidParameterError
-        try {
-            InvalidParameterError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with ProjectCredentialConfigNotExistError
-        try {
-            ProjectCredentialConfigNotExistError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProjectCredentialConfigNotExistError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with CredentialOfferExpiredError
-        try {
-            CredentialOfferExpiredError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialOfferExpiredError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with CredentialOfferClaimedError
-        try {
-            CredentialOfferClaimedError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialOfferClaimedError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with VcClaimedError
-        try {
-            VcClaimedError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for VcClaimedError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for GetCredentialOffer400Response with oneOf schemas: CredentialOfferClaimedError, CredentialOfferExpiredError, InvalidParameterError, ProjectCredentialConfigNotExistError, VcClaimedError. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Create an instance of GetCredentialOffer400Response given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of GetCredentialOffer400Response
-     * @throws IOException if the JSON string is invalid with respect to GetCredentialOffer400Response
-     */
-    public static GetCredentialOffer400Response fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, GetCredentialOffer400Response.class);
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      try {
+        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of GetCredentialOffer400Response to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
+    // add `httpStatusCode` to the URL query string
+    if (getHttpStatusCode() != null) {
+      try {
+        joiner.add(String.format("%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
+
+    // add `traceId` to the URL query string
+    if (getTraceId() != null) {
+      try {
+        joiner.add(String.format("%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      for (int i = 0; i < getDetails().size(); i++) {
+        if (getDetails().get(i) != null) {
+          joiner.add(getDetails().get(i).toUrlQueryString(String.format("%sdetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+
 }
 

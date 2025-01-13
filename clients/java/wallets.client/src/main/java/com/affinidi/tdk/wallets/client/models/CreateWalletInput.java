@@ -14,261 +14,296 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.wallets.client.models.DidKeyInputParams;
 import com.affinidi.tdk.wallets.client.models.DidWebInputParams;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * CreateWalletInput
+ */
+@JsonPropertyOrder({
+  CreateWalletInput.JSON_PROPERTY_NAME,
+  CreateWalletInput.JSON_PROPERTY_DESCRIPTION,
+  CreateWalletInput.JSON_PROPERTY_DID_METHOD,
+  CreateWalletInput.JSON_PROPERTY_DID_WEB_URL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:54:55.179705361Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class CreateWalletInput {
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+  /**
+   * Gets or Sets didMethod
+   */
+  public enum DidMethodEnum {
+    KEY("key");
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
+    private String value;
 
-import com.affinidi.tdk.wallets.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:44.326296176Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class CreateWalletInput extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(CreateWalletInput.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CreateWalletInput.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CreateWalletInput' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<DidWebInputParams> adapterDidWebInputParams = gson.getDelegateAdapter(this, TypeToken.get(DidWebInputParams.class));
-            final TypeAdapter<DidKeyInputParams> adapterDidKeyInputParams = gson.getDelegateAdapter(this, TypeToken.get(DidKeyInputParams.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<CreateWalletInput>() {
-                @Override
-                public void write(JsonWriter out, CreateWalletInput value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `DidWebInputParams`
-                    if (value.getActualInstance() instanceof DidWebInputParams) {
-                        JsonElement element = adapterDidWebInputParams.toJsonTree((DidWebInputParams)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `DidKeyInputParams`
-                    if (value.getActualInstance() instanceof DidKeyInputParams) {
-                        JsonElement element = adapterDidKeyInputParams.toJsonTree((DidKeyInputParams)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: DidKeyInputParams, DidWebInputParams");
-                }
-
-                @Override
-                public CreateWalletInput read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize DidWebInputParams
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        DidWebInputParams.validateJsonElement(jsonElement);
-                        actualAdapter = adapterDidWebInputParams;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'DidWebInputParams'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for DidWebInputParams failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'DidWebInputParams'", e);
-                    }
-                    // deserialize DidKeyInputParams
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        DidKeyInputParams.validateJsonElement(jsonElement);
-                        actualAdapter = adapterDidKeyInputParams;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'DidKeyInputParams'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for DidKeyInputParams failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'DidKeyInputParams'", e);
-                    }
-
-                    if (match == 1) {
-                        CreateWalletInput ret = new CreateWalletInput();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for CreateWalletInput: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    DidMethodEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public CreateWalletInput() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public CreateWalletInput(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("DidWebInputParams", DidWebInputParams.class);
-        schemas.put("DidKeyInputParams", DidKeyInputParams.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return CreateWalletInput.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * DidKeyInputParams, DidWebInputParams
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof DidWebInputParams) {
-            super.setActualInstance(instance);
-            return;
+    @JsonCreator
+    public static DidMethodEnum fromValue(String value) {
+      for (DidMethodEnum b : DidMethodEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
-        if (instance instanceof DidKeyInputParams) {
-            super.setActualInstance(instance);
-            return;
-        }
+  public static final String JSON_PROPERTY_DID_METHOD = "didMethod";
+  private DidMethodEnum didMethod;
 
-        throw new RuntimeException("Invalid instance type. Must be DidKeyInputParams, DidWebInputParams");
+  public static final String JSON_PROPERTY_DID_WEB_URL = "didWebUrl";
+  private String didWebUrl;
+
+  public CreateWalletInput() {
+  }
+
+  public CreateWalletInput name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * The name of the wallet
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CreateWalletInput description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * The description of the wallet
+   * @return description
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public CreateWalletInput didMethod(DidMethodEnum didMethod) {
+    
+    this.didMethod = didMethod;
+    return this;
+  }
+
+  /**
+   * Get didMethod
+   * @return didMethod
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DID_METHOD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public DidMethodEnum getDidMethod() {
+    return didMethod;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DID_METHOD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDidMethod(DidMethodEnum didMethod) {
+    this.didMethod = didMethod;
+  }
+
+  public CreateWalletInput didWebUrl(String didWebUrl) {
+    
+    this.didWebUrl = didWebUrl;
+    return this;
+  }
+
+  /**
+   * If the did method is web, this is the URL of the did
+   * @return didWebUrl
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getDidWebUrl() {
+    return didWebUrl;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDidWebUrl(String didWebUrl) {
+    this.didWebUrl = didWebUrl;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CreateWalletInput createWalletInput = (CreateWalletInput) o;
+    return Objects.equals(this.name, createWalletInput.name) &&
+        Objects.equals(this.description, createWalletInput.description) &&
+        Objects.equals(this.didMethod, createWalletInput.didMethod) &&
+        Objects.equals(this.didWebUrl, createWalletInput.didWebUrl);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, description, didMethod, didWebUrl);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CreateWalletInput {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    didMethod: ").append(toIndentedString(didMethod)).append("\n");
+    sb.append("    didWebUrl: ").append(toIndentedString(didWebUrl)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * DidKeyInputParams, DidWebInputParams
-     *
-     * @return The actual instance (DidKeyInputParams, DidWebInputParams)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Get the actual instance of `DidWebInputParams`. If the actual instance is not `DidWebInputParams`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DidWebInputParams`
-     * @throws ClassCastException if the instance is not `DidWebInputParams`
-     */
-    public DidWebInputParams getDidWebInputParams() throws ClassCastException {
-        return (DidWebInputParams)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `DidKeyInputParams`. If the actual instance is not `DidKeyInputParams`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DidKeyInputParams`
-     * @throws ClassCastException if the instance is not `DidKeyInputParams`
-     */
-    public DidKeyInputParams getDidKeyInputParams() throws ClassCastException {
-        return (DidKeyInputParams)super.getActualInstance();
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to CreateWalletInput
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with DidWebInputParams
-        try {
-            DidWebInputParams.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for DidWebInputParams failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with DidKeyInputParams
-        try {
-            DidKeyInputParams.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for DidKeyInputParams failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CreateWalletInput with oneOf schemas: DidKeyInputParams, DidWebInputParams. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+    // add `didMethod` to the URL query string
+    if (getDidMethod() != null) {
+      try {
+        joiner.add(String.format("%sdidMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidMethod()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Create an instance of CreateWalletInput given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of CreateWalletInput
-     * @throws IOException if the JSON string is invalid with respect to CreateWalletInput
-     */
-    public static CreateWalletInput fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CreateWalletInput.class);
+    // add `didWebUrl` to the URL query string
+    if (getDidWebUrl() != null) {
+      try {
+        joiner.add(String.format("%sdidWebUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidWebUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of CreateWalletInput to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
-    }
+    return joiner.toString();
+  }
+
 }
 

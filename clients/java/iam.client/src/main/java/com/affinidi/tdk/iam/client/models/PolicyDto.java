@@ -14,73 +14,58 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iam.client.models.PolicyStatementDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * PolicyDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  PolicyDto.JSON_PROPERTY_NAME,
+  PolicyDto.JSON_PROPERTY_DESCRIPTION,
+  PolicyDto.JSON_PROPERTY_PRINCIPAL_ID,
+  PolicyDto.JSON_PROPERTY_PROJECT_ID,
+  PolicyDto.JSON_PROPERTY_VERSION,
+  PolicyDto.JSON_PROPERTY_STATEMENT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:53:59.101529993Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PolicyDto {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_PRINCIPAL_ID = "principalId";
-  @SerializedName(SERIALIZED_NAME_PRINCIPAL_ID)
+  public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
   private String principalId;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID = "projectId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   private String projectId;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private String version;
 
-  public static final String SERIALIZED_NAME_STATEMENT = "statement";
-  @SerializedName(SERIALIZED_NAME_STATEMENT)
+  public static final String JSON_PROPERTY_STATEMENT = "statement";
   private List<PolicyStatementDto> statement = new ArrayList<>();
 
   public PolicyDto() {
   }
 
   public PolicyDto name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -90,16 +75,22 @@ public class PolicyDto {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public PolicyDto description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -109,16 +100,22 @@ public class PolicyDto {
    * @return description
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDescription() {
     return description;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public PolicyDto principalId(String principalId) {
+    
     this.principalId = principalId;
     return this;
   }
@@ -128,16 +125,22 @@ public class PolicyDto {
    * @return principalId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPrincipalId() {
     return principalId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPrincipalId(String principalId) {
     this.principalId = principalId;
   }
 
-
   public PolicyDto projectId(String projectId) {
+    
     this.projectId = projectId;
     return this;
   }
@@ -147,16 +150,22 @@ public class PolicyDto {
    * @return projectId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProjectId() {
     return projectId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectId(String projectId) {
     this.projectId = projectId;
   }
 
-
   public PolicyDto version(String version) {
+    
     this.version = version;
     return this;
   }
@@ -166,16 +175,22 @@ public class PolicyDto {
    * @return version
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getVersion() {
     return version;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVersion(String version) {
     this.version = version;
   }
 
-
   public PolicyDto statement(List<PolicyStatementDto> statement) {
+    
     this.statement = statement;
     return this;
   }
@@ -193,15 +208,19 @@ public class PolicyDto {
    * @return statement
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATEMENT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<PolicyStatementDto> getStatement() {
     return statement;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATEMENT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatement(List<PolicyStatementDto> statement) {
     this.statement = statement;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -250,128 +269,100 @@ public class PolicyDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("principalId");
-    openapiFields.add("projectId");
-    openapiFields.add("version");
-    openapiFields.add("statement");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("version");
-    openapiRequiredFields.add("statement");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PolicyDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PolicyDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PolicyDto is not found in the empty JSON string", PolicyDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PolicyDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PolicyDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PolicyDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("principalId") != null && !jsonObj.get("principalId").isJsonNull()) && !jsonObj.get("principalId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `principalId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("principalId").toString()));
-      }
-      if ((jsonObj.get("projectId") != null && !jsonObj.get("projectId").isJsonNull()) && !jsonObj.get("projectId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectId").toString()));
-      }
-      if (!jsonObj.get("version").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("statement").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statement` to be an array in the JSON string but got `%s`", jsonObj.get("statement").toString()));
-      }
-
-      JsonArray jsonArraystatement = jsonObj.getAsJsonArray("statement");
-      // validate the required field `statement` (array)
-      for (int i = 0; i < jsonArraystatement.size(); i++) {
-        PolicyStatementDto.validateJsonElement(jsonArraystatement.get(i));
-      };
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PolicyDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PolicyDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PolicyDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PolicyDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<PolicyDto>() {
-           @Override
-           public void write(JsonWriter out, PolicyDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public PolicyDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `principalId` to the URL query string
+    if (getPrincipalId() != null) {
+      try {
+        joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectId` to the URL query string
+    if (getProjectId() != null) {
+      try {
+        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      try {
+        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statement` to the URL query string
+    if (getStatement() != null) {
+      for (int i = 0; i < getStatement().size(); i++) {
+        if (getStatement().get(i) != null) {
+          joiner.add(getStatement().get(i).toUrlQueryString(String.format("%sstatement%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of PolicyDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of PolicyDto
-   * @throws IOException if the JSON string is invalid with respect to PolicyDto
-   */
-  public static PolicyDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PolicyDto.class);
-  }
-
-  /**
-   * Convert an instance of PolicyDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

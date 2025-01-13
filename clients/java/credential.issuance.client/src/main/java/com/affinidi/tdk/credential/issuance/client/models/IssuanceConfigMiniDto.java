@@ -14,73 +14,59 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * IssuanceConfigMiniDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  IssuanceConfigMiniDto.JSON_PROPERTY_ID,
+  IssuanceConfigMiniDto.JSON_PROPERTY_NAME,
+  IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_DID,
+  IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_WALLET_ID,
+  IssuanceConfigMiniDto.JSON_PROPERTY_CREDENTIAL_OFFER_DURATION,
+  IssuanceConfigMiniDto.JSON_PROPERTY_C_NONCE_DURATION,
+  IssuanceConfigMiniDto.JSON_PROPERTY_FORMAT,
+  IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_URI,
+  IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_METADATA,
+  IssuanceConfigMiniDto.JSON_PROPERTY_VERSION
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:53:29.633342755Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IssuanceConfigMiniDto {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_ISSUER_DID = "issuerDid";
-  @SerializedName(SERIALIZED_NAME_ISSUER_DID)
+  public static final String JSON_PROPERTY_ISSUER_DID = "issuerDid";
   private String issuerDid;
 
-  public static final String SERIALIZED_NAME_ISSUER_WALLET_ID = "issuerWalletId";
-  @SerializedName(SERIALIZED_NAME_ISSUER_WALLET_ID)
+  public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
   private String issuerWalletId;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_OFFER_DURATION)
+  public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
   private BigDecimal credentialOfferDuration;
 
-  public static final String SERIALIZED_NAME_C_NONCE_DURATION = "cNonceDuration";
-  @SerializedName(SERIALIZED_NAME_C_NONCE_DURATION)
+  public static final String JSON_PROPERTY_C_NONCE_DURATION = "cNonceDuration";
   private BigDecimal cNonceDuration;
 
   /**
    * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
    */
-  @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
     LDP_VC("ldp_vc"),
     
@@ -94,6 +80,7 @@ public class IssuanceConfigMiniDto {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -103,6 +90,7 @@ public class IssuanceConfigMiniDto {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static FormatEnum fromValue(String value) {
       for (FormatEnum b : FormatEnum.values()) {
         if (b.value.equals(value)) {
@@ -111,46 +99,25 @@ public class IssuanceConfigMiniDto {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<FormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FormatEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      FormatEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
+  public static final String JSON_PROPERTY_FORMAT = "format";
   private FormatEnum format;
 
-  public static final String SERIALIZED_NAME_ISSUER_URI = "issuerUri";
-  @SerializedName(SERIALIZED_NAME_ISSUER_URI)
+  public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
   private String issuerUri;
 
-  public static final String SERIALIZED_NAME_ISSUER_METADATA = "issuerMetadata";
-  @SerializedName(SERIALIZED_NAME_ISSUER_METADATA)
+  public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
   private Map<String, Object> issuerMetadata = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private BigDecimal version;
 
   public IssuanceConfigMiniDto() {
   }
 
   public IssuanceConfigMiniDto id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -160,16 +127,22 @@ public class IssuanceConfigMiniDto {
    * @return id
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
 
-
   public IssuanceConfigMiniDto name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -179,16 +152,22 @@ public class IssuanceConfigMiniDto {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public IssuanceConfigMiniDto issuerDid(String issuerDid) {
+    
     this.issuerDid = issuerDid;
     return this;
   }
@@ -198,16 +177,22 @@ public class IssuanceConfigMiniDto {
    * @return issuerDid
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuerDid() {
     return issuerDid;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerDid(String issuerDid) {
     this.issuerDid = issuerDid;
   }
 
-
   public IssuanceConfigMiniDto issuerWalletId(String issuerWalletId) {
+    
     this.issuerWalletId = issuerWalletId;
     return this;
   }
@@ -217,16 +202,22 @@ public class IssuanceConfigMiniDto {
    * @return issuerWalletId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuerWalletId() {
     return issuerWalletId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerWalletId(String issuerWalletId) {
     this.issuerWalletId = issuerWalletId;
   }
 
-
   public IssuanceConfigMiniDto credentialOfferDuration(BigDecimal credentialOfferDuration) {
+    
     this.credentialOfferDuration = credentialOfferDuration;
     return this;
   }
@@ -236,16 +227,22 @@ public class IssuanceConfigMiniDto {
    * @return credentialOfferDuration
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getCredentialOfferDuration() {
     return credentialOfferDuration;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
     this.credentialOfferDuration = credentialOfferDuration;
   }
 
-
   public IssuanceConfigMiniDto cNonceDuration(BigDecimal cNonceDuration) {
+    
     this.cNonceDuration = cNonceDuration;
     return this;
   }
@@ -255,16 +252,22 @@ public class IssuanceConfigMiniDto {
    * @return cNonceDuration
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getcNonceDuration() {
     return cNonceDuration;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setcNonceDuration(BigDecimal cNonceDuration) {
     this.cNonceDuration = cNonceDuration;
   }
 
-
   public IssuanceConfigMiniDto format(FormatEnum format) {
+    
     this.format = format;
     return this;
   }
@@ -274,16 +277,22 @@ public class IssuanceConfigMiniDto {
    * @return format
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public FormatEnum getFormat() {
     return format;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
-
   public IssuanceConfigMiniDto issuerUri(String issuerUri) {
+    
     this.issuerUri = issuerUri;
     return this;
   }
@@ -293,16 +302,22 @@ public class IssuanceConfigMiniDto {
    * @return issuerUri
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuerUri() {
     return issuerUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerUri(String issuerUri) {
     this.issuerUri = issuerUri;
   }
 
-
   public IssuanceConfigMiniDto issuerMetadata(Map<String, Object> issuerMetadata) {
+    
     this.issuerMetadata = issuerMetadata;
     return this;
   }
@@ -320,16 +335,22 @@ public class IssuanceConfigMiniDto {
    * @return issuerMetadata
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
   public Map<String, Object> getIssuerMetadata() {
     return issuerMetadata;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
     this.issuerMetadata = issuerMetadata;
   }
 
-
   public IssuanceConfigMiniDto version(BigDecimal version) {
+    
     this.version = version;
     return this;
   }
@@ -339,15 +360,19 @@ public class IssuanceConfigMiniDto {
    * @return version
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getVersion() {
     return version;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVersion(BigDecimal version) {
     this.version = version;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -404,128 +429,144 @@ public class IssuanceConfigMiniDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("issuerDid");
-    openapiFields.add("issuerWalletId");
-    openapiFields.add("credentialOfferDuration");
-    openapiFields.add("cNonceDuration");
-    openapiFields.add("format");
-    openapiFields.add("issuerUri");
-    openapiFields.add("issuerMetadata");
-    openapiFields.add("version");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IssuanceConfigMiniDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!IssuanceConfigMiniDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IssuanceConfigMiniDto is not found in the empty JSON string", IssuanceConfigMiniDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IssuanceConfigMiniDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IssuanceConfigMiniDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IssuanceConfigMiniDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("issuerDid") != null && !jsonObj.get("issuerDid").isJsonNull()) && !jsonObj.get("issuerDid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuerDid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuerDid").toString()));
-      }
-      if ((jsonObj.get("issuerWalletId") != null && !jsonObj.get("issuerWalletId").isJsonNull()) && !jsonObj.get("issuerWalletId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuerWalletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuerWalletId").toString()));
-      }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
-      // validate the optional field `format`
-      if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) {
-        FormatEnum.validateJsonElement(jsonObj.get("format"));
-      }
-      if ((jsonObj.get("issuerUri") != null && !jsonObj.get("issuerUri").isJsonNull()) && !jsonObj.get("issuerUri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuerUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuerUri").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IssuanceConfigMiniDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IssuanceConfigMiniDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IssuanceConfigMiniDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IssuanceConfigMiniDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IssuanceConfigMiniDto>() {
-           @Override
-           public void write(JsonWriter out, IssuanceConfigMiniDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IssuanceConfigMiniDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerDid` to the URL query string
+    if (getIssuerDid() != null) {
+      try {
+        joiner.add(String.format("%sissuerDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerWalletId` to the URL query string
+    if (getIssuerWalletId() != null) {
+      try {
+        joiner.add(String.format("%sissuerWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialOfferDuration` to the URL query string
+    if (getCredentialOfferDuration() != null) {
+      try {
+        joiner.add(String.format("%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `cNonceDuration` to the URL query string
+    if (getcNonceDuration() != null) {
+      try {
+        joiner.add(String.format("%scNonceDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceDuration()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      try {
+        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerUri` to the URL query string
+    if (getIssuerUri() != null) {
+      try {
+        joiner.add(String.format("%sissuerUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerMetadata` to the URL query string
+    if (getIssuerMetadata() != null) {
+      for (String _key : getIssuerMetadata().keySet()) {
+        try {
+          joiner.add(String.format("%sissuerMetadata%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getIssuerMetadata().get(_key), URLEncoder.encode(String.valueOf(getIssuerMetadata().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      try {
+        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of IssuanceConfigMiniDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of IssuanceConfigMiniDto
-   * @throws IOException if the JSON string is invalid with respect to IssuanceConfigMiniDto
-   */
-  public static IssuanceConfigMiniDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IssuanceConfigMiniDto.class);
-  }
-
-  /**
-   * Convert an instance of IssuanceConfigMiniDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

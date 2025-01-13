@@ -12,9 +12,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**savePexQueries**](PexQueryApi.md#savePexQueries)         | **POST** /v1/configurations/{configurationId}/save-queries            |             |
 | [**updatePexQueryById**](PexQueryApi.md#updatePexQueryById) | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}  |             |
 
-<a id="createPexQuery"></a>
-
-# **createPexQuery**
+## createPexQuery
 
 > PexQueryDto createPexQuery(configurationId, createPexQueryInput)
 
@@ -32,30 +30,30 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    CreatePexQueryInput createPexQueryInput = new CreatePexQueryInput(); // CreatePexQueryInput | CreatePexQuery
-    try {
-      PexQueryDto result = apiInstance.createPexQuery(configurationId, createPexQueryInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#createPexQuery");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        CreatePexQueryInput createPexQueryInput = new CreatePexQueryInput(); // CreatePexQueryInput | CreatePexQuery
+        try {
+            PexQueryDto result = apiInstance.createPexQuery(configurationId, createPexQueryInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#createPexQuery");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -90,9 +88,7 @@ public class Example {
 | **409**     | ConflictError       | -                |
 | **422**     | UnprocessableEntity | -                |
 
-<a id="deletePexQueries"></a>
-
-# **deletePexQueries**
+## deletePexQueries
 
 > deletePexQueries(configurationId)
 
@@ -110,28 +106,28 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    try {
-      apiInstance.deletePexQueries(configurationId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#deletePexQueries");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        try {
+            apiInstance.deletePexQueries(configurationId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#deletePexQueries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -162,9 +158,7 @@ null (empty response body)
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 
-<a id="deletePexQueryById"></a>
-
-# **deletePexQueryById**
+## deletePexQueryById
 
 > deletePexQueryById(configurationId, queryId)
 
@@ -182,29 +176,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    String queryId = "queryId_example"; // String | The ID of the query.
-    try {
-      apiInstance.deletePexQueryById(configurationId, queryId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#deletePexQueryById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        String queryId = "queryId_example"; // String | The ID of the query.
+        try {
+            apiInstance.deletePexQueryById(configurationId, queryId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#deletePexQueryById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -237,9 +231,7 @@ null (empty response body)
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="getPexQueryById"></a>
-
-# **getPexQueryById**
+## getPexQueryById
 
 > PexQueryDto getPexQueryById(configurationId, queryId)
 
@@ -257,30 +249,30 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    String queryId = "queryId_example"; // String | The ID of the query.
-    try {
-      PexQueryDto result = apiInstance.getPexQueryById(configurationId, queryId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#getPexQueryById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        String queryId = "queryId_example"; // String | The ID of the query.
+        try {
+            PexQueryDto result = apiInstance.getPexQueryById(configurationId, queryId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#getPexQueryById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -313,9 +305,7 @@ public class Example {
 | **403**     | ForbiddenError    | -                |
 | **404**     | NotFoundError     | -                |
 
-<a id="listPexQueries"></a>
-
-# **listPexQueries**
+## listPexQueries
 
 > ListPexQueriesOK listPexQueries(configurationId, limit, exclusiveStartKey)
 
@@ -333,31 +323,31 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    Integer limit = 56; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      ListPexQueriesOK result = apiInstance.listPexQueries(configurationId, limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#listPexQueries");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        Integer limit = 56; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            ListPexQueriesOK result = apiInstance.listPexQueries(configurationId, limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#listPexQueries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -391,9 +381,7 @@ public class Example {
 | **403**     | ForbiddenError   | -                |
 | **404**     | NotFoundError    | -                |
 
-<a id="savePexQueries"></a>
-
-# **savePexQueries**
+## savePexQueries
 
 > Object savePexQueries(configurationId, savePexQueriesUpdateInput)
 
@@ -411,30 +399,30 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    SavePexQueriesUpdateInput savePexQueriesUpdateInput = new SavePexQueriesUpdateInput(); // SavePexQueriesUpdateInput | SavePexQueriesInput
-    try {
-      Object result = apiInstance.savePexQueries(configurationId, savePexQueriesUpdateInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#savePexQueries");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        SavePexQueriesUpdateInput savePexQueriesUpdateInput = new SavePexQueriesUpdateInput(); // SavePexQueriesUpdateInput | SavePexQueriesInput
+        try {
+            Object result = apiInstance.savePexQueries(configurationId, savePexQueriesUpdateInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#savePexQueries");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -466,9 +454,7 @@ public class Example {
 | **400**     | BadRequestError          | -                |
 | **403**     | ForbiddenError           | -                |
 
-<a id="updatePexQueryById"></a>
-
-# **updatePexQueryById**
+## updatePexQueryById
 
 > PexQueryDto updatePexQueryById(configurationId, queryId, updatePexQueryInput)
 
@@ -486,31 +472,31 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.PexQueryApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PexQueryApi apiInstance = new PexQueryApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    String queryId = "queryId_example"; // String | The ID of the query.
-    UpdatePexQueryInput updatePexQueryInput = new UpdatePexQueryInput(); // UpdatePexQueryInput | UpdatePexQueryById
-    try {
-      PexQueryDto result = apiInstance.updatePexQueryById(configurationId, queryId, updatePexQueryInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PexQueryApi#updatePexQueryById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PexQueryApi apiInstance = new PexQueryApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        String queryId = "queryId_example"; // String | The ID of the query.
+        UpdatePexQueryInput updatePexQueryInput = new UpdatePexQueryInput(); // UpdatePexQueryInput | UpdatePexQueryById
+        try {
+            PexQueryDto result = apiInstance.updatePexQueryById(configurationId, queryId, updatePexQueryInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PexQueryApi#updatePexQueryById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

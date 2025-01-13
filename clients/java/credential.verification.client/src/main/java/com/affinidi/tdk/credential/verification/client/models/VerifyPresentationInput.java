@@ -14,67 +14,51 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentation;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.affinidi.tdk.credential.verification.client.models.W3cPresentation;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Request model of /verify-vp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  VerifyPresentationInput.JSON_PROPERTY_VERIFIABLE_PRESENTATION,
+  VerifyPresentationInput.JSON_PROPERTY_SIGNED_PRESENTATION,
+  VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_DEFINITION,
+  VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:54:28.383763662Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class VerifyPresentationInput {
-  public static final String SERIALIZED_NAME_VERIFIABLE_PRESENTATION = "verifiablePresentation";
-  @SerializedName(SERIALIZED_NAME_VERIFIABLE_PRESENTATION)
+  public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
   private W3cPresentation verifiablePresentation;
 
-  public static final String SERIALIZED_NAME_SIGNED_PRESENTATION = "signedPresentation";
-  @SerializedName(SERIALIZED_NAME_SIGNED_PRESENTATION)
+  public static final String JSON_PROPERTY_SIGNED_PRESENTATION = "signedPresentation";
   private W3cPresentation signedPresentation;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_DEFINITION = "presentationDefinition";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_DEFINITION)
+  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   private Object presentationDefinition;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_SUBMISSION = "presentationSubmission";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_SUBMISSION)
+  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
   private Object presentationSubmission;
 
-  public static final String SERIALIZED_NAME_CHALLENGE = "challenge";
-  @SerializedName(SERIALIZED_NAME_CHALLENGE)
+  public static final String JSON_PROPERTY_CHALLENGE = "challenge";
   private String challenge;
 
   public VerifyPresentationInput() {
   }
 
   public VerifyPresentationInput verifiablePresentation(W3cPresentation verifiablePresentation) {
+    
     this.verifiablePresentation = verifiablePresentation;
     return this;
   }
@@ -84,16 +68,22 @@ public class VerifyPresentationInput {
    * @return verifiablePresentation
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public W3cPresentation getVerifiablePresentation() {
     return verifiablePresentation;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVerifiablePresentation(W3cPresentation verifiablePresentation) {
     this.verifiablePresentation = verifiablePresentation;
   }
 
-
   public VerifyPresentationInput signedPresentation(W3cPresentation signedPresentation) {
+    
     this.signedPresentation = signedPresentation;
     return this;
   }
@@ -103,16 +93,22 @@ public class VerifyPresentationInput {
    * @return signedPresentation
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public W3cPresentation getSignedPresentation() {
     return signedPresentation;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignedPresentation(W3cPresentation signedPresentation) {
     this.signedPresentation = signedPresentation;
   }
 
-
   public VerifyPresentationInput presentationDefinition(Object presentationDefinition) {
+    
     this.presentationDefinition = presentationDefinition;
     return this;
   }
@@ -122,16 +118,22 @@ public class VerifyPresentationInput {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Object getPresentationDefinition() {
     return presentationDefinition;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-
   public VerifyPresentationInput presentationSubmission(Object presentationSubmission) {
+    
     this.presentationSubmission = presentationSubmission;
     return this;
   }
@@ -141,16 +143,22 @@ public class VerifyPresentationInput {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Object getPresentationSubmission() {
     return presentationSubmission;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(Object presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-
   public VerifyPresentationInput challenge(String challenge) {
+    
     this.challenge = challenge;
     return this;
   }
@@ -160,15 +168,19 @@ public class VerifyPresentationInput {
    * @return challenge
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getChallenge() {
     return challenge;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChallenge(String challenge) {
     this.challenge = challenge;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -215,104 +227,80 @@ public class VerifyPresentationInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("verifiablePresentation");
-    openapiFields.add("signedPresentation");
-    openapiFields.add("presentationDefinition");
-    openapiFields.add("presentationSubmission");
-    openapiFields.add("challenge");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to VerifyPresentationInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!VerifyPresentationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VerifyPresentationInput is not found in the empty JSON string", VerifyPresentationInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!VerifyPresentationInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VerifyPresentationInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `verifiablePresentation`
-      if (jsonObj.get("verifiablePresentation") != null && !jsonObj.get("verifiablePresentation").isJsonNull()) {
-        W3cPresentation.validateJsonElement(jsonObj.get("verifiablePresentation"));
-      }
-      // validate the optional field `signedPresentation`
-      if (jsonObj.get("signedPresentation") != null && !jsonObj.get("signedPresentation").isJsonNull()) {
-        W3cPresentation.validateJsonElement(jsonObj.get("signedPresentation"));
-      }
-      if ((jsonObj.get("challenge") != null && !jsonObj.get("challenge").isJsonNull()) && !jsonObj.get("challenge").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `challenge` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challenge").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VerifyPresentationInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VerifyPresentationInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VerifyPresentationInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VerifyPresentationInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<VerifyPresentationInput>() {
-           @Override
-           public void write(JsonWriter out, VerifyPresentationInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public VerifyPresentationInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `verifiablePresentation` to the URL query string
+    if (getVerifiablePresentation() != null) {
+      joiner.add(getVerifiablePresentation().toUrlQueryString(prefix + "verifiablePresentation" + suffix));
+    }
+
+    // add `signedPresentation` to the URL query string
+    if (getSignedPresentation() != null) {
+      joiner.add(getSignedPresentation().toUrlQueryString(prefix + "signedPresentation" + suffix));
+    }
+
+    // add `presentationDefinition` to the URL query string
+    if (getPresentationDefinition() != null) {
+      try {
+        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentationSubmission` to the URL query string
+    if (getPresentationSubmission() != null) {
+      try {
+        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `challenge` to the URL query string
+    if (getChallenge() != null) {
+      try {
+        joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of VerifyPresentationInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of VerifyPresentationInput
-   * @throws IOException if the JSON string is invalid with respect to VerifyPresentationInput
-   */
-  public static VerifyPresentationInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VerifyPresentationInput.class);
-  }
-
-  /**
-   * Convert an instance of VerifyPresentationInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

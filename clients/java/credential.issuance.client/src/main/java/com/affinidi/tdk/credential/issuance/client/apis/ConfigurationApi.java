@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
-import com.affinidi.tdk.credential.issuance.client.ApiCallback;
-import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.credential.issuance.client.ApiException;
-import com.affinidi.tdk.credential.issuance.client.ApiResponse;
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.BaseApi;
 import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
-import com.affinidi.tdk.credential.issuance.client.ProgressRequestBody;
-import com.affinidi.tdk.credential.issuance.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.credential.issuance.client.models.CreateIssuanceConfig400Response;
 import com.affinidi.tdk.credential.issuance.client.models.CreateIssuanceConfigInput;
@@ -35,686 +28,433 @@ import com.affinidi.tdk.credential.issuance.client.models.IssuanceConfigListResp
 import com.affinidi.tdk.credential.issuance.client.models.NotFoundError;
 import com.affinidi.tdk.credential.issuance.client.models.UpdateIssuanceConfigInput;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class ConfigurationApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:53:29.633342755Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class ConfigurationApi extends BaseApi {
 
-    public ConfigurationApi() {
-        this(Configuration.getDefaultApiClient());
+  public ConfigurationApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public ConfigurationApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * Create issuance configuration, project have only one configuration
+   * @param createIssuanceConfigInput Request body of create configuration (required)
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto createIssuanceConfig(CreateIssuanceConfigInput createIssuanceConfigInput) throws ApiException {
+    return this.createIssuanceConfig(createIssuanceConfigInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Create issuance configuration, project have only one configuration
+   * @param createIssuanceConfigInput Request body of create configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto createIssuanceConfig(CreateIssuanceConfigInput createIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createIssuanceConfigInput;
+    
+    // verify the required parameter 'createIssuanceConfigInput' is set
+    if (createIssuanceConfigInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createIssuanceConfigInput' when calling createIssuanceConfig");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations";
 
-    public ConfigurationApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IssuanceConfigDto> localVarReturnType = new TypeReference<IssuanceConfigDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Delete project issuance configuration
+   * @param configurationId The id of the issuance configuration (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteIssuanceConfigById(String configurationId) throws ApiException {
+    this.deleteIssuanceConfigById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Delete project issuance configuration
+   * @param configurationId The id of the issuance configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteIssuanceConfigById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deleteIssuanceConfigById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * 
+   * Get issuance configuration by id
+   * @param configurationId The id of the issuance configuration (required)
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto getIssuanceConfigById(String configurationId) throws ApiException {
+    return this.getIssuanceConfigById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Get issuance configuration by id
+   * @param configurationId The id of the issuance configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto getIssuanceConfigById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getIssuanceConfigById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IssuanceConfigDto> localVarReturnType = new TypeReference<IssuanceConfigDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Get issuance configuration for my selected project
+   * @return IssuanceConfigListResponse
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigListResponse getIssuanceConfigList() throws ApiException {
+    return this.getIssuanceConfigList(Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Get issuance configuration for my selected project
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IssuanceConfigListResponse
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigListResponse getIssuanceConfigList(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IssuanceConfigListResponse> localVarReturnType = new TypeReference<IssuanceConfigListResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Update issuance configuration
+   * @param configurationId The id of the issuance configuration (required)
+   * @param updateIssuanceConfigInput Request body of update configuration (required)
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto updateIssuanceConfigById(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput) throws ApiException {
+    return this.updateIssuanceConfigById(configurationId, updateIssuanceConfigInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Update issuance configuration
+   * @param configurationId The id of the issuance configuration (required)
+   * @param updateIssuanceConfigInput Request body of update configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IssuanceConfigDto
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceConfigDto updateIssuanceConfigById(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateIssuanceConfigInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling updateIssuanceConfigById");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'updateIssuanceConfigInput' is set
+    if (updateIssuanceConfigInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateIssuanceConfigInput' when calling updateIssuanceConfigById");
     }
-
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
-
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
-
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
-
-    /**
-     * Build call for createIssuanceConfig
-     * @param createIssuanceConfigInput Request body of create configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createIssuanceConfigCall(CreateIssuanceConfigInput createIssuanceConfigInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createIssuanceConfigInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createIssuanceConfigValidateBeforeCall(CreateIssuanceConfigInput createIssuanceConfigInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createIssuanceConfigInput' is set
-        if (createIssuanceConfigInput == null) {
-            throw new ApiException("Missing the required parameter 'createIssuanceConfigInput' when calling createIssuanceConfig(Async)");
-        }
-
-        return createIssuanceConfigCall(createIssuanceConfigInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Create issuance configuration, project have only one configuration
-     * @param createIssuanceConfigInput Request body of create configuration (required)
-     * @return IssuanceConfigDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IssuanceConfigDto createIssuanceConfig(CreateIssuanceConfigInput createIssuanceConfigInput) throws ApiException {
-        ApiResponse<IssuanceConfigDto> localVarResp = createIssuanceConfigWithHttpInfo(createIssuanceConfigInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create issuance configuration, project have only one configuration
-     * @param createIssuanceConfigInput Request body of create configuration (required)
-     * @return ApiResponse&lt;IssuanceConfigDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IssuanceConfigDto> createIssuanceConfigWithHttpInfo(CreateIssuanceConfigInput createIssuanceConfigInput) throws ApiException {
-        okhttp3.Call localVarCall = createIssuanceConfigValidateBeforeCall(createIssuanceConfigInput, null);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create issuance configuration, project have only one configuration
-     * @param createIssuanceConfigInput Request body of create configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createIssuanceConfigAsync(CreateIssuanceConfigInput createIssuanceConfigInput, final ApiCallback<IssuanceConfigDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createIssuanceConfigValidateBeforeCall(createIssuanceConfigInput, _callback);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteIssuanceConfigById
-     * @param configurationId The id of the issuance configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Response for deleting the config </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteIssuanceConfigByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteIssuanceConfigByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling deleteIssuanceConfigById(Async)");
-        }
-
-        return deleteIssuanceConfigByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Delete project issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Response for deleting the config </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteIssuanceConfigById(String configurationId) throws ApiException {
-        deleteIssuanceConfigByIdWithHttpInfo(configurationId);
-    }
-
-    /**
-     * 
-     * Delete project issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Response for deleting the config </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteIssuanceConfigByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = deleteIssuanceConfigByIdValidateBeforeCall(configurationId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Delete project issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Response for deleting the config </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteIssuanceConfigByIdAsync(String configurationId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteIssuanceConfigByIdValidateBeforeCall(configurationId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIssuanceConfigById
-     * @param configurationId The id of the issuance configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIssuanceConfigByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIssuanceConfigByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling getIssuanceConfigById(Async)");
-        }
-
-        return getIssuanceConfigByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get issuance configuration by id
-     * @param configurationId The id of the issuance configuration (required)
-     * @return IssuanceConfigDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IssuanceConfigDto getIssuanceConfigById(String configurationId) throws ApiException {
-        ApiResponse<IssuanceConfigDto> localVarResp = getIssuanceConfigByIdWithHttpInfo(configurationId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get issuance configuration by id
-     * @param configurationId The id of the issuance configuration (required)
-     * @return ApiResponse&lt;IssuanceConfigDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IssuanceConfigDto> getIssuanceConfigByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = getIssuanceConfigByIdValidateBeforeCall(configurationId, null);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get issuance configuration by id
-     * @param configurationId The id of the issuance configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIssuanceConfigByIdAsync(String configurationId, final ApiCallback<IssuanceConfigDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIssuanceConfigByIdValidateBeforeCall(configurationId, _callback);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIssuanceConfigList
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIssuanceConfigListCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIssuanceConfigListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIssuanceConfigListCall(_callback);
-
-    }
-
-    /**
-     * 
-     * Get issuance configuration for my selected project
-     * @return IssuanceConfigListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IssuanceConfigListResponse getIssuanceConfigList() throws ApiException {
-        ApiResponse<IssuanceConfigListResponse> localVarResp = getIssuanceConfigListWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get issuance configuration for my selected project
-     * @return ApiResponse&lt;IssuanceConfigListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IssuanceConfigListResponse> getIssuanceConfigListWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIssuanceConfigListValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IssuanceConfigListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get issuance configuration for my selected project
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIssuanceConfigListAsync(final ApiCallback<IssuanceConfigListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIssuanceConfigListValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IssuanceConfigListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateIssuanceConfigById
-     * @param configurationId The id of the issuance configuration (required)
-     * @param updateIssuanceConfigInput Request body of update configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateIssuanceConfigByIdCall(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateIssuanceConfigInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateIssuanceConfigByIdValidateBeforeCall(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling updateIssuanceConfigById(Async)");
-        }
-
-        // verify the required parameter 'updateIssuanceConfigInput' is set
-        if (updateIssuanceConfigInput == null) {
-            throw new ApiException("Missing the required parameter 'updateIssuanceConfigInput' when calling updateIssuanceConfigById(Async)");
-        }
-
-        return updateIssuanceConfigByIdCall(configurationId, updateIssuanceConfigInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Update issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @param updateIssuanceConfigInput Request body of update configuration (required)
-     * @return IssuanceConfigDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IssuanceConfigDto updateIssuanceConfigById(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput) throws ApiException {
-        ApiResponse<IssuanceConfigDto> localVarResp = updateIssuanceConfigByIdWithHttpInfo(configurationId, updateIssuanceConfigInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Update issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @param updateIssuanceConfigInput Request body of update configuration (required)
-     * @return ApiResponse&lt;IssuanceConfigDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IssuanceConfigDto> updateIssuanceConfigByIdWithHttpInfo(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput) throws ApiException {
-        okhttp3.Call localVarCall = updateIssuanceConfigByIdValidateBeforeCall(configurationId, updateIssuanceConfigInput, null);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Update issuance configuration
-     * @param configurationId The id of the issuance configuration (required)
-     * @param updateIssuanceConfigInput Request body of update configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateIssuanceConfigByIdAsync(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput, final ApiCallback<IssuanceConfigDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateIssuanceConfigByIdValidateBeforeCall(configurationId, updateIssuanceConfigInput, _callback);
-        Type localVarReturnType = new TypeToken<IssuanceConfigDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IssuanceConfigDto> localVarReturnType = new TypeReference<IssuanceConfigDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PUT",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

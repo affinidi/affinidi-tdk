@@ -14,82 +14,66 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * JsonWebKeyDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  JsonWebKeyDto.JSON_PROPERTY_KID,
+  JsonWebKeyDto.JSON_PROPERTY_KTY,
+  JsonWebKeyDto.JSON_PROPERTY_N,
+  JsonWebKeyDto.JSON_PROPERTY_E,
+  JsonWebKeyDto.JSON_PROPERTY_X,
+  JsonWebKeyDto.JSON_PROPERTY_Y,
+  JsonWebKeyDto.JSON_PROPERTY_CRV,
+  JsonWebKeyDto.JSON_PROPERTY_ALG,
+  JsonWebKeyDto.JSON_PROPERTY_USE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:53:59.101529993Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class JsonWebKeyDto {
-  public static final String SERIALIZED_NAME_KID = "kid";
-  @SerializedName(SERIALIZED_NAME_KID)
+  public static final String JSON_PROPERTY_KID = "kid";
   private String kid;
 
-  public static final String SERIALIZED_NAME_KTY = "kty";
-  @SerializedName(SERIALIZED_NAME_KTY)
+  public static final String JSON_PROPERTY_KTY = "kty";
   private String kty;
 
-  public static final String SERIALIZED_NAME_N = "n";
-  @SerializedName(SERIALIZED_NAME_N)
+  public static final String JSON_PROPERTY_N = "n";
   private String n;
 
-  public static final String SERIALIZED_NAME_E = "e";
-  @SerializedName(SERIALIZED_NAME_E)
+  public static final String JSON_PROPERTY_E = "e";
   private String e;
 
-  public static final String SERIALIZED_NAME_X = "x";
-  @SerializedName(SERIALIZED_NAME_X)
+  public static final String JSON_PROPERTY_X = "x";
   private String x;
 
-  public static final String SERIALIZED_NAME_Y = "y";
-  @SerializedName(SERIALIZED_NAME_Y)
+  public static final String JSON_PROPERTY_Y = "y";
   private String y;
 
-  public static final String SERIALIZED_NAME_CRV = "crv";
-  @SerializedName(SERIALIZED_NAME_CRV)
+  public static final String JSON_PROPERTY_CRV = "crv";
   private String crv;
 
-  public static final String SERIALIZED_NAME_ALG = "alg";
-  @SerializedName(SERIALIZED_NAME_ALG)
+  public static final String JSON_PROPERTY_ALG = "alg";
   private String alg;
 
-  public static final String SERIALIZED_NAME_USE = "use";
-  @SerializedName(SERIALIZED_NAME_USE)
+  public static final String JSON_PROPERTY_USE = "use";
   private String use;
 
   public JsonWebKeyDto() {
   }
 
   public JsonWebKeyDto kid(String kid) {
+    
     this.kid = kid;
     return this;
   }
@@ -99,16 +83,22 @@ public class JsonWebKeyDto {
    * @return kid
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getKid() {
     return kid;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKid(String kid) {
     this.kid = kid;
   }
 
-
   public JsonWebKeyDto kty(String kty) {
+    
     this.kty = kty;
     return this;
   }
@@ -118,16 +108,22 @@ public class JsonWebKeyDto {
    * @return kty
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getKty() {
     return kty;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKty(String kty) {
     this.kty = kty;
   }
 
-
   public JsonWebKeyDto n(String n) {
+    
     this.n = n;
     return this;
   }
@@ -137,16 +133,22 @@ public class JsonWebKeyDto {
    * @return n
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_N)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getN() {
     return n;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_N)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setN(String n) {
     this.n = n;
   }
 
-
   public JsonWebKeyDto e(String e) {
+    
     this.e = e;
     return this;
   }
@@ -156,16 +158,22 @@ public class JsonWebKeyDto {
    * @return e
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_E)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getE() {
     return e;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_E)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setE(String e) {
     this.e = e;
   }
 
-
   public JsonWebKeyDto x(String x) {
+    
     this.x = x;
     return this;
   }
@@ -175,16 +183,22 @@ public class JsonWebKeyDto {
    * @return x
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getX() {
     return x;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setX(String x) {
     this.x = x;
   }
 
-
   public JsonWebKeyDto y(String y) {
+    
     this.y = y;
     return this;
   }
@@ -194,16 +208,22 @@ public class JsonWebKeyDto {
    * @return y
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getY() {
     return y;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setY(String y) {
     this.y = y;
   }
 
-
   public JsonWebKeyDto crv(String crv) {
+    
     this.crv = crv;
     return this;
   }
@@ -213,16 +233,22 @@ public class JsonWebKeyDto {
    * @return crv
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCrv() {
     return crv;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCrv(String crv) {
     this.crv = crv;
   }
 
-
   public JsonWebKeyDto alg(String alg) {
+    
     this.alg = alg;
     return this;
   }
@@ -232,16 +258,22 @@ public class JsonWebKeyDto {
    * @return alg
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAlg() {
     return alg;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAlg(String alg) {
     this.alg = alg;
   }
 
-
   public JsonWebKeyDto use(String use) {
+    
     this.use = use;
     return this;
   }
@@ -251,15 +283,19 @@ public class JsonWebKeyDto {
    * @return use
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getUse() {
     return use;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUse(String use) {
     this.use = use;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -314,135 +350,130 @@ public class JsonWebKeyDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("kid");
-    openapiFields.add("kty");
-    openapiFields.add("n");
-    openapiFields.add("e");
-    openapiFields.add("x");
-    openapiFields.add("y");
-    openapiFields.add("crv");
-    openapiFields.add("alg");
-    openapiFields.add("use");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("kid");
-    openapiRequiredFields.add("kty");
-    openapiRequiredFields.add("alg");
-    openapiRequiredFields.add("use");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to JsonWebKeyDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!JsonWebKeyDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonWebKeyDto is not found in the empty JSON string", JsonWebKeyDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!JsonWebKeyDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JsonWebKeyDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : JsonWebKeyDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("kid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kid").toString()));
-      }
-      if (!jsonObj.get("kty").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kty").toString()));
-      }
-      if ((jsonObj.get("n") != null && !jsonObj.get("n").isJsonNull()) && !jsonObj.get("n").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `n` to be a primitive type in the JSON string but got `%s`", jsonObj.get("n").toString()));
-      }
-      if ((jsonObj.get("e") != null && !jsonObj.get("e").isJsonNull()) && !jsonObj.get("e").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `e` to be a primitive type in the JSON string but got `%s`", jsonObj.get("e").toString()));
-      }
-      if ((jsonObj.get("x") != null && !jsonObj.get("x").isJsonNull()) && !jsonObj.get("x").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x").toString()));
-      }
-      if ((jsonObj.get("y") != null && !jsonObj.get("y").isJsonNull()) && !jsonObj.get("y").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `y` to be a primitive type in the JSON string but got `%s`", jsonObj.get("y").toString()));
-      }
-      if ((jsonObj.get("crv") != null && !jsonObj.get("crv").isJsonNull()) && !jsonObj.get("crv").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `crv` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crv").toString()));
-      }
-      if (!jsonObj.get("alg").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alg").toString()));
-      }
-      if (!jsonObj.get("use").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `use` to be a primitive type in the JSON string but got `%s`", jsonObj.get("use").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!JsonWebKeyDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'JsonWebKeyDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<JsonWebKeyDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(JsonWebKeyDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<JsonWebKeyDto>() {
-           @Override
-           public void write(JsonWriter out, JsonWebKeyDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public JsonWebKeyDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `kid` to the URL query string
+    if (getKid() != null) {
+      try {
+        joiner.add(String.format("%skid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `kty` to the URL query string
+    if (getKty() != null) {
+      try {
+        joiner.add(String.format("%skty%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `n` to the URL query string
+    if (getN() != null) {
+      try {
+        joiner.add(String.format("%sn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `e` to the URL query string
+    if (getE() != null) {
+      try {
+        joiner.add(String.format("%se%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `x` to the URL query string
+    if (getX() != null) {
+      try {
+        joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `y` to the URL query string
+    if (getY() != null) {
+      try {
+        joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `crv` to the URL query string
+    if (getCrv() != null) {
+      try {
+        joiner.add(String.format("%scrv%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `alg` to the URL query string
+    if (getAlg() != null) {
+      try {
+        joiner.add(String.format("%salg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `use` to the URL query string
+    if (getUse() != null) {
+      try {
+        joiner.add(String.format("%suse%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of JsonWebKeyDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of JsonWebKeyDto
-   * @throws IOException if the JSON string is invalid with respect to JsonWebKeyDto
-   */
-  public static JsonWebKeyDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, JsonWebKeyDto.class);
-  }
-
-  /**
-   * Convert an instance of JsonWebKeyDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

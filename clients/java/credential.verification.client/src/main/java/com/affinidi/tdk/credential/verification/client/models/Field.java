@@ -14,65 +14,49 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.Filter;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Field
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  Field.JSON_PROPERTY_ID,
+  Field.JSON_PROPERTY_PATH,
+  Field.JSON_PROPERTY_PURPOSE,
+  Field.JSON_PROPERTY_FILTER,
+  Field.JSON_PROPERTY_PREDICATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:54:28.383763662Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Field {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_PATH = "path";
-  @SerializedName(SERIALIZED_NAME_PATH)
+  public static final String JSON_PROPERTY_PATH = "path";
   private List<String> path = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
-  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  public static final String JSON_PROPERTY_PURPOSE = "purpose";
   private String purpose;
 
-  public static final String SERIALIZED_NAME_FILTER = "filter";
-  @SerializedName(SERIALIZED_NAME_FILTER)
+  public static final String JSON_PROPERTY_FILTER = "filter";
   private Filter filter;
 
   /**
    * Gets or Sets predicate
    */
-  @JsonAdapter(PredicateEnum.Adapter.class)
   public enum PredicateEnum {
     REQUIRED("required"),
     
@@ -84,6 +68,7 @@ public class Field {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -93,6 +78,7 @@ public class Field {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static PredicateEnum fromValue(String value) {
       for (PredicateEnum b : PredicateEnum.values()) {
         if (b.value.equals(value)) {
@@ -101,34 +87,16 @@ public class Field {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<PredicateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PredicateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PredicateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PredicateEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      PredicateEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_PREDICATE = "predicate";
-  @SerializedName(SERIALIZED_NAME_PREDICATE)
+  public static final String JSON_PROPERTY_PREDICATE = "predicate";
   private PredicateEnum predicate;
 
   public Field() {
   }
 
   public Field id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -138,16 +106,22 @@ public class Field {
    * @return id
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(String id) {
     this.id = id;
   }
 
-
   public Field path(List<String> path) {
+    
     this.path = path;
     return this;
   }
@@ -165,16 +139,22 @@ public class Field {
    * @return path
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PATH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getPath() {
     return path;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PATH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPath(List<String> path) {
     this.path = path;
   }
 
-
   public Field purpose(String purpose) {
+    
     this.purpose = purpose;
     return this;
   }
@@ -184,16 +164,22 @@ public class Field {
    * @return purpose
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPurpose() {
     return purpose;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPurpose(String purpose) {
     this.purpose = purpose;
   }
 
-
   public Field filter(Filter filter) {
+    
     this.filter = filter;
     return this;
   }
@@ -203,16 +189,22 @@ public class Field {
    * @return filter
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Filter getFilter() {
     return filter;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFilter(Filter filter) {
     this.filter = filter;
   }
 
-
   public Field predicate(PredicateEnum predicate) {
+    
     this.predicate = predicate;
     return this;
   }
@@ -222,15 +214,19 @@ public class Field {
    * @return predicate
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREDICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public PredicateEnum getPredicate() {
     return predicate;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PREDICATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPredicate(PredicateEnum predicate) {
     this.predicate = predicate;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -277,114 +273,89 @@ public class Field {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("path");
-    openapiFields.add("purpose");
-    openapiFields.add("filter");
-    openapiFields.add("predicate");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Field
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Field.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Field is not found in the empty JSON string", Field.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Field.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Field` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull() && !jsonObj.get("path").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `path` to be an array in the JSON string but got `%s`", jsonObj.get("path").toString()));
-      }
-      if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
-      }
-      // validate the optional field `filter`
-      if (jsonObj.get("filter") != null && !jsonObj.get("filter").isJsonNull()) {
-        Filter.validateJsonElement(jsonObj.get("filter"));
-      }
-      if ((jsonObj.get("predicate") != null && !jsonObj.get("predicate").isJsonNull()) && !jsonObj.get("predicate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `predicate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("predicate").toString()));
-      }
-      // validate the optional field `predicate`
-      if (jsonObj.get("predicate") != null && !jsonObj.get("predicate").isJsonNull()) {
-        PredicateEnum.validateJsonElement(jsonObj.get("predicate"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Field.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Field' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Field> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Field.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Field>() {
-           @Override
-           public void write(JsonWriter out, Field value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Field read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `path` to the URL query string
+    if (getPath() != null) {
+      for (int i = 0; i < getPath().size(); i++) {
+        try {
+          joiner.add(String.format("%spath%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getPath().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `purpose` to the URL query string
+    if (getPurpose() != null) {
+      try {
+        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `filter` to the URL query string
+    if (getFilter() != null) {
+      joiner.add(getFilter().toUrlQueryString(prefix + "filter" + suffix));
+    }
+
+    // add `predicate` to the URL query string
+    if (getPredicate() != null) {
+      try {
+        joiner.add(String.format("%spredicate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPredicate()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of Field given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Field
-   * @throws IOException if the JSON string is invalid with respect to Field
-   */
-  public static Field fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Field.class);
-  }
-
-  /**
-   * Convert an instance of Field to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

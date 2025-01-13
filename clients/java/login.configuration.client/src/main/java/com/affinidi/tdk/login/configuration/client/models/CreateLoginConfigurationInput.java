@@ -14,83 +14,70 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.login.configuration.client.models.IdTokenMapping;
 import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationClientMetadataInput;
 import com.affinidi.tdk.login.configuration.client.models.TokenEndpointAuthMethod;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CreateLoginConfigurationInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CreateLoginConfigurationInput.JSON_PROPERTY_NAME,
+  CreateLoginConfigurationInput.JSON_PROPERTY_DESCRIPTION,
+  CreateLoginConfigurationInput.JSON_PROPERTY_REDIRECT_URIS,
+  CreateLoginConfigurationInput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS,
+  CreateLoginConfigurationInput.JSON_PROPERTY_VP_DEFINITION,
+  CreateLoginConfigurationInput.JSON_PROPERTY_PRESENTATION_DEFINITION,
+  CreateLoginConfigurationInput.JSON_PROPERTY_ID_TOKEN_MAPPING,
+  CreateLoginConfigurationInput.JSON_PROPERTY_CLIENT_METADATA,
+  CreateLoginConfigurationInput.JSON_PROPERTY_CLAIM_FORMAT,
+  CreateLoginConfigurationInput.JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT,
+  CreateLoginConfigurationInput.JSON_PROPERTY_SCOPE,
+  CreateLoginConfigurationInput.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:52:57.548212817Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationInput {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_REDIRECT_URIS = "redirectUris";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_URIS)
+  public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
   private List<String> redirectUris = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
-  @SerializedName(SERIALIZED_NAME_POST_LOGOUT_REDIRECT_URIS)
+  public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
   private List<String> postLogoutRedirectUris = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_VP_DEFINITION = "vpDefinition";
-  @SerializedName(SERIALIZED_NAME_VP_DEFINITION)
+  public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
   private String vpDefinition;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_DEFINITION = "presentationDefinition";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_DEFINITION)
+  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   private Object presentationDefinition;
 
-  public static final String SERIALIZED_NAME_ID_TOKEN_MAPPING = "idTokenMapping";
-  @SerializedName(SERIALIZED_NAME_ID_TOKEN_MAPPING)
+  public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
   private IdTokenMapping idTokenMapping = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_CLIENT_METADATA = "clientMetadata";
-  @SerializedName(SERIALIZED_NAME_CLIENT_METADATA)
+  public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
   private LoginConfigurationClientMetadataInput clientMetadata;
 
   /**
    * ID token claims output format. Default is array.
    */
-  @JsonAdapter(ClaimFormatEnum.Adapter.class)
   public enum ClaimFormatEnum {
     ARRAY("array"),
     
@@ -102,6 +89,7 @@ public class CreateLoginConfigurationInput {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -111,6 +99,7 @@ public class CreateLoginConfigurationInput {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ClaimFormatEnum fromValue(String value) {
       for (ClaimFormatEnum b : ClaimFormatEnum.values()) {
         if (b.value.equals(value)) {
@@ -119,46 +108,25 @@ public class CreateLoginConfigurationInput {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ClaimFormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ClaimFormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ClaimFormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ClaimFormatEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ClaimFormatEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_CLAIM_FORMAT = "claimFormat";
-  @SerializedName(SERIALIZED_NAME_CLAIM_FORMAT)
+  public static final String JSON_PROPERTY_CLAIM_FORMAT = "claimFormat";
   private ClaimFormatEnum claimFormat;
 
-  public static final String SERIALIZED_NAME_FAIL_ON_MAPPING_CONFLICT = "failOnMappingConflict";
-  @SerializedName(SERIALIZED_NAME_FAIL_ON_MAPPING_CONFLICT)
+  public static final String JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT = "failOnMappingConflict";
   private Boolean failOnMappingConflict = true;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
+  public static final String JSON_PROPERTY_SCOPE = "scope";
   private String scope;
 
-  public static final String SERIALIZED_NAME_TOKEN_ENDPOINT_AUTH_METHOD = "tokenEndpointAuthMethod";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ENDPOINT_AUTH_METHOD)
+  public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD = "tokenEndpointAuthMethod";
   private TokenEndpointAuthMethod tokenEndpointAuthMethod;
 
   public CreateLoginConfigurationInput() {
   }
 
   public CreateLoginConfigurationInput name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -168,16 +136,22 @@ public class CreateLoginConfigurationInput {
    * @return name
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CreateLoginConfigurationInput description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -187,16 +161,22 @@ public class CreateLoginConfigurationInput {
    * @return description
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDescription() {
     return description;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public CreateLoginConfigurationInput redirectUris(List<String> redirectUris) {
+    
     this.redirectUris = redirectUris;
     return this;
   }
@@ -214,16 +194,22 @@ public class CreateLoginConfigurationInput {
    * @return redirectUris
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getRedirectUris() {
     return redirectUris;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRedirectUris(List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-
   public CreateLoginConfigurationInput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+    
     this.postLogoutRedirectUris = postLogoutRedirectUris;
     return this;
   }
@@ -241,16 +227,22 @@ public class CreateLoginConfigurationInput {
    * @return postLogoutRedirectUris
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getPostLogoutRedirectUris() {
     return postLogoutRedirectUris;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
 
-
   public CreateLoginConfigurationInput vpDefinition(String vpDefinition) {
+    
     this.vpDefinition = vpDefinition;
     return this;
   }
@@ -260,16 +252,22 @@ public class CreateLoginConfigurationInput {
    * @return vpDefinition
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getVpDefinition() {
     return vpDefinition;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-
   public CreateLoginConfigurationInput presentationDefinition(Object presentationDefinition) {
+    
     this.presentationDefinition = presentationDefinition;
     return this;
   }
@@ -279,16 +277,22 @@ public class CreateLoginConfigurationInput {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Object getPresentationDefinition() {
     return presentationDefinition;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-
   public CreateLoginConfigurationInput idTokenMapping(IdTokenMapping idTokenMapping) {
+    
     this.idTokenMapping = idTokenMapping;
     return this;
   }
@@ -298,16 +302,22 @@ public class CreateLoginConfigurationInput {
    * @return idTokenMapping
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public IdTokenMapping getIdTokenMapping() {
     return idTokenMapping;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIdTokenMapping(IdTokenMapping idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
   }
 
-
   public CreateLoginConfigurationInput clientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
+    
     this.clientMetadata = clientMetadata;
     return this;
   }
@@ -317,16 +327,22 @@ public class CreateLoginConfigurationInput {
    * @return clientMetadata
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public LoginConfigurationClientMetadataInput getClientMetadata() {
     return clientMetadata;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-
   public CreateLoginConfigurationInput claimFormat(ClaimFormatEnum claimFormat) {
+    
     this.claimFormat = claimFormat;
     return this;
   }
@@ -336,16 +352,22 @@ public class CreateLoginConfigurationInput {
    * @return claimFormat
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLAIM_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public ClaimFormatEnum getClaimFormat() {
     return claimFormat;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLAIM_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimFormat(ClaimFormatEnum claimFormat) {
     this.claimFormat = claimFormat;
   }
 
-
   public CreateLoginConfigurationInput failOnMappingConflict(Boolean failOnMappingConflict) {
+    
     this.failOnMappingConflict = failOnMappingConflict;
     return this;
   }
@@ -355,16 +377,22 @@ public class CreateLoginConfigurationInput {
    * @return failOnMappingConflict
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Boolean getFailOnMappingConflict() {
     return failOnMappingConflict;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFailOnMappingConflict(Boolean failOnMappingConflict) {
     this.failOnMappingConflict = failOnMappingConflict;
   }
 
-
   public CreateLoginConfigurationInput scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -374,16 +402,22 @@ public class CreateLoginConfigurationInput {
    * @return scope
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getScope() {
     return scope;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(String scope) {
     this.scope = scope;
   }
 
-
   public CreateLoginConfigurationInput tokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+    
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
     return this;
   }
@@ -393,15 +427,19 @@ public class CreateLoginConfigurationInput {
    * @return tokenEndpointAuthMethod
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public TokenEndpointAuthMethod getTokenEndpointAuthMethod() {
     return tokenEndpointAuthMethod;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -462,146 +500,163 @@ public class CreateLoginConfigurationInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("redirectUris");
-    openapiFields.add("postLogoutRedirectUris");
-    openapiFields.add("vpDefinition");
-    openapiFields.add("presentationDefinition");
-    openapiFields.add("idTokenMapping");
-    openapiFields.add("clientMetadata");
-    openapiFields.add("claimFormat");
-    openapiFields.add("failOnMappingConflict");
-    openapiFields.add("scope");
-    openapiFields.add("tokenEndpointAuthMethod");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("redirectUris");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateLoginConfigurationInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CreateLoginConfigurationInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLoginConfigurationInput is not found in the empty JSON string", CreateLoginConfigurationInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CreateLoginConfigurationInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateLoginConfigurationInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateLoginConfigurationInput.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("redirectUris") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("redirectUris").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirectUris` to be an array in the JSON string but got `%s`", jsonObj.get("redirectUris").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("postLogoutRedirectUris") != null && !jsonObj.get("postLogoutRedirectUris").isJsonNull() && !jsonObj.get("postLogoutRedirectUris").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `postLogoutRedirectUris` to be an array in the JSON string but got `%s`", jsonObj.get("postLogoutRedirectUris").toString()));
-      }
-      if ((jsonObj.get("vpDefinition") != null && !jsonObj.get("vpDefinition").isJsonNull()) && !jsonObj.get("vpDefinition").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vpDefinition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vpDefinition").toString()));
-      }
-      // validate the optional field `clientMetadata`
-      if (jsonObj.get("clientMetadata") != null && !jsonObj.get("clientMetadata").isJsonNull()) {
-        LoginConfigurationClientMetadataInput.validateJsonElement(jsonObj.get("clientMetadata"));
-      }
-      if ((jsonObj.get("claimFormat") != null && !jsonObj.get("claimFormat").isJsonNull()) && !jsonObj.get("claimFormat").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `claimFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("claimFormat").toString()));
-      }
-      // validate the optional field `claimFormat`
-      if (jsonObj.get("claimFormat") != null && !jsonObj.get("claimFormat").isJsonNull()) {
-        ClaimFormatEnum.validateJsonElement(jsonObj.get("claimFormat"));
-      }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-      // validate the optional field `tokenEndpointAuthMethod`
-      if (jsonObj.get("tokenEndpointAuthMethod") != null && !jsonObj.get("tokenEndpointAuthMethod").isJsonNull()) {
-        TokenEndpointAuthMethod.validateJsonElement(jsonObj.get("tokenEndpointAuthMethod"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateLoginConfigurationInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateLoginConfigurationInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateLoginConfigurationInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateLoginConfigurationInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateLoginConfigurationInput>() {
-           @Override
-           public void write(JsonWriter out, CreateLoginConfigurationInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateLoginConfigurationInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `redirectUris` to the URL query string
+    if (getRedirectUris() != null) {
+      for (int i = 0; i < getRedirectUris().size(); i++) {
+        try {
+          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `postLogoutRedirectUris` to the URL query string
+    if (getPostLogoutRedirectUris() != null) {
+      for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
+        try {
+          joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `vpDefinition` to the URL query string
+    if (getVpDefinition() != null) {
+      try {
+        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentationDefinition` to the URL query string
+    if (getPresentationDefinition() != null) {
+      try {
+        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `idTokenMapping` to the URL query string
+    if (getIdTokenMapping() != null) {
+      try {
+        joiner.add(String.format("%sidTokenMapping%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdTokenMapping()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `clientMetadata` to the URL query string
+    if (getClientMetadata() != null) {
+      joiner.add(getClientMetadata().toUrlQueryString(prefix + "clientMetadata" + suffix));
+    }
+
+    // add `claimFormat` to the URL query string
+    if (getClaimFormat() != null) {
+      try {
+        joiner.add(String.format("%sclaimFormat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimFormat()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `failOnMappingConflict` to the URL query string
+    if (getFailOnMappingConflict() != null) {
+      try {
+        joiner.add(String.format("%sfailOnMappingConflict%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFailOnMappingConflict()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `scope` to the URL query string
+    if (getScope() != null) {
+      try {
+        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `tokenEndpointAuthMethod` to the URL query string
+    if (getTokenEndpointAuthMethod() != null) {
+      try {
+        joiner.add(String.format("%stokenEndpointAuthMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethod()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CreateLoginConfigurationInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CreateLoginConfigurationInput
-   * @throws IOException if the JSON string is invalid with respect to CreateLoginConfigurationInput
-   */
-  public static CreateLoginConfigurationInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateLoginConfigurationInput.class);
-  }
-
-  /**
-   * Convert an instance of CreateLoginConfigurationInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

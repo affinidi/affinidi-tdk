@@ -14,122 +14,106 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * GetUserInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  GetUserInfo.JSON_PROPERTY_BIRTHDATE,
+  GetUserInfo.JSON_PROPERTY_EMAIL,
+  GetUserInfo.JSON_PROPERTY_EMAIL_VERIFIED,
+  GetUserInfo.JSON_PROPERTY_FAMILY_NAME,
+  GetUserInfo.JSON_PROPERTY_GENDER,
+  GetUserInfo.JSON_PROPERTY_GIVEN_NAME,
+  GetUserInfo.JSON_PROPERTY_LOCALE,
+  GetUserInfo.JSON_PROPERTY_MIDDLE_NAME,
+  GetUserInfo.JSON_PROPERTY_NAME,
+  GetUserInfo.JSON_PROPERTY_NICKNAME,
+  GetUserInfo.JSON_PROPERTY_PHONE_NUMBER,
+  GetUserInfo.JSON_PROPERTY_PHONE_NUMBER_VERIFIED,
+  GetUserInfo.JSON_PROPERTY_PICTURE,
+  GetUserInfo.JSON_PROPERTY_PREFERRED_USERNAME,
+  GetUserInfo.JSON_PROPERTY_PROFILE,
+  GetUserInfo.JSON_PROPERTY_SUB,
+  GetUserInfo.JSON_PROPERTY_UPDATED_AT,
+  GetUserInfo.JSON_PROPERTY_WEBSITE,
+  GetUserInfo.JSON_PROPERTY_ZONEINFO
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:52:57.548212817Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GetUserInfo {
-  public static final String SERIALIZED_NAME_BIRTHDATE = "birthdate";
-  @SerializedName(SERIALIZED_NAME_BIRTHDATE)
+  public static final String JSON_PROPERTY_BIRTHDATE = "birthdate";
   private String birthdate;
 
-  public static final String SERIALIZED_NAME_EMAIL = "email";
-  @SerializedName(SERIALIZED_NAME_EMAIL)
+  public static final String JSON_PROPERTY_EMAIL = "email";
   private String email;
 
-  public static final String SERIALIZED_NAME_EMAIL_VERIFIED = "email_verified";
-  @SerializedName(SERIALIZED_NAME_EMAIL_VERIFIED)
+  public static final String JSON_PROPERTY_EMAIL_VERIFIED = "email_verified";
   private Boolean emailVerified;
 
-  public static final String SERIALIZED_NAME_FAMILY_NAME = "family_name";
-  @SerializedName(SERIALIZED_NAME_FAMILY_NAME)
+  public static final String JSON_PROPERTY_FAMILY_NAME = "family_name";
   private String familyName;
 
-  public static final String SERIALIZED_NAME_GENDER = "gender";
-  @SerializedName(SERIALIZED_NAME_GENDER)
+  public static final String JSON_PROPERTY_GENDER = "gender";
   private String gender;
 
-  public static final String SERIALIZED_NAME_GIVEN_NAME = "given_name";
-  @SerializedName(SERIALIZED_NAME_GIVEN_NAME)
+  public static final String JSON_PROPERTY_GIVEN_NAME = "given_name";
   private String givenName;
 
-  public static final String SERIALIZED_NAME_LOCALE = "locale";
-  @SerializedName(SERIALIZED_NAME_LOCALE)
+  public static final String JSON_PROPERTY_LOCALE = "locale";
   private String locale;
 
-  public static final String SERIALIZED_NAME_MIDDLE_NAME = "middle_name";
-  @SerializedName(SERIALIZED_NAME_MIDDLE_NAME)
+  public static final String JSON_PROPERTY_MIDDLE_NAME = "middle_name";
   private String middleName;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_NICKNAME = "nickname";
-  @SerializedName(SERIALIZED_NAME_NICKNAME)
+  public static final String JSON_PROPERTY_NICKNAME = "nickname";
   private String nickname;
 
-  public static final String SERIALIZED_NAME_PHONE_NUMBER = "phone_number";
-  @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
+  public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
   private String phoneNumber;
 
-  public static final String SERIALIZED_NAME_PHONE_NUMBER_VERIFIED = "phone_number_verified";
-  @SerializedName(SERIALIZED_NAME_PHONE_NUMBER_VERIFIED)
+  public static final String JSON_PROPERTY_PHONE_NUMBER_VERIFIED = "phone_number_verified";
   private Boolean phoneNumberVerified;
 
-  public static final String SERIALIZED_NAME_PICTURE = "picture";
-  @SerializedName(SERIALIZED_NAME_PICTURE)
+  public static final String JSON_PROPERTY_PICTURE = "picture";
   private String picture;
 
-  public static final String SERIALIZED_NAME_PREFERRED_USERNAME = "preferred_username";
-  @SerializedName(SERIALIZED_NAME_PREFERRED_USERNAME)
+  public static final String JSON_PROPERTY_PREFERRED_USERNAME = "preferred_username";
   private String preferredUsername;
 
-  public static final String SERIALIZED_NAME_PROFILE = "profile";
-  @SerializedName(SERIALIZED_NAME_PROFILE)
+  public static final String JSON_PROPERTY_PROFILE = "profile";
   private String profile;
 
-  public static final String SERIALIZED_NAME_SUB = "sub";
-  @SerializedName(SERIALIZED_NAME_SUB)
+  public static final String JSON_PROPERTY_SUB = "sub";
   private String sub;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  public static final String JSON_PROPERTY_UPDATED_AT = "updated_at";
   private Integer updatedAt;
 
-  public static final String SERIALIZED_NAME_WEBSITE = "website";
-  @SerializedName(SERIALIZED_NAME_WEBSITE)
+  public static final String JSON_PROPERTY_WEBSITE = "website";
   private String website;
 
-  public static final String SERIALIZED_NAME_ZONEINFO = "zoneinfo";
-  @SerializedName(SERIALIZED_NAME_ZONEINFO)
+  public static final String JSON_PROPERTY_ZONEINFO = "zoneinfo";
   private String zoneinfo;
 
   public GetUserInfo() {
   }
 
   public GetUserInfo birthdate(String birthdate) {
+    
     this.birthdate = birthdate;
     return this;
   }
@@ -139,16 +123,22 @@ public class GetUserInfo {
    * @return birthdate
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BIRTHDATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getBirthdate() {
     return birthdate;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_BIRTHDATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBirthdate(String birthdate) {
     this.birthdate = birthdate;
   }
 
-
   public GetUserInfo email(String email) {
+    
     this.email = email;
     return this;
   }
@@ -158,16 +148,22 @@ public class GetUserInfo {
    * @return email
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getEmail() {
     return email;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmail(String email) {
     this.email = email;
   }
 
-
   public GetUserInfo emailVerified(Boolean emailVerified) {
+    
     this.emailVerified = emailVerified;
     return this;
   }
@@ -177,16 +173,22 @@ public class GetUserInfo {
    * @return emailVerified
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EMAIL_VERIFIED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Boolean getEmailVerified() {
     return emailVerified;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EMAIL_VERIFIED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmailVerified(Boolean emailVerified) {
     this.emailVerified = emailVerified;
   }
 
-
   public GetUserInfo familyName(String familyName) {
+    
     this.familyName = familyName;
     return this;
   }
@@ -196,16 +198,22 @@ public class GetUserInfo {
    * @return familyName
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getFamilyName() {
     return familyName;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFamilyName(String familyName) {
     this.familyName = familyName;
   }
 
-
   public GetUserInfo gender(String gender) {
+    
     this.gender = gender;
     return this;
   }
@@ -215,16 +223,22 @@ public class GetUserInfo {
    * @return gender
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GENDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getGender() {
     return gender;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_GENDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGender(String gender) {
     this.gender = gender;
   }
 
-
   public GetUserInfo givenName(String givenName) {
+    
     this.givenName = givenName;
     return this;
   }
@@ -234,16 +248,22 @@ public class GetUserInfo {
    * @return givenName
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getGivenName() {
     return givenName;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGivenName(String givenName) {
     this.givenName = givenName;
   }
 
-
   public GetUserInfo locale(String locale) {
+    
     this.locale = locale;
     return this;
   }
@@ -253,16 +273,22 @@ public class GetUserInfo {
    * @return locale
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getLocale() {
     return locale;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocale(String locale) {
     this.locale = locale;
   }
 
-
   public GetUserInfo middleName(String middleName) {
+    
     this.middleName = middleName;
     return this;
   }
@@ -272,16 +298,22 @@ public class GetUserInfo {
    * @return middleName
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getMiddleName() {
     return middleName;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMiddleName(String middleName) {
     this.middleName = middleName;
   }
 
-
   public GetUserInfo name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -291,16 +323,22 @@ public class GetUserInfo {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public GetUserInfo nickname(String nickname) {
+    
     this.nickname = nickname;
     return this;
   }
@@ -310,16 +348,22 @@ public class GetUserInfo {
    * @return nickname
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getNickname() {
     return nickname;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNickname(String nickname) {
     this.nickname = nickname;
   }
 
-
   public GetUserInfo phoneNumber(String phoneNumber) {
+    
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -329,16 +373,22 @@ public class GetUserInfo {
    * @return phoneNumber
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
-
   public GetUserInfo phoneNumberVerified(Boolean phoneNumberVerified) {
+    
     this.phoneNumberVerified = phoneNumberVerified;
     return this;
   }
@@ -348,16 +398,22 @@ public class GetUserInfo {
    * @return phoneNumberVerified
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_VERIFIED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Boolean getPhoneNumberVerified() {
     return phoneNumberVerified;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_VERIFIED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhoneNumberVerified(Boolean phoneNumberVerified) {
     this.phoneNumberVerified = phoneNumberVerified;
   }
 
-
   public GetUserInfo picture(String picture) {
+    
     this.picture = picture;
     return this;
   }
@@ -367,16 +423,22 @@ public class GetUserInfo {
    * @return picture
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PICTURE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPicture() {
     return picture;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PICTURE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPicture(String picture) {
     this.picture = picture;
   }
 
-
   public GetUserInfo preferredUsername(String preferredUsername) {
+    
     this.preferredUsername = preferredUsername;
     return this;
   }
@@ -386,16 +448,22 @@ public class GetUserInfo {
    * @return preferredUsername
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFERRED_USERNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPreferredUsername() {
     return preferredUsername;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PREFERRED_USERNAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPreferredUsername(String preferredUsername) {
     this.preferredUsername = preferredUsername;
   }
 
-
   public GetUserInfo profile(String profile) {
+    
     this.profile = profile;
     return this;
   }
@@ -405,16 +473,22 @@ public class GetUserInfo {
    * @return profile
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProfile() {
     return profile;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfile(String profile) {
     this.profile = profile;
   }
 
-
   public GetUserInfo sub(String sub) {
+    
     this.sub = sub;
     return this;
   }
@@ -424,16 +498,22 @@ public class GetUserInfo {
    * @return sub
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getSub() {
     return sub;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSub(String sub) {
     this.sub = sub;
   }
 
-
   public GetUserInfo updatedAt(Integer updatedAt) {
+    
     this.updatedAt = updatedAt;
     return this;
   }
@@ -443,16 +523,22 @@ public class GetUserInfo {
    * @return updatedAt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getUpdatedAt() {
     return updatedAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUpdatedAt(Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-
   public GetUserInfo website(String website) {
+    
     this.website = website;
     return this;
   }
@@ -462,16 +548,22 @@ public class GetUserInfo {
    * @return website
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WEBSITE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getWebsite() {
     return website;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_WEBSITE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWebsite(String website) {
     this.website = website;
   }
 
-
   public GetUserInfo zoneinfo(String zoneinfo) {
+    
     this.zoneinfo = zoneinfo;
     return this;
   }
@@ -481,15 +573,19 @@ public class GetUserInfo {
    * @return zoneinfo
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ZONEINFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getZoneinfo() {
     return zoneinfo;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ZONEINFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setZoneinfo(String zoneinfo) {
     this.zoneinfo = zoneinfo;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -564,155 +660,230 @@ public class GetUserInfo {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("birthdate");
-    openapiFields.add("email");
-    openapiFields.add("email_verified");
-    openapiFields.add("family_name");
-    openapiFields.add("gender");
-    openapiFields.add("given_name");
-    openapiFields.add("locale");
-    openapiFields.add("middle_name");
-    openapiFields.add("name");
-    openapiFields.add("nickname");
-    openapiFields.add("phone_number");
-    openapiFields.add("phone_number_verified");
-    openapiFields.add("picture");
-    openapiFields.add("preferred_username");
-    openapiFields.add("profile");
-    openapiFields.add("sub");
-    openapiFields.add("updated_at");
-    openapiFields.add("website");
-    openapiFields.add("zoneinfo");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GetUserInfo
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GetUserInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetUserInfo is not found in the empty JSON string", GetUserInfo.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GetUserInfo.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetUserInfo` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("birthdate") != null && !jsonObj.get("birthdate").isJsonNull()) && !jsonObj.get("birthdate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `birthdate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("birthdate").toString()));
-      }
-      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
-      }
-      if ((jsonObj.get("family_name") != null && !jsonObj.get("family_name").isJsonNull()) && !jsonObj.get("family_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `family_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("family_name").toString()));
-      }
-      if ((jsonObj.get("gender") != null && !jsonObj.get("gender").isJsonNull()) && !jsonObj.get("gender").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `gender` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gender").toString()));
-      }
-      if ((jsonObj.get("given_name") != null && !jsonObj.get("given_name").isJsonNull()) && !jsonObj.get("given_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `given_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("given_name").toString()));
-      }
-      if ((jsonObj.get("locale") != null && !jsonObj.get("locale").isJsonNull()) && !jsonObj.get("locale").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locale").toString()));
-      }
-      if ((jsonObj.get("middle_name") != null && !jsonObj.get("middle_name").isJsonNull()) && !jsonObj.get("middle_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `middle_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("middle_name").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("nickname") != null && !jsonObj.get("nickname").isJsonNull()) && !jsonObj.get("nickname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nickname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nickname").toString()));
-      }
-      if ((jsonObj.get("phone_number") != null && !jsonObj.get("phone_number").isJsonNull()) && !jsonObj.get("phone_number").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phone_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone_number").toString()));
-      }
-      if ((jsonObj.get("picture") != null && !jsonObj.get("picture").isJsonNull()) && !jsonObj.get("picture").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `picture` to be a primitive type in the JSON string but got `%s`", jsonObj.get("picture").toString()));
-      }
-      if ((jsonObj.get("preferred_username") != null && !jsonObj.get("preferred_username").isJsonNull()) && !jsonObj.get("preferred_username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `preferred_username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("preferred_username").toString()));
-      }
-      if ((jsonObj.get("profile") != null && !jsonObj.get("profile").isJsonNull()) && !jsonObj.get("profile").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `profile` to be a primitive type in the JSON string but got `%s`", jsonObj.get("profile").toString()));
-      }
-      if ((jsonObj.get("sub") != null && !jsonObj.get("sub").isJsonNull()) && !jsonObj.get("sub").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sub` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sub").toString()));
-      }
-      if ((jsonObj.get("website") != null && !jsonObj.get("website").isJsonNull()) && !jsonObj.get("website").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `website` to be a primitive type in the JSON string but got `%s`", jsonObj.get("website").toString()));
-      }
-      if ((jsonObj.get("zoneinfo") != null && !jsonObj.get("zoneinfo").isJsonNull()) && !jsonObj.get("zoneinfo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `zoneinfo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("zoneinfo").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetUserInfo.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetUserInfo' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetUserInfo> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetUserInfo.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GetUserInfo>() {
-           @Override
-           public void write(JsonWriter out, GetUserInfo value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GetUserInfo read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `birthdate` to the URL query string
+    if (getBirthdate() != null) {
+      try {
+        joiner.add(String.format("%sbirthdate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBirthdate()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `email` to the URL query string
+    if (getEmail() != null) {
+      try {
+        joiner.add(String.format("%semail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmail()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `email_verified` to the URL query string
+    if (getEmailVerified() != null) {
+      try {
+        joiner.add(String.format("%semail_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmailVerified()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `family_name` to the URL query string
+    if (getFamilyName() != null) {
+      try {
+        joiner.add(String.format("%sfamily_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFamilyName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `gender` to the URL query string
+    if (getGender() != null) {
+      try {
+        joiner.add(String.format("%sgender%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGender()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `given_name` to the URL query string
+    if (getGivenName() != null) {
+      try {
+        joiner.add(String.format("%sgiven_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGivenName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `locale` to the URL query string
+    if (getLocale() != null) {
+      try {
+        joiner.add(String.format("%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `middle_name` to the URL query string
+    if (getMiddleName() != null) {
+      try {
+        joiner.add(String.format("%smiddle_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMiddleName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `nickname` to the URL query string
+    if (getNickname() != null) {
+      try {
+        joiner.add(String.format("%snickname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNickname()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `phone_number` to the URL query string
+    if (getPhoneNumber() != null) {
+      try {
+        joiner.add(String.format("%sphone_number%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumber()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `phone_number_verified` to the URL query string
+    if (getPhoneNumberVerified() != null) {
+      try {
+        joiner.add(String.format("%sphone_number_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumberVerified()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `picture` to the URL query string
+    if (getPicture() != null) {
+      try {
+        joiner.add(String.format("%spicture%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPicture()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `preferred_username` to the URL query string
+    if (getPreferredUsername() != null) {
+      try {
+        joiner.add(String.format("%spreferred_username%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreferredUsername()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `profile` to the URL query string
+    if (getProfile() != null) {
+      try {
+        joiner.add(String.format("%sprofile%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfile()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sub` to the URL query string
+    if (getSub() != null) {
+      try {
+        joiner.add(String.format("%ssub%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSub()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `updated_at` to the URL query string
+    if (getUpdatedAt() != null) {
+      try {
+        joiner.add(String.format("%supdated_at%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUpdatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `website` to the URL query string
+    if (getWebsite() != null) {
+      try {
+        joiner.add(String.format("%swebsite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWebsite()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `zoneinfo` to the URL query string
+    if (getZoneinfo() != null) {
+      try {
+        joiner.add(String.format("%szoneinfo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getZoneinfo()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of GetUserInfo given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GetUserInfo
-   * @throws IOException if the JSON string is invalid with respect to GetUserInfo
-   */
-  public static GetUserInfo fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetUserInfo.class);
-  }
-
-  /**
-   * Convert an instance of GetUserInfo to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

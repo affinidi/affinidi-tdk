@@ -7,9 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**getPolicies**](PoliciesApi.md#getPolicies)       | **GET** /v1/policies/principals/{principalId} |             |
 | [**updatePolicies**](PoliciesApi.md#updatePolicies) | **PUT** /v1/policies/principals/{principalId} |             |
 
-<a id="getPolicies"></a>
-
-# **getPolicies**
+## getPolicies
 
 > PolicyDto getPolicies(principalId, principalType)
 
@@ -25,30 +23,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.PoliciesApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PoliciesApi apiInstance = new PoliciesApi(defaultClient);
-    String principalId = "principalId_example"; // String |
-    String principalType = "user"; // String |
-    try {
-      PolicyDto result = apiInstance.getPolicies(principalId, principalType);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PoliciesApi#getPolicies");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PoliciesApi apiInstance = new PoliciesApi(defaultClient);
+        String principalId = "principalId_example"; // String |
+        String principalType = "user"; // String |
+        try {
+            PolicyDto result = apiInstance.getPolicies(principalId, principalType);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PoliciesApi#getPolicies");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -81,9 +79,7 @@ public class Example {
 | **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="updatePolicies"></a>
-
-# **updatePolicies**
+## updatePolicies
 
 > PolicyDto updatePolicies(principalId, principalType, policyDto)
 
@@ -99,31 +95,31 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.PoliciesApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    PoliciesApi apiInstance = new PoliciesApi(defaultClient);
-    String principalId = "principalId_example"; // String |
-    String principalType = "user"; // String |
-    PolicyDto policyDto = new PolicyDto(); // PolicyDto | UpdatePolicies
-    try {
-      PolicyDto result = apiInstance.updatePolicies(principalId, principalType, policyDto);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PoliciesApi#updatePolicies");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        PoliciesApi apiInstance = new PoliciesApi(defaultClient);
+        String principalId = "principalId_example"; // String |
+        String principalType = "user"; // String |
+        PolicyDto policyDto = new PolicyDto(); // PolicyDto | UpdatePolicies
+        try {
+            PolicyDto result = apiInstance.updatePolicies(principalId, principalType, policyDto);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PoliciesApi#updatePolicies");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

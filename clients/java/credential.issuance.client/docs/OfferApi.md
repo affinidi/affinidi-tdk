@@ -6,9 +6,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | -------------------------------------------------------- | ------------------------------------------- | ----------- |
 | [**getCredentialOffer**](OfferApi.md#getCredentialOffer) | **GET** /v1/{projectId}/offers/{issuanceId} |             |
 
-<a id="getCredentialOffer"></a>
-
-# **getCredentialOffer**
+## getCredentialOffer
 
 > CredentialOfferResponse getCredentialOffer(projectId, issuanceId)
 
@@ -25,24 +23,24 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.OfferApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    OfferApi apiInstance = new OfferApi(defaultClient);
-    String projectId = "projectId_example"; // String | Affinidi project id
-    String issuanceId = "issuanceId_example"; // String | issuanceId from credential_offer_uri
-    try {
-      CredentialOfferResponse result = apiInstance.getCredentialOffer(projectId, issuanceId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OfferApi#getCredentialOffer");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        OfferApi apiInstance = new OfferApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        String issuanceId = "issuanceId_example"; // String | issuanceId from credential_offer_uri
+        try {
+            CredentialOfferResponse result = apiInstance.getCredentialOffer(projectId, issuanceId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OfferApi#getCredentialOffer");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
