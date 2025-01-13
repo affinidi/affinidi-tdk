@@ -31,48 +31,59 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
+    <apache-http-version>5.4.1</apache-http-version>
+    <junit-version>5.11.0</junit-version>
+    <cdimascio-version>2.2.0</cdimascio-version>
+    <jersey-version>3.1.7</jersey-version>
+    <affinidi-common-version>1.0</affinidi-common-version>
+    <jsonwebtoken-version>0.12.6</jsonwebtoken-version>
+    <mockito-version>3.12.4</mockito-version>
   </properties>
 
   <dependencies>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.11.0</version>
+        <artifactId>junit-jupiter-api</artifactId> 
+        <version>${junit-version}</version>
         <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.11.0</version>
+        <version>${junit-version}</version>
         <scope>test</scope>
     </dependency>
     <dependency>
 			<groupId>io.github.cdimascio</groupId>
 			<artifactId>dotenv-java</artifactId>
-			<version>2.2.0</version>
+			<version>${cdimascio-version}</version>
 		</dependency>
     <dependency>
      <groupId>org.glassfish.jersey.core</groupId>
      <artifactId>jersey-common</artifactId>
-     <version>3.1.7</version>
+     <version>${jersey-version}</version>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>3.12.4</version>
+      <version>${mockito-version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.affinidi.tdk</groupId>
       <artifactId>common</artifactId>
-      <version>1.0</version>
+      <version>${affinidi-common-version}</version>
     </dependency>
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-api</artifactId>
-      <version>0.12.6</version>
+      <version>${jsonwebtoken-version}</version>
     </dependency>
-
+    <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>${apache-http-version}</version>
+    </dependency>
   </dependencies>
 
   <build>
