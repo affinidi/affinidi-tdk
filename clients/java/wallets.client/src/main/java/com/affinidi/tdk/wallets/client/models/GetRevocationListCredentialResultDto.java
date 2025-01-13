@@ -14,50 +14,34 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.wallets.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * DTO contains revocation list credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:51.319891501Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  GetRevocationListCredentialResultDto.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GetRevocationListCredentialResultDto {
-  public static final String SERIALIZED_NAME_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
-  @SerializedName(SERIALIZED_NAME_REVOCATION_LIST_CREDENTIAL)
+  public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
   private Object revocationListCredential;
 
   public GetRevocationListCredentialResultDto() {
   }
 
   public GetRevocationListCredentialResultDto revocationListCredential(Object revocationListCredential) {
+    
     this.revocationListCredential = revocationListCredential;
     return this;
   }
@@ -67,15 +51,19 @@ public class GetRevocationListCredentialResultDto {
    * @return revocationListCredential
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Object getRevocationListCredential() {
     return revocationListCredential;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRevocationListCredential(Object revocationListCredential) {
     this.revocationListCredential = revocationListCredential;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -114,97 +102,50 @@ public class GetRevocationListCredentialResultDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("revocationListCredential");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("revocationListCredential");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GetRevocationListCredentialResultDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GetRevocationListCredentialResultDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetRevocationListCredentialResultDto is not found in the empty JSON string", GetRevocationListCredentialResultDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GetRevocationListCredentialResultDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GetRevocationListCredentialResultDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GetRevocationListCredentialResultDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetRevocationListCredentialResultDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetRevocationListCredentialResultDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetRevocationListCredentialResultDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetRevocationListCredentialResultDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GetRevocationListCredentialResultDto>() {
-           @Override
-           public void write(JsonWriter out, GetRevocationListCredentialResultDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GetRevocationListCredentialResultDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `revocationListCredential` to the URL query string
+    if (getRevocationListCredential() != null) {
+      try {
+        joiner.add(String.format("%srevocationListCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationListCredential()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of GetRevocationListCredentialResultDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GetRevocationListCredentialResultDto
-   * @throws IOException if the JSON string is invalid with respect to GetRevocationListCredentialResultDto
-   */
-  public static GetRevocationListCredentialResultDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetRevocationListCredentialResultDto.class);
-  }
-
-  /**
-   * Convert an instance of GetRevocationListCredentialResultDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

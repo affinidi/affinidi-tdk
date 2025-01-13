@@ -14,218 +14,289 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
 import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * How the Token will be authenticate against our Authorization Server
+ */
+@JsonPropertyOrder({
+  TokenAuthenticationMethodDto.JSON_PROPERTY_TYPE,
+  TokenAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
+  TokenAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class TokenAuthenticationMethodDto {
+  /**
+   * Gets or Sets type
+   */
+  public enum TypeEnum {
+    PRIVATE_KEY("PRIVATE_KEY");
 
+    private String value;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-
-import com.affinidi.tdk.iam.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class TokenAuthenticationMethodDto extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(TokenAuthenticationMethodDto.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!TokenAuthenticationMethodDto.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'TokenAuthenticationMethodDto' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<TokenPrivateKeyAuthenticationMethodDto> adapterTokenPrivateKeyAuthenticationMethodDto = gson.getDelegateAdapter(this, TypeToken.get(TokenPrivateKeyAuthenticationMethodDto.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<TokenAuthenticationMethodDto>() {
-                @Override
-                public void write(JsonWriter out, TokenAuthenticationMethodDto value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `TokenPrivateKeyAuthenticationMethodDto`
-                    if (value.getActualInstance() instanceof TokenPrivateKeyAuthenticationMethodDto) {
-                        JsonElement element = adapterTokenPrivateKeyAuthenticationMethodDto.toJsonTree((TokenPrivateKeyAuthenticationMethodDto)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: TokenPrivateKeyAuthenticationMethodDto");
-                }
-
-                @Override
-                public TokenAuthenticationMethodDto read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize TokenPrivateKeyAuthenticationMethodDto
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        TokenPrivateKeyAuthenticationMethodDto.validateJsonElement(jsonElement);
-                        actualAdapter = adapterTokenPrivateKeyAuthenticationMethodDto;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'TokenPrivateKeyAuthenticationMethodDto'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for TokenPrivateKeyAuthenticationMethodDto failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'TokenPrivateKeyAuthenticationMethodDto'", e);
-                    }
-
-                    if (match == 1) {
-                        TokenAuthenticationMethodDto ret = new TokenAuthenticationMethodDto();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for TokenAuthenticationMethodDto: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    TypeEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public TokenAuthenticationMethodDto() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public TokenAuthenticationMethodDto(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("TokenPrivateKeyAuthenticationMethodDto", TokenPrivateKeyAuthenticationMethodDto.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return TokenAuthenticationMethodDto.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * TokenPrivateKeyAuthenticationMethodDto
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    @JsonCreator
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private TypeEnum type;
+
+  /**
+   * Gets or Sets signingAlgorithm
+   */
+  public enum SigningAlgorithmEnum {
+    RS256("RS256"),
+    
+    RS512("RS512"),
+    
+    ES256("ES256"),
+    
+    ES512("ES512");
+
+    private String value;
+
+    SigningAlgorithmEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof TokenPrivateKeyAuthenticationMethodDto) {
-            super.setActualInstance(instance);
-            return;
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SigningAlgorithmEnum fromValue(String value) {
+      for (SigningAlgorithmEnum b : SigningAlgorithmEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
-        throw new RuntimeException("Invalid instance type. Must be TokenPrivateKeyAuthenticationMethodDto");
+  public static final String JSON_PROPERTY_SIGNING_ALGORITHM = "signingAlgorithm";
+  private SigningAlgorithmEnum signingAlgorithm;
+
+  public static final String JSON_PROPERTY_PUBLIC_KEY_INFO = "publicKeyInfo";
+  private TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo;
+
+  public TokenAuthenticationMethodDto() {
+  }
+
+  public TokenAuthenticationMethodDto type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+  public TokenAuthenticationMethodDto signingAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+    
+    this.signingAlgorithm = signingAlgorithm;
+    return this;
+  }
+
+  /**
+   * Get signingAlgorithm
+   * @return signingAlgorithm
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public SigningAlgorithmEnum getSigningAlgorithm() {
+    return signingAlgorithm;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSigningAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+    this.signingAlgorithm = signingAlgorithm;
+  }
+
+  public TokenAuthenticationMethodDto publicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+    
+    this.publicKeyInfo = publicKeyInfo;
+    return this;
+  }
+
+  /**
+   * Get publicKeyInfo
+   * @return publicKeyInfo
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo getPublicKeyInfo() {
+    return publicKeyInfo;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPublicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+    this.publicKeyInfo = publicKeyInfo;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    TokenAuthenticationMethodDto tokenAuthenticationMethodDto = (TokenAuthenticationMethodDto) o;
+    return Objects.equals(this.type, tokenAuthenticationMethodDto.type) &&
+        Objects.equals(this.signingAlgorithm, tokenAuthenticationMethodDto.signingAlgorithm) &&
+        Objects.equals(this.publicKeyInfo, tokenAuthenticationMethodDto.publicKeyInfo);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(type, signingAlgorithm, publicKeyInfo);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class TokenAuthenticationMethodDto {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    signingAlgorithm: ").append(toIndentedString(signingAlgorithm)).append("\n");
+    sb.append("    publicKeyInfo: ").append(toIndentedString(publicKeyInfo)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * TokenPrivateKeyAuthenticationMethodDto
-     *
-     * @return The actual instance (TokenPrivateKeyAuthenticationMethodDto)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      try {
+        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Get the actual instance of `TokenPrivateKeyAuthenticationMethodDto`. If the actual instance is not `TokenPrivateKeyAuthenticationMethodDto`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `TokenPrivateKeyAuthenticationMethodDto`
-     * @throws ClassCastException if the instance is not `TokenPrivateKeyAuthenticationMethodDto`
-     */
-    public TokenPrivateKeyAuthenticationMethodDto getTokenPrivateKeyAuthenticationMethodDto() throws ClassCastException {
-        return (TokenPrivateKeyAuthenticationMethodDto)super.getActualInstance();
+    // add `signingAlgorithm` to the URL query string
+    if (getSigningAlgorithm() != null) {
+      try {
+        joiner.add(String.format("%ssigningAlgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSigningAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to TokenAuthenticationMethodDto
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with TokenPrivateKeyAuthenticationMethodDto
-        try {
-            TokenPrivateKeyAuthenticationMethodDto.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for TokenPrivateKeyAuthenticationMethodDto failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for TokenAuthenticationMethodDto with oneOf schemas: TokenPrivateKeyAuthenticationMethodDto. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+    // add `publicKeyInfo` to the URL query string
+    if (getPublicKeyInfo() != null) {
+      joiner.add(getPublicKeyInfo().toUrlQueryString(prefix + "publicKeyInfo" + suffix));
     }
 
-    /**
-     * Create an instance of TokenAuthenticationMethodDto given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of TokenAuthenticationMethodDto
-     * @throws IOException if the JSON string is invalid with respect to TokenAuthenticationMethodDto
-     */
-    public static TokenAuthenticationMethodDto fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, TokenAuthenticationMethodDto.class);
-    }
+    return joiner.toString();
+  }
 
-    /**
-     * Convert an instance of TokenAuthenticationMethodDto to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
-    }
 }
 

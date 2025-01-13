@@ -14,68 +14,54 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInnerMetaData;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInnerStatusListDetailsInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Data to be included in issued credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  StartIssuanceInputDataInner.JSON_PROPERTY_CREDENTIAL_TYPE_ID,
+  StartIssuanceInputDataInner.JSON_PROPERTY_CREDENTIAL_DATA,
+  StartIssuanceInputDataInner.JSON_PROPERTY_STATUS_LIST_DETAILS,
+  StartIssuanceInputDataInner.JSON_PROPERTY_META_DATA
+})
+@JsonTypeName("StartIssuanceInput_data_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuanceInputDataInner {
-  public static final String SERIALIZED_NAME_CREDENTIAL_TYPE_ID = "credentialTypeId";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_TYPE_ID)
+  public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   private String credentialTypeId;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_DATA = "credentialData";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_DATA)
+  public static final String JSON_PROPERTY_CREDENTIAL_DATA = "credentialData";
   private Map<String, Object> credentialData = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_STATUS_LIST_DETAILS = "statusListDetails";
-  @SerializedName(SERIALIZED_NAME_STATUS_LIST_DETAILS)
+  public static final String JSON_PROPERTY_STATUS_LIST_DETAILS = "statusListDetails";
   private List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_META_DATA = "metaData";
-  @SerializedName(SERIALIZED_NAME_META_DATA)
+  public static final String JSON_PROPERTY_META_DATA = "metaData";
   private StartIssuanceInputDataInnerMetaData metaData;
 
   public StartIssuanceInputDataInner() {
   }
 
   public StartIssuanceInputDataInner credentialTypeId(String credentialTypeId) {
+    
     this.credentialTypeId = credentialTypeId;
     return this;
   }
@@ -85,24 +71,27 @@ public class StartIssuanceInputDataInner {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCredentialTypeId() {
     return credentialTypeId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-
   public StartIssuanceInputDataInner credentialData(Map<String, Object> credentialData) {
+    
     this.credentialData = credentialData;
     return this;
   }
 
   public StartIssuanceInputDataInner putCredentialDataItem(String key, Object credentialDataItem) {
-    if (this.credentialData == null) {
-      this.credentialData = new HashMap<>();
-    }
     this.credentialData.put(key, credentialDataItem);
     return this;
   }
@@ -112,16 +101,22 @@ public class StartIssuanceInputDataInner {
    * @return credentialData
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_DATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+
   public Map<String, Object> getCredentialData() {
     return credentialData;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_DATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setCredentialData(Map<String, Object> credentialData) {
     this.credentialData = credentialData;
   }
 
-
   public StartIssuanceInputDataInner statusListDetails(List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
+    
     this.statusListDetails = statusListDetails;
     return this;
   }
@@ -139,16 +134,22 @@ public class StartIssuanceInputDataInner {
    * @return statusListDetails
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<StartIssuanceInputDataInnerStatusListDetailsInner> getStatusListDetails() {
     return statusListDetails;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusListDetails(List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
     this.statusListDetails = statusListDetails;
   }
 
-
   public StartIssuanceInputDataInner metaData(StartIssuanceInputDataInnerMetaData metaData) {
+    
     this.metaData = metaData;
     return this;
   }
@@ -158,15 +159,19 @@ public class StartIssuanceInputDataInner {
    * @return metaData
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_META_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public StartIssuanceInputDataInnerMetaData getMetaData() {
     return metaData;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_META_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetaData(StartIssuanceInputDataInnerMetaData metaData) {
     this.metaData = metaData;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -211,122 +216,79 @@ public class StartIssuanceInputDataInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credentialTypeId");
-    openapiFields.add("credentialData");
-    openapiFields.add("statusListDetails");
-    openapiFields.add("metaData");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credentialTypeId");
-    openapiRequiredFields.add("credentialData");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to StartIssuanceInputDataInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!StartIssuanceInputDataInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in StartIssuanceInputDataInner is not found in the empty JSON string", StartIssuanceInputDataInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!StartIssuanceInputDataInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StartIssuanceInputDataInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : StartIssuanceInputDataInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("credentialTypeId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialTypeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialTypeId").toString()));
-      }
-      if (jsonObj.get("statusListDetails") != null && !jsonObj.get("statusListDetails").isJsonNull()) {
-        JsonArray jsonArraystatusListDetails = jsonObj.getAsJsonArray("statusListDetails");
-        if (jsonArraystatusListDetails != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("statusListDetails").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `statusListDetails` to be an array in the JSON string but got `%s`", jsonObj.get("statusListDetails").toString()));
-          }
-
-          // validate the optional field `statusListDetails` (array)
-          for (int i = 0; i < jsonArraystatusListDetails.size(); i++) {
-            StartIssuanceInputDataInnerStatusListDetailsInner.validateJsonElement(jsonArraystatusListDetails.get(i));
-          };
-        }
-      }
-      // validate the optional field `metaData`
-      if (jsonObj.get("metaData") != null && !jsonObj.get("metaData").isJsonNull()) {
-        StartIssuanceInputDataInnerMetaData.validateJsonElement(jsonObj.get("metaData"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!StartIssuanceInputDataInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'StartIssuanceInputDataInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<StartIssuanceInputDataInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(StartIssuanceInputDataInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<StartIssuanceInputDataInner>() {
-           @Override
-           public void write(JsonWriter out, StartIssuanceInputDataInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public StartIssuanceInputDataInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `credentialTypeId` to the URL query string
+    if (getCredentialTypeId() != null) {
+      try {
+        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialData` to the URL query string
+    if (getCredentialData() != null) {
+      for (String _key : getCredentialData().keySet()) {
+        try {
+          joiner.add(String.format("%scredentialData%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getCredentialData().get(_key), URLEncoder.encode(String.valueOf(getCredentialData().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `statusListDetails` to the URL query string
+    if (getStatusListDetails() != null) {
+      for (int i = 0; i < getStatusListDetails().size(); i++) {
+        if (getStatusListDetails().get(i) != null) {
+          joiner.add(getStatusListDetails().get(i).toUrlQueryString(String.format("%sstatusListDetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `metaData` to the URL query string
+    if (getMetaData() != null) {
+      joiner.add(getMetaData().toUrlQueryString(prefix + "metaData" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of StartIssuanceInputDataInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of StartIssuanceInputDataInner
-   * @throws IOException if the JSON string is invalid with respect to StartIssuanceInputDataInner
-   */
-  public static StartIssuanceInputDataInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, StartIssuanceInputDataInner.class);
-  }
-
-  /**
-   * Convert an instance of StartIssuanceInputDataInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -6,9 +6,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | ----------------------------------------------------------- | --------------------- | ----------- |
 | [**iotOIDC4VPCallback**](CallbackApi.md#iotOIDC4VPCallback) | **POST** /v1/callback |             |
 
-<a id="iotOIDC4VPCallback"></a>
-
-# **iotOIDC4VPCallback**
+## iotOIDC4VPCallback
 
 > CallbackResponseOK iotOIDC4VPCallback(callbackInput)
 
@@ -25,23 +23,23 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.CallbackApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    CallbackApi apiInstance = new CallbackApi(defaultClient);
-    CallbackInput callbackInput = new CallbackInput(); // CallbackInput | CallbackRequestInput
-    try {
-      CallbackResponseOK result = apiInstance.iotOIDC4VPCallback(callbackInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CallbackApi#iotOIDC4VPCallback");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        CallbackApi apiInstance = new CallbackApi(defaultClient);
+        CallbackInput callbackInput = new CallbackInput(); // CallbackInput | CallbackRequestInput
+        try {
+            CallbackResponseOK result = apiInstance.iotOIDC4VPCallback(callbackInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CallbackApi#iotOIDC4VPCallback");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

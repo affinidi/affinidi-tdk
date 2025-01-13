@@ -14,58 +14,43 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_CREDENTIAL_TYPE_ID,
+  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_SCHEMA_URL,
+  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL
+})
+@JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
-  public static final String SERIALIZED_NAME_CREDENTIAL_TYPE_ID = "credentialTypeId";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_TYPE_ID)
+  public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   private String credentialTypeId;
 
-  public static final String SERIALIZED_NAME_JSON_SCHEMA_URL = "jsonSchemaUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_SCHEMA_URL)
+  public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
   private String jsonSchemaUrl;
 
-  public static final String SERIALIZED_NAME_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_LD_CONTEXT_URL)
+  public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   private String jsonLdContextUrl;
 
   public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner() {
   }
 
   public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner credentialTypeId(String credentialTypeId) {
+    
     this.credentialTypeId = credentialTypeId;
     return this;
   }
@@ -75,16 +60,22 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCredentialTypeId() {
     return credentialTypeId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonSchemaUrl(String jsonSchemaUrl) {
+    
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
   }
@@ -94,16 +85,22 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonSchemaUrl() {
     return jsonSchemaUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonLdContextUrl(String jsonLdContextUrl) {
+    
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
   }
@@ -113,15 +110,19 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonLdContextUrl() {
     return jsonLdContextUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,110 +165,70 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credentialTypeId");
-    openapiFields.add("jsonSchemaUrl");
-    openapiFields.add("jsonLdContextUrl");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credentialTypeId");
-    openapiRequiredFields.add("jsonSchemaUrl");
-    openapiRequiredFields.add("jsonLdContextUrl");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner is not found in the empty JSON string", WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("credentialTypeId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialTypeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialTypeId").toString()));
-      }
-      if (!jsonObj.get("jsonSchemaUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonSchemaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonSchemaUrl").toString()));
-      }
-      if (!jsonObj.get("jsonLdContextUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonLdContextUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonLdContextUrl").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>() {
-           @Override
-           public void write(JsonWriter out, WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `credentialTypeId` to the URL query string
+    if (getCredentialTypeId() != null) {
+      try {
+        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `jsonSchemaUrl` to the URL query string
+    if (getJsonSchemaUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `jsonLdContextUrl` to the URL query string
+    if (getJsonLdContextUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
-   * @throws IOException if the JSON string is invalid with respect to WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
-   */
-  public static WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.class);
-  }
-
-  /**
-   * Convert an instance of WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -11,9 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**listIotaConfigurations**](ConfigurationsApi.md#listIotaConfigurations)             | **GET** /v1/configurations                                                 |             |
 | [**updateIotaConfigurationById**](ConfigurationsApi.md#updateIotaConfigurationById)   | **PATCH** /v1/configurations/{configurationId}                             |             |
 
-<a id="createIotaConfiguration"></a>
-
-# **createIotaConfiguration**
+## createIotaConfiguration
 
 > IotaConfigurationDto createIotaConfiguration(createIotaConfigurationInput)
 
@@ -31,29 +29,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    CreateIotaConfigurationInput createIotaConfigurationInput = new CreateIotaConfigurationInput(); // CreateIotaConfigurationInput | CreateConfiguration
-    try {
-      IotaConfigurationDto result = apiInstance.createIotaConfiguration(createIotaConfigurationInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#createIotaConfiguration");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        CreateIotaConfigurationInput createIotaConfigurationInput = new CreateIotaConfigurationInput(); // CreateIotaConfigurationInput | CreateConfiguration
+        try {
+            IotaConfigurationDto result = apiInstance.createIotaConfiguration(createIotaConfigurationInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#createIotaConfiguration");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -86,9 +84,7 @@ public class Example {
 | **409**     | ConflictError         | -                |
 | **422**     | UnprocessableEntity   | -                |
 
-<a id="deleteIotaConfigurationById"></a>
-
-# **deleteIotaConfigurationById**
+## deleteIotaConfigurationById
 
 > deleteIotaConfigurationById(configurationId)
 
@@ -106,28 +102,28 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    try {
-      apiInstance.deleteIotaConfigurationById(configurationId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#deleteIotaConfigurationById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        try {
+            apiInstance.deleteIotaConfigurationById(configurationId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#deleteIotaConfigurationById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -158,9 +154,7 @@ null (empty response body)
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 
-<a id="getIotaConfigurationById"></a>
-
-# **getIotaConfigurationById**
+## getIotaConfigurationById
 
 > IotaConfigurationDto getIotaConfigurationById(configurationId)
 
@@ -178,29 +172,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    try {
-      IotaConfigurationDto result = apiInstance.getIotaConfigurationById(configurationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#getIotaConfigurationById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        try {
+            IotaConfigurationDto result = apiInstance.getIotaConfigurationById(configurationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#getIotaConfigurationById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -232,9 +226,7 @@ public class Example {
 | **403**     | ForbiddenError         | -                |
 | **404**     | NotFoundError          | -                |
 
-<a id="getIotaConfigurationMetaData"></a>
-
-# **getIotaConfigurationMetaData**
+## getIotaConfigurationMetaData
 
 > GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(projectId, configurationId)
 
@@ -251,24 +243,24 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    String projectId = "projectId_example"; // String | The ID of the project.
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    try {
-      GetIotaConfigurationMetaDataOK result = apiInstance.getIotaConfigurationMetaData(projectId, configurationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#getIotaConfigurationMetaData");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        String projectId = "projectId_example"; // String | The ID of the project.
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        try {
+            GetIotaConfigurationMetaDataOK result = apiInstance.getIotaConfigurationMetaData(projectId, configurationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#getIotaConfigurationMetaData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -300,9 +292,7 @@ No authorization required
 | **400**     | BadRequestError                | -                |
 | **403**     | ForbiddenError                 | -                |
 
-<a id="listIotaConfigurations"></a>
-
-# **listIotaConfigurations**
+## listIotaConfigurations
 
 > ListConfigurationOK listIotaConfigurations()
 
@@ -320,28 +310,28 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    try {
-      ListConfigurationOK result = apiInstance.listIotaConfigurations();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#listIotaConfigurations");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        try {
+            ListConfigurationOK result = apiInstance.listIotaConfigurations();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#listIotaConfigurations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -370,9 +360,7 @@ This endpoint does not need any parameter.
 | **400**     | BadRequestError     | -                |
 | **403**     | ForbiddenError      | -                |
 
-<a id="updateIotaConfigurationById"></a>
-
-# **updateIotaConfigurationById**
+## updateIotaConfigurationById
 
 > IotaConfigurationDto updateIotaConfigurationById(configurationId, updateConfigurationByIdInput)
 
@@ -390,30 +378,30 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
-    UpdateConfigurationByIdInput updateConfigurationByIdInput = new UpdateConfigurationByIdInput(); // UpdateConfigurationByIdInput | UpdateConfigurationById
-    try {
-      IotaConfigurationDto result = apiInstance.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationsApi#updateIotaConfigurationById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationsApi apiInstance = new ConfigurationsApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        UpdateConfigurationByIdInput updateConfigurationByIdInput = new UpdateConfigurationByIdInput(); // UpdateConfigurationByIdInput | UpdateConfigurationById
+        try {
+            IotaConfigurationDto result = apiInstance.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationsApi#updateIotaConfigurationById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

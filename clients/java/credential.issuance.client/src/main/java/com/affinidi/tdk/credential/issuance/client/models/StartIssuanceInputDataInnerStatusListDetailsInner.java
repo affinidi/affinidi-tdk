@@ -14,46 +14,31 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * StartIssuanceInputDataInnerStatusListDetailsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  StartIssuanceInputDataInnerStatusListDetailsInner.JSON_PROPERTY_PURPOSE,
+  StartIssuanceInputDataInnerStatusListDetailsInner.JSON_PROPERTY_STANDARD
+})
+@JsonTypeName("StartIssuanceInput_data_inner_statusListDetails_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuanceInputDataInnerStatusListDetailsInner {
   /**
    * Gets or Sets purpose
    */
-  @JsonAdapter(PurposeEnum.Adapter.class)
   public enum PurposeEnum {
     REVOCABLE("REVOCABLE");
 
@@ -63,6 +48,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -72,6 +58,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static PurposeEnum fromValue(String value) {
       for (PurposeEnum b : PurposeEnum.values()) {
         if (b.value.equals(value)) {
@@ -80,34 +67,14 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<PurposeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PurposeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PurposeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PurposeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      PurposeEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
-  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  public static final String JSON_PROPERTY_PURPOSE = "purpose";
   private PurposeEnum purpose;
 
   /**
    * Gets or Sets standard
    */
-  @JsonAdapter(StandardEnum.Adapter.class)
   public enum StandardEnum {
     REVOCATION_LIST2020("RevocationList2020"),
     
@@ -119,6 +86,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -128,6 +96,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StandardEnum fromValue(String value) {
       for (StandardEnum b : StandardEnum.values()) {
         if (b.value.equals(value)) {
@@ -136,34 +105,16 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StandardEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StandardEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StandardEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StandardEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      StandardEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_STANDARD = "standard";
-  @SerializedName(SERIALIZED_NAME_STANDARD)
+  public static final String JSON_PROPERTY_STANDARD = "standard";
   private StandardEnum standard;
 
   public StartIssuanceInputDataInnerStatusListDetailsInner() {
   }
 
   public StartIssuanceInputDataInnerStatusListDetailsInner purpose(PurposeEnum purpose) {
+    
     this.purpose = purpose;
     return this;
   }
@@ -173,16 +124,22 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
    * @return purpose
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public PurposeEnum getPurpose() {
     return purpose;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPurpose(PurposeEnum purpose) {
     this.purpose = purpose;
   }
 
-
   public StartIssuanceInputDataInnerStatusListDetailsInner standard(StandardEnum standard) {
+    
     this.standard = standard;
     return this;
   }
@@ -192,15 +149,19 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
    * @return standard
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public StandardEnum getStandard() {
     return standard;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStandard(StandardEnum standard) {
     this.standard = standard;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -241,109 +202,60 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("purpose");
-    openapiFields.add("standard");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("purpose");
-    openapiRequiredFields.add("standard");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to StartIssuanceInputDataInnerStatusListDetailsInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!StartIssuanceInputDataInnerStatusListDetailsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in StartIssuanceInputDataInnerStatusListDetailsInner is not found in the empty JSON string", StartIssuanceInputDataInnerStatusListDetailsInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!StartIssuanceInputDataInnerStatusListDetailsInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StartIssuanceInputDataInnerStatusListDetailsInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : StartIssuanceInputDataInnerStatusListDetailsInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
-      }
-      // validate the required field `purpose`
-      PurposeEnum.validateJsonElement(jsonObj.get("purpose"));
-      if (!jsonObj.get("standard").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `standard` to be a primitive type in the JSON string but got `%s`", jsonObj.get("standard").toString()));
-      }
-      // validate the required field `standard`
-      StandardEnum.validateJsonElement(jsonObj.get("standard"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!StartIssuanceInputDataInnerStatusListDetailsInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'StartIssuanceInputDataInnerStatusListDetailsInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<StartIssuanceInputDataInnerStatusListDetailsInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(StartIssuanceInputDataInnerStatusListDetailsInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<StartIssuanceInputDataInnerStatusListDetailsInner>() {
-           @Override
-           public void write(JsonWriter out, StartIssuanceInputDataInnerStatusListDetailsInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public StartIssuanceInputDataInnerStatusListDetailsInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `purpose` to the URL query string
+    if (getPurpose() != null) {
+      try {
+        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `standard` to the URL query string
+    if (getStandard() != null) {
+      try {
+        joiner.add(String.format("%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of StartIssuanceInputDataInnerStatusListDetailsInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of StartIssuanceInputDataInnerStatusListDetailsInner
-   * @throws IOException if the JSON string is invalid with respect to StartIssuanceInputDataInnerStatusListDetailsInner
-   */
-  public static StartIssuanceInputDataInnerStatusListDetailsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, StartIssuanceInputDataInnerStatusListDetailsInner.class);
-  }
-
-  /**
-   * Convert an instance of StartIssuanceInputDataInnerStatusListDetailsInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

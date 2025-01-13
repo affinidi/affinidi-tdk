@@ -14,80 +14,65 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.Format;
 import com.affinidi.tdk.credential.verification.client.models.FreeFormObject;
 import com.affinidi.tdk.credential.verification.client.models.InputDescriptor;
 import com.affinidi.tdk.credential.verification.client.models.SubmissionRequirement;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Presentation definition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:28.162527459Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  PresentationDefinition.JSON_PROPERTY_ID,
+  PresentationDefinition.JSON_PROPERTY_NAME,
+  PresentationDefinition.JSON_PROPERTY_PURPOSE,
+  PresentationDefinition.JSON_PROPERTY_FORMAT,
+  PresentationDefinition.JSON_PROPERTY_SUBMISSION_REQUIREMENTS,
+  PresentationDefinition.JSON_PROPERTY_INPUT_DESCRIPTORS,
+  PresentationDefinition.JSON_PROPERTY_FRAME
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PresentationDefinition {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
-  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  public static final String JSON_PROPERTY_PURPOSE = "purpose";
   private String purpose;
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
+  public static final String JSON_PROPERTY_FORMAT = "format";
   private Format format;
 
-  public static final String SERIALIZED_NAME_SUBMISSION_REQUIREMENTS = "submission_requirements";
-  @SerializedName(SERIALIZED_NAME_SUBMISSION_REQUIREMENTS)
+  public static final String JSON_PROPERTY_SUBMISSION_REQUIREMENTS = "submission_requirements";
   private List<SubmissionRequirement> submissionRequirements = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_INPUT_DESCRIPTORS = "input_descriptors";
-  @SerializedName(SERIALIZED_NAME_INPUT_DESCRIPTORS)
+  public static final String JSON_PROPERTY_INPUT_DESCRIPTORS = "input_descriptors";
   private List<InputDescriptor> inputDescriptors = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_FRAME = "frame";
-  @SerializedName(SERIALIZED_NAME_FRAME)
+  public static final String JSON_PROPERTY_FRAME = "frame";
   private FreeFormObject frame = new HashMap<>();
 
   public PresentationDefinition() {
   }
 
   public PresentationDefinition id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -97,16 +82,22 @@ public class PresentationDefinition {
    * @return id
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
 
-
   public PresentationDefinition name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -116,16 +107,22 @@ public class PresentationDefinition {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public PresentationDefinition purpose(String purpose) {
+    
     this.purpose = purpose;
     return this;
   }
@@ -135,16 +132,22 @@ public class PresentationDefinition {
    * @return purpose
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPurpose() {
     return purpose;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPurpose(String purpose) {
     this.purpose = purpose;
   }
 
-
   public PresentationDefinition format(Format format) {
+    
     this.format = format;
     return this;
   }
@@ -154,16 +157,22 @@ public class PresentationDefinition {
    * @return format
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Format getFormat() {
     return format;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(Format format) {
     this.format = format;
   }
 
-
   public PresentationDefinition submissionRequirements(List<SubmissionRequirement> submissionRequirements) {
+    
     this.submissionRequirements = submissionRequirements;
     return this;
   }
@@ -181,16 +190,22 @@ public class PresentationDefinition {
    * @return submissionRequirements
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<SubmissionRequirement> getSubmissionRequirements() {
     return submissionRequirements;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSubmissionRequirements(List<SubmissionRequirement> submissionRequirements) {
     this.submissionRequirements = submissionRequirements;
   }
 
-
   public PresentationDefinition inputDescriptors(List<InputDescriptor> inputDescriptors) {
+    
     this.inputDescriptors = inputDescriptors;
     return this;
   }
@@ -208,16 +223,22 @@ public class PresentationDefinition {
    * @return inputDescriptors
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<InputDescriptor> getInputDescriptors() {
     return inputDescriptors;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setInputDescriptors(List<InputDescriptor> inputDescriptors) {
     this.inputDescriptors = inputDescriptors;
   }
 
-
   public PresentationDefinition frame(FreeFormObject frame) {
+    
     this.frame = frame;
     return this;
   }
@@ -227,15 +248,19 @@ public class PresentationDefinition {
    * @return frame
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FRAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public FreeFormObject getFrame() {
     return frame;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FRAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFrame(FreeFormObject frame) {
     this.frame = frame;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -286,141 +311,105 @@ public class PresentationDefinition {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("purpose");
-    openapiFields.add("format");
-    openapiFields.add("submission_requirements");
-    openapiFields.add("input_descriptors");
-    openapiFields.add("frame");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("input_descriptors");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PresentationDefinition
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PresentationDefinition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PresentationDefinition is not found in the empty JSON string", PresentationDefinition.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PresentationDefinition.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PresentationDefinition` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PresentationDefinition.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
-      }
-      // validate the optional field `format`
-      if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) {
-        Format.validateJsonElement(jsonObj.get("format"));
-      }
-      if (jsonObj.get("submission_requirements") != null && !jsonObj.get("submission_requirements").isJsonNull()) {
-        JsonArray jsonArraysubmissionRequirements = jsonObj.getAsJsonArray("submission_requirements");
-        if (jsonArraysubmissionRequirements != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("submission_requirements").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `submission_requirements` to be an array in the JSON string but got `%s`", jsonObj.get("submission_requirements").toString()));
-          }
-
-          // validate the optional field `submission_requirements` (array)
-          for (int i = 0; i < jsonArraysubmissionRequirements.size(); i++) {
-            SubmissionRequirement.validateJsonElement(jsonArraysubmissionRequirements.get(i));
-          };
-        }
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("input_descriptors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `input_descriptors` to be an array in the JSON string but got `%s`", jsonObj.get("input_descriptors").toString()));
-      }
-
-      JsonArray jsonArrayinputDescriptors = jsonObj.getAsJsonArray("input_descriptors");
-      // validate the required field `input_descriptors` (array)
-      for (int i = 0; i < jsonArrayinputDescriptors.size(); i++) {
-        InputDescriptor.validateJsonElement(jsonArrayinputDescriptors.get(i));
-      };
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PresentationDefinition.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PresentationDefinition' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PresentationDefinition> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PresentationDefinition.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<PresentationDefinition>() {
-           @Override
-           public void write(JsonWriter out, PresentationDefinition value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public PresentationDefinition read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `purpose` to the URL query string
+    if (getPurpose() != null) {
+      try {
+        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      joiner.add(getFormat().toUrlQueryString(prefix + "format" + suffix));
+    }
+
+    // add `submission_requirements` to the URL query string
+    if (getSubmissionRequirements() != null) {
+      for (int i = 0; i < getSubmissionRequirements().size(); i++) {
+        if (getSubmissionRequirements().get(i) != null) {
+          joiner.add(getSubmissionRequirements().get(i).toUrlQueryString(String.format("%ssubmission_requirements%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `input_descriptors` to the URL query string
+    if (getInputDescriptors() != null) {
+      for (int i = 0; i < getInputDescriptors().size(); i++) {
+        if (getInputDescriptors().get(i) != null) {
+          joiner.add(getInputDescriptors().get(i).toUrlQueryString(String.format("%sinput_descriptors%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `frame` to the URL query string
+    if (getFrame() != null) {
+      try {
+        joiner.add(String.format("%sframe%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrame()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of PresentationDefinition given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of PresentationDefinition
-   * @throws IOException if the JSON string is invalid with respect to PresentationDefinition
-   */
-  public static PresentationDefinition fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PresentationDefinition.class);
-  }
-
-  /**
-   * Convert an instance of PresentationDefinition to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

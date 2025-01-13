@@ -14,74 +14,59 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * TokenDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  TokenDto.JSON_PROPERTY_ID,
+  TokenDto.JSON_PROPERTY_ARI,
+  TokenDto.JSON_PROPERTY_OWNER_ARI,
+  TokenDto.JSON_PROPERTY_NAME,
+  TokenDto.JSON_PROPERTY_AUTHENTICATION_METHOD,
+  TokenDto.JSON_PROPERTY_SCOPES
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class TokenDto {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private UUID id;
 
-  public static final String SERIALIZED_NAME_ARI = "ari";
-  @SerializedName(SERIALIZED_NAME_ARI)
+  public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
-  public static final String SERIALIZED_NAME_OWNER_ARI = "ownerAri";
-  @SerializedName(SERIALIZED_NAME_OWNER_ARI)
+  public static final String JSON_PROPERTY_OWNER_ARI = "ownerAri";
   private String ownerAri;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_AUTHENTICATION_METHOD = "authenticationMethod";
-  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_METHOD)
+  public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
   private TokenAuthenticationMethodDto authenticationMethod;
 
-  public static final String SERIALIZED_NAME_SCOPES = "scopes";
-  @SerializedName(SERIALIZED_NAME_SCOPES)
+  public static final String JSON_PROPERTY_SCOPES = "scopes";
   private List<String> scopes = new ArrayList<>();
 
   public TokenDto() {
   }
 
   public TokenDto id(UUID id) {
+    
     this.id = id;
     return this;
   }
@@ -91,16 +76,22 @@ public class TokenDto {
    * @return id
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public UUID getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(UUID id) {
     this.id = id;
   }
 
-
   public TokenDto ari(String ari) {
+    
     this.ari = ari;
     return this;
   }
@@ -110,16 +101,22 @@ public class TokenDto {
    * @return ari
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAri() {
     return ari;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(String ari) {
     this.ari = ari;
   }
 
-
   public TokenDto ownerAri(String ownerAri) {
+    
     this.ownerAri = ownerAri;
     return this;
   }
@@ -129,16 +126,22 @@ public class TokenDto {
    * @return ownerAri
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_OWNER_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getOwnerAri() {
     return ownerAri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_OWNER_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOwnerAri(String ownerAri) {
     this.ownerAri = ownerAri;
   }
 
-
   public TokenDto name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -148,16 +151,22 @@ public class TokenDto {
    * @return name
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public TokenDto authenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
+    
     this.authenticationMethod = authenticationMethod;
     return this;
   }
@@ -167,16 +176,22 @@ public class TokenDto {
    * @return authenticationMethod
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public TokenAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAuthenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 
-
   public TokenDto scopes(List<String> scopes) {
+    
     this.scopes = scopes;
     return this;
   }
@@ -194,15 +209,19 @@ public class TokenDto {
    * @return scopes
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SCOPES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getScopes() {
     return scopes;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScopes(List<String> scopes) {
     this.scopes = scopes;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -251,127 +270,99 @@ public class TokenDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("ari");
-    openapiFields.add("ownerAri");
-    openapiFields.add("name");
-    openapiFields.add("authenticationMethod");
-    openapiFields.add("scopes");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("ari");
-    openapiRequiredFields.add("ownerAri");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("authenticationMethod");
-    openapiRequiredFields.add("scopes");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TokenDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!TokenDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TokenDto is not found in the empty JSON string", TokenDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TokenDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TokenDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : TokenDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("ari").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ari` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ari").toString()));
-      }
-      if (!jsonObj.get("ownerAri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ownerAri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ownerAri").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // validate the required field `authenticationMethod`
-      TokenAuthenticationMethodDto.validateJsonElement(jsonObj.get("authenticationMethod"));
-      // ensure the required json array is present
-      if (jsonObj.get("scopes") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("scopes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scopes` to be an array in the JSON string but got `%s`", jsonObj.get("scopes").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TokenDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TokenDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TokenDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TokenDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<TokenDto>() {
-           @Override
-           public void write(JsonWriter out, TokenDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public TokenDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `ari` to the URL query string
+    if (getAri() != null) {
+      try {
+        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `ownerAri` to the URL query string
+    if (getOwnerAri() != null) {
+      try {
+        joiner.add(String.format("%sownerAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `authenticationMethod` to the URL query string
+    if (getAuthenticationMethod() != null) {
+      joiner.add(getAuthenticationMethod().toUrlQueryString(prefix + "authenticationMethod" + suffix));
+    }
+
+    // add `scopes` to the URL query string
+    if (getScopes() != null) {
+      for (int i = 0; i < getScopes().size(); i++) {
+        try {
+          joiner.add(String.format("%sscopes%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getScopes().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of TokenDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of TokenDto
-   * @throws IOException if the JSON string is invalid with respect to TokenDto
-   */
-  public static TokenDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TokenDto.class);
-  }
-
-  /**
-   * Convert an instance of TokenDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

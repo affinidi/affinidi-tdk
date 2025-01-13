@@ -5,6 +5,10 @@
     "packageName": {
       "type": "string",
       "description": "package name"
+    },
+    "language": {
+      "type": "string",
+      "description": "language platform"
     }
   },
   "required": ["packageName"]

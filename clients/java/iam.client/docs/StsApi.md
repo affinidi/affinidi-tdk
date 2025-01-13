@@ -7,9 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**createProjectScopedToken**](StsApi.md#createProjectScopedToken) | **POST** /v1/sts/create-project-scoped-token |             |
 | [**whoami**](StsApi.md#whoami)                                     | **GET** /v1/sts/whoami                       |             |
 
-<a id="createProjectScopedToken"></a>
-
-# **createProjectScopedToken**
+## createProjectScopedToken
 
 > CreateProjectScopedTokenOutput createProjectScopedToken(createProjectScopedTokenInput)
 
@@ -25,29 +23,29 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.StsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    StsApi apiInstance = new StsApi(defaultClient);
-    CreateProjectScopedTokenInput createProjectScopedTokenInput = new CreateProjectScopedTokenInput(); // CreateProjectScopedTokenInput | CreateProjectScopedToken
-    try {
-      CreateProjectScopedTokenOutput result = apiInstance.createProjectScopedToken(createProjectScopedTokenInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling StsApi#createProjectScopedToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        StsApi apiInstance = new StsApi(defaultClient);
+        CreateProjectScopedTokenInput createProjectScopedTokenInput = new CreateProjectScopedTokenInput(); // CreateProjectScopedTokenInput | CreateProjectScopedToken
+        try {
+            CreateProjectScopedTokenOutput result = apiInstance.createProjectScopedToken(createProjectScopedTokenInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling StsApi#createProjectScopedToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -79,9 +77,7 @@ public class Example {
 | **403**     | ForbiddenError                | -                |
 | **500**     | UnexpectedError               | -                |
 
-<a id="whoami"></a>
-
-# **whoami**
+## whoami
 
 > WhoamiDto whoami()
 
@@ -97,28 +93,28 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.StsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    StsApi apiInstance = new StsApi(defaultClient);
-    try {
-      WhoamiDto result = apiInstance.whoami();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling StsApi#whoami");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        StsApi apiInstance = new StsApi(defaultClient);
+        try {
+            WhoamiDto result = apiInstance.whoami();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling StsApi#whoami");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

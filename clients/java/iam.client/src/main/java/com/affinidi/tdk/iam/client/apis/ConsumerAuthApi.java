@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
-import com.affinidi.tdk.iam.client.ApiCallback;
-import com.affinidi.tdk.iam.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iam.client.ApiException;
-import com.affinidi.tdk.iam.client.ApiResponse;
+import com.affinidi.tdk.iam.client.ApiClient;
+import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
-import com.affinidi.tdk.iam.client.ProgressRequestBody;
-import com.affinidi.tdk.iam.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iam.client.models.ConsumerAuthTokenEndpointInput;
 import com.affinidi.tdk.iam.client.models.ConsumerAuthTokenEndpointOutput;
@@ -33,182 +26,137 @@ import com.affinidi.tdk.iam.client.models.InvalidDIDError;
 import com.affinidi.tdk.iam.client.models.UnauthorizedError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class ConsumerAuthApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class ConsumerAuthApi extends BaseApi {
 
-    public ConsumerAuthApi() {
-        this(Configuration.getDefaultApiClient());
+  public ConsumerAuthApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public ConsumerAuthApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * The Consumer OAuth 2.0 Token Endpoint
+   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+   * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
+   * @return ConsumerAuthTokenEndpointOutput
+   * @throws ApiException if fails to make API call
+   */
+  public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput) throws ApiException {
+    return this.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * The Consumer OAuth 2.0 Token Endpoint
+   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+   * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ConsumerAuthTokenEndpointOutput
+   * @throws ApiException if fails to make API call
+   */
+  public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = consumerAuthTokenEndpointInput;
+    
+    // verify the required parameter 'consumerAuthTokenEndpointInput' is set
+    if (consumerAuthTokenEndpointInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'consumerAuthTokenEndpointInput' when calling consumerAuthTokenEndpoint");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/consumer/oauth2/token";
 
-    public ConsumerAuthApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    String[] localVarAuthNames = new String[] {  };
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    TypeReference<ConsumerAuthTokenEndpointOutput> localVarReturnType = new TypeReference<ConsumerAuthTokenEndpointOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    /**
-     * Build call for consumerAuthTokenEndpoint
-     * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consumer Token OK Response </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call consumerAuthTokenEndpointCall(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        Object localVarPostBody = consumerAuthTokenEndpointInput;
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // create path and map variables
-        String localVarPath = "/v1/consumer/oauth2/token";
+    String[] localVarAuthNames = new String[] {  };
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call consumerAuthTokenEndpointValidateBeforeCall(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'consumerAuthTokenEndpointInput' is set
-        if (consumerAuthTokenEndpointInput == null) {
-            throw new ApiException("Missing the required parameter 'consumerAuthTokenEndpointInput' when calling consumerAuthTokenEndpoint(Async)");
-        }
-
-        return consumerAuthTokenEndpointCall(consumerAuthTokenEndpointInput, _callback);
-
-    }
-
-    /**
-     * The Consumer OAuth 2.0 Token Endpoint
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
-     * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-     * @return ConsumerAuthTokenEndpointOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consumer Token OK Response </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput) throws ApiException {
-        ApiResponse<ConsumerAuthTokenEndpointOutput> localVarResp = consumerAuthTokenEndpointWithHttpInfo(consumerAuthTokenEndpointInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * The Consumer OAuth 2.0 Token Endpoint
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
-     * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-     * @return ApiResponse&lt;ConsumerAuthTokenEndpointOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consumer Token OK Response </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public ApiResponse<ConsumerAuthTokenEndpointOutput> consumerAuthTokenEndpointWithHttpInfo(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput) throws ApiException {
-        okhttp3.Call localVarCall = consumerAuthTokenEndpointValidateBeforeCall(consumerAuthTokenEndpointInput, null);
-        Type localVarReturnType = new TypeToken<ConsumerAuthTokenEndpointOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * The Consumer OAuth 2.0 Token Endpoint (asynchronously)
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
-     * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consumer Token OK Response </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call consumerAuthTokenEndpointAsync(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, final ApiCallback<ConsumerAuthTokenEndpointOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = consumerAuthTokenEndpointValidateBeforeCall(consumerAuthTokenEndpointInput, _callback);
-        Type localVarReturnType = new TypeToken<ConsumerAuthTokenEndpointOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

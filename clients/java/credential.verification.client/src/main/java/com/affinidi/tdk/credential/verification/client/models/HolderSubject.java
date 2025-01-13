@@ -14,52 +14,36 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * HolderSubject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:28.162527459Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  HolderSubject.JSON_PROPERTY_FIELD_ID,
+  HolderSubject.JSON_PROPERTY_DIRECTIVE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HolderSubject {
-  public static final String SERIALIZED_NAME_FIELD_ID = "field_id";
-  @SerializedName(SERIALIZED_NAME_FIELD_ID)
+  public static final String JSON_PROPERTY_FIELD_ID = "field_id";
   private List<String> fieldId = new ArrayList<>();
 
   /**
    * Gets or Sets directive
    */
-  @JsonAdapter(DirectiveEnum.Adapter.class)
   public enum DirectiveEnum {
     REQUIRED("required"),
     
@@ -71,6 +55,7 @@ public class HolderSubject {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -80,6 +65,7 @@ public class HolderSubject {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static DirectiveEnum fromValue(String value) {
       for (DirectiveEnum b : DirectiveEnum.values()) {
         if (b.value.equals(value)) {
@@ -88,34 +74,16 @@ public class HolderSubject {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<DirectiveEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DirectiveEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DirectiveEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DirectiveEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      DirectiveEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_DIRECTIVE = "directive";
-  @SerializedName(SERIALIZED_NAME_DIRECTIVE)
+  public static final String JSON_PROPERTY_DIRECTIVE = "directive";
   private DirectiveEnum directive;
 
   public HolderSubject() {
   }
 
   public HolderSubject fieldId(List<String> fieldId) {
+    
     this.fieldId = fieldId;
     return this;
   }
@@ -133,16 +101,22 @@ public class HolderSubject {
    * @return fieldId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_FIELD_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getFieldId() {
     return fieldId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FIELD_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFieldId(List<String> fieldId) {
     this.fieldId = fieldId;
   }
 
-
   public HolderSubject directive(DirectiveEnum directive) {
+    
     this.directive = directive;
     return this;
   }
@@ -152,15 +126,19 @@ public class HolderSubject {
    * @return directive
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DIRECTIVE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public DirectiveEnum getDirective() {
     return directive;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DIRECTIVE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDirective(DirectiveEnum directive) {
     this.directive = directive;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -201,110 +179,64 @@ public class HolderSubject {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("field_id");
-    openapiFields.add("directive");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("field_id");
-    openapiRequiredFields.add("directive");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to HolderSubject
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!HolderSubject.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in HolderSubject is not found in the empty JSON string", HolderSubject.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!HolderSubject.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HolderSubject` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : HolderSubject.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the required json array is present
-      if (jsonObj.get("field_id") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("field_id").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `field_id` to be an array in the JSON string but got `%s`", jsonObj.get("field_id").toString()));
-      }
-      if (!jsonObj.get("directive").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `directive` to be a primitive type in the JSON string but got `%s`", jsonObj.get("directive").toString()));
-      }
-      // validate the required field `directive`
-      DirectiveEnum.validateJsonElement(jsonObj.get("directive"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!HolderSubject.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'HolderSubject' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<HolderSubject> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(HolderSubject.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<HolderSubject>() {
-           @Override
-           public void write(JsonWriter out, HolderSubject value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public HolderSubject read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `field_id` to the URL query string
+    if (getFieldId() != null) {
+      for (int i = 0; i < getFieldId().size(); i++) {
+        try {
+          joiner.add(String.format("%sfield_id%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getFieldId().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `directive` to the URL query string
+    if (getDirective() != null) {
+      try {
+        joiner.add(String.format("%sdirective%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDirective()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of HolderSubject given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of HolderSubject
-   * @throws IOException if the JSON string is invalid with respect to HolderSubject
-   */
-  public static HolderSubject fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, HolderSubject.class);
-  }
-
-  /**
-   * Convert an instance of HolderSubject to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

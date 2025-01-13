@@ -14,54 +14,39 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * AwsExchangeCredentialsProjectTokenOKCredentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  AwsExchangeCredentialsProjectTokenOKCredentials.JSON_PROPERTY_IDENTITY_ID,
+  AwsExchangeCredentialsProjectTokenOKCredentials.JSON_PROPERTY_TOKEN
+})
+@JsonTypeName("AwsExchangeCredentialsProjectTokenOK_credentials")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AwsExchangeCredentialsProjectTokenOKCredentials {
-  public static final String SERIALIZED_NAME_IDENTITY_ID = "identityId";
-  @SerializedName(SERIALIZED_NAME_IDENTITY_ID)
+  public static final String JSON_PROPERTY_IDENTITY_ID = "identityId";
   private String identityId;
 
-  public static final String SERIALIZED_NAME_TOKEN = "token";
-  @SerializedName(SERIALIZED_NAME_TOKEN)
+  public static final String JSON_PROPERTY_TOKEN = "token";
   private String token;
 
   public AwsExchangeCredentialsProjectTokenOKCredentials() {
   }
 
   public AwsExchangeCredentialsProjectTokenOKCredentials identityId(String identityId) {
+    
     this.identityId = identityId;
     return this;
   }
@@ -71,16 +56,22 @@ public class AwsExchangeCredentialsProjectTokenOKCredentials {
    * @return identityId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_IDENTITY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getIdentityId() {
     return identityId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_IDENTITY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdentityId(String identityId) {
     this.identityId = identityId;
   }
 
-
   public AwsExchangeCredentialsProjectTokenOKCredentials token(String token) {
+    
     this.token = token;
     return this;
   }
@@ -90,15 +81,19 @@ public class AwsExchangeCredentialsProjectTokenOKCredentials {
    * @return token
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getToken() {
     return token;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setToken(String token) {
     this.token = token;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -139,105 +134,60 @@ public class AwsExchangeCredentialsProjectTokenOKCredentials {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("identityId");
-    openapiFields.add("token");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("identityId");
-    openapiRequiredFields.add("token");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AwsExchangeCredentialsProjectTokenOKCredentials
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!AwsExchangeCredentialsProjectTokenOKCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AwsExchangeCredentialsProjectTokenOKCredentials is not found in the empty JSON string", AwsExchangeCredentialsProjectTokenOKCredentials.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AwsExchangeCredentialsProjectTokenOKCredentials.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AwsExchangeCredentialsProjectTokenOKCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AwsExchangeCredentialsProjectTokenOKCredentials.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("identityId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identityId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identityId").toString()));
-      }
-      if (!jsonObj.get("token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AwsExchangeCredentialsProjectTokenOKCredentials.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AwsExchangeCredentialsProjectTokenOKCredentials' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AwsExchangeCredentialsProjectTokenOKCredentials> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AwsExchangeCredentialsProjectTokenOKCredentials.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<AwsExchangeCredentialsProjectTokenOKCredentials>() {
-           @Override
-           public void write(JsonWriter out, AwsExchangeCredentialsProjectTokenOKCredentials value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public AwsExchangeCredentialsProjectTokenOKCredentials read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `identityId` to the URL query string
+    if (getIdentityId() != null) {
+      try {
+        joiner.add(String.format("%sidentityId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdentityId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `token` to the URL query string
+    if (getToken() != null) {
+      try {
+        joiner.add(String.format("%stoken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of AwsExchangeCredentialsProjectTokenOKCredentials given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of AwsExchangeCredentialsProjectTokenOKCredentials
-   * @throws IOException if the JSON string is invalid with respect to AwsExchangeCredentialsProjectTokenOKCredentials
-   */
-  public static AwsExchangeCredentialsProjectTokenOKCredentials fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AwsExchangeCredentialsProjectTokenOKCredentials.class);
-  }
-
-  /**
-   * Convert an instance of AwsExchangeCredentialsProjectTokenOKCredentials to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 
