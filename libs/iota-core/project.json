@@ -30,7 +30,6 @@
       "dependsOn": ["build"],
       "outputs": ["{projectRoot}/dist/"]
     },
-
     "nx-release-publish": {
       "executor": "nx:run-commands",
       "options": {
