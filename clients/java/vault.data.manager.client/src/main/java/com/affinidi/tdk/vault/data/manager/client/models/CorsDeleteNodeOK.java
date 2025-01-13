@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsDeleteNodeOK.JSON_PROPERTY_CORS_DELETE_NODE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T14:48:59.848710595Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsDeleteNodeOK {
   public static final String JSON_PROPERTY_CORS_DELETE_NODE_OK = "corsDeleteNodeOk";
   private String corsDeleteNodeOk;

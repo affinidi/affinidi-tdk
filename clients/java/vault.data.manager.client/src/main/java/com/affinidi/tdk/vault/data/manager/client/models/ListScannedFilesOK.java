@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListScannedFilesOK.JSON_PROPERTY_SCANNED_FILES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T14:48:59.848710595Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListScannedFilesOK {
   public static final String JSON_PROPERTY_SCANNED_FILES = "scannedFiles";
   private List<ListScannedFilesOKScannedFilesInner> scannedFiles = new ArrayList<>();
