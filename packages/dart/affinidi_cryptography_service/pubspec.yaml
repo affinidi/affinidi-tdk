@@ -1,0 +1,22 @@
+name: affinidi_cryptography_service
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  bs58: ^1.0.2
+  convert: ^3.1.1
+  crypto: ^3.0.3
+  cryptography: ^2.7.0
+  cryptography_flutter: ^2.3.2
+  dart_jsonwebtoken: ^2.14.0
+  jwt_decoder: ^2.0.1
+  pointycastle: ^3.9.1
+  secp256k1: ^0.3.0
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.24.0

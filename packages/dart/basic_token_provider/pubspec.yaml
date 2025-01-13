@@ -8,14 +8,12 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  bip39_mnemonic: ^3.0.6
   bip32: ^2.0.0
   web3dart: ^2.7.3
   base_codecs: ^1.0.1
   uuid: ^4.5.1
   crypto: ^3.0.6
   dio: ^5.7.0
-  pure_dart_ui: ^0.1.10
 
 dev_dependencies:
   lints: ^5.0.0

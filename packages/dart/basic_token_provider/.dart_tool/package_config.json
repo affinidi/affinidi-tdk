@@ -44,12 +44,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "bip39_mnemonic",
-      "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/bip39_mnemonic-3.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
@@ -248,12 +242,6 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "pure_dart_ui",
-      "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/pure_dart_ui-0.1.10",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "sec",
       "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/sec-1.1.0",
       "packageUri": "lib/",
@@ -362,12 +350,6 @@
       "languageVersion": "3.5"
     },
     {
-      "name": "unorm_dart",
-      "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/unorm_dart-0.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "uuid",
       "rootUri": "file:///Users/earlreyes/.pub-cache/hosted/pub.dev/uuid-4.5.1",
       "packageUri": "lib/",
@@ -434,7 +416,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-01-09T17:08:19.153012Z",
+  "generated": "2025-01-12T09:38:48.224257Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///Users/earlreyes/tools/flutter",
