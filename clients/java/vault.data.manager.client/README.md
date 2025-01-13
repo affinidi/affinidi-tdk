@@ -4,7 +4,7 @@ VaultFileSystem
 
 - API version: 1.0.0
 
-- Build date: 2025-01-13T09:23:40.721253515Z[Etc/UTC]
+- Build date: 2025-01-13T11:32:16.826997939Z[Etc/UTC]
 
 - Generator version: 7.9.0
 
