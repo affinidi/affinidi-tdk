@@ -13,6 +13,9 @@ Libraries and packages are created once using Typescript and then automatically 
 ### Requirements
 
 - [Node.js v18 or higher](https://nodejs.org)
+- [pre-commit](https://pre-commit.com/#install)
+- [gitleaks](https://github.com/gitleaks/gitleaks)
+- [commitizen](https://github.com/commitizen-tools/commitizen)
 
 ### Creating a new library or package
 
@@ -56,15 +59,15 @@ The module will be generated under `/dist` for each language, ready to use.
 
 ## Auto update of versions and changelogs
 
-After merging PR, the GitHub actions publish all libs that have increased versions.  
-To make it easier when you are updating one of lib and all TDK packages you can use ./utils/pre-publish-update.js  
+After merging PR, the GitHub actions publish all libs that have increased versions.
+To make it easier when you are updating one of lib and all TDK packages you can use ./utils/pre-publish-update.js
 The flow is:
 
 - if libs without internal dependencies were updated - process them first
 - if libs with internal dependencies were updated - update libs they depend on and update them
 - if TDK should be updated - update all libs TDK depends on and then update TDK
 
-All libs are updated one by one, while all SDKs are updated by one iteration.  
+All libs are updated one by one, while all SDKs are updated by one iteration.
 The script updates in package.json / dependencies all internal dependencies of the lib (or SDKs) that were updated, before so no need to manually do it.
 More details in the code.
 
