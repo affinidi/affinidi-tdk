@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   CredentialOfferClaimedError.JSON_PROPERTY_TRACE_ID,
   CredentialOfferClaimedError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:16.698971646Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialOfferClaimedError {
   /**
    * Gets or Sets name

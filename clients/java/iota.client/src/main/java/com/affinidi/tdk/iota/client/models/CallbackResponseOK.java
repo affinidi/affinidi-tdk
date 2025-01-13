@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
   CallbackResponseOK.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:13:01.871961661Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CallbackResponseOK {
   public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
   private String redirectUri;

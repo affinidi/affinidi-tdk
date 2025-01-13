@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ProjectDto.JSON_PROPERTY_CREATED_AT,
   ProjectDto.JSON_PROPERTY_UPDATED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:44.923328007Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProjectDto {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

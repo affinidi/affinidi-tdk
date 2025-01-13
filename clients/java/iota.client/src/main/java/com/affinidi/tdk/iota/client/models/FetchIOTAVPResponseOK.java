@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:13:01.871961661Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   private String correlationId;

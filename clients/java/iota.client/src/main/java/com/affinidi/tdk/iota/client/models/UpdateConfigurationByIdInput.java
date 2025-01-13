@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   UpdateConfigurationByIdInput.JSON_PROPERTY_REDIRECT_URIS,
   UpdateConfigurationByIdInput.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:13:01.871961661Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UpdateConfigurationByIdInput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

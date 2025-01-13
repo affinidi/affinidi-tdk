@@ -44,7 +44,7 @@ import java.util.StringJoiner;
   WalletDto.JSON_PROPERTY_CREATED_AT,
   WalletDto.JSON_PROPERTY_MODIFIED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:12:35.101250807Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class WalletDto {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ProjectWithPolicyList.JSON_PROPERTY_PROJECTS,
   ProjectWithPolicyList.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:44.923328007Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProjectWithPolicyList {
   public static final String JSON_PROPERTY_PROJECTS = "projects";
   private List<ProjectWithPolicyDto> projects = new ArrayList<>();

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_LOGO,
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_DOMAIN_VERIFIED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:10:46.697644309Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginConfigurationClientMetadataOutput extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

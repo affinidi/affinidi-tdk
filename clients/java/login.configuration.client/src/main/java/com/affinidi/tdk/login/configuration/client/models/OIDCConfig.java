@@ -66,7 +66,7 @@ import java.util.StringJoiner;
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG,
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:10:46.697644309Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OIDCConfig {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   private String authorizationEndpoint;

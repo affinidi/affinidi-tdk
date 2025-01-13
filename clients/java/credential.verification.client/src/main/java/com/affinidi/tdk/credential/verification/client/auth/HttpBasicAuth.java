@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:12:10.353717048Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HttpBasicAuth implements Authentication {
   private String username;
   private String password;

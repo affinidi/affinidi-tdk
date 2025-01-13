@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CreateProjectScopedTokenInput.JSON_PROPERTY_PROJECT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:44.923328007Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateProjectScopedTokenInput {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   private String projectId;

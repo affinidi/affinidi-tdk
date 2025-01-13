@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestOKData.JSON_PROPERTY_TRANSACTION_ID
 })
 @JsonTypeName("InitiateDataSharingRequestOK_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:13:01.871961661Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class InitiateDataSharingRequestOKData {
   public static final String JSON_PROPERTY_JWT = "jwt";
   private String jwt;

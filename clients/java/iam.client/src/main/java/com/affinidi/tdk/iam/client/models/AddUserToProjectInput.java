@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_ID,
   AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:44.923328007Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class AddUserToProjectInput {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
   private String principalId;

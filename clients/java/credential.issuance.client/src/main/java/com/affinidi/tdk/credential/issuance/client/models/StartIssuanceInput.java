@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID,
   StartIssuanceInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:11:16.698971646Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).

@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:10:46.697644309Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConfigurationApi extends BaseApi {
 
   public ConfigurationApi() {

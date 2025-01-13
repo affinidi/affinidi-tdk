@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsListNodeChildrenOK.JSON_PROPERTY_CORS_LIST_NODE_CHILDREN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:13:31.425052226Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsListNodeChildrenOK {
   public static final String JSON_PROPERTY_CORS_LIST_NODE_CHILDREN_OK = "corsListNodeChildrenOk";
   private String corsListNodeChildrenOk;

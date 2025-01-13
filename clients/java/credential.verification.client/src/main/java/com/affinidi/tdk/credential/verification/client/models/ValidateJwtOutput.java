@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   ValidateJwtOutput.JSON_PROPERTY_IS_VALID,
   ValidateJwtOutput.JSON_PROPERTY_PAYLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T15:12:10.353717048Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ValidateJwtOutput {
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
   private Boolean isValid;
