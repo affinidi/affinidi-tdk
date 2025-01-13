@@ -8,9 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 | [**disallowGroups**](AllowListApi.md#disallowGroups)       | **POST** /v1/allow-list/groups/remove |             |
 | [**listAllowedGroups**](AllowListApi.md#listAllowedGroups) | **GET** /v1/allow-list/groups         |             |
 
-<a id="allowGroups"></a>
-
-# **allowGroups**
+## allowGroups
 
 > allowGroups(groupNamesInput)
 
@@ -28,28 +26,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.AllowListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    AllowListApi apiInstance = new AllowListApi(defaultClient);
-    GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
-    try {
-      apiInstance.allowGroups(groupNamesInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AllowListApi#allowGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        AllowListApi apiInstance = new AllowListApi(defaultClient);
+        GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
+        try {
+            apiInstance.allowGroups(groupNamesInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllowListApi#allowGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -79,9 +77,7 @@ null (empty response body)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 
-<a id="disallowGroups"></a>
-
-# **disallowGroups**
+## disallowGroups
 
 > disallowGroups(groupNamesInput)
 
@@ -99,28 +95,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.AllowListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    AllowListApi apiInstance = new AllowListApi(defaultClient);
-    GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
-    try {
-      apiInstance.disallowGroups(groupNamesInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AllowListApi#disallowGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        AllowListApi apiInstance = new AllowListApi(defaultClient);
+        GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
+        try {
+            apiInstance.disallowGroups(groupNamesInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllowListApi#disallowGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -150,9 +146,7 @@ null (empty response body)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 
-<a id="listAllowedGroups"></a>
-
-# **listAllowedGroups**
+## listAllowedGroups
 
 > GroupNames listAllowedGroups(pageToken)
 
@@ -170,29 +164,29 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.AllowListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    AllowListApi apiInstance = new AllowListApi(defaultClient);
-    String pageToken = "pageToken_example"; // String |
-    try {
-      GroupNames result = apiInstance.listAllowedGroups(pageToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AllowListApi#listAllowedGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        AllowListApi apiInstance = new AllowListApi(defaultClient);
+        String pageToken = "pageToken_example"; // String |
+        try {
+            GroupNames result = apiInstance.listAllowedGroups(pageToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllowListApi#listAllowedGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

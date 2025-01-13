@@ -65,16 +65,13 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/affinidi/tdk/iota/client/ApiCallback.java
 src/main/java/com/affinidi/tdk/iota/client/ApiClient.java
 src/main/java/com/affinidi/tdk/iota/client/ApiException.java
-src/main/java/com/affinidi/tdk/iota/client/ApiResponse.java
+src/main/java/com/affinidi/tdk/iota/client/BaseApi.java
 src/main/java/com/affinidi/tdk/iota/client/Configuration.java
-src/main/java/com/affinidi/tdk/iota/client/GzipRequestInterceptor.java
-src/main/java/com/affinidi/tdk/iota/client/JSON.java
+src/main/java/com/affinidi/tdk/iota/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/iota/client/Pair.java
-src/main/java/com/affinidi/tdk/iota/client/ProgressRequestBody.java
-src/main/java/com/affinidi/tdk/iota/client/ProgressResponseBody.java
+src/main/java/com/affinidi/tdk/iota/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/iota/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/iota/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/iota/client/StringUtil.java
@@ -87,7 +84,6 @@ src/main/java/com/affinidi/tdk/iota/client/auth/ApiKeyAuth.java
 src/main/java/com/affinidi/tdk/iota/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/iota/client/auth/HttpBasicAuth.java
 src/main/java/com/affinidi/tdk/iota/client/auth/HttpBearerAuth.java
-src/main/java/com/affinidi/tdk/iota/client/models/AbstractOpenApiSchema.java
 src/main/java/com/affinidi/tdk/iota/client/models/AlreadyExistsError.java
 src/main/java/com/affinidi/tdk/iota/client/models/AwsExchangeCredentials.java
 src/main/java/com/affinidi/tdk/iota/client/models/AwsExchangeCredentialsOK.java

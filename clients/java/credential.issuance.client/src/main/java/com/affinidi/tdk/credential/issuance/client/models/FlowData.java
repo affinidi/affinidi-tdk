@@ -14,109 +14,94 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.FlowDataStatusListsDetailsInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * FlowData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  FlowData.JSON_PROPERTY_CREATED_AT,
+  FlowData.JSON_PROPERTY_MODIFIED_AT,
+  FlowData.JSON_PROPERTY_ID,
+  FlowData.JSON_PROPERTY_PROJECT_ID,
+  FlowData.JSON_PROPERTY_FLOW_ID,
+  FlowData.JSON_PROPERTY_CREDENTIAL_TYPE_ID,
+  FlowData.JSON_PROPERTY_JSON_LD_CONTEXT_URL,
+  FlowData.JSON_PROPERTY_JSON_SCHEMA_URL,
+  FlowData.JSON_PROPERTY_CONFIGURATION_ID,
+  FlowData.JSON_PROPERTY_ISSUED_AT,
+  FlowData.JSON_PROPERTY_WALLET_ID,
+  FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID,
+  FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID,
+  FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE,
+  FlowData.JSON_PROPERTY_STATUS_LISTS_DETAILS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FlowData {
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   private String createdAt;
 
-  public static final String SERIALIZED_NAME_MODIFIED_AT = "modifiedAt";
-  @SerializedName(SERIALIZED_NAME_MODIFIED_AT)
+  public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
   private String modifiedAt;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID = "projectId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   private String projectId;
 
-  public static final String SERIALIZED_NAME_FLOW_ID = "flowId";
-  @SerializedName(SERIALIZED_NAME_FLOW_ID)
+  public static final String JSON_PROPERTY_FLOW_ID = "flowId";
   private String flowId;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_TYPE_ID = "credentialTypeId";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_TYPE_ID)
+  public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   private String credentialTypeId;
 
-  public static final String SERIALIZED_NAME_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_LD_CONTEXT_URL)
+  public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   private String jsonLdContextUrl;
 
-  public static final String SERIALIZED_NAME_JSON_SCHEMA_URL = "jsonSchemaUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_SCHEMA_URL)
+  public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
   private String jsonSchemaUrl;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_ID = "configurationId";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_ID)
+  public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
   private String configurationId;
 
-  public static final String SERIALIZED_NAME_ISSUED_AT = "issuedAt";
-  @SerializedName(SERIALIZED_NAME_ISSUED_AT)
+  public static final String JSON_PROPERTY_ISSUED_AT = "issuedAt";
   private String issuedAt;
 
-  public static final String SERIALIZED_NAME_WALLET_ID = "walletId";
-  @SerializedName(SERIALIZED_NAME_WALLET_ID)
+  public static final String JSON_PROPERTY_WALLET_ID = "walletId";
   private String walletId;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID = "projectIdConfigurationId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID = "projectIdConfigurationId";
   private String projectIdConfigurationId;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID_WALLET_ID = "projectIdConfigurationIdWalletId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID = "projectIdConfigurationIdWalletId";
   private String projectIdConfigurationIdWalletId;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE = "projectIdConfigurationIdCredentialType";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
+  public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE = "projectIdConfigurationIdCredentialType";
   private String projectIdConfigurationIdCredentialType;
 
-  public static final String SERIALIZED_NAME_STATUS_LISTS_DETAILS = "statusListsDetails";
-  @SerializedName(SERIALIZED_NAME_STATUS_LISTS_DETAILS)
+  public static final String JSON_PROPERTY_STATUS_LISTS_DETAILS = "statusListsDetails";
   private List<FlowDataStatusListsDetailsInner> statusListsDetails = new ArrayList<>();
 
   public FlowData() {
   }
 
   public FlowData createdAt(String createdAt) {
+    
     this.createdAt = createdAt;
     return this;
   }
@@ -126,16 +111,22 @@ public class FlowData {
    * @return createdAt
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCreatedAt() {
     return createdAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
 
-
   public FlowData modifiedAt(String modifiedAt) {
+    
     this.modifiedAt = modifiedAt;
     return this;
   }
@@ -145,16 +136,22 @@ public class FlowData {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getModifiedAt() {
     return modifiedAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
-
   public FlowData id(String id) {
+    
     this.id = id;
     return this;
   }
@@ -164,16 +161,22 @@ public class FlowData {
    * @return id
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getId() {
     return id;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
 
-
   public FlowData projectId(String projectId) {
+    
     this.projectId = projectId;
     return this;
   }
@@ -183,16 +186,22 @@ public class FlowData {
    * @return projectId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProjectId() {
     return projectId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectId(String projectId) {
     this.projectId = projectId;
   }
 
-
   public FlowData flowId(String flowId) {
+    
     this.flowId = flowId;
     return this;
   }
@@ -202,16 +211,22 @@ public class FlowData {
    * @return flowId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_FLOW_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getFlowId() {
     return flowId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FLOW_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFlowId(String flowId) {
     this.flowId = flowId;
   }
 
-
   public FlowData credentialTypeId(String credentialTypeId) {
+    
     this.credentialTypeId = credentialTypeId;
     return this;
   }
@@ -221,16 +236,22 @@ public class FlowData {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCredentialTypeId() {
     return credentialTypeId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-
   public FlowData jsonLdContextUrl(String jsonLdContextUrl) {
+    
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
   }
@@ -240,16 +261,22 @@ public class FlowData {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonLdContextUrl() {
     return jsonLdContextUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 
-
   public FlowData jsonSchemaUrl(String jsonSchemaUrl) {
+    
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
   }
@@ -259,16 +286,22 @@ public class FlowData {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonSchemaUrl() {
     return jsonSchemaUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-
   public FlowData configurationId(String configurationId) {
+    
     this.configurationId = configurationId;
     return this;
   }
@@ -278,16 +311,22 @@ public class FlowData {
    * @return configurationId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getConfigurationId() {
     return configurationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfigurationId(String configurationId) {
     this.configurationId = configurationId;
   }
 
-
   public FlowData issuedAt(String issuedAt) {
+    
     this.issuedAt = issuedAt;
     return this;
   }
@@ -297,16 +336,22 @@ public class FlowData {
    * @return issuedAt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuedAt() {
     return issuedAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuedAt(String issuedAt) {
     this.issuedAt = issuedAt;
   }
 
-
   public FlowData walletId(String walletId) {
+    
     this.walletId = walletId;
     return this;
   }
@@ -316,16 +361,22 @@ public class FlowData {
    * @return walletId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getWalletId() {
     return walletId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWalletId(String walletId) {
     this.walletId = walletId;
   }
 
-
   public FlowData projectIdConfigurationId(String projectIdConfigurationId) {
+    
     this.projectIdConfigurationId = projectIdConfigurationId;
     return this;
   }
@@ -335,16 +386,22 @@ public class FlowData {
    * @return projectIdConfigurationId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProjectIdConfigurationId() {
     return projectIdConfigurationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationId(String projectIdConfigurationId) {
     this.projectIdConfigurationId = projectIdConfigurationId;
   }
 
-
   public FlowData projectIdConfigurationIdWalletId(String projectIdConfigurationIdWalletId) {
+    
     this.projectIdConfigurationIdWalletId = projectIdConfigurationIdWalletId;
     return this;
   }
@@ -354,16 +411,22 @@ public class FlowData {
    * @return projectIdConfigurationIdWalletId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProjectIdConfigurationIdWalletId() {
     return projectIdConfigurationIdWalletId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationIdWalletId(String projectIdConfigurationIdWalletId) {
     this.projectIdConfigurationIdWalletId = projectIdConfigurationIdWalletId;
   }
 
-
   public FlowData projectIdConfigurationIdCredentialType(String projectIdConfigurationIdCredentialType) {
+    
     this.projectIdConfigurationIdCredentialType = projectIdConfigurationIdCredentialType;
     return this;
   }
@@ -373,16 +436,22 @@ public class FlowData {
    * @return projectIdConfigurationIdCredentialType
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getProjectIdConfigurationIdCredentialType() {
     return projectIdConfigurationIdCredentialType;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationIdCredentialType(String projectIdConfigurationIdCredentialType) {
     this.projectIdConfigurationIdCredentialType = projectIdConfigurationIdCredentialType;
   }
 
-
   public FlowData statusListsDetails(List<FlowDataStatusListsDetailsInner> statusListsDetails) {
+    
     this.statusListsDetails = statusListsDetails;
     return this;
   }
@@ -400,15 +469,19 @@ public class FlowData {
    * @return statusListsDetails
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STATUS_LISTS_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<FlowDataStatusListsDetailsInner> getStatusListsDetails() {
     return statusListsDetails;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_LISTS_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusListsDetails(List<FlowDataStatusListsDetailsInner> statusListsDetails) {
     this.statusListsDetails = statusListsDetails;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -475,173 +548,190 @@ public class FlowData {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("createdAt");
-    openapiFields.add("modifiedAt");
-    openapiFields.add("id");
-    openapiFields.add("projectId");
-    openapiFields.add("flowId");
-    openapiFields.add("credentialTypeId");
-    openapiFields.add("jsonLdContextUrl");
-    openapiFields.add("jsonSchemaUrl");
-    openapiFields.add("configurationId");
-    openapiFields.add("issuedAt");
-    openapiFields.add("walletId");
-    openapiFields.add("projectIdConfigurationId");
-    openapiFields.add("projectIdConfigurationIdWalletId");
-    openapiFields.add("projectIdConfigurationIdCredentialType");
-    openapiFields.add("statusListsDetails");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("modifiedAt");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("flowId");
-    openapiRequiredFields.add("credentialTypeId");
-    openapiRequiredFields.add("jsonLdContextUrl");
-    openapiRequiredFields.add("jsonSchemaUrl");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to FlowData
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FlowData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FlowData is not found in the empty JSON string", FlowData.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!FlowData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FlowData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FlowData.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("createdAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
-      }
-      if (!jsonObj.get("modifiedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `modifiedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifiedAt").toString()));
-      }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("projectId") != null && !jsonObj.get("projectId").isJsonNull()) && !jsonObj.get("projectId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectId").toString()));
-      }
-      if (!jsonObj.get("flowId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `flowId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("flowId").toString()));
-      }
-      if (!jsonObj.get("credentialTypeId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialTypeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialTypeId").toString()));
-      }
-      if (!jsonObj.get("jsonLdContextUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonLdContextUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonLdContextUrl").toString()));
-      }
-      if (!jsonObj.get("jsonSchemaUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonSchemaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonSchemaUrl").toString()));
-      }
-      if ((jsonObj.get("configurationId") != null && !jsonObj.get("configurationId").isJsonNull()) && !jsonObj.get("configurationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `configurationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configurationId").toString()));
-      }
-      if ((jsonObj.get("issuedAt") != null && !jsonObj.get("issuedAt").isJsonNull()) && !jsonObj.get("issuedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuedAt").toString()));
-      }
-      if ((jsonObj.get("walletId") != null && !jsonObj.get("walletId").isJsonNull()) && !jsonObj.get("walletId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `walletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("walletId").toString()));
-      }
-      if ((jsonObj.get("projectIdConfigurationId") != null && !jsonObj.get("projectIdConfigurationId").isJsonNull()) && !jsonObj.get("projectIdConfigurationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectIdConfigurationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectIdConfigurationId").toString()));
-      }
-      if ((jsonObj.get("projectIdConfigurationIdWalletId") != null && !jsonObj.get("projectIdConfigurationIdWalletId").isJsonNull()) && !jsonObj.get("projectIdConfigurationIdWalletId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectIdConfigurationIdWalletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectIdConfigurationIdWalletId").toString()));
-      }
-      if ((jsonObj.get("projectIdConfigurationIdCredentialType") != null && !jsonObj.get("projectIdConfigurationIdCredentialType").isJsonNull()) && !jsonObj.get("projectIdConfigurationIdCredentialType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectIdConfigurationIdCredentialType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectIdConfigurationIdCredentialType").toString()));
-      }
-      if (jsonObj.get("statusListsDetails") != null && !jsonObj.get("statusListsDetails").isJsonNull()) {
-        JsonArray jsonArraystatusListsDetails = jsonObj.getAsJsonArray("statusListsDetails");
-        if (jsonArraystatusListsDetails != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("statusListsDetails").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `statusListsDetails` to be an array in the JSON string but got `%s`", jsonObj.get("statusListsDetails").toString()));
-          }
-
-          // validate the optional field `statusListsDetails` (array)
-          for (int i = 0; i < jsonArraystatusListsDetails.size(); i++) {
-            FlowDataStatusListsDetailsInner.validateJsonElement(jsonArraystatusListsDetails.get(i));
-          };
-        }
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FlowData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FlowData' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FlowData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FlowData.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FlowData>() {
-           @Override
-           public void write(JsonWriter out, FlowData value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FlowData read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `createdAt` to the URL query string
+    if (getCreatedAt() != null) {
+      try {
+        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `modifiedAt` to the URL query string
+    if (getModifiedAt() != null) {
+      try {
+        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectId` to the URL query string
+    if (getProjectId() != null) {
+      try {
+        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `flowId` to the URL query string
+    if (getFlowId() != null) {
+      try {
+        joiner.add(String.format("%sflowId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFlowId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialTypeId` to the URL query string
+    if (getCredentialTypeId() != null) {
+      try {
+        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `jsonLdContextUrl` to the URL query string
+    if (getJsonLdContextUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `jsonSchemaUrl` to the URL query string
+    if (getJsonSchemaUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `configurationId` to the URL query string
+    if (getConfigurationId() != null) {
+      try {
+        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuedAt` to the URL query string
+    if (getIssuedAt() != null) {
+      try {
+        joiner.add(String.format("%sissuedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `walletId` to the URL query string
+    if (getWalletId() != null) {
+      try {
+        joiner.add(String.format("%swalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectIdConfigurationId` to the URL query string
+    if (getProjectIdConfigurationId() != null) {
+      try {
+        joiner.add(String.format("%sprojectIdConfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectIdConfigurationIdWalletId` to the URL query string
+    if (getProjectIdConfigurationIdWalletId() != null) {
+      try {
+        joiner.add(String.format("%sprojectIdConfigurationIdWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectIdConfigurationIdCredentialType` to the URL query string
+    if (getProjectIdConfigurationIdCredentialType() != null) {
+      try {
+        joiner.add(String.format("%sprojectIdConfigurationIdCredentialType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdCredentialType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statusListsDetails` to the URL query string
+    if (getStatusListsDetails() != null) {
+      for (int i = 0; i < getStatusListsDetails().size(); i++) {
+        if (getStatusListsDetails().get(i) != null) {
+          joiner.add(getStatusListsDetails().get(i).toUrlQueryString(String.format("%sstatusListsDetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of FlowData given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of FlowData
-   * @throws IOException if the JSON string is invalid with respect to FlowData
-   */
-  public static FlowData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FlowData.class);
-  }
-
-  /**
-   * Convert an instance of FlowData to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

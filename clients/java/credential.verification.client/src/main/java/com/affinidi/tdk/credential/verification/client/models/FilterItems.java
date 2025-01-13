@@ -14,286 +14,814 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.Filter;
 import com.affinidi.tdk.credential.verification.client.models.FilterConst;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
+
+/**
+ * FilterItems
+ */
+@JsonPropertyOrder({
+  FilterItems.JSON_PROPERTY_CONST,
+  FilterItems.JSON_PROPERTY_ENUM,
+  FilterItems.JSON_PROPERTY_EXCLUSIVE_MINIMUM,
+  FilterItems.JSON_PROPERTY_EXCLUSIVE_MAXIMUM,
+  FilterItems.JSON_PROPERTY_FORMAT,
+  FilterItems.JSON_PROPERTY_FORMAT_MAXIMUM,
+  FilterItems.JSON_PROPERTY_FORMAT_MINIMUM,
+  FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM,
+  FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM,
+  FilterItems.JSON_PROPERTY_MIN_LENGTH,
+  FilterItems.JSON_PROPERTY_MAX_LENGTH,
+  FilterItems.JSON_PROPERTY_MINIMUM,
+  FilterItems.JSON_PROPERTY_MAXIMUM,
+  FilterItems.JSON_PROPERTY_NOT,
+  FilterItems.JSON_PROPERTY_PATTERN,
+  FilterItems.JSON_PROPERTY_CONTAINS,
+  FilterItems.JSON_PROPERTY_ITEMS,
+  FilterItems.JSON_PROPERTY_TYPE
+})
+@JsonTypeName("Filter_items")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class FilterItems {
+  public static final String JSON_PROPERTY_CONST = "_const";
+  private FilterConst _const;
+
+  public static final String JSON_PROPERTY_ENUM = "_enum";
+  private List<FilterConst> _enum = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EXCLUSIVE_MINIMUM = "exclusiveMinimum";
+  private FilterConst exclusiveMinimum;
+
+  public static final String JSON_PROPERTY_EXCLUSIVE_MAXIMUM = "exclusiveMaximum";
+  private FilterConst exclusiveMaximum;
+
+  public static final String JSON_PROPERTY_FORMAT = "format";
+  private String format;
+
+  public static final String JSON_PROPERTY_FORMAT_MAXIMUM = "formatMaximum";
+  private String formatMaximum;
+
+  public static final String JSON_PROPERTY_FORMAT_MINIMUM = "formatMinimum";
+  private String formatMinimum;
+
+  public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM = "formatExclusiveMaximum";
+  private String formatExclusiveMaximum;
+
+  public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM = "formatExclusiveMinimum";
+  private String formatExclusiveMinimum;
+
+  public static final String JSON_PROPERTY_MIN_LENGTH = "minLength";
+  private Integer minLength;
+
+  public static final String JSON_PROPERTY_MAX_LENGTH = "maxLength";
+  private Integer maxLength;
+
+  public static final String JSON_PROPERTY_MINIMUM = "minimum";
+  private FilterConst minimum;
+
+  public static final String JSON_PROPERTY_MAXIMUM = "maximum";
+  private FilterConst maximum;
+
+  public static final String JSON_PROPERTY_NOT = "not";
+  private Object not;
+
+  public static final String JSON_PROPERTY_PATTERN = "pattern";
+  private String pattern;
+
+  public static final String JSON_PROPERTY_CONTAINS = "contains";
+  private Filter contains;
+
+  public static final String JSON_PROPERTY_ITEMS = "items";
+  private FilterItems items;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  private String type;
+
+  public FilterItems() {
+  }
+
+  public FilterItems _const(FilterConst _const) {
+    
+    this._const = _const;
+    return this;
+  }
+
+  /**
+   * Get _const
+   * @return _const
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FilterConst getConst() {
+    return _const;
+  }
 
 
+  @JsonProperty(JSON_PROPERTY_CONST)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConst(FilterConst _const) {
+    this._const = _const;
+  }
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+  public FilterItems _enum(List<FilterConst> _enum) {
+    
+    this._enum = _enum;
+    return this;
+  }
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
+  public FilterItems addEnumItem(FilterConst _enumItem) {
+    if (this._enum == null) {
+      this._enum = new ArrayList<>();
+    }
+    this._enum.add(_enumItem);
+    return this;
+  }
 
-import com.affinidi.tdk.credential.verification.client.JSON;
+  /**
+   * Get _enum
+   * @return _enum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class FilterItems extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(FilterItems.class.getName());
+  public List<FilterConst> getEnum() {
+    return _enum;
+  }
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!FilterItems.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'FilterItems' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Filter> adapterFilter = gson.getDelegateAdapter(this, TypeToken.get(Filter.class));
 
-            final Type typeInstanceListFilter = new TypeToken<List<Filter>>(){}.getType();
-            final TypeAdapter<List<Filter>> adapterListFilter = (TypeAdapter<List<Filter>>) gson.getDelegateAdapter(this, TypeToken.get(typeInstanceListFilter));
+  @JsonProperty(JSON_PROPERTY_ENUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEnum(List<FilterConst> _enum) {
+    this._enum = _enum;
+  }
 
-            return (TypeAdapter<T>) new TypeAdapter<FilterItems>() {
-                @Override
-                public void write(JsonWriter out, FilterItems value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public FilterItems exclusiveMinimum(FilterConst exclusiveMinimum) {
+    
+    this.exclusiveMinimum = exclusiveMinimum;
+    return this;
+  }
 
-                    // check if the actual instance is of the type `Filter`
-                    if (value.getActualInstance() instanceof Filter) {
-                        JsonElement element = adapterFilter.toJsonTree((Filter)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `List<Filter>`
-                    if (value.getActualInstance() instanceof List<?>) {
-                        List<?> list = (List<?>) value.getActualInstance();
-                        if (list.get(0) instanceof Filter) {
-                            JsonArray array = adapterListFilter.toJsonTree((List<Filter>)value.getActualInstance()).getAsJsonArray();
-                            elementAdapter.write(out, array);
-                            return;
-                        }
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Filter, List<Filter>");
-                }
+  /**
+   * Get exclusiveMinimum
+   * @return exclusiveMinimum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-                @Override
-                public FilterItems read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public FilterConst getExclusiveMinimum() {
+    return exclusiveMinimum;
+  }
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize Filter
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        Filter.validateJsonElement(jsonElement);
-                        actualAdapter = adapterFilter;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'Filter'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Filter failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'Filter'", e);
-                    }
-                    // deserialize List<Filter>
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        if (!jsonElement.isJsonArray()) {
-                            throw new IllegalArgumentException(String.format("Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
-                        }
+  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExclusiveMinimum(FilterConst exclusiveMinimum) {
+    this.exclusiveMinimum = exclusiveMinimum;
+  }
 
-                        JsonArray array = jsonElement.getAsJsonArray();
-                        // validate array items
-                        for(JsonElement element : array) {
-                            Filter.validateJsonElement(element);
-                        }
-                        actualAdapter = adapterListFilter;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'List<Filter>'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for List<Filter> failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'List<Filter>'", e);
-                    }
+  public FilterItems exclusiveMaximum(FilterConst exclusiveMaximum) {
+    
+    this.exclusiveMaximum = exclusiveMaximum;
+    return this;
+  }
 
-                    if (match == 1) {
-                        FilterItems ret = new FilterItems();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  /**
+   * Get exclusiveMaximum
+   * @return exclusiveMaximum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-                    throw new IOException(String.format("Failed deserialization for FilterItems: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
+  public FilterConst getExclusiveMaximum() {
+    return exclusiveMaximum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExclusiveMaximum(FilterConst exclusiveMaximum) {
+    this.exclusiveMaximum = exclusiveMaximum;
+  }
+
+  public FilterItems format(String format) {
+    
+    this.format = format;
+    return this;
+  }
+
+  /**
+   * Get format
+   * @return format
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getFormat() {
+    return format;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+  public FilterItems formatMaximum(String formatMaximum) {
+    
+    this.formatMaximum = formatMaximum;
+    return this;
+  }
+
+  /**
+   * Get formatMaximum
+   * @return formatMaximum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getFormatMaximum() {
+    return formatMaximum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFormatMaximum(String formatMaximum) {
+    this.formatMaximum = formatMaximum;
+  }
+
+  public FilterItems formatMinimum(String formatMinimum) {
+    
+    this.formatMinimum = formatMinimum;
+    return this;
+  }
+
+  /**
+   * Get formatMinimum
+   * @return formatMinimum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getFormatMinimum() {
+    return formatMinimum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFormatMinimum(String formatMinimum) {
+    this.formatMinimum = formatMinimum;
+  }
+
+  public FilterItems formatExclusiveMaximum(String formatExclusiveMaximum) {
+    
+    this.formatExclusiveMaximum = formatExclusiveMaximum;
+    return this;
+  }
+
+  /**
+   * Get formatExclusiveMaximum
+   * @return formatExclusiveMaximum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getFormatExclusiveMaximum() {
+    return formatExclusiveMaximum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFormatExclusiveMaximum(String formatExclusiveMaximum) {
+    this.formatExclusiveMaximum = formatExclusiveMaximum;
+  }
+
+  public FilterItems formatExclusiveMinimum(String formatExclusiveMinimum) {
+    
+    this.formatExclusiveMinimum = formatExclusiveMinimum;
+    return this;
+  }
+
+  /**
+   * Get formatExclusiveMinimum
+   * @return formatExclusiveMinimum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getFormatExclusiveMinimum() {
+    return formatExclusiveMinimum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFormatExclusiveMinimum(String formatExclusiveMinimum) {
+    this.formatExclusiveMinimum = formatExclusiveMinimum;
+  }
+
+  public FilterItems minLength(Integer minLength) {
+    
+    this.minLength = minLength;
+    return this;
+  }
+
+  /**
+   * Get minLength
+   * @return minLength
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getMinLength() {
+    return minLength;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMinLength(Integer minLength) {
+    this.minLength = minLength;
+  }
+
+  public FilterItems maxLength(Integer maxLength) {
+    
+    this.maxLength = maxLength;
+    return this;
+  }
+
+  /**
+   * Get maxLength
+   * @return maxLength
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getMaxLength() {
+    return maxLength;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxLength(Integer maxLength) {
+    this.maxLength = maxLength;
+  }
+
+  public FilterItems minimum(FilterConst minimum) {
+    
+    this.minimum = minimum;
+    return this;
+  }
+
+  /**
+   * Get minimum
+   * @return minimum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FilterConst getMinimum() {
+    return minimum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MINIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMinimum(FilterConst minimum) {
+    this.minimum = minimum;
+  }
+
+  public FilterItems maximum(FilterConst maximum) {
+    
+    this.maximum = maximum;
+    return this;
+  }
+
+  /**
+   * Get maximum
+   * @return maximum
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FilterConst getMaximum() {
+    return maximum;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MAXIMUM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaximum(FilterConst maximum) {
+    this.maximum = maximum;
+  }
+
+  public FilterItems not(Object not) {
+    
+    this.not = not;
+    return this;
+  }
+
+  /**
+   * Get not
+   * @return not
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getNot() {
+    return not;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNot(Object not) {
+    this.not = not;
+  }
+
+  public FilterItems pattern(String pattern) {
+    
+    this.pattern = pattern;
+    return this;
+  }
+
+  /**
+   * Get pattern
+   * @return pattern
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PATTERN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPattern() {
+    return pattern;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PATTERN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPattern(String pattern) {
+    this.pattern = pattern;
+  }
+
+  public FilterItems contains(Filter contains) {
+    
+    this.contains = contains;
+    return this;
+  }
+
+  /**
+   * Get contains
+   * @return contains
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CONTAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Filter getContains() {
+    return contains;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONTAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContains(Filter contains) {
+    this.contains = contains;
+  }
+
+  public FilterItems items(FilterItems items) {
+    
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ITEMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FilterItems getItems() {
+    return items;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ITEMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setItems(FilterItems items) {
+    this.items = items;
+  }
+
+  public FilterItems type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    FilterItems filterItems = (FilterItems) o;
+    return Objects.equals(this._const, filterItems._const) &&
+        Objects.equals(this._enum, filterItems._enum) &&
+        Objects.equals(this.exclusiveMinimum, filterItems.exclusiveMinimum) &&
+        Objects.equals(this.exclusiveMaximum, filterItems.exclusiveMaximum) &&
+        Objects.equals(this.format, filterItems.format) &&
+        Objects.equals(this.formatMaximum, filterItems.formatMaximum) &&
+        Objects.equals(this.formatMinimum, filterItems.formatMinimum) &&
+        Objects.equals(this.formatExclusiveMaximum, filterItems.formatExclusiveMaximum) &&
+        Objects.equals(this.formatExclusiveMinimum, filterItems.formatExclusiveMinimum) &&
+        Objects.equals(this.minLength, filterItems.minLength) &&
+        Objects.equals(this.maxLength, filterItems.maxLength) &&
+        Objects.equals(this.minimum, filterItems.minimum) &&
+        Objects.equals(this.maximum, filterItems.maximum) &&
+        Objects.equals(this.not, filterItems.not) &&
+        Objects.equals(this.pattern, filterItems.pattern) &&
+        Objects.equals(this.contains, filterItems.contains) &&
+        Objects.equals(this.items, filterItems.items) &&
+        Objects.equals(this.type, filterItems.type);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(_const, _enum, exclusiveMinimum, exclusiveMaximum, format, formatMaximum, formatMinimum, formatExclusiveMaximum, formatExclusiveMinimum, minLength, maxLength, minimum, maximum, not, pattern, contains, items, type);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class FilterItems {\n");
+    sb.append("    _const: ").append(toIndentedString(_const)).append("\n");
+    sb.append("    _enum: ").append(toIndentedString(_enum)).append("\n");
+    sb.append("    exclusiveMinimum: ").append(toIndentedString(exclusiveMinimum)).append("\n");
+    sb.append("    exclusiveMaximum: ").append(toIndentedString(exclusiveMaximum)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    formatMaximum: ").append(toIndentedString(formatMaximum)).append("\n");
+    sb.append("    formatMinimum: ").append(toIndentedString(formatMinimum)).append("\n");
+    sb.append("    formatExclusiveMaximum: ").append(toIndentedString(formatExclusiveMaximum)).append("\n");
+    sb.append("    formatExclusiveMinimum: ").append(toIndentedString(formatExclusiveMinimum)).append("\n");
+    sb.append("    minLength: ").append(toIndentedString(minLength)).append("\n");
+    sb.append("    maxLength: ").append(toIndentedString(maxLength)).append("\n");
+    sb.append("    minimum: ").append(toIndentedString(minimum)).append("\n");
+    sb.append("    maximum: ").append(toIndentedString(maximum)).append("\n");
+    sb.append("    not: ").append(toIndentedString(not)).append("\n");
+    sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
+    sb.append("    contains: ").append(toIndentedString(contains)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
+    }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `_const` to the URL query string
+    if (getConst() != null) {
+      joiner.add(getConst().toUrlQueryString(prefix + "_const" + suffix));
+    }
+
+    // add `_enum` to the URL query string
+    if (getEnum() != null) {
+      for (int i = 0; i < getEnum().size(); i++) {
+        if (getEnum().get(i) != null) {
+          joiner.add(getEnum().get(i).toUrlQueryString(String.format("%s_enum%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
+      }
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public FilterItems() {
-        super("oneOf", Boolean.FALSE);
+    // add `exclusiveMinimum` to the URL query string
+    if (getExclusiveMinimum() != null) {
+      joiner.add(getExclusiveMinimum().toUrlQueryString(prefix + "exclusiveMinimum" + suffix));
     }
 
-    public FilterItems(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+    // add `exclusiveMaximum` to the URL query string
+    if (getExclusiveMaximum() != null) {
+      joiner.add(getExclusiveMaximum().toUrlQueryString(prefix + "exclusiveMaximum" + suffix));
     }
 
-    static {
-        schemas.put("Filter", Filter.class);
-        schemas.put("List<Filter>", List.class);
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      try {
+        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return FilterItems.schemas;
+    // add `formatMaximum` to the URL query string
+    if (getFormatMaximum() != null) {
+      try {
+        joiner.add(String.format("%sformatMaximum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatMaximum()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * Filter, List<Filter>
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof Filter) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof List<?>) {
-            List<?> list = (List<?>) instance;
-            if (list.get(0) instanceof Filter) {
-                super.setActualInstance(instance);
-                return;
-            }
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be Filter, List<Filter>");
+    // add `formatMinimum` to the URL query string
+    if (getFormatMinimum() != null) {
+      try {
+        joiner.add(String.format("%sformatMinimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatMinimum()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * Filter, List<Filter>
-     *
-     * @return The actual instance (Filter, List<Filter>)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    // add `formatExclusiveMaximum` to the URL query string
+    if (getFormatExclusiveMaximum() != null) {
+      try {
+        joiner.add(String.format("%sformatExclusiveMaximum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatExclusiveMaximum()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Get the actual instance of `Filter`. If the actual instance is not `Filter`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `Filter`
-     * @throws ClassCastException if the instance is not `Filter`
-     */
-    public Filter getFilter() throws ClassCastException {
-        return (Filter)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `List<Filter>`. If the actual instance is not `List<Filter>`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `List<Filter>`
-     * @throws ClassCastException if the instance is not `List<Filter>`
-     */
-    public List<Filter> getListFilter() throws ClassCastException {
-        return (List<Filter>)super.getActualInstance();
+    // add `formatExclusiveMinimum` to the URL query string
+    if (getFormatExclusiveMinimum() != null) {
+      try {
+        joiner.add(String.format("%sformatExclusiveMinimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatExclusiveMinimum()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to FilterItems
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with Filter
-        try {
-            Filter.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Filter failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with List<Filter>
-        try {
-            if (!jsonElement.isJsonArray()) {
-                throw new IllegalArgumentException(String.format("Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
-            }
-            JsonArray array = jsonElement.getAsJsonArray();
-            // validate array items
-            for(JsonElement element : array) {
-                Filter.validateJsonElement(element);
-            }
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for List<Filter> failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for FilterItems with oneOf schemas: Filter, List<Filter>. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+    // add `minLength` to the URL query string
+    if (getMinLength() != null) {
+      try {
+        joiner.add(String.format("%sminLength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMinLength()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Create an instance of FilterItems given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of FilterItems
-     * @throws IOException if the JSON string is invalid with respect to FilterItems
-     */
-    public static FilterItems fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, FilterItems.class);
+    // add `maxLength` to the URL query string
+    if (getMaxLength() != null) {
+      try {
+        joiner.add(String.format("%smaxLength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMaxLength()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of FilterItems to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
+    // add `minimum` to the URL query string
+    if (getMinimum() != null) {
+      joiner.add(getMinimum().toUrlQueryString(prefix + "minimum" + suffix));
     }
+
+    // add `maximum` to the URL query string
+    if (getMaximum() != null) {
+      joiner.add(getMaximum().toUrlQueryString(prefix + "maximum" + suffix));
+    }
+
+    // add `not` to the URL query string
+    if (getNot() != null) {
+      try {
+        joiner.add(String.format("%snot%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNot()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `pattern` to the URL query string
+    if (getPattern() != null) {
+      try {
+        joiner.add(String.format("%spattern%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPattern()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `contains` to the URL query string
+    if (getContains() != null) {
+      joiner.add(getContains().toUrlQueryString(prefix + "contains" + suffix));
+    }
+
+    // add `items` to the URL query string
+    if (getItems() != null) {
+      joiner.add(getItems().toUrlQueryString(prefix + "items" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      try {
+        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
+  }
+
 }
 

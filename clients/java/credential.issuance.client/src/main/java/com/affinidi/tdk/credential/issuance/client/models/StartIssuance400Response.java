@@ -14,6 +14,7 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenErrorDetailsInner;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialIssuanceIdExistError;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSubjectNotValidError;
@@ -21,434 +22,413 @@ import com.affinidi.tdk.credential.issuance.client.models.InvalidCredentialTypeE
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
 import com.affinidi.tdk.credential.issuance.client.models.MissingHolderDidError;
 import com.affinidi.tdk.credential.issuance.client.models.ProjectCredentialConfigNotExistError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * StartIssuance400Response
+ */
+@JsonPropertyOrder({
+  StartIssuance400Response.JSON_PROPERTY_NAME,
+  StartIssuance400Response.JSON_PROPERTY_MESSAGE,
+  StartIssuance400Response.JSON_PROPERTY_HTTP_STATUS_CODE,
+  StartIssuance400Response.JSON_PROPERTY_TRACE_ID,
+  StartIssuance400Response.JSON_PROPERTY_DETAILS
+})
+@JsonTypeName("startIssuance_400_response")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class StartIssuance400Response {
+  /**
+   * Gets or Sets name
+   */
+  public enum NameEnum {
+    MISSING_HOLDER_DID_ERROR("MissingHolderDidError");
 
+    private String value;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class StartIssuance400Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(StartIssuance400Response.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!StartIssuance400Response.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'StartIssuance400Response' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidParameterError> adapterInvalidParameterError = gson.getDelegateAdapter(this, TypeToken.get(InvalidParameterError.class));
-            final TypeAdapter<InvalidCredentialTypeError> adapterInvalidCredentialTypeError = gson.getDelegateAdapter(this, TypeToken.get(InvalidCredentialTypeError.class));
-            final TypeAdapter<ProjectCredentialConfigNotExistError> adapterProjectCredentialConfigNotExistError = gson.getDelegateAdapter(this, TypeToken.get(ProjectCredentialConfigNotExistError.class));
-            final TypeAdapter<CredentialSubjectNotValidError> adapterCredentialSubjectNotValidError = gson.getDelegateAdapter(this, TypeToken.get(CredentialSubjectNotValidError.class));
-            final TypeAdapter<CredentialIssuanceIdExistError> adapterCredentialIssuanceIdExistError = gson.getDelegateAdapter(this, TypeToken.get(CredentialIssuanceIdExistError.class));
-            final TypeAdapter<MissingHolderDidError> adapterMissingHolderDidError = gson.getDelegateAdapter(this, TypeToken.get(MissingHolderDidError.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<StartIssuance400Response>() {
-                @Override
-                public void write(JsonWriter out, StartIssuance400Response value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `InvalidParameterError`
-                    if (value.getActualInstance() instanceof InvalidParameterError) {
-                        JsonElement element = adapterInvalidParameterError.toJsonTree((InvalidParameterError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `InvalidCredentialTypeError`
-                    if (value.getActualInstance() instanceof InvalidCredentialTypeError) {
-                        JsonElement element = adapterInvalidCredentialTypeError.toJsonTree((InvalidCredentialTypeError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `ProjectCredentialConfigNotExistError`
-                    if (value.getActualInstance() instanceof ProjectCredentialConfigNotExistError) {
-                        JsonElement element = adapterProjectCredentialConfigNotExistError.toJsonTree((ProjectCredentialConfigNotExistError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `CredentialSubjectNotValidError`
-                    if (value.getActualInstance() instanceof CredentialSubjectNotValidError) {
-                        JsonElement element = adapterCredentialSubjectNotValidError.toJsonTree((CredentialSubjectNotValidError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `CredentialIssuanceIdExistError`
-                    if (value.getActualInstance() instanceof CredentialIssuanceIdExistError) {
-                        JsonElement element = adapterCredentialIssuanceIdExistError.toJsonTree((CredentialIssuanceIdExistError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `MissingHolderDidError`
-                    if (value.getActualInstance() instanceof MissingHolderDidError) {
-                        JsonElement element = adapterMissingHolderDidError.toJsonTree((MissingHolderDidError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError");
-                }
-
-                @Override
-                public StartIssuance400Response read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize InvalidParameterError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidParameterError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidParameterError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidParameterError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidParameterError'", e);
-                    }
-                    // deserialize InvalidCredentialTypeError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidCredentialTypeError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidCredentialTypeError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidCredentialTypeError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidCredentialTypeError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidCredentialTypeError'", e);
-                    }
-                    // deserialize ProjectCredentialConfigNotExistError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        ProjectCredentialConfigNotExistError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterProjectCredentialConfigNotExistError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'ProjectCredentialConfigNotExistError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProjectCredentialConfigNotExistError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'ProjectCredentialConfigNotExistError'", e);
-                    }
-                    // deserialize CredentialSubjectNotValidError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialSubjectNotValidError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialSubjectNotValidError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialSubjectNotValidError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialSubjectNotValidError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialSubjectNotValidError'", e);
-                    }
-                    // deserialize CredentialIssuanceIdExistError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialIssuanceIdExistError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialIssuanceIdExistError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialIssuanceIdExistError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialIssuanceIdExistError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialIssuanceIdExistError'", e);
-                    }
-                    // deserialize MissingHolderDidError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        MissingHolderDidError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterMissingHolderDidError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'MissingHolderDidError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MissingHolderDidError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'MissingHolderDidError'", e);
-                    }
-
-                    if (match == 1) {
-                        StartIssuance400Response ret = new StartIssuance400Response();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for StartIssuance400Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    NameEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public StartIssuance400Response() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public StartIssuance400Response(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("InvalidParameterError", InvalidParameterError.class);
-        schemas.put("InvalidCredentialTypeError", InvalidCredentialTypeError.class);
-        schemas.put("ProjectCredentialConfigNotExistError", ProjectCredentialConfigNotExistError.class);
-        schemas.put("CredentialSubjectNotValidError", CredentialSubjectNotValidError.class);
-        schemas.put("CredentialIssuanceIdExistError", CredentialIssuanceIdExistError.class);
-        schemas.put("MissingHolderDidError", MissingHolderDidError.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return StartIssuance400Response.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    @JsonCreator
+    public static NameEnum fromValue(String value) {
+      for (NameEnum b : NameEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private NameEnum name;
+
+  /**
+   * Gets or Sets message
+   */
+  public enum MessageEnum {
+    HOLDER_DID_IS_REQUIRED_IN_THIS_CLAIM_MODE("holderDID is required in this claimMode");
+
+    private String value;
+
+    MessageEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidParameterError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof InvalidCredentialTypeError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof ProjectCredentialConfigNotExistError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CredentialSubjectNotValidError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof CredentialIssuanceIdExistError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof MissingHolderDidError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError");
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError
-     *
-     * @return The actual instance (CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError)
-     */
-    @SuppressWarnings("unchecked")
+    @JsonCreator
+    public static MessageEnum fromValue(String value) {
+      for (MessageEnum b : MessageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private MessageEnum message;
+
+  /**
+   * Gets or Sets httpStatusCode
+   */
+  public enum HttpStatusCodeEnum {
+    NUMBER_400(new BigDecimal("400"));
+
+    private BigDecimal value;
+
+    HttpStatusCodeEnum(BigDecimal value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public BigDecimal getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `InvalidParameterError`. If the actual instance is not `InvalidParameterError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidParameterError`
-     * @throws ClassCastException if the instance is not `InvalidParameterError`
-     */
-    public InvalidParameterError getInvalidParameterError() throws ClassCastException {
-        return (InvalidParameterError)super.getActualInstance();
+    @JsonCreator
+    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+      for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-    /**
-     * Get the actual instance of `InvalidCredentialTypeError`. If the actual instance is not `InvalidCredentialTypeError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidCredentialTypeError`
-     * @throws ClassCastException if the instance is not `InvalidCredentialTypeError`
-     */
-    public InvalidCredentialTypeError getInvalidCredentialTypeError() throws ClassCastException {
-        return (InvalidCredentialTypeError)super.getActualInstance();
+  }
+
+  public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  private HttpStatusCodeEnum httpStatusCode;
+
+  public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  private String traceId;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private List<ActionForbiddenErrorDetailsInner> details = new ArrayList<>();
+
+  public StartIssuance400Response() {
+  }
+
+  public StartIssuance400Response name(NameEnum name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public NameEnum getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setName(NameEnum name) {
+    this.name = name;
+  }
+
+  public StartIssuance400Response message(MessageEnum message) {
+    
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public MessageEnum getMessage() {
+    return message;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMessage(MessageEnum message) {
+    this.message = message;
+  }
+
+  public StartIssuance400Response httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    
+    this.httpStatusCode = httpStatusCode;
+    return this;
+  }
+
+  /**
+   * Get httpStatusCode
+   * @return httpStatusCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public HttpStatusCodeEnum getHttpStatusCode() {
+    return httpStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    this.httpStatusCode = httpStatusCode;
+  }
+
+  public StartIssuance400Response traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+  /**
+   * Get traceId
+   * @return traceId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+  public StartIssuance400Response details(List<ActionForbiddenErrorDetailsInner> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public StartIssuance400Response addDetailsItem(ActionForbiddenErrorDetailsInner detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
     }
-    /**
-     * Get the actual instance of `ProjectCredentialConfigNotExistError`. If the actual instance is not `ProjectCredentialConfigNotExistError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProjectCredentialConfigNotExistError`
-     * @throws ClassCastException if the instance is not `ProjectCredentialConfigNotExistError`
-     */
-    public ProjectCredentialConfigNotExistError getProjectCredentialConfigNotExistError() throws ClassCastException {
-        return (ProjectCredentialConfigNotExistError)super.getActualInstance();
+    this.details.add(detailsItem);
+    return this;
+  }
+
+  /**
+   * Get details
+   * @return details
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ActionForbiddenErrorDetailsInner> getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(List<ActionForbiddenErrorDetailsInner> details) {
+    this.details = details;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-    /**
-     * Get the actual instance of `CredentialSubjectNotValidError`. If the actual instance is not `CredentialSubjectNotValidError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialSubjectNotValidError`
-     * @throws ClassCastException if the instance is not `CredentialSubjectNotValidError`
-     */
-    public CredentialSubjectNotValidError getCredentialSubjectNotValidError() throws ClassCastException {
-        return (CredentialSubjectNotValidError)super.getActualInstance();
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    /**
-     * Get the actual instance of `CredentialIssuanceIdExistError`. If the actual instance is not `CredentialIssuanceIdExistError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialIssuanceIdExistError`
-     * @throws ClassCastException if the instance is not `CredentialIssuanceIdExistError`
-     */
-    public CredentialIssuanceIdExistError getCredentialIssuanceIdExistError() throws ClassCastException {
-        return (CredentialIssuanceIdExistError)super.getActualInstance();
+    StartIssuance400Response startIssuance400Response = (StartIssuance400Response) o;
+    return Objects.equals(this.name, startIssuance400Response.name) &&
+        Objects.equals(this.message, startIssuance400Response.message) &&
+        Objects.equals(this.httpStatusCode, startIssuance400Response.httpStatusCode) &&
+        Objects.equals(this.traceId, startIssuance400Response.traceId) &&
+        Objects.equals(this.details, startIssuance400Response.details);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, message, httpStatusCode, traceId, details);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class StartIssuance400Response {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
     }
-    /**
-     * Get the actual instance of `MissingHolderDidError`. If the actual instance is not `MissingHolderDidError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `MissingHolderDidError`
-     * @throws ClassCastException if the instance is not `MissingHolderDidError`
-     */
-    public MissingHolderDidError getMissingHolderDidError() throws ClassCastException {
-        return (MissingHolderDidError)super.getActualInstance();
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to StartIssuance400Response
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidParameterError
-        try {
-            InvalidParameterError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with InvalidCredentialTypeError
-        try {
-            InvalidCredentialTypeError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidCredentialTypeError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with ProjectCredentialConfigNotExistError
-        try {
-            ProjectCredentialConfigNotExistError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProjectCredentialConfigNotExistError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with CredentialSubjectNotValidError
-        try {
-            CredentialSubjectNotValidError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialSubjectNotValidError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with CredentialIssuanceIdExistError
-        try {
-            CredentialIssuanceIdExistError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialIssuanceIdExistError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with MissingHolderDidError
-        try {
-            MissingHolderDidError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MissingHolderDidError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for StartIssuance400Response with oneOf schemas: CredentialIssuanceIdExistError, CredentialSubjectNotValidError, InvalidCredentialTypeError, InvalidParameterError, MissingHolderDidError, ProjectCredentialConfigNotExistError. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Create an instance of StartIssuance400Response given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of StartIssuance400Response
-     * @throws IOException if the JSON string is invalid with respect to StartIssuance400Response
-     */
-    public static StartIssuance400Response fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, StartIssuance400Response.class);
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      try {
+        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of StartIssuance400Response to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
+    // add `httpStatusCode` to the URL query string
+    if (getHttpStatusCode() != null) {
+      try {
+        joiner.add(String.format("%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
+
+    // add `traceId` to the URL query string
+    if (getTraceId() != null) {
+      try {
+        joiner.add(String.format("%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      for (int i = 0; i < getDetails().size(); i++) {
+        if (getDetails().get(i) != null) {
+          joiner.add(getDetails().get(i).toUrlQueryString(String.format("%sdetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+
 }
 

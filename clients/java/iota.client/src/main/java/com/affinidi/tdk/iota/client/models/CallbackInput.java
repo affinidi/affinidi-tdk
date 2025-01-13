@@ -14,70 +14,54 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CallbackInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CallbackInput.JSON_PROPERTY_STATE,
+  CallbackInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  CallbackInput.JSON_PROPERTY_VP_TOKEN,
+  CallbackInput.JSON_PROPERTY_ERROR,
+  CallbackInput.JSON_PROPERTY_ERROR_DESCRIPTION,
+  CallbackInput.JSON_PROPERTY_ONBOARDED
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CallbackInput {
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_SUBMISSION = "presentation_submission";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_SUBMISSION)
+  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
   private String presentationSubmission;
 
-  public static final String SERIALIZED_NAME_VP_TOKEN = "vp_token";
-  @SerializedName(SERIALIZED_NAME_VP_TOKEN)
+  public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
   private String vpToken;
 
-  public static final String SERIALIZED_NAME_ERROR = "error";
-  @SerializedName(SERIALIZED_NAME_ERROR)
+  public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
 
-  public static final String SERIALIZED_NAME_ERROR_DESCRIPTION = "error_description";
-  @SerializedName(SERIALIZED_NAME_ERROR_DESCRIPTION)
+  public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
   private String errorDescription;
 
-  public static final String SERIALIZED_NAME_ONBOARDED = "onboarded";
-  @SerializedName(SERIALIZED_NAME_ONBOARDED)
+  public static final String JSON_PROPERTY_ONBOARDED = "onboarded";
   private Boolean onboarded;
 
   public CallbackInput() {
   }
 
   public CallbackInput state(String state) {
+    
     this.state = state;
     return this;
   }
@@ -87,16 +71,22 @@ public class CallbackInput {
    * @return state
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getState() {
     return state;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setState(String state) {
     this.state = state;
   }
 
-
   public CallbackInput presentationSubmission(String presentationSubmission) {
+    
     this.presentationSubmission = presentationSubmission;
     return this;
   }
@@ -106,16 +96,22 @@ public class CallbackInput {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPresentationSubmission() {
     return presentationSubmission;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-
   public CallbackInput vpToken(String vpToken) {
+    
     this.vpToken = vpToken;
     return this;
   }
@@ -125,16 +121,22 @@ public class CallbackInput {
    * @return vpToken
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getVpToken() {
     return vpToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpToken(String vpToken) {
     this.vpToken = vpToken;
   }
 
-
   public CallbackInput error(String error) {
+    
     this.error = error;
     return this;
   }
@@ -144,16 +146,22 @@ public class CallbackInput {
    * @return error
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getError() {
     return error;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(String error) {
     this.error = error;
   }
 
-
   public CallbackInput errorDescription(String errorDescription) {
+    
     this.errorDescription = errorDescription;
     return this;
   }
@@ -163,16 +171,22 @@ public class CallbackInput {
    * @return errorDescription
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getErrorDescription() {
     return errorDescription;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setErrorDescription(String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-
   public CallbackInput onboarded(Boolean onboarded) {
+    
     this.onboarded = onboarded;
     return this;
   }
@@ -182,15 +196,19 @@ public class CallbackInput {
    * @return onboarded
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ONBOARDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Boolean getOnboarded() {
     return onboarded;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ONBOARDED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOnboarded(Boolean onboarded) {
     this.onboarded = onboarded;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -239,117 +257,100 @@ public class CallbackInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("state");
-    openapiFields.add("presentation_submission");
-    openapiFields.add("vp_token");
-    openapiFields.add("error");
-    openapiFields.add("error_description");
-    openapiFields.add("onboarded");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("state");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CallbackInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CallbackInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CallbackInput is not found in the empty JSON string", CallbackInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CallbackInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallbackInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CallbackInput.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      if ((jsonObj.get("presentation_submission") != null && !jsonObj.get("presentation_submission").isJsonNull()) && !jsonObj.get("presentation_submission").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `presentation_submission` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presentation_submission").toString()));
-      }
-      if ((jsonObj.get("vp_token") != null && !jsonObj.get("vp_token").isJsonNull()) && !jsonObj.get("vp_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vp_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vp_token").toString()));
-      }
-      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
-      }
-      if ((jsonObj.get("error_description") != null && !jsonObj.get("error_description").isJsonNull()) && !jsonObj.get("error_description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_description").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CallbackInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CallbackInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CallbackInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CallbackInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CallbackInput>() {
-           @Override
-           public void write(JsonWriter out, CallbackInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CallbackInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `state` to the URL query string
+    if (getState() != null) {
+      try {
+        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentation_submission` to the URL query string
+    if (getPresentationSubmission() != null) {
+      try {
+        joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `vp_token` to the URL query string
+    if (getVpToken() != null) {
+      try {
+        joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      try {
+        joiner.add(String.format("%serror%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error_description` to the URL query string
+    if (getErrorDescription() != null) {
+      try {
+        joiner.add(String.format("%serror_description%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `onboarded` to the URL query string
+    if (getOnboarded() != null) {
+      try {
+        joiner.add(String.format("%sonboarded%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOnboarded()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CallbackInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CallbackInput
-   * @throws IOException if the JSON string is invalid with respect to CallbackInput
-   */
-  public static CallbackInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CallbackInput.class);
-  }
-
-  /**
-   * Convert an instance of CallbackInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

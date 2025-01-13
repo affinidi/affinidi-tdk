@@ -13,20 +13,24 @@
 
 package com.affinidi.tdk.iam.client.auth;
 
-import com.affinidi.tdk.iam.client.ApiException;
 import com.affinidi.tdk.iam.client.Pair;
 
-import java.net.URI;
 import java.util.Map;
 import java.util.List;
+import java.util.function.Supplier;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;
 
   private String apiKey;
   private String apiKeyPrefix;
+  private Supplier<String> apiKeySupplier;
+
+  public void setApiKeySupplier(Supplier<String> apiKeySupplier) {
+    this.apiKeySupplier = apiKeySupplier;
+  }
 
   public ApiKeyAuth(String location, String paramName) {
     this.location = location;
@@ -58,11 +62,15 @@ public class ApiKeyAuth implements Authentication {
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-                           String payload, String method, URI uri) throws ApiException {
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    if (apiKeySupplier != null) {
+      apiKey = apiKeySupplier.get();
+    }
+
     if (apiKey == null) {
       return;
     }
+
     String value;
     if (apiKeyPrefix != null) {
       value = apiKeyPrefix + " " + apiKey;

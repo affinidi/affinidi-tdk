@@ -14,68 +14,53 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * FetchIOTAVPResponseOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class FetchIOTAVPResponseOK {
-  public static final String SERIALIZED_NAME_CORRELATION_ID = "correlationId";
-  @SerializedName(SERIALIZED_NAME_CORRELATION_ID)
+@JsonPropertyOrder({
+  FetchIOTAVPResponseOK.JSON_PROPERTY_CORRELATION_ID,
+  FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN,
+  FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
+  public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   private String correlationId;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_SUBMISSION = "presentation_submission";
-  @Deprecated
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_SUBMISSION)
+  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
   private String presentationSubmission;
 
-  public static final String SERIALIZED_NAME_VP_TOKEN = "vp_token";
-  @Deprecated
-  @SerializedName(SERIALIZED_NAME_VP_TOKEN)
+  public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
   private String vpToken;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_SUBMISSION = "presentationSubmission";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_SUBMISSION)
+  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
   private String presentationSubmission;
 
-  public static final String SERIALIZED_NAME_VP_TOKEN = "vpToken";
-  @SerializedName(SERIALIZED_NAME_VP_TOKEN)
+  public static final String JSON_PROPERTY_VP_TOKEN = "vpToken";
   private String vpToken;
 
   public FetchIOTAVPResponseOK() {
+
   }
 
   public FetchIOTAVPResponseOK correlationId(String correlationId) {
+    
     this.correlationId = correlationId;
     return this;
   }
@@ -85,17 +70,22 @@ public class FetchIOTAVPResponseOK {
    * @return correlationId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCorrelationId() {
     return correlationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCorrelationId(String correlationId) {
     this.correlationId = correlationId;
   }
 
-
-  @Deprecated
   public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
+    
     this.presentationSubmission = presentationSubmission;
     return this;
   }
@@ -107,18 +97,22 @@ public class FetchIOTAVPResponseOK {
    */
   @Deprecated
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPresentationSubmission() {
     return presentationSubmission;
   }
 
-  @Deprecated
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-
-  @Deprecated
   public FetchIOTAVPResponseOK vpToken(String vpToken) {
+    
     this.vpToken = vpToken;
     return this;
   }
@@ -130,17 +124,22 @@ public class FetchIOTAVPResponseOK {
    */
   @Deprecated
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getVpToken() {
     return vpToken;
   }
 
-  @Deprecated
+
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpToken(String vpToken) {
     this.vpToken = vpToken;
   }
 
-
   public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
+    
     this.presentationSubmission = presentationSubmission;
     return this;
   }
@@ -150,16 +149,22 @@ public class FetchIOTAVPResponseOK {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPresentationSubmission() {
     return presentationSubmission;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-
   public FetchIOTAVPResponseOK vpToken(String vpToken) {
+    
     this.vpToken = vpToken;
     return this;
   }
@@ -169,59 +174,19 @@ public class FetchIOTAVPResponseOK {
    * @return vpToken
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getVpToken() {
     return vpToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpToken(String vpToken) {
     this.vpToken = vpToken;
   }
-
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the FetchIOTAVPResponseOK instance itself
-   */
-  public FetchIOTAVPResponseOK putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -236,25 +201,25 @@ public class FetchIOTAVPResponseOK {
         Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
         Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
         Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
-        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken)&&
-        Objects.equals(this.additionalProperties, fetchIOTAVPResponseOK.additionalProperties);
+        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(correlationId, presentationSubmission, vpToken, presentationSubmission, vpToken, additionalProperties);
+    return Objects.hash(correlationId, presentationSubmission, vpToken, presentationSubmission, vpToken, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FetchIOTAVPResponseOK {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,143 +235,90 @@ public class FetchIOTAVPResponseOK {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("correlationId");
-    openapiFields.add("presentation_submission");
-    openapiFields.add("vp_token");
-    openapiFields.add("presentationSubmission");
-    openapiFields.add("vpToken");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to FetchIOTAVPResponseOK
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FetchIOTAVPResponseOK.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FetchIOTAVPResponseOK is not found in the empty JSON string", FetchIOTAVPResponseOK.openapiRequiredFields.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("correlationId") != null && !jsonObj.get("correlationId").isJsonNull()) && !jsonObj.get("correlationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `correlationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("correlationId").toString()));
-      }
-      if ((jsonObj.get("presentation_submission") != null && !jsonObj.get("presentation_submission").isJsonNull()) && !jsonObj.get("presentation_submission").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `presentation_submission` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presentation_submission").toString()));
-      }
-      if ((jsonObj.get("vp_token") != null && !jsonObj.get("vp_token").isJsonNull()) && !jsonObj.get("vp_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vp_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vp_token").toString()));
-      }
-      if ((jsonObj.get("presentationSubmission") != null && !jsonObj.get("presentationSubmission").isJsonNull()) && !jsonObj.get("presentationSubmission").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `presentationSubmission` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presentationSubmission").toString()));
-      }
-      if ((jsonObj.get("vpToken") != null && !jsonObj.get("vpToken").isJsonNull()) && !jsonObj.get("vpToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `vpToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vpToken").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FetchIOTAVPResponseOK.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FetchIOTAVPResponseOK' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FetchIOTAVPResponseOK> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FetchIOTAVPResponseOK.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FetchIOTAVPResponseOK>() {
-           @Override
-           public void write(JsonWriter out, FetchIOTAVPResponseOK value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
-                 }
-               }
-             }
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FetchIOTAVPResponseOK read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
-             // store additional fields in the deserialized instance
-             FetchIOTAVPResponseOK instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `correlationId` to the URL query string
+    if (getCorrelationId() != null) {
+      try {
+        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentation_submission` to the URL query string
+    if (getPresentationSubmission() != null) {
+      try {
+        joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `vp_token` to the URL query string
+    if (getVpToken() != null) {
+      try {
+        joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentationSubmission` to the URL query string
+    if (getPresentationSubmission() != null) {
+      try {
+        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `vpToken` to the URL query string
+    if (getVpToken() != null) {
+      try {
+        joiner.add(String.format("%svpToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of FetchIOTAVPResponseOK given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of FetchIOTAVPResponseOK
-   * @throws IOException if the JSON string is invalid with respect to FetchIOTAVPResponseOK
-   */
-  public static FetchIOTAVPResponseOK fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FetchIOTAVPResponseOK.class);
-  }
-
-  /**
-   * Convert an instance of FetchIOTAVPResponseOK to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

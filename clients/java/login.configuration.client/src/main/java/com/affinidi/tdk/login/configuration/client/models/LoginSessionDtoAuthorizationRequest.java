@@ -14,66 +14,51 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * LoginSessionDtoAuthorizationRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_STATE,
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_PRESENTATION_DEFINITION,
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_ARI,
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_CLIENT_ID,
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE
+})
+@JsonTypeName("LoginSessionDto_authorizationRequest")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginSessionDtoAuthorizationRequest {
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
+  public static final String JSON_PROPERTY_STATE = "state";
   private String state;
 
-  public static final String SERIALIZED_NAME_PRESENTATION_DEFINITION = "presentationDefinition";
-  @SerializedName(SERIALIZED_NAME_PRESENTATION_DEFINITION)
+  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   private String presentationDefinition;
 
-  public static final String SERIALIZED_NAME_ARI = "ari";
-  @SerializedName(SERIALIZED_NAME_ARI)
+  public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
-  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
   private String clientId;
 
-  public static final String SERIALIZED_NAME_NONCE = "nonce";
-  @SerializedName(SERIALIZED_NAME_NONCE)
+  public static final String JSON_PROPERTY_NONCE = "nonce";
   private String nonce;
 
   public LoginSessionDtoAuthorizationRequest() {
   }
 
   public LoginSessionDtoAuthorizationRequest state(String state) {
+    
     this.state = state;
     return this;
   }
@@ -83,16 +68,22 @@ public class LoginSessionDtoAuthorizationRequest {
    * @return state
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getState() {
     return state;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setState(String state) {
     this.state = state;
   }
 
-
   public LoginSessionDtoAuthorizationRequest presentationDefinition(String presentationDefinition) {
+    
     this.presentationDefinition = presentationDefinition;
     return this;
   }
@@ -102,16 +93,22 @@ public class LoginSessionDtoAuthorizationRequest {
    * @return presentationDefinition
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getPresentationDefinition() {
     return presentationDefinition;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPresentationDefinition(String presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-
   public LoginSessionDtoAuthorizationRequest ari(String ari) {
+    
     this.ari = ari;
     return this;
   }
@@ -121,16 +118,22 @@ public class LoginSessionDtoAuthorizationRequest {
    * @return ari
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getAri() {
     return ari;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAri(String ari) {
     this.ari = ari;
   }
 
-
   public LoginSessionDtoAuthorizationRequest clientId(String clientId) {
+    
     this.clientId = clientId;
     return this;
   }
@@ -140,16 +143,22 @@ public class LoginSessionDtoAuthorizationRequest {
    * @return clientId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getClientId() {
     return clientId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientId(String clientId) {
     this.clientId = clientId;
   }
 
-
   public LoginSessionDtoAuthorizationRequest nonce(String nonce) {
+    
     this.nonce = nonce;
     return this;
   }
@@ -159,15 +168,19 @@ public class LoginSessionDtoAuthorizationRequest {
    * @return nonce
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getNonce() {
     return nonce;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNonce(String nonce) {
     this.nonce = nonce;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -214,117 +227,90 @@ public class LoginSessionDtoAuthorizationRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("state");
-    openapiFields.add("presentationDefinition");
-    openapiFields.add("ari");
-    openapiFields.add("clientId");
-    openapiFields.add("nonce");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("state");
-    openapiRequiredFields.add("presentationDefinition");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LoginSessionDtoAuthorizationRequest
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!LoginSessionDtoAuthorizationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoginSessionDtoAuthorizationRequest is not found in the empty JSON string", LoginSessionDtoAuthorizationRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LoginSessionDtoAuthorizationRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoginSessionDtoAuthorizationRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoginSessionDtoAuthorizationRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("state").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
-      }
-      if (!jsonObj.get("presentationDefinition").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `presentationDefinition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presentationDefinition").toString()));
-      }
-      if ((jsonObj.get("ari") != null && !jsonObj.get("ari").isJsonNull()) && !jsonObj.get("ari").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ari` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ari").toString()));
-      }
-      if ((jsonObj.get("clientId") != null && !jsonObj.get("clientId").isJsonNull()) && !jsonObj.get("clientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
-      }
-      if ((jsonObj.get("nonce") != null && !jsonObj.get("nonce").isJsonNull()) && !jsonObj.get("nonce").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nonce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nonce").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoginSessionDtoAuthorizationRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoginSessionDtoAuthorizationRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoginSessionDtoAuthorizationRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoginSessionDtoAuthorizationRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<LoginSessionDtoAuthorizationRequest>() {
-           @Override
-           public void write(JsonWriter out, LoginSessionDtoAuthorizationRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public LoginSessionDtoAuthorizationRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `state` to the URL query string
+    if (getState() != null) {
+      try {
+        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `presentationDefinition` to the URL query string
+    if (getPresentationDefinition() != null) {
+      try {
+        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `ari` to the URL query string
+    if (getAri() != null) {
+      try {
+        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `clientId` to the URL query string
+    if (getClientId() != null) {
+      try {
+        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `nonce` to the URL query string
+    if (getNonce() != null) {
+      try {
+        joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of LoginSessionDtoAuthorizationRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of LoginSessionDtoAuthorizationRequest
-   * @throws IOException if the JSON string is invalid with respect to LoginSessionDtoAuthorizationRequest
-   */
-  public static LoginSessionDtoAuthorizationRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoginSessionDtoAuthorizationRequest.class);
-  }
-
-  /**
-   * Convert an instance of LoginSessionDtoAuthorizationRequest to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

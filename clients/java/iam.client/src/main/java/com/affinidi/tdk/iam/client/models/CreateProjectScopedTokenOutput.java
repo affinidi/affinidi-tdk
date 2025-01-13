@@ -14,58 +14,42 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CreateProjectScopedTokenOutput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:45.406501982Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CreateProjectScopedTokenOutput.JSON_PROPERTY_ACCESS_TOKEN,
+  CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN,
+  CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateProjectScopedTokenOutput {
-  public static final String SERIALIZED_NAME_ACCESS_TOKEN = "accessToken";
-  @SerializedName(SERIALIZED_NAME_ACCESS_TOKEN)
+  public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
   private String accessToken;
 
-  public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
+  public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
   private Integer expiresIn;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
+  public static final String JSON_PROPERTY_SCOPE = "scope";
   private String scope;
 
   public CreateProjectScopedTokenOutput() {
   }
 
   public CreateProjectScopedTokenOutput accessToken(String accessToken) {
+    
     this.accessToken = accessToken;
     return this;
   }
@@ -75,16 +59,22 @@ public class CreateProjectScopedTokenOutput {
    * @return accessToken
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAccessToken() {
     return accessToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccessToken(String accessToken) {
     this.accessToken = accessToken;
   }
 
-
   public CreateProjectScopedTokenOutput expiresIn(Integer expiresIn) {
+    
     this.expiresIn = expiresIn;
     return this;
   }
@@ -94,16 +84,22 @@ public class CreateProjectScopedTokenOutput {
    * @return expiresIn
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Integer getExpiresIn() {
     return expiresIn;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresIn(Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
-
   public CreateProjectScopedTokenOutput scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -113,15 +109,19 @@ public class CreateProjectScopedTokenOutput {
    * @return scope
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getScope() {
     return scope;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScope(String scope) {
     this.scope = scope;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,107 +164,70 @@ public class CreateProjectScopedTokenOutput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("accessToken");
-    openapiFields.add("expiresIn");
-    openapiFields.add("scope");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("accessToken");
-    openapiRequiredFields.add("expiresIn");
-    openapiRequiredFields.add("scope");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateProjectScopedTokenOutput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CreateProjectScopedTokenOutput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateProjectScopedTokenOutput is not found in the empty JSON string", CreateProjectScopedTokenOutput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CreateProjectScopedTokenOutput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateProjectScopedTokenOutput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateProjectScopedTokenOutput.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("accessToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accessToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accessToken").toString()));
-      }
-      if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateProjectScopedTokenOutput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateProjectScopedTokenOutput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateProjectScopedTokenOutput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateProjectScopedTokenOutput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateProjectScopedTokenOutput>() {
-           @Override
-           public void write(JsonWriter out, CreateProjectScopedTokenOutput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateProjectScopedTokenOutput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `accessToken` to the URL query string
+    if (getAccessToken() != null) {
+      try {
+        joiner.add(String.format("%saccessToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expiresIn` to the URL query string
+    if (getExpiresIn() != null) {
+      try {
+        joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `scope` to the URL query string
+    if (getScope() != null) {
+      try {
+        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CreateProjectScopedTokenOutput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CreateProjectScopedTokenOutput
-   * @throws IOException if the JSON string is invalid with respect to CreateProjectScopedTokenOutput
-   */
-  public static CreateProjectScopedTokenOutput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateProjectScopedTokenOutput.class);
-  }
-
-  /**
-   * Convert an instance of CreateProjectScopedTokenOutput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

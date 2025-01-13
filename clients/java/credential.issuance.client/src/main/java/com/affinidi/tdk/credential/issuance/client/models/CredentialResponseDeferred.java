@@ -14,59 +14,43 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CredentialResponseDeferred
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CredentialResponseDeferred.JSON_PROPERTY_TRANSACTION_ID,
+  CredentialResponseDeferred.JSON_PROPERTY_C_NONCE,
+  CredentialResponseDeferred.JSON_PROPERTY_C_NONCE_EXPIRES_IN
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialResponseDeferred {
-  public static final String SERIALIZED_NAME_TRANSACTION_ID = "transaction_id";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+  public static final String JSON_PROPERTY_TRANSACTION_ID = "transaction_id";
   private String transactionId;
 
-  public static final String SERIALIZED_NAME_C_NONCE = "c_nonce";
-  @SerializedName(SERIALIZED_NAME_C_NONCE)
+  public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
   private String cNonce;
 
-  public static final String SERIALIZED_NAME_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
-  @SerializedName(SERIALIZED_NAME_C_NONCE_EXPIRES_IN)
+  public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
   private BigDecimal cNonceExpiresIn;
 
   public CredentialResponseDeferred() {
   }
 
   public CredentialResponseDeferred transactionId(String transactionId) {
+    
     this.transactionId = transactionId;
     return this;
   }
@@ -76,16 +60,22 @@ public class CredentialResponseDeferred {
    * @return transactionId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getTransactionId() {
     return transactionId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransactionId(String transactionId) {
     this.transactionId = transactionId;
   }
 
-
   public CredentialResponseDeferred cNonce(String cNonce) {
+    
     this.cNonce = cNonce;
     return this;
   }
@@ -95,16 +85,22 @@ public class CredentialResponseDeferred {
    * @return cNonce
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getcNonce() {
     return cNonce;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonce(String cNonce) {
     this.cNonce = cNonce;
   }
 
-
   public CredentialResponseDeferred cNonceExpiresIn(BigDecimal cNonceExpiresIn) {
+    
     this.cNonceExpiresIn = cNonceExpiresIn;
     return this;
   }
@@ -114,15 +110,19 @@ public class CredentialResponseDeferred {
    * @return cNonceExpiresIn
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public BigDecimal getcNonceExpiresIn() {
     return cNonceExpiresIn;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonceExpiresIn(BigDecimal cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -165,107 +165,70 @@ public class CredentialResponseDeferred {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("transaction_id");
-    openapiFields.add("c_nonce");
-    openapiFields.add("c_nonce_expires_in");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("transaction_id");
-    openapiRequiredFields.add("c_nonce");
-    openapiRequiredFields.add("c_nonce_expires_in");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CredentialResponseDeferred
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CredentialResponseDeferred.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CredentialResponseDeferred is not found in the empty JSON string", CredentialResponseDeferred.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CredentialResponseDeferred.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CredentialResponseDeferred` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CredentialResponseDeferred.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("transaction_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transaction_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transaction_id").toString()));
-      }
-      if (!jsonObj.get("c_nonce").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `c_nonce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("c_nonce").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CredentialResponseDeferred.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CredentialResponseDeferred' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CredentialResponseDeferred> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CredentialResponseDeferred.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CredentialResponseDeferred>() {
-           @Override
-           public void write(JsonWriter out, CredentialResponseDeferred value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CredentialResponseDeferred read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `transaction_id` to the URL query string
+    if (getTransactionId() != null) {
+      try {
+        joiner.add(String.format("%stransaction_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `c_nonce` to the URL query string
+    if (getcNonce() != null) {
+      try {
+        joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `c_nonce_expires_in` to the URL query string
+    if (getcNonceExpiresIn() != null) {
+      try {
+        joiner.add(String.format("%sc_nonce_expires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CredentialResponseDeferred given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CredentialResponseDeferred
-   * @throws IOException if the JSON string is invalid with respect to CredentialResponseDeferred
-   */
-  public static CredentialResponseDeferred fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CredentialResponseDeferred.class);
-  }
-
-  /**
-   * Convert an instance of CredentialResponseDeferred to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 
