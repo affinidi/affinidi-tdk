@@ -1,15 +1,13 @@
 import 'package:affinidi_common/affinidi_common.dart';
+import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
 import 'package:basic_token_provider/basic_token_provider.dart';
 
 class ConsumerAuthProvider {
   ConsumerAuthProvider();
 
-  // TODO: delete ConsumerTokenProvider and use AffinidiSDK
-  ConsumerTokenProvider tokenProvider = ConsumerTokenProvider();
-
   Future<String> fetchConsumerToken({
-    required String encryptedSeed,
-    required String encryptionKey,
+    required List<int> encryptedSeed,
+    required List<int> encryptionKey,
   }) async {
     try {
       final aud = Environment.fetchConsumerAudienceUrl();
@@ -35,10 +33,21 @@ class ConsumerAuthProvider {
       return token;
     */
 
-      // decrypt encryptedSeed using encryptionKey to get walletSeed, use AES256 symmetric encryption
+      /* DEMO purpose only */
 
-      // DEMO purpose only
-      final token = await tokenProvider.getToken('walletSeed');
+      // decrypt encryptedSeed using encryptionKey to get walletSeed, use AES256 symmetric encryption
+      final cryptographyService = CryptographyService();
+      final seedBytes = await cryptographyService.Aes256Decrypt(
+        key: encryptionKey,
+        encryptedData: encryptedSeed,
+      );
+      if (seedBytes == null) {
+        throw Exception('Failed to decrypt seed');
+      }
+
+      // TODO: delete ConsumerTokenProvider and use AffinidiSDK
+      ConsumerTokenProvider tokenProvider = ConsumerTokenProvider();
+      final token = await tokenProvider.getToken(seedBytes);
       return token;
     } catch (e) {
       print('Failed to fetch consumer token: $e');

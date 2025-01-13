@@ -14,10 +14,25 @@ packages:
     description: dart
     source: sdk
     version: "0.3.3"
+  adaptive_number:
+    dependency: transitive
+    description:
+      name: adaptive_number
+      sha256: "3a567544e9b5c9c803006f51140ad544aedc79604fd4f3f2c1380003f97c1d77"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   affinidi_common:
     dependency: "direct main"
     description:
       path: "../affinidi_common"
+      relative: true
+    source: path
+    version: "1.0.0"
+  affinidi_cryptography_service:
+    dependency: "direct main"
+    description:
+      path: "../affinidi_cryptography_service"
       relative: true
     source: path
     version: "1.0.0"
@@ -53,6 +68,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  base_x:
+    dependency: transitive
+    description:
+      name: base_x
+      sha256: "519abcdafd637d4b6bd7e72fabd8f9264935f804b9b9f6c5d8411c7d52cbf8fd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   basic_token_provider:
     dependency: "direct main"
     description:
@@ -68,14 +91,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  bip39_mnemonic:
-    dependency: transitive
-    description:
-      name: bip39_mnemonic
-      sha256: "24855a62fb9dd930f697063a274e084b0a574e1cc55ec270ca4756f579ab512c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.6"
   boolean_selector:
     dependency: transitive
     description:
@@ -84,6 +99,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  bs58:
+    dependency: transitive
+    description:
+      name: bs58
+      sha256: "3ed24dadf386ca749ff50af678be1131ef569a3583a6f37b87b90c032270c767"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   bs58check:
     dependency: transitive
     description:
@@ -92,14 +115,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  characters:
+    dependency: transitive
+    description:
+      name: characters
+      sha256: "04a925763edad70e8443c99234dc3328f442e811f1d8fd1a72f1c8ad0f69a605"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      sha256: fddb70d9b5277016c77a80201021d40a2247104d9f4aa7bab7157b7e3f05b84b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
   collection:
     dependency: transitive
     description:
       name: collection
-      sha256: "2f5709ae4d3d59dd8f7cd309b4e023046b57d8a6c82130785d2b0e5868084e76"
+      sha256: a1ace0a119f20aabc852d165077c036cd864315bd99b7eaa10a60100341941bf
       url: "https://pub.dev"
     source: hosted
-    version: "1.19.1"
+    version: "1.19.0"
   convert:
     dependency: transitive
     description:
@@ -124,6 +163,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  cryptography:
+    dependency: transitive
+    description:
+      name: cryptography
+      sha256: d146b76d33d94548cf035233fbc2f4338c1242fa119013bead807d033fc4ae05
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
+  cryptography_flutter:
+    dependency: transitive
+    description:
+      name: cryptography_flutter
+      sha256: a7fc3f0de42fb0947cbf213257aa3a69c89df561d104723ede8050658621f292
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  dart_jsonwebtoken:
+    dependency: transitive
+    description:
+      name: dart_jsonwebtoken
+      sha256: "866787dc17afaef46a9ea7dd33eefe60c6d82084b4a36d70e8e788d091cd04ef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.14.2"
   dio:
     dependency: transitive
     description:
@@ -140,6 +203,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  ed25519_edwards:
+    dependency: transitive
+    description:
+      name: ed25519_edwards
+      sha256: "6ce0112d131327ec6d42beede1e5dfd526069b18ad45dcf654f15074ad9276cd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1"
   eip1559:
     dependency: transitive
     description:
@@ -156,6 +227,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
+      sha256: "16ed7b077ef01ad6170a3d0c57caa4a112a38d7a2ed5602e0aca9ca6f3d98da6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.3"
   file:
     dependency: transitive
     description:
@@ -172,6 +251,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  flutter:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -232,10 +316,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.6.7"
   json_rpc_2:
     dependency: transitive
     description:
@@ -244,6 +328,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  jwt_decoder:
+    dependency: transitive
+    description:
+      name: jwt_decoder
+      sha256: "54774aebf83f2923b99e6416b4ea915d47af3bde56884eb622de85feabbc559f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   lints:
     dependency: "direct dev"
     description:
@@ -276,14 +368,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.12.17"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.11.1"
   meta:
     dependency: transitive
     description:
       name: meta
-      sha256: e3641ec5d63ebf0d9b41bd43201a66e3fc79a65db5f61fc181f04cd27aab950c
+      sha256: bdb68674043280c3428e9ec998512fb681678676b3c54e773629ffe74419f8c7
       url: "https://pub.dev"
     source: hosted
-    version: "1.16.0"
+    version: "1.15.0"
   mime:
     dependency: transitive
     description:
@@ -348,14 +448,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
-  pure_dart_ui:
-    dependency: transitive
-    description:
-      name: pure_dart_ui
-      sha256: "0591dc1774a3f9e1d1ea2685a527d027707877717b47639127dd95b253594771"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.10"
   sec:
     dependency: transitive
     description:
@@ -364,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  secp256k1:
+    dependency: transitive
+    description:
+      name: secp256k1
+      sha256: "66310c1fce68d0c3cfae61f9f23aba11f459fb8c84a50bdc6520548c62a4828a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   shelf:
     dependency: transitive
     description:
@@ -396,6 +496,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  sky_engine:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -500,14 +605,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  unorm_dart:
-    dependency: transitive
-    description:
-      name: unorm_dart
-      sha256: "5b35bff83fce4d76467641438f9e867dc9bcfdb8c1694854f230579d68cd8f4b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.0"
   uuid:
     dependency: transitive
     description:
@@ -516,6 +613,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+  vector_math:
+    dependency: transitive
+    description:
+      name: vector_math
+      sha256: "80b3257d1492ce4d091729e3a67a60407d227c27241d6927be0130c98e741803"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.4"
   vm_service:
     dependency: transitive
     description:
@@ -590,3 +695,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.6.0 <4.0.0"
+  flutter: ">=3.13.0"

@@ -1,4 +1,7 @@
-import 'package:basic_token_provider/basic_token_provider.dart';
+import 'package:affinidi_consumer_auth_provider/affinidi_consumer_auth_provider.dart';
+import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockConsumerTokenProvider extends Mock implements ConsumerTokenProvider {}
+class MockConsumerAuthProvider extends Mock implements ConsumerAuthProvider {}
+
+class MockCryptographyService extends Mock implements CryptographyService {}
