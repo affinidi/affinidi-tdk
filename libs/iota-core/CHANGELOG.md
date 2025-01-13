@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.21.0...@affinidi-tdk/iota-core-v1.22.0) (2025-01-13)
+
+
+### Features
+
+* add dart clients versioning ([#406](https://github.com/affinidi/affinidi-tdk/issues/406)) ([21dee9a](https://github.com/affinidi/affinidi-tdk/commit/21dee9a8c53d7ec35717781f8cb203d53f8e0b74))
+
 # [1.21.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.20.0...@affinidi-tdk/iota-core-v1.21.0) (2024-12-09)
 
 
