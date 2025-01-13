@@ -74,16 +74,13 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/affinidi/tdk/login/configuration/client/ApiCallback.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ApiClient.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ApiException.java
-src/main/java/com/affinidi/tdk/login/configuration/client/ApiResponse.java
+src/main/java/com/affinidi/tdk/login/configuration/client/BaseApi.java
 src/main/java/com/affinidi/tdk/login/configuration/client/Configuration.java
-src/main/java/com/affinidi/tdk/login/configuration/client/GzipRequestInterceptor.java
-src/main/java/com/affinidi/tdk/login/configuration/client/JSON.java
+src/main/java/com/affinidi/tdk/login/configuration/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/login/configuration/client/Pair.java
-src/main/java/com/affinidi/tdk/login/configuration/client/ProgressRequestBody.java
-src/main/java/com/affinidi/tdk/login/configuration/client/ProgressResponseBody.java
+src/main/java/com/affinidi/tdk/login/configuration/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/login/configuration/client/StringUtil.java
@@ -96,7 +93,6 @@ src/main/java/com/affinidi/tdk/login/configuration/client/auth/ApiKeyAuth.java
 src/main/java/com/affinidi/tdk/login/configuration/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/login/configuration/client/auth/HttpBasicAuth.java
 src/main/java/com/affinidi/tdk/login/configuration/client/auth/HttpBearerAuth.java
-src/main/java/com/affinidi/tdk/login/configuration/client/models/AbstractOpenApiSchema.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/ActionForbiddenError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/AddUserToGroupInput.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/BlockedUsers.java

@@ -14,67 +14,51 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * PrepareRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  PrepareRequest.JSON_PROPERTY_CONNECTION_CLIENT_ID,
+  PrepareRequest.JSON_PROPERTY_QUERY_ID,
+  PrepareRequest.JSON_PROPERTY_CORRELATION_ID,
+  PrepareRequest.JSON_PROPERTY_TOKEN_MAX_AGE,
+  PrepareRequest.JSON_PROPERTY_AUDIENCE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class PrepareRequest {
-  public static final String SERIALIZED_NAME_CONNECTION_CLIENT_ID = "connectionClientId";
-  @SerializedName(SERIALIZED_NAME_CONNECTION_CLIENT_ID)
+  public static final String JSON_PROPERTY_CONNECTION_CLIENT_ID = "connectionClientId";
   private String connectionClientId;
 
-  public static final String SERIALIZED_NAME_QUERY_ID = "queryId";
-  @SerializedName(SERIALIZED_NAME_QUERY_ID)
+  public static final String JSON_PROPERTY_QUERY_ID = "queryId";
   private String queryId;
 
-  public static final String SERIALIZED_NAME_CORRELATION_ID = "correlationId";
-  @SerializedName(SERIALIZED_NAME_CORRELATION_ID)
+  public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   private String correlationId;
 
-  public static final String SERIALIZED_NAME_TOKEN_MAX_AGE = "tokenMaxAge";
-  @SerializedName(SERIALIZED_NAME_TOKEN_MAX_AGE)
+  public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
   private BigDecimal tokenMaxAge;
 
-  public static final String SERIALIZED_NAME_AUDIENCE = "audience";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE)
+  public static final String JSON_PROPERTY_AUDIENCE = "audience";
   private String audience;
 
   public PrepareRequest() {
   }
 
   public PrepareRequest connectionClientId(String connectionClientId) {
+    
     this.connectionClientId = connectionClientId;
     return this;
   }
@@ -84,16 +68,22 @@ public class PrepareRequest {
    * @return connectionClientId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getConnectionClientId() {
     return connectionClientId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConnectionClientId(String connectionClientId) {
     this.connectionClientId = connectionClientId;
   }
 
-
   public PrepareRequest queryId(String queryId) {
+    
     this.queryId = queryId;
     return this;
   }
@@ -103,16 +93,22 @@ public class PrepareRequest {
    * @return queryId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getQueryId() {
     return queryId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setQueryId(String queryId) {
     this.queryId = queryId;
   }
 
-
   public PrepareRequest correlationId(String correlationId) {
+    
     this.correlationId = correlationId;
     return this;
   }
@@ -122,16 +118,22 @@ public class PrepareRequest {
    * @return correlationId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCorrelationId() {
     return correlationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCorrelationId(String correlationId) {
     this.correlationId = correlationId;
   }
 
-
   public PrepareRequest tokenMaxAge(BigDecimal tokenMaxAge) {
+    
     this.tokenMaxAge = tokenMaxAge;
     return this;
   }
@@ -141,16 +143,22 @@ public class PrepareRequest {
    * @return tokenMaxAge
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getTokenMaxAge() {
     return tokenMaxAge;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenMaxAge(BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-
   public PrepareRequest audience(String audience) {
+    
     this.audience = audience;
     return this;
   }
@@ -160,15 +168,19 @@ public class PrepareRequest {
    * @return audience
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AUDIENCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getAudience() {
     return audience;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AUDIENCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAudience(String audience) {
     this.audience = audience;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -215,115 +227,90 @@ public class PrepareRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("connectionClientId");
-    openapiFields.add("queryId");
-    openapiFields.add("correlationId");
-    openapiFields.add("tokenMaxAge");
-    openapiFields.add("audience");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("connectionClientId");
-    openapiRequiredFields.add("queryId");
-    openapiRequiredFields.add("correlationId");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PrepareRequest
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!PrepareRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PrepareRequest is not found in the empty JSON string", PrepareRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PrepareRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PrepareRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PrepareRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("connectionClientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `connectionClientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("connectionClientId").toString()));
-      }
-      if (!jsonObj.get("queryId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `queryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queryId").toString()));
-      }
-      if (!jsonObj.get("correlationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `correlationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("correlationId").toString()));
-      }
-      if ((jsonObj.get("audience") != null && !jsonObj.get("audience").isJsonNull()) && !jsonObj.get("audience").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audience` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audience").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PrepareRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PrepareRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PrepareRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PrepareRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<PrepareRequest>() {
-           @Override
-           public void write(JsonWriter out, PrepareRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public PrepareRequest read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `connectionClientId` to the URL query string
+    if (getConnectionClientId() != null) {
+      try {
+        joiner.add(String.format("%sconnectionClientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConnectionClientId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `queryId` to the URL query string
+    if (getQueryId() != null) {
+      try {
+        joiner.add(String.format("%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `correlationId` to the URL query string
+    if (getCorrelationId() != null) {
+      try {
+        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `tokenMaxAge` to the URL query string
+    if (getTokenMaxAge() != null) {
+      try {
+        joiner.add(String.format("%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `audience` to the URL query string
+    if (getAudience() != null) {
+      try {
+        joiner.add(String.format("%saudience%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAudience()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of PrepareRequest given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of PrepareRequest
-   * @throws IOException if the JSON string is invalid with respect to PrepareRequest
-   */
-  public static PrepareRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PrepareRequest.class);
-  }
-
-  /**
-   * Convert an instance of PrepareRequest to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

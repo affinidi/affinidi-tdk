@@ -14,50 +14,34 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CorsLoginSessionRejectResponseOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CorsLoginSessionRejectResponseOK.JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsLoginSessionRejectResponseOK {
-  public static final String SERIALIZED_NAME_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
-  @SerializedName(SERIALIZED_NAME_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
+  public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
   private String corsLoginSessionRejectResponseOk;
 
   public CorsLoginSessionRejectResponseOK() {
   }
 
   public CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
+    
     this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
     return this;
   }
@@ -67,15 +51,19 @@ public class CorsLoginSessionRejectResponseOK {
    * @return corsLoginSessionRejectResponseOk
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCorsLoginSessionRejectResponseOk() {
     return corsLoginSessionRejectResponseOk;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCorsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
     this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -114,92 +102,50 @@ public class CorsLoginSessionRejectResponseOK {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("corsLoginSessionRejectResponseOk");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CorsLoginSessionRejectResponseOK
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CorsLoginSessionRejectResponseOK.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CorsLoginSessionRejectResponseOK is not found in the empty JSON string", CorsLoginSessionRejectResponseOK.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CorsLoginSessionRejectResponseOK.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CorsLoginSessionRejectResponseOK` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("corsLoginSessionRejectResponseOk") != null && !jsonObj.get("corsLoginSessionRejectResponseOk").isJsonNull()) && !jsonObj.get("corsLoginSessionRejectResponseOk").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `corsLoginSessionRejectResponseOk` to be a primitive type in the JSON string but got `%s`", jsonObj.get("corsLoginSessionRejectResponseOk").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CorsLoginSessionRejectResponseOK.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CorsLoginSessionRejectResponseOK' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CorsLoginSessionRejectResponseOK> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CorsLoginSessionRejectResponseOK.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CorsLoginSessionRejectResponseOK>() {
-           @Override
-           public void write(JsonWriter out, CorsLoginSessionRejectResponseOK value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CorsLoginSessionRejectResponseOK read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `corsLoginSessionRejectResponseOk` to the URL query string
+    if (getCorsLoginSessionRejectResponseOk() != null) {
+      try {
+        joiner.add(String.format("%scorsLoginSessionRejectResponseOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsLoginSessionRejectResponseOk()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CorsLoginSessionRejectResponseOK given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CorsLoginSessionRejectResponseOK
-   * @throws IOException if the JSON string is invalid with respect to CorsLoginSessionRejectResponseOK
-   */
-  public static CorsLoginSessionRejectResponseOK fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CorsLoginSessionRejectResponseOK.class);
-  }
-
-  /**
-   * Convert an instance of CorsLoginSessionRejectResponseOK to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

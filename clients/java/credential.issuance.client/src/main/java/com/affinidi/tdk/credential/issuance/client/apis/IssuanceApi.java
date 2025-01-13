@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
-import com.affinidi.tdk.credential.issuance.client.ApiCallback;
-import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.credential.issuance.client.ApiException;
-import com.affinidi.tdk.credential.issuance.client.ApiResponse;
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.BaseApi;
 import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
-import com.affinidi.tdk.credential.issuance.client.ProgressRequestBody;
-import com.affinidi.tdk.credential.issuance.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenError;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
@@ -36,460 +29,303 @@ import com.affinidi.tdk.credential.issuance.client.models.StartIssuance400Respon
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInput;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceResponse;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class IssuanceApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class IssuanceApi extends BaseApi {
 
-    public IssuanceApi() {
-        this(Configuration.getDefaultApiClient());
+  public IssuanceApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public IssuanceApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * Get issuance status
+   * @param issuanceId  (required)
+   * @param projectId Affinidi project id (required)
+   * @return IssuanceStateResponse
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceStateResponse issuanceState(String issuanceId, String projectId) throws ApiException {
+    return this.issuanceState(issuanceId, projectId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Get issuance status
+   * @param issuanceId  (required)
+   * @param projectId Affinidi project id (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IssuanceStateResponse
+   * @throws ApiException if fails to make API call
+   */
+  public IssuanceStateResponse issuanceState(String issuanceId, String projectId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'issuanceId' is set
+    if (issuanceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'issuanceId' when calling issuanceState");
     }
-
-    public IssuanceApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling issuanceState");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/issuance/state/{issuanceId}"
+      .replaceAll("\\{" + "issuanceId" + "\\}", apiClient.escapeString(apiClient.parameterToString(issuanceId)))
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IssuanceStateResponse> localVarReturnType = new TypeReference<IssuanceStateResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * List all issuances for Project
+   * @param projectId Affinidi project id (required)
+   * @return ListIssuanceResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListIssuanceResponse listIssuance(String projectId) throws ApiException {
+    return this.listIssuance(projectId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * List all issuances for Project
+   * @param projectId Affinidi project id (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ListIssuanceResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListIssuanceResponse listIssuance(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling listIssuance");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/issuance"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<ListIssuanceResponse> localVarReturnType = new TypeReference<ListIssuanceResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Endpoint used b websites to start the issuance process
+   * @param projectId Affinidi project id (required)
+   * @param startIssuanceInput Request body to start issuance (required)
+   * @return StartIssuanceResponse
+   * @throws ApiException if fails to make API call
+   */
+  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
+    return this.startIssuance(projectId, startIssuanceInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Endpoint used b websites to start the issuance process
+   * @param projectId Affinidi project id (required)
+   * @param startIssuanceInput Request body to start issuance (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return StartIssuanceResponse
+   * @throws ApiException if fails to make API call
+   */
+  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = startIssuanceInput;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling startIssuance");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'startIssuanceInput' is set
+    if (startIssuanceInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'startIssuanceInput' when calling startIssuance");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/issuance/start"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for issuanceState
-     * @param issuanceId  (required)
-     * @param projectId Affinidi project id (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call issuanceStateCall(String issuanceId, String projectId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        Object localVarPostBody = null;
+    TypeReference<StartIssuanceResponse> localVarReturnType = new TypeReference<StartIssuanceResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-        // create path and map variables
-        String localVarPath = "/v1/{projectId}/issuance/state/{issuanceId}"
-            .replace("{" + "issuanceId" + "}", localVarApiClient.escapeString(issuanceId.toString()))
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()));
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call issuanceStateValidateBeforeCall(String issuanceId, String projectId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'issuanceId' is set
-        if (issuanceId == null) {
-            throw new ApiException("Missing the required parameter 'issuanceId' when calling issuanceState(Async)");
-        }
-
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling issuanceState(Async)");
-        }
-
-        return issuanceStateCall(issuanceId, projectId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get issuance status
-     * @param issuanceId  (required)
-     * @param projectId Affinidi project id (required)
-     * @return IssuanceStateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IssuanceStateResponse issuanceState(String issuanceId, String projectId) throws ApiException {
-        ApiResponse<IssuanceStateResponse> localVarResp = issuanceStateWithHttpInfo(issuanceId, projectId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get issuance status
-     * @param issuanceId  (required)
-     * @param projectId Affinidi project id (required)
-     * @return ApiResponse&lt;IssuanceStateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IssuanceStateResponse> issuanceStateWithHttpInfo(String issuanceId, String projectId) throws ApiException {
-        okhttp3.Call localVarCall = issuanceStateValidateBeforeCall(issuanceId, projectId, null);
-        Type localVarReturnType = new TypeToken<IssuanceStateResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get issuance status
-     * @param issuanceId  (required)
-     * @param projectId Affinidi project id (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call issuanceStateAsync(String issuanceId, String projectId, final ApiCallback<IssuanceStateResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = issuanceStateValidateBeforeCall(issuanceId, projectId, _callback);
-        Type localVarReturnType = new TypeToken<IssuanceStateResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listIssuance
-     * @param projectId Affinidi project id (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listIssuanceCall(String projectId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/{projectId}/issuance"
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listIssuanceValidateBeforeCall(String projectId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling listIssuance(Async)");
-        }
-
-        return listIssuanceCall(projectId, _callback);
-
-    }
-
-    /**
-     * 
-     * List all issuances for Project
-     * @param projectId Affinidi project id (required)
-     * @return ListIssuanceResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListIssuanceResponse listIssuance(String projectId) throws ApiException {
-        ApiResponse<ListIssuanceResponse> localVarResp = listIssuanceWithHttpInfo(projectId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * List all issuances for Project
-     * @param projectId Affinidi project id (required)
-     * @return ApiResponse&lt;ListIssuanceResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListIssuanceResponse> listIssuanceWithHttpInfo(String projectId) throws ApiException {
-        okhttp3.Call localVarCall = listIssuanceValidateBeforeCall(projectId, null);
-        Type localVarReturnType = new TypeToken<ListIssuanceResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * List all issuances for Project
-     * @param projectId Affinidi project id (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listIssuanceAsync(String projectId, final ApiCallback<ListIssuanceResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listIssuanceValidateBeforeCall(projectId, _callback);
-        Type localVarReturnType = new TypeToken<ListIssuanceResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for startIssuance
-     * @param projectId Affinidi project id (required)
-     * @param startIssuanceInput Request body to start issuance (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call startIssuanceCall(String projectId, StartIssuanceInput startIssuanceInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = startIssuanceInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/{projectId}/issuance/start"
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call startIssuanceValidateBeforeCall(String projectId, StartIssuanceInput startIssuanceInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling startIssuance(Async)");
-        }
-
-        // verify the required parameter 'startIssuanceInput' is set
-        if (startIssuanceInput == null) {
-            throw new ApiException("Missing the required parameter 'startIssuanceInput' when calling startIssuance(Async)");
-        }
-
-        return startIssuanceCall(projectId, startIssuanceInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Endpoint used b websites to start the issuance process
-     * @param projectId Affinidi project id (required)
-     * @param startIssuanceInput Request body to start issuance (required)
-     * @return StartIssuanceResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
-        ApiResponse<StartIssuanceResponse> localVarResp = startIssuanceWithHttpInfo(projectId, startIssuanceInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Endpoint used b websites to start the issuance process
-     * @param projectId Affinidi project id (required)
-     * @param startIssuanceInput Request body to start issuance (required)
-     * @return ApiResponse&lt;StartIssuanceResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<StartIssuanceResponse> startIssuanceWithHttpInfo(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
-        okhttp3.Call localVarCall = startIssuanceValidateBeforeCall(projectId, startIssuanceInput, null);
-        Type localVarReturnType = new TypeToken<StartIssuanceResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Endpoint used b websites to start the issuance process
-     * @param projectId Affinidi project id (required)
-     * @param startIssuanceInput Request body to start issuance (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call startIssuanceAsync(String projectId, StartIssuanceInput startIssuanceInput, final ApiCallback<StartIssuanceResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = startIssuanceValidateBeforeCall(projectId, startIssuanceInput, _callback);
-        Type localVarReturnType = new TypeToken<StartIssuanceResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

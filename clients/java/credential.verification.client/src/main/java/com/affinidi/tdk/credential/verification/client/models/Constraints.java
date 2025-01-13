@@ -14,51 +14,40 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.ConstraintsStatuses;
 import com.affinidi.tdk.credential.verification.client.models.Field;
 import com.affinidi.tdk.credential.verification.client.models.HolderSubject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Constraints
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  Constraints.JSON_PROPERTY_LIMIT_DISCLOSURE,
+  Constraints.JSON_PROPERTY_STATUSES,
+  Constraints.JSON_PROPERTY_FIELDS,
+  Constraints.JSON_PROPERTY_SUBJECT_IS_ISSUER,
+  Constraints.JSON_PROPERTY_IS_HOLDER,
+  Constraints.JSON_PROPERTY_SAME_SUBJECT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Constraints {
   /**
    * Gets or Sets limitDisclosure
    */
-  @JsonAdapter(LimitDisclosureEnum.Adapter.class)
   public enum LimitDisclosureEnum {
     REQUIRED("required"),
     
@@ -70,6 +59,7 @@ public class Constraints {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -79,6 +69,7 @@ public class Constraints {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static LimitDisclosureEnum fromValue(String value) {
       for (LimitDisclosureEnum b : LimitDisclosureEnum.values()) {
         if (b.value.equals(value)) {
@@ -87,42 +78,20 @@ public class Constraints {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<LimitDisclosureEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LimitDisclosureEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LimitDisclosureEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LimitDisclosureEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      LimitDisclosureEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_LIMIT_DISCLOSURE = "limit_disclosure";
-  @SerializedName(SERIALIZED_NAME_LIMIT_DISCLOSURE)
+  public static final String JSON_PROPERTY_LIMIT_DISCLOSURE = "limit_disclosure";
   private LimitDisclosureEnum limitDisclosure;
 
-  public static final String SERIALIZED_NAME_STATUSES = "statuses";
-  @SerializedName(SERIALIZED_NAME_STATUSES)
+  public static final String JSON_PROPERTY_STATUSES = "statuses";
   private ConstraintsStatuses statuses;
 
-  public static final String SERIALIZED_NAME_FIELDS = "fields";
-  @SerializedName(SERIALIZED_NAME_FIELDS)
+  public static final String JSON_PROPERTY_FIELDS = "fields";
   private List<Field> fields = new ArrayList<>();
 
   /**
    * Gets or Sets subjectIsIssuer
    */
-  @JsonAdapter(SubjectIsIssuerEnum.Adapter.class)
   public enum SubjectIsIssuerEnum {
     REQUIRED("required"),
     
@@ -134,6 +103,7 @@ public class Constraints {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -143,6 +113,7 @@ public class Constraints {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static SubjectIsIssuerEnum fromValue(String value) {
       for (SubjectIsIssuerEnum b : SubjectIsIssuerEnum.values()) {
         if (b.value.equals(value)) {
@@ -151,42 +122,22 @@ public class Constraints {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<SubjectIsIssuerEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SubjectIsIssuerEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SubjectIsIssuerEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SubjectIsIssuerEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      SubjectIsIssuerEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_SUBJECT_IS_ISSUER = "subject_is_issuer";
-  @SerializedName(SERIALIZED_NAME_SUBJECT_IS_ISSUER)
+  public static final String JSON_PROPERTY_SUBJECT_IS_ISSUER = "subject_is_issuer";
   private SubjectIsIssuerEnum subjectIsIssuer;
 
-  public static final String SERIALIZED_NAME_IS_HOLDER = "is_holder";
-  @SerializedName(SERIALIZED_NAME_IS_HOLDER)
+  public static final String JSON_PROPERTY_IS_HOLDER = "is_holder";
   private List<HolderSubject> isHolder = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SAME_SUBJECT = "same_subject";
-  @SerializedName(SERIALIZED_NAME_SAME_SUBJECT)
+  public static final String JSON_PROPERTY_SAME_SUBJECT = "same_subject";
   private List<HolderSubject> sameSubject = new ArrayList<>();
 
   public Constraints() {
   }
 
   public Constraints limitDisclosure(LimitDisclosureEnum limitDisclosure) {
+    
     this.limitDisclosure = limitDisclosure;
     return this;
   }
@@ -196,16 +147,22 @@ public class Constraints {
    * @return limitDisclosure
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public LimitDisclosureEnum getLimitDisclosure() {
     return limitDisclosure;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLimitDisclosure(LimitDisclosureEnum limitDisclosure) {
     this.limitDisclosure = limitDisclosure;
   }
 
-
   public Constraints statuses(ConstraintsStatuses statuses) {
+    
     this.statuses = statuses;
     return this;
   }
@@ -215,16 +172,22 @@ public class Constraints {
    * @return statuses
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STATUSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public ConstraintsStatuses getStatuses() {
     return statuses;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatuses(ConstraintsStatuses statuses) {
     this.statuses = statuses;
   }
 
-
   public Constraints fields(List<Field> fields) {
+    
     this.fields = fields;
     return this;
   }
@@ -242,16 +205,22 @@ public class Constraints {
    * @return fields
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<Field> getFields() {
     return fields;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFields(List<Field> fields) {
     this.fields = fields;
   }
 
-
   public Constraints subjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
+    
     this.subjectIsIssuer = subjectIsIssuer;
     return this;
   }
@@ -261,16 +230,22 @@ public class Constraints {
    * @return subjectIsIssuer
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public SubjectIsIssuerEnum getSubjectIsIssuer() {
     return subjectIsIssuer;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSubjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
     this.subjectIsIssuer = subjectIsIssuer;
   }
 
-
   public Constraints isHolder(List<HolderSubject> isHolder) {
+    
     this.isHolder = isHolder;
     return this;
   }
@@ -288,16 +263,22 @@ public class Constraints {
    * @return isHolder
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IS_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<HolderSubject> getIsHolder() {
     return isHolder;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_IS_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIsHolder(List<HolderSubject> isHolder) {
     this.isHolder = isHolder;
   }
 
-
   public Constraints sameSubject(List<HolderSubject> sameSubject) {
+    
     this.sameSubject = sameSubject;
     return this;
   }
@@ -315,15 +296,19 @@ public class Constraints {
    * @return sameSubject
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<HolderSubject> getSameSubject() {
     return sameSubject;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSameSubject(List<HolderSubject> sameSubject) {
     this.sameSubject = sameSubject;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -372,154 +357,95 @@ public class Constraints {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("limit_disclosure");
-    openapiFields.add("statuses");
-    openapiFields.add("fields");
-    openapiFields.add("subject_is_issuer");
-    openapiFields.add("is_holder");
-    openapiFields.add("same_subject");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Constraints
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Constraints.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Constraints is not found in the empty JSON string", Constraints.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Constraints.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Constraints` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("limit_disclosure") != null && !jsonObj.get("limit_disclosure").isJsonNull()) && !jsonObj.get("limit_disclosure").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `limit_disclosure` to be a primitive type in the JSON string but got `%s`", jsonObj.get("limit_disclosure").toString()));
-      }
-      // validate the optional field `limit_disclosure`
-      if (jsonObj.get("limit_disclosure") != null && !jsonObj.get("limit_disclosure").isJsonNull()) {
-        LimitDisclosureEnum.validateJsonElement(jsonObj.get("limit_disclosure"));
-      }
-      // validate the optional field `statuses`
-      if (jsonObj.get("statuses") != null && !jsonObj.get("statuses").isJsonNull()) {
-        ConstraintsStatuses.validateJsonElement(jsonObj.get("statuses"));
-      }
-      if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull()) {
-        JsonArray jsonArrayfields = jsonObj.getAsJsonArray("fields");
-        if (jsonArrayfields != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("fields").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
-          }
-
-          // validate the optional field `fields` (array)
-          for (int i = 0; i < jsonArrayfields.size(); i++) {
-            Field.validateJsonElement(jsonArrayfields.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("subject_is_issuer") != null && !jsonObj.get("subject_is_issuer").isJsonNull()) && !jsonObj.get("subject_is_issuer").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subject_is_issuer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject_is_issuer").toString()));
-      }
-      // validate the optional field `subject_is_issuer`
-      if (jsonObj.get("subject_is_issuer") != null && !jsonObj.get("subject_is_issuer").isJsonNull()) {
-        SubjectIsIssuerEnum.validateJsonElement(jsonObj.get("subject_is_issuer"));
-      }
-      if (jsonObj.get("is_holder") != null && !jsonObj.get("is_holder").isJsonNull()) {
-        JsonArray jsonArrayisHolder = jsonObj.getAsJsonArray("is_holder");
-        if (jsonArrayisHolder != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("is_holder").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `is_holder` to be an array in the JSON string but got `%s`", jsonObj.get("is_holder").toString()));
-          }
-
-          // validate the optional field `is_holder` (array)
-          for (int i = 0; i < jsonArrayisHolder.size(); i++) {
-            HolderSubject.validateJsonElement(jsonArrayisHolder.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("same_subject") != null && !jsonObj.get("same_subject").isJsonNull()) {
-        JsonArray jsonArraysameSubject = jsonObj.getAsJsonArray("same_subject");
-        if (jsonArraysameSubject != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("same_subject").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `same_subject` to be an array in the JSON string but got `%s`", jsonObj.get("same_subject").toString()));
-          }
-
-          // validate the optional field `same_subject` (array)
-          for (int i = 0; i < jsonArraysameSubject.size(); i++) {
-            HolderSubject.validateJsonElement(jsonArraysameSubject.get(i));
-          };
-        }
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Constraints.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Constraints' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Constraints> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Constraints.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Constraints>() {
-           @Override
-           public void write(JsonWriter out, Constraints value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Constraints read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `limit_disclosure` to the URL query string
+    if (getLimitDisclosure() != null) {
+      try {
+        joiner.add(String.format("%slimit_disclosure%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLimitDisclosure()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statuses` to the URL query string
+    if (getStatuses() != null) {
+      joiner.add(getStatuses().toUrlQueryString(prefix + "statuses" + suffix));
+    }
+
+    // add `fields` to the URL query string
+    if (getFields() != null) {
+      for (int i = 0; i < getFields().size(); i++) {
+        if (getFields().get(i) != null) {
+          joiner.add(getFields().get(i).toUrlQueryString(String.format("%sfields%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `subject_is_issuer` to the URL query string
+    if (getSubjectIsIssuer() != null) {
+      try {
+        joiner.add(String.format("%ssubject_is_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSubjectIsIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `is_holder` to the URL query string
+    if (getIsHolder() != null) {
+      for (int i = 0; i < getIsHolder().size(); i++) {
+        if (getIsHolder().get(i) != null) {
+          joiner.add(getIsHolder().get(i).toUrlQueryString(String.format("%sis_holder%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `same_subject` to the URL query string
+    if (getSameSubject() != null) {
+      for (int i = 0; i < getSameSubject().size(); i++) {
+        if (getSameSubject().get(i) != null) {
+          joiner.add(getSameSubject().get(i).toUrlQueryString(String.format("%ssame_subject%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of Constraints given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Constraints
-   * @throws IOException if the JSON string is invalid with respect to Constraints
-   */
-  public static Constraints fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Constraints.class);
-  }
-
-  /**
-   * Convert an instance of Constraints to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

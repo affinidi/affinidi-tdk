@@ -55,16 +55,13 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/affinidi/tdk/credential/verification/client/ApiCallback.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ApiClient.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ApiException.java
-src/main/java/com/affinidi/tdk/credential/verification/client/ApiResponse.java
+src/main/java/com/affinidi/tdk/credential/verification/client/BaseApi.java
 src/main/java/com/affinidi/tdk/credential/verification/client/Configuration.java
-src/main/java/com/affinidi/tdk/credential/verification/client/GzipRequestInterceptor.java
-src/main/java/com/affinidi/tdk/credential/verification/client/JSON.java
+src/main/java/com/affinidi/tdk/credential/verification/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/credential/verification/client/Pair.java
-src/main/java/com/affinidi/tdk/credential/verification/client/ProgressRequestBody.java
-src/main/java/com/affinidi/tdk/credential/verification/client/ProgressResponseBody.java
+src/main/java/com/affinidi/tdk/credential/verification/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/credential/verification/client/StringUtil.java
@@ -73,7 +70,6 @@ src/main/java/com/affinidi/tdk/credential/verification/client/auth/ApiKeyAuth.ja
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/HttpBasicAuth.java
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/HttpBearerAuth.java
-src/main/java/com/affinidi/tdk/credential/verification/client/models/AbstractOpenApiSchema.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/Constraints.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/ConstraintsStatuses.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/CredentialRequirements.java

@@ -14,49 +14,36 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * StartIssuanceInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  StartIssuanceInput.JSON_PROPERTY_CLAIM_MODE,
+  StartIssuanceInput.JSON_PROPERTY_HOLDER_DID,
+  StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID,
+  StartIssuanceInput.JSON_PROPERTY_DATA
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
    */
-  @JsonAdapter(ClaimModeEnum.Adapter.class)
   public enum ClaimModeEnum {
     NORMAL("NORMAL"),
     
@@ -70,6 +57,7 @@ public class StartIssuanceInput {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -79,6 +67,7 @@ public class StartIssuanceInput {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ClaimModeEnum fromValue(String value) {
       for (ClaimModeEnum b : ClaimModeEnum.values()) {
         if (b.value.equals(value)) {
@@ -87,46 +76,25 @@ public class StartIssuanceInput {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ClaimModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ClaimModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ClaimModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ClaimModeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ClaimModeEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_CLAIM_MODE = "claimMode";
-  @SerializedName(SERIALIZED_NAME_CLAIM_MODE)
+  public static final String JSON_PROPERTY_CLAIM_MODE = "claimMode";
   private ClaimModeEnum claimMode;
 
-  public static final String SERIALIZED_NAME_HOLDER_DID = "holderDid";
-  @SerializedName(SERIALIZED_NAME_HOLDER_DID)
+  public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
   private String holderDid;
 
-  public static final String SERIALIZED_NAME_ISSUANCE_ID = "issuanceId";
-  @SerializedName(SERIALIZED_NAME_ISSUANCE_ID)
+  public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
   private String issuanceId;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String JSON_PROPERTY_DATA = "data";
   private List<StartIssuanceInputDataInner> data = new ArrayList<>();
 
   public StartIssuanceInput() {
   }
 
   public StartIssuanceInput claimMode(ClaimModeEnum claimMode) {
+    
     this.claimMode = claimMode;
     return this;
   }
@@ -136,16 +104,22 @@ public class StartIssuanceInput {
    * @return claimMode
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public ClaimModeEnum getClaimMode() {
     return claimMode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimMode(ClaimModeEnum claimMode) {
     this.claimMode = claimMode;
   }
 
-
   public StartIssuanceInput holderDid(String holderDid) {
+    
     this.holderDid = holderDid;
     return this;
   }
@@ -155,16 +129,22 @@ public class StartIssuanceInput {
    * @return holderDid
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getHolderDid() {
     return holderDid;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHolderDid(String holderDid) {
     this.holderDid = holderDid;
   }
 
-
   public StartIssuanceInput issuanceId(String issuanceId) {
+    
     this.issuanceId = issuanceId;
     return this;
   }
@@ -174,16 +154,22 @@ public class StartIssuanceInput {
    * @return issuanceId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuanceId() {
     return issuanceId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuanceId(String issuanceId) {
     this.issuanceId = issuanceId;
   }
 
-
   public StartIssuanceInput data(List<StartIssuanceInputDataInner> data) {
+    
     this.data = data;
     return this;
   }
@@ -201,15 +187,19 @@ public class StartIssuanceInput {
    * @return data
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<StartIssuanceInputDataInner> getData() {
     return data;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setData(List<StartIssuanceInputDataInner> data) {
     this.data = data;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -254,123 +244,80 @@ public class StartIssuanceInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("claimMode");
-    openapiFields.add("holderDid");
-    openapiFields.add("issuanceId");
-    openapiFields.add("data");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("data");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to StartIssuanceInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!StartIssuanceInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in StartIssuanceInput is not found in the empty JSON string", StartIssuanceInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!StartIssuanceInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StartIssuanceInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : StartIssuanceInput.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("claimMode") != null && !jsonObj.get("claimMode").isJsonNull()) && !jsonObj.get("claimMode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `claimMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("claimMode").toString()));
-      }
-      // validate the optional field `claimMode`
-      if (jsonObj.get("claimMode") != null && !jsonObj.get("claimMode").isJsonNull()) {
-        ClaimModeEnum.validateJsonElement(jsonObj.get("claimMode"));
-      }
-      if ((jsonObj.get("holderDid") != null && !jsonObj.get("holderDid").isJsonNull()) && !jsonObj.get("holderDid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `holderDid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holderDid").toString()));
-      }
-      if ((jsonObj.get("issuanceId") != null && !jsonObj.get("issuanceId").isJsonNull()) && !jsonObj.get("issuanceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuanceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuanceId").toString()));
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
-
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        StartIssuanceInputDataInner.validateJsonElement(jsonArraydata.get(i));
-      };
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!StartIssuanceInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'StartIssuanceInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<StartIssuanceInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(StartIssuanceInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<StartIssuanceInput>() {
-           @Override
-           public void write(JsonWriter out, StartIssuanceInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public StartIssuanceInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `claimMode` to the URL query string
+    if (getClaimMode() != null) {
+      try {
+        joiner.add(String.format("%sclaimMode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimMode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `holderDid` to the URL query string
+    if (getHolderDid() != null) {
+      try {
+        joiner.add(String.format("%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuanceId` to the URL query string
+    if (getIssuanceId() != null) {
+      try {
+        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `data` to the URL query string
+    if (getData() != null) {
+      for (int i = 0; i < getData().size(); i++) {
+        if (getData().get(i) != null) {
+          joiner.add(getData().get(i).toUrlQueryString(String.format("%sdata%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of StartIssuanceInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of StartIssuanceInput
-   * @throws IOException if the JSON string is invalid with respect to StartIssuanceInput
-   */
-  public static StartIssuanceInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, StartIssuanceInput.class);
-  }
-
-  /**
-   * Convert an instance of StartIssuanceInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -7,9 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 | [**verifyCredentials**](DefaultApi.md#verifyCredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
 | [**verifyPresentation**](DefaultApi.md#verifyPresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
 
-<a id="verifyCredentials"></a>
-
-# **verifyCredentials**
+## verifyCredentials
 
 > VerifyCredentialOutput verifyCredentials(verifyCredentialInput)
 
@@ -29,29 +27,29 @@ import com.affinidi.tdk.credential.verification.client.models.*;
 import com.affinidi.tdk.credential.verification.client.apis.DefaultApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ver");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ver");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
-    VerifyCredentialInput verifyCredentialInput = new VerifyCredentialInput(); // VerifyCredentialInput | VerifyCredentials
-    try {
-      VerifyCredentialOutput result = apiInstance.verifyCredentials(verifyCredentialInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#verifyCredentials");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DefaultApi apiInstance = new DefaultApi(defaultClient);
+        VerifyCredentialInput verifyCredentialInput = new VerifyCredentialInput(); // VerifyCredentialInput | VerifyCredentials
+        try {
+            VerifyCredentialOutput result = apiInstance.verifyCredentials(verifyCredentialInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#verifyCredentials");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -82,9 +80,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="verifyPresentation"></a>
-
-# **verifyPresentation**
+## verifyPresentation
 
 > VerifyPresentationOutput verifyPresentation(verifyPresentationInput)
 
@@ -104,29 +100,29 @@ import com.affinidi.tdk.credential.verification.client.models.*;
 import com.affinidi.tdk.credential.verification.client.apis.DefaultApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ver");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ver");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
-    VerifyPresentationInput verifyPresentationInput = new VerifyPresentationInput(); // VerifyPresentationInput | VerifyPresentation
-    try {
-      VerifyPresentationOutput result = apiInstance.verifyPresentation(verifyPresentationInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#verifyPresentation");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DefaultApi apiInstance = new DefaultApi(defaultClient);
+        VerifyPresentationInput verifyPresentationInput = new VerifyPresentationInput(); // VerifyPresentationInput | VerifyPresentation
+        try {
+            VerifyPresentationOutput result = apiInstance.verifyPresentation(verifyPresentationInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#verifyPresentation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

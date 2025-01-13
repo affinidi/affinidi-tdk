@@ -14,64 +14,50 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * OIDCConfigCredentialsSupportedDraft00Inner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED,
+  OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED,
+  OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_FORMAT,
+  OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_TYPES
+})
+@JsonTypeName("OIDCConfig_credentials_supported_draft_00_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class OIDCConfigCredentialsSupportedDraft00Inner {
-  public static final String SERIALIZED_NAME_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED = "cryptographic_binding_methods_supported";
-  @SerializedName(SERIALIZED_NAME_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
+  public static final String JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED = "cryptographic_binding_methods_supported";
   private List<String> cryptographicBindingMethodsSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_CRYPTOGRAPHIC_SUITES_SUPPORTED = "cryptographic_suites_supported";
-  @SerializedName(SERIALIZED_NAME_CRYPTOGRAPHIC_SUITES_SUPPORTED)
+  public static final String JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED = "cryptographic_suites_supported";
   private List<String> cryptographicSuitesSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
+  public static final String JSON_PROPERTY_FORMAT = "format";
   private String format;
 
-  public static final String SERIALIZED_NAME_TYPES = "types";
-  @SerializedName(SERIALIZED_NAME_TYPES)
+  public static final String JSON_PROPERTY_TYPES = "types";
   private List<String> types = new ArrayList<>();
 
   public OIDCConfigCredentialsSupportedDraft00Inner() {
   }
 
   public OIDCConfigCredentialsSupportedDraft00Inner cryptographicBindingMethodsSupported(List<String> cryptographicBindingMethodsSupported) {
+    
     this.cryptographicBindingMethodsSupported = cryptographicBindingMethodsSupported;
     return this;
   }
@@ -89,16 +75,22 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return cryptographicBindingMethodsSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getCryptographicBindingMethodsSupported() {
     return cryptographicBindingMethodsSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCryptographicBindingMethodsSupported(List<String> cryptographicBindingMethodsSupported) {
     this.cryptographicBindingMethodsSupported = cryptographicBindingMethodsSupported;
   }
 
-
   public OIDCConfigCredentialsSupportedDraft00Inner cryptographicSuitesSupported(List<String> cryptographicSuitesSupported) {
+    
     this.cryptographicSuitesSupported = cryptographicSuitesSupported;
     return this;
   }
@@ -116,16 +108,22 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return cryptographicSuitesSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getCryptographicSuitesSupported() {
     return cryptographicSuitesSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCryptographicSuitesSupported(List<String> cryptographicSuitesSupported) {
     this.cryptographicSuitesSupported = cryptographicSuitesSupported;
   }
 
-
   public OIDCConfigCredentialsSupportedDraft00Inner format(String format) {
+    
     this.format = format;
     return this;
   }
@@ -135,16 +133,22 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return format
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getFormat() {
     return format;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(String format) {
     this.format = format;
   }
 
-
   public OIDCConfigCredentialsSupportedDraft00Inner types(List<String> types) {
+    
     this.types = types;
     return this;
   }
@@ -162,15 +166,19 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return types
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getTypes() {
     return types;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTypes(List<String> types) {
     this.types = types;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -215,107 +223,92 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("cryptographic_binding_methods_supported");
-    openapiFields.add("cryptographic_suites_supported");
-    openapiFields.add("format");
-    openapiFields.add("types");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to OIDCConfigCredentialsSupportedDraft00Inner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!OIDCConfigCredentialsSupportedDraft00Inner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OIDCConfigCredentialsSupportedDraft00Inner is not found in the empty JSON string", OIDCConfigCredentialsSupportedDraft00Inner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!OIDCConfigCredentialsSupportedDraft00Inner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OIDCConfigCredentialsSupportedDraft00Inner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("cryptographic_binding_methods_supported") != null && !jsonObj.get("cryptographic_binding_methods_supported").isJsonNull() && !jsonObj.get("cryptographic_binding_methods_supported").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cryptographic_binding_methods_supported` to be an array in the JSON string but got `%s`", jsonObj.get("cryptographic_binding_methods_supported").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("cryptographic_suites_supported") != null && !jsonObj.get("cryptographic_suites_supported").isJsonNull() && !jsonObj.get("cryptographic_suites_supported").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cryptographic_suites_supported` to be an array in the JSON string but got `%s`", jsonObj.get("cryptographic_suites_supported").toString()));
-      }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("types") != null && !jsonObj.get("types").isJsonNull() && !jsonObj.get("types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `types` to be an array in the JSON string but got `%s`", jsonObj.get("types").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!OIDCConfigCredentialsSupportedDraft00Inner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'OIDCConfigCredentialsSupportedDraft00Inner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<OIDCConfigCredentialsSupportedDraft00Inner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(OIDCConfigCredentialsSupportedDraft00Inner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<OIDCConfigCredentialsSupportedDraft00Inner>() {
-           @Override
-           public void write(JsonWriter out, OIDCConfigCredentialsSupportedDraft00Inner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public OIDCConfigCredentialsSupportedDraft00Inner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `cryptographic_binding_methods_supported` to the URL query string
+    if (getCryptographicBindingMethodsSupported() != null) {
+      for (int i = 0; i < getCryptographicBindingMethodsSupported().size(); i++) {
+        try {
+          joiner.add(String.format("%scryptographic_binding_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getCryptographicBindingMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `cryptographic_suites_supported` to the URL query string
+    if (getCryptographicSuitesSupported() != null) {
+      for (int i = 0; i < getCryptographicSuitesSupported().size(); i++) {
+        try {
+          joiner.add(String.format("%scryptographic_suites_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getCryptographicSuitesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      try {
+        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `types` to the URL query string
+    if (getTypes() != null) {
+      for (int i = 0; i < getTypes().size(); i++) {
+        try {
+          joiner.add(String.format("%stypes%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getTypes().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of OIDCConfigCredentialsSupportedDraft00Inner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of OIDCConfigCredentialsSupportedDraft00Inner
-   * @throws IOException if the JSON string is invalid with respect to OIDCConfigCredentialsSupportedDraft00Inner
-   */
-  public static OIDCConfigCredentialsSupportedDraft00Inner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, OIDCConfigCredentialsSupportedDraft00Inner.class);
-  }
-
-  /**
-   * Convert an instance of OIDCConfigCredentialsSupportedDraft00Inner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

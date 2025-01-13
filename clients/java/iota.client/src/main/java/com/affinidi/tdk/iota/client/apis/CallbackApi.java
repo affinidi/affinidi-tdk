@@ -10,200 +10,152 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
-import com.affinidi.tdk.iota.client.ApiCallback;
-import com.affinidi.tdk.iota.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iota.client.ApiException;
-import com.affinidi.tdk.iota.client.ApiResponse;
+import com.affinidi.tdk.iota.client.ApiClient;
+import com.affinidi.tdk.iota.client.BaseApi;
 import com.affinidi.tdk.iota.client.Configuration;
 import com.affinidi.tdk.iota.client.Pair;
-import com.affinidi.tdk.iota.client.ProgressRequestBody;
-import com.affinidi.tdk.iota.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iota.client.models.CallbackInput;
 import com.affinidi.tdk.iota.client.models.CallbackResponseOK;
 import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class CallbackApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class CallbackApi extends BaseApi {
 
-    public CallbackApi() {
-        this(Configuration.getDefaultApiClient());
+  public CallbackApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public CallbackApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
+   * @param callbackInput CallbackRequestInput (required)
+   * @return CallbackResponseOK
+   * @throws ApiException if fails to make API call
+   */
+  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput) throws ApiException {
+    return this.iotOIDC4VPCallback(callbackInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
+   * @param callbackInput CallbackRequestInput (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CallbackResponseOK
+   * @throws ApiException if fails to make API call
+   */
+  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = callbackInput;
+    
+    // verify the required parameter 'callbackInput' is set
+    if (callbackInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'callbackInput' when calling iotOIDC4VPCallback");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/callback";
 
-    public CallbackApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    String[] localVarAuthNames = new String[] {  };
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    TypeReference<CallbackResponseOK> localVarReturnType = new TypeReference<CallbackResponseOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    /**
-     * Build call for iotOIDC4VPCallback
-     * @param callbackInput CallbackRequestInput (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> CallbackResponseOK </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call iotOIDC4VPCallbackCall(CallbackInput callbackInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        Object localVarPostBody = callbackInput;
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // create path and map variables
-        String localVarPath = "/v1/callback";
+    String[] localVarAuthNames = new String[] {  };
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call iotOIDC4VPCallbackValidateBeforeCall(CallbackInput callbackInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'callbackInput' is set
-        if (callbackInput == null) {
-            throw new ApiException("Missing the required parameter 'callbackInput' when calling iotOIDC4VPCallback(Async)");
-        }
-
-        return iotOIDC4VPCallbackCall(callbackInput, _callback);
-
-    }
-
-    /**
-     * 
-     * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
-     * @param callbackInput CallbackRequestInput (required)
-     * @return CallbackResponseOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> CallbackResponseOK </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput) throws ApiException {
-        ApiResponse<CallbackResponseOK> localVarResp = iotOIDC4VPCallbackWithHttpInfo(callbackInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
-     * @param callbackInput CallbackRequestInput (required)
-     * @return ApiResponse&lt;CallbackResponseOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> CallbackResponseOK </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public ApiResponse<CallbackResponseOK> iotOIDC4VPCallbackWithHttpInfo(CallbackInput callbackInput) throws ApiException {
-        okhttp3.Call localVarCall = iotOIDC4VPCallbackValidateBeforeCall(callbackInput, null);
-        Type localVarReturnType = new TypeToken<CallbackResponseOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
-     * @param callbackInput CallbackRequestInput (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> CallbackResponseOK </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call iotOIDC4VPCallbackAsync(CallbackInput callbackInput, final ApiCallback<CallbackResponseOK> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = iotOIDC4VPCallbackValidateBeforeCall(callbackInput, _callback);
-        Type localVarReturnType = new TypeToken<CallbackResponseOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

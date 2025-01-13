@@ -11,9 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 | [**unblockGroups**](DenyListApi.md#unblockGroups)         | **POST** /v1/deny-list/groups/remove |             |
 | [**unblockUsers**](DenyListApi.md#unblockUsers)           | **POST** /v1/deny-list/users/remove  |             |
 
-<a id="blockGroups"></a>
-
-# **blockGroups**
+## blockGroups
 
 > blockGroups(groupNamesInput)
 
@@ -31,28 +29,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
-    try {
-      apiInstance.blockGroups(groupNamesInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#blockGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
+        try {
+            apiInstance.blockGroups(groupNamesInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#blockGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -82,9 +80,7 @@ null (empty response body)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 
-<a id="blockUsers"></a>
-
-# **blockUsers**
+## blockUsers
 
 > blockUsers(blockedUsersInput)
 
@@ -102,28 +98,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    BlockedUsersInput blockedUsersInput = new BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
-    try {
-      apiInstance.blockUsers(blockedUsersInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#blockUsers");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        BlockedUsersInput blockedUsersInput = new BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
+        try {
+            apiInstance.blockUsers(blockedUsersInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#blockUsers");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -152,9 +148,7 @@ null (empty response body)
 | ----------- | ----------- | ---------------- |
 | **200**     | Ok          | -                |
 
-<a id="listBlockedGroups"></a>
-
-# **listBlockedGroups**
+## listBlockedGroups
 
 > GroupNames listBlockedGroups(pageToken)
 
@@ -172,29 +166,29 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    String pageToken = "pageToken_example"; // String |
-    try {
-      GroupNames result = apiInstance.listBlockedGroups(pageToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#listBlockedGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        String pageToken = "pageToken_example"; // String |
+        try {
+            GroupNames result = apiInstance.listBlockedGroups(pageToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#listBlockedGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -223,9 +217,7 @@ public class Example {
 | ----------- | --------------------- | ---------------- |
 | **200**     | Groups Names Response | -                |
 
-<a id="listBlockedUsers"></a>
-
-# **listBlockedUsers**
+## listBlockedUsers
 
 > BlockedUsers listBlockedUsers(pageToken)
 
@@ -243,29 +235,29 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    String pageToken = "pageToken_example"; // String |
-    try {
-      BlockedUsers result = apiInstance.listBlockedUsers(pageToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#listBlockedUsers");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        String pageToken = "pageToken_example"; // String |
+        try {
+            BlockedUsers result = apiInstance.listBlockedUsers(pageToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#listBlockedUsers");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -294,9 +286,7 @@ public class Example {
 | ----------- | ------------------------- | ---------------- |
 | **200**     | Blocked user ids response | -                |
 
-<a id="unblockGroups"></a>
-
-# **unblockGroups**
+## unblockGroups
 
 > unblockGroups(groupNamesInput)
 
@@ -314,28 +304,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
-    try {
-      apiInstance.unblockGroups(groupNamesInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#unblockGroups");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        GroupNamesInput groupNamesInput = new GroupNamesInput(); // GroupNamesInput | List of group names as input
+        try {
+            apiInstance.unblockGroups(groupNamesInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#unblockGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -365,9 +355,7 @@ null (empty response body)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 
-<a id="unblockUsers"></a>
-
-# **unblockUsers**
+## unblockUsers
 
 > unblockUsers(blockedUsersInput)
 
@@ -385,28 +373,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.DenyListApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DenyListApi apiInstance = new DenyListApi(defaultClient);
-    BlockedUsersInput blockedUsersInput = new BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
-    try {
-      apiInstance.unblockUsers(blockedUsersInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DenyListApi#unblockUsers");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DenyListApi apiInstance = new DenyListApi(defaultClient);
+        BlockedUsersInput blockedUsersInput = new BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
+        try {
+            apiInstance.unblockUsers(blockedUsersInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DenyListApi#unblockUsers");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

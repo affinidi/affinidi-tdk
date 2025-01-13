@@ -14,60 +14,44 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponseImmediateCNonceExpiresIn;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponseImmediateCredential;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CredentialResponseImmediate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CredentialResponseImmediate.JSON_PROPERTY_CREDENTIAL,
+  CredentialResponseImmediate.JSON_PROPERTY_C_NONCE,
+  CredentialResponseImmediate.JSON_PROPERTY_C_NONCE_EXPIRES_IN
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialResponseImmediate {
-  public static final String SERIALIZED_NAME_CREDENTIAL = "credential";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL)
+  public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   private CredentialResponseImmediateCredential credential;
 
-  public static final String SERIALIZED_NAME_C_NONCE = "c_nonce";
-  @SerializedName(SERIALIZED_NAME_C_NONCE)
+  public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
   private String cNonce;
 
-  public static final String SERIALIZED_NAME_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
-  @SerializedName(SERIALIZED_NAME_C_NONCE_EXPIRES_IN)
+  public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
   private CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn;
 
   public CredentialResponseImmediate() {
   }
 
   public CredentialResponseImmediate credential(CredentialResponseImmediateCredential credential) {
+    
     this.credential = credential;
     return this;
   }
@@ -77,16 +61,22 @@ public class CredentialResponseImmediate {
    * @return credential
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public CredentialResponseImmediateCredential getCredential() {
     return credential;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredential(CredentialResponseImmediateCredential credential) {
     this.credential = credential;
   }
 
-
   public CredentialResponseImmediate cNonce(String cNonce) {
+    
     this.cNonce = cNonce;
     return this;
   }
@@ -96,16 +86,22 @@ public class CredentialResponseImmediate {
    * @return cNonce
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getcNonce() {
     return cNonce;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonce(String cNonce) {
     this.cNonce = cNonce;
   }
 
-
   public CredentialResponseImmediate cNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
+    
     this.cNonceExpiresIn = cNonceExpiresIn;
     return this;
   }
@@ -115,15 +111,19 @@ public class CredentialResponseImmediate {
    * @return cNonceExpiresIn
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public CredentialResponseImmediateCNonceExpiresIn getcNonceExpiresIn() {
     return cNonceExpiresIn;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -166,108 +166,60 @@ public class CredentialResponseImmediate {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credential");
-    openapiFields.add("c_nonce");
-    openapiFields.add("c_nonce_expires_in");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credential");
-    openapiRequiredFields.add("c_nonce");
-    openapiRequiredFields.add("c_nonce_expires_in");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CredentialResponseImmediate
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CredentialResponseImmediate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CredentialResponseImmediate is not found in the empty JSON string", CredentialResponseImmediate.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CredentialResponseImmediate.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CredentialResponseImmediate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CredentialResponseImmediate.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `credential`
-      CredentialResponseImmediateCredential.validateJsonElement(jsonObj.get("credential"));
-      if (!jsonObj.get("c_nonce").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `c_nonce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("c_nonce").toString()));
-      }
-      // validate the required field `c_nonce_expires_in`
-      CredentialResponseImmediateCNonceExpiresIn.validateJsonElement(jsonObj.get("c_nonce_expires_in"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CredentialResponseImmediate.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CredentialResponseImmediate' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CredentialResponseImmediate> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CredentialResponseImmediate.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CredentialResponseImmediate>() {
-           @Override
-           public void write(JsonWriter out, CredentialResponseImmediate value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CredentialResponseImmediate read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `credential` to the URL query string
+    if (getCredential() != null) {
+      joiner.add(getCredential().toUrlQueryString(prefix + "credential" + suffix));
+    }
+
+    // add `c_nonce` to the URL query string
+    if (getcNonce() != null) {
+      try {
+        joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `c_nonce_expires_in` to the URL query string
+    if (getcNonceExpiresIn() != null) {
+      joiner.add(getcNonceExpiresIn().toUrlQueryString(prefix + "c_nonce_expires_in" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CredentialResponseImmediate given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CredentialResponseImmediate
-   * @throws IOException if the JSON string is invalid with respect to CredentialResponseImmediate
-   */
-  public static CredentialResponseImmediate fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CredentialResponseImmediate.class);
-  }
-
-  /**
-   * Convert an instance of CredentialResponseImmediate to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

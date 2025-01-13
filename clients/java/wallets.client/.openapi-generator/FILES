@@ -41,16 +41,13 @@ gradlew.bat
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/main/java/com/affinidi/tdk/wallets/client/ApiCallback.java
 src/main/java/com/affinidi/tdk/wallets/client/ApiClient.java
 src/main/java/com/affinidi/tdk/wallets/client/ApiException.java
-src/main/java/com/affinidi/tdk/wallets/client/ApiResponse.java
+src/main/java/com/affinidi/tdk/wallets/client/BaseApi.java
 src/main/java/com/affinidi/tdk/wallets/client/Configuration.java
-src/main/java/com/affinidi/tdk/wallets/client/GzipRequestInterceptor.java
-src/main/java/com/affinidi/tdk/wallets/client/JSON.java
+src/main/java/com/affinidi/tdk/wallets/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/wallets/client/Pair.java
-src/main/java/com/affinidi/tdk/wallets/client/ProgressRequestBody.java
-src/main/java/com/affinidi/tdk/wallets/client/ProgressResponseBody.java
+src/main/java/com/affinidi/tdk/wallets/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/wallets/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/wallets/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/wallets/client/StringUtil.java
@@ -60,7 +57,6 @@ src/main/java/com/affinidi/tdk/wallets/client/auth/ApiKeyAuth.java
 src/main/java/com/affinidi/tdk/wallets/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/wallets/client/auth/HttpBasicAuth.java
 src/main/java/com/affinidi/tdk/wallets/client/auth/HttpBearerAuth.java
-src/main/java/com/affinidi/tdk/wallets/client/models/AbstractOpenApiSchema.java
 src/main/java/com/affinidi/tdk/wallets/client/models/CreateWalletInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/CreateWalletResponse.java
 src/main/java/com/affinidi/tdk/wallets/client/models/DidKeyInputParams.java

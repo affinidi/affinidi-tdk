@@ -14,72 +14,56 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.JwtObject;
 import com.affinidi.tdk.credential.verification.client.models.LdpObject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Format
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  Format.JSON_PROPERTY_JWT,
+  Format.JSON_PROPERTY_JWT_VC,
+  Format.JSON_PROPERTY_JWT_VP,
+  Format.JSON_PROPERTY_LDP,
+  Format.JSON_PROPERTY_LDP_VC,
+  Format.JSON_PROPERTY_LDP_VP
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Format {
-  public static final String SERIALIZED_NAME_JWT = "jwt";
-  @SerializedName(SERIALIZED_NAME_JWT)
+  public static final String JSON_PROPERTY_JWT = "jwt";
   private JwtObject jwt;
 
-  public static final String SERIALIZED_NAME_JWT_VC = "jwt_vc";
-  @SerializedName(SERIALIZED_NAME_JWT_VC)
+  public static final String JSON_PROPERTY_JWT_VC = "jwt_vc";
   private JwtObject jwtVc;
 
-  public static final String SERIALIZED_NAME_JWT_VP = "jwt_vp";
-  @SerializedName(SERIALIZED_NAME_JWT_VP)
+  public static final String JSON_PROPERTY_JWT_VP = "jwt_vp";
   private JwtObject jwtVp;
 
-  public static final String SERIALIZED_NAME_LDP = "ldp";
-  @SerializedName(SERIALIZED_NAME_LDP)
+  public static final String JSON_PROPERTY_LDP = "ldp";
   private LdpObject ldp;
 
-  public static final String SERIALIZED_NAME_LDP_VC = "ldp_vc";
-  @SerializedName(SERIALIZED_NAME_LDP_VC)
+  public static final String JSON_PROPERTY_LDP_VC = "ldp_vc";
   private LdpObject ldpVc;
 
-  public static final String SERIALIZED_NAME_LDP_VP = "ldp_vp";
-  @SerializedName(SERIALIZED_NAME_LDP_VP)
+  public static final String JSON_PROPERTY_LDP_VP = "ldp_vp";
   private LdpObject ldpVp;
 
   public Format() {
   }
 
   public Format jwt(JwtObject jwt) {
+    
     this.jwt = jwt;
     return this;
   }
@@ -89,16 +73,22 @@ public class Format {
    * @return jwt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public JwtObject getJwt() {
     return jwt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwt(JwtObject jwt) {
     this.jwt = jwt;
   }
 
-
   public Format jwtVc(JwtObject jwtVc) {
+    
     this.jwtVc = jwtVc;
     return this;
   }
@@ -108,16 +98,22 @@ public class Format {
    * @return jwtVc
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_JWT_VC)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public JwtObject getJwtVc() {
     return jwtVc;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JWT_VC)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwtVc(JwtObject jwtVc) {
     this.jwtVc = jwtVc;
   }
 
-
   public Format jwtVp(JwtObject jwtVp) {
+    
     this.jwtVp = jwtVp;
     return this;
   }
@@ -127,16 +123,22 @@ public class Format {
    * @return jwtVp
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_JWT_VP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public JwtObject getJwtVp() {
     return jwtVp;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JWT_VP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwtVp(JwtObject jwtVp) {
     this.jwtVp = jwtVp;
   }
 
-
   public Format ldp(LdpObject ldp) {
+    
     this.ldp = ldp;
     return this;
   }
@@ -146,16 +148,22 @@ public class Format {
    * @return ldp
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LDP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public LdpObject getLdp() {
     return ldp;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LDP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLdp(LdpObject ldp) {
     this.ldp = ldp;
   }
 
-
   public Format ldpVc(LdpObject ldpVc) {
+    
     this.ldpVc = ldpVc;
     return this;
   }
@@ -165,16 +173,22 @@ public class Format {
    * @return ldpVc
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LDP_VC)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public LdpObject getLdpVc() {
     return ldpVc;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LDP_VC)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLdpVc(LdpObject ldpVc) {
     this.ldpVc = ldpVc;
   }
 
-
   public Format ldpVp(LdpObject ldpVp) {
+    
     this.ldpVp = ldpVp;
     return this;
   }
@@ -184,15 +198,19 @@ public class Format {
    * @return ldpVp
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LDP_VP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public LdpObject getLdpVp() {
     return ldpVp;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LDP_VP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLdpVp(LdpObject ldpVp) {
     this.ldpVp = ldpVp;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -241,118 +259,70 @@ public class Format {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("jwt");
-    openapiFields.add("jwt_vc");
-    openapiFields.add("jwt_vp");
-    openapiFields.add("ldp");
-    openapiFields.add("ldp_vc");
-    openapiFields.add("ldp_vp");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Format
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!Format.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Format is not found in the empty JSON string", Format.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Format.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Format` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `jwt`
-      if (jsonObj.get("jwt") != null && !jsonObj.get("jwt").isJsonNull()) {
-        JwtObject.validateJsonElement(jsonObj.get("jwt"));
-      }
-      // validate the optional field `jwt_vc`
-      if (jsonObj.get("jwt_vc") != null && !jsonObj.get("jwt_vc").isJsonNull()) {
-        JwtObject.validateJsonElement(jsonObj.get("jwt_vc"));
-      }
-      // validate the optional field `jwt_vp`
-      if (jsonObj.get("jwt_vp") != null && !jsonObj.get("jwt_vp").isJsonNull()) {
-        JwtObject.validateJsonElement(jsonObj.get("jwt_vp"));
-      }
-      // validate the optional field `ldp`
-      if (jsonObj.get("ldp") != null && !jsonObj.get("ldp").isJsonNull()) {
-        LdpObject.validateJsonElement(jsonObj.get("ldp"));
-      }
-      // validate the optional field `ldp_vc`
-      if (jsonObj.get("ldp_vc") != null && !jsonObj.get("ldp_vc").isJsonNull()) {
-        LdpObject.validateJsonElement(jsonObj.get("ldp_vc"));
-      }
-      // validate the optional field `ldp_vp`
-      if (jsonObj.get("ldp_vp") != null && !jsonObj.get("ldp_vp").isJsonNull()) {
-        LdpObject.validateJsonElement(jsonObj.get("ldp_vp"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Format.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Format' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Format> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Format.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Format>() {
-           @Override
-           public void write(JsonWriter out, Format value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Format read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `jwt` to the URL query string
+    if (getJwt() != null) {
+      joiner.add(getJwt().toUrlQueryString(prefix + "jwt" + suffix));
+    }
+
+    // add `jwt_vc` to the URL query string
+    if (getJwtVc() != null) {
+      joiner.add(getJwtVc().toUrlQueryString(prefix + "jwt_vc" + suffix));
+    }
+
+    // add `jwt_vp` to the URL query string
+    if (getJwtVp() != null) {
+      joiner.add(getJwtVp().toUrlQueryString(prefix + "jwt_vp" + suffix));
+    }
+
+    // add `ldp` to the URL query string
+    if (getLdp() != null) {
+      joiner.add(getLdp().toUrlQueryString(prefix + "ldp" + suffix));
+    }
+
+    // add `ldp_vc` to the URL query string
+    if (getLdpVc() != null) {
+      joiner.add(getLdpVc().toUrlQueryString(prefix + "ldp_vc" + suffix));
+    }
+
+    // add `ldp_vp` to the URL query string
+    if (getLdpVp() != null) {
+      joiner.add(getLdpVp().toUrlQueryString(prefix + "ldp_vp" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of Format given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of Format
-   * @throws IOException if the JSON string is invalid with respect to Format
-   */
-  public static Format fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Format.class);
-  }
-
-  /**
-   * Convert an instance of Format to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

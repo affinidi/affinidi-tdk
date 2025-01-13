@@ -14,62 +14,46 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * GroupDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  GroupDto.JSON_PROPERTY_ARI,
+  GroupDto.JSON_PROPERTY_PROJECT_ID,
+  GroupDto.JSON_PROPERTY_GROUP_NAME,
+  GroupDto.JSON_PROPERTY_CREATION_DATE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GroupDto {
-  public static final String SERIALIZED_NAME_ARI = "ari";
-  @SerializedName(SERIALIZED_NAME_ARI)
+  public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID = "projectId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   private String projectId;
 
-  public static final String SERIALIZED_NAME_GROUP_NAME = "groupName";
-  @SerializedName(SERIALIZED_NAME_GROUP_NAME)
+  public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
   private String groupName;
 
-  public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
-  @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
   private String creationDate;
 
   public GroupDto() {
   }
 
   public GroupDto ari(String ari) {
+    
     this.ari = ari;
     return this;
   }
@@ -79,16 +63,22 @@ public class GroupDto {
    * @return ari
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAri() {
     return ari;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(String ari) {
     this.ari = ari;
   }
 
-
   public GroupDto projectId(String projectId) {
+    
     this.projectId = projectId;
     return this;
   }
@@ -98,16 +88,22 @@ public class GroupDto {
    * @return projectId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getProjectId() {
     return projectId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(String projectId) {
     this.projectId = projectId;
   }
 
-
   public GroupDto groupName(String groupName) {
+    
     this.groupName = groupName;
     return this;
   }
@@ -117,16 +113,22 @@ public class GroupDto {
    * @return groupName
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getGroupName() {
     return groupName;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGroupName(String groupName) {
     this.groupName = groupName;
   }
 
-
   public GroupDto creationDate(String creationDate) {
+    
     this.creationDate = creationDate;
     return this;
   }
@@ -136,15 +138,19 @@ public class GroupDto {
    * @return creationDate
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCreationDate() {
     return creationDate;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreationDate(String creationDate) {
     this.creationDate = creationDate;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -189,115 +195,80 @@ public class GroupDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ari");
-    openapiFields.add("projectId");
-    openapiFields.add("groupName");
-    openapiFields.add("creationDate");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ari");
-    openapiRequiredFields.add("projectId");
-    openapiRequiredFields.add("groupName");
-    openapiRequiredFields.add("creationDate");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GroupDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GroupDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GroupDto is not found in the empty JSON string", GroupDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GroupDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("ari").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ari` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ari").toString()));
-      }
-      if (!jsonObj.get("projectId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectId").toString()));
-      }
-      if (!jsonObj.get("groupName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `groupName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("groupName").toString()));
-      }
-      if (!jsonObj.get("creationDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creationDate").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GroupDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GroupDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GroupDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GroupDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GroupDto>() {
-           @Override
-           public void write(JsonWriter out, GroupDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GroupDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `ari` to the URL query string
+    if (getAri() != null) {
+      try {
+        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectId` to the URL query string
+    if (getProjectId() != null) {
+      try {
+        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `groupName` to the URL query string
+    if (getGroupName() != null) {
+      try {
+        joiner.add(String.format("%sgroupName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGroupName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `creationDate` to the URL query string
+    if (getCreationDate() != null) {
+      try {
+        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of GroupDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GroupDto
-   * @throws IOException if the JSON string is invalid with respect to GroupDto
-   */
-  public static GroupDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GroupDto.class);
-  }
-
-  /**
-   * Convert an instance of GroupDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

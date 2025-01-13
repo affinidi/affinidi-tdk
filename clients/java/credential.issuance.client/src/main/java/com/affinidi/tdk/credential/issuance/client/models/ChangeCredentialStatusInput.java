@@ -14,46 +14,30 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * ChangeCredentialStatusInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
+  ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ChangeCredentialStatusInput {
   /**
    * reason for revocation
    */
-  @JsonAdapter(ChangeReasonEnum.Adapter.class)
   public enum ChangeReasonEnum {
     INVALID_CREDENTIAL("INVALID_CREDENTIAL"),
     
@@ -65,6 +49,7 @@ public class ChangeCredentialStatusInput {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -74,6 +59,7 @@ public class ChangeCredentialStatusInput {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ChangeReasonEnum fromValue(String value) {
       for (ChangeReasonEnum b : ChangeReasonEnum.values()) {
         if (b.value.equals(value)) {
@@ -82,38 +68,19 @@ public class ChangeCredentialStatusInput {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ChangeReasonEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChangeReasonEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChangeReasonEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChangeReasonEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ChangeReasonEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_CHANGE_REASON = "changeReason";
-  @SerializedName(SERIALIZED_NAME_CHANGE_REASON)
+  public static final String JSON_PROPERTY_CHANGE_REASON = "changeReason";
   private ChangeReasonEnum changeReason;
 
-  public static final String SERIALIZED_NAME_ISSUANCE_RECORD_ID = "issuanceRecordId";
-  @SerializedName(SERIALIZED_NAME_ISSUANCE_RECORD_ID)
+  public static final String JSON_PROPERTY_ISSUANCE_RECORD_ID = "issuanceRecordId";
   private String issuanceRecordId;
 
   public ChangeCredentialStatusInput() {
   }
 
   public ChangeCredentialStatusInput changeReason(ChangeReasonEnum changeReason) {
+    
     this.changeReason = changeReason;
     return this;
   }
@@ -123,16 +90,22 @@ public class ChangeCredentialStatusInput {
    * @return changeReason
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public ChangeReasonEnum getChangeReason() {
     return changeReason;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChangeReason(ChangeReasonEnum changeReason) {
     this.changeReason = changeReason;
   }
 
-
   public ChangeCredentialStatusInput issuanceRecordId(String issuanceRecordId) {
+    
     this.issuanceRecordId = issuanceRecordId;
     return this;
   }
@@ -142,15 +115,19 @@ public class ChangeCredentialStatusInput {
    * @return issuanceRecordId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuanceRecordId() {
     return issuanceRecordId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuanceRecordId(String issuanceRecordId) {
     this.issuanceRecordId = issuanceRecordId;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -191,100 +168,60 @@ public class ChangeCredentialStatusInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("changeReason");
-    openapiFields.add("issuanceRecordId");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ChangeCredentialStatusInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ChangeCredentialStatusInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ChangeCredentialStatusInput is not found in the empty JSON string", ChangeCredentialStatusInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ChangeCredentialStatusInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ChangeCredentialStatusInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("changeReason") != null && !jsonObj.get("changeReason").isJsonNull()) && !jsonObj.get("changeReason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `changeReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("changeReason").toString()));
-      }
-      // validate the optional field `changeReason`
-      if (jsonObj.get("changeReason") != null && !jsonObj.get("changeReason").isJsonNull()) {
-        ChangeReasonEnum.validateJsonElement(jsonObj.get("changeReason"));
-      }
-      if ((jsonObj.get("issuanceRecordId") != null && !jsonObj.get("issuanceRecordId").isJsonNull()) && !jsonObj.get("issuanceRecordId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuanceRecordId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuanceRecordId").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ChangeCredentialStatusInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ChangeCredentialStatusInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ChangeCredentialStatusInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ChangeCredentialStatusInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ChangeCredentialStatusInput>() {
-           @Override
-           public void write(JsonWriter out, ChangeCredentialStatusInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ChangeCredentialStatusInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `changeReason` to the URL query string
+    if (getChangeReason() != null) {
+      try {
+        joiner.add(String.format("%schangeReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChangeReason()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuanceRecordId` to the URL query string
+    if (getIssuanceRecordId() != null) {
+      try {
+        joiner.add(String.format("%sissuanceRecordId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceRecordId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of ChangeCredentialStatusInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ChangeCredentialStatusInput
-   * @throws IOException if the JSON string is invalid with respect to ChangeCredentialStatusInput
-   */
-  public static ChangeCredentialStatusInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ChangeCredentialStatusInput.class);
-  }
-
-  /**
-   * Convert an instance of ChangeCredentialStatusInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 
