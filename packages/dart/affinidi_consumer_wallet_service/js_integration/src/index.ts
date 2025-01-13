@@ -1,7 +1,0 @@
-import './randomBytesPolyfill'
-import 'webcrypto-liner'
-import 'node-self'
-import 'text-encoding'
-export { WalletService } from './walletService'
-export { PexProcessor } from './pexProcessor'
-export { AuthenticationService } from './authenticationService'

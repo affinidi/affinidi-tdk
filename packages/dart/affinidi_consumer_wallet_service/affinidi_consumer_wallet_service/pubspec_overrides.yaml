@@ -1,3 +1,0 @@
-dependency_overrides:
-  avmp_cryptography_service:
-    path: ../../cryptography_service
