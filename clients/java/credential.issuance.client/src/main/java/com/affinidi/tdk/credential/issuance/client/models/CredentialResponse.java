@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   CredentialResponse.JSON_PROPERTY_C_NONCE_EXPIRES_IN,
   CredentialResponse.JSON_PROPERTY_TRANSACTION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   private CredentialResponseImmediateCredential credential;

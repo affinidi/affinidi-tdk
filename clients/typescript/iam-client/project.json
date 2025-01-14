@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iam-client",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "clients/typescript/iam-client",
   "projectType": "library",
   "private": false,

@@ -1,0 +1,30 @@
+{
+  "name": "@affinidi-tdk/login-configuration-client-java",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "{projectRoot}",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "mvn clean package"
+      }
+    },
+    "set-version": {
+      "executor": "@affinidi-tdk/nx-tdk-tools:set-version",
+      "options": {
+        "packageName": "login.configuration.client"
+      }
+    },
+    "nx-release-publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "mvn --no-transfer-progress --batch-mode clean deploy -P sign-artifacts"
+      }
+    },
+    "tags": ["lang:java", "kind:client"]
+  }
+}

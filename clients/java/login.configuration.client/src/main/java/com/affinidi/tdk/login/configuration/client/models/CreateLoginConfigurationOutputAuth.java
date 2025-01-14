@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutputAuth.JSON_PROPERTY_ISSUER
 })
 @JsonTypeName("CreateLoginConfigurationOutput_auth")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationOutputAuth {
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
   private String clientId;

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ListLoggedConsentsOK.JSON_PROPERTY_CONSENTS,
   ListLoggedConsentsOK.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListLoggedConsentsOK {
   public static final String JSON_PROPERTY_CONSENTS = "consents";
   private List<ConsentDto> consents = new ArrayList<>();

@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   MessagePublishingError.JSON_PROPERTY_TRACE_ID,
   MessagePublishingError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MessagePublishingError {
   /**
    * Gets or Sets name

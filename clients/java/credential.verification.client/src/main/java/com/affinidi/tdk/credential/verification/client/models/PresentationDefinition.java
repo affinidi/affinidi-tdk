@@ -45,7 +45,7 @@ import java.util.StringJoiner;
   PresentationDefinition.JSON_PROPERTY_INPUT_DESCRIPTORS,
   PresentationDefinition.JSON_PROPERTY_FRAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PresentationDefinition {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

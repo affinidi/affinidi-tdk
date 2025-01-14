@@ -523,6 +523,69 @@ paths:
       x-accepts:
         - application/json
   /v1/nodes/{nodeId}/profile-data:
+    get:
+      description: Retrieves information from a profile.
+      operationId: queryProfileData
+      parameters:
+        - description: the nodeId of the node being operated on
+          explode: false
+          in: path
+          name: nodeId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: 'data query, TBD maybe encode it with base64 to make it url friendly?'
+          explode: true
+          in: query
+          name: query
+          required: false
+          schema:
+            type: string
+          style: form
+        - description:
+            "A base64url encoded data encryption key, encrypted using VFS\
+            \ public"
+          explode: true
+          in: query
+          name: dek
+          required: true
+          schema:
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryProfileDataOK'
+          description: QueryProfileDataOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - profile-data
+      x-accepts:
+        - application/json
     patch:
       description: Updates the profile with the given data
       operationId: updateProfileData
@@ -2340,6 +2403,8 @@ components:
       type: object
     QueryProfileDataOK:
       additionalProperties: false
+      example:
+        data: '{}'
       properties:
         data:
           type: object

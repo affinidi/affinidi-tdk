@@ -55,7 +55,7 @@ import java.util.StringJoiner;
   FilterItems.JSON_PROPERTY_TYPE
 })
 @JsonTypeName("Filter_items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class FilterItems {
   public static final String JSON_PROPERTY_CONST = "_const";
   private FilterConst _const;
