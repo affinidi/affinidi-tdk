@@ -82,6 +82,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _NodesApi_       | [**permanentlyDeleteNode**](doc//NodesApi.md#permanentlydeletenode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
 | _NodesApi_       | [**restoreNodeFromTrashbin**](doc//NodesApi.md#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
 | _NodesApi_       | [**updateNode**](doc//NodesApi.md#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          |
+| _ProfileDataApi_ | [**queryProfileData**](doc//ProfileDataApi.md#queryprofiledata)         | **GET** /v1/nodes/{nodeId}/profile-data               |
 | _ProfileDataApi_ | [**updateProfileData**](doc//ProfileDataApi.md#updateprofiledata)       | **PATCH** /v1/nodes/{nodeId}/profile-data             |
 
 ## Documentation For Models

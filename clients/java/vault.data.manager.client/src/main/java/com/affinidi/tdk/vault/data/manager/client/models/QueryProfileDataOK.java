@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   QueryProfileDataOK.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T09:28:19.227095136Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class QueryProfileDataOK {
   public static final String JSON_PROPERTY_DATA = "data";
   private Object data;
