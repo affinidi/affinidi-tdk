@@ -1,4 +1,4 @@
-import 'package:affinidi_auth_provider/affinidi_auth_provider.dart';
+import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:dotenv/dotenv.dart';
 
 void main() async {

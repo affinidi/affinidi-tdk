@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:affinidi_common/affinidi_common.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 const String sharePath = '/login';
 const String claimPath = '/claim';
