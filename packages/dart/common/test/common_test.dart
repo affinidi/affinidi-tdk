@@ -1,4 +1,4 @@
-import 'package:affinidi_common/affinidi_common.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:test/test.dart';
 
 void main() {
