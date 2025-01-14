@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:affinidi_consumer_auth_provider/affinidi_consumer_auth_provider.dart';
+import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
 
 Future<void> main() async {
