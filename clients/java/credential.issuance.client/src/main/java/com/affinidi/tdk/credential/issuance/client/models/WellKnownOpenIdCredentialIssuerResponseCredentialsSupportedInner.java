@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL
 })
 @JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:20.233220349Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   private String credentialTypeId;

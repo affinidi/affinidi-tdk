@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   Error.JSON_PROPERTY_DEBUG_ID,
   Error.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:13.923255103Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Error {
   public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
   private String errorCode;

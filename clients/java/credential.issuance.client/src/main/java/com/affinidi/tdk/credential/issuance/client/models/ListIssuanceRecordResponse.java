@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ListIssuanceRecordResponse.JSON_PROPERTY_FLOW_DATA,
   ListIssuanceRecordResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:20.233220349Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListIssuanceRecordResponse {
   public static final String JSON_PROPERTY_FLOW_DATA = "flowData";
   private List<FlowData> flowData = new ArrayList<>();

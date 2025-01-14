@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetWellKnownJwksOK.JSON_PROPERTY_CORS_GET_WELL_KNOWN_JWKS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:21:35.502562260Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsGetWellKnownJwksOK {
   public static final String JSON_PROPERTY_CORS_GET_WELL_KNOWN_JWKS_OK = "corsGetWellKnownJwksOk";
   private String corsGetWellKnownJwksOk;

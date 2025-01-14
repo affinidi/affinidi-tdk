@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BlockedUsers.JSON_PROPERTY_USER_IDS,
   BlockedUsers.JSON_PROPERTY_PAGE_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:18:49.698376211Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class BlockedUsers {
   public static final String JSON_PROPERTY_USER_IDS = "userIds";
   private List<String> userIds = new ArrayList<>();

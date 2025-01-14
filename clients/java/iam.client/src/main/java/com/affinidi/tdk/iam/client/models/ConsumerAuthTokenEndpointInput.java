@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_REDIRECT_URI,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:46.742015351Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
   private String grantType;

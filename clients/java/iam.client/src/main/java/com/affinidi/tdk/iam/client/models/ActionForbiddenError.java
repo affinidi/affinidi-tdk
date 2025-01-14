@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   ActionForbiddenError.JSON_PROPERTY_TRACE_ID,
   ActionForbiddenError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:46.742015351Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ActionForbiddenError {
   /**
    * Gets or Sets name

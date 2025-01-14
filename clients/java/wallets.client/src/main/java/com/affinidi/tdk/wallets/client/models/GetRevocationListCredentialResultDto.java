@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GetRevocationListCredentialResultDto.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:39.494234633Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class GetRevocationListCredentialResultDto {
   public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
   private Object revocationListCredential;

@@ -48,7 +48,7 @@ import java.util.StringJoiner;
   StartIssuance400Response.JSON_PROPERTY_DETAILS
 })
 @JsonTypeName("startIssuance_400_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:20.233220349Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class StartIssuance400Response {
   /**
    * Gets or Sets name

@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   SignCredentialInputDto.JSON_PROPERTY_CREDENTIAL_FORMAT,
   SignCredentialInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:39.494234633Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignCredentialInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
   private Object unsignedCredential;

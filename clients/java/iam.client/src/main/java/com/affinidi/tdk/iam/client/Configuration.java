@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.iam.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:46.742015351Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Configuration {
     public static final String VERSION = "1.0.0";
 

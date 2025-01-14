@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   SubmissionRequirement.JSON_PROPERTY_FROM,
   SubmissionRequirement.JSON_PROPERTY_FROM_NESTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:13.923255103Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SubmissionRequirement {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

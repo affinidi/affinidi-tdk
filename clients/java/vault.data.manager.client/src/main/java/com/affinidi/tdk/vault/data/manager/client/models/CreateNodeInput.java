@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   CreateNodeInput.JSON_PROPERTY_DEK,
   CreateNodeInput.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:21:35.502562260Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateNodeInput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

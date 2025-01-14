@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   HolderSubject.JSON_PROPERTY_FIELD_ID,
   HolderSubject.JSON_PROPERTY_DIRECTIVE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:13.923255103Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class HolderSubject {
   public static final String JSON_PROPERTY_FIELD_ID = "field_id";
   private List<String> fieldId = new ArrayList<>();

@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   ResourceLimitExceededError.JSON_PROPERTY_TRACE_ID,
   ResourceLimitExceededError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:21:06.035114986Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ResourceLimitExceededError {
   /**
    * Gets or Sets name

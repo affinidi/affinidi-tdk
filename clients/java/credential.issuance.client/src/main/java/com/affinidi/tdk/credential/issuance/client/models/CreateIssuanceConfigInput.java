@@ -46,7 +46,7 @@ import java.util.StringJoiner;
   CreateIssuanceConfigInput.JSON_PROPERTY_ISSUER_METADATA,
   CreateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:19:20.233220349Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateIssuanceConfigInput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

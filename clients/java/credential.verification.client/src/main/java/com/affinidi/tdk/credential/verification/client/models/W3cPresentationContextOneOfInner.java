@@ -29,7 +29,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("W3cPresentation__context_oneOf_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:20:13.923255103Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class W3cPresentationContextOneOfInner {
   public W3cPresentationContextOneOfInner() {
   }

@@ -45,7 +45,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutput.JSON_PROPERTY_CREATION_DATE,
   CreateLoginConfigurationOutput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-14T23:18:49.698376211Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationOutput {
   public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
