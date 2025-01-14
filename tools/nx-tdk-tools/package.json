@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/nx-tdk-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "@nx/devkit": "19.3.0",
     "tslib": "^2.3.0"

@@ -14,55 +14,39 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
-import com.affinidi.tdk.iam.client.models.UpdateTokenPrivateKeyAuthenticationMethodDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.affinidi.tdk.iam.client.models.UpdateTokenPrivateKeyAuthenticationMethodDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * UpdateTokenInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  UpdateTokenInput.JSON_PROPERTY_NAME,
+  UpdateTokenInput.JSON_PROPERTY_AUTHENTICATION_METHOD
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UpdateTokenInput {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_AUTHENTICATION_METHOD = "authenticationMethod";
-  @SerializedName(SERIALIZED_NAME_AUTHENTICATION_METHOD)
+  public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
   private UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod;
 
   public UpdateTokenInput() {
   }
 
   public UpdateTokenInput name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -72,16 +56,22 @@ public class UpdateTokenInput {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateTokenInput authenticationMethod(UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+    
     this.authenticationMethod = authenticationMethod;
     return this;
   }
@@ -91,15 +81,19 @@ public class UpdateTokenInput {
    * @return authenticationMethod
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public UpdateTokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthenticationMethod(UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -140,97 +134,55 @@ public class UpdateTokenInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("authenticationMethod");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to UpdateTokenInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!UpdateTokenInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateTokenInput is not found in the empty JSON string", UpdateTokenInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UpdateTokenInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateTokenInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      // validate the optional field `authenticationMethod`
-      if (jsonObj.get("authenticationMethod") != null && !jsonObj.get("authenticationMethod").isJsonNull()) {
-        UpdateTokenPrivateKeyAuthenticationMethodDto.validateJsonElement(jsonObj.get("authenticationMethod"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateTokenInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateTokenInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateTokenInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateTokenInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<UpdateTokenInput>() {
-           @Override
-           public void write(JsonWriter out, UpdateTokenInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public UpdateTokenInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `authenticationMethod` to the URL query string
+    if (getAuthenticationMethod() != null) {
+      joiner.add(getAuthenticationMethod().toUrlQueryString(prefix + "authenticationMethod" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of UpdateTokenInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of UpdateTokenInput
-   * @throws IOException if the JSON string is invalid with respect to UpdateTokenInput
-   */
-  public static UpdateTokenInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateTokenInput.class);
-  }
-
-  /**
-   * Convert an instance of UpdateTokenInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

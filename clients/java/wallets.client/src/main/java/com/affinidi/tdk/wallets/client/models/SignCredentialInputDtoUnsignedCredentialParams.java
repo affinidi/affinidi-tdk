@@ -14,72 +14,57 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.wallets.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \&quot;unsignedCredential\&quot; is given
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:51.319891501Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_JSON_LD_CONTEXT_URL,
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_JSON_SCHEMA_URL,
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_TYPE_NAME,
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_CREDENTIAL_SUBJECT,
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_HOLDER_DID,
+  SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_EXPIRES_AT
+})
+@JsonTypeName("SignCredentialInputDto_unsignedCredentialParams")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignCredentialInputDtoUnsignedCredentialParams {
-  public static final String SERIALIZED_NAME_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_LD_CONTEXT_URL)
+  public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   private String jsonLdContextUrl;
 
-  public static final String SERIALIZED_NAME_JSON_SCHEMA_URL = "jsonSchemaUrl";
-  @SerializedName(SERIALIZED_NAME_JSON_SCHEMA_URL)
+  public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
   private String jsonSchemaUrl;
 
-  public static final String SERIALIZED_NAME_TYPE_NAME = "typeName";
-  @SerializedName(SERIALIZED_NAME_TYPE_NAME)
+  public static final String JSON_PROPERTY_TYPE_NAME = "typeName";
   private String typeName;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_SUBJECT = "credentialSubject";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_SUBJECT)
+  public static final String JSON_PROPERTY_CREDENTIAL_SUBJECT = "credentialSubject";
   private Map<String, Object> credentialSubject = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_HOLDER_DID = "holderDid";
-  @SerializedName(SERIALIZED_NAME_HOLDER_DID)
+  public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
   private String holderDid;
 
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  public static final String JSON_PROPERTY_EXPIRES_AT = "expiresAt";
   private String expiresAt;
 
   public SignCredentialInputDtoUnsignedCredentialParams() {
   }
 
   public SignCredentialInputDtoUnsignedCredentialParams jsonLdContextUrl(String jsonLdContextUrl) {
+    
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
   }
@@ -89,16 +74,22 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonLdContextUrl() {
     return jsonLdContextUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 
-
   public SignCredentialInputDtoUnsignedCredentialParams jsonSchemaUrl(String jsonSchemaUrl) {
+    
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
   }
@@ -108,16 +99,22 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getJsonSchemaUrl() {
     return jsonSchemaUrl;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-
   public SignCredentialInputDtoUnsignedCredentialParams typeName(String typeName) {
+    
     this.typeName = typeName;
     return this;
   }
@@ -127,24 +124,27 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return typeName
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getTypeName() {
     return typeName;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTypeName(String typeName) {
     this.typeName = typeName;
   }
 
-
   public SignCredentialInputDtoUnsignedCredentialParams credentialSubject(Map<String, Object> credentialSubject) {
+    
     this.credentialSubject = credentialSubject;
     return this;
   }
 
   public SignCredentialInputDtoUnsignedCredentialParams putCredentialSubjectItem(String key, Object credentialSubjectItem) {
-    if (this.credentialSubject == null) {
-      this.credentialSubject = new HashMap<>();
-    }
     this.credentialSubject.put(key, credentialSubjectItem);
     return this;
   }
@@ -154,16 +154,22 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return credentialSubject
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+
   public Map<String, Object> getCredentialSubject() {
     return credentialSubject;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setCredentialSubject(Map<String, Object> credentialSubject) {
     this.credentialSubject = credentialSubject;
   }
 
-
   public SignCredentialInputDtoUnsignedCredentialParams holderDid(String holderDid) {
+    
     this.holderDid = holderDid;
     return this;
   }
@@ -173,16 +179,22 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return holderDid
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getHolderDid() {
     return holderDid;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHolderDid(String holderDid) {
     this.holderDid = holderDid;
   }
 
-
   public SignCredentialInputDtoUnsignedCredentialParams expiresAt(String expiresAt) {
+    
     this.expiresAt = expiresAt;
     return this;
   }
@@ -192,15 +204,19 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return expiresAt
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getExpiresAt() {
     return expiresAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresAt(String expiresAt) {
     this.expiresAt = expiresAt;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -249,122 +265,104 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("jsonLdContextUrl");
-    openapiFields.add("jsonSchemaUrl");
-    openapiFields.add("typeName");
-    openapiFields.add("credentialSubject");
-    openapiFields.add("holderDid");
-    openapiFields.add("expiresAt");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("jsonLdContextUrl");
-    openapiRequiredFields.add("jsonSchemaUrl");
-    openapiRequiredFields.add("typeName");
-    openapiRequiredFields.add("credentialSubject");
-    openapiRequiredFields.add("holderDid");
-    openapiRequiredFields.add("expiresAt");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SignCredentialInputDtoUnsignedCredentialParams
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!SignCredentialInputDtoUnsignedCredentialParams.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SignCredentialInputDtoUnsignedCredentialParams is not found in the empty JSON string", SignCredentialInputDtoUnsignedCredentialParams.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SignCredentialInputDtoUnsignedCredentialParams.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SignCredentialInputDtoUnsignedCredentialParams` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SignCredentialInputDtoUnsignedCredentialParams.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("jsonLdContextUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonLdContextUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonLdContextUrl").toString()));
-      }
-      if (!jsonObj.get("jsonSchemaUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jsonSchemaUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jsonSchemaUrl").toString()));
-      }
-      if (!jsonObj.get("typeName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `typeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("typeName").toString()));
-      }
-      if (!jsonObj.get("holderDid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `holderDid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holderDid").toString()));
-      }
-      if (!jsonObj.get("expiresAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expiresAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiresAt").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SignCredentialInputDtoUnsignedCredentialParams.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SignCredentialInputDtoUnsignedCredentialParams' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SignCredentialInputDtoUnsignedCredentialParams> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SignCredentialInputDtoUnsignedCredentialParams.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<SignCredentialInputDtoUnsignedCredentialParams>() {
-           @Override
-           public void write(JsonWriter out, SignCredentialInputDtoUnsignedCredentialParams value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public SignCredentialInputDtoUnsignedCredentialParams read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `jsonLdContextUrl` to the URL query string
+    if (getJsonLdContextUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `jsonSchemaUrl` to the URL query string
+    if (getJsonSchemaUrl() != null) {
+      try {
+        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `typeName` to the URL query string
+    if (getTypeName() != null) {
+      try {
+        joiner.add(String.format("%stypeName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTypeName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialSubject` to the URL query string
+    if (getCredentialSubject() != null) {
+      for (String _key : getCredentialSubject().keySet()) {
+        try {
+          joiner.add(String.format("%scredentialSubject%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getCredentialSubject().get(_key), URLEncoder.encode(String.valueOf(getCredentialSubject().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `holderDid` to the URL query string
+    if (getHolderDid() != null) {
+      try {
+        joiner.add(String.format("%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expiresAt` to the URL query string
+    if (getExpiresAt() != null) {
+      try {
+        joiner.add(String.format("%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of SignCredentialInputDtoUnsignedCredentialParams given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of SignCredentialInputDtoUnsignedCredentialParams
-   * @throws IOException if the JSON string is invalid with respect to SignCredentialInputDtoUnsignedCredentialParams
-   */
-  public static SignCredentialInputDtoUnsignedCredentialParams fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SignCredentialInputDtoUnsignedCredentialParams.class);
-  }
-
-  /**
-   * Convert an instance of SignCredentialInputDtoUnsignedCredentialParams to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

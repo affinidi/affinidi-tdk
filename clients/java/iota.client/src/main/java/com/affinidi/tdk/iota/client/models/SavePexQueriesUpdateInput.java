@@ -14,53 +14,38 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iota.client.models.SavePexQueriesUpdateInputQueriesInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * SavePexQueriesUpdateInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  SavePexQueriesUpdateInput.JSON_PROPERTY_QUERIES
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SavePexQueriesUpdateInput {
-  public static final String SERIALIZED_NAME_QUERIES = "queries";
-  @SerializedName(SERIALIZED_NAME_QUERIES)
+  public static final String JSON_PROPERTY_QUERIES = "queries";
   private List<SavePexQueriesUpdateInputQueriesInner> queries = new ArrayList<>();
 
   public SavePexQueriesUpdateInput() {
   }
 
   public SavePexQueriesUpdateInput queries(List<SavePexQueriesUpdateInputQueriesInner> queries) {
+    
     this.queries = queries;
     return this;
   }
@@ -78,15 +63,19 @@ public class SavePexQueriesUpdateInput {
    * @return queries
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_QUERIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<SavePexQueriesUpdateInputQueriesInner> getQueries() {
     return queries;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_QUERIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setQueries(List<SavePexQueriesUpdateInputQueriesInner> queries) {
     this.queries = queries;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -125,103 +114,50 @@ public class SavePexQueriesUpdateInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("queries");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SavePexQueriesUpdateInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!SavePexQueriesUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SavePexQueriesUpdateInput is not found in the empty JSON string", SavePexQueriesUpdateInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SavePexQueriesUpdateInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SavePexQueriesUpdateInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("queries") != null && !jsonObj.get("queries").isJsonNull()) {
-        JsonArray jsonArrayqueries = jsonObj.getAsJsonArray("queries");
-        if (jsonArrayqueries != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("queries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `queries` to be an array in the JSON string but got `%s`", jsonObj.get("queries").toString()));
-          }
-
-          // validate the optional field `queries` (array)
-          for (int i = 0; i < jsonArrayqueries.size(); i++) {
-            SavePexQueriesUpdateInputQueriesInner.validateJsonElement(jsonArrayqueries.get(i));
-          };
-        }
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SavePexQueriesUpdateInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SavePexQueriesUpdateInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SavePexQueriesUpdateInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SavePexQueriesUpdateInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<SavePexQueriesUpdateInput>() {
-           @Override
-           public void write(JsonWriter out, SavePexQueriesUpdateInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public SavePexQueriesUpdateInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `queries` to the URL query string
+    if (getQueries() != null) {
+      for (int i = 0; i < getQueries().size(); i++) {
+        if (getQueries().get(i) != null) {
+          joiner.add(getQueries().get(i).toUrlQueryString(String.format("%squeries%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of SavePexQueriesUpdateInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of SavePexQueriesUpdateInput
-   * @throws IOException if the JSON string is invalid with respect to SavePexQueriesUpdateInput
-   */
-  public static SavePexQueriesUpdateInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SavePexQueriesUpdateInput.class);
-  }
-
-  /**
-   * Convert an instance of SavePexQueriesUpdateInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

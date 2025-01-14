@@ -14,62 +14,47 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * IotaExchangeCredentialsOKCredentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_ACCESS_KEY_ID,
+  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SECRET_KEY,
+  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SESSION_TOKEN,
+  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_EXPIRATION
+})
+@JsonTypeName("IotaExchangeCredentialsOK_credentials")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IotaExchangeCredentialsOKCredentials {
-  public static final String SERIALIZED_NAME_ACCESS_KEY_ID = "accessKeyId";
-  @SerializedName(SERIALIZED_NAME_ACCESS_KEY_ID)
+  public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
   private String accessKeyId;
 
-  public static final String SERIALIZED_NAME_SECRET_KEY = "secretKey";
-  @SerializedName(SERIALIZED_NAME_SECRET_KEY)
+  public static final String JSON_PROPERTY_SECRET_KEY = "secretKey";
   private String secretKey;
 
-  public static final String SERIALIZED_NAME_SESSION_TOKEN = "sessionToken";
-  @SerializedName(SERIALIZED_NAME_SESSION_TOKEN)
+  public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   private String sessionToken;
 
-  public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
-  @SerializedName(SERIALIZED_NAME_EXPIRATION)
+  public static final String JSON_PROPERTY_EXPIRATION = "expiration";
   private String expiration;
 
   public IotaExchangeCredentialsOKCredentials() {
   }
 
   public IotaExchangeCredentialsOKCredentials accessKeyId(String accessKeyId) {
+    
     this.accessKeyId = accessKeyId;
     return this;
   }
@@ -79,16 +64,22 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return accessKeyId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAccessKeyId() {
     return accessKeyId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccessKeyId(String accessKeyId) {
     this.accessKeyId = accessKeyId;
   }
 
-
   public IotaExchangeCredentialsOKCredentials secretKey(String secretKey) {
+    
     this.secretKey = secretKey;
     return this;
   }
@@ -98,16 +89,22 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return secretKey
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getSecretKey() {
     return secretKey;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSecretKey(String secretKey) {
     this.secretKey = secretKey;
   }
 
-
   public IotaExchangeCredentialsOKCredentials sessionToken(String sessionToken) {
+    
     this.sessionToken = sessionToken;
     return this;
   }
@@ -117,16 +114,22 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return sessionToken
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getSessionToken() {
     return sessionToken;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSessionToken(String sessionToken) {
     this.sessionToken = sessionToken;
   }
 
-
   public IotaExchangeCredentialsOKCredentials expiration(String expiration) {
+    
     this.expiration = expiration;
     return this;
   }
@@ -136,15 +139,19 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return expiration
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXPIRATION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getExpiration() {
     return expiration;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EXPIRATION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiration(String expiration) {
     this.expiration = expiration;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -189,115 +196,80 @@ public class IotaExchangeCredentialsOKCredentials {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("accessKeyId");
-    openapiFields.add("secretKey");
-    openapiFields.add("sessionToken");
-    openapiFields.add("expiration");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("accessKeyId");
-    openapiRequiredFields.add("secretKey");
-    openapiRequiredFields.add("sessionToken");
-    openapiRequiredFields.add("expiration");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IotaExchangeCredentialsOKCredentials
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!IotaExchangeCredentialsOKCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IotaExchangeCredentialsOKCredentials is not found in the empty JSON string", IotaExchangeCredentialsOKCredentials.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IotaExchangeCredentialsOKCredentials.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IotaExchangeCredentialsOKCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IotaExchangeCredentialsOKCredentials.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("accessKeyId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accessKeyId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accessKeyId").toString()));
-      }
-      if (!jsonObj.get("secretKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `secretKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("secretKey").toString()));
-      }
-      if (!jsonObj.get("sessionToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sessionToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sessionToken").toString()));
-      }
-      if (!jsonObj.get("expiration").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expiration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiration").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IotaExchangeCredentialsOKCredentials.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IotaExchangeCredentialsOKCredentials' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IotaExchangeCredentialsOKCredentials> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IotaExchangeCredentialsOKCredentials.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IotaExchangeCredentialsOKCredentials>() {
-           @Override
-           public void write(JsonWriter out, IotaExchangeCredentialsOKCredentials value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IotaExchangeCredentialsOKCredentials read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `accessKeyId` to the URL query string
+    if (getAccessKeyId() != null) {
+      try {
+        joiner.add(String.format("%saccessKeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `secretKey` to the URL query string
+    if (getSecretKey() != null) {
+      try {
+        joiner.add(String.format("%ssecretKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSecretKey()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sessionToken` to the URL query string
+    if (getSessionToken() != null) {
+      try {
+        joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expiration` to the URL query string
+    if (getExpiration() != null) {
+      try {
+        joiner.add(String.format("%sexpiration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiration()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of IotaExchangeCredentialsOKCredentials given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of IotaExchangeCredentialsOKCredentials
-   * @throws IOException if the JSON string is invalid with respect to IotaExchangeCredentialsOKCredentials
-   */
-  public static IotaExchangeCredentialsOKCredentials fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IotaExchangeCredentialsOKCredentials.class);
-  }
-
-  /**
-   * Convert an instance of IotaExchangeCredentialsOKCredentials to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

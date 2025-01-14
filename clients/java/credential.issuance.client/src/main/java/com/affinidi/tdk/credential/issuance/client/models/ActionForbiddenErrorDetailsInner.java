@@ -14,62 +14,47 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * ActionForbiddenErrorDetailsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  ActionForbiddenErrorDetailsInner.JSON_PROPERTY_ISSUE,
+  ActionForbiddenErrorDetailsInner.JSON_PROPERTY_FIELD,
+  ActionForbiddenErrorDetailsInner.JSON_PROPERTY_VALUE,
+  ActionForbiddenErrorDetailsInner.JSON_PROPERTY_LOCATION
+})
+@JsonTypeName("ActionForbiddenError_details_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ActionForbiddenErrorDetailsInner {
-  public static final String SERIALIZED_NAME_ISSUE = "issue";
-  @SerializedName(SERIALIZED_NAME_ISSUE)
+  public static final String JSON_PROPERTY_ISSUE = "issue";
   private String issue;
 
-  public static final String SERIALIZED_NAME_FIELD = "field";
-  @SerializedName(SERIALIZED_NAME_FIELD)
+  public static final String JSON_PROPERTY_FIELD = "field";
   private String field;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
 
-  public static final String SERIALIZED_NAME_LOCATION = "location";
-  @SerializedName(SERIALIZED_NAME_LOCATION)
+  public static final String JSON_PROPERTY_LOCATION = "location";
   private String location;
 
   public ActionForbiddenErrorDetailsInner() {
   }
 
   public ActionForbiddenErrorDetailsInner issue(String issue) {
+    
     this.issue = issue;
     return this;
   }
@@ -79,16 +64,22 @@ public class ActionForbiddenErrorDetailsInner {
    * @return issue
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ISSUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getIssue() {
     return issue;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssue(String issue) {
     this.issue = issue;
   }
 
-
   public ActionForbiddenErrorDetailsInner field(String field) {
+    
     this.field = field;
     return this;
   }
@@ -98,16 +89,22 @@ public class ActionForbiddenErrorDetailsInner {
    * @return field
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FIELD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getField() {
     return field;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FIELD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setField(String field) {
     this.field = field;
   }
 
-
   public ActionForbiddenErrorDetailsInner value(String value) {
+    
     this.value = value;
     return this;
   }
@@ -117,16 +114,22 @@ public class ActionForbiddenErrorDetailsInner {
    * @return value
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getValue() {
     return value;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setValue(String value) {
     this.value = value;
   }
 
-
   public ActionForbiddenErrorDetailsInner location(String location) {
+    
     this.location = location;
     return this;
   }
@@ -136,15 +139,19 @@ public class ActionForbiddenErrorDetailsInner {
    * @return location
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LOCATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getLocation() {
     return location;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LOCATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocation(String location) {
     this.location = location;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -189,112 +196,80 @@ public class ActionForbiddenErrorDetailsInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("issue");
-    openapiFields.add("field");
-    openapiFields.add("value");
-    openapiFields.add("location");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("issue");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ActionForbiddenErrorDetailsInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ActionForbiddenErrorDetailsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ActionForbiddenErrorDetailsInner is not found in the empty JSON string", ActionForbiddenErrorDetailsInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ActionForbiddenErrorDetailsInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ActionForbiddenErrorDetailsInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ActionForbiddenErrorDetailsInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("issue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issue").toString()));
-      }
-      if ((jsonObj.get("field") != null && !jsonObj.get("field").isJsonNull()) && !jsonObj.get("field").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `field` to be a primitive type in the JSON string but got `%s`", jsonObj.get("field").toString()));
-      }
-      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
-      }
-      if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ActionForbiddenErrorDetailsInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ActionForbiddenErrorDetailsInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ActionForbiddenErrorDetailsInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ActionForbiddenErrorDetailsInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ActionForbiddenErrorDetailsInner>() {
-           @Override
-           public void write(JsonWriter out, ActionForbiddenErrorDetailsInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ActionForbiddenErrorDetailsInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `issue` to the URL query string
+    if (getIssue() != null) {
+      try {
+        joiner.add(String.format("%sissue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssue()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `field` to the URL query string
+    if (getField() != null) {
+      try {
+        joiner.add(String.format("%sfield%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getField()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `value` to the URL query string
+    if (getValue() != null) {
+      try {
+        joiner.add(String.format("%svalue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getValue()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `location` to the URL query string
+    if (getLocation() != null) {
+      try {
+        joiner.add(String.format("%slocation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocation()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of ActionForbiddenErrorDetailsInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ActionForbiddenErrorDetailsInner
-   * @throws IOException if the JSON string is invalid with respect to ActionForbiddenErrorDetailsInner
-   */
-  public static ActionForbiddenErrorDetailsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ActionForbiddenErrorDetailsInner.class);
-  }
-
-  /**
-   * Convert an instance of ActionForbiddenErrorDetailsInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -14,265 +14,417 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
 import com.affinidi.tdk.wallets.client.models.ServiceErrorResponseDetailsInner;
 import com.affinidi.tdk.wallets.client.models.SigningFailedError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * SignCredential400Response
+ */
+@JsonPropertyOrder({
+  SignCredential400Response.JSON_PROPERTY_NAME,
+  SignCredential400Response.JSON_PROPERTY_MESSAGE,
+  SignCredential400Response.JSON_PROPERTY_HTTP_STATUS_CODE,
+  SignCredential400Response.JSON_PROPERTY_TRACE_ID,
+  SignCredential400Response.JSON_PROPERTY_DETAILS
+})
+@JsonTypeName("signCredential_400_response")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class SignCredential400Response {
+  /**
+   * Gets or Sets name
+   */
+  public enum NameEnum {
+    SIGNING_FAILED_ERROR("SigningFailedError");
 
+    private String value;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-
-import com.affinidi.tdk.wallets.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:51.319891501Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class SignCredential400Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(SignCredential400Response.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!SignCredential400Response.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'SignCredential400Response' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidParameterError> adapterInvalidParameterError = gson.getDelegateAdapter(this, TypeToken.get(InvalidParameterError.class));
-            final TypeAdapter<SigningFailedError> adapterSigningFailedError = gson.getDelegateAdapter(this, TypeToken.get(SigningFailedError.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<SignCredential400Response>() {
-                @Override
-                public void write(JsonWriter out, SignCredential400Response value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `InvalidParameterError`
-                    if (value.getActualInstance() instanceof InvalidParameterError) {
-                        JsonElement element = adapterInvalidParameterError.toJsonTree((InvalidParameterError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `SigningFailedError`
-                    if (value.getActualInstance() instanceof SigningFailedError) {
-                        JsonElement element = adapterSigningFailedError.toJsonTree((SigningFailedError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidParameterError, SigningFailedError");
-                }
-
-                @Override
-                public SignCredential400Response read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize InvalidParameterError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidParameterError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidParameterError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidParameterError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidParameterError'", e);
-                    }
-                    // deserialize SigningFailedError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        SigningFailedError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterSigningFailedError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'SigningFailedError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for SigningFailedError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'SigningFailedError'", e);
-                    }
-
-                    if (match == 1) {
-                        SignCredential400Response ret = new SignCredential400Response();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for SignCredential400Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    NameEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public SignCredential400Response() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public SignCredential400Response(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("InvalidParameterError", InvalidParameterError.class);
-        schemas.put("SigningFailedError", SigningFailedError.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return SignCredential400Response.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * InvalidParameterError, SigningFailedError
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    @JsonCreator
+    public static NameEnum fromValue(String value) {
+      for (NameEnum b : NameEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private NameEnum name;
+
+  /**
+   * Gets or Sets message
+   */
+  public enum MessageEnum {
+    SIGNING_FAILED_("Signing failed.");
+
+    private String value;
+
+    MessageEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidParameterError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof SigningFailedError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be InvalidParameterError, SigningFailedError");
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * InvalidParameterError, SigningFailedError
-     *
-     * @return The actual instance (InvalidParameterError, SigningFailedError)
-     */
-    @SuppressWarnings("unchecked")
+    @JsonCreator
+    public static MessageEnum fromValue(String value) {
+      for (MessageEnum b : MessageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private MessageEnum message;
+
+  /**
+   * Gets or Sets httpStatusCode
+   */
+  public enum HttpStatusCodeEnum {
+    NUMBER_400(new BigDecimal("400"));
+
+    private BigDecimal value;
+
+    HttpStatusCodeEnum(BigDecimal value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public BigDecimal getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `InvalidParameterError`. If the actual instance is not `InvalidParameterError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidParameterError`
-     * @throws ClassCastException if the instance is not `InvalidParameterError`
-     */
-    public InvalidParameterError getInvalidParameterError() throws ClassCastException {
-        return (InvalidParameterError)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `SigningFailedError`. If the actual instance is not `SigningFailedError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `SigningFailedError`
-     * @throws ClassCastException if the instance is not `SigningFailedError`
-     */
-    public SigningFailedError getSigningFailedError() throws ClassCastException {
-        return (SigningFailedError)super.getActualInstance();
-    }
-
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to SignCredential400Response
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidParameterError
-        try {
-            InvalidParameterError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidParameterError failed with `%s`.", e.getMessage()));
-            // continue to the next one
+    @JsonCreator
+    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+      for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-        // validate the json string with SigningFailedError
-        try {
-            SigningFailedError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for SigningFailedError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for SignCredential400Response with oneOf schemas: InvalidParameterError, SigningFailedError. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  private HttpStatusCodeEnum httpStatusCode;
+
+  public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  private String traceId;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+
+  public SignCredential400Response() {
+  }
+
+  public SignCredential400Response name(NameEnum name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public NameEnum getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setName(NameEnum name) {
+    this.name = name;
+  }
+
+  public SignCredential400Response message(MessageEnum message) {
+    
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public MessageEnum getMessage() {
+    return message;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMessage(MessageEnum message) {
+    this.message = message;
+  }
+
+  public SignCredential400Response httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    
+    this.httpStatusCode = httpStatusCode;
+    return this;
+  }
+
+  /**
+   * Get httpStatusCode
+   * @return httpStatusCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public HttpStatusCodeEnum getHttpStatusCode() {
+    return httpStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    this.httpStatusCode = httpStatusCode;
+  }
+
+  public SignCredential400Response traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+  /**
+   * Get traceId
+   * @return traceId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+  public SignCredential400Response details(List<ServiceErrorResponseDetailsInner> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public SignCredential400Response addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
+    }
+    this.details.add(detailsItem);
+    return this;
+  }
+
+  /**
+   * Get details
+   * @return details
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ServiceErrorResponseDetailsInner> getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(List<ServiceErrorResponseDetailsInner> details) {
+    this.details = details;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SignCredential400Response signCredential400Response = (SignCredential400Response) o;
+    return Objects.equals(this.name, signCredential400Response.name) &&
+        Objects.equals(this.message, signCredential400Response.message) &&
+        Objects.equals(this.httpStatusCode, signCredential400Response.httpStatusCode) &&
+        Objects.equals(this.traceId, signCredential400Response.traceId) &&
+        Objects.equals(this.details, signCredential400Response.details);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, message, httpStatusCode, traceId, details);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class SignCredential400Response {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Create an instance of SignCredential400Response given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of SignCredential400Response
-     * @throws IOException if the JSON string is invalid with respect to SignCredential400Response
-     */
-    public static SignCredential400Response fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, SignCredential400Response.class);
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of SignCredential400Response to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      try {
+        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
+
+    // add `httpStatusCode` to the URL query string
+    if (getHttpStatusCode() != null) {
+      try {
+        joiner.add(String.format("%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `traceId` to the URL query string
+    if (getTraceId() != null) {
+      try {
+        joiner.add(String.format("%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      for (int i = 0; i < getDetails().size(); i++) {
+        if (getDetails().get(i) != null) {
+          joiner.add(getDetails().get(i).toUrlQueryString(String.format("%sdetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+
 }
 

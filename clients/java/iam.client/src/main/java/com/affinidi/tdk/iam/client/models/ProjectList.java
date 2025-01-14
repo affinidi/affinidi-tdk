@@ -14,57 +14,42 @@
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iam.client.models.ProjectDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iam.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * ProjectList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  ProjectList.JSON_PROPERTY_PROJECTS,
+  ProjectList.JSON_PROPERTY_LAST_EVALUATED_KEY
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ProjectList {
-  public static final String SERIALIZED_NAME_PROJECTS = "projects";
-  @SerializedName(SERIALIZED_NAME_PROJECTS)
+  public static final String JSON_PROPERTY_PROJECTS = "projects";
   private List<ProjectDto> projects = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  @SerializedName(SERIALIZED_NAME_LAST_EVALUATED_KEY)
+  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
   private String lastEvaluatedKey;
 
   public ProjectList() {
   }
 
   public ProjectList projects(List<ProjectDto> projects) {
+    
     this.projects = projects;
     return this;
   }
@@ -82,16 +67,22 @@ public class ProjectList {
    * @return projects
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PROJECTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<ProjectDto> getProjects() {
     return projects;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjects(List<ProjectDto> projects) {
     this.projects = projects;
   }
 
-
   public ProjectList lastEvaluatedKey(String lastEvaluatedKey) {
+    
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
   }
@@ -101,15 +92,19 @@ public class ProjectList {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getLastEvaluatedKey() {
     return lastEvaluatedKey;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -150,111 +145,60 @@ public class ProjectList {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("projects");
-    openapiFields.add("lastEvaluatedKey");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("projects");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ProjectList
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ProjectList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectList is not found in the empty JSON string", ProjectList.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ProjectList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProjectList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProjectList.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("projects").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projects` to be an array in the JSON string but got `%s`", jsonObj.get("projects").toString()));
-      }
-
-      JsonArray jsonArrayprojects = jsonObj.getAsJsonArray("projects");
-      // validate the required field `projects` (array)
-      for (int i = 0; i < jsonArrayprojects.size(); i++) {
-        ProjectDto.validateJsonElement(jsonArrayprojects.get(i));
-      };
-      if ((jsonObj.get("lastEvaluatedKey") != null && !jsonObj.get("lastEvaluatedKey").isJsonNull()) && !jsonObj.get("lastEvaluatedKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastEvaluatedKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastEvaluatedKey").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ProjectList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ProjectList' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ProjectList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ProjectList.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ProjectList>() {
-           @Override
-           public void write(JsonWriter out, ProjectList value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ProjectList read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `projects` to the URL query string
+    if (getProjects() != null) {
+      for (int i = 0; i < getProjects().size(); i++) {
+        if (getProjects().get(i) != null) {
+          joiner.add(getProjects().get(i).toUrlQueryString(String.format("%sprojects%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `lastEvaluatedKey` to the URL query string
+    if (getLastEvaluatedKey() != null) {
+      try {
+        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of ProjectList given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ProjectList
-   * @throws IOException if the JSON string is invalid with respect to ProjectList
-   */
-  public static ProjectList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ProjectList.class);
-  }
-
-  /**
-   * Convert an instance of ProjectList to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

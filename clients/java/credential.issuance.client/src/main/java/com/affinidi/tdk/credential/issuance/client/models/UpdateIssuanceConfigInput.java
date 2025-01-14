@@ -14,68 +14,56 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSupportedObject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * UpdateIssuanceConfigInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  UpdateIssuanceConfigInput.JSON_PROPERTY_NAME,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_DESCRIPTION,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_ISSUER_WALLET_ID,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_CREDENTIAL_OFFER_DURATION,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_FORMAT,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_ISSUER_URI,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_CREDENTIAL_SUPPORTED,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_ISSUER_METADATA,
+  UpdateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class UpdateIssuanceConfigInput {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String SERIALIZED_NAME_ISSUER_WALLET_ID = "issuerWalletId";
-  @SerializedName(SERIALIZED_NAME_ISSUER_WALLET_ID)
+  public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
   private String issuerWalletId;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_OFFER_DURATION)
+  public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
   private BigDecimal credentialOfferDuration;
 
   /**
    * String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
    */
-  @JsonAdapter(FormatEnum.Adapter.class)
   public enum FormatEnum {
     LDP_VC("ldp_vc"),
     
@@ -89,6 +77,7 @@ public class UpdateIssuanceConfigInput {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -98,6 +87,7 @@ public class UpdateIssuanceConfigInput {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static FormatEnum fromValue(String value) {
       for (FormatEnum b : FormatEnum.values()) {
         if (b.value.equals(value)) {
@@ -106,50 +96,28 @@ public class UpdateIssuanceConfigInput {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<FormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FormatEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      FormatEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
+  public static final String JSON_PROPERTY_FORMAT = "format";
   private FormatEnum format;
 
-  public static final String SERIALIZED_NAME_ISSUER_URI = "issuerUri";
-  @SerializedName(SERIALIZED_NAME_ISSUER_URI)
+  public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
   private String issuerUri;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_SUPPORTED = "credentialSupported";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_SUPPORTED)
+  public static final String JSON_PROPERTY_CREDENTIAL_SUPPORTED = "credentialSupported";
   private List<CredentialSupportedObject> credentialSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_ISSUER_METADATA = "issuerMetadata";
-  @SerializedName(SERIALIZED_NAME_ISSUER_METADATA)
+  public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
   private Map<String, Object> issuerMetadata = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_RETURN_URIS = "returnUris";
-  @SerializedName(SERIALIZED_NAME_RETURN_URIS)
+  public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
   private List<String> returnUris = new ArrayList<>();
 
   public UpdateIssuanceConfigInput() {
   }
 
   public UpdateIssuanceConfigInput name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -159,16 +127,22 @@ public class UpdateIssuanceConfigInput {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateIssuanceConfigInput description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -178,16 +152,22 @@ public class UpdateIssuanceConfigInput {
    * @return description
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDescription() {
     return description;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateIssuanceConfigInput issuerWalletId(String issuerWalletId) {
+    
     this.issuerWalletId = issuerWalletId;
     return this;
   }
@@ -197,16 +177,22 @@ public class UpdateIssuanceConfigInput {
    * @return issuerWalletId
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuerWalletId() {
     return issuerWalletId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerWalletId(String issuerWalletId) {
     this.issuerWalletId = issuerWalletId;
   }
 
-
   public UpdateIssuanceConfigInput credentialOfferDuration(BigDecimal credentialOfferDuration) {
+    
     this.credentialOfferDuration = credentialOfferDuration;
     return this;
   }
@@ -218,16 +204,22 @@ public class UpdateIssuanceConfigInput {
    * @return credentialOfferDuration
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getCredentialOfferDuration() {
     return credentialOfferDuration;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
     this.credentialOfferDuration = credentialOfferDuration;
   }
 
-
   public UpdateIssuanceConfigInput format(FormatEnum format) {
+    
     this.format = format;
     return this;
   }
@@ -237,16 +229,22 @@ public class UpdateIssuanceConfigInput {
    * @return format
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public FormatEnum getFormat() {
     return format;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
-
   public UpdateIssuanceConfigInput issuerUri(String issuerUri) {
+    
     this.issuerUri = issuerUri;
     return this;
   }
@@ -256,16 +254,22 @@ public class UpdateIssuanceConfigInput {
    * @return issuerUri
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuerUri() {
     return issuerUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerUri(String issuerUri) {
     this.issuerUri = issuerUri;
   }
 
-
   public UpdateIssuanceConfigInput credentialSupported(List<CredentialSupportedObject> credentialSupported) {
+    
     this.credentialSupported = credentialSupported;
     return this;
   }
@@ -283,16 +287,22 @@ public class UpdateIssuanceConfigInput {
    * @return credentialSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<CredentialSupportedObject> getCredentialSupported() {
     return credentialSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialSupported(List<CredentialSupportedObject> credentialSupported) {
     this.credentialSupported = credentialSupported;
   }
 
-
   public UpdateIssuanceConfigInput issuerMetadata(Map<String, Object> issuerMetadata) {
+    
     this.issuerMetadata = issuerMetadata;
     return this;
   }
@@ -310,16 +320,22 @@ public class UpdateIssuanceConfigInput {
    * @return issuerMetadata
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
   public Map<String, Object> getIssuerMetadata() {
     return issuerMetadata;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
     this.issuerMetadata = issuerMetadata;
   }
 
-
   public UpdateIssuanceConfigInput returnUris(List<String> returnUris) {
+    
     this.returnUris = returnUris;
     return this;
   }
@@ -337,15 +353,19 @@ public class UpdateIssuanceConfigInput {
    * @return returnUris
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getReturnUris() {
     return returnUris;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setReturnUris(List<String> returnUris) {
     this.returnUris = returnUris;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -400,134 +420,138 @@ public class UpdateIssuanceConfigInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("issuerWalletId");
-    openapiFields.add("credentialOfferDuration");
-    openapiFields.add("format");
-    openapiFields.add("issuerUri");
-    openapiFields.add("credentialSupported");
-    openapiFields.add("issuerMetadata");
-    openapiFields.add("returnUris");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to UpdateIssuanceConfigInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!UpdateIssuanceConfigInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateIssuanceConfigInput is not found in the empty JSON string", UpdateIssuanceConfigInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UpdateIssuanceConfigInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateIssuanceConfigInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("issuerWalletId") != null && !jsonObj.get("issuerWalletId").isJsonNull()) && !jsonObj.get("issuerWalletId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuerWalletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuerWalletId").toString()));
-      }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
-      // validate the optional field `format`
-      if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) {
-        FormatEnum.validateJsonElement(jsonObj.get("format"));
-      }
-      if ((jsonObj.get("issuerUri") != null && !jsonObj.get("issuerUri").isJsonNull()) && !jsonObj.get("issuerUri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuerUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuerUri").toString()));
-      }
-      if (jsonObj.get("credentialSupported") != null && !jsonObj.get("credentialSupported").isJsonNull()) {
-        JsonArray jsonArraycredentialSupported = jsonObj.getAsJsonArray("credentialSupported");
-        if (jsonArraycredentialSupported != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("credentialSupported").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `credentialSupported` to be an array in the JSON string but got `%s`", jsonObj.get("credentialSupported").toString()));
-          }
-
-          // validate the optional field `credentialSupported` (array)
-          for (int i = 0; i < jsonArraycredentialSupported.size(); i++) {
-            CredentialSupportedObject.validateJsonElement(jsonArraycredentialSupported.get(i));
-          };
-        }
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("returnUris") != null && !jsonObj.get("returnUris").isJsonNull() && !jsonObj.get("returnUris").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `returnUris` to be an array in the JSON string but got `%s`", jsonObj.get("returnUris").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateIssuanceConfigInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateIssuanceConfigInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateIssuanceConfigInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateIssuanceConfigInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<UpdateIssuanceConfigInput>() {
-           @Override
-           public void write(JsonWriter out, UpdateIssuanceConfigInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public UpdateIssuanceConfigInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerWalletId` to the URL query string
+    if (getIssuerWalletId() != null) {
+      try {
+        joiner.add(String.format("%sissuerWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialOfferDuration` to the URL query string
+    if (getCredentialOfferDuration() != null) {
+      try {
+        joiner.add(String.format("%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      try {
+        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuerUri` to the URL query string
+    if (getIssuerUri() != null) {
+      try {
+        joiner.add(String.format("%sissuerUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentialSupported` to the URL query string
+    if (getCredentialSupported() != null) {
+      for (int i = 0; i < getCredentialSupported().size(); i++) {
+        if (getCredentialSupported().get(i) != null) {
+          joiner.add(getCredentialSupported().get(i).toUrlQueryString(String.format("%scredentialSupported%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `issuerMetadata` to the URL query string
+    if (getIssuerMetadata() != null) {
+      for (String _key : getIssuerMetadata().keySet()) {
+        try {
+          joiner.add(String.format("%sissuerMetadata%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getIssuerMetadata().get(_key), URLEncoder.encode(String.valueOf(getIssuerMetadata().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `returnUris` to the URL query string
+    if (getReturnUris() != null) {
+      for (int i = 0; i < getReturnUris().size(); i++) {
+        try {
+          joiner.add(String.format("%sreturnUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getReturnUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of UpdateIssuanceConfigInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of UpdateIssuanceConfigInput
-   * @throws IOException if the JSON string is invalid with respect to UpdateIssuanceConfigInput
-   */
-  public static UpdateIssuanceConfigInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateIssuanceConfigInput.class);
-  }
-
-  /**
-   * Convert an instance of UpdateIssuanceConfigInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

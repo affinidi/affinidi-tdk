@@ -11,9 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**listProject**](ProjectsApi.md#listProject)                               | **GET** /v1/projects                             |             |
 | [**updateProject**](ProjectsApi.md#updateProject)                           | **PATCH** /v1/projects/{projectId}               |             |
 
-<a id="addPrincipalToProject"></a>
-
-# **addPrincipalToProject**
+## addPrincipalToProject
 
 > addPrincipalToProject(addUserToProjectInput)
 
@@ -29,28 +27,28 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    AddUserToProjectInput addUserToProjectInput = new AddUserToProjectInput(); // AddUserToProjectInput | AddPrincipalToProject
-    try {
-      apiInstance.addPrincipalToProject(addUserToProjectInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#addPrincipalToProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        AddUserToProjectInput addUserToProjectInput = new AddUserToProjectInput(); // AddUserToProjectInput | AddPrincipalToProject
+        try {
+            apiInstance.addPrincipalToProject(addUserToProjectInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#addPrincipalToProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -82,9 +80,7 @@ null (empty response body)
 | **403**     | ForbiddenError  | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="createProject"></a>
-
-# **createProject**
+## createProject
 
 > ProjectDto createProject(createProjectInput)
 
@@ -100,29 +96,29 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    CreateProjectInput createProjectInput = new CreateProjectInput(); // CreateProjectInput | CreateProject
-    try {
-      ProjectDto result = apiInstance.createProject(createProjectInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#createProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        CreateProjectInput createProjectInput = new CreateProjectInput(); // CreateProjectInput | CreateProject
+        try {
+            ProjectDto result = apiInstance.createProject(createProjectInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#createProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -153,9 +149,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="deletePrincipalFromProject"></a>
-
-# **deletePrincipalFromProject**
+## deletePrincipalFromProject
 
 > deletePrincipalFromProject(principalId, principalType)
 
@@ -171,29 +165,29 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    String principalId = "principalId_example"; // String | id of principal
-    String principalType = "user"; // String | type of principal
-    try {
-      apiInstance.deletePrincipalFromProject(principalId, principalType);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#deletePrincipalFromProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        String principalId = "principalId_example"; // String | id of principal
+        String principalType = "user"; // String | type of principal
+        try {
+            apiInstance.deletePrincipalFromProject(principalId, principalType);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#deletePrincipalFromProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -228,9 +222,7 @@ null (empty response body)
 | **409**     | ConflictError   | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="listPrincipalsOfProject"></a>
-
-# **listPrincipalsOfProject**
+## listPrincipalsOfProject
 
 > UserList listPrincipalsOfProject(limit, exclusiveStartKey)
 
@@ -246,30 +238,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer limit = 100; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      UserList result = apiInstance.listPrincipalsOfProject(limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#listPrincipalsOfProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        Integer limit = 100; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            UserList result = apiInstance.listPrincipalsOfProject(limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#listPrincipalsOfProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -302,9 +294,7 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="listProject"></a>
-
-# **listProject**
+## listProject
 
 > ProjectList listProject(limit, exclusiveStartKey)
 
@@ -320,30 +310,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    Integer limit = 100; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      ProjectList result = apiInstance.listProject(limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#listProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        Integer limit = 100; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            ProjectList result = apiInstance.listProject(limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#listProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -374,9 +364,7 @@ public class Example {
 | **200**     | Ok              | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="updateProject"></a>
-
-# **updateProject**
+## updateProject
 
 > ProjectDto updateProject(projectId, updateProjectInput)
 
@@ -392,30 +380,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    ProjectsApi apiInstance = new ProjectsApi(defaultClient);
-    String projectId = "projectId_example"; // String | projectId
-    UpdateProjectInput updateProjectInput = new UpdateProjectInput(); // UpdateProjectInput | UpdateProject
-    try {
-      ProjectDto result = apiInstance.updateProject(projectId, updateProjectInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ProjectsApi#updateProject");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        String projectId = "projectId_example"; // String | projectId
+        UpdateProjectInput updateProjectInput = new UpdateProjectInput(); // UpdateProjectInput | UpdateProject
+        try {
+            ProjectDto result = apiInstance.updateProject(projectId, updateProjectInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#updateProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

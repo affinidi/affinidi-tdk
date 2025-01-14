@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.apis;
 
-import com.affinidi.tdk.wallets.client.ApiCallback;
-import com.affinidi.tdk.wallets.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.wallets.client.ApiException;
-import com.affinidi.tdk.wallets.client.ApiResponse;
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.BaseApi;
 import com.affinidi.tdk.wallets.client.Configuration;
 import com.affinidi.tdk.wallets.client.Pair;
-import com.affinidi.tdk.wallets.client.ProgressRequestBody;
-import com.affinidi.tdk.wallets.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.wallets.client.models.EntityNotFoundError;
 import com.affinidi.tdk.wallets.client.models.GetRevocationListCredentialResultDto;
@@ -34,485 +27,320 @@ import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialInput;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class RevocationApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class RevocationApi extends BaseApi {
 
-    public RevocationApi() {
-        this(Configuration.getDefaultApiClient());
+  public RevocationApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public RevocationApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * Get revocation status list as RevocationListCredential
+   * @param projectId Description for projectId. (required)
+   * @param walletId Description for walletId. (required)
+   * @param statusId Description for statusId. (required)
+   * @return GetRevocationListCredentialResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId) throws ApiException {
+    return this.getRevocationCredentialStatus(projectId, walletId, statusId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Get revocation status list as RevocationListCredential
+   * @param projectId Description for projectId. (required)
+   * @param walletId Description for walletId. (required)
+   * @param statusId Description for statusId. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GetRevocationListCredentialResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getRevocationCredentialStatus");
     }
-
-    public RevocationApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getRevocationCredentialStatus");
     }
-
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    
+    // verify the required parameter 'statusId' is set
+    if (statusId == null) {
+      throw new ApiException(400, "Missing the required parameter 'statusId' when calling getRevocationCredentialStatus");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)))
+      .replaceAll("\\{" + "statusId" + "\\}", apiClient.escapeString(apiClient.parameterToString(statusId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Return revocation list credential.
+   * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
+   * @param listId  (required)
+   * @param walletId id of the wallet (required)
+   * @return GetRevocationListCredentialResultDto
+   * @throws ApiException if fails to make API call
+   * @deprecated
+   */
+  @Deprecated
+  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId) throws ApiException {
+    return this.getRevocationListCredential(listId, walletId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Return revocation list credential.
+   * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
+   * @param listId  (required)
+   * @param walletId id of the wallet (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GetRevocationListCredentialResultDto
+   * @throws ApiException if fails to make API call
+   * @deprecated
+   */
+  @Deprecated
+  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'listId' is set
+    if (listId == null) {
+      throw new ApiException(400, "Missing the required parameter 'listId' when calling getRevocationListCredential");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getRevocationListCredential");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}/revocation-list/{listId}"
+      .replaceAll("\\{" + "listId" + "\\}", apiClient.escapeString(apiClient.parameterToString(listId)))
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Revoke Credential.
+   * Update index/credetial at appropriate revocation list (set revoken is true).
+   * @param walletId id of the wallet (required)
+   * @param revokeCredentialInput RevokeCredential (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
+    this.revokeCredential(walletId, revokeCredentialInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * Revoke Credential.
+   * Update index/credetial at appropriate revocation list (set revoken is true).
+   * @param walletId id of the wallet (required)
+   * @param revokeCredentialInput RevokeCredential (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = revokeCredentialInput;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling revokeCredential");
     }
-
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
+    
+    // verify the required parameter 'revokeCredentialInput' is set
+    if (revokeCredentialInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'revokeCredentialInput' when calling revokeCredential");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}/revoke"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    /**
-     * Build call for getRevocationCredentialStatus
-     * @param projectId Description for projectId. (required)
-     * @param walletId Description for walletId. (required)
-     * @param statusId Description for statusId. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetRevocationCredentialStatusOK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRevocationCredentialStatusCall(String projectId, String walletId, String statusId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        Object localVarPostBody = null;
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // create path and map variables
-        String localVarPath = "/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}"
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()))
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()))
-            .replace("{" + "statusId" + "}", localVarApiClient.escapeString(statusId.toString()));
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRevocationCredentialStatusValidateBeforeCall(String projectId, String walletId, String statusId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling getRevocationCredentialStatus(Async)");
-        }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling getRevocationCredentialStatus(Async)");
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        // verify the required parameter 'statusId' is set
-        if (statusId == null) {
-            throw new ApiException("Missing the required parameter 'statusId' when calling getRevocationCredentialStatus(Async)");
-        }
-
-        return getRevocationCredentialStatusCall(projectId, walletId, statusId, _callback);
-
-    }
-
-    /**
-     * 
-     * Get revocation status list as RevocationListCredential
-     * @param projectId Description for projectId. (required)
-     * @param walletId Description for walletId. (required)
-     * @param statusId Description for statusId. (required)
-     * @return GetRevocationListCredentialResultDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetRevocationCredentialStatusOK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId) throws ApiException {
-        ApiResponse<GetRevocationListCredentialResultDto> localVarResp = getRevocationCredentialStatusWithHttpInfo(projectId, walletId, statusId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get revocation status list as RevocationListCredential
-     * @param projectId Description for projectId. (required)
-     * @param walletId Description for walletId. (required)
-     * @param statusId Description for statusId. (required)
-     * @return ApiResponse&lt;GetRevocationListCredentialResultDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetRevocationCredentialStatusOK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetRevocationListCredentialResultDto> getRevocationCredentialStatusWithHttpInfo(String projectId, String walletId, String statusId) throws ApiException {
-        okhttp3.Call localVarCall = getRevocationCredentialStatusValidateBeforeCall(projectId, walletId, statusId, null);
-        Type localVarReturnType = new TypeToken<GetRevocationListCredentialResultDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get revocation status list as RevocationListCredential
-     * @param projectId Description for projectId. (required)
-     * @param walletId Description for walletId. (required)
-     * @param statusId Description for statusId. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetRevocationCredentialStatusOK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRevocationCredentialStatusAsync(String projectId, String walletId, String statusId, final ApiCallback<GetRevocationListCredentialResultDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getRevocationCredentialStatusValidateBeforeCall(projectId, walletId, statusId, _callback);
-        Type localVarReturnType = new TypeToken<GetRevocationListCredentialResultDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getRevocationListCredential
-     * @param listId  (required)
-     * @param walletId id of the wallet (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public okhttp3.Call getRevocationListCredentialCall(String listId, String walletId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}/revocation-list/{listId}"
-            .replace("{" + "listId" + "}", localVarApiClient.escapeString(listId.toString()))
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRevocationListCredentialValidateBeforeCall(String listId, String walletId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'listId' is set
-        if (listId == null) {
-            throw new ApiException("Missing the required parameter 'listId' when calling getRevocationListCredential(Async)");
-        }
-
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling getRevocationListCredential(Async)");
-        }
-
-        return getRevocationListCredentialCall(listId, walletId, _callback);
-
-    }
-
-    /**
-     * Return revocation list credential.
-     * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
-     * @param listId  (required)
-     * @param walletId id of the wallet (required)
-     * @return GetRevocationListCredentialResultDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId) throws ApiException {
-        ApiResponse<GetRevocationListCredentialResultDto> localVarResp = getRevocationListCredentialWithHttpInfo(listId, walletId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Return revocation list credential.
-     * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
-     * @param listId  (required)
-     * @param walletId id of the wallet (required)
-     * @return ApiResponse&lt;GetRevocationListCredentialResultDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<GetRevocationListCredentialResultDto> getRevocationListCredentialWithHttpInfo(String listId, String walletId) throws ApiException {
-        okhttp3.Call localVarCall = getRevocationListCredentialValidateBeforeCall(listId, walletId, null);
-        Type localVarReturnType = new TypeToken<GetRevocationListCredentialResultDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Return revocation list credential. (asynchronously)
-     * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
-     * @param listId  (required)
-     * @param walletId id of the wallet (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public okhttp3.Call getRevocationListCredentialAsync(String listId, String walletId, final ApiCallback<GetRevocationListCredentialResultDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getRevocationListCredentialValidateBeforeCall(listId, walletId, _callback);
-        Type localVarReturnType = new TypeToken<GetRevocationListCredentialResultDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for revokeCredential
-     * @param walletId id of the wallet (required)
-     * @param revokeCredentialInput RevokeCredential (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call revokeCredentialCall(String walletId, RevokeCredentialInput revokeCredentialInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = revokeCredentialInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}/revoke"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call revokeCredentialValidateBeforeCall(String walletId, RevokeCredentialInput revokeCredentialInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling revokeCredential(Async)");
-        }
-
-        // verify the required parameter 'revokeCredentialInput' is set
-        if (revokeCredentialInput == null) {
-            throw new ApiException("Missing the required parameter 'revokeCredentialInput' when calling revokeCredential(Async)");
-        }
-
-        return revokeCredentialCall(walletId, revokeCredentialInput, _callback);
-
-    }
-
-    /**
-     * Revoke Credential.
-     * Update index/credetial at appropriate revocation list (set revoken is true).
-     * @param walletId id of the wallet (required)
-     * @param revokeCredentialInput RevokeCredential (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
-        revokeCredentialWithHttpInfo(walletId, revokeCredentialInput);
-    }
-
-    /**
-     * Revoke Credential.
-     * Update index/credetial at appropriate revocation list (set revoken is true).
-     * @param walletId id of the wallet (required)
-     * @param revokeCredentialInput RevokeCredential (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> revokeCredentialWithHttpInfo(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
-        okhttp3.Call localVarCall = revokeCredentialValidateBeforeCall(walletId, revokeCredentialInput, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Revoke Credential. (asynchronously)
-     * Update index/credetial at appropriate revocation list (set revoken is true).
-     * @param walletId id of the wallet (required)
-     * @param revokeCredentialInput RevokeCredential (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call revokeCredentialAsync(String walletId, RevokeCredentialInput revokeCredentialInput, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = revokeCredentialValidateBeforeCall(walletId, revokeCredentialInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

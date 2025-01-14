@@ -16,12 +16,7 @@ package com.affinidi.tdk.iam.client;
 import java.util.Map;
 import java.util.List;
 
-
-/**
- * <p>ApiException class.</p>
- */
-@SuppressWarnings("serial")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:17:04.645187545Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ApiException extends Exception {
     private static final long serialVersionUID = 1L;
 
@@ -29,38 +24,16 @@ public class ApiException extends Exception {
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     */
     public ApiException() {}
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param throwable a {@link java.lang.Throwable} object
-     */
     public ApiException(Throwable throwable) {
         super(throwable);
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param message the error message
-     */
     public ApiException(String message) {
         super(message);
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param message the error message
-     * @param throwable a {@link java.lang.Throwable} object
-     * @param code HTTP status code
-     * @param responseHeaders a {@link java.util.Map} of HTTP response headers
-     * @param responseBody the response body
-     */
     public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders, String responseBody) {
         super(message, throwable);
         this.code = code;
@@ -68,60 +41,23 @@ public class ApiException extends Exception {
         this.responseBody = responseBody;
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param message the error message
-     * @param code HTTP status code
-     * @param responseHeaders a {@link java.util.Map} of HTTP response headers
-     * @param responseBody the response body
-     */
     public ApiException(String message, int code, Map<String, List<String>> responseHeaders, String responseBody) {
         this(message, (Throwable) null, code, responseHeaders, responseBody);
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param message the error message
-     * @param throwable a {@link java.lang.Throwable} object
-     * @param code HTTP status code
-     * @param responseHeaders a {@link java.util.Map} of HTTP response headers
-     */
     public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders) {
         this(message, throwable, code, responseHeaders, null);
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param code HTTP status code
-     * @param responseHeaders a {@link java.util.Map} of HTTP response headers
-     * @param responseBody the response body
-     */
     public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
         this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders, responseBody);
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param code HTTP status code
-     * @param message a {@link java.lang.String} object
-     */
     public ApiException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    /**
-     * <p>Constructor for ApiException.</p>
-     *
-     * @param code HTTP status code
-     * @param message the error message
-     * @param responseHeaders a {@link java.util.Map} of HTTP response headers
-     * @param responseBody the response body
-     */
     public ApiException(int code, String message, Map<String, List<String>> responseHeaders, String responseBody) {
         this(code, message);
         this.responseHeaders = responseHeaders;
@@ -155,13 +91,12 @@ public class ApiException extends Exception {
         return responseBody;
     }
 
-    /**
-     * Get the exception message including HTTP response data.
-     *
-     * @return The exception message
-     */
-    public String getMessage() {
-        return String.format("Message: %s%nHTTP response code: %s%nHTTP response body: %s%nHTTP response headers: %s",
-                super.getMessage(), this.getCode(), this.getResponseBody(), this.getResponseHeaders());
+    @Override
+    public String toString() {
+        return "ApiException{" +
+                "code=" + code +
+                ", responseHeaders=" + responseHeaders +
+                ", responseBody='" + responseBody + '\'' +
+                '}';
     }
 }

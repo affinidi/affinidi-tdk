@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
-import com.affinidi.tdk.iota.client.ApiCallback;
-import com.affinidi.tdk.iota.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iota.client.ApiException;
-import com.affinidi.tdk.iota.client.ApiResponse;
+import com.affinidi.tdk.iota.client.ApiClient;
+import com.affinidi.tdk.iota.client.BaseApi;
 import com.affinidi.tdk.iota.client.Configuration;
 import com.affinidi.tdk.iota.client.Pair;
-import com.affinidi.tdk.iota.client.ProgressRequestBody;
-import com.affinidi.tdk.iota.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iota.client.models.AlreadyExistsError;
 import com.affinidi.tdk.iota.client.models.CreatePexQueryInput;
@@ -38,1060 +31,633 @@ import com.affinidi.tdk.iota.client.models.ResourceLimitExceededError;
 import com.affinidi.tdk.iota.client.models.SavePexQueriesUpdateInput;
 import com.affinidi.tdk.iota.client.models.UpdatePexQueryInput;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class PexQueryApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class PexQueryApi extends BaseApi {
 
-    public PexQueryApi() {
-        this(Configuration.getDefaultApiClient());
+  public PexQueryApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public PexQueryApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * Creates a new Presentation Definition in the configuration to query data.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param createPexQueryInput CreatePexQuery (required)
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto createPexQuery(String configurationId, CreatePexQueryInput createPexQueryInput) throws ApiException {
+    return this.createPexQuery(configurationId, createPexQueryInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Creates a new Presentation Definition in the configuration to query data.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param createPexQueryInput CreatePexQuery (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto createPexQuery(String configurationId, CreatePexQueryInput createPexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createPexQueryInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling createPexQuery");
     }
-
-    public PexQueryApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'createPexQueryInput' is set
+    if (createPexQueryInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createPexQueryInput' when calling createPexQuery");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/pex-queries"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<PexQueryDto> localVarReturnType = new TypeReference<PexQueryDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Deletes all Presentation Definition queries of a configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePexQueries(String configurationId) throws ApiException {
+    this.deletePexQueries(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Deletes all Presentation Definition queries of a configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePexQueries(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deletePexQueries");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/delete-queries"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * 
+   * Deletes a Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePexQueryById(String configurationId, String queryId) throws ApiException {
+    this.deletePexQueryById(configurationId, queryId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Deletes a Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePexQueryById(String configurationId, String queryId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deletePexQueryById");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'queryId' is set
+    if (queryId == null) {
+      throw new ApiException(400, "Missing the required parameter 'queryId' when calling deletePexQueryById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)))
+      .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(apiClient.parameterToString(queryId)));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * 
+   * Retrieves a Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto getPexQueryById(String configurationId, String queryId) throws ApiException {
+    return this.getPexQueryById(configurationId, queryId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Retrieves a Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto getPexQueryById(String configurationId, String queryId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getPexQueryById");
     }
-
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
+    
+    // verify the required parameter 'queryId' is set
+    if (queryId == null) {
+      throw new ApiException(400, "Missing the required parameter 'queryId' when calling getPexQueryById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)))
+      .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(apiClient.parameterToString(queryId)));
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<PexQueryDto> localVarReturnType = new TypeReference<PexQueryDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Lists all Presentation Definitions in the configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param limit Maximum number of records to fetch in a list (optional)
+   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
+   * @return ListPexQueriesOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListPexQueriesOK listPexQueries(String configurationId, Integer limit, String exclusiveStartKey) throws ApiException {
+    return this.listPexQueries(configurationId, limit, exclusiveStartKey, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Lists all Presentation Definitions in the configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param limit Maximum number of records to fetch in a list (optional)
+   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ListPexQueriesOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListPexQueriesOK listPexQueries(String configurationId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling listPexQueries");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/pex-queries"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    /**
-     * Build call for createPexQuery
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param createPexQueryInput CreatePexQuery (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreatePexQueryOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createPexQueryCall(String configurationId, CreatePexQueryInput createPexQueryInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        Object localVarPostBody = createPexQueryInput;
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/pex-queries"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+    TypeReference<ListPexQueriesOK> localVarReturnType = new TypeReference<ListPexQueriesOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+  /**
+   * 
+   * Saves all Presentation Definition queries of a configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
+   * @return Object
+   * @throws ApiException if fails to make API call
+   */
+  public Object savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput) throws ApiException {
+    return this.savePexQueries(configurationId, savePexQueriesUpdateInput, Collections.emptyMap());
+  }
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+
+  /**
+   * 
+   * Saves all Presentation Definition queries of a configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return Object
+   * @throws ApiException if fails to make API call
+   */
+  public Object savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = savePexQueriesUpdateInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling savePexQueries");
     }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPexQueryValidateBeforeCall(String configurationId, CreatePexQueryInput createPexQueryInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling createPexQuery(Async)");
-        }
-
-        // verify the required parameter 'createPexQueryInput' is set
-        if (createPexQueryInput == null) {
-            throw new ApiException("Missing the required parameter 'createPexQueryInput' when calling createPexQuery(Async)");
-        }
-
-        return createPexQueryCall(configurationId, createPexQueryInput, _callback);
-
+    
+    // verify the required parameter 'savePexQueriesUpdateInput' is set
+    if (savePexQueriesUpdateInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'savePexQueriesUpdateInput' when calling savePexQueries");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/save-queries"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    /**
-     * 
-     * Creates a new Presentation Definition in the configuration to query data.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param createPexQueryInput CreatePexQuery (required)
-     * @return PexQueryDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreatePexQueryOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public PexQueryDto createPexQuery(String configurationId, CreatePexQueryInput createPexQueryInput) throws ApiException {
-        ApiResponse<PexQueryDto> localVarResp = createPexQueryWithHttpInfo(configurationId, createPexQueryInput);
-        return localVarResp.getData();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<Object> localVarReturnType = new TypeReference<Object>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Updates the Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @param updatePexQueryInput UpdatePexQueryById (required)
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto updatePexQueryById(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput) throws ApiException {
+    return this.updatePexQueryById(configurationId, queryId, updatePexQueryInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Updates the Presentation Definition in the configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param queryId The ID of the query. (required)
+   * @param updatePexQueryInput UpdatePexQueryById (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return PexQueryDto
+   * @throws ApiException if fails to make API call
+   */
+  public PexQueryDto updatePexQueryById(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updatePexQueryInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling updatePexQueryById");
     }
-
-    /**
-     * 
-     * Creates a new Presentation Definition in the configuration to query data.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param createPexQueryInput CreatePexQuery (required)
-     * @return ApiResponse&lt;PexQueryDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreatePexQueryOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PexQueryDto> createPexQueryWithHttpInfo(String configurationId, CreatePexQueryInput createPexQueryInput) throws ApiException {
-        okhttp3.Call localVarCall = createPexQueryValidateBeforeCall(configurationId, createPexQueryInput, null);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    
+    // verify the required parameter 'queryId' is set
+    if (queryId == null) {
+      throw new ApiException(400, "Missing the required parameter 'queryId' when calling updatePexQueryById");
     }
-
-    /**
-     *  (asynchronously)
-     * Creates a new Presentation Definition in the configuration to query data.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param createPexQueryInput CreatePexQuery (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreatePexQueryOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createPexQueryAsync(String configurationId, CreatePexQueryInput createPexQueryInput, final ApiCallback<PexQueryDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createPexQueryValidateBeforeCall(configurationId, createPexQueryInput, _callback);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    
+    // verify the required parameter 'updatePexQueryInput' is set
+    if (updatePexQueryInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updatePexQueryInput' when calling updatePexQueryById");
     }
-    /**
-     * Build call for deletePexQueries
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePexQueriesCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/delete-queries"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePexQueriesValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling deletePexQueries(Async)");
-        }
-
-        return deletePexQueriesCall(configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Deletes all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deletePexQueries(String configurationId) throws ApiException {
-        deletePexQueriesWithHttpInfo(configurationId);
-    }
-
-    /**
-     * 
-     * Deletes all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deletePexQueriesWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = deletePexQueriesValidateBeforeCall(configurationId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePexQueriesAsync(String configurationId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deletePexQueriesValidateBeforeCall(configurationId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deletePexQueryById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePexQueryByIdCall(String configurationId, String queryId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()))
-            .replace("{" + "queryId" + "}", localVarApiClient.escapeString(queryId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePexQueryByIdValidateBeforeCall(String configurationId, String queryId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling deletePexQueryById(Async)");
-        }
-
-        // verify the required parameter 'queryId' is set
-        if (queryId == null) {
-            throw new ApiException("Missing the required parameter 'queryId' when calling deletePexQueryById(Async)");
-        }
-
-        return deletePexQueryByIdCall(configurationId, queryId, _callback);
-
-    }
-
-    /**
-     * 
-     * Deletes a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deletePexQueryById(String configurationId, String queryId) throws ApiException {
-        deletePexQueryByIdWithHttpInfo(configurationId, queryId);
-    }
-
-    /**
-     * 
-     * Deletes a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deletePexQueryByIdWithHttpInfo(String configurationId, String queryId) throws ApiException {
-        okhttp3.Call localVarCall = deletePexQueryByIdValidateBeforeCall(configurationId, queryId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deletePexQueryByIdAsync(String configurationId, String queryId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deletePexQueryByIdValidateBeforeCall(configurationId, queryId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getPexQueryById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetPexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPexQueryByIdCall(String configurationId, String queryId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()))
-            .replace("{" + "queryId" + "}", localVarApiClient.escapeString(queryId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPexQueryByIdValidateBeforeCall(String configurationId, String queryId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling getPexQueryById(Async)");
-        }
-
-        // verify the required parameter 'queryId' is set
-        if (queryId == null) {
-            throw new ApiException("Missing the required parameter 'queryId' when calling getPexQueryById(Async)");
-        }
-
-        return getPexQueryByIdCall(configurationId, queryId, _callback);
-
-    }
-
-    /**
-     * 
-     * Retrieves a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @return PexQueryDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetPexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public PexQueryDto getPexQueryById(String configurationId, String queryId) throws ApiException {
-        ApiResponse<PexQueryDto> localVarResp = getPexQueryByIdWithHttpInfo(configurationId, queryId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Retrieves a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @return ApiResponse&lt;PexQueryDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetPexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PexQueryDto> getPexQueryByIdWithHttpInfo(String configurationId, String queryId) throws ApiException {
-        okhttp3.Call localVarCall = getPexQueryByIdValidateBeforeCall(configurationId, queryId, null);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Retrieves a Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetPexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPexQueryByIdAsync(String configurationId, String queryId, final ApiCallback<PexQueryDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getPexQueryByIdValidateBeforeCall(configurationId, queryId, _callback);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listPexQueries
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListPexQueriesOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPexQueriesCall(String configurationId, Integer limit, String exclusiveStartKey, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/pex-queries"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (exclusiveStartKey != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPexQueriesValidateBeforeCall(String configurationId, Integer limit, String exclusiveStartKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling listPexQueries(Async)");
-        }
-
-        return listPexQueriesCall(configurationId, limit, exclusiveStartKey, _callback);
-
-    }
-
-    /**
-     * 
-     * Lists all Presentation Definitions in the configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @return ListPexQueriesOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListPexQueriesOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListPexQueriesOK listPexQueries(String configurationId, Integer limit, String exclusiveStartKey) throws ApiException {
-        ApiResponse<ListPexQueriesOK> localVarResp = listPexQueriesWithHttpInfo(configurationId, limit, exclusiveStartKey);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Lists all Presentation Definitions in the configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @return ApiResponse&lt;ListPexQueriesOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListPexQueriesOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListPexQueriesOK> listPexQueriesWithHttpInfo(String configurationId, Integer limit, String exclusiveStartKey) throws ApiException {
-        okhttp3.Call localVarCall = listPexQueriesValidateBeforeCall(configurationId, limit, exclusiveStartKey, null);
-        Type localVarReturnType = new TypeToken<ListPexQueriesOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Lists all Presentation Definitions in the configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListPexQueriesOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listPexQueriesAsync(String configurationId, Integer limit, String exclusiveStartKey, final ApiCallback<ListPexQueriesOK> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listPexQueriesValidateBeforeCall(configurationId, limit, exclusiveStartKey, _callback);
-        Type localVarReturnType = new TypeToken<ListPexQueriesOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for savePexQueries
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SavePexQueriesResponseOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call savePexQueriesCall(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = savePexQueriesUpdateInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/save-queries"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call savePexQueriesValidateBeforeCall(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling savePexQueries(Async)");
-        }
-
-        // verify the required parameter 'savePexQueriesUpdateInput' is set
-        if (savePexQueriesUpdateInput == null) {
-            throw new ApiException("Missing the required parameter 'savePexQueriesUpdateInput' when calling savePexQueries(Async)");
-        }
-
-        return savePexQueriesCall(configurationId, savePexQueriesUpdateInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Saves all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
-     * @return Object
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SavePexQueriesResponseOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public Object savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput) throws ApiException {
-        ApiResponse<Object> localVarResp = savePexQueriesWithHttpInfo(configurationId, savePexQueriesUpdateInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Saves all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SavePexQueriesResponseOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Object> savePexQueriesWithHttpInfo(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = savePexQueriesValidateBeforeCall(configurationId, savePexQueriesUpdateInput, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Saves all Presentation Definition queries of a configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param savePexQueriesUpdateInput SavePexQueriesInput (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SavePexQueriesResponseOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call savePexQueriesAsync(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput, final ApiCallback<Object> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = savePexQueriesValidateBeforeCall(configurationId, savePexQueriesUpdateInput, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updatePexQueryById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param updatePexQueryInput UpdatePexQueryById (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdatePexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updatePexQueryByIdCall(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updatePexQueryInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()))
-            .replace("{" + "queryId" + "}", localVarApiClient.escapeString(queryId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePexQueryByIdValidateBeforeCall(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling updatePexQueryById(Async)");
-        }
-
-        // verify the required parameter 'queryId' is set
-        if (queryId == null) {
-            throw new ApiException("Missing the required parameter 'queryId' when calling updatePexQueryById(Async)");
-        }
-
-        // verify the required parameter 'updatePexQueryInput' is set
-        if (updatePexQueryInput == null) {
-            throw new ApiException("Missing the required parameter 'updatePexQueryInput' when calling updatePexQueryById(Async)");
-        }
-
-        return updatePexQueryByIdCall(configurationId, queryId, updatePexQueryInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates the Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param updatePexQueryInput UpdatePexQueryById (required)
-     * @return PexQueryDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdatePexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public PexQueryDto updatePexQueryById(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput) throws ApiException {
-        ApiResponse<PexQueryDto> localVarResp = updatePexQueryByIdWithHttpInfo(configurationId, queryId, updatePexQueryInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param updatePexQueryInput UpdatePexQueryById (required)
-     * @return ApiResponse&lt;PexQueryDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdatePexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PexQueryDto> updatePexQueryByIdWithHttpInfo(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput) throws ApiException {
-        okhttp3.Call localVarCall = updatePexQueryByIdValidateBeforeCall(configurationId, queryId, updatePexQueryInput, null);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the Presentation Definition in the configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param queryId The ID of the query. (required)
-     * @param updatePexQueryInput UpdatePexQueryById (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdatePexQueryByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updatePexQueryByIdAsync(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput, final ApiCallback<PexQueryDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updatePexQueryByIdValidateBeforeCall(configurationId, queryId, updatePexQueryInput, _callback);
-        Type localVarReturnType = new TypeToken<PexQueryDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}/pex-queries/{queryId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)))
+      .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(apiClient.parameterToString(queryId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<PexQueryDto> localVarReturnType = new TypeReference<PexQueryDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

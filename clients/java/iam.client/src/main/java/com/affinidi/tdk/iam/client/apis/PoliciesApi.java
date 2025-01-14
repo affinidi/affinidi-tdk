@@ -10,371 +10,251 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
-import com.affinidi.tdk.iam.client.ApiCallback;
-import com.affinidi.tdk.iam.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iam.client.ApiException;
-import com.affinidi.tdk.iam.client.ApiResponse;
+import com.affinidi.tdk.iam.client.ApiClient;
+import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
-import com.affinidi.tdk.iam.client.ProgressRequestBody;
-import com.affinidi.tdk.iam.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iam.client.models.InvalidParameterError;
 import com.affinidi.tdk.iam.client.models.NotFoundError;
 import com.affinidi.tdk.iam.client.models.PolicyDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class PoliciesApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class PoliciesApi extends BaseApi {
 
-    public PoliciesApi() {
-        this(Configuration.getDefaultApiClient());
+  public PoliciesApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public PoliciesApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * 
+   * @param principalId  (required)
+   * @param principalType  (required)
+   * @return PolicyDto
+   * @throws ApiException if fails to make API call
+   */
+  public PolicyDto getPolicies(String principalId, String principalType) throws ApiException {
+    return this.getPolicies(principalId, principalType, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param principalId  (required)
+   * @param principalType  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return PolicyDto
+   * @throws ApiException if fails to make API call
+   */
+  public PolicyDto getPolicies(String principalId, String principalType, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'principalId' is set
+    if (principalId == null) {
+      throw new ApiException(400, "Missing the required parameter 'principalId' when calling getPolicies");
     }
-
-    public PoliciesApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'principalType' is set
+    if (principalType == null) {
+      throw new ApiException(400, "Missing the required parameter 'principalType' when calling getPolicies");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/policies/principals/{principalId}"
+      .replaceAll("\\{" + "principalId" + "\\}", apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * 
+   * @param principalId  (required)
+   * @param principalType  (required)
+   * @param policyDto UpdatePolicies (required)
+   * @return PolicyDto
+   * @throws ApiException if fails to make API call
+   */
+  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
+    return this.updatePolicies(principalId, principalType, policyDto, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param principalId  (required)
+   * @param principalType  (required)
+   * @param policyDto UpdatePolicies (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return PolicyDto
+   * @throws ApiException if fails to make API call
+   */
+  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = policyDto;
+    
+    // verify the required parameter 'principalId' is set
+    if (principalId == null) {
+      throw new ApiException(400, "Missing the required parameter 'principalId' when calling updatePolicies");
     }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'principalType' is set
+    if (principalType == null) {
+      throw new ApiException(400, "Missing the required parameter 'principalType' when calling updatePolicies");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'policyDto' is set
+    if (policyDto == null) {
+      throw new ApiException(400, "Missing the required parameter 'policyDto' when calling updatePolicies");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/policies/principals/{principalId}"
+      .replaceAll("\\{" + "principalId" + "\\}", apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for getPolicies
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPoliciesCall(String principalId, String principalType, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        Object localVarPostBody = null;
+    TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PUT",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-        // create path and map variables
-        String localVarPath = "/v1/policies/principals/{principalId}"
-            .replace("{" + "principalId" + "}", localVarApiClient.escapeString(principalId.toString()));
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        if (principalType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("principalType", principalType));
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPoliciesValidateBeforeCall(String principalId, String principalType, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'principalId' is set
-        if (principalId == null) {
-            throw new ApiException("Missing the required parameter 'principalId' when calling getPolicies(Async)");
-        }
-
-        // verify the required parameter 'principalType' is set
-        if (principalType == null) {
-            throw new ApiException("Missing the required parameter 'principalType' when calling getPolicies(Async)");
-        }
-
-        return getPoliciesCall(principalId, principalType, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @return PolicyDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public PolicyDto getPolicies(String principalId, String principalType) throws ApiException {
-        ApiResponse<PolicyDto> localVarResp = getPoliciesWithHttpInfo(principalId, principalType);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @return ApiResponse&lt;PolicyDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PolicyDto> getPoliciesWithHttpInfo(String principalId, String principalType) throws ApiException {
-        okhttp3.Call localVarCall = getPoliciesValidateBeforeCall(principalId, principalType, null);
-        Type localVarReturnType = new TypeToken<PolicyDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getPoliciesAsync(String principalId, String principalType, final ApiCallback<PolicyDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getPoliciesValidateBeforeCall(principalId, principalType, _callback);
-        Type localVarReturnType = new TypeToken<PolicyDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updatePolicies
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param policyDto UpdatePolicies (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updatePoliciesCall(String principalId, String principalType, PolicyDto policyDto, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = policyDto;
-
-        // create path and map variables
-        String localVarPath = "/v1/policies/principals/{principalId}"
-            .replace("{" + "principalId" + "}", localVarApiClient.escapeString(principalId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (principalType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("principalType", principalType));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePoliciesValidateBeforeCall(String principalId, String principalType, PolicyDto policyDto, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'principalId' is set
-        if (principalId == null) {
-            throw new ApiException("Missing the required parameter 'principalId' when calling updatePolicies(Async)");
-        }
-
-        // verify the required parameter 'principalType' is set
-        if (principalType == null) {
-            throw new ApiException("Missing the required parameter 'principalType' when calling updatePolicies(Async)");
-        }
-
-        // verify the required parameter 'policyDto' is set
-        if (policyDto == null) {
-            throw new ApiException("Missing the required parameter 'policyDto' when calling updatePolicies(Async)");
-        }
-
-        return updatePoliciesCall(principalId, principalType, policyDto, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param policyDto UpdatePolicies (required)
-     * @return PolicyDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
-        ApiResponse<PolicyDto> localVarResp = updatePoliciesWithHttpInfo(principalId, principalType, policyDto);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param policyDto UpdatePolicies (required)
-     * @return ApiResponse&lt;PolicyDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PolicyDto> updatePoliciesWithHttpInfo(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
-        okhttp3.Call localVarCall = updatePoliciesValidateBeforeCall(principalId, principalType, policyDto, null);
-        Type localVarReturnType = new TypeToken<PolicyDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param principalId  (required)
-     * @param principalType  (required)
-     * @param policyDto UpdatePolicies (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updatePoliciesAsync(String principalId, String principalType, PolicyDto policyDto, final ApiCallback<PolicyDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updatePoliciesValidateBeforeCall(principalId, principalType, policyDto, _callback);
-        Type localVarReturnType = new TypeToken<PolicyDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

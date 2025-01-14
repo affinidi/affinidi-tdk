@@ -14,90 +14,76 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.iota.client.models.IotaConfigurationDtoClientMetadata;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * IotaConfigurationDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  IotaConfigurationDto.JSON_PROPERTY_ARI,
+  IotaConfigurationDto.JSON_PROPERTY_CONFIGURATION_ID,
+  IotaConfigurationDto.JSON_PROPERTY_NAME,
+  IotaConfigurationDto.JSON_PROPERTY_PROJECT_ID,
+  IotaConfigurationDto.JSON_PROPERTY_WALLET_ARI,
+  IotaConfigurationDto.JSON_PROPERTY_TOKEN_MAX_AGE,
+  IotaConfigurationDto.JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L,
+  IotaConfigurationDto.JSON_PROPERTY_ENABLE_VERIFICATION,
+  IotaConfigurationDto.JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG,
+  IotaConfigurationDto.JSON_PROPERTY_CLIENT_METADATA,
+  IotaConfigurationDto.JSON_PROPERTY_MODE,
+  IotaConfigurationDto.JSON_PROPERTY_REDIRECT_URIS,
+  IotaConfigurationDto.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class IotaConfigurationDto {
-  public static final String SERIALIZED_NAME_ARI = "ari";
-  @SerializedName(SERIALIZED_NAME_ARI)
+  public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_ID = "configurationId";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_ID)
+  public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
   private String configurationId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_PROJECT_ID = "projectId";
-  @SerializedName(SERIALIZED_NAME_PROJECT_ID)
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   private String projectId;
 
-  public static final String SERIALIZED_NAME_WALLET_ARI = "walletAri";
-  @SerializedName(SERIALIZED_NAME_WALLET_ARI)
+  public static final String JSON_PROPERTY_WALLET_ARI = "walletAri";
   private String walletAri;
 
-  public static final String SERIALIZED_NAME_TOKEN_MAX_AGE = "tokenMaxAge";
-  @SerializedName(SERIALIZED_NAME_TOKEN_MAX_AGE)
+  public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
   private BigDecimal tokenMaxAge;
 
-  public static final String SERIALIZED_NAME_IOTA_RESPONSE_WEBHOOK_U_R_L = "iotaResponseWebhookURL";
-  @SerializedName(SERIALIZED_NAME_IOTA_RESPONSE_WEBHOOK_U_R_L)
+  public static final String JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L = "iotaResponseWebhookURL";
   private String iotaResponseWebhookURL;
 
-  public static final String SERIALIZED_NAME_ENABLE_VERIFICATION = "enableVerification";
-  @SerializedName(SERIALIZED_NAME_ENABLE_VERIFICATION)
+  public static final String JSON_PROPERTY_ENABLE_VERIFICATION = "enableVerification";
   private Boolean enableVerification;
 
-  public static final String SERIALIZED_NAME_ENABLE_CONSENT_AUDIT_LOG = "enableConsentAuditLog";
-  @SerializedName(SERIALIZED_NAME_ENABLE_CONSENT_AUDIT_LOG)
+  public static final String JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG = "enableConsentAuditLog";
   private Boolean enableConsentAuditLog;
 
-  public static final String SERIALIZED_NAME_CLIENT_METADATA = "clientMetadata";
-  @SerializedName(SERIALIZED_NAME_CLIENT_METADATA)
+  public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
   private IotaConfigurationDtoClientMetadata clientMetadata;
 
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
    */
-  @JsonAdapter(ModeEnum.Adapter.class)
   public enum ModeEnum {
     REDIRECT("redirect"),
     
@@ -109,6 +95,7 @@ public class IotaConfigurationDto {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -118,6 +105,7 @@ public class IotaConfigurationDto {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ModeEnum fromValue(String value) {
       for (ModeEnum b : ModeEnum.values()) {
         if (b.value.equals(value)) {
@@ -126,42 +114,22 @@ public class IotaConfigurationDto {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ModeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ModeEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_MODE = "mode";
-  @SerializedName(SERIALIZED_NAME_MODE)
+  public static final String JSON_PROPERTY_MODE = "mode";
   private ModeEnum mode = ModeEnum.WEBSOCKET;
 
-  public static final String SERIALIZED_NAME_REDIRECT_URIS = "redirectUris";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_URIS)
+  public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
   private List<String> redirectUris = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_ENABLE_IDV_PROVIDERS = "enableIdvProviders";
-  @SerializedName(SERIALIZED_NAME_ENABLE_IDV_PROVIDERS)
+  public static final String JSON_PROPERTY_ENABLE_IDV_PROVIDERS = "enableIdvProviders";
   private Boolean enableIdvProviders;
 
   public IotaConfigurationDto() {
   }
 
   public IotaConfigurationDto ari(String ari) {
+    
     this.ari = ari;
     return this;
   }
@@ -171,16 +139,22 @@ public class IotaConfigurationDto {
    * @return ari
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAri() {
     return ari;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(String ari) {
     this.ari = ari;
   }
 
-
   public IotaConfigurationDto configurationId(String configurationId) {
+    
     this.configurationId = configurationId;
     return this;
   }
@@ -190,16 +164,22 @@ public class IotaConfigurationDto {
    * @return configurationId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getConfigurationId() {
     return configurationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(String configurationId) {
     this.configurationId = configurationId;
   }
 
-
   public IotaConfigurationDto name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -209,16 +189,22 @@ public class IotaConfigurationDto {
    * @return name
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public IotaConfigurationDto projectId(String projectId) {
+    
     this.projectId = projectId;
     return this;
   }
@@ -228,16 +214,22 @@ public class IotaConfigurationDto {
    * @return projectId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getProjectId() {
     return projectId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(String projectId) {
     this.projectId = projectId;
   }
 
-
   public IotaConfigurationDto walletAri(String walletAri) {
+    
     this.walletAri = walletAri;
     return this;
   }
@@ -247,16 +239,22 @@ public class IotaConfigurationDto {
    * @return walletAri
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getWalletAri() {
     return walletAri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setWalletAri(String walletAri) {
     this.walletAri = walletAri;
   }
 
-
   public IotaConfigurationDto tokenMaxAge(BigDecimal tokenMaxAge) {
+    
     this.tokenMaxAge = tokenMaxAge;
     return this;
   }
@@ -266,16 +264,22 @@ public class IotaConfigurationDto {
    * @return tokenMaxAge
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public BigDecimal getTokenMaxAge() {
     return tokenMaxAge;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTokenMaxAge(BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-
   public IotaConfigurationDto iotaResponseWebhookURL(String iotaResponseWebhookURL) {
+    
     this.iotaResponseWebhookURL = iotaResponseWebhookURL;
     return this;
   }
@@ -285,16 +289,22 @@ public class IotaConfigurationDto {
    * @return iotaResponseWebhookURL
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIotaResponseWebhookURL() {
     return iotaResponseWebhookURL;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIotaResponseWebhookURL(String iotaResponseWebhookURL) {
     this.iotaResponseWebhookURL = iotaResponseWebhookURL;
   }
 
-
   public IotaConfigurationDto enableVerification(Boolean enableVerification) {
+    
     this.enableVerification = enableVerification;
     return this;
   }
@@ -304,16 +314,22 @@ public class IotaConfigurationDto {
    * @return enableVerification
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ENABLE_VERIFICATION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Boolean getEnableVerification() {
     return enableVerification;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ENABLE_VERIFICATION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEnableVerification(Boolean enableVerification) {
     this.enableVerification = enableVerification;
   }
 
-
   public IotaConfigurationDto enableConsentAuditLog(Boolean enableConsentAuditLog) {
+    
     this.enableConsentAuditLog = enableConsentAuditLog;
     return this;
   }
@@ -323,16 +339,22 @@ public class IotaConfigurationDto {
    * @return enableConsentAuditLog
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Boolean getEnableConsentAuditLog() {
     return enableConsentAuditLog;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEnableConsentAuditLog(Boolean enableConsentAuditLog) {
     this.enableConsentAuditLog = enableConsentAuditLog;
   }
 
-
   public IotaConfigurationDto clientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
+    
     this.clientMetadata = clientMetadata;
     return this;
   }
@@ -342,16 +364,22 @@ public class IotaConfigurationDto {
    * @return clientMetadata
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public IotaConfigurationDtoClientMetadata getClientMetadata() {
     return clientMetadata;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-
   public IotaConfigurationDto mode(ModeEnum mode) {
+    
     this.mode = mode;
     return this;
   }
@@ -361,16 +389,22 @@ public class IotaConfigurationDto {
    * @return mode
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public ModeEnum getMode() {
     return mode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMode(ModeEnum mode) {
     this.mode = mode;
   }
 
-
   public IotaConfigurationDto redirectUris(List<String> redirectUris) {
+    
     this.redirectUris = redirectUris;
     return this;
   }
@@ -388,16 +422,22 @@ public class IotaConfigurationDto {
    * @return redirectUris
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<String> getRedirectUris() {
     return redirectUris;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUris(List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-
   public IotaConfigurationDto enableIdvProviders(Boolean enableIdvProviders) {
+    
     this.enableIdvProviders = enableIdvProviders;
     return this;
   }
@@ -407,15 +447,19 @@ public class IotaConfigurationDto {
    * @return enableIdvProviders
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ENABLE_IDV_PROVIDERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Boolean getEnableIdvProviders() {
     return enableIdvProviders;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ENABLE_IDV_PROVIDERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnableIdvProviders(Boolean enableIdvProviders) {
     this.enableIdvProviders = enableIdvProviders;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -478,146 +522,174 @@ public class IotaConfigurationDto {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ari");
-    openapiFields.add("configurationId");
-    openapiFields.add("name");
-    openapiFields.add("projectId");
-    openapiFields.add("walletAri");
-    openapiFields.add("tokenMaxAge");
-    openapiFields.add("iotaResponseWebhookURL");
-    openapiFields.add("enableVerification");
-    openapiFields.add("enableConsentAuditLog");
-    openapiFields.add("clientMetadata");
-    openapiFields.add("mode");
-    openapiFields.add("redirectUris");
-    openapiFields.add("enableIdvProviders");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ari");
-    openapiRequiredFields.add("configurationId");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("projectId");
-    openapiRequiredFields.add("walletAri");
-    openapiRequiredFields.add("tokenMaxAge");
-    openapiRequiredFields.add("enableVerification");
-    openapiRequiredFields.add("enableConsentAuditLog");
-    openapiRequiredFields.add("clientMetadata");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IotaConfigurationDto
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!IotaConfigurationDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IotaConfigurationDto is not found in the empty JSON string", IotaConfigurationDto.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IotaConfigurationDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IotaConfigurationDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IotaConfigurationDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("ari").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ari` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ari").toString()));
-      }
-      if (!jsonObj.get("configurationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `configurationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configurationId").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("projectId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `projectId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("projectId").toString()));
-      }
-      if (!jsonObj.get("walletAri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `walletAri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("walletAri").toString()));
-      }
-      if ((jsonObj.get("iotaResponseWebhookURL") != null && !jsonObj.get("iotaResponseWebhookURL").isJsonNull()) && !jsonObj.get("iotaResponseWebhookURL").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `iotaResponseWebhookURL` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iotaResponseWebhookURL").toString()));
-      }
-      if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
-      // validate the optional field `mode`
-      if (jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) {
-        ModeEnum.validateJsonElement(jsonObj.get("mode"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("redirectUris") != null && !jsonObj.get("redirectUris").isJsonNull() && !jsonObj.get("redirectUris").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirectUris` to be an array in the JSON string but got `%s`", jsonObj.get("redirectUris").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IotaConfigurationDto.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IotaConfigurationDto' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IotaConfigurationDto> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IotaConfigurationDto.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<IotaConfigurationDto>() {
-           @Override
-           public void write(JsonWriter out, IotaConfigurationDto value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public IotaConfigurationDto read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `ari` to the URL query string
+    if (getAri() != null) {
+      try {
+        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `configurationId` to the URL query string
+    if (getConfigurationId() != null) {
+      try {
+        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `projectId` to the URL query string
+    if (getProjectId() != null) {
+      try {
+        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `walletAri` to the URL query string
+    if (getWalletAri() != null) {
+      try {
+        joiner.add(String.format("%swalletAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletAri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `tokenMaxAge` to the URL query string
+    if (getTokenMaxAge() != null) {
+      try {
+        joiner.add(String.format("%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `iotaResponseWebhookURL` to the URL query string
+    if (getIotaResponseWebhookURL() != null) {
+      try {
+        joiner.add(String.format("%siotaResponseWebhookURL%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIotaResponseWebhookURL()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `enableVerification` to the URL query string
+    if (getEnableVerification() != null) {
+      try {
+        joiner.add(String.format("%senableVerification%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableVerification()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `enableConsentAuditLog` to the URL query string
+    if (getEnableConsentAuditLog() != null) {
+      try {
+        joiner.add(String.format("%senableConsentAuditLog%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableConsentAuditLog()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `clientMetadata` to the URL query string
+    if (getClientMetadata() != null) {
+      try {
+        joiner.add(String.format("%sclientMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `mode` to the URL query string
+    if (getMode() != null) {
+      try {
+        joiner.add(String.format("%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `redirectUris` to the URL query string
+    if (getRedirectUris() != null) {
+      for (int i = 0; i < getRedirectUris().size(); i++) {
+        try {
+          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `enableIdvProviders` to the URL query string
+    if (getEnableIdvProviders() != null) {
+      try {
+        joiner.add(String.format("%senableIdvProviders%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableIdvProviders()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of IotaConfigurationDto given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of IotaConfigurationDto
-   * @throws IOException if the JSON string is invalid with respect to IotaConfigurationDto
-   */
-  public static IotaConfigurationDto fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IotaConfigurationDto.class);
-  }
-
-  /**
-   * Convert an instance of IotaConfigurationDto to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

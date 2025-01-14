@@ -14,51 +14,36 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * Object indicating to the Wallet the Grant Types the Credential Issuer&#39;s Authorization Server is prepared to process for this Credential Offer.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:16:39.123213391Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CredentialOfferResponseGrants.JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE
+})
+@JsonTypeName("CredentialOfferResponse_grants")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponseGrants {
-  public static final String SERIALIZED_NAME_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
-  @SerializedName(SERIALIZED_NAME_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)
+  public static final String JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
   private CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
 
   public CredentialOfferResponseGrants() {
   }
 
   public CredentialOfferResponseGrants urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode) {
+    
     this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode = urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
     return this;
   }
@@ -68,15 +53,19 @@ public class CredentialOfferResponseGrants {
    * @return urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode() {
     return urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode) {
     this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode = urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -115,99 +104,45 @@ public class CredentialOfferResponseGrants {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("urn:ietf:params:oauth:grant-type:pre-authorized_code");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("urn:ietf:params:oauth:grant-type:pre-authorized_code");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CredentialOfferResponseGrants
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CredentialOfferResponseGrants.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CredentialOfferResponseGrants is not found in the empty JSON string", CredentialOfferResponseGrants.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CredentialOfferResponseGrants.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CredentialOfferResponseGrants` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CredentialOfferResponseGrants.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `urn:ietf:params:oauth:grant-type:pre-authorized_code`
-      CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.validateJsonElement(jsonObj.get("urn:ietf:params:oauth:grant-type:pre-authorized_code"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CredentialOfferResponseGrants.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CredentialOfferResponseGrants' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CredentialOfferResponseGrants> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CredentialOfferResponseGrants.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CredentialOfferResponseGrants>() {
-           @Override
-           public void write(JsonWriter out, CredentialOfferResponseGrants value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CredentialOfferResponseGrants read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `urn:ietf:params:oauth:grant-type:pre-authorized_code` to the URL query string
+    if (getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode() != null) {
+      joiner.add(getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode().toUrlQueryString(prefix + "urn:ietf:params:oauth:grant-type:pre-authorized_code" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CredentialOfferResponseGrants given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CredentialOfferResponseGrants
-   * @throws IOException if the JSON string is invalid with respect to CredentialOfferResponseGrants
-   */
-  public static CredentialOfferResponseGrants fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CredentialOfferResponseGrants.class);
-  }
-
-  /**
-   * Convert an instance of CredentialOfferResponseGrants to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

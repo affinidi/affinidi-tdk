@@ -8,9 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | [**listIssuance**](IssuanceApi.md#listIssuance)   | **GET** /v1/{projectId}/issuance                    |             |
 | [**startIssuance**](IssuanceApi.md#startIssuance) | **POST** /v1/{projectId}/issuance/start             |             |
 
-<a id="issuanceState"></a>
-
-# **issuanceState**
+## issuanceState
 
 > IssuanceStateResponse issuanceState(issuanceId, projectId)
 
@@ -28,30 +26,30 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.IssuanceApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IssuanceApi apiInstance = new IssuanceApi(defaultClient);
-    String issuanceId = "issuanceId_example"; // String |
-    String projectId = "projectId_example"; // String | Affinidi project id
-    try {
-      IssuanceStateResponse result = apiInstance.issuanceState(issuanceId, projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IssuanceApi#issuanceState");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IssuanceApi apiInstance = new IssuanceApi(defaultClient);
+        String issuanceId = "issuanceId_example"; // String |
+        String projectId = "projectId_example"; // String | Affinidi project id
+        try {
+            IssuanceStateResponse result = apiInstance.issuanceState(issuanceId, projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IssuanceApi#issuanceState");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -84,9 +82,7 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="listIssuance"></a>
-
-# **listIssuance**
+## listIssuance
 
 > ListIssuanceResponse listIssuance(projectId)
 
@@ -104,29 +100,29 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.IssuanceApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IssuanceApi apiInstance = new IssuanceApi(defaultClient);
-    String projectId = "projectId_example"; // String | Affinidi project id
-    try {
-      ListIssuanceResponse result = apiInstance.listIssuance(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IssuanceApi#listIssuance");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IssuanceApi apiInstance = new IssuanceApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        try {
+            ListIssuanceResponse result = apiInstance.listIssuance(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IssuanceApi#listIssuance");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -156,9 +152,7 @@ public class Example {
 | **200**     | Ok             | -                |
 | **403**     | ForbiddenError | -                |
 
-<a id="startIssuance"></a>
-
-# **startIssuance**
+## startIssuance
 
 > StartIssuanceResponse startIssuance(projectId, startIssuanceInput)
 
@@ -176,30 +170,30 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.IssuanceApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IssuanceApi apiInstance = new IssuanceApi(defaultClient);
-    String projectId = "projectId_example"; // String | Affinidi project id
-    StartIssuanceInput startIssuanceInput = new StartIssuanceInput(); // StartIssuanceInput | Request body to start issuance
-    try {
-      StartIssuanceResponse result = apiInstance.startIssuance(projectId, startIssuanceInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IssuanceApi#startIssuance");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IssuanceApi apiInstance = new IssuanceApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        StartIssuanceInput startIssuanceInput = new StartIssuanceInput(); // StartIssuanceInput | Request body to start issuance
+        try {
+            StartIssuanceResponse result = apiInstance.startIssuance(projectId, startIssuanceInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IssuanceApi#startIssuance");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

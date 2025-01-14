@@ -14,58 +14,42 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * CallbackResponseOK
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-05T23:18:16.395480383Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CallbackResponseOK.JSON_PROPERTY_REDIRECT_URI,
+  CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
+  CallbackResponseOK.JSON_PROPERTY_MESSAGE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CallbackResponseOK {
-  public static final String SERIALIZED_NAME_REDIRECT_URI = "redirect_uri";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
+  public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
   private String redirectUri;
 
-  public static final String SERIALIZED_NAME_RESPONSE_CODE = "response_code";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CODE)
+  public static final String JSON_PROPERTY_RESPONSE_CODE = "response_code";
   private String responseCode;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String JSON_PROPERTY_MESSAGE = "message";
   private String message;
 
   public CallbackResponseOK() {
   }
 
   public CallbackResponseOK redirectUri(String redirectUri) {
+    
     this.redirectUri = redirectUri;
     return this;
   }
@@ -75,16 +59,22 @@ public class CallbackResponseOK {
    * @return redirectUri
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getRedirectUri() {
     return redirectUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUri(String redirectUri) {
     this.redirectUri = redirectUri;
   }
 
-
   public CallbackResponseOK responseCode(String responseCode) {
+    
     this.responseCode = responseCode;
     return this;
   }
@@ -94,16 +84,22 @@ public class CallbackResponseOK {
    * @return responseCode
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getResponseCode() {
     return responseCode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResponseCode(String responseCode) {
     this.responseCode = responseCode;
   }
 
-
   public CallbackResponseOK message(String message) {
+    
     this.message = message;
     return this;
   }
@@ -113,15 +109,19 @@ public class CallbackResponseOK {
    * @return message
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getMessage() {
     return message;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMessage(String message) {
     this.message = message;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -164,108 +164,70 @@ public class CallbackResponseOK {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("redirect_uri");
-    openapiFields.add("response_code");
-    openapiFields.add("message");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("message");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CallbackResponseOK
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CallbackResponseOK.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CallbackResponseOK is not found in the empty JSON string", CallbackResponseOK.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CallbackResponseOK.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CallbackResponseOK` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CallbackResponseOK.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("redirect_uri") != null && !jsonObj.get("redirect_uri").isJsonNull()) && !jsonObj.get("redirect_uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirect_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirect_uri").toString()));
-      }
-      if ((jsonObj.get("response_code") != null && !jsonObj.get("response_code").isJsonNull()) && !jsonObj.get("response_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_code").toString()));
-      }
-      if (!jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CallbackResponseOK.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CallbackResponseOK' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CallbackResponseOK> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CallbackResponseOK.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CallbackResponseOK>() {
-           @Override
-           public void write(JsonWriter out, CallbackResponseOK value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CallbackResponseOK read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `redirect_uri` to the URL query string
+    if (getRedirectUri() != null) {
+      try {
+        joiner.add(String.format("%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `response_code` to the URL query string
+    if (getResponseCode() != null) {
+      try {
+        joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      try {
+        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CallbackResponseOK given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CallbackResponseOK
-   * @throws IOException if the JSON string is invalid with respect to CallbackResponseOK
-   */
-  public static CallbackResponseOK fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CallbackResponseOK.class);
-  }
-
-  /**
-   * Convert an instance of CallbackResponseOK to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

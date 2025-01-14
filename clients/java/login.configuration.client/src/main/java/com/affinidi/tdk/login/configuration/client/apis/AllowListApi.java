@@ -10,425 +10,279 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
-import com.affinidi.tdk.login.configuration.client.ApiCallback;
-import com.affinidi.tdk.login.configuration.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.login.configuration.client.ApiException;
-import com.affinidi.tdk.login.configuration.client.ApiResponse;
+import com.affinidi.tdk.login.configuration.client.ApiClient;
+import com.affinidi.tdk.login.configuration.client.BaseApi;
 import com.affinidi.tdk.login.configuration.client.Configuration;
 import com.affinidi.tdk.login.configuration.client.Pair;
-import com.affinidi.tdk.login.configuration.client.ProgressRequestBody;
-import com.affinidi.tdk.login.configuration.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.login.configuration.client.models.GroupNames;
 import com.affinidi.tdk.login.configuration.client.models.GroupNamesInput;
 import com.affinidi.tdk.login.configuration.client.models.InvalidGroupsError;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class AllowListApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+public class AllowListApi extends BaseApi {
 
-    public AllowListApi() {
-        this(Configuration.getDefaultApiClient());
-    }
+  public AllowListApi() {
+    super(Configuration.getDefaultApiClient());
+  }
 
-    public AllowListApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+  public AllowListApi(ApiClient apiClient) {
+    super(apiClient);
+  }
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+  /**
+   * 
+   * Allow Single or Multiple Groups
+   * @param groupNamesInput List of group names as input (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void allowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+    this.allowGroups(groupNamesInput, Collections.emptyMap());
+  }
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+  /**
+   * 
+   * Allow Single or Multiple Groups
+   * @param groupNamesInput List of group names as input (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void allowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = groupNamesInput;
+    
+    // create path and map variables
+    String localVarPath = "/v1/allow-list/groups/add";
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for allowGroups
-     * @param groupNamesInput List of group names as input (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call allowGroupsCall(GroupNamesInput groupNamesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        Object localVarPostBody = groupNamesInput;
+    apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
 
-        // create path and map variables
-        String localVarPath = "/v1/allow-list/groups/add";
+  /**
+   * 
+   * Disallow Single or Multiple Groups
+   * @param groupNamesInput List of group names as input (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void disallowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+    this.disallowGroups(groupNamesInput, Collections.emptyMap());
+  }
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+  /**
+   * 
+   * Disallow Single or Multiple Groups
+   * @param groupNamesInput List of group names as input (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void disallowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = groupNamesInput;
+    
+    // create path and map variables
+    String localVarPath = "/v1/allow-list/groups/remove";
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call allowGroupsValidateBeforeCall(GroupNamesInput groupNamesInput, final ApiCallback _callback) throws ApiException {
-        return allowGroupsCall(groupNamesInput, _callback);
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    /**
-     * 
-     * Allow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void allowGroups(GroupNamesInput groupNamesInput) throws ApiException {
-        allowGroupsWithHttpInfo(groupNamesInput);
-    }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    /**
-     * 
-     * Allow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> allowGroupsWithHttpInfo(GroupNamesInput groupNamesInput) throws ApiException {
-        okhttp3.Call localVarCall = allowGroupsValidateBeforeCall(groupNamesInput, null);
-        return localVarApiClient.execute(localVarCall);
-    }
+    apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
 
-    /**
-     *  (asynchronously)
-     * Allow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call allowGroupsAsync(GroupNamesInput groupNamesInput, final ApiCallback<Void> _callback) throws ApiException {
+  /**
+   * 
+   * Get Allowed Groups
+   * @param pageToken  (optional)
+   * @return GroupNames
+   * @throws ApiException if fails to make API call
+   */
+  public GroupNames listAllowedGroups(String pageToken) throws ApiException {
+    return this.listAllowedGroups(pageToken, Collections.emptyMap());
+  }
 
-        okhttp3.Call localVarCall = allowGroupsValidateBeforeCall(groupNamesInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for disallowGroups
-     * @param groupNamesInput List of group names as input (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call disallowGroupsCall(GroupNamesInput groupNamesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+  /**
+   * 
+   * Get Allowed Groups
+   * @param pageToken  (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GroupNames
+   * @throws ApiException if fails to make API call
+   */
+  public GroupNames listAllowedGroups(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/allow-list/groups";
 
-        Object localVarPostBody = groupNamesInput;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        // create path and map variables
-        String localVarPath = "/v1/allow-list/groups/remove";
+    localVarQueryParams.addAll(apiClient.parameterToPair("pageToken", pageToken));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    TypeReference<GroupNames> localVarReturnType = new TypeReference<GroupNames>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call disallowGroupsValidateBeforeCall(GroupNamesInput groupNamesInput, final ApiCallback _callback) throws ApiException {
-        return disallowGroupsCall(groupNamesInput, _callback);
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    }
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    /**
-     * 
-     * Disallow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void disallowGroups(GroupNamesInput groupNamesInput) throws ApiException {
-        disallowGroupsWithHttpInfo(groupNamesInput);
-    }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * 
-     * Disallow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> disallowGroupsWithHttpInfo(GroupNamesInput groupNamesInput) throws ApiException {
-        okhttp3.Call localVarCall = disallowGroupsValidateBeforeCall(groupNamesInput, null);
-        return localVarApiClient.execute(localVarCall);
-    }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    /**
-     *  (asynchronously)
-     * Disallow Single or Multiple Groups
-     * @param groupNamesInput List of group names as input (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call disallowGroupsAsync(GroupNamesInput groupNamesInput, final ApiCallback<Void> _callback) throws ApiException {
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-        okhttp3.Call localVarCall = disallowGroupsValidateBeforeCall(groupNamesInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listAllowedGroups
-     * @param pageToken  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Groups Names Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAllowedGroupsCall(String pageToken, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/allow-list/groups";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (pageToken != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageToken", pageToken));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllowedGroupsValidateBeforeCall(String pageToken, final ApiCallback _callback) throws ApiException {
-        return listAllowedGroupsCall(pageToken, _callback);
-
-    }
-
-    /**
-     * 
-     * Get Allowed Groups
-     * @param pageToken  (optional)
-     * @return GroupNames
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Groups Names Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public GroupNames listAllowedGroups(String pageToken) throws ApiException {
-        ApiResponse<GroupNames> localVarResp = listAllowedGroupsWithHttpInfo(pageToken);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get Allowed Groups
-     * @param pageToken  (optional)
-     * @return ApiResponse&lt;GroupNames&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Groups Names Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GroupNames> listAllowedGroupsWithHttpInfo(String pageToken) throws ApiException {
-        okhttp3.Call localVarCall = listAllowedGroupsValidateBeforeCall(pageToken, null);
-        Type localVarReturnType = new TypeToken<GroupNames>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get Allowed Groups
-     * @param pageToken  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Groups Names Response </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listAllowedGroupsAsync(String pageToken, final ApiCallback<GroupNames> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listAllowedGroupsValidateBeforeCall(pageToken, _callback);
-        Type localVarReturnType = new TypeToken<GroupNames>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }
