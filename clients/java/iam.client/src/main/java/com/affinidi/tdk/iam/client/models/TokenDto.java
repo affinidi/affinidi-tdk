@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   TokenDto.JSON_PROPERTY_AUTHENTICATION_METHOD,
   TokenDto.JSON_PROPERTY_SCOPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokenDto {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   InvalidDIDError.JSON_PROPERTY_TRACE_ID,
   InvalidDIDError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InvalidDIDError {
   /**
    * Gets or Sets name

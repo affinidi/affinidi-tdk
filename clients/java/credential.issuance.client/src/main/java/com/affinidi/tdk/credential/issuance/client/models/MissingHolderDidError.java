@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   MissingHolderDidError.JSON_PROPERTY_TRACE_ID,
   MissingHolderDidError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MissingHolderDidError {
   /**
    * Gets or Sets name

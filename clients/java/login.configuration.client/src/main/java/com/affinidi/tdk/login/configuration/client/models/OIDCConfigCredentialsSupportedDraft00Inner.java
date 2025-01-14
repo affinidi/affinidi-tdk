@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_TYPES
 })
 @JsonTypeName("OIDCConfig_credentials_supported_draft_00_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class OIDCConfigCredentialsSupportedDraft00Inner {
   public static final String JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED = "cryptographic_binding_methods_supported";
   private List<String> cryptographicBindingMethodsSupported = new ArrayList<>();

@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   NotFoundErrorDetailsInner.JSON_PROPERTY_LOCATION
 })
 @JsonTypeName("NotFoundError_details_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class NotFoundErrorDetailsInner {
   public static final String JSON_PROPERTY_ISSUE = "issue";
   private String issue;

@@ -78,6 +78,7 @@ gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
 pom.xml
+project.json
 settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/affinidi/tdk/credential/issuance/client/ApiClient.java

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CreateGroupInput.JSON_PROPERTY_NAME,
   CreateGroupInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateGroupInput {
   public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
   private String groupName;

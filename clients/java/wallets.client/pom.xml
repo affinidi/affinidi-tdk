@@ -9,9 +9,9 @@
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>Affinidi TDK java client for Affinidi WALLETS</description>
     <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
+        <connection>git@github.com:affinidi/affinidi-tdk.git</connection>
+        <developerConnection>git@github.com:affinidi/affinidi-tdk.git</developerConnection>
+        <url>https://github.com/affinidi/affinidi-tdk</url>
     </scm>
 
     <licenses>
@@ -25,9 +25,9 @@
     <developers>
         <developer>
             <name>Affinidi</name>
-            <email>...</email>
+            <email>info@affinidi.com</email>
             <organization>Affinidi</organization>
-            <organizationUrl>https://affinidi.com</organizationUrl>
+            <organizationUrl>https://github.com/affinidi/affinidi-tdk</organizationUrl>
         </developer>
     </developers>
 
@@ -178,6 +178,36 @@
                     </execution>
                 </executions>
             </plugin>
+             <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
         </plugins>
     </build>
 
@@ -197,6 +227,12 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                            <configuration>
+                                <keyname>${gpg.keyname}</keyname>
+                                <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </configuration>
                             </execution>
                         </executions>
                     </plugin>
