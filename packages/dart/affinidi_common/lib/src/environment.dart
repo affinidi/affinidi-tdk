@@ -1,7 +1,7 @@
 enum EnvironmentType {
   local('local'),
-  development('development'),
-  production('production');
+  dev('dev'),
+  prod('prod');
 
   final String value;
   const EnvironmentType(this.value);
@@ -39,8 +39,8 @@ class Environment {
       consumerAudienceEndpoint: '/iam/v1/consumer/oauth2/token',
       consumerCisEndpoint: '/cis',
     ),
-    EnvironmentType.development: Environment._(
-      environmentName: EnvironmentType.development.value,
+    EnvironmentType.dev: Environment._(
+      environmentName: EnvironmentType.dev.value,
       apiGwUrl: 'https://apse1.dev.api.affinidi.io',
       elementsAuthTokenUrl:
           'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
@@ -49,8 +49,8 @@ class Environment {
       consumerAudienceEndpoint: '/iam/v1/consumer/oauth2/token',
       consumerCisEndpoint: '/cis',
     ),
-    EnvironmentType.production: Environment._(
-      environmentName: EnvironmentType.production.value,
+    EnvironmentType.prod: Environment._(
+      environmentName: EnvironmentType.prod.value,
       apiGwUrl: 'https://apse1.api.affinidi.io',
       elementsAuthTokenUrl:
           'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
@@ -65,11 +65,10 @@ class Environment {
     final envValue = String.fromEnvironment(enviromentVariableName);
     final environmentType = EnvironmentType.values.firstWhere(
       (e) => e.value == envValue,
-      orElse: () => EnvironmentType.production,
+      orElse: () => EnvironmentType.prod,
     );
 
-    return environments[environmentType] ??
-        environments[EnvironmentType.production]!;
+    return environments[environmentType] ?? environments[EnvironmentType.prod]!;
   }
 
   static String fetchApiGwUrl([Environment? env]) {
