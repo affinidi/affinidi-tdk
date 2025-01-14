@@ -27,6 +27,8 @@ class Environment {
   });
 
   static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
+  static const _consumerAudienceEndpoint = '/iam/v1/consumer/oauth2/token';
+  static const _consumerCisEndpoint = '/cis';
 
   static final environments = {
     EnvironmentType.local: Environment._(
@@ -36,8 +38,8 @@ class Environment {
           'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
       webVaultUrl: 'http://localhost:3001',
-      consumerAudienceEndpoint: '/iam/v1/consumer/oauth2/token',
-      consumerCisEndpoint: '/cis',
+      consumerAudienceEndpoint: _consumerAudienceEndpoint,
+      consumerCisEndpoint: _consumerCisEndpoint,
     ),
     EnvironmentType.dev: Environment._(
       environmentName: EnvironmentType.dev.value,
@@ -46,8 +48,8 @@ class Environment {
           'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
       webVaultUrl: 'https://vault.dev.affinidi.com',
-      consumerAudienceEndpoint: '/iam/v1/consumer/oauth2/token',
-      consumerCisEndpoint: '/cis',
+      consumerAudienceEndpoint: _consumerAudienceEndpoint,
+      consumerCisEndpoint: _consumerCisEndpoint,
     ),
     EnvironmentType.prod: Environment._(
       environmentName: EnvironmentType.prod.value,
@@ -56,8 +58,8 @@ class Environment {
           'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
       webVaultUrl: 'https://vault.affinidi.com',
-      consumerAudienceEndpoint: '/iam/v1/consumer/oauth2/token',
-      consumerCisEndpoint: '/cis',
+      consumerAudienceEndpoint: _consumerAudienceEndpoint,
+      consumerCisEndpoint: _consumerCisEndpoint,
     ),
   };
 
