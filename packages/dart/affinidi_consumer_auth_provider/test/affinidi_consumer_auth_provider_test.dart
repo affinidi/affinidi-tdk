@@ -16,7 +16,7 @@ void main() {
     });
 
     test('Fetch Consumer Token returns a token', () async {
-      final seed = '12345678';
+      final seed = 'test_seed';
       final nonce = 'fixed_nonce_per_client';
       final nonceBytes = utf8.encode(nonce);
 
@@ -38,16 +38,10 @@ void main() {
       ).thenAnswer((_) async => encryptedSeed);
 
       when(
-        () => authProvider.fetchConsumerToken(
-          encryptedSeed: encryptedSeed,
-          encryptionKey: encryptionKey,
-        ),
+        () => authProvider.fetchConsumerToken(),
       ).thenAnswer((_) async => testToken);
 
-      final token = await authProvider.fetchConsumerToken(
-        encryptedSeed: encryptedSeed,
-        encryptionKey: encryptionKey,
-      );
+      final token = await authProvider.fetchConsumerToken();
 
       expect(token, isNotNull);
       expect(token, isA<String>());
@@ -67,17 +61,11 @@ void main() {
       ).thenAnswer((_) async => null);
 
       when(
-        () => authProvider.fetchConsumerToken(
-          encryptedSeed: encryptedSeed,
-          encryptionKey: encryptionKey,
-        ),
+        () => authProvider.fetchConsumerToken(),
       ).thenThrow(Exception('Failed to decrypt seed'));
 
       expect(
-        () async => await authProvider.fetchConsumerToken(
-          encryptedSeed: encryptedSeed,
-          encryptionKey: encryptionKey,
-        ),
+        () async => await authProvider.fetchConsumerToken(),
         throwsA(isA<Exception>()),
       );
     });
