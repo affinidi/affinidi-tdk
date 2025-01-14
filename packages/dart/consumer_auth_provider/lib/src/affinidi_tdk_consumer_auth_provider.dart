@@ -1,5 +1,5 @@
-import 'package:affinidi_common/affinidi_common.dart';
 import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:basic_token_provider/basic_token_provider.dart';
 
 class ConsumerAuthProvider {

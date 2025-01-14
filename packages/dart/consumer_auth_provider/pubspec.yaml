@@ -8,14 +8,14 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  affinidi_common:
-    path: ../affinidi_common
+  affinidi_tdk_common:
+    path: ../common
 
   # TODO: remove this dependency
   basic_token_provider:
     path: ../basic_token_provider
   affinidi_cryptography_service:
-    path: ../affinidi_cryptography_service
+    path: ../cryptography_service
 
 dev_dependencies:
   lints: ^5.0.0
