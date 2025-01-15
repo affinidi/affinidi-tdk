@@ -94,6 +94,13 @@ public class EnvironmentUtil {
     }
 
     /** 
+     * @return String
+     */ 
+    public String getValueFromEnvConfig(String propertyName) {
+        return properties.get(propertyName);
+    }
+
+    /** 
      * Returns the APi gateway URL for the configured environment
      * 
      * @return String
