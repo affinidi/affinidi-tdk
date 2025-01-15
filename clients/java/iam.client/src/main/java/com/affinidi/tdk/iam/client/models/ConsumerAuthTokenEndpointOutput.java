@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_SCOPE,
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_TOKEN_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:03.223863394Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ConsumerAuthTokenEndpointOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "access_token";
   private String accessToken;

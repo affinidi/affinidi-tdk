@@ -22,21 +22,15 @@ Issue credential for end user upon presentation a valid access token. Since we d
 
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CredentialsApi();
-final projectId = projectId_example; // String | Affinidi project id
-final createCredentialInput = CreateCredentialInput(); // CreateCredentialInput | Request body to issue credentials
+final api = AffinidiTdkCredentialIssuanceClient().getCredentialsApi();
+final String projectId = projectId_example; // String | Affinidi project id
+final CreateCredentialInput createCredentialInput = ; // CreateCredentialInput | Request body to issue credentials
 
 try {
-    final result = api_instance.generateCredentials(projectId, createCredentialInput);
-    print(result);
-} catch (e) {
+    final response = api.generateCredentials(projectId, createCredentialInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CredentialsApi->generateCredentials: $e\n');
 }
 ```

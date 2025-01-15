@@ -8,11 +8,11 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
 ## Properties
 
-| Name                                     | Type             | Description | Notes                            |
-| ---------------------------------------- | ---------------- | ----------- | -------------------------------- |
-| **cryptographicBindingMethodsSupported** | **List<String>** |             | [optional] [default to const []] |
-| **cryptographicSuitesSupported**         | **List<String>** |             | [optional] [default to const []] |
-| **format**                               | **String**       |             | [optional]                       |
-| **types**                                | **List<String>** |             | [optional] [default to const []] |
+| Name                                     | Type                        | Description | Notes      |
+| ---------------------------------------- | --------------------------- | ----------- | ---------- |
+| **cryptographicBindingMethodsSupported** | **BuiltList&lt;String&gt;** |             | [optional] |
+| **cryptographicSuitesSupported**         | **BuiltList&lt;String&gt;** |             | [optional] |
+| **format**                               | **String**                  |             | [optional] |
+| **types**                                | **BuiltList&lt;String&gt;** |             | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

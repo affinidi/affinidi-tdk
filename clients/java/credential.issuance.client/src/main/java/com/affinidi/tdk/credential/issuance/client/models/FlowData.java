@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE,
   FlowData.JSON_PROPERTY_STATUS_LISTS_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FlowData {
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   private String createdAt;

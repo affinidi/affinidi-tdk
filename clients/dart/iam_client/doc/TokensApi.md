@@ -30,13 +30,13 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final createTokenInput = CreateTokenInput(); // CreateTokenInput | CreateToken
+final api = AffinidiTdkIamClient().getTokensApi();
+final CreateTokenInput createTokenInput = ; // CreateTokenInput | CreateToken
 
 try {
-    final result = api_instance.createToken(createTokenInput);
-    print(result);
-} catch (e) {
+    final response = api.createToken(createTokenInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->createToken: $e\n');
 }
 ```
@@ -75,12 +75,12 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
+final api = AffinidiTdkIamClient().getTokensApi();
+final String tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
 
 try {
-    api_instance.deleteToken(tokenId);
-} catch (e) {
+    api.deleteToken(tokenId);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->deleteToken: $e\n');
 }
 ```
@@ -119,13 +119,13 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
+final api = AffinidiTdkIamClient().getTokensApi();
+final String tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
 
 try {
-    final result = api_instance.getToken(tokenId);
-    print(result);
-} catch (e) {
+    final response = api.getToken(tokenId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->getToken: $e\n');
 }
 ```
@@ -164,15 +164,15 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIamClient().getTokensApi();
+final String tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listProjectsOfToken(tokenId, limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listProjectsOfToken(tokenId, limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->listProjectsOfToken: $e\n');
 }
 ```
@@ -213,14 +213,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIamClient().getTokensApi();
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listToken(limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listToken(limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->listToken: $e\n');
 }
 ```
@@ -260,14 +260,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = TokensApi();
-final tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
-final updateTokenInput = UpdateTokenInput(); // UpdateTokenInput | UpdateToken
+final api = AffinidiTdkIamClient().getTokensApi();
+final String tokenId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String |
+final UpdateTokenInput updateTokenInput = ; // UpdateTokenInput | UpdateToken
 
 try {
-    final result = api_instance.updateToken(tokenId, updateTokenInput);
-    print(result);
-} catch (e) {
+    final response = api.updateToken(tokenId, updateTokenInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling TokensApi->updateToken: $e\n');
 }
 ```

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   RevokeCredentialInput.JSON_PROPERTY_REVOCATION_REASON,
   RevokeCredentialInput.JSON_PROPERTY_CREDENTIAL_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class RevokeCredentialInput {
   public static final String JSON_PROPERTY_REVOCATION_REASON = "revocationReason";
   private JsonNullable<String> revocationReason = JsonNullable.<String>undefined();

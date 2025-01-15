@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsFetchIotaVpResponseOK.JSON_PROPERTY_CORS_FETCH_IOTA_VP_RESPONSE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsFetchIotaVpResponseOK {
   public static final String JSON_PROPERTY_CORS_FETCH_IOTA_VP_RESPONSE_OK = "corsFetchIotaVpResponseOk";
   private String corsFetchIotaVpResponseOk;

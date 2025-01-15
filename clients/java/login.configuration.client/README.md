@@ -4,7 +4,7 @@ OidcVpAdapterBackend
 
 - API version: 1.0.0
 
-- Build date: 2025-01-13T09:20:45.285025567Z[Etc/UTC]
+- Build date: 2025-01-15T13:39:52.417040092Z[Etc/UTC]
 
 - Generator version: 7.9.0
 

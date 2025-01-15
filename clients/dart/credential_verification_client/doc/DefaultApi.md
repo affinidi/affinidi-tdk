@@ -30,13 +30,13 @@ import 'package:affinidi_tdk_credential_verification_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final verifyCredentialInput = VerifyCredentialInput(); // VerifyCredentialInput | VerifyCredentials
+final api = AffinidiTdkCredentialVerificationClient().getDefaultApi();
+final VerifyCredentialInput verifyCredentialInput = ; // VerifyCredentialInput | VerifyCredentials
 
 try {
-    final result = api_instance.verifyCredentials(verifyCredentialInput);
-    print(result);
-} catch (e) {
+    final response = api.verifyCredentials(verifyCredentialInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->verifyCredentials: $e\n');
 }
 ```
@@ -79,13 +79,13 @@ import 'package:affinidi_tdk_credential_verification_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final verifyPresentationInput = VerifyPresentationInput(); // VerifyPresentationInput | VerifyPresentation
+final api = AffinidiTdkCredentialVerificationClient().getDefaultApi();
+final VerifyPresentationInput verifyPresentationInput = ; // VerifyPresentationInput | VerifyPresentation
 
 try {
-    final result = api_instance.verifyPresentation(verifyPresentationInput);
-    print(result);
-} catch (e) {
+    final response = api.verifyPresentation(verifyPresentationInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->verifyPresentation: $e\n');
 }
 ```
