@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE
 })
 @JsonTypeName("LoginSessionDto_authorizationRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:39:52.417040092Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class LoginSessionDtoAuthorizationRequest {
   public static final String JSON_PROPERTY_STATE = "state";
   private String state;

@@ -29,14 +29,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = FilesApi();
-final scannedFileJobId = scannedFileJobId_example; // String | Scanned file jobId.
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkVaultDataManagerClient().getFilesApi();
+final String scannedFileJobId = scannedFileJobId_example; // String | Scanned file jobId.
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.getScannedFileInfo(scannedFileJobId, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.getScannedFileInfo(scannedFileJobId, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling FilesApi->getScannedFileInfo: $e\n');
 }
 ```
@@ -78,12 +78,12 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = FilesApi();
+final api = AffinidiTdkVaultDataManagerClient().getFilesApi();
 
 try {
-    final result = api_instance.listScannedFiles();
-    print(result);
-} catch (e) {
+    final response = api.listScannedFiles();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling FilesApi->listScannedFiles: $e\n');
 }
 ```
@@ -122,14 +122,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = FilesApi();
-final nodeId = nodeId_example; // String | Description for nodeId.
-final startFileScanInput = StartFileScanInput(); // StartFileScanInput | StartFileScan
+final api = AffinidiTdkVaultDataManagerClient().getFilesApi();
+final String nodeId = nodeId_example; // String | Description for nodeId.
+final StartFileScanInput startFileScanInput = ; // StartFileScanInput | StartFileScan
 
 try {
-    final result = api_instance.startFileScan(nodeId, startFileScanInput);
-    print(result);
-} catch (e) {
+    final response = api.startFileScan(nodeId, startFileScanInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling FilesApi->startFileScan: $e\n');
 }
 ```

@@ -30,12 +30,12 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1AuthProxyDelete(proxy);
-} catch (e) {
+    api.v1AuthProxyDelete(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1AuthProxyDelete: $e\n');
 }
 ```
@@ -70,12 +70,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1AuthProxyGet(proxy);
-} catch (e) {
+    api.v1AuthProxyGet(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1AuthProxyGet: $e\n');
 }
 ```
@@ -110,12 +110,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1AuthProxyPatch(proxy);
-} catch (e) {
+    api.v1AuthProxyPatch(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1AuthProxyPatch: $e\n');
 }
 ```
@@ -150,12 +150,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1AuthProxyPost(proxy);
-} catch (e) {
+    api.v1AuthProxyPost(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1AuthProxyPost: $e\n');
 }
 ```
@@ -190,12 +190,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1AuthProxyPut(proxy);
-} catch (e) {
+    api.v1AuthProxyPut(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1AuthProxyPut: $e\n');
 }
 ```
@@ -230,12 +230,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1IdpProxyDelete(proxy);
-} catch (e) {
+    api.v1IdpProxyDelete(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1IdpProxyDelete: $e\n');
 }
 ```
@@ -270,12 +270,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1IdpProxyGet(proxy);
-} catch (e) {
+    api.v1IdpProxyGet(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1IdpProxyGet: $e\n');
 }
 ```
@@ -310,12 +310,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1IdpProxyPatch(proxy);
-} catch (e) {
+    api.v1IdpProxyPatch(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1IdpProxyPatch: $e\n');
 }
 ```
@@ -350,12 +350,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1IdpProxyPost(proxy);
-} catch (e) {
+    api.v1IdpProxyPost(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1IdpProxyPost: $e\n');
 }
 ```
@@ -390,12 +390,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = DefaultApi();
-final proxy = proxy_example; // String |
+final api = AffinidiTdkIamClient().getDefaultApi();
+final String proxy = proxy_example; // String |
 
 try {
-    api_instance.v1IdpProxyPut(proxy);
-} catch (e) {
+    api.v1IdpProxyPut(proxy);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->v1IdpProxyPut: $e\n');
 }
 ```

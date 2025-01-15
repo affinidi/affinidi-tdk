@@ -10,7 +10,7 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 
 | Name                         | Type                                                                                                    | Description                                                                   | Notes      |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ---------- |
-| **unsignedCredential**       | [**Object**](.md)                                                                                       | Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted | [optional] |
+| **unsignedCredential**       | [**JsonObject**](.md)                                                                                   | Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted | [optional] |
 | **revocable**                | **bool**                                                                                                |                                                                               | [optional] |
 | **credentialFormat**         | **String**                                                                                              |                                                                               | [optional] |
 | **unsignedCredentialParams** | [**SignCredentialInputDtoUnsignedCredentialParams**](SignCredentialInputDtoUnsignedCredentialParams.md) |                                                                               | [optional] |

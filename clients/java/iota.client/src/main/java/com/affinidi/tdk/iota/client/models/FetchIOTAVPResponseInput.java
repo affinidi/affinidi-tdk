@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseInput.JSON_PROPERTY_RESPONSE_CODE,
   FetchIOTAVPResponseInput.JSON_PROPERTY_CONFIGURATION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class FetchIOTAVPResponseInput {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   private String correlationId;

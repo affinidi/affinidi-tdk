@@ -48,7 +48,7 @@ import java.util.StringJoiner;
   W3cPresentation.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   W3cPresentation.JSON_PROPERTY_PROOF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class W3cPresentation {
   public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
   private W3cPresentationContext atContext;

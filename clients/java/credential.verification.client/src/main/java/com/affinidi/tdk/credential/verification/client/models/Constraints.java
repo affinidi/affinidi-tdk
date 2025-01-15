@@ -43,7 +43,7 @@ import java.util.StringJoiner;
   Constraints.JSON_PROPERTY_IS_HOLDER,
   Constraints.JSON_PROPERTY_SAME_SUBJECT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Constraints {
   /**
    * Gets or Sets limitDisclosure

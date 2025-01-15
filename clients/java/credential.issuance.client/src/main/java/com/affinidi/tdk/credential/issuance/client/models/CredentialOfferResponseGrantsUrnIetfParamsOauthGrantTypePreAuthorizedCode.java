@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.JSON_PROPERTY_TX_CODE
 })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode {
   public static final String JSON_PROPERTY_PRE_AUTHORIZED_CODE = "pre-authorized_code";
   private String preAuthorizedCode;

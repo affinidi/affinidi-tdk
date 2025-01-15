@@ -4,7 +4,7 @@ CloudWalletEssentials
 
 - API version: 1.0.0
 
-- Build date: 2025-01-13T09:22:40.907513725Z[Etc/UTC]
+- Build date: 2025-01-15T13:42:00.870067692Z[Etc/UTC]
 
 - Generator version: 7.9.0
 

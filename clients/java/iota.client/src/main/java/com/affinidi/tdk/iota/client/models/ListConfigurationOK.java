@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListConfigurationOK.JSON_PROPERTY_CONFIGURATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:09.759834929Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListConfigurationOK {
   public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
   private List<IotaConfigurationDto> configurations = new ArrayList<>();
