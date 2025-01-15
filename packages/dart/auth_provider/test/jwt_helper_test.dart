@@ -59,8 +59,8 @@ void main() {
 
       test('creates JWT from OpenSSL RSA 4096 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa4096,
         );
         expect(token, isNotEmpty);
@@ -69,8 +69,8 @@ void main() {
 
       test('creates JWT from ssh-keygen RSA 2048 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keySshRsa2048,
         );
         expect(token, isNotEmpty);
@@ -79,8 +79,8 @@ void main() {
 
       test('creates JWT from ssh-keygen RSA 4096 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keySshRsa4096,
         );
         expect(token, isNotEmpty);
@@ -89,8 +89,8 @@ void main() {
 
       test('includes keyId in header when provided', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa2048,
           keyId: 'test-key-id',
         );
@@ -100,8 +100,8 @@ void main() {
 
       test('includes additional payload when provided', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa2048,
           additionalPayload: {
             'custom_claim': 'custom_value',
@@ -117,8 +117,8 @@ void main() {
       test('throws error with invalid private key', () {
         expect(
             () => JWTHelper.signPayload(
-                  audience: 'test-audience',
-                  tokenId: 'test-token',
+                  audience: mockAudience,
+                  tokenId: mockTokenId,
                   privateKey: 'invalid-key',
                 ),
             throwsA(isA<Error>()));
@@ -150,8 +150,8 @@ void main() {
 
       test('creates JWT from OpenSSL AES-128 encrypted RSA 2048 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa2048Aes128,
           passphrase: passphrase,
         );
@@ -161,8 +161,8 @@ void main() {
 
       test('creates JWT from OpenSSL AES-192 encrypted RSA 2048 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa2048Aes192,
           passphrase: passphrase,
         );
@@ -172,8 +172,8 @@ void main() {
 
       test('creates JWT from OpenSSL AES-256 encrypted RSA 2048 key', () {
         final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
+          audience: mockAudience,
+          tokenId: mockTokenId,
           privateKey: keyOpensslRsa2048Aes256,
           passphrase: passphrase,
         );
@@ -183,8 +183,8 @@ void main() {
 
       test('creates JWT from ssh-keygen encrypted RSA 4096 key', () {
         final token = JWTHelper.signPayload(
-            audience: 'test-audience',
-            tokenId: 'test-token',
+            audience: mockAudience,
+            tokenId: mockTokenId,
             privateKey: keySshRsa4096Encrypted,
             passphrase: passphrase);
         expect(token, isNotEmpty);
