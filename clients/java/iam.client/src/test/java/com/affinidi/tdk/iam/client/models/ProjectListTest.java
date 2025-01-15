@@ -14,29 +14,29 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.ProjectDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ProjectList
  */
-public class ProjectListTest {
+class ProjectListTest {
     private final ProjectList model = new ProjectList();
 
     /**
      * Model tests for ProjectList
      */
     @Test
-    public void testProjectList() {
+    void testProjectList() {
         // TODO: test ProjectList
     }
 
@@ -44,7 +44,7 @@ public class ProjectListTest {
      * Test the property 'projects'
      */
     @Test
-    public void projectsTest() {
+    void projectsTest() {
         // TODO: test projects
     }
 
@@ -52,7 +52,7 @@ public class ProjectListTest {
      * Test the property 'lastEvaluatedKey'
      */
     @Test
-    public void lastEvaluatedKeyTest() {
+    void lastEvaluatedKeyTest() {
         // TODO: test lastEvaluatedKey
     }
 

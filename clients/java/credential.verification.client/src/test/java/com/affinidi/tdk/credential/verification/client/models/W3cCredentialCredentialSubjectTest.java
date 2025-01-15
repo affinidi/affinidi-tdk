@@ -13,21 +13,23 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cCredentialCredentialSubject
  */
-public class W3cCredentialCredentialSubjectTest {
+class W3cCredentialCredentialSubjectTest {
     private final W3cCredentialCredentialSubject model = new W3cCredentialCredentialSubject();
 
     /**
      * Model tests for W3cCredentialCredentialSubject
      */
     @Test
-    public void testW3cCredentialCredentialSubject() {
+    void testW3cCredentialCredentialSubject() {
         // TODO: test W3cCredentialCredentialSubject
     }
 

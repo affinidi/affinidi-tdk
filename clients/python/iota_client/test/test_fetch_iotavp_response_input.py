@@ -39,13 +39,15 @@ class TestFetchIOTAVPResponseInput(unittest.TestCase):
             return FetchIOTAVPResponseInput(
                 correlation_id = '',
                 transaction_id = '',
-                response_code = ''
+                response_code = '0',
+                configuration_id = ''
             )
         else:
             return FetchIOTAVPResponseInput(
                 correlation_id = '',
                 transaction_id = '',
-                response_code = '',
+                response_code = '0',
+                configuration_id = '',
         )
         """
 

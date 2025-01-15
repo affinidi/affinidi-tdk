@@ -55,7 +55,7 @@ import java.util.StringJoiner;
   W3cCredential.JSON_PROPERTY_PROOF,
   W3cCredential.JSON_PROPERTY_CREDENTIAL_SCHEMA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class W3cCredential {
   public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
   private W3cPresentationContext atContext;

@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_wallets_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
 // tests for WalletDtoKeysInner
 void main() {
-  // final instance = WalletDtoKeysInner();
+  final instance = WalletDtoKeysInnerBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test WalletDtoKeysInner', () {
+  group(WalletDtoKeysInner, () {
     // id of linked key
     // String id
     test('to test the property `id`', () async {
@@ -28,7 +19,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

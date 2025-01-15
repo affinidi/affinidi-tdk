@@ -16,29 +16,29 @@ package com.affinidi.tdk.login.configuration.client.models;
 import com.affinidi.tdk.login.configuration.client.models.IdTokenMapping;
 import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationClientMetadataInput;
 import com.affinidi.tdk.login.configuration.client.models.TokenEndpointAuthMethod;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for UpdateLoginConfigurationInput
  */
-public class UpdateLoginConfigurationInputTest {
+class UpdateLoginConfigurationInputTest {
     private final UpdateLoginConfigurationInput model = new UpdateLoginConfigurationInput();
 
     /**
      * Model tests for UpdateLoginConfigurationInput
      */
     @Test
-    public void testUpdateLoginConfigurationInput() {
+    void testUpdateLoginConfigurationInput() {
         // TODO: test UpdateLoginConfigurationInput
     }
 
@@ -46,7 +46,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -54,7 +54,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'redirectUris'
      */
     @Test
-    public void redirectUrisTest() {
+    void redirectUrisTest() {
         // TODO: test redirectUris
     }
 
@@ -62,7 +62,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'postLogoutRedirectUris'
      */
     @Test
-    public void postLogoutRedirectUrisTest() {
+    void postLogoutRedirectUrisTest() {
         // TODO: test postLogoutRedirectUris
     }
 
@@ -70,7 +70,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'clientSecret'
      */
     @Test
-    public void clientSecretTest() {
+    void clientSecretTest() {
         // TODO: test clientSecret
     }
 
@@ -78,7 +78,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'vpDefinition'
      */
     @Test
-    public void vpDefinitionTest() {
+    void vpDefinitionTest() {
         // TODO: test vpDefinition
     }
 
@@ -86,7 +86,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'presentationDefinition'
      */
     @Test
-    public void presentationDefinitionTest() {
+    void presentationDefinitionTest() {
         // TODO: test presentationDefinition
     }
 
@@ -94,7 +94,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'idTokenMapping'
      */
     @Test
-    public void idTokenMappingTest() {
+    void idTokenMappingTest() {
         // TODO: test idTokenMapping
     }
 
@@ -102,7 +102,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'clientMetadata'
      */
     @Test
-    public void clientMetadataTest() {
+    void clientMetadataTest() {
         // TODO: test clientMetadata
     }
 
@@ -110,7 +110,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'tokenEndpointAuthMethod'
      */
     @Test
-    public void tokenEndpointAuthMethodTest() {
+    void tokenEndpointAuthMethodTest() {
         // TODO: test tokenEndpointAuthMethod
     }
 
@@ -118,7 +118,7 @@ public class UpdateLoginConfigurationInputTest {
      * Test the property 'failOnMappingConflict'
      */
     @Test
-    public void failOnMappingConflictTest() {
+    void failOnMappingConflictTest() {
         // TODO: test failOnMappingConflict
     }
 

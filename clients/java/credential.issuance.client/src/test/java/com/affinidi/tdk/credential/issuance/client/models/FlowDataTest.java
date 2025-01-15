@@ -14,29 +14,29 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.FlowDataStatusListsDetailsInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for FlowData
  */
-public class FlowDataTest {
+class FlowDataTest {
     private final FlowData model = new FlowData();
 
     /**
      * Model tests for FlowData
      */
     @Test
-    public void testFlowData() {
+    void testFlowData() {
         // TODO: test FlowData
     }
 
@@ -44,7 +44,7 @@ public class FlowDataTest {
      * Test the property 'createdAt'
      */
     @Test
-    public void createdAtTest() {
+    void createdAtTest() {
         // TODO: test createdAt
     }
 
@@ -52,7 +52,7 @@ public class FlowDataTest {
      * Test the property 'modifiedAt'
      */
     @Test
-    public void modifiedAtTest() {
+    void modifiedAtTest() {
         // TODO: test modifiedAt
     }
 
@@ -60,7 +60,7 @@ public class FlowDataTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -68,7 +68,7 @@ public class FlowDataTest {
      * Test the property 'projectId'
      */
     @Test
-    public void projectIdTest() {
+    void projectIdTest() {
         // TODO: test projectId
     }
 
@@ -76,7 +76,7 @@ public class FlowDataTest {
      * Test the property 'flowId'
      */
     @Test
-    public void flowIdTest() {
+    void flowIdTest() {
         // TODO: test flowId
     }
 
@@ -84,7 +84,7 @@ public class FlowDataTest {
      * Test the property 'credentialTypeId'
      */
     @Test
-    public void credentialTypeIdTest() {
+    void credentialTypeIdTest() {
         // TODO: test credentialTypeId
     }
 
@@ -92,7 +92,7 @@ public class FlowDataTest {
      * Test the property 'jsonLdContextUrl'
      */
     @Test
-    public void jsonLdContextUrlTest() {
+    void jsonLdContextUrlTest() {
         // TODO: test jsonLdContextUrl
     }
 
@@ -100,7 +100,7 @@ public class FlowDataTest {
      * Test the property 'jsonSchemaUrl'
      */
     @Test
-    public void jsonSchemaUrlTest() {
+    void jsonSchemaUrlTest() {
         // TODO: test jsonSchemaUrl
     }
 
@@ -108,7 +108,7 @@ public class FlowDataTest {
      * Test the property 'configurationId'
      */
     @Test
-    public void configurationIdTest() {
+    void configurationIdTest() {
         // TODO: test configurationId
     }
 
@@ -116,7 +116,7 @@ public class FlowDataTest {
      * Test the property 'issuedAt'
      */
     @Test
-    public void issuedAtTest() {
+    void issuedAtTest() {
         // TODO: test issuedAt
     }
 
@@ -124,7 +124,7 @@ public class FlowDataTest {
      * Test the property 'walletId'
      */
     @Test
-    public void walletIdTest() {
+    void walletIdTest() {
         // TODO: test walletId
     }
 
@@ -132,7 +132,7 @@ public class FlowDataTest {
      * Test the property 'projectIdConfigurationId'
      */
     @Test
-    public void projectIdConfigurationIdTest() {
+    void projectIdConfigurationIdTest() {
         // TODO: test projectIdConfigurationId
     }
 
@@ -140,7 +140,7 @@ public class FlowDataTest {
      * Test the property 'projectIdConfigurationIdWalletId'
      */
     @Test
-    public void projectIdConfigurationIdWalletIdTest() {
+    void projectIdConfigurationIdWalletIdTest() {
         // TODO: test projectIdConfigurationIdWalletId
     }
 
@@ -148,7 +148,7 @@ public class FlowDataTest {
      * Test the property 'projectIdConfigurationIdCredentialType'
      */
     @Test
-    public void projectIdConfigurationIdCredentialTypeTest() {
+    void projectIdConfigurationIdCredentialTypeTest() {
         // TODO: test projectIdConfigurationIdCredentialType
     }
 
@@ -156,7 +156,7 @@ public class FlowDataTest {
      * Test the property 'statusListsDetails'
      */
     @Test
-    public void statusListsDetailsTest() {
+    void statusListsDetailsTest() {
         // TODO: test statusListsDetails
     }
 

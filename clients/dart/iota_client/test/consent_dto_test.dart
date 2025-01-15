@@ -1,55 +1,61 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for ConsentDto
 void main() {
-  // final instance = ConsentDto();
+  final instance = ConsentDtoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test ConsentDto', () {
+  group(ConsentDto, () {
+    // The ID of the project.
     // String projectId
     test('to test the property `projectId`', () async {
       // TODO
     });
 
-    // id of the record
+    // Unique identifier for the record.
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // unique identifier of the user
+    // Unique identifier for the user.
     // String userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-    // VC type of shared vc. If the actual VC has several VC types (excluding base types as VerifiableCredential) then for each of the a separate record will be added
+    // Type of the VC shared by the user. It creates a consent record for each  VC type shared except for the base type VerifiableCredential.
     // String vcType
     test('to test the property `vcType`', () async {
       // TODO
     });
 
+    // Status of the consent.
     // String status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // String updatedAt
-    test('to test the property `updatedAt`', () async {
+    // String modifiedAt
+    test('to test the property `modifiedAt`', () async {
       // TODO
     });
 
+    // String modifiedBy
+    test('to test the property `modifiedBy`', () async {
+      // TODO
+    });
+
+    // String createdAt
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // String createdBy
+    test('to test the property `createdBy`', () async {
+      // TODO
+    });
 
   });
-
 }

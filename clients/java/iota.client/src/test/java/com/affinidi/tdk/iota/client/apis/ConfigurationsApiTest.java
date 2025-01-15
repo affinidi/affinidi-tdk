@@ -24,9 +24,12 @@ import com.affinidi.tdk.iota.client.models.NotFoundError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 import com.affinidi.tdk.iota.client.models.ResourceLimitExceededError;
 import com.affinidi.tdk.iota.client.models.UpdateConfigurationByIdInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,74 +46,80 @@ public class ConfigurationsApiTest {
     /**
      * Creates a new Affinidi Iota Framework configuration.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createIotaConfigurationTest() throws ApiException {
         CreateIotaConfigurationInput createIotaConfigurationInput = null;
         IotaConfigurationDto response = api.createIotaConfiguration(createIotaConfigurationInput);
+
         // TODO: test validations
     }
-
     /**
      * Deletes an Affinidi Iota Framework configuration by ID.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteIotaConfigurationByIdTest() throws ApiException {
         String configurationId = null;
         api.deleteIotaConfigurationById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * Retrieves the details of an Affinidi Iota Framework configuration.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getIotaConfigurationByIdTest() throws ApiException {
         String configurationId = null;
         IotaConfigurationDto response = api.getIotaConfigurationById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getIotaConfigurationMetaDataTest() throws ApiException {
         String projectId = null;
         String configurationId = null;
         GetIotaConfigurationMetaDataOK response = api.getIotaConfigurationMetaData(projectId, configurationId);
+
         // TODO: test validations
     }
-
     /**
      * List all Affinidi Iota Framework configurations.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listIotaConfigurationsTest() throws ApiException {
         ListConfigurationOK response = api.listIotaConfigurations();
+
         // TODO: test validations
     }
-
     /**
      * Updates the details of an Affinidi Iota Framework configuration by ID.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateIotaConfigurationByIdTest() throws ApiException {
         String configurationId = null;
         UpdateConfigurationByIdInput updateConfigurationByIdInput = null;
         IotaConfigurationDto response = api.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput);
+
         // TODO: test validations
     }
-
 }

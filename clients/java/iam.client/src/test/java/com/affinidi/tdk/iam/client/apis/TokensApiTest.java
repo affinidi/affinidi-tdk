@@ -24,9 +24,12 @@ import com.affinidi.tdk.iam.client.models.TokenList;
 import java.util.UUID;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.UpdateTokenInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,37 +44,41 @@ public class TokensApiTest {
     private final TokensApi api = new TokensApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createTokenTest() throws ApiException {
         CreateTokenInput createTokenInput = null;
         TokenDto response = api.createToken(createTokenInput);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteTokenTest() throws ApiException {
         UUID tokenId = null;
         api.deleteToken(tokenId);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getTokenTest() throws ApiException {
         UUID tokenId = null;
         TokenDto response = api.getToken(tokenId);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listProjectsOfTokenTest() throws ApiException {
@@ -79,29 +86,31 @@ public class TokensApiTest {
         Integer limit = null;
         String exclusiveStartKey = null;
         ProjectWithPolicyList response = api.listProjectsOfToken(tokenId, limit, exclusiveStartKey);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listTokenTest() throws ApiException {
         Integer limit = null;
         String exclusiveStartKey = null;
         TokenList response = api.listToken(limit, exclusiveStartKey);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateTokenTest() throws ApiException {
         UUID tokenId = null;
         UpdateTokenInput updateTokenInput = null;
         TokenDto response = api.updateToken(tokenId, updateTokenInput);
+
         // TODO: test validations
     }
-
 }

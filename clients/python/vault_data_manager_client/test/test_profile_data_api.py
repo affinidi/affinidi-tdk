@@ -27,6 +27,12 @@ class TestProfileDataApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_query_profile_data(self) -> None:
+        """Test case for query_profile_data
+
+        """
+        pass
+
     def test_update_profile_data(self) -> None:
         """Test case for update_profile_data
 

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN,
   CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:03.223863394Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateProjectScopedTokenOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
   private String accessToken;

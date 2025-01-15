@@ -13,20 +13,22 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cCredentialHolder
  */
-public class W3cCredentialHolderTest {
+class W3cCredentialHolderTest {
     private final W3cCredentialHolder model = new W3cCredentialHolder();
 
     /**
      * Model tests for W3cCredentialHolder
      */
     @Test
-    public void testW3cCredentialHolder() {
+    void testW3cCredentialHolder() {
         // TODO: test W3cCredentialHolder
     }
 

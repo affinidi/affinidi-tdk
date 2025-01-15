@@ -15,29 +15,29 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.Constraints;
 import com.affinidi.tdk.credential.verification.client.models.Format;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for InputDescriptor
  */
-public class InputDescriptorTest {
+class InputDescriptorTest {
     private final InputDescriptor model = new InputDescriptor();
 
     /**
      * Model tests for InputDescriptor
      */
     @Test
-    public void testInputDescriptor() {
+    void testInputDescriptor() {
         // TODO: test InputDescriptor
     }
 
@@ -45,7 +45,7 @@ public class InputDescriptorTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -53,7 +53,7 @@ public class InputDescriptorTest {
      * Test the property 'constraints'
      */
     @Test
-    public void constraintsTest() {
+    void constraintsTest() {
         // TODO: test constraints
     }
 
@@ -61,7 +61,7 @@ public class InputDescriptorTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -69,7 +69,7 @@ public class InputDescriptorTest {
      * Test the property 'purpose'
      */
     @Test
-    public void purposeTest() {
+    void purposeTest() {
         // TODO: test purpose
     }
 
@@ -77,7 +77,7 @@ public class InputDescriptorTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -85,7 +85,7 @@ public class InputDescriptorTest {
      * Test the property 'group'
      */
     @Test
-    public void groupTest() {
+    void groupTest() {
         // TODO: test group
     }
 

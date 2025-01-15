@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for UpdatePexQueryInput
  */
-public class UpdatePexQueryInputTest {
+class UpdatePexQueryInputTest {
     private final UpdatePexQueryInput model = new UpdatePexQueryInput();
 
     /**
      * Model tests for UpdatePexQueryInput
      */
     @Test
-    public void testUpdatePexQueryInput() {
+    void testUpdatePexQueryInput() {
         // TODO: test UpdatePexQueryInput
     }
 
@@ -41,7 +40,7 @@ public class UpdatePexQueryInputTest {
      * Test the property 'vpDefinition'
      */
     @Test
-    public void vpDefinitionTest() {
+    void vpDefinitionTest() {
         // TODO: test vpDefinition
     }
 
@@ -49,7 +48,7 @@ public class UpdatePexQueryInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 

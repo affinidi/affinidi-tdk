@@ -28,7 +28,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("SignCredentialResultDto_signedCredential")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SignCredentialResultDtoSignedCredential {
   public SignCredentialResultDtoSignedCredential() {
   }

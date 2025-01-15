@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UpdateProfileDataInput.JSON_PROPERTY_DEK,
   UpdateProfileDataInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateProfileDataInput {
   public static final String JSON_PROPERTY_DEK = "dek";
   private String dek;

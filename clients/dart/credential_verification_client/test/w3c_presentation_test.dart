@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_verification_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 
 // tests for W3cPresentation
 void main() {
-  // final instance = W3cPresentation();
+  final instance = W3cPresentationBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test W3cPresentation', () {
+  group(W3cPresentation, () {
     // W3cPresentationContext atContext
     test('to test the property `atContext`', () async {
       // TODO
@@ -26,17 +17,17 @@ void main() {
       // TODO
     });
 
-    // List<String> type (default value: const [])
+    // BuiltList<String> type
     test('to test the property `type`', () async {
       // TODO
     });
 
-    // Object holder
+    // JsonObject holder
     test('to test the property `holder`', () async {
       // TODO
     });
 
-    // List<W3cCredential> verifiableCredential (default value: const [])
+    // BuiltList<W3cCredential> verifiableCredential
     test('to test the property `verifiableCredential`', () async {
       // TODO
     });
@@ -46,12 +37,10 @@ void main() {
       // TODO
     });
 
-    // Object proof
+    // JsonObject proof
     test('to test the property `proof`', () async {
       // TODO
     });
 
-
   });
-
 }

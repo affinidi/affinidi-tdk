@@ -13,20 +13,23 @@
 
 package com.affinidi.tdk.iam.client.models;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for GetWellKnownDidOK
  */
-public class GetWellKnownDidOKTest {
+class GetWellKnownDidOKTest {
     private final GetWellKnownDidOK model = new GetWellKnownDidOK();
 
     /**
      * Model tests for GetWellKnownDidOK
      */
     @Test
-    public void testGetWellKnownDidOK() {
+    void testGetWellKnownDidOK() {
         // TODO: test GetWellKnownDidOK
     }
 

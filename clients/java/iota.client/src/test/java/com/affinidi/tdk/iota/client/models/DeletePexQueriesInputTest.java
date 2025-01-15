@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for DeletePexQueriesInput
  */
-public class DeletePexQueriesInputTest {
+class DeletePexQueriesInputTest {
     private final DeletePexQueriesInput model = new DeletePexQueriesInput();
 
     /**
      * Model tests for DeletePexQueriesInput
      */
     @Test
-    public void testDeletePexQueriesInput() {
+    void testDeletePexQueriesInput() {
         // TODO: test DeletePexQueriesInput
     }
 
@@ -43,7 +43,7 @@ public class DeletePexQueriesInputTest {
      * Test the property 'queryIds'
      */
     @Test
-    public void queryIdsTest() {
+    void queryIdsTest() {
         // TODO: test queryIds
     }
 

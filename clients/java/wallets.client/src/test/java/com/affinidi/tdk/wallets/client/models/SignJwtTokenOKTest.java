@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SignJwtTokenOK
  */
-public class SignJwtTokenOKTest {
+class SignJwtTokenOKTest {
     private final SignJwtTokenOK model = new SignJwtTokenOK();
 
     /**
      * Model tests for SignJwtTokenOK
      */
     @Test
-    public void testSignJwtTokenOK() {
+    void testSignJwtTokenOK() {
         // TODO: test SignJwtTokenOK
     }
 
@@ -41,7 +40,7 @@ public class SignJwtTokenOKTest {
      * Test the property 'signedJwt'
      */
     @Test
-    public void signedJwtTest() {
+    void signedJwtTest() {
         // TODO: test signedJwt
     }
 

@@ -15,27 +15,26 @@ package com.affinidi.tdk.wallets.client.models;
 
 import com.affinidi.tdk.wallets.client.models.DidKeyInputParams;
 import com.affinidi.tdk.wallets.client.models.DidWebInputParams;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateWalletInput
  */
-public class CreateWalletInputTest {
+class CreateWalletInputTest {
     private final CreateWalletInput model = new CreateWalletInput();
 
     /**
      * Model tests for CreateWalletInput
      */
     @Test
-    public void testCreateWalletInput() {
+    void testCreateWalletInput() {
         // TODO: test CreateWalletInput
     }
 
@@ -43,7 +42,7 @@ public class CreateWalletInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -51,7 +50,7 @@ public class CreateWalletInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -59,7 +58,7 @@ public class CreateWalletInputTest {
      * Test the property 'didMethod'
      */
     @Test
-    public void didMethodTest() {
+    void didMethodTest() {
         // TODO: test didMethod
     }
 
@@ -67,7 +66,7 @@ public class CreateWalletInputTest {
      * Test the property 'didWebUrl'
      */
     @Test
-    public void didWebUrlTest() {
+    void didWebUrlTest() {
         // TODO: test didWebUrl
     }
 

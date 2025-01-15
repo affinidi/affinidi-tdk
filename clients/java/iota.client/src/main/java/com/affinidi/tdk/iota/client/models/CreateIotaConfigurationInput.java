@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   CreateIotaConfigurationInput.JSON_PROPERTY_REDIRECT_URIS,
   CreateIotaConfigurationInput.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateIotaConfigurationInput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

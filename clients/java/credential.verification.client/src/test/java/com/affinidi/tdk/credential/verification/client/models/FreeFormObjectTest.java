@@ -13,20 +13,23 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for FreeFormObject
  */
-public class FreeFormObjectTest {
+class FreeFormObjectTest {
     private final FreeFormObject model = new FreeFormObject();
 
     /**
      * Model tests for FreeFormObject
      */
     @Test
-    public void testFreeFormObject() {
+    void testFreeFormObject() {
         // TODO: test FreeFormObject
     }
 
