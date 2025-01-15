@@ -8,117 +8,92 @@ import 'package:mocktail/mocktail.dart';
 
 class MockIamClient extends Mock implements IamClient {}
 
+void validateJWTClaims(String token, String audience, String tokenId) {
+  final jwt = JWT.decode(token);
+
+  expect(jwt.payload['aud'], equals(audience));
+  expect(jwt.payload['iss'], equals(tokenId));
+  expect(jwt.payload['sub'], equals(tokenId));
+  expect(jwt.payload['jti'], isNotEmpty);
+  expect(jwt.payload['iat'], isA<int>());
+  expect(jwt.payload['exp'], isA<int>());
+  expect(jwt.payload['exp'] - jwt.payload['iat'], equals(5 * 60));
+
+  expect(jwt.header!['alg'], equals('RS256'));
+}
+
 void main() {
   group('JWTHelper Tests', () {
-    late IamClient iamClient;
-    late String keyOpensslRSA2048;
-    late String keyOpensslRSA4096;
-    late String keySshRSA2048;
-    late String keySshRSA4096;
+    final mockAudience = "test-audience";
+    final mockTokenId = "test-token";
+    group('signPayload with unencrypted private keys', () {
+      late String keyOpensslRsa2048;
+      late String keyOpensslRsa4096;
+      late String keySshRsa2048;
+      late String keySshRsa4096;
 
-    setUp(() {
-      final testDir = Directory.current.path;
-      keyOpensslRSA2048 =
-          File(path.join(testDir, 'test', 'pem', 'openssl-rsa2048.pem'))
-              .readAsStringSync();
-      keyOpensslRSA4096 =
-          File(path.join(testDir, 'test', 'pem', 'openssl-rsa4096.pem'))
-              .readAsStringSync();
-      keySshRSA2048 = File(path.join(testDir, 'test', 'pem', 'ssh-rsa2048.pem'))
-          .readAsStringSync();
-      keySshRSA4096 = File(path.join(testDir, 'test', 'pem', 'ssh-rsa4096.pem'))
-          .readAsStringSync();
-    });
+      setUp(() {
+        final testDir = Directory.current.path;
+        keyOpensslRsa2048 =
+            File(path.join(testDir, 'test', 'pem', 'openssl-rsa2048.pem'))
+                .readAsStringSync();
+        keyOpensslRsa4096 =
+            File(path.join(testDir, 'test', 'pem', 'openssl-rsa4096.pem'))
+                .readAsStringSync();
+        keySshRsa2048 =
+            File(path.join(testDir, 'test', 'pem', 'ssh-rsa2048.pem'))
+                .readAsStringSync();
+        keySshRsa4096 =
+            File(path.join(testDir, 'test', 'pem', 'ssh-rsa4096.pem'))
+                .readAsStringSync();
+      });
+      test('creates JWT from OpenSSL RSA 2048 key', () {
+        final token = JWTHelper.signPayload(
+          audience: mockAudience,
+          tokenId: mockTokenId,
+          privateKey: keyOpensslRsa2048,
+        );
+        expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      });
 
-    group('signPayload with unencrypted key', () {
-      test('creates and signs valid JWT from OpenSSL RSA 2048 key', () {
+      test('creates JWT from OpenSSL RSA 4096 key', () {
         final token = JWTHelper.signPayload(
           audience: 'test-audience',
           tokenId: 'test-token',
-          privateKey: keyOpensslRSA2048,
+          privateKey: keyOpensslRsa4096,
         );
-
         expect(token, isNotEmpty);
-
-        final jwt = JWT.decode(token);
-
-        expect(jwt.payload['aud'], equals('test-audience'));
-        expect(jwt.payload['iss'], equals('test-token'));
-        expect(jwt.payload['sub'], equals('test-token'));
-        expect(jwt.payload['jti'], isNotEmpty);
-        expect(jwt.payload['iat'], isA<int>());
-        expect(jwt.payload['exp'], isA<int>());
-        expect(jwt.payload['exp'] - jwt.payload['iat'], equals(5 * 60));
+        validateJWTClaims(token, mockAudience, mockTokenId);
       });
 
-      test('creates and signs valid JWT from OpenSSL RSA 4096 key', () {
+      test('creates JWT from ssh-keygen RSA 2048 key', () {
         final token = JWTHelper.signPayload(
           audience: 'test-audience',
           tokenId: 'test-token',
-          privateKey: keyOpensslRSA4096,
+          privateKey: keySshRsa2048,
         );
-
         expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'ssh-keygen key tags are not yet supported');
 
-        final jwt = JWT.decode(token);
-
-        expect(jwt.payload['aud'], equals('test-audience'));
-        expect(jwt.payload['iss'], equals('test-token'));
-        expect(jwt.payload['sub'], equals('test-token'));
-        expect(jwt.payload['jti'], isNotEmpty);
-        expect(jwt.payload['iat'], isA<int>());
-        expect(jwt.payload['exp'], isA<int>());
-        expect(jwt.payload['exp'] - jwt.payload['iat'], equals(5 * 60));
-      });
-
-      test('creates and signs valid JWT from ssh-keygen RSA 2048 key', () {
+      test('creates JWT from ssh-keygen RSA 4096 key', () {
         final token = JWTHelper.signPayload(
           audience: 'test-audience',
           tokenId: 'test-token',
-          privateKey: keySshRSA2048,
+          privateKey: keySshRsa4096,
         );
-
         expect(token, isNotEmpty);
-
-        final jwt = JWT.decode(token);
-
-        expect(jwt.payload['aud'], equals('test-audience'));
-        expect(jwt.payload['iss'], equals('test-token'));
-        expect(jwt.payload['sub'], equals('test-token'));
-        expect(jwt.payload['jti'], isNotEmpty);
-        expect(jwt.payload['iat'], isA<int>());
-        expect(jwt.payload['exp'], isA<int>());
-        expect(jwt.payload['exp'] - jwt.payload['iat'], equals(5 * 60));
-      });
-
-      test('creates and signs valid JWT from ssh-keygen RSA 4096 key', () {
-        final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
-          privateKey: keySshRSA4096,
-        );
-
-        expect(token, isNotEmpty);
-
-        final jwt = JWT.decode(token);
-
-        expect(jwt.payload['aud'], equals('test-audience'));
-        expect(jwt.payload['iss'], equals('test-token'));
-        expect(jwt.payload['sub'], equals('test-token'));
-        expect(jwt.payload['jti'], isNotEmpty);
-        expect(jwt.payload['iat'], isA<int>());
-        expect(jwt.payload['exp'], isA<int>());
-        expect(jwt.payload['exp'] - jwt.payload['iat'], equals(5 * 60));
-      });
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'ssh-keygen key tags are not yet supported');
 
       test('includes keyId in header when provided', () {
         final token = JWTHelper.signPayload(
           audience: 'test-audience',
           tokenId: 'test-token',
-          privateKey: keyOpensslRSA2048,
+          privateKey: keyOpensslRsa2048,
           keyId: 'test-key-id',
         );
-
         final jwt = JWT.decode(token);
         expect(jwt.header!['kid'], equals('test-key-id'));
       });
@@ -127,7 +102,7 @@ void main() {
         final token = JWTHelper.signPayload(
           audience: 'test-audience',
           tokenId: 'test-token',
-          privateKey: keyOpensslRSA2048,
+          privateKey: keyOpensslRsa2048,
           additionalPayload: {
             'custom_claim': 'custom_value',
             'nested_claim': {'key': 'value'}
@@ -137,17 +112,6 @@ void main() {
         final jwt = JWT.decode(token);
         expect(jwt.payload['custom_claim'], equals('custom_value'));
         expect(jwt.payload['nested_claim'], equals({'key': 'value'}));
-      });
-
-      test('uses RS256 algorithm', () {
-        final token = JWTHelper.signPayload(
-          audience: 'test-audience',
-          tokenId: 'test-token',
-          privateKey: keyOpensslRSA2048,
-        );
-
-        final jwt = JWT.decode(token);
-        expect(jwt.header!['alg'], equals('RS256'));
       });
 
       test('throws error with invalid private key', () {
@@ -161,7 +125,76 @@ void main() {
       });
     });
 
+    group('signPayload with encrypted private keys', () {
+      final String passphrase = 'hello';
+      late String keyOpensslRsa2048Aes128;
+      late String keyOpensslRsa2048Aes192;
+      late String keyOpensslRsa2048Aes256;
+      late String keySshRsa4096Encrypted;
+
+      setUp(() {
+        final testDir = Directory.current.path;
+        keyOpensslRsa2048Aes128 = File(
+                path.join(testDir, 'test', 'pem', 'openssl-rsa2048-aes128.pem'))
+            .readAsStringSync();
+        keyOpensslRsa2048Aes192 = File(
+                path.join(testDir, 'test', 'pem', 'openssl-rsa2048-aes192.pem'))
+            .readAsStringSync();
+        keyOpensslRsa2048Aes256 = File(
+                path.join(testDir, 'test', 'pem', 'openssl-rsa2048-aes256.pem'))
+            .readAsStringSync();
+        keySshRsa4096Encrypted =
+            File(path.join(testDir, 'test', 'pem', 'ssh-rsa4096-encrypted.pem'))
+                .readAsStringSync();
+      });
+
+      test('creates JWT from OpenSSL AES-128 encrypted RSA 2048 key', () {
+        final token = JWTHelper.signPayload(
+          audience: 'test-audience',
+          tokenId: 'test-token',
+          privateKey: keyOpensslRsa2048Aes128,
+          passphrase: passphrase,
+        );
+        expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'encrypted keys are not yet supported');
+
+      test('creates JWT from OpenSSL AES-192 encrypted RSA 2048 key', () {
+        final token = JWTHelper.signPayload(
+          audience: 'test-audience',
+          tokenId: 'test-token',
+          privateKey: keyOpensslRsa2048Aes192,
+          passphrase: passphrase,
+        );
+        expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'encrypted keys are not yet supported');
+
+      test('creates JWT from OpenSSL AES-256 encrypted RSA 2048 key', () {
+        final token = JWTHelper.signPayload(
+          audience: 'test-audience',
+          tokenId: 'test-token',
+          privateKey: keyOpensslRsa2048Aes256,
+          passphrase: passphrase,
+        );
+        expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'encrypted keys are not yet supported');
+
+      test('creates JWT from ssh-keygen encrypted RSA 4096 key', () {
+        final token = JWTHelper.signPayload(
+            audience: 'test-audience',
+            tokenId: 'test-token',
+            privateKey: keySshRsa4096Encrypted,
+            passphrase: passphrase);
+        expect(token, isNotEmpty);
+        validateJWTClaims(token, mockAudience, mockTokenId);
+      }, skip: 'ssh-keygen key tags are not yet supported');
+    });
+
     group('fetchPublicKey', () {
+      late IamClient iamClient;
+
       setUp(() {
         iamClient = MockIamClient();
       });

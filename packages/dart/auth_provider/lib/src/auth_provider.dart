@@ -129,7 +129,7 @@ class AuthProvider {
         additionalPayload: {
           'project_id': projectId,
           'iota_configuration_id': iotaConfigId,
-          'iota_session_id': iotaSessionId,
+          'iota_session_id': sessionId,
           'scope': 'iota_channel',
         },
       ),
