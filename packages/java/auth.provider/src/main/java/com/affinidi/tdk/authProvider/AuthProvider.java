@@ -13,6 +13,10 @@ import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 
+import com.affinidi.tdk.authProvider.exception.AccessTokenGenerationException;
+import com.affinidi.tdk.authProvider.exception.ConfigurationException;
+import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
+import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
 import com.affinidi.tdk.authProvider.types.IotaJwtOutput;
@@ -58,7 +62,7 @@ public class AuthProvider {
      * generating a new.
      * 
      * The validation involves verifying token's signature against the 
-     * public (verification) key.
+     * public (verification) key; validating token's expiration or malformation.
      * 
      * @return boolean
      */
@@ -71,10 +75,20 @@ public class AuthProvider {
 
     
     /** 
+     * This method generates a projectScopeToken required to call 
+     * Affinidi services.
+     * 
+     * In case there is an existing projectScopeToken in the 
+     * authProvider instance; it is first validated and a new one is
+     * generated only if needed. 
+     * 
+     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)}
+     * for validation details
+     * 
      * @return String
-     * @throws Exception
+     * @throws PSTGenerationException incase access_token generation has issues or projectScopeToken end point 
      */
-    public String fetchProjectScopedToken() throws Exception{
+    public String fetchProjectScopedToken() throws PSTGenerationException{
         boolean tokenFetchRequired = shouldRefreshToken();
 
         if(tokenFetchRequired){
@@ -85,32 +99,35 @@ public class AuthProvider {
 
     
     /** 
+     * This method generates a user-access-token which is required  
+     * as an API authorization token. 
+     * 
      * @return String
-     * @throws Exception
+     * @throws AccessTokenGenerationException in case the acceess token could not be generated
      */
-    public String getUserAccessToken() throws Exception{
-
-        String signedToken = JwtUtil.signPayload(this.tokenId, this.tokenEndPoint, this.privateKey, this.passphrase, this.keyId);
-        if(signedToken == null){
-            return null;
-        }
-        final HttpPost httpPost = new HttpPost(this.getTokenEndPoint());
-        httpPost.setHeader(AuthProviderConstants.contentTypeHeader, "application/x-www-form-urlencoded");
-
-        final List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("grant_type", "client_credentials"));
-        params.add(new BasicNameValuePair("scope", "openid"));
-        params.add(new BasicNameValuePair("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"));
-        params.add(new BasicNameValuePair("client_assertion", signedToken));
-        params.add(new BasicNameValuePair("client_id", this.tokenId));
-        httpPost.setEntity(new UrlEncodedFormEntity(params));
-
-        CloseableHttpClient client = HttpClients.createDefault();
+    public String getUserAccessToken() throws AccessTokenGenerationException{
         String userAccessToken = null;
+
         try{
+            String signedToken = JwtUtil.signPayload(this.tokenId, this.tokenEndPoint, this.privateKey, this.passphrase, this.keyId);
+
+            if(signedToken == null){
+                throw new JwtGenerationException("Could not generate signed JWT from the configurations ");
+            }
+            final HttpPost httpPost = new HttpPost(this.getTokenEndPoint());
+            httpPost.setHeader(AuthProviderConstants.contentTypeHeader, AuthProviderConstants.applicationUrlEncodedContentType);
+
+            final List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("grant_type", "client_credentials"));
+            params.add(new BasicNameValuePair("scope", "openid"));
+            params.add(new BasicNameValuePair("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"));
+            params.add(new BasicNameValuePair("client_assertion", signedToken));
+            params.add(new BasicNameValuePair("client_id", this.tokenId));
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+
+            CloseableHttpClient client = HttpClients.createDefault();
             userAccessToken = client.execute(httpPost, 
                 response -> {
-                    System.out.println(response.getCode());
                     if(response.getCode() >=200 && response.getCode() < 300){
                         HttpEntity responseEntity = response.getEntity();
 
@@ -122,36 +139,39 @@ public class AuthProvider {
                     }
                     return null;
                 });
+                if(userAccessToken == null){
+                    throw new AccessTokenGenerationException("getUserAccessToken : Could not retrieve access_token from the token end point");
+                }
+        }catch(JwtGenerationException jwtGenerationException){
+            throw new AccessTokenGenerationException(jwtGenerationException.getMessage());
         }catch(Exception exception){
-            throw new Exception(exception.getMessage());
+            throw new AccessTokenGenerationException(exception.getMessage());
         }
         return userAccessToken;
     }
-
-        
     
     /** 
-     * @param apiGatewayUrl
-     * @param projectId
+     * This method generates a projectScopeToken for the configuration
+     * values associated to the AuthProvider
+     * 
      * @return String
-     * @throws Exception
+     * @throws PSTGenerationException
      */
-    private String getProjectScopedToken() throws Exception{
-                                                     
-        String userAccessToken = getUserAccessToken();
-        
-        final HttpPost httpPost = new HttpPost(apiGatewayUrl + AuthProviderConstants.projectScopeTokenApiPath);
-    
-        final List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("projectId", projectId));
-        httpPost.setEntity(new UrlEncodedFormEntity(params));
-        
-        httpPost.setHeader("Authorization", "Bearer "+userAccessToken);
-        httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        CloseableHttpClient client = HttpClients.createDefault();
+    private String getProjectScopedToken() throws PSTGenerationException{
         String projectScopeToken = null;
-        try{
+        try{                                            
+            String userAccessToken = getUserAccessToken();
+            
+            final HttpPost httpPost = new HttpPost(apiGatewayUrl + AuthProviderConstants.projectScopeTokenApiPath);
+        
+            final List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("projectId", projectId));
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            
+            httpPost.setHeader("Authorization", "Bearer "+userAccessToken);
+            httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            CloseableHttpClient client = HttpClients.createDefault();
             projectScopeToken = client.execute(httpPost, 
                 response -> {
                     if(response.getCode() >=200 && response.getCode() < 300){
@@ -167,8 +187,13 @@ public class AuthProvider {
                     }
                     return null;
                 });
+            if(projectScopeToken == null){
+                throw new PSTGenerationException("getProjectScopedToken :  Could not retrieve accessToken from "+(apiGatewayUrl + AuthProviderConstants.projectScopeTokenApiPath));
+            }
+        }catch(AccessTokenGenerationException accessTokenGenerationException){
+            throw new PSTGenerationException(accessTokenGenerationException.getMessage());
         }catch(Exception exception){
-            throw new Exception(exception.getMessage());
+            throw new PSTGenerationException(exception.getMessage());
         }
 
         return projectScopeToken;
@@ -176,6 +201,8 @@ public class AuthProvider {
 
     
     /** 
+     * This method generates a signed jwt for an iota session
+     * 
      * @param iotaConfigId
      * @param did
      * @param iotaSessionId
@@ -228,16 +255,31 @@ public class AuthProvider {
             return this;
         }
 
-        public AuthProvider build() throws Exception{
+        /**
+         * This method builds an instance of AuthProvider with the 
+         * values passed through {@link Configuration}
+         * 
+         * @return
+         * @throws ConfigurationException
+         */
+        public AuthProvider build() throws ConfigurationException{
             if(this.projectId == null || this.privateKey == null || this.tokenId == null){
-                throw new Exception("Cannot create Auth provider without projectId, privateKey and toeknId");
+                throw new ConfigurationException("Cannot create Auth provider without projectId, privateKey and toeknId");
             }
             return new AuthProvider(this);
         }
-        public AuthProvider buildWithEnv() throws Exception{
+
+        /**
+         * This method builds an instance of AuthProvider with the
+         * configuration values present in the .env file
+         * 
+         * @return
+         * @throws ConfigurationException
+         */
+        public AuthProvider buildWithEnv() throws ConfigurationException{
 
             if(this.projectId != null || this.privateKey != null || this.tokenId != null || this.passphrase != null || this.privateKey != null){
-                throw new Exception("Please do not pass configurations values while using buildWithEnv. "+
+                throw new ConfigurationException("Please do not pass configurations values while using buildWithEnv. "+
                                     " These values will picked from .env. Alternatively you may use build() in order to explicitly pass values");
             }
 
@@ -249,7 +291,7 @@ public class AuthProvider {
             this.privateKey = envUtil.getValueFromEnvConfig(AuthProviderConstants.privateKeyPropertyNameinEnv);
 
             if(this.projectId == null || this.privateKey == null || this.tokenId == null){
-                throw new Exception("Cannot create Auth provider without projectId, privateKey and tokenId. Please ensure these values are configured in .env");
+                throw new ConfigurationException("Cannot create Auth provider without projectId, privateKey and tokenId. Please ensure these values are configured in .env");
             }
             return new AuthProvider(this);
         }
