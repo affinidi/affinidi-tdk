@@ -1,6 +1,6 @@
+import 'package:affinidi_tdk_auth_provider/src/iam_client.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pointycastle/export.dart' as pce;
 import 'dart:typed_data';
@@ -41,17 +41,8 @@ class JWTHelper {
     return token;
   }
 
-  static Future<ECPublicKey> fetchPublicKey(String apiGatewayUrl) async {
-    final response = await http.get(
-      Uri.parse('$apiGatewayUrl/iam/.well-known/jwks.json'),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to fetch public key');
-    }
-
-    final data = jsonDecode(response.body);
+  static Future<ECPublicKey> fetchPublicKey(IamClient iamClient) async {
+    final data = await iamClient.getPublicKeyJWKS();
 
     if (data['keys'] == null || data['keys'].isEmpty) {
       throw Exception('No keys found in JWKS');

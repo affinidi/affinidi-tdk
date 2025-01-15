@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:affinidi_tdk_auth_provider/src/iam_client.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:affinidi_tdk_auth_provider/src/jwt_helper.dart';
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
@@ -40,7 +41,9 @@ class AuthProvider {
     if (projectScopedToken == null) {
       return true;
     }
-    publicKey ??= await JWTHelper.fetchPublicKey(apiGatewayUrl);
+
+    IamClient iamClient = IamClient(apiGatewayUrl: apiGatewayUrl);
+    publicKey ??= await JWTHelper.fetchPublicKey(iamClient);
     try {
       JWT.verify(projectScopedToken!, publicKey!);
       return false;
