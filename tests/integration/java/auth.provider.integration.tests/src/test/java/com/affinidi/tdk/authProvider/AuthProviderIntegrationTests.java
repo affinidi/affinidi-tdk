@@ -3,6 +3,9 @@ package com.affinidi.tdk.authProvider;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class AuthProviderIntegrationTests {
     @Test
@@ -17,15 +20,17 @@ public class AuthProviderIntegrationTests {
         assertEquals("test-project", provider.getProjectId());
     }
 
-    @Test
-    @DisplayName("throws given an invalid private-key")
-    void testInvalidPrivateKey() {
+    @ParameterizedTest
+    @DisplayName("throws given an invalid private-key and a empty or non-empty passphrase")
+    @EmptySource
+    @ValueSource(strings = { "complicated-word" })
+    void testInvalidPrivateKey(String phrase) {
         Exception exception = assertThrows(Exception.class, () -> {
             AuthProvider provider = new AuthProvider.Configurations()
                     .projectId("test-project")
                     .tokenId("test-token")
                     .privateKey("invalid-key")
-                    .passphrase("")
+                    .passphrase(phrase)
                     .build();
             provider.fetchProjectScopedToken();
         });
