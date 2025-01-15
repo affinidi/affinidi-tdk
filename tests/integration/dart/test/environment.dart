@@ -17,18 +17,19 @@ class ProjectEnvironment {
 }
 
 ProjectEnvironment getProjectEnvironment() {
-  final env = DotEnv(includePlatformEnvironment: true)..load(['../../.env']);
+  final env = DotEnv()..load(['../../.env']);
 
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
-    throw ('Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
+    throw Exception(
+        'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
   }
 
   // Workaround for dotenv multiline limitations
   final privateKey = env['PRIVATE_KEY']!.replaceAll('\\n', '\n');
   final token = env['TOKEN_ID']!;
   final projectId = env['PROJECT_ID']!;
-  final keyId = env['KEY_ID'];
-  final passphrase = env['PASSPHRASE'];
+  final keyId = env['KEY_ID'] ?? '';
+  final passphrase = env['PASSPHRASE'] ?? '';
 
   return ProjectEnvironment(
     projectId: projectId,

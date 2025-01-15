@@ -9,7 +9,7 @@ class IamClient {
   final http.Client _httpClient;
   final String _apiGatewayUrl;
 
-  Future<dynamic> getPublicKeyJWKS() async {
+  Future<Map<String, dynamic>> getPublicKeyJWKS() async {
     final response = await _httpClient.get(
       Uri.parse('$_apiGatewayUrl/iam/.well-known/jwks.json'),
       headers: {'Content-Type': 'application/json'},
@@ -19,6 +19,12 @@ class IamClient {
       throw Exception('Failed to fetch public key');
     }
 
-    return jsonDecode(response.body);
+    final data = jsonDecode(response.body);
+
+    if (data['keys'] == null || data['keys'].isEmpty) {
+      throw Exception('No keys found in JWKS');
+    }
+
+    return data['keys'][0];
   }
 }

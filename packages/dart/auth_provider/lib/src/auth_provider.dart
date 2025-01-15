@@ -1,11 +1,10 @@
 import 'dart:convert';
-
-import 'package:affinidi_tdk_auth_provider/src/iam_client.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
-import 'package:affinidi_tdk_auth_provider/src/jwt_helper.dart';
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
+import 'iam_client.dart';
+import 'jwt_helper.dart';
 
 class AuthProvider {
   final String projectId;
@@ -42,7 +41,7 @@ class AuthProvider {
       return true;
     }
 
-    IamClient iamClient = IamClient(apiGatewayUrl: apiGatewayUrl);
+    final iamClient = IamClient(apiGatewayUrl: apiGatewayUrl);
     publicKey ??= await JWTHelper.fetchPublicKey(iamClient);
     try {
       JWT.verify(projectScopedToken!, publicKey!);

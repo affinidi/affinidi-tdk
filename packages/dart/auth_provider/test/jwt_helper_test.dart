@@ -201,17 +201,13 @@ void main() {
 
       test('successfully parses JWKS', () async {
         final mockPublicKeyJWKS = {
-          'keys': [
-            {
-              'kid': 'a622a999-9846-48cf-a470-22759e1f435a',
-              'alg': 'ES256',
-              'use': 'sig',
-              'kty': 'EC',
-              'crv': 'P-256',
-              'x': 'b3kdYEBrlWjQwY55F8MhXC97pwkjTpcQZZ09oDDBK4c',
-              'y': 'wlopQwIPWuT55M3ZfCDZdoBs1nh2kwEvzPjnkakf96U'
-            }
-          ]
+          'kid': 'a622a999-9846-48cf-a470-22759e1f435a',
+          'alg': 'ES256',
+          'use': 'sig',
+          'kty': 'EC',
+          'crv': 'P-256',
+          'x': 'b3kdYEBrlWjQwY55F8MhXC97pwkjTpcQZZ09oDDBK4c',
+          'y': 'wlopQwIPWuT55M3ZfCDZdoBs1nh2kwEvzPjnkakf96U'
         };
 
         when(() => iamClient.getPublicKeyJWKS()).thenAnswer(

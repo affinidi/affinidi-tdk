@@ -1,9 +1,9 @@
-import 'package:affinidi_tdk_auth_provider/src/iam_client.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
-import 'dart:convert';
 import 'package:pointycastle/export.dart' as pce;
-import 'dart:typed_data';
+import 'iam_client.dart';
 
 class JWTHelper {
   static String signPayload({
@@ -42,14 +42,7 @@ class JWTHelper {
   }
 
   static Future<ECPublicKey> fetchPublicKey(IamClient iamClient) async {
-    final data = await iamClient.getPublicKeyJWKS();
-
-    if (data['keys'] == null || data['keys'].isEmpty) {
-      throw Exception('No keys found in JWKS');
-    }
-
-    final jwk = data['keys'][0];
-
+    final jwk = await iamClient.getPublicKeyJWKS();
     return ECPublicKey.raw(_jwkToPublicKey(jwk));
   }
 
@@ -58,9 +51,13 @@ class JWTHelper {
       throw UnimplementedError('Unsupported algorithm or key type');
     }
 
+    if (jwk['x'] == null || jwk['y'] == null) {
+      throw Exception('Invalid public key');
+    }
+
     // Decode base64url-encoded x and y coordinates
-    final Uint8List x = base64Url.decode(_addPadding(jwk['x']));
-    final Uint8List y = base64Url.decode(_addPadding(jwk['y']));
+    final Uint8List x = base64Url.decode(_addPadding(jwk['x']!));
+    final Uint8List y = base64Url.decode(_addPadding(jwk['y']!));
 
     // Create the EC domain parameters for P-256 (secp256r1)
     final curve = pce.ECCurve_secp256r1();
