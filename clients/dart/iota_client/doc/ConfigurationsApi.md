@@ -32,13 +32,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationsApi();
-final createIotaConfigurationInput = CreateIotaConfigurationInput(); // CreateIotaConfigurationInput | CreateConfiguration
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
+final CreateIotaConfigurationInput createIotaConfigurationInput = ; // CreateIotaConfigurationInput | CreateConfiguration
 
 try {
-    final result = api_instance.createIotaConfiguration(createIotaConfigurationInput);
-    print(result);
-} catch (e) {
+    final response = api.createIotaConfiguration(createIotaConfigurationInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->createIotaConfiguration: $e\n');
 }
 ```
@@ -79,12 +79,12 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
-    api_instance.deleteIotaConfigurationById(configurationId);
-} catch (e) {
+    api.deleteIotaConfigurationById(configurationId);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->deleteIotaConfigurationById: $e\n');
 }
 ```
@@ -125,13 +125,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
-    final result = api_instance.getIotaConfigurationById(configurationId);
-    print(result);
-} catch (e) {
+    final response = api.getIotaConfigurationById(configurationId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->getIotaConfigurationById: $e\n');
 }
 ```
@@ -168,14 +168,14 @@ Retrieves the client metadata of an Affinidi Iota Framework configuration.
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
 
-final api_instance = ConfigurationsApi();
-final projectId = projectId_example; // String | The ID of the project.
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
+final String projectId = projectId_example; // String | The ID of the project.
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
-    final result = api_instance.getIotaConfigurationMetaData(projectId, configurationId);
-    print(result);
-} catch (e) {
+    final response = api.getIotaConfigurationMetaData(projectId, configurationId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->getIotaConfigurationMetaData: $e\n');
 }
 ```
@@ -217,12 +217,12 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationsApi();
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
 
 try {
-    final result = api_instance.listIotaConfigurations();
-    print(result);
-} catch (e) {
+    final response = api.listIotaConfigurations();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->listIotaConfigurations: $e\n');
 }
 ```
@@ -261,14 +261,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationsApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final updateConfigurationByIdInput = UpdateConfigurationByIdInput(); // UpdateConfigurationByIdInput | UpdateConfigurationById
+final api = AffinidiTdkIotaClient().getConfigurationsApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final UpdateConfigurationByIdInput updateConfigurationByIdInput = ; // UpdateConfigurationByIdInput | UpdateConfigurationById
 
 try {
-    final result = api_instance.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput);
-    print(result);
-} catch (e) {
+    final response = api.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationsApi->updateIotaConfigurationById: $e\n');
 }
 ```

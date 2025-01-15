@@ -36,13 +36,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final createNodeInput = CreateNodeInput(); // CreateNodeInput | CreateNode
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final CreateNodeInput createNodeInput = ; // CreateNodeInput | CreateNode
 
 try {
-    final result = api_instance.createNode(createNodeInput);
-    print(result);
-} catch (e) {
+    final response = api.createNode(createNodeInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->createNode: $e\n');
 }
 ```
@@ -83,13 +83,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String |
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String |
 
 try {
-    final result = api_instance.deleteNode(nodeId);
-    print(result);
-} catch (e) {
+    final response = api.deleteNode(nodeId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->deleteNode: $e\n');
 }
 ```
@@ -130,14 +130,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String |
-final dek = dek_example; // String | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String |
+final String dek = dek_example; // String | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
 
 try {
-    final result = api_instance.getDetailedNodeInfo(nodeId, dek);
-    print(result);
-} catch (e) {
+    final response = api.getDetailedNodeInfo(nodeId, dek);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->getDetailedNodeInfo: $e\n');
 }
 ```
@@ -179,12 +179,12 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 
 try {
-    final result = api_instance.initNodes();
-    print(result);
-} catch (e) {
+    final response = api.initNodes();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->initNodes: $e\n');
 }
 ```
@@ -223,15 +223,15 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String | Description for nodeId.
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String | Description for nodeId.
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
 
 try {
-    final result = api_instance.listNodeChildren(nodeId, limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listNodeChildren(nodeId, limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->listNodeChildren: $e\n');
 }
 ```
@@ -274,12 +274,12 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 
 try {
-    final result = api_instance.listRootNodeChildren();
-    print(result);
-} catch (e) {
+    final response = api.listRootNodeChildren();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->listRootNodeChildren: $e\n');
 }
 ```
@@ -318,14 +318,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String |
-final moveNodeInput = MoveNodeInput(); // MoveNodeInput | MoveNode
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String |
+final MoveNodeInput moveNodeInput = ; // MoveNodeInput | MoveNode
 
 try {
-    final result = api_instance.moveNode(nodeId, moveNodeInput);
-    print(result);
-} catch (e) {
+    final response = api.moveNode(nodeId, moveNodeInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->moveNode: $e\n');
 }
 ```
@@ -367,13 +367,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String | nodeId of the TRASH_BIN
-final nodeIdToRemove = nodeIdToRemove_example; // String | nodeId of the node to be deleted from TRASH_BIN
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String | nodeId of the TRASH_BIN
+final String nodeIdToRemove = nodeIdToRemove_example; // String | nodeId of the node to be deleted from TRASH_BIN
 
 try {
-    api_instance.permanentlyDeleteNode(nodeId, nodeIdToRemove);
-} catch (e) {
+    api.permanentlyDeleteNode(nodeId, nodeIdToRemove);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->permanentlyDeleteNode: $e\n');
 }
 ```
@@ -415,15 +415,15 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String | nodeId of the TRASH_BIN
-final nodeIdToRestore = nodeIdToRestore_example; // String | nodeId of the node to be restored from TRASH_BIN
-final restoreNodeFromTrashbin = RestoreNodeFromTrashbin(); // RestoreNodeFromTrashbin | RestoreNodeFromTrashbin
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String | nodeId of the TRASH_BIN
+final String nodeIdToRestore = nodeIdToRestore_example; // String | nodeId of the node to be restored from TRASH_BIN
+final RestoreNodeFromTrashbin restoreNodeFromTrashbin = ; // RestoreNodeFromTrashbin | RestoreNodeFromTrashbin
 
 try {
-    final result = api_instance.restoreNodeFromTrashbin(nodeId, nodeIdToRestore, restoreNodeFromTrashbin);
-    print(result);
-} catch (e) {
+    final response = api.restoreNodeFromTrashbin(nodeId, nodeIdToRestore, restoreNodeFromTrashbin);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->restoreNodeFromTrashbin: $e\n');
 }
 ```
@@ -466,14 +466,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = NodesApi();
-final nodeId = nodeId_example; // String | Description for nodeId.
-final updateNodeInput = UpdateNodeInput(); // UpdateNodeInput | UpdateNodeInput
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String nodeId = nodeId_example; // String | Description for nodeId.
+final UpdateNodeInput updateNodeInput = ; // UpdateNodeInput | UpdateNodeInput
 
 try {
-    final result = api_instance.updateNode(nodeId, updateNodeInput);
-    print(result);
-} catch (e) {
+    final response = api.updateNode(nodeId, updateNodeInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling NodesApi->updateNode: $e\n');
 }
 ```

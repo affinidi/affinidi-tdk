@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsRestoreNodeFromTrashbinOK.JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsRestoreNodeFromTrashbinOK {
   public static final String JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK = "corsRestoreNodeFromTrashbinOk";
   private String corsRestoreNodeFromTrashbinOk;

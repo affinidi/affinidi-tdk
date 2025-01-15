@@ -27,12 +27,12 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('AwsSigV4').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigApi();
+final api = AffinidiTdkVaultDataManagerClient().getConfigApi();
 
 try {
-    final result = api_instance.getConfig();
-    print(result);
-} catch (e) {
+    final response = api.getConfig();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigApi->getConfig: $e\n');
 }
 ```

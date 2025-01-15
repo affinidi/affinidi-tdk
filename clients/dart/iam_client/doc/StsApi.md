@@ -26,13 +26,13 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = StsApi();
-final createProjectScopedTokenInput = CreateProjectScopedTokenInput(); // CreateProjectScopedTokenInput | CreateProjectScopedToken
+final api = AffinidiTdkIamClient().getStsApi();
+final CreateProjectScopedTokenInput createProjectScopedTokenInput = ; // CreateProjectScopedTokenInput | CreateProjectScopedToken
 
 try {
-    final result = api_instance.createProjectScopedToken(createProjectScopedTokenInput);
-    print(result);
-} catch (e) {
+    final response = api.createProjectScopedToken(createProjectScopedTokenInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StsApi->createProjectScopedToken: $e\n');
 }
 ```
@@ -71,12 +71,12 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = StsApi();
+final api = AffinidiTdkIamClient().getStsApi();
 
 try {
-    final result = api_instance.whoami();
-    print(result);
-} catch (e) {
+    final response = api.whoami();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StsApi->whoami: $e\n');
 }
 ```

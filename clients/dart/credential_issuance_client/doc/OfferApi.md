@@ -23,14 +23,14 @@ Endpoint used to return Credential Offer details, used with `credential_offer_ur
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
-final api_instance = OfferApi();
-final projectId = projectId_example; // String | Affinidi project id
-final issuanceId = issuanceId_example; // String | issuanceId from credential_offer_uri
+final api = AffinidiTdkCredentialIssuanceClient().getOfferApi();
+final String projectId = projectId_example; // String | Affinidi project id
+final String issuanceId = issuanceId_example; // String | issuanceId from credential_offer_uri
 
 try {
-    final result = api_instance.getCredentialOffer(projectId, issuanceId);
-    print(result);
-} catch (e) {
+    final response = api.getCredentialOffer(projectId, issuanceId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OfferApi->getCredentialOffer: $e\n');
 }
 ```

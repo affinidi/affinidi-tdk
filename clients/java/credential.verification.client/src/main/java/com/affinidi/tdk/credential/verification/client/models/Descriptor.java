@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   Descriptor.JSON_PROPERTY_PATH_NESTED,
   Descriptor.JSON_PROPERTY_FORMAT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Descriptor {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

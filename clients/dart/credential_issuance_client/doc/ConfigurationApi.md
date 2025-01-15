@@ -31,13 +31,13 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final createIssuanceConfigInput = CreateIssuanceConfigInput(); // CreateIssuanceConfigInput | Request body of create configuration
+final api = AffinidiTdkCredentialIssuanceClient().getConfigurationApi();
+final CreateIssuanceConfigInput createIssuanceConfigInput = ; // CreateIssuanceConfigInput | Request body of create configuration
 
 try {
-    final result = api_instance.createIssuanceConfig(createIssuanceConfigInput);
-    print(result);
-} catch (e) {
+    final response = api.createIssuanceConfig(createIssuanceConfigInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->createIssuanceConfig: $e\n');
 }
 ```
@@ -78,12 +78,12 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the issuance configuration
+final api = AffinidiTdkCredentialIssuanceClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the issuance configuration
 
 try {
-    api_instance.deleteIssuanceConfigById(configurationId);
-} catch (e) {
+    api.deleteIssuanceConfigById(configurationId);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->deleteIssuanceConfigById: $e\n');
 }
 ```
@@ -124,13 +124,13 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the issuance configuration
+final api = AffinidiTdkCredentialIssuanceClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the issuance configuration
 
 try {
-    final result = api_instance.getIssuanceConfigById(configurationId);
-    print(result);
-} catch (e) {
+    final response = api.getIssuanceConfigById(configurationId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->getIssuanceConfigById: $e\n');
 }
 ```
@@ -171,12 +171,12 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
+final api = AffinidiTdkCredentialIssuanceClient().getConfigurationApi();
 
 try {
-    final result = api_instance.getIssuanceConfigList();
-    print(result);
-} catch (e) {
+    final response = api.getIssuanceConfigList();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->getIssuanceConfigList: $e\n');
 }
 ```
@@ -215,14 +215,14 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the issuance configuration
-final updateIssuanceConfigInput = UpdateIssuanceConfigInput(); // UpdateIssuanceConfigInput | Request body of update configuration
+final api = AffinidiTdkCredentialIssuanceClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the issuance configuration
+final UpdateIssuanceConfigInput updateIssuanceConfigInput = ; // UpdateIssuanceConfigInput | Request body of update configuration
 
 try {
-    final result = api_instance.updateIssuanceConfigById(configurationId, updateIssuanceConfigInput);
-    print(result);
-} catch (e) {
+    final response = api.updateIssuanceConfigById(configurationId, updateIssuanceConfigInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->updateIssuanceConfigById: $e\n');
 }
 ```

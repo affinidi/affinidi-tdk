@@ -25,13 +25,13 @@ Use open source libraries to perform OAuth 2.0 and OpenID Connect available for 
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = ConsumerAuthApi();
-final consumerAuthTokenEndpointInput = ConsumerAuthTokenEndpointInput(); // ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+final api = AffinidiTdkIamClient().getConsumerAuthApi();
+final ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput = ; // ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
 
 try {
-    final result = api_instance.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput);
-    print(result);
-} catch (e) {
+    final response = api.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConsumerAuthApi->consumerAuthTokenEndpoint: $e\n');
 }
 ```
