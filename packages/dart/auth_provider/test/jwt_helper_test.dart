@@ -192,7 +192,7 @@ void main() {
       }, skip: 'ssh-keygen key tags are not yet supported');
     });
 
-    group('fetchPublicKey', () {
+    group('Affinidi Elements Public Key', () {
       late IamClient iamClient;
 
       setUp(() {
