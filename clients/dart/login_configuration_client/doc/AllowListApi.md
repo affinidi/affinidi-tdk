@@ -29,12 +29,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = AllowListApi();
-final groupNamesInput = GroupNamesInput(); // GroupNamesInput | List of group names as input
+final api = AffinidiTdkLoginConfigurationClient().getAllowListApi();
+final GroupNamesInput groupNamesInput = ; // GroupNamesInput | List of group names as input
 
 try {
-    api_instance.allowGroups(groupNamesInput);
-} catch (e) {
+    api.allowGroups(groupNamesInput);
+} catch on DioException (e) {
     print('Exception when calling AllowListApi->allowGroups: $e\n');
 }
 ```
@@ -75,12 +75,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = AllowListApi();
-final groupNamesInput = GroupNamesInput(); // GroupNamesInput | List of group names as input
+final api = AffinidiTdkLoginConfigurationClient().getAllowListApi();
+final GroupNamesInput groupNamesInput = ; // GroupNamesInput | List of group names as input
 
 try {
-    api_instance.disallowGroups(groupNamesInput);
-} catch (e) {
+    api.disallowGroups(groupNamesInput);
+} catch on DioException (e) {
     print('Exception when calling AllowListApi->disallowGroups: $e\n');
 }
 ```
@@ -121,13 +121,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = AllowListApi();
-final pageToken = pageToken_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getAllowListApi();
+final String pageToken = pageToken_example; // String |
 
 try {
-    final result = api_instance.listAllowedGroups(pageToken);
-    print(result);
-} catch (e) {
+    final response = api.listAllowedGroups(pageToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AllowListApi->listAllowedGroups: $e\n');
 }
 ```

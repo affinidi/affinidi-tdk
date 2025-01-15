@@ -1,0 +1,82 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+export 'package:affinidi_tdk_credential_issuance_client/src/api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/auth/api_key_auth.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/auth/basic_auth.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/auth/bearer_auth.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/auth/oauth.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/serializers.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/date.dart';
+
+export 'package:affinidi_tdk_credential_issuance_client/src/api/configuration_api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/api/credentials_api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/api/default_api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/api/issuance_api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/api/offer_api.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/api/well_known_api.dart';
+
+export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error_details_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_issuance_id_exist_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_claimed_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_expired_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_response_grants.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_proof.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response_deferred.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response_immediate.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response_immediate_c_nonce_expires_in.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response_immediate_credential.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_subject_not_valid_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/credential_supported_object.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/deferred_credential_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data_status_lists_details_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/generate_credentials400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/get_credential_offer400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_request_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_type_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_issuer_wallet_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_jwt_token_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_parameter_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_proof_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/issuance_config_dto.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/issuance_config_list_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/issuance_config_mini_dto.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/issuance_state_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/list_issuance_record_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/list_issuance_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/list_issuance_response_issuances_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/missing_holder_did_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_exist_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_not_exist_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/revocation_forbidden_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input_data_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input_data_inner_meta_data.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input_data_inner_status_list_details_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
+

@@ -30,15 +30,15 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final projectId = projectId_example; // String | project id
-final configurationId = configurationId_example; // String | configuration id
-final changeCredentialStatusInput = ChangeCredentialStatusInput(); // ChangeCredentialStatusInput | Request body for changing credential status
+final api = AffinidiTdkCredentialIssuanceClient().getDefaultApi();
+final String projectId = projectId_example; // String | project id
+final String configurationId = configurationId_example; // String | configuration id
+final ChangeCredentialStatusInput changeCredentialStatusInput = ; // ChangeCredentialStatusInput | Request body for changing credential status
 
 try {
-    final result = api_instance.changeCredentialStatus(projectId, configurationId, changeCredentialStatusInput);
-    print(result);
-} catch (e) {
+    final response = api.changeCredentialStatus(projectId, configurationId, changeCredentialStatusInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->changeCredentialStatus: $e\n');
 }
 ```
@@ -83,16 +83,16 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final projectId = projectId_example; // String | Affinidi project id
-final configurationId = configurationId_example; // String | The id of the issuance configuration
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
+final api = AffinidiTdkCredentialIssuanceClient().getDefaultApi();
+final String projectId = projectId_example; // String | Affinidi project id
+final String configurationId = configurationId_example; // String | The id of the issuance configuration
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
 
 try {
-    final result = api_instance.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->listIssuanceDataRecords: $e\n');
 }
 ```

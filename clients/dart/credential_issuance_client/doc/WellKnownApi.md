@@ -21,13 +21,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
-final api_instance = WellKnownApi();
-final projectId = projectId_example; // String | Affinidi project id
+final api = AffinidiTdkCredentialIssuanceClient().getWellKnownApi();
+final String projectId = projectId_example; // String | Affinidi project id
 
 try {
-    final result = api_instance.getWellKnownOpenIdCredentialIssuer(projectId);
-    print(result);
-} catch (e) {
+    final response = api.getWellKnownOpenIdCredentialIssuer(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WellKnownApi->getWellKnownOpenIdCredentialIssuer: $e\n');
 }
 ```

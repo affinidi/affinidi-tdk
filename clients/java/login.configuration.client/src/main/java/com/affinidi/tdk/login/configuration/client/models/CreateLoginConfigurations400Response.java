@@ -45,7 +45,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurations400Response.JSON_PROPERTY_DETAILS
 })
 @JsonTypeName("createLoginConfigurations_400_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:39:52.417040092Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurations400Response {
   /**
    * Gets or Sets name

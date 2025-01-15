@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ListLoginConfigurationOutput.JSON_PROPERTY_CONFIGURATIONS,
   ListLoginConfigurationOutput.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:20:45.285025567Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:39:52.417040092Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class ListLoginConfigurationOutput {
   public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
   private List<LoginConfigurationObject> configurations = new ArrayList<>();

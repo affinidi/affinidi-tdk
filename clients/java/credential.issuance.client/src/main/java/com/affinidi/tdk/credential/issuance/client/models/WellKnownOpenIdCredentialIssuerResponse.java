@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:17.954698072Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   private String authorizationEndpoint;

@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsAwsCredentialExchangeOK.JSON_PROPERTY_CORS_AWS_CREDENTIAL_EXCHANGE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class CorsAwsCredentialExchangeOK {
   public static final String JSON_PROPERTY_CORS_AWS_CREDENTIAL_EXCHANGE_OK = "corsAwsCredentialExchangeOk";
   private String corsAwsCredentialExchangeOk;

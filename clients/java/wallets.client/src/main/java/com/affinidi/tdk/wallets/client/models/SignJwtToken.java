@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   SignJwtToken.JSON_PROPERTY_HEADER,
   SignJwtToken.JSON_PROPERTY_PAYLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignJwtToken {
   public static final String JSON_PROPERTY_HEADER = "header";
   private Object header;

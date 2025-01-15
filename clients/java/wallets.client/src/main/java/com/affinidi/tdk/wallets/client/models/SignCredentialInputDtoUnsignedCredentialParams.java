@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_EXPIRES_AT
 })
 @JsonTypeName("SignCredentialInputDto_unsignedCredentialParams")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:40.907513725Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class SignCredentialInputDtoUnsignedCredentialParams {
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   private String jsonLdContextUrl;
