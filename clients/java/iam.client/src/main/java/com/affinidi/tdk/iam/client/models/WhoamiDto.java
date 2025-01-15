@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_ID,
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:21:47.313409253Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class WhoamiDto {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
   private String principalId;
