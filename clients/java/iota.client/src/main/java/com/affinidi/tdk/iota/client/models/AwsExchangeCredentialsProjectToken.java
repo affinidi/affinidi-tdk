@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   AwsExchangeCredentialsProjectToken.JSON_PROPERTY_CONFIGURATION_ID,
   AwsExchangeCredentialsProjectToken.JSON_PROPERTY_DID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AwsExchangeCredentialsProjectToken {
   public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   private String sessionId;

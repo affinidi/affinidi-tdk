@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 // tests for JsonWebKeyKeysInner
 void main() {
-  // final instance = JsonWebKeyKeysInner();
+  final instance = JsonWebKeyKeysInnerBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test JsonWebKeyKeysInner', () {
+  group(JsonWebKeyKeysInner, () {
     // The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name. 
     // String alg
     test('to test the property `alg`', () async {
@@ -95,8 +86,8 @@ void main() {
       // TODO
     });
 
-    // The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER  [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
-    // List<String> x5c (default value: const [])
+    // The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
+    // BuiltList<String> x5c
     test('to test the property `x5c`', () async {
       // TODO
     });
@@ -106,7 +97,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for FetchIOTAVPResponseInput
  */
-public class FetchIOTAVPResponseInputTest {
+class FetchIOTAVPResponseInputTest {
     private final FetchIOTAVPResponseInput model = new FetchIOTAVPResponseInput();
 
     /**
      * Model tests for FetchIOTAVPResponseInput
      */
     @Test
-    public void testFetchIOTAVPResponseInput() {
+    void testFetchIOTAVPResponseInput() {
         // TODO: test FetchIOTAVPResponseInput
     }
 
@@ -41,7 +40,7 @@ public class FetchIOTAVPResponseInputTest {
      * Test the property 'correlationId'
      */
     @Test
-    public void correlationIdTest() {
+    void correlationIdTest() {
         // TODO: test correlationId
     }
 
@@ -49,7 +48,7 @@ public class FetchIOTAVPResponseInputTest {
      * Test the property 'transactionId'
      */
     @Test
-    public void transactionIdTest() {
+    void transactionIdTest() {
         // TODO: test transactionId
     }
 
@@ -57,7 +56,7 @@ public class FetchIOTAVPResponseInputTest {
      * Test the property 'responseCode'
      */
     @Test
-    public void responseCodeTest() {
+    void responseCodeTest() {
         // TODO: test responseCode
     }
 
@@ -65,7 +64,7 @@ public class FetchIOTAVPResponseInputTest {
      * Test the property 'configurationId'
      */
     @Test
-    public void configurationIdTest() {
+    void configurationIdTest() {
         // TODO: test configurationId
     }
 

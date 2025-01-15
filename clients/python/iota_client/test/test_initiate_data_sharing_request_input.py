@@ -41,7 +41,9 @@ class TestInitiateDataSharingRequestInput(unittest.TestCase):
                 correlation_id = '',
                 token_max_age = 1.337,
                 nonce = '',
-                redirect_uri = ''
+                redirect_uri = '',
+                configuration_id = '',
+                mode = 'redirect'
             )
         else:
             return InitiateDataSharingRequestInput(
@@ -49,6 +51,8 @@ class TestInitiateDataSharingRequestInput(unittest.TestCase):
                 correlation_id = '',
                 nonce = '',
                 redirect_uri = '',
+                configuration_id = '',
+                mode = 'redirect',
         )
         """
 

@@ -17,30 +17,30 @@ import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenErrorDe
 import com.affinidi.tdk.credential.issuance.client.models.InvalidIssuerWalletError;
 import com.affinidi.tdk.credential.issuance.client.models.ProjectCredentialConfigExistError;
 import com.affinidi.tdk.credential.issuance.client.models.ProjectCredentialConfigNotExistError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateIssuanceConfig400Response
  */
-public class CreateIssuanceConfig400ResponseTest {
+class CreateIssuanceConfig400ResponseTest {
     private final CreateIssuanceConfig400Response model = new CreateIssuanceConfig400Response();
 
     /**
      * Model tests for CreateIssuanceConfig400Response
      */
     @Test
-    public void testCreateIssuanceConfig400Response() {
+    void testCreateIssuanceConfig400Response() {
         // TODO: test CreateIssuanceConfig400Response
     }
 
@@ -48,7 +48,7 @@ public class CreateIssuanceConfig400ResponseTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -56,7 +56,7 @@ public class CreateIssuanceConfig400ResponseTest {
      * Test the property 'message'
      */
     @Test
-    public void messageTest() {
+    void messageTest() {
         // TODO: test message
     }
 
@@ -64,7 +64,7 @@ public class CreateIssuanceConfig400ResponseTest {
      * Test the property 'httpStatusCode'
      */
     @Test
-    public void httpStatusCodeTest() {
+    void httpStatusCodeTest() {
         // TODO: test httpStatusCode
     }
 
@@ -72,7 +72,7 @@ public class CreateIssuanceConfig400ResponseTest {
      * Test the property 'traceId'
      */
     @Test
-    public void traceIdTest() {
+    void traceIdTest() {
         // TODO: test traceId
     }
 
@@ -80,7 +80,7 @@ public class CreateIssuanceConfig400ResponseTest {
      * Test the property 'details'
      */
     @Test
-    public void detailsTest() {
+    void detailsTest() {
         // TODO: test details
     }
 

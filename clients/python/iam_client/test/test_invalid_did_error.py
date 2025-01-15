@@ -38,7 +38,7 @@ class TestInvalidDIDError(unittest.TestCase):
         if include_optional:
             return InvalidDIDError(
                 name = 'InvalidDIDError',
-                message = 'unable to resolve DID method. Invalid public key',
+                message = 'Unable to resolve DID method. Invalid public key',
                 http_status_code = 400,
                 trace_id = '',
                 details = [
@@ -52,7 +52,7 @@ class TestInvalidDIDError(unittest.TestCase):
         else:
             return InvalidDIDError(
                 name = 'InvalidDIDError',
-                message = 'unable to resolve DID method. Invalid public key',
+                message = 'Unable to resolve DID method. Invalid public key',
                 http_status_code = 400,
                 trace_id = '',
         )

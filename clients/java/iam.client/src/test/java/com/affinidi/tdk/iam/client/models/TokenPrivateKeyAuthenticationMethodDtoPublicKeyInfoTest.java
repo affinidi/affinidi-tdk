@@ -16,27 +16,26 @@ package com.affinidi.tdk.iam.client.models;
 import com.affinidi.tdk.iam.client.models.JsonWebKeySetDto;
 import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf;
 import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
  */
-public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoTest {
+class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoTest {
     private final TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo model = new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo();
 
     /**
      * Model tests for TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
      */
     @Test
-    public void testTokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo() {
+    void testTokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo() {
         // TODO: test TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
     }
 
@@ -44,7 +43,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoTest {
      * Test the property 'jwks'
      */
     @Test
-    public void jwksTest() {
+    void jwksTest() {
         // TODO: test jwks
     }
 
@@ -52,7 +51,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoTest {
      * Test the property 'jwksUri'
      */
     @Test
-    public void jwksUriTest() {
+    void jwksUriTest() {
         // TODO: test jwksUri
     }
 

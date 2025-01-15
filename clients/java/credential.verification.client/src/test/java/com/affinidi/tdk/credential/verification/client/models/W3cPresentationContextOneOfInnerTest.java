@@ -13,21 +13,23 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cPresentationContextOneOfInner
  */
-public class W3cPresentationContextOneOfInnerTest {
+class W3cPresentationContextOneOfInnerTest {
     private final W3cPresentationContextOneOfInner model = new W3cPresentationContextOneOfInner();
 
     /**
      * Model tests for W3cPresentationContextOneOfInner
      */
     @Test
-    public void testW3cPresentationContextOneOfInner() {
+    void testW3cPresentationContextOneOfInner() {
         // TODO: test W3cPresentationContextOneOfInner
     }
 

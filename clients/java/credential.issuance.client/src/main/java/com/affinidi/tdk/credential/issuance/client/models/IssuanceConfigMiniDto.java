@@ -44,7 +44,7 @@ import java.util.StringJoiner;
   IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_METADATA,
   IssuanceConfigMiniDto.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IssuanceConfigMiniDto {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

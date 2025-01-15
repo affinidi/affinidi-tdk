@@ -1,28 +1,17 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for AwsExchangeCredentials
 void main() {
-  // final instance = AwsExchangeCredentials();
+  final instance = AwsExchangeCredentialsBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test AwsExchangeCredentials', () {
-    // JWT signed with a machine token used to secure the web socket connection
+  group(AwsExchangeCredentials, () {
+    // A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair's private key used to create the Personal Access Token (PAT).
     // String assertion
     test('to test the property `assertion`', () async {
       // TODO
     });
 
-
   });
-
 }

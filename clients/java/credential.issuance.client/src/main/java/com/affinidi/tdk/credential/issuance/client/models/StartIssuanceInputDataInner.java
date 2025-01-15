@@ -43,7 +43,7 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInner.JSON_PROPERTY_META_DATA
 })
 @JsonTypeName("StartIssuanceInput_data_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StartIssuanceInputDataInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   private String credentialTypeId;

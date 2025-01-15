@@ -1,21 +1,13 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for StartIssuanceInput
 void main() {
-  // final instance = StartIssuanceInput();
+  final instance = StartIssuanceInputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test StartIssuanceInput', () {
+  group(StartIssuanceInput, () {
+    // In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
     // String claimMode
     test('to test the property `claimMode`', () async {
       // TODO
@@ -33,12 +25,10 @@ void main() {
       // TODO
     });
 
-    // List<StartIssuanceInputDataInner> data (default value: const [])
+    // BuiltList<StartIssuanceInputDataInner> data
     test('to test the property `data`', () async {
       // TODO
     });
 
-
   });
-
 }

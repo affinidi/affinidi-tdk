@@ -37,10 +37,9 @@ class TestCallbackResponseOK(unittest.TestCase):
         model = CallbackResponseOK()  # noqa: E501
         if include_optional:
             return CallbackResponseOK(
-                message = '',
-                redirect_response = affinidi_tdk_iota_client.models.callback_response_ok_redirect_response.CallbackResponseOK_redirectResponse(
-                    redirect_uri = '', 
-                    response_code = '', )
+                redirect_uri = '',
+                response_code = '',
+                message = ''
             )
         else:
             return CallbackResponseOK(

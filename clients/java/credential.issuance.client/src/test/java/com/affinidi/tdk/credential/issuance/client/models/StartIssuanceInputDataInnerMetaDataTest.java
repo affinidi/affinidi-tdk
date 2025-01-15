@@ -13,28 +13,27 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for StartIssuanceInputDataInnerMetaData
  */
-public class StartIssuanceInputDataInnerMetaDataTest {
+class StartIssuanceInputDataInnerMetaDataTest {
     private final StartIssuanceInputDataInnerMetaData model = new StartIssuanceInputDataInnerMetaData();
 
     /**
      * Model tests for StartIssuanceInputDataInnerMetaData
      */
     @Test
-    public void testStartIssuanceInputDataInnerMetaData() {
+    void testStartIssuanceInputDataInnerMetaData() {
         // TODO: test StartIssuanceInputDataInnerMetaData
     }
 
@@ -42,7 +41,7 @@ public class StartIssuanceInputDataInnerMetaDataTest {
      * Test the property 'expirationDate'
      */
     @Test
-    public void expirationDateTest() {
+    void expirationDateTest() {
         // TODO: test expirationDate
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-client",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "clients/typescript/iota-client",
   "projectType": "library",
   "private": false,

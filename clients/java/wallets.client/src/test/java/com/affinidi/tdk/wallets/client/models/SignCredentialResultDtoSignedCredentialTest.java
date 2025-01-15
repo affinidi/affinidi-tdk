@@ -13,20 +13,22 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SignCredentialResultDtoSignedCredential
  */
-public class SignCredentialResultDtoSignedCredentialTest {
+class SignCredentialResultDtoSignedCredentialTest {
     private final SignCredentialResultDtoSignedCredential model = new SignCredentialResultDtoSignedCredential();
 
     /**
      * Model tests for SignCredentialResultDtoSignedCredential
      */
     @Test
-    public void testSignCredentialResultDtoSignedCredential() {
+    void testSignCredentialResultDtoSignedCredential() {
         // TODO: test SignCredentialResultDtoSignedCredential
     }
 

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   PexQueryDto.JSON_PROPERTY_CONFIGURATION_ARI,
   PexQueryDto.JSON_PROPERTY_VP_DEFINITION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PexQueryDto {
   public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;

@@ -22,9 +22,12 @@ import com.affinidi.tdk.credential.issuance.client.models.NotFoundError;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuance400Response;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInput;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceResponse;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,39 +44,42 @@ public class IssuanceApiTest {
     /**
      * Get issuance status
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void issuanceStateTest() throws ApiException {
         String issuanceId = null;
         String projectId = null;
         IssuanceStateResponse response = api.issuanceState(issuanceId, projectId);
+
         // TODO: test validations
     }
-
     /**
      * List all issuances for Project
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listIssuanceTest() throws ApiException {
         String projectId = null;
         ListIssuanceResponse response = api.listIssuance(projectId);
+
         // TODO: test validations
     }
-
     /**
      * Endpoint used b websites to start the issuance process
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void startIssuanceTest() throws ApiException {
         String projectId = null;
         StartIssuanceInput startIssuanceInput = null;
         StartIssuanceResponse response = api.startIssuance(projectId, startIssuanceInput);
+
         // TODO: test validations
     }
-
 }

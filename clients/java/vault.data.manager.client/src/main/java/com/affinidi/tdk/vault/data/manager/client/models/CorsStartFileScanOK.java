@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsStartFileScanOK.JSON_PROPERTY_CORS_START_FILE_SCAN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsStartFileScanOK {
   public static final String JSON_PROPERTY_CORS_START_FILE_SCAN_OK = "corsStartFileScanOk";
   private String corsStartFileScanOk;

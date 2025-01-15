@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cCredentialStatus
  */
-public class W3cCredentialStatusTest {
+class W3cCredentialStatusTest {
     private final W3cCredentialStatus model = new W3cCredentialStatus();
 
     /**
      * Model tests for W3cCredentialStatus
      */
     @Test
-    public void testW3cCredentialStatus() {
+    void testW3cCredentialStatus() {
         // TODO: test W3cCredentialStatus
     }
 
@@ -41,7 +40,7 @@ public class W3cCredentialStatusTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -49,7 +48,7 @@ public class W3cCredentialStatusTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 
@@ -57,7 +56,7 @@ public class W3cCredentialStatusTest {
      * Test the property 'revocationListIndex'
      */
     @Test
-    public void revocationListIndexTest() {
+    void revocationListIndexTest() {
         // TODO: test revocationListIndex
     }
 
@@ -65,7 +64,7 @@ public class W3cCredentialStatusTest {
      * Test the property 'revocationListCredential'
      */
     @Test
-    public void revocationListCredentialTest() {
+    void revocationListCredentialTest() {
         // TODO: test revocationListCredential
     }
 

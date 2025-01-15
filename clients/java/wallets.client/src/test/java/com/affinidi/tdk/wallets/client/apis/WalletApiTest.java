@@ -27,9 +27,12 @@ import com.affinidi.tdk.wallets.client.models.SignJwtTokenOK;
 import com.affinidi.tdk.wallets.client.models.UpdateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 import com.affinidi.tdk.wallets.client.models.WalletsListDto;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,88 +49,95 @@ public class WalletApiTest {
     /**
      * creates a wallet
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createWalletTest() throws ApiException {
         CreateWalletInput createWalletInput = null;
         CreateWalletResponse response = api.createWallet(createWalletInput);
+
         // TODO: test validations
     }
-
     /**
      * delete wallet by walletId
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteWalletTest() throws ApiException {
         String walletId = null;
         api.deleteWallet(walletId);
+
         // TODO: test validations
     }
-
     /**
      * get wallet details using wallet Id.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getWalletTest() throws ApiException {
         String walletId = null;
         WalletDto response = api.getWallet(walletId);
+
         // TODO: test validations
     }
-
     /**
      * lists all wallets
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listWalletsTest() throws ApiException {
         String didType = null;
         WalletsListDto response = api.listWallets(didType);
+
         // TODO: test validations
     }
-
     /**
      * signs credential with the wallet
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void signCredentialTest() throws ApiException {
         String walletId = null;
         SignCredentialInputDto signCredentialInputDto = null;
         SignCredentialResultDto response = api.signCredential(walletId, signCredentialInputDto);
+
         // TODO: test validations
     }
-
     /**
      * signs a jwt token with the wallet
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void signJwtTokenTest() throws ApiException {
         String walletId = null;
         SignJwtToken signJwtToken = null;
         SignJwtTokenOK response = api.signJwtToken(walletId, signJwtToken);
+
         // TODO: test validations
     }
-
     /**
      * update wallet details using wallet Id.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateWalletTest() throws ApiException {
         String walletId = null;
         UpdateWalletInput updateWalletInput = null;
         WalletDto response = api.updateWallet(walletId, updateWalletInput);
+
         // TODO: test validations
     }
-
 }

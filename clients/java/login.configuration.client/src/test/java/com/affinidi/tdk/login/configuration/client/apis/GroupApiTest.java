@@ -25,9 +25,12 @@ import com.affinidi.tdk.login.configuration.client.models.GroupsPerUserLimitExce
 import com.affinidi.tdk.login.configuration.client.models.InvalidParameterError;
 import com.affinidi.tdk.login.configuration.client.models.NotFoundError;
 import com.affinidi.tdk.login.configuration.client.models.RemoveUserFromGroupInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,48 +45,53 @@ public class GroupApiTest {
     private final GroupApi api = new GroupApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void addUserToGroupTest() throws ApiException {
         String groupName = null;
         AddUserToGroupInput addUserToGroupInput = null;
         GroupUserMappingDto response = api.addUserToGroup(groupName, addUserToGroupInput);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createGroupTest() throws ApiException {
         CreateGroupInput createGroupInput = null;
         GroupDto response = api.createGroup(createGroupInput);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteGroupTest() throws ApiException {
         String groupName = null;
         api.deleteGroup(groupName);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getGroupByIdTest() throws ApiException {
         String groupName = null;
         GroupDto response = api.getGroupById(groupName);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listGroupUserMappingsTest() throws ApiException {
@@ -92,27 +100,29 @@ public class GroupApiTest {
         String exclusiveStartKey = null;
         String sortOrder = null;
         GroupUserMappingsList response = api.listGroupUserMappings(groupName, limit, exclusiveStartKey, sortOrder);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listGroupsTest() throws ApiException {
         GroupsList response = api.listGroups();
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void removeUserFromGroupTest() throws ApiException {
         String groupName = null;
         RemoveUserFromGroupInput removeUserFromGroupInput = null;
         api.removeUserFromGroup(groupName, removeUserFromGroupInput);
+
         // TODO: test validations
     }
-
 }

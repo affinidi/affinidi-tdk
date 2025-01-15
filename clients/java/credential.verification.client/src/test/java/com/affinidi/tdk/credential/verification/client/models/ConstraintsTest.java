@@ -16,29 +16,29 @@ package com.affinidi.tdk.credential.verification.client.models;
 import com.affinidi.tdk.credential.verification.client.models.ConstraintsStatuses;
 import com.affinidi.tdk.credential.verification.client.models.Field;
 import com.affinidi.tdk.credential.verification.client.models.HolderSubject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for Constraints
  */
-public class ConstraintsTest {
+class ConstraintsTest {
     private final Constraints model = new Constraints();
 
     /**
      * Model tests for Constraints
      */
     @Test
-    public void testConstraints() {
+    void testConstraints() {
         // TODO: test Constraints
     }
 
@@ -46,7 +46,7 @@ public class ConstraintsTest {
      * Test the property 'limitDisclosure'
      */
     @Test
-    public void limitDisclosureTest() {
+    void limitDisclosureTest() {
         // TODO: test limitDisclosure
     }
 
@@ -54,7 +54,7 @@ public class ConstraintsTest {
      * Test the property 'statuses'
      */
     @Test
-    public void statusesTest() {
+    void statusesTest() {
         // TODO: test statuses
     }
 
@@ -62,7 +62,7 @@ public class ConstraintsTest {
      * Test the property 'fields'
      */
     @Test
-    public void fieldsTest() {
+    void fieldsTest() {
         // TODO: test fields
     }
 
@@ -70,7 +70,7 @@ public class ConstraintsTest {
      * Test the property 'subjectIsIssuer'
      */
     @Test
-    public void subjectIsIssuerTest() {
+    void subjectIsIssuerTest() {
         // TODO: test subjectIsIssuer
     }
 
@@ -78,7 +78,7 @@ public class ConstraintsTest {
      * Test the property 'isHolder'
      */
     @Test
-    public void isHolderTest() {
+    void isHolderTest() {
         // TODO: test isHolder
     }
 
@@ -86,7 +86,7 @@ public class ConstraintsTest {
      * Test the property 'sameSubject'
      */
     @Test
-    public void sameSubjectTest() {
+    void sameSubjectTest() {
         // TODO: test sameSubject
     }
 

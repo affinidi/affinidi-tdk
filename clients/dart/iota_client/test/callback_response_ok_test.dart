@@ -1,33 +1,29 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for CallbackResponseOK
 void main() {
-  // final instance = CallbackResponseOK();
+  final instance = CallbackResponseOKBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test CallbackResponseOK', () {
-    // A message to vault that flow is updated successfully
+  group(CallbackResponseOK, () {
+    // The URL to which Affinidi Vault will redirect the user.
+    // String redirectUri
+    test('to test the property `redirectUri`', () async {
+      // TODO
+    });
+
+    // A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.
+    // String responseCode
+    test('to test the property `responseCode`', () async {
+      // TODO
+    });
+
+    // A message to the Affinidi Vault indicating that the update was successful.
     // String message
     test('to test the property `message`', () async {
       // TODO
     });
 
-    // CallbackResponseOKRedirectResponse redirectResponse
-    test('to test the property `redirectResponse`', () async {
-      // TODO
-    });
-
-
   });
-
 }

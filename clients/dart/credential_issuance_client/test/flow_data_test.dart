@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for FlowData
 void main() {
-  // final instance = FlowData();
+  final instance = FlowDataBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test FlowData', () {
+  group(FlowData, () {
     // [GEN] ISO 8601 string of the creation date/time the entity
     // String createdAt
     test('to test the property `createdAt`', () async {
@@ -94,12 +85,10 @@ void main() {
       // TODO
     });
 
-    // List<FlowDataStatusListsDetailsInner> statusListsDetails (default value: const [])
+    // BuiltList<FlowDataStatusListsDetailsInner> statusListsDetails
     test('to test the property `statusListsDetails`', () async {
       // TODO
     });
 
-
   });
-
 }

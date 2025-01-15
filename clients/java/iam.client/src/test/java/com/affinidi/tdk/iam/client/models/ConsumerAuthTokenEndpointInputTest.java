@@ -13,27 +13,28 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ConsumerAuthTokenEndpointInput
  */
-public class ConsumerAuthTokenEndpointInputTest {
+class ConsumerAuthTokenEndpointInputTest {
     private final ConsumerAuthTokenEndpointInput model = new ConsumerAuthTokenEndpointInput();
 
     /**
      * Model tests for ConsumerAuthTokenEndpointInput
      */
     @Test
-    public void testConsumerAuthTokenEndpointInput() {
+    void testConsumerAuthTokenEndpointInput() {
         // TODO: test ConsumerAuthTokenEndpointInput
     }
 
@@ -41,7 +42,7 @@ public class ConsumerAuthTokenEndpointInputTest {
      * Test the property 'grantType'
      */
     @Test
-    public void grantTypeTest() {
+    void grantTypeTest() {
         // TODO: test grantType
     }
 
@@ -49,7 +50,7 @@ public class ConsumerAuthTokenEndpointInputTest {
      * Test the property 'code'
      */
     @Test
-    public void codeTest() {
+    void codeTest() {
         // TODO: test code
     }
 
@@ -57,7 +58,7 @@ public class ConsumerAuthTokenEndpointInputTest {
      * Test the property 'refreshToken'
      */
     @Test
-    public void refreshTokenTest() {
+    void refreshTokenTest() {
         // TODO: test refreshToken
     }
 
@@ -65,7 +66,7 @@ public class ConsumerAuthTokenEndpointInputTest {
      * Test the property 'redirectUri'
      */
     @Test
-    public void redirectUriTest() {
+    void redirectUriTest() {
         // TODO: test redirectUri
     }
 
@@ -73,7 +74,7 @@ public class ConsumerAuthTokenEndpointInputTest {
      * Test the property 'clientId'
      */
     @Test
-    public void clientIdTest() {
+    void clientIdTest() {
         // TODO: test clientId
     }
 

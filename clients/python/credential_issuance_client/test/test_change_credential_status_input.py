@@ -37,8 +37,8 @@ class TestChangeCredentialStatusInput(unittest.TestCase):
         model = ChangeCredentialStatusInput()  # noqa: E501
         if include_optional:
             return ChangeCredentialStatusInput(
-                change_reason = '',
-                issuance_flow_data_id = ''
+                change_reason = 'INVALID_CREDENTIAL',
+                issuance_record_id = ''
             )
         else:
             return ChangeCredentialStatusInput(

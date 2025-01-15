@@ -14,27 +14,26 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.PdStatus;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ConstraintsStatuses
  */
-public class ConstraintsStatusesTest {
+class ConstraintsStatusesTest {
     private final ConstraintsStatuses model = new ConstraintsStatuses();
 
     /**
      * Model tests for ConstraintsStatuses
      */
     @Test
-    public void testConstraintsStatuses() {
+    void testConstraintsStatuses() {
         // TODO: test ConstraintsStatuses
     }
 
@@ -42,7 +41,7 @@ public class ConstraintsStatusesTest {
      * Test the property 'active'
      */
     @Test
-    public void activeTest() {
+    void activeTest() {
         // TODO: test active
     }
 
@@ -50,7 +49,7 @@ public class ConstraintsStatusesTest {
      * Test the property 'suspended'
      */
     @Test
-    public void suspendedTest() {
+    void suspendedTest() {
         // TODO: test suspended
     }
 
@@ -58,7 +57,7 @@ public class ConstraintsStatusesTest {
      * Test the property 'revoked'
      */
     @Test
-    public void revokedTest() {
+    void revokedTest() {
         // TODO: test revoked
     }
 

@@ -16,30 +16,33 @@ package com.affinidi.tdk.credential.verification.client.models;
 import com.affinidi.tdk.credential.verification.client.models.PresentationSubmission;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
 import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cPresentation
  */
-public class W3cPresentationTest {
+class W3cPresentationTest {
     private final W3cPresentation model = new W3cPresentation();
 
     /**
      * Model tests for W3cPresentation
      */
     @Test
-    public void testW3cPresentation() {
+    void testW3cPresentation() {
         // TODO: test W3cPresentation
     }
 
@@ -47,7 +50,7 @@ public class W3cPresentationTest {
      * Test the property 'atContext'
      */
     @Test
-    public void atContextTest() {
+    void atContextTest() {
         // TODO: test atContext
     }
 
@@ -55,7 +58,7 @@ public class W3cPresentationTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -63,7 +66,7 @@ public class W3cPresentationTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 
@@ -71,7 +74,7 @@ public class W3cPresentationTest {
      * Test the property 'holder'
      */
     @Test
-    public void holderTest() {
+    void holderTest() {
         // TODO: test holder
     }
 
@@ -79,7 +82,7 @@ public class W3cPresentationTest {
      * Test the property 'verifiableCredential'
      */
     @Test
-    public void verifiableCredentialTest() {
+    void verifiableCredentialTest() {
         // TODO: test verifiableCredential
     }
 
@@ -87,7 +90,7 @@ public class W3cPresentationTest {
      * Test the property 'presentationSubmission'
      */
     @Test
-    public void presentationSubmissionTest() {
+    void presentationSubmissionTest() {
         // TODO: test presentationSubmission
     }
 
@@ -95,7 +98,7 @@ public class W3cPresentationTest {
      * Test the property 'proof'
      */
     @Test
-    public void proofTest() {
+    void proofTest() {
         // TODO: test proof
     }
 

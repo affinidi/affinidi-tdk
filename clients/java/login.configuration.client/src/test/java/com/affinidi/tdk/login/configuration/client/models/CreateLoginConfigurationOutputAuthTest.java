@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateLoginConfigurationOutputAuth
  */
-public class CreateLoginConfigurationOutputAuthTest {
+class CreateLoginConfigurationOutputAuthTest {
     private final CreateLoginConfigurationOutputAuth model = new CreateLoginConfigurationOutputAuth();
 
     /**
      * Model tests for CreateLoginConfigurationOutputAuth
      */
     @Test
-    public void testCreateLoginConfigurationOutputAuth() {
+    void testCreateLoginConfigurationOutputAuth() {
         // TODO: test CreateLoginConfigurationOutputAuth
     }
 
@@ -41,7 +40,7 @@ public class CreateLoginConfigurationOutputAuthTest {
      * Test the property 'clientId'
      */
     @Test
-    public void clientIdTest() {
+    void clientIdTest() {
         // TODO: test clientId
     }
 
@@ -49,7 +48,7 @@ public class CreateLoginConfigurationOutputAuthTest {
      * Test the property 'clientSecret'
      */
     @Test
-    public void clientSecretTest() {
+    void clientSecretTest() {
         // TODO: test clientSecret
     }
 
@@ -57,7 +56,7 @@ public class CreateLoginConfigurationOutputAuthTest {
      * Test the property 'scope'
      */
     @Test
-    public void scopeTest() {
+    void scopeTest() {
         // TODO: test scope
     }
 
@@ -65,7 +64,7 @@ public class CreateLoginConfigurationOutputAuthTest {
      * Test the property 'issuer'
      */
     @Test
-    public void issuerTest() {
+    void issuerTest() {
         // TODO: test issuer
     }
 

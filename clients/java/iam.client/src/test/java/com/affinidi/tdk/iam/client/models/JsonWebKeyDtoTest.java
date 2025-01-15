@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for JsonWebKeyDto
  */
-public class JsonWebKeyDtoTest {
+class JsonWebKeyDtoTest {
     private final JsonWebKeyDto model = new JsonWebKeyDto();
 
     /**
      * Model tests for JsonWebKeyDto
      */
     @Test
-    public void testJsonWebKeyDto() {
+    void testJsonWebKeyDto() {
         // TODO: test JsonWebKeyDto
     }
 
@@ -41,7 +40,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'kid'
      */
     @Test
-    public void kidTest() {
+    void kidTest() {
         // TODO: test kid
     }
 
@@ -49,7 +48,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'kty'
      */
     @Test
-    public void ktyTest() {
+    void ktyTest() {
         // TODO: test kty
     }
 
@@ -57,7 +56,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'n'
      */
     @Test
-    public void nTest() {
+    void nTest() {
         // TODO: test n
     }
 
@@ -65,7 +64,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'e'
      */
     @Test
-    public void eTest() {
+    void eTest() {
         // TODO: test e
     }
 
@@ -73,7 +72,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'x'
      */
     @Test
-    public void xTest() {
+    void xTest() {
         // TODO: test x
     }
 
@@ -81,7 +80,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'y'
      */
     @Test
-    public void yTest() {
+    void yTest() {
         // TODO: test y
     }
 
@@ -89,7 +88,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'crv'
      */
     @Test
-    public void crvTest() {
+    void crvTest() {
         // TODO: test crv
     }
 
@@ -97,7 +96,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'alg'
      */
     @Test
-    public void algTest() {
+    void algTest() {
         // TODO: test alg
     }
 
@@ -105,7 +104,7 @@ public class JsonWebKeyDtoTest {
      * Test the property 'use'
      */
     @Test
-    public void useTest() {
+    void useTest() {
         // TODO: test use
     }
 

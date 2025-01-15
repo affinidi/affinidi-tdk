@@ -14,29 +14,29 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.Filter;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for Field
  */
-public class FieldTest {
+class FieldTest {
     private final Field model = new Field();
 
     /**
      * Model tests for Field
      */
     @Test
-    public void testField() {
+    void testField() {
         // TODO: test Field
     }
 
@@ -44,7 +44,7 @@ public class FieldTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -52,7 +52,7 @@ public class FieldTest {
      * Test the property 'path'
      */
     @Test
-    public void pathTest() {
+    void pathTest() {
         // TODO: test path
     }
 
@@ -60,7 +60,7 @@ public class FieldTest {
      * Test the property 'purpose'
      */
     @Test
-    public void purposeTest() {
+    void purposeTest() {
         // TODO: test purpose
     }
 
@@ -68,7 +68,7 @@ public class FieldTest {
      * Test the property 'filter'
      */
     @Test
-    public void filterTest() {
+    void filterTest() {
         // TODO: test filter
     }
 
@@ -76,7 +76,7 @@ public class FieldTest {
      * Test the property 'predicate'
      */
     @Test
-    public void predicateTest() {
+    void predicateTest() {
         // TODO: test predicate
     }
 

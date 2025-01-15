@@ -14,29 +14,29 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import com.affinidi.tdk.login.configuration.client.models.OIDCConfigCredentialsSupportedDraft00Inner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for OIDCConfig
  */
-public class OIDCConfigTest {
+class OIDCConfigTest {
     private final OIDCConfig model = new OIDCConfig();
 
     /**
      * Model tests for OIDCConfig
      */
     @Test
-    public void testOIDCConfig() {
+    void testOIDCConfig() {
         // TODO: test OIDCConfig
     }
 
@@ -44,7 +44,7 @@ public class OIDCConfigTest {
      * Test the property 'authorizationEndpoint'
      */
     @Test
-    public void authorizationEndpointTest() {
+    void authorizationEndpointTest() {
         // TODO: test authorizationEndpoint
     }
 
@@ -52,7 +52,7 @@ public class OIDCConfigTest {
      * Test the property 'backchannelLogoutSessionSupported'
      */
     @Test
-    public void backchannelLogoutSessionSupportedTest() {
+    void backchannelLogoutSessionSupportedTest() {
         // TODO: test backchannelLogoutSessionSupported
     }
 
@@ -60,7 +60,7 @@ public class OIDCConfigTest {
      * Test the property 'backchannelLogoutSupported'
      */
     @Test
-    public void backchannelLogoutSupportedTest() {
+    void backchannelLogoutSupportedTest() {
         // TODO: test backchannelLogoutSupported
     }
 
@@ -68,7 +68,7 @@ public class OIDCConfigTest {
      * Test the property 'claimsParameterSupported'
      */
     @Test
-    public void claimsParameterSupportedTest() {
+    void claimsParameterSupportedTest() {
         // TODO: test claimsParameterSupported
     }
 
@@ -76,7 +76,7 @@ public class OIDCConfigTest {
      * Test the property 'claimsSupported'
      */
     @Test
-    public void claimsSupportedTest() {
+    void claimsSupportedTest() {
         // TODO: test claimsSupported
     }
 
@@ -84,7 +84,7 @@ public class OIDCConfigTest {
      * Test the property 'codeChallengeMethodsSupported'
      */
     @Test
-    public void codeChallengeMethodsSupportedTest() {
+    void codeChallengeMethodsSupportedTest() {
         // TODO: test codeChallengeMethodsSupported
     }
 
@@ -92,7 +92,7 @@ public class OIDCConfigTest {
      * Test the property 'credentialsEndpointDraft00'
      */
     @Test
-    public void credentialsEndpointDraft00Test() {
+    void credentialsEndpointDraft00Test() {
         // TODO: test credentialsEndpointDraft00
     }
 
@@ -100,7 +100,7 @@ public class OIDCConfigTest {
      * Test the property 'credentialsSupportedDraft00'
      */
     @Test
-    public void credentialsSupportedDraft00Test() {
+    void credentialsSupportedDraft00Test() {
         // TODO: test credentialsSupportedDraft00
     }
 
@@ -108,7 +108,7 @@ public class OIDCConfigTest {
      * Test the property 'endSessionEndpoint'
      */
     @Test
-    public void endSessionEndpointTest() {
+    void endSessionEndpointTest() {
         // TODO: test endSessionEndpoint
     }
 
@@ -116,7 +116,7 @@ public class OIDCConfigTest {
      * Test the property 'frontchannelLogoutSessionSupported'
      */
     @Test
-    public void frontchannelLogoutSessionSupportedTest() {
+    void frontchannelLogoutSessionSupportedTest() {
         // TODO: test frontchannelLogoutSessionSupported
     }
 
@@ -124,7 +124,7 @@ public class OIDCConfigTest {
      * Test the property 'frontchannelLogoutSupported'
      */
     @Test
-    public void frontchannelLogoutSupportedTest() {
+    void frontchannelLogoutSupportedTest() {
         // TODO: test frontchannelLogoutSupported
     }
 
@@ -132,7 +132,7 @@ public class OIDCConfigTest {
      * Test the property 'grantTypesSupported'
      */
     @Test
-    public void grantTypesSupportedTest() {
+    void grantTypesSupportedTest() {
         // TODO: test grantTypesSupported
     }
 
@@ -140,7 +140,7 @@ public class OIDCConfigTest {
      * Test the property 'idTokenSignedResponseAlg'
      */
     @Test
-    public void idTokenSignedResponseAlgTest() {
+    void idTokenSignedResponseAlgTest() {
         // TODO: test idTokenSignedResponseAlg
     }
 
@@ -148,7 +148,7 @@ public class OIDCConfigTest {
      * Test the property 'idTokenSigningAlgValuesSupported'
      */
     @Test
-    public void idTokenSigningAlgValuesSupportedTest() {
+    void idTokenSigningAlgValuesSupportedTest() {
         // TODO: test idTokenSigningAlgValuesSupported
     }
 
@@ -156,7 +156,7 @@ public class OIDCConfigTest {
      * Test the property 'issuer'
      */
     @Test
-    public void issuerTest() {
+    void issuerTest() {
         // TODO: test issuer
     }
 
@@ -164,7 +164,7 @@ public class OIDCConfigTest {
      * Test the property 'jwksUri'
      */
     @Test
-    public void jwksUriTest() {
+    void jwksUriTest() {
         // TODO: test jwksUri
     }
 
@@ -172,7 +172,7 @@ public class OIDCConfigTest {
      * Test the property 'registrationEndpoint'
      */
     @Test
-    public void registrationEndpointTest() {
+    void registrationEndpointTest() {
         // TODO: test registrationEndpoint
     }
 
@@ -180,7 +180,7 @@ public class OIDCConfigTest {
      * Test the property 'requestObjectSigningAlgValuesSupported'
      */
     @Test
-    public void requestObjectSigningAlgValuesSupportedTest() {
+    void requestObjectSigningAlgValuesSupportedTest() {
         // TODO: test requestObjectSigningAlgValuesSupported
     }
 
@@ -188,7 +188,7 @@ public class OIDCConfigTest {
      * Test the property 'requestParameterSupported'
      */
     @Test
-    public void requestParameterSupportedTest() {
+    void requestParameterSupportedTest() {
         // TODO: test requestParameterSupported
     }
 
@@ -196,7 +196,7 @@ public class OIDCConfigTest {
      * Test the property 'requestUriParameterSupported'
      */
     @Test
-    public void requestUriParameterSupportedTest() {
+    void requestUriParameterSupportedTest() {
         // TODO: test requestUriParameterSupported
     }
 
@@ -204,7 +204,7 @@ public class OIDCConfigTest {
      * Test the property 'requireRequestUriRegistration'
      */
     @Test
-    public void requireRequestUriRegistrationTest() {
+    void requireRequestUriRegistrationTest() {
         // TODO: test requireRequestUriRegistration
     }
 
@@ -212,7 +212,7 @@ public class OIDCConfigTest {
      * Test the property 'responseModesSupported'
      */
     @Test
-    public void responseModesSupportedTest() {
+    void responseModesSupportedTest() {
         // TODO: test responseModesSupported
     }
 
@@ -220,7 +220,7 @@ public class OIDCConfigTest {
      * Test the property 'responseTypesSupported'
      */
     @Test
-    public void responseTypesSupportedTest() {
+    void responseTypesSupportedTest() {
         // TODO: test responseTypesSupported
     }
 
@@ -228,7 +228,7 @@ public class OIDCConfigTest {
      * Test the property 'revocationEndpoint'
      */
     @Test
-    public void revocationEndpointTest() {
+    void revocationEndpointTest() {
         // TODO: test revocationEndpoint
     }
 
@@ -236,7 +236,7 @@ public class OIDCConfigTest {
      * Test the property 'scopesSupported'
      */
     @Test
-    public void scopesSupportedTest() {
+    void scopesSupportedTest() {
         // TODO: test scopesSupported
     }
 
@@ -244,7 +244,7 @@ public class OIDCConfigTest {
      * Test the property 'subjectTypesSupported'
      */
     @Test
-    public void subjectTypesSupportedTest() {
+    void subjectTypesSupportedTest() {
         // TODO: test subjectTypesSupported
     }
 
@@ -252,7 +252,7 @@ public class OIDCConfigTest {
      * Test the property 'tokenEndpoint'
      */
     @Test
-    public void tokenEndpointTest() {
+    void tokenEndpointTest() {
         // TODO: test tokenEndpoint
     }
 
@@ -260,7 +260,7 @@ public class OIDCConfigTest {
      * Test the property 'tokenEndpointAuthMethodsSupported'
      */
     @Test
-    public void tokenEndpointAuthMethodsSupportedTest() {
+    void tokenEndpointAuthMethodsSupportedTest() {
         // TODO: test tokenEndpointAuthMethodsSupported
     }
 
@@ -268,7 +268,7 @@ public class OIDCConfigTest {
      * Test the property 'userinfoEndpoint'
      */
     @Test
-    public void userinfoEndpointTest() {
+    void userinfoEndpointTest() {
         // TODO: test userinfoEndpoint
     }
 
@@ -276,7 +276,7 @@ public class OIDCConfigTest {
      * Test the property 'userinfoSignedResponseAlg'
      */
     @Test
-    public void userinfoSignedResponseAlgTest() {
+    void userinfoSignedResponseAlgTest() {
         // TODO: test userinfoSignedResponseAlg
     }
 
@@ -284,7 +284,7 @@ public class OIDCConfigTest {
      * Test the property 'userinfoSigningAlgValuesSupported'
      */
     @Test
-    public void userinfoSigningAlgValuesSupportedTest() {
+    void userinfoSigningAlgValuesSupportedTest() {
         // TODO: test userinfoSigningAlgValuesSupported
     }
 
