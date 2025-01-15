@@ -1,5 +1,13 @@
-package com.affinidi.tdk.authProvider.type;
+package com.affinidi.tdk.authProvider.types;
 
+/**
+* This class represents the output returned 
+* when {@link AuthProvider#signIotaJwt()} is invoked
+* 
+*
+* @author Priyanka
+* 
+*/
 public class IotaJwtOutput {
     private final String iotaSessionId;
     private final String iotaJwt;
