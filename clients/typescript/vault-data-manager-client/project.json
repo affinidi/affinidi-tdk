@@ -21,7 +21,8 @@
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
-        "changelog": true,
+        "changelog": false,
+        "git": false,
         "github": true,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
