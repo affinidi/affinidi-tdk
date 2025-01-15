@@ -14,27 +14,26 @@
 package com.affinidi.tdk.iota.client.models;
 
 import com.affinidi.tdk.iota.client.models.AwsExchangeCredentialsProjectTokenOKCredentials;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for AwsExchangeCredentialsOK
  */
-public class AwsExchangeCredentialsOKTest {
+class AwsExchangeCredentialsOKTest {
     private final AwsExchangeCredentialsOK model = new AwsExchangeCredentialsOK();
 
     /**
      * Model tests for AwsExchangeCredentialsOK
      */
     @Test
-    public void testAwsExchangeCredentialsOK() {
+    void testAwsExchangeCredentialsOK() {
         // TODO: test AwsExchangeCredentialsOK
     }
 
@@ -42,7 +41,7 @@ public class AwsExchangeCredentialsOKTest {
      * Test the property 'connectionClientId'
      */
     @Test
-    public void connectionClientIdTest() {
+    void connectionClientIdTest() {
         // TODO: test connectionClientId
     }
 
@@ -50,7 +49,7 @@ public class AwsExchangeCredentialsOKTest {
      * Test the property 'credentials'
      */
     @Test
-    public void credentialsTest() {
+    void credentialsTest() {
         // TODO: test credentials
     }
 

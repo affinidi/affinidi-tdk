@@ -25,9 +25,12 @@ import com.affinidi.tdk.iam.client.models.ProjectList;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.UpdateProjectInput;
 import com.affinidi.tdk.iam.client.models.UserList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,67 +45,73 @@ public class ProjectsApiTest {
     private final ProjectsApi api = new ProjectsApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void addPrincipalToProjectTest() throws ApiException {
         AddUserToProjectInput addUserToProjectInput = null;
         api.addPrincipalToProject(addUserToProjectInput);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createProjectTest() throws ApiException {
         CreateProjectInput createProjectInput = null;
         ProjectDto response = api.createProject(createProjectInput);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deletePrincipalFromProjectTest() throws ApiException {
         String principalId = null;
         String principalType = null;
         api.deletePrincipalFromProject(principalId, principalType);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listPrincipalsOfProjectTest() throws ApiException {
         Integer limit = null;
         String exclusiveStartKey = null;
         UserList response = api.listPrincipalsOfProject(limit, exclusiveStartKey);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listProjectTest() throws ApiException {
         Integer limit = null;
         String exclusiveStartKey = null;
         ProjectList response = api.listProject(limit, exclusiveStartKey);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateProjectTest() throws ApiException {
         String projectId = null;
         UpdateProjectInput updateProjectInput = null;
         ProjectDto response = api.updateProject(projectId, updateProjectInput);
+
         // TODO: test validations
     }
-
 }

@@ -13,20 +13,23 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginSessionAcceptResponseInput
  */
-public class LoginSessionAcceptResponseInputTest {
+class LoginSessionAcceptResponseInputTest {
     private final LoginSessionAcceptResponseInput model = new LoginSessionAcceptResponseInput();
 
     /**
      * Model tests for LoginSessionAcceptResponseInput
      */
     @Test
-    public void testLoginSessionAcceptResponseInput() {
+    void testLoginSessionAcceptResponseInput() {
         // TODO: test LoginSessionAcceptResponseInput
     }
 

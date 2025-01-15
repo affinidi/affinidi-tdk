@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CorsFetchIotaVpResponseOK
  */
-public class CorsFetchIotaVpResponseOKTest {
+class CorsFetchIotaVpResponseOKTest {
     private final CorsFetchIotaVpResponseOK model = new CorsFetchIotaVpResponseOK();
 
     /**
      * Model tests for CorsFetchIotaVpResponseOK
      */
     @Test
-    public void testCorsFetchIotaVpResponseOK() {
+    void testCorsFetchIotaVpResponseOK() {
         // TODO: test CorsFetchIotaVpResponseOK
     }
 
@@ -41,7 +40,7 @@ public class CorsFetchIotaVpResponseOKTest {
      * Test the property 'corsFetchIotaVpResponseOk'
      */
     @Test
-    public void corsFetchIotaVpResponseOkTest() {
+    void corsFetchIotaVpResponseOkTest() {
         // TODO: test corsFetchIotaVpResponseOk
     }
 

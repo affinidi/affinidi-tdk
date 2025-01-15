@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SubmissionRequirement
  */
-public class SubmissionRequirementTest {
+class SubmissionRequirementTest {
     private final SubmissionRequirement model = new SubmissionRequirement();
 
     /**
      * Model tests for SubmissionRequirement
      */
     @Test
-    public void testSubmissionRequirement() {
+    void testSubmissionRequirement() {
         // TODO: test SubmissionRequirement
     }
 
@@ -43,7 +43,7 @@ public class SubmissionRequirementTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -51,7 +51,7 @@ public class SubmissionRequirementTest {
      * Test the property 'purpose'
      */
     @Test
-    public void purposeTest() {
+    void purposeTest() {
         // TODO: test purpose
     }
 
@@ -59,7 +59,7 @@ public class SubmissionRequirementTest {
      * Test the property 'rule'
      */
     @Test
-    public void ruleTest() {
+    void ruleTest() {
         // TODO: test rule
     }
 
@@ -67,7 +67,7 @@ public class SubmissionRequirementTest {
      * Test the property 'count'
      */
     @Test
-    public void countTest() {
+    void countTest() {
         // TODO: test count
     }
 
@@ -75,7 +75,7 @@ public class SubmissionRequirementTest {
      * Test the property 'min'
      */
     @Test
-    public void minTest() {
+    void minTest() {
         // TODO: test min
     }
 
@@ -83,7 +83,7 @@ public class SubmissionRequirementTest {
      * Test the property 'max'
      */
     @Test
-    public void maxTest() {
+    void maxTest() {
         // TODO: test max
     }
 
@@ -91,7 +91,7 @@ public class SubmissionRequirementTest {
      * Test the property 'from'
      */
     @Test
-    public void fromTest() {
+    void fromTest() {
         // TODO: test from
     }
 
@@ -99,7 +99,7 @@ public class SubmissionRequirementTest {
      * Test the property 'fromNested'
      */
     @Test
-    public void fromNestedTest() {
+    void fromNestedTest() {
         // TODO: test fromNested
     }
 

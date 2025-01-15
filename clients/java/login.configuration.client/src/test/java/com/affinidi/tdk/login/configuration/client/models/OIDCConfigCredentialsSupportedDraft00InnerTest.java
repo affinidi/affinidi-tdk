@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for OIDCConfigCredentialsSupportedDraft00Inner
  */
-public class OIDCConfigCredentialsSupportedDraft00InnerTest {
+class OIDCConfigCredentialsSupportedDraft00InnerTest {
     private final OIDCConfigCredentialsSupportedDraft00Inner model = new OIDCConfigCredentialsSupportedDraft00Inner();
 
     /**
      * Model tests for OIDCConfigCredentialsSupportedDraft00Inner
      */
     @Test
-    public void testOIDCConfigCredentialsSupportedDraft00Inner() {
+    void testOIDCConfigCredentialsSupportedDraft00Inner() {
         // TODO: test OIDCConfigCredentialsSupportedDraft00Inner
     }
 
@@ -43,7 +43,7 @@ public class OIDCConfigCredentialsSupportedDraft00InnerTest {
      * Test the property 'cryptographicBindingMethodsSupported'
      */
     @Test
-    public void cryptographicBindingMethodsSupportedTest() {
+    void cryptographicBindingMethodsSupportedTest() {
         // TODO: test cryptographicBindingMethodsSupported
     }
 
@@ -51,7 +51,7 @@ public class OIDCConfigCredentialsSupportedDraft00InnerTest {
      * Test the property 'cryptographicSuitesSupported'
      */
     @Test
-    public void cryptographicSuitesSupportedTest() {
+    void cryptographicSuitesSupportedTest() {
         // TODO: test cryptographicSuitesSupported
     }
 
@@ -59,7 +59,7 @@ public class OIDCConfigCredentialsSupportedDraft00InnerTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -67,7 +67,7 @@ public class OIDCConfigCredentialsSupportedDraft00InnerTest {
      * Test the property 'types'
      */
     @Test
-    public void typesTest() {
+    void typesTest() {
         // TODO: test types
     }
 

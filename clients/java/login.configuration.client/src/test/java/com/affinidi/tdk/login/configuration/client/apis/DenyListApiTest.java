@@ -19,9 +19,12 @@ import com.affinidi.tdk.login.configuration.client.models.BlockedUsersInput;
 import com.affinidi.tdk.login.configuration.client.models.GroupNames;
 import com.affinidi.tdk.login.configuration.client.models.GroupNamesInput;
 import com.affinidi.tdk.login.configuration.client.models.InvalidGroupsError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,73 +41,79 @@ public class DenyListApiTest {
     /**
      * Block Single or Multiple Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void blockGroupsTest() throws ApiException {
         GroupNamesInput groupNamesInput = null;
         api.blockGroups(groupNamesInput);
+
         // TODO: test validations
     }
-
     /**
      * Block Single or Multiple user ids
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void blockUsersTest() throws ApiException {
         BlockedUsersInput blockedUsersInput = null;
         api.blockUsers(blockedUsersInput);
+
         // TODO: test validations
     }
-
     /**
      * Get Blocked Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listBlockedGroupsTest() throws ApiException {
         String pageToken = null;
         GroupNames response = api.listBlockedGroups(pageToken);
+
         // TODO: test validations
     }
-
     /**
      * Get List of Blocked Users
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listBlockedUsersTest() throws ApiException {
         String pageToken = null;
         BlockedUsers response = api.listBlockedUsers(pageToken);
+
         // TODO: test validations
     }
-
     /**
      * Unblock Single or Multiple Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void unblockGroupsTest() throws ApiException {
         GroupNamesInput groupNamesInput = null;
         api.unblockGroups(groupNamesInput);
+
         // TODO: test validations
     }
-
     /**
      * Unblock Single or Multiple user ids
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void unblockUsersTest() throws ApiException {
         BlockedUsersInput blockedUsersInput = null;
         api.unblockUsers(blockedUsersInput);
+
         // TODO: test validations
     }
-
 }

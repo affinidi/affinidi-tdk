@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ErrorOAuth2
  */
-public class ErrorOAuth2Test {
+class ErrorOAuth2Test {
     private final ErrorOAuth2 model = new ErrorOAuth2();
 
     /**
      * Model tests for ErrorOAuth2
      */
     @Test
-    public void testErrorOAuth2() {
+    void testErrorOAuth2() {
         // TODO: test ErrorOAuth2
     }
 
@@ -41,7 +40,7 @@ public class ErrorOAuth2Test {
      * Test the property 'error'
      */
     @Test
-    public void errorTest() {
+    void errorTest() {
         // TODO: test error
     }
 
@@ -49,7 +48,7 @@ public class ErrorOAuth2Test {
      * Test the property 'errorDebug'
      */
     @Test
-    public void errorDebugTest() {
+    void errorDebugTest() {
         // TODO: test errorDebug
     }
 
@@ -57,7 +56,7 @@ public class ErrorOAuth2Test {
      * Test the property 'errorDescription'
      */
     @Test
-    public void errorDescriptionTest() {
+    void errorDescriptionTest() {
         // TODO: test errorDescription
     }
 
@@ -65,7 +64,7 @@ public class ErrorOAuth2Test {
      * Test the property 'errorHint'
      */
     @Test
-    public void errorHintTest() {
+    void errorHintTest() {
         // TODO: test errorHint
     }
 
@@ -73,7 +72,7 @@ public class ErrorOAuth2Test {
      * Test the property 'statusCode'
      */
     @Test
-    public void statusCodeTest() {
+    void statusCodeTest() {
         // TODO: test statusCode
     }
 

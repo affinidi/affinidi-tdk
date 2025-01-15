@@ -14,30 +14,30 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import com.affinidi.tdk.login.configuration.client.models.GroupUserMappingDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for GroupUserMappingsList
  */
-public class GroupUserMappingsListTest {
+class GroupUserMappingsListTest {
     private final GroupUserMappingsList model = new GroupUserMappingsList();
 
     /**
      * Model tests for GroupUserMappingsList
      */
     @Test
-    public void testGroupUserMappingsList() {
+    void testGroupUserMappingsList() {
         // TODO: test GroupUserMappingsList
     }
 
@@ -45,7 +45,7 @@ public class GroupUserMappingsListTest {
      * Test the property 'users'
      */
     @Test
-    public void usersTest() {
+    void usersTest() {
         // TODO: test users
     }
 
@@ -53,7 +53,7 @@ public class GroupUserMappingsListTest {
      * Test the property 'lastEvaluatedKey'
      */
     @Test
-    public void lastEvaluatedKeyTest() {
+    void lastEvaluatedKeyTest() {
         // TODO: test lastEvaluatedKey
     }
 
@@ -61,7 +61,7 @@ public class GroupUserMappingsListTest {
      * Test the property 'totalUserCount'
      */
     @Test
-    public void totalUserCountTest() {
+    void totalUserCountTest() {
         // TODO: test totalUserCount
     }
 

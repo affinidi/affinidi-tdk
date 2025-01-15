@@ -13,22 +13,24 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialRequirementsConstraints
  */
-public class CredentialRequirementsConstraintsTest {
+class CredentialRequirementsConstraintsTest {
     private final CredentialRequirementsConstraints model = new CredentialRequirementsConstraints();
 
     /**
      * Model tests for CredentialRequirementsConstraints
      */
     @Test
-    public void testCredentialRequirementsConstraints() {
+    void testCredentialRequirementsConstraints() {
         // TODO: test CredentialRequirementsConstraints
     }
 

@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_verification_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 
 // tests for W3cCredential
 void main() {
-  // final instance = W3cCredential();
+  final instance = W3cCredentialBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test W3cCredential', () {
+  group(W3cCredential, () {
     // W3cPresentationContext atContext
     test('to test the property `atContext`', () async {
       // TODO
@@ -26,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // List<String> type (default value: const [])
+    // BuiltList<String> type
     test('to test the property `type`', () async {
       // TODO
     });
@@ -71,7 +62,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CorsIotOidc4vpcallbackOK
  */
-public class CorsIotOidc4vpcallbackOKTest {
+class CorsIotOidc4vpcallbackOKTest {
     private final CorsIotOidc4vpcallbackOK model = new CorsIotOidc4vpcallbackOK();
 
     /**
      * Model tests for CorsIotOidc4vpcallbackOK
      */
     @Test
-    public void testCorsIotOidc4vpcallbackOK() {
+    void testCorsIotOidc4vpcallbackOK() {
         // TODO: test CorsIotOidc4vpcallbackOK
     }
 
@@ -41,7 +40,7 @@ public class CorsIotOidc4vpcallbackOKTest {
      * Test the property 'corsIotOidc4vpcallbackOk'
      */
     @Test
-    public void corsIotOidc4vpcallbackOkTest() {
+    void corsIotOidc4vpcallbackOkTest() {
         // TODO: test corsIotOidc4vpcallbackOk
     }
 

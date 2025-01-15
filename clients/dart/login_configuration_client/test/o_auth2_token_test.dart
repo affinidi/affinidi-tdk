@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 // tests for OAuth2Token
 void main() {
-  // final instance = OAuth2Token();
+  final instance = OAuth2TokenBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test OAuth2Token', () {
+  group(OAuth2Token, () {
     // The access token issued by the authorization server. 
     // String accessToken
     test('to test the property `accessToken`', () async {
@@ -34,7 +25,7 @@ void main() {
       // TODO
     });
 
-    // The refresh token, which can be used to obtain new access tokens.  To retrieve it add the scope \"offline\" to your access token request. 
+    // The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. 
     // String refreshToken
     test('to test the property `refreshToken`', () async {
       // TODO
@@ -52,7 +43,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

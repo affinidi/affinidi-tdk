@@ -18,9 +18,12 @@ import com.affinidi.tdk.iota.client.models.CallbackInput;
 import com.affinidi.tdk.iota.client.models.CallbackResponseOK;
 import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +40,14 @@ public class CallbackApiTest {
     /**
      * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void iotOIDC4VPCallbackTest() throws ApiException {
         CallbackInput callbackInput = null;
         CallbackResponseOK response = api.iotOIDC4VPCallback(callbackInput);
+
         // TODO: test validations
     }
-
 }

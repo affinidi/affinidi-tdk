@@ -1,27 +1,21 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for ListPexQueriesOK
 void main() {
-  // final instance = ListPexQueriesOK();
+  final instance = ListPexQueriesOKBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test ListPexQueriesOK', () {
-    // List<PexQueryDto> pexQueries (default value: const [])
+  group(ListPexQueriesOK, () {
+    // BuiltList<PexQueryDto> pexQueries
     test('to test the property `pexQueries`', () async {
       // TODO
     });
 
+    // String lastEvaluatedKey
+    test('to test the property `lastEvaluatedKey`', () async {
+      // TODO
+    });
 
   });
-
 }

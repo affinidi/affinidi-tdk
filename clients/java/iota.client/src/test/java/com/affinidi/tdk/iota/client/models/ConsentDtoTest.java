@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ConsentDto
  */
-public class ConsentDtoTest {
+class ConsentDtoTest {
     private final ConsentDto model = new ConsentDto();
 
     /**
      * Model tests for ConsentDto
      */
     @Test
-    public void testConsentDto() {
+    void testConsentDto() {
         // TODO: test ConsentDto
     }
 
@@ -41,7 +40,7 @@ public class ConsentDtoTest {
      * Test the property 'projectId'
      */
     @Test
-    public void projectIdTest() {
+    void projectIdTest() {
         // TODO: test projectId
     }
 
@@ -49,7 +48,7 @@ public class ConsentDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -57,7 +56,7 @@ public class ConsentDtoTest {
      * Test the property 'userId'
      */
     @Test
-    public void userIdTest() {
+    void userIdTest() {
         // TODO: test userId
     }
 
@@ -65,7 +64,7 @@ public class ConsentDtoTest {
      * Test the property 'vcType'
      */
     @Test
-    public void vcTypeTest() {
+    void vcTypeTest() {
         // TODO: test vcType
     }
 
@@ -73,7 +72,7 @@ public class ConsentDtoTest {
      * Test the property 'status'
      */
     @Test
-    public void statusTest() {
+    void statusTest() {
         // TODO: test status
     }
 
@@ -81,7 +80,7 @@ public class ConsentDtoTest {
      * Test the property 'modifiedAt'
      */
     @Test
-    public void modifiedAtTest() {
+    void modifiedAtTest() {
         // TODO: test modifiedAt
     }
 
@@ -89,7 +88,7 @@ public class ConsentDtoTest {
      * Test the property 'modifiedBy'
      */
     @Test
-    public void modifiedByTest() {
+    void modifiedByTest() {
         // TODO: test modifiedBy
     }
 
@@ -97,7 +96,7 @@ public class ConsentDtoTest {
      * Test the property 'createdAt'
      */
     @Test
-    public void createdAtTest() {
+    void createdAtTest() {
         // TODO: test createdAt
     }
 
@@ -105,7 +104,7 @@ public class ConsentDtoTest {
      * Test the property 'createdBy'
      */
     @Test
-    public void createdByTest() {
+    void createdByTest() {
         // TODO: test createdBy
     }
 

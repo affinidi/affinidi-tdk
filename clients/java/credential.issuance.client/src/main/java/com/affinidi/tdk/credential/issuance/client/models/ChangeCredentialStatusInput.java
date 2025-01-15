@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
   ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:40:30.454277569Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ChangeCredentialStatusInput {
   /**
    * reason for revocation

@@ -14,27 +14,28 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.CredentialProof;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateCredentialInput
  */
-public class CreateCredentialInputTest {
+class CreateCredentialInputTest {
     private final CreateCredentialInput model = new CreateCredentialInput();
 
     /**
      * Model tests for CreateCredentialInput
      */
     @Test
-    public void testCreateCredentialInput() {
+    void testCreateCredentialInput() {
         // TODO: test CreateCredentialInput
     }
 
@@ -42,7 +43,7 @@ public class CreateCredentialInputTest {
      * Test the property 'credentialIdentifier'
      */
     @Test
-    public void credentialIdentifierTest() {
+    void credentialIdentifierTest() {
         // TODO: test credentialIdentifier
     }
 
@@ -50,7 +51,7 @@ public class CreateCredentialInputTest {
      * Test the property 'proof'
      */
     @Test
-    public void proofTest() {
+    void proofTest() {
         // TODO: test proof
     }
 

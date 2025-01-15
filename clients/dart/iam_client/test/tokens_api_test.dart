@@ -1,22 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iam_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 
 /// tests for TokensApi
 void main() {
-  // final instance = TokensApi();
+  final instance = AffinidiTdkIamClient().getTokensApi();
 
-  group('tests for TokensApi', () {
+  group(TokensApi, () {
     //Future<TokenDto> createToken(CreateTokenInput createTokenInput) async
     test('test createToken', () async {
       // TODO
@@ -32,7 +22,12 @@ void main() {
       // TODO
     });
 
-    //Future<TokenList> listToken() async
+    //Future<ProjectWithPolicyList> listProjectsOfToken(String tokenId, { int limit, String exclusiveStartKey }) async
+    test('test listProjectsOfToken', () async {
+      // TODO
+    });
+
+    //Future<TokenList> listToken({ int limit, String exclusiveStartKey }) async
     test('test listToken', () async {
       // TODO
     });

@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_verification_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 
 // tests for Constraints
 void main() {
-  // final instance = Constraints();
+  final instance = ConstraintsBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test Constraints', () {
+  group(Constraints, () {
     // String limitDisclosure
     test('to test the property `limitDisclosure`', () async {
       // TODO
@@ -26,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // List<Field> fields (default value: const [])
+    // BuiltList<Field> fields
     test('to test the property `fields`', () async {
       // TODO
     });
@@ -36,17 +27,15 @@ void main() {
       // TODO
     });
 
-    // List<HolderSubject> isHolder (default value: const [])
+    // BuiltList<HolderSubject> isHolder
     test('to test the property `isHolder`', () async {
       // TODO
     });
 
-    // List<HolderSubject> sameSubject (default value: const [])
+    // BuiltList<HolderSubject> sameSubject
     test('to test the property `sameSubject`', () async {
       // TODO
     });
 
-
   });
-
 }

@@ -13,21 +13,23 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.math.BigDecimal;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for FilterConst
  */
-public class FilterConstTest {
+class FilterConstTest {
     private final FilterConst model = new FilterConst();
 
     /**
      * Model tests for FilterConst
      */
     @Test
-    public void testFilterConst() {
+    void testFilterConst() {
         // TODO: test FilterConst
     }
 

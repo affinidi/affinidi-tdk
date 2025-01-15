@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   InputDescriptor.JSON_PROPERTY_FORMAT,
   InputDescriptor.JSON_PROPERTY_GROUP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InputDescriptor {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

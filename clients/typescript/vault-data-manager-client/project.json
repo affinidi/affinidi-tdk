@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/vault-data-manager-client",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "clients/typescript/vault-data-manager-client",
   "projectType": "library",
   "private": false,

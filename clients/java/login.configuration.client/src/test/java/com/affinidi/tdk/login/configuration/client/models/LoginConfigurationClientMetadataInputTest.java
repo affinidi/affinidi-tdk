@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginConfigurationClientMetadataInput
  */
-public class LoginConfigurationClientMetadataInputTest {
+class LoginConfigurationClientMetadataInputTest {
     private final LoginConfigurationClientMetadataInput model = new LoginConfigurationClientMetadataInput();
 
     /**
      * Model tests for LoginConfigurationClientMetadataInput
      */
     @Test
-    public void testLoginConfigurationClientMetadataInput() {
+    void testLoginConfigurationClientMetadataInput() {
         // TODO: test LoginConfigurationClientMetadataInput
     }
 
@@ -41,7 +40,7 @@ public class LoginConfigurationClientMetadataInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -49,7 +48,7 @@ public class LoginConfigurationClientMetadataInputTest {
      * Test the property 'origin'
      */
     @Test
-    public void originTest() {
+    void originTest() {
         // TODO: test origin
     }
 
@@ -57,7 +56,7 @@ public class LoginConfigurationClientMetadataInputTest {
      * Test the property 'logo'
      */
     @Test
-    public void logoTest() {
+    void logoTest() {
         // TODO: test logo
     }
 

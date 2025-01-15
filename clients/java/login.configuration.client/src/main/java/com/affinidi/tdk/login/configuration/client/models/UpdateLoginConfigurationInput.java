@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   UpdateLoginConfigurationInput.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD,
   UpdateLoginConfigurationInput.JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:39:52.417040092Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UpdateLoginConfigurationInput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;

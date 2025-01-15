@@ -20,9 +20,12 @@ import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
 import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +42,8 @@ public class RevocationApiTest {
     /**
      * Get revocation status list as RevocationListCredential
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getRevocationCredentialStatusTest() throws ApiException {
@@ -47,37 +51,39 @@ public class RevocationApiTest {
         String walletId = null;
         String statusId = null;
         GetRevocationListCredentialResultDto response = api.getRevocationCredentialStatus(projectId, walletId, statusId);
+
         // TODO: test validations
     }
-
     /**
      * Return revocation list credential.
      *
      * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getRevocationListCredentialTest() throws ApiException {
         String listId = null;
         String walletId = null;
         GetRevocationListCredentialResultDto response = api.getRevocationListCredential(listId, walletId);
+
         // TODO: test validations
     }
-
     /**
      * Revoke Credential.
      *
      * Update index/credetial at appropriate revocation list (set revoken is true).
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void revokeCredentialTest() throws ApiException {
         String walletId = null;
         RevokeCredentialInput revokeCredentialInput = null;
         api.revokeCredential(walletId, revokeCredentialInput);
+
         // TODO: test validations
     }
-
 }

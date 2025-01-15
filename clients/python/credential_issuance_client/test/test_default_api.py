@@ -27,17 +27,10 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_change_credential_satatus(self) -> None:
-        """Test case for change_credential_satatus
+    def test_change_credential_status(self) -> None:
+        """Test case for change_credential_status
 
         change credential status.  # noqa: E501
-        """
-        pass
-
-    def test_get_status_list(self) -> None:
-        """Test case for get_status_list
-
-        Return status list credential  # noqa: E501
         """
         pass
 

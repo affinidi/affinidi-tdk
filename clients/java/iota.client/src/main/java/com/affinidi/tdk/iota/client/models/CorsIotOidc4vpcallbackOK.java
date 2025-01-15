@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsIotOidc4vpcallbackOK.JSON_PROPERTY_CORS_IOT_OIDC4VPCALLBACK_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:30.065956999Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsIotOidc4vpcallbackOK {
   public static final String JSON_PROPERTY_CORS_IOT_OIDC4VPCALLBACK_OK = "corsIotOidc4vpcallbackOk";
   private String corsIotOidc4vpcallbackOk;

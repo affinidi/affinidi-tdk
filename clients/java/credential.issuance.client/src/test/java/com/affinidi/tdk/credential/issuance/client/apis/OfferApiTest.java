@@ -16,9 +16,12 @@ package com.affinidi.tdk.credential.issuance.client.apis;
 import com.affinidi.tdk.credential.issuance.client.ApiException;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponse;
 import com.affinidi.tdk.credential.issuance.client.models.GetCredentialOffer400Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,14 +38,15 @@ public class OfferApiTest {
     /**
      * Endpoint used to return Credential Offer details, used with &#x60;credential_offer_uri&#x60; response
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getCredentialOfferTest() throws ApiException {
         String projectId = null;
         String issuanceId = null;
         CredentialOfferResponse response = api.getCredentialOffer(projectId, issuanceId);
+
         // TODO: test validations
     }
-
 }

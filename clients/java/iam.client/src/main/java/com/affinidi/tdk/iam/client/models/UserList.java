@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   UserList.JSON_PROPERTY_RECORDS,
   UserList.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:03.223863394Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class UserList {
   public static final String JSON_PROPERTY_RECORDS = "records";
   private List<UserDto> records = new ArrayList<>();

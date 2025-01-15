@@ -14,30 +14,30 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for TokenDto
  */
-public class TokenDtoTest {
+class TokenDtoTest {
     private final TokenDto model = new TokenDto();
 
     /**
      * Model tests for TokenDto
      */
     @Test
-    public void testTokenDto() {
+    void testTokenDto() {
         // TODO: test TokenDto
     }
 
@@ -45,7 +45,7 @@ public class TokenDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -53,7 +53,7 @@ public class TokenDtoTest {
      * Test the property 'ari'
      */
     @Test
-    public void ariTest() {
+    void ariTest() {
         // TODO: test ari
     }
 
@@ -61,7 +61,7 @@ public class TokenDtoTest {
      * Test the property 'ownerAri'
      */
     @Test
-    public void ownerAriTest() {
+    void ownerAriTest() {
         // TODO: test ownerAri
     }
 
@@ -69,7 +69,7 @@ public class TokenDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -77,7 +77,7 @@ public class TokenDtoTest {
      * Test the property 'authenticationMethod'
      */
     @Test
-    public void authenticationMethodTest() {
+    void authenticationMethodTest() {
         // TODO: test authenticationMethod
     }
 
@@ -85,7 +85,7 @@ public class TokenDtoTest {
      * Test the property 'scopes'
      */
     @Test
-    public void scopesTest() {
+    void scopesTest() {
         // TODO: test scopes
     }
 

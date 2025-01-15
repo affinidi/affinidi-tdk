@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   ServiceErrorResponse.JSON_PROPERTY_CODE,
   ServiceErrorResponse.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ServiceErrorResponse {
   public static final String JSON_PROPERTY_DEBUG_ID = "debugId";
   private UUID debugId;

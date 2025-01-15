@@ -14,32 +14,32 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSupportedObject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for UpdateIssuanceConfigInput
  */
-public class UpdateIssuanceConfigInputTest {
+class UpdateIssuanceConfigInputTest {
     private final UpdateIssuanceConfigInput model = new UpdateIssuanceConfigInput();
 
     /**
      * Model tests for UpdateIssuanceConfigInput
      */
     @Test
-    public void testUpdateIssuanceConfigInput() {
+    void testUpdateIssuanceConfigInput() {
         // TODO: test UpdateIssuanceConfigInput
     }
 
@@ -47,7 +47,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -55,7 +55,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -63,7 +63,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'issuerWalletId'
      */
     @Test
-    public void issuerWalletIdTest() {
+    void issuerWalletIdTest() {
         // TODO: test issuerWalletId
     }
 
@@ -71,7 +71,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'credentialOfferDuration'
      */
     @Test
-    public void credentialOfferDurationTest() {
+    void credentialOfferDurationTest() {
         // TODO: test credentialOfferDuration
     }
 
@@ -79,7 +79,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -87,7 +87,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'issuerUri'
      */
     @Test
-    public void issuerUriTest() {
+    void issuerUriTest() {
         // TODO: test issuerUri
     }
 
@@ -95,7 +95,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'credentialSupported'
      */
     @Test
-    public void credentialSupportedTest() {
+    void credentialSupportedTest() {
         // TODO: test credentialSupported
     }
 
@@ -103,7 +103,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'issuerMetadata'
      */
     @Test
-    public void issuerMetadataTest() {
+    void issuerMetadataTest() {
         // TODO: test issuerMetadata
     }
 
@@ -111,7 +111,7 @@ public class UpdateIssuanceConfigInputTest {
      * Test the property 'returnUris'
      */
     @Test
-    public void returnUrisTest() {
+    void returnUrisTest() {
         // TODO: test returnUris
     }
 

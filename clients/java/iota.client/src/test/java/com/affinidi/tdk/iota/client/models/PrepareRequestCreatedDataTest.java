@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for PrepareRequestCreatedData
  */
-public class PrepareRequestCreatedDataTest {
+class PrepareRequestCreatedDataTest {
     private final PrepareRequestCreatedData model = new PrepareRequestCreatedData();
 
     /**
      * Model tests for PrepareRequestCreatedData
      */
     @Test
-    public void testPrepareRequestCreatedData() {
+    void testPrepareRequestCreatedData() {
         // TODO: test PrepareRequestCreatedData
     }
 
@@ -41,7 +40,7 @@ public class PrepareRequestCreatedDataTest {
      * Test the property 'jwt'
      */
     @Test
-    public void jwtTest() {
+    void jwtTest() {
         // TODO: test jwt
     }
 
@@ -49,7 +48,7 @@ public class PrepareRequestCreatedDataTest {
      * Test the property 'correlationId'
      */
     @Test
-    public void correlationIdTest() {
+    void correlationIdTest() {
         // TODO: test correlationId
     }
 

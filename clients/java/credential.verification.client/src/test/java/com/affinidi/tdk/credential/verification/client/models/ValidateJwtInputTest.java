@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ValidateJwtInput
  */
-public class ValidateJwtInputTest {
+class ValidateJwtInputTest {
     private final ValidateJwtInput model = new ValidateJwtInput();
 
     /**
      * Model tests for ValidateJwtInput
      */
     @Test
-    public void testValidateJwtInput() {
+    void testValidateJwtInput() {
         // TODO: test ValidateJwtInput
     }
 
@@ -41,7 +40,7 @@ public class ValidateJwtInputTest {
      * Test the property 'token'
      */
     @Test
-    public void tokenTest() {
+    void tokenTest() {
         // TODO: test token
     }
 

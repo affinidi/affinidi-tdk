@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for IssuanceStateResponse
  */
-public class IssuanceStateResponseTest {
+class IssuanceStateResponseTest {
     private final IssuanceStateResponse model = new IssuanceStateResponse();
 
     /**
      * Model tests for IssuanceStateResponse
      */
     @Test
-    public void testIssuanceStateResponse() {
+    void testIssuanceStateResponse() {
         // TODO: test IssuanceStateResponse
     }
 
@@ -41,7 +40,7 @@ public class IssuanceStateResponseTest {
      * Test the property 'issuanceId'
      */
     @Test
-    public void issuanceIdTest() {
+    void issuanceIdTest() {
         // TODO: test issuanceId
     }
 
@@ -49,7 +48,7 @@ public class IssuanceStateResponseTest {
      * Test the property 'status'
      */
     @Test
-    public void statusTest() {
+    void statusTest() {
         // TODO: test status
     }
 

@@ -19,30 +19,30 @@ import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferExpired
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
 import com.affinidi.tdk.credential.issuance.client.models.ProjectCredentialConfigNotExistError;
 import com.affinidi.tdk.credential.issuance.client.models.VcClaimedError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for GetCredentialOffer400Response
  */
-public class GetCredentialOffer400ResponseTest {
+class GetCredentialOffer400ResponseTest {
     private final GetCredentialOffer400Response model = new GetCredentialOffer400Response();
 
     /**
      * Model tests for GetCredentialOffer400Response
      */
     @Test
-    public void testGetCredentialOffer400Response() {
+    void testGetCredentialOffer400Response() {
         // TODO: test GetCredentialOffer400Response
     }
 
@@ -50,7 +50,7 @@ public class GetCredentialOffer400ResponseTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -58,7 +58,7 @@ public class GetCredentialOffer400ResponseTest {
      * Test the property 'message'
      */
     @Test
-    public void messageTest() {
+    void messageTest() {
         // TODO: test message
     }
 
@@ -66,7 +66,7 @@ public class GetCredentialOffer400ResponseTest {
      * Test the property 'httpStatusCode'
      */
     @Test
-    public void httpStatusCodeTest() {
+    void httpStatusCodeTest() {
         // TODO: test httpStatusCode
     }
 
@@ -74,7 +74,7 @@ public class GetCredentialOffer400ResponseTest {
      * Test the property 'traceId'
      */
     @Test
-    public void traceIdTest() {
+    void traceIdTest() {
         // TODO: test traceId
     }
 
@@ -82,7 +82,7 @@ public class GetCredentialOffer400ResponseTest {
      * Test the property 'details'
      */
     @Test
-    public void detailsTest() {
+    void detailsTest() {
         // TODO: test details
     }
 

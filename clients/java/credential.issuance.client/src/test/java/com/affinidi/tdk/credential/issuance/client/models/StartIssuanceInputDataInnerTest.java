@@ -15,31 +15,31 @@ package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInnerMetaData;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInnerStatusListDetailsInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for StartIssuanceInputDataInner
  */
-public class StartIssuanceInputDataInnerTest {
+class StartIssuanceInputDataInnerTest {
     private final StartIssuanceInputDataInner model = new StartIssuanceInputDataInner();
 
     /**
      * Model tests for StartIssuanceInputDataInner
      */
     @Test
-    public void testStartIssuanceInputDataInner() {
+    void testStartIssuanceInputDataInner() {
         // TODO: test StartIssuanceInputDataInner
     }
 
@@ -47,7 +47,7 @@ public class StartIssuanceInputDataInnerTest {
      * Test the property 'credentialTypeId'
      */
     @Test
-    public void credentialTypeIdTest() {
+    void credentialTypeIdTest() {
         // TODO: test credentialTypeId
     }
 
@@ -55,7 +55,7 @@ public class StartIssuanceInputDataInnerTest {
      * Test the property 'credentialData'
      */
     @Test
-    public void credentialDataTest() {
+    void credentialDataTest() {
         // TODO: test credentialData
     }
 
@@ -63,7 +63,7 @@ public class StartIssuanceInputDataInnerTest {
      * Test the property 'statusListDetails'
      */
     @Test
-    public void statusListDetailsTest() {
+    void statusListDetailsTest() {
         // TODO: test statusListDetails
     }
 
@@ -71,7 +71,7 @@ public class StartIssuanceInputDataInnerTest {
      * Test the property 'metaData'
      */
     @Test
-    public void metaDataTest() {
+    void metaDataTest() {
         // TODO: test metaData
     }
 

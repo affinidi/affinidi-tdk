@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ServiceErrorResponseDetailsInner
  */
-public class ServiceErrorResponseDetailsInnerTest {
+class ServiceErrorResponseDetailsInnerTest {
     private final ServiceErrorResponseDetailsInner model = new ServiceErrorResponseDetailsInner();
 
     /**
      * Model tests for ServiceErrorResponseDetailsInner
      */
     @Test
-    public void testServiceErrorResponseDetailsInner() {
+    void testServiceErrorResponseDetailsInner() {
         // TODO: test ServiceErrorResponseDetailsInner
     }
 
@@ -41,7 +40,7 @@ public class ServiceErrorResponseDetailsInnerTest {
      * Test the property 'issue'
      */
     @Test
-    public void issueTest() {
+    void issueTest() {
         // TODO: test issue
     }
 
@@ -49,7 +48,7 @@ public class ServiceErrorResponseDetailsInnerTest {
      * Test the property 'field'
      */
     @Test
-    public void fieldTest() {
+    void fieldTest() {
         // TODO: test field
     }
 
@@ -57,7 +56,7 @@ public class ServiceErrorResponseDetailsInnerTest {
      * Test the property 'value'
      */
     @Test
-    public void valueTest() {
+    void valueTest() {
         // TODO: test value
     }
 
@@ -65,7 +64,7 @@ public class ServiceErrorResponseDetailsInnerTest {
      * Test the property 'location'
      */
     @Test
-    public void locationTest() {
+    void locationTest() {
         // TODO: test location
     }
 
