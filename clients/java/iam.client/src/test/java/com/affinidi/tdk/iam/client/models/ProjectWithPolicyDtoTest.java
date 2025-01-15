@@ -14,27 +14,26 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.PolicyDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ProjectWithPolicyDto
  */
-public class ProjectWithPolicyDtoTest {
+class ProjectWithPolicyDtoTest {
     private final ProjectWithPolicyDto model = new ProjectWithPolicyDto();
 
     /**
      * Model tests for ProjectWithPolicyDto
      */
     @Test
-    public void testProjectWithPolicyDto() {
+    void testProjectWithPolicyDto() {
         // TODO: test ProjectWithPolicyDto
     }
 
@@ -42,7 +41,7 @@ public class ProjectWithPolicyDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -50,7 +49,7 @@ public class ProjectWithPolicyDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -58,7 +57,7 @@ public class ProjectWithPolicyDtoTest {
      * Test the property 'policy'
      */
     @Test
-    public void policyTest() {
+    void policyTest() {
         // TODO: test policy
     }
 

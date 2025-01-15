@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   ProjectWithPolicyDto.JSON_PROPERTY_NAME,
   ProjectWithPolicyDto.JSON_PROPERTY_POLICY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:03.223863394Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ProjectWithPolicyDto {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

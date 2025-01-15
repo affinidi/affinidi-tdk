@@ -14,27 +14,26 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateTokenInput
  */
-public class CreateTokenInputTest {
+class CreateTokenInputTest {
     private final CreateTokenInput model = new CreateTokenInput();
 
     /**
      * Model tests for CreateTokenInput
      */
     @Test
-    public void testCreateTokenInput() {
+    void testCreateTokenInput() {
         // TODO: test CreateTokenInput
     }
 
@@ -42,7 +41,7 @@ public class CreateTokenInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -50,7 +49,7 @@ public class CreateTokenInputTest {
      * Test the property 'authenticationMethod'
      */
     @Test
-    public void authenticationMethodTest() {
+    void authenticationMethodTest() {
         // TODO: test authenticationMethod
     }
 
@@ -58,7 +57,7 @@ public class CreateTokenInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
