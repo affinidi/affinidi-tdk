@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   Field.JSON_PROPERTY_FILTER,
   Field.JSON_PROPERTY_PREDICATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Field {
   public static final String JSON_PROPERTY_ID = "id";
   private String id;

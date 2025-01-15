@@ -44,7 +44,7 @@ import java.util.StringJoiner;
   SignCredential400Response.JSON_PROPERTY_DETAILS
 })
 @JsonTypeName("signCredential_400_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:42:00.870067692Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SignCredential400Response {
   /**
    * Gets or Sets name

@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   GetScannedFileInfoOK.JSON_PROPERTY_CREATED_AT,
   GetScannedFileInfoOK.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GetScannedFileInfoOK {
   public static final String JSON_PROPERTY_DATA = "data";
   private Object data;

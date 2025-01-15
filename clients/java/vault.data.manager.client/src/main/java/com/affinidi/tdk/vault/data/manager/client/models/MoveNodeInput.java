@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   MoveNodeInput.JSON_PROPERTY_DESTINATION_NODE_ID,
   MoveNodeInput.JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:43:03.269651168Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class MoveNodeInput {
   public static final String JSON_PROPERTY_DESTINATION_NODE_ID = "destinationNodeId";
   private String destinationNodeId;

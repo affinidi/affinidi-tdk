@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   TokenAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
   TokenAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:03.223863394Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokenAuthenticationMethodDto {
   /**
    * Gets or Sets type

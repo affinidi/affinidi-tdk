@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   VerifyCredentialInput.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
   VerifyCredentialInput.JSON_PROPERTY_ISSUER_DID_DOCUMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:41:32.583013257Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyCredentialInput {
   public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
   private List<W3cCredential> verifiableCredentials = new ArrayList<>();

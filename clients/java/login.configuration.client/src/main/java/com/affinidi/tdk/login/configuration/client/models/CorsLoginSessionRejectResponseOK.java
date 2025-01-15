@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsLoginSessionRejectResponseOK.JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-15T13:39:52.417040092Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsLoginSessionRejectResponseOK {
   public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
   private String corsLoginSessionRejectResponseOk;
