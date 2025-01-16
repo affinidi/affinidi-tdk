@@ -8,7 +8,7 @@ import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 void main() {
   group('Affinidi Elements Public Key Tests', () {
     test('fetches public key from development environment', () async {
-      final env = Environment.environments[EnvironmentType.development]!;
+      final env = Environment.environments[EnvironmentType.dev]!;
       final devIamClient = IamClient(apiGatewayUrl: env.apiGwUrl);
       final publicKey = await JWTHelper.fetchPublicKey(devIamClient);
 
@@ -18,7 +18,7 @@ void main() {
     });
 
     test('fetches public key from production environment', () async {
-      final env = Environment.environments[EnvironmentType.production]!;
+      final env = Environment.environments[EnvironmentType.prod]!;
       final prodIamClient = IamClient(apiGatewayUrl: env.apiGwUrl);
       final publicKey = await JWTHelper.fetchPublicKey(prodIamClient);
 
