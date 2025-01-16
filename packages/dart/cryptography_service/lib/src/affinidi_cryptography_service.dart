@@ -283,6 +283,66 @@ class CryptographyService implements CryptographyServiceInterface {
     return _processInBlocks(encryptor, Uint8List.fromList(data));
   }
 
+  @override
+  Uint8List aesCbcEncrypt(
+    Uint8List key,
+    Uint8List iv,
+    Uint8List paddedPlaintext,
+  ) {
+    assert([128, 192, 256].contains(key.length * 8));
+    assert(128 == iv.length * 8);
+    assert(128 == paddedPlaintext.length * 8);
+
+    // Create a CBC block cipher with AES, and initialize with key and IV
+
+    final cbc = pce.CBCBlockCipher(
+      pce.AESEngine(),
+    )..init(
+        true,
+        pce.ParametersWithIV(pce.KeyParameter(key), iv),
+      ); // true=encrypt
+
+    // Encrypt the plaintext block-by-block
+
+    final cipherText = Uint8List(paddedPlaintext.length); // allocate space
+
+    var offset = 0;
+    while (offset < paddedPlaintext.length) {
+      offset += cbc.processBlock(paddedPlaintext, offset, cipherText, offset);
+    }
+    assert(offset == paddedPlaintext.length);
+
+    return cipherText;
+  }
+
+  @override
+  Uint8List aesCbcDecrypt(
+    Uint8List key,
+    Uint8List iv,
+    Uint8List cipherText,
+  ) {
+    // Create a CBC block cipher with AES, and initialize with key and IV
+
+    final cbc = pce.CBCBlockCipher(
+      pce.AESEngine(),
+    )..init(
+        false,
+        pce.ParametersWithIV(pce.KeyParameter(key), iv),
+      ); // false=decrypt
+
+    // Decrypt the cipherText block-by-block
+
+    final paddedPlainText = Uint8List(cipherText.length); // allocate space
+
+    var offset = 0;
+    while (offset < cipherText.length) {
+      offset += cbc.processBlock(cipherText, offset, paddedPlainText, offset);
+    }
+    assert(offset == cipherText.length);
+
+    return paddedPlainText;
+  }
+
   pc.RSAPublicKey _getRsaPublicKeyFromJwk(Map<String, dynamic> jwk) {
     print('Started getting RSA public key from JWK');
 
