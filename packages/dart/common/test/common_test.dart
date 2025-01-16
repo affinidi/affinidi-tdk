@@ -3,22 +3,20 @@ import 'package:test/test.dart';
 
 void main() {
   final Environment local = Environment.environments[EnvironmentType.local]!;
-  final Environment development =
-      Environment.environments[EnvironmentType.development]!;
-  final Environment production =
-      Environment.environments[EnvironmentType.production]!;
+  final Environment dev = Environment.environments[EnvironmentType.dev]!;
+  final Environment prod = Environment.environments[EnvironmentType.prod]!;
 
   group('Environment Tests', () {
-    test('fetchEnvironment returns production by default', () {
-      expect(Environment.fetchEnvironment(), equals(production));
+    test('fetchEnvironment returns prod by default', () {
+      expect(Environment.fetchEnvironment(), equals(prod));
     });
 
     test('API Gateway URLs are correct', () {
       expect(Environment.fetchApiGwUrl(local),
           equals('https://apse1.dev.api.affinidi.io'));
-      expect(Environment.fetchApiGwUrl(development),
+      expect(Environment.fetchApiGwUrl(dev),
           equals('https://apse1.dev.api.affinidi.io'));
-      expect(Environment.fetchApiGwUrl(production),
+      expect(Environment.fetchApiGwUrl(prod),
           equals('https://apse1.api.affinidi.io'));
     });
 
@@ -33,10 +31,10 @@ void main() {
           equals(
               'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
       expect(
-          Environment.fetchElementsAuthTokenUrl(development),
+          Environment.fetchElementsAuthTokenUrl(dev),
           equals(
               'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
-      expect(Environment.fetchElementsAuthTokenUrl(production),
+      expect(Environment.fetchElementsAuthTokenUrl(prod),
           equals('https://apse1.auth.developer.affinidi.io/auth/oauth2/token'));
     });
 
@@ -48,9 +46,9 @@ void main() {
     test('IoT URLs are correct', () {
       expect(Environment.fetchIotUrl(local),
           equals('a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'));
-      expect(Environment.fetchIotUrl(development),
+      expect(Environment.fetchIotUrl(dev),
           equals('a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com'));
-      expect(Environment.fetchIotUrl(production),
+      expect(Environment.fetchIotUrl(prod),
           equals('a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com'));
     });
 
@@ -65,10 +63,10 @@ void main() {
           equals(
               'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
       expect(
-          Environment.fetchConsumerAudienceUrl(development),
+          Environment.fetchConsumerAudienceUrl(dev),
           equals(
               'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
-      expect(Environment.fetchConsumerAudienceUrl(production),
+      expect(Environment.fetchConsumerAudienceUrl(prod),
           equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
     });
 
@@ -76,15 +74,29 @@ void main() {
       expect(Environment.fetchConsumerAudienceUrl(),
           equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
     });
+
+    test('Consumer CIS URLs are correct', () {
+      expect(Environment.fetchConsumerCisUrl(local),
+          equals('https://apse1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(dev),
+          equals('https://apse1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(prod),
+          equals('https://apse1.api.affinidi.io/cis'));
+    });
+
+    test('Consumer CIS URL defaults to prod', () {
+      expect(Environment.fetchConsumerCisUrl(),
+          equals('https://apse1.api.affinidi.io/cis'));
+    });
   });
 
   group('Vault Utils Tests', () {
     test('Web Vault URLs are correct', () {
       expect(
           VaultUtils.fetchWebVaultUrl(local), equals('http://localhost:3001'));
-      expect(VaultUtils.fetchWebVaultUrl(development),
+      expect(VaultUtils.fetchWebVaultUrl(dev),
           equals('https://vault.dev.affinidi.com'));
-      expect(VaultUtils.fetchWebVaultUrl(production),
+      expect(VaultUtils.fetchWebVaultUrl(prod),
           equals('https://vault.affinidi.com'));
     });
 
