@@ -24,7 +24,7 @@
         "cwd": "{projectRoot}",
         "command": "mvn --no-transfer-progress --batch-mode clean deploy -P sign-artifacts"
       }
-    },
-    "tags": ["lang:java", "kind:client"]
-  }
+    }
+  },
+  "tags": ["lang:java", "kind:client"]
 }
