@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -11,6 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+
+import com.affinidi.tdk.authProvider.exception.InvalidPublicKeyException;
+import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
+import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
+import com.affinidi.tdk.authProvider.helper.JwtUtil;
 
 public class AuthProviderTest {
 
@@ -51,6 +59,30 @@ public class AuthProviderTest {
             });
 
             assertTrue(exception.getMessage().startsWith("Could not derive private key out of the configurations."));
+        }
+
+        @Test
+        @DisplayName("throws given the failing api-key endpoint call")
+        void givenInvalidApiGatewayUrl_thenThrows() {
+            // arrange
+            String mockErrorMessage = "mock-exception-message";
+            MockedStatic<JwtUtil> utils = Mockito.mockStatic(JwtUtil.class);
+            utils.when(() -> JwtUtil.fetchPublicKey(any())).thenThrow(InvalidPublicKeyException.class);
+            utils.when(() -> JwtUtil.signPayload(any(), any(), any(), any(), any()))
+                    .thenThrow(new JwtGenerationException(mockErrorMessage));
+
+            // act
+            Exception exception = assertThrows(PSTGenerationException.class, () -> {
+                AuthProvider provider = new AuthProvider.Configurations()
+                        .projectId("test-project")
+                        .tokenId("test-token")
+                        .privateKey("test-key")
+                        .build();
+                provider.fetchProjectScopedToken();
+            });
+
+            // assert
+            assertEquals(mockErrorMessage, exception.getMessage());
         }
     }
 
