@@ -1,6 +1,7 @@
 name: branch
 on:
-  pull_request:
+  #we need to keep on push as target because of this issue  https://github.com/orgs/community/discussions/65321
+  push: 
     branches: 
      - '**'
      - '!main'
