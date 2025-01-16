@@ -1,6 +1,7 @@
 import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:basic_token_provider/basic_token_provider.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class ConsumerAuthProvider {
   final List<int> _encryptedSeed;
@@ -15,7 +16,7 @@ class ConsumerAuthProvider {
         _encryptionKey = encryptionKey;
 
   Future<String> fetchConsumerToken() async {
-    if (_consumerToken != null) {
+    if (_consumerToken != null && !_isTokenExpired(_consumerToken!)) {
       return _consumerToken!;
     }
 
@@ -39,6 +40,10 @@ class ConsumerAuthProvider {
       print('Failed to fetch consumer token: $e');
       rethrow;
     }
+  }
+
+  bool _isTokenExpired(String token) {
+    return JwtDecoder.isExpired(token);
   }
 
   Future<String> _getToken(String assertion) async {

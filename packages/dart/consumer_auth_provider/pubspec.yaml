@@ -10,6 +10,7 @@ environment:
 dependencies:
   affinidi_tdk_common:
     path: ../common
+  jwt_decoder: ^2.0.1
 
   # TODO: remove this dependency
   basic_token_provider:
