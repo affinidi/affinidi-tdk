@@ -109,8 +109,8 @@ jobs:
           echo "${{ secrets.MAVEN_GPG_SECRET_KEY }}" | gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
 
-      - name: Set up JDK 17 for deploy to Sonatype
-        uses: actions/setup-java@v3
+      - name: Set up JDK for deploy to Sonatype
+        uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
           java-version: 21
