@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 import 'environment.dart';
 
 void main() {
@@ -63,11 +63,12 @@ void main() {
         passphrase: env.passphrase,
       );
 
-      final apiClient =
-          ApiClient(authTokenHook: authProvider.fetchProjectScopedToken);
-      final apiInstance = GroupApi(apiClient);
-      final userGroups = await apiInstance.listGroups();
-      expect(userGroups, isA<GroupsList>());
+      final apiClient = AffinidiTdkCredentialIssuanceClient(
+          authTokenHook: authProvider.fetchProjectScopedToken);
+
+      final api = apiClient.getConfigurationApi();
+      final response = await api.getIssuanceConfigList();
+      expect(response, isA<IssuanceConfigListResponse>());
     });
   });
 }

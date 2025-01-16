@@ -36,10 +36,10 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
-  affinidi_tdk_login_configuration_client:
+  affinidi_tdk_credential_issuance_client:
     dependency: "direct dev"
     description:
-      path: "../../../clients/dart/login_configuration_client"
+      path: "../../../clients/dart/credential_issuance_client"
       relative: true
     source: path
     version: "1.0.0"
