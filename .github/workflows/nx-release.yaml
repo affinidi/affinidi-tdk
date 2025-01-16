@@ -104,6 +104,22 @@ jobs:
       - name: Set version for non-js client packages
         run: npx nx run-many -t set-version
 
+      - name: Install gpg secret key for java Maven
+        run: |
+          echo "${{ secrets.MAVEN_GPG_SECRET_KEY }}" | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
+
+      - name: Set up JDK 17 for deploy to Sonatype
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 21
+          server-id: central
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_CENTRAL_TOKEN
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
+
       - name: build
         run: |
           npx nx run-many -t build --parallel=false
@@ -121,3 +137,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+          MAVEN_GPG_SECRET_KEY_PASSWORD: ${{ secrets.MAVEN_GPG_SECRET_KEY_PASSWORD }}
