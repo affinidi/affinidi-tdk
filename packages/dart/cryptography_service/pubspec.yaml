@@ -11,7 +11,6 @@ dependencies:
   convert: ^3.1.1
   crypto: ^3.0.3
   cryptography: ^2.7.0
-  cryptography_flutter: ^2.3.2
   dart_jsonwebtoken: ^2.14.0
   jwt_decoder: ^2.0.1
   pointycastle: ^3.9.1
