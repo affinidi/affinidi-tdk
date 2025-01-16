@@ -3194,72 +3194,6 @@ export const ProfileDataApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    queryProfileData: async (
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options: RawAxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'nodeId' is not null or undefined
-      assertParamExists('queryProfileData', 'nodeId', nodeId)
-      // verify required parameter 'dek' is not null or undefined
-      assertParamExists('queryProfileData', 'dek', dek)
-      const localVarPath = `/v1/nodes/{nodeId}/profile-data`.replace(
-        `{${'nodeId'}}`,
-        encodeURIComponent(String(nodeId)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = {
-        method: 'GET',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication ConsumerTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration,
-      )
-
-      if (query !== undefined) {
-        localVarQueryParameter['query'] = query
-      }
-
-      if (dek !== undefined) {
-        localVarQueryParameter['dek'] = dek
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3338,45 +3272,6 @@ export const ProfileDataApiFp = function (configuration?: Configuration) {
     ProfileDataApiAxiosParamCreator(configuration)
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async queryProfileData(
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string,
-      ) => AxiosPromise<QueryProfileDataOK>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.queryProfileData(
-          nodeId,
-          dek,
-          query,
-          options,
-        )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['ProfileDataApi.queryProfileData']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3427,24 +3322,6 @@ export const ProfileDataApiFactory = function (
   const localVarFp = ProfileDataApiFp(configuration)
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    queryProfileData(
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<QueryProfileDataOK> {
-      return localVarFp
-        .queryProfileData(nodeId, dek, query, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3470,26 +3347,6 @@ export const ProfileDataApiFactory = function (
  * @extends {BaseAPI}
  */
 export class ProfileDataApi extends BaseAPI {
-  /**
-   * Retrieves information from a profile.
-   * @param {string} nodeId the nodeId of the node being operated on
-   * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-   * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof ProfileDataApi
-   */
-  public queryProfileData(
-    nodeId: string,
-    dek: string,
-    query?: string,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return ProfileDataApiFp(this.configuration)
-      .queryProfileData(nodeId, dek, query, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
   /**
    * Updates the profile with the given data
    * @param {string} nodeId

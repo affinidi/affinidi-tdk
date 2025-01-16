@@ -130,7 +130,6 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _NodesApi_       | [**permanentlyDeleteNode**](docs/NodesApi.md#permanentlyDeleteNode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
 | _NodesApi_       | [**restoreNodeFromTrashbin**](docs/NodesApi.md#restoreNodeFromTrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
 | _NodesApi_       | [**updateNode**](docs/NodesApi.md#updateNode)                           | **PATCH** /v1/nodes/{nodeId}                          |
-| _ProfileDataApi_ | [**queryProfileData**](docs/ProfileDataApi.md#queryProfileData)         | **GET** /v1/nodes/{nodeId}/profile-data               |
 | _ProfileDataApi_ | [**updateProfileData**](docs/ProfileDataApi.md#updateProfileData)       | **PATCH** /v1/nodes/{nodeId}/profile-data             |
 
 ## Documentation for Models
