@@ -31,12 +31,12 @@ The authorization endpoint is one of the components in the OAuth 2.0 flow. It's 
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    api_instance.v1LoginProjectProjectIdOauth2AuthGet(projectId);
-} catch (e) {
+    api.v1LoginProjectProjectIdOauth2AuthGet(projectId);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdOauth2AuthGet: $e\n');
 }
 ```
@@ -75,12 +75,12 @@ Revoking a token (both access and refresh) means that the tokens will be invalid
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    api_instance.v1LoginProjectProjectIdOauth2RevokePost(projectId);
-} catch (e) {
+    api.v1LoginProjectProjectIdOauth2RevokePost(projectId);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdOauth2RevokePost: $e\n');
 }
 ```
@@ -119,12 +119,12 @@ This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID pro
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    api_instance.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId);
-} catch (e) {
+    api.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdOauth2SessionsLogoutGet: $e\n');
 }
 ```
@@ -163,13 +163,13 @@ The token endpoint is a critical component in the OAuth 2.0 protocol. It's the U
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    final result = api_instance.v1LoginProjectProjectIdOauth2TokenPost(projectId);
-    print(result);
-} catch (e) {
+    final response = api.v1LoginProjectProjectIdOauth2TokenPost(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdOauth2TokenPost: $e\n');
 }
 ```
@@ -208,13 +208,13 @@ This endpoint returns the payload of the ID Token, including session.id_token va
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    final result = api_instance.v1LoginProjectProjectIdUserinfoGet(projectId);
-    print(result);
-} catch (e) {
+    final response = api.v1LoginProjectProjectIdUserinfoGet(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdUserinfoGet: $e\n');
 }
 ```
@@ -253,13 +253,13 @@ This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Toke
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    final result = api_instance.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId);
-    print(result);
-} catch (e) {
+    final response = api.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdWellKnownJwksJsonGet: $e\n');
 }
 ```
@@ -298,13 +298,13 @@ A mechanism for an OpenID Connect Relying Party to discover the End-User's OpenI
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = IdpApi();
-final projectId = projectId_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getIdpApi();
+final String projectId = projectId_example; // String |
 
 try {
-    final result = api_instance.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId);
-    print(result);
-} catch (e) {
+    final response = api.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IdpApi->v1LoginProjectProjectIdWellKnownOpenidConfigurationGet: $e\n');
 }
 ```

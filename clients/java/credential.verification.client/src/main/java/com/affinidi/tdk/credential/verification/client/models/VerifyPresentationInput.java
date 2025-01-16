@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:22:13.913964654Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyPresentationInput {
   public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
   private W3cPresentation verifiablePresentation;

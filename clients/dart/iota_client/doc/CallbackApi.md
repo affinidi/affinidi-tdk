@@ -23,13 +23,13 @@ It handles the client's (e.g., Affinidi Vault) callback about the result of the 
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
 
-final api_instance = CallbackApi();
-final callbackInput = CallbackInput(); // CallbackInput | CallbackRequestInput
+final api = AffinidiTdkIotaClient().getCallbackApi();
+final CallbackInput callbackInput = ; // CallbackInput | CallbackRequestInput
 
 try {
-    final result = api_instance.iotOIDC4VPCallback(callbackInput);
-    print(result);
-} catch (e) {
+    final response = api.iotOIDC4VPCallback(callbackInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CallbackApi->iotOIDC4VPCallback: $e\n');
 }
 ```

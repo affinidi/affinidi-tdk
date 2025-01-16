@@ -14,29 +14,29 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import com.affinidi.tdk.login.configuration.client.models.JsonWebKeyKeysInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for JsonWebKey
  */
-public class JsonWebKeyTest {
+class JsonWebKeyTest {
     private final JsonWebKey model = new JsonWebKey();
 
     /**
      * Model tests for JsonWebKey
      */
     @Test
-    public void testJsonWebKey() {
+    void testJsonWebKey() {
         // TODO: test JsonWebKey
     }
 
@@ -44,7 +44,7 @@ public class JsonWebKeyTest {
      * Test the property 'keys'
      */
     @Test
-    public void keysTest() {
+    void keysTest() {
         // TODO: test keys
     }
 

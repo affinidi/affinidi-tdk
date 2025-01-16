@@ -14,27 +14,26 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
  */
-public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTest {
+class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTest {
     private final CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode model = new CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode();
 
     /**
      * Model tests for CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
      */
     @Test
-    public void testCredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode() {
+    void testCredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode() {
         // TODO: test CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
     }
 
@@ -42,7 +41,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
      * Test the property 'preAuthorizedCode'
      */
     @Test
-    public void preAuthorizedCodeTest() {
+    void preAuthorizedCodeTest() {
         // TODO: test preAuthorizedCode
     }
 
@@ -50,7 +49,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
      * Test the property 'txCode'
      */
     @Test
-    public void txCodeTest() {
+    void txCodeTest() {
         // TODO: test txCode
     }
 

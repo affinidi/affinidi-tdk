@@ -57,7 +57,7 @@ import java.util.StringJoiner;
   GetDetailedNodeInfoOK.JSON_PROPERTY_METADATA,
   GetDetailedNodeInfoOK.JSON_PROPERTY_GET_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-13T09:23:40.721253515Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GetDetailedNodeInfoOK {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
   private String nodeId;

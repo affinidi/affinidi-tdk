@@ -13,28 +13,30 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cProof
  */
-public class W3cProofTest {
+class W3cProofTest {
     private final W3cProof model = new W3cProof();
 
     /**
      * Model tests for W3cProof
      */
     @Test
-    public void testW3cProof() {
+    void testW3cProof() {
         // TODO: test W3cProof
     }
 
@@ -42,7 +44,7 @@ public class W3cProofTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 
@@ -50,7 +52,7 @@ public class W3cProofTest {
      * Test the property 'created'
      */
     @Test
-    public void createdTest() {
+    void createdTest() {
         // TODO: test created
     }
 
@@ -58,7 +60,7 @@ public class W3cProofTest {
      * Test the property 'verificationMethod'
      */
     @Test
-    public void verificationMethodTest() {
+    void verificationMethodTest() {
         // TODO: test verificationMethod
     }
 
@@ -66,7 +68,7 @@ public class W3cProofTest {
      * Test the property 'proofPurpose'
      */
     @Test
-    public void proofPurposeTest() {
+    void proofPurposeTest() {
         // TODO: test proofPurpose
     }
 
@@ -74,7 +76,7 @@ public class W3cProofTest {
      * Test the property 'jws'
      */
     @Test
-    public void jwsTest() {
+    void jwsTest() {
         // TODO: test jws
     }
 
@@ -82,7 +84,7 @@ public class W3cProofTest {
      * Test the property 'proofValue'
      */
     @Test
-    public void proofValueTest() {
+    void proofValueTest() {
         // TODO: test proofValue
     }
 
@@ -90,7 +92,7 @@ public class W3cProofTest {
      * Test the property 'nonce'
      */
     @Test
-    public void nonceTest() {
+    void nonceTest() {
         // TODO: test nonce
     }
 

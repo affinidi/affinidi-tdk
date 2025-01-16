@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginSessionForIDPInput
  */
-public class LoginSessionForIDPInputTest {
+class LoginSessionForIDPInputTest {
     private final LoginSessionForIDPInput model = new LoginSessionForIDPInput();
 
     /**
      * Model tests for LoginSessionForIDPInput
      */
     @Test
-    public void testLoginSessionForIDPInput() {
+    void testLoginSessionForIDPInput() {
         // TODO: test LoginSessionForIDPInput
     }
 
@@ -41,7 +40,7 @@ public class LoginSessionForIDPInputTest {
      * Test the property 'loginChallenge'
      */
     @Test
-    public void loginChallengeTest() {
+    void loginChallengeTest() {
         // TODO: test loginChallenge
     }
 
@@ -49,7 +48,7 @@ public class LoginSessionForIDPInputTest {
      * Test the property 'clientId'
      */
     @Test
-    public void clientIdTest() {
+    void clientIdTest() {
         // TODO: test clientId
     }
 

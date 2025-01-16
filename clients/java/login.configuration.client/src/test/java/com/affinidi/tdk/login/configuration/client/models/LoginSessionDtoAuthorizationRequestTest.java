@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginSessionDtoAuthorizationRequest
  */
-public class LoginSessionDtoAuthorizationRequestTest {
+class LoginSessionDtoAuthorizationRequestTest {
     private final LoginSessionDtoAuthorizationRequest model = new LoginSessionDtoAuthorizationRequest();
 
     /**
      * Model tests for LoginSessionDtoAuthorizationRequest
      */
     @Test
-    public void testLoginSessionDtoAuthorizationRequest() {
+    void testLoginSessionDtoAuthorizationRequest() {
         // TODO: test LoginSessionDtoAuthorizationRequest
     }
 
@@ -41,7 +40,7 @@ public class LoginSessionDtoAuthorizationRequestTest {
      * Test the property 'state'
      */
     @Test
-    public void stateTest() {
+    void stateTest() {
         // TODO: test state
     }
 
@@ -49,7 +48,7 @@ public class LoginSessionDtoAuthorizationRequestTest {
      * Test the property 'presentationDefinition'
      */
     @Test
-    public void presentationDefinitionTest() {
+    void presentationDefinitionTest() {
         // TODO: test presentationDefinition
     }
 
@@ -57,7 +56,7 @@ public class LoginSessionDtoAuthorizationRequestTest {
      * Test the property 'ari'
      */
     @Test
-    public void ariTest() {
+    void ariTest() {
         // TODO: test ari
     }
 
@@ -65,7 +64,7 @@ public class LoginSessionDtoAuthorizationRequestTest {
      * Test the property 'clientId'
      */
     @Test
-    public void clientIdTest() {
+    void clientIdTest() {
         // TODO: test clientId
     }
 
@@ -73,7 +72,7 @@ public class LoginSessionDtoAuthorizationRequestTest {
      * Test the property 'nonce'
      */
     @Test
-    public void nonceTest() {
+    void nonceTest() {
         // TODO: test nonce
     }
 

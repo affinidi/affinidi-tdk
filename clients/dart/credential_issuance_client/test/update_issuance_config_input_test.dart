@@ -1,21 +1,22 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for UpdateIssuanceConfigInput
 void main() {
-  // final instance = UpdateIssuanceConfigInput();
+  final instance = UpdateIssuanceConfigInputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test UpdateIssuanceConfigInput', () {
+  group(UpdateIssuanceConfigInput, () {
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
     // Issuer Wallet id
     // String issuerWalletId
     test('to test the property `issuerWalletId`', () async {
@@ -40,18 +41,22 @@ void main() {
       // TODO
     });
 
-    // List<CreateIssuanceConfigInputCredentialSupportedInner> credentialSupported (default value: const [])
+    // BuiltList<CredentialSupportedObject> credentialSupported
     test('to test the property `credentialSupported`', () async {
       // TODO
     });
 
     // Issuer public information wallet may want to show to user during consent confirmation
-    // Map<String, Object> issuerMetadata (default value: const {})
+    // BuiltMap<String, JsonObject> issuerMetadata
     test('to test the property `issuerMetadata`', () async {
       // TODO
     });
 
+    // List of allowed URIs to be returned to after issuance
+    // BuiltList<String> returnUris
+    test('to test the property `returnUris`', () async {
+      // TODO
+    });
 
   });
-
 }

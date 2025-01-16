@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for BlockedUsersInput
  */
-public class BlockedUsersInputTest {
+class BlockedUsersInputTest {
     private final BlockedUsersInput model = new BlockedUsersInput();
 
     /**
      * Model tests for BlockedUsersInput
      */
     @Test
-    public void testBlockedUsersInput() {
+    void testBlockedUsersInput() {
         // TODO: test BlockedUsersInput
     }
 
@@ -43,7 +43,7 @@ public class BlockedUsersInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -51,7 +51,7 @@ public class BlockedUsersInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -59,7 +59,7 @@ public class BlockedUsersInputTest {
      * Test the property 'userIds'
      */
     @Test
-    public void userIdsTest() {
+    void userIdsTest() {
         // TODO: test userIds
     }
 

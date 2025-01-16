@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
  */
-public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Test {
+class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Test {
     private final TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 model = new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1();
 
     /**
      * Model tests for TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
      */
     @Test
-    public void testTokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1() {
+    void testTokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1() {
         // TODO: test TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
     }
 
@@ -41,7 +40,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Test {
      * Test the property 'jwksUri'
      */
     @Test
-    public void jwksUriTest() {
+    void jwksUriTest() {
         // TODO: test jwksUri
     }
 

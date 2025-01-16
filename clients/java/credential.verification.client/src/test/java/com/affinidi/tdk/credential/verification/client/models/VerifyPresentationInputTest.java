@@ -14,27 +14,26 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.W3cPresentation;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for VerifyPresentationInput
  */
-public class VerifyPresentationInputTest {
+class VerifyPresentationInputTest {
     private final VerifyPresentationInput model = new VerifyPresentationInput();
 
     /**
      * Model tests for VerifyPresentationInput
      */
     @Test
-    public void testVerifyPresentationInput() {
+    void testVerifyPresentationInput() {
         // TODO: test VerifyPresentationInput
     }
 
@@ -42,7 +41,7 @@ public class VerifyPresentationInputTest {
      * Test the property 'verifiablePresentation'
      */
     @Test
-    public void verifiablePresentationTest() {
+    void verifiablePresentationTest() {
         // TODO: test verifiablePresentation
     }
 
@@ -50,7 +49,7 @@ public class VerifyPresentationInputTest {
      * Test the property 'signedPresentation'
      */
     @Test
-    public void signedPresentationTest() {
+    void signedPresentationTest() {
         // TODO: test signedPresentation
     }
 
@@ -58,7 +57,7 @@ public class VerifyPresentationInputTest {
      * Test the property 'presentationDefinition'
      */
     @Test
-    public void presentationDefinitionTest() {
+    void presentationDefinitionTest() {
         // TODO: test presentationDefinition
     }
 
@@ -66,7 +65,7 @@ public class VerifyPresentationInputTest {
      * Test the property 'presentationSubmission'
      */
     @Test
-    public void presentationSubmissionTest() {
+    void presentationSubmissionTest() {
         // TODO: test presentationSubmission
     }
 
@@ -74,7 +73,7 @@ public class VerifyPresentationInputTest {
      * Test the property 'challenge'
      */
     @Test
-    public void challengeTest() {
+    void challengeTest() {
         // TODO: test challenge
     }
 

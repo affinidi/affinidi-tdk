@@ -25,9 +25,12 @@ import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationObje
 import com.affinidi.tdk.login.configuration.client.models.NotFoundError;
 import com.affinidi.tdk.login.configuration.client.models.ResourceCreationError;
 import com.affinidi.tdk.login.configuration.client.models.UpdateLoginConfigurationInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,85 +49,91 @@ public class ConfigurationApiTest {
      *
      * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createLoginConfigurationsTest() throws ApiException {
         CreateLoginConfigurationInput createLoginConfigurationInput = null;
         CreateLoginConfigurationOutput response = api.createLoginConfigurations(createLoginConfigurationInput);
+
         // TODO: test validations
     }
-
     /**
      * Delete login configurations by ID
      *
      * Delete login configurations by ID
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteLoginConfigurationsByIdTest() throws ApiException {
         String configurationId = null;
         api.deleteLoginConfigurationsById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * Get Client Metadata By  OAuth 2.0 Client ID
      *
      * Get Client Metadata By  OAuth 2.0 Client ID
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getClientMetadataByClientIdTest() throws ApiException {
         String clientId = null;
         LoginConfigurationClientMetadataOutput response = api.getClientMetadataByClientId(clientId);
+
         // TODO: test validations
     }
-
     /**
      * Get login configuration by ID
      *
      * Get login configuration by ID
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getLoginConfigurationsByIdTest() throws ApiException {
         String configurationId = null;
         LoginConfigurationObject response = api.getLoginConfigurationsById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * List login configurations
      *
      * Endpoint to retrieve list of login configurations
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listLoginConfigurationsTest() throws ApiException {
         Integer limit = null;
         String exclusiveStartKey = null;
         ListLoginConfigurationOutput response = api.listLoginConfigurations(limit, exclusiveStartKey);
+
         // TODO: test validations
     }
-
     /**
      * Update login configurations by ID
      *
      * Update login configurations by ID
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateLoginConfigurationsByIdTest() throws ApiException {
         String configurationId = null;
         UpdateLoginConfigurationInput updateLoginConfigurationInput = null;
         LoginConfigurationObject response = api.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
+
         // TODO: test validations
     }
-
 }

@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for JsonWebKeyKeysInner
  */
-public class JsonWebKeyKeysInnerTest {
+class JsonWebKeyKeysInnerTest {
     private final JsonWebKeyKeysInner model = new JsonWebKeyKeysInner();
 
     /**
      * Model tests for JsonWebKeyKeysInner
      */
     @Test
-    public void testJsonWebKeyKeysInner() {
+    void testJsonWebKeyKeysInner() {
         // TODO: test JsonWebKeyKeysInner
     }
 
@@ -43,7 +43,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'alg'
      */
     @Test
-    public void algTest() {
+    void algTest() {
         // TODO: test alg
     }
 
@@ -51,7 +51,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'crv'
      */
     @Test
-    public void crvTest() {
+    void crvTest() {
         // TODO: test crv
     }
 
@@ -59,7 +59,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'd'
      */
     @Test
-    public void dTest() {
+    void dTest() {
         // TODO: test d
     }
 
@@ -67,7 +67,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'dp'
      */
     @Test
-    public void dpTest() {
+    void dpTest() {
         // TODO: test dp
     }
 
@@ -75,7 +75,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'dq'
      */
     @Test
-    public void dqTest() {
+    void dqTest() {
         // TODO: test dq
     }
 
@@ -83,7 +83,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'e'
      */
     @Test
-    public void eTest() {
+    void eTest() {
         // TODO: test e
     }
 
@@ -91,7 +91,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'k'
      */
     @Test
-    public void kTest() {
+    void kTest() {
         // TODO: test k
     }
 
@@ -99,7 +99,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'kid'
      */
     @Test
-    public void kidTest() {
+    void kidTest() {
         // TODO: test kid
     }
 
@@ -107,7 +107,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'kty'
      */
     @Test
-    public void ktyTest() {
+    void ktyTest() {
         // TODO: test kty
     }
 
@@ -115,7 +115,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'n'
      */
     @Test
-    public void nTest() {
+    void nTest() {
         // TODO: test n
     }
 
@@ -123,7 +123,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'p'
      */
     @Test
-    public void pTest() {
+    void pTest() {
         // TODO: test p
     }
 
@@ -131,7 +131,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'q'
      */
     @Test
-    public void qTest() {
+    void qTest() {
         // TODO: test q
     }
 
@@ -139,7 +139,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'qi'
      */
     @Test
-    public void qiTest() {
+    void qiTest() {
         // TODO: test qi
     }
 
@@ -147,7 +147,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'use'
      */
     @Test
-    public void useTest() {
+    void useTest() {
         // TODO: test use
     }
 
@@ -155,7 +155,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'x'
      */
     @Test
-    public void xTest() {
+    void xTest() {
         // TODO: test x
     }
 
@@ -163,7 +163,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'x5c'
      */
     @Test
-    public void x5cTest() {
+    void x5cTest() {
         // TODO: test x5c
     }
 
@@ -171,7 +171,7 @@ public class JsonWebKeyKeysInnerTest {
      * Test the property 'y'
      */
     @Test
-    public void yTest() {
+    void yTest() {
         // TODO: test y
     }
 

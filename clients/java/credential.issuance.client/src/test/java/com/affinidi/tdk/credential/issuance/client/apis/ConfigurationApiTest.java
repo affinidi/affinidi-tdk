@@ -21,9 +21,12 @@ import com.affinidi.tdk.credential.issuance.client.models.IssuanceConfigDto;
 import com.affinidi.tdk.credential.issuance.client.models.IssuanceConfigListResponse;
 import com.affinidi.tdk.credential.issuance.client.models.NotFoundError;
 import com.affinidi.tdk.credential.issuance.client.models.UpdateIssuanceConfigInput;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,61 +43,66 @@ public class ConfigurationApiTest {
     /**
      * Create issuance configuration, project have only one configuration
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void createIssuanceConfigTest() throws ApiException {
         CreateIssuanceConfigInput createIssuanceConfigInput = null;
         IssuanceConfigDto response = api.createIssuanceConfig(createIssuanceConfigInput);
+
         // TODO: test validations
     }
-
     /**
      * Delete project issuance configuration
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void deleteIssuanceConfigByIdTest() throws ApiException {
         String configurationId = null;
         api.deleteIssuanceConfigById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * Get issuance configuration by id
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getIssuanceConfigByIdTest() throws ApiException {
         String configurationId = null;
         IssuanceConfigDto response = api.getIssuanceConfigById(configurationId);
+
         // TODO: test validations
     }
-
     /**
      * Get issuance configuration for my selected project
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getIssuanceConfigListTest() throws ApiException {
         IssuanceConfigListResponse response = api.getIssuanceConfigList();
+
         // TODO: test validations
     }
-
     /**
      * Update issuance configuration
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updateIssuanceConfigByIdTest() throws ApiException {
         String configurationId = null;
         UpdateIssuanceConfigInput updateIssuanceConfigInput = null;
         IssuanceConfigDto response = api.updateIssuanceConfigById(configurationId, updateIssuanceConfigInput);
+
         // TODO: test validations
     }
-
 }

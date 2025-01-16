@@ -22,12 +22,12 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = WellKnownApi();
+final api = AffinidiTdkIamClient().getWellKnownApi();
 
 try {
-    final result = api_instance.getWellKnownDid();
-    print(result);
-} catch (e) {
+    final response = api.getWellKnownDid();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WellKnownApi->getWellKnownDid: $e\n');
 }
 ```
@@ -60,12 +60,12 @@ No authorization required
 ```dart
 import 'package:affinidi_tdk_iam_client/api.dart';
 
-final api_instance = WellKnownApi();
+final api = AffinidiTdkIamClient().getWellKnownApi();
 
 try {
-    final result = api_instance.getWellKnownJwks();
-    print(result);
-} catch (e) {
+    final response = api.getWellKnownJwks();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WellKnownApi->getWellKnownJwks: $e\n');
 }
 ```

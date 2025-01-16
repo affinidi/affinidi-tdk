@@ -17,9 +17,12 @@ import com.affinidi.tdk.login.configuration.client.ApiException;
 import com.affinidi.tdk.login.configuration.client.models.GroupNames;
 import com.affinidi.tdk.login.configuration.client.models.GroupNamesInput;
 import com.affinidi.tdk.login.configuration.client.models.InvalidGroupsError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,37 +39,40 @@ public class AllowListApiTest {
     /**
      * Allow Single or Multiple Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void allowGroupsTest() throws ApiException {
         GroupNamesInput groupNamesInput = null;
         api.allowGroups(groupNamesInput);
+
         // TODO: test validations
     }
-
     /**
      * Disallow Single or Multiple Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void disallowGroupsTest() throws ApiException {
         GroupNamesInput groupNamesInput = null;
         api.disallowGroups(groupNamesInput);
+
         // TODO: test validations
     }
-
     /**
      * Get Allowed Groups
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void listAllowedGroupsTest() throws ApiException {
         String pageToken = null;
         GroupNames response = api.listAllowedGroups(pageToken);
+
         // TODO: test validations
     }
-
 }

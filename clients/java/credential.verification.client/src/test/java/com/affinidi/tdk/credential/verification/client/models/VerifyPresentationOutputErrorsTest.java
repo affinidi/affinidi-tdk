@@ -13,22 +13,24 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for VerifyPresentationOutputErrors
  */
-public class VerifyPresentationOutputErrorsTest {
+class VerifyPresentationOutputErrorsTest {
     private final VerifyPresentationOutputErrors model = new VerifyPresentationOutputErrors();
 
     /**
      * Model tests for VerifyPresentationOutputErrors
      */
     @Test
-    public void testVerifyPresentationOutputErrors() {
+    void testVerifyPresentationOutputErrors() {
         // TODO: test VerifyPresentationOutputErrors
     }
 

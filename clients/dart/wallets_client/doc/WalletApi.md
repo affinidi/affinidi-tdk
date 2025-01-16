@@ -33,13 +33,13 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final createWalletInput = CreateWalletInput(); // CreateWalletInput | CreateWallet
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final CreateWalletInput createWalletInput = ; // CreateWalletInput | CreateWallet
 
 try {
-    final result = api_instance.createWallet(createWalletInput);
-    print(result);
-} catch (e) {
+    final response = api.createWallet(createWalletInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->createWallet: $e\n');
 }
 ```
@@ -80,12 +80,12 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final walletId = walletId_example; // String | id of the wallet
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet
 
 try {
-    api_instance.deleteWallet(walletId);
-} catch (e) {
+    api.deleteWallet(walletId);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->deleteWallet: $e\n');
 }
 ```
@@ -126,13 +126,13 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final walletId = walletId_example; // String | id of the wallet
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet
 
 try {
-    final result = api_instance.getWallet(walletId);
-    print(result);
-} catch (e) {
+    final response = api.getWallet(walletId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->getWallet: $e\n');
 }
 ```
@@ -173,13 +173,13 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final didType = didType_example; // String |
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String didType = didType_example; // String |
 
 try {
-    final result = api_instance.listWallets(didType);
-    print(result);
-} catch (e) {
+    final response = api.listWallets(didType);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->listWallets: $e\n');
 }
 ```
@@ -220,14 +220,14 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final walletId = walletId_example; // String | id of the wallet
-final signCredentialInputDto = SignCredentialInputDto(); // SignCredentialInputDto | SignCredential
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet
+final SignCredentialInputDto signCredentialInputDto = ; // SignCredentialInputDto | SignCredential
 
 try {
-    final result = api_instance.signCredential(walletId, signCredentialInputDto);
-    print(result);
-} catch (e) {
+    final response = api.signCredential(walletId, signCredentialInputDto);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->signCredential: $e\n');
 }
 ```
@@ -269,14 +269,14 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final walletId = walletId_example; // String | id of the wallet.
-final signJwtToken = SignJwtToken(); // SignJwtToken | SignJwtToken
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet.
+final SignJwtToken signJwtToken = ; // SignJwtToken | SignJwtToken
 
 try {
-    final result = api_instance.signJwtToken(walletId, signJwtToken);
-    print(result);
-} catch (e) {
+    final response = api.signJwtToken(walletId, signJwtToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->signJwtToken: $e\n');
 }
 ```
@@ -318,14 +318,14 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = WalletApi();
-final walletId = walletId_example; // String | id of the wallet
-final updateWalletInput = UpdateWalletInput(); // UpdateWalletInput | UpdateWallet
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet
+final UpdateWalletInput updateWalletInput = ; // UpdateWalletInput | UpdateWallet
 
 try {
-    final result = api_instance.updateWallet(walletId, updateWalletInput);
-    print(result);
-} catch (e) {
+    final response = api.updateWallet(walletId, updateWalletInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling WalletApi->updateWallet: $e\n');
 }
 ```

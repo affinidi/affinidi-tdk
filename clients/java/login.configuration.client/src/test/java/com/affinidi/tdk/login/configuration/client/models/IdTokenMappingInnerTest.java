@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for IdTokenMappingInner
  */
-public class IdTokenMappingInnerTest {
+class IdTokenMappingInnerTest {
     private final IdTokenMappingInner model = new IdTokenMappingInner();
 
     /**
      * Model tests for IdTokenMappingInner
      */
     @Test
-    public void testIdTokenMappingInner() {
+    void testIdTokenMappingInner() {
         // TODO: test IdTokenMappingInner
     }
 
@@ -41,7 +40,7 @@ public class IdTokenMappingInnerTest {
      * Test the property 'sourceField'
      */
     @Test
-    public void sourceFieldTest() {
+    void sourceFieldTest() {
         // TODO: test sourceField
     }
 
@@ -49,7 +48,7 @@ public class IdTokenMappingInnerTest {
      * Test the property 'idTokenClaim'
      */
     @Test
-    public void idTokenClaimTest() {
+    void idTokenClaimTest() {
         // TODO: test idTokenClaim
     }
 
@@ -57,7 +56,7 @@ public class IdTokenMappingInnerTest {
      * Test the property 'inputDescriptorId'
      */
     @Test
-    public void inputDescriptorIdTest() {
+    void inputDescriptorIdTest() {
         // TODO: test inputDescriptorId
     }
 

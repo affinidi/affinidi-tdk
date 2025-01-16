@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for GroupDto
  */
-public class GroupDtoTest {
+class GroupDtoTest {
     private final GroupDto model = new GroupDto();
 
     /**
      * Model tests for GroupDto
      */
     @Test
-    public void testGroupDto() {
+    void testGroupDto() {
         // TODO: test GroupDto
     }
 
@@ -41,7 +40,7 @@ public class GroupDtoTest {
      * Test the property 'ari'
      */
     @Test
-    public void ariTest() {
+    void ariTest() {
         // TODO: test ari
     }
 
@@ -49,7 +48,7 @@ public class GroupDtoTest {
      * Test the property 'projectId'
      */
     @Test
-    public void projectIdTest() {
+    void projectIdTest() {
         // TODO: test projectId
     }
 
@@ -57,7 +56,7 @@ public class GroupDtoTest {
      * Test the property 'groupName'
      */
     @Test
-    public void groupNameTest() {
+    void groupNameTest() {
         // TODO: test groupName
     }
 
@@ -65,7 +64,7 @@ public class GroupDtoTest {
      * Test the property 'creationDate'
      */
     @Test
-    public void creationDateTest() {
+    void creationDateTest() {
         // TODO: test creationDate
     }
 

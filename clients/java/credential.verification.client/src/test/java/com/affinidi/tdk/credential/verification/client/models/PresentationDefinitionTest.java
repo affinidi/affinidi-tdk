@@ -17,29 +17,29 @@ import com.affinidi.tdk.credential.verification.client.models.Format;
 import com.affinidi.tdk.credential.verification.client.models.FreeFormObject;
 import com.affinidi.tdk.credential.verification.client.models.InputDescriptor;
 import com.affinidi.tdk.credential.verification.client.models.SubmissionRequirement;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for PresentationDefinition
  */
-public class PresentationDefinitionTest {
+class PresentationDefinitionTest {
     private final PresentationDefinition model = new PresentationDefinition();
 
     /**
      * Model tests for PresentationDefinition
      */
     @Test
-    public void testPresentationDefinition() {
+    void testPresentationDefinition() {
         // TODO: test PresentationDefinition
     }
 
@@ -47,7 +47,7 @@ public class PresentationDefinitionTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -55,7 +55,7 @@ public class PresentationDefinitionTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -63,7 +63,7 @@ public class PresentationDefinitionTest {
      * Test the property 'purpose'
      */
     @Test
-    public void purposeTest() {
+    void purposeTest() {
         // TODO: test purpose
     }
 
@@ -71,7 +71,7 @@ public class PresentationDefinitionTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -79,7 +79,7 @@ public class PresentationDefinitionTest {
      * Test the property 'submissionRequirements'
      */
     @Test
-    public void submissionRequirementsTest() {
+    void submissionRequirementsTest() {
         // TODO: test submissionRequirements
     }
 
@@ -87,7 +87,7 @@ public class PresentationDefinitionTest {
      * Test the property 'inputDescriptors'
      */
     @Test
-    public void inputDescriptorsTest() {
+    void inputDescriptorsTest() {
         // TODO: test inputDescriptors
     }
 
@@ -95,7 +95,7 @@ public class PresentationDefinitionTest {
      * Test the property 'frame'
      */
     @Test
-    public void frameTest() {
+    void frameTest() {
         // TODO: test frame
     }
 

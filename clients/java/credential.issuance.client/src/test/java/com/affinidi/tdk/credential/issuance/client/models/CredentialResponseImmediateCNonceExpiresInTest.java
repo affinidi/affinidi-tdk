@@ -13,21 +13,23 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.math.BigDecimal;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialResponseImmediateCNonceExpiresIn
  */
-public class CredentialResponseImmediateCNonceExpiresInTest {
+class CredentialResponseImmediateCNonceExpiresInTest {
     private final CredentialResponseImmediateCNonceExpiresIn model = new CredentialResponseImmediateCNonceExpiresIn();
 
     /**
      * Model tests for CredentialResponseImmediateCNonceExpiresIn
      */
     @Test
-    public void testCredentialResponseImmediateCNonceExpiresIn() {
+    void testCredentialResponseImmediateCNonceExpiresIn() {
         // TODO: test CredentialResponseImmediateCNonceExpiresIn
     }
 

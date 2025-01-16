@@ -13,19 +13,19 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.annotations.SerializedName;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for TokenEndpointAuthMethod
  */
-public class TokenEndpointAuthMethodTest {
+class TokenEndpointAuthMethodTest {
     /**
      * Model tests for TokenEndpointAuthMethod
      */
     @Test
-    public void testTokenEndpointAuthMethod() {
+    void testTokenEndpointAuthMethod() {
         // TODO: test TokenEndpointAuthMethod
     }
 

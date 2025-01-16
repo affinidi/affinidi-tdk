@@ -14,9 +14,12 @@
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,103 +34,113 @@ public class DefaultApiTest {
     private final DefaultApi api = new DefaultApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1AuthProxyDeleteTest() throws ApiException {
         String proxy = null;
         api.v1AuthProxyDelete(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1AuthProxyGetTest() throws ApiException {
         String proxy = null;
         api.v1AuthProxyGet(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1AuthProxyPatchTest() throws ApiException {
         String proxy = null;
         api.v1AuthProxyPatch(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1AuthProxyPostTest() throws ApiException {
         String proxy = null;
         api.v1AuthProxyPost(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1AuthProxyPutTest() throws ApiException {
         String proxy = null;
         api.v1AuthProxyPut(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1IdpProxyDeleteTest() throws ApiException {
         String proxy = null;
         api.v1IdpProxyDelete(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1IdpProxyGetTest() throws ApiException {
         String proxy = null;
         api.v1IdpProxyGet(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1IdpProxyPatchTest() throws ApiException {
         String proxy = null;
         api.v1IdpProxyPatch(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1IdpProxyPostTest() throws ApiException {
         String proxy = null;
         api.v1IdpProxyPost(proxy);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1IdpProxyPutTest() throws ApiException {
         String proxy = null;
         api.v1IdpProxyPut(proxy);
+
         // TODO: test validations
     }
-
 }

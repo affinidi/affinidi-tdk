@@ -1,27 +1,16 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 
 // tests for CorsListScannedFilesOK
 void main() {
-  // final instance = CorsListScannedFilesOK();
+  final instance = CorsListScannedFilesOKBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test CorsListScannedFilesOK', () {
+  group(CorsListScannedFilesOK, () {
     // String corsListScannedFilesOk
     test('to test the property `corsListScannedFilesOk`', () async {
       // TODO
     });
 
-
   });
-
 }

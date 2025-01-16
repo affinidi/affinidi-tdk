@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CallbackInput
  */
-public class CallbackInputTest {
+class CallbackInputTest {
     private final CallbackInput model = new CallbackInput();
 
     /**
      * Model tests for CallbackInput
      */
     @Test
-    public void testCallbackInput() {
+    void testCallbackInput() {
         // TODO: test CallbackInput
     }
 
@@ -41,7 +40,7 @@ public class CallbackInputTest {
      * Test the property 'state'
      */
     @Test
-    public void stateTest() {
+    void stateTest() {
         // TODO: test state
     }
 
@@ -49,7 +48,7 @@ public class CallbackInputTest {
      * Test the property 'presentationSubmission'
      */
     @Test
-    public void presentationSubmissionTest() {
+    void presentationSubmissionTest() {
         // TODO: test presentationSubmission
     }
 
@@ -57,7 +56,7 @@ public class CallbackInputTest {
      * Test the property 'vpToken'
      */
     @Test
-    public void vpTokenTest() {
+    void vpTokenTest() {
         // TODO: test vpToken
     }
 
@@ -65,7 +64,7 @@ public class CallbackInputTest {
      * Test the property 'error'
      */
     @Test
-    public void errorTest() {
+    void errorTest() {
         // TODO: test error
     }
 
@@ -73,7 +72,7 @@ public class CallbackInputTest {
      * Test the property 'errorDescription'
      */
     @Test
-    public void errorDescriptionTest() {
+    void errorDescriptionTest() {
         // TODO: test errorDescription
     }
 
@@ -81,7 +80,7 @@ public class CallbackInputTest {
      * Test the property 'onboarded'
      */
     @Test
-    public void onboardedTest() {
+    void onboardedTest() {
         // TODO: test onboarded
     }
 
