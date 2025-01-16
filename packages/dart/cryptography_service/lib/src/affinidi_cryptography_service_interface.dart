@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:typed_data';
+
 import 'package:affinidi_cryptography_service/src/models/verify_jwt_result.dart';
 
 abstract interface class CryptographyServiceInterface {
@@ -49,4 +51,16 @@ abstract interface class CryptographyServiceInterface {
   String createHash({required String hashSource});
   String createSha256Hex({required List<int> bytes});
   String createMd5Base64({required List<int> bytes});
+
+  Uint8List aesCbcEncrypt(
+    Uint8List key,
+    Uint8List iv,
+    Uint8List paddedPlaintext,
+  );
+
+  Uint8List aesCbcDecrypt(
+    Uint8List key,
+    Uint8List iv,
+    Uint8List cipherText,
+  );
 }

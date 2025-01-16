@@ -17,12 +17,9 @@ class ConsumerTokenProvider {
       'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token';
   static const secondsBetweenApiAuthRefresh = 300;
 
-  Future<String> getToken(List<int> seedBytes) async {
-    ///
-    /// you would never do this for real, loading from a const but this is a DEMO!!!!!
-    ///
-
-    final master = BIP32.fromSeed(Uint8List.fromList(seedBytes));
+  /// DEMO method to get a consumer token
+  Future<String> getToken(Uint8List seedBytes) async {
+    final master = BIP32.fromSeed(seedBytes);
 
     final key = master.derivePath(etheriumIdentityKey);
     final myDiD = _getDID(key.privateKey!);
@@ -39,12 +36,7 @@ class ConsumerTokenProvider {
       base64UrlEncode(Uint8List.fromList(assertion)),
     )}';
 
-    final token = await Future.microtask(() => _getConsumerToken(jwt, myDiD));
-
-    Timer(const Duration(seconds: secondsBetweenApiAuthRefresh), () {
-      print('[TOKEN] Refreshing consumer auth token (timer)');
-    });
-
+    final token = await _getConsumerToken(jwt, myDiD);
     return token;
   }
 
@@ -84,8 +76,6 @@ class ConsumerTokenProvider {
   }
 
   Future<String> _getConsumerToken(String clientAssertion, String did) async {
-    print('Connecting to Affinidi');
-
     final dioInstance = Dio();
     final data = {
       "grant_type": 'client_credentials',
@@ -107,7 +97,6 @@ class ConsumerTokenProvider {
       ),
     );
 
-    print('     done! Got a consumer token');
     return response.data['access_token'];
   }
 }
