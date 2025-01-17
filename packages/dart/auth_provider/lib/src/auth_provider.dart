@@ -46,7 +46,7 @@ class AuthProvider {
     try {
       JWT.verify(_projectScopedToken!, _publicKey!);
       return false;
-    } on JWTExpiredException {
+    } on JWTException {
       return true;
     }
   }
