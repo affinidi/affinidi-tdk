@@ -8,13 +8,17 @@ class ConsumerAuthProvider {
   final String _encryptedSeed;
   final String _encryptionKey;
 
+  late final AesCbcEncryptionService _aesCbcEncryptionService;
+
   String? _consumerToken;
 
   ConsumerAuthProvider({
     required String encryptedSeed,
     required String encryptionKey,
   })  : _encryptedSeed = encryptedSeed,
-        _encryptionKey = encryptionKey;
+        _encryptionKey = encryptionKey {
+    _aesCbcEncryptionService = AesCbcEncryptionService();
+  }
 
   Future<String> fetchConsumerToken() async {
     try {
@@ -22,8 +26,7 @@ class ConsumerAuthProvider {
         return _consumerToken!;
       }
 
-      final cryptographyService = CryptographyService();
-      final seed = await cryptographyService.decryptSeed(
+      final seed = _aesCbcEncryptionService.decryptSeed(
         encryptedSeedHex: _encryptedSeed,
         encryptionKeyHex: _encryptionKey,
       );
