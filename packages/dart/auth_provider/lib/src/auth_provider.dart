@@ -33,18 +33,18 @@ class AuthProvider {
       required this.apiGatewayUrl,
       required this.tokenEndpoint});
 
-  ECPublicKey? publicKey;
-  String? projectScopedToken;
+  ECPublicKey? _publicKey;
+  String? _projectScopedToken;
 
   Future<bool> _shouldFetchToken() async {
-    if (projectScopedToken == null) {
+    if (_projectScopedToken == null) {
       return true;
     }
 
     final iamClient = IamClient(apiGatewayUrl: apiGatewayUrl);
-    publicKey ??= await JWTHelper.fetchPublicKey(iamClient);
+    _publicKey ??= await JWTHelper.fetchPublicKey(iamClient);
     try {
-      JWT.verify(projectScopedToken!, publicKey!);
+      JWT.verify(_projectScopedToken!, _publicKey!);
       return false;
     } on JWTExpiredException {
       return true;
@@ -53,10 +53,10 @@ class AuthProvider {
 
   Future<String> fetchProjectScopedToken() async {
     if (await _shouldFetchToken()) {
-      projectScopedToken =
+      _projectScopedToken =
           await _getProjectScopedToken(audience: tokenEndpoint);
     }
-    return projectScopedToken!;
+    return _projectScopedToken!;
   }
 
   Future<String> _getUserAccessToken({required String audience}) async {
