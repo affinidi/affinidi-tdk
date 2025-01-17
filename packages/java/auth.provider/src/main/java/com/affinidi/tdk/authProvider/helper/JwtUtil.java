@@ -236,7 +236,8 @@ public class JwtUtil {
             }
         } catch (Exception exception) {
             throw new InvalidPrivateKeyException(
-                    "Could not derive private key out of the configurations. Exception : " + exception.toString());
+                    AuthProviderConstants.couldNotDerivePrivateKeyErrorMsg +
+                            " Exception : " + exception.toString());
         }
         return privateKey;
     }

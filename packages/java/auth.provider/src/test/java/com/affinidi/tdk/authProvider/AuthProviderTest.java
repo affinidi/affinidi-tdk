@@ -126,7 +126,7 @@ public class AuthProviderTest {
 
             // assert
             assertTrue(exception.getMessage()
-                    .startsWith("Could not derive private key out of the configurations. Exception : "));
+                    .startsWith(AuthProviderConstants.couldNotDerivePrivateKeyErrorMsg + " Exception : "));
         }
 
     }
