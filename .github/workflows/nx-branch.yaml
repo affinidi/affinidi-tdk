@@ -1,9 +1,11 @@
 name: branch
 on:
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
+  #we need to keep on push as target because of this issue  https://github.com/orgs/community/discussions/65321
+  push: 
+    branches: 
+     - '**'
+     - '!main'
+
 
 permissions:
   actions: read
@@ -34,4 +36,11 @@ jobs:
       - name: install python tools
         run: |
           pip install poetry
+
+      - name: Set up specific jdk
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: 21
+
       - run: npx nx affected -t build --parallel=1
