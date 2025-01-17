@@ -4,9 +4,6 @@ import 'environment.dart';
 
 void main() {
   group('Consumer Auth Provider Integration Tests', () {
-    final expiredToken =
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImQyMjdiMDI4LTlkNjQtNGNlOS05N2UwLWEyODcyM2UyN2IxOCJ9.eyJzdWIiOiJkaWQ6a2V5OnpRM3NoY2VoQnFONnFlSlFMSlhGYXVYMVhFdWg4OVF2b0xIZkhjRUc2ckd1WldmdDEiLCJhdWQiOiJodHRwczovL2Fwc2UxLmFwaS5hZmZpbmlkaS5pbyIsImlzcyI6Imh0dHBzOi8vYXBzZTEuYXBpLmFmZmluaWRpLmlvL2lhbSIsImlhdCI6MTczNzA3MjMxMiwiZXhwIjoxNzM3MDc1OTEyLCJqdGkiOiIxMmFhMWVhOS05YmRhLTQ4ZjEtYjdmYy1lYTY5ODljMWU0NTcifQ.7l2LPR8ljJllR36LxwQp7nV5S8j0Z0Mk4jdcI9d6dZ-dppOn3p_v-C4gml5BC6q6eZjeyVmz2ChZIDeh6vj99A';
-
     late VaultEnvironment env;
 
     setUp(() {
@@ -27,22 +24,24 @@ void main() {
       expect(consumerAuthToken2, equals(consumerAuthToken1));
     });
 
-    test('identify expired consumer scoped token and request a new one',
-        () async {
-      final consumerAuthProvider = ConsumerAuthProvider(
-        encryptedSeed: env.encryptedSeed,
-        encryptionKey: env.encryptionKey,
-      );
+    // test('identify expired consumer scoped token and request a new one',
+    //     () async {
+    //   final expiredToken = "";
 
-      expect(consumerAuthProvider.consumerToken, isNull);
-      consumerAuthProvider.consumerToken = expiredToken;
-      expect(consumerAuthProvider.consumerToken, isNotEmpty);
+    //   final consumerAuthProvider = ConsumerAuthProvider(
+    //     encryptedSeed: env.encryptedSeed,
+    //     encryptionKey: env.encryptionKey,
+    //   );
 
-      final consumerAuthToken = await consumerAuthProvider.fetchConsumerToken();
+    //   expect(consumerAuthProvider.consumerToken, isNull);
+    //   consumerAuthProvider.consumerToken = expiredToken;
+    //   expect(consumerAuthProvider.consumerToken, isNotEmpty);
 
-      expect(consumerAuthToken, equals(consumerAuthProvider.consumerToken));
-      expect(consumerAuthToken, isNotEmpty);
-      expect(consumerAuthToken, isNot(equals(expiredToken)));
-    }, skip: 'consumerToken var in provider is private');
+    //   final consumerAuthToken = await consumerAuthProvider.fetchConsumerToken();
+
+    //   expect(consumerAuthToken, equals(consumerAuthProvider.consumerToken));
+    //   expect(consumerAuthToken, isNotEmpty);
+    //   expect(consumerAuthToken, isNot(equals(expiredToken)));
+    // });
   });
 }
