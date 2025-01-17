@@ -39,6 +39,7 @@
     <affinidi-common-version>1.0</affinidi-common-version>
     <jsonwebtoken-version>0.12.6</jsonwebtoken-version>
     <mockito-version>3.12.4</mockito-version>
+    <wiremock-version>3.10.0</wiremock-version>
     <gson-version>2.10.1</gson-version>
     <slf4j.version>2.0.16</slf4j.version>
   </properties>
@@ -82,6 +83,12 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-inline</artifactId>
       <version>${mockito-version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock</artifactId>
+      <version>${wiremock-version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

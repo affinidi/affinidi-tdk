@@ -40,21 +40,21 @@ import io.jsonwebtoken.security.Jwk;
 import io.jsonwebtoken.security.Jwks;
 
 /**
-* This class provides utility functions required 
-* by {@link AuthProvider} related for
-* processing(creating, signing, validation) of JWT
-*
-* @author Priyanka
-* 
-*/
+ * This class provides utility functions required
+ * by {@link AuthProvider} related for
+ * processing(creating, signing, validation) of JWT
+ *
+ * @author Priyanka
+ * 
+ */
 
 public class JwtUtil {
 
-    /** 
+    /**
      * This method builds a JSON web token for the provided claims.
-     * It then signs the token with the provided privatekey using RS256. 
+     * It then signs the token with the provided privatekey using RS256.
      * 
-     * In case of an encrypted private key; this method expects to receive 
+     * In case of an encrypted private key; this method expects to receive
      * the passphrase which was used during generation of the key pair.
      * 
      * @param tokenId
@@ -63,10 +63,11 @@ public class JwtUtil {
      * @param passphrase
      * @param keyId
      * @return String
-     * @throws JwtGenerationException in case the private key could not be processed or jwt generation failed
+     * @throws JwtGenerationException in case the private key could not be processed
+     *                                or jwt generation failed
      */
     public static String signPayload(String tokenId, String audience, String privateKeyString, String passphrase,
-            String keyId)  throws JwtGenerationException{
+            String keyId) throws JwtGenerationException {
 
         String signedJwtForClaims = null;
         long issueTimeInSeconds = System.currentTimeMillis() / 1000;
@@ -87,13 +88,13 @@ public class JwtUtil {
         }
         return signedJwtForClaims;
     }
-    
-     /** 
+
+    /**
      * This method builds a JSON web token for the provided claims specific
      * to an iota request.
-     * It then signs the token with the provided privatekey using RS256. 
+     * It then signs the token with the provided privatekey using RS256.
      * 
-     * In case of an encrypted private key; this method expects to receive 
+     * In case of an encrypted private key; this method expects to receive
      * the passphrase which was used during generation of the key pair.
      * 
      * @param tokenId
@@ -105,11 +106,12 @@ public class JwtUtil {
      * @param iotaConfigId
      * @param iotaSessionId
      * @return String
-     * @throws JwtGenerationException in case the private key could not be processed or jwt generation failed
+     * @throws JwtGenerationException in case the private key could not be processed
+     *                                or jwt generation failed
      */
     public static String signIotaPayload(String tokenId, String audience, String privateKeyString, String passphrase,
             String keyId, String projectId, String iotaConfigId, String iotaSessionId) throws JwtGenerationException {
-        
+
         String signedJwtForClaims = null;
         long issueTimeInSeconds = System.currentTimeMillis() / 1000;
         Map<String, Object> claims = new HashMap<>();
@@ -136,47 +138,53 @@ public class JwtUtil {
         return signedJwtForClaims;
     }
 
-    
-    /** 
+    /**
      * This method fetches the signature verification key, required to
-     * validate the jws for a projectScopeToken and converts it to 
+     * validate the jws for a projectScopeToken and converts it to
      * {@link java.security.PublicKey}
      * 
      * @param apiGatewayUrl
      * @return PublicKey
-     * @throws InvalidPublicKeyException in case the public key could not be retrieved/extracted
+     * @throws InvalidPublicKeyException in case the public key could not be
+     *                                   retrieved/extracted
      */
     public static PublicKey fetchPublicKey(String apiGatewayUrl) throws InvalidPublicKeyException {
         PublicKey publicKey = null;
-        try{
+        try {
             final HttpGet httpGet = new HttpGet(apiGatewayUrl + AuthProviderConstants.publicKeyPath);
-            httpGet.setHeader(AuthProviderConstants.contentTypeHeader, AuthProviderConstants.applicationJsonContentType);
+            httpGet.setHeader(AuthProviderConstants.contentTypeHeader,
+                    AuthProviderConstants.applicationJsonContentType);
 
-            CloseableHttpClient client = HttpClients.createDefault();
-            publicKey = client.execute(httpGet, 
-                response -> {
-                    if(response.getCode() >=200 && response.getCode() < 300){
-                        String jwkFromResponse = decodeRespose(response.getEntity());
-                        Jwk<?> jwk = Jwks.parser().build()
-                                        .parse(jwkFromResponse);
-                        if(jwk != null){
-                            return (PublicKey)jwk.toKey();
+            CloseableHttpClient client = HttpClients.createSystem();
+            publicKey = client.execute(httpGet,
+                    response -> {
+                        if (response.getCode() >= 200 && response.getCode() < 300) {
+                            HttpEntity entity = response.getEntity();
+                            // String bodyString = EntityUtils.toString(entity, "UTF-8");
+                            String jwkFromResponse = decodeRespose(entity);
+                            Jwk<?> jwk = Jwks.parser().build()
+                                    .parse(jwkFromResponse);
+                            if (jwk != null) {
+                                return (PublicKey) jwk.toKey();
+                            }
+                        } else {
+                            String resp = decodeRespose(response.getEntity());
+                            System.out.println(resp.toString());
                         }
-                    }
-                    return null;
-                });
-        }catch(Exception exception){
-            throw new InvalidPublicKeyException("Could not retreive/ extract the public "+
-                    "key required to validate projectScopeToken "+exception.getMessage());
+                        return null;
+                    });
+        } catch (Exception exception) {
+            throw new InvalidPublicKeyException("Could not retreive/ extract the public " +
+                    "key required to validate projectScopeToken " + exception.getMessage());
         }
         return publicKey;
     }
-    
-    /** 
+
+    /**
      * This method validates the projectScopeToken.
      * Along with validating if the token is malformed or expired;
-     * it also verifies the token signature using the 
-     * signature verification public key. 
+     * it also verifies the token signature using the
+     * signature verification public key.
      * 
      * If the public key could not be retrieved for any reason;
      * the method would consider the token as invalid.
@@ -188,13 +196,13 @@ public class JwtUtil {
     public static boolean validProjectTokenPresent(String token, String apiGatewayUrl) {
         try {
             PublicKey publicKey = fetchPublicKey(apiGatewayUrl);
-            if(publicKey == null){
+            if (publicKey == null) {
                 throw new Exception("Could not retrieve public key for token validation");
             }
             Jwts.parser().verifyWith(publicKey).build().parse(token);
         } catch (InvalidPublicKeyException iPublicKeyException) {
             return false;
-        }catch (ExpiredJwtException ejException) {
+        } catch (ExpiredJwtException ejException) {
             return false;
         } catch (MalformedJwtException mjException) {
             return false;
@@ -204,12 +212,11 @@ public class JwtUtil {
         return true;
     }
 
-    
-    /** 
-     * This method converts the private key string passed to a 
-     * {@link java.security.PrivateKey}. In case a passphrase is passed,  
+    /**
+     * This method converts the private key string passed to a
+     * {@link java.security.PrivateKey}. In case a passphrase is passed,
      * the private key is treated as encrypted and processed accordingly.
-     * This passphrase should be same as the one used to create the 
+     * This passphrase should be same as the one used to create the
      * public-private key pair
      * 
      * @param privateKeyString
@@ -217,7 +224,8 @@ public class JwtUtil {
      * @return PrivateKey
      * @throws InvalidPrivateKeyException
      */
-    private static PrivateKey derivePrivateKey(String privateKeyString, String passphrase) throws InvalidPrivateKeyException {
+    private static PrivateKey derivePrivateKey(String privateKeyString, String passphrase)
+            throws InvalidPrivateKeyException {
 
         PrivateKey privateKey = null;
         try {
@@ -233,35 +241,35 @@ public class JwtUtil {
         return privateKey;
     }
 
-    
-    /** 
+    /**
      * This method generates a JSON payload representing all the
-     * claims passed. It then signs this payload with the 
+     * claims passed. It then signs this payload with the
      * {@link java.security.PrivateKey}, creating a json web
      * signature (JWS) and then builds the JWT as a URL-safe
      * string
-     *  
+     * 
      * @param privateKey
      * @param claims
      * @return String
-     * @throws JwtGenerationException when the jwt generation fails. For instance if the private key is insufficient
+     * @throws JwtGenerationException when the jwt generation fails. For instance if
+     *                                the private key is insufficient
      */
-    private static String generateJwt(PrivateKey privateKey, Map<String, Object> claims) throws JwtGenerationException{
+    private static String generateJwt(PrivateKey privateKey, Map<String, Object> claims) throws JwtGenerationException {
         String jwToken = null;
-        try{
+        try {
             jwToken = Jwts.builder()
-                .claims(claims)
-                .signWith(privateKey, Jwts.SIG.RS256)
-                .compact();
+                    .claims(claims)
+                    .signWith(privateKey, Jwts.SIG.RS256)
+                    .compact();
 
-        }catch(Exception exception){
-            throw new JwtGenerationException(" Could not generate the JWT representing the claims. Exception"+ exception.getMessage());
+        } catch (Exception exception) {
+            throw new JwtGenerationException(
+                    " Could not generate the JWT representing the claims. Exception" + exception.getMessage());
         }
-        return jwToken; 
+        return jwToken;
     }
 
-    
-    /** 
+    /**
      * This method converts a private key string to
      * {@link java.security.PrivateKey} object
      * 
@@ -277,8 +285,7 @@ public class JwtUtil {
         return keyFactory.generatePrivate(keySpec);
     }
 
-    
-    /** 
+    /**
      * This method converts an encrypted private key string to
      * {@link java.security.PrivateKey} object
      * The passphrase which was used to generate the public-private
@@ -306,10 +313,9 @@ public class JwtUtil {
         return keyFactory.generatePrivate(pkcs8KeySpec);
     }
 
-    
-    /** 
-     * This method cleans up the private key string which is required to 
-     * decode the key material 
+    /**
+     * This method cleans up the private key string which is required to
+     * decode the key material
      * 
      * @param privateKey
      * @return String
@@ -320,8 +326,7 @@ public class JwtUtil {
                 .replace("\\n", "").trim();
     }
 
-    
-    /** 
+    /**
      * This method processes the response from the public key API call and extracts
      * the first key listed from the response
      * 
@@ -332,17 +337,20 @@ public class JwtUtil {
      * @throws JsonSyntaxException
      * @throws ParseException
      */
-    private static String decodeRespose(HttpEntity responseEntity) throws IOException, JsonSyntaxException, ParseException{
+    private static String decodeRespose(HttpEntity responseEntity)
+            throws IOException, JsonSyntaxException, ParseException {
         String extractedJwkFromResponse = null;
-        if(responseEntity != null){
+        if (responseEntity != null) {
             JsonElement responseAsJson = new Gson().fromJson(EntityUtils.toString(responseEntity), JsonElement.class);
-            JsonObject responseObject = responseAsJson.isJsonObject() ?  responseAsJson.getAsJsonObject() : null;
+            JsonObject responseObject = responseAsJson.isJsonObject() ? responseAsJson.getAsJsonObject() : null;
 
-            if(responseObject != null){
-                JsonArray setOfkeys = responseObject.getAsJsonArray("keys") ;
-                if(setOfkeys != null){
+            if (responseObject != null) {
+                JsonArray setOfkeys = responseObject.getAsJsonArray("keys");
+                if (setOfkeys != null) {
 
-                    JsonObject firstKeysAsObject = (setOfkeys != null && setOfkeys.size() > 0) ? setOfkeys.get(0).getAsJsonObject() : null;
+                    JsonObject firstKeysAsObject = (setOfkeys != null && setOfkeys.size() > 0)
+                            ? setOfkeys.get(0).getAsJsonObject()
+                            : null;
                     extractedJwkFromResponse = (firstKeysAsObject != null) ? firstKeysAsObject.toString() : null;
                 }
             }
