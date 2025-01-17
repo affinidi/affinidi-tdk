@@ -13,30 +13,29 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for IssuanceConfigMiniDto
  */
-public class IssuanceConfigMiniDtoTest {
+class IssuanceConfigMiniDtoTest {
     private final IssuanceConfigMiniDto model = new IssuanceConfigMiniDto();
 
     /**
      * Model tests for IssuanceConfigMiniDto
      */
     @Test
-    public void testIssuanceConfigMiniDto() {
+    void testIssuanceConfigMiniDto() {
         // TODO: test IssuanceConfigMiniDto
     }
 
@@ -44,7 +43,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -52,7 +51,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -60,7 +59,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'issuerDid'
      */
     @Test
-    public void issuerDidTest() {
+    void issuerDidTest() {
         // TODO: test issuerDid
     }
 
@@ -68,7 +67,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'issuerWalletId'
      */
     @Test
-    public void issuerWalletIdTest() {
+    void issuerWalletIdTest() {
         // TODO: test issuerWalletId
     }
 
@@ -76,7 +75,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'credentialOfferDuration'
      */
     @Test
-    public void credentialOfferDurationTest() {
+    void credentialOfferDurationTest() {
         // TODO: test credentialOfferDuration
     }
 
@@ -84,7 +83,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'cNonceDuration'
      */
     @Test
-    public void cNonceDurationTest() {
+    void cNonceDurationTest() {
         // TODO: test cNonceDuration
     }
 
@@ -92,7 +91,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -100,7 +99,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'issuerUri'
      */
     @Test
-    public void issuerUriTest() {
+    void issuerUriTest() {
         // TODO: test issuerUri
     }
 
@@ -108,7 +107,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'issuerMetadata'
      */
     @Test
-    public void issuerMetadataTest() {
+    void issuerMetadataTest() {
         // TODO: test issuerMetadata
     }
 
@@ -116,7 +115,7 @@ public class IssuanceConfigMiniDtoTest {
      * Test the property 'version'
      */
     @Test
-    public void versionTest() {
+    void versionTest() {
         // TODO: test version
     }
 

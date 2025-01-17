@@ -42,6 +42,8 @@ class TestStartIssuanceInputDataInnerStatusListDetailsInner(unittest.TestCase):
             )
         else:
             return StartIssuanceInputDataInnerStatusListDetailsInner(
+                purpose = 'REVOCABLE',
+                standard = 'RevocationList2020',
         )
         """
 

@@ -13,28 +13,30 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for RevokeCredentialInput
  */
-public class RevokeCredentialInputTest {
+class RevokeCredentialInputTest {
     private final RevokeCredentialInput model = new RevokeCredentialInput();
 
     /**
      * Model tests for RevokeCredentialInput
      */
     @Test
-    public void testRevokeCredentialInput() {
+    void testRevokeCredentialInput() {
         // TODO: test RevokeCredentialInput
     }
 
@@ -42,7 +44,7 @@ public class RevokeCredentialInputTest {
      * Test the property 'revocationReason'
      */
     @Test
-    public void revocationReasonTest() {
+    void revocationReasonTest() {
         // TODO: test revocationReason
     }
 
@@ -50,7 +52,7 @@ public class RevokeCredentialInputTest {
      * Test the property 'credentialId'
      */
     @Test
-    public void credentialIdTest() {
+    void credentialIdTest() {
         // TODO: test credentialId
     }
 

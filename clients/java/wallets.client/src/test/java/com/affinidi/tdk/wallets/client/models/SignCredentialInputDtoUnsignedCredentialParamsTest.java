@@ -13,29 +13,28 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SignCredentialInputDtoUnsignedCredentialParams
  */
-public class SignCredentialInputDtoUnsignedCredentialParamsTest {
+class SignCredentialInputDtoUnsignedCredentialParamsTest {
     private final SignCredentialInputDtoUnsignedCredentialParams model = new SignCredentialInputDtoUnsignedCredentialParams();
 
     /**
      * Model tests for SignCredentialInputDtoUnsignedCredentialParams
      */
     @Test
-    public void testSignCredentialInputDtoUnsignedCredentialParams() {
+    void testSignCredentialInputDtoUnsignedCredentialParams() {
         // TODO: test SignCredentialInputDtoUnsignedCredentialParams
     }
 
@@ -43,7 +42,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'jsonLdContextUrl'
      */
     @Test
-    public void jsonLdContextUrlTest() {
+    void jsonLdContextUrlTest() {
         // TODO: test jsonLdContextUrl
     }
 
@@ -51,7 +50,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'jsonSchemaUrl'
      */
     @Test
-    public void jsonSchemaUrlTest() {
+    void jsonSchemaUrlTest() {
         // TODO: test jsonSchemaUrl
     }
 
@@ -59,7 +58,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'typeName'
      */
     @Test
-    public void typeNameTest() {
+    void typeNameTest() {
         // TODO: test typeName
     }
 
@@ -67,7 +66,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'credentialSubject'
      */
     @Test
-    public void credentialSubjectTest() {
+    void credentialSubjectTest() {
         // TODO: test credentialSubject
     }
 
@@ -75,7 +74,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'holderDid'
      */
     @Test
-    public void holderDidTest() {
+    void holderDidTest() {
         // TODO: test holderDid
     }
 
@@ -83,7 +82,7 @@ public class SignCredentialInputDtoUnsignedCredentialParamsTest {
      * Test the property 'expiresAt'
      */
     @Test
-    public void expiresAtTest() {
+    void expiresAtTest() {
         // TODO: test expiresAt
     }
 

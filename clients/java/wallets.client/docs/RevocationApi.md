@@ -8,9 +8,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**getRevocationListCredential**](RevocationApi.md#getRevocationListCredential)     | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
 | [**revokeCredential**](RevocationApi.md#revokeCredential)                           | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
 
-<a id="getRevocationCredentialStatus"></a>
-
-# **getRevocationCredentialStatus**
+## getRevocationCredentialStatus
 
 > GetRevocationListCredentialResultDto getRevocationCredentialStatus(projectId, walletId, statusId)
 
@@ -28,31 +26,31 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.RevocationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    RevocationApi apiInstance = new RevocationApi(defaultClient);
-    String projectId = "projectId_example"; // String | Description for projectId.
-    String walletId = "walletId_example"; // String | Description for walletId.
-    String statusId = "statusId_example"; // String | Description for statusId.
-    try {
-      GetRevocationListCredentialResultDto result = apiInstance.getRevocationCredentialStatus(projectId, walletId, statusId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling RevocationApi#getRevocationCredentialStatus");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        RevocationApi apiInstance = new RevocationApi(defaultClient);
+        String projectId = "projectId_example"; // String | Description for projectId.
+        String walletId = "walletId_example"; // String | Description for walletId.
+        String statusId = "statusId_example"; // String | Description for statusId.
+        try {
+            GetRevocationListCredentialResultDto result = apiInstance.getRevocationCredentialStatus(projectId, walletId, statusId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RevocationApi#getRevocationCredentialStatus");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -84,9 +82,7 @@ public class Example {
 | **200**     | GetRevocationCredentialStatusOK | -                |
 | **404**     | NotFoundError                   | -                |
 
-<a id="getRevocationListCredential"></a>
-
-# **getRevocationListCredential**
+## getRevocationListCredential
 
 > GetRevocationListCredentialResultDto getRevocationListCredential(listId, walletId)
 
@@ -106,30 +102,30 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.RevocationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    RevocationApi apiInstance = new RevocationApi(defaultClient);
-    String listId = "listId_example"; // String |
-    String walletId = "walletId_example"; // String | id of the wallet
-    try {
-      GetRevocationListCredentialResultDto result = apiInstance.getRevocationListCredential(listId, walletId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling RevocationApi#getRevocationListCredential");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        RevocationApi apiInstance = new RevocationApi(defaultClient);
+        String listId = "listId_example"; // String |
+        String walletId = "walletId_example"; // String | id of the wallet
+        try {
+            GetRevocationListCredentialResultDto result = apiInstance.getRevocationListCredential(listId, walletId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RevocationApi#getRevocationListCredential");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -161,9 +157,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 
-<a id="revokeCredential"></a>
-
-# **revokeCredential**
+## revokeCredential
 
 > revokeCredential(walletId, revokeCredentialInput)
 
@@ -183,29 +177,29 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.RevocationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    RevocationApi apiInstance = new RevocationApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet
-    RevokeCredentialInput revokeCredentialInput = new RevokeCredentialInput(); // RevokeCredentialInput | RevokeCredential
-    try {
-      apiInstance.revokeCredential(walletId, revokeCredentialInput);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling RevocationApi#revokeCredential");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        RevocationApi apiInstance = new RevocationApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        RevokeCredentialInput revokeCredentialInput = new RevokeCredentialInput(); // RevokeCredentialInput | RevokeCredential
+        try {
+            apiInstance.revokeCredential(walletId, revokeCredentialInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RevocationApi#revokeCredential");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

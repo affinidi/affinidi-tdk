@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.30.1
+    hooks:
+      - id: commitizen
+  - repo: local
+    hooks:
+      - id: npm-audit
+        name: Run npm audit --omit=dev
+        description: Informs on potential vulnerabilities in NPM packages
+        entry: npm audit
+        args:
+          - --omit=dev
+          - --audit-level=none
+        language: node
+        verbose: true
+        pass_filenames: false

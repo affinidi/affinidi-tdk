@@ -15,29 +15,29 @@ package com.affinidi.tdk.login.configuration.client.models;
 
 import com.affinidi.tdk.login.configuration.client.models.CreateLoginConfigurationOutputAuth;
 import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationClientMetadataOutput;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateLoginConfigurationOutput
  */
-public class CreateLoginConfigurationOutputTest {
+class CreateLoginConfigurationOutputTest {
     private final CreateLoginConfigurationOutput model = new CreateLoginConfigurationOutput();
 
     /**
      * Model tests for CreateLoginConfigurationOutput
      */
     @Test
-    public void testCreateLoginConfigurationOutput() {
+    void testCreateLoginConfigurationOutput() {
         // TODO: test CreateLoginConfigurationOutput
     }
 
@@ -45,7 +45,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'ari'
      */
     @Test
-    public void ariTest() {
+    void ariTest() {
         // TODO: test ari
     }
 
@@ -53,7 +53,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'projectId'
      */
     @Test
-    public void projectIdTest() {
+    void projectIdTest() {
         // TODO: test projectId
     }
 
@@ -61,7 +61,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'configurationId'
      */
     @Test
-    public void configurationIdTest() {
+    void configurationIdTest() {
         // TODO: test configurationId
     }
 
@@ -69,7 +69,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -77,7 +77,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'auth'
      */
     @Test
-    public void authTest() {
+    void authTest() {
         // TODO: test auth
     }
 
@@ -85,7 +85,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'redirectUris'
      */
     @Test
-    public void redirectUrisTest() {
+    void redirectUrisTest() {
         // TODO: test redirectUris
     }
 
@@ -93,7 +93,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'clientMetadata'
      */
     @Test
-    public void clientMetadataTest() {
+    void clientMetadataTest() {
         // TODO: test clientMetadata
     }
 
@@ -101,7 +101,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'creationDate'
      */
     @Test
-    public void creationDateTest() {
+    void creationDateTest() {
         // TODO: test creationDate
     }
 
@@ -109,7 +109,7 @@ public class CreateLoginConfigurationOutputTest {
      * Test the property 'postLogoutRedirectUris'
      */
     @Test
-    public void postLogoutRedirectUrisTest() {
+    void postLogoutRedirectUrisTest() {
         // TODO: test postLogoutRedirectUris
     }
 

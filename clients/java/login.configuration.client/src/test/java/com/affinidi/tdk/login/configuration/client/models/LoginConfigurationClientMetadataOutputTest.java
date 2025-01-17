@@ -13,27 +13,28 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginConfigurationClientMetadataOutput
  */
-public class LoginConfigurationClientMetadataOutputTest {
+class LoginConfigurationClientMetadataOutputTest {
     private final LoginConfigurationClientMetadataOutput model = new LoginConfigurationClientMetadataOutput();
 
     /**
      * Model tests for LoginConfigurationClientMetadataOutput
      */
     @Test
-    public void testLoginConfigurationClientMetadataOutput() {
+    void testLoginConfigurationClientMetadataOutput() {
         // TODO: test LoginConfigurationClientMetadataOutput
     }
 
@@ -41,7 +42,7 @@ public class LoginConfigurationClientMetadataOutputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -49,7 +50,7 @@ public class LoginConfigurationClientMetadataOutputTest {
      * Test the property 'origin'
      */
     @Test
-    public void originTest() {
+    void originTest() {
         // TODO: test origin
     }
 
@@ -57,7 +58,7 @@ public class LoginConfigurationClientMetadataOutputTest {
      * Test the property 'logo'
      */
     @Test
-    public void logoTest() {
+    void logoTest() {
         // TODO: test logo
     }
 
@@ -65,7 +66,7 @@ public class LoginConfigurationClientMetadataOutputTest {
      * Test the property 'domainVerified'
      */
     @Test
-    public void domainVerifiedTest() {
+    void domainVerifiedTest() {
         // TODO: test domainVerified
     }
 

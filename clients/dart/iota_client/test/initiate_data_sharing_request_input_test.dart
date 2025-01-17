@@ -1,50 +1,53 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for InitiateDataSharingRequestInput
 void main() {
-  // final instance = InitiateDataSharingRequestInput();
+  final instance = InitiateDataSharingRequestInputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test InitiateDataSharingRequestInput', () {
+  group(InitiateDataSharingRequestInput, () {
+    // The ID of the query.
     // String queryId
     test('to test the property `queryId`', () async {
       // TODO
     });
 
+    // A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
     // String correlationId
     test('to test the property `correlationId`', () async {
       // TODO
     });
 
-    // token time to live in seconds
+    // This is the lifetime of the signed request token during the data-sharing flow.
     // int tokenMaxAge
     test('to test the property `tokenMaxAge`', () async {
       // TODO
     });
 
-    // Random value used to prevent replay attacks
+    // A randomly generated value that is added in the request and response to prevent replay attacks.
     // String nonce
     test('to test the property `nonce`', () async {
       // TODO
     });
 
-    // the URL that the user will be redirected to after the request has been processed; should be provided by the developer of the client application.
+    // List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
     // String redirectUri
     test('to test the property `redirectUri`', () async {
       // TODO
     });
 
+    // ID of the Affinidi Iota Framework configuration.
+    // String configurationId
+    test('to test the property `configurationId`', () async {
+      // TODO
+    });
+
+    // Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+    // String mode
+    test('to test the property `mode`', () async {
+      // TODO
+    });
 
   });
-
 }

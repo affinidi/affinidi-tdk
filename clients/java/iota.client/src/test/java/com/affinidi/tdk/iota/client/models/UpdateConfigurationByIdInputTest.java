@@ -14,30 +14,30 @@
 package com.affinidi.tdk.iota.client.models;
 
 import com.affinidi.tdk.iota.client.models.IotaConfigurationDtoClientMetadata;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for UpdateConfigurationByIdInput
  */
-public class UpdateConfigurationByIdInputTest {
+class UpdateConfigurationByIdInputTest {
     private final UpdateConfigurationByIdInput model = new UpdateConfigurationByIdInput();
 
     /**
      * Model tests for UpdateConfigurationByIdInput
      */
     @Test
-    public void testUpdateConfigurationByIdInput() {
+    void testUpdateConfigurationByIdInput() {
         // TODO: test UpdateConfigurationByIdInput
     }
 
@@ -45,7 +45,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -53,7 +53,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'walletAri'
      */
     @Test
-    public void walletAriTest() {
+    void walletAriTest() {
         // TODO: test walletAri
     }
 
@@ -61,7 +61,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'iotaResponseWebhookURL'
      */
     @Test
-    public void iotaResponseWebhookURLTest() {
+    void iotaResponseWebhookURLTest() {
         // TODO: test iotaResponseWebhookURL
     }
 
@@ -69,7 +69,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'enableVerification'
      */
     @Test
-    public void enableVerificationTest() {
+    void enableVerificationTest() {
         // TODO: test enableVerification
     }
 
@@ -77,7 +77,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'enableConsentAuditLog'
      */
     @Test
-    public void enableConsentAuditLogTest() {
+    void enableConsentAuditLogTest() {
         // TODO: test enableConsentAuditLog
     }
 
@@ -85,7 +85,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'tokenMaxAge'
      */
     @Test
-    public void tokenMaxAgeTest() {
+    void tokenMaxAgeTest() {
         // TODO: test tokenMaxAge
     }
 
@@ -93,7 +93,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -101,7 +101,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'clientMetadata'
      */
     @Test
-    public void clientMetadataTest() {
+    void clientMetadataTest() {
         // TODO: test clientMetadata
     }
 
@@ -109,7 +109,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'mode'
      */
     @Test
-    public void modeTest() {
+    void modeTest() {
         // TODO: test mode
     }
 
@@ -117,7 +117,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'redirectUris'
      */
     @Test
-    public void redirectUrisTest() {
+    void redirectUrisTest() {
         // TODO: test redirectUris
     }
 
@@ -125,7 +125,7 @@ public class UpdateConfigurationByIdInputTest {
      * Test the property 'enableIdvProviders'
      */
     @Test
-    public void enableIdvProvidersTest() {
+    void enableIdvProvidersTest() {
         // TODO: test enableIdvProviders
     }
 

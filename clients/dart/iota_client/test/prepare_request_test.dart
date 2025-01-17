@@ -1,23 +1,14 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for PrepareRequest
 void main() {
-  // final instance = PrepareRequest();
+  final instance = PrepareRequestBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test PrepareRequest', () {
-    // String iotClientId
-    test('to test the property `iotClientId`', () async {
+  group(PrepareRequest, () {
+    // String connectionClientId
+    test('to test the property `connectionClientId`', () async {
       // TODO
     });
 
@@ -26,12 +17,13 @@ void main() {
       // TODO
     });
 
+    // A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
     // String correlationId
     test('to test the property `correlationId`', () async {
       // TODO
     });
 
-    // token time to live in seconds
+    // This is the lifetime of the signed request token during the data-sharing flow.
     // int tokenMaxAge
     test('to test the property `tokenMaxAge`', () async {
       // TODO
@@ -42,7 +34,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

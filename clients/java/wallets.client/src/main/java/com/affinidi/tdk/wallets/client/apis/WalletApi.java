@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.apis;
 
-import com.affinidi.tdk.wallets.client.ApiCallback;
-import com.affinidi.tdk.wallets.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.wallets.client.ApiException;
-import com.affinidi.tdk.wallets.client.ApiResponse;
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.BaseApi;
 import com.affinidi.tdk.wallets.client.Configuration;
 import com.affinidi.tdk.wallets.client.Pair;
-import com.affinidi.tdk.wallets.client.ProgressRequestBody;
-import com.affinidi.tdk.wallets.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.wallets.client.models.CreateWalletInput;
 import com.affinidi.tdk.wallets.client.models.CreateWalletResponse;
@@ -41,978 +34,595 @@ import com.affinidi.tdk.wallets.client.models.UpdateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 import com.affinidi.tdk.wallets.client.models.WalletsListDto;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class WalletApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class WalletApi extends BaseApi {
 
-    public WalletApi() {
-        this(Configuration.getDefaultApiClient());
+  public WalletApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public WalletApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * creates a wallet
+   * @param createWalletInput CreateWallet (optional)
+   * @return CreateWalletResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput) throws ApiException {
+    return this.createWallet(createWalletInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * creates a wallet
+   * @param createWalletInput CreateWallet (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateWalletResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createWalletInput;
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<CreateWalletResponse> localVarReturnType = new TypeReference<CreateWalletResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * delete wallet by walletId
+   * @param walletId id of the wallet (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteWallet(String walletId) throws ApiException {
+    this.deleteWallet(walletId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * delete wallet by walletId
+   * @param walletId id of the wallet (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling deleteWallet");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public WalletApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * 
+   * get wallet details using wallet Id.
+   * @param walletId id of the wallet (required)
+   * @return WalletDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletDto getWallet(String walletId) throws ApiException {
+    return this.getWallet(walletId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * get wallet details using wallet Id.
+   * @param walletId id of the wallet (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return WalletDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletDto getWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getWallet");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * lists all wallets
+   * @param didType  (optional)
+   * @return WalletsListDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletsListDto listWallets(String didType) throws ApiException {
+    return this.listWallets(didType, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * lists all wallets
+   * @param didType  (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return WalletsListDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletsListDto listWallets(String didType, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("didType", didType));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<WalletsListDto> localVarReturnType = new TypeReference<WalletsListDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * signs credential with the wallet
+   * @param walletId id of the wallet (required)
+   * @param signCredentialInputDto SignCredential (required)
+   * @return SignCredentialResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto) throws ApiException {
+    return this.signCredential(walletId, signCredentialInputDto, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * signs credential with the wallet
+   * @param walletId id of the wallet (required)
+   * @param signCredentialInputDto SignCredential (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SignCredentialResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = signCredentialInputDto;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredential");
     }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'signCredentialInputDto' is set
+    if (signCredentialInputDto == null) {
+      throw new ApiException(400, "Missing the required parameter 'signCredentialInputDto' when calling signCredential");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}/sign-credential"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public int getHostIndex() {
-        return localHostIndex;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<SignCredentialResultDto> localVarReturnType = new TypeReference<SignCredentialResultDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * signs a jwt token with the wallet
+   * @param walletId id of the wallet. (required)
+   * @param signJwtToken SignJwtToken (required)
+   * @return SignJwtTokenOK
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken) throws ApiException {
+    return this.signJwtToken(walletId, signJwtToken, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * signs a jwt token with the wallet
+   * @param walletId id of the wallet. (required)
+   * @param signJwtToken SignJwtToken (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SignJwtTokenOK
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = signJwtToken;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtToken");
     }
-
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
+    
+    // verify the required parameter 'signJwtToken' is set
+    if (signJwtToken == null) {
+      throw new ApiException(400, "Missing the required parameter 'signJwtToken' when calling signJwtToken");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}/sign-jwt"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<SignJwtTokenOK> localVarReturnType = new TypeReference<SignJwtTokenOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * update wallet details using wallet Id.
+   * @param walletId id of the wallet (required)
+   * @param updateWalletInput UpdateWallet (required)
+   * @return WalletDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
+    return this.updateWallet(walletId, updateWalletInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * update wallet details using wallet Id.
+   * @param walletId id of the wallet (required)
+   * @param updateWalletInput UpdateWallet (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return WalletDto
+   * @throws ApiException if fails to make API call
+   */
+  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateWalletInput;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling updateWallet");
     }
-
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
+    
+    // verify the required parameter 'updateWalletInput' is set
+    if (updateWalletInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateWalletInput' when calling updateWallet");
     }
-
-    /**
-     * Build call for createWallet
-     * @param createWalletInput CreateWallet (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createWalletCall(CreateWalletInput createWalletInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createWalletInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createWalletValidateBeforeCall(CreateWalletInput createWalletInput, final ApiCallback _callback) throws ApiException {
-        return createWalletCall(createWalletInput, _callback);
-
-    }
-
-    /**
-     * 
-     * creates a wallet
-     * @param createWalletInput CreateWallet (optional)
-     * @return CreateWalletResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public CreateWalletResponse createWallet(CreateWalletInput createWalletInput) throws ApiException {
-        ApiResponse<CreateWalletResponse> localVarResp = createWalletWithHttpInfo(createWalletInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * creates a wallet
-     * @param createWalletInput CreateWallet (optional)
-     * @return ApiResponse&lt;CreateWalletResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CreateWalletResponse> createWalletWithHttpInfo(CreateWalletInput createWalletInput) throws ApiException {
-        okhttp3.Call localVarCall = createWalletValidateBeforeCall(createWalletInput, null);
-        Type localVarReturnType = new TypeToken<CreateWalletResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * creates a wallet
-     * @param createWalletInput CreateWallet (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createWalletAsync(CreateWalletInput createWalletInput, final ApiCallback<CreateWalletResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createWalletValidateBeforeCall(createWalletInput, _callback);
-        Type localVarReturnType = new TypeToken<CreateWalletResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteWallet
-     * @param walletId id of the wallet (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteWalletCall(String walletId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteWalletValidateBeforeCall(String walletId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling deleteWallet(Async)");
-        }
-
-        return deleteWalletCall(walletId, _callback);
-
-    }
-
-    /**
-     * 
-     * delete wallet by walletId
-     * @param walletId id of the wallet (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteWallet(String walletId) throws ApiException {
-        deleteWalletWithHttpInfo(walletId);
-    }
-
-    /**
-     * 
-     * delete wallet by walletId
-     * @param walletId id of the wallet (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteWalletWithHttpInfo(String walletId) throws ApiException {
-        okhttp3.Call localVarCall = deleteWalletValidateBeforeCall(walletId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * delete wallet by walletId
-     * @param walletId id of the wallet (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteWalletAsync(String walletId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteWalletValidateBeforeCall(walletId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getWallet
-     * @param walletId id of the wallet (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWalletCall(String walletId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWalletValidateBeforeCall(String walletId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling getWallet(Async)");
-        }
-
-        return getWalletCall(walletId, _callback);
-
-    }
-
-    /**
-     * 
-     * get wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @return WalletDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public WalletDto getWallet(String walletId) throws ApiException {
-        ApiResponse<WalletDto> localVarResp = getWalletWithHttpInfo(walletId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * get wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @return ApiResponse&lt;WalletDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<WalletDto> getWalletWithHttpInfo(String walletId) throws ApiException {
-        okhttp3.Call localVarCall = getWalletValidateBeforeCall(walletId, null);
-        Type localVarReturnType = new TypeToken<WalletDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * get wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWalletAsync(String walletId, final ApiCallback<WalletDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getWalletValidateBeforeCall(walletId, _callback);
-        Type localVarReturnType = new TypeToken<WalletDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listWallets
-     * @param didType  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listWalletsCall(String didType, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (didType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("didType", didType));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listWalletsValidateBeforeCall(String didType, final ApiCallback _callback) throws ApiException {
-        return listWalletsCall(didType, _callback);
-
-    }
-
-    /**
-     * 
-     * lists all wallets
-     * @param didType  (optional)
-     * @return WalletsListDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public WalletsListDto listWallets(String didType) throws ApiException {
-        ApiResponse<WalletsListDto> localVarResp = listWalletsWithHttpInfo(didType);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * lists all wallets
-     * @param didType  (optional)
-     * @return ApiResponse&lt;WalletsListDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<WalletsListDto> listWalletsWithHttpInfo(String didType) throws ApiException {
-        okhttp3.Call localVarCall = listWalletsValidateBeforeCall(didType, null);
-        Type localVarReturnType = new TypeToken<WalletsListDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * lists all wallets
-     * @param didType  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listWalletsAsync(String didType, final ApiCallback<WalletsListDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listWalletsValidateBeforeCall(didType, _callback);
-        Type localVarReturnType = new TypeToken<WalletsListDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for signCredential
-     * @param walletId id of the wallet (required)
-     * @param signCredentialInputDto SignCredential (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call signCredentialCall(String walletId, SignCredentialInputDto signCredentialInputDto, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = signCredentialInputDto;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}/sign-credential"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call signCredentialValidateBeforeCall(String walletId, SignCredentialInputDto signCredentialInputDto, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling signCredential(Async)");
-        }
-
-        // verify the required parameter 'signCredentialInputDto' is set
-        if (signCredentialInputDto == null) {
-            throw new ApiException("Missing the required parameter 'signCredentialInputDto' when calling signCredential(Async)");
-        }
-
-        return signCredentialCall(walletId, signCredentialInputDto, _callback);
-
-    }
-
-    /**
-     * 
-     * signs credential with the wallet
-     * @param walletId id of the wallet (required)
-     * @param signCredentialInputDto SignCredential (required)
-     * @return SignCredentialResultDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto) throws ApiException {
-        ApiResponse<SignCredentialResultDto> localVarResp = signCredentialWithHttpInfo(walletId, signCredentialInputDto);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * signs credential with the wallet
-     * @param walletId id of the wallet (required)
-     * @param signCredentialInputDto SignCredential (required)
-     * @return ApiResponse&lt;SignCredentialResultDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SignCredentialResultDto> signCredentialWithHttpInfo(String walletId, SignCredentialInputDto signCredentialInputDto) throws ApiException {
-        okhttp3.Call localVarCall = signCredentialValidateBeforeCall(walletId, signCredentialInputDto, null);
-        Type localVarReturnType = new TypeToken<SignCredentialResultDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * signs credential with the wallet
-     * @param walletId id of the wallet (required)
-     * @param signCredentialInputDto SignCredential (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call signCredentialAsync(String walletId, SignCredentialInputDto signCredentialInputDto, final ApiCallback<SignCredentialResultDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = signCredentialValidateBeforeCall(walletId, signCredentialInputDto, _callback);
-        Type localVarReturnType = new TypeToken<SignCredentialResultDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for signJwtToken
-     * @param walletId id of the wallet. (required)
-     * @param signJwtToken SignJwtToken (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SignJwtTokenOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call signJwtTokenCall(String walletId, SignJwtToken signJwtToken, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = signJwtToken;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}/sign-jwt"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call signJwtTokenValidateBeforeCall(String walletId, SignJwtToken signJwtToken, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling signJwtToken(Async)");
-        }
-
-        // verify the required parameter 'signJwtToken' is set
-        if (signJwtToken == null) {
-            throw new ApiException("Missing the required parameter 'signJwtToken' when calling signJwtToken(Async)");
-        }
-
-        return signJwtTokenCall(walletId, signJwtToken, _callback);
-
-    }
-
-    /**
-     * 
-     * signs a jwt token with the wallet
-     * @param walletId id of the wallet. (required)
-     * @param signJwtToken SignJwtToken (required)
-     * @return SignJwtTokenOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SignJwtTokenOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken) throws ApiException {
-        ApiResponse<SignJwtTokenOK> localVarResp = signJwtTokenWithHttpInfo(walletId, signJwtToken);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * signs a jwt token with the wallet
-     * @param walletId id of the wallet. (required)
-     * @param signJwtToken SignJwtToken (required)
-     * @return ApiResponse&lt;SignJwtTokenOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SignJwtTokenOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SignJwtTokenOK> signJwtTokenWithHttpInfo(String walletId, SignJwtToken signJwtToken) throws ApiException {
-        okhttp3.Call localVarCall = signJwtTokenValidateBeforeCall(walletId, signJwtToken, null);
-        Type localVarReturnType = new TypeToken<SignJwtTokenOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * signs a jwt token with the wallet
-     * @param walletId id of the wallet. (required)
-     * @param signJwtToken SignJwtToken (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> SignJwtTokenOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call signJwtTokenAsync(String walletId, SignJwtToken signJwtToken, final ApiCallback<SignJwtTokenOK> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = signJwtTokenValidateBeforeCall(walletId, signJwtToken, _callback);
-        Type localVarReturnType = new TypeToken<SignJwtTokenOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateWallet
-     * @param walletId id of the wallet (required)
-     * @param updateWalletInput UpdateWallet (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateWalletCall(String walletId, UpdateWalletInput updateWalletInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateWalletInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/wallets/{walletId}"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateWalletValidateBeforeCall(String walletId, UpdateWalletInput updateWalletInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling updateWallet(Async)");
-        }
-
-        // verify the required parameter 'updateWalletInput' is set
-        if (updateWalletInput == null) {
-            throw new ApiException("Missing the required parameter 'updateWalletInput' when calling updateWallet(Async)");
-        }
-
-        return updateWalletCall(walletId, updateWalletInput, _callback);
-
-    }
-
-    /**
-     * 
-     * update wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @param updateWalletInput UpdateWallet (required)
-     * @return WalletDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
-        ApiResponse<WalletDto> localVarResp = updateWalletWithHttpInfo(walletId, updateWalletInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * update wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @param updateWalletInput UpdateWallet (required)
-     * @return ApiResponse&lt;WalletDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<WalletDto> updateWalletWithHttpInfo(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
-        okhttp3.Call localVarCall = updateWalletValidateBeforeCall(walletId, updateWalletInput, null);
-        Type localVarReturnType = new TypeToken<WalletDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * update wallet details using wallet Id.
-     * @param walletId id of the wallet (required)
-     * @param updateWalletInput UpdateWallet (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateWalletAsync(String walletId, UpdateWalletInput updateWalletInput, final ApiCallback<WalletDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateWalletValidateBeforeCall(walletId, updateWalletInput, _callback);
-        Type localVarReturnType = new TypeToken<WalletDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/wallets/{walletId}"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

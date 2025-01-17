@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
-import com.affinidi.tdk.login.configuration.client.ApiCallback;
-import com.affinidi.tdk.login.configuration.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.login.configuration.client.ApiException;
-import com.affinidi.tdk.login.configuration.client.ApiResponse;
+import com.affinidi.tdk.login.configuration.client.ApiClient;
+import com.affinidi.tdk.login.configuration.client.BaseApi;
 import com.affinidi.tdk.login.configuration.client.Configuration;
 import com.affinidi.tdk.login.configuration.client.Pair;
-import com.affinidi.tdk.login.configuration.client.ProgressRequestBody;
-import com.affinidi.tdk.login.configuration.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.login.configuration.client.models.ActionForbiddenError;
 import com.affinidi.tdk.login.configuration.client.models.CreateLoginConfigurationInput;
@@ -39,839 +32,504 @@ import com.affinidi.tdk.login.configuration.client.models.NotFoundError;
 import com.affinidi.tdk.login.configuration.client.models.ResourceCreationError;
 import com.affinidi.tdk.login.configuration.client.models.UpdateLoginConfigurationInput;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class ConfigurationApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class ConfigurationApi extends BaseApi {
 
-    public ConfigurationApi() {
-        this(Configuration.getDefaultApiClient());
+  public ConfigurationApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public ConfigurationApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * Create a new login configuration
+   * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
+   * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
+   * @return CreateLoginConfigurationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
+    return this.createLoginConfigurations(createLoginConfigurationInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * Create a new login configuration
+   * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
+   * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateLoginConfigurationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createLoginConfigurationInput;
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<CreateLoginConfigurationOutput> localVarReturnType = new TypeReference<CreateLoginConfigurationOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Delete login configurations by ID
+   * Delete login configurations by ID
+   * @param configurationId The id of the login configuration (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteLoginConfigurationsById(String configurationId) throws ApiException {
+    this.deleteLoginConfigurationsById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Delete login configurations by ID
+   * Delete login configurations by ID
+   * @param configurationId The id of the login configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deleteLoginConfigurationsById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public ConfigurationApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * Get Client Metadata By  OAuth 2.0 Client ID
+   * Get Client Metadata By  OAuth 2.0 Client ID
+   * @param clientId OAuth 2.0 Client ID (required)
+   * @return LoginConfigurationClientMetadataOutput
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId) throws ApiException {
+    return this.getClientMetadataByClientId(clientId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get Client Metadata By  OAuth 2.0 Client ID
+   * Get Client Metadata By  OAuth 2.0 Client ID
+   * @param clientId OAuth 2.0 Client ID (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return LoginConfigurationClientMetadataOutput
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'clientId' is set
+    if (clientId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clientId' when calling getClientMetadataByClientId");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations/metadata/{clientId}"
+      .replaceAll("\\{" + "clientId" + "\\}", apiClient.escapeString(apiClient.parameterToString(clientId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+    TypeReference<LoginConfigurationClientMetadataOutput> localVarReturnType = new TypeReference<LoginConfigurationClientMetadataOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Get login configuration by ID
+   * Get login configuration by ID
+   * @param configurationId The id of the login configuration (required)
+   * @return LoginConfigurationObject
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationObject getLoginConfigurationsById(String configurationId) throws ApiException {
+    return this.getLoginConfigurationsById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get login configuration by ID
+   * Get login configuration by ID
+   * @param configurationId The id of the login configuration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return LoginConfigurationObject
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationObject getLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getLoginConfigurationsById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List login configurations
+   * Endpoint to retrieve list of login configurations
+   * @param limit Maximum number of records to fetch in a list (optional)
+   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
+   * @return ListLoginConfigurationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey) throws ApiException {
+    return this.listLoginConfigurations(limit, exclusiveStartKey, Collections.emptyMap());
+  }
+
+
+  /**
+   * List login configurations
+   * Endpoint to retrieve list of login configurations
+   * @param limit Maximum number of records to fetch in a list (optional)
+   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ListLoginConfigurationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<ListLoginConfigurationOutput> localVarReturnType = new TypeReference<ListLoginConfigurationOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Update login configurations by ID
+   * Update login configurations by ID
+   * @param configurationId The id of the login configuration (required)
+   * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
+   * @return LoginConfigurationObject
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
+    return this.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * Update login configurations by ID
+   * Update login configurations by ID
+   * @param configurationId The id of the login configuration (required)
+   * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return LoginConfigurationObject
+   * @throws ApiException if fails to make API call
+   */
+  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateLoginConfigurationInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling updateLoginConfigurationsById");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
-    }
-
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
-
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
-
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
-
-    /**
-     * Build call for createLoginConfigurations
-     * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 424 </td><td> FailedDependencyError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createLoginConfigurationsCall(CreateLoginConfigurationInput createLoginConfigurationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createLoginConfigurationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLoginConfigurationsValidateBeforeCall(CreateLoginConfigurationInput createLoginConfigurationInput, final ApiCallback _callback) throws ApiException {
-        return createLoginConfigurationsCall(createLoginConfigurationInput, _callback);
-
-    }
-
-    /**
-     * Create a new login configuration
-     * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
-     * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-     * @return CreateLoginConfigurationOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 424 </td><td> FailedDependencyError </td><td>  -  </td></tr>
-     </table>
-     */
-    public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
-        ApiResponse<CreateLoginConfigurationOutput> localVarResp = createLoginConfigurationsWithHttpInfo(createLoginConfigurationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create a new login configuration
-     * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
-     * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-     * @return ApiResponse&lt;CreateLoginConfigurationOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 424 </td><td> FailedDependencyError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CreateLoginConfigurationOutput> createLoginConfigurationsWithHttpInfo(CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
-        okhttp3.Call localVarCall = createLoginConfigurationsValidateBeforeCall(createLoginConfigurationInput, null);
-        Type localVarReturnType = new TypeToken<CreateLoginConfigurationOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create a new login configuration (asynchronously)
-     * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
-     * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 424 </td><td> FailedDependencyError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createLoginConfigurationsAsync(CreateLoginConfigurationInput createLoginConfigurationInput, final ApiCallback<CreateLoginConfigurationOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createLoginConfigurationsValidateBeforeCall(createLoginConfigurationInput, _callback);
-        Type localVarReturnType = new TypeToken<CreateLoginConfigurationOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteLoginConfigurationsById
-     * @param configurationId The id of the login configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLoginConfigurationsByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLoginConfigurationsByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling deleteLoginConfigurationsById(Async)");
-        }
-
-        return deleteLoginConfigurationsByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * Delete login configurations by ID
-     * Delete login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteLoginConfigurationsById(String configurationId) throws ApiException {
-        deleteLoginConfigurationsByIdWithHttpInfo(configurationId);
-    }
-
-    /**
-     * Delete login configurations by ID
-     * Delete login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteLoginConfigurationsByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = deleteLoginConfigurationsByIdValidateBeforeCall(configurationId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete login configurations by ID (asynchronously)
-     * Delete login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteLoginConfigurationsByIdAsync(String configurationId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteLoginConfigurationsByIdValidateBeforeCall(configurationId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getClientMetadataByClientId
-     * @param clientId OAuth 2.0 Client ID (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getClientMetadataByClientIdCall(String clientId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations/metadata/{clientId}"
-            .replace("{" + "clientId" + "}", localVarApiClient.escapeString(clientId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getClientMetadataByClientIdValidateBeforeCall(String clientId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'clientId' is set
-        if (clientId == null) {
-            throw new ApiException("Missing the required parameter 'clientId' when calling getClientMetadataByClientId(Async)");
-        }
-
-        return getClientMetadataByClientIdCall(clientId, _callback);
-
-    }
-
-    /**
-     * Get Client Metadata By  OAuth 2.0 Client ID
-     * Get Client Metadata By  OAuth 2.0 Client ID
-     * @param clientId OAuth 2.0 Client ID (required)
-     * @return LoginConfigurationClientMetadataOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId) throws ApiException {
-        ApiResponse<LoginConfigurationClientMetadataOutput> localVarResp = getClientMetadataByClientIdWithHttpInfo(clientId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get Client Metadata By  OAuth 2.0 Client ID
-     * Get Client Metadata By  OAuth 2.0 Client ID
-     * @param clientId OAuth 2.0 Client ID (required)
-     * @return ApiResponse&lt;LoginConfigurationClientMetadataOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LoginConfigurationClientMetadataOutput> getClientMetadataByClientIdWithHttpInfo(String clientId) throws ApiException {
-        okhttp3.Call localVarCall = getClientMetadataByClientIdValidateBeforeCall(clientId, null);
-        Type localVarReturnType = new TypeToken<LoginConfigurationClientMetadataOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get Client Metadata By  OAuth 2.0 Client ID (asynchronously)
-     * Get Client Metadata By  OAuth 2.0 Client ID
-     * @param clientId OAuth 2.0 Client ID (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getClientMetadataByClientIdAsync(String clientId, final ApiCallback<LoginConfigurationClientMetadataOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getClientMetadataByClientIdValidateBeforeCall(clientId, _callback);
-        Type localVarReturnType = new TypeToken<LoginConfigurationClientMetadataOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getLoginConfigurationsById
-     * @param configurationId The id of the login configuration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLoginConfigurationsByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoginConfigurationsByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling getLoginConfigurationsById(Async)");
-        }
-
-        return getLoginConfigurationsByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * Get login configuration by ID
-     * Get login configuration by ID
-     * @param configurationId The id of the login configuration (required)
-     * @return LoginConfigurationObject
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public LoginConfigurationObject getLoginConfigurationsById(String configurationId) throws ApiException {
-        ApiResponse<LoginConfigurationObject> localVarResp = getLoginConfigurationsByIdWithHttpInfo(configurationId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get login configuration by ID
-     * Get login configuration by ID
-     * @param configurationId The id of the login configuration (required)
-     * @return ApiResponse&lt;LoginConfigurationObject&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LoginConfigurationObject> getLoginConfigurationsByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = getLoginConfigurationsByIdValidateBeforeCall(configurationId, null);
-        Type localVarReturnType = new TypeToken<LoginConfigurationObject>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get login configuration by ID (asynchronously)
-     * Get login configuration by ID
-     * @param configurationId The id of the login configuration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getLoginConfigurationsByIdAsync(String configurationId, final ApiCallback<LoginConfigurationObject> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getLoginConfigurationsByIdValidateBeforeCall(configurationId, _callback);
-        Type localVarReturnType = new TypeToken<LoginConfigurationObject>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listLoginConfigurations
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listLoginConfigurationsCall(Integer limit, String exclusiveStartKey, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (exclusiveStartKey != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLoginConfigurationsValidateBeforeCall(Integer limit, String exclusiveStartKey, final ApiCallback _callback) throws ApiException {
-        return listLoginConfigurationsCall(limit, exclusiveStartKey, _callback);
-
-    }
-
-    /**
-     * List login configurations
-     * Endpoint to retrieve list of login configurations
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @return ListLoginConfigurationOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey) throws ApiException {
-        ApiResponse<ListLoginConfigurationOutput> localVarResp = listLoginConfigurationsWithHttpInfo(limit, exclusiveStartKey);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List login configurations
-     * Endpoint to retrieve list of login configurations
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @return ApiResponse&lt;ListLoginConfigurationOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListLoginConfigurationOutput> listLoginConfigurationsWithHttpInfo(Integer limit, String exclusiveStartKey) throws ApiException {
-        okhttp3.Call localVarCall = listLoginConfigurationsValidateBeforeCall(limit, exclusiveStartKey, null);
-        Type localVarReturnType = new TypeToken<ListLoginConfigurationOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List login configurations (asynchronously)
-     * Endpoint to retrieve list of login configurations
-     * @param limit Maximum number of records to fetch in a list (optional)
-     * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listLoginConfigurationsAsync(Integer limit, String exclusiveStartKey, final ApiCallback<ListLoginConfigurationOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listLoginConfigurationsValidateBeforeCall(limit, exclusiveStartKey, _callback);
-        Type localVarReturnType = new TypeToken<ListLoginConfigurationOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateLoginConfigurationsById
-     * @param configurationId The id of the login configuration (required)
-     * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateLoginConfigurationsByIdCall(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateLoginConfigurationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/login/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateLoginConfigurationsByIdValidateBeforeCall(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling updateLoginConfigurationsById(Async)");
-        }
-
-        return updateLoginConfigurationsByIdCall(configurationId, updateLoginConfigurationInput, _callback);
-
-    }
-
-    /**
-     * Update login configurations by ID
-     * Update login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-     * @return LoginConfigurationObject
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
-        ApiResponse<LoginConfigurationObject> localVarResp = updateLoginConfigurationsByIdWithHttpInfo(configurationId, updateLoginConfigurationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Update login configurations by ID
-     * Update login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-     * @return ApiResponse&lt;LoginConfigurationObject&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LoginConfigurationObject> updateLoginConfigurationsByIdWithHttpInfo(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
-        okhttp3.Call localVarCall = updateLoginConfigurationsByIdValidateBeforeCall(configurationId, updateLoginConfigurationInput, null);
-        Type localVarReturnType = new TypeToken<LoginConfigurationObject>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Update login configurations by ID (asynchronously)
-     * Update login configurations by ID
-     * @param configurationId The id of the login configuration (required)
-     * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateLoginConfigurationOutput </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateLoginConfigurationsByIdAsync(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, final ApiCallback<LoginConfigurationObject> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateLoginConfigurationsByIdValidateBeforeCall(configurationId, updateLoginConfigurationInput, _callback);
-        Type localVarReturnType = new TypeToken<LoginConfigurationObject>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/login/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

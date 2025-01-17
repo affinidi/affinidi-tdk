@@ -18,9 +18,12 @@ import com.affinidi.tdk.credential.issuance.client.models.CreateCredentialInput;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.GenerateCredentials400Response;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidJwtTokenError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,14 +40,15 @@ public class CredentialsApiTest {
     /**
      * Issue credential for end user upon presentation a valid access token. Since we don&#39;t immediate issue credential It&#39;s expected to return &#x60;transaction_id&#x60; and use this &#x60;transaction_id&#x60; to get the deferred credentials
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void generateCredentialsTest() throws ApiException {
         String projectId = null;
         CreateCredentialInput createCredentialInput = null;
         CredentialResponse response = api.generateCredentials(projectId, createCredentialInput);
+
         // TODO: test validations
     }
-
 }

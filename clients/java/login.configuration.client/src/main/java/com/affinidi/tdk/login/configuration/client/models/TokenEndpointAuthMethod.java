@@ -14,19 +14,19 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.annotations.SerializedName;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
-import java.io.IOException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.JsonElement;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Requested Client Authentication method for the Token Endpoint. The options are: &#x60;client_secret_post&#x60;: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. &#x60;client_secret_basic&#x60;: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. &#x60;none&#x60;: For public clients (native/mobile apps) which can not have secret. 
  */
-@JsonAdapter(TokenEndpointAuthMethod.Adapter.class)
 public enum TokenEndpointAuthMethod {
   
   CLIENT_SECRET_BASIC("client_secret_basic"),
@@ -41,6 +41,7 @@ public enum TokenEndpointAuthMethod {
     this.value = value;
   }
 
+  @JsonValue
   public String getValue() {
     return value;
   }
@@ -50,6 +51,7 @@ public enum TokenEndpointAuthMethod {
     return String.valueOf(value);
   }
 
+  @JsonCreator
   public static TokenEndpointAuthMethod fromValue(String value) {
     for (TokenEndpointAuthMethod b : TokenEndpointAuthMethod.values()) {
       if (b.value.equals(value)) {
@@ -59,22 +61,18 @@ public enum TokenEndpointAuthMethod {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<TokenEndpointAuthMethod> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final TokenEndpointAuthMethod enumeration) throws IOException {
-      jsonWriter.value(enumeration.getValue());
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    if (prefix == null) {
+      prefix = "";
     }
 
-    @Override
-    public TokenEndpointAuthMethod read(final JsonReader jsonReader) throws IOException {
-      String value = jsonReader.nextString();
-      return TokenEndpointAuthMethod.fromValue(value);
-    }
-  }
-
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-    String value = jsonElement.getAsString();
-    TokenEndpointAuthMethod.fromValue(value);
+    return String.format("%s=%s", prefix, this.toString());
   }
 }
 

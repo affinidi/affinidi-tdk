@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for SupportedCredentialMetadataDisplayInner
 void main() {
-  // final instance = SupportedCredentialMetadataDisplayInner();
+  final instance = SupportedCredentialMetadataDisplayInnerBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test SupportedCredentialMetadataDisplayInner', () {
+  group(SupportedCredentialMetadataDisplayInner, () {
     // String name
     test('to test the property `name`', () async {
       // TODO
@@ -41,7 +32,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

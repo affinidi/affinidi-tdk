@@ -14,71 +14,54 @@
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.iota.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * InitiateDataSharingRequestInput
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:17:17.244171119Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  InitiateDataSharingRequestInput.JSON_PROPERTY_QUERY_ID,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_CORRELATION_ID,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_TOKEN_MAX_AGE,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_NONCE,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_REDIRECT_URI,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_CONFIGURATION_ID,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_MODE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InitiateDataSharingRequestInput {
-  public static final String SERIALIZED_NAME_QUERY_ID = "queryId";
-  @SerializedName(SERIALIZED_NAME_QUERY_ID)
+  public static final String JSON_PROPERTY_QUERY_ID = "queryId";
   private String queryId;
 
-  public static final String SERIALIZED_NAME_CORRELATION_ID = "correlationId";
-  @SerializedName(SERIALIZED_NAME_CORRELATION_ID)
+  public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   private String correlationId;
 
-  public static final String SERIALIZED_NAME_TOKEN_MAX_AGE = "tokenMaxAge";
-  @SerializedName(SERIALIZED_NAME_TOKEN_MAX_AGE)
+  public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
   private BigDecimal tokenMaxAge;
 
-  public static final String SERIALIZED_NAME_NONCE = "nonce";
-  @SerializedName(SERIALIZED_NAME_NONCE)
+  public static final String JSON_PROPERTY_NONCE = "nonce";
   private String nonce;
 
-  public static final String SERIALIZED_NAME_REDIRECT_URI = "redirectUri";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
+  public static final String JSON_PROPERTY_REDIRECT_URI = "redirectUri";
   private String redirectUri;
 
-  public static final String SERIALIZED_NAME_CONFIGURATION_ID = "configurationId";
-  @SerializedName(SERIALIZED_NAME_CONFIGURATION_ID)
+  public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
   private String configurationId;
 
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
    */
-  @JsonAdapter(ModeEnum.Adapter.class)
   public enum ModeEnum {
     REDIRECT("redirect"),
     
@@ -90,6 +73,7 @@ public class InitiateDataSharingRequestInput {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -99,6 +83,7 @@ public class InitiateDataSharingRequestInput {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ModeEnum fromValue(String value) {
       for (ModeEnum b : ModeEnum.values()) {
         if (b.value.equals(value)) {
@@ -107,34 +92,16 @@ public class InitiateDataSharingRequestInput {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ModeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ModeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ModeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ModeEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_MODE = "mode";
-  @SerializedName(SERIALIZED_NAME_MODE)
+  public static final String JSON_PROPERTY_MODE = "mode";
   private ModeEnum mode;
 
   public InitiateDataSharingRequestInput() {
   }
 
   public InitiateDataSharingRequestInput queryId(String queryId) {
+    
     this.queryId = queryId;
     return this;
   }
@@ -144,16 +111,22 @@ public class InitiateDataSharingRequestInput {
    * @return queryId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getQueryId() {
     return queryId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setQueryId(String queryId) {
     this.queryId = queryId;
   }
 
-
   public InitiateDataSharingRequestInput correlationId(String correlationId) {
+    
     this.correlationId = correlationId;
     return this;
   }
@@ -163,16 +136,22 @@ public class InitiateDataSharingRequestInput {
    * @return correlationId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCorrelationId() {
     return correlationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCorrelationId(String correlationId) {
     this.correlationId = correlationId;
   }
 
-
   public InitiateDataSharingRequestInput tokenMaxAge(BigDecimal tokenMaxAge) {
+    
     this.tokenMaxAge = tokenMaxAge;
     return this;
   }
@@ -182,16 +161,22 @@ public class InitiateDataSharingRequestInput {
    * @return tokenMaxAge
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getTokenMaxAge() {
     return tokenMaxAge;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenMaxAge(BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-
   public InitiateDataSharingRequestInput nonce(String nonce) {
+    
     this.nonce = nonce;
     return this;
   }
@@ -201,16 +186,22 @@ public class InitiateDataSharingRequestInput {
    * @return nonce
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getNonce() {
     return nonce;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNonce(String nonce) {
     this.nonce = nonce;
   }
 
-
   public InitiateDataSharingRequestInput redirectUri(String redirectUri) {
+    
     this.redirectUri = redirectUri;
     return this;
   }
@@ -220,16 +211,22 @@ public class InitiateDataSharingRequestInput {
    * @return redirectUri
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getRedirectUri() {
     return redirectUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRedirectUri(String redirectUri) {
     this.redirectUri = redirectUri;
   }
 
-
   public InitiateDataSharingRequestInput configurationId(String configurationId) {
+    
     this.configurationId = configurationId;
     return this;
   }
@@ -239,16 +236,22 @@ public class InitiateDataSharingRequestInput {
    * @return configurationId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getConfigurationId() {
     return configurationId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(String configurationId) {
     this.configurationId = configurationId;
   }
 
-
   public InitiateDataSharingRequestInput mode(ModeEnum mode) {
+    
     this.mode = mode;
     return this;
   }
@@ -258,15 +261,19 @@ public class InitiateDataSharingRequestInput {
    * @return mode
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public ModeEnum getMode() {
     return mode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMode(ModeEnum mode) {
     this.mode = mode;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -317,128 +324,110 @@ public class InitiateDataSharingRequestInput {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("queryId");
-    openapiFields.add("correlationId");
-    openapiFields.add("tokenMaxAge");
-    openapiFields.add("nonce");
-    openapiFields.add("redirectUri");
-    openapiFields.add("configurationId");
-    openapiFields.add("mode");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("queryId");
-    openapiRequiredFields.add("correlationId");
-    openapiRequiredFields.add("nonce");
-    openapiRequiredFields.add("redirectUri");
-    openapiRequiredFields.add("configurationId");
-    openapiRequiredFields.add("mode");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to InitiateDataSharingRequestInput
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!InitiateDataSharingRequestInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InitiateDataSharingRequestInput is not found in the empty JSON string", InitiateDataSharingRequestInput.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!InitiateDataSharingRequestInput.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InitiateDataSharingRequestInput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InitiateDataSharingRequestInput.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("queryId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `queryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queryId").toString()));
-      }
-      if (!jsonObj.get("correlationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `correlationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("correlationId").toString()));
-      }
-      if (!jsonObj.get("nonce").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nonce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nonce").toString()));
-      }
-      if (!jsonObj.get("redirectUri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirectUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirectUri").toString()));
-      }
-      if (!jsonObj.get("configurationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `configurationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configurationId").toString()));
-      }
-      if (!jsonObj.get("mode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
-      }
-      // validate the required field `mode`
-      ModeEnum.validateJsonElement(jsonObj.get("mode"));
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!InitiateDataSharingRequestInput.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'InitiateDataSharingRequestInput' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<InitiateDataSharingRequestInput> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(InitiateDataSharingRequestInput.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<InitiateDataSharingRequestInput>() {
-           @Override
-           public void write(JsonWriter out, InitiateDataSharingRequestInput value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public InitiateDataSharingRequestInput read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `queryId` to the URL query string
+    if (getQueryId() != null) {
+      try {
+        joiner.add(String.format("%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `correlationId` to the URL query string
+    if (getCorrelationId() != null) {
+      try {
+        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `tokenMaxAge` to the URL query string
+    if (getTokenMaxAge() != null) {
+      try {
+        joiner.add(String.format("%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `nonce` to the URL query string
+    if (getNonce() != null) {
+      try {
+        joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `redirectUri` to the URL query string
+    if (getRedirectUri() != null) {
+      try {
+        joiner.add(String.format("%sredirectUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `configurationId` to the URL query string
+    if (getConfigurationId() != null) {
+      try {
+        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `mode` to the URL query string
+    if (getMode() != null) {
+      try {
+        joiner.add(String.format("%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of InitiateDataSharingRequestInput given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of InitiateDataSharingRequestInput
-   * @throws IOException if the JSON string is invalid with respect to InitiateDataSharingRequestInput
-   */
-  public static InitiateDataSharingRequestInput fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, InitiateDataSharingRequestInput.class);
-  }
-
-  /**
-   * Convert an instance of InitiateDataSharingRequestInput to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

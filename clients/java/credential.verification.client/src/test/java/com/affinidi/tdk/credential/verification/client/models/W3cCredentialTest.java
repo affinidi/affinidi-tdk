@@ -19,30 +19,33 @@ import com.affinidi.tdk.credential.verification.client.models.W3cCredentialHolde
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialStatus;
 import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.affinidi.tdk.credential.verification.client.models.W3cProof;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for W3cCredential
  */
-public class W3cCredentialTest {
+class W3cCredentialTest {
     private final W3cCredential model = new W3cCredential();
 
     /**
      * Model tests for W3cCredential
      */
     @Test
-    public void testW3cCredential() {
+    void testW3cCredential() {
         // TODO: test W3cCredential
     }
 
@@ -50,7 +53,7 @@ public class W3cCredentialTest {
      * Test the property 'atContext'
      */
     @Test
-    public void atContextTest() {
+    void atContextTest() {
         // TODO: test atContext
     }
 
@@ -58,7 +61,7 @@ public class W3cCredentialTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -66,7 +69,7 @@ public class W3cCredentialTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 
@@ -74,7 +77,7 @@ public class W3cCredentialTest {
      * Test the property 'holder'
      */
     @Test
-    public void holderTest() {
+    void holderTest() {
         // TODO: test holder
     }
 
@@ -82,7 +85,7 @@ public class W3cCredentialTest {
      * Test the property 'credentialSubject'
      */
     @Test
-    public void credentialSubjectTest() {
+    void credentialSubjectTest() {
         // TODO: test credentialSubject
     }
 
@@ -90,7 +93,7 @@ public class W3cCredentialTest {
      * Test the property 'credentialStatus'
      */
     @Test
-    public void credentialStatusTest() {
+    void credentialStatusTest() {
         // TODO: test credentialStatus
     }
 
@@ -98,7 +101,7 @@ public class W3cCredentialTest {
      * Test the property 'issuanceDate'
      */
     @Test
-    public void issuanceDateTest() {
+    void issuanceDateTest() {
         // TODO: test issuanceDate
     }
 
@@ -106,7 +109,7 @@ public class W3cCredentialTest {
      * Test the property 'issuer'
      */
     @Test
-    public void issuerTest() {
+    void issuerTest() {
         // TODO: test issuer
     }
 
@@ -114,7 +117,7 @@ public class W3cCredentialTest {
      * Test the property 'expirationDate'
      */
     @Test
-    public void expirationDateTest() {
+    void expirationDateTest() {
         // TODO: test expirationDate
     }
 
@@ -122,7 +125,7 @@ public class W3cCredentialTest {
      * Test the property 'proof'
      */
     @Test
-    public void proofTest() {
+    void proofTest() {
         // TODO: test proof
     }
 
@@ -130,7 +133,7 @@ public class W3cCredentialTest {
      * Test the property 'credentialSchema'
      */
     @Test
-    public void credentialSchemaTest() {
+    void credentialSchemaTest() {
         // TODO: test credentialSchema
     }
 

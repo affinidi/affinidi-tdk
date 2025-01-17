@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
-import com.affinidi.tdk.iota.client.ApiCallback;
-import com.affinidi.tdk.iota.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iota.client.ApiException;
-import com.affinidi.tdk.iota.client.ApiResponse;
+import com.affinidi.tdk.iota.client.ApiClient;
+import com.affinidi.tdk.iota.client.BaseApi;
 import com.affinidi.tdk.iota.client.Configuration;
 import com.affinidi.tdk.iota.client.Pair;
-import com.affinidi.tdk.iota.client.ProgressRequestBody;
-import com.affinidi.tdk.iota.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iota.client.models.AlreadyExistsError;
 import com.affinidi.tdk.iota.client.models.CreateIotaConfigurationInput;
@@ -38,855 +31,516 @@ import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 import com.affinidi.tdk.iota.client.models.ResourceLimitExceededError;
 import com.affinidi.tdk.iota.client.models.UpdateConfigurationByIdInput;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class ConfigurationsApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class ConfigurationsApi extends BaseApi {
 
-    public ConfigurationsApi() {
-        this(Configuration.getDefaultApiClient());
+  public ConfigurationsApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public ConfigurationsApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * Creates a new Affinidi Iota Framework configuration.
+   * @param createIotaConfigurationInput CreateConfiguration (required)
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput createIotaConfigurationInput) throws ApiException {
+    return this.createIotaConfiguration(createIotaConfigurationInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Creates a new Affinidi Iota Framework configuration.
+   * @param createIotaConfigurationInput CreateConfiguration (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput createIotaConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createIotaConfigurationInput;
+    
+    // verify the required parameter 'createIotaConfigurationInput' is set
+    if (createIotaConfigurationInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createIotaConfigurationInput' when calling createIotaConfiguration");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations";
 
-    public ConfigurationsApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IotaConfigurationDto> localVarReturnType = new TypeReference<IotaConfigurationDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Deletes an Affinidi Iota Framework configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteIotaConfigurationById(String configurationId) throws ApiException {
+    this.deleteIotaConfigurationById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Deletes an Affinidi Iota Framework configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteIotaConfigurationById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deleteIotaConfigurationById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * 
+   * Retrieves the details of an Affinidi Iota Framework configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto getIotaConfigurationById(String configurationId) throws ApiException {
+    return this.getIotaConfigurationById(configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Retrieves the details of an Affinidi Iota Framework configuration.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto getIotaConfigurationById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getIotaConfigurationById");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IotaConfigurationDto> localVarReturnType = new TypeReference<IotaConfigurationDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
+   * @param projectId The ID of the project. (required)
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @return GetIotaConfigurationMetaDataOK
+   * @throws ApiException if fails to make API call
+   */
+  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(String projectId, String configurationId) throws ApiException {
+    return this.getIotaConfigurationMetaData(projectId, configurationId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
+   * @param projectId The ID of the project. (required)
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GetIotaConfigurationMetaDataOK
+   * @throws ApiException if fails to make API call
+   */
+  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(String projectId, String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getIotaConfigurationMetaData");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getIotaConfigurationMetaData");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/projects/{projectId}/configurations/{configurationId}/metadata"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] {  };
+
+    TypeReference<GetIotaConfigurationMetaDataOK> localVarReturnType = new TypeReference<GetIotaConfigurationMetaDataOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * List all Affinidi Iota Framework configurations.
+   * @return ListConfigurationOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListConfigurationOK listIotaConfigurations() throws ApiException {
+    return this.listIotaConfigurations(Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * List all Affinidi Iota Framework configurations.
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ListConfigurationOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListConfigurationOK listIotaConfigurations(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<ListConfigurationOK> localVarReturnType = new TypeReference<ListConfigurationOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Updates the details of an Affinidi Iota Framework configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param updateConfigurationByIdInput UpdateConfigurationById (required)
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto updateIotaConfigurationById(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput) throws ApiException {
+    return this.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Updates the details of an Affinidi Iota Framework configuration by ID.
+   * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param updateConfigurationByIdInput UpdateConfigurationById (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return IotaConfigurationDto
+   * @throws ApiException if fails to make API call
+   */
+  public IotaConfigurationDto updateIotaConfigurationById(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateConfigurationByIdInput;
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling updateIotaConfigurationById");
     }
-
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
+    
+    // verify the required parameter 'updateConfigurationByIdInput' is set
+    if (updateConfigurationByIdInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateConfigurationByIdInput' when calling updateIotaConfigurationById");
     }
-
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
-
-    /**
-     * Build call for createIotaConfiguration
-     * @param createIotaConfigurationInput CreateConfiguration (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreateConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createIotaConfigurationCall(CreateIotaConfigurationInput createIotaConfigurationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createIotaConfigurationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createIotaConfigurationValidateBeforeCall(CreateIotaConfigurationInput createIotaConfigurationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createIotaConfigurationInput' is set
-        if (createIotaConfigurationInput == null) {
-            throw new ApiException("Missing the required parameter 'createIotaConfigurationInput' when calling createIotaConfiguration(Async)");
-        }
-
-        return createIotaConfigurationCall(createIotaConfigurationInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Creates a new Affinidi Iota Framework configuration.
-     * @param createIotaConfigurationInput CreateConfiguration (required)
-     * @return IotaConfigurationDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreateConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput createIotaConfigurationInput) throws ApiException {
-        ApiResponse<IotaConfigurationDto> localVarResp = createIotaConfigurationWithHttpInfo(createIotaConfigurationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Creates a new Affinidi Iota Framework configuration.
-     * @param createIotaConfigurationInput CreateConfiguration (required)
-     * @return ApiResponse&lt;IotaConfigurationDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreateConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IotaConfigurationDto> createIotaConfigurationWithHttpInfo(CreateIotaConfigurationInput createIotaConfigurationInput) throws ApiException {
-        okhttp3.Call localVarCall = createIotaConfigurationValidateBeforeCall(createIotaConfigurationInput, null);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Creates a new Affinidi Iota Framework configuration.
-     * @param createIotaConfigurationInput CreateConfiguration (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> CreateConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> ConflictError </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> UnprocessableEntity </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createIotaConfigurationAsync(CreateIotaConfigurationInput createIotaConfigurationInput, final ApiCallback<IotaConfigurationDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createIotaConfigurationValidateBeforeCall(createIotaConfigurationInput, _callback);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteIotaConfigurationById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteIotaConfigurationByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteIotaConfigurationByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling deleteIotaConfigurationById(Async)");
-        }
-
-        return deleteIotaConfigurationByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Deletes an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteIotaConfigurationById(String configurationId) throws ApiException {
-        deleteIotaConfigurationByIdWithHttpInfo(configurationId);
-    }
-
-    /**
-     * 
-     * Deletes an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteIotaConfigurationByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = deleteIotaConfigurationByIdValidateBeforeCall(configurationId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteIotaConfigurationByIdAsync(String configurationId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteIotaConfigurationByIdValidateBeforeCall(configurationId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIotaConfigurationById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIotaConfigurationByIdCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIotaConfigurationByIdValidateBeforeCall(String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling getIotaConfigurationById(Async)");
-        }
-
-        return getIotaConfigurationByIdCall(configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Retrieves the details of an Affinidi Iota Framework configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return IotaConfigurationDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IotaConfigurationDto getIotaConfigurationById(String configurationId) throws ApiException {
-        ApiResponse<IotaConfigurationDto> localVarResp = getIotaConfigurationByIdWithHttpInfo(configurationId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Retrieves the details of an Affinidi Iota Framework configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return ApiResponse&lt;IotaConfigurationDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IotaConfigurationDto> getIotaConfigurationByIdWithHttpInfo(String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = getIotaConfigurationByIdValidateBeforeCall(configurationId, null);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Retrieves the details of an Affinidi Iota Framework configuration.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIotaConfigurationByIdAsync(String configurationId, final ApiCallback<IotaConfigurationDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIotaConfigurationByIdValidateBeforeCall(configurationId, _callback);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIotaConfigurationMetaData
-     * @param projectId The ID of the project. (required)
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetIotaConfigurationMetaDataOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIotaConfigurationMetaDataCall(String projectId, String configurationId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/projects/{projectId}/configurations/{configurationId}/metadata"
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()))
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIotaConfigurationMetaDataValidateBeforeCall(String projectId, String configurationId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling getIotaConfigurationMetaData(Async)");
-        }
-
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling getIotaConfigurationMetaData(Async)");
-        }
-
-        return getIotaConfigurationMetaDataCall(projectId, configurationId, _callback);
-
-    }
-
-    /**
-     * 
-     * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
-     * @param projectId The ID of the project. (required)
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return GetIotaConfigurationMetaDataOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetIotaConfigurationMetaDataOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(String projectId, String configurationId) throws ApiException {
-        ApiResponse<GetIotaConfigurationMetaDataOK> localVarResp = getIotaConfigurationMetaDataWithHttpInfo(projectId, configurationId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
-     * @param projectId The ID of the project. (required)
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @return ApiResponse&lt;GetIotaConfigurationMetaDataOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetIotaConfigurationMetaDataOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetIotaConfigurationMetaDataOK> getIotaConfigurationMetaDataWithHttpInfo(String projectId, String configurationId) throws ApiException {
-        okhttp3.Call localVarCall = getIotaConfigurationMetaDataValidateBeforeCall(projectId, configurationId, null);
-        Type localVarReturnType = new TypeToken<GetIotaConfigurationMetaDataOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
-     * @param projectId The ID of the project. (required)
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetIotaConfigurationMetaDataOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIotaConfigurationMetaDataAsync(String projectId, String configurationId, final ApiCallback<GetIotaConfigurationMetaDataOK> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIotaConfigurationMetaDataValidateBeforeCall(projectId, configurationId, _callback);
-        Type localVarReturnType = new TypeToken<GetIotaConfigurationMetaDataOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listIotaConfigurations
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listIotaConfigurationsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listIotaConfigurationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return listIotaConfigurationsCall(_callback);
-
-    }
-
-    /**
-     * 
-     * List all Affinidi Iota Framework configurations.
-     * @return ListConfigurationOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ListConfigurationOK listIotaConfigurations() throws ApiException {
-        ApiResponse<ListConfigurationOK> localVarResp = listIotaConfigurationsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * List all Affinidi Iota Framework configurations.
-     * @return ApiResponse&lt;ListConfigurationOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ListConfigurationOK> listIotaConfigurationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listIotaConfigurationsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ListConfigurationOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * List all Affinidi Iota Framework configurations.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ListConfigurationOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listIotaConfigurationsAsync(final ApiCallback<ListConfigurationOK> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listIotaConfigurationsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ListConfigurationOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateIotaConfigurationById
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param updateConfigurationByIdInput UpdateConfigurationById (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateIotaConfigurationByIdCall(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = updateConfigurationByIdInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/configurations/{configurationId}"
-            .replace("{" + "configurationId" + "}", localVarApiClient.escapeString(configurationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateIotaConfigurationByIdValidateBeforeCall(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'configurationId' is set
-        if (configurationId == null) {
-            throw new ApiException("Missing the required parameter 'configurationId' when calling updateIotaConfigurationById(Async)");
-        }
-
-        // verify the required parameter 'updateConfigurationByIdInput' is set
-        if (updateConfigurationByIdInput == null) {
-            throw new ApiException("Missing the required parameter 'updateConfigurationByIdInput' when calling updateIotaConfigurationById(Async)");
-        }
-
-        return updateIotaConfigurationByIdCall(configurationId, updateConfigurationByIdInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates the details of an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param updateConfigurationByIdInput UpdateConfigurationById (required)
-     * @return IotaConfigurationDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public IotaConfigurationDto updateIotaConfigurationById(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput) throws ApiException {
-        ApiResponse<IotaConfigurationDto> localVarResp = updateIotaConfigurationByIdWithHttpInfo(configurationId, updateConfigurationByIdInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the details of an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param updateConfigurationByIdInput UpdateConfigurationById (required)
-     * @return ApiResponse&lt;IotaConfigurationDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IotaConfigurationDto> updateIotaConfigurationByIdWithHttpInfo(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput) throws ApiException {
-        okhttp3.Call localVarCall = updateIotaConfigurationByIdValidateBeforeCall(configurationId, updateConfigurationByIdInput, null);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the details of an Affinidi Iota Framework configuration by ID.
-     * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
-     * @param updateConfigurationByIdInput UpdateConfigurationById (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> UpdateConfigurationByIdOK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateIotaConfigurationByIdAsync(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput, final ApiCallback<IotaConfigurationDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateIotaConfigurationByIdValidateBeforeCall(configurationId, updateConfigurationByIdInput, _callback);
-        Type localVarReturnType = new TypeToken<IotaConfigurationDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/configurations/{configurationId}"
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<IotaConfigurationDto> localVarReturnType = new TypeReference<IotaConfigurationDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

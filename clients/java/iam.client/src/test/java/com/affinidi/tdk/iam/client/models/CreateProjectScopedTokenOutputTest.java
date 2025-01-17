@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateProjectScopedTokenOutput
  */
-public class CreateProjectScopedTokenOutputTest {
+class CreateProjectScopedTokenOutputTest {
     private final CreateProjectScopedTokenOutput model = new CreateProjectScopedTokenOutput();
 
     /**
      * Model tests for CreateProjectScopedTokenOutput
      */
     @Test
-    public void testCreateProjectScopedTokenOutput() {
+    void testCreateProjectScopedTokenOutput() {
         // TODO: test CreateProjectScopedTokenOutput
     }
 
@@ -41,7 +40,7 @@ public class CreateProjectScopedTokenOutputTest {
      * Test the property 'accessToken'
      */
     @Test
-    public void accessTokenTest() {
+    void accessTokenTest() {
         // TODO: test accessToken
     }
 
@@ -49,7 +48,7 @@ public class CreateProjectScopedTokenOutputTest {
      * Test the property 'expiresIn'
      */
     @Test
-    public void expiresInTest() {
+    void expiresInTest() {
         // TODO: test expiresIn
     }
 
@@ -57,7 +56,7 @@ public class CreateProjectScopedTokenOutputTest {
      * Test the property 'scope'
      */
     @Test
-    public void scopeTest() {
+    void scopeTest() {
         // TODO: test scope
     }
 

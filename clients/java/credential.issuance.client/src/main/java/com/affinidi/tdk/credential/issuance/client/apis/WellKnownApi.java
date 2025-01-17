@@ -10,189 +10,150 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
-import com.affinidi.tdk.credential.issuance.client.ApiCallback;
-import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.credential.issuance.client.ApiException;
-import com.affinidi.tdk.credential.issuance.client.ApiResponse;
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.BaseApi;
 import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
-import com.affinidi.tdk.credential.issuance.client.ProgressRequestBody;
-import com.affinidi.tdk.credential.issuance.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponse;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class WellKnownApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class WellKnownApi extends BaseApi {
 
-    public WellKnownApi() {
-        this(Configuration.getDefaultApiClient());
+  public WellKnownApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public WellKnownApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * 
+   * @param projectId Affinidi project id (required)
+   * @return WellKnownOpenIdCredentialIssuerResponse
+   * @throws ApiException if fails to make API call
+   */
+  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId) throws ApiException {
+    return this.getWellKnownOpenIdCredentialIssuer(projectId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param projectId Affinidi project id (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return WellKnownOpenIdCredentialIssuerResponse
+   * @throws ApiException if fails to make API call
+   */
+  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getWellKnownOpenIdCredentialIssuer");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/.well-known/openid-credential-issuer"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    public WellKnownApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    String[] localVarAuthNames = new String[] {  };
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    TypeReference<WellKnownOpenIdCredentialIssuerResponse> localVarReturnType = new TypeReference<WellKnownOpenIdCredentialIssuerResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    /**
-     * Build call for getWellKnownOpenIdCredentialIssuer
-     * @param projectId Affinidi project id (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Credential issuer Metadata and capabilities </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownOpenIdCredentialIssuerCall(String projectId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        Object localVarPostBody = null;
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // create path and map variables
-        String localVarPath = "/v1/{projectId}/.well-known/openid-credential-issuer"
-            .replace("{" + "projectId" + "}", localVarApiClient.escapeString(projectId.toString()));
+    String[] localVarAuthNames = new String[] {  };
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWellKnownOpenIdCredentialIssuerValidateBeforeCall(String projectId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'projectId' is set
-        if (projectId == null) {
-            throw new ApiException("Missing the required parameter 'projectId' when calling getWellKnownOpenIdCredentialIssuer(Async)");
-        }
-
-        return getWellKnownOpenIdCredentialIssuerCall(projectId, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param projectId Affinidi project id (required)
-     * @return WellKnownOpenIdCredentialIssuerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Credential issuer Metadata and capabilities </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId) throws ApiException {
-        ApiResponse<WellKnownOpenIdCredentialIssuerResponse> localVarResp = getWellKnownOpenIdCredentialIssuerWithHttpInfo(projectId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @param projectId Affinidi project id (required)
-     * @return ApiResponse&lt;WellKnownOpenIdCredentialIssuerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Credential issuer Metadata and capabilities </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public ApiResponse<WellKnownOpenIdCredentialIssuerResponse> getWellKnownOpenIdCredentialIssuerWithHttpInfo(String projectId) throws ApiException {
-        okhttp3.Call localVarCall = getWellKnownOpenIdCredentialIssuerValidateBeforeCall(projectId, null);
-        Type localVarReturnType = new TypeToken<WellKnownOpenIdCredentialIssuerResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param projectId Affinidi project id (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Credential issuer Metadata and capabilities </td><td>  * Access-Control-Allow-Origin -  <br>  * Access-Control-Allow-Methods -  <br>  * Access-Control-Allow-Headers -  <br>  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownOpenIdCredentialIssuerAsync(String projectId, final ApiCallback<WellKnownOpenIdCredentialIssuerResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getWellKnownOpenIdCredentialIssuerValidateBeforeCall(projectId, _callback);
-        Type localVarReturnType = new TypeToken<WellKnownOpenIdCredentialIssuerResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

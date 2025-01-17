@@ -14,69 +14,59 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * WellKnownOpenIdCredentialIssuerResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class WellKnownOpenIdCredentialIssuerResponse {
-  public static final String SERIALIZED_NAME_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
-  @SerializedName(SERIALIZED_NAME_AUTHORIZATION_ENDPOINT)
+@JsonPropertyOrder({
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_AUTHORIZATION_ENDPOINT,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIAL_ENDPOINT,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIAL_ISSUER,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIALS_SUPPORTED,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_GRANT_TYPES_SUPPORTED,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_JWKS_URI,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_SCOPES_SUPPORTED,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Object> {
+  public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   private String authorizationEndpoint;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_ENDPOINT = "credential_endpoint";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_ENDPOINT)
+  public static final String JSON_PROPERTY_CREDENTIAL_ENDPOINT = "credential_endpoint";
   private String credentialEndpoint;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_ISSUER = "credential_issuer";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_ISSUER)
+  public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
   private String credentialIssuer;
 
-  public static final String SERIALIZED_NAME_CREDENTIALS_SUPPORTED = "credentials_supported";
-  @SerializedName(SERIALIZED_NAME_CREDENTIALS_SUPPORTED)
+  public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED = "credentials_supported";
   private List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_DEFERRED_CREDENTIAL_ENDPOINT = "deferred_credential_endpoint";
-  @SerializedName(SERIALIZED_NAME_DEFERRED_CREDENTIAL_ENDPOINT)
+  public static final String JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT = "deferred_credential_endpoint";
   private String deferredCredentialEndpoint;
 
   /**
    * Gets or Sets grantTypesSupported
    */
-  @JsonAdapter(GrantTypesSupportedEnum.Adapter.class)
   public enum GrantTypesSupportedEnum {
     AUTHORIZATION_CODE("authorization_code"),
     
@@ -88,6 +78,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -97,6 +88,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static GrantTypesSupportedEnum fromValue(String value) {
       for (GrantTypesSupportedEnum b : GrantTypesSupportedEnum.values()) {
         if (b.value.equals(value)) {
@@ -105,38 +97,17 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<GrantTypesSupportedEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final GrantTypesSupportedEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public GrantTypesSupportedEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return GrantTypesSupportedEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      GrantTypesSupportedEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_GRANT_TYPES_SUPPORTED = "grant_types_supported";
-  @SerializedName(SERIALIZED_NAME_GRANT_TYPES_SUPPORTED)
+  public static final String JSON_PROPERTY_GRANT_TYPES_SUPPORTED = "grant_types_supported";
   private List<GrantTypesSupportedEnum> grantTypesSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_JWKS_URI = "jwks_uri";
-  @SerializedName(SERIALIZED_NAME_JWKS_URI)
+  public static final String JSON_PROPERTY_JWKS_URI = "jwks_uri";
   private String jwksUri;
 
   /**
    * Gets or Sets scopesSupported
    */
-  @JsonAdapter(ScopesSupportedEnum.Adapter.class)
   public enum ScopesSupportedEnum {
     OPENID("openid");
 
@@ -146,6 +117,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -155,6 +127,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static ScopesSupportedEnum fromValue(String value) {
       for (ScopesSupportedEnum b : ScopesSupportedEnum.values()) {
         if (b.value.equals(value)) {
@@ -163,38 +136,17 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<ScopesSupportedEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ScopesSupportedEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ScopesSupportedEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ScopesSupportedEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ScopesSupportedEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_SCOPES_SUPPORTED = "scopes_supported";
-  @SerializedName(SERIALIZED_NAME_SCOPES_SUPPORTED)
+  public static final String JSON_PROPERTY_SCOPES_SUPPORTED = "scopes_supported";
   private List<ScopesSupportedEnum> scopesSupported = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TOKEN_ENDPOINT = "token_endpoint";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ENDPOINT)
+  public static final String JSON_PROPERTY_TOKEN_ENDPOINT = "token_endpoint";
   private String tokenEndpoint;
 
   /**
    * Gets or Sets tokenEndpointAuthMethodsSupported
    */
-  @JsonAdapter(TokenEndpointAuthMethodsSupportedEnum.Adapter.class)
   public enum TokenEndpointAuthMethodsSupportedEnum {
     CLIENT_SECRET_POST("client_secret_post"),
     
@@ -208,6 +160,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -217,6 +170,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TokenEndpointAuthMethodsSupportedEnum fromValue(String value) {
       for (TokenEndpointAuthMethodsSupportedEnum b : TokenEndpointAuthMethodsSupportedEnum.values()) {
         if (b.value.equals(value)) {
@@ -225,34 +179,17 @@ public class WellKnownOpenIdCredentialIssuerResponse {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TokenEndpointAuthMethodsSupportedEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TokenEndpointAuthMethodsSupportedEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TokenEndpointAuthMethodsSupportedEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TokenEndpointAuthMethodsSupportedEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TokenEndpointAuthMethodsSupportedEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
-  @SerializedName(SERIALIZED_NAME_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
   private List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported = new ArrayList<>();
 
   public WellKnownOpenIdCredentialIssuerResponse() {
+
   }
 
   public WellKnownOpenIdCredentialIssuerResponse authorizationEndpoint(String authorizationEndpoint) {
+    
     this.authorizationEndpoint = authorizationEndpoint;
     return this;
   }
@@ -262,16 +199,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return authorizationEndpoint
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getAuthorizationEndpoint() {
     return authorizationEndpoint;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthorizationEndpoint(String authorizationEndpoint) {
     this.authorizationEndpoint = authorizationEndpoint;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse credentialEndpoint(String credentialEndpoint) {
+    
     this.credentialEndpoint = credentialEndpoint;
     return this;
   }
@@ -281,16 +224,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialEndpoint
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCredentialEndpoint() {
     return credentialEndpoint;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialEndpoint(String credentialEndpoint) {
     this.credentialEndpoint = credentialEndpoint;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse credentialIssuer(String credentialIssuer) {
+    
     this.credentialIssuer = credentialIssuer;
     return this;
   }
@@ -300,16 +249,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialIssuer
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCredentialIssuer() {
     return credentialIssuer;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialIssuer(String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse credentialsSupported(List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
+    
     this.credentialsSupported = credentialsSupported;
     return this;
   }
@@ -327,16 +282,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialsSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> getCredentialsSupported() {
     return credentialsSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialsSupported(List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
     this.credentialsSupported = credentialsSupported;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse deferredCredentialEndpoint(String deferredCredentialEndpoint) {
+    
     this.deferredCredentialEndpoint = deferredCredentialEndpoint;
     return this;
   }
@@ -346,16 +307,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return deferredCredentialEndpoint
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDeferredCredentialEndpoint() {
     return deferredCredentialEndpoint;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDeferredCredentialEndpoint(String deferredCredentialEndpoint) {
     this.deferredCredentialEndpoint = deferredCredentialEndpoint;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse grantTypesSupported(List<GrantTypesSupportedEnum> grantTypesSupported) {
+    
     this.grantTypesSupported = grantTypesSupported;
     return this;
   }
@@ -373,16 +340,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return grantTypesSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<GrantTypesSupportedEnum> getGrantTypesSupported() {
     return grantTypesSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrantTypesSupported(List<GrantTypesSupportedEnum> grantTypesSupported) {
     this.grantTypesSupported = grantTypesSupported;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse jwksUri(String jwksUri) {
+    
     this.jwksUri = jwksUri;
     return this;
   }
@@ -392,16 +365,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return jwksUri
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getJwksUri() {
     return jwksUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwksUri(String jwksUri) {
     this.jwksUri = jwksUri;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse scopesSupported(List<ScopesSupportedEnum> scopesSupported) {
+    
     this.scopesSupported = scopesSupported;
     return this;
   }
@@ -419,16 +398,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return scopesSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<ScopesSupportedEnum> getScopesSupported() {
     return scopesSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScopesSupported(List<ScopesSupportedEnum> scopesSupported) {
     this.scopesSupported = scopesSupported;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse tokenEndpoint(String tokenEndpoint) {
+    
     this.tokenEndpoint = tokenEndpoint;
     return this;
   }
@@ -438,16 +423,22 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return tokenEndpoint
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getTokenEndpoint() {
     return tokenEndpoint;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpoint(String tokenEndpoint) {
     this.tokenEndpoint = tokenEndpoint;
   }
 
-
   public WellKnownOpenIdCredentialIssuerResponse tokenEndpointAuthMethodsSupported(List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
+    
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
     return this;
   }
@@ -465,59 +456,19 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return tokenEndpointAuthMethodsSupported
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<TokenEndpointAuthMethodsSupportedEnum> getTokenEndpointAuthMethodsSupported() {
     return tokenEndpointAuthMethodsSupported;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpointAuthMethodsSupported(List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
   }
-
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the WellKnownOpenIdCredentialIssuerResponse instance itself
-   */
-  public WellKnownOpenIdCredentialIssuerResponse putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -537,19 +488,20 @@ public class WellKnownOpenIdCredentialIssuerResponse {
         Objects.equals(this.jwksUri, wellKnownOpenIdCredentialIssuerResponse.jwksUri) &&
         Objects.equals(this.scopesSupported, wellKnownOpenIdCredentialIssuerResponse.scopesSupported) &&
         Objects.equals(this.tokenEndpoint, wellKnownOpenIdCredentialIssuerResponse.tokenEndpoint) &&
-        Objects.equals(this.tokenEndpointAuthMethodsSupported, wellKnownOpenIdCredentialIssuerResponse.tokenEndpointAuthMethodsSupported)&&
-        Objects.equals(this.additionalProperties, wellKnownOpenIdCredentialIssuerResponse.additionalProperties);
+        Objects.equals(this.tokenEndpointAuthMethodsSupported, wellKnownOpenIdCredentialIssuerResponse.tokenEndpointAuthMethodsSupported) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizationEndpoint, credentialEndpoint, credentialIssuer, credentialsSupported, deferredCredentialEndpoint, grantTypesSupported, jwksUri, scopesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported, additionalProperties);
+    return Objects.hash(authorizationEndpoint, credentialEndpoint, credentialIssuer, credentialsSupported, deferredCredentialEndpoint, grantTypesSupported, jwksUri, scopesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WellKnownOpenIdCredentialIssuerResponse {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    authorizationEndpoint: ").append(toIndentedString(authorizationEndpoint)).append("\n");
     sb.append("    credentialEndpoint: ").append(toIndentedString(credentialEndpoint)).append("\n");
     sb.append("    credentialIssuer: ").append(toIndentedString(credentialIssuer)).append("\n");
@@ -560,7 +512,6 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     sb.append("    scopesSupported: ").append(toIndentedString(scopesSupported)).append("\n");
     sb.append("    tokenEndpoint: ").append(toIndentedString(tokenEndpoint)).append("\n");
     sb.append("    tokenEndpointAuthMethodsSupported: ").append(toIndentedString(tokenEndpointAuthMethodsSupported)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -576,177 +527,152 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("authorization_endpoint");
-    openapiFields.add("credential_endpoint");
-    openapiFields.add("credential_issuer");
-    openapiFields.add("credentials_supported");
-    openapiFields.add("deferred_credential_endpoint");
-    openapiFields.add("grant_types_supported");
-    openapiFields.add("jwks_uri");
-    openapiFields.add("scopes_supported");
-    openapiFields.add("token_endpoint");
-    openapiFields.add("token_endpoint_auth_methods_supported");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to WellKnownOpenIdCredentialIssuerResponse
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!WellKnownOpenIdCredentialIssuerResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in WellKnownOpenIdCredentialIssuerResponse is not found in the empty JSON string", WellKnownOpenIdCredentialIssuerResponse.openapiRequiredFields.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("authorization_endpoint") != null && !jsonObj.get("authorization_endpoint").isJsonNull()) && !jsonObj.get("authorization_endpoint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `authorization_endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authorization_endpoint").toString()));
-      }
-      if ((jsonObj.get("credential_endpoint") != null && !jsonObj.get("credential_endpoint").isJsonNull()) && !jsonObj.get("credential_endpoint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credential_endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credential_endpoint").toString()));
-      }
-      if ((jsonObj.get("credential_issuer") != null && !jsonObj.get("credential_issuer").isJsonNull()) && !jsonObj.get("credential_issuer").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credential_issuer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credential_issuer").toString()));
-      }
-      if (jsonObj.get("credentials_supported") != null && !jsonObj.get("credentials_supported").isJsonNull()) {
-        JsonArray jsonArraycredentialsSupported = jsonObj.getAsJsonArray("credentials_supported");
-        if (jsonArraycredentialsSupported != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("credentials_supported").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `credentials_supported` to be an array in the JSON string but got `%s`", jsonObj.get("credentials_supported").toString()));
-          }
-
-          // validate the optional field `credentials_supported` (array)
-          for (int i = 0; i < jsonArraycredentialsSupported.size(); i++) {
-            WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.validateJsonElement(jsonArraycredentialsSupported.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("deferred_credential_endpoint") != null && !jsonObj.get("deferred_credential_endpoint").isJsonNull()) && !jsonObj.get("deferred_credential_endpoint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deferred_credential_endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deferred_credential_endpoint").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("grant_types_supported") != null && !jsonObj.get("grant_types_supported").isJsonNull() && !jsonObj.get("grant_types_supported").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `grant_types_supported` to be an array in the JSON string but got `%s`", jsonObj.get("grant_types_supported").toString()));
-      }
-      if ((jsonObj.get("jwks_uri") != null && !jsonObj.get("jwks_uri").isJsonNull()) && !jsonObj.get("jwks_uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jwks_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jwks_uri").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("scopes_supported") != null && !jsonObj.get("scopes_supported").isJsonNull() && !jsonObj.get("scopes_supported").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scopes_supported` to be an array in the JSON string but got `%s`", jsonObj.get("scopes_supported").toString()));
-      }
-      if ((jsonObj.get("token_endpoint") != null && !jsonObj.get("token_endpoint").isJsonNull()) && !jsonObj.get("token_endpoint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_endpoint").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("token_endpoint_auth_methods_supported") != null && !jsonObj.get("token_endpoint_auth_methods_supported").isJsonNull() && !jsonObj.get("token_endpoint_auth_methods_supported").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_endpoint_auth_methods_supported` to be an array in the JSON string but got `%s`", jsonObj.get("token_endpoint_auth_methods_supported").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!WellKnownOpenIdCredentialIssuerResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'WellKnownOpenIdCredentialIssuerResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<WellKnownOpenIdCredentialIssuerResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(WellKnownOpenIdCredentialIssuerResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<WellKnownOpenIdCredentialIssuerResponse>() {
-           @Override
-           public void write(JsonWriter out, WellKnownOpenIdCredentialIssuerResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
-                   } else {
-                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
-                   }
-                 }
-               }
-             }
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public WellKnownOpenIdCredentialIssuerResponse read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             JsonObject jsonObj = jsonElement.getAsJsonObject();
-             // store additional fields in the deserialized instance
-             WellKnownOpenIdCredentialIssuerResponse instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `authorization_endpoint` to the URL query string
+    if (getAuthorizationEndpoint() != null) {
+      try {
+        joiner.add(String.format("%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credential_endpoint` to the URL query string
+    if (getCredentialEndpoint() != null) {
+      try {
+        joiner.add(String.format("%scredential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credential_issuer` to the URL query string
+    if (getCredentialIssuer() != null) {
+      try {
+        joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `credentials_supported` to the URL query string
+    if (getCredentialsSupported() != null) {
+      for (int i = 0; i < getCredentialsSupported().size(); i++) {
+        if (getCredentialsSupported().get(i) != null) {
+          joiner.add(getCredentialsSupported().get(i).toUrlQueryString(String.format("%scredentials_supported%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `deferred_credential_endpoint` to the URL query string
+    if (getDeferredCredentialEndpoint() != null) {
+      try {
+        joiner.add(String.format("%sdeferred_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeferredCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `grant_types_supported` to the URL query string
+    if (getGrantTypesSupported() != null) {
+      for (int i = 0; i < getGrantTypesSupported().size(); i++) {
+        try {
+          joiner.add(String.format("%sgrant_types_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getGrantTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `jwks_uri` to the URL query string
+    if (getJwksUri() != null) {
+      try {
+        joiner.add(String.format("%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `scopes_supported` to the URL query string
+    if (getScopesSupported() != null) {
+      for (int i = 0; i < getScopesSupported().size(); i++) {
+        try {
+          joiner.add(String.format("%sscopes_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getScopesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `token_endpoint` to the URL query string
+    if (getTokenEndpoint() != null) {
+      try {
+        joiner.add(String.format("%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `token_endpoint_auth_methods_supported` to the URL query string
+    if (getTokenEndpointAuthMethodsSupported() != null) {
+      for (int i = 0; i < getTokenEndpointAuthMethodsSupported().size(); i++) {
+        try {
+          joiner.add(String.format("%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of WellKnownOpenIdCredentialIssuerResponse given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of WellKnownOpenIdCredentialIssuerResponse
-   * @throws IOException if the JSON string is invalid with respect to WellKnownOpenIdCredentialIssuerResponse
-   */
-  public static WellKnownOpenIdCredentialIssuerResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, WellKnownOpenIdCredentialIssuerResponse.class);
-  }
-
-  /**
-   * Convert an instance of WellKnownOpenIdCredentialIssuerResponse to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -1,48 +1,47 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for PexQueryDto
 void main() {
-  // final instance = PexQueryDto();
+  final instance = PexQueryDtoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test PexQueryDto', () {
+  group(PexQueryDto, () {
+    // The unique resource identifier of the qeuery.
     // String ari
     test('to test the property `ari`', () async {
       // TODO
     });
 
+    // The ID of the query.
     // String queryId
     test('to test the property `queryId`', () async {
       // TODO
     });
 
+    // The name of the presentation definition to quickly identify the query.
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
+    // An optional description of what the query is used for.
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // The unique resource identifier of the related configuration where the query is defined.
     // String configurationAri
     test('to test the property `configurationAri`', () async {
       // TODO
     });
 
-    // VP definition in JSON stringify format
+    // The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
     // String vpDefinition
     test('to test the property `vpDefinition`', () async {
       // TODO
     });
 
-
   });
-
 }

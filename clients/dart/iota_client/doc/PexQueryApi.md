@@ -33,14 +33,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final createPexQueryInput = CreatePexQueryInput(); // CreatePexQueryInput | CreatePexQuery
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final CreatePexQueryInput createPexQueryInput = ; // CreatePexQueryInput | CreatePexQuery
 
 try {
-    final result = api_instance.createPexQuery(configurationId, createPexQueryInput);
-    print(result);
-} catch (e) {
+    final response = api.createPexQuery(configurationId, createPexQueryInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->createPexQuery: $e\n');
 }
 ```
@@ -82,12 +82,12 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
 
 try {
-    api_instance.deletePexQueries(configurationId);
-} catch (e) {
+    api.deletePexQueries(configurationId);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->deletePexQueries: $e\n');
 }
 ```
@@ -128,13 +128,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final queryId = queryId_example; // String | The ID of the query.
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final String queryId = queryId_example; // String | The ID of the query.
 
 try {
-    api_instance.deletePexQueryById(configurationId, queryId);
-} catch (e) {
+    api.deletePexQueryById(configurationId, queryId);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->deletePexQueryById: $e\n');
 }
 ```
@@ -176,14 +176,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final queryId = queryId_example; // String | The ID of the query.
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final String queryId = queryId_example; // String | The ID of the query.
 
 try {
-    final result = api_instance.getPexQueryById(configurationId, queryId);
-    print(result);
-} catch (e) {
+    final response = api.getPexQueryById(configurationId, queryId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->getPexQueryById: $e\n');
 }
 ```
@@ -225,15 +225,15 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listPexQueries(configurationId, limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listPexQueries(configurationId, limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->listPexQueries: $e\n');
 }
 ```
@@ -263,7 +263,7 @@ try {
 
 # **savePexQueries**
 
-> Object savePexQueries(configurationId, savePexQueriesUpdateInput)
+> JsonObject savePexQueries(configurationId, savePexQueriesUpdateInput)
 
 Saves all Presentation Definition queries of a configuration.
 
@@ -276,14 +276,14 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final savePexQueriesUpdateInput = SavePexQueriesUpdateInput(); // SavePexQueriesUpdateInput | SavePexQueriesInput
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final SavePexQueriesUpdateInput savePexQueriesUpdateInput = ; // SavePexQueriesUpdateInput | SavePexQueriesInput
 
 try {
-    final result = api_instance.savePexQueries(configurationId, savePexQueriesUpdateInput);
-    print(result);
-} catch (e) {
+    final response = api.savePexQueries(configurationId, savePexQueriesUpdateInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->savePexQueries: $e\n');
 }
 ```
@@ -297,7 +297,7 @@ try {
 
 ### Return type
 
-[**Object**](Object.md)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -325,15 +325,15 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PexQueryApi();
-final configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
-final queryId = queryId_example; // String | The ID of the query.
-final updatePexQueryInput = UpdatePexQueryInput(); // UpdatePexQueryInput | UpdatePexQueryById
+final api = AffinidiTdkIotaClient().getPexQueryApi();
+final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final String queryId = queryId_example; // String | The ID of the query.
+final UpdatePexQueryInput updatePexQueryInput = ; // UpdatePexQueryInput | UpdatePexQueryById
 
 try {
-    final result = api_instance.updatePexQueryById(configurationId, queryId, updatePexQueryInput);
-    print(result);
-} catch (e) {
+    final response = api.updatePexQueryById(configurationId, queryId, updatePexQueryInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PexQueryApi->updatePexQueryById: $e\n');
 }
 ```

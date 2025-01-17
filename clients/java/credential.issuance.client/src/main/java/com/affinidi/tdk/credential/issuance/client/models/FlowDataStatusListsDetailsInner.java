@@ -14,46 +14,36 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * FlowDataStatusListsDetailsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_LIST_PURPOSE,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_LIST_ID,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_LIST_INDEX,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STANDARD,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_IS_ACTIVE,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_ACTIVATION_REASON,
+  FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_ACTIVATED_AT
+})
+@JsonTypeName("FlowData_statusListsDetails_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class FlowDataStatusListsDetailsInner {
   /**
    * Purpose of status list to which credential is added
    */
-  @JsonAdapter(StatusListPurposeEnum.Adapter.class)
   public enum StatusListPurposeEnum {
     REVOKED("REVOKED");
 
@@ -63,6 +53,7 @@ public class FlowDataStatusListsDetailsInner {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -72,6 +63,7 @@ public class FlowDataStatusListsDetailsInner {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StatusListPurposeEnum fromValue(String value) {
       for (StatusListPurposeEnum b : StatusListPurposeEnum.values()) {
         if (b.value.equals(value)) {
@@ -80,42 +72,20 @@ public class FlowDataStatusListsDetailsInner {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StatusListPurposeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusListPurposeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusListPurposeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusListPurposeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      StatusListPurposeEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_STATUS_LIST_PURPOSE = "statusListPurpose";
-  @SerializedName(SERIALIZED_NAME_STATUS_LIST_PURPOSE)
+  public static final String JSON_PROPERTY_STATUS_LIST_PURPOSE = "statusListPurpose";
   private StatusListPurposeEnum statusListPurpose;
 
-  public static final String SERIALIZED_NAME_STATUS_LIST_ID = "statusListId";
-  @SerializedName(SERIALIZED_NAME_STATUS_LIST_ID)
+  public static final String JSON_PROPERTY_STATUS_LIST_ID = "statusListId";
   private String statusListId;
 
-  public static final String SERIALIZED_NAME_STATUS_LIST_INDEX = "statusListIndex";
-  @SerializedName(SERIALIZED_NAME_STATUS_LIST_INDEX)
+  public static final String JSON_PROPERTY_STATUS_LIST_INDEX = "statusListIndex";
   private String statusListIndex;
 
   /**
    * Gets or Sets standard
    */
-  @JsonAdapter(StandardEnum.Adapter.class)
   public enum StandardEnum {
     REVOCATION_LIST2020("RevocationList2020"),
     
@@ -127,6 +97,7 @@ public class FlowDataStatusListsDetailsInner {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -136,6 +107,7 @@ public class FlowDataStatusListsDetailsInner {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static StandardEnum fromValue(String value) {
       for (StandardEnum b : StandardEnum.values()) {
         if (b.value.equals(value)) {
@@ -144,46 +116,25 @@ public class FlowDataStatusListsDetailsInner {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<StandardEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StandardEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StandardEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StandardEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      StandardEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_STANDARD = "standard";
-  @SerializedName(SERIALIZED_NAME_STANDARD)
+  public static final String JSON_PROPERTY_STANDARD = "standard";
   private StandardEnum standard;
 
-  public static final String SERIALIZED_NAME_IS_ACTIVE = "isActive";
-  @SerializedName(SERIALIZED_NAME_IS_ACTIVE)
+  public static final String JSON_PROPERTY_IS_ACTIVE = "isActive";
   private Boolean isActive;
 
-  public static final String SERIALIZED_NAME_STATUS_ACTIVATION_REASON = "statusActivationReason";
-  @SerializedName(SERIALIZED_NAME_STATUS_ACTIVATION_REASON)
+  public static final String JSON_PROPERTY_STATUS_ACTIVATION_REASON = "statusActivationReason";
   private String statusActivationReason;
 
-  public static final String SERIALIZED_NAME_STATUS_ACTIVATED_AT = "statusActivatedAt";
-  @SerializedName(SERIALIZED_NAME_STATUS_ACTIVATED_AT)
+  public static final String JSON_PROPERTY_STATUS_ACTIVATED_AT = "statusActivatedAt";
   private String statusActivatedAt;
 
   public FlowDataStatusListsDetailsInner() {
   }
 
   public FlowDataStatusListsDetailsInner statusListPurpose(StatusListPurposeEnum statusListPurpose) {
+    
     this.statusListPurpose = statusListPurpose;
     return this;
   }
@@ -193,16 +144,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListPurpose
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public StatusListPurposeEnum getStatusListPurpose() {
     return statusListPurpose;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListPurpose(StatusListPurposeEnum statusListPurpose) {
     this.statusListPurpose = statusListPurpose;
   }
 
-
   public FlowDataStatusListsDetailsInner statusListId(String statusListId) {
+    
     this.statusListId = statusListId;
     return this;
   }
@@ -212,16 +169,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getStatusListId() {
     return statusListId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListId(String statusListId) {
     this.statusListId = statusListId;
   }
 
-
   public FlowDataStatusListsDetailsInner statusListIndex(String statusListIndex) {
+    
     this.statusListIndex = statusListIndex;
     return this;
   }
@@ -231,16 +194,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListIndex
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_INDEX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getStatusListIndex() {
     return statusListIndex;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_LIST_INDEX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListIndex(String statusListIndex) {
     this.statusListIndex = statusListIndex;
   }
 
-
   public FlowDataStatusListsDetailsInner standard(StandardEnum standard) {
+    
     this.standard = standard;
     return this;
   }
@@ -250,16 +219,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return standard
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public StandardEnum getStandard() {
     return standard;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStandard(StandardEnum standard) {
     this.standard = standard;
   }
 
-
   public FlowDataStatusListsDetailsInner isActive(Boolean isActive) {
+    
     this.isActive = isActive;
     return this;
   }
@@ -269,16 +244,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return isActive
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_IS_ACTIVE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public Boolean getIsActive() {
     return isActive;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_IS_ACTIVE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIsActive(Boolean isActive) {
     this.isActive = isActive;
   }
 
-
   public FlowDataStatusListsDetailsInner statusActivationReason(String statusActivationReason) {
+    
     this.statusActivationReason = statusActivationReason;
     return this;
   }
@@ -288,16 +269,22 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusActivationReason
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATION_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getStatusActivationReason() {
     return statusActivationReason;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATION_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusActivationReason(String statusActivationReason) {
     this.statusActivationReason = statusActivationReason;
   }
 
-
   public FlowDataStatusListsDetailsInner statusActivatedAt(String statusActivatedAt) {
+    
     this.statusActivatedAt = statusActivatedAt;
     return this;
   }
@@ -307,15 +294,19 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusActivatedAt
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getStatusActivatedAt() {
     return statusActivatedAt;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusActivatedAt(String statusActivatedAt) {
     this.statusActivatedAt = statusActivatedAt;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -366,129 +357,110 @@ public class FlowDataStatusListsDetailsInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("statusListPurpose");
-    openapiFields.add("statusListId");
-    openapiFields.add("statusListIndex");
-    openapiFields.add("standard");
-    openapiFields.add("isActive");
-    openapiFields.add("statusActivationReason");
-    openapiFields.add("statusActivatedAt");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("statusListPurpose");
-    openapiRequiredFields.add("statusListId");
-    openapiRequiredFields.add("statusListIndex");
-    openapiRequiredFields.add("standard");
-    openapiRequiredFields.add("isActive");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to FlowDataStatusListsDetailsInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!FlowDataStatusListsDetailsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FlowDataStatusListsDetailsInner is not found in the empty JSON string", FlowDataStatusListsDetailsInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!FlowDataStatusListsDetailsInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FlowDataStatusListsDetailsInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FlowDataStatusListsDetailsInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("statusListPurpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusListPurpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusListPurpose").toString()));
-      }
-      // validate the required field `statusListPurpose`
-      StatusListPurposeEnum.validateJsonElement(jsonObj.get("statusListPurpose"));
-      if (!jsonObj.get("statusListId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusListId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusListId").toString()));
-      }
-      if (!jsonObj.get("statusListIndex").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusListIndex` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusListIndex").toString()));
-      }
-      if (!jsonObj.get("standard").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `standard` to be a primitive type in the JSON string but got `%s`", jsonObj.get("standard").toString()));
-      }
-      // validate the required field `standard`
-      StandardEnum.validateJsonElement(jsonObj.get("standard"));
-      if ((jsonObj.get("statusActivationReason") != null && !jsonObj.get("statusActivationReason").isJsonNull()) && !jsonObj.get("statusActivationReason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusActivationReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusActivationReason").toString()));
-      }
-      if ((jsonObj.get("statusActivatedAt") != null && !jsonObj.get("statusActivatedAt").isJsonNull()) && !jsonObj.get("statusActivatedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `statusActivatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("statusActivatedAt").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FlowDataStatusListsDetailsInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FlowDataStatusListsDetailsInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FlowDataStatusListsDetailsInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FlowDataStatusListsDetailsInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FlowDataStatusListsDetailsInner>() {
-           @Override
-           public void write(JsonWriter out, FlowDataStatusListsDetailsInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FlowDataStatusListsDetailsInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `statusListPurpose` to the URL query string
+    if (getStatusListPurpose() != null) {
+      try {
+        joiner.add(String.format("%sstatusListPurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statusListId` to the URL query string
+    if (getStatusListId() != null) {
+      try {
+        joiner.add(String.format("%sstatusListId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statusListIndex` to the URL query string
+    if (getStatusListIndex() != null) {
+      try {
+        joiner.add(String.format("%sstatusListIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListIndex()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `standard` to the URL query string
+    if (getStandard() != null) {
+      try {
+        joiner.add(String.format("%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `isActive` to the URL query string
+    if (getIsActive() != null) {
+      try {
+        joiner.add(String.format("%sisActive%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsActive()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statusActivationReason` to the URL query string
+    if (getStatusActivationReason() != null) {
+      try {
+        joiner.add(String.format("%sstatusActivationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivationReason()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `statusActivatedAt` to the URL query string
+    if (getStatusActivatedAt() != null) {
+      try {
+        joiner.add(String.format("%sstatusActivatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of FlowDataStatusListsDetailsInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of FlowDataStatusListsDetailsInner
-   * @throws IOException if the JSON string is invalid with respect to FlowDataStatusListsDetailsInner
-   */
-  public static FlowDataStatusListsDetailsInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FlowDataStatusListsDetailsInner.class);
-  }
-
-  /**
-   * Convert an instance of FlowDataStatusListsDetailsInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

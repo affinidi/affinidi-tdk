@@ -13,27 +13,28 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SupportedCredentialMetadataDisplayInnerLogo
  */
-public class SupportedCredentialMetadataDisplayInnerLogoTest {
+class SupportedCredentialMetadataDisplayInnerLogoTest {
     private final SupportedCredentialMetadataDisplayInnerLogo model = new SupportedCredentialMetadataDisplayInnerLogo();
 
     /**
      * Model tests for SupportedCredentialMetadataDisplayInnerLogo
      */
     @Test
-    public void testSupportedCredentialMetadataDisplayInnerLogo() {
+    void testSupportedCredentialMetadataDisplayInnerLogo() {
         // TODO: test SupportedCredentialMetadataDisplayInnerLogo
     }
 
@@ -41,7 +42,7 @@ public class SupportedCredentialMetadataDisplayInnerLogoTest {
      * Test the property 'url'
      */
     @Test
-    public void urlTest() {
+    void urlTest() {
         // TODO: test url
     }
 
@@ -49,7 +50,7 @@ public class SupportedCredentialMetadataDisplayInnerLogoTest {
      * Test the property 'altText'
      */
     @Test
-    public void altTextTest() {
+    void altTextTest() {
         // TODO: test altText
     }
 

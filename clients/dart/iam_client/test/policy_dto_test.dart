@@ -1,21 +1,22 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iam_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 // tests for PolicyDto
 void main() {
-  // final instance = PolicyDto();
+  final instance = PolicyDtoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test PolicyDto', () {
+  group(PolicyDto, () {
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
     // String principalId
     test('to test the property `principalId`', () async {
       // TODO
@@ -31,12 +32,10 @@ void main() {
       // TODO
     });
 
-    // List<PolicyStatementDto> statement (default value: const [])
+    // BuiltList<PolicyStatementDto> statement
     test('to test the property `statement`', () async {
       // TODO
     });
 
-
   });
-
 }

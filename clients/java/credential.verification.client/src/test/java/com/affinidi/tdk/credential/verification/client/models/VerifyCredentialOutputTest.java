@@ -13,29 +13,29 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for VerifyCredentialOutput
  */
-public class VerifyCredentialOutputTest {
+class VerifyCredentialOutputTest {
     private final VerifyCredentialOutput model = new VerifyCredentialOutput();
 
     /**
      * Model tests for VerifyCredentialOutput
      */
     @Test
-    public void testVerifyCredentialOutput() {
+    void testVerifyCredentialOutput() {
         // TODO: test VerifyCredentialOutput
     }
 
@@ -43,7 +43,7 @@ public class VerifyCredentialOutputTest {
      * Test the property 'errors'
      */
     @Test
-    public void errorsTest() {
+    void errorsTest() {
         // TODO: test errors
     }
 
@@ -51,7 +51,7 @@ public class VerifyCredentialOutputTest {
      * Test the property 'isValid'
      */
     @Test
-    public void isValidTest() {
+    void isValidTest() {
         // TODO: test isValid
     }
 

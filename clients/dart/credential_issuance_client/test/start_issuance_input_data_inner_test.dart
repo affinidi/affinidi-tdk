@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for StartIssuanceInputDataInner
 void main() {
-  // final instance = StartIssuanceInputDataInner();
+  final instance = StartIssuanceInputDataInnerBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test StartIssuanceInputDataInner', () {
+  group(StartIssuanceInputDataInner, () {
     // It is a String that identifies a Credential that is being requested to be issued.
     // String credentialTypeId
     test('to test the property `credentialTypeId`', () async {
@@ -23,12 +14,21 @@ void main() {
     });
 
     // Object of data to be included in the issued credential ,should  match the credential type
-    // Map<String, Object> credentialData (default value: const {})
+    // BuiltMap<String, JsonObject> credentialData
     test('to test the property `credentialData`', () async {
       // TODO
     });
 
+    // Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
+    // BuiltList<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails
+    test('to test the property `statusListDetails`', () async {
+      // TODO
+    });
+
+    // StartIssuanceInputDataInnerMetaData metaData
+    test('to test the property `metaData`', () async {
+      // TODO
+    });
 
   });
-
 }

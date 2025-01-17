@@ -14,116 +14,102 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * JsonWebKeyKeysInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  JsonWebKeyKeysInner.JSON_PROPERTY_ALG,
+  JsonWebKeyKeysInner.JSON_PROPERTY_CRV,
+  JsonWebKeyKeysInner.JSON_PROPERTY_D,
+  JsonWebKeyKeysInner.JSON_PROPERTY_DP,
+  JsonWebKeyKeysInner.JSON_PROPERTY_DQ,
+  JsonWebKeyKeysInner.JSON_PROPERTY_E,
+  JsonWebKeyKeysInner.JSON_PROPERTY_K,
+  JsonWebKeyKeysInner.JSON_PROPERTY_KID,
+  JsonWebKeyKeysInner.JSON_PROPERTY_KTY,
+  JsonWebKeyKeysInner.JSON_PROPERTY_N,
+  JsonWebKeyKeysInner.JSON_PROPERTY_P,
+  JsonWebKeyKeysInner.JSON_PROPERTY_Q,
+  JsonWebKeyKeysInner.JSON_PROPERTY_QI,
+  JsonWebKeyKeysInner.JSON_PROPERTY_USE,
+  JsonWebKeyKeysInner.JSON_PROPERTY_X,
+  JsonWebKeyKeysInner.JSON_PROPERTY_X5C,
+  JsonWebKeyKeysInner.JSON_PROPERTY_Y
+})
+@JsonTypeName("JsonWebKey_keys_inner")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class JsonWebKeyKeysInner {
-  public static final String SERIALIZED_NAME_ALG = "alg";
-  @SerializedName(SERIALIZED_NAME_ALG)
+  public static final String JSON_PROPERTY_ALG = "alg";
   private String alg;
 
-  public static final String SERIALIZED_NAME_CRV = "crv";
-  @SerializedName(SERIALIZED_NAME_CRV)
+  public static final String JSON_PROPERTY_CRV = "crv";
   private String crv;
 
-  public static final String SERIALIZED_NAME_D = "d";
-  @SerializedName(SERIALIZED_NAME_D)
+  public static final String JSON_PROPERTY_D = "d";
   private String d;
 
-  public static final String SERIALIZED_NAME_DP = "dp";
-  @SerializedName(SERIALIZED_NAME_DP)
+  public static final String JSON_PROPERTY_DP = "dp";
   private String dp;
 
-  public static final String SERIALIZED_NAME_DQ = "dq";
-  @SerializedName(SERIALIZED_NAME_DQ)
+  public static final String JSON_PROPERTY_DQ = "dq";
   private String dq;
 
-  public static final String SERIALIZED_NAME_E = "e";
-  @SerializedName(SERIALIZED_NAME_E)
+  public static final String JSON_PROPERTY_E = "e";
   private String e;
 
-  public static final String SERIALIZED_NAME_K = "k";
-  @SerializedName(SERIALIZED_NAME_K)
+  public static final String JSON_PROPERTY_K = "k";
   private String k;
 
-  public static final String SERIALIZED_NAME_KID = "kid";
-  @SerializedName(SERIALIZED_NAME_KID)
+  public static final String JSON_PROPERTY_KID = "kid";
   private String kid;
 
-  public static final String SERIALIZED_NAME_KTY = "kty";
-  @SerializedName(SERIALIZED_NAME_KTY)
+  public static final String JSON_PROPERTY_KTY = "kty";
   private String kty;
 
-  public static final String SERIALIZED_NAME_N = "n";
-  @SerializedName(SERIALIZED_NAME_N)
+  public static final String JSON_PROPERTY_N = "n";
   private String n;
 
-  public static final String SERIALIZED_NAME_P = "p";
-  @SerializedName(SERIALIZED_NAME_P)
+  public static final String JSON_PROPERTY_P = "p";
   private String p;
 
-  public static final String SERIALIZED_NAME_Q = "q";
-  @SerializedName(SERIALIZED_NAME_Q)
+  public static final String JSON_PROPERTY_Q = "q";
   private String q;
 
-  public static final String SERIALIZED_NAME_QI = "qi";
-  @SerializedName(SERIALIZED_NAME_QI)
+  public static final String JSON_PROPERTY_QI = "qi";
   private String qi;
 
-  public static final String SERIALIZED_NAME_USE = "use";
-  @SerializedName(SERIALIZED_NAME_USE)
+  public static final String JSON_PROPERTY_USE = "use";
   private String use;
 
-  public static final String SERIALIZED_NAME_X = "x";
-  @SerializedName(SERIALIZED_NAME_X)
+  public static final String JSON_PROPERTY_X = "x";
   private String x;
 
-  public static final String SERIALIZED_NAME_X5C = "x5c";
-  @SerializedName(SERIALIZED_NAME_X5C)
+  public static final String JSON_PROPERTY_X5C = "x5c";
   private List<String> x5c = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_Y = "y";
-  @SerializedName(SERIALIZED_NAME_Y)
+  public static final String JSON_PROPERTY_Y = "y";
   private String y;
 
   public JsonWebKeyKeysInner() {
   }
 
   public JsonWebKeyKeysInner alg(String alg) {
+    
     this.alg = alg;
     return this;
   }
@@ -133,16 +119,22 @@ public class JsonWebKeyKeysInner {
    * @return alg
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getAlg() {
     return alg;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAlg(String alg) {
     this.alg = alg;
   }
 
-
   public JsonWebKeyKeysInner crv(String crv) {
+    
     this.crv = crv;
     return this;
   }
@@ -152,16 +144,22 @@ public class JsonWebKeyKeysInner {
    * @return crv
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getCrv() {
     return crv;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCrv(String crv) {
     this.crv = crv;
   }
 
-
   public JsonWebKeyKeysInner d(String d) {
+    
     this.d = d;
     return this;
   }
@@ -171,16 +169,22 @@ public class JsonWebKeyKeysInner {
    * @return d
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_D)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getD() {
     return d;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_D)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setD(String d) {
     this.d = d;
   }
 
-
   public JsonWebKeyKeysInner dp(String dp) {
+    
     this.dp = dp;
     return this;
   }
@@ -190,16 +194,22 @@ public class JsonWebKeyKeysInner {
    * @return dp
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDp() {
     return dp;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDp(String dp) {
     this.dp = dp;
   }
 
-
   public JsonWebKeyKeysInner dq(String dq) {
+    
     this.dq = dq;
     return this;
   }
@@ -209,16 +219,22 @@ public class JsonWebKeyKeysInner {
    * @return dq
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DQ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getDq() {
     return dq;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_DQ)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDq(String dq) {
     this.dq = dq;
   }
 
-
   public JsonWebKeyKeysInner e(String e) {
+    
     this.e = e;
     return this;
   }
@@ -228,16 +244,22 @@ public class JsonWebKeyKeysInner {
    * @return e
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_E)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getE() {
     return e;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_E)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setE(String e) {
     this.e = e;
   }
 
-
   public JsonWebKeyKeysInner k(String k) {
+    
     this.k = k;
     return this;
   }
@@ -247,16 +269,22 @@ public class JsonWebKeyKeysInner {
    * @return k
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_K)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getK() {
     return k;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_K)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setK(String k) {
     this.k = k;
   }
 
-
   public JsonWebKeyKeysInner kid(String kid) {
+    
     this.kid = kid;
     return this;
   }
@@ -266,16 +294,22 @@ public class JsonWebKeyKeysInner {
    * @return kid
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getKid() {
     return kid;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKid(String kid) {
     this.kid = kid;
   }
 
-
   public JsonWebKeyKeysInner kty(String kty) {
+    
     this.kty = kty;
     return this;
   }
@@ -285,16 +319,22 @@ public class JsonWebKeyKeysInner {
    * @return kty
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getKty() {
     return kty;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKty(String kty) {
     this.kty = kty;
   }
 
-
   public JsonWebKeyKeysInner n(String n) {
+    
     this.n = n;
     return this;
   }
@@ -304,16 +344,22 @@ public class JsonWebKeyKeysInner {
    * @return n
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_N)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getN() {
     return n;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_N)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setN(String n) {
     this.n = n;
   }
 
-
   public JsonWebKeyKeysInner p(String p) {
+    
     this.p = p;
     return this;
   }
@@ -323,16 +369,22 @@ public class JsonWebKeyKeysInner {
    * @return p
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_P)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getP() {
     return p;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_P)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setP(String p) {
     this.p = p;
   }
 
-
   public JsonWebKeyKeysInner q(String q) {
+    
     this.q = q;
     return this;
   }
@@ -342,16 +394,22 @@ public class JsonWebKeyKeysInner {
    * @return q
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_Q)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getQ() {
     return q;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_Q)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setQ(String q) {
     this.q = q;
   }
 
-
   public JsonWebKeyKeysInner qi(String qi) {
+    
     this.qi = qi;
     return this;
   }
@@ -361,16 +419,22 @@ public class JsonWebKeyKeysInner {
    * @return qi
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_QI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getQi() {
     return qi;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_QI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setQi(String qi) {
     this.qi = qi;
   }
 
-
   public JsonWebKeyKeysInner use(String use) {
+    
     this.use = use;
     return this;
   }
@@ -380,16 +444,22 @@ public class JsonWebKeyKeysInner {
    * @return use
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getUse() {
     return use;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUse(String use) {
     this.use = use;
   }
 
-
   public JsonWebKeyKeysInner x(String x) {
+    
     this.x = x;
     return this;
   }
@@ -399,16 +469,22 @@ public class JsonWebKeyKeysInner {
    * @return x
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getX() {
     return x;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_X)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setX(String x) {
     this.x = x;
   }
 
-
   public JsonWebKeyKeysInner x5c(List<String> x5c) {
+    
     this.x5c = x5c;
     return this;
   }
@@ -426,16 +502,22 @@ public class JsonWebKeyKeysInner {
    * @return x5c
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_X5C)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getX5c() {
     return x5c;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_X5C)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setX5c(List<String> x5c) {
     this.x5c = x5c;
   }
 
-
   public JsonWebKeyKeysInner y(String y) {
+    
     this.y = y;
     return this;
   }
@@ -445,15 +527,19 @@ public class JsonWebKeyKeysInner {
    * @return y
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getY() {
     return y;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setY(String y) {
     this.y = y;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -524,171 +610,214 @@ public class JsonWebKeyKeysInner {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("alg");
-    openapiFields.add("crv");
-    openapiFields.add("d");
-    openapiFields.add("dp");
-    openapiFields.add("dq");
-    openapiFields.add("e");
-    openapiFields.add("k");
-    openapiFields.add("kid");
-    openapiFields.add("kty");
-    openapiFields.add("n");
-    openapiFields.add("p");
-    openapiFields.add("q");
-    openapiFields.add("qi");
-    openapiFields.add("use");
-    openapiFields.add("x");
-    openapiFields.add("x5c");
-    openapiFields.add("y");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("alg");
-    openapiRequiredFields.add("kid");
-    openapiRequiredFields.add("kty");
-    openapiRequiredFields.add("use");
-    openapiRequiredFields.add("x5c");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to JsonWebKeyKeysInner
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!JsonWebKeyKeysInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonWebKeyKeysInner is not found in the empty JSON string", JsonWebKeyKeysInner.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!JsonWebKeyKeysInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JsonWebKeyKeysInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : JsonWebKeyKeysInner.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("alg").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alg").toString()));
-      }
-      if ((jsonObj.get("crv") != null && !jsonObj.get("crv").isJsonNull()) && !jsonObj.get("crv").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `crv` to be a primitive type in the JSON string but got `%s`", jsonObj.get("crv").toString()));
-      }
-      if ((jsonObj.get("d") != null && !jsonObj.get("d").isJsonNull()) && !jsonObj.get("d").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `d` to be a primitive type in the JSON string but got `%s`", jsonObj.get("d").toString()));
-      }
-      if ((jsonObj.get("dp") != null && !jsonObj.get("dp").isJsonNull()) && !jsonObj.get("dp").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dp").toString()));
-      }
-      if ((jsonObj.get("dq") != null && !jsonObj.get("dq").isJsonNull()) && !jsonObj.get("dq").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dq` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dq").toString()));
-      }
-      if ((jsonObj.get("e") != null && !jsonObj.get("e").isJsonNull()) && !jsonObj.get("e").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `e` to be a primitive type in the JSON string but got `%s`", jsonObj.get("e").toString()));
-      }
-      if ((jsonObj.get("k") != null && !jsonObj.get("k").isJsonNull()) && !jsonObj.get("k").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `k` to be a primitive type in the JSON string but got `%s`", jsonObj.get("k").toString()));
-      }
-      if (!jsonObj.get("kid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kid").toString()));
-      }
-      if (!jsonObj.get("kty").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kty").toString()));
-      }
-      if ((jsonObj.get("n") != null && !jsonObj.get("n").isJsonNull()) && !jsonObj.get("n").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `n` to be a primitive type in the JSON string but got `%s`", jsonObj.get("n").toString()));
-      }
-      if ((jsonObj.get("p") != null && !jsonObj.get("p").isJsonNull()) && !jsonObj.get("p").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `p` to be a primitive type in the JSON string but got `%s`", jsonObj.get("p").toString()));
-      }
-      if ((jsonObj.get("q") != null && !jsonObj.get("q").isJsonNull()) && !jsonObj.get("q").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `q` to be a primitive type in the JSON string but got `%s`", jsonObj.get("q").toString()));
-      }
-      if ((jsonObj.get("qi") != null && !jsonObj.get("qi").isJsonNull()) && !jsonObj.get("qi").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `qi` to be a primitive type in the JSON string but got `%s`", jsonObj.get("qi").toString()));
-      }
-      if (!jsonObj.get("use").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `use` to be a primitive type in the JSON string but got `%s`", jsonObj.get("use").toString()));
-      }
-      if ((jsonObj.get("x") != null && !jsonObj.get("x").isJsonNull()) && !jsonObj.get("x").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("x5c") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("x5c").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x5c` to be an array in the JSON string but got `%s`", jsonObj.get("x5c").toString()));
-      }
-      if ((jsonObj.get("y") != null && !jsonObj.get("y").isJsonNull()) && !jsonObj.get("y").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `y` to be a primitive type in the JSON string but got `%s`", jsonObj.get("y").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!JsonWebKeyKeysInner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'JsonWebKeyKeysInner' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<JsonWebKeyKeysInner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(JsonWebKeyKeysInner.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<JsonWebKeyKeysInner>() {
-           @Override
-           public void write(JsonWriter out, JsonWebKeyKeysInner value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public JsonWebKeyKeysInner read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `alg` to the URL query string
+    if (getAlg() != null) {
+      try {
+        joiner.add(String.format("%salg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `crv` to the URL query string
+    if (getCrv() != null) {
+      try {
+        joiner.add(String.format("%scrv%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `d` to the URL query string
+    if (getD() != null) {
+      try {
+        joiner.add(String.format("%sd%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getD()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `dp` to the URL query string
+    if (getDp() != null) {
+      try {
+        joiner.add(String.format("%sdp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDp()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `dq` to the URL query string
+    if (getDq() != null) {
+      try {
+        joiner.add(String.format("%sdq%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDq()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `e` to the URL query string
+    if (getE() != null) {
+      try {
+        joiner.add(String.format("%se%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `k` to the URL query string
+    if (getK() != null) {
+      try {
+        joiner.add(String.format("%sk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getK()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `kid` to the URL query string
+    if (getKid() != null) {
+      try {
+        joiner.add(String.format("%skid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `kty` to the URL query string
+    if (getKty() != null) {
+      try {
+        joiner.add(String.format("%skty%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `n` to the URL query string
+    if (getN() != null) {
+      try {
+        joiner.add(String.format("%sn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `p` to the URL query string
+    if (getP() != null) {
+      try {
+        joiner.add(String.format("%sp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getP()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `q` to the URL query string
+    if (getQ() != null) {
+      try {
+        joiner.add(String.format("%sq%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQ()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `qi` to the URL query string
+    if (getQi() != null) {
+      try {
+        joiner.add(String.format("%sqi%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQi()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `use` to the URL query string
+    if (getUse() != null) {
+      try {
+        joiner.add(String.format("%suse%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `x` to the URL query string
+    if (getX() != null) {
+      try {
+        joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `x5c` to the URL query string
+    if (getX5c() != null) {
+      for (int i = 0; i < getX5c().size(); i++) {
+        try {
+          joiner.add(String.format("%sx5c%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getX5c().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `y` to the URL query string
+    if (getY() != null) {
+      try {
+        joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of JsonWebKeyKeysInner given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of JsonWebKeyKeysInner
-   * @throws IOException if the JSON string is invalid with respect to JsonWebKeyKeysInner
-   */
-  public static JsonWebKeyKeysInner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, JsonWebKeyKeysInner.class);
-  }
-
-  /**
-   * Convert an instance of JsonWebKeyKeysInner to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

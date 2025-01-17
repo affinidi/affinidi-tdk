@@ -14,27 +14,26 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for UpdateTokenPrivateKeyAuthenticationMethodDto
  */
-public class UpdateTokenPrivateKeyAuthenticationMethodDtoTest {
+class UpdateTokenPrivateKeyAuthenticationMethodDtoTest {
     private final UpdateTokenPrivateKeyAuthenticationMethodDto model = new UpdateTokenPrivateKeyAuthenticationMethodDto();
 
     /**
      * Model tests for UpdateTokenPrivateKeyAuthenticationMethodDto
      */
     @Test
-    public void testUpdateTokenPrivateKeyAuthenticationMethodDto() {
+    void testUpdateTokenPrivateKeyAuthenticationMethodDto() {
         // TODO: test UpdateTokenPrivateKeyAuthenticationMethodDto
     }
 
@@ -42,7 +41,7 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDtoTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 
@@ -50,7 +49,7 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDtoTest {
      * Test the property 'signingAlgorithm'
      */
     @Test
-    public void signingAlgorithmTest() {
+    void signingAlgorithmTest() {
         // TODO: test signingAlgorithm
     }
 
@@ -58,7 +57,7 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDtoTest {
      * Test the property 'publicKeyInfo'
      */
     @Test
-    public void publicKeyInfoTest() {
+    void publicKeyInfoTest() {
         // TODO: test publicKeyInfo
     }
 

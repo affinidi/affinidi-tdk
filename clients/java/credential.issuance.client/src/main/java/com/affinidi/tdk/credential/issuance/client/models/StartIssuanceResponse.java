@@ -14,63 +14,47 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * StartIssuanceResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  StartIssuanceResponse.JSON_PROPERTY_CREDENTIAL_OFFER_URI,
+  StartIssuanceResponse.JSON_PROPERTY_TX_CODE,
+  StartIssuanceResponse.JSON_PROPERTY_ISSUANCE_ID,
+  StartIssuanceResponse.JSON_PROPERTY_EXPIRES_IN
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StartIssuanceResponse {
-  public static final String SERIALIZED_NAME_CREDENTIAL_OFFER_URI = "credentialOfferUri";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_OFFER_URI)
+  public static final String JSON_PROPERTY_CREDENTIAL_OFFER_URI = "credentialOfferUri";
   private String credentialOfferUri;
 
-  public static final String SERIALIZED_NAME_TX_CODE = "txCode";
-  @SerializedName(SERIALIZED_NAME_TX_CODE)
+  public static final String JSON_PROPERTY_TX_CODE = "txCode";
   private String txCode;
 
-  public static final String SERIALIZED_NAME_ISSUANCE_ID = "issuanceId";
-  @SerializedName(SERIALIZED_NAME_ISSUANCE_ID)
+  public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
   private String issuanceId;
 
-  public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
+  public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
   private BigDecimal expiresIn;
 
   public StartIssuanceResponse() {
   }
 
   public StartIssuanceResponse credentialOfferUri(String credentialOfferUri) {
+    
     this.credentialOfferUri = credentialOfferUri;
     return this;
   }
@@ -80,16 +64,22 @@ public class StartIssuanceResponse {
    * @return credentialOfferUri
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getCredentialOfferUri() {
     return credentialOfferUri;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialOfferUri(String credentialOfferUri) {
     this.credentialOfferUri = credentialOfferUri;
   }
 
-
   public StartIssuanceResponse txCode(String txCode) {
+    
     this.txCode = txCode;
     return this;
   }
@@ -99,16 +89,22 @@ public class StartIssuanceResponse {
    * @return txCode
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getTxCode() {
     return txCode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTxCode(String txCode) {
     this.txCode = txCode;
   }
 
-
   public StartIssuanceResponse issuanceId(String issuanceId) {
+    
     this.issuanceId = issuanceId;
     return this;
   }
@@ -118,16 +114,22 @@ public class StartIssuanceResponse {
    * @return issuanceId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getIssuanceId() {
     return issuanceId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuanceId(String issuanceId) {
     this.issuanceId = issuanceId;
   }
 
-
   public StartIssuanceResponse expiresIn(BigDecimal expiresIn) {
+    
     this.expiresIn = expiresIn;
     return this;
   }
@@ -137,15 +139,19 @@ public class StartIssuanceResponse {
    * @return expiresIn
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public BigDecimal getExpiresIn() {
     return expiresIn;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresIn(BigDecimal expiresIn) {
     this.expiresIn = expiresIn;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -190,111 +196,80 @@ public class StartIssuanceResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credentialOfferUri");
-    openapiFields.add("txCode");
-    openapiFields.add("issuanceId");
-    openapiFields.add("expiresIn");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credentialOfferUri");
-    openapiRequiredFields.add("issuanceId");
-    openapiRequiredFields.add("expiresIn");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to StartIssuanceResponse
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!StartIssuanceResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in StartIssuanceResponse is not found in the empty JSON string", StartIssuanceResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!StartIssuanceResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `StartIssuanceResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : StartIssuanceResponse.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("credentialOfferUri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialOfferUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialOfferUri").toString()));
-      }
-      if ((jsonObj.get("txCode") != null && !jsonObj.get("txCode").isJsonNull()) && !jsonObj.get("txCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `txCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("txCode").toString()));
-      }
-      if (!jsonObj.get("issuanceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuanceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuanceId").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!StartIssuanceResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'StartIssuanceResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<StartIssuanceResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(StartIssuanceResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<StartIssuanceResponse>() {
-           @Override
-           public void write(JsonWriter out, StartIssuanceResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public StartIssuanceResponse read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `credentialOfferUri` to the URL query string
+    if (getCredentialOfferUri() != null) {
+      try {
+        joiner.add(String.format("%scredentialOfferUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferUri()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `txCode` to the URL query string
+    if (getTxCode() != null) {
+      try {
+        joiner.add(String.format("%stxCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTxCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuanceId` to the URL query string
+    if (getIssuanceId() != null) {
+      try {
+        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expiresIn` to the URL query string
+    if (getExpiresIn() != null) {
+      try {
+        joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of StartIssuanceResponse given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of StartIssuanceResponse
-   * @throws IOException if the JSON string is invalid with respect to StartIssuanceResponse
-   */
-  public static StartIssuanceResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, StartIssuanceResponse.class);
-  }
-
-  /**
-   * Convert an instance of StartIssuanceResponse to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

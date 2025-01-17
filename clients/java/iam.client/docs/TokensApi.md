@@ -11,9 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**listToken**](TokensApi.md#listToken)                     | **GET** /v1/tokens                    |             |
 | [**updateToken**](TokensApi.md#updateToken)                 | **PATCH** /v1/tokens/{tokenId}        |             |
 
-<a id="createToken"></a>
-
-# **createToken**
+## createToken
 
 > TokenDto createToken(createTokenInput)
 
@@ -29,29 +27,29 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    CreateTokenInput createTokenInput = new CreateTokenInput(); // CreateTokenInput | CreateToken
-    try {
-      TokenDto result = apiInstance.createToken(createTokenInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#createToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        CreateTokenInput createTokenInput = new CreateTokenInput(); // CreateTokenInput | CreateToken
+        try {
+            TokenDto result = apiInstance.createToken(createTokenInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#createToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -82,9 +80,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="deleteToken"></a>
-
-# **deleteToken**
+## deleteToken
 
 > deleteToken(tokenId)
 
@@ -100,28 +96,28 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID |
-    try {
-      apiInstance.deleteToken(tokenId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#deleteToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        UUID tokenId = UUID.randomUUID(); // UUID |
+        try {
+            apiInstance.deleteToken(tokenId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#deleteToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -153,9 +149,7 @@ null (empty response body)
 | **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="getToken"></a>
-
-# **getToken**
+## getToken
 
 > TokenDto getToken(tokenId)
 
@@ -171,29 +165,29 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID |
-    try {
-      TokenDto result = apiInstance.getToken(tokenId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#getToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        UUID tokenId = UUID.randomUUID(); // UUID |
+        try {
+            TokenDto result = apiInstance.getToken(tokenId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#getToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -225,9 +219,7 @@ public class Example {
 | **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="listProjectsOfToken"></a>
-
-# **listProjectsOfToken**
+## listProjectsOfToken
 
 > ProjectWithPolicyList listProjectsOfToken(tokenId, limit, exclusiveStartKey)
 
@@ -243,31 +235,31 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID |
-    Integer limit = 100; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      ProjectWithPolicyList result = apiInstance.listProjectsOfToken(tokenId, limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#listProjectsOfToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        UUID tokenId = UUID.randomUUID(); // UUID |
+        Integer limit = 100; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            ProjectWithPolicyList result = apiInstance.listProjectsOfToken(tokenId, limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#listProjectsOfToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -301,9 +293,7 @@ public class Example {
 | **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="listToken"></a>
-
-# **listToken**
+## listToken
 
 > TokenList listToken(limit, exclusiveStartKey)
 
@@ -319,30 +309,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    Integer limit = 100; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      TokenList result = apiInstance.listToken(limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#listToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        Integer limit = 100; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            TokenList result = apiInstance.listToken(limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#listToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -374,9 +364,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **500**     | UnexpectedError | -                |
 
-<a id="updateToken"></a>
-
-# **updateToken**
+## updateToken
 
 > TokenDto updateToken(tokenId, updateTokenInput)
 
@@ -392,30 +380,30 @@ import com.affinidi.tdk.iam.client.models.*;
 import com.affinidi.tdk.iam.client.apis.TokensApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-    // Configure API key authorization: UserTokenAuth
-    ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
-    UserTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //UserTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
 
-    TokensApi apiInstance = new TokensApi(defaultClient);
-    UUID tokenId = UUID.randomUUID(); // UUID |
-    UpdateTokenInput updateTokenInput = new UpdateTokenInput(); // UpdateTokenInput | UpdateToken
-    try {
-      TokenDto result = apiInstance.updateToken(tokenId, updateTokenInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TokensApi#updateToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        TokensApi apiInstance = new TokensApi(defaultClient);
+        UUID tokenId = UUID.randomUUID(); // UUID |
+        UpdateTokenInput updateTokenInput = new UpdateTokenInput(); // UpdateTokenInput | UpdateToken
+        try {
+            TokenDto result = apiInstance.updateToken(tokenId, updateTokenInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TokensApi#updateToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

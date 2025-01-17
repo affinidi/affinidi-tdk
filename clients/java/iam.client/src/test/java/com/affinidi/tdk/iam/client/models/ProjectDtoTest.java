@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ProjectDto
  */
-public class ProjectDtoTest {
+class ProjectDtoTest {
     private final ProjectDto model = new ProjectDto();
 
     /**
      * Model tests for ProjectDto
      */
     @Test
-    public void testProjectDto() {
+    void testProjectDto() {
         // TODO: test ProjectDto
     }
 
@@ -41,7 +40,7 @@ public class ProjectDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -49,7 +48,7 @@ public class ProjectDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -57,7 +56,7 @@ public class ProjectDtoTest {
      * Test the property 'ownerId'
      */
     @Test
-    public void ownerIdTest() {
+    void ownerIdTest() {
         // TODO: test ownerId
     }
 
@@ -65,7 +64,7 @@ public class ProjectDtoTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -73,7 +72,7 @@ public class ProjectDtoTest {
      * Test the property 'createdAt'
      */
     @Test
-    public void createdAtTest() {
+    void createdAtTest() {
         // TODO: test createdAt
     }
 
@@ -81,7 +80,7 @@ public class ProjectDtoTest {
      * Test the property 'updatedAt'
      */
     @Test
-    public void updatedAtTest() {
+    void updatedAtTest() {
         // TODO: test updatedAt
     }
 

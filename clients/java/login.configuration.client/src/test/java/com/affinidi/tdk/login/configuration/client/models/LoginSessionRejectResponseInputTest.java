@@ -13,27 +13,28 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for LoginSessionRejectResponseInput
  */
-public class LoginSessionRejectResponseInputTest {
+class LoginSessionRejectResponseInputTest {
     private final LoginSessionRejectResponseInput model = new LoginSessionRejectResponseInput();
 
     /**
      * Model tests for LoginSessionRejectResponseInput
      */
     @Test
-    public void testLoginSessionRejectResponseInput() {
+    void testLoginSessionRejectResponseInput() {
         // TODO: test LoginSessionRejectResponseInput
     }
 
@@ -41,7 +42,7 @@ public class LoginSessionRejectResponseInputTest {
      * Test the property 'error'
      */
     @Test
-    public void errorTest() {
+    void errorTest() {
         // TODO: test error
     }
 
@@ -49,7 +50,7 @@ public class LoginSessionRejectResponseInputTest {
      * Test the property 'errorDescription'
      */
     @Test
-    public void errorDescriptionTest() {
+    void errorDescriptionTest() {
         // TODO: test errorDescription
     }
 
@@ -57,7 +58,7 @@ public class LoginSessionRejectResponseInputTest {
      * Test the property 'state'
      */
     @Test
-    public void stateTest() {
+    void stateTest() {
         // TODO: test state
     }
 

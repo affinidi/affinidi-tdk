@@ -16,20 +16,21 @@ package com.affinidi.tdk.login.configuration.client.models;
 import com.affinidi.tdk.login.configuration.client.models.IdTokenMappingInner;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for IdTokenMapping
  */
-public class IdTokenMappingTest {
+class IdTokenMappingTest {
     private final IdTokenMapping model = new IdTokenMapping();
 
     /**
      * Model tests for IdTokenMapping
      */
     @Test
-    public void testIdTokenMapping() {
+    void testIdTokenMapping() {
         // TODO: test IdTokenMapping
     }
 

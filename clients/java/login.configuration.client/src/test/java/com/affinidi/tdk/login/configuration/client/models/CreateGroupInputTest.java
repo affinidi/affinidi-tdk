@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateGroupInput
  */
-public class CreateGroupInputTest {
+class CreateGroupInputTest {
     private final CreateGroupInput model = new CreateGroupInput();
 
     /**
      * Model tests for CreateGroupInput
      */
     @Test
-    public void testCreateGroupInput() {
+    void testCreateGroupInput() {
         // TODO: test CreateGroupInput
     }
 
@@ -41,7 +40,7 @@ public class CreateGroupInputTest {
      * Test the property 'groupName'
      */
     @Test
-    public void groupNameTest() {
+    void groupNameTest() {
         // TODO: test groupName
     }
 
@@ -49,7 +48,7 @@ public class CreateGroupInputTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -57,7 +56,7 @@ public class CreateGroupInputTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 

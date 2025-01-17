@@ -14,30 +14,30 @@
 package com.affinidi.tdk.iota.client.models;
 
 import com.affinidi.tdk.iota.client.models.InvalidParameterErrorDetailsInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for MessagePublishingError
  */
-public class MessagePublishingErrorTest {
+class MessagePublishingErrorTest {
     private final MessagePublishingError model = new MessagePublishingError();
 
     /**
      * Model tests for MessagePublishingError
      */
     @Test
-    public void testMessagePublishingError() {
+    void testMessagePublishingError() {
         // TODO: test MessagePublishingError
     }
 
@@ -45,7 +45,7 @@ public class MessagePublishingErrorTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -53,7 +53,7 @@ public class MessagePublishingErrorTest {
      * Test the property 'message'
      */
     @Test
-    public void messageTest() {
+    void messageTest() {
         // TODO: test message
     }
 
@@ -61,7 +61,7 @@ public class MessagePublishingErrorTest {
      * Test the property 'httpStatusCode'
      */
     @Test
-    public void httpStatusCodeTest() {
+    void httpStatusCodeTest() {
         // TODO: test httpStatusCode
     }
 
@@ -69,7 +69,7 @@ public class MessagePublishingErrorTest {
      * Test the property 'traceId'
      */
     @Test
-    public void traceIdTest() {
+    void traceIdTest() {
         // TODO: test traceId
     }
 
@@ -77,7 +77,7 @@ public class MessagePublishingErrorTest {
      * Test the property 'details'
      */
     @Test
-    public void detailsTest() {
+    void detailsTest() {
         // TODO: test details
     }
 

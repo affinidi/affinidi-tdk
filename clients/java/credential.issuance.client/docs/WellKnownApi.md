@@ -6,9 +6,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------- |
 | [**getWellKnownOpenIdCredentialIssuer**](WellKnownApi.md#getWellKnownOpenIdCredentialIssuer) | **GET** /v1/{projectId}/.well-known/openid-credential-issuer |             |
 
-<a id="getWellKnownOpenIdCredentialIssuer"></a>
-
-# **getWellKnownOpenIdCredentialIssuer**
+## getWellKnownOpenIdCredentialIssuer
 
 > WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(projectId)
 
@@ -23,23 +21,23 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.WellKnownApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    WellKnownApi apiInstance = new WellKnownApi(defaultClient);
-    String projectId = "projectId_example"; // String | Affinidi project id
-    try {
-      WellKnownOpenIdCredentialIssuerResponse result = apiInstance.getWellKnownOpenIdCredentialIssuer(projectId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WellKnownApi#getWellKnownOpenIdCredentialIssuer");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WellKnownApi apiInstance = new WellKnownApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        try {
+            WellKnownOpenIdCredentialIssuerResponse result = apiInstance.getWellKnownOpenIdCredentialIssuer(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WellKnownApi#getWellKnownOpenIdCredentialIssuer");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

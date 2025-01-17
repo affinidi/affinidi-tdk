@@ -26,9 +26,12 @@ import com.affinidi.tdk.iota.client.models.IotaExchangeCredentials;
 import com.affinidi.tdk.iota.client.models.IotaExchangeCredentialsOK;
 import com.affinidi.tdk.iota.client.models.NotFoundError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,61 +48,66 @@ public class IotaApiTest {
     /**
      * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void awsExchangeCredentialsTest() throws ApiException {
         AwsExchangeCredentials awsExchangeCredentials = null;
         AwsExchangeCredentialsOK response = api.awsExchangeCredentials(awsExchangeCredentials);
+
         // TODO: test validations
     }
-
     /**
      * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void awsExchangeCredentialsProjectTokenTest() throws ApiException {
         AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken = null;
         IotaExchangeCredentialsOK response = api.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken);
+
         // TODO: test validations
     }
-
     /**
      * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format after a successful data-sharing flow.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void fetchIotaVpResponseTest() throws ApiException {
         FetchIOTAVPResponseInput fetchIOTAVPResponseInput = null;
         FetchIOTAVPResponseOK response = api.fetchIotaVpResponse(fetchIOTAVPResponseInput);
+
         // TODO: test validations
     }
-
     /**
      * Generates the request token for the Redirect mode to initiate the data-sharing flow.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void initiateDataSharingRequestTest() throws ApiException {
         InitiateDataSharingRequestInput initiateDataSharingRequestInput = null;
         InitiateDataSharingRequestOK response = api.initiateDataSharingRequest(initiateDataSharingRequestInput);
+
         // TODO: test validations
     }
-
     /**
      * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void iotaExchangeCredentialsTest() throws ApiException {
         IotaExchangeCredentials iotaExchangeCredentials = null;
         IotaExchangeCredentialsOK response = api.iotaExchangeCredentials(iotaExchangeCredentials);
+
         // TODO: test validations
     }
-
 }

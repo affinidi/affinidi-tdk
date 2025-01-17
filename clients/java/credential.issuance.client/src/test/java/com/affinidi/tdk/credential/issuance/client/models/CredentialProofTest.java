@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialProof
  */
-public class CredentialProofTest {
+class CredentialProofTest {
     private final CredentialProof model = new CredentialProof();
 
     /**
      * Model tests for CredentialProof
      */
     @Test
-    public void testCredentialProof() {
+    void testCredentialProof() {
         // TODO: test CredentialProof
     }
 
@@ -41,7 +40,7 @@ public class CredentialProofTest {
      * Test the property 'proofType'
      */
     @Test
-    public void proofTypeTest() {
+    void proofTypeTest() {
         // TODO: test proofType
     }
 
@@ -49,7 +48,7 @@ public class CredentialProofTest {
      * Test the property 'jwt'
      */
     @Test
-    public void jwtTest() {
+    void jwtTest() {
         // TODO: test jwt
     }
 

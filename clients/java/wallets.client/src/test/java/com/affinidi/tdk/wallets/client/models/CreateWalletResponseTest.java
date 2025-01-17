@@ -14,27 +14,26 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import com.affinidi.tdk.wallets.client.models.WalletDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CreateWalletResponse
  */
-public class CreateWalletResponseTest {
+class CreateWalletResponseTest {
     private final CreateWalletResponse model = new CreateWalletResponse();
 
     /**
      * Model tests for CreateWalletResponse
      */
     @Test
-    public void testCreateWalletResponse() {
+    void testCreateWalletResponse() {
         // TODO: test CreateWalletResponse
     }
 
@@ -42,7 +41,7 @@ public class CreateWalletResponseTest {
      * Test the property 'wallet'
      */
     @Test
-    public void walletTest() {
+    void walletTest() {
         // TODO: test wallet
     }
 

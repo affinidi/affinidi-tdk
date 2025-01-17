@@ -1,40 +1,29 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for IotaConfigurationDtoClientMetadata
 void main() {
-  // final instance = IotaConfigurationDtoClientMetadata();
+  final instance = IotaConfigurationDtoClientMetadataBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test IotaConfigurationDtoClientMetadata', () {
-    // application name that will be displayed in consent page
+  group(IotaConfigurationDtoClientMetadata, () {
+    // The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website's name.
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // origin url that will be displayed in consent page
+    // The URL of the requester displayed on the consent page indicates the request's origin.
     // String origin
     test('to test the property `origin`', () async {
       // TODO
     });
 
-    // logo url that will be displayed in consent page
+    // The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
     // String logo
     test('to test the property `logo`', () async {
       // TODO
     });
 
-
   });
-
 }

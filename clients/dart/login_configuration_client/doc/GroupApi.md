@@ -31,14 +31,14 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final groupName = groupName_example; // String |
-final addUserToGroupInput = AddUserToGroupInput(); // AddUserToGroupInput | AddUserToGroup
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final String groupName = groupName_example; // String |
+final AddUserToGroupInput addUserToGroupInput = ; // AddUserToGroupInput | AddUserToGroup
 
 try {
-    final result = api_instance.addUserToGroup(groupName, addUserToGroupInput);
-    print(result);
-} catch (e) {
+    final response = api.addUserToGroup(groupName, addUserToGroupInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->addUserToGroup: $e\n');
 }
 ```
@@ -78,13 +78,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final createGroupInput = CreateGroupInput(); // CreateGroupInput | CreateGroup
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final CreateGroupInput createGroupInput = ; // CreateGroupInput | CreateGroup
 
 try {
-    final result = api_instance.createGroup(createGroupInput);
-    print(result);
-} catch (e) {
+    final response = api.createGroup(createGroupInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->createGroup: $e\n');
 }
 ```
@@ -123,12 +123,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final groupName = groupName_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final String groupName = groupName_example; // String |
 
 try {
-    api_instance.deleteGroup(groupName);
-} catch (e) {
+    api.deleteGroup(groupName);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->deleteGroup: $e\n');
 }
 ```
@@ -167,13 +167,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final groupName = groupName_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final String groupName = groupName_example; // String |
 
 try {
-    final result = api_instance.getGroupById(groupName);
-    print(result);
-} catch (e) {
+    final response = api.getGroupById(groupName);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->getGroupById: $e\n');
 }
 ```
@@ -212,16 +212,16 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final groupName = groupName_example; // String |
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-final sortOrder = sortOrder_example; // String | sort response in specific order. By default it is in desc order
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final String groupName = groupName_example; // String |
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final String sortOrder = sortOrder_example; // String | sort response in specific order. By default it is in desc order
 
 try {
-    final result = api_instance.listGroupUserMappings(groupName, limit, exclusiveStartKey, sortOrder);
-    print(result);
-} catch (e) {
+    final response = api.listGroupUserMappings(groupName, limit, exclusiveStartKey, sortOrder);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->listGroupUserMappings: $e\n');
 }
 ```
@@ -263,12 +263,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
 
 try {
-    final result = api_instance.listGroups();
-    print(result);
-} catch (e) {
+    final response = api.listGroups();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->listGroups: $e\n');
 }
 ```
@@ -305,13 +305,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = GroupApi();
-final groupName = groupName_example; // String |
-final removeUserFromGroupInput = RemoveUserFromGroupInput(); // RemoveUserFromGroupInput | Remove user from group
+final api = AffinidiTdkLoginConfigurationClient().getGroupApi();
+final String groupName = groupName_example; // String |
+final RemoveUserFromGroupInput removeUserFromGroupInput = ; // RemoveUserFromGroupInput | Remove user from group
 
 try {
-    api_instance.removeUserFromGroup(groupName, removeUserFromGroupInput);
-} catch (e) {
+    api.removeUserFromGroup(groupName, removeUserFromGroupInput);
+} catch on DioException (e) {
     print('Exception when calling GroupApi->removeUserFromGroup: $e\n');
 }
 ```

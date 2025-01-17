@@ -1,27 +1,15 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 
 /// tests for CallbackApi
 void main() {
-  // final instance = CallbackApi();
+  final instance = AffinidiTdkIotaClient().getCallbackApi();
 
-  group('tests for CallbackApi', () {
-    // Processes the callback for OIDC4VP flows
+  group(CallbackApi, () {
+    // It handles the client's (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
     //
-    // This endpoint handles callbacks from clients with data from OIDC4VP transactions, including state, presentation submission, and verification tokens. It updates the flow status based on the provided state and communicates the outcome through MQTT, ensuring the transaction's completion or notifying of any errors. 
-    //
-    //Future<Object> iotOIDC4VPCallback(CallbackInput callbackInput) async
+    //Future<CallbackResponseOK> iotOIDC4VPCallback(CallbackInput callbackInput) async
     test('test iotOIDC4VPCallback', () async {
       // TODO
     });

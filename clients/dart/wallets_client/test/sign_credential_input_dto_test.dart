@@ -1,23 +1,14 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_wallets_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
 // tests for SignCredentialInputDto
 void main() {
-  // final instance = SignCredentialInputDto();
+  final instance = SignCredentialInputDtoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test SignCredentialInputDto', () {
-    // Unsiged Credential. If provided \"unsignedCredentialParams\" is not accepted
-    // Object unsignedCredential
+  group(SignCredentialInputDto, () {
+    // Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
+    // JsonObject unsignedCredential
     test('to test the property `unsignedCredential`', () async {
       // TODO
     });
@@ -27,12 +18,15 @@ void main() {
       // TODO
     });
 
+    // String credentialFormat
+    test('to test the property `credentialFormat`', () async {
+      // TODO
+    });
+
     // SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams
     test('to test the property `unsignedCredentialParams`', () async {
       // TODO
     });
 
-
   });
-
 }

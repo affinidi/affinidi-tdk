@@ -14,62 +14,47 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.login.configuration.client.models.GroupUserMappingDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * GroupUserMappingsList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  GroupUserMappingsList.JSON_PROPERTY_USERS,
+  GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
+  GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GroupUserMappingsList {
-  public static final String SERIALIZED_NAME_USERS = "users";
-  @SerializedName(SERIALIZED_NAME_USERS)
+  public static final String JSON_PROPERTY_USERS = "users";
   private List<GroupUserMappingDto> users = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  @SerializedName(SERIALIZED_NAME_LAST_EVALUATED_KEY)
+  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
   private String lastEvaluatedKey;
 
-  public static final String SERIALIZED_NAME_TOTAL_USER_COUNT = "totalUserCount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_USER_COUNT)
+  public static final String JSON_PROPERTY_TOTAL_USER_COUNT = "totalUserCount";
   private BigDecimal totalUserCount;
 
   public GroupUserMappingsList() {
   }
 
   public GroupUserMappingsList users(List<GroupUserMappingDto> users) {
+    
     this.users = users;
     return this;
   }
@@ -87,16 +72,22 @@ public class GroupUserMappingsList {
    * @return users
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<GroupUserMappingDto> getUsers() {
     return users;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_USERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUsers(List<GroupUserMappingDto> users) {
     this.users = users;
   }
 
-
   public GroupUserMappingsList lastEvaluatedKey(String lastEvaluatedKey) {
+    
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
   }
@@ -106,16 +97,22 @@ public class GroupUserMappingsList {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getLastEvaluatedKey() {
     return lastEvaluatedKey;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 
-
   public GroupUserMappingsList totalUserCount(BigDecimal totalUserCount) {
+    
     this.totalUserCount = totalUserCount;
     return this;
   }
@@ -125,15 +122,19 @@ public class GroupUserMappingsList {
    * @return totalUserCount
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public BigDecimal getTotalUserCount() {
     return totalUserCount;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTotalUserCount(BigDecimal totalUserCount) {
     this.totalUserCount = totalUserCount;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -176,108 +177,70 @@ public class GroupUserMappingsList {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("users");
-    openapiFields.add("lastEvaluatedKey");
-    openapiFields.add("totalUserCount");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GroupUserMappingsList
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GroupUserMappingsList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GroupUserMappingsList is not found in the empty JSON string", GroupUserMappingsList.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GroupUserMappingsList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GroupUserMappingsList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("users") != null && !jsonObj.get("users").isJsonNull()) {
-        JsonArray jsonArrayusers = jsonObj.getAsJsonArray("users");
-        if (jsonArrayusers != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("users").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `users` to be an array in the JSON string but got `%s`", jsonObj.get("users").toString()));
-          }
-
-          // validate the optional field `users` (array)
-          for (int i = 0; i < jsonArrayusers.size(); i++) {
-            GroupUserMappingDto.validateJsonElement(jsonArrayusers.get(i));
-          };
-        }
-      }
-      if ((jsonObj.get("lastEvaluatedKey") != null && !jsonObj.get("lastEvaluatedKey").isJsonNull()) && !jsonObj.get("lastEvaluatedKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastEvaluatedKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastEvaluatedKey").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GroupUserMappingsList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GroupUserMappingsList' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GroupUserMappingsList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GroupUserMappingsList.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GroupUserMappingsList>() {
-           @Override
-           public void write(JsonWriter out, GroupUserMappingsList value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GroupUserMappingsList read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `users` to the URL query string
+    if (getUsers() != null) {
+      for (int i = 0; i < getUsers().size(); i++) {
+        if (getUsers().get(i) != null) {
+          joiner.add(getUsers().get(i).toUrlQueryString(String.format("%susers%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `lastEvaluatedKey` to the URL query string
+    if (getLastEvaluatedKey() != null) {
+      try {
+        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `totalUserCount` to the URL query string
+    if (getTotalUserCount() != null) {
+      try {
+        joiner.add(String.format("%stotalUserCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTotalUserCount()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of GroupUserMappingsList given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GroupUserMappingsList
-   * @throws IOException if the JSON string is invalid with respect to GroupUserMappingsList
-   */
-  public static GroupUserMappingsList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GroupUserMappingsList.class);
-  }
-
-  /**
-   * Convert an instance of GroupUserMappingsList to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

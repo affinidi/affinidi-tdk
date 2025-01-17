@@ -14,29 +14,29 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponseGrants;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialOfferResponse
  */
-public class CredentialOfferResponseTest {
+class CredentialOfferResponseTest {
     private final CredentialOfferResponse model = new CredentialOfferResponse();
 
     /**
      * Model tests for CredentialOfferResponse
      */
     @Test
-    public void testCredentialOfferResponse() {
+    void testCredentialOfferResponse() {
         // TODO: test CredentialOfferResponse
     }
 
@@ -44,7 +44,7 @@ public class CredentialOfferResponseTest {
      * Test the property 'credentialIssuer'
      */
     @Test
-    public void credentialIssuerTest() {
+    void credentialIssuerTest() {
         // TODO: test credentialIssuer
     }
 
@@ -52,7 +52,7 @@ public class CredentialOfferResponseTest {
      * Test the property 'credentialConfigurationIds'
      */
     @Test
-    public void credentialConfigurationIdsTest() {
+    void credentialConfigurationIdsTest() {
         // TODO: test credentialConfigurationIds
     }
 
@@ -60,7 +60,7 @@ public class CredentialOfferResponseTest {
      * Test the property 'grants'
      */
     @Test
-    public void grantsTest() {
+    void grantsTest() {
         // TODO: test grants
     }
 
