@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:one_of/one_of.dart';
-import 'package:built_collection/built_collection.dart';
+// import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
@@ -69,14 +69,14 @@ void main() {
       final description = 'Test issuance config';
       final format = CreateIssuanceConfigInputFormatEnum.ldpVc;
       final credentialOfferDuration = 600;
-      final credentialSupported = [
-        CredentialSupportedObject((b) => b
-          ..credentialTypeId = 'TDriversLicenseV1R1'
-          ..jsonSchemaUrl =
-              'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
-          ..jsonLdContextUrl =
-              'https://schema.affinidi.io/TDriversLicenseV1R1.json')
-      ];
+      // final credentialSupported = [
+      //   CredentialSupportedObject((b) => b
+      //     ..credentialTypeId = 'TDriversLicenseV1R1'
+      //     ..jsonSchemaUrl =
+      //         'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
+      //     ..jsonLdContextUrl =
+      //         'https://schema.affinidi.io/TDriversLicenseV1R1.json')
+      // ];
 
       // create config
       final configInputBuilder = CreateIssuanceConfigInputBuilder()

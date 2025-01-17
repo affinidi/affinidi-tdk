@@ -5,10 +5,10 @@ import 'environment.dart';
 
 void main() {
   group('Vault Data Manager Client Integration Tests', () {
-    late ConfigApi configApi;
-    late FilesApi filesApi;
+    // late ConfigApi configApi;
+    // late FilesApi filesApi;
     late NodesApi nodesApi;
-    late ProfileDataApi profileDataApi;
+    // late ProfileDataApi profileDataApi;
 
     setUp(() async {
       final env = getVaultEnvironment();
@@ -19,11 +19,10 @@ void main() {
       final apiClient = AffinidiTdkVaultDataManagerClient(
           authTokenHook: consumerAuthProvider.fetchConsumerToken);
 
-      print(await consumerAuthProvider.fetchConsumerToken());
-      configApi = apiClient.getConfigApi();
-      filesApi = apiClient.getFilesApi();
+      // configApi = apiClient.getConfigApi();
+      // filesApi = apiClient.getFilesApi();
       nodesApi = apiClient.getNodesApi();
-      profileDataApi = apiClient.getProfileDataApi();
+      // profileDataApi = apiClient.getProfileDataApi();
     });
 
     test('list root node children', () async {
