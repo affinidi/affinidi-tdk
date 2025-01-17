@@ -52,15 +52,20 @@ abstract interface class CryptographyServiceInterface {
   String createSha256Hex({required List<int> bytes});
   String createMd5Base64({required List<int> bytes});
 
-  Uint8List aesCbcEncrypt(
-    Uint8List key,
-    Uint8List iv,
-    Uint8List paddedPlaintext,
-  );
+  Future<Uint8List> aesCbcEncrypt({
+    required Uint8List key,
+    required Uint8List iv,
+    required Uint8List paddedPlaintext,
+  });
 
-  Uint8List aesCbcDecrypt(
-    Uint8List key,
-    Uint8List iv,
-    Uint8List cipherText,
-  );
+  Future<Uint8List> aesCbcDecrypt({
+    required Uint8List key,
+    required Uint8List iv,
+    required Uint8List cipherText,
+  });
+
+  Future<String> decryptSeed({
+    required String encryptedSeedHex,
+    required String encryptionKeyHex,
+  });
 }

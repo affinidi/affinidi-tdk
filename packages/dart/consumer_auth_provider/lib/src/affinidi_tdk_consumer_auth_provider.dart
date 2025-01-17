@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
 import 'package:basic_token_provider/basic_token_provider.dart';
-import 'package:convert/convert.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 class ConsumerAuthProvider {
@@ -11,8 +9,6 @@ class ConsumerAuthProvider {
   final String _encryptionKey;
 
   String? _consumerToken;
-
-  static const didMethodSeparator = '++';
 
   ConsumerAuthProvider({
     required String encryptedSeed,
@@ -26,24 +22,14 @@ class ConsumerAuthProvider {
         return _consumerToken!;
       }
 
-      final List<int> walletSeedBuff = hex.decode(_encryptedSeed);
-      final nonce = walletSeedBuff.sublist(0, 16);
-      final ciphertextAndMac = walletSeedBuff.sublist(16);
-      final key = hex.decode(_encryptionKey);
-
       final cryptographyService = CryptographyService();
-      final decryptedSeed = cryptographyService.aesCbcDecrypt(
-        Uint8List.fromList(key),
-        Uint8List.fromList(nonce),
-        Uint8List.fromList(ciphertextAndMac),
+      final seed = await cryptographyService.decryptSeed(
+        encryptedSeedHex: _encryptedSeed,
+        encryptionKeyHex: _encryptionKey,
       );
 
       // TODO: dependency-inject this tokenProvider
       ConsumerTokenProvider tokenProvider = ConsumerTokenProvider();
-      final decryptedSeedEncoded = utf8.decode(decryptedSeed);
-      final [seed, ...didMethod] = decryptedSeedEncoded.split(
-        didMethodSeparator,
-      );
       _consumerToken = await tokenProvider.getToken(utf8.encode(seed));
 
       return _consumerToken!;
