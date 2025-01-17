@@ -16,6 +16,16 @@ class ProjectEnvironment {
   });
 }
 
+class VaultEnvironment {
+  final String encryptedSeed;
+  final String encryptionKey;
+
+  VaultEnvironment({
+    required this.encryptedSeed,
+    required this.encryptionKey,
+  });
+}
+
 ProjectEnvironment getProjectEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
@@ -37,5 +47,22 @@ ProjectEnvironment getProjectEnvironment() {
     privateKey: privateKey,
     keyId: keyId,
     passphrase: passphrase,
+  );
+}
+
+VaultEnvironment getVaultEnvironment() {
+  final env = DotEnv()..load(['../../.env']);
+
+  if (!env.isEveryDefined(['VAULT_ENCRYPTED_SEED', 'VAULT_ENCRYPTION_KEY'])) {
+    throw Exception(
+        'Missing environment variables. Please provide VAULT_ENCRYPTED_SEED and VAULT_ENCRYPTION_KEY');
+  }
+
+  final encryptedSeed = env['VAULT_ENCRYPTED_SEED']!;
+  final encryptionKey = env['VAULT_ENCRYPTION_KEY']!;
+
+  return VaultEnvironment(
+    encryptedSeed: encryptedSeed,
+    encryptionKey: encryptionKey,
   );
 }

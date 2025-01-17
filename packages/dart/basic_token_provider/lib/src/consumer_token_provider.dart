@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:base_codecs/base_codecs.dart';
 import 'package:bip32/bip32.dart';
 import 'package:crypto/crypto.dart';
@@ -13,8 +14,8 @@ import 'package:web3dart/crypto.dart';
 /// This is intended for **DEMO purposes only** and **should NOT be used in production**.
 class ConsumerTokenProvider {
   static const etheriumIdentityKey = "m/44'/60'/0'/0/0";
-  static const String affConsumerAuthTokenEndpoint =
-      'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token';
+  static final String affConsumerAuthTokenEndpoint =
+      Environment.fetchConsumerAudienceUrl();
   static const secondsBetweenApiAuthRefresh = 300;
 
   /// DEMO method to get a consumer token

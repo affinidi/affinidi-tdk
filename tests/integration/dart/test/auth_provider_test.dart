@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
-import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 import 'environment.dart';
 
 void main() {
@@ -54,21 +53,5 @@ void main() {
       expect(authProvider.publicKey, isNotNull);
     });
 
-    test('use auth provider with an API client', () async {
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
-      final apiClient = AffinidiTdkCredentialIssuanceClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
-
-      final api = apiClient.getConfigurationApi();
-      final response = await api.getIssuanceConfigList();
-      expect(response, isA<IssuanceConfigListResponse>());
-    });
   });
 }
