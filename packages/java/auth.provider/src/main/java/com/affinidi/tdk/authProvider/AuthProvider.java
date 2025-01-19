@@ -39,7 +39,7 @@ public class AuthProvider {
     private final String privateKey;
     private final String keyId;
     private final String passphrase;
-    private final String tokenEndPoint;
+    private String tokenEndPoint;
     private String apiGatewayUrl;
     private String publicKey;
     private String projectScopeToken;
@@ -361,6 +361,10 @@ public class AuthProvider {
      */
     public String getTokenEndPoint() {
         return tokenEndPoint;
+    }
+
+    public void setTokenEndPoint(String tokenEndPoint) {
+        this.tokenEndPoint = tokenEndPoint;
     }
 
     /**

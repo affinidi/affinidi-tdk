@@ -160,7 +160,6 @@ public class JwtUtil {
                     response -> {
                         if (response.getCode() >= 200 && response.getCode() < 300) {
                             HttpEntity entity = response.getEntity();
-                            // String bodyString = EntityUtils.toString(entity, "UTF-8");
                             String jwkFromResponse = decodeRespose(entity);
                             Jwk<?> jwk = Jwks.parser().build()
                                     .parse(jwkFromResponse);

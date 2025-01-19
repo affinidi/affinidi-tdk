@@ -17,11 +17,13 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.givenThat;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
+import com.affinidi.tdk.authProvider.exception.ConfigurationException;
 import com.affinidi.tdk.authProvider.exception.InvalidPublicKeyException;
 import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
@@ -129,21 +131,50 @@ public class AuthProviderTest {
                     .startsWith(AuthProviderConstants.couldNotDerivePrivateKeyErrorMsg + " Exception : "));
         }
 
+        @Test
+        @DisplayName("happy path: given a validprivate-key, when all the endponts succesfully returns 200, then it returns a JWT")
+        void givenValidApiKeyResponse_AndSuccessfulApiCalls_thenReturnsAJWT(WireMockRuntimeInfo wmRuntimeInfo)
+                throws IOException, URISyntaxException, ConfigurationException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            String fakeTokenUrl = apiUrl + "/auth-token";
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey(testPrivateKey)
+                    .passphrase("")
+                    .build();
+            provider.setApiGatewayUrl(apiUrl);
+            provider.setTokenEndPoint(fakeTokenUrl);
+            givenThat(post("/auth-token")
+                    .withHost(equalTo(host))
+                    .willReturn(okJson("{access_token: \"some-access-token\"}")));
+            givenThat(post(AuthProviderConstants.projectScopeTokenApiPath).withHost(equalTo(host))
+                    .willReturn(okJson("{accessToken: \"some-project-scope-token\"}")));
+
+            // act and assert
+            String token = assertDoesNotThrow(() -> provider.fetchProjectScopedToken());
+            assertEquals("some-project-scope-token", token);
+        }
+
+        @Test
+        void testGetUserAccessToken() {
+
+        }
+
+        @Test
+        void testShouldRefreshToken() {
+
+        }
+
+        @Test
+        void testSignIotaJwt() {
+
+        }
     }
-
-    @Test
-    void testGetUserAccessToken() {
-
-    }
-
-    @Test
-    void testShouldRefreshToken() {
-
-    }
-
-    @Test
-    void testSignIotaJwt() {
-
-    }
-
 }
