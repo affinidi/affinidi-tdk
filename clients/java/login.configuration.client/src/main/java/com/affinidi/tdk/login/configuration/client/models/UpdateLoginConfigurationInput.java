@@ -15,7 +15,7 @@ package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.login.configuration.client.models.IdTokenMapping;
+import com.affinidi.tdk.login.configuration.client.models.IdTokenMappingItem;
 import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationClientMetadataInput;
 import com.affinidi.tdk.login.configuration.client.models.TokenEndpointAuthMethod;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -68,7 +68,7 @@ public class UpdateLoginConfigurationInput {
   private Object presentationDefinition;
 
   public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
-  private IdTokenMapping idTokenMapping = new ArrayList<>();
+  private List<IdTokenMappingItem> idTokenMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
   private LoginConfigurationClientMetadataInput clientMetadata;
@@ -248,28 +248,36 @@ public class UpdateLoginConfigurationInput {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public UpdateLoginConfigurationInput idTokenMapping(IdTokenMapping idTokenMapping) {
+  public UpdateLoginConfigurationInput idTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
     
     this.idTokenMapping = idTokenMapping;
     return this;
   }
 
+  public UpdateLoginConfigurationInput addIdTokenMappingItem(IdTokenMappingItem idTokenMappingItem) {
+    if (this.idTokenMapping == null) {
+      this.idTokenMapping = new ArrayList<>();
+    }
+    this.idTokenMapping.add(idTokenMappingItem);
+    return this;
+  }
+
   /**
-   * Get idTokenMapping
+   * Fields name/path mapping between the vp_token and the id_token
    * @return idTokenMapping
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IdTokenMapping getIdTokenMapping() {
+  public List<IdTokenMappingItem> getIdTokenMapping() {
     return idTokenMapping;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdTokenMapping(IdTokenMapping idTokenMapping) {
+  public void setIdTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
   }
 
@@ -505,11 +513,11 @@ public class UpdateLoginConfigurationInput {
 
     // add `idTokenMapping` to the URL query string
     if (getIdTokenMapping() != null) {
-      try {
-        joiner.add(String.format("%sidTokenMapping%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdTokenMapping()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (int i = 0; i < getIdTokenMapping().size(); i++) {
+        if (getIdTokenMapping().get(i) != null) {
+          joiner.add(getIdTokenMapping().get(i).toUrlQueryString(String.format("%sidTokenMapping%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
       }
     }
 

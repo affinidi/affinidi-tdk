@@ -18,7 +18,6 @@ docs/Filter.md
 docs/FilterConst.md
 docs/FilterItems.md
 docs/Format.md
-docs/FreeFormObject.md
 docs/HolderSubject.md
 docs/InputDescriptor.md
 docs/InvalidParameterError.md
@@ -84,7 +83,6 @@ src/main/java/com/affinidi/tdk/credential/verification/client/models/Filter.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/FilterConst.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/FilterItems.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/Format.java
-src/main/java/com/affinidi/tdk/credential/verification/client/models/FreeFormObject.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/HolderSubject.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/InputDescriptor.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/InvalidParameterError.java
@@ -127,7 +125,6 @@ src/test/java/com/affinidi/tdk/credential/verification/client/models/FilterConst
 src/test/java/com/affinidi/tdk/credential/verification/client/models/FilterItemsTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/FilterTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/FormatTest.java
-src/test/java/com/affinidi/tdk/credential/verification/client/models/FreeFormObjectTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/HolderSubjectTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/InputDescriptorTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/InvalidParameterErrorTest.java

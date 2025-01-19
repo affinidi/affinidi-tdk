@@ -330,11 +330,11 @@ export interface CreateLoginConfigurationInput {
    */
   presentationDefinition?: object
   /**
-   *
-   * @type {IdTokenMapping}
+   * Fields name/path mapping between the vp_token and the id_token
+   * @type {Array<IdTokenMappingItem>}
    * @memberof CreateLoginConfigurationInput
    */
-  idTokenMapping?: IdTokenMapping
+  idTokenMapping?: Array<IdTokenMappingItem>
   /**
    *
    * @type {LoginConfigurationClientMetadataInput}
@@ -869,33 +869,27 @@ export type GroupsPerUserLimitExceededErrorHttpStatusCodeEnum =
   (typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum)[keyof typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum]
 
 /**
- * Fields name/path mapping between the vp_token and the id_token
- * @export
- * @interface IdTokenMapping
- */
-export interface IdTokenMapping extends Array<IdTokenMappingInner> {}
-/**
  *
  * @export
- * @interface IdTokenMappingInner
+ * @interface IdTokenMappingItem
  */
-export interface IdTokenMappingInner {
+export interface IdTokenMappingItem {
   /**
    * Name(path) of the corresponding field in the vp_token
    * @type {string}
-   * @memberof IdTokenMappingInner
+   * @memberof IdTokenMappingItem
    */
   sourceField: string
   /**
    * Name of the corresponding field in the id_token
    * @type {string}
-   * @memberof IdTokenMappingInner
+   * @memberof IdTokenMappingItem
    */
   idTokenClaim: string
   /**
    * Id of related input descriptor from presentation definition
    * @type {string}
-   * @memberof IdTokenMappingInner
+   * @memberof IdTokenMappingItem
    */
   inputDescriptorId?: string
 }
@@ -1432,11 +1426,11 @@ export interface LoginConfigurationObject {
    */
   presentationDefinition?: object
   /**
-   *
-   * @type {IdTokenMapping}
+   * Fields name/path mapping between the vp_token and the id_token
+   * @type {Array<IdTokenMappingItem>}
    * @memberof LoginConfigurationObject
    */
-  idTokenMapping: IdTokenMapping
+  idTokenMapping: Array<IdTokenMappingItem>
   /**
    *
    * @type {LoginConfigurationClientMetadataOutput}
@@ -2234,11 +2228,11 @@ export interface UpdateLoginConfigurationInput {
    */
   presentationDefinition?: object
   /**
-   *
-   * @type {IdTokenMapping}
+   * Fields name/path mapping between the vp_token and the id_token
+   * @type {Array<IdTokenMappingItem>}
    * @memberof UpdateLoginConfigurationInput
    */
-  idTokenMapping?: IdTokenMapping
+  idTokenMapping?: Array<IdTokenMappingItem>
   /**
    *
    * @type {LoginConfigurationClientMetadataInput}

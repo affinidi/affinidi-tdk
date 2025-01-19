@@ -14,7 +14,6 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.Format;
-import com.affinidi.tdk.credential.verification.client.models.FreeFormObject;
 import com.affinidi.tdk.credential.verification.client.models.InputDescriptor;
 import com.affinidi.tdk.credential.verification.client.models.SubmissionRequirement;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -24,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

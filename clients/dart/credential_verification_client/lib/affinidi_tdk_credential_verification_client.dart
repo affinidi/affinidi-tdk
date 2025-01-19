@@ -25,7 +25,6 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/filter.dar
 export 'package:affinidi_tdk_credential_verification_client/src/model/filter_const.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/filter_items.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/holder_subject.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/invalid_parameter_error.dart';

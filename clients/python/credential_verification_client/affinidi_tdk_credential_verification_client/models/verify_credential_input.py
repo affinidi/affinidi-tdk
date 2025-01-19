@@ -19,9 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, conlist
-from affinidi_tdk_credential_verification_client.models.free_form_object import FreeFormObject
 from affinidi_tdk_credential_verification_client.models.w3c_credential import W3cCredential
 
 class VerifyCredentialInput(BaseModel):
@@ -29,7 +28,7 @@ class VerifyCredentialInput(BaseModel):
     Request model of /verify-vcs  # noqa: E501
     """
     verifiable_credentials: conlist(W3cCredential, min_items=1) = Field(default=..., alias="verifiableCredentials", description="List of VCs")
-    issuer_did_document: Optional[FreeFormObject] = Field(default=None, alias="issuerDidDocument")
+    issuer_did_document: Optional[Dict[str, Any]] = Field(default=None, alias="issuerDidDocument", description="Dynamic model")
     __properties = ["verifiableCredentials", "issuerDidDocument"]
 
     class Config:
@@ -63,9 +62,6 @@ class VerifyCredentialInput(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['verifiableCredentials'] = _items
-        # override the default output from pydantic by calling `to_dict()` of issuer_did_document
-        if self.issuer_did_document:
-            _dict['issuerDidDocument'] = self.issuer_did_document.to_dict()
         return _dict
 
     @classmethod
@@ -79,7 +75,7 @@ class VerifyCredentialInput(BaseModel):
 
         _obj = VerifyCredentialInput.parse_obj({
             "verifiable_credentials": [W3cCredential.from_dict(_item) for _item in obj.get("verifiableCredentials")] if obj.get("verifiableCredentials") is not None else None,
-            "issuer_did_document": FreeFormObject.from_dict(obj.get("issuerDidDocument")) if obj.get("issuerDidDocument") is not None else None
+            "issuer_did_document": obj.get("issuerDidDocument")
         })
         return _obj
 

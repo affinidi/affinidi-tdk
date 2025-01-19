@@ -4,10 +4,10 @@ Request model of /verify-vcs
 
 ## Properties
 
-| Name                       | Type                                        | Description | Notes      |
-| -------------------------- | ------------------------------------------- | ----------- | ---------- |
-| **verifiable_credentials** | [**List[W3cCredential]**](W3cCredential.md) | List of VCs |
-| **issuer_did_document**    | [**FreeFormObject**](FreeFormObject.md)     |             | [optional] |
+| Name                       | Type                                        | Description   | Notes      |
+| -------------------------- | ------------------------------------------- | ------------- | ---------- |
+| **verifiable_credentials** | [**List[W3cCredential]**](W3cCredential.md) | List of VCs   |
+| **issuer_did_document**    | **Dict[str, object]**                       | Dynamic model | [optional] |
 
 ## Example
 

@@ -19,10 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_credential_verification_client.models.format import Format
-from affinidi_tdk_credential_verification_client.models.free_form_object import FreeFormObject
 from affinidi_tdk_credential_verification_client.models.input_descriptor import InputDescriptor
 from affinidi_tdk_credential_verification_client.models.submission_requirement import SubmissionRequirement
 
@@ -36,7 +35,7 @@ class PresentationDefinition(BaseModel):
     format: Optional[Format] = None
     submission_requirements: Optional[conlist(SubmissionRequirement)] = None
     input_descriptors: conlist(InputDescriptor) = Field(...)
-    frame: Optional[FreeFormObject] = None
+    frame: Optional[Dict[str, Any]] = Field(default=None, description="Dynamic model")
     __properties = ["id", "name", "purpose", "format", "submission_requirements", "input_descriptors", "frame"]
 
     class Config:
@@ -80,9 +79,6 @@ class PresentationDefinition(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['input_descriptors'] = _items
-        # override the default output from pydantic by calling `to_dict()` of frame
-        if self.frame:
-            _dict['frame'] = self.frame.to_dict()
         return _dict
 
     @classmethod
@@ -101,7 +97,7 @@ class PresentationDefinition(BaseModel):
             "format": Format.from_dict(obj.get("format")) if obj.get("format") is not None else None,
             "submission_requirements": [SubmissionRequirement.from_dict(_item) for _item in obj.get("submission_requirements")] if obj.get("submission_requirements") is not None else None,
             "input_descriptors": [InputDescriptor.from_dict(_item) for _item in obj.get("input_descriptors")] if obj.get("input_descriptors") is not None else None,
-            "frame": FreeFormObject.from_dict(obj.get("frame")) if obj.get("frame") is not None else None
+            "frame": obj.get("frame")
         })
         return _obj
 
