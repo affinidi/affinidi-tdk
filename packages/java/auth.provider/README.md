@@ -1,8 +1,6 @@
 # auth.provider
 
-AuthProvider package
-
-- API version: 1.0.0
+AuthProvider package enables you to generate the required access token like Project Scoped Token to authenticate and access Affinidi Trust Network services.
 
 For more information, please visit [https://github.com/affinidi/affinidi-tdk](https://github.com/affinidi/affinidi-tdk)
 
@@ -47,17 +45,11 @@ At first generate the JAR by executing:
 mvn clean package
 ```
 
-## Getting Started
+## Usage
 
-Configure .env file at your project base with the following values (Refer .env.example)
+Sample usage to generate Project Scoped Token to call Affinidi TDK clients.
 
-AFFINIDI_TDK_ENVIRONMENT= (local,dev or prod)
-
-PROJECT_ID=
-KEY_ID=
-TOKEN_ID=
-PASSPHRASE=
-PRIVATE_KEY=
+> You can store the required parameters like the Token details into an environment file.
 
 ```java
 
@@ -96,13 +88,3 @@ public class AuthProviderConsumer {
 }
 
 ```
-
-## Documentation for API Endpoints
-
-
-## Recommendation
-
-
-## Author
-
-info@affinidi.com
