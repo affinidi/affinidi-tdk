@@ -27,12 +27,13 @@ The Affinidi TDK offers the following modules and support to programming languag
 |[auth-provider](packages/auth-provider/)           |   🟢                  |     🟢                |        🔴            | [🟢](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/AuthProvider) |     🟢                |
 |[common](packages/common/)                         |   🟢                  |     🟢                |        🔴            | [🟢](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Common) |     🟢                |
 |**Clients**                                       |                       |                       |                      |
-|credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/) | [🟢 Link](clients/python/credential_issuance_client/) | [🟡 Link](clients/dart/credential_issuance_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialIssuanceClient) | [🟢 Link](clients/java/credential-issuance-client/) |
-|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialVerificationClient) | [🟢 Link](clients/java/credential-verification-client/) |
-|iam-client                     | [🟢 Link](clients/typescript/iam-client/) | [🟢 Link](clients/python/iam_client/) | [🟡 Link](clients/dart/iam_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IamClient) | [🟢 Link](clients/java/iam-client/) |
-|iota-client                    | [🟢 Link](clients/typescript/iota-client/) | [🟢 Link](clients/python/iota_client/) | [🟡 Link](clients/dart/iota_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IotaClient) | [🟢 Link](clients/java/iota-client/) |
-|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟢 Link](clients/python/login_configuration_client/) | [🟡 Link](clients/dart/login_configuration_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/LoginConfigurationClient) | [🟢 Link](clients/java/login-configuration-client/) |
-|wallets-client                 | [🟢 Link](clients/typescript/wallets-client/) | [🟢 Link](clients/python/wallets_client/) | [🟡 Link](clients/dart/wallets_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/WalletsClient) | [🟢 Link](clients/java/wallets-client/) |
+|credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/) | [🟢 Link](clients/python/credential_issuance_client/) | [🟡 Link](clients/dart/credential_issuance_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialIssuanceClient) | [🟢 Link](clients/java/credential.issuance.client/) |
+|credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialVerificationClient) | [🟢 Link](clients/java/credential.verification.client/) |
+|iam-client                     | [🟢 Link](clients/typescript/iam-client/) | [🟢 Link](clients/python/iam_client/) | [🟡 Link](clients/dart/iam_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IamClient) | [🟢 Link](clients/java/iam.client/) |
+|iota-client                    | [🟢 Link](clients/typescript/iota-client/) | [🟢 Link](clients/python/iota_client/) | [🟡 Link](clients/dart/iota_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IotaClient) | [🟢 Link](clients/java/iota.client/) |
+|login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/) | [🟢 Link](clients/python/login_configuration_client/) | [🟡 Link](clients/dart/login_configuration_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/LoginConfigurationClient) | [🟢 Link](clients/java/login.configuration.client/) |
+|vault-data-manager-client                 | [🟢 Link](clients/typescript/vault-data-manager-client/) | [🟢 Link](clients/python/vault_data_manager_client/) | [🟡 Link](clients/dart/vault_data_manager_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/VaultDataManagerClient) | [🟢 Link](clients/java/vault.data.manager.client/) |
+|wallets-client                 | [🟢 Link](clients/typescript/wallets-client/) | [🟢 Link](clients/python/wallets_client/) | [🟡 Link](clients/dart/wallets_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/WalletsClient) | [🟢 Link](clients/java/wallets.client/) |
 |**Libraries**                                       |                       |                       |                      |
 |[iota-browser](libs/iota-browser/)            |   🟢                  |     🔴                |        🔴            |        🔴            |   🔴                  |
 |[iota-core](libs/iota-core/)               |   🟢                  |     🟢                |        🔴            |        🔴            |   🟢                  |
@@ -40,7 +41,7 @@ The Affinidi TDK offers the following modules and support to programming languag
 <br />
 🟢 Supported <br />
 🟡 Experimental <br />
-🔴 Not supported 
+🔴 Not supported
 
 ## Documentation
 
