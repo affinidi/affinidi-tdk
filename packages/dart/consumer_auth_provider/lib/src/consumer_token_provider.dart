@@ -11,14 +11,12 @@ import 'package:uuid/uuid.dart';
 import 'package:web3dart/credentials.dart';
 import 'package:web3dart/crypto.dart';
 
-/// This is intended for **DEMO purposes only** and **should NOT be used in production**.
 class ConsumerTokenProvider {
   static const etheriumIdentityKey = "m/44'/60'/0'/0/0";
   static final String affConsumerAuthTokenEndpoint =
       Environment.fetchConsumerAudienceUrl();
   static const secondsBetweenApiAuthRefresh = 300;
 
-  /// DEMO method to get a consumer token
   Future<String> getToken(Uint8List seedBytes) async {
     final master = BIP32.fromSeed(seedBytes);
 

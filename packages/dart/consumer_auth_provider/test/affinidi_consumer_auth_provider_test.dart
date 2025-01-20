@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import 'mocks.dart';
 
 void main() {
-  group('A group of tests', () {
+  group('Consumer Auth Provider Tests', () {
     late MockConsumerAuthProvider authProvider;
 
     setUp(() {

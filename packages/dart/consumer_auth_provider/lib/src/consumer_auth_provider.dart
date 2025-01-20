@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart';
-import 'package:basic_token_provider/basic_token_provider.dart';
+import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+
+import 'consumer_token_provider.dart';
 
 class ConsumerAuthProvider {
   final String _encryptedSeed;

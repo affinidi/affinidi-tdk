@@ -7,7 +7,7 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:pointycastle/export.dart';
 
-import 'affinidi_aes_cbc_encryption_service_interface.dart';
+import 'aes_cbc_encryption_interface.dart';
 
 class AesCbcEncryptionService implements AesCbcEncryptionServiceInterface {
   final IV_LENGTH = 16;
