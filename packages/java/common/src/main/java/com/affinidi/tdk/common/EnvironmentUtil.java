@@ -21,8 +21,11 @@ public class EnvironmentUtil {
     private static Dotenv properties;
     private static Logger logger = Logger.getLogger(EnvironmentUtil.class.getName());
 
-    static {
-        properties = Dotenv.load();
+    public static Dotenv getProperties(){
+        if(properties == null){
+            properties = Dotenv.load();
+        }
+        return properties;
     }
 
     
@@ -35,12 +38,17 @@ public class EnvironmentUtil {
      */
     public String getConfiguredEnvironment() {
         String configuredEnvironment = null;
-        if (properties != null) {
-            configuredEnvironment = properties.get(Environment.AFFINIDI_TDK_PROPERTY_NAME);
-            if (configuredEnvironment == null) {
-                configuredEnvironment = properties.get(Environment.NEXT_AFFINIDI_TDK_PROPERTY_NAME);
+        try{
+            if (getProperties() != null) {
+                configuredEnvironment = getProperties().get(Environment.AFFINIDI_TDK_PROPERTY_NAME);
+                if (configuredEnvironment == null) {
+                    configuredEnvironment = getProperties().get(Environment.NEXT_AFFINIDI_TDK_PROPERTY_NAME);
+                }
             }
+        }catch(Exception exception){
+            logger.severe("Could not read .env file for TDK environment configuration");
         }
+        
         if (configuredEnvironment == null) {
             logger.severe("Could not find environment details for "+configuredEnvironment+". Defaulting to production");
             configuredEnvironment = Environment.PRODUCTION.environmentName;
@@ -97,7 +105,13 @@ public class EnvironmentUtil {
      * @return String
      */ 
     public String getValueFromEnvConfig(String propertyName) {
-        return properties.get(propertyName);
+        String propertyValue = null;
+        try{
+            propertyValue = getProperties().get(propertyName);
+        }catch(Exception exception){
+            logger.severe("Could not read .env file for "+propertyName);
+        }
+        return propertyValue;
     }
 
     /** 
@@ -111,8 +125,8 @@ public class EnvironmentUtil {
         Environment envDetail = (envName != null) ? Environment.getEnvSpecificDetails(envName) : null;
 
         if (envDetail == null) {
+            logger.severe("Could not find environment details for the specified name " + envName+". Hence defaulting to production");
             envDetail = Environment.getEnvSpecificDetails(Environment.PRODUCTION.environmentName);
-            logger.severe("Could not find environment details for the specified name " + envName);
         }
         return envDetail;
     }

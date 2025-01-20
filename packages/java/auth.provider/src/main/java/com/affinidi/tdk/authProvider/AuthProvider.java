@@ -26,7 +26,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * This class provides
+ * This class provides utility functions in order to generate
+ * projectScopeToken required to call Affinidi Services. 
  * 
  *
  * @author Priyanka
@@ -44,7 +45,7 @@ public class AuthProvider {
     private String publicKey;
     private String projectScopeToken;
 
-    AuthProvider(Configurations configurations) {
+    private AuthProvider(Configurations configurations) {
         this.projectId = configurations.projectId;
         this.tokenId = configurations.tokenId;
         this.privateKey = configurations.privateKey;
