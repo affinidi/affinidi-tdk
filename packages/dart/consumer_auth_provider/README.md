@@ -36,7 +36,3 @@ void main() {
   final token = await consumerAuthProvider.fetchConsumerToken();
 }
 ```
-
-## API Reference
-
-For a detailed list of all classes, methods, and properties, refer to the [API documentation](https://example.com/api_docs).
