@@ -64,9 +64,7 @@ class TestVerifyCredentialInput(unittest.TestCase):
                         credential_schema = affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema.W3cCredential_credentialSchema(
                             id = '', ), )
                     ],
-                issuer_did_document = {
-                    'key' : null
-                    }
+                issuer_did_document = { }
             )
         else:
             return VerifyCredentialInput(

@@ -171,9 +171,7 @@ class TestPresentationDefinition(unittest.TestCase):
                             ''
                             ], )
                     ],
-                frame = {
-                    'key' : null
-                    }
+                frame = { }
             )
         else:
             return PresentationDefinition(

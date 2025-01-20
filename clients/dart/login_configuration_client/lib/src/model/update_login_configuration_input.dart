@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:affinidi_tdk_login_configuration_client/src/model/login_configuration_client_metadata_input.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/token_endpoint_auth_method.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -21,6 +22,7 @@ part 'update_login_configuration_input.g.dart';
 /// * [clientSecret] - OAuth2 client secret
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
 /// * [clientMetadata] 
 /// * [tokenEndpointAuthMethod] 
 /// * [failOnMappingConflict] - Interrupts login process if duplications of data fields names will be found
@@ -49,6 +51,10 @@ abstract class UpdateLoginConfigurationInput implements Built<UpdateLoginConfigu
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
+
+  /// Fields name/path mapping between the vp_token and the id_token
+  @BuiltValueField(wireName: r'idTokenMapping')
+  BuiltList<IdTokenMappingItem>? get idTokenMapping;
 
   @BuiltValueField(wireName: r'clientMetadata')
   LoginConfigurationClientMetadataInput? get clientMetadata;
@@ -124,6 +130,13 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
       yield serializers.serialize(
         object.presentationDefinition,
         specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.idTokenMapping != null) {
+      yield r'idTokenMapping';
+      yield serializers.serialize(
+        object.idTokenMapping,
+        specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
       );
     }
     if (object.clientMetadata != null) {
@@ -211,6 +224,13 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationDefinition = valueDes;
+          break;
+        case r'idTokenMapping':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
+          ) as BuiltList<IdTokenMappingItem>;
+          result.idTokenMapping.replace(valueDes);
           break;
         case r'clientMetadata':
           final valueDes = serializers.deserialize(

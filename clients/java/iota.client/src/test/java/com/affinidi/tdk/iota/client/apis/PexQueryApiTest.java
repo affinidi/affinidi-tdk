@@ -16,6 +16,7 @@ package com.affinidi.tdk.iota.client.apis;
 import com.affinidi.tdk.iota.client.ApiException;
 import com.affinidi.tdk.iota.client.models.AlreadyExistsError;
 import com.affinidi.tdk.iota.client.models.CreatePexQueryInput;
+import com.affinidi.tdk.iota.client.models.DeletePexQueriesInput;
 import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.ListPexQueriesOK;
 import com.affinidi.tdk.iota.client.models.NotFoundError;
@@ -66,7 +67,8 @@ public class PexQueryApiTest {
     @Test
     public void deletePexQueriesTest() throws ApiException {
         String configurationId = null;
-        api.deletePexQueries(configurationId);
+        DeletePexQueriesInput deletePexQueriesInput = null;
+        Object response = api.deletePexQueries(configurationId, deletePexQueriesInput);
 
         // TODO: test validations
     }

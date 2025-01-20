@@ -15,7 +15,6 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.credential.verification.client.models.FreeFormObject;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -44,7 +45,7 @@ public class VerifyCredentialInput {
   private List<W3cCredential> verifiableCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
-  private FreeFormObject issuerDidDocument = new HashMap<>();
+  private Map<String, Object> issuerDidDocument = new HashMap<>();
 
   public VerifyCredentialInput() {
   }
@@ -82,28 +83,36 @@ public class VerifyCredentialInput {
     this.verifiableCredentials = verifiableCredentials;
   }
 
-  public VerifyCredentialInput issuerDidDocument(FreeFormObject issuerDidDocument) {
+  public VerifyCredentialInput issuerDidDocument(Map<String, Object> issuerDidDocument) {
     
     this.issuerDidDocument = issuerDidDocument;
     return this;
   }
 
+  public VerifyCredentialInput putIssuerDidDocumentItem(String key, Object issuerDidDocumentItem) {
+    if (this.issuerDidDocument == null) {
+      this.issuerDidDocument = new HashMap<>();
+    }
+    this.issuerDidDocument.put(key, issuerDidDocumentItem);
+    return this;
+  }
+
   /**
-   * Get issuerDidDocument
+   * Dynamic model
    * @return issuerDidDocument
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
-  public FreeFormObject getIssuerDidDocument() {
+  public Map<String, Object> getIssuerDidDocument() {
     return issuerDidDocument;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDidDocument(FreeFormObject issuerDidDocument) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIssuerDidDocument(Map<String, Object> issuerDidDocument) {
     this.issuerDidDocument = issuerDidDocument;
   }
 
@@ -190,11 +199,15 @@ public class VerifyCredentialInput {
 
     // add `issuerDidDocument` to the URL query string
     if (getIssuerDidDocument() != null) {
-      try {
-        joiner.add(String.format("%sissuerDidDocument%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerDidDocument()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (String _key : getIssuerDidDocument().keySet()) {
+        try {
+          joiner.add(String.format("%sissuerDidDocument%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getIssuerDidDocument().get(_key), URLEncoder.encode(String.valueOf(getIssuerDidDocument().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 

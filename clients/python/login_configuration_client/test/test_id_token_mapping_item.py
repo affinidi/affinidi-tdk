@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from affinidi_tdk_login_configuration_client.models.id_token_mapping import IdTokenMapping  # noqa: E501
+from affinidi_tdk_login_configuration_client.models.id_token_mapping_item import IdTokenMappingItem  # noqa: E501
 
-class TestIdTokenMapping(unittest.TestCase):
-    """IdTokenMapping unit test stubs"""
+class TestIdTokenMappingItem(unittest.TestCase):
+    """IdTokenMappingItem unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,24 +27,29 @@ class TestIdTokenMapping(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> IdTokenMapping:
-        """Test IdTokenMapping
+    def make_instance(self, include_optional) -> IdTokenMappingItem:
+        """Test IdTokenMappingItem
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `IdTokenMapping`
+        # uncomment below to create an instance of `IdTokenMappingItem`
         """
-        model = IdTokenMapping()  # noqa: E501
+        model = IdTokenMappingItem()  # noqa: E501
         if include_optional:
-            return IdTokenMapping(
+            return IdTokenMappingItem(
+                source_field = '',
+                id_token_claim = '',
+                input_descriptor_id = ''
             )
         else:
-            return IdTokenMapping(
+            return IdTokenMappingItem(
+                source_field = '',
+                id_token_claim = '',
         )
         """
 
-    def testIdTokenMapping(self):
-        """Test IdTokenMapping"""
+    def testIdTokenMappingItem(self):
+        """Test IdTokenMappingItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

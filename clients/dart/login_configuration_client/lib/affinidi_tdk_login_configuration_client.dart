@@ -39,6 +39,7 @@ export 'package:affinidi_tdk_login_configuration_client/src/model/group_user_map
 export 'package:affinidi_tdk_login_configuration_client/src/model/group_user_mappings_list.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/groups_list.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/groups_per_user_limit_exceeded_error.dart';
+export 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/invalid_claim_context_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/invalid_groups_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/invalid_parameter_error.dart';

@@ -23,17 +23,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for IdTokenMappingInner
+ * Model tests for IdTokenMappingItem
  */
-class IdTokenMappingInnerTest {
-    private final IdTokenMappingInner model = new IdTokenMappingInner();
+class IdTokenMappingItemTest {
+    private final IdTokenMappingItem model = new IdTokenMappingItem();
 
     /**
-     * Model tests for IdTokenMappingInner
+     * Model tests for IdTokenMappingItem
      */
     @Test
-    void testIdTokenMappingInner() {
-        // TODO: test IdTokenMappingInner
+    void testIdTokenMappingItem() {
+        // TODO: test IdTokenMappingItem
     }
 
     /**

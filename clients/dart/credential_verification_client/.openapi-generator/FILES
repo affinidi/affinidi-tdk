@@ -15,7 +15,6 @@ doc/Filter.md
 doc/FilterConst.md
 doc/FilterItems.md
 doc/Format.md
-doc/FreeFormObject.md
 doc/HolderSubject.md
 doc/InputDescriptor.md
 doc/InvalidParameterError.md
@@ -68,7 +67,6 @@ lib/src/model/filter.dart
 lib/src/model/filter_const.dart
 lib/src/model/filter_items.dart
 lib/src/model/format.dart
-lib/src/model/free_form_object.dart
 lib/src/model/holder_subject.dart
 lib/src/model/input_descriptor.dart
 lib/src/model/invalid_parameter_error.dart
@@ -113,7 +111,6 @@ test/filter_const_test.dart
 test/filter_items_test.dart
 test/filter_test.dart
 test/format_test.dart
-test/free_form_object_test.dart
 test/holder_subject_test.dart
 test/input_descriptor_test.dart
 test/invalid_parameter_error_test.dart

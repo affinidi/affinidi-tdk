@@ -22,9 +22,9 @@ import json
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
-class IdTokenMappingInner(BaseModel):
+class IdTokenMappingItem(BaseModel):
     """
-    IdTokenMappingInner
+    IdTokenMappingItem
     """
     source_field: StrictStr = Field(default=..., alias="sourceField", description="Name(path) of the corresponding field in the vp_token")
     id_token_claim: StrictStr = Field(default=..., alias="idTokenClaim", description="Name of the corresponding field in the id_token")
@@ -45,8 +45,8 @@ class IdTokenMappingInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdTokenMappingInner:
-        """Create an instance of IdTokenMappingInner from a JSON string"""
+    def from_json(cls, json_str: str) -> IdTokenMappingItem:
+        """Create an instance of IdTokenMappingItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -58,15 +58,15 @@ class IdTokenMappingInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdTokenMappingInner:
-        """Create an instance of IdTokenMappingInner from a dict"""
+    def from_dict(cls, obj: dict) -> IdTokenMappingItem:
+        """Create an instance of IdTokenMappingItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdTokenMappingInner.parse_obj(obj)
+            return IdTokenMappingItem.parse_obj(obj)
 
-        _obj = IdTokenMappingInner.parse_obj({
+        _obj = IdTokenMappingItem.parse_obj({
             "source_field": obj.get("sourceField"),
             "id_token_claim": obj.get("idTokenClaim"),
             "input_descriptor_id": obj.get("inputDescriptorId")

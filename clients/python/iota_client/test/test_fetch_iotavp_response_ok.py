@@ -39,8 +39,6 @@ class TestFetchIOTAVPResponseOK(unittest.TestCase):
             return FetchIOTAVPResponseOK(
                 correlation_id = '',
                 presentation_submission = '',
-                vp_token = '',
-                presentation_submission = '',
                 vp_token = ''
             )
         else:

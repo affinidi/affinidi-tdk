@@ -29,10 +29,8 @@ class FetchIOTAVPResponseOK(BaseModel):
     correlation_id: Optional[StrictStr] = Field(default=None, alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
     presentation_submission: Optional[StrictStr] = Field(default=None, description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
     vp_token: Optional[StrictStr] = Field(default=None, description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
-    presentation_submission: Optional[StrictStr] = Field(default=None, alias="presentationSubmission", description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
-    vp_token: Optional[StrictStr] = Field(default=None, alias="vpToken", description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
     additional_properties: Dict[str, Any] = {}
-    __properties = ["correlationId", "presentation_submission", "vp_token", "presentationSubmission", "vpToken"]
+    __properties = ["correlationId", "presentation_submission", "vp_token"]
 
     class Config:
         """Pydantic configuration"""
@@ -78,9 +76,7 @@ class FetchIOTAVPResponseOK(BaseModel):
         _obj = FetchIOTAVPResponseOK.parse_obj({
             "correlation_id": obj.get("correlationId"),
             "presentation_submission": obj.get("presentation_submission"),
-            "vp_token": obj.get("vp_token"),
-            "presentation_submission": obj.get("presentationSubmission"),
-            "vp_token": obj.get("vpToken")
+            "vp_token": obj.get("vp_token")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

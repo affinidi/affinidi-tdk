@@ -127,6 +127,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [GroupUserMappingsList](doc/GroupUserMappingsList.md)
 - [GroupsList](doc/GroupsList.md)
 - [GroupsPerUserLimitExceededError](doc/GroupsPerUserLimitExceededError.md)
+- [IdTokenMappingItem](doc/IdTokenMappingItem.md)
 - [InvalidClaimContextError](doc/InvalidClaimContextError.md)
 - [InvalidGroupsError](doc/InvalidGroupsError.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)

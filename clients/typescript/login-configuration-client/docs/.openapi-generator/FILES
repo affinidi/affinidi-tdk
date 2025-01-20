@@ -26,7 +26,7 @@ Models/GroupUserMappingDto.md
 Models/GroupUserMappingsList.md
 Models/GroupsList.md
 Models/GroupsPerUserLimitExceededError.md
-Models/IdTokenMapping_inner.md
+Models/IdTokenMappingItem.md
 Models/InvalidClaimContextError.md
 Models/InvalidGroupsError.md
 Models/InvalidParameterError.md

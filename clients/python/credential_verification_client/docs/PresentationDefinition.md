@@ -12,7 +12,7 @@ Presentation definition
 | **format**                  | [**Format**](Format.md)                                     |                    | [optional] |
 | **submission_requirements** | [**List[SubmissionRequirement]**](SubmissionRequirement.md) |                    | [optional] |
 | **input_descriptors**       | [**List[InputDescriptor]**](InputDescriptor.md)             |                    |
-| **frame**                   | [**FreeFormObject**](FreeFormObject.md)                     |                    | [optional] |
+| **frame**                   | **Dict[str, object]**                                       | Dynamic model      | [optional] |
 
 ## Example
 

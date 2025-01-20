@@ -1997,7 +1997,11 @@ components:
           description: Presentation Definition
           type: object
         idTokenMapping:
-          $ref: '#/components/schemas/IdTokenMapping'
+          description: Fields name/path mapping between the vp_token and the id_token
+          items:
+            $ref: '#/components/schemas/IdTokenMappingItem'
+          minItems: 1
+          type: array
         clientMetadata:
           $ref: '#/components/schemas/LoginConfigurationClientMetadataInput'
         claimFormat:
@@ -2144,7 +2148,11 @@ components:
           description: Presentation Definition
           type: object
         idTokenMapping:
-          $ref: '#/components/schemas/IdTokenMapping'
+          description: Fields name/path mapping between the vp_token and the id_token
+          items:
+            $ref: '#/components/schemas/IdTokenMappingItem'
+          minItems: 1
+          type: array
         clientMetadata:
           $ref: '#/components/schemas/LoginConfigurationClientMetadataInput'
         tokenEndpointAuthMethod:
@@ -2293,7 +2301,11 @@ components:
           description: Presentation Definition
           type: object
         idTokenMapping:
-          $ref: '#/components/schemas/IdTokenMapping'
+          description: Fields name/path mapping between the vp_token and the id_token
+          items:
+            $ref: '#/components/schemas/IdTokenMappingItem'
+          minItems: 1
+          type: array
         clientMetadata:
           $ref: '#/components/schemas/LoginConfigurationClientMetadataOutput'
         tokenEndpointAuthMethod:
@@ -2310,12 +2322,26 @@ components:
         - tokenEndpointAuthMethod
         - vpDefinition
       type: object
-    IdTokenMapping:
-      description: Fields name/path mapping between the vp_token and the id_token
-      items:
-        $ref: '#/components/schemas/IdTokenMapping_inner'
-      minItems: 1
-      type: array
+    IdTokenMappingItem:
+      additionalProperties: false
+      example:
+        sourceField: sourceField
+        inputDescriptorId: inputDescriptorId
+        idTokenClaim: idTokenClaim
+      properties:
+        sourceField:
+          description: Name(path) of the corresponding field in the vp_token
+          type: string
+        idTokenClaim:
+          description: Name of the corresponding field in the id_token
+          type: string
+        inputDescriptorId:
+          description: Id of related input descriptor from presentation definition
+          type: string
+      required:
+        - idTokenClaim
+        - sourceField
+      type: object
     CreateGroupInput:
       additionalProperties: false
       example:
@@ -3558,26 +3584,6 @@ components:
       required:
         - presentationDefinition
         - state
-      type: object
-    IdTokenMapping_inner:
-      additionalProperties: false
-      example:
-        sourceField: sourceField
-        inputDescriptorId: inputDescriptorId
-        idTokenClaim: idTokenClaim
-      properties:
-        sourceField:
-          description: Name(path) of the corresponding field in the vp_token
-          type: string
-        idTokenClaim:
-          description: Name of the corresponding field in the id_token
-          type: string
-        inputDescriptorId:
-          description: Id of related input descriptor from presentation definition
-          type: string
-      required:
-        - idTokenClaim
-        - sourceField
       type: object
     InvalidParameterError_details_inner:
       additionalProperties: false

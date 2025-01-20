@@ -37,8 +37,7 @@ affinidi_tdk_login_configuration_client/models/group_user_mapping_dto.py
 affinidi_tdk_login_configuration_client/models/group_user_mappings_list.py
 affinidi_tdk_login_configuration_client/models/groups_list.py
 affinidi_tdk_login_configuration_client/models/groups_per_user_limit_exceeded_error.py
-affinidi_tdk_login_configuration_client/models/id_token_mapping.py
-affinidi_tdk_login_configuration_client/models/id_token_mapping_inner.py
+affinidi_tdk_login_configuration_client/models/id_token_mapping_item.py
 affinidi_tdk_login_configuration_client/models/invalid_claim_context_error.py
 affinidi_tdk_login_configuration_client/models/invalid_groups_error.py
 affinidi_tdk_login_configuration_client/models/invalid_parameter_error.py
@@ -100,8 +99,7 @@ docs/GroupUserMappingDto.md
 docs/GroupUserMappingsList.md
 docs/GroupsList.md
 docs/GroupsPerUserLimitExceededError.md
-docs/IdTokenMapping.md
-docs/IdTokenMappingInner.md
+docs/IdTokenMappingItem.md
 docs/IdpApi.md
 docs/InvalidClaimContextError.md
 docs/InvalidGroupsError.md
@@ -169,8 +167,7 @@ test/test_group_user_mapping_dto.py
 test/test_group_user_mappings_list.py
 test/test_groups_list.py
 test/test_groups_per_user_limit_exceeded_error.py
-test/test_id_token_mapping.py
-test/test_id_token_mapping_inner.py
+test/test_id_token_mapping_item.py
 test/test_idp_api.py
 test/test_invalid_claim_context_error.py
 test/test_invalid_groups_error.py
