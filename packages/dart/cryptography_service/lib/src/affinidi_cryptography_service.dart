@@ -5,10 +5,8 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:affinidi_cryptography_service/src/affinidi_cryptography_service_interface.dart';
 import 'package:affinidi_cryptography_service/src/models/verify_jwt_result.dart';
-import 'package:crypto/crypto.dart'
-    as crypto; // TODO: consider delete in favor of package:cryptography
+import 'package:crypto/crypto.dart' as crypto;
 import 'package:cryptography/cryptography.dart' as cryptography;
-import 'package:cryptography/cryptography.dart';
 import 'package:convert/convert.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -126,7 +124,7 @@ class CryptographyService implements CryptographyServiceInterface {
 
       print('Completed decrypting with AES256');
       return decrypted;
-    } on SecretBoxAuthenticationError catch (_) {
+    } on cryptography.SecretBoxAuthenticationError catch (_) {
       print('Failed decrypting with AES256');
       return null;
     }
@@ -187,6 +185,60 @@ class CryptographyService implements CryptographyServiceInterface {
     return base64.encode(digest.bytes);
   }
 
+  @override
+  VerifyJwtResult verifyJwt({
+    required String jwtToken,
+    required String didKey,
+  }) {
+    try {
+      final key = _ecPublicKeyFromDid(didKey);
+
+      final jwt = JWT.verify(
+        jwtToken,
+        key,
+        checkHeaderType: false,
+        checkExpiresIn: true,
+      );
+
+      return VerifyJwtResult(
+        isValid: true,
+        isExpired: false,
+        errorMessage: '',
+        jwtPayload: jwt.payload,
+      );
+    } on JWTExpiredException {
+      return VerifyJwtResult(
+        isValid: false,
+        isExpired: true,
+        errorMessage: 'Jwt is expired',
+        jwtPayload: null,
+      );
+    } on JWTException catch (ex) {
+      return VerifyJwtResult(
+        isValid: false,
+        isExpired: false,
+        errorMessage: ex.message,
+        jwtPayload: null,
+      );
+    }
+  }
+
+  @override
+  List<int> encryptWithRsaPublicKeyFromJwk({
+    required Map<String, dynamic> jwk,
+    required List<int> data,
+  }) {
+    final publicKey = _getRsaPublicKeyFromJwk(jwk);
+    final encryptor = pce.OAEPEncoding.withSHA256(pce.RSAEngine());
+
+    encryptor.init(
+      true,
+      pce.PublicKeyParameter<pce.RSAPublicKey>(publicKey),
+    ); // true=encrypt
+
+    return _processInBlocks(encryptor, Uint8List.fromList(data));
+  }
+
   (BigInt x, BigInt y) _ecPointFromDid(String did) {
     if (!did.startsWith("did:key:")) {
       throw "only did:key supported";
@@ -218,12 +270,12 @@ class CryptographyService implements CryptographyServiceInterface {
     return (publicKey.X, publicKey.Y);
   }
 
+  final _b256 = BigInt.from(256);
+
   BigInt _uint8ListToBigInt(Uint8List compressed) =>
       compressed.fold(BigInt.zero, (a, b) => a * _b256 + BigInt.from(b));
 
-  final _b256 = BigInt.from(256);
-
-  ECPublicKey ecPublicKeyFromDid(String did) {
+  ECPublicKey _ecPublicKeyFromDid(String did) {
     final (x, y) = _ecPointFromDid(did);
 
     final params = pc.ECDomainParameters('secp256k1');
@@ -238,51 +290,6 @@ class CryptographyService implements CryptographyServiceInterface {
     );
 
     return ECPublicKey.raw(pcKey);
-  }
-
-  @override
-  VerifyJwtResult verifyJwt(
-      {required String jwtToken, required String didKey}) {
-    try {
-      final key = ecPublicKeyFromDid(didKey);
-
-      final jwt = JWT.verify(jwtToken, key,
-          checkHeaderType: false, checkExpiresIn: true);
-
-      return VerifyJwtResult(
-          isValid: true,
-          isExpired: false,
-          errorMessage: '',
-          jwtPayload: jwt.payload);
-    } on JWTExpiredException {
-      return VerifyJwtResult(
-          isValid: false,
-          isExpired: true,
-          errorMessage: 'Jwt is expired',
-          jwtPayload: null);
-    } on JWTException catch (ex) {
-      return VerifyJwtResult(
-          isValid: false,
-          isExpired: false,
-          errorMessage: ex.message,
-          jwtPayload: null);
-    }
-  }
-
-  @override
-  List<int> encryptWithRsaPublicKeyFromJwk({
-    required Map<String, dynamic> jwk,
-    required List<int> data,
-  }) {
-    final publicKey = _getRsaPublicKeyFromJwk(jwk);
-    final encryptor = pce.OAEPEncoding.withSHA256(pce.RSAEngine());
-
-    encryptor.init(
-      true,
-      pce.PublicKeyParameter<pce.RSAPublicKey>(publicKey),
-    ); // true=encrypt
-
-    return _processInBlocks(encryptor, Uint8List.fromList(data));
   }
 
   pc.RSAPublicKey _getRsaPublicKeyFromJwk(Map<String, dynamic> jwk) {
@@ -320,7 +327,12 @@ class CryptographyService implements CryptographyServiceInterface {
           : input.length - inputOffset;
 
       outputOffset += engine.processBlock(
-          input, inputOffset, chunkSize, output, outputOffset);
+        input,
+        inputOffset,
+        chunkSize,
+        output,
+        outputOffset,
+      );
 
       inputOffset += chunkSize;
     }

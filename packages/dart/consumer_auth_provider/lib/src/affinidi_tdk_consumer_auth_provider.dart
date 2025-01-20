@@ -4,6 +4,18 @@ import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart
 import 'package:basic_token_provider/basic_token_provider.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
+/// A provider for handling Consumer authentication token
+///
+/// Example usage:
+///```dart
+///void main() {
+///  final consumerAuthProvider = ConsumerAuthProvider(
+///    encryptedSeed: 'encryptedSeed',
+///    encryptionKey: 'encryptionKey',
+///  );
+///  final token = await consumerAuthProvider.fetchConsumerToken();
+///}
+///```
 class ConsumerAuthProvider {
   final String _encryptedSeed;
   final String _encryptionKey;
@@ -20,6 +32,8 @@ class ConsumerAuthProvider {
     _aesCbcEncryptionService = AesCbcEncryptionService();
   }
 
+  /// Retrieves a valid Consumer token. Checks its validity and, if necessary,
+  /// sends a request to the server to obtain a fresh token.
   Future<String> fetchConsumerToken() async {
     try {
       if (_consumerToken != null && !_isTokenExpired(_consumerToken!)) {

@@ -1,12 +1,11 @@
 name: affinidi_tdk_consumer_auth_provider
-description: A starting point for Dart libraries or applications.
+description: Provider of Consumer auth token
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: ^3.6.0
 
-# Add regular dependencies here.
 dependencies:
   affinidi_tdk_common:
     path: ../common
