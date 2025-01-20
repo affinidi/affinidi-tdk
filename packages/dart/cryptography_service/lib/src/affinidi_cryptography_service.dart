@@ -23,9 +23,6 @@ class CryptographyService implements CryptographyServiceInterface {
   final _aes256NonceLength = 16;
   final _aes256MacLength = 32;
 
-  final _ivLength = 16;
-  final _didMethodSeparator = '++';
-
   final _aes256Algorithm = cryptography.AesCbc.with256bits(
     macAlgorithm: cryptography.Hmac.sha256(),
   );
@@ -288,66 +285,6 @@ class CryptographyService implements CryptographyServiceInterface {
     return _processInBlocks(encryptor, Uint8List.fromList(data));
   }
 
-  @override
-  Future<Uint8List> aesCbcEncrypt({
-    required Uint8List key,
-    required Uint8List iv,
-    required Uint8List paddedPlaintext,
-  }) async {
-    assert([128, 192, 256].contains(key.length * 8));
-    assert(128 == iv.length * 8);
-    assert(128 == paddedPlaintext.length * 8);
-
-    // Create a CBC block cipher with AES, and initialize with key and IV
-
-    final cbc = pce.CBCBlockCipher(
-      pce.AESEngine(),
-    )..init(
-        true,
-        pce.ParametersWithIV(pce.KeyParameter(key), iv),
-      ); // true=encrypt
-
-    // Encrypt the plaintext block-by-block
-
-    final cipherText = Uint8List(paddedPlaintext.length); // allocate space
-
-    var offset = 0;
-    while (offset < paddedPlaintext.length) {
-      offset += cbc.processBlock(paddedPlaintext, offset, cipherText, offset);
-    }
-    assert(offset == paddedPlaintext.length);
-
-    return cipherText;
-  }
-
-  @override
-  Future<Uint8List> aesCbcDecrypt({
-    required Uint8List key,
-    required Uint8List iv,
-    required Uint8List cipherText,
-  }) async {
-    // Create a CBC block cipher with AES, and initialize with key and IV
-
-    final cbc = pce.CBCBlockCipher(
-      pce.AESEngine(),
-    )..init(
-        false,
-        pce.ParametersWithIV(pce.KeyParameter(key), iv),
-      ); // false=decrypt
-
-    // Decrypt the cipherText block-by-block
-
-    final paddedPlainText = Uint8List(cipherText.length); // allocate space
-
-    var offset = 0;
-    while (offset < cipherText.length) {
-      offset += cbc.processBlock(cipherText, offset, paddedPlainText, offset);
-    }
-    assert(offset == cipherText.length);
-
-    return paddedPlainText;
-  }
-
   pc.RSAPublicKey _getRsaPublicKeyFromJwk(Map<String, dynamic> jwk) {
     print('Started getting RSA public key from JWK');
 
@@ -364,31 +301,6 @@ class CryptographyService implements CryptographyServiceInterface {
 
     // print(bu.CryptoUtils.encodeRSAPublicKeyToPem(pc.RSAPublicKey(n, e)));
     return pc.RSAPublicKey(n, e);
-  }
-
-  @override
-  Future<String> decryptSeed({
-    required String encryptedSeedHex,
-    required String encryptionKeyHex,
-  }) async {
-    final List<int> walletSeedBuff = hex.decode(encryptedSeedHex);
-    final nonce = walletSeedBuff.sublist(0, _ivLength);
-    final ciphertextAndMac = walletSeedBuff.sublist(_ivLength);
-    final key = hex.decode(encryptionKeyHex);
-
-    final cryptographyService = CryptographyService();
-    final decryptedSeed = await cryptographyService.aesCbcDecrypt(
-      key: Uint8List.fromList(key),
-      iv: Uint8List.fromList(nonce),
-      cipherText: Uint8List.fromList(ciphertextAndMac),
-    );
-
-    final decryptedSeedEncoded = utf8.decode(decryptedSeed);
-    final [seed, ...didMethod] = decryptedSeedEncoded.split(
-      _didMethodSeparator,
-    );
-
-    return seed;
   }
 
   Uint8List _processInBlocks(
