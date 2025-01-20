@@ -58,7 +58,7 @@ public class AuthProviderTest {
         @EmptySource
         @ValueSource(strings = { "complicated-word" })
         void givenInvalidPrivateKey_thenThrows(String phrase) {
-            Exception exception = assertThrows(Exception.class, () -> {
+            Exception exception = assertThrows(PSTGenerationException.class, () -> {
                 AuthProvider provider = new AuthProvider.Configurations()
                         .projectId("test-project")
                         .tokenId("test-token")
