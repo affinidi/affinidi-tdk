@@ -48,7 +48,7 @@ class TestUpdateLoginConfigurationInput(unittest.TestCase):
                 vp_definition = '',
                 presentation_definition = None,
                 id_token_mapping = [
-                    affinidi_tdk_login_configuration_client.models.id_token_mapping_inner.IdTokenMapping_inner(
+                    affinidi_tdk_login_configuration_client.models.id_token_mapping_item.IdTokenMappingItem(
                         source_field = '', 
                         id_token_claim = '', 
                         input_descriptor_id = '', )

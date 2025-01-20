@@ -27,7 +27,6 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/filter.dar
 import 'package:affinidi_tdk_credential_verification_client/src/model/filter_const.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/filter_items.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/holder_subject.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/invalid_parameter_error.dart';
@@ -73,7 +72,6 @@ part 'serializers.g.dart';
   FilterConst,
   FilterItems,
   Format,
-  FreeFormObject,
   HolderSubject,
   InputDescriptor,
   InvalidParameterError,

@@ -62,20 +62,4 @@ class FetchIOTAVPResponseOKTest {
         // TODO: test vpToken
     }
 
-    /**
-     * Test the property 'presentationSubmission'
-     */
-    @Test
-    void presentationSubmissionTest() {
-        // TODO: test presentationSubmission
-    }
-
-    /**
-     * Test the property 'vpToken'
-     */
-    @Test
-    void vpTokenTest() {
-        // TODO: test vpToken
-    }
-
 }

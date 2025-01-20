@@ -22,6 +22,7 @@ import com.affinidi.tdk.iota.client.Pair;
 
 import com.affinidi.tdk.iota.client.models.AlreadyExistsError;
 import com.affinidi.tdk.iota.client.models.CreatePexQueryInput;
+import com.affinidi.tdk.iota.client.models.DeletePexQueriesInput;
 import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.ListPexQueriesOK;
 import com.affinidi.tdk.iota.client.models.NotFoundError;
@@ -136,10 +137,12 @@ public class PexQueryApi extends BaseApi {
    * 
    * Deletes all Presentation Definition queries of a configuration.
    * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param deletePexQueriesInput DeletePexQueriesInput (required)
+   * @return Object
    * @throws ApiException if fails to make API call
    */
-  public void deletePexQueries(String configurationId) throws ApiException {
-    this.deletePexQueries(configurationId, Collections.emptyMap());
+  public Object deletePexQueries(String configurationId, DeletePexQueriesInput deletePexQueriesInput) throws ApiException {
+    return this.deletePexQueries(configurationId, deletePexQueriesInput, Collections.emptyMap());
   }
 
 
@@ -147,15 +150,22 @@ public class PexQueryApi extends BaseApi {
    * 
    * Deletes all Presentation Definition queries of a configuration.
    * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
+   * @param deletePexQueriesInput DeletePexQueriesInput (required)
    * @param additionalHeaders additionalHeaders for this call
+   * @return Object
    * @throws ApiException if fails to make API call
    */
-  public void deletePexQueries(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public Object deletePexQueries(String configurationId, DeletePexQueriesInput deletePexQueriesInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = deletePexQueriesInput;
     
     // verify the required parameter 'configurationId' is set
     if (configurationId == null) {
       throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deletePexQueries");
+    }
+    
+    // verify the required parameter 'deletePexQueriesInput' is set
+    if (deletePexQueriesInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'deletePexQueriesInput' when calling deletePexQueries");
     }
     
     // create path and map variables
@@ -181,13 +191,14 @@ public class PexQueryApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    apiClient.invokeAPI(
+    TypeReference<Object> localVarReturnType = new TypeReference<Object>() {};
+    return apiClient.invokeAPI(
         localVarPath,
         "POST",
         localVarQueryParams,
@@ -200,7 +211,7 @@ public class PexQueryApi extends BaseApi {
         localVarAccept,
         localVarContentType,
         localVarAuthNames,
-        null
+        localVarReturnType
     );
   }
 

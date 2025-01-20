@@ -69,7 +69,7 @@ try {
 
 # **deletePexQueries**
 
-> deletePexQueries(configurationId)
+> JsonObject deletePexQueries(configurationId, deletePexQueriesInput)
 
 Deletes all Presentation Definition queries of a configuration.
 
@@ -84,9 +84,11 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 
 final api = AffinidiTdkIotaClient().getPexQueryApi();
 final String configurationId = configurationId_example; // String | ID of the Affinidi Iota Framework configuration.
+final DeletePexQueriesInput deletePexQueriesInput = ; // DeletePexQueriesInput | DeletePexQueriesInput
 
 try {
-    api.deletePexQueries(configurationId);
+    final response = api.deletePexQueries(configurationId, deletePexQueriesInput);
+    print(response);
 } catch on DioException (e) {
     print('Exception when calling PexQueryApi->deletePexQueries: $e\n');
 }
@@ -94,13 +96,14 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description                                      | Notes |
-| ------------------- | ---------- | ------------------------------------------------ | ----- |
-| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. |
+| Name                      | Type                                                  | Description                                      | Notes |
+| ------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configurationId**       | **String**                                            | ID of the Affinidi Iota Framework configuration. |
+| **deletePexQueriesInput** | [**DeletePexQueriesInput**](DeletePexQueriesInput.md) | DeletePexQueriesInput                            |
 
 ### Return type
 
-void (empty response body)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -108,7 +111,7 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

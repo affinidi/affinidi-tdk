@@ -34,8 +34,6 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   FetchIOTAVPResponseOK.JSON_PROPERTY_CORRELATION_ID,
   FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
-  FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN,
-  FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
@@ -47,12 +45,6 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   private String presentationSubmission;
 
   public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
-  private String vpToken;
-
-  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
-  private String presentationSubmission;
-
-  public static final String JSON_PROPERTY_VP_TOKEN = "vpToken";
   private String vpToken;
 
   public FetchIOTAVPResponseOK() {
@@ -138,56 +130,6 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
     this.vpToken = vpToken;
   }
 
-  public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
-    
-    this.presentationSubmission = presentationSubmission;
-    return this;
-  }
-
-  /**
-   * A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-   * @return presentationSubmission
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPresentationSubmission() {
-    return presentationSubmission;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(String presentationSubmission) {
-    this.presentationSubmission = presentationSubmission;
-  }
-
-  public FetchIOTAVPResponseOK vpToken(String vpToken) {
-    
-    this.vpToken = vpToken;
-    return this;
-  }
-
-  /**
-   * A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-   * @return vpToken
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getVpToken() {
-    return vpToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpToken(String vpToken) {
-    this.vpToken = vpToken;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -200,14 +142,12 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
     return Objects.equals(this.correlationId, fetchIOTAVPResponseOK.correlationId) &&
         Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
         Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
-        Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
-        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(correlationId, presentationSubmission, vpToken, presentationSubmission, vpToken, super.hashCode());
+    return Objects.hash(correlationId, presentationSubmission, vpToken, super.hashCode());
   }
 
   @Override
@@ -216,8 +156,6 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
     sb.append("class FetchIOTAVPResponseOK {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
-    sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
-    sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
     sb.append("}");
@@ -291,26 +229,6 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
     if (getVpToken() != null) {
       try {
         joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `presentationSubmission` to the URL query string
-    if (getPresentationSubmission() != null) {
-      try {
-        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `vpToken` to the URL query string
-    if (getVpToken() != null) {
-      try {
-        joiner.add(String.format("%svpToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

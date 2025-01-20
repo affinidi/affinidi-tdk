@@ -28,6 +28,7 @@ doc/GroupUserMappingDto.md
 doc/GroupUserMappingsList.md
 doc/GroupsList.md
 doc/GroupsPerUserLimitExceededError.md
+doc/IdTokenMappingItem.md
 doc/IdpApi.md
 doc/InvalidClaimContextError.md
 doc/InvalidGroupsError.md
@@ -95,6 +96,7 @@ lib/src/model/group_user_mapping_dto.dart
 lib/src/model/group_user_mappings_list.dart
 lib/src/model/groups_list.dart
 lib/src/model/groups_per_user_limit_exceeded_error.dart
+lib/src/model/id_token_mapping_item.dart
 lib/src/model/invalid_claim_context_error.dart
 lib/src/model/invalid_groups_error.dart
 lib/src/model/invalid_parameter_error.dart
@@ -152,6 +154,7 @@ test/group_user_mapping_dto_test.dart
 test/group_user_mappings_list_test.dart
 test/groups_list_test.dart
 test/groups_per_user_limit_exceeded_error_test.dart
+test/id_token_mapping_item_test.dart
 test/idp_api_test.dart
 test/invalid_claim_context_error_test.dart
 test/invalid_groups_error_test.dart

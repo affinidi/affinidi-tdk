@@ -40,7 +40,8 @@ void main() {
       // TODO
     });
 
-    // FreeFormObject frame
+    // Dynamic model
+    // BuiltMap<String, JsonObject> frame
     test('to test the property `frame`', () async {
       // TODO
     });
