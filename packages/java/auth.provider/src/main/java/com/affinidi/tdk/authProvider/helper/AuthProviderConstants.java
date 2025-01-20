@@ -12,5 +12,8 @@ public interface AuthProviderConstants {
     public static final String passphrasePropertyNameinEnv = "PASSPHRASE";
     public static final String privateKeyPropertyNameinEnv = "PRIVATE_KEY";
     public static final String projectIdPropertyNameinEnv = "PROJECT_ID";
-    
+
+    // Error messages:
+    public static final String couldNotDerivePrivateKeyErrorMsg = "Could not derive private key out of the configurations.";
+
 }
