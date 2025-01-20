@@ -22,7 +22,7 @@ for dir in "$ROOT_DIR"/*/; do
     (cd "$dir" && dart run build_runner build --delete-conflicting-outputs)
 
     if [ $? -ne 0 ]; then
-      echo "\033[1;31mError during build_runner in $dir.\033[0m"
+      echo "\033[1;31mError during build_runner in $dir\033[0m"
       echo "\033[1;33mRunning dart pub upgrade in $dir...\033[0m"
 
       (cd "$dir" && dart pub upgrade)
