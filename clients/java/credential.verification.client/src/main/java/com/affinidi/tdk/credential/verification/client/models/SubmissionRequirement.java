@@ -14,56 +14,45 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * SubmissionRequirement
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  SubmissionRequirement.JSON_PROPERTY_NAME,
+  SubmissionRequirement.JSON_PROPERTY_PURPOSE,
+  SubmissionRequirement.JSON_PROPERTY_RULE,
+  SubmissionRequirement.JSON_PROPERTY_COUNT,
+  SubmissionRequirement.JSON_PROPERTY_MIN,
+  SubmissionRequirement.JSON_PROPERTY_MAX,
+  SubmissionRequirement.JSON_PROPERTY_FROM,
+  SubmissionRequirement.JSON_PROPERTY_FROM_NESTED
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SubmissionRequirement {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_PURPOSE = "purpose";
-  @SerializedName(SERIALIZED_NAME_PURPOSE)
+  public static final String JSON_PROPERTY_PURPOSE = "purpose";
   private String purpose;
 
   /**
    * Gets or Sets rule
    */
-  @JsonAdapter(RuleEnum.Adapter.class)
   public enum RuleEnum {
     ALL("all"),
     
@@ -75,6 +64,7 @@ public class SubmissionRequirement {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -84,6 +74,7 @@ public class SubmissionRequirement {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static RuleEnum fromValue(String value) {
       for (RuleEnum b : RuleEnum.values()) {
         if (b.value.equals(value)) {
@@ -92,54 +83,31 @@ public class SubmissionRequirement {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<RuleEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RuleEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RuleEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RuleEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      RuleEnum.fromValue(value);
-    }
   }
 
-  public static final String SERIALIZED_NAME_RULE = "rule";
-  @SerializedName(SERIALIZED_NAME_RULE)
+  public static final String JSON_PROPERTY_RULE = "rule";
   private RuleEnum rule;
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
+  public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;
 
-  public static final String SERIALIZED_NAME_MIN = "min";
-  @SerializedName(SERIALIZED_NAME_MIN)
+  public static final String JSON_PROPERTY_MIN = "min";
   private Integer min;
 
-  public static final String SERIALIZED_NAME_MAX = "max";
-  @SerializedName(SERIALIZED_NAME_MAX)
+  public static final String JSON_PROPERTY_MAX = "max";
   private Integer max;
 
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
+  public static final String JSON_PROPERTY_FROM = "from";
   private String from;
 
-  public static final String SERIALIZED_NAME_FROM_NESTED = "from_nested";
-  @SerializedName(SERIALIZED_NAME_FROM_NESTED)
+  public static final String JSON_PROPERTY_FROM_NESTED = "from_nested";
   private List<SubmissionRequirement> fromNested = new ArrayList<>();
 
   public SubmissionRequirement() {
   }
 
   public SubmissionRequirement name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -149,16 +117,22 @@ public class SubmissionRequirement {
    * @return name
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getName() {
     return name;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(String name) {
     this.name = name;
   }
 
-
   public SubmissionRequirement purpose(String purpose) {
+    
     this.purpose = purpose;
     return this;
   }
@@ -168,16 +142,22 @@ public class SubmissionRequirement {
    * @return purpose
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getPurpose() {
     return purpose;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPurpose(String purpose) {
     this.purpose = purpose;
   }
 
-
   public SubmissionRequirement rule(RuleEnum rule) {
+    
     this.rule = rule;
     return this;
   }
@@ -187,16 +167,22 @@ public class SubmissionRequirement {
    * @return rule
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_RULE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public RuleEnum getRule() {
     return rule;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_RULE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRule(RuleEnum rule) {
     this.rule = rule;
   }
 
-
   public SubmissionRequirement count(Integer count) {
+    
     this.count = count;
     return this;
   }
@@ -206,16 +192,22 @@ public class SubmissionRequirement {
    * @return count
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getCount() {
     return count;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCount(Integer count) {
     this.count = count;
   }
 
-
   public SubmissionRequirement min(Integer min) {
+    
     this.min = min;
     return this;
   }
@@ -225,16 +217,22 @@ public class SubmissionRequirement {
    * @return min
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MIN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getMin() {
     return min;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MIN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMin(Integer min) {
     this.min = min;
   }
 
-
   public SubmissionRequirement max(Integer max) {
+    
     this.max = max;
     return this;
   }
@@ -244,16 +242,22 @@ public class SubmissionRequirement {
    * @return max
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public Integer getMax() {
     return max;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_MAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMax(Integer max) {
     this.max = max;
   }
 
-
   public SubmissionRequirement from(String from) {
+    
     this.from = from;
     return this;
   }
@@ -263,16 +267,22 @@ public class SubmissionRequirement {
    * @return from
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getFrom() {
     return from;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FROM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFrom(String from) {
     this.from = from;
   }
 
-
   public SubmissionRequirement fromNested(List<SubmissionRequirement> fromNested) {
+    
     this.fromNested = fromNested;
     return this;
   }
@@ -290,15 +300,19 @@ public class SubmissionRequirement {
    * @return fromNested
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FROM_NESTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public List<SubmissionRequirement> getFromNested() {
     return fromNested;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_FROM_NESTED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFromNested(List<SubmissionRequirement> fromNested) {
     this.fromNested = fromNested;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -351,132 +365,120 @@ public class SubmissionRequirement {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("purpose");
-    openapiFields.add("rule");
-    openapiFields.add("count");
-    openapiFields.add("min");
-    openapiFields.add("max");
-    openapiFields.add("from");
-    openapiFields.add("from_nested");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("rule");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SubmissionRequirement
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!SubmissionRequirement.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SubmissionRequirement is not found in the empty JSON string", SubmissionRequirement.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SubmissionRequirement.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SubmissionRequirement` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SubmissionRequirement.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
-      }
-      if (!jsonObj.get("rule").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rule").toString()));
-      }
-      // validate the required field `rule`
-      RuleEnum.validateJsonElement(jsonObj.get("rule"));
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
-      if (jsonObj.get("from_nested") != null && !jsonObj.get("from_nested").isJsonNull()) {
-        JsonArray jsonArrayfromNested = jsonObj.getAsJsonArray("from_nested");
-        if (jsonArrayfromNested != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("from_nested").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `from_nested` to be an array in the JSON string but got `%s`", jsonObj.get("from_nested").toString()));
-          }
-
-          // validate the optional field `from_nested` (array)
-          for (int i = 0; i < jsonArrayfromNested.size(); i++) {
-            SubmissionRequirement.validateJsonElement(jsonArrayfromNested.get(i));
-          };
-        }
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SubmissionRequirement.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SubmissionRequirement' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SubmissionRequirement> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SubmissionRequirement.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<SubmissionRequirement>() {
-           @Override
-           public void write(JsonWriter out, SubmissionRequirement value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public SubmissionRequirement read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `purpose` to the URL query string
+    if (getPurpose() != null) {
+      try {
+        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `rule` to the URL query string
+    if (getRule() != null) {
+      try {
+        joiner.add(String.format("%srule%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRule()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `count` to the URL query string
+    if (getCount() != null) {
+      try {
+        joiner.add(String.format("%scount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCount()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `min` to the URL query string
+    if (getMin() != null) {
+      try {
+        joiner.add(String.format("%smin%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMin()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `max` to the URL query string
+    if (getMax() != null) {
+      try {
+        joiner.add(String.format("%smax%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMax()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `from` to the URL query string
+    if (getFrom() != null) {
+      try {
+        joiner.add(String.format("%sfrom%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrom()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `from_nested` to the URL query string
+    if (getFromNested() != null) {
+      for (int i = 0; i < getFromNested().size(); i++) {
+        if (getFromNested().get(i) != null) {
+          joiner.add(getFromNested().get(i).toUrlQueryString(String.format("%sfrom_nested%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of SubmissionRequirement given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of SubmissionRequirement
-   * @throws IOException if the JSON string is invalid with respect to SubmissionRequirement
-   */
-  public static SubmissionRequirement fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SubmissionRequirement.class);
-  }
-
-  /**
-   * Convert an instance of SubmissionRequirement to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iam_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 // tests for ProjectDto
 void main() {
-  // final instance = ProjectDto();
+  final instance = ProjectDtoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test ProjectDto', () {
+  group(ProjectDto, () {
     // String id
     test('to test the property `id`', () async {
       // TODO
@@ -23,6 +14,11 @@ void main() {
 
     // String name
     test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String ownerId
+    test('to test the property `ownerId`', () async {
       // TODO
     });
 
@@ -43,7 +39,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

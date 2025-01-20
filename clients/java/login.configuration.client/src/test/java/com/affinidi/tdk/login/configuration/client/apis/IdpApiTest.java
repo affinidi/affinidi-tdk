@@ -18,9 +18,12 @@ import com.affinidi.tdk.login.configuration.client.models.GetUserInfo;
 import com.affinidi.tdk.login.configuration.client.models.JsonWebKey;
 import com.affinidi.tdk.login.configuration.client.models.OAuth2Token;
 import com.affinidi.tdk.login.configuration.client.models.OIDCConfig;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,97 +42,104 @@ public class IdpApiTest {
      *
      * The authorization endpoint is one of the components in the OAuth 2.0 flow. It&#39;s the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdOauth2AuthGetTest() throws ApiException {
         String projectId = null;
         api.v1LoginProjectProjectIdOauth2AuthGet(projectId);
+
         // TODO: test validations
     }
-
     /**
      * Revoke OAuth 2.0 Access or Refresh Token
      *
      * Revoking a token (both access and refresh) means that the tokens will be invalid.  A revoked access token can no longer be used to make access requests, and a revoked  refresh token can no longer be used to refresh an access token. Revoking a refresh  token also invalidates the access token that was created with it. A token may only  be revoked by the client the token was generated for. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdOauth2RevokePostTest() throws ApiException {
         String projectId = null;
         api.v1LoginProjectProjectIdOauth2RevokePost(projectId);
+
         // TODO: test validations
     }
-
     /**
      * OpenID Connect Front- and Back-channel Enabled Logout
      *
      * This endpoint initiates and completes user logout at the IdP OAuth2 &amp; OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdOauth2SessionsLogoutGetTest() throws ApiException {
         String projectId = null;
         api.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId);
+
         // TODO: test validations
     }
-
     /**
      * The OAuth 2.0 Token Endpoint
      *
      * The token endpoint is a critical component in the OAuth 2.0 protocol. It&#39;s the URL where a client application makes a request to exchange an authorization grant (such as an authorization code) for an access token. After a user grants authorization at the authorization endpoint, the client application receives an authorization grant, which is then exchanged for an access token at the token endpoint. This access token is then used to access the user&#39;s resources on the protected server. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdOauth2TokenPostTest() throws ApiException {
         String projectId = null;
         OAuth2Token response = api.v1LoginProjectProjectIdOauth2TokenPost(projectId);
+
         // TODO: test validations
     }
-
     /**
      * OpenID Connect Userinfo
      *
      * This endpoint returns the payload of the ID Token,  including session.id_token values, of the provided  OAuth 2.0 Access Token&#39;s consent request. In the case of authentication error, a WWW-Authenticate  header might be set in the response with more information  about the error. See the spec for more details about  header format. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdUserinfoGetTest() throws ApiException {
         String projectId = null;
         GetUserInfo response = api.v1LoginProjectProjectIdUserinfoGet(projectId);
+
         // TODO: test validations
     }
-
     /**
      * Discover Well-Known JSON Web Keys
      *
      * This endpoint returns JSON Web Keys required to verifying OpenID Connect ID Tokens and, if enabled, OAuth 2.0 JWT Access Tokens. This endpoint can be used with client libraries like node-jwks-rsa among others.
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdWellKnownJwksJsonGetTest() throws ApiException {
         String projectId = null;
         JsonWebKey response = api.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId);
+
         // TODO: test validations
     }
-
     /**
      * OpenID Connect Discovery
      *
      * A mechanism for an OpenID Connect Relying Party to discover the End-User&#39;s  OpenID Provider and obtain information needed to interact with it, including  its OAuth 2.0 endpoint locations. 
      *
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void v1LoginProjectProjectIdWellKnownOpenidConfigurationGetTest() throws ApiException {
         String projectId = null;
         OIDCConfig response = api.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId);
+
         // TODO: test validations
     }
-
 }

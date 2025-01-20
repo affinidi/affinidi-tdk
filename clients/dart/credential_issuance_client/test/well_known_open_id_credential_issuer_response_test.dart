@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 // tests for WellKnownOpenIdCredentialIssuerResponse
 void main() {
-  // final instance = WellKnownOpenIdCredentialIssuerResponse();
+  final instance = WellKnownOpenIdCredentialIssuerResponseBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test WellKnownOpenIdCredentialIssuerResponse', () {
+  group(WellKnownOpenIdCredentialIssuerResponse, () {
     // String authorizationEndpoint
     test('to test the property `authorizationEndpoint`', () async {
       // TODO
@@ -31,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // List<CreateIssuanceConfigInputCredentialSupportedInner> credentialsSupported (default value: const [])
+    // BuiltList<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported
     test('to test the property `credentialsSupported`', () async {
       // TODO
     });
@@ -41,7 +32,7 @@ void main() {
       // TODO
     });
 
-    // List<String> grantTypesSupported (default value: const [])
+    // BuiltList<String> grantTypesSupported
     test('to test the property `grantTypesSupported`', () async {
       // TODO
     });
@@ -51,7 +42,7 @@ void main() {
       // TODO
     });
 
-    // List<String> scopesSupported (default value: const [])
+    // BuiltList<String> scopesSupported
     test('to test the property `scopesSupported`', () async {
       // TODO
     });
@@ -61,12 +52,10 @@ void main() {
       // TODO
     });
 
-    // List<String> tokenEndpointAuthMethodsSupported (default value: const [])
+    // BuiltList<String> tokenEndpointAuthMethodsSupported
     test('to test the property `tokenEndpointAuthMethodsSupported`', () async {
       // TODO
     });
 
-
   });
-
 }

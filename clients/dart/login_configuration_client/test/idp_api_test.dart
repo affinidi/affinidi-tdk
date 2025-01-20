@@ -1,22 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 
 /// tests for IdpApi
 void main() {
-  // final instance = IdpApi();
+  final instance = AffinidiTdkLoginConfigurationClient().getIdpApi();
 
-  group('tests for IdpApi', () {
+  group(IdpApi, () {
     // OAuth 2.0 Authorize Endpoint
     //
     // The authorization endpoint is one of the components in the OAuth 2.0 flow. It's the URL where a user is redirected to grant or deny access to their resources. When a user tries to access a service that requires OAuth 2.0 authorization, the application will redirect the user to this authorization endpoint. Here, the user can log in (if necessary) and then decide whether to grant the application access. 

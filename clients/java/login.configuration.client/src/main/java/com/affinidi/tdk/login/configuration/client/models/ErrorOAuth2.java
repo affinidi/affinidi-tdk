@@ -14,66 +14,50 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * ErrorOAuth2
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  ErrorOAuth2.JSON_PROPERTY_ERROR,
+  ErrorOAuth2.JSON_PROPERTY_ERROR_DEBUG,
+  ErrorOAuth2.JSON_PROPERTY_ERROR_DESCRIPTION,
+  ErrorOAuth2.JSON_PROPERTY_ERROR_HINT,
+  ErrorOAuth2.JSON_PROPERTY_STATUS_CODE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ErrorOAuth2 {
-  public static final String SERIALIZED_NAME_ERROR = "error";
-  @SerializedName(SERIALIZED_NAME_ERROR)
+  public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
 
-  public static final String SERIALIZED_NAME_ERROR_DEBUG = "error_debug";
-  @SerializedName(SERIALIZED_NAME_ERROR_DEBUG)
+  public static final String JSON_PROPERTY_ERROR_DEBUG = "error_debug";
   private String errorDebug;
 
-  public static final String SERIALIZED_NAME_ERROR_DESCRIPTION = "error_description";
-  @SerializedName(SERIALIZED_NAME_ERROR_DESCRIPTION)
+  public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
   private String errorDescription;
 
-  public static final String SERIALIZED_NAME_ERROR_HINT = "error_hint";
-  @SerializedName(SERIALIZED_NAME_ERROR_HINT)
+  public static final String JSON_PROPERTY_ERROR_HINT = "error_hint";
   private String errorHint;
 
-  public static final String SERIALIZED_NAME_STATUS_CODE = "status_code";
-  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
+  public static final String JSON_PROPERTY_STATUS_CODE = "status_code";
   private String statusCode;
 
   public ErrorOAuth2() {
   }
 
   public ErrorOAuth2 error(String error) {
+    
     this.error = error;
     return this;
   }
@@ -83,16 +67,22 @@ public class ErrorOAuth2 {
    * @return error
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getError() {
     return error;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setError(String error) {
     this.error = error;
   }
 
-
   public ErrorOAuth2 errorDebug(String errorDebug) {
+    
     this.errorDebug = errorDebug;
     return this;
   }
@@ -102,16 +92,22 @@ public class ErrorOAuth2 {
    * @return errorDebug
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getErrorDebug() {
     return errorDebug;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setErrorDebug(String errorDebug) {
     this.errorDebug = errorDebug;
   }
 
-
   public ErrorOAuth2 errorDescription(String errorDescription) {
+    
     this.errorDescription = errorDescription;
     return this;
   }
@@ -121,16 +117,22 @@ public class ErrorOAuth2 {
    * @return errorDescription
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getErrorDescription() {
     return errorDescription;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setErrorDescription(String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-
   public ErrorOAuth2 errorHint(String errorHint) {
+    
     this.errorHint = errorHint;
     return this;
   }
@@ -140,16 +142,22 @@ public class ErrorOAuth2 {
    * @return errorHint
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ERROR_HINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getErrorHint() {
     return errorHint;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ERROR_HINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setErrorHint(String errorHint) {
     this.errorHint = errorHint;
   }
 
-
   public ErrorOAuth2 statusCode(String statusCode) {
+    
     this.statusCode = statusCode;
     return this;
   }
@@ -159,15 +167,19 @@ public class ErrorOAuth2 {
    * @return statusCode
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getStatusCode() {
     return statusCode;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusCode(String statusCode) {
     this.statusCode = statusCode;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -214,118 +226,90 @@ public class ErrorOAuth2 {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("error");
-    openapiFields.add("error_debug");
-    openapiFields.add("error_description");
-    openapiFields.add("error_hint");
-    openapiFields.add("status_code");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("error");
-    openapiRequiredFields.add("error_description");
-    openapiRequiredFields.add("status_code");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ErrorOAuth2
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ErrorOAuth2.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ErrorOAuth2 is not found in the empty JSON string", ErrorOAuth2.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ErrorOAuth2.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ErrorOAuth2` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ErrorOAuth2.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("error").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
-      }
-      if ((jsonObj.get("error_debug") != null && !jsonObj.get("error_debug").isJsonNull()) && !jsonObj.get("error_debug").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error_debug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_debug").toString()));
-      }
-      if (!jsonObj.get("error_description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_description").toString()));
-      }
-      if ((jsonObj.get("error_hint") != null && !jsonObj.get("error_hint").isJsonNull()) && !jsonObj.get("error_hint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error_hint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error_hint").toString()));
-      }
-      if (!jsonObj.get("status_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status_code").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ErrorOAuth2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ErrorOAuth2' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ErrorOAuth2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorOAuth2.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ErrorOAuth2>() {
-           @Override
-           public void write(JsonWriter out, ErrorOAuth2 value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ErrorOAuth2 read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      try {
+        joiner.add(String.format("%serror%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error_debug` to the URL query string
+    if (getErrorDebug() != null) {
+      try {
+        joiner.add(String.format("%serror_debug%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDebug()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error_description` to the URL query string
+    if (getErrorDescription() != null) {
+      try {
+        joiner.add(String.format("%serror_description%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error_hint` to the URL query string
+    if (getErrorHint() != null) {
+      try {
+        joiner.add(String.format("%serror_hint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorHint()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `status_code` to the URL query string
+    if (getStatusCode() != null) {
+      try {
+        joiner.add(String.format("%sstatus_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of ErrorOAuth2 given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of ErrorOAuth2
-   * @throws IOException if the JSON string is invalid with respect to ErrorOAuth2
-   */
-  public static ErrorOAuth2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ErrorOAuth2.class);
-  }
-
-  /**
-   * Convert an instance of ErrorOAuth2 to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

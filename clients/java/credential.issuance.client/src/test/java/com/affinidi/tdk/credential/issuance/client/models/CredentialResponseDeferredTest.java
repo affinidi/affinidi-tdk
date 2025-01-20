@@ -13,28 +13,27 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
-import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialResponseDeferred
  */
-public class CredentialResponseDeferredTest {
+class CredentialResponseDeferredTest {
     private final CredentialResponseDeferred model = new CredentialResponseDeferred();
 
     /**
      * Model tests for CredentialResponseDeferred
      */
     @Test
-    public void testCredentialResponseDeferred() {
+    void testCredentialResponseDeferred() {
         // TODO: test CredentialResponseDeferred
     }
 
@@ -42,7 +41,7 @@ public class CredentialResponseDeferredTest {
      * Test the property 'transactionId'
      */
     @Test
-    public void transactionIdTest() {
+    void transactionIdTest() {
         // TODO: test transactionId
     }
 
@@ -50,7 +49,7 @@ public class CredentialResponseDeferredTest {
      * Test the property 'cNonce'
      */
     @Test
-    public void cNonceTest() {
+    void cNonceTest() {
         // TODO: test cNonce
     }
 
@@ -58,7 +57,7 @@ public class CredentialResponseDeferredTest {
      * Test the property 'cNonceExpiresIn'
      */
     @Test
-    public void cNonceExpiresInTest() {
+    void cNonceExpiresInTest() {
         // TODO: test cNonceExpiresIn
     }
 

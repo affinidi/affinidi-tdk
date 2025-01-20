@@ -13,28 +13,27 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
-import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for StartIssuanceResponse
  */
-public class StartIssuanceResponseTest {
+class StartIssuanceResponseTest {
     private final StartIssuanceResponse model = new StartIssuanceResponse();
 
     /**
      * Model tests for StartIssuanceResponse
      */
     @Test
-    public void testStartIssuanceResponse() {
+    void testStartIssuanceResponse() {
         // TODO: test StartIssuanceResponse
     }
 
@@ -42,7 +41,7 @@ public class StartIssuanceResponseTest {
      * Test the property 'credentialOfferUri'
      */
     @Test
-    public void credentialOfferUriTest() {
+    void credentialOfferUriTest() {
         // TODO: test credentialOfferUri
     }
 
@@ -50,7 +49,7 @@ public class StartIssuanceResponseTest {
      * Test the property 'txCode'
      */
     @Test
-    public void txCodeTest() {
+    void txCodeTest() {
         // TODO: test txCode
     }
 
@@ -58,7 +57,7 @@ public class StartIssuanceResponseTest {
      * Test the property 'issuanceId'
      */
     @Test
-    public void issuanceIdTest() {
+    void issuanceIdTest() {
         // TODO: test issuanceId
     }
 
@@ -66,7 +65,7 @@ public class StartIssuanceResponseTest {
      * Test the property 'expiresIn'
      */
     @Test
-    public void expiresInTest() {
+    void expiresInTest() {
         // TODO: test expiresIn
     }
 

@@ -64,7 +64,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [GroupUserMappingsList](./Models/GroupUserMappingsList.md)
 - [GroupsList](./Models/GroupsList.md)
 - [GroupsPerUserLimitExceededError](./Models/GroupsPerUserLimitExceededError.md)
-- [IdTokenMapping_inner](./Models/IdTokenMapping_inner.md)
+- [IdTokenMappingItem](./Models/IdTokenMappingItem.md)
 - [InvalidClaimContextError](./Models/InvalidClaimContextError.md)
 - [InvalidGroupsError](./Models/InvalidGroupsError.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)

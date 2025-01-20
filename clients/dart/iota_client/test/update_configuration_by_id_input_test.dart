@@ -1,52 +1,51 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iota_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 
 // tests for UpdateConfigurationByIdInput
 void main() {
-  // final instance = UpdateConfigurationByIdInput();
+  final instance = UpdateConfigurationByIdInputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test UpdateConfigurationByIdInput', () {
-    // The name of the config
+  group(UpdateConfigurationByIdInput, () {
+    // The name of the configuration to quickly identify the resource.
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // The wallet Ari that will be used to sign
+    // The unique resource identifier of the Wallet used to sign the request token.
     // String walletAri
     test('to test the property `walletAri`', () async {
       // TODO
     });
 
-    // webhook to call when data is ready
+    // The webhook URL is used for callback when the data is ready.
     // String iotaResponseWebhookURL
     test('to test the property `iotaResponseWebhookURL`', () async {
       // TODO
     });
 
+    // Cryptographically verifies the data shared by the user when enabled.
     // bool enableVerification
     test('to test the property `enableVerification`', () async {
       // TODO
     });
 
+    // Records the user's consent when they share their data, including the type of data shared when enabled.
     // bool enableConsentAuditLog
     test('to test the property `enableConsentAuditLog`', () async {
       // TODO
     });
 
-    // token time to live in seconds
+    // This is the lifetime of the signed request token during the data-sharing flow.
     // int tokenMaxAge
     test('to test the property `tokenMaxAge`', () async {
+      // TODO
+    });
+
+    // An optional description of what the configuration is used for.
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
@@ -55,7 +54,23 @@ void main() {
       // TODO
     });
 
+    // Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+    // String mode
+    test('to test the property `mode`', () async {
+      // TODO
+    });
+
+    // List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
+    // BuiltList<String> redirectUris
+    test('to test the property `redirectUris`', () async {
+      // TODO
+    });
+
+    // Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
+    // bool enableIdvProviders
+    test('to test the property `enableIdvProviders`', () async {
+      // TODO
+    });
 
   });
-
 }

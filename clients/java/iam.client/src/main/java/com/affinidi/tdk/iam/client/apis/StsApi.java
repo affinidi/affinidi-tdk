@@ -10,22 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
-import com.affinidi.tdk.iam.client.ApiCallback;
-import com.affinidi.tdk.iam.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iam.client.ApiException;
-import com.affinidi.tdk.iam.client.ApiResponse;
+import com.affinidi.tdk.iam.client.ApiClient;
+import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
-import com.affinidi.tdk.iam.client.ProgressRequestBody;
-import com.affinidi.tdk.iam.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iam.client.models.ActionForbiddenError;
 import com.affinidi.tdk.iam.client.models.CreateProjectScopedTokenInput;
@@ -36,307 +29,204 @@ import com.affinidi.tdk.iam.client.models.PrincipalDoesNotBelongToProjectError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.WhoamiDto;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class StsApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class StsApi extends BaseApi {
 
-    public StsApi() {
-        this(Configuration.getDefaultApiClient());
+  public StsApi() {
+    super(Configuration.getDefaultApiClient());
+  }
+
+  public StsApi(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  /**
+   * 
+   * 
+   * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
+   * @return CreateProjectScopedTokenOutput
+   * @throws ApiException if fails to make API call
+   */
+  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
+    return this.createProjectScopedToken(createProjectScopedTokenInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateProjectScopedTokenOutput
+   * @throws ApiException if fails to make API call
+   */
+  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createProjectScopedTokenInput;
+    
+    // verify the required parameter 'createProjectScopedTokenInput' is set
+    if (createProjectScopedTokenInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createProjectScopedTokenInput' when calling createProjectScopedToken");
     }
+    
+    // create path and map variables
+    String localVarPath = "/v1/sts/create-project-scoped-token";
 
-    public StsApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    TypeReference<CreateProjectScopedTokenOutput> localVarReturnType = new TypeReference<CreateProjectScopedTokenOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+  /**
+   * 
+   * 
+   * @return WhoamiDto
+   * @throws ApiException if fails to make API call
+   */
+  public WhoamiDto whoami() throws ApiException {
+    return this.whoami(Collections.emptyMap());
+  }
 
-    /**
-     * Build call for createProjectScopedToken
-     * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Created Project Scoped Tokens </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createProjectScopedTokenCall(CreateProjectScopedTokenInput createProjectScopedTokenInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+  /**
+   * 
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return WhoamiDto
+   * @throws ApiException if fails to make API call
+   */
+  public WhoamiDto whoami(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/sts/whoami";
 
-        Object localVarPostBody = createProjectScopedTokenInput;
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        // create path and map variables
-        String localVarPath = "/v1/sts/create-project-scoped-token";
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    TypeReference<WhoamiDto> localVarReturnType = new TypeReference<WhoamiDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createProjectScopedTokenValidateBeforeCall(CreateProjectScopedTokenInput createProjectScopedTokenInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createProjectScopedTokenInput' is set
-        if (createProjectScopedTokenInput == null) {
-            throw new ApiException("Missing the required parameter 'createProjectScopedTokenInput' when calling createProjectScopedToken(Async)");
-        }
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        return createProjectScopedTokenCall(createProjectScopedTokenInput, _callback);
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * 
-     * 
-     * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-     * @return CreateProjectScopedTokenOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Created Project Scoped Tokens </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
-        ApiResponse<CreateProjectScopedTokenOutput> localVarResp = createProjectScopedTokenWithHttpInfo(createProjectScopedTokenInput);
-        return localVarResp.getData();
-    }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    /**
-     * 
-     * 
-     * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-     * @return ApiResponse&lt;CreateProjectScopedTokenOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Created Project Scoped Tokens </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CreateProjectScopedTokenOutput> createProjectScopedTokenWithHttpInfo(CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
-        okhttp3.Call localVarCall = createProjectScopedTokenValidateBeforeCall(createProjectScopedTokenInput, null);
-        Type localVarReturnType = new TypeToken<CreateProjectScopedTokenOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
+    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Created Project Scoped Tokens </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> BadRequestError </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createProjectScopedTokenAsync(CreateProjectScopedTokenInput createProjectScopedTokenInput, final ApiCallback<CreateProjectScopedTokenOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createProjectScopedTokenValidateBeforeCall(createProjectScopedTokenInput, _callback);
-        Type localVarReturnType = new TypeToken<CreateProjectScopedTokenOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for whoami
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User info </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call whoamiCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/sts/whoami";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call whoamiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return whoamiCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @return WhoamiDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User info </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public WhoamiDto whoami() throws ApiException {
-        ApiResponse<WhoamiDto> localVarResp = whoamiWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;WhoamiDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User info </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<WhoamiDto> whoamiWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = whoamiValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<WhoamiDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User info </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> ForbiddenError </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> NotFoundError </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call whoamiAsync(final ApiCallback<WhoamiDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = whoamiValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<WhoamiDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

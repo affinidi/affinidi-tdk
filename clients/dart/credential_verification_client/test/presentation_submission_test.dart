@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_credential_verification_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 
 // tests for PresentationSubmission
 void main() {
-  // final instance = PresentationSubmission();
+  final instance = PresentationSubmissionBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test PresentationSubmission', () {
+  group(PresentationSubmission, () {
     // String id
     test('to test the property `id`', () async {
       // TODO
@@ -26,12 +17,10 @@ void main() {
       // TODO
     });
 
-    // List<Descriptor> descriptorMap (default value: const [])
+    // BuiltList<Descriptor> descriptorMap
     test('to test the property `descriptorMap`', () async {
       // TODO
     });
 
-
   });
-
 }

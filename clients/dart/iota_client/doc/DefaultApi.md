@@ -27,16 +27,16 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final configurationId = configurationId_example; // String |
-final userId = userId_example; // String |
-final limit = 56; // int | The maximum number of records to fetch from the list of logged consents.
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIotaClient().getDefaultApi();
+final String configurationId = configurationId_example; // String |
+final String userId = userId_example; // String |
+final int limit = 56; // int | The maximum number of records to fetch from the list of logged consents.
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->listLoggedConsents: $e\n');
 }
 ```

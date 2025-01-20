@@ -29,14 +29,14 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IssuanceApi();
-final issuanceId = issuanceId_example; // String |
-final projectId = projectId_example; // String | Affinidi project id
+final api = AffinidiTdkCredentialIssuanceClient().getIssuanceApi();
+final String issuanceId = issuanceId_example; // String |
+final String projectId = projectId_example; // String | Affinidi project id
 
 try {
-    final result = api_instance.issuanceState(issuanceId, projectId);
-    print(result);
-} catch (e) {
+    final response = api.issuanceState(issuanceId, projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IssuanceApi->issuanceState: $e\n');
 }
 ```
@@ -78,13 +78,13 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IssuanceApi();
-final projectId = projectId_example; // String | Affinidi project id
+final api = AffinidiTdkCredentialIssuanceClient().getIssuanceApi();
+final String projectId = projectId_example; // String | Affinidi project id
 
 try {
-    final result = api_instance.listIssuance(projectId);
-    print(result);
-} catch (e) {
+    final response = api.listIssuance(projectId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IssuanceApi->listIssuance: $e\n');
 }
 ```
@@ -125,14 +125,14 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IssuanceApi();
-final projectId = projectId_example; // String | Affinidi project id
-final startIssuanceInput = StartIssuanceInput(); // StartIssuanceInput | Request body to start issuance
+final api = AffinidiTdkCredentialIssuanceClient().getIssuanceApi();
+final String projectId = projectId_example; // String | Affinidi project id
+final StartIssuanceInput startIssuanceInput = ; // StartIssuanceInput | Request body to start issuance
 
 try {
-    final result = api_instance.startIssuance(projectId, startIssuanceInput);
-    print(result);
-} catch (e) {
+    final response = api.startIssuance(projectId, startIssuanceInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IssuanceApi->startIssuance: $e\n');
 }
 ```

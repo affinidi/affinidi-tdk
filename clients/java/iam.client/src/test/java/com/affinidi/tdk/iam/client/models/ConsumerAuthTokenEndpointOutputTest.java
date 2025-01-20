@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for ConsumerAuthTokenEndpointOutput
  */
-public class ConsumerAuthTokenEndpointOutputTest {
+class ConsumerAuthTokenEndpointOutputTest {
     private final ConsumerAuthTokenEndpointOutput model = new ConsumerAuthTokenEndpointOutput();
 
     /**
      * Model tests for ConsumerAuthTokenEndpointOutput
      */
     @Test
-    public void testConsumerAuthTokenEndpointOutput() {
+    void testConsumerAuthTokenEndpointOutput() {
         // TODO: test ConsumerAuthTokenEndpointOutput
     }
 
@@ -41,7 +40,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'accessToken'
      */
     @Test
-    public void accessTokenTest() {
+    void accessTokenTest() {
         // TODO: test accessToken
     }
 
@@ -49,7 +48,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'expiresIn'
      */
     @Test
-    public void expiresInTest() {
+    void expiresInTest() {
         // TODO: test expiresIn
     }
 
@@ -57,7 +56,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'idToken'
      */
     @Test
-    public void idTokenTest() {
+    void idTokenTest() {
         // TODO: test idToken
     }
 
@@ -65,7 +64,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'refreshToken'
      */
     @Test
-    public void refreshTokenTest() {
+    void refreshTokenTest() {
         // TODO: test refreshToken
     }
 
@@ -73,7 +72,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'scope'
      */
     @Test
-    public void scopeTest() {
+    void scopeTest() {
         // TODO: test scope
     }
 
@@ -81,7 +80,7 @@ public class ConsumerAuthTokenEndpointOutputTest {
      * Test the property 'tokenType'
      */
     @Test
-    public void tokenTypeTest() {
+    void tokenTypeTest() {
         // TODO: test tokenType
     }
 

@@ -852,7 +852,11 @@ paths:
         $ref: '#/components/requestBodies/DeletePexQueriesInput'
       responses:
         '200':
-          $ref: '#/components/responses/BulkDeleteResponseOK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkDeleteResponseOK'
+          description: BulkDeleteResponseOK
         '400':
           content:
             application/json:
@@ -869,6 +873,7 @@ paths:
         - ProjectTokenAuth: []
       tags:
         - pex-query
+      x-content-type: application/json
       x-accepts:
         - application/json
   /v1/configurations/{configurationId}/save-queries:
@@ -1146,6 +1151,13 @@ components:
             $ref: '#/components/schemas/FetchIOTAVPResponseInput'
       description: FetchIOTAVPResponseInput
       required: true
+    DeletePexQueriesInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeletePexQueriesInput'
+      description: DeletePexQueriesInput
+      required: true
   responses:
     AwsExchangeCredentialsOK:
       content:
@@ -1362,6 +1374,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    BulkDeleteResponseOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BulkDeleteResponseOK'
+      description: BulkDeleteResponseOK
     AwsExchangeCredentialsProjectTokenBadRequestError:
       content:
         application/json:
@@ -2158,8 +2176,6 @@ components:
       example:
         vp_token: vp_token
         correlationId: correlationId
-        presentationSubmission: presentationSubmission
-        vpToken: vpToken
         presentation_submission: presentation_submission
       properties:
         correlationId:
@@ -2176,18 +2192,6 @@ components:
           type: string
         vp_token:
           deprecated: true
-          description:
-            A JSON string format containing the data the user consented
-            to share in a Verifiable Presentation format. The VP Token follows the
-            OID4VP standard.
-          type: string
-        presentationSubmission:
-          description:
-            A JSON string format that describes the link between the Verifiable
-            Presentation and Presentation Definition for the verifier. The presentation
-            submission follows the OID4VP standard.
-          type: string
-        vpToken:
           description:
             A JSON string format containing the data the user consented
             to share in a Verifiable Presentation format. The VP Token follows the
@@ -2672,6 +2676,13 @@ components:
       type: object
     DeletePexQueriesInput:
       additionalProperties: false
+      example:
+        queryIds:
+          - queryIds
+          - queryIds
+          - queryIds
+          - queryIds
+          - queryIds
       properties:
         queryIds:
           items:

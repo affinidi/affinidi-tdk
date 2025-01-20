@@ -14,29 +14,29 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.PolicyStatementDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for PolicyDto
  */
-public class PolicyDtoTest {
+class PolicyDtoTest {
     private final PolicyDto model = new PolicyDto();
 
     /**
      * Model tests for PolicyDto
      */
     @Test
-    public void testPolicyDto() {
+    void testPolicyDto() {
         // TODO: test PolicyDto
     }
 
@@ -44,7 +44,7 @@ public class PolicyDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -52,7 +52,7 @@ public class PolicyDtoTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -60,7 +60,7 @@ public class PolicyDtoTest {
      * Test the property 'principalId'
      */
     @Test
-    public void principalIdTest() {
+    void principalIdTest() {
         // TODO: test principalId
     }
 
@@ -68,7 +68,7 @@ public class PolicyDtoTest {
      * Test the property 'projectId'
      */
     @Test
-    public void projectIdTest() {
+    void projectIdTest() {
         // TODO: test projectId
     }
 
@@ -76,7 +76,7 @@ public class PolicyDtoTest {
      * Test the property 'version'
      */
     @Test
-    public void versionTest() {
+    void versionTest() {
         // TODO: test version
     }
 
@@ -84,7 +84,7 @@ public class PolicyDtoTest {
      * Test the property 'statement'
      */
     @Test
-    public void statementTest() {
+    void statementTest() {
         // TODO: test statement
     }
 

@@ -14,27 +14,28 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadataDisplayInnerLogo;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for SupportedCredentialMetadataDisplayInner
  */
-public class SupportedCredentialMetadataDisplayInnerTest {
+class SupportedCredentialMetadataDisplayInnerTest {
     private final SupportedCredentialMetadataDisplayInner model = new SupportedCredentialMetadataDisplayInner();
 
     /**
      * Model tests for SupportedCredentialMetadataDisplayInner
      */
     @Test
-    public void testSupportedCredentialMetadataDisplayInner() {
+    void testSupportedCredentialMetadataDisplayInner() {
         // TODO: test SupportedCredentialMetadataDisplayInner
     }
 
@@ -42,7 +43,7 @@ public class SupportedCredentialMetadataDisplayInnerTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -50,7 +51,7 @@ public class SupportedCredentialMetadataDisplayInnerTest {
      * Test the property 'locale'
      */
     @Test
-    public void localeTest() {
+    void localeTest() {
         // TODO: test locale
     }
 
@@ -58,7 +59,7 @@ public class SupportedCredentialMetadataDisplayInnerTest {
      * Test the property 'logo'
      */
     @Test
-    public void logoTest() {
+    void logoTest() {
         // TODO: test logo
     }
 
@@ -66,7 +67,7 @@ public class SupportedCredentialMetadataDisplayInnerTest {
      * Test the property 'backgroundColor'
      */
     @Test
-    public void backgroundColorTest() {
+    void backgroundColorTest() {
         // TODO: test backgroundColor
     }
 
@@ -74,7 +75,7 @@ public class SupportedCredentialMetadataDisplayInnerTest {
      * Test the property 'textColor'
      */
     @Test
-    public void textColorTest() {
+    void textColorTest() {
         // TODO: test textColor
     }
 

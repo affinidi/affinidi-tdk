@@ -10,302 +10,211 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
-import com.affinidi.tdk.iam.client.ApiCallback;
-import com.affinidi.tdk.iam.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.affinidi.tdk.iam.client.ApiException;
-import com.affinidi.tdk.iam.client.ApiResponse;
+import com.affinidi.tdk.iam.client.ApiClient;
+import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
-import com.affinidi.tdk.iam.client.ProgressRequestBody;
-import com.affinidi.tdk.iam.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import com.affinidi.tdk.iam.client.models.GetWellKnownDidOK;
 import com.affinidi.tdk.iam.client.models.JsonWebKeySetDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
-public class WellKnownApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class WellKnownApi extends BaseApi {
 
-    public WellKnownApi() {
-        this(Configuration.getDefaultApiClient());
-    }
+  public WellKnownApi() {
+    super(Configuration.getDefaultApiClient());
+  }
 
-    public WellKnownApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
+  public WellKnownApi(ApiClient apiClient) {
+    super(apiClient);
+  }
 
-    public ApiClient getApiClient() {
-        return localVarApiClient;
-    }
+  /**
+   * 
+   * 
+   * @return GetWellKnownDidOK
+   * @throws ApiException if fails to make API call
+   */
+  public GetWellKnownDidOK getWellKnownDid() throws ApiException {
+    return this.getWellKnownDid(Collections.emptyMap());
+  }
 
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
-    }
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+  /**
+   * 
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GetWellKnownDidOK
+   * @throws ApiException if fails to make API call
+   */
+  public GetWellKnownDidOK getWellKnownDid(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/.well-known/did.json";
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for getWellKnownDid
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetWellKnownDidOK </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownDidCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    String[] localVarAuthNames = new String[] {  };
 
-        Object localVarPostBody = null;
+    TypeReference<GetWellKnownDidOK> localVarReturnType = new TypeReference<GetWellKnownDidOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-        // create path and map variables
-        String localVarPath = "/.well-known/did.json";
+  /**
+   * 
+   * 
+   * @return JsonWebKeySetDto
+   * @throws ApiException if fails to make API call
+   */
+  public JsonWebKeySetDto getWellKnownJwks() throws ApiException {
+    return this.getWellKnownJwks(Collections.emptyMap());
+  }
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
+  /**
+   * 
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return JsonWebKeySetDto
+   * @throws ApiException if fails to make API call
+   */
+  public JsonWebKeySetDto getWellKnownJwks(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/.well-known/jwks.json";
 
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
+    
+    localVarHeaderParams.putAll(additionalHeaders);
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWellKnownDidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getWellKnownDidCall(_callback);
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    }
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    /**
-     * 
-     * 
-     * @return GetWellKnownDidOK
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetWellKnownDidOK </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public GetWellKnownDidOK getWellKnownDid() throws ApiException {
-        ApiResponse<GetWellKnownDidOK> localVarResp = getWellKnownDidWithHttpInfo();
-        return localVarResp.getData();
-    }
+    String[] localVarAuthNames = new String[] {  };
 
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;GetWellKnownDidOK&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetWellKnownDidOK </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GetWellKnownDidOK> getWellKnownDidWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getWellKnownDidValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GetWellKnownDidOK>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
+    TypeReference<JsonWebKeySetDto> localVarReturnType = new TypeReference<JsonWebKeySetDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> GetWellKnownDidOK </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownDidAsync(final ApiCallback<GetWellKnownDidOK> _callback) throws ApiException {
+  @Override
+  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
+    String localVarPath = url.replace(apiClient.getBaseURL(), "");
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        okhttp3.Call localVarCall = getWellKnownDidValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GetWellKnownDidOK>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getWellKnownJwks
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of JWK used by the services as JWKS </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownJwksCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    localVarHeaderParams.putAll(additionalHeaders);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        Object localVarPostBody = null;
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // create path and map variables
-        String localVarPath = "/.well-known/jwks.json";
+    String[] localVarAuthNames = new String[] {  };
 
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWellKnownJwksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getWellKnownJwksCall(_callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @return JsonWebKeySetDto
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of JWK used by the services as JWKS </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public JsonWebKeySetDto getWellKnownJwks() throws ApiException {
-        ApiResponse<JsonWebKeySetDto> localVarResp = getWellKnownJwksWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @return ApiResponse&lt;JsonWebKeySetDto&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of JWK used by the services as JWKS </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<JsonWebKeySetDto> getWellKnownJwksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getWellKnownJwksValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<JsonWebKeySetDto>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of JWK used by the services as JWKS </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> UnexpectedError </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getWellKnownJwksAsync(final ApiCallback<JsonWebKeySetDto> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getWellKnownJwksValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<JsonWebKeySetDto>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    return apiClient.invokeAPI(
+      localVarPath,
+        method,
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        request,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        returnType
+    );
+  }
 }

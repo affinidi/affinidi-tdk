@@ -15,29 +15,29 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.FilterConst;
 import com.affinidi.tdk.credential.verification.client.models.FilterItems;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for Filter
  */
-public class FilterTest {
+class FilterTest {
     private final Filter model = new Filter();
 
     /**
      * Model tests for Filter
      */
     @Test
-    public void testFilter() {
+    void testFilter() {
         // TODO: test Filter
     }
 
@@ -45,7 +45,7 @@ public class FilterTest {
      * Test the property '_const'
      */
     @Test
-    public void _constTest() {
+    void _constTest() {
         // TODO: test _const
     }
 
@@ -53,7 +53,7 @@ public class FilterTest {
      * Test the property '_enum'
      */
     @Test
-    public void _enumTest() {
+    void _enumTest() {
         // TODO: test _enum
     }
 
@@ -61,7 +61,7 @@ public class FilterTest {
      * Test the property 'exclusiveMinimum'
      */
     @Test
-    public void exclusiveMinimumTest() {
+    void exclusiveMinimumTest() {
         // TODO: test exclusiveMinimum
     }
 
@@ -69,7 +69,7 @@ public class FilterTest {
      * Test the property 'exclusiveMaximum'
      */
     @Test
-    public void exclusiveMaximumTest() {
+    void exclusiveMaximumTest() {
         // TODO: test exclusiveMaximum
     }
 
@@ -77,7 +77,7 @@ public class FilterTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 
@@ -85,7 +85,7 @@ public class FilterTest {
      * Test the property 'formatMaximum'
      */
     @Test
-    public void formatMaximumTest() {
+    void formatMaximumTest() {
         // TODO: test formatMaximum
     }
 
@@ -93,7 +93,7 @@ public class FilterTest {
      * Test the property 'formatMinimum'
      */
     @Test
-    public void formatMinimumTest() {
+    void formatMinimumTest() {
         // TODO: test formatMinimum
     }
 
@@ -101,7 +101,7 @@ public class FilterTest {
      * Test the property 'formatExclusiveMaximum'
      */
     @Test
-    public void formatExclusiveMaximumTest() {
+    void formatExclusiveMaximumTest() {
         // TODO: test formatExclusiveMaximum
     }
 
@@ -109,7 +109,7 @@ public class FilterTest {
      * Test the property 'formatExclusiveMinimum'
      */
     @Test
-    public void formatExclusiveMinimumTest() {
+    void formatExclusiveMinimumTest() {
         // TODO: test formatExclusiveMinimum
     }
 
@@ -117,7 +117,7 @@ public class FilterTest {
      * Test the property 'minLength'
      */
     @Test
-    public void minLengthTest() {
+    void minLengthTest() {
         // TODO: test minLength
     }
 
@@ -125,7 +125,7 @@ public class FilterTest {
      * Test the property 'maxLength'
      */
     @Test
-    public void maxLengthTest() {
+    void maxLengthTest() {
         // TODO: test maxLength
     }
 
@@ -133,7 +133,7 @@ public class FilterTest {
      * Test the property 'minimum'
      */
     @Test
-    public void minimumTest() {
+    void minimumTest() {
         // TODO: test minimum
     }
 
@@ -141,7 +141,7 @@ public class FilterTest {
      * Test the property 'maximum'
      */
     @Test
-    public void maximumTest() {
+    void maximumTest() {
         // TODO: test maximum
     }
 
@@ -149,7 +149,7 @@ public class FilterTest {
      * Test the property 'not'
      */
     @Test
-    public void notTest() {
+    void notTest() {
         // TODO: test not
     }
 
@@ -157,7 +157,7 @@ public class FilterTest {
      * Test the property 'pattern'
      */
     @Test
-    public void patternTest() {
+    void patternTest() {
         // TODO: test pattern
     }
 
@@ -165,7 +165,7 @@ public class FilterTest {
      * Test the property 'contains'
      */
     @Test
-    public void containsTest() {
+    void containsTest() {
         // TODO: test contains
     }
 
@@ -173,7 +173,7 @@ public class FilterTest {
      * Test the property 'items'
      */
     @Test
-    public void itemsTest() {
+    void itemsTest() {
         // TODO: test items
     }
 
@@ -181,7 +181,7 @@ public class FilterTest {
      * Test the property 'type'
      */
     @Test
-    public void typeTest() {
+    void typeTest() {
         // TODO: test type
     }
 

@@ -12,4 +12,4 @@ Presentation definition
 | **format**                 | [**Format**](Format.md)                                           |                    | [optional] |
 | **submissionRequirements** | [**List&lt;SubmissionRequirement&gt;**](SubmissionRequirement.md) |                    | [optional] |
 | **inputDescriptors**       | [**List&lt;InputDescriptor&gt;**](InputDescriptor.md)             |                    |            |
-| **frame**                  | **FreeFormObject**                                                |                    | [optional] |
+| **frame**                  | **Map&lt;String, Object&gt;**                                     | Dynamic model      | [optional] |

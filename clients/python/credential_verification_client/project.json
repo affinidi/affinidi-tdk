@@ -24,7 +24,7 @@
         "cwd": "{projectRoot}",
         "command": "poetry publish --skip-existing"
       }
-    },
-    "tags": []
-  }
+    }
+  },
+  "tags": ["lang:python", "kind:client"]
 }

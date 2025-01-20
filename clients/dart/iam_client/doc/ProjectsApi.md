@@ -30,12 +30,12 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final addUserToProjectInput = AddUserToProjectInput(); // AddUserToProjectInput | AddPrincipalToProject
+final api = AffinidiTdkIamClient().getProjectsApi();
+final AddUserToProjectInput addUserToProjectInput = ; // AddUserToProjectInput | AddPrincipalToProject
 
 try {
-    api_instance.addPrincipalToProject(addUserToProjectInput);
-} catch (e) {
+    api.addPrincipalToProject(addUserToProjectInput);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->addPrincipalToProject: $e\n');
 }
 ```
@@ -74,13 +74,13 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final createProjectInput = CreateProjectInput(); // CreateProjectInput | CreateProject
+final api = AffinidiTdkIamClient().getProjectsApi();
+final CreateProjectInput createProjectInput = ; // CreateProjectInput | CreateProject
 
 try {
-    final result = api_instance.createProject(createProjectInput);
-    print(result);
-} catch (e) {
+    final response = api.createProject(createProjectInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->createProject: $e\n');
 }
 ```
@@ -119,13 +119,13 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final principalId = principalId_example; // String | id of principal
-final principalType = principalType_example; // String | type of principal
+final api = AffinidiTdkIamClient().getProjectsApi();
+final String principalId = principalId_example; // String | id of principal
+final String principalType = principalType_example; // String | type of principal
 
 try {
-    api_instance.deletePrincipalFromProject(principalId, principalType);
-} catch (e) {
+    api.deletePrincipalFromProject(principalId, principalType);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->deletePrincipalFromProject: $e\n');
 }
 ```
@@ -165,14 +165,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIamClient().getProjectsApi();
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listPrincipalsOfProject(limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listPrincipalsOfProject(limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->listPrincipalsOfProject: $e\n');
 }
 ```
@@ -212,14 +212,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkIamClient().getProjectsApi();
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listProject(limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listProject(limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->listProject: $e\n');
 }
 ```
@@ -259,14 +259,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ProjectsApi();
-final projectId = projectId_example; // String | projectId
-final updateProjectInput = UpdateProjectInput(); // UpdateProjectInput | UpdateProject
+final api = AffinidiTdkIamClient().getProjectsApi();
+final String projectId = projectId_example; // String | projectId
+final UpdateProjectInput updateProjectInput = ; // UpdateProjectInput | UpdateProject
 
 try {
-    final result = api_instance.updateProject(projectId, updateProjectInput);
-    print(result);
-} catch (e) {
+    final response = api.updateProject(projectId, updateProjectInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->updateProject: $e\n');
 }
 ```

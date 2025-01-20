@@ -21,7 +21,7 @@ import json
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
-from affinidi_tdk_login_configuration_client.models.id_token_mapping import IdTokenMapping
+from affinidi_tdk_login_configuration_client.models.id_token_mapping_item import IdTokenMappingItem
 from affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_input import LoginConfigurationClientMetadataInput
 from affinidi_tdk_login_configuration_client.models.token_endpoint_auth_method import TokenEndpointAuthMethod
 
@@ -35,7 +35,7 @@ class CreateLoginConfigurationInput(BaseModel):
     post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs")
     vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition", description="Presentation Definition")
-    id_token_mapping: Optional[IdTokenMapping] = Field(default=None, alias="idTokenMapping")
+    id_token_mapping: Optional[conlist(IdTokenMappingItem, min_items=1)] = Field(default=None, alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: Optional[LoginConfigurationClientMetadataInput] = Field(default=None, alias="clientMetadata")
     claim_format: Optional[StrictStr] = Field(default=None, alias="claimFormat", description="ID token claims output format. Default is array.")
     fail_on_mapping_conflict: Optional[StrictBool] = Field(default=True, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
@@ -77,9 +77,13 @@ class CreateLoginConfigurationInput(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of id_token_mapping
+        # override the default output from pydantic by calling `to_dict()` of each item in id_token_mapping (list)
+        _items = []
         if self.id_token_mapping:
-            _dict['idTokenMapping'] = self.id_token_mapping.to_dict()
+            for _item in self.id_token_mapping:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['idTokenMapping'] = _items
         # override the default output from pydantic by calling `to_dict()` of client_metadata
         if self.client_metadata:
             _dict['clientMetadata'] = self.client_metadata.to_dict()
@@ -101,7 +105,7 @@ class CreateLoginConfigurationInput(BaseModel):
             "post_logout_redirect_uris": obj.get("postLogoutRedirectUris"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
-            "id_token_mapping": IdTokenMapping.from_dict(obj.get("idTokenMapping")) if obj.get("idTokenMapping") is not None else None,
+            "id_token_mapping": [IdTokenMappingItem.from_dict(_item) for _item in obj.get("idTokenMapping")] if obj.get("idTokenMapping") is not None else None,
             "client_metadata": LoginConfigurationClientMetadataInput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "claim_format": obj.get("claimFormat"),
             "fail_on_mapping_conflict": obj.get("failOnMappingConflict") if obj.get("failOnMappingConflict") is not None else True,

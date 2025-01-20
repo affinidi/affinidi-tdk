@@ -18,9 +18,12 @@ import com.affinidi.tdk.iam.client.models.InvalidParameterError;
 import com.affinidi.tdk.iam.client.models.NotFoundError;
 import com.affinidi.tdk.iam.client.models.PolicyDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,18 +38,20 @@ public class PoliciesApiTest {
     private final PoliciesApi api = new PoliciesApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getPoliciesTest() throws ApiException {
         String principalId = null;
         String principalType = null;
         PolicyDto response = api.getPolicies(principalId, principalType);
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void updatePoliciesTest() throws ApiException {
@@ -54,7 +59,7 @@ public class PoliciesApiTest {
         String principalType = null;
         PolicyDto policyDto = null;
         PolicyDto response = api.updatePolicies(principalId, principalType, policyDto);
+
         // TODO: test validations
     }
-
 }

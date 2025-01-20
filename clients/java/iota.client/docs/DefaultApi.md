@@ -6,9 +6,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | ---------------------------------------------------------- | --------------------------- | ----------- |
 | [**listLoggedConsents**](DefaultApi.md#listLoggedConsents) | **GET** /v1/logged-consents |             |
 
-<a id="listLoggedConsents"></a>
-
-# **listLoggedConsents**
+## listLoggedConsents
 
 > ListLoggedConsentsOK listLoggedConsents(configurationId, userId, limit, exclusiveStartKey)
 
@@ -26,32 +24,32 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.DefaultApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    DefaultApi apiInstance = new DefaultApi(defaultClient);
-    String configurationId = "configurationId_example"; // String |
-    String userId = "userId_example"; // String |
-    Integer limit = 56; // Integer | The maximum number of records to fetch from the list of logged consents.
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      ListLoggedConsentsOK result = apiInstance.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DefaultApi#listLoggedConsents");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        DefaultApi apiInstance = new DefaultApi(defaultClient);
+        String configurationId = "configurationId_example"; // String |
+        String userId = "userId_example"; // String |
+        Integer limit = 56; // Integer | The maximum number of records to fetch from the list of logged consents.
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            ListLoggedConsentsOK result = apiInstance.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#listLoggedConsents");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

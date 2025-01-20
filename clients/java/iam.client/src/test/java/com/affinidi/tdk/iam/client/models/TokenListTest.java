@@ -14,29 +14,29 @@
 package com.affinidi.tdk.iam.client.models;
 
 import com.affinidi.tdk.iam.client.models.TokenDto;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for TokenList
  */
-public class TokenListTest {
+class TokenListTest {
     private final TokenList model = new TokenList();
 
     /**
      * Model tests for TokenList
      */
     @Test
-    public void testTokenList() {
+    void testTokenList() {
         // TODO: test TokenList
     }
 
@@ -44,7 +44,7 @@ public class TokenListTest {
      * Test the property 'tokens'
      */
     @Test
-    public void tokensTest() {
+    void tokensTest() {
         // TODO: test tokens
     }
 
@@ -52,7 +52,7 @@ public class TokenListTest {
      * Test the property 'lastEvaluatedKey'
      */
     @Test
-    public void lastEvaluatedKeyTest() {
+    void lastEvaluatedKeyTest() {
         // TODO: test lastEvaluatedKey
     }
 

@@ -14,27 +14,26 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadata;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialSupportedObject
  */
-public class CredentialSupportedObjectTest {
+class CredentialSupportedObjectTest {
     private final CredentialSupportedObject model = new CredentialSupportedObject();
 
     /**
      * Model tests for CredentialSupportedObject
      */
     @Test
-    public void testCredentialSupportedObject() {
+    void testCredentialSupportedObject() {
         // TODO: test CredentialSupportedObject
     }
 
@@ -42,7 +41,7 @@ public class CredentialSupportedObjectTest {
      * Test the property 'credentialTypeId'
      */
     @Test
-    public void credentialTypeIdTest() {
+    void credentialTypeIdTest() {
         // TODO: test credentialTypeId
     }
 
@@ -50,7 +49,7 @@ public class CredentialSupportedObjectTest {
      * Test the property 'jsonSchemaUrl'
      */
     @Test
-    public void jsonSchemaUrlTest() {
+    void jsonSchemaUrlTest() {
         // TODO: test jsonSchemaUrl
     }
 
@@ -58,7 +57,7 @@ public class CredentialSupportedObjectTest {
      * Test the property 'jsonLdContextUrl'
      */
     @Test
-    public void jsonLdContextUrlTest() {
+    void jsonLdContextUrlTest() {
         // TODO: test jsonLdContextUrl
     }
 
@@ -66,7 +65,7 @@ public class CredentialSupportedObjectTest {
      * Test the property 'metadata'
      */
     @Test
-    public void metadataTest() {
+    void metadataTest() {
         // TODO: test metadata
     }
 

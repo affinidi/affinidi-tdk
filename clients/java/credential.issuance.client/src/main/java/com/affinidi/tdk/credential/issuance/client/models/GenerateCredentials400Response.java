@@ -14,265 +14,417 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenErrorDetailsInner;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidCredentialRequestError;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidProofError;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
+/**
+ * GenerateCredentials400Response
+ */
+@JsonPropertyOrder({
+  GenerateCredentials400Response.JSON_PROPERTY_NAME,
+  GenerateCredentials400Response.JSON_PROPERTY_MESSAGE,
+  GenerateCredentials400Response.JSON_PROPERTY_HTTP_STATUS_CODE,
+  GenerateCredentials400Response.JSON_PROPERTY_TRACE_ID,
+  GenerateCredentials400Response.JSON_PROPERTY_DETAILS
+})
+@JsonTypeName("generateCredentials_400_response")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class GenerateCredentials400Response {
+  /**
+   * Gets or Sets name
+   */
+  public enum NameEnum {
+    INVALID_PROOF_ERROR("InvalidProofError");
 
+    private String value;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
-
-import com.affinidi.tdk.credential.issuance.client.JSON;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class GenerateCredentials400Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(GenerateCredentials400Response.class.getName());
-
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!GenerateCredentials400Response.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'GenerateCredentials400Response' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidCredentialRequestError> adapterInvalidCredentialRequestError = gson.getDelegateAdapter(this, TypeToken.get(InvalidCredentialRequestError.class));
-            final TypeAdapter<InvalidProofError> adapterInvalidProofError = gson.getDelegateAdapter(this, TypeToken.get(InvalidProofError.class));
-
-            return (TypeAdapter<T>) new TypeAdapter<GenerateCredentials400Response>() {
-                @Override
-                public void write(JsonWriter out, GenerateCredentials400Response value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
-
-                    // check if the actual instance is of the type `InvalidCredentialRequestError`
-                    if (value.getActualInstance() instanceof InvalidCredentialRequestError) {
-                        JsonElement element = adapterInvalidCredentialRequestError.toJsonTree((InvalidCredentialRequestError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `InvalidProofError`
-                    if (value.getActualInstance() instanceof InvalidProofError) {
-                        JsonElement element = adapterInvalidProofError.toJsonTree((InvalidProofError)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidCredentialRequestError, InvalidProofError");
-                }
-
-                @Override
-                public GenerateCredentials400Response read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
-
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
-
-                    // deserialize InvalidCredentialRequestError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidCredentialRequestError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidCredentialRequestError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidCredentialRequestError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidCredentialRequestError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidCredentialRequestError'", e);
-                    }
-                    // deserialize InvalidProofError
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidProofError.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidProofError;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidProofError'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidProofError failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidProofError'", e);
-                    }
-
-                    if (match == 1) {
-                        GenerateCredentials400Response ret = new GenerateCredentials400Response();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
-
-                    throw new IOException(String.format("Failed deserialization for GenerateCredentials400Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+    NameEnum(String value) {
+      this.value = value;
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public GenerateCredentials400Response() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public GenerateCredentials400Response(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("InvalidCredentialRequestError", InvalidCredentialRequestError.class);
-        schemas.put("InvalidProofError", InvalidProofError.class);
+    @JsonValue
+    public String getValue() {
+      return value;
     }
 
     @Override
-    public Map<String, Class<?>> getSchemas() {
-        return GenerateCredentials400Response.schemas;
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * InvalidCredentialRequestError, InvalidProofError
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
+    @JsonCreator
+    public static NameEnum fromValue(String value) {
+      for (NameEnum b : NameEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  private NameEnum name;
+
+  /**
+   * Gets or Sets message
+   */
+  public enum MessageEnum {
+    THE_PROOF_IN_THE_CREDENTIAL_REQUEST_IS_INVALID("The proof in the Credential Request is invalid");
+
+    private String value;
+
+    MessageEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
     @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidCredentialRequestError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof InvalidProofError) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be InvalidCredentialRequestError, InvalidProofError");
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance, which can be the following:
-     * InvalidCredentialRequestError, InvalidProofError
-     *
-     * @return The actual instance (InvalidCredentialRequestError, InvalidProofError)
-     */
-    @SuppressWarnings("unchecked")
+    @JsonCreator
+    public static MessageEnum fromValue(String value) {
+      for (MessageEnum b : MessageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  private MessageEnum message;
+
+  /**
+   * Gets or Sets httpStatusCode
+   */
+  public enum HttpStatusCodeEnum {
+    NUMBER_400(new BigDecimal("400"));
+
+    private BigDecimal value;
+
+    HttpStatusCodeEnum(BigDecimal value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public BigDecimal getValue() {
+      return value;
+    }
+
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
+    public String toString() {
+      return String.valueOf(value);
     }
 
-    /**
-     * Get the actual instance of `InvalidCredentialRequestError`. If the actual instance is not `InvalidCredentialRequestError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidCredentialRequestError`
-     * @throws ClassCastException if the instance is not `InvalidCredentialRequestError`
-     */
-    public InvalidCredentialRequestError getInvalidCredentialRequestError() throws ClassCastException {
-        return (InvalidCredentialRequestError)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `InvalidProofError`. If the actual instance is not `InvalidProofError`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidProofError`
-     * @throws ClassCastException if the instance is not `InvalidProofError`
-     */
-    public InvalidProofError getInvalidProofError() throws ClassCastException {
-        return (InvalidProofError)super.getActualInstance();
-    }
-
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to GenerateCredentials400Response
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidCredentialRequestError
-        try {
-            InvalidCredentialRequestError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidCredentialRequestError failed with `%s`.", e.getMessage()));
-            // continue to the next one
+    @JsonCreator
+    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+      for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
         }
-        // validate the json string with InvalidProofError
-        try {
-            InvalidProofError.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidProofError failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for GenerateCredentials400Response with oneOf schemas: InvalidCredentialRequestError, InvalidProofError. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  private HttpStatusCodeEnum httpStatusCode;
+
+  public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  private String traceId;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  private List<ActionForbiddenErrorDetailsInner> details = new ArrayList<>();
+
+  public GenerateCredentials400Response() {
+  }
+
+  public GenerateCredentials400Response name(NameEnum name) {
+    
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public NameEnum getName() {
+    return name;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setName(NameEnum name) {
+    this.name = name;
+  }
+
+  public GenerateCredentials400Response message(MessageEnum message) {
+    
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public MessageEnum getMessage() {
+    return message;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMessage(MessageEnum message) {
+    this.message = message;
+  }
+
+  public GenerateCredentials400Response httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    
+    this.httpStatusCode = httpStatusCode;
+    return this;
+  }
+
+  /**
+   * Get httpStatusCode
+   * @return httpStatusCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public HttpStatusCodeEnum getHttpStatusCode() {
+    return httpStatusCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+    this.httpStatusCode = httpStatusCode;
+  }
+
+  public GenerateCredentials400Response traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+  /**
+   * Get traceId
+   * @return traceId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+  public GenerateCredentials400Response details(List<ActionForbiddenErrorDetailsInner> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public GenerateCredentials400Response addDetailsItem(ActionForbiddenErrorDetailsInner detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
+    }
+    this.details.add(detailsItem);
+    return this;
+  }
+
+  /**
+   * Get details
+   * @return details
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ActionForbiddenErrorDetailsInner> getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(List<ActionForbiddenErrorDetailsInner> details) {
+    this.details = details;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    GenerateCredentials400Response generateCredentials400Response = (GenerateCredentials400Response) o;
+    return Objects.equals(this.name, generateCredentials400Response.name) &&
+        Objects.equals(this.message, generateCredentials400Response.message) &&
+        Objects.equals(this.httpStatusCode, generateCredentials400Response.httpStatusCode) &&
+        Objects.equals(this.traceId, generateCredentials400Response.traceId) &&
+        Objects.equals(this.details, generateCredentials400Response.details);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, message, httpStatusCode, traceId, details);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class GenerateCredentials400Response {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    /**
-     * Create an instance of GenerateCredentials400Response given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of GenerateCredentials400Response
-     * @throws IOException if the JSON string is invalid with respect to GenerateCredentials400Response
-     */
-    public static GenerateCredentials400Response fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, GenerateCredentials400Response.class);
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      try {
+        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Convert an instance of GenerateCredentials400Response to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      try {
+        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
+
+    // add `httpStatusCode` to the URL query string
+    if (getHttpStatusCode() != null) {
+      try {
+        joiner.add(String.format("%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `traceId` to the URL query string
+    if (getTraceId() != null) {
+      try {
+        joiner.add(String.format("%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      for (int i = 0; i < getDetails().size(); i++) {
+        if (getDetails().get(i) != null) {
+          joiner.add(getDetails().get(i).toUrlQueryString(String.format("%sdetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+
 }
 

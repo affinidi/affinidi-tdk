@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 // tests for CreateLoginConfigurationOutput
 void main() {
-  // final instance = CreateLoginConfigurationOutput();
+  final instance = CreateLoginConfigurationOutputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test CreateLoginConfigurationOutput', () {
+  group(CreateLoginConfigurationOutput, () {
     // Configuration ari
     // String ari
     test('to test the property `ari`', () async {
@@ -46,7 +37,7 @@ void main() {
     });
 
     // OAuth 2.0 Redirect URIs
-    // List<String> redirectUris (default value: const [])
+    // BuiltList<String> redirectUris
     test('to test the property `redirectUris`', () async {
       // TODO
     });
@@ -62,7 +53,11 @@ void main() {
       // TODO
     });
 
+    // Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+    // BuiltList<String> postLogoutRedirectUris
+    test('to test the property `postLogoutRedirectUris`', () async {
+      // TODO
+    });
 
   });
-
 }

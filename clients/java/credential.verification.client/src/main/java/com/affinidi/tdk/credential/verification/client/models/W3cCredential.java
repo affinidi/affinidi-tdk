@@ -14,99 +14,87 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSchema;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSubject;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialHolder;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialStatus;
 import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.affinidi.tdk.credential.verification.client.models.W3cProof;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.credential.verification.client.JSON;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * W3cCredential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:16:14.786007424Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  W3cCredential.JSON_PROPERTY_AT_CONTEXT,
+  W3cCredential.JSON_PROPERTY_ID,
+  W3cCredential.JSON_PROPERTY_TYPE,
+  W3cCredential.JSON_PROPERTY_HOLDER,
+  W3cCredential.JSON_PROPERTY_CREDENTIAL_SUBJECT,
+  W3cCredential.JSON_PROPERTY_CREDENTIAL_STATUS,
+  W3cCredential.JSON_PROPERTY_ISSUANCE_DATE,
+  W3cCredential.JSON_PROPERTY_ISSUER,
+  W3cCredential.JSON_PROPERTY_EXPIRATION_DATE,
+  W3cCredential.JSON_PROPERTY_PROOF,
+  W3cCredential.JSON_PROPERTY_CREDENTIAL_SCHEMA
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class W3cCredential {
-  public static final String SERIALIZED_NAME_AT_CONTEXT = "@context";
-  @SerializedName(SERIALIZED_NAME_AT_CONTEXT)
+  public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
   private W3cPresentationContext atContext;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String JSON_PROPERTY_ID = "id";
+  private JsonNullable<String> id = JsonNullable.<String>undefined();
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private List<String> type = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_HOLDER = "holder";
-  @SerializedName(SERIALIZED_NAME_HOLDER)
+  public static final String JSON_PROPERTY_HOLDER = "holder";
   private W3cCredentialHolder holder;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_SUBJECT = "credentialSubject";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_SUBJECT)
+  public static final String JSON_PROPERTY_CREDENTIAL_SUBJECT = "credentialSubject";
   private W3cCredentialCredentialSubject credentialSubject;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_STATUS = "credentialStatus";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_STATUS)
+  public static final String JSON_PROPERTY_CREDENTIAL_STATUS = "credentialStatus";
   private W3cCredentialStatus credentialStatus;
 
-  public static final String SERIALIZED_NAME_ISSUANCE_DATE = "issuanceDate";
-  @SerializedName(SERIALIZED_NAME_ISSUANCE_DATE)
+  public static final String JSON_PROPERTY_ISSUANCE_DATE = "issuanceDate";
   private String issuanceDate;
 
-  public static final String SERIALIZED_NAME_ISSUER = "issuer";
-  @SerializedName(SERIALIZED_NAME_ISSUER)
+  public static final String JSON_PROPERTY_ISSUER = "issuer";
   private String issuer;
 
-  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expirationDate";
-  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
-  private String expirationDate;
+  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
+  private JsonNullable<String> expirationDate = JsonNullable.<String>undefined();
 
-  public static final String SERIALIZED_NAME_PROOF = "proof";
-  @SerializedName(SERIALIZED_NAME_PROOF)
+  public static final String JSON_PROPERTY_PROOF = "proof";
   private W3cProof proof;
 
-  public static final String SERIALIZED_NAME_CREDENTIAL_SCHEMA = "credentialSchema";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_SCHEMA)
+  public static final String JSON_PROPERTY_CREDENTIAL_SCHEMA = "credentialSchema";
   private W3cCredentialCredentialSchema credentialSchema;
 
   public W3cCredential() {
   }
 
   public W3cCredential atContext(W3cPresentationContext atContext) {
+    
     this.atContext = atContext;
     return this;
   }
@@ -116,17 +104,23 @@ public class W3cCredential {
    * @return atContext
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public W3cPresentationContext getAtContext() {
     return atContext;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAtContext(W3cPresentationContext atContext) {
     this.atContext = atContext;
   }
 
-
   public W3cCredential id(String id) {
-    this.id = id;
+    this.id = JsonNullable.<String>of(id);
+    
     return this;
   }
 
@@ -135,16 +129,30 @@ public class W3cCredential {
    * @return id
    */
   @javax.annotation.Nullable
+  @JsonIgnore
+
   public String getId() {
-    return id;
+        return id.orElse(null);
   }
 
-  public void setId(String id) {
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getId_JsonNullable() {
+    return id;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ID)
+  public void setId_JsonNullable(JsonNullable<String> id) {
     this.id = id;
   }
 
+  public void setId(String id) {
+    this.id = JsonNullable.<String>of(id);
+  }
 
   public W3cCredential type(List<String> type) {
+    
     this.type = type;
     return this;
   }
@@ -162,16 +170,22 @@ public class W3cCredential {
    * @return type
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public List<String> getType() {
     return type;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(List<String> type) {
     this.type = type;
   }
 
-
   public W3cCredential holder(W3cCredentialHolder holder) {
+    
     this.holder = holder;
     return this;
   }
@@ -181,16 +195,22 @@ public class W3cCredential {
    * @return holder
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public W3cCredentialHolder getHolder() {
     return holder;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_HOLDER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHolder(W3cCredentialHolder holder) {
     this.holder = holder;
   }
 
-
   public W3cCredential credentialSubject(W3cCredentialCredentialSubject credentialSubject) {
+    
     this.credentialSubject = credentialSubject;
     return this;
   }
@@ -200,16 +220,22 @@ public class W3cCredential {
    * @return credentialSubject
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public W3cCredentialCredentialSubject getCredentialSubject() {
     return credentialSubject;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialSubject(W3cCredentialCredentialSubject credentialSubject) {
     this.credentialSubject = credentialSubject;
   }
 
-
   public W3cCredential credentialStatus(W3cCredentialStatus credentialStatus) {
+    
     this.credentialStatus = credentialStatus;
     return this;
   }
@@ -219,16 +245,22 @@ public class W3cCredential {
    * @return credentialStatus
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public W3cCredentialStatus getCredentialStatus() {
     return credentialStatus;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_STATUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialStatus(W3cCredentialStatus credentialStatus) {
     this.credentialStatus = credentialStatus;
   }
 
-
   public W3cCredential issuanceDate(String issuanceDate) {
+    
     this.issuanceDate = issuanceDate;
     return this;
   }
@@ -238,16 +270,22 @@ public class W3cCredential {
    * @return issuanceDate
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_DATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getIssuanceDate() {
     return issuanceDate;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUANCE_DATE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuanceDate(String issuanceDate) {
     this.issuanceDate = issuanceDate;
   }
 
-
   public W3cCredential issuer(String issuer) {
+    
     this.issuer = issuer;
     return this;
   }
@@ -257,17 +295,23 @@ public class W3cCredential {
    * @return issuer
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getIssuer() {
     return issuer;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuer(String issuer) {
     this.issuer = issuer;
   }
 
-
   public W3cCredential expirationDate(String expirationDate) {
-    this.expirationDate = expirationDate;
+    this.expirationDate = JsonNullable.<String>of(expirationDate);
+    
     return this;
   }
 
@@ -276,16 +320,30 @@ public class W3cCredential {
    * @return expirationDate
    */
   @javax.annotation.Nullable
+  @JsonIgnore
+
   public String getExpirationDate() {
-    return expirationDate;
+        return expirationDate.orElse(null);
   }
 
-  public void setExpirationDate(String expirationDate) {
+  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getExpirationDate_JsonNullable() {
+    return expirationDate;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
+  public void setExpirationDate_JsonNullable(JsonNullable<String> expirationDate) {
     this.expirationDate = expirationDate;
   }
 
+  public void setExpirationDate(String expirationDate) {
+    this.expirationDate = JsonNullable.<String>of(expirationDate);
+  }
 
   public W3cCredential proof(W3cProof proof) {
+    
     this.proof = proof;
     return this;
   }
@@ -295,16 +353,22 @@ public class W3cCredential {
    * @return proof
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public W3cProof getProof() {
     return proof;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProof(W3cProof proof) {
     this.proof = proof;
   }
 
-
   public W3cCredential credentialSchema(W3cCredentialCredentialSchema credentialSchema) {
+    
     this.credentialSchema = credentialSchema;
     return this;
   }
@@ -314,15 +378,19 @@ public class W3cCredential {
    * @return credentialSchema
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SCHEMA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public W3cCredentialCredentialSchema getCredentialSchema() {
     return credentialSchema;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SCHEMA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialSchema(W3cCredentialCredentialSchema credentialSchema) {
     this.credentialSchema = credentialSchema;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -334,14 +402,14 @@ public class W3cCredential {
     }
     W3cCredential w3cCredential = (W3cCredential) o;
     return Objects.equals(this.atContext, w3cCredential.atContext) &&
-        Objects.equals(this.id, w3cCredential.id) &&
+        equalsNullable(this.id, w3cCredential.id) &&
         Objects.equals(this.type, w3cCredential.type) &&
         Objects.equals(this.holder, w3cCredential.holder) &&
         Objects.equals(this.credentialSubject, w3cCredential.credentialSubject) &&
         Objects.equals(this.credentialStatus, w3cCredential.credentialStatus) &&
         Objects.equals(this.issuanceDate, w3cCredential.issuanceDate) &&
         Objects.equals(this.issuer, w3cCredential.issuer) &&
-        Objects.equals(this.expirationDate, w3cCredential.expirationDate) &&
+        equalsNullable(this.expirationDate, w3cCredential.expirationDate) &&
         Objects.equals(this.proof, w3cCredential.proof) &&
         Objects.equals(this.credentialSchema, w3cCredential.credentialSchema);
   }
@@ -352,7 +420,7 @@ public class W3cCredential {
 
   @Override
   public int hashCode() {
-    return Objects.hash(atContext, id, type, holder, credentialSubject, credentialStatus, issuanceDate, issuer, expirationDate, proof, credentialSchema);
+    return Objects.hash(atContext, hashCodeNullable(id), type, holder, credentialSubject, credentialStatus, issuanceDate, issuer, hashCodeNullable(expirationDate), proof, credentialSchema);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -392,148 +460,124 @@ public class W3cCredential {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("@context");
-    openapiFields.add("id");
-    openapiFields.add("type");
-    openapiFields.add("holder");
-    openapiFields.add("credentialSubject");
-    openapiFields.add("credentialStatus");
-    openapiFields.add("issuanceDate");
-    openapiFields.add("issuer");
-    openapiFields.add("expirationDate");
-    openapiFields.add("proof");
-    openapiFields.add("credentialSchema");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("@context");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("credentialSubject");
-    openapiRequiredFields.add("issuanceDate");
-    openapiRequiredFields.add("issuer");
-    openapiRequiredFields.add("proof");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to W3cCredential
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!W3cCredential.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in W3cCredential is not found in the empty JSON string", W3cCredential.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!W3cCredential.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `W3cCredential` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : W3cCredential.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `@context`
-      W3cPresentationContext.validateJsonElement(jsonObj.get("@context"));
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("type") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("type").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be an array in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `holder`
-      if (jsonObj.get("holder") != null && !jsonObj.get("holder").isJsonNull()) {
-        W3cCredentialHolder.validateJsonElement(jsonObj.get("holder"));
-      }
-      // validate the required field `credentialSubject`
-      W3cCredentialCredentialSubject.validateJsonElement(jsonObj.get("credentialSubject"));
-      // validate the optional field `credentialStatus`
-      if (jsonObj.get("credentialStatus") != null && !jsonObj.get("credentialStatus").isJsonNull()) {
-        W3cCredentialStatus.validateJsonElement(jsonObj.get("credentialStatus"));
-      }
-      if (!jsonObj.get("issuanceDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuanceDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuanceDate").toString()));
-      }
-      if (!jsonObj.get("issuer").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuer").toString()));
-      }
-      if ((jsonObj.get("expirationDate") != null && !jsonObj.get("expirationDate").isJsonNull()) && !jsonObj.get("expirationDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `expirationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expirationDate").toString()));
-      }
-      // validate the required field `proof`
-      W3cProof.validateJsonElement(jsonObj.get("proof"));
-      // validate the optional field `credentialSchema`
-      if (jsonObj.get("credentialSchema") != null && !jsonObj.get("credentialSchema").isJsonNull()) {
-        W3cCredentialCredentialSchema.validateJsonElement(jsonObj.get("credentialSchema"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!W3cCredential.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'W3cCredential' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<W3cCredential> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(W3cCredential.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<W3cCredential>() {
-           @Override
-           public void write(JsonWriter out, W3cCredential value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public W3cCredential read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `@context` to the URL query string
+    if (getAtContext() != null) {
+      joiner.add(getAtContext().toUrlQueryString(prefix + "@context" + suffix));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      try {
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      for (int i = 0; i < getType().size(); i++) {
+        try {
+          joiner.add(String.format("%stype%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getType().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `holder` to the URL query string
+    if (getHolder() != null) {
+      joiner.add(getHolder().toUrlQueryString(prefix + "holder" + suffix));
+    }
+
+    // add `credentialSubject` to the URL query string
+    if (getCredentialSubject() != null) {
+      joiner.add(getCredentialSubject().toUrlQueryString(prefix + "credentialSubject" + suffix));
+    }
+
+    // add `credentialStatus` to the URL query string
+    if (getCredentialStatus() != null) {
+      joiner.add(getCredentialStatus().toUrlQueryString(prefix + "credentialStatus" + suffix));
+    }
+
+    // add `issuanceDate` to the URL query string
+    if (getIssuanceDate() != null) {
+      try {
+        joiner.add(String.format("%sissuanceDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceDate()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuer` to the URL query string
+    if (getIssuer() != null) {
+      try {
+        joiner.add(String.format("%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `expirationDate` to the URL query string
+    if (getExpirationDate() != null) {
+      try {
+        joiner.add(String.format("%sexpirationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpirationDate()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `proof` to the URL query string
+    if (getProof() != null) {
+      joiner.add(getProof().toUrlQueryString(prefix + "proof" + suffix));
+    }
+
+    // add `credentialSchema` to the URL query string
+    if (getCredentialSchema() != null) {
+      joiner.add(getCredentialSchema().toUrlQueryString(prefix + "credentialSchema" + suffix));
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of W3cCredential given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of W3cCredential
-   * @throws IOException if the JSON string is invalid with respect to W3cCredential
-   */
-  public static W3cCredential fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, W3cCredential.class);
-  }
-
-  /**
-   * Convert an instance of W3cCredential to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

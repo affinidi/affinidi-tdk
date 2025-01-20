@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.credential.verification.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for PdStatus
  */
-public class PdStatusTest {
+class PdStatusTest {
     private final PdStatus model = new PdStatus();
 
     /**
      * Model tests for PdStatus
      */
     @Test
-    public void testPdStatus() {
+    void testPdStatus() {
         // TODO: test PdStatus
     }
 
@@ -41,7 +40,7 @@ public class PdStatusTest {
      * Test the property 'directive'
      */
     @Test
-    public void directiveTest() {
+    void directiveTest() {
         // TODO: test directive
     }
 

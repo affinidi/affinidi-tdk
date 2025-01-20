@@ -1,0 +1,52 @@
+{
+  "name": "@affinidi-tdk/iota-client-java",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "{projectRoot}",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "mvn --no-transfer-progress --batch-mode clean package"
+      }
+    },
+    "set-version": {
+      "executor": "@affinidi-tdk/nx-tdk-tools:set-version",
+      "options": {
+        "packageName": "iota.client"
+      }
+    },
+    "nx-release-publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "mvn --no-transfer-progress --batch-mode clean deploy -P sign-artifacts"
+      }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": false,
+        "git": false,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/exec",
+            {
+              "execCwd": "clients/java/iota.client",
+              "prepareCmd": "mvn versions:set -DnewVersion=${nextRelease.version}",
+              "publishCmd": "mvn versions:set -DnewVersion=${nextRelease.version}",
+              "verifyConditionsCmd": "mvn --version"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": ["lang:java", "kind:client"]
+}

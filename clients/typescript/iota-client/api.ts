@@ -585,18 +585,6 @@ export interface FetchIOTAVPResponseOK {
    * @deprecated
    */
   vp_token?: string
-  /**
-   * A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-   * @type {string}
-   * @memberof FetchIOTAVPResponseOK
-   */
-  presentationSubmission?: string
-  /**
-   * A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-   * @type {string}
-   * @memberof FetchIOTAVPResponseOK
-   */
-  vpToken?: string
 }
 /**
  *
@@ -3457,15 +3445,23 @@ export const PexQueryApiAxiosParamCreator = function (
     /**
      * Deletes all Presentation Definition queries of a configuration.
      * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {DeletePexQueriesInput} deletePexQueriesInput DeletePexQueriesInput
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deletePexQueries: async (
       configurationId: string,
+      deletePexQueriesInput: DeletePexQueriesInput,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'configurationId' is not null or undefined
       assertParamExists('deletePexQueries', 'configurationId', configurationId)
+      // verify required parameter 'deletePexQueriesInput' is not null or undefined
+      assertParamExists(
+        'deletePexQueries',
+        'deletePexQueriesInput',
+        deletePexQueriesInput,
+      )
       const localVarPath =
         `/v1/configurations/{configurationId}/delete-queries`.replace(
           `{${'configurationId'}}`,
@@ -3493,6 +3489,8 @@ export const PexQueryApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3501,6 +3499,11 @@ export const PexQueryApiAxiosParamCreator = function (
         ...headersFromBaseOptions,
         ...options.headers,
       }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        deletePexQueriesInput,
+        localVarRequestOptions,
+        configuration,
+      )
 
       return {
         url: toPathString(localVarUrlObj),
@@ -3885,18 +3888,21 @@ export const PexQueryApiFp = function (configuration?: Configuration) {
     /**
      * Deletes all Presentation Definition queries of a configuration.
      * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {DeletePexQueriesInput} deletePexQueriesInput DeletePexQueriesInput
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async deletePexQueries(
       configurationId: string,
+      deletePexQueriesInput: DeletePexQueriesInput,
       options?: RawAxiosRequestConfig,
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.deletePexQueries(
           configurationId,
+          deletePexQueriesInput,
           options,
         )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -4116,15 +4122,17 @@ export const PexQueryApiFactory = function (
     /**
      * Deletes all Presentation Definition queries of a configuration.
      * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {DeletePexQueriesInput} deletePexQueriesInput DeletePexQueriesInput
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     deletePexQueries(
       configurationId: string,
+      deletePexQueriesInput: DeletePexQueriesInput,
       options?: RawAxiosRequestConfig,
-    ): AxiosPromise<void> {
+    ): AxiosPromise<object> {
       return localVarFp
-        .deletePexQueries(configurationId, options)
+        .deletePexQueries(configurationId, deletePexQueriesInput, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -4247,16 +4255,18 @@ export class PexQueryApi extends BaseAPI {
   /**
    * Deletes all Presentation Definition queries of a configuration.
    * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {DeletePexQueriesInput} deletePexQueriesInput DeletePexQueriesInput
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof PexQueryApi
    */
   public deletePexQueries(
     configurationId: string,
+    deletePexQueriesInput: DeletePexQueriesInput,
     options?: RawAxiosRequestConfig,
   ) {
     return PexQueryApiFp(this.configuration)
-      .deletePexQueries(configurationId, options)
+      .deletePexQueries(configurationId, deletePexQueriesInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

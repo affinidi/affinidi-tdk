@@ -26,14 +26,14 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PoliciesApi();
-final principalId = principalId_example; // String |
-final principalType = principalType_example; // String |
+final api = AffinidiTdkIamClient().getPoliciesApi();
+final String principalId = principalId_example; // String |
+final String principalType = principalType_example; // String |
 
 try {
-    final result = api_instance.getPolicies(principalId, principalType);
-    print(result);
-} catch (e) {
+    final response = api.getPolicies(principalId, principalType);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PoliciesApi->getPolicies: $e\n');
 }
 ```
@@ -73,15 +73,15 @@ import 'package:affinidi_tdk_iam_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = PoliciesApi();
-final principalId = principalId_example; // String |
-final principalType = principalType_example; // String |
-final policyDto = PolicyDto(); // PolicyDto | UpdatePolicies
+final api = AffinidiTdkIamClient().getPoliciesApi();
+final String principalId = principalId_example; // String |
+final String principalType = principalType_example; // String |
+final PolicyDto policyDto = ; // PolicyDto | UpdatePolicies
 
 try {
-    final result = api_instance.updatePolicies(principalId, principalType, policyDto);
-    print(result);
-} catch (e) {
+    final response = api.updatePolicies(principalId, principalType, policyDto);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PoliciesApi->updatePolicies: $e\n');
 }
 ```

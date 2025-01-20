@@ -34,13 +34,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final createLoginConfigurationInput = CreateLoginConfigurationInput(); // CreateLoginConfigurationInput | CreateLoginConfigurations
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final CreateLoginConfigurationInput createLoginConfigurationInput = ; // CreateLoginConfigurationInput | CreateLoginConfigurations
 
 try {
-    final result = api_instance.createLoginConfigurations(createLoginConfigurationInput);
-    print(result);
-} catch (e) {
+    final response = api.createLoginConfigurations(createLoginConfigurationInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->createLoginConfigurations: $e\n');
 }
 ```
@@ -83,12 +83,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the login configuration
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the login configuration
 
 try {
-    api_instance.deleteLoginConfigurationsById(configurationId);
-} catch (e) {
+    api.deleteLoginConfigurationsById(configurationId);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->deleteLoginConfigurationsById: $e\n');
 }
 ```
@@ -127,13 +127,13 @@ Get Client Metadata By OAuth 2.0 Client ID
 ```dart
 import 'package:affinidi_tdk_login_configuration_client/api.dart';
 
-final api_instance = ConfigurationApi();
-final clientId = clientId_example; // String | OAuth 2.0 Client ID
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final String clientId = clientId_example; // String | OAuth 2.0 Client ID
 
 try {
-    final result = api_instance.getClientMetadataByClientId(clientId);
-    print(result);
-} catch (e) {
+    final response = api.getClientMetadataByClientId(clientId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->getClientMetadataByClientId: $e\n');
 }
 ```
@@ -176,13 +176,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the login configuration
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the login configuration
 
 try {
-    final result = api_instance.getLoginConfigurationsById(configurationId);
-    print(result);
-} catch (e) {
+    final response = api.getLoginConfigurationsById(configurationId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->getLoginConfigurationsById: $e\n');
 }
 ```
@@ -225,14 +225,14 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final limit = 56; // int | Maximum number of records to fetch in a list
-final exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final int limit = 56; // int | Maximum number of records to fetch in a list
+final String exclusiveStartKey = exclusiveStartKey_example; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
 
 try {
-    final result = api_instance.listLoginConfigurations(limit, exclusiveStartKey);
-    print(result);
-} catch (e) {
+    final response = api.listLoginConfigurations(limit, exclusiveStartKey);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->listLoginConfigurations: $e\n');
 }
 ```
@@ -276,14 +276,14 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = ConfigurationApi();
-final configurationId = configurationId_example; // String | The id of the login configuration
-final updateLoginConfigurationInput = UpdateLoginConfigurationInput(); // UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
+final api = AffinidiTdkLoginConfigurationClient().getConfigurationApi();
+final String configurationId = configurationId_example; // String | The id of the login configuration
+final UpdateLoginConfigurationInput updateLoginConfigurationInput = ; // UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
 
 try {
-    final result = api_instance.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
-    print(result);
-} catch (e) {
+    final response = api.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ConfigurationApi->updateLoginConfigurationsById: $e\n');
 }
 ```

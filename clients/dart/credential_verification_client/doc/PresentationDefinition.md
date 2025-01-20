@@ -8,14 +8,14 @@ import 'package:affinidi_tdk_credential_verification_client/api.dart';
 
 ## Properties
 
-| Name                       | Type                                                        | Description        | Notes                            |
-| -------------------------- | ----------------------------------------------------------- | ------------------ | -------------------------------- |
-| **id**                     | **String**                                                  | Definition id      |
-| **name**                   | **String**                                                  | Definition name    | [optional]                       |
-| **purpose**                | **String**                                                  | Definition purpose | [optional]                       |
-| **format**                 | [**Format**](Format.md)                                     |                    | [optional]                       |
-| **submissionRequirements** | [**List<SubmissionRequirement>**](SubmissionRequirement.md) |                    | [optional] [default to const []] |
-| **inputDescriptors**       | [**List<InputDescriptor>**](InputDescriptor.md)             |                    | [default to const []]            |
-| **frame**                  | [**FreeFormObject**](FreeFormObject.md)                     |                    | [optional]                       |
+| Name                       | Type                                                                   | Description        | Notes      |
+| -------------------------- | ---------------------------------------------------------------------- | ------------------ | ---------- |
+| **id**                     | **String**                                                             | Definition id      |
+| **name**                   | **String**                                                             | Definition name    | [optional] |
+| **purpose**                | **String**                                                             | Definition purpose | [optional] |
+| **format**                 | [**Format**](Format.md)                                                |                    | [optional] |
+| **submissionRequirements** | [**BuiltList&lt;SubmissionRequirement&gt;**](SubmissionRequirement.md) |                    | [optional] |
+| **inputDescriptors**       | [**BuiltList&lt;InputDescriptor&gt;**](InputDescriptor.md)             |                    |
+| **frame**                  | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)                | Dynamic model      | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,9 +6,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | ---------------------------------------------------------------- | ----------------------------------- | ----------- |
 | [**generateCredentials**](CredentialsApi.md#generateCredentials) | **POST** /v1/{projectId}/credential |             |
 
-<a id="generateCredentials"></a>
-
-# **generateCredentials**
+## generateCredentials
 
 > CredentialResponse generateCredentials(projectId, createCredentialInput)
 
@@ -26,28 +24,28 @@ import com.affinidi.tdk.credential.issuance.client.models.*;
 import com.affinidi.tdk.credential.issuance.client.apis.CredentialsApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
 
-    // Configure HTTP bearer authorization: bearerAuth
-    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-    bearerAuth.setBearerToken("BEARER TOKEN");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-    CredentialsApi apiInstance = new CredentialsApi(defaultClient);
-    String projectId = "projectId_example"; // String | Affinidi project id
-    CreateCredentialInput createCredentialInput = new CreateCredentialInput(); // CreateCredentialInput | Request body to issue credentials
-    try {
-      CredentialResponse result = apiInstance.generateCredentials(projectId, createCredentialInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CredentialsApi#generateCredentials");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        CredentialsApi apiInstance = new CredentialsApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        CreateCredentialInput createCredentialInput = new CreateCredentialInput(); // CreateCredentialInput | Request body to issue credentials
+        try {
+            CredentialResponse result = apiInstance.generateCredentials(projectId, createCredentialInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CredentialsApi#generateCredentials");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

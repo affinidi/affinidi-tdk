@@ -1,6 +1,6 @@
 {
   "name": "@affinidi-tdk/iota-client",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "clients/typescript/iota-client",
   "projectType": "library",
   "private": false,
@@ -21,7 +21,8 @@
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
-        "changelog": true,
+        "changelog": false,
+        "git": false,
         "github": true,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
@@ -37,5 +38,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["lang:typescript", "kind:client"]
 }

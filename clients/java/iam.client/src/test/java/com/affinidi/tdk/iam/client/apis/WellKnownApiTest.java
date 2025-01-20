@@ -17,9 +17,12 @@ import com.affinidi.tdk.iam.client.ApiException;
 import com.affinidi.tdk.iam.client.models.GetWellKnownDidOK;
 import com.affinidi.tdk.iam.client.models.JsonWebKeySetDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,21 +37,23 @@ public class WellKnownApiTest {
     private final WellKnownApi api = new WellKnownApi();
 
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getWellKnownDidTest() throws ApiException {
         GetWellKnownDidOK response = api.getWellKnownDid();
+
         // TODO: test validations
     }
-
     /**
-     * @throws ApiException if the Api call fails
+     * @throws ApiException
+     *          if the Api call fails
      */
     @Test
     public void getWellKnownJwksTest() throws ApiException {
         JsonWebKeySetDto response = api.getWellKnownJwks();
+
         // TODO: test validations
     }
-
 }

@@ -13,21 +13,23 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for CredentialResponseImmediateCredential
  */
-public class CredentialResponseImmediateCredentialTest {
+class CredentialResponseImmediateCredentialTest {
     private final CredentialResponseImmediateCredential model = new CredentialResponseImmediateCredential();
 
     /**
      * Model tests for CredentialResponseImmediateCredential
      */
     @Test
-    public void testCredentialResponseImmediateCredential() {
+    void testCredentialResponseImmediateCredential() {
         // TODO: test CredentialResponseImmediateCredential
     }
 

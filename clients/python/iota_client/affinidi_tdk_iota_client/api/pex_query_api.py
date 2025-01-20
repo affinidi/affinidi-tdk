@@ -25,6 +25,7 @@ from pydantic import Field, StrictStr, conint, constr
 from typing import Any, Dict, Optional
 
 from affinidi_tdk_iota_client.models.create_pex_query_input import CreatePexQueryInput
+from affinidi_tdk_iota_client.models.delete_pex_queries_input import DeletePexQueriesInput
 from affinidi_tdk_iota_client.models.list_pex_queries_ok import ListPexQueriesOK
 from affinidi_tdk_iota_client.models.pex_query_dto import PexQueryDto
 from affinidi_tdk_iota_client.models.save_pex_queries_update_input import SavePexQueriesUpdateInput
@@ -211,18 +212,20 @@ class PexQueryApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> None:  # noqa: E501
+    def delete_pex_queries(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], delete_pex_queries_input : Annotated[DeletePexQueriesInput, Field(..., description="DeletePexQueriesInput")], **kwargs) -> object:  # noqa: E501
         """delete_pex_queries  # noqa: E501
 
         Deletes all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_pex_queries(configuration_id, async_req=True)
+        >>> thread = api.delete_pex_queries(configuration_id, delete_pex_queries_input, async_req=True)
         >>> result = thread.get()
 
         :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
+        :param delete_pex_queries_input: DeletePexQueriesInput (required)
+        :type delete_pex_queries_input: DeletePexQueriesInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -232,27 +235,29 @@ class PexQueryApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_pex_queries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_pex_queries_with_http_info(configuration_id, **kwargs)  # noqa: E501
+        return self.delete_pex_queries_with_http_info(configuration_id, delete_pex_queries_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_pex_queries_with_http_info(self, configuration_id : Annotated[StrictStr, Field(..., description="ID of the Affinidi Iota Framework configuration.")], delete_pex_queries_input : Annotated[DeletePexQueriesInput, Field(..., description="DeletePexQueriesInput")], **kwargs) -> ApiResponse:  # noqa: E501
         """delete_pex_queries  # noqa: E501
 
         Deletes all Presentation Definition queries of a configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_pex_queries_with_http_info(configuration_id, async_req=True)
+        >>> thread = api.delete_pex_queries_with_http_info(configuration_id, delete_pex_queries_input, async_req=True)
         >>> result = thread.get()
 
         :param configuration_id: ID of the Affinidi Iota Framework configuration. (required)
         :type configuration_id: str
+        :param delete_pex_queries_input: DeletePexQueriesInput (required)
+        :type delete_pex_queries_input: DeletePexQueriesInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -275,13 +280,14 @@ class PexQueryApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'configuration_id'
+            'configuration_id',
+            'delete_pex_queries_input'
         ]
         _all_params.extend(
             [
@@ -322,14 +328,28 @@ class PexQueryApi:
         _files = {}
         # process the body parameter
         _body_params = None
+        if _params['delete_pex_queries_input'] is not None:
+            _body_params = _params['delete_pex_queries_input']
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
         # authentication setting
         _auth_settings = ['ProjectTokenAuth']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "object",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+        }
 
         return self.api_client.call_api(
             '/v1/configurations/{configurationId}/delete-queries', 'POST',

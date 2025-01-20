@@ -1,0 +1,13 @@
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+# Please use .gitleaksignore with explicit finding fingerprint
+
+[[rules]]
+id = "generic-api-key"
+
+[rules.allowlist]
+description = "Allows DID keys format"
+regexTarget = "line"
+regexes = ['''did:key:[a-zA-Z0-9]{49}''']

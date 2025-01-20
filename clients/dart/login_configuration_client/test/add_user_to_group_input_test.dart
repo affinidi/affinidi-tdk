@@ -1,28 +1,27 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 // tests for AddUserToGroupInput
 void main() {
-  // final instance = AddUserToGroupInput();
+  final instance = AddUserToGroupInputBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test AddUserToGroupInput', () {
+  group(AddUserToGroupInput, () {
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
     // Unique identifier of the user
     // String userId
     test('to test the property `userId`', () async {
       // TODO
     });
 
-
   });
-
 }

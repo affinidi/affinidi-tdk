@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for GetUserInfo
  */
-public class GetUserInfoTest {
+class GetUserInfoTest {
     private final GetUserInfo model = new GetUserInfo();
 
     /**
      * Model tests for GetUserInfo
      */
     @Test
-    public void testGetUserInfo() {
+    void testGetUserInfo() {
         // TODO: test GetUserInfo
     }
 
@@ -41,7 +40,7 @@ public class GetUserInfoTest {
      * Test the property 'birthdate'
      */
     @Test
-    public void birthdateTest() {
+    void birthdateTest() {
         // TODO: test birthdate
     }
 
@@ -49,7 +48,7 @@ public class GetUserInfoTest {
      * Test the property 'email'
      */
     @Test
-    public void emailTest() {
+    void emailTest() {
         // TODO: test email
     }
 
@@ -57,7 +56,7 @@ public class GetUserInfoTest {
      * Test the property 'emailVerified'
      */
     @Test
-    public void emailVerifiedTest() {
+    void emailVerifiedTest() {
         // TODO: test emailVerified
     }
 
@@ -65,7 +64,7 @@ public class GetUserInfoTest {
      * Test the property 'familyName'
      */
     @Test
-    public void familyNameTest() {
+    void familyNameTest() {
         // TODO: test familyName
     }
 
@@ -73,7 +72,7 @@ public class GetUserInfoTest {
      * Test the property 'gender'
      */
     @Test
-    public void genderTest() {
+    void genderTest() {
         // TODO: test gender
     }
 
@@ -81,7 +80,7 @@ public class GetUserInfoTest {
      * Test the property 'givenName'
      */
     @Test
-    public void givenNameTest() {
+    void givenNameTest() {
         // TODO: test givenName
     }
 
@@ -89,7 +88,7 @@ public class GetUserInfoTest {
      * Test the property 'locale'
      */
     @Test
-    public void localeTest() {
+    void localeTest() {
         // TODO: test locale
     }
 
@@ -97,7 +96,7 @@ public class GetUserInfoTest {
      * Test the property 'middleName'
      */
     @Test
-    public void middleNameTest() {
+    void middleNameTest() {
         // TODO: test middleName
     }
 
@@ -105,7 +104,7 @@ public class GetUserInfoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -113,7 +112,7 @@ public class GetUserInfoTest {
      * Test the property 'nickname'
      */
     @Test
-    public void nicknameTest() {
+    void nicknameTest() {
         // TODO: test nickname
     }
 
@@ -121,7 +120,7 @@ public class GetUserInfoTest {
      * Test the property 'phoneNumber'
      */
     @Test
-    public void phoneNumberTest() {
+    void phoneNumberTest() {
         // TODO: test phoneNumber
     }
 
@@ -129,7 +128,7 @@ public class GetUserInfoTest {
      * Test the property 'phoneNumberVerified'
      */
     @Test
-    public void phoneNumberVerifiedTest() {
+    void phoneNumberVerifiedTest() {
         // TODO: test phoneNumberVerified
     }
 
@@ -137,7 +136,7 @@ public class GetUserInfoTest {
      * Test the property 'picture'
      */
     @Test
-    public void pictureTest() {
+    void pictureTest() {
         // TODO: test picture
     }
 
@@ -145,7 +144,7 @@ public class GetUserInfoTest {
      * Test the property 'preferredUsername'
      */
     @Test
-    public void preferredUsernameTest() {
+    void preferredUsernameTest() {
         // TODO: test preferredUsername
     }
 
@@ -153,7 +152,7 @@ public class GetUserInfoTest {
      * Test the property 'profile'
      */
     @Test
-    public void profileTest() {
+    void profileTest() {
         // TODO: test profile
     }
 
@@ -161,7 +160,7 @@ public class GetUserInfoTest {
      * Test the property 'sub'
      */
     @Test
-    public void subTest() {
+    void subTest() {
         // TODO: test sub
     }
 
@@ -169,7 +168,7 @@ public class GetUserInfoTest {
      * Test the property 'updatedAt'
      */
     @Test
-    public void updatedAtTest() {
+    void updatedAtTest() {
         // TODO: test updatedAt
     }
 
@@ -177,7 +176,7 @@ public class GetUserInfoTest {
      * Test the property 'website'
      */
     @Test
-    public void websiteTest() {
+    void websiteTest() {
         // TODO: test website
     }
 
@@ -185,7 +184,7 @@ public class GetUserInfoTest {
      * Test the property 'zoneinfo'
      */
     @Test
-    public void zoneinfoTest() {
+    void zoneinfoTest() {
         // TODO: test zoneinfo
     }
 

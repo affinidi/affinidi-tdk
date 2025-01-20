@@ -11,9 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 | [**listLoginConfigurations**](ConfigurationApi.md#listLoginConfigurations)             | **GET** /v1/login/configurations                      | List login configurations                  |
 | [**updateLoginConfigurationsById**](ConfigurationApi.md#updateLoginConfigurationsById) | **PATCH** /v1/login/configurations/{configurationId}  | Update login configurations by ID          |
 
-<a id="createLoginConfigurations"></a>
-
-# **createLoginConfigurations**
+## createLoginConfigurations
 
 > CreateLoginConfigurationOutput createLoginConfigurations(createLoginConfigurationInput)
 
@@ -33,29 +31,29 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    CreateLoginConfigurationInput createLoginConfigurationInput = new CreateLoginConfigurationInput(); // CreateLoginConfigurationInput | CreateLoginConfigurations
-    try {
-      CreateLoginConfigurationOutput result = apiInstance.createLoginConfigurations(createLoginConfigurationInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#createLoginConfigurations");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        CreateLoginConfigurationInput createLoginConfigurationInput = new CreateLoginConfigurationInput(); // CreateLoginConfigurationInput | CreateLoginConfigurations
+        try {
+            CreateLoginConfigurationOutput result = apiInstance.createLoginConfigurations(createLoginConfigurationInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#createLoginConfigurations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -87,9 +85,7 @@ public class Example {
 | **403**     | ForbiddenError        | -                |
 | **424**     | FailedDependencyError | -                |
 
-<a id="deleteLoginConfigurationsById"></a>
-
-# **deleteLoginConfigurationsById**
+## deleteLoginConfigurationsById
 
 > deleteLoginConfigurationsById(configurationId)
 
@@ -109,28 +105,28 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | The id of the login configuration
-    try {
-      apiInstance.deleteLoginConfigurationsById(configurationId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#deleteLoginConfigurationsById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | The id of the login configuration
+        try {
+            apiInstance.deleteLoginConfigurationsById(configurationId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#deleteLoginConfigurationsById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -161,9 +157,7 @@ null (empty response body)
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 
-<a id="getClientMetadataByClientId"></a>
-
-# **getClientMetadataByClientId**
+## getClientMetadataByClientId
 
 > LoginConfigurationClientMetadataOutput getClientMetadataByClientId(clientId)
 
@@ -182,23 +176,23 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    String clientId = "clientId_example"; // String | OAuth 2.0 Client ID
-    try {
-      LoginConfigurationClientMetadataOutput result = apiInstance.getClientMetadataByClientId(clientId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#getClientMetadataByClientId");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        String clientId = "clientId_example"; // String | OAuth 2.0 Client ID
+        try {
+            LoginConfigurationClientMetadataOutput result = apiInstance.getClientMetadataByClientId(clientId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#getClientMetadataByClientId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -229,9 +223,7 @@ No authorization required
 | **400**     | BadRequestError | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="getLoginConfigurationsById"></a>
-
-# **getLoginConfigurationsById**
+## getLoginConfigurationsById
 
 > LoginConfigurationObject getLoginConfigurationsById(configurationId)
 
@@ -251,29 +243,29 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | The id of the login configuration
-    try {
-      LoginConfigurationObject result = apiInstance.getLoginConfigurationsById(configurationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#getLoginConfigurationsById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | The id of the login configuration
+        try {
+            LoginConfigurationObject result = apiInstance.getLoginConfigurationsById(configurationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#getLoginConfigurationsById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -304,9 +296,7 @@ public class Example {
 | **400**     | BadRequestError             | -                |
 | **403**     | ForbiddenError              | -                |
 
-<a id="listLoginConfigurations"></a>
-
-# **listLoginConfigurations**
+## listLoginConfigurations
 
 > ListLoginConfigurationOutput listLoginConfigurations(limit, exclusiveStartKey)
 
@@ -326,30 +316,30 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    Integer limit = 56; // Integer | Maximum number of records to fetch in a list
-    String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-    try {
-      ListLoginConfigurationOutput result = apiInstance.listLoginConfigurations(limit, exclusiveStartKey);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#listLoginConfigurations");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        Integer limit = 56; // Integer | Maximum number of records to fetch in a list
+        String exclusiveStartKey = "exclusiveStartKey_example"; // String | The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+        try {
+            ListLoginConfigurationOutput result = apiInstance.listLoginConfigurations(limit, exclusiveStartKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#listLoginConfigurations");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -381,9 +371,7 @@ public class Example {
 | **400**     | BadRequestError              | -                |
 | **403**     | ForbiddenError               | -                |
 
-<a id="updateLoginConfigurationsById"></a>
-
-# **updateLoginConfigurationsById**
+## updateLoginConfigurationsById
 
 > LoginConfigurationObject updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput)
 
@@ -403,30 +391,30 @@ import com.affinidi.tdk.login.configuration.client.models.*;
 import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/vpa");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
-    String configurationId = "configurationId_example"; // String | The id of the login configuration
-    UpdateLoginConfigurationInput updateLoginConfigurationInput = new UpdateLoginConfigurationInput(); // UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
-    try {
-      LoginConfigurationObject result = apiInstance.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ConfigurationApi#updateLoginConfigurationsById");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
+        String configurationId = "configurationId_example"; // String | The id of the login configuration
+        UpdateLoginConfigurationInput updateLoginConfigurationInput = new UpdateLoginConfigurationInput(); // UpdateLoginConfigurationInput | UpdateLoginConfigurationsById
+        try {
+            LoginConfigurationObject result = apiInstance.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConfigurationApi#updateLoginConfigurationsById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

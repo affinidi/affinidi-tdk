@@ -14,263 +14,260 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponseDeferred;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponseImmediate;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponseImmediateCredential;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.math.BigDecimal;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
+
+/**
+ * CredentialResponse
+ */
+@JsonPropertyOrder({
+  CredentialResponse.JSON_PROPERTY_CREDENTIAL,
+  CredentialResponse.JSON_PROPERTY_C_NONCE,
+  CredentialResponse.JSON_PROPERTY_C_NONCE_EXPIRES_IN,
+  CredentialResponse.JSON_PROPERTY_TRANSACTION_ID
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+public class CredentialResponse {
+  public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+  private CredentialResponseImmediateCredential credential;
+
+  public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
+  private String cNonce;
+
+  public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
+  private BigDecimal cNonceExpiresIn;
+
+  public static final String JSON_PROPERTY_TRANSACTION_ID = "transaction_id";
+  private String transactionId;
+
+  public CredentialResponse() {
+  }
+
+  public CredentialResponse credential(CredentialResponseImmediateCredential credential) {
+    
+    this.credential = credential;
+    return this;
+  }
+
+  /**
+   * Get credential
+   * @return credential
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public CredentialResponseImmediateCredential getCredential() {
+    return credential;
+  }
 
 
+  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCredential(CredentialResponseImmediateCredential credential) {
+    this.credential = credential;
+  }
 
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+  public CredentialResponse cNonce(String cNonce) {
+    
+    this.cNonce = cNonce;
+    return this;
+  }
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParseException;
+  /**
+   * String containing a nonce to be used when creating a proof of possession of the key proof
+   * @return cNonce
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-import com.affinidi.tdk.credential.issuance.client.JSON;
+  public String getcNonce() {
+    return cNonce;
+  }
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:15:12.132374761Z[Etc/UTC]", comments = "Generator version: 7.9.0")
-public class CredentialResponse extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(CredentialResponse.class.getName());
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CredentialResponse.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CredentialResponse' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<CredentialResponseImmediate> adapterCredentialResponseImmediate = gson.getDelegateAdapter(this, TypeToken.get(CredentialResponseImmediate.class));
-            final TypeAdapter<CredentialResponseDeferred> adapterCredentialResponseDeferred = gson.getDelegateAdapter(this, TypeToken.get(CredentialResponseDeferred.class));
+  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setcNonce(String cNonce) {
+    this.cNonce = cNonce;
+  }
 
-            return (TypeAdapter<T>) new TypeAdapter<CredentialResponse>() {
-                @Override
-                public void write(JsonWriter out, CredentialResponse value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public CredentialResponse cNonceExpiresIn(BigDecimal cNonceExpiresIn) {
+    
+    this.cNonceExpiresIn = cNonceExpiresIn;
+    return this;
+  }
 
-                    // check if the actual instance is of the type `CredentialResponseImmediate`
-                    if (value.getActualInstance() instanceof CredentialResponseImmediate) {
-                        JsonElement element = adapterCredentialResponseImmediate.toJsonTree((CredentialResponseImmediate)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `CredentialResponseDeferred`
-                    if (value.getActualInstance() instanceof CredentialResponseDeferred) {
-                        JsonElement element = adapterCredentialResponseDeferred.toJsonTree((CredentialResponseDeferred)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CredentialResponseDeferred, CredentialResponseImmediate");
-                }
+  /**
+   * Lifetime in seconds of the c_nonce
+   * @return cNonceExpiresIn
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-                @Override
-                public CredentialResponse read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  public BigDecimal getcNonceExpiresIn() {
+    return cNonceExpiresIn;
+  }
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize CredentialResponseImmediate
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialResponseImmediate.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialResponseImmediate;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialResponseImmediate'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialResponseImmediate failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialResponseImmediate'", e);
-                    }
-                    // deserialize CredentialResponseDeferred
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        CredentialResponseDeferred.validateJsonElement(jsonElement);
-                        actualAdapter = adapterCredentialResponseDeferred;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'CredentialResponseDeferred'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CredentialResponseDeferred failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'CredentialResponseDeferred'", e);
-                    }
+  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setcNonceExpiresIn(BigDecimal cNonceExpiresIn) {
+    this.cNonceExpiresIn = cNonceExpiresIn;
+  }
 
-                    if (match == 1) {
-                        CredentialResponse ret = new CredentialResponse();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  public CredentialResponse transactionId(String transactionId) {
+    
+    this.transactionId = transactionId;
+    return this;
+  }
 
-                    throw new IOException(String.format("Failed deserialization for CredentialResponse: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
-        }
+  /**
+   * String identifying a Deferred Issuance transaction. This claim is contained in the response if the Credential Issuer was unable to immediately issue the Credential.
+   * @return transactionId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTransactionId() {
+    return transactionId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTransactionId(String transactionId) {
+    this.transactionId = transactionId;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CredentialResponse credentialResponse = (CredentialResponse) o;
+    return Objects.equals(this.credential, credentialResponse.credential) &&
+        Objects.equals(this.cNonce, credentialResponse.cNonce) &&
+        Objects.equals(this.cNonceExpiresIn, credentialResponse.cNonceExpiresIn) &&
+        Objects.equals(this.transactionId, credentialResponse.transactionId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(credential, cNonce, cNonceExpiresIn, transactionId);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CredentialResponse {\n");
+    sb.append("    credential: ").append(toIndentedString(credential)).append("\n");
+    sb.append("    cNonce: ").append(toIndentedString(cNonce)).append("\n");
+    sb.append("    cNonceExpiresIn: ").append(toIndentedString(cNonceExpiresIn)).append("\n");
+    sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+    StringJoiner joiner = new StringJoiner("&");
 
-    public CredentialResponse() {
-        super("oneOf", Boolean.FALSE);
+    // add `credential` to the URL query string
+    if (getCredential() != null) {
+      joiner.add(getCredential().toUrlQueryString(prefix + "credential" + suffix));
     }
 
-    public CredentialResponse(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
+    // add `c_nonce` to the URL query string
+    if (getcNonce() != null) {
+      try {
+        joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    static {
-        schemas.put("CredentialResponseImmediate", CredentialResponseImmediate.class);
-        schemas.put("CredentialResponseDeferred", CredentialResponseDeferred.class);
+    // add `c_nonce_expires_in` to the URL query string
+    if (getcNonceExpiresIn() != null) {
+      try {
+        joiner.add(String.format("%sc_nonce_expires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return CredentialResponse.schemas;
+    // add `transaction_id` to the URL query string
+    if (getTransactionId() != null) {
+      try {
+        joiner.add(String.format("%stransaction_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * CredentialResponseDeferred, CredentialResponseImmediate
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof CredentialResponseImmediate) {
-            super.setActualInstance(instance);
-            return;
-        }
+    return joiner.toString();
+  }
 
-        if (instance instanceof CredentialResponseDeferred) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be CredentialResponseDeferred, CredentialResponseImmediate");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * CredentialResponseDeferred, CredentialResponseImmediate
-     *
-     * @return The actual instance (CredentialResponseDeferred, CredentialResponseImmediate)
-     */
-    @SuppressWarnings("unchecked")
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `CredentialResponseImmediate`. If the actual instance is not `CredentialResponseImmediate`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialResponseImmediate`
-     * @throws ClassCastException if the instance is not `CredentialResponseImmediate`
-     */
-    public CredentialResponseImmediate getCredentialResponseImmediate() throws ClassCastException {
-        return (CredentialResponseImmediate)super.getActualInstance();
-    }
-    /**
-     * Get the actual instance of `CredentialResponseDeferred`. If the actual instance is not `CredentialResponseDeferred`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `CredentialResponseDeferred`
-     * @throws ClassCastException if the instance is not `CredentialResponseDeferred`
-     */
-    public CredentialResponseDeferred getCredentialResponseDeferred() throws ClassCastException {
-        return (CredentialResponseDeferred)super.getActualInstance();
-    }
-
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to CredentialResponse
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with CredentialResponseImmediate
-        try {
-            CredentialResponseImmediate.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialResponseImmediate failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with CredentialResponseDeferred
-        try {
-            CredentialResponseDeferred.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CredentialResponseDeferred failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CredentialResponse with oneOf schemas: CredentialResponseDeferred, CredentialResponseImmediate. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
-    }
-
-    /**
-     * Create an instance of CredentialResponse given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of CredentialResponse
-     * @throws IOException if the JSON string is invalid with respect to CredentialResponse
-     */
-    public static CredentialResponse fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CredentialResponse.class);
-    }
-
-    /**
-     * Convert an instance of CredentialResponse to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
-    }
 }
 

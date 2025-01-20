@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_login_configuration_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 
 // tests for GetUserInfo
 void main() {
-  // final instance = GetUserInfo();
+  final instance = GetUserInfoBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test GetUserInfo', () {
+  group(GetUserInfo, () {
     // End-User's birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format.  The year MAY be 0000, indicating that it is omitted. To represent only the year,  YYYY format is allowed. Note that depending on the underlying platform's date related  function, providing just year can result in varying month and day, so the implementers  need to take this factor into account to correctly process the dates. 
     // String birthdate
     test('to test the property `birthdate`', () async {
@@ -88,7 +79,7 @@ void main() {
       // TODO
     });
 
-    // URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD  specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User. 
+    // URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User. 
     // String picture
     test('to test the property `picture`', () async {
       // TODO
@@ -130,7 +121,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

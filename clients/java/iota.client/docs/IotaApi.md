@@ -10,9 +10,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [**initiateDataSharingRequest**](IotaApi.md#initiateDataSharingRequest)                 | **POST** /v1/initiate-data-sharing-request          |             |
 | [**iotaExchangeCredentials**](IotaApi.md#iotaExchangeCredentials)                       | **POST** /v1/exchange-credentials                   |             |
 
-<a id="awsExchangeCredentials"></a>
-
-# **awsExchangeCredentials**
+## awsExchangeCredentials
 
 > AwsExchangeCredentialsOK awsExchangeCredentials(awsExchangeCredentials)
 
@@ -29,23 +27,23 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.IotaApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    IotaApi apiInstance = new IotaApi(defaultClient);
-    AwsExchangeCredentials awsExchangeCredentials = new AwsExchangeCredentials(); // AwsExchangeCredentials | AwsExchangeCredentials
-    try {
-      AwsExchangeCredentialsOK result = apiInstance.awsExchangeCredentials(awsExchangeCredentials);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IotaApi#awsExchangeCredentials");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IotaApi apiInstance = new IotaApi(defaultClient);
+        AwsExchangeCredentials awsExchangeCredentials = new AwsExchangeCredentials(); // AwsExchangeCredentials | AwsExchangeCredentials
+        try {
+            AwsExchangeCredentialsOK result = apiInstance.awsExchangeCredentials(awsExchangeCredentials);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IotaApi#awsExchangeCredentials");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -76,9 +74,7 @@ No authorization required
 | **400**     | BadRequestError          | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **403**     | ForbiddenError           | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
-<a id="awsExchangeCredentialsProjectToken"></a>
-
-# **awsExchangeCredentialsProjectToken**
+## awsExchangeCredentialsProjectToken
 
 > IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken)
 
@@ -96,29 +92,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.IotaApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IotaApi apiInstance = new IotaApi(defaultClient);
-    AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken = new AwsExchangeCredentialsProjectToken(); // AwsExchangeCredentialsProjectToken | AwsExchangeCredentialsProjectToken
-    try {
-      IotaExchangeCredentialsOK result = apiInstance.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IotaApi#awsExchangeCredentialsProjectToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IotaApi apiInstance = new IotaApi(defaultClient);
+        AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken = new AwsExchangeCredentialsProjectToken(); // AwsExchangeCredentialsProjectToken | AwsExchangeCredentialsProjectToken
+        try {
+            IotaExchangeCredentialsOK result = apiInstance.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IotaApi#awsExchangeCredentialsProjectToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -149,9 +145,7 @@ public class Example {
 | **400**     | BadRequestError           | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **403**     | ForbiddenError            | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
-<a id="fetchIotaVpResponse"></a>
-
-# **fetchIotaVpResponse**
+## fetchIotaVpResponse
 
 > FetchIOTAVPResponseOK fetchIotaVpResponse(fetchIOTAVPResponseInput)
 
@@ -169,29 +163,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.IotaApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IotaApi apiInstance = new IotaApi(defaultClient);
-    FetchIOTAVPResponseInput fetchIOTAVPResponseInput = new FetchIOTAVPResponseInput(); // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
-    try {
-      FetchIOTAVPResponseOK result = apiInstance.fetchIotaVpResponse(fetchIOTAVPResponseInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IotaApi#fetchIotaVpResponse");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IotaApi apiInstance = new IotaApi(defaultClient);
+        FetchIOTAVPResponseInput fetchIOTAVPResponseInput = new FetchIOTAVPResponseInput(); // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
+        try {
+            FetchIOTAVPResponseOK result = apiInstance.fetchIotaVpResponse(fetchIOTAVPResponseInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IotaApi#fetchIotaVpResponse");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -223,9 +217,7 @@ public class Example {
 | **403**     | ForbiddenError        | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **404**     | NotFoundError         | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
-<a id="initiateDataSharingRequest"></a>
-
-# **initiateDataSharingRequest**
+## initiateDataSharingRequest
 
 > InitiateDataSharingRequestOK initiateDataSharingRequest(initiateDataSharingRequestInput)
 
@@ -243,29 +235,29 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.IotaApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    IotaApi apiInstance = new IotaApi(defaultClient);
-    InitiateDataSharingRequestInput initiateDataSharingRequestInput = new InitiateDataSharingRequestInput(); // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
-    try {
-      InitiateDataSharingRequestOK result = apiInstance.initiateDataSharingRequest(initiateDataSharingRequestInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IotaApi#initiateDataSharingRequest");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IotaApi apiInstance = new IotaApi(defaultClient);
+        InitiateDataSharingRequestInput initiateDataSharingRequestInput = new InitiateDataSharingRequestInput(); // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
+        try {
+            InitiateDataSharingRequestOK result = apiInstance.initiateDataSharingRequest(initiateDataSharingRequestInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IotaApi#initiateDataSharingRequest");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -296,9 +288,7 @@ public class Example {
 | **400**     | BadRequestError              | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **403**     | ForbiddenError               | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
-<a id="iotaExchangeCredentials"></a>
-
-# **iotaExchangeCredentials**
+## iotaExchangeCredentials
 
 > IotaExchangeCredentialsOK iotaExchangeCredentials(iotaExchangeCredentials)
 
@@ -315,23 +305,23 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.iota.client.apis.IotaApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/ais");
 
-    IotaApi apiInstance = new IotaApi(defaultClient);
-    IotaExchangeCredentials iotaExchangeCredentials = new IotaExchangeCredentials(); // IotaExchangeCredentials | IotaAwsExchangeCredentials
-    try {
-      IotaExchangeCredentialsOK result = apiInstance.iotaExchangeCredentials(iotaExchangeCredentials);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IotaApi#iotaExchangeCredentials");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        IotaApi apiInstance = new IotaApi(defaultClient);
+        IotaExchangeCredentials iotaExchangeCredentials = new IotaExchangeCredentials(); // IotaExchangeCredentials | IotaAwsExchangeCredentials
+        try {
+            IotaExchangeCredentialsOK result = apiInstance.iotaExchangeCredentials(iotaExchangeCredentials);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IotaApi#iotaExchangeCredentials");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

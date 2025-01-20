@@ -15,27 +15,26 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.JwtObject;
 import com.affinidi.tdk.credential.verification.client.models.LdpObject;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for Format
  */
-public class FormatTest {
+class FormatTest {
     private final Format model = new Format();
 
     /**
      * Model tests for Format
      */
     @Test
-    public void testFormat() {
+    void testFormat() {
         // TODO: test Format
     }
 
@@ -43,7 +42,7 @@ public class FormatTest {
      * Test the property 'jwt'
      */
     @Test
-    public void jwtTest() {
+    void jwtTest() {
         // TODO: test jwt
     }
 
@@ -51,7 +50,7 @@ public class FormatTest {
      * Test the property 'jwtVc'
      */
     @Test
-    public void jwtVcTest() {
+    void jwtVcTest() {
         // TODO: test jwtVc
     }
 
@@ -59,7 +58,7 @@ public class FormatTest {
      * Test the property 'jwtVp'
      */
     @Test
-    public void jwtVpTest() {
+    void jwtVpTest() {
         // TODO: test jwtVp
     }
 
@@ -67,7 +66,7 @@ public class FormatTest {
      * Test the property 'ldp'
      */
     @Test
-    public void ldpTest() {
+    void ldpTest() {
         // TODO: test ldp
     }
 
@@ -75,7 +74,7 @@ public class FormatTest {
      * Test the property 'ldpVc'
      */
     @Test
-    public void ldpVcTest() {
+    void ldpVcTest() {
         // TODO: test ldpVc
     }
 
@@ -83,7 +82,7 @@ public class FormatTest {
      * Test the property 'ldpVp'
      */
     @Test
-    public void ldpVpTest() {
+    void ldpVpTest() {
         // TODO: test ldpVp
     }
 

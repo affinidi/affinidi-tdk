@@ -13,27 +13,26 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for RemoveUserFromGroupInput
  */
-public class RemoveUserFromGroupInputTest {
+class RemoveUserFromGroupInputTest {
     private final RemoveUserFromGroupInput model = new RemoveUserFromGroupInput();
 
     /**
      * Model tests for RemoveUserFromGroupInput
      */
     @Test
-    public void testRemoveUserFromGroupInput() {
+    void testRemoveUserFromGroupInput() {
         // TODO: test RemoveUserFromGroupInput
     }
 
@@ -41,7 +40,7 @@ public class RemoveUserFromGroupInputTest {
      * Test the property 'userId'
      */
     @Test
-    public void userIdTest() {
+    void userIdTest() {
         // TODO: test userId
     }
 

@@ -14,62 +14,47 @@
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 import java.util.Arrays;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.affinidi.tdk.login.configuration.client.JSON;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.StringJoiner;
 
 /**
  * OIDC Auth Credentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-01-08T23:14:35.669482265Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@JsonPropertyOrder({
+  CreateLoginConfigurationOutputAuth.JSON_PROPERTY_CLIENT_ID,
+  CreateLoginConfigurationOutputAuth.JSON_PROPERTY_CLIENT_SECRET,
+  CreateLoginConfigurationOutputAuth.JSON_PROPERTY_SCOPE,
+  CreateLoginConfigurationOutputAuth.JSON_PROPERTY_ISSUER
+})
+@JsonTypeName("CreateLoginConfigurationOutput_auth")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationOutputAuth {
-  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
   private String clientId;
 
-  public static final String SERIALIZED_NAME_CLIENT_SECRET = "clientSecret";
-  @SerializedName(SERIALIZED_NAME_CLIENT_SECRET)
+  public static final String JSON_PROPERTY_CLIENT_SECRET = "clientSecret";
   private String clientSecret;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
+  public static final String JSON_PROPERTY_SCOPE = "scope";
   private String scope;
 
-  public static final String SERIALIZED_NAME_ISSUER = "issuer";
-  @SerializedName(SERIALIZED_NAME_ISSUER)
+  public static final String JSON_PROPERTY_ISSUER = "issuer";
   private String issuer;
 
   public CreateLoginConfigurationOutputAuth() {
   }
 
   public CreateLoginConfigurationOutputAuth clientId(String clientId) {
+    
     this.clientId = clientId;
     return this;
   }
@@ -79,16 +64,22 @@ public class CreateLoginConfigurationOutputAuth {
    * @return clientId
    */
   @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
   public String getClientId() {
     return clientId;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientId(String clientId) {
     this.clientId = clientId;
   }
 
-
   public CreateLoginConfigurationOutputAuth clientSecret(String clientSecret) {
+    
     this.clientSecret = clientSecret;
     return this;
   }
@@ -98,16 +89,22 @@ public class CreateLoginConfigurationOutputAuth {
    * @return clientSecret
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getClientSecret() {
     return clientSecret;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientSecret(String clientSecret) {
     this.clientSecret = clientSecret;
   }
 
-
   public CreateLoginConfigurationOutputAuth scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -117,16 +114,22 @@ public class CreateLoginConfigurationOutputAuth {
    * @return scope
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getScope() {
     return scope;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(String scope) {
     this.scope = scope;
   }
 
-
   public CreateLoginConfigurationOutputAuth issuer(String issuer) {
+    
     this.issuer = issuer;
     return this;
   }
@@ -136,15 +139,19 @@ public class CreateLoginConfigurationOutputAuth {
    * @return issuer
    */
   @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
   public String getIssuer() {
     return issuer;
   }
 
+
+  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuer(String issuer) {
     this.issuer = issuer;
   }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -189,112 +196,80 @@ public class CreateLoginConfigurationOutputAuth {
     return o.toString().replace("\n", "\n    ");
   }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("clientId");
-    openapiFields.add("clientSecret");
-    openapiFields.add("scope");
-    openapiFields.add("issuer");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("clientId");
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
   }
 
   /**
-   * Validates the JSON Element and throws an exception if issues found
+   * Convert the instance into URL query string.
    *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CreateLoginConfigurationOutputAuth
+   * @param prefix prefix of the query string
+   * @return URL query string
    */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!CreateLoginConfigurationOutputAuth.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLoginConfigurationOutputAuth is not found in the empty JSON string", CreateLoginConfigurationOutputAuth.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CreateLoginConfigurationOutputAuth.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateLoginConfigurationOutputAuth` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateLoginConfigurationOutputAuth.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("clientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
-      }
-      if ((jsonObj.get("clientSecret") != null && !jsonObj.get("clientSecret").isJsonNull()) && !jsonObj.get("clientSecret").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientSecret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientSecret").toString()));
-      }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-      if ((jsonObj.get("issuer") != null && !jsonObj.get("issuer").isJsonNull()) && !jsonObj.get("issuer").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `issuer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuer").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateLoginConfigurationOutputAuth.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateLoginConfigurationOutputAuth' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateLoginConfigurationOutputAuth> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateLoginConfigurationOutputAuth.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateLoginConfigurationOutputAuth>() {
-           @Override
-           public void write(JsonWriter out, CreateLoginConfigurationOutputAuth value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateLoginConfigurationOutputAuth read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
     }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `clientId` to the URL query string
+    if (getClientId() != null) {
+      try {
+        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `clientSecret` to the URL query string
+    if (getClientSecret() != null) {
+      try {
+        joiner.add(String.format("%sclientSecret%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientSecret()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `scope` to the URL query string
+    if (getScope() != null) {
+      try {
+        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `issuer` to the URL query string
+    if (getIssuer() != null) {
+      try {
+        joiner.add(String.format("%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    return joiner.toString();
   }
 
-  /**
-   * Create an instance of CreateLoginConfigurationOutputAuth given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of CreateLoginConfigurationOutputAuth
-   * @throws IOException if the JSON string is invalid with respect to CreateLoginConfigurationOutputAuth
-   */
-  public static CreateLoginConfigurationOutputAuth fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateLoginConfigurationOutputAuth.class);
-  }
-
-  /**
-   * Convert an instance of CreateLoginConfigurationOutputAuth to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
 }
 

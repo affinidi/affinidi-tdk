@@ -12,9 +12,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**signJwtToken**](WalletApi.md#signJwtToken)     | **POST** /v1/wallets/{walletId}/sign-jwt        |             |
 | [**updateWallet**](WalletApi.md#updateWallet)     | **PATCH** /v1/wallets/{walletId}                |             |
 
-<a id="createWallet"></a>
-
-# **createWallet**
+## createWallet
 
 > CreateWalletResponse createWallet(createWalletInput)
 
@@ -32,29 +30,29 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    CreateWalletInput createWalletInput = new CreateWalletInput(); // CreateWalletInput | CreateWallet
-    try {
-      CreateWalletResponse result = apiInstance.createWallet(createWalletInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#createWallet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        CreateWalletInput createWalletInput = new CreateWalletInput(); // CreateWalletInput | CreateWallet
+        try {
+            CreateWalletResponse result = apiInstance.createWallet(createWalletInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#createWallet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -84,9 +82,7 @@ public class Example {
 | **201**     | Created        | -                |
 | **403**     | ForbiddenError | -                |
 
-<a id="deleteWallet"></a>
-
-# **deleteWallet**
+## deleteWallet
 
 > deleteWallet(walletId)
 
@@ -104,28 +100,28 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet
-    try {
-      apiInstance.deleteWallet(walletId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#deleteWallet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        try {
+            apiInstance.deleteWallet(walletId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#deleteWallet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -154,9 +150,7 @@ null (empty response body)
 | ----------- | ----------- | ---------------- |
 | **204**     | Deleted     | -                |
 
-<a id="getWallet"></a>
-
-# **getWallet**
+## getWallet
 
 > WalletDto getWallet(walletId)
 
@@ -174,29 +168,29 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet
-    try {
-      WalletDto result = apiInstance.getWallet(walletId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#getWallet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        try {
+            WalletDto result = apiInstance.getWallet(walletId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#getWallet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -228,9 +222,7 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="listWallets"></a>
-
-# **listWallets**
+## listWallets
 
 > WalletsListDto listWallets(didType)
 
@@ -248,29 +240,29 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String didType = "WEB"; // String |
-    try {
-      WalletsListDto result = apiInstance.listWallets(didType);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#listWallets");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String didType = "WEB"; // String |
+        try {
+            WalletsListDto result = apiInstance.listWallets(didType);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#listWallets");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -301,9 +293,7 @@ public class Example {
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 
-<a id="signCredential"></a>
-
-# **signCredential**
+## signCredential
 
 > SignCredentialResultDto signCredential(walletId, signCredentialInputDto)
 
@@ -321,30 +311,30 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet
-    SignCredentialInputDto signCredentialInputDto = new SignCredentialInputDto(); // SignCredentialInputDto | SignCredential
-    try {
-      SignCredentialResultDto result = apiInstance.signCredential(walletId, signCredentialInputDto);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#signCredential");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        SignCredentialInputDto signCredentialInputDto = new SignCredentialInputDto(); // SignCredentialInputDto | SignCredential
+        try {
+            SignCredentialResultDto result = apiInstance.signCredential(walletId, signCredentialInputDto);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#signCredential");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -377,9 +367,7 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="signJwtToken"></a>
-
-# **signJwtToken**
+## signJwtToken
 
 > SignJwtTokenOK signJwtToken(walletId, signJwtToken)
 
@@ -397,30 +385,30 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet.
-    SignJwtToken signJwtToken = new SignJwtToken(); // SignJwtToken | SignJwtToken
-    try {
-      SignJwtTokenOK result = apiInstance.signJwtToken(walletId, signJwtToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#signJwtToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet.
+        SignJwtToken signJwtToken = new SignJwtToken(); // SignJwtToken | SignJwtToken
+        try {
+            SignJwtTokenOK result = apiInstance.signJwtToken(walletId, signJwtToken);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#signJwtToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
@@ -453,9 +441,7 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
-<a id="updateWallet"></a>
-
-# **updateWallet**
+## updateWallet
 
 > WalletDto updateWallet(walletId, updateWalletInput)
 
@@ -473,30 +459,30 @@ import com.affinidi.tdk.wallets.client.models.*;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
 
-    // Configure API key authorization: ProjectTokenAuth
-    ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
-    ProjectTokenAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //ProjectTokenAuth.setApiKeyPrefix("Token");
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
 
-    WalletApi apiInstance = new WalletApi(defaultClient);
-    String walletId = "walletId_example"; // String | id of the wallet
-    UpdateWalletInput updateWalletInput = new UpdateWalletInput(); // UpdateWalletInput | UpdateWallet
-    try {
-      WalletDto result = apiInstance.updateWallet(walletId, updateWalletInput);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WalletApi#updateWallet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        UpdateWalletInput updateWalletInput = new UpdateWalletInput(); // UpdateWalletInput | UpdateWallet
+        try {
+            WalletDto result = apiInstance.updateWallet(walletId, updateWalletInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#updateWallet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 

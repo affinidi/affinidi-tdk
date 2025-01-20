@@ -27,13 +27,13 @@ Exchange a limited-scoped token into a Cognito credential to generate the identi
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
 
-final api_instance = IotaApi();
-final awsExchangeCredentials = AwsExchangeCredentials(); // AwsExchangeCredentials | AwsExchangeCredentials
+final api = AffinidiTdkIotaClient().getIotaApi();
+final AwsExchangeCredentials awsExchangeCredentials = ; // AwsExchangeCredentials | AwsExchangeCredentials
 
 try {
-    final result = api_instance.awsExchangeCredentials(awsExchangeCredentials);
-    print(result);
-} catch (e) {
+    final response = api.awsExchangeCredentials(awsExchangeCredentials);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IotaApi->awsExchangeCredentials: $e\n');
 }
 ```
@@ -74,13 +74,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IotaApi();
-final awsExchangeCredentialsProjectToken = AwsExchangeCredentialsProjectToken(); // AwsExchangeCredentialsProjectToken | AwsExchangeCredentialsProjectToken
+final api = AffinidiTdkIotaClient().getIotaApi();
+final AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken = ; // AwsExchangeCredentialsProjectToken | AwsExchangeCredentialsProjectToken
 
 try {
-    final result = api_instance.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken);
-    print(result);
-} catch (e) {
+    final response = api.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IotaApi->awsExchangeCredentialsProjectToken: $e\n');
 }
 ```
@@ -121,13 +121,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IotaApi();
-final fetchIOTAVPResponseInput = FetchIOTAVPResponseInput(); // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
+final api = AffinidiTdkIotaClient().getIotaApi();
+final FetchIOTAVPResponseInput fetchIOTAVPResponseInput = ; // FetchIOTAVPResponseInput | FetchIOTAVPResponseInput
 
 try {
-    final result = api_instance.fetchIotaVpResponse(fetchIOTAVPResponseInput);
-    print(result);
-} catch (e) {
+    final response = api.fetchIotaVpResponse(fetchIOTAVPResponseInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IotaApi->fetchIotaVpResponse: $e\n');
 }
 ```
@@ -168,13 +168,13 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = IotaApi();
-final initiateDataSharingRequestInput = InitiateDataSharingRequestInput(); // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
+final api = AffinidiTdkIotaClient().getIotaApi();
+final InitiateDataSharingRequestInput initiateDataSharingRequestInput = ; // InitiateDataSharingRequestInput | InitiateDataSharingRequestInput
 
 try {
-    final result = api_instance.initiateDataSharingRequest(initiateDataSharingRequestInput);
-    print(result);
-} catch (e) {
+    final response = api.initiateDataSharingRequest(initiateDataSharingRequestInput);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IotaApi->initiateDataSharingRequest: $e\n');
 }
 ```
@@ -211,13 +211,13 @@ Exchange a limited-scoped token into an identity credential directly to initiate
 ```dart
 import 'package:affinidi_tdk_iota_client/api.dart';
 
-final api_instance = IotaApi();
-final iotaExchangeCredentials = IotaExchangeCredentials(); // IotaExchangeCredentials | IotaAwsExchangeCredentials
+final api = AffinidiTdkIotaClient().getIotaApi();
+final IotaExchangeCredentials iotaExchangeCredentials = ; // IotaExchangeCredentials | IotaAwsExchangeCredentials
 
 try {
-    final result = api_instance.iotaExchangeCredentials(iotaExchangeCredentials);
-    print(result);
-} catch (e) {
+    final response = api.iotaExchangeCredentials(iotaExchangeCredentials);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling IotaApi->iotaExchangeCredentials: $e\n');
 }
 ```

@@ -14,27 +14,26 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.NestedDescriptor;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for Descriptor
  */
-public class DescriptorTest {
+class DescriptorTest {
     private final Descriptor model = new Descriptor();
 
     /**
      * Model tests for Descriptor
      */
     @Test
-    public void testDescriptor() {
+    void testDescriptor() {
         // TODO: test Descriptor
     }
 
@@ -42,7 +41,7 @@ public class DescriptorTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -50,7 +49,7 @@ public class DescriptorTest {
      * Test the property 'path'
      */
     @Test
-    public void pathTest() {
+    void pathTest() {
         // TODO: test path
     }
 
@@ -58,7 +57,7 @@ public class DescriptorTest {
      * Test the property 'pathNested'
      */
     @Test
-    public void pathNestedTest() {
+    void pathNestedTest() {
         // TODO: test pathNested
     }
 
@@ -66,7 +65,7 @@ public class DescriptorTest {
      * Test the property 'format'
      */
     @Test
-    public void formatTest() {
+    void formatTest() {
         // TODO: test format
     }
 

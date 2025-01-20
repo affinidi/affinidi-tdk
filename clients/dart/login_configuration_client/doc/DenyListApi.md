@@ -32,12 +32,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final groupNamesInput = GroupNamesInput(); // GroupNamesInput | List of group names as input
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final GroupNamesInput groupNamesInput = ; // GroupNamesInput | List of group names as input
 
 try {
-    api_instance.blockGroups(groupNamesInput);
-} catch (e) {
+    api.blockGroups(groupNamesInput);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->blockGroups: $e\n');
 }
 ```
@@ -78,12 +78,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final blockedUsersInput = BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final BlockedUsersInput blockedUsersInput = ; // BlockedUsersInput | List of blocked users as input
 
 try {
-    api_instance.blockUsers(blockedUsersInput);
-} catch (e) {
+    api.blockUsers(blockedUsersInput);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->blockUsers: $e\n');
 }
 ```
@@ -124,13 +124,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final pageToken = pageToken_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final String pageToken = pageToken_example; // String |
 
 try {
-    final result = api_instance.listBlockedGroups(pageToken);
-    print(result);
-} catch (e) {
+    final response = api.listBlockedGroups(pageToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->listBlockedGroups: $e\n');
 }
 ```
@@ -171,13 +171,13 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final pageToken = pageToken_example; // String |
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final String pageToken = pageToken_example; // String |
 
 try {
-    final result = api_instance.listBlockedUsers(pageToken);
-    print(result);
-} catch (e) {
+    final response = api.listBlockedUsers(pageToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->listBlockedUsers: $e\n');
 }
 ```
@@ -218,12 +218,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final groupNamesInput = GroupNamesInput(); // GroupNamesInput | List of group names as input
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final GroupNamesInput groupNamesInput = ; // GroupNamesInput | List of group names as input
 
 try {
-    api_instance.unblockGroups(groupNamesInput);
-} catch (e) {
+    api.unblockGroups(groupNamesInput);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->unblockGroups: $e\n');
 }
 ```
@@ -264,12 +264,12 @@ import 'package:affinidi_tdk_login_configuration_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = DenyListApi();
-final blockedUsersInput = BlockedUsersInput(); // BlockedUsersInput | List of blocked users as input
+final api = AffinidiTdkLoginConfigurationClient().getDenyListApi();
+final BlockedUsersInput blockedUsersInput = ; // BlockedUsersInput | List of blocked users as input
 
 try {
-    api_instance.unblockUsers(blockedUsersInput);
-} catch (e) {
+    api.unblockUsers(blockedUsersInput);
+} catch on DioException (e) {
     print('Exception when calling DenyListApi->unblockUsers: $e\n');
 }
 ```

@@ -14,29 +14,29 @@
 package com.affinidi.tdk.wallets.client.models;
 
 import com.affinidi.tdk.wallets.client.models.WalletDtoKeysInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for WalletDto
  */
-public class WalletDtoTest {
+class WalletDtoTest {
     private final WalletDto model = new WalletDto();
 
     /**
      * Model tests for WalletDto
      */
     @Test
-    public void testWalletDto() {
+    void testWalletDto() {
         // TODO: test WalletDto
     }
 
@@ -44,7 +44,7 @@ public class WalletDtoTest {
      * Test the property 'id'
      */
     @Test
-    public void idTest() {
+    void idTest() {
         // TODO: test id
     }
 
@@ -52,7 +52,7 @@ public class WalletDtoTest {
      * Test the property 'did'
      */
     @Test
-    public void didTest() {
+    void didTest() {
         // TODO: test did
     }
 
@@ -60,7 +60,7 @@ public class WalletDtoTest {
      * Test the property 'name'
      */
     @Test
-    public void nameTest() {
+    void nameTest() {
         // TODO: test name
     }
 
@@ -68,7 +68,7 @@ public class WalletDtoTest {
      * Test the property 'description'
      */
     @Test
-    public void descriptionTest() {
+    void descriptionTest() {
         // TODO: test description
     }
 
@@ -76,7 +76,7 @@ public class WalletDtoTest {
      * Test the property 'didDocument'
      */
     @Test
-    public void didDocumentTest() {
+    void didDocumentTest() {
         // TODO: test didDocument
     }
 
@@ -84,7 +84,7 @@ public class WalletDtoTest {
      * Test the property 'ari'
      */
     @Test
-    public void ariTest() {
+    void ariTest() {
         // TODO: test ari
     }
 
@@ -92,7 +92,7 @@ public class WalletDtoTest {
      * Test the property 'keys'
      */
     @Test
-    public void keysTest() {
+    void keysTest() {
         // TODO: test keys
     }
 
@@ -100,7 +100,7 @@ public class WalletDtoTest {
      * Test the property 'createdAt'
      */
     @Test
-    public void createdAtTest() {
+    void createdAtTest() {
         // TODO: test createdAt
     }
 
@@ -108,7 +108,7 @@ public class WalletDtoTest {
      * Test the property 'modifiedAt'
      */
     @Test
-    public void modifiedAtTest() {
+    void modifiedAtTest() {
         // TODO: test modifiedAt
     }
 

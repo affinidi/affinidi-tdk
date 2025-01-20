@@ -14,29 +14,31 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
  * Model tests for WellKnownOpenIdCredentialIssuerResponse
  */
-public class WellKnownOpenIdCredentialIssuerResponseTest {
+class WellKnownOpenIdCredentialIssuerResponseTest {
     private final WellKnownOpenIdCredentialIssuerResponse model = new WellKnownOpenIdCredentialIssuerResponse();
 
     /**
      * Model tests for WellKnownOpenIdCredentialIssuerResponse
      */
     @Test
-    public void testWellKnownOpenIdCredentialIssuerResponse() {
+    void testWellKnownOpenIdCredentialIssuerResponse() {
         // TODO: test WellKnownOpenIdCredentialIssuerResponse
     }
 
@@ -44,7 +46,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'authorizationEndpoint'
      */
     @Test
-    public void authorizationEndpointTest() {
+    void authorizationEndpointTest() {
         // TODO: test authorizationEndpoint
     }
 
@@ -52,7 +54,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'credentialEndpoint'
      */
     @Test
-    public void credentialEndpointTest() {
+    void credentialEndpointTest() {
         // TODO: test credentialEndpoint
     }
 
@@ -60,7 +62,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'credentialIssuer'
      */
     @Test
-    public void credentialIssuerTest() {
+    void credentialIssuerTest() {
         // TODO: test credentialIssuer
     }
 
@@ -68,7 +70,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'credentialsSupported'
      */
     @Test
-    public void credentialsSupportedTest() {
+    void credentialsSupportedTest() {
         // TODO: test credentialsSupported
     }
 
@@ -76,7 +78,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'deferredCredentialEndpoint'
      */
     @Test
-    public void deferredCredentialEndpointTest() {
+    void deferredCredentialEndpointTest() {
         // TODO: test deferredCredentialEndpoint
     }
 
@@ -84,7 +86,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'grantTypesSupported'
      */
     @Test
-    public void grantTypesSupportedTest() {
+    void grantTypesSupportedTest() {
         // TODO: test grantTypesSupported
     }
 
@@ -92,7 +94,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'jwksUri'
      */
     @Test
-    public void jwksUriTest() {
+    void jwksUriTest() {
         // TODO: test jwksUri
     }
 
@@ -100,7 +102,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'scopesSupported'
      */
     @Test
-    public void scopesSupportedTest() {
+    void scopesSupportedTest() {
         // TODO: test scopesSupported
     }
 
@@ -108,7 +110,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'tokenEndpoint'
      */
     @Test
-    public void tokenEndpointTest() {
+    void tokenEndpointTest() {
         // TODO: test tokenEndpoint
     }
 
@@ -116,7 +118,7 @@ public class WellKnownOpenIdCredentialIssuerResponseTest {
      * Test the property 'tokenEndpointAuthMethodsSupported'
      */
     @Test
-    public void tokenEndpointAuthMethodsSupportedTest() {
+    void tokenEndpointAuthMethodsSupportedTest() {
         // TODO: test tokenEndpointAuthMethodsSupported
     }
 

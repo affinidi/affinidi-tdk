@@ -29,15 +29,15 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = RevocationApi();
-final projectId = projectId_example; // String | Description for projectId.
-final walletId = walletId_example; // String | Description for walletId.
-final statusId = statusId_example; // String | Description for statusId.
+final api = AffinidiTdkWalletsClient().getRevocationApi();
+final String projectId = projectId_example; // String | Description for projectId.
+final String walletId = walletId_example; // String | Description for walletId.
+final String statusId = statusId_example; // String | Description for statusId.
 
 try {
-    final result = api_instance.getRevocationCredentialStatus(projectId, walletId, statusId);
-    print(result);
-} catch (e) {
+    final response = api.getRevocationCredentialStatus(projectId, walletId, statusId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling RevocationApi->getRevocationCredentialStatus: $e\n');
 }
 ```
@@ -82,14 +82,14 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = RevocationApi();
-final listId = listId_example; // String |
-final walletId = walletId_example; // String | id of the wallet
+final api = AffinidiTdkWalletsClient().getRevocationApi();
+final String listId = listId_example; // String |
+final String walletId = walletId_example; // String | id of the wallet
 
 try {
-    final result = api_instance.getRevocationListCredential(listId, walletId);
-    print(result);
-} catch (e) {
+    final response = api.getRevocationListCredential(listId, walletId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling RevocationApi->getRevocationListCredential: $e\n');
 }
 ```
@@ -133,13 +133,13 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
-final api_instance = RevocationApi();
-final walletId = walletId_example; // String | id of the wallet
-final revokeCredentialInput = RevokeCredentialInput(); // RevokeCredentialInput | RevokeCredential
+final api = AffinidiTdkWalletsClient().getRevocationApi();
+final String walletId = walletId_example; // String | id of the wallet
+final RevokeCredentialInput revokeCredentialInput = ; // RevokeCredentialInput | RevokeCredential
 
 try {
-    api_instance.revokeCredential(walletId, revokeCredentialInput);
-} catch (e) {
+    api.revokeCredential(walletId, revokeCredentialInput);
+} catch on DioException (e) {
     print('Exception when calling RevocationApi->revokeCredential: $e\n');
 }
 ```

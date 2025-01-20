@@ -1,22 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.12
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:affinidi_tdk_iam_client/api.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 
 /// tests for ProjectsApi
 void main() {
-  // final instance = ProjectsApi();
+  final instance = AffinidiTdkIamClient().getProjectsApi();
 
-  group('tests for ProjectsApi', () {
+  group(ProjectsApi, () {
     //Future addPrincipalToProject(AddUserToProjectInput addUserToProjectInput) async
     test('test addPrincipalToProject', () async {
       // TODO
@@ -32,12 +22,12 @@ void main() {
       // TODO
     });
 
-    //Future<UserList> listPrincipalsOfProject() async
+    //Future<UserList> listPrincipalsOfProject({ int limit, String exclusiveStartKey }) async
     test('test listPrincipalsOfProject', () async {
       // TODO
     });
 
-    //Future<ProjectList> listProject() async
+    //Future<ProjectList> listProject({ int limit, String exclusiveStartKey }) async
     test('test listProject', () async {
       // TODO
     });
