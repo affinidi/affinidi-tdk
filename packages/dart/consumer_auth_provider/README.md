@@ -19,7 +19,7 @@ dart pub get
 
 ## Getting Started
 
-Once you've installed the SDK, import it into your Dart code:
+Once you've installed the TDK, import it into your Dart code:
 
 ```dart
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
