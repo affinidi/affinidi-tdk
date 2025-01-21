@@ -1,5 +1,4 @@
 library;
 
+export 'src/consumer_auth_provider_interface.dart';
 export 'src/consumer_auth_provider.dart';
-
-// TODO: Export any libraries intended for clients of this package.
