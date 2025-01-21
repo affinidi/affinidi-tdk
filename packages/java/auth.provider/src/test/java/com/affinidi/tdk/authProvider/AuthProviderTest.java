@@ -36,12 +36,9 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 public class AuthProviderTest {
-
     @Nested
     @DisplayName("setting values to the authProvider configurations")
-    @SuppressWarnings("unused")
     class ConfigurationsTest {
-
         @Test
         void testAuthProviderConfiguration() throws Exception {
             AuthProvider provider = new AuthProvider.Configurations()
@@ -60,13 +57,12 @@ public class AuthProviderTest {
     @WireMockTest(proxyMode = true)
     @Nested
     @DisplayName("fetchProjectScopedToken method")
-    @SuppressWarnings("unused")
     class FetchProjectScopedTokenTest {
 
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
-        @ValueSource(strings = {"complicated-word"})
+        @ValueSource(strings = { "complicated-word" })
         void givenInvalidPrivateKey_thenThrows(String phrase) {
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
                 AuthProvider provider = new AuthProvider.Configurations()
@@ -78,7 +74,8 @@ public class AuthProviderTest {
                 provider.fetchProjectScopedToken();
             });
 
-            assertTrue(exception.getMessage().startsWith("Could not derive private key out of the configurations."));
+            assertTrue(exception.getMessage()
+                    .startsWith("Could not derive private key out of the configurations."));
         }
 
         @Test
@@ -87,7 +84,8 @@ public class AuthProviderTest {
             // arrange
             String mockErrorMessage = "mock-exception-message";
             try (MockedStatic<JwtUtil> utilsMock = Mockito.mockStatic(JwtUtil.class)) {
-                utilsMock.when(() -> JwtUtil.fetchPublicKey(any())).thenThrow(InvalidPublicKeyException.class);
+                utilsMock.when(() -> JwtUtil.fetchPublicKey(any()))
+                        .thenThrow(InvalidPublicKeyException.class);
                 utilsMock.when(() -> JwtUtil.signPayload(any(), any(), any(), any(), any()))
                         .thenThrow(new JwtGenerationException(mockErrorMessage));
 
@@ -136,7 +134,8 @@ public class AuthProviderTest {
 
             // assert
             assertTrue(exception.getMessage()
-                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG + " Exception : "));
+                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG
+                            + " Exception : "));
         }
 
         @Test
@@ -169,20 +168,29 @@ public class AuthProviderTest {
             String token = assertDoesNotThrow(() -> provider.fetchProjectScopedToken());
             assertEquals("some-project-scope-token", token);
         }
+    }
 
+    @Nested
+    @DisplayName("shouldRefreshToken method")
+    class ShouldRefreshTokenTest {
         @Test
-        void testGetUserAccessToken() {
-
+        void givenNoProjectToken_thenReturnsTrue() throws ConfigurationException {
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey("test-key")
+                    .build();
+            assertTrue(provider.shouldRefreshToken());
         }
+    }
 
-        @Test
-        void testShouldRefreshToken() {
+    @Test
+    void testGetUserAccessToken() {
 
-        }
+    }
 
-        @Test
-        void testSignIotaJwt() {
+    @Test
+    void testSignIotaJwt() {
 
-        }
     }
 }
