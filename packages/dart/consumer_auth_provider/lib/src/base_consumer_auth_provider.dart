@@ -11,6 +11,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   final String _encryptionKey;
 
   late final AesCbcEncryptionService _aesCbcEncryptionService;
+  late final ConsumerTokenProvider _tokenProvider;
 
   String? _consumerToken;
 
@@ -20,6 +21,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   })  : _encryptedSeed = encryptedSeed,
         _encryptionKey = encryptionKey {
     _aesCbcEncryptionService = AesCbcEncryptionService();
+    _tokenProvider = ConsumerTokenProvider();
   }
 
   @override
@@ -34,9 +36,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         encryptionKeyHex: _encryptionKey,
       );
 
-      // TODO: dependency-inject this tokenProvider
-      ConsumerTokenProvider tokenProvider = ConsumerTokenProvider();
-      _consumerToken = await tokenProvider.getToken(utf8.encode(seed));
+      _consumerToken = await _tokenProvider.getToken(utf8.encode(seed));
 
       return _consumerToken!;
     } catch (e) {
