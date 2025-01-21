@@ -15,23 +15,24 @@ class AuthProvider {
   final String apiGatewayUrl;
   final String tokenEndpoint;
 
-  AuthProvider(
-      {required this.projectId,
-      required this.tokenId,
-      required this.privateKey,
-      this.keyId,
-      this.passphrase})
-      : apiGatewayUrl = Environment.fetchApiGwUrl(),
+  AuthProvider({
+    required this.projectId,
+    required this.tokenId,
+    required this.privateKey,
+    this.keyId,
+    this.passphrase,
+  })  : apiGatewayUrl = Environment.fetchApiGwUrl(),
         tokenEndpoint = Environment.fetchElementsAuthTokenUrl();
 
-  AuthProvider.withEnv(
-      {required this.projectId,
-      required this.tokenId,
-      required this.privateKey,
-      this.keyId,
-      this.passphrase,
-      required this.apiGatewayUrl,
-      required this.tokenEndpoint});
+  AuthProvider.withEnv({
+    required this.projectId,
+    required this.tokenId,
+    required this.privateKey,
+    this.keyId,
+    this.passphrase,
+    required this.apiGatewayUrl,
+    required this.tokenEndpoint,
+  });
 
   ECPublicKey? _publicKey;
   String? _projectScopedToken;

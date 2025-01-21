@@ -4,7 +4,9 @@ import 'package:affinidi_cryptography_service/affinidi_cryptography_service.dart
 import 'package:basic_token_provider/basic_token_provider.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-class ConsumerAuthProvider {
+import 'consumer_auth_provider_abstract.dart';
+
+class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   final String _encryptedSeed;
   final String _encryptionKey;
 
@@ -12,7 +14,7 @@ class ConsumerAuthProvider {
 
   String? _consumerToken;
 
-  ConsumerAuthProvider({
+  BaseConsumerAuthProvider({
     required String encryptedSeed,
     required String encryptionKey,
   })  : _encryptedSeed = encryptedSeed,
@@ -20,6 +22,7 @@ class ConsumerAuthProvider {
     _aesCbcEncryptionService = AesCbcEncryptionService();
   }
 
+  @override
   Future<String> fetchConsumerToken() async {
     try {
       if (_consumerToken != null && !_isTokenExpired(_consumerToken!)) {
