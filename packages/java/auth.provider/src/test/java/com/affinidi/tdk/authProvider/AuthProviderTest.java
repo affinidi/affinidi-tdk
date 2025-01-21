@@ -150,6 +150,9 @@ public class AuthProviderTest {
             URI uri = new URI(apiUrl);
             String host = uri.getHost();
             String fakeTokenUrl = apiUrl + "/auth-token";
+            String apiKeyJson = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
             String testPrivateKey = new String(
                     Files.readAllBytes(Paths.get(
                             "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
@@ -161,6 +164,9 @@ public class AuthProviderTest {
                     .build();
             provider.setApiGatewayUrl(apiUrl);
             provider.setTokenEndPoint(fakeTokenUrl);
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
+                    .withHost(equalTo(host))
+                    .willReturn(okJson(apiKeyJson)));
             givenThat(post("/auth-token")
                     .withHost(equalTo(host))
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
@@ -192,8 +198,8 @@ public class AuthProviderTest {
         }
 
         @Test
-        @DisplayName("given a valid project-token, when the api-key endpoint call fails, then it returns true")
-        void givenInvalidProjectToken_whenTheApiKeyEndpointCallFails_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
+        @DisplayName("given a project-token, when the api-key endpoint call fails, then it returns true")
+        void givenProjectToken_whenTheApiKeyEndpointCallFails_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
                 throws ConfigurationException, URISyntaxException {
             // arrange
             String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
@@ -214,6 +220,33 @@ public class AuthProviderTest {
             provider.setProjectScopeToken("test-project-scope-token");
 
             // assert
+            assertTrue(provider.shouldRefreshToken());
+        }
+
+        @Test
+        @DisplayName("given an invalid project-token, when the api-key endpoint call succeeds, then it returns true")
+        void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue(
+                WireMockRuntimeInfo wmRuntimeInfo) throws URISyntaxException, IOException, ConfigurationException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            String apiKeyJson = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
+                    .withHost(equalTo(host))
+                    .willReturn(okJson(apiKeyJson)));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey("test-key")
+                    .passphrase("")
+                    .build();
+            provider.setApiGatewayUrl(apiUrl);
+            provider.setProjectScopeToken("test-project-scope-token");
+
+            // act and assert
             assertTrue(provider.shouldRefreshToken());
         }
     }
