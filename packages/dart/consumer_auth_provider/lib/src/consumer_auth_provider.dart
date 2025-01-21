@@ -1,5 +1,5 @@
-import 'base_consumer_auth_provider.dart';
-import 'consumer_auth_provider_abstract.dart';
+import 'provider/base_consumer_auth_provider.dart';
+import 'provider/consumer_auth_provider_abstract.dart';
 import 'consumer_auth_provider_interface.dart';
 
 class ConsumerAuthProvider implements ConsumerAuthProviderInterface {

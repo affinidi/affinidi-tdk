@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_cryptography/src/models/verify_jwt_result.dart';
 
 import 'cryptography/base_cryptography_service.dart';
@@ -209,6 +211,74 @@ class CryptographyService implements CryptographyServiceInterface {
     return CryptographyServiceAbstract.instance.verifyJwt(
       jwtToken: jwtToken,
       didKey: didKey,
+    );
+  }
+
+  /// Decrypts the given bytes using the provided key.
+  ///
+  /// [key] - The key to use for decryption.
+  ///
+  /// [ivAndBytes] - The initialization vector and bytes to decrypt.
+  @override
+  Uint8List? decryptFromBytes(Uint8List key, Uint8List ivAndBytes) {
+    return CryptographyServiceAbstract.instance.decryptFromBytes(
+      key,
+      ivAndBytes,
+    );
+  }
+
+  /// Decrypts the given hexadecimal string using the provided key.
+  ///
+  /// [key] - The key to use for decryption.
+  ///
+  /// [hexStr] - The hexadecimal string to decrypt.
+  @override
+  Uint8List? decryptFromHex(Uint8List key, String hexStr) {
+    return CryptographyServiceAbstract.instance.decryptFromHex(
+      key,
+      hexStr,
+    );
+  }
+
+  /// Decrypts the given encrypted seed using the provided encryption key.
+  ///
+  /// [encryptedSeedHex] - The encrypted seed in hexadecimal format.
+  ///
+  /// [encryptionKeyHex] - The encryption key in hexadecimal format.
+  @override
+  String decryptSeed({
+    required String encryptedSeedHex,
+    required String encryptionKeyHex,
+  }) {
+    return CryptographyServiceAbstract.instance.decryptSeed(
+      encryptedSeedHex: encryptedSeedHex,
+      encryptionKeyHex: encryptionKeyHex,
+    );
+  }
+
+  /// Encrypts the given data to bytes using the provided key.
+  ///
+  /// [key] - The key to use for encryption.
+  ///
+  /// [data] - The data to encrypt.
+  @override
+  Uint8List encryptToBytes(Uint8List key, Uint8List data) {
+    return CryptographyServiceAbstract.instance.encryptToBytes(
+      key,
+      data,
+    );
+  }
+
+  /// Encrypts the given data to a hexadecimal string using the provided key.
+  ///
+  /// [key] - The key to use for encryption.
+  ///
+  /// [data] - The data to encrypt.
+  @override
+  String encryptToHex(Uint8List key, Uint8List data) {
+    return CryptographyServiceAbstract.instance.encryptToHex(
+      key,
+      data,
     );
   }
 }

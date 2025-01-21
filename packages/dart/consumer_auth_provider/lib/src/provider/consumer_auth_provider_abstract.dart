@@ -1,4 +1,4 @@
-import 'consumer_auth_provider_interface.dart';
+import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 
 abstract class ConsumerAuthProviderAbstract
     implements ConsumerAuthProviderInterface {

@@ -10,7 +10,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   final String _encryptedSeed;
   final String _encryptionKey;
 
-  late final AesCbcEncryptionService _aesCbcEncryptionService;
+  late final CryptographyService _cryptographyService;
   late final ConsumerTokenProvider _tokenProvider;
 
   String? _consumerToken;
@@ -20,7 +20,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
     required String encryptionKey,
   })  : _encryptedSeed = encryptedSeed,
         _encryptionKey = encryptionKey {
-    _aesCbcEncryptionService = AesCbcEncryptionService();
+    _cryptographyService = CryptographyService();
     _tokenProvider = ConsumerTokenProvider();
   }
 
@@ -31,7 +31,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         return _consumerToken!;
       }
 
-      final seed = _aesCbcEncryptionService.decryptSeed(
+      final seed = _cryptographyService.decryptSeed(
         encryptedSeedHex: _encryptedSeed,
         encryptionKeyHex: _encryptionKey,
       );
