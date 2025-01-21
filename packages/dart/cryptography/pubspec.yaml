@@ -1,5 +1,5 @@
 name: affinidi_tdk_cryptography
-description: A starting point for Dart libraries or applications.
+description: Cryptography package for Affinidi TDK
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

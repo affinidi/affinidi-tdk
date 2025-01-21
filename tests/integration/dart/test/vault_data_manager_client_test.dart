@@ -17,7 +17,8 @@ void main() {
         encryptionKey: env.encryptionKey,
       );
       final apiClient = AffinidiTdkVaultDataManagerClient(
-          authTokenHook: consumerAuthProvider.fetchConsumerToken);
+        authTokenHook: consumerAuthProvider.fetchConsumerToken,
+      );
 
       // configApi = apiClient.getConfigApi();
       // filesApi = apiClient.getFilesApi();
