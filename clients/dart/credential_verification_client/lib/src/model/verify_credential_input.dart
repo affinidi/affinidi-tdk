@@ -3,9 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,15 +15,16 @@ part 'verify_credential_input.g.dart';
 ///
 /// Properties:
 /// * [verifiableCredentials] - List of VCs
-/// * [issuerDidDocument] 
+/// * [issuerDidDocument] - Dynamic model
 @BuiltValue()
 abstract class VerifyCredentialInput implements Built<VerifyCredentialInput, VerifyCredentialInputBuilder> {
   /// List of VCs
   @BuiltValueField(wireName: r'verifiableCredentials')
   BuiltList<W3cCredential> get verifiableCredentials;
 
+  /// Dynamic model
   @BuiltValueField(wireName: r'issuerDidDocument')
-  FreeFormObject? get issuerDidDocument;
+  BuiltMap<String, JsonObject?>? get issuerDidDocument;
 
   VerifyCredentialInput._();
 
@@ -57,7 +58,7 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
       yield r'issuerDidDocument';
       yield serializers.serialize(
         object.issuerDidDocument,
-        specifiedType: const FullType(FreeFormObject),
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
   }
@@ -93,9 +94,9 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
         case r'issuerDidDocument':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(FreeFormObject),
-          ) as FreeFormObject;
-          result.issuerDidDocument = valueDes;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.issuerDidDocument.replace(valueDes);
           break;
         default:
           unhandled.add(key);

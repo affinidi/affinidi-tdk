@@ -21,7 +21,7 @@ import json
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from affinidi_tdk_login_configuration_client.models.id_token_mapping import IdTokenMapping
+from affinidi_tdk_login_configuration_client.models.id_token_mapping_item import IdTokenMappingItem
 from affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_output import LoginConfigurationClientMetadataOutput
 from affinidi_tdk_login_configuration_client.models.token_endpoint_auth_method import TokenEndpointAuthMethod
 
@@ -40,7 +40,7 @@ class LoginConfigurationObject(BaseModel):
     creation_date: StrictStr = Field(default=..., alias="creationDate", description="OAuth 2.0 Client Creation Date")
     vp_definition: StrictStr = Field(default=..., alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition", description="Presentation Definition")
-    id_token_mapping: IdTokenMapping = Field(default=..., alias="idTokenMapping")
+    id_token_mapping: conlist(IdTokenMappingItem, min_items=1) = Field(default=..., alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: LoginConfigurationClientMetadataOutput = Field(default=..., alias="clientMetadata")
     token_endpoint_auth_method: TokenEndpointAuthMethod = Field(default=..., alias="tokenEndpointAuthMethod")
     additional_properties: Dict[str, Any] = {}
@@ -71,9 +71,13 @@ class LoginConfigurationObject(BaseModel):
                             "additional_properties"
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of id_token_mapping
+        # override the default output from pydantic by calling `to_dict()` of each item in id_token_mapping (list)
+        _items = []
         if self.id_token_mapping:
-            _dict['idTokenMapping'] = self.id_token_mapping.to_dict()
+            for _item in self.id_token_mapping:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['idTokenMapping'] = _items
         # override the default output from pydantic by calling `to_dict()` of client_metadata
         if self.client_metadata:
             _dict['clientMetadata'] = self.client_metadata.to_dict()
@@ -105,7 +109,7 @@ class LoginConfigurationObject(BaseModel):
             "creation_date": obj.get("creationDate"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
-            "id_token_mapping": IdTokenMapping.from_dict(obj.get("idTokenMapping")) if obj.get("idTokenMapping") is not None else None,
+            "id_token_mapping": [IdTokenMappingItem.from_dict(_item) for _item in obj.get("idTokenMapping")] if obj.get("idTokenMapping") is not None else None,
             "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod")
         })

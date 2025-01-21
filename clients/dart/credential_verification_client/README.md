@@ -91,7 +91,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [FilterConst](doc/FilterConst.md)
 - [FilterItems](doc/FilterItems.md)
 - [Format](doc/Format.md)
-- [FreeFormObject](doc/FreeFormObject.md)
 - [HolderSubject](doc/HolderSubject.md)
 - [InputDescriptor](doc/InputDescriptor.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)

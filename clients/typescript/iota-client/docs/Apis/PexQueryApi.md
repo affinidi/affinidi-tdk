@@ -44,19 +44,20 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 
 # **deletePexQueries**
 
-> deletePexQueries(configurationId)
+> Object deletePexQueries(configurationId, DeletePexQueriesInput)
 
     Deletes all Presentation Definition queries of a configuration.
 
 ### Parameters
 
-| Name                | Type       | Description                                      | Notes             |
-| ------------------- | ---------- | ------------------------------------------------ | ----------------- |
-| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. | [default to null] |
+| Name                      | Type                                                            | Description                                      | Notes             |
+| ------------------------- | --------------------------------------------------------------- | ------------------------------------------------ | ----------------- |
+| **configurationId**       | **String**                                                      | ID of the Affinidi Iota Framework configuration. | [default to null] |
+| **DeletePexQueriesInput** | [**DeletePexQueriesInput**](../Models/DeletePexQueriesInput.md) | DeletePexQueriesInput                            |                   |
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -64,7 +65,7 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="deletePexQueryById"></a>

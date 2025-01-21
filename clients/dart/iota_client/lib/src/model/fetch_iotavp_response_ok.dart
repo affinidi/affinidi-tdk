@@ -16,8 +16,6 @@ part 'fetch_iotavp_response_ok.g.dart';
 /// * [correlationId] - A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
 /// * [presentationSubmission] - A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
 /// * [vpToken] - A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-/// * [presentationSubmission] - A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-/// * [vpToken] - A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
 @BuiltValue()
 abstract class FetchIOTAVPResponseOK implements Built<FetchIOTAVPResponseOK, FetchIOTAVPResponseOKBuilder> {
   /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
@@ -32,14 +30,6 @@ abstract class FetchIOTAVPResponseOK implements Built<FetchIOTAVPResponseOK, Fet
   /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
   @Deprecated('vpToken has been deprecated')
   @BuiltValueField(wireName: r'vp_token')
-  String? get vpToken;
-
-  /// A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-  @BuiltValueField(wireName: r'presentationSubmission')
-  String? get presentationSubmission;
-
-  /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-  @BuiltValueField(wireName: r'vpToken')
   String? get vpToken;
 
   FetchIOTAVPResponseOK._();
@@ -86,20 +76,6 @@ class _$FetchIOTAVPResponseOKSerializer implements PrimitiveSerializer<FetchIOTA
         specifiedType: const FullType(String),
       );
     }
-    if (object.presentationSubmission != null) {
-      yield r'presentationSubmission';
-      yield serializers.serialize(
-        object.presentationSubmission,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.vpToken != null) {
-      yield r'vpToken';
-      yield serializers.serialize(
-        object.vpToken,
-        specifiedType: const FullType(String),
-      );
-    }
   }
 
   @override
@@ -138,20 +114,6 @@ class _$FetchIOTAVPResponseOKSerializer implements PrimitiveSerializer<FetchIOTA
           result.presentationSubmission = valueDes;
           break;
         case r'vp_token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.vpToken = valueDes;
-          break;
-        case r'presentationSubmission':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.presentationSubmission = valueDes;
-          break;
-        case r'vpToken':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),

@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
-import com.affinidi.tdk.login.configuration.client.models.IdTokenMapping;
+import com.affinidi.tdk.login.configuration.client.models.IdTokenMappingItem;
 import com.affinidi.tdk.login.configuration.client.models.LoginConfigurationClientMetadataOutput;
 import com.affinidi.tdk.login.configuration.client.models.TokenEndpointAuthMethod;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -113,7 +113,7 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
 
 # **delete_pex_queries**
 
-> delete_pex_queries(configuration_id)
+> object delete_pex_queries(configuration_id, delete_pex_queries_input)
 
 Deletes all Presentation Definition queries of a configuration.
 
@@ -125,6 +125,7 @@ Deletes all Presentation Definition queries of a configuration.
 import time
 import os
 import affinidi_tdk_iota_client
+from affinidi_tdk_iota_client.models.delete_pex_queries_input import DeletePexQueriesInput
 from affinidi_tdk_iota_client.rest import ApiException
 from pprint import pprint
 
@@ -165,22 +166,26 @@ with affinidi_tdk_iota_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iota_client.PexQueryApi(api_client)
     configuration_id = 'configuration_id_example' # str | ID of the Affinidi Iota Framework configuration.
+    delete_pex_queries_input = affinidi_tdk_iota_client.DeletePexQueriesInput() # DeletePexQueriesInput | DeletePexQueriesInput
 
     try:
-        api_instance.delete_pex_queries(configuration_id)
+        api_response = api_instance.delete_pex_queries(configuration_id, delete_pex_queries_input)
+        print("The response of PexQueryApi->delete_pex_queries:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling PexQueryApi->delete_pex_queries: %s\n" % e)
 ```
 
 ### Parameters
 
-| Name                 | Type    | Description                                      | Notes |
-| -------------------- | ------- | ------------------------------------------------ | ----- |
-| **configuration_id** | **str** | ID of the Affinidi Iota Framework configuration. |
+| Name                         | Type                                                  | Description                                      | Notes |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configuration_id**         | **str**                                               | ID of the Affinidi Iota Framework configuration. |
+| **delete_pex_queries_input** | [**DeletePexQueriesInput**](DeletePexQueriesInput.md) | DeletePexQueriesInput                            |
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -188,16 +193,16 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     |                 | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | BulkDeleteResponseOK | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

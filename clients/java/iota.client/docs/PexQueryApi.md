@@ -90,7 +90,7 @@ public class Example {
 
 ## deletePexQueries
 
-> deletePexQueries(configurationId)
+> Object deletePexQueries(configurationId, deletePexQueriesInput)
 
 Deletes all Presentation Definition queries of a configuration.
 
@@ -118,8 +118,10 @@ public class Example {
 
         PexQueryApi apiInstance = new PexQueryApi(defaultClient);
         String configurationId = "configurationId_example"; // String | ID of the Affinidi Iota Framework configuration.
+        DeletePexQueriesInput deletePexQueriesInput = new DeletePexQueriesInput(); // DeletePexQueriesInput | DeletePexQueriesInput
         try {
-            apiInstance.deletePexQueries(configurationId);
+            Object result = apiInstance.deletePexQueries(configurationId, deletePexQueriesInput);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PexQueryApi#deletePexQueries");
             System.err.println("Status code: " + e.getCode());
@@ -133,13 +135,14 @@ public class Example {
 
 ### Parameters
 
-| Name                | Type       | Description                                      | Notes |
-| ------------------- | ---------- | ------------------------------------------------ | ----- |
-| **configurationId** | **String** | ID of the Affinidi Iota Framework configuration. |       |
+| Name                      | Type                                                  | Description                                      | Notes |
+| ------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ----- |
+| **configurationId**       | **String**                                            | ID of the Affinidi Iota Framework configuration. |       |
+| **deletePexQueriesInput** | [**DeletePexQueriesInput**](DeletePexQueriesInput.md) | DeletePexQueriesInput                            |       |
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -147,16 +150,16 @@ null (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     |                 | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | BulkDeleteResponseOK | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
 
 ## deletePexQueryById
 

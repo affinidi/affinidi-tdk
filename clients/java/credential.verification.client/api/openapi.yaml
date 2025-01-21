@@ -217,12 +217,6 @@ components:
       required:
         - token
       type: object
-    FreeFormObject:
-      additionalProperties: {}
-      description: Dynamic model
-      example: {}
-      properties: {}
-      type: object
     VerifyCredentialOutput:
       additionalProperties: false
       description: Response model of /verify-vcs
@@ -301,7 +295,8 @@ components:
               id: id
               type: type
             expirationDate: expirationDate
-        issuerDidDocument: {}
+        issuerDidDocument:
+          key: ''
       properties:
         verifiableCredentials:
           description: List of VCs
@@ -310,7 +305,9 @@ components:
           minItems: 1
           type: array
         issuerDidDocument:
-          $ref: '#/components/schemas/FreeFormObject'
+          additionalProperties: true
+          description: Dynamic model
+          type: object
       required:
         - verifiableCredentials
       type: object
@@ -839,7 +836,9 @@ components:
             $ref: '#/components/schemas/InputDescriptor'
           type: array
         frame:
-          $ref: '#/components/schemas/FreeFormObject'
+          additionalProperties: true
+          description: Dynamic model
+          type: object
       required:
         - id
         - input_descriptors

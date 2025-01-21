@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_iota_client/src/api_util.dart';
 import 'package:affinidi_tdk_iota_client/src/model/already_exists_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_pex_query_input.dart';
+import 'package:affinidi_tdk_iota_client/src/model/delete_pex_queries_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/invalid_parameter_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_pex_queries_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/not_found_error.dart';
@@ -138,6 +139,7 @@ class PexQueryApi {
   ///
   /// Parameters:
   /// * [configurationId] - ID of the Affinidi Iota Framework configuration.
+  /// * [deletePexQueriesInput] - DeletePexQueriesInput
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -145,10 +147,11 @@ class PexQueryApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deletePexQueries({ 
+  Future<Response<JsonObject>> deletePexQueries({ 
     required String configurationId,
+    required DeletePexQueriesInput deletePexQueriesInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -173,18 +176,66 @@ class PexQueryApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(DeletePexQueriesInput);
+      _bodyData = _serializers.serialize(deletePexQueriesInput, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    JsonObject? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(JsonObject),
+      ) as JsonObject;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<JsonObject>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// deletePexQueryById

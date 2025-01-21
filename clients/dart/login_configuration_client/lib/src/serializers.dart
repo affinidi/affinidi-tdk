@@ -37,6 +37,7 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/group_user_map
 import 'package:affinidi_tdk_login_configuration_client/src/model/group_user_mappings_list.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/groups_list.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/groups_per_user_limit_exceeded_error.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_claim_context_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_groups_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_parameter_error.dart';
@@ -92,6 +93,7 @@ part 'serializers.g.dart';
   GroupUserMappingsList,
   GroupsList,
   GroupsPerUserLimitExceededError,
+  IdTokenMappingItem,
   InvalidClaimContextError,
   InvalidGroupsError,
   InvalidParameterError,

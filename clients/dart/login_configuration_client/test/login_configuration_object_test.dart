@@ -73,6 +73,12 @@ void main() {
       // TODO
     });
 
+    // Fields name/path mapping between the vp_token and the id_token
+    // BuiltList<IdTokenMappingItem> idTokenMapping
+    test('to test the property `idTokenMapping`', () async {
+      // TODO
+    });
+
     // LoginConfigurationClientMetadataOutput clientMetadata
     test('to test the property `clientMetadata`', () async {
       // TODO

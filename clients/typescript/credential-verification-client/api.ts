@@ -428,14 +428,6 @@ export interface Format {
   ldp_vp?: LdpObject
 }
 /**
- * Dynamic model
- * @export
- * @interface FreeFormObject
- */
-export interface FreeFormObject {
-  [key: string]: any
-}
-/**
  *
  * @export
  * @interface HolderSubject
@@ -817,11 +809,11 @@ export interface PresentationDefinition {
    */
   input_descriptors: Array<InputDescriptor>
   /**
-   *
-   * @type {FreeFormObject}
+   * Dynamic model
+   * @type {{ [key: string]: any; }}
    * @memberof PresentationDefinition
    */
-  frame?: FreeFormObject
+  frame?: { [key: string]: any }
 }
 /**
  *
@@ -957,11 +949,11 @@ export interface VerifyCredentialInput {
    */
   verifiableCredentials: Array<W3cCredential>
   /**
-   *
-   * @type {FreeFormObject}
+   * Dynamic model
+   * @type {{ [key: string]: any; }}
    * @memberof VerifyCredentialInput
    */
-  issuerDidDocument?: FreeFormObject
+  issuerDidDocument?: { [key: string]: any }
 }
 /**
  * Response model of /verify-vcs

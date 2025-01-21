@@ -13,7 +13,8 @@ void main() {
       // TODO
     });
 
-    // FreeFormObject issuerDidDocument
+    // Dynamic model
+    // BuiltMap<String, JsonObject> issuerDidDocument
     test('to test the property `issuerDidDocument`', () async {
       // TODO
     });

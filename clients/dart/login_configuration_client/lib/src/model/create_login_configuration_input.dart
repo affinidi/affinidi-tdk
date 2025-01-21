@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:affinidi_tdk_login_configuration_client/src/model/login_configuration_client_metadata_input.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/token_endpoint_auth_method.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -21,6 +22,7 @@ part 'create_login_configuration_input.g.dart';
 /// * [postLogoutRedirectUris] - Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
 /// * [clientMetadata] 
 /// * [claimFormat] - ID token claims output format. Default is array.
 /// * [failOnMappingConflict] - Interrupts login process if duplications of data fields names will be found
@@ -50,6 +52,10 @@ abstract class CreateLoginConfigurationInput implements Built<CreateLoginConfigu
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
+
+  /// Fields name/path mapping between the vp_token and the id_token
+  @BuiltValueField(wireName: r'idTokenMapping')
+  BuiltList<IdTokenMappingItem>? get idTokenMapping;
 
   @BuiltValueField(wireName: r'clientMetadata')
   LoginConfigurationClientMetadataInput? get clientMetadata;
@@ -131,6 +137,13 @@ class _$CreateLoginConfigurationInputSerializer implements PrimitiveSerializer<C
       yield serializers.serialize(
         object.presentationDefinition,
         specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.idTokenMapping != null) {
+      yield r'idTokenMapping';
+      yield serializers.serialize(
+        object.idTokenMapping,
+        specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
       );
     }
     if (object.clientMetadata != null) {
@@ -232,6 +245,13 @@ class _$CreateLoginConfigurationInputSerializer implements PrimitiveSerializer<C
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationDefinition = valueDes;
+          break;
+        case r'idTokenMapping':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
+          ) as BuiltList<IdTokenMappingItem>;
+          result.idTokenMapping.replace(valueDes);
           break;
         case r'clientMetadata':
           final valueDes = serializers.deserialize(

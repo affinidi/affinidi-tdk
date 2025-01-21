@@ -16,7 +16,6 @@ package com.affinidi.tdk.credential.verification.client.models;
 import java.util.Objects;
 import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.Format;
-import com.affinidi.tdk.credential.verification.client.models.FreeFormObject;
 import com.affinidi.tdk.credential.verification.client.models.InputDescriptor;
 import com.affinidi.tdk.credential.verification.client.models.SubmissionRequirement;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -26,7 +25,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -66,7 +67,7 @@ public class PresentationDefinition {
   private List<InputDescriptor> inputDescriptors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FRAME = "frame";
-  private FreeFormObject frame = new HashMap<>();
+  private Map<String, Object> frame = new HashMap<>();
 
   public PresentationDefinition() {
   }
@@ -237,28 +238,36 @@ public class PresentationDefinition {
     this.inputDescriptors = inputDescriptors;
   }
 
-  public PresentationDefinition frame(FreeFormObject frame) {
+  public PresentationDefinition frame(Map<String, Object> frame) {
     
     this.frame = frame;
     return this;
   }
 
+  public PresentationDefinition putFrameItem(String key, Object frameItem) {
+    if (this.frame == null) {
+      this.frame = new HashMap<>();
+    }
+    this.frame.put(key, frameItem);
+    return this;
+  }
+
   /**
-   * Get frame
+   * Dynamic model
    * @return frame
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FRAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
-  public FreeFormObject getFrame() {
+  public Map<String, Object> getFrame() {
     return frame;
   }
 
 
   @JsonProperty(JSON_PROPERTY_FRAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrame(FreeFormObject frame) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFrame(Map<String, Object> frame) {
     this.frame = frame;
   }
 
@@ -400,11 +409,15 @@ public class PresentationDefinition {
 
     // add `frame` to the URL query string
     if (getFrame() != null) {
-      try {
-        joiner.add(String.format("%sframe%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrame()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (String _key : getFrame().keySet()) {
+        try {
+          joiner.add(String.format("%sframe%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getFrame().get(_key), URLEncoder.encode(String.valueOf(getFrame().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 

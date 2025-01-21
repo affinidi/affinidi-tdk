@@ -1,4 +1,4 @@
-# IdTokenMapping_inner
+# IdTokenMappingItem
 
 ## Properties
 

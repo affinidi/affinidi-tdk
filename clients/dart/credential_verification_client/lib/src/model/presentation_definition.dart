@@ -4,10 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:affinidi_tdk_credential_verification_client/src/model/submission_requirement.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +22,7 @@ part 'presentation_definition.g.dart';
 /// * [format] 
 /// * [submissionRequirements] 
 /// * [inputDescriptors] 
-/// * [frame] 
+/// * [frame] - Dynamic model
 @BuiltValue()
 abstract class PresentationDefinition implements Built<PresentationDefinition, PresentationDefinitionBuilder> {
   /// Definition id
@@ -46,8 +46,9 @@ abstract class PresentationDefinition implements Built<PresentationDefinition, P
   @BuiltValueField(wireName: r'input_descriptors')
   BuiltList<InputDescriptor> get inputDescriptors;
 
+  /// Dynamic model
   @BuiltValueField(wireName: r'frame')
-  FreeFormObject? get frame;
+  BuiltMap<String, JsonObject?>? get frame;
 
   PresentationDefinition._();
 
@@ -114,7 +115,7 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
       yield r'frame';
       yield serializers.serialize(
         object.frame,
-        specifiedType: const FullType(FreeFormObject),
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
   }
@@ -185,9 +186,9 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
         case r'frame':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(FreeFormObject),
-          ) as FreeFormObject;
-          result.frame = valueDes;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.frame.replace(valueDes);
           break;
         default:
           unhandled.add(key);

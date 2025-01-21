@@ -27,16 +27,15 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * IdTokenMappingInner
+ * IdTokenMappingItem
  */
 @JsonPropertyOrder({
-  IdTokenMappingInner.JSON_PROPERTY_SOURCE_FIELD,
-  IdTokenMappingInner.JSON_PROPERTY_ID_TOKEN_CLAIM,
-  IdTokenMappingInner.JSON_PROPERTY_INPUT_DESCRIPTOR_ID
+  IdTokenMappingItem.JSON_PROPERTY_SOURCE_FIELD,
+  IdTokenMappingItem.JSON_PROPERTY_ID_TOKEN_CLAIM,
+  IdTokenMappingItem.JSON_PROPERTY_INPUT_DESCRIPTOR_ID
 })
-@JsonTypeName("IdTokenMapping_inner")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class IdTokenMappingInner {
+public class IdTokenMappingItem {
   public static final String JSON_PROPERTY_SOURCE_FIELD = "sourceField";
   private String sourceField;
 
@@ -46,10 +45,10 @@ public class IdTokenMappingInner {
   public static final String JSON_PROPERTY_INPUT_DESCRIPTOR_ID = "inputDescriptorId";
   private String inputDescriptorId;
 
-  public IdTokenMappingInner() {
+  public IdTokenMappingItem() {
   }
 
-  public IdTokenMappingInner sourceField(String sourceField) {
+  public IdTokenMappingItem sourceField(String sourceField) {
     
     this.sourceField = sourceField;
     return this;
@@ -74,7 +73,7 @@ public class IdTokenMappingInner {
     this.sourceField = sourceField;
   }
 
-  public IdTokenMappingInner idTokenClaim(String idTokenClaim) {
+  public IdTokenMappingItem idTokenClaim(String idTokenClaim) {
     
     this.idTokenClaim = idTokenClaim;
     return this;
@@ -99,7 +98,7 @@ public class IdTokenMappingInner {
     this.idTokenClaim = idTokenClaim;
   }
 
-  public IdTokenMappingInner inputDescriptorId(String inputDescriptorId) {
+  public IdTokenMappingItem inputDescriptorId(String inputDescriptorId) {
     
     this.inputDescriptorId = inputDescriptorId;
     return this;
@@ -132,10 +131,10 @@ public class IdTokenMappingInner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IdTokenMappingInner idTokenMappingInner = (IdTokenMappingInner) o;
-    return Objects.equals(this.sourceField, idTokenMappingInner.sourceField) &&
-        Objects.equals(this.idTokenClaim, idTokenMappingInner.idTokenClaim) &&
-        Objects.equals(this.inputDescriptorId, idTokenMappingInner.inputDescriptorId);
+    IdTokenMappingItem idTokenMappingItem = (IdTokenMappingItem) o;
+    return Objects.equals(this.sourceField, idTokenMappingItem.sourceField) &&
+        Objects.equals(this.idTokenClaim, idTokenMappingItem.idTokenClaim) &&
+        Objects.equals(this.inputDescriptorId, idTokenMappingItem.inputDescriptorId);
   }
 
   @Override
@@ -146,7 +145,7 @@ public class IdTokenMappingInner {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IdTokenMappingInner {\n");
+    sb.append("class IdTokenMappingItem {\n");
     sb.append("    sourceField: ").append(toIndentedString(sourceField)).append("\n");
     sb.append("    idTokenClaim: ").append(toIndentedString(idTokenClaim)).append("\n");
     sb.append("    inputDescriptorId: ").append(toIndentedString(inputDescriptorId)).append("\n");

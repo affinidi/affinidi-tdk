@@ -16,7 +16,7 @@ void main() {
 
     // Deletes all Presentation Definition queries of a configuration.
     //
-    //Future deletePexQueries(String configurationId) async
+    //Future<JsonObject> deletePexQueries(String configurationId, DeletePexQueriesInput deletePexQueriesInput) async
     test('test deletePexQueries', () async {
       // TODO
     });
