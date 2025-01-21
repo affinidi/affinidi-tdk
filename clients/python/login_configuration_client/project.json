@@ -12,17 +12,26 @@
         "command": "poetry build"
       }
     },
-    "set-version": {
-      "executor": "@affinidi-tdk/nx-tdk-tools:set-version",
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
-        "packageName": "login_configuration_client"
-      }
-    },
-    "nx-release-publish": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "poetry publish --skip-existing"
+        "changelog": false,
+        "git": false,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/exec",
+            {
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "poetry version ${nextRelease.version}",
+              "publishCmd": "poetry publish --skip-existing --build",
+              "verifyConditionsCmd": "poetry --version"
+            }
+          ]
+        ]
       }
     }
   },

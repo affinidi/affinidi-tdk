@@ -1,22 +1,23 @@
 name: affinidi_tdk_consumer_auth_provider
-description: A starting point for Dart libraries or applications.
+description: Provider of Consumer auth token
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: ^3.6.0
 
-# Add regular dependencies here.
-dependencies:
-  affinidi_tdk_common:
-    path: ../common
-  jwt_decoder: ^2.0.1
+resolution: workspace
 
-  # TODO: remove this dependency
-  basic_token_provider:
-    path: ../basic_token_provider
-  affinidi_cryptography_service:
-    path: ../cryptography_service
+dependencies:
+  affinidi_tdk_common: ^1.0.0
+  affinidi_tdk_cryptography: ^1.0.0
+  jwt_decoder: ^2.0.1
+  bip32: ^2.0.0
+  web3dart: ^2.7.3
+  base_codecs: ^1.0.1
+  uuid: ^4.5.1
+  crypto: ^3.0.6
+  dio: ^5.7.0
 
 dev_dependencies:
   lints: ^5.0.0
