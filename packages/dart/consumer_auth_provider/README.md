@@ -28,11 +28,19 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 ### Initialize the provider
 
 ```dart
+import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
+
 void main() {
   final consumerAuthProvider = ConsumerAuthProvider(
     encryptedSeed: 'encryptedSeed',
     encryptionKey: 'encryptionKey',
   );
-  final token = await consumerAuthProvider.fetchConsumerToken();
+
+  // Actual Consumer client that accepts a hook for
+  // the token which requires a separate import
+  final apiClient = AffinidiTdkVaultDataManagerClient(
+    authTokenHook: consumerAuthProvider.fetchConsumerToken,
+  );
 }
 ```
