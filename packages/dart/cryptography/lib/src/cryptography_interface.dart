@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:typed_data';
+
 import 'models/verify_jwt_result.dart';
 
 abstract interface class CryptographyServiceInterface {
@@ -9,31 +11,26 @@ abstract interface class CryptographyServiceInterface {
 
   List<int> getRandomBytes(int length);
 
-  // TODO: rename
   Future<List<int>> Pbkdf2({
     required String password,
     required List<int> nonce,
   });
 
-  // TODO: rename
   Future<List<int>> Aes256Encrypt({
     required List<int> key,
     required List<int> data,
   });
 
-  // TODO: rename
   Future<List<int>?> Aes256Decrypt({
     required List<int> key,
     required List<int> encryptedData,
   });
 
-  // TODO: rename
   Future<String> Aes256EncryptStringToHex({
     required List<int> key,
     required String data,
   });
 
-  // TODO: rename
   Future<String?> Aes256DecryptStringFromHex({
     required List<int> key,
     required String encryptedData,
@@ -45,8 +42,23 @@ abstract interface class CryptographyServiceInterface {
   });
 
   Map<String, dynamic> decodeJwtToken({required String token});
-  VerifyJwtResult verifyJwt({required String jwtToken, required String didKey});
+  VerifyJwtResult verifyJwt({
+    required String jwtToken,
+    required String didKey,
+  });
   String createHash({required String hashSource});
   String createSha256Hex({required List<int> bytes});
   String createMd5Base64({required List<int> bytes});
+
+  /* New */
+  String encryptToHex(Uint8List key, Uint8List data);
+  Uint8List encryptToBytes(Uint8List key, Uint8List data);
+
+  Uint8List? decryptFromHex(Uint8List key, String hexStr);
+  Uint8List? decryptFromBytes(Uint8List key, Uint8List ivAndBytes);
+
+  String decryptSeed({
+    required String encryptedSeedHex,
+    required String encryptionKeyHex,
+  });
 }

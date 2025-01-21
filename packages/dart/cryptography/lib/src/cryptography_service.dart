@@ -1,350 +1,284 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
-import 'package:crypto/crypto.dart' as crypto;
-import 'package:cryptography/cryptography.dart' as cryptography;
-import 'package:convert/convert.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:bs58/bs58.dart';
-import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
-import 'package:pointycastle/ecc/ecc_fp.dart' as ecc_fp;
-import 'package:pointycastle/pointycastle.dart' as pc;
-import "package:pointycastle/export.dart" as pce;
-import 'package:secp256k1/secp256k1.dart' as secp256k1;
 
+import 'package:affinidi_tdk_cryptography/src/models/verify_jwt_result.dart';
+
+import 'cryptography/base_cryptography_service.dart';
+import 'cryptography/cryptography_abstract.dart';
 import 'cryptography_interface.dart';
-import 'models/verify_jwt_result.dart';
 
 class CryptographyService implements CryptographyServiceInterface {
-  final _aes256NonceLength = 16;
-  final _aes256MacLength = 32;
-
-  final _aes256Algorithm = cryptography.AesCbc.with256bits(
-    macAlgorithm: cryptography.Hmac.sha256(),
-  );
-
-  final _pbkdf2Algorithm = cryptography.Pbkdf2(
-    macAlgorithm: cryptography.Hmac.sha256(),
-    iterations: 600000,
-    bits: 256, // 256 bits = 32 bytes output
-  );
-
-  CryptographyService();
-
-  @override
-  String getSha256HexFromString(String input) {
-    print('Started creating SHA256 HEX from string');
-    final hex = getSha256HexFromBytes(utf8.encode(input));
-
-    print('Completed creating SHA256 HEX from string');
-    return hex;
+  /// A service class that provides cryptographic operations.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// final cryptographyService = CryptographyService();
+  /// final encryptionKey = cryptographyService.getRandomBytes(32);
+  /// final nonce = utf8.encode('nonce');
+  /// final passphrase = 'your-passphrase';
+  ///
+  /// final passphraseEncryptionKey = await cryptographyService.Pbkdf2(
+  ///   password: passphrase,
+  ///   nonce: nonce,
+  /// );
+  ///
+  /// final encryptedKey = await cryptographyService.Aes256Encrypt(
+  ///   key: passphraseEncryptionKey,
+  ///   data: encryptionKey,
+  /// );
+  /// ```
+  CryptographyService() {
+    CryptographyServiceAbstract.instance = BaseCryptographyService();
   }
 
-  @override
-  String getSha256HexFromBytes(List<int> bytes) {
-    print('Started creating SHA256 HEX from bytes');
-    final hex = crypto.sha256.convert(bytes).toString();
-
-    print('Completed creating SHA256 HEX from bytes');
-    return hex;
-  }
-
-  @override
-  List<int> getRandomBytes(int length) {
-    print('Started generating random bytes');
-
-    final random = Random.secure();
-    final bytes = List<int>.generate(length, (_) => random.nextInt(256));
-
-    print('Completed generating random bytes');
-    return bytes;
-  }
-
-  @override
-  Future<List<int>> Pbkdf2({
-    required String password,
-    required List<int> nonce,
-  }) async {
-    print('Started creating PDKDF2');
-
-    final keyDerivedFromPassword = await _pbkdf2Algorithm.deriveKeyFromPassword(
-      password: password,
-      nonce: nonce,
-    );
-
-    final bytes = await keyDerivedFromPassword.extractBytes();
-    print('Completed creating PDKDF2');
-
-    return bytes;
-  }
-
-  @override
-  Future<List<int>> Aes256Encrypt({
-    required List<int> key,
-    required List<int> data,
-  }) async {
-    print('Started encrypting with AES256');
-
-    final nonce = getRandomBytes(_aes256NonceLength);
-    final secretKey = await _aes256Algorithm.newSecretKeyFromBytes(key);
-
-    final secretBox = await _aes256Algorithm.encrypt(
-      data,
-      secretKey: secretKey,
-      nonce: nonce,
-    );
-
-    final encryptedData = secretBox.concatenation();
-
-    print('Completed encrypting with AES256');
-    return encryptedData;
-  }
-
+  /// Decrypts the given encrypted data using AES-256 algorithm.
+  ///
+  /// [key] - The encryption key.
+  ///
+  /// [encryptedData] - The data to be decrypted.
   @override
   Future<List<int>?> Aes256Decrypt({
     required List<int> key,
     required List<int> encryptedData,
   }) async {
-    print('Started decrypting with AES256');
-
-    final secretBox = cryptography.SecretBox.fromConcatenation(
-      encryptedData,
-      nonceLength: _aes256NonceLength,
-      macLength: _aes256MacLength,
-      copy: true,
-    );
-
-    try {
-      final decrypted = await _aes256Algorithm.decrypt(
-        secretBox,
-        secretKey: cryptography.SecretKey(key),
-      );
-
-      print('Completed decrypting with AES256');
-      return decrypted;
-    } on cryptography.SecretBoxAuthenticationError catch (_) {
-      print('Failed decrypting with AES256');
-      return null;
-    }
-  }
-
-  @override
-  Future<String> Aes256EncryptStringToHex({
-    required List<int> key,
-    required String data,
-  }) async {
-    final encryptedBytes = await Aes256Encrypt(
+    return await CryptographyServiceAbstract.instance.Aes256Decrypt(
       key: key,
-      data: utf8.encode(data),
+      encryptedData: encryptedData,
     );
-    return hex.encode(encryptedBytes);
   }
 
+  /// Decrypts the given encrypted hex string using AES-256 algorithm.
+  ///
+  /// [key] - The encryption key.
+  ///
+  /// [encryptedData] - The hex string to be decrypted.
   @override
   Future<String?> Aes256DecryptStringFromHex({
     required List<int> key,
     required String encryptedData,
-  }) async {
-    final decryptedBytes = await Aes256Decrypt(
+  }) {
+    return CryptographyServiceAbstract.instance.Aes256DecryptStringFromHex(
       key: key,
-      encryptedData: hex.decode(encryptedData),
+      encryptedData: encryptedData,
     );
-
-    if (decryptedBytes == null) {
-      return null;
-    }
-
-    return utf8.decode(decryptedBytes);
   }
 
+  /// Encrypts the given data using AES-256 algorithm.
+  ///
+  /// [key] - The encryption key.
+  ///
+  /// [data] - The data to be encrypted.
   @override
-  Map<String, dynamic> decodeJwtToken({required String token}) {
-    final decodedToken = JwtDecoder.decode(token);
-    return decodedToken;
+  Future<List<int>> Aes256Encrypt({
+    required List<int> key,
+    required List<int> data,
+  }) {
+    return CryptographyServiceAbstract.instance.Aes256Encrypt(
+      key: key,
+      data: data,
+    );
   }
 
+  /// Encrypts the given string to a hex string using AES-256 algorithm.
+  ///
+  /// [key] - The encryption key.
+  ///
+  /// [data] - The string to be encrypted.
+  @override
+  Future<String> Aes256EncryptStringToHex({
+    required List<int> key,
+    required String data,
+  }) {
+    return CryptographyServiceAbstract.instance.Aes256EncryptStringToHex(
+      key: key,
+      data: data,
+    );
+  }
+
+  /// Derives a key using PBKDF2 algorithm.
+  ///
+  /// [password] - The password to derive the key from.
+  ///
+  /// [nonce] - The nonce to use in the derivation.
+  @override
+  Future<List<int>> Pbkdf2({
+    required String password,
+    required List<int> nonce,
+  }) {
+    return CryptographyServiceAbstract.instance.Pbkdf2(
+      password: password,
+      nonce: nonce,
+    );
+  }
+
+  /// Creates a hash from the given source string.
+  ///
+  /// [hashSource] - The source string to hash.
   @override
   String createHash({required String hashSource}) {
-    List<int> bytes = utf8.encode(hashSource);
-    crypto.Digest digest = crypto.sha1.convert(bytes);
-
-    return digest.toString();
+    return CryptographyServiceAbstract.instance.createHash(
+      hashSource: hashSource,
+    );
   }
 
-  @override
-  String createSha256Hex({required List<int> bytes}) {
-    crypto.Digest digest = crypto.sha256.convert(bytes);
-    return digest.toString();
-  }
-
+  /// Creates a base64-encoded MD5 hash from the given bytes.
+  ///
+  /// [bytes] - The bytes to hash.
   @override
   String createMd5Base64({required List<int> bytes}) {
-    crypto.Digest digest = crypto.md5.convert(bytes);
-    return base64.encode(digest.bytes);
+    return CryptographyServiceAbstract.instance.createMd5Base64(
+      bytes: bytes,
+    );
   }
 
+  /// Creates a hex-encoded SHA-256 hash from the given bytes.
+  ///
+  /// [bytes] - The bytes to hash.
   @override
-  VerifyJwtResult verifyJwt({
-    required String jwtToken,
-    required String didKey,
-  }) {
-    try {
-      final key = _ecPublicKeyFromDid(didKey);
-
-      final jwt = JWT.verify(
-        jwtToken,
-        key,
-        checkHeaderType: false,
-        checkExpiresIn: true,
-      );
-
-      return VerifyJwtResult(
-        isValid: true,
-        isExpired: false,
-        errorMessage: '',
-        jwtPayload: jwt.payload,
-      );
-    } on JWTExpiredException {
-      return VerifyJwtResult(
-        isValid: false,
-        isExpired: true,
-        errorMessage: 'Jwt is expired',
-        jwtPayload: null,
-      );
-    } on JWTException catch (ex) {
-      return VerifyJwtResult(
-        isValid: false,
-        isExpired: false,
-        errorMessage: ex.message,
-        jwtPayload: null,
-      );
-    }
+  String createSha256Hex({required List<int> bytes}) {
+    return CryptographyServiceAbstract.instance.createSha256Hex(
+      bytes: bytes,
+    );
   }
 
+  /// Decodes the given JWT token.
+  ///
+  /// [token] - The JWT token to decode.
+  @override
+  Map<String, dynamic> decodeJwtToken({required String token}) {
+    return CryptographyServiceAbstract.instance.decodeJwtToken(
+      token: token,
+    );
+  }
+
+  /// Encrypts the given data using an RSA public key from a JWK.
+  ///
+  /// [jwk] - The JWK containing the RSA public key.
+  ///
+  /// [data] - The data to be encrypted.
   @override
   List<int> encryptWithRsaPublicKeyFromJwk({
     required Map<String, dynamic> jwk,
     required List<int> data,
   }) {
-    final publicKey = _getRsaPublicKeyFromJwk(jwk);
-    final encryptor = pce.OAEPEncoding.withSHA256(pce.RSAEngine());
-
-    encryptor.init(
-      true,
-      pce.PublicKeyParameter<pce.RSAPublicKey>(publicKey),
-    ); // true=encrypt
-
-    return _processInBlocks(encryptor, Uint8List.fromList(data));
-  }
-
-  (BigInt x, BigInt y) _ecPointFromDid(String did) {
-    if (!did.startsWith("did:key:")) {
-      throw "only did:key supported";
-    }
-
-    final keyStr = did.split(':')[2];
-
-    if (!keyStr.startsWith('z')) {
-      throw "unsupported encoding";
-    }
-
-    final compressedWithHeader = base58.decode(keyStr.substring(1));
-
-    if (compressedWithHeader.isEmpty || compressedWithHeader[0] != 0xe7) {
-      throw "expected secp256k1 curve";
-    }
-
-    final compressed = Uint8List.sublistView(compressedWithHeader, 2);
-
-    if (compressed.length != 33) {
-      throw "invalid key length";
-    }
-
-    final bigCompressed = _uint8ListToBigInt(compressed);
-    final hex = bigCompressed.toRadixString(16).padLeft(66, '0');
-
-    final publicKey = secp256k1.PublicKey.fromCompressedHex(hex);
-
-    return (publicKey.X, publicKey.Y);
-  }
-
-  final _b256 = BigInt.from(256);
-
-  BigInt _uint8ListToBigInt(Uint8List compressed) =>
-      compressed.fold(BigInt.zero, (a, b) => a * _b256 + BigInt.from(b));
-
-  ECPublicKey _ecPublicKeyFromDid(String did) {
-    final (x, y) = _ecPointFromDid(did);
-
-    final params = pc.ECDomainParameters('secp256k1');
-    final pcKey = pc.ECPublicKey(
-      ecc_fp.ECPoint(
-        params.curve as ecc_fp.ECCurve,
-        params.curve.fromBigInteger(x) as ecc_fp.ECFieldElement?,
-        params.curve.fromBigInteger(y) as ecc_fp.ECFieldElement?,
-        false,
-      ),
-      params,
+    return CryptographyServiceAbstract.instance.encryptWithRsaPublicKeyFromJwk(
+      jwk: jwk,
+      data: data,
     );
-
-    return ECPublicKey.raw(pcKey);
   }
 
-  pc.RSAPublicKey _getRsaPublicKeyFromJwk(Map<String, dynamic> jwk) {
-    print('Started getting RSA public key from JWK');
-
-    const alg = 'RSAES_OAEP_SHA_256';
-
-    if (jwk['alg'] != alg) {
-      throw UnimplementedError('Only alg=$alg is supported');
-    }
-
-    final n = BigInt.parse(hex.encode(_base64UrlDecode(jwk['n']!)), radix: 16);
-    final e = BigInt.parse(hex.encode(_base64UrlDecode(jwk['e']!)), radix: 16);
-
-    print('Completed getting RSA public key from JWK');
-
-    // print(bu.CryptoUtils.encodeRSAPublicKeyToPem(pc.RSAPublicKey(n, e)));
-    return pc.RSAPublicKey(n, e);
+  /// Generates a list of random bytes of the given length.
+  ///
+  /// [length] - The length of the random byte list.
+  @override
+  List<int> getRandomBytes(int length) {
+    return CryptographyServiceAbstract.instance.getRandomBytes(
+      length,
+    );
   }
 
-  Uint8List _processInBlocks(
-    pce.AsymmetricBlockCipher engine,
-    Uint8List input,
-  ) {
-    final numBlocks = input.length ~/ engine.inputBlockSize +
-        ((input.length % engine.inputBlockSize != 0) ? 1 : 0);
-
-    final output = Uint8List(numBlocks * engine.outputBlockSize);
-
-    var inputOffset = 0;
-    var outputOffset = 0;
-    while (inputOffset < input.length) {
-      final chunkSize = (inputOffset + engine.inputBlockSize <= input.length)
-          ? engine.inputBlockSize
-          : input.length - inputOffset;
-
-      outputOffset += engine.processBlock(
-        input,
-        inputOffset,
-        chunkSize,
-        output,
-        outputOffset,
-      );
-
-      inputOffset += chunkSize;
-    }
-
-    return (output.length == outputOffset)
-        ? output
-        : output.sublist(0, outputOffset);
+  /// Creates a hex-encoded SHA-256 hash from the given bytes.
+  ///
+  /// [bytes] - The bytes to hash.
+  @override
+  String getSha256HexFromBytes(List<int> bytes) {
+    return CryptographyServiceAbstract.instance.getSha256HexFromBytes(
+      bytes,
+    );
   }
 
-  Uint8List _base64UrlDecode(String input) {
-    // Pad the string to a multiple of 4 for correct decoding
-    String padded = input.padRight((input.length + 3) ~/ 4 * 4, '=');
-    return base64Url.decode(padded);
+  /// Creates a hex-encoded SHA-256 hash from the given string.
+  ///
+  /// [input] - The string to hash.
+  @override
+  String getSha256HexFromString(String input) {
+    return CryptographyServiceAbstract.instance.getSha256HexFromString(
+      input,
+    );
+  }
+
+  /// Verifies the given JWT token using the provided DID key.
+  ///
+  /// [jwtToken] - The JWT token to verify.
+  ///
+  /// [didKey] - The DID key to use for verification.
+  @override
+  VerifyJwtResult verifyJwt({
+    required String jwtToken,
+    required String didKey,
+  }) {
+    return CryptographyServiceAbstract.instance.verifyJwt(
+      jwtToken: jwtToken,
+      didKey: didKey,
+    );
+  }
+
+  /// Decrypts the given bytes using the provided key.
+  ///
+  /// [key] - The key to use for decryption.
+  ///
+  /// [ivAndBytes] - The initialization vector and bytes to decrypt.
+  @override
+  Uint8List? decryptFromBytes(Uint8List key, Uint8List ivAndBytes) {
+    return CryptographyServiceAbstract.instance.decryptFromBytes(
+      key,
+      ivAndBytes,
+    );
+  }
+
+  /// Decrypts the given hexadecimal string using the provided key.
+  ///
+  /// [key] - The key to use for decryption.
+  ///
+  /// [hexStr] - The hexadecimal string to decrypt.
+  @override
+  Uint8List? decryptFromHex(Uint8List key, String hexStr) {
+    return CryptographyServiceAbstract.instance.decryptFromHex(
+      key,
+      hexStr,
+    );
+  }
+
+  /// Decrypts the given encrypted seed using the provided encryption key.
+  ///
+  /// [encryptedSeedHex] - The encrypted seed in hexadecimal format.
+  ///
+  /// [encryptionKeyHex] - The encryption key in hexadecimal format.
+  @override
+  String decryptSeed({
+    required String encryptedSeedHex,
+    required String encryptionKeyHex,
+  }) {
+    return CryptographyServiceAbstract.instance.decryptSeed(
+      encryptedSeedHex: encryptedSeedHex,
+      encryptionKeyHex: encryptionKeyHex,
+    );
+  }
+
+  /// Encrypts the given data to bytes using the provided key.
+  ///
+  /// [key] - The key to use for encryption.
+  ///
+  /// [data] - The data to encrypt.
+  @override
+  Uint8List encryptToBytes(Uint8List key, Uint8List data) {
+    return CryptographyServiceAbstract.instance.encryptToBytes(
+      key,
+      data,
+    );
+  }
+
+  /// Encrypts the given data to a hexadecimal string using the provided key.
+  ///
+  /// [key] - The key to use for encryption.
+  ///
+  /// [data] - The data to encrypt.
+  @override
+  String encryptToHex(Uint8List key, Uint8List data) {
+    return CryptographyServiceAbstract.instance.encryptToHex(
+      key,
+      data,
+    );
   }
 }
