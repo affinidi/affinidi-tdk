@@ -27,14 +27,12 @@ import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.givenThat;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
-
 import com.github.tomakehurst.wiremock.http.Fault;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
