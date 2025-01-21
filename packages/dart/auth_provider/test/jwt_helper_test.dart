@@ -1,8 +1,9 @@
+import 'dart:io';
+
 import 'package:affinidi_tdk_auth_provider/src/iam_client.dart';
 import 'package:affinidi_tdk_auth_provider/src/jwt_helper.dart';
 import 'package:test/test.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
-import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:mocktail/mocktail.dart';
 

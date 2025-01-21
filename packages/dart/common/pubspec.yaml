@@ -1,14 +1,12 @@
 name: affinidi_tdk_common
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: ^3.6.0
 
-# Add regular dependencies here.
-# dependencies:
-  # path: ^1.8.0
+resolution: workspace
 
 dev_dependencies:
   lints: ^5.0.0
