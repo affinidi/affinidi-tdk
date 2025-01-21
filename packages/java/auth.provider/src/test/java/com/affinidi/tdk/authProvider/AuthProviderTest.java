@@ -27,11 +27,15 @@ import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
+
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.givenThat;
 import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
+
+import com.github.tomakehurst.wiremock.http.Fault;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -58,7 +62,6 @@ public class AuthProviderTest {
     @Nested
     @DisplayName("fetchProjectScopedToken method")
     class FetchProjectScopedTokenTest {
-
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
@@ -170,16 +173,47 @@ public class AuthProviderTest {
         }
     }
 
+    @WireMockTest(proxyMode = true)
     @Nested
     @DisplayName("shouldRefreshToken method")
     class ShouldRefreshTokenTest {
         @Test
+        @DisplayName("given no project-token, then it returns true")
         void givenNoProjectToken_thenReturnsTrue() throws ConfigurationException {
+            // arrange
             AuthProvider provider = new AuthProvider.Configurations()
                     .projectId("test-project")
                     .tokenId("test-token")
                     .privateKey("test-key")
                     .build();
+
+            // act and assert
+            assertTrue(provider.shouldRefreshToken());
+        }
+
+        @Test
+        @DisplayName("given a valid project-token, when the api-key endpoint call fails, then it returns true")
+        void givenInvalidProjectToken_whenTheApiKeyEndpointCallFails_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
+                throws ConfigurationException, URISyntaxException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
+                    .withHost(equalTo(host))
+                    .willReturn(aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
+
+            // act
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey("test-key")
+                    .passphrase("")
+                    .build();
+            provider.setApiGatewayUrl(apiUrl);
+            provider.setProjectScopeToken("test-project-scope-token");
+
+            // assert
             assertTrue(provider.shouldRefreshToken());
         }
     }
