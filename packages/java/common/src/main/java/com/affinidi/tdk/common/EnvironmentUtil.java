@@ -1,134 +1,129 @@
-
 package com.affinidi.tdk.common;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
-* This class provides utility functions required to access environment specific
-* configurations. The environment can be specified in the .env file at the project
-* base using AFFINIDI_TDK_PROPERTY_NAME or NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as
-* dev, local or prod.
-* 
-*
-* @author Priyanka
-* 
-*/
-
+ * This class provides utility functions required to access environment specific
+ * configurations. The environment can be specified in the .env file at the
+ * project base using AFFINIDI_TDK_PROPERTY_NAME or
+ * NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as dev, local or prod.
+ *
+ *
+ * @author Priyanka
+ *
+ */
 public class EnvironmentUtil {
 
-    private static Dotenv properties;
-    private static Logger logger = Logger.getLogger(EnvironmentUtil.class.getName());
+    private static final Dotenv PROPERTIES = Dotenv.load();
+    private static final Logger LOGGER = Logger.getLogger(EnvironmentUtil.class.getName());
 
-    public static Dotenv getProperties(){
-        if(properties == null){
-            properties = Dotenv.load();
-        }
-        return properties;
+    public static Dotenv getProperties() {
+        return PROPERTIES;
     }
 
-    
-    /** 
-     * Returns the environment name as configured in the .env file
-     * In case no configuration is found, the default return is 
-     * production environment
-     * 
+    /**
+     * Returns the environment name as configured in the .env file In case no
+     * configuration is found, the default return is production environment
+     *
      * @return String
      */
-    public String getConfiguredEnvironment() {
+    public static String getConfiguredEnvironment() {
         String configuredEnvironment = null;
-        try{
+        try {
             if (getProperties() != null) {
                 configuredEnvironment = getProperties().get(Environment.AFFINIDI_TDK_PROPERTY_NAME);
                 if (configuredEnvironment == null) {
                     configuredEnvironment = getProperties().get(Environment.NEXT_AFFINIDI_TDK_PROPERTY_NAME);
                 }
             }
-        }catch(Exception exception){
-            logger.severe("Could not read .env file for TDK environment configuration");
+        } catch (Exception exception) {
+            LOGGER.severe("Could not read .env file for TDK environment configuration");
         }
-        
+
         if (configuredEnvironment == null) {
-            logger.severe("Could not find environment details for "+configuredEnvironment+". Defaulting to production");
+            LOGGER.log(Level.SEVERE, "Could not find environment details for {0}. Defaulting to production", configuredEnvironment);
             configuredEnvironment = Environment.PRODUCTION.environmentName;
         }
         return configuredEnvironment;
     }
 
-    
-    /** 
+    /**
      * Return the default region name
-     * 
+     *
      * @return String
      */
-    public String getDefaultRegion() {
+    public static String getDefaultRegion() {
         return Environment.DEFAULT_REGION;
     }
 
-    
-    /** 
+    /**
      * Returns the IOT url string for the configured environment
-     * 
+     *
      * @return String
      */
-    public String getIotUrlForEnvironment()  {
+    public static String getIotUrlForEnvironment() {
         return getEnvironmentDetail().iotUrl;
     }
 
-    /** 
+    /**
      * Returns the elements auth token url string for the configured environment
-     * 
+     *
      * @return String
      */
-    public String getElementAuthTokenUrlForEnvironment() {
+    public static String getElementAuthTokenUrlForEnvironment() {
         return getEnvironmentDetail().elementsAuthTokenUrl;
     }
 
-    /** 
+    /**
      * Returns the vault URL for the configured environment
-     * 
+     *
      * @return String
      */
-    public String getVaultUrlForEnvironment()  {
+    public static String getVaultUrlForEnvironment() {
         return getEnvironmentDetail().vaultUrl;
     }
 
-    /** 
+    /**
      * @return String
-     */ 
-    public String getApiGatewayUrlForEnvironment() {
+     */
+    public static String getApiGatewayUrlForEnvironment() {
         return getEnvironmentDetail().apiGatewayUrl;
     }
 
-    /** 
+    /**
      * @return String
-     */ 
-    public String getValueFromEnvConfig(String propertyName) {
+     */
+    public static String getValueFromEnvConfig(String propertyName) {
         String propertyValue = null;
-        try{
+        try {
             propertyValue = getProperties().get(propertyName);
-        }catch(Exception exception){
-            logger.severe("Could not read .env file for "+propertyName);
+        } catch (Exception exception) {
+            LOGGER.log(Level.SEVERE, "Could not read .env file for {0}", propertyName);
         }
         return propertyValue;
     }
 
-    /** 
+    /**
      * Returns the APi gateway URL for the configured environment
-     * 
+     *
      * @return String
      */
-    private Environment getEnvironmentDetail() {
+    static Environment getEnvironmentDetail() {
+        System.out.println("XXX");
 
-        String envName = getConfiguredEnvironment();
-        Environment envDetail = (envName != null) ? Environment.getEnvSpecificDetails(envName) : null;
+        final String envName = getConfiguredEnvironment();
+        final Environment envDetail = (envName != null) ? Environment.getEnvSpecificDetails(envName) : null;
 
-        if (envDetail == null) {
-            logger.severe("Could not find environment details for the specified name " + envName+". Hence defaulting to production");
-            envDetail = Environment.getEnvSpecificDetails(Environment.PRODUCTION.environmentName);
+        if (envDetail != null) {
+            return envDetail;
         }
-        return envDetail;
+        LOGGER.log(Level.SEVERE, "Could not find environment details for the specified name {0}. Hence defaulting to production", envName);
+        return Environment.getEnvSpecificDetails(Environment.PRODUCTION.environmentName);
     }
 }
 
@@ -158,6 +153,7 @@ enum Environment {
     }
 
     private static final Map<String, Environment> EnvironmentMap = new HashMap<>();
+
     static {
         for (Environment env : values()) {
             EnvironmentMap.put(env.environmentName, env);
