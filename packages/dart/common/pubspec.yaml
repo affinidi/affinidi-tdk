@@ -1,5 +1,5 @@
 name: affinidi_tdk_common
-description: A starting point for Dart libraries or applications.
+description: Common package for Affinidi TDK
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

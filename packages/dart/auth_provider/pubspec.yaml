@@ -1,5 +1,5 @@
 name: affinidi_tdk_auth_provider
-description: A starting point for Dart libraries or applications.
+description: Provider of project scoped token
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 
