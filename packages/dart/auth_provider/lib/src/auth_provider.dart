@@ -1,8 +1,10 @@
 import 'dart:convert';
-import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
+
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
+
 import 'iam_client.dart';
 import 'jwt_helper.dart';
 

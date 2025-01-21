@@ -1,10 +1,12 @@
-name: affinidi_cryptography_service
+name: affinidi_tdk_cryptography
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: ^3.6.0
+
+resolution: workspace
 
 dependencies:
   bs58: ^1.0.2

@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:affinidi_cryptography_service/src/models/verify_jwt_result.dart';
+import 'models/verify_jwt_result.dart';
 
 abstract interface class CryptographyServiceInterface {
   String getSha256HexFromString(String input);

@@ -3,21 +3,22 @@
 import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
-import 'package:affinidi_cryptography_service/src/affinidi_cryptography_service_interface.dart';
-import 'package:affinidi_cryptography_service/src/models/verify_jwt_result.dart';
+
 import 'package:crypto/crypto.dart'
     as crypto; // TODO: consider delete in favor of package:cryptography
 import 'package:cryptography/cryptography.dart' as cryptography;
 import 'package:cryptography/cryptography.dart';
 import 'package:convert/convert.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-
 import 'package:bs58/bs58.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:pointycastle/ecc/ecc_fp.dart' as ecc_fp;
 import 'package:pointycastle/pointycastle.dart' as pc;
 import "package:pointycastle/export.dart" as pce;
 import 'package:secp256k1/secp256k1.dart' as secp256k1;
+
+import 'cryptography_interface.dart';
+import 'models/verify_jwt_result.dart';
 
 class CryptographyService implements CryptographyServiceInterface {
   final _aes256NonceLength = 16;
