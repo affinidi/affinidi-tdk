@@ -1,6 +1,7 @@
 package com.affinidi.tdk.authProvider;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,14 +27,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * This class provides utility functions in order to generate
- * projectScopeToken required to call Affinidi Services. 
- * 
+ * This class provides utility functions in order to generate projectScopeToken
+ * required to call Affinidi Services.
+ *
  *
  * @author Priyanka
- * 
+ *
  */
 public class AuthProvider {
+
+    /**
+     * Gson is thread safe.
+     */
+    private static final Gson GSON = new Gson();
 
     private final String projectId;
     private final String tokenId;
@@ -51,165 +57,119 @@ public class AuthProvider {
         this.privateKey = configurations.privateKey;
         this.keyId = configurations.keyId;
         this.passphrase = configurations.passphrase;
-        EnvironmentUtil eUtil = new EnvironmentUtil();
-        this.apiGatewayUrl = eUtil.getApiGatewayUrlForEnvironment();
-        this.tokenEndPoint = eUtil.getElementAuthTokenUrlForEnvironment();
+        this.apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment();
+        this.tokenEndPoint = EnvironmentUtil.getElementAuthTokenUrlForEnvironment();
     }
 
     /**
      * This method identifies if the current AuthProvider has a valid existing
-     * projectScopeToken or not. This helps to reuse the valid tokens without always
-     * generating a new.
-     * 
-     * The validation involves verifying token's signature against the
-     * public (verification) key; validating token's expiration or malformation.
-     * 
+     * projectScopeToken or not. This helps to reuse the valid tokens without
+     * always generating a new.
+     *
+     * The validation involves verifying token's signature against the public
+     * (verification) key; validating token's expiration or malformation.
+     *
      * @return boolean
      */
     public boolean shouldRefreshToken() {
-        if (this.projectScopeToken == null) {
-            return true;
-        }
-        return !(JwtUtil.validProjectTokenPresent(this.projectScopeToken, this.apiGatewayUrl));
+        return (this.projectScopeToken == null) || !(JwtUtil.validProjectTokenPresent(this.projectScopeToken, this.apiGatewayUrl));
     }
 
     /**
-     * This method generates a projectScopeToken required to call
-     * Affinidi services.
-     * 
-     * In case there is an existing projectScopeToken in the
-     * authProvider instance; it is first validated and a new one is
-     * generated only if needed.
-     * 
-     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)}
-     * for validation details
-     * 
+     * This method generates a projectScopeToken required to call Affinidi
+     * services.
+     *
+     * In case there is an existing projectScopeToken in the authProvider
+     * instance; it is first validated and a new one is generated only if
+     * needed.
+     *
+     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)} for
+     * validation details
+     *
      * @return String
-     * @throws PSTGenerationException incase access_token generation has issues or
-     *                                projectScopeToken end point
+     * @throws PSTGenerationException incase access_token generation has issues
+     * or projectScopeToken end point
      */
     public String fetchProjectScopedToken() throws PSTGenerationException {
-        boolean tokenFetchRequired = shouldRefreshToken();
-
-        if (tokenFetchRequired) {
+        if (shouldRefreshToken()) {
             this.projectScopeToken = getProjectScopedToken();
         }
         return this.projectScopeToken;
     }
 
     /**
-     * This method generates a user-access-token which is required
-     * as an API authorization token.
-     * 
+     * This method generates a user-access-token which is required as an API
+     * authorization token.
+     *
      * @return String
-     * @throws AccessTokenGenerationException in case the acceess token could not be
-     *                                        generated
+     * @throws AccessTokenGenerationException in case the access token could not
+     * be generated
      */
     public String getUserAccessToken() throws AccessTokenGenerationException {
-        String userAccessToken = null;
-
         try {
-            String signedToken = JwtUtil.signPayload(this.tokenId, this.tokenEndPoint, this.privateKey, this.passphrase,
+            final String signedToken = JwtUtil.signPayload(this.tokenId, this.tokenEndPoint, this.privateKey, this.passphrase,
                     this.keyId);
-
             if (signedToken == null) {
                 throw new JwtGenerationException("Could not generate signed JWT from the configurations ");
             }
             final HttpPost httpPost = new HttpPost(this.getTokenEndPoint());
-            httpPost.setHeader(AuthProviderConstants.contentTypeHeader,
-                    AuthProviderConstants.applicationUrlEncodedContentType);
+            httpPost.setHeader(AuthProviderConstants.CONTENT_TYPE_HEADER,
+                    AuthProviderConstants.APPLICATION_URL_ENCODED_CONTENT_TYPE);
 
-            final List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("grant_type", "client_credentials"));
-            params.add(new BasicNameValuePair("scope", "openid"));
-            params.add(new BasicNameValuePair("client_assertion_type",
-                    "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"));
-            params.add(new BasicNameValuePair("client_assertion", signedToken));
-            params.add(new BasicNameValuePair("client_id", this.tokenId));
+            final List<NameValuePair> params = Arrays.asList(
+                    new BasicNameValuePair("grant_type", "client_credentials"),
+                    new BasicNameValuePair("scope", "openid"),
+                    new BasicNameValuePair("client_assertion_type",
+                            "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),
+                    new BasicNameValuePair("client_assertion", signedToken),
+                    new BasicNameValuePair("client_id", this.tokenId));
             httpPost.setEntity(new UrlEncodedFormEntity(params));
 
-            CloseableHttpClient client = HttpClients.createSystem();
-            userAccessToken = client.execute(httpPost,
-                    response -> {
-                        if (response.getCode() >= 200 && response.getCode() < 300) {
-                            HttpEntity responseEntity = response.getEntity();
-
-                            JsonElement responseAsJson = new Gson().fromJson(EntityUtils.toString(responseEntity),
-                                    JsonElement.class);
-                            JsonObject responseObject = responseAsJson.isJsonObject() ? responseAsJson.getAsJsonObject()
-                                    : null;
-                            if (responseObject != null && responseObject.get("access_token") != null) {
-                                return responseObject.get("access_token").getAsString();
-                            }
-                        }
-                        return null;
-                    });
+            String userAccessToken = executeHttp(httpPost, "access_token");
             if (userAccessToken == null) {
                 throw new AccessTokenGenerationException(
                         "getUserAccessToken : Could not retrieve access_token from the token end point");
             }
-        } catch (JwtGenerationException jwtGenerationException) {
+            return userAccessToken;
+        } catch (JwtGenerationException | AccessTokenGenerationException | IOException jwtGenerationException) {
             throw new AccessTokenGenerationException(jwtGenerationException.getMessage());
-        } catch (Exception exception) {
-            throw new AccessTokenGenerationException(exception.getMessage());
         }
-        return userAccessToken;
     }
 
     /**
-     * This method generates a projectScopeToken for the configuration
-     * values associated to the AuthProvider
-     * 
+     * This method generates a projectScopeToken for the configuration values
+     * associated to the AuthProvider.
+     *
      * @return String
      * @throws PSTGenerationException
      */
     private String getProjectScopedToken() throws PSTGenerationException {
-        String projectScopeToken = null;
         try {
             String userAccessToken = getUserAccessToken();
 
-            final HttpPost httpPost = new HttpPost(apiGatewayUrl + AuthProviderConstants.projectScopeTokenApiPath);
+            final HttpPost httpPost = new HttpPost(apiGatewayUrl + AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH);
 
-            final List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("projectId", projectId));
+            final List<NameValuePair> params = Arrays.asList(
+                    new BasicNameValuePair("projectId", projectId));
             httpPost.setEntity(new UrlEncodedFormEntity(params));
 
             httpPost.setHeader("Authorization", "Bearer " + userAccessToken);
             httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
 
-            CloseableHttpClient client = HttpClients.createSystem();
-            projectScopeToken = client.execute(httpPost,
-                    response -> {
-                        if (response.getCode() >= 200 && response.getCode() < 300) {
-                            HttpEntity responseEntity = response.getEntity();
-
-                            JsonElement responseAsJson = new Gson().fromJson(EntityUtils.toString(responseEntity),
-                                    JsonElement.class);
-                            JsonObject responseObject = responseAsJson.isJsonObject() ? responseAsJson.getAsJsonObject()
-                                    : null;
-                            if (responseObject != null && responseObject.get("accessToken") != null) {
-                                return responseObject.get("accessToken").getAsString();
-                            }
-
-                        }
-                        return null;
-                    });
-            if (projectScopeToken == null) {
+            String token = executeHttp(httpPost, "accessToken");
+            if (token == null) {
                 throw new PSTGenerationException("getProjectScopedToken :  Could not retrieve accessToken from "
-                        + (apiGatewayUrl + AuthProviderConstants.projectScopeTokenApiPath));
+                        + (apiGatewayUrl + AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH));
             }
-        } catch (AccessTokenGenerationException accessTokenGenerationException) {
-            throw new PSTGenerationException(accessTokenGenerationException.getMessage());
-        } catch (Exception exception) {
-            throw new PSTGenerationException(exception.getMessage());
+            return token;
+        } catch (AccessTokenGenerationException | PSTGenerationException | IOException ex) {
+            throw new PSTGenerationException(ex.getMessage());
         }
-
-        return projectScopeToken;
     }
 
     /**
-     * This method generates a signed jwt for an iota session
-     * 
+     * This method generates a signed jwt for an iota session.
+     *
      * @param iotaConfigId
      * @param did
      * @param iotaSessionId
@@ -227,14 +187,32 @@ public class AuthProvider {
         return new IotaJwtOutput(iotaSessionID, iotaJwt);
     }
 
+    private String executeHttp(final HttpPost httpPost, String memberName) throws IOException {
+        try (CloseableHttpClient client = HttpClients.createSystem()) {
+            return client.execute(httpPost,
+                    response -> {
+                        if (response.getCode() >= 200 && response.getCode() < 300) {
+                            final HttpEntity responseEntity = response.getEntity();
+                            final JsonElement responseAsJson = GSON.fromJson(EntityUtils.toString(responseEntity),
+                                    JsonElement.class);
+                            final JsonObject responseObject = responseAsJson.isJsonObject() ? responseAsJson.getAsJsonObject()
+                            : null;
+                            if (responseObject != null && responseObject.get(memberName) != null) {
+                                return responseObject.get(memberName).getAsString();
+                            }
+                        }
+                        return null;
+                    });
+        }
+    }
+
     /**
-     * This class provides a way to pass configurations to the AuthProvider
-     * It also helps to build an instance of AuthProvider which uses
-     * these configurations
-     * 
-     * 
+     * This class provides a way to pass configurations to the AuthProvider It
+     * also helps to build an instance of AuthProvider which uses these
+     * configurations.
      */
     public static class Configurations {
+
         private String projectId;
         private String tokenId;
         private String privateKey;
@@ -267,9 +245,9 @@ public class AuthProvider {
         }
 
         /**
-         * This method builds an instance of AuthProvider with the
-         * values passed through {@link Configuration}
-         * 
+         * This method builds an instance of AuthProvider with the values passed
+         * through {@link Configuration}.
+         *
          * @return
          * @throws ConfigurationException
          */
@@ -282,9 +260,9 @@ public class AuthProvider {
         }
 
         /**
-         * This method builds an instance of AuthProvider with the
-         * configuration values present in the .env file
-         * 
+         * This method builds an instance of AuthProvider with the configuration
+         * values present in the .env file.
+         *
          * @return
          * @throws ConfigurationException
          */
@@ -292,16 +270,15 @@ public class AuthProvider {
 
             if (this.projectId != null || this.privateKey != null || this.tokenId != null || this.passphrase != null
                     || this.privateKey != null) {
-                throw new ConfigurationException("Please do not pass configurations values while using buildWithEnv. " +
-                        " These values will picked from .env. Alternatively you may use build() in order to explicitly pass values");
+                throw new ConfigurationException("Please do not pass configurations values while using buildWithEnv. "
+                        + " These values will picked from .env. Alternatively you may use build() in order to explicitly pass values");
             }
 
-            EnvironmentUtil envUtil = new EnvironmentUtil();
-            this.keyId = envUtil.getValueFromEnvConfig(AuthProviderConstants.keyIdPropertyNameinEnv);
-            this.projectId = envUtil.getValueFromEnvConfig(AuthProviderConstants.projectIdPropertyNameinEnv);
-            this.passphrase = envUtil.getValueFromEnvConfig(AuthProviderConstants.passphrasePropertyNameinEnv);
-            this.tokenId = envUtil.getValueFromEnvConfig(AuthProviderConstants.tokenIdPropertyNameinEnv);
-            this.privateKey = envUtil.getValueFromEnvConfig(AuthProviderConstants.privateKeyPropertyNameinEnv);
+            this.keyId = EnvironmentUtil.getValueFromEnvConfig(AuthProviderConstants.KEY_ID_PROPERTY_NAME_IN_ENV);
+            this.projectId = EnvironmentUtil.getValueFromEnvConfig(AuthProviderConstants.PROJECT_ID_PROPERTY_NAME_IN_ENV);
+            this.passphrase = EnvironmentUtil.getValueFromEnvConfig(AuthProviderConstants.PASSPHRASE_PROPERTY_NAME_IN_ENV);
+            this.tokenId = EnvironmentUtil.getValueFromEnvConfig(AuthProviderConstants.TOKEN_ID_PROPERTY_NAME_IN_ENV);
+            this.privateKey = EnvironmentUtil.getValueFromEnvConfig(AuthProviderConstants.PRIVATE_KEY_PROPERTY_NAME_IN_ENV);
 
             if (this.projectId == null || this.privateKey == null || this.tokenId == null) {
                 throw new ConfigurationException(

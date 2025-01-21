@@ -1,8 +1,8 @@
 package com.affinidi.tdk.authProvider.exception;
 
-public class ConfigurationException extends Exception{
+public class ConfigurationException extends GenericAuthProviderException {
+
     public ConfigurationException(String errorMessage) {
         super(errorMessage);
     }
-
 }
