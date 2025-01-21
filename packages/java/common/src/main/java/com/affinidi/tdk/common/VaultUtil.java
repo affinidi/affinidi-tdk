@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.UriBuilder;
  * @author Priyanka
  *
  */
-public class VaultUtil {
+public final class VaultUtil {
 
     static final String VAULT_SHARE_PATH = "/login";
     static final String VAULT_CLAIM_PATH = "/claim";
@@ -31,7 +31,7 @@ public class VaultUtil {
      * @param credentialOfferUri
      * @return String
      */
-    public String buildClaimLink(String credentialOfferUri) {
+    public static String buildClaimLink(String credentialOfferUri) {
         String webVaultUrl = EnvironmentUtil.getVaultUrlForEnvironment();
 
         if (credentialOfferUri == null || credentialOfferUri.equals("")) {
@@ -52,7 +52,7 @@ public class VaultUtil {
      * @param clientId
      * @return String
      */
-    public String buildShareLink(String request, String clientId) {
+    public static String buildShareLink(String request, String clientId) {
 
         String webVaultUrl = EnvironmentUtil.getVaultUrlForEnvironment();
         webVaultUrl = String.join("", webVaultUrl, VAULT_SHARE_PATH);

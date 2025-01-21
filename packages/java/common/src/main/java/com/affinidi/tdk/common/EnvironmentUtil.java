@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvBuilder;
 
 /**
  * This class provides utility functions required to access environment specific
@@ -19,7 +20,7 @@ import io.github.cdimascio.dotenv.Dotenv;
  */
 public class EnvironmentUtil {
 
-    private static final Dotenv PROPERTIES = Dotenv.load();
+    private static final Dotenv PROPERTIES = new DotenvBuilder().ignoreIfMissing().load();
     private static final Logger LOGGER = Logger.getLogger(EnvironmentUtil.class.getName());
 
     public static Dotenv getProperties() {
