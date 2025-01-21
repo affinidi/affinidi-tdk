@@ -1,27 +1,25 @@
 package com.affinidi.tdk.authProvider;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.givenThat;
-import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
-import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
-import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 import com.affinidi.tdk.authProvider.exception.ConfigurationException;
 import com.affinidi.tdk.authProvider.exception.InvalidPublicKeyException;
@@ -29,11 +27,21 @@ import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.givenThat;
+import static com.github.tomakehurst.wiremock.client.WireMock.okJson;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 public class AuthProviderTest {
+
     @Nested
     @DisplayName("setting values to the authProvider configurations")
+    @SuppressWarnings("unused")
     class ConfigurationsTest {
+
         @Test
         void testAuthProviderConfiguration() throws Exception {
             AuthProvider provider = new AuthProvider.Configurations()
@@ -52,11 +60,13 @@ public class AuthProviderTest {
     @WireMockTest(proxyMode = true)
     @Nested
     @DisplayName("fetchProjectScopedToken method")
+    @SuppressWarnings("unused")
     class FetchProjectScopedTokenTest {
+
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
-        @ValueSource(strings = { "complicated-word" })
+        @ValueSource(strings = {"complicated-word"})
         void givenInvalidPrivateKey_thenThrows(String phrase) {
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
                 AuthProvider provider = new AuthProvider.Configurations()
@@ -76,26 +86,24 @@ public class AuthProviderTest {
         void givenInvalidApiGatewayUrl_thenThrows() {
             // arrange
             String mockErrorMessage = "mock-exception-message";
-            MockedStatic<JwtUtil> utilsMock = Mockito.mockStatic(JwtUtil.class);
-            utilsMock.when(() -> JwtUtil.fetchPublicKey(any())).thenThrow(InvalidPublicKeyException.class);
-            utilsMock.when(() -> JwtUtil.signPayload(any(), any(), any(), any(), any()))
-                    .thenThrow(new JwtGenerationException(mockErrorMessage));
+            try (MockedStatic<JwtUtil> utilsMock = Mockito.mockStatic(JwtUtil.class)) {
+                utilsMock.when(() -> JwtUtil.fetchPublicKey(any())).thenThrow(InvalidPublicKeyException.class);
+                utilsMock.when(() -> JwtUtil.signPayload(any(), any(), any(), any(), any()))
+                        .thenThrow(new JwtGenerationException(mockErrorMessage));
 
-            // act
-            Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations()
-                        .projectId("test-project")
-                        .tokenId("test-token")
-                        .privateKey("test-key")
-                        .build();
-                provider.fetchProjectScopedToken();
-            });
+                // act
+                Exception exception = assertThrows(PSTGenerationException.class, () -> {
+                    AuthProvider provider = new AuthProvider.Configurations()
+                            .projectId("test-project")
+                            .tokenId("test-token")
+                            .privateKey("test-key")
+                            .build();
+                    provider.fetchProjectScopedToken();
+                });
 
-            // assert
-            assertEquals(mockErrorMessage, exception.getMessage());
-
-            // cleanup
-            utilsMock.close();
+                // assert
+                assertEquals(mockErrorMessage, exception.getMessage());
+            }
         }
 
         @Test
@@ -109,7 +117,7 @@ public class AuthProviderTest {
             String apiKeyJson = new String(
                     Files.readAllBytes(Paths.get(
                             "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
-            givenThat(get(AuthProviderConstants.publicKeyPath)
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
                     .withHost(equalTo(host))
                     .willReturn(okJson(apiKeyJson)));
 
@@ -128,11 +136,11 @@ public class AuthProviderTest {
 
             // assert
             assertTrue(exception.getMessage()
-                    .startsWith(AuthProviderConstants.couldNotDerivePrivateKeyErrorMsg + " Exception : "));
+                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG + " Exception : "));
         }
 
         @Test
-        @DisplayName("happy path: given a validprivate-key, when all the endponts succesfully returns 200, then it returns a JWT")
+        @DisplayName("happy path: given a valid private-key, when all the endponts succesfully returns 200, then it returns a JWT")
         void givenValidApiKeyResponse_AndSuccessfulApiCalls_thenReturnsAJWT(WireMockRuntimeInfo wmRuntimeInfo)
                 throws IOException, URISyntaxException, ConfigurationException {
             // arrange
@@ -154,7 +162,7 @@ public class AuthProviderTest {
             givenThat(post("/auth-token")
                     .withHost(equalTo(host))
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
-            givenThat(post(AuthProviderConstants.projectScopeTokenApiPath).withHost(equalTo(host))
+            givenThat(post(AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH).withHost(equalTo(host))
                     .willReturn(okJson("{accessToken: \"some-project-scope-token\"}")));
 
             // act and assert

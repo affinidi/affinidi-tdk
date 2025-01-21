@@ -14,9 +14,7 @@ import io.github.cdimascio.dotenv.DotenvBuilder;
  * project base using AFFINIDI_TDK_PROPERTY_NAME or
  * NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as dev, local or prod.
  *
- *
  * @author Priyanka
- *
  */
 public class EnvironmentUtil {
 
@@ -29,7 +27,7 @@ public class EnvironmentUtil {
 
     /**
      * Returns the environment name as configured in the .env file In case no
-     * configuration is found, the default return is production environment
+     * configuration is found, the default return is production environment.
      *
      * @return String
      */
@@ -54,7 +52,7 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Return the default region name
+     * Return the default region name.
      *
      * @return String
      */
@@ -63,7 +61,7 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the IOT url string for the configured environment
+     * Returns the IOT url string for the configured environment.
      *
      * @return String
      */
@@ -72,7 +70,8 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the elements auth token url string for the configured environment
+     * Returns the elements auth token url string for the configured
+     * environment.
      *
      * @return String
      */
@@ -81,7 +80,7 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the vault URL for the configured environment
+     * Returns the vault URL for the configured environment.
      *
      * @return String
      */
@@ -100,13 +99,12 @@ public class EnvironmentUtil {
      * @return String
      */
     public static String getValueFromEnvConfig(String propertyName) {
-        String propertyValue = null;
         try {
-            propertyValue = getProperties().get(propertyName);
+            return getProperties().get(propertyName);
         } catch (Exception exception) {
             LOGGER.log(Level.SEVERE, "Could not read .env file for {0}", propertyName);
         }
-        return propertyValue;
+        return null;
     }
 
     /**
@@ -115,8 +113,6 @@ public class EnvironmentUtil {
      * @return String
      */
     static Environment getEnvironmentDetail() {
-        System.out.println("XXX");
-
         final String envName = getConfiguredEnvironment();
         final Environment envDetail = (envName != null) ? Environment.getEnvSpecificDetails(envName) : null;
 

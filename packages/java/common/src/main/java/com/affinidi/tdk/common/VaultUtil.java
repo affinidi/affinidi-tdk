@@ -8,11 +8,10 @@ import jakarta.ws.rs.core.UriBuilder;
 
 /**
  * This class provides utility functions required to create vault specific
- * links. Refer {@EnvironmentUtil} for more information
+ * links. Refer {@EnvironmentUtil} for more information.
  *
  *
  * @author Priyanka
- *
  */
 public final class VaultUtil {
 
@@ -26,7 +25,7 @@ public final class VaultUtil {
 
     /**
      * Returns the credential offer claim link specific to the configured
-     * environment
+     * environment.
      *
      * @param credentialOfferUri
      * @return String
@@ -46,7 +45,7 @@ public final class VaultUtil {
 
     /**
      * Returns the vault share link given request and a client id, specific to
-     * the configured environment
+     * the configured environment.
      *
      * @param request
      * @param clientId
@@ -60,7 +59,5 @@ public final class VaultUtil {
         URI shareUri = UriBuilder.fromUri(webVaultUrl).
                 queryParam(SHARE_REQUEST_PARAM, request).queryParam(SHARE_CLIENT_PARAM, clientId).build();
         return shareUri.toString();
-
     }
-
 }
