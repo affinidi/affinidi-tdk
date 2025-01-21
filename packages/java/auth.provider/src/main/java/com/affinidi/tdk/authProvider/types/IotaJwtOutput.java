@@ -1,8 +1,7 @@
 package com.affinidi.tdk.authProvider.types;
 
 /**
- * This class represents the output returned when
- * {@link AuthProvider#signIotaJwt()} is invoked
+ * This class represents the output returned when {@link AuthProvider#signIotaJwt()} is invoked
  *
  * @author Priyanka
  *
