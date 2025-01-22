@@ -7,7 +7,7 @@
   <packaging>jar</packaging>
   <groupId>com.affinidi.tdk</groupId>
   <artifactId>auth.provider</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <name>auth.provider</name>
   <url>https://github.com/affinidi/affinidi-tdk</url>
   <licenses>
@@ -21,7 +21,7 @@
   <developers>
     <developer>
       <name>Affinidi</name>
-      <email>...</email>
+      <email>info@affinidi.com</email>
       <organization>Affinidi</organization>
       <organizationUrl>https://affinidi.com</organizationUrl>
     </developer>
@@ -36,7 +36,8 @@
     <junit-version>5.11.0</junit-version>
     <cdimascio-version>2.2.0</cdimascio-version>
     <jersey-version>3.1.7</jersey-version>
-    <affinidi-common-version>1.0</affinidi-common-version>
+    <!-- TODO: use modules resoluition for local developement-->
+    <affinidi-common-version>1.0.0</affinidi-common-version>
     <jsonwebtoken-version>0.12.6</jsonwebtoken-version>
     <mockito-version>3.12.4</mockito-version>
     <wiremock-version>3.10.0</wiremock-version>
