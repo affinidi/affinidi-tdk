@@ -10,6 +10,7 @@
     <version>${revision}</version>
     <name>tdk</name>
     <url>https://github.com/affinidi/affinidi-tdk</url>
+    <description>Affinidi TDK Java pom package</description>
     <licenses>
         <license>
             <name>Apache-2.0</name>

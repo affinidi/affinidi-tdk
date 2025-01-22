@@ -13,6 +13,7 @@
     <groupId>com.affinidi.tdk</groupId>
     <artifactId>auth.provider</artifactId>
     <name>auth.provider</name>
+    <description>Affinidi TDK Java auth.provider package</description>
 
     <dependencies>
         <dependency>
