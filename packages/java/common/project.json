@@ -1,0 +1,39 @@
+{
+  "name": "@affinidi-tdk/common-java",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "{projectRoot}",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "mvn --no-transfer-progress --batch-mode clean package install"
+      }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": false,
+        "git": false,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/exec",
+            {
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "mvn --no-transfer-progress --batch-mode versions:set -DnewVersion=${nextRelease.version}",
+              "publishCmd": "mvn --no-transfer-progress --batch-mode clean deploy",
+              "verifyConditionsCmd": "mvn --version"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": ["lang:java", "kind:client"]
+}
