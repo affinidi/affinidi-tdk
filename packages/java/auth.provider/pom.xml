@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.affinidi.tdk</groupId>
-        <artifactId>tdk</artifactId>
+        <artifactId>java</artifactId>
         <version>${revision}</version>
     </parent>
     <packaging>jar</packaging>

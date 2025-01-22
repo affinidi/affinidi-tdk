@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/tdk",
+  "name": "@affinidi-tdk/java",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
