@@ -1,0 +1,10 @@
+name: _
+publish_to: none
+environment:
+  sdk: ^3.6.0
+workspace:
+  - packages/dart/common
+  - packages/dart/cryptography
+  - packages/dart/auth_provider
+  - packages/dart/consumer_auth_provider
+  - tests/integration/dart
