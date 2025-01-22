@@ -48,7 +48,6 @@
         <maven-resources-plugin-version>3.1.0</maven-resources-plugin-version>
         <maven-compiler-plugin-version>3.8.0</maven-compiler-plugin-version>
         <maven-surefire-plugin-version>3.5.2</maven-surefire-plugin-version>
-        <artifactId>maven-surefire-plugin</artifactId>
         <maven-failsafe-plugin-version>3.5.0</maven-failsafe-plugin-version>
         <maven-jar-plugin-version>3.0.2</maven-jar-plugin-version>
         <maven-install-plugin-version>2.5.2</maven-install-plugin-version>
