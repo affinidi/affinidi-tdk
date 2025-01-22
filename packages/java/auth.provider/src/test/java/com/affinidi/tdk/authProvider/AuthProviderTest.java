@@ -21,6 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import com.affinidi.tdk.authProvider.exception.AccessTokenGenerationException;
 import com.affinidi.tdk.authProvider.exception.ConfigurationException;
 import com.affinidi.tdk.authProvider.exception.InvalidPublicKeyException;
 import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
@@ -208,9 +209,116 @@ public class AuthProviderTest {
         }
     }
 
-    @Test
-    void testGetUserAccessToken() {
+    @WireMockTest(proxyMode = true)
+    @Nested
+    @DisplayName("getUserAccessToken method")
+    class GetUserAccessTokenTest {
+        @Test
+        @DisplayName("given an invalid private-key, then it throws")
+        void givenInvalidPrivateKey_thenThrows() {
+            Exception exception = assertThrows(AccessTokenGenerationException.class, () -> {
+                AuthProvider provider = new AuthProvider.Configurations()
+                        .projectId("test-project")
+                        .tokenId("test-token")
+                        .privateKey("invalid-key")
+                        .passphrase("")
+                        .build();
+                provider.getUserAccessToken();
+            });
 
+            assertTrue(exception.getMessage()
+                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
+        }
+
+        @Test
+        @DisplayName("given a valid private-key, when the token-endpoint call fails, then it throws")
+        void givenValidPrivateKey_WhenTheTokenEndpointCallFails_thenThrows(WireMockRuntimeInfo wmRuntimeInfo)
+                throws URISyntaxException, IOException, ConfigurationException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            String fakeTokenUrl = apiUrl + "/auth-token";
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
+            givenThat(post("/auth-token")
+                    .withHost(equalTo(host))
+                    // .willReturn(aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
+                    .willReturn(aResponse().withStatus(400)));
+            Exception exception = assertThrows(AccessTokenGenerationException.class, () -> {
+                AuthProvider provider = new AuthProvider.Configurations()
+                        .projectId("test-project")
+                        .tokenId("test-token")
+                        .privateKey(testPrivateKey)
+                        .passphrase("")
+                        .build();
+                provider.setTokenEndPoint(fakeTokenUrl);
+                provider.getUserAccessToken();
+            });
+
+            // assert
+            assertTrue(exception.getMessage()
+                    .contains("Could not retrieve access_token from the token end point"));
+        }
+
+        @Test
+        @DisplayName("given a valid private-key, when the token-endpoint call succeeds, then it returns a JWT")
+        void givenValidPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT(
+                WireMockRuntimeInfo wmRuntimeInfo)
+                throws URISyntaxException, IOException, ConfigurationException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            String fakeTokenUrl = apiUrl + "/auth-token";
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey(testPrivateKey)
+                    .passphrase("")
+                    .build();
+            provider.setTokenEndPoint(fakeTokenUrl);
+            givenThat(post("/auth-token")
+                    .withHost(equalTo(host))
+                    .willReturn(okJson("{access_token: \"some-access-token\"}")));
+
+            // act and assert
+            String token = assertDoesNotThrow(() -> provider.getUserAccessToken());
+            assertEquals("some-access-token", token);
+        }
+
+        @Test
+        @DisplayName("given a valid encrypted private-key, when the token-endpoint call succeeds, then it returns a JWT")
+        void givenValidEncryptedPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT(
+                WireMockRuntimeInfo wmRuntimeInfo)
+                throws URISyntaxException, IOException, ConfigurationException {
+            // arrange
+            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            URI uri = new URI(apiUrl);
+            String host = uri.getHost();
+            String fakeTokenUrl = apiUrl + "/auth-token";
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey(testPrivateKey)
+                    .passphrase("test-pass-phrase")
+                    .build();
+            provider.setTokenEndPoint(fakeTokenUrl);
+            givenThat(post("/auth-token")
+                    .withHost(equalTo(host))
+                    .willReturn(okJson("{access_token: \"some-access-token\"}")));
+
+            // act and assert
+            String token = assertDoesNotThrow(() -> provider.getUserAccessToken());
+            assertEquals("some-access-token", token);
+        }
     }
 
     @Test
