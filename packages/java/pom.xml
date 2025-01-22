@@ -18,6 +18,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>git@github.com:affinidi/affinidi-tdk.git</connection>
+        <developerConnection>git@github.com:affinidi/affinidi-tdk.git</developerConnection>
+        <url>https://github.com/affinidi/affinidi-tdk</url>
+    </scm>
+  
     <developers>
         <developer>
             <name>Affinidi</name>
@@ -42,6 +48,10 @@
         <wiremock-version>3.10.0</wiremock-version>
         <gson-version>2.10.1</gson-version>
         <jakarta-version>3.1.0</jakarta-version>
+        <maven-source-plugin-version>3.3.1</maven-source-plugin-version>
+        <central-publishing-maven-plugin-version>0.7.0</central-publishing-maven-plugin-version>
+        <maven-assembly-plugin-version>3.7.1</maven-assembly-plugin-version>
+        <maven-gpg-plugin-version>3.2.7</maven-gpg-plugin-version>
         <maven-clean-plugin-version>3.4.0</maven-clean-plugin-version>
         <maven-resources-plugin-version>3.3.1</maven-resources-plugin-version>
         <maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
@@ -143,6 +153,67 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>${central-publishing-maven-plugin-version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <publishingServerId>central</publishingServerId>
+                        <autoPublish>true</autoPublish>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin-version}</version>
+                    <configuration>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <archive>
+                        </archive>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin> 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                            <configuration>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <!-- clean lifecycle, see
                 https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
