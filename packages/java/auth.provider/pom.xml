@@ -10,6 +10,7 @@
   <version>1.0.0</version>
   <name>auth.provider</name>
   <url>https://github.com/affinidi/affinidi-tdk</url>
+  <description>Affinidi TDK auth provider package</description>
   <licenses>
     <license>
       <name>Apache-2.0</name>
@@ -18,6 +19,12 @@
     </license>
   </licenses>
 
+  <scm>
+    <connection>git@github.com:affinidi/affinidi-tdk.git</connection>
+    <developerConnection>git@github.com:affinidi/affinidi-tdk.git</developerConnection>
+    <url>https://github.com/affinidi/affinidi-tdk</url>
+  </scm>
+  
   <developers>
     <developer>
       <name>Affinidi</name>
@@ -121,13 +128,13 @@
 
   <build>
       <plugins>
-        <!-- clean lifecycle, see
+      <!-- clean lifecycle, see
         https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see
+      <!-- default lifecycle, jar packaging: see
         https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -141,6 +148,18 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.2.5</version>
+          <configuration>
+            <systemPropertyVariables>
+              <property>
+                <name>loggerPath</name>
+                <value>conf/log4j.properties</value>
+              </property>
+            </systemPropertyVariables>
+            <argLine>-Xms512m -Xmx1500m</argLine>
+            <parallel>methods</parallel>
+            <threadCount>10</threadCount>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
@@ -158,7 +177,7 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see
+      <!-- site lifecycle, see
         https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
@@ -168,6 +187,67 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+             <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.6.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                            <configuration>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
       </plugins>
   </build>
 </project>
