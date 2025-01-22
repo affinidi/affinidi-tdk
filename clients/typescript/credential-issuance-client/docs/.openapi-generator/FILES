@@ -56,8 +56,8 @@ Models/StartIssuanceInput_data_inner_metaData.md
 Models/StartIssuanceInput_data_inner_statusListDetails_inner.md
 Models/StartIssuanceResponse.md
 Models/SupportedCredentialMetadata.md
+Models/SupportedCredentialMetadataItemLogo.md
 Models/SupportedCredentialMetadata_display_inner.md
-Models/SupportedCredentialMetadata_display_inner_logo.md
 Models/UpdateIssuanceConfigInput.md
 Models/VcClaimedError.md
 Models/WellKnownOpenIdCredentialIssuerResponse.md

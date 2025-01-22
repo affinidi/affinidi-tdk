@@ -71,7 +71,7 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance
 import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
@@ -137,7 +137,7 @@ part 'serializers.g.dart';
   StartIssuanceResponse,
   SupportedCredentialMetadata,
   SupportedCredentialMetadataDisplayInner,
-  SupportedCredentialMetadataDisplayInnerLogo,
+  SupportedCredentialMetadataItemLogo,
   UpdateIssuanceConfigInput,
   VcClaimedError,
   WellKnownOpenIdCredentialIssuerResponse,

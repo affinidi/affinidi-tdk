@@ -1,4 +1,4 @@
-# SupportedCredentialMetadataDisplayInnerLogo
+# SupportedCredentialMetadataItemLogo
 
 ## Properties
 

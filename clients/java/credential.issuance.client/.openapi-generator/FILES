@@ -66,7 +66,7 @@ docs/StartIssuanceInputDataInnerStatusListDetailsInner.md
 docs/StartIssuanceResponse.md
 docs/SupportedCredentialMetadata.md
 docs/SupportedCredentialMetadataDisplayInner.md
-docs/SupportedCredentialMetadataDisplayInnerLogo.md
+docs/SupportedCredentialMetadataItemLogo.md
 docs/UpdateIssuanceConfigInput.md
 docs/VcClaimedError.md
 docs/WellKnownApi.md
@@ -158,7 +158,7 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceIn
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceResponse.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadata.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataDisplayInner.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataDisplayInnerLogo.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataItemLogo.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/UpdateIssuanceConfigInput.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/VcClaimedError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponse.java
@@ -224,8 +224,8 @@ src/test/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceIn
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceInputDataInnerTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceInputTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceResponseTest.java
-src/test/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataDisplayInnerLogoTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataDisplayInnerTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataItemLogoTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCredentialMetadataTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/UpdateIssuanceConfigInputTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/VcClaimedErrorTest.java
