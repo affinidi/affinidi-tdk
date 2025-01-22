@@ -1,6 +1,9 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
@@ -17,9 +20,11 @@ Each module has its own README that you can check to better understand how to in
 
 ## Available modules
 
-The Affinidi TDK offers the following modules and support to programming languages:
+The Affinidi TDK offers several modules depending on the type of application you are using and the programming language.
 
+### For vault applications
 
+If you are building a vault application that manages user's data, you will be interested in the following packages:
 
 |                                                   |       TypeScript      |         Python        |         Dart         |         PHP         |         Java        |
 |-----------                                        |-----------------------|-----------------------|----------------------|---------------------|---------------------|

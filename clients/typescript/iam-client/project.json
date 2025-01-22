@@ -18,6 +18,11 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
+    "nx-release-publish": {
+      "options": {
+        "access": "public"
+      }
+    },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
