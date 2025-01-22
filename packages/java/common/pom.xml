@@ -9,6 +9,7 @@
     <version>1.0.0</version>
     <name>common</name>
     <url>https://github.com/affinidi/affinidi-tdk</url>
+    <description>Affinidi TDK common package</description>
     <licenses>
         <license>
             <name>Apache-2.0</name>
@@ -16,6 +17,11 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+   <scm>
+     <connection>git@github.com:affinidi/affinidi-tdk.git</connection>
+     <developerConnection>git@github.com:affinidi/affinidi-tdk.git</developerConnection>
+     <url>https://github.com/affinidi/affinidi-tdk</url>
+   </scm>
 
     <developers>
         <developer>
