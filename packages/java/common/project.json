@@ -27,7 +27,7 @@
             {
               "execCwd": "{projectRoot}",
               "prepareCmd": "mvn --no-transfer-progress --batch-mode versions:set -DnewVersion=${nextRelease.version}",
-              "publishCmd": "mvn --no-transfer-progress --batch-mode clean install deploy",
+              "publishCmd": "mvn --no-transfer-progress --batch-mode clean install deploy -P sign-artifacts",
               "verifyConditionsCmd": "mvn --version"
             }
           ]
