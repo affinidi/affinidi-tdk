@@ -88,9 +88,6 @@
                 <artifactId>maven-assembly-plugin</artifactId>
             </plugin> 
             <plugin>
-                <artifactId>maven-gpg-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-clean-plugin</artifactId> 
             </plugin>
             <plugin>
