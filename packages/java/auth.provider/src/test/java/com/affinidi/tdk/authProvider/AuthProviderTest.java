@@ -28,6 +28,8 @@ import com.affinidi.tdk.authProvider.exception.JwtGenerationException;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
+import com.affinidi.tdk.authProvider.types.IotaJwtOutput;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -321,8 +323,66 @@ public class AuthProviderTest {
         }
     }
 
-    @Test
-    void testSignIotaJwt() {
+    @Nested
+    @DisplayName("signIotaJwt method")
+    class SignIotaJwtTest {
+        @Test
+        @DisplayName("given an invalid private-key, then it throws")
+        void givenInvalidPrivateKey_thenThrows() {
+            Exception exception = assertThrows(JwtGenerationException.class, () -> {
+                AuthProvider provider = new AuthProvider.Configurations()
+                        .projectId("test-project")
+                        .tokenId("test-token")
+                        .privateKey("invalid-key")
+                        .passphrase("")
+                        .build();
+                provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id");
+            });
+            assertTrue(exception.getMessage().startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
+        }
 
+        @Test
+        @DisplayName("given a valid private-key, then it returns a IotaJwtOutput")
+        void givenValidPrivateKey_thenReturnsIotaJwtOutput() throws ConfigurationException, IOException {
+            // arrange
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey(testPrivateKey)
+                    .passphrase("")
+                    .build();
+
+            // act and assert
+            IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
+                    () -> provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id"));
+            assertNotNull(iotaJwtOutput);
+            assertNotNull(iotaJwtOutput.getIotaSessionId());
+            assertNotNull(iotaJwtOutput.getIotaJwt());
+        }
+
+        @Test
+        @DisplayName("given a valid encrypted private-key, then it returns a IotaJwtOutput")
+        void givenValidEncryptedPrivateKey_thenReturnsIotaJwtOutput() throws ConfigurationException, IOException {
+            // arrange
+            String testPrivateKey = new String(
+                    Files.readAllBytes(Paths.get(
+                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations()
+                    .projectId("test-project")
+                    .tokenId("test-token")
+                    .privateKey(testPrivateKey)
+                    .passphrase("test-pass-phrase")
+                    .build();
+
+            // act and assert
+            IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
+                    () -> provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id"));
+            assertNotNull(iotaJwtOutput);
+            assertNotNull(iotaJwtOutput.getIotaSessionId());
+            assertNotNull(iotaJwtOutput.getIotaJwt());
+        }
     }
 }
