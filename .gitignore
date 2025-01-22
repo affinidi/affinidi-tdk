@@ -42,6 +42,8 @@ Thumbs.db
 .nx
 .vscode
 
+# Java
+**/target
 # Created by `dart pub`
 .dart_tool/
 
