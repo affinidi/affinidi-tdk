@@ -1,6 +1,6 @@
 {
-  "name": "@affinidi-tdk/common-java",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "@affinidi-tdk/tdk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
   "private": false,
@@ -20,7 +20,9 @@
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
+        "branches": [
+          "main"
+        ],
         "plugins": [
           [
             "@semantic-release/exec",
@@ -35,5 +37,8 @@
       }
     }
   },
-  "tags": ["lang:java", "kind:client"]
+  "tags": [
+    "lang:java",
+    "kind:client"
+  ]
 }
