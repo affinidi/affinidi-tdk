@@ -1,7 +1,7 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
@@ -162,6 +162,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yaroslav-affinidi"><img src="https://avatars.githubusercontent.com/u/196060619?v=4?s=100" width="100px;" alt="yaroslav-affinidi"/><br /><sub><b>yaroslav-affinidi</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=yaroslav-affinidi" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/obradovicaffinidi"><img src="https://avatars.githubusercontent.com/u/187629637?v=4?s=100" width="100px;" alt="obradovicaffinidi"/><br /><sub><b>obradovicaffinidi</b></sub></a><br /><a href="#projectManagement-obradovicaffinidi" title="Project Management">📆</a></td>
     </tr>
   </tbody>
   <tfoot>

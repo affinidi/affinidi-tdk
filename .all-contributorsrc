@@ -129,6 +129,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/196060619?v=4",
       "profile": "https://github.com/yaroslav-affinidi",
       "contributions": ["code"]
+    },
+    {
+      "login": "obradovicaffinidi",
+      "name": "obradovicaffinidi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/187629637?v=4",
+      "profile": "https://github.com/obradovicaffinidi",
+      "contributions": ["projectManagement"]
     }
   ],
   "contributorsPerLine": 7,
