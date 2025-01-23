@@ -21,7 +21,7 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, constr
-from affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_display_inner_logo import SupportedCredentialMetadataDisplayInnerLogo
+from affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_item_logo import SupportedCredentialMetadataItemLogo
 
 class SupportedCredentialMetadataDisplayInner(BaseModel):
     """
@@ -29,7 +29,7 @@ class SupportedCredentialMetadataDisplayInner(BaseModel):
     """
     name: constr(strict=True, max_length=64) = Field(...)
     locale: Optional[constr(strict=True, max_length=16)] = None
-    logo: Optional[SupportedCredentialMetadataDisplayInnerLogo] = None
+    logo: Optional[SupportedCredentialMetadataItemLogo] = None
     background_color: Optional[StrictStr] = Field(default=None, alias="backgroundColor")
     text_color: Optional[StrictStr] = Field(default=None, alias="textColor")
     additional_properties: Dict[str, Any] = {}
@@ -82,7 +82,7 @@ class SupportedCredentialMetadataDisplayInner(BaseModel):
         _obj = SupportedCredentialMetadataDisplayInner.parse_obj({
             "name": obj.get("name"),
             "locale": obj.get("locale"),
-            "logo": SupportedCredentialMetadataDisplayInnerLogo.from_dict(obj.get("logo")) if obj.get("logo") is not None else None,
+            "logo": SupportedCredentialMetadataItemLogo.from_dict(obj.get("logo")) if obj.get("logo") is not None else None,
             "background_color": obj.get("backgroundColor"),
             "text_color": obj.get("textColor")
         })

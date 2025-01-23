@@ -15,7 +15,7 @@ package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadataDisplayInnerLogo;
+import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadataItemLogo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -49,7 +49,7 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
   private String locale;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
-  private SupportedCredentialMetadataDisplayInnerLogo logo;
+  private SupportedCredentialMetadataItemLogo logo;
 
   public static final String JSON_PROPERTY_BACKGROUND_COLOR = "backgroundColor";
   private String backgroundColor;
@@ -111,7 +111,7 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
     this.locale = locale;
   }
 
-  public SupportedCredentialMetadataDisplayInner logo(SupportedCredentialMetadataDisplayInnerLogo logo) {
+  public SupportedCredentialMetadataDisplayInner logo(SupportedCredentialMetadataItemLogo logo) {
     
     this.logo = logo;
     return this;
@@ -125,14 +125,14 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SupportedCredentialMetadataDisplayInnerLogo getLogo() {
+  public SupportedCredentialMetadataItemLogo getLogo() {
     return logo;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLogo(SupportedCredentialMetadataDisplayInnerLogo logo) {
+  public void setLogo(SupportedCredentialMetadataItemLogo logo) {
     this.logo = logo;
   }
 
