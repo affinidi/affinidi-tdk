@@ -84,7 +84,7 @@ class _$UpdateConfigurationByIdInput extends UpdateConfigurationByIdInput {
   @override
   final String? description;
   @override
-  final IotaConfigurationDtoClientMetadata? clientMetadata;
+  final UpdateConfigurationByIdInputClientMetadata? clientMetadata;
   @override
   final UpdateConfigurationByIdInputModeEnum? mode;
   @override
@@ -209,12 +209,12 @@ class UpdateConfigurationByIdInputBuilder
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
 
-  IotaConfigurationDtoClientMetadataBuilder? _clientMetadata;
-  IotaConfigurationDtoClientMetadataBuilder get clientMetadata =>
+  UpdateConfigurationByIdInputClientMetadataBuilder? _clientMetadata;
+  UpdateConfigurationByIdInputClientMetadataBuilder get clientMetadata =>
       _$this._clientMetadata ??=
-          new IotaConfigurationDtoClientMetadataBuilder();
+          new UpdateConfigurationByIdInputClientMetadataBuilder();
   set clientMetadata(
-          IotaConfigurationDtoClientMetadataBuilder? clientMetadata) =>
+          UpdateConfigurationByIdInputClientMetadataBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
 
   UpdateConfigurationByIdInputModeEnum? _mode;

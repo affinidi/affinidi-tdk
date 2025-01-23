@@ -61,6 +61,7 @@ export 'package:affinidi_tdk_iota_client/src/model/resource_limit_exceeded_error
 export 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input_queries_inner.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input.dart';
+export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input_client_metadata.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_pex_query_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/vp_token_validation_error.dart';

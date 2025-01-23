@@ -54,6 +54,7 @@ docs/ResourceLimitExceededError.md
 docs/SavePexQueriesUpdateInput.md
 docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
+docs/UpdateConfigurationByIdInputClientMetadata.md
 docs/UpdateConfigurationByIdOK.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
@@ -130,6 +131,7 @@ src/main/java/com/affinidi/tdk/iota/client/models/ResourceLimitExceededError.jav
 src/main/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInputQueriesInner.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdInput.java
+src/main/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdInputClientMetadata.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdatePexQueryInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/VPTokenValidationError.java
@@ -182,6 +184,7 @@ src/test/java/com/affinidi/tdk/iota/client/models/PrepareRequestTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/ResourceLimitExceededErrorTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInputQueriesInnerTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInputTest.java
+src/test/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdInputClientMetadataTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdInputTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdOKTest.java
 src/test/java/com/affinidi/tdk/iota/client/models/UpdatePexQueryInputTest.java

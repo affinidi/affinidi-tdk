@@ -182,7 +182,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [StartIssuanceResponse](docs/StartIssuanceResponse.md)
 - [SupportedCredentialMetadata](docs/SupportedCredentialMetadata.md)
 - [SupportedCredentialMetadataDisplayInner](docs/SupportedCredentialMetadataDisplayInner.md)
-- [SupportedCredentialMetadataDisplayInnerLogo](docs/SupportedCredentialMetadataDisplayInnerLogo.md)
+- [SupportedCredentialMetadataItemLogo](docs/SupportedCredentialMetadataItemLogo.md)
 - [UpdateIssuanceConfigInput](docs/UpdateIssuanceConfigInput.md)
 - [VcClaimedError](docs/VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](docs/WellKnownOpenIdCredentialIssuerResponse.md)

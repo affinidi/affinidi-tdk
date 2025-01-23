@@ -141,6 +141,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [SavePexQueriesUpdateInput](doc/SavePexQueriesUpdateInput.md)
 - [SavePexQueriesUpdateInputQueriesInner](doc/SavePexQueriesUpdateInputQueriesInner.md)
 - [UpdateConfigurationByIdInput](doc/UpdateConfigurationByIdInput.md)
+- [UpdateConfigurationByIdInputClientMetadata](doc/UpdateConfigurationByIdInputClientMetadata.md)
 - [UpdateConfigurationByIdOK](doc/UpdateConfigurationByIdOK.md)
 - [UpdatePexQueryInput](doc/UpdatePexQueryInput.md)
 - [VPTokenValidationError](doc/VPTokenValidationError.md)

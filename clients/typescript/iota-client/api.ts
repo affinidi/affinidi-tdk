@@ -1458,10 +1458,10 @@ export interface UpdateConfigurationByIdInput {
   description?: string
   /**
    *
-   * @type {IotaConfigurationDtoClientMetadata}
+   * @type {UpdateConfigurationByIdInputClientMetadata}
    * @memberof UpdateConfigurationByIdInput
    */
-  clientMetadata?: IotaConfigurationDtoClientMetadata
+  clientMetadata?: UpdateConfigurationByIdInputClientMetadata
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
    * @type {string}
@@ -1490,6 +1490,33 @@ export const UpdateConfigurationByIdInputModeEnum = {
 export type UpdateConfigurationByIdInputModeEnum =
   (typeof UpdateConfigurationByIdInputModeEnum)[keyof typeof UpdateConfigurationByIdInputModeEnum]
 
+/**
+ * It contains information about the requester or verifier.
+ * @export
+ * @interface UpdateConfigurationByIdInputClientMetadata
+ */
+export interface UpdateConfigurationByIdInputClientMetadata {
+  [key: string]: any
+
+  /**
+   * The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website\'s name.
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInputClientMetadata
+   */
+  name: string
+  /**
+   * The URL of the requester displayed on the consent page indicates the request\'s origin.
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInputClientMetadata
+   */
+  origin: string
+  /**
+   * The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
+   * @type {string}
+   * @memberof UpdateConfigurationByIdInputClientMetadata
+   */
+  logo: string
+}
 /**
  *
  * @export

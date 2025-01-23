@@ -21,7 +21,7 @@ import json
 
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, validator
-from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
+from affinidi_tdk_iota_client.models.update_configuration_by_id_input_client_metadata import UpdateConfigurationByIdInputClientMetadata
 
 class UpdateConfigurationByIdInput(BaseModel):
     """
@@ -34,7 +34,7 @@ class UpdateConfigurationByIdInput(BaseModel):
     enable_consent_audit_log: Optional[StrictBool] = Field(default=None, alias="enableConsentAuditLog", description="Records the user's consent when they share their data, including the type of data shared when enabled.")
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
     description: Optional[StrictStr] = Field(default=None, description="An optional description of what the configuration is used for.")
-    client_metadata: Optional[IotaConfigurationDtoClientMetadata] = Field(default=None, alias="clientMetadata")
+    client_metadata: Optional[UpdateConfigurationByIdInputClientMetadata] = Field(default=None, alias="clientMetadata")
     mode: Optional[StrictStr] = Field(default=None, description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
@@ -96,7 +96,7 @@ class UpdateConfigurationByIdInput(BaseModel):
             "enable_consent_audit_log": obj.get("enableConsentAuditLog"),
             "token_max_age": obj.get("tokenMaxAge"),
             "description": obj.get("description"),
-            "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
+            "client_metadata": UpdateConfigurationByIdInputClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "mode": obj.get("mode"),
             "redirect_uris": obj.get("redirectUris"),
             "enable_idv_providers": obj.get("enableIdvProviders")

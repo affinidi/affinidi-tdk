@@ -32,12 +32,13 @@ import java.util.StringJoiner;
  * It contains information about the requester or verifier.
  */
 @JsonPropertyOrder({
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_NAME,
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_ORIGIN,
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_LOGO
+  UpdateConfigurationByIdInputClientMetadata.JSON_PROPERTY_NAME,
+  UpdateConfigurationByIdInputClientMetadata.JSON_PROPERTY_ORIGIN,
+  UpdateConfigurationByIdInputClientMetadata.JSON_PROPERTY_LOGO
 })
+@JsonTypeName("UpdateConfigurationByIdInput_clientMetadata")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> {
+public class UpdateConfigurationByIdInputClientMetadata extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
@@ -47,11 +48,11 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
   public static final String JSON_PROPERTY_LOGO = "logo";
   private String logo;
 
-  public IotaConfigurationDtoClientMetadata() {
+  public UpdateConfigurationByIdInputClientMetadata() {
 
   }
 
-  public IotaConfigurationDtoClientMetadata name(String name) {
+  public UpdateConfigurationByIdInputClientMetadata name(String name) {
     
     this.name = name;
     return this;
@@ -76,7 +77,7 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
     this.name = name;
   }
 
-  public IotaConfigurationDtoClientMetadata origin(String origin) {
+  public UpdateConfigurationByIdInputClientMetadata origin(String origin) {
     
     this.origin = origin;
     return this;
@@ -101,7 +102,7 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
     this.origin = origin;
   }
 
-  public IotaConfigurationDtoClientMetadata logo(String logo) {
+  public UpdateConfigurationByIdInputClientMetadata logo(String logo) {
     
     this.logo = logo;
     return this;
@@ -134,10 +135,10 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IotaConfigurationDtoClientMetadata iotaConfigurationDtoClientMetadata = (IotaConfigurationDtoClientMetadata) o;
-    return Objects.equals(this.name, iotaConfigurationDtoClientMetadata.name) &&
-        Objects.equals(this.origin, iotaConfigurationDtoClientMetadata.origin) &&
-        Objects.equals(this.logo, iotaConfigurationDtoClientMetadata.logo) &&
+    UpdateConfigurationByIdInputClientMetadata updateConfigurationByIdInputClientMetadata = (UpdateConfigurationByIdInputClientMetadata) o;
+    return Objects.equals(this.name, updateConfigurationByIdInputClientMetadata.name) &&
+        Objects.equals(this.origin, updateConfigurationByIdInputClientMetadata.origin) &&
+        Objects.equals(this.logo, updateConfigurationByIdInputClientMetadata.logo) &&
         super.equals(o);
   }
 
@@ -149,7 +150,7 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IotaConfigurationDtoClientMetadata {\n");
+    sb.append("class UpdateConfigurationByIdInputClientMetadata {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");

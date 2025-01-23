@@ -49,7 +49,7 @@ void main() {
       // TODO
     });
 
-    // IotaConfigurationDtoClientMetadata clientMetadata
+    // UpdateConfigurationByIdInputClientMetadata clientMetadata
     test('to test the property `clientMetadata`', () async {
       // TODO
     });

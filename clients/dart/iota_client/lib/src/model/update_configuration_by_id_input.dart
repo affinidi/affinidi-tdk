@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_iota_client/src/model/iota_configuration_dto_client_metadata.dart';
+import 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input_client_metadata.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -55,7 +55,7 @@ abstract class UpdateConfigurationByIdInput implements Built<UpdateConfiguration
   String? get description;
 
   @BuiltValueField(wireName: r'clientMetadata')
-  IotaConfigurationDtoClientMetadata? get clientMetadata;
+  UpdateConfigurationByIdInputClientMetadata? get clientMetadata;
 
   /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   @BuiltValueField(wireName: r'mode')
@@ -146,7 +146,7 @@ class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<Up
       yield r'clientMetadata';
       yield serializers.serialize(
         object.clientMetadata,
-        specifiedType: const FullType(IotaConfigurationDtoClientMetadata),
+        specifiedType: const FullType(UpdateConfigurationByIdInputClientMetadata),
       );
     }
     if (object.mode != null) {
@@ -245,8 +245,8 @@ class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<Up
         case r'clientMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(IotaConfigurationDtoClientMetadata),
-          ) as IotaConfigurationDtoClientMetadata;
+            specifiedType: const FullType(UpdateConfigurationByIdInputClientMetadata),
+          ) as UpdateConfigurationByIdInputClientMetadata;
           result.clientMetadata = valueDes;
           break;
         case r'mode':

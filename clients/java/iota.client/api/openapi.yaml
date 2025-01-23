@@ -2340,7 +2340,7 @@ components:
             \ including the type of data shared."
           type: boolean
         clientMetadata:
-          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+          $ref: '#/components/schemas/IotaConfigurationDtoClientMetadata'
         mode:
           default: websocket
           description:
@@ -2425,7 +2425,7 @@ components:
           minimum: 1
           type: number
         clientMetadata:
-          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+          $ref: '#/components/schemas/IotaConfigurationDtoClientMetadata'
         mode:
           default: websocket
           description:
@@ -2553,7 +2553,7 @@ components:
           description: An optional description of what the configuration is used for.
           type: string
         clientMetadata:
-          $ref: '#/components/schemas/IotaConfigurationDto_clientMetadata'
+          $ref: '#/components/schemas/UpdateConfigurationByIdInput_clientMetadata'
         mode:
           description:
             Determines whether to handle the data-sharing request using
@@ -3146,6 +3146,34 @@ components:
         corsFetchIotaVpResponseOk:
           type: string
       type: object
+    IotaConfigurationDtoClientMetadata:
+      additionalProperties: true
+      description: It contains information about the requester or verifier.
+      example:
+        origin: origin
+        name: name
+        logo: logo
+      properties:
+        name:
+          description:
+            The name displayed on the consent page indicates who is requesting
+            data from the user. It can be the application or website's name.
+          type: string
+        origin:
+          description:
+            The URL of the requester displayed on the consent page indicates
+            the request's origin.
+          type: string
+        logo:
+          description:
+            "The logo of the requester displayed on the consent page, allowing\
+            \ users to easily recognise who requests the data."
+          type: string
+      required:
+        - logo
+        - name
+        - origin
+      type: object
     InvalidParameterError_details_inner:
       additionalProperties: false
       example:
@@ -3217,7 +3245,7 @@ components:
         - jwt
         - transactionId
       type: object
-    IotaConfigurationDto_clientMetadata:
+    UpdateConfigurationByIdInput_clientMetadata:
       additionalProperties: true
       description: It contains information about the requester or verifier.
       example:

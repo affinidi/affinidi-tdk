@@ -15,7 +15,7 @@ package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iota.client.models.IotaConfigurationDtoClientMetadata;
+import com.affinidi.tdk.iota.client.models.UpdateConfigurationByIdInputClientMetadata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -71,7 +71,7 @@ public class UpdateConfigurationByIdInput {
   private String description;
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
-  private IotaConfigurationDtoClientMetadata clientMetadata;
+  private UpdateConfigurationByIdInputClientMetadata clientMetadata;
 
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
@@ -295,7 +295,7 @@ public class UpdateConfigurationByIdInput {
     this.description = description;
   }
 
-  public UpdateConfigurationByIdInput clientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
+  public UpdateConfigurationByIdInput clientMetadata(UpdateConfigurationByIdInputClientMetadata clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -309,14 +309,14 @@ public class UpdateConfigurationByIdInput {
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public IotaConfigurationDtoClientMetadata getClientMetadata() {
+  public UpdateConfigurationByIdInputClientMetadata getClientMetadata() {
     return clientMetadata;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
+  public void setClientMetadata(UpdateConfigurationByIdInputClientMetadata clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 

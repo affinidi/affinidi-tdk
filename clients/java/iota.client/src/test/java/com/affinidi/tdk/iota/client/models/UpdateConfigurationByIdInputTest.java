@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.iota.client.models;
 
-import com.affinidi.tdk.iota.client.models.IotaConfigurationDtoClientMetadata;
+import com.affinidi.tdk.iota.client.models.UpdateConfigurationByIdInputClientMetadata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

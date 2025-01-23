@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Name                 | Type                                                                                              | Description | Notes      |
-| -------------------- | ------------------------------------------------------------------------------------------------- | ----------- | ---------- |
-| **name**             | **str**                                                                                           |             |
-| **locale**           | **str**                                                                                           |             | [optional] |
-| **logo**             | [**SupportedCredentialMetadataDisplayInnerLogo**](SupportedCredentialMetadataDisplayInnerLogo.md) |             | [optional] |
-| **background_color** | **str**                                                                                           |             | [optional] |
-| **text_color**       | **str**                                                                                           |             | [optional] |
+| Name                 | Type                                                                              | Description | Notes      |
+| -------------------- | --------------------------------------------------------------------------------- | ----------- | ---------- |
+| **name**             | **str**                                                                           |             |
+| **locale**           | **str**                                                                           |             | [optional] |
+| **logo**             | [**SupportedCredentialMetadataItemLogo**](SupportedCredentialMetadataItemLogo.md) |             | [optional] |
+| **background_color** | **str**                                                                           |             | [optional] |
+| **text_color**       | **str**                                                                           |             | [optional] |
 
 ## Example
 

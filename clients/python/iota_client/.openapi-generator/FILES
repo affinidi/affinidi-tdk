@@ -59,6 +59,7 @@ affinidi_tdk_iota_client/models/resource_limit_exceeded_error.py
 affinidi_tdk_iota_client/models/save_pex_queries_update_input.py
 affinidi_tdk_iota_client/models/save_pex_queries_update_input_queries_inner.py
 affinidi_tdk_iota_client/models/update_configuration_by_id_input.py
+affinidi_tdk_iota_client/models/update_configuration_by_id_input_client_metadata.py
 affinidi_tdk_iota_client/models/update_configuration_by_id_ok.py
 affinidi_tdk_iota_client/models/update_pex_query_input.py
 affinidi_tdk_iota_client/models/vp_token_validation_error.py
@@ -114,6 +115,7 @@ docs/ResourceLimitExceededError.md
 docs/SavePexQueriesUpdateInput.md
 docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
+docs/UpdateConfigurationByIdInputClientMetadata.md
 docs/UpdateConfigurationByIdOK.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
@@ -174,6 +176,7 @@ test/test_resource_limit_exceeded_error.py
 test/test_save_pex_queries_update_input.py
 test/test_save_pex_queries_update_input_queries_inner.py
 test/test_update_configuration_by_id_input.py
+test/test_update_configuration_by_id_input_client_metadata.py
 test/test_update_configuration_by_id_ok.py
 test/test_update_pex_query_input.py
 test/test_vp_token_validation_error.py

@@ -127,7 +127,7 @@ class _$CredentialSupportedObjectSerializer implements PrimitiveSerializer<Crede
             value,
             specifiedType: const FullType(SupportedCredentialMetadata),
           ) as SupportedCredentialMetadata;
-          result.metadata = valueDes;
+          result.metadata = valueDes.toBuilder();
           break;
         default:
           unhandled.add(key);
