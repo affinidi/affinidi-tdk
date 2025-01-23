@@ -31,15 +31,7 @@
         "github": true,
         "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
-        "plugins": [
-          [
-            "@semantic-release/npm",
-            {
-              "npmPublish": true
-            }
-          ]
-        ]
+        "branches": ["main"]
       }
     }
   },
