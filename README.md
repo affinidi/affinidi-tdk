@@ -58,7 +58,7 @@ If you are building a site that issues credentials or requests data from the use
 | iota-browser                   | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-browser) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) |
 | iota-core                      | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-core) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-core) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) |
 
-Click on the green and yellow boxes to view the source code of each module per langauage.
+Click on the green and yellow boxes to view the source code of each module per language.
 
 ![◯](https://img.shields.io/badge/%E2%97%AF-Supported-2ecc71?labelColor=52a447&style=flat)
 ![◯](https://img.shields.io/badge/%E2%97%AF-Experimental-f9e79f?labelColor=FFEA00&style=flat)
@@ -70,7 +70,7 @@ Affinidi publishes TDK modules to the following package repositories.
 
 | TypeScript           | Python             | Dart             | PHP             | Java             |
 |----------------------|----------------------|----------------------|----------------------|----------------------|
-| [![⚑](https://img.shields.io/badge/%E2%9A%91-npmjs.com-FF7139?labelColor=777777&style=flat-square)](https://www.npmjs.com/search?q=affinidi-tdk) | [![⚑](https://img.shields.io/badge/%E2%9A%91-pypi.org-FF7139?labelColor=777777&style=flat-square)](https://pypi.org/user/affinidi/) | [![⚑](https://img.shields.io/badge/%E2%9A%91-pub.dev-FF7139?labelColor=777777&style=flat-square&link=https://pub.dev/)](https://pub.dev/) | [![⚑](https://img.shields.io/badge/%E2%9A%91-packagist.org-FF7139?labelColor=777777&style=flat-square)](https://packagist.org/packages/affinidi-tdk/affinidi-tdk-php) | [![⚑](https://img.shields.io/badge/%E2%9A%91-central.sonatype.com-FF7139?labelColor=777777&style=flat-square&link=https://central.sonatype.com/namespace/com.affinidi.tdk)](https://central.sonatype.com/namespace/com.affinidi.tdk)
+| [![⚑](https://img.shields.io/badge/%E2%9A%91-npmjs.com-FF7139?labelColor=777777&style=flat-square)](https://www.npmjs.com/search?q=affinidi-tdk) | [![⚑](https://img.shields.io/badge/%E2%9A%91-pypi.org-FF7139?labelColor=777777&style=flat-square)](https://pypi.org/user/affinidi/) | TBD | [![⚑](https://img.shields.io/badge/%E2%9A%91-packagist.org-FF7139?labelColor=777777&style=flat-square)](https://packagist.org/packages/affinidi-tdk/affinidi-tdk-php) | [![⚑](https://img.shields.io/badge/%E2%9A%91-central.sonatype.com-FF7139?labelColor=777777&style=flat-square&link=https://central.sonatype.com/namespace/com.affinidi.tdk)](https://central.sonatype.com/namespace/com.affinidi.tdk)
 
 
 ## Documentation
