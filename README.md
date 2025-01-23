@@ -1,9 +1,7 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
@@ -155,6 +153,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sureshaff"><img src="https://avatars.githubusercontent.com/u/170073177?v=4?s=100" width="100px;" alt="sureshaff"/><br /><sub><b>sureshaff</b></sub></a><br /><a href="#security-sureshaff" title="Security">🛡️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/maindotdev"><img src="https://avatars.githubusercontent.com/u/56207234?v=4?s=100" width="100px;" alt="Sebastian Müller"/><br /><sub><b>Sebastian Müller</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=maindotdev" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=maindotdev" title="Documentation">📖</a> <a href="#research-maindotdev" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/priyanka-affinidi"><img src="https://avatars.githubusercontent.com/u/131958705?v=4?s=100" width="100px;" alt="Priyanka Affinidi"/><br /><sub><b>Priyanka Affinidi</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=priyanka-affinidi" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=priyanka-affinidi" title="Documentation">📖</a> <a href="#research-priyanka-affinidi" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rohitjjw"><img src="https://avatars.githubusercontent.com/u/80765488?v=4?s=100" width="100px;" alt="rohitjjw"/><br /><sub><b>rohitjjw</b></sub></a><br /><a href="#ideas-rohitjjw" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-rohitjjw" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/robert-affinidi"><img src="https://avatars.githubusercontent.com/u/88320072?v=4?s=100" width="100px;" alt="Robert"/><br /><sub><b>Robert</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=robert-affinidi" title="Code">💻</a> <a href="#research-robert-affinidi" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/affrncsp"><img src="https://avatars.githubusercontent.com/u/135792176?v=4?s=100" width="100px;" alt="Francis Pineda"/><br /><sub><b>Francis Pineda</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=affrncsp" title="Code">💻</a> <a href="https://github.com/affinidi/affinidi-tdk/commits?author=affrncsp" title="Documentation">📖</a> <a href="#research-affrncsp" title="Research">🔬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/annavaff"><img src="https://avatars.githubusercontent.com/u/130508647?v=4?s=100" width="100px;" alt="annavaff"/><br /><sub><b>annavaff</b></sub></a><br /><a href="#projectManagement-annavaff" title="Project Management">📆</a> <a href="#research-annavaff" title="Research">🔬</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/yaroslav-affinidi"><img src="https://avatars.githubusercontent.com/u/196060619?v=4?s=100" width="100px;" alt="yaroslav-affinidi"/><br /><sub><b>yaroslav-affinidi</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=yaroslav-affinidi" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>

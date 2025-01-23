@@ -80,6 +80,55 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/170073177?v=4",
       "profile": "https://github.com/sureshaff",
       "contributions": ["security"]
+    },
+    {
+      "login": "maindotdev",
+      "name": "Sebastian Müller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56207234?v=4",
+      "profile": "https://github.com/maindotdev",
+      "contributions": ["code", "doc", "research"]
+    },
+    {
+      "login": "priyanka-affinidi",
+      "name": "Priyanka Affinidi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/131958705?v=4",
+      "profile": "https://github.com/priyanka-affinidi",
+      "contributions": ["code", "doc", "research"]
+    },
+    {
+      "login": "rohitjjw",
+      "name": "rohitjjw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/80765488?v=4",
+      "profile": "https://github.com/rohitjjw",
+      "contributions": ["ideas", "research"]
+    },
+    {
+      "login": "robert-affinidi",
+      "name": "Robert",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88320072?v=4",
+      "profile": "https://github.com/robert-affinidi",
+      "contributions": ["code", "research"]
+    },
+    {
+      "login": "affrncsp",
+      "name": "Francis Pineda",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135792176?v=4",
+      "profile": "https://github.com/affrncsp",
+      "contributions": ["code", "doc", "research"]
+    },
+    {
+      "login": "annavaff",
+      "name": "annavaff",
+      "avatar_url": "https://avatars.githubusercontent.com/u/130508647?v=4",
+      "profile": "https://github.com/annavaff",
+      "contributions": ["projectManagement", "research"]
+    },
+    {
+      "login": "yaroslav-affinidi",
+      "name": "yaroslav-affinidi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/196060619?v=4",
+      "profile": "https://github.com/yaroslav-affinidi",
+      "contributions": ["code"]
     }
   ],
   "contributorsPerLine": 7,
