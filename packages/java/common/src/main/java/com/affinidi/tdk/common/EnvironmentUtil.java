@@ -9,9 +9,8 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvBuilder;
 
 /**
- * This class provides utility functions required to access environment specific
- * configurations. The environment can be specified in the .env file at the
- * project base using AFFINIDI_TDK_PROPERTY_NAME or
+ * This class provides utility functions required to access environment specific configurations. The environment can be
+ * specified in the .env file at the project base using AFFINIDI_TDK_PROPERTY_NAME or
  * NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as dev, local or prod.
  *
  * @author Priyanka
@@ -26,8 +25,8 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the environment name as configured in the .env file In case no
-     * configuration is found, the default return is production environment.
+     * Returns the environment name as configured in the .env file In case no configuration is found, the default return
+     * is production environment.
      *
      * @return String
      */
@@ -71,8 +70,7 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the elements auth token url string for the configured
-     * environment.
+     * Returns the elements auth token url string for the configured environment.
      *
      * @return String
      */

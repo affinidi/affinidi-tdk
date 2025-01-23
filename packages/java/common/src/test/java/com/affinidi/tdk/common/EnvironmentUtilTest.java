@@ -10,7 +10,8 @@ import org.opentest4j.TestAbortedException;
 
 public class EnvironmentUtilTest {
 
-    private void test_getUrlForEnvironment(String configuredEnvironment, Callable<String> getUrlForEnvironment, String expectedUrlForEnvironment) {
+    private void test_getUrlForEnvironment(String configuredEnvironment, Callable<String> getUrlForEnvironment,
+            String expectedUrlForEnvironment) {
         try (MockedStatic mocked = mockStatic(EnvironmentUtil.class)) {
             // Test the function call for local environment without reading the configured property
             mocked.when(EnvironmentUtil::getConfiguredEnvironment).thenReturn(configuredEnvironment);
@@ -30,19 +31,25 @@ public class EnvironmentUtilTest {
     }
 
     private void test_getVaultUrlForEnvironment(String configuredEnvironment, String expectedVaultUrlForEnvironment) {
-        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getVaultUrlForEnvironment(), expectedVaultUrlForEnvironment);
+        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getVaultUrlForEnvironment(),
+                expectedVaultUrlForEnvironment);
     }
 
     private void test_getIotUrlForEnvironment(String configuredEnvironment, String expectedIotUrlForEnvironment) {
-        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getIotUrlForEnvironment(), expectedIotUrlForEnvironment);
+        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getIotUrlForEnvironment(),
+                expectedIotUrlForEnvironment);
     }
 
-    private void test_getElementAuthTokenUrlForEnvironment(String configuredEnvironment, String expectedElementAuthTokenUrlForEnvironment) {
-        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getElementAuthTokenUrlForEnvironment(), expectedElementAuthTokenUrlForEnvironment);
+    private void test_getElementAuthTokenUrlForEnvironment(String configuredEnvironment,
+            String expectedElementAuthTokenUrlForEnvironment) {
+        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getElementAuthTokenUrlForEnvironment(),
+                expectedElementAuthTokenUrlForEnvironment);
     }
 
-    private void test_getApiGatewayUrlForEnvironment(String configuredEnvironment, String expectedApiGatewayUrlForEnvironment) {
-        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getApiGatewayUrlForEnvironment(), expectedApiGatewayUrlForEnvironment);
+    private void test_getApiGatewayUrlForEnvironment(String configuredEnvironment,
+            String expectedApiGatewayUrlForEnvironment) {
+        test_getUrlForEnvironment(configuredEnvironment, () -> EnvironmentUtil.getApiGatewayUrlForEnvironment(),
+                expectedApiGatewayUrlForEnvironment);
     }
 
     @Test

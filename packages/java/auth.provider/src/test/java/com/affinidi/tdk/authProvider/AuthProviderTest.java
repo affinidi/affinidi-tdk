@@ -43,11 +43,8 @@ public class AuthProviderTest {
     class ConfigurationsTest {
         @Test
         void testAuthProviderConfiguration() throws Exception {
-            AuthProvider provider = new AuthProvider.Configurations()
-                    .projectId("test-project")
-                    .tokenId("test-token")
-                    .privateKey("test-key")
-                    .build();
+            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
+                    .privateKey("test-key").build();
 
             assertNotNull(provider);
             assertEquals("test-project", provider.getProjectId());
@@ -66,17 +63,12 @@ public class AuthProviderTest {
         @ValueSource(strings = { "complicated-word" })
         void givenInvalidPrivateKey_thenThrows(String phrase) {
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations()
-                        .projectId("test-project")
-                        .tokenId("test-token")
-                        .privateKey("invalid-key")
-                        .passphrase(phrase)
-                        .build();
+                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
+                        .tokenId("test-token").privateKey("invalid-key").passphrase(phrase).build();
                 provider.fetchProjectScopedToken();
             });
 
-            assertTrue(exception.getMessage()
-                    .startsWith("Could not derive private key out of the configurations."));
+            assertTrue(exception.getMessage().startsWith("Could not derive private key out of the configurations."));
         }
 
         @Test
@@ -85,18 +77,14 @@ public class AuthProviderTest {
             // arrange
             String mockErrorMessage = "mock-exception-message";
             try (MockedStatic<JwtUtil> utilsMock = Mockito.mockStatic(JwtUtil.class)) {
-                utilsMock.when(() -> JwtUtil.fetchPublicKey(any()))
-                        .thenThrow(InvalidPublicKeyException.class);
+                utilsMock.when(() -> JwtUtil.fetchPublicKey(any())).thenThrow(InvalidPublicKeyException.class);
                 utilsMock.when(() -> JwtUtil.signPayload(any(), any(), any(), any(), any()))
                         .thenThrow(new JwtGenerationException(mockErrorMessage));
 
                 // act
                 Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                    AuthProvider provider = new AuthProvider.Configurations()
-                            .projectId("test-project")
-                            .tokenId("test-token")
-                            .privateKey("test-key")
-                            .build();
+                    AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
+                            .tokenId("test-token").privateKey("test-key").build();
                     provider.fetchProjectScopedToken();
                 });
 
@@ -113,21 +101,15 @@ public class AuthProviderTest {
             String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
             URI uri = new URI(apiUrl);
             String host = uri.getHost();
-            String apiKeyJson = new String(
-                    Files.readAllBytes(Paths.get(
-                            "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
-            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
-                    .withHost(equalTo(host))
-                    .willReturn(okJson(apiKeyJson)));
+            String apiKeyJson = new String(Files.readAllBytes(
+                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
+            givenThat(
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
 
             // act
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations()
-                        .projectId("test-project")
-                        .tokenId("test-token")
-                        .privateKey("test-key")
-                        .passphrase("")
-                        .build();
+                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
+                        .tokenId("test-token").privateKey("test-key").passphrase("").build();
                 provider.setApiGatewayUrl(apiUrl);
                 provider.setProjectScopeToken("test-project-scope-token");
                 provider.fetchProjectScopedToken();
@@ -135,8 +117,7 @@ public class AuthProviderTest {
 
             // assert
             assertTrue(exception.getMessage()
-                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG
-                            + " Exception : "));
+                    .startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG + " Exception : "));
         }
 
         @Test
@@ -148,25 +129,17 @@ public class AuthProviderTest {
             URI uri = new URI(apiUrl);
             String host = uri.getHost();
             String fakeTokenUrl = apiUrl + "/auth-token";
-            String apiKeyJson = new String(
-                    Files.readAllBytes(Paths.get(
-                            "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
-            String testPrivateKey = new String(
-                    Files.readAllBytes(Paths.get(
-                            "src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations()
-                    .projectId("test-project")
-                    .tokenId("test-token")
-                    .privateKey(testPrivateKey)
-                    .passphrase("")
-                    .build();
+            String apiKeyJson = new String(Files.readAllBytes(
+                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
+            String testPrivateKey = new String(Files.readAllBytes(
+                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
+            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
+                    .privateKey(testPrivateKey).passphrase("").build();
             provider.setApiGatewayUrl(apiUrl);
             provider.setTokenEndPoint(fakeTokenUrl);
-            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
-                    .withHost(equalTo(host))
-                    .willReturn(okJson(apiKeyJson)));
-            givenThat(post("/auth-token")
-                    .withHost(equalTo(host))
+            givenThat(
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
+            givenThat(post("/auth-token").withHost(equalTo(host))
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
             givenThat(post(AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH).withHost(equalTo(host))
                     .willReturn(okJson("{accessToken: \"some-project-scope-token\"}")));
@@ -185,11 +158,8 @@ public class AuthProviderTest {
         @DisplayName("given no project-token, then it returns true")
         void givenNoProjectToken_thenReturnsTrue() throws ConfigurationException {
             // arrange
-            AuthProvider provider = new AuthProvider.Configurations()
-                    .projectId("test-project")
-                    .tokenId("test-token")
-                    .privateKey("test-key")
-                    .build();
+            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
+                    .privateKey("test-key").build();
 
             // act and assert
             assertTrue(provider.shouldRefreshToken());
@@ -203,17 +173,12 @@ public class AuthProviderTest {
             String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
             URI uri = new URI(apiUrl);
             String host = uri.getHost();
-            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
-                    .withHost(equalTo(host))
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host))
                     .willReturn(aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
 
             // act
-            AuthProvider provider = new AuthProvider.Configurations()
-                    .projectId("test-project")
-                    .tokenId("test-token")
-                    .privateKey("test-key")
-                    .passphrase("")
-                    .build();
+            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
+                    .privateKey("test-key").passphrase("").build();
             provider.setApiGatewayUrl(apiUrl);
             provider.setProjectScopeToken("test-project-scope-token");
 
@@ -223,24 +188,18 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given an invalid project-token, when the api-key endpoint call succeeds, then it returns true")
-        void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue(
-                WireMockRuntimeInfo wmRuntimeInfo) throws URISyntaxException, IOException, ConfigurationException {
+        void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
+                throws URISyntaxException, IOException, ConfigurationException {
             // arrange
             String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
             URI uri = new URI(apiUrl);
             String host = uri.getHost();
-            String apiKeyJson = new String(
-                    Files.readAllBytes(Paths.get(
-                            "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
-            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH)
-                    .withHost(equalTo(host))
-                    .willReturn(okJson(apiKeyJson)));
-            AuthProvider provider = new AuthProvider.Configurations()
-                    .projectId("test-project")
-                    .tokenId("test-token")
-                    .privateKey("test-key")
-                    .passphrase("")
-                    .build();
+            String apiKeyJson = new String(Files.readAllBytes(
+                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
+            givenThat(
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
+            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
+                    .privateKey("test-key").passphrase("").build();
             provider.setApiGatewayUrl(apiUrl);
             provider.setProjectScopeToken("test-project-scope-token");
 
