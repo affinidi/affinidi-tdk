@@ -162,7 +162,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yaroslav-affinidi"><img src="https://avatars.githubusercontent.com/u/196060619?v=4?s=100" width="100px;" alt="yaroslav-affinidi"/><br /><sub><b>yaroslav-affinidi</b></sub></a><br /><a href="https://github.com/affinidi/affinidi-tdk/commits?author=yaroslav-affinidi" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/obradovicaffinidi"><img src="https://avatars.githubusercontent.com/u/187629637?v=4?s=100" width="100px;" alt="obradovicaffinidi"/><br /><sub><b>obradovicaffinidi</b></sub></a><br /><a href="#projectManagement-obradovicaffinidi" title="Project Management">📆</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/obradovicaffinidi"><img src="https://avatars.githubusercontent.com/u/187629637?v=4?s=100" width="100px;" alt="obradovicaffinidi"/><br /><sub><b>obradovicaffinidi</b></sub></a><br /><a href="#projectManagement-obradovicaffinidi" title="Project Management">📆</a> <a href="#research-obradovicaffinidi" title="Research">🔬</a></td>
     </tr>
   </tbody>
   <tfoot>
