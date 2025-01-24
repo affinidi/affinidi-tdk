@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -36,684 +35,692 @@ import java.util.StringJoiner;
 /**
  * IssuanceConfigDto
  */
-@JsonPropertyOrder({
-  IssuanceConfigDto.JSON_PROPERTY_ID,
-  IssuanceConfigDto.JSON_PROPERTY_NAME,
-  IssuanceConfigDto.JSON_PROPERTY_DESCRIPTION,
-  IssuanceConfigDto.JSON_PROPERTY_ISSUER_DID,
-  IssuanceConfigDto.JSON_PROPERTY_ISSUER_WALLET_ID,
-  IssuanceConfigDto.JSON_PROPERTY_CREDENTIAL_OFFER_DURATION,
-  IssuanceConfigDto.JSON_PROPERTY_C_NONCE_DURATION,
-  IssuanceConfigDto.JSON_PROPERTY_FORMAT,
-  IssuanceConfigDto.JSON_PROPERTY_ISSUER_URI,
-  IssuanceConfigDto.JSON_PROPERTY_CREDENTIAL_SUPPORTED,
-  IssuanceConfigDto.JSON_PROPERTY_ISSUER_METADATA,
-  IssuanceConfigDto.JSON_PROPERTY_VERSION,
-  IssuanceConfigDto.JSON_PROPERTY_RETURN_URIS
-})
+@JsonPropertyOrder({ IssuanceConfigDto.JSON_PROPERTY_ID, IssuanceConfigDto.JSON_PROPERTY_NAME,
+        IssuanceConfigDto.JSON_PROPERTY_DESCRIPTION, IssuanceConfigDto.JSON_PROPERTY_ISSUER_DID,
+        IssuanceConfigDto.JSON_PROPERTY_ISSUER_WALLET_ID, IssuanceConfigDto.JSON_PROPERTY_CREDENTIAL_OFFER_DURATION,
+        IssuanceConfigDto.JSON_PROPERTY_C_NONCE_DURATION, IssuanceConfigDto.JSON_PROPERTY_FORMAT,
+        IssuanceConfigDto.JSON_PROPERTY_ISSUER_URI, IssuanceConfigDto.JSON_PROPERTY_CREDENTIAL_SUPPORTED,
+        IssuanceConfigDto.JSON_PROPERTY_ISSUER_METADATA, IssuanceConfigDto.JSON_PROPERTY_VERSION,
+        IssuanceConfigDto.JSON_PROPERTY_RETURN_URIS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IssuanceConfigDto {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public static final String JSON_PROPERTY_ISSUER_DID = "issuerDid";
-  private String issuerDid;
+    public static final String JSON_PROPERTY_ISSUER_DID = "issuerDid";
+    private String issuerDid;
 
-  public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
-  private String issuerWalletId;
+    public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
+    private String issuerWalletId;
 
-  public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
-  private BigDecimal credentialOfferDuration;
+    public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
+    private BigDecimal credentialOfferDuration;
 
-  public static final String JSON_PROPERTY_C_NONCE_DURATION = "cNonceDuration";
-  private BigDecimal cNonceDuration;
+    public static final String JSON_PROPERTY_C_NONCE_DURATION = "cNonceDuration";
+    private BigDecimal cNonceDuration;
 
-  /**
-   * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
-   */
-  public enum FormatEnum {
-    LDP_VC("ldp_vc"),
-    
-    JWT_VC_JSON_LD("jwt_vc_json-ld"),
-    
-    SD_JWT_VC_JSON_LD("sd_jwt_vc_json-ld");
+    /**
+     * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value,
+     * the object contains further elements defining the type
+     */
+    public enum FormatEnum {
+        LDP_VC("ldp_vc"),
 
-    private String value;
+        JWT_VC_JSON_LD("jwt_vc_json-ld"),
 
-    FormatEnum(String value) {
-      this.value = value;
+        SD_JWT_VC_JSON_LD("sd_jwt_vc_json-ld");
+
+        private String value;
+
+        FormatEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static FormatEnum fromValue(String value) {
+            for (FormatEnum b : FormatEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_FORMAT = "format";
+    private FormatEnum format;
+
+    public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
+    private String issuerUri;
+
+    public static final String JSON_PROPERTY_CREDENTIAL_SUPPORTED = "credentialSupported";
+    private List<CredentialSupportedObject> credentialSupported = new ArrayList<>();
+
+    public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
+    private Map<String, Object> issuerMetadata = new HashMap<>();
+
+    public static final String JSON_PROPERTY_VERSION = "version";
+    private BigDecimal version;
+
+    public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
+    private List<String> returnUris = new ArrayList<>();
+
+    public IssuanceConfigDto() {
+    }
+
+    public IssuanceConfigDto id(String id) {
+
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getId() {
+        return id;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public IssuanceConfigDto name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public IssuanceConfigDto description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public IssuanceConfigDto issuerDid(String issuerDid) {
+
+        this.issuerDid = issuerDid;
+        return this;
+    }
+
+    /**
+     * Issuer DID
+     *
+     * @return issuerDid
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUER_DID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getIssuerDid() {
+        return issuerDid;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER_DID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuerDid(String issuerDid) {
+        this.issuerDid = issuerDid;
+    }
+
+    public IssuanceConfigDto issuerWalletId(String issuerWalletId) {
+
+        this.issuerWalletId = issuerWalletId;
+        return this;
+    }
+
+    /**
+     * Issuer Wallet id
+     *
+     * @return issuerWalletId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getIssuerWalletId() {
+        return issuerWalletId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuerWalletId(String issuerWalletId) {
+        this.issuerWalletId = issuerWalletId;
+    }
+
+    public IssuanceConfigDto credentialOfferDuration(BigDecimal credentialOfferDuration) {
+
+        this.credentialOfferDuration = credentialOfferDuration;
+        return this;
+    }
+
+    /**
+     * credential offer duration in second
+     *
+     * @return credentialOfferDuration
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public BigDecimal getCredentialOfferDuration() {
+        return credentialOfferDuration;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
+        this.credentialOfferDuration = credentialOfferDuration;
+    }
+
+    public IssuanceConfigDto cNonceDuration(BigDecimal cNonceDuration) {
+
+        this.cNonceDuration = cNonceDuration;
+        return this;
+    }
+
+    /**
+     * c_nonce duration in second
+     *
+     * @return cNonceDuration
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public BigDecimal getcNonceDuration() {
+        return cNonceDuration;
+    }
+
+    @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setcNonceDuration(BigDecimal cNonceDuration) {
+        this.cNonceDuration = cNonceDuration;
+    }
+
+    public IssuanceConfigDto format(FormatEnum format) {
+
+        this.format = format;
+        return this;
+    }
+
+    /**
+     * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value,
+     * the object contains further elements defining the type
+     *
+     * @return format
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FormatEnum getFormat() {
+        return format;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormat(FormatEnum format) {
+        this.format = format;
+    }
+
+    public IssuanceConfigDto issuerUri(String issuerUri) {
+
+        this.issuerUri = issuerUri;
+        return this;
+    }
+
+    /**
+     * Issuer URI
+     *
+     * @return issuerUri
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getIssuerUri() {
+        return issuerUri;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuerUri(String issuerUri) {
+        this.issuerUri = issuerUri;
+    }
+
+    public IssuanceConfigDto credentialSupported(List<CredentialSupportedObject> credentialSupported) {
+
+        this.credentialSupported = credentialSupported;
+        return this;
+    }
+
+    public IssuanceConfigDto addCredentialSupportedItem(CredentialSupportedObject credentialSupportedItem) {
+        if (this.credentialSupported == null) {
+            this.credentialSupported = new ArrayList<>();
+        }
+        this.credentialSupported.add(credentialSupportedItem);
+        return this;
+    }
+
+    /**
+     * Get credentialSupported
+     *
+     * @return credentialSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<CredentialSupportedObject> getCredentialSupported() {
+        return credentialSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialSupported(List<CredentialSupportedObject> credentialSupported) {
+        this.credentialSupported = credentialSupported;
+    }
+
+    public IssuanceConfigDto issuerMetadata(Map<String, Object> issuerMetadata) {
+
+        this.issuerMetadata = issuerMetadata;
+        return this;
+    }
+
+    public IssuanceConfigDto putIssuerMetadataItem(String key, Object issuerMetadataItem) {
+        if (this.issuerMetadata == null) {
+            this.issuerMetadata = new HashMap<>();
+        }
+        this.issuerMetadata.put(key, issuerMetadataItem);
+        return this;
+    }
+
+    /**
+     * Issuer public information wallet may want to show to user during consent confirmation
+     *
+     * @return issuerMetadata
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Map<String, Object> getIssuerMetadata() {
+        return issuerMetadata;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
+        this.issuerMetadata = issuerMetadata;
+    }
+
+    public IssuanceConfigDto version(BigDecimal version) {
+
+        this.version = version;
+        return this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return version
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_VERSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public BigDecimal getVersion() {
+        return version;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VERSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setVersion(BigDecimal version) {
+        this.version = version;
+    }
+
+    public IssuanceConfigDto returnUris(List<String> returnUris) {
+
+        this.returnUris = returnUris;
+        return this;
+    }
+
+    public IssuanceConfigDto addReturnUrisItem(String returnUrisItem) {
+        if (this.returnUris == null) {
+            this.returnUris = new ArrayList<>();
+        }
+        this.returnUris.add(returnUrisItem);
+        return this;
+    }
+
+    /**
+     * List of allowed URIs to be returned to after issuance
+     *
+     * @return returnUris
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getReturnUris() {
+        return returnUris;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setReturnUris(List<String> returnUris) {
+        this.returnUris = returnUris;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        IssuanceConfigDto issuanceConfigDto = (IssuanceConfigDto) o;
+        return Objects.equals(this.id, issuanceConfigDto.id) && Objects.equals(this.name, issuanceConfigDto.name)
+                && Objects.equals(this.description, issuanceConfigDto.description)
+                && Objects.equals(this.issuerDid, issuanceConfigDto.issuerDid)
+                && Objects.equals(this.issuerWalletId, issuanceConfigDto.issuerWalletId)
+                && Objects.equals(this.credentialOfferDuration, issuanceConfigDto.credentialOfferDuration)
+                && Objects.equals(this.cNonceDuration, issuanceConfigDto.cNonceDuration)
+                && Objects.equals(this.format, issuanceConfigDto.format)
+                && Objects.equals(this.issuerUri, issuanceConfigDto.issuerUri)
+                && Objects.equals(this.credentialSupported, issuanceConfigDto.credentialSupported)
+                && Objects.equals(this.issuerMetadata, issuanceConfigDto.issuerMetadata)
+                && Objects.equals(this.version, issuanceConfigDto.version)
+                && Objects.equals(this.returnUris, issuanceConfigDto.returnUris);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, issuerDid, issuerWalletId, credentialOfferDuration, cNonceDuration,
+                format, issuerUri, credentialSupported, issuerMetadata, version, returnUris);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class IssuanceConfigDto {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    issuerDid: ").append(toIndentedString(issuerDid)).append("\n");
+        sb.append("    issuerWalletId: ").append(toIndentedString(issuerWalletId)).append("\n");
+        sb.append("    credentialOfferDuration: ").append(toIndentedString(credentialOfferDuration)).append("\n");
+        sb.append("    cNonceDuration: ").append(toIndentedString(cNonceDuration)).append("\n");
+        sb.append("    format: ").append(toIndentedString(format)).append("\n");
+        sb.append("    issuerUri: ").append(toIndentedString(issuerUri)).append("\n");
+        sb.append("    credentialSupported: ").append(toIndentedString(credentialSupported)).append("\n");
+        sb.append("    issuerMetadata: ").append(toIndentedString(issuerMetadata)).append("\n");
+        sb.append("    version: ").append(toIndentedString(version)).append("\n");
+        sb.append("    returnUris: ").append(toIndentedString(returnUris)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static FormatEnum fromValue(String value) {
-      for (FormatEnum b : FormatEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_FORMAT = "format";
-  private FormatEnum format;
-
-  public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
-  private String issuerUri;
-
-  public static final String JSON_PROPERTY_CREDENTIAL_SUPPORTED = "credentialSupported";
-  private List<CredentialSupportedObject> credentialSupported = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
-  private Map<String, Object> issuerMetadata = new HashMap<>();
-
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private BigDecimal version;
-
-  public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
-  private List<String> returnUris = new ArrayList<>();
-
-  public IssuanceConfigDto() {
-  }
-
-  public IssuanceConfigDto id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public IssuanceConfigDto name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public IssuanceConfigDto description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public IssuanceConfigDto issuerDid(String issuerDid) {
-    
-    this.issuerDid = issuerDid;
-    return this;
-  }
-
-  /**
-   * Issuer DID
-   * @return issuerDid
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIssuerDid() {
-    return issuerDid;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDid(String issuerDid) {
-    this.issuerDid = issuerDid;
-  }
-
-  public IssuanceConfigDto issuerWalletId(String issuerWalletId) {
-    
-    this.issuerWalletId = issuerWalletId;
-    return this;
-  }
-
-  /**
-   * Issuer Wallet id
-   * @return issuerWalletId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIssuerWalletId() {
-    return issuerWalletId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerWalletId(String issuerWalletId) {
-    this.issuerWalletId = issuerWalletId;
-  }
-
-  public IssuanceConfigDto credentialOfferDuration(BigDecimal credentialOfferDuration) {
-    
-    this.credentialOfferDuration = credentialOfferDuration;
-    return this;
-  }
-
-  /**
-   * credential offer duration in second
-   * @return credentialOfferDuration
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getCredentialOfferDuration() {
-    return credentialOfferDuration;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
-    this.credentialOfferDuration = credentialOfferDuration;
-  }
-
-  public IssuanceConfigDto cNonceDuration(BigDecimal cNonceDuration) {
-    
-    this.cNonceDuration = cNonceDuration;
-    return this;
-  }
-
-  /**
-   * c_nonce duration in second
-   * @return cNonceDuration
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getcNonceDuration() {
-    return cNonceDuration;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcNonceDuration(BigDecimal cNonceDuration) {
-    this.cNonceDuration = cNonceDuration;
-  }
-
-  public IssuanceConfigDto format(FormatEnum format) {
-    
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
-   * @return format
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FormatEnum getFormat() {
-    return format;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(FormatEnum format) {
-    this.format = format;
-  }
-
-  public IssuanceConfigDto issuerUri(String issuerUri) {
-    
-    this.issuerUri = issuerUri;
-    return this;
-  }
-
-  /**
-   * Issuer URI
-   * @return issuerUri
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIssuerUri() {
-    return issuerUri;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerUri(String issuerUri) {
-    this.issuerUri = issuerUri;
-  }
-
-  public IssuanceConfigDto credentialSupported(List<CredentialSupportedObject> credentialSupported) {
-    
-    this.credentialSupported = credentialSupported;
-    return this;
-  }
-
-  public IssuanceConfigDto addCredentialSupportedItem(CredentialSupportedObject credentialSupportedItem) {
-    if (this.credentialSupported == null) {
-      this.credentialSupported = new ArrayList<>();
-    }
-    this.credentialSupported.add(credentialSupportedItem);
-    return this;
-  }
-
-  /**
-   * Get credentialSupported
-   * @return credentialSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<CredentialSupportedObject> getCredentialSupported() {
-    return credentialSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialSupported(List<CredentialSupportedObject> credentialSupported) {
-    this.credentialSupported = credentialSupported;
-  }
-
-  public IssuanceConfigDto issuerMetadata(Map<String, Object> issuerMetadata) {
-    
-    this.issuerMetadata = issuerMetadata;
-    return this;
-  }
-
-  public IssuanceConfigDto putIssuerMetadataItem(String key, Object issuerMetadataItem) {
-    if (this.issuerMetadata == null) {
-      this.issuerMetadata = new HashMap<>();
-    }
-    this.issuerMetadata.put(key, issuerMetadataItem);
-    return this;
-  }
-
-  /**
-   * Issuer public information wallet may want to show to user during consent confirmation
-   * @return issuerMetadata
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Map<String, Object> getIssuerMetadata() {
-    return issuerMetadata;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
-    this.issuerMetadata = issuerMetadata;
-  }
-
-  public IssuanceConfigDto version(BigDecimal version) {
-    
-    this.version = version;
-    return this;
-  }
-
-  /**
-   * Get version
-   * @return version
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getVersion() {
-    return version;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(BigDecimal version) {
-    this.version = version;
-  }
-
-  public IssuanceConfigDto returnUris(List<String> returnUris) {
-    
-    this.returnUris = returnUris;
-    return this;
-  }
-
-  public IssuanceConfigDto addReturnUrisItem(String returnUrisItem) {
-    if (this.returnUris == null) {
-      this.returnUris = new ArrayList<>();
-    }
-    this.returnUris.add(returnUrisItem);
-    return this;
-  }
-
-  /**
-   * List of allowed URIs to be returned to after issuance
-   * @return returnUris
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getReturnUris() {
-    return returnUris;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReturnUris(List<String> returnUris) {
-    this.returnUris = returnUris;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    IssuanceConfigDto issuanceConfigDto = (IssuanceConfigDto) o;
-    return Objects.equals(this.id, issuanceConfigDto.id) &&
-        Objects.equals(this.name, issuanceConfigDto.name) &&
-        Objects.equals(this.description, issuanceConfigDto.description) &&
-        Objects.equals(this.issuerDid, issuanceConfigDto.issuerDid) &&
-        Objects.equals(this.issuerWalletId, issuanceConfigDto.issuerWalletId) &&
-        Objects.equals(this.credentialOfferDuration, issuanceConfigDto.credentialOfferDuration) &&
-        Objects.equals(this.cNonceDuration, issuanceConfigDto.cNonceDuration) &&
-        Objects.equals(this.format, issuanceConfigDto.format) &&
-        Objects.equals(this.issuerUri, issuanceConfigDto.issuerUri) &&
-        Objects.equals(this.credentialSupported, issuanceConfigDto.credentialSupported) &&
-        Objects.equals(this.issuerMetadata, issuanceConfigDto.issuerMetadata) &&
-        Objects.equals(this.version, issuanceConfigDto.version) &&
-        Objects.equals(this.returnUris, issuanceConfigDto.returnUris);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, description, issuerDid, issuerWalletId, credentialOfferDuration, cNonceDuration, format, issuerUri, credentialSupported, issuerMetadata, version, returnUris);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IssuanceConfigDto {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    issuerDid: ").append(toIndentedString(issuerDid)).append("\n");
-    sb.append("    issuerWalletId: ").append(toIndentedString(issuerWalletId)).append("\n");
-    sb.append("    credentialOfferDuration: ").append(toIndentedString(credentialOfferDuration)).append("\n");
-    sb.append("    cNonceDuration: ").append(toIndentedString(cNonceDuration)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    issuerUri: ").append(toIndentedString(issuerUri)).append("\n");
-    sb.append("    credentialSupported: ").append(toIndentedString(credentialSupported)).append("\n");
-    sb.append("    issuerMetadata: ").append(toIndentedString(issuerMetadata)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    returnUris: ").append(toIndentedString(returnUris)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `issuerDid` to the URL query string
-    if (getIssuerDid() != null) {
-      try {
-        joiner.add(String.format("%sissuerDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerDid()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `issuerWalletId` to the URL query string
-    if (getIssuerWalletId() != null) {
-      try {
-        joiner.add(String.format("%sissuerWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `credentialOfferDuration` to the URL query string
-    if (getCredentialOfferDuration() != null) {
-      try {
-        joiner.add(String.format("%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `cNonceDuration` to the URL query string
-    if (getcNonceDuration() != null) {
-      try {
-        joiner.add(String.format("%scNonceDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceDuration()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      try {
-        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `issuerUri` to the URL query string
-    if (getIssuerUri() != null) {
-      try {
-        joiner.add(String.format("%sissuerUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `credentialSupported` to the URL query string
-    if (getCredentialSupported() != null) {
-      for (int i = 0; i < getCredentialSupported().size(); i++) {
-        if (getCredentialSupported().get(i) != null) {
-          joiner.add(getCredentialSupported().get(i).toUrlQueryString(String.format("%scredentialSupported%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-    }
 
-    // add `issuerMetadata` to the URL query string
-    if (getIssuerMetadata() != null) {
-      for (String _key : getIssuerMetadata().keySet()) {
-        try {
-          joiner.add(String.format("%sissuerMetadata%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getIssuerMetadata().get(_key), URLEncoder.encode(String.valueOf(getIssuerMetadata().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
         }
-      }
-    }
 
-    // add `version` to the URL query string
-    if (getVersion() != null) {
-      try {
-        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `returnUris` to the URL query string
-    if (getReturnUris() != null) {
-      for (int i = 0; i < getReturnUris().size(); i++) {
-        try {
-          joiner.add(String.format("%sreturnUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getReturnUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
         }
-      }
-    }
 
-    return joiner.toString();
-  }
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `issuerDid` to the URL query string
+        if (getIssuerDid() != null) {
+            try {
+                joiner.add(String.format("%sissuerDid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuerDid()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `issuerWalletId` to the URL query string
+        if (getIssuerWalletId() != null) {
+            try {
+                joiner.add(String.format("%sissuerWalletId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `credentialOfferDuration` to the URL query string
+        if (getCredentialOfferDuration() != null) {
+            try {
+                joiner.add(String.format("%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `cNonceDuration` to the URL query string
+        if (getcNonceDuration() != null) {
+            try {
+                joiner.add(String.format("%scNonceDuration%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getcNonceDuration()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `format` to the URL query string
+        if (getFormat() != null) {
+            try {
+                joiner.add(String.format("%sformat%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `issuerUri` to the URL query string
+        if (getIssuerUri() != null) {
+            try {
+                joiner.add(String.format("%sissuerUri%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `credentialSupported` to the URL query string
+        if (getCredentialSupported() != null) {
+            for (int i = 0; i < getCredentialSupported().size(); i++) {
+                if (getCredentialSupported().get(i) != null) {
+                    joiner.add(getCredentialSupported().get(i).toUrlQueryString(String.format(
+                            "%scredentialSupported%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `issuerMetadata` to the URL query string
+        if (getIssuerMetadata() != null) {
+            for (String _key : getIssuerMetadata().keySet()) {
+                try {
+                    joiner.add(String.format("%sissuerMetadata%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+                            getIssuerMetadata().get(_key),
+                            URLEncoder.encode(String.valueOf(getIssuerMetadata().get(_key)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `version` to the URL query string
+        if (getVersion() != null) {
+            try {
+                joiner.add(String.format("%sversion%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `returnUris` to the URL query string
+        if (getReturnUris() != null) {
+            for (int i = 0; i < getReturnUris().size(); i++) {
+                try {
+                    joiner.add(String.format("%sreturnUris%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getReturnUris().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

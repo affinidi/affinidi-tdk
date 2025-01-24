@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -32,176 +31,174 @@ import java.util.StringJoiner;
 /**
  * Response model of /verify-vcs
  */
-@JsonPropertyOrder({
-  VerifyCredentialOutput.JSON_PROPERTY_ERRORS,
-  VerifyCredentialOutput.JSON_PROPERTY_IS_VALID
-})
+@JsonPropertyOrder({ VerifyCredentialOutput.JSON_PROPERTY_ERRORS, VerifyCredentialOutput.JSON_PROPERTY_IS_VALID })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyCredentialOutput {
-  public static final String JSON_PROPERTY_ERRORS = "errors";
-  private List<String> errors = new ArrayList<>();
+    public static final String JSON_PROPERTY_ERRORS = "errors";
+    private List<String> errors = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_IS_VALID = "isValid";
-  private Boolean isValid;
+    public static final String JSON_PROPERTY_IS_VALID = "isValid";
+    private Boolean isValid;
 
-  public VerifyCredentialOutput() {
-  }
-
-  public VerifyCredentialOutput errors(List<String> errors) {
-    
-    this.errors = errors;
-    return this;
-  }
-
-  public VerifyCredentialOutput addErrorsItem(String errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Errors of the VCs failed verification
-   * @return errors
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ERRORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getErrors() {
-    return errors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERRORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(List<String> errors) {
-    this.errors = errors;
-  }
-
-  public VerifyCredentialOutput isValid(Boolean isValid) {
-    
-    this.isValid = isValid;
-    return this;
-  }
-
-  /**
-   * Verification result
-   * @return isValid
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IS_VALID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Boolean getIsValid() {
-    return isValid;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IS_VALID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIsValid(Boolean isValid) {
-    this.isValid = isValid;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VerifyCredentialOutput verifyCredentialOutput = (VerifyCredentialOutput) o;
-    return Objects.equals(this.errors, verifyCredentialOutput.errors) &&
-        Objects.equals(this.isValid, verifyCredentialOutput.isValid);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(errors, isValid);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VerifyCredentialOutput {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public VerifyCredentialOutput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public VerifyCredentialOutput errors(List<String> errors) {
 
-    // add `errors` to the URL query string
-    if (getErrors() != null) {
-      for (int i = 0; i < getErrors().size(); i++) {
-        try {
-          joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        this.errors = errors;
+        return this;
+    }
+
+    public VerifyCredentialOutput addErrorsItem(String errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
         }
-      }
+        this.errors.add(errorsItem);
+        return this;
     }
 
-    // add `isValid` to the URL query string
-    if (getIsValid() != null) {
-      try {
-        joiner.add(String.format("%sisValid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsValid()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Errors of the VCs failed verification
+     *
+     * @return errors
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ERRORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getErrors() {
+        return errors;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_ERRORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setErrors(List<String> errors) {
+        this.errors = errors;
+    }
+
+    public VerifyCredentialOutput isValid(Boolean isValid) {
+
+        this.isValid = isValid;
+        return this;
+    }
+
+    /**
+     * Verification result
+     *
+     * @return isValid
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_IS_VALID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Boolean getIsValid() {
+        return isValid;
+    }
+
+    @JsonProperty(JSON_PROPERTY_IS_VALID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        VerifyCredentialOutput verifyCredentialOutput = (VerifyCredentialOutput) o;
+        return Objects.equals(this.errors, verifyCredentialOutput.errors)
+                && Objects.equals(this.isValid, verifyCredentialOutput.isValid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(errors, isValid);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class VerifyCredentialOutput {\n");
+        sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+        sb.append("    isValid: ").append(toIndentedString(isValid)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `errors` to the URL query string
+        if (getErrors() != null) {
+            for (int i = 0; i < getErrors().size(); i++) {
+                try {
+                    joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `isValid` to the URL query string
+        if (getIsValid() != null) {
+            try {
+                joiner.add(String.format("%sisValid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIsValid()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

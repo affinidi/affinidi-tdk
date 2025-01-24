@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -25,58 +24,61 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * status of current node. INITIALIZED status is used for PROFILE/FILE node that was just created, before file was uploaded in s3 CREATED status is used, when the file for node is uploaded in s3. HIDDEN and DELETED statuses are used for deletion of Nodes
+ * status of current node. INITIALIZED status is used for PROFILE/FILE node that was just created, before file was
+ * uploaded in s3 CREATED status is used, when the file for node is uploaded in s3. HIDDEN and DELETED statuses are used
+ * for deletion of Nodes
  */
 public enum NodeStatus {
-  
-  NOT_SET("NOT_SET"),
-  
-  HIDDEN("HIDDEN"),
-  
-  DELETED("DELETED"),
-  
-  INITIALIZED("INITIALIZED"),
-  
-  CREATED("CREATED");
 
-  private String value;
+    NOT_SET("NOT_SET"),
 
-  NodeStatus(String value) {
-    this.value = value;
-  }
+    HIDDEN("HIDDEN"),
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+    DELETED("DELETED"),
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    INITIALIZED("INITIALIZED"),
 
-  @JsonCreator
-  public static NodeStatus fromValue(String value) {
-    for (NodeStatus b : NodeStatus.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+    CREATED("CREATED");
 
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    if (prefix == null) {
-      prefix = "";
+    private String value;
+
+    NodeStatus(String value) {
+        this.value = value;
     }
 
-    return String.format("%s=%s", prefix, this.toString());
-  }
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static NodeStatus fromValue(String value) {
+        for (NodeStatus b : NodeStatus.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        if (prefix == null) {
+            prefix = "";
+        }
+
+        return String.format("%s=%s", prefix, this.toString());
+    }
 }
-

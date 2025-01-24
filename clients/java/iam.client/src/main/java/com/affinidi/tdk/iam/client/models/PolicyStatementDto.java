@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -32,282 +31,280 @@ import java.util.StringJoiner;
 /**
  * PolicyStatementDto
  */
-@JsonPropertyOrder({
-  PolicyStatementDto.JSON_PROPERTY_ACTION,
-  PolicyStatementDto.JSON_PROPERTY_EFFECT,
-  PolicyStatementDto.JSON_PROPERTY_PRINCIPAL,
-  PolicyStatementDto.JSON_PROPERTY_RESOURCE
-})
+@JsonPropertyOrder({ PolicyStatementDto.JSON_PROPERTY_ACTION, PolicyStatementDto.JSON_PROPERTY_EFFECT,
+        PolicyStatementDto.JSON_PROPERTY_PRINCIPAL, PolicyStatementDto.JSON_PROPERTY_RESOURCE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PolicyStatementDto {
-  public static final String JSON_PROPERTY_ACTION = "action";
-  private List<String> action = new ArrayList<>();
+    public static final String JSON_PROPERTY_ACTION = "action";
+    private List<String> action = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_EFFECT = "effect";
-  private String effect;
+    public static final String JSON_PROPERTY_EFFECT = "effect";
+    private String effect;
 
-  public static final String JSON_PROPERTY_PRINCIPAL = "principal";
-  private List<String> principal = new ArrayList<>();
+    public static final String JSON_PROPERTY_PRINCIPAL = "principal";
+    private List<String> principal = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_RESOURCE = "resource";
-  private List<String> resource = new ArrayList<>();
+    public static final String JSON_PROPERTY_RESOURCE = "resource";
+    private List<String> resource = new ArrayList<>();
 
-  public PolicyStatementDto() {
-  }
-
-  public PolicyStatementDto action(List<String> action) {
-    
-    this.action = action;
-    return this;
-  }
-
-  public PolicyStatementDto addActionItem(String actionItem) {
-    if (this.action == null) {
-      this.action = new ArrayList<>();
-    }
-    this.action.add(actionItem);
-    return this;
-  }
-
-  /**
-   * Get action
-   * @return action
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getAction() {
-    return action;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ACTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAction(List<String> action) {
-    this.action = action;
-  }
-
-  public PolicyStatementDto effect(String effect) {
-    
-    this.effect = effect;
-    return this;
-  }
-
-  /**
-   * Get effect
-   * @return effect
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EFFECT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getEffect() {
-    return effect;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EFFECT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEffect(String effect) {
-    this.effect = effect;
-  }
-
-  public PolicyStatementDto principal(List<String> principal) {
-    
-    this.principal = principal;
-    return this;
-  }
-
-  public PolicyStatementDto addPrincipalItem(String principalItem) {
-    if (this.principal == null) {
-      this.principal = new ArrayList<>();
-    }
-    this.principal.add(principalItem);
-    return this;
-  }
-
-  /**
-   * Get principal
-   * @return principal
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getPrincipal() {
-    return principal;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipal(List<String> principal) {
-    this.principal = principal;
-  }
-
-  public PolicyStatementDto resource(List<String> resource) {
-    
-    this.resource = resource;
-    return this;
-  }
-
-  public PolicyStatementDto addResourceItem(String resourceItem) {
-    if (this.resource == null) {
-      this.resource = new ArrayList<>();
-    }
-    this.resource.add(resourceItem);
-    return this;
-  }
-
-  /**
-   * Get resource
-   * @return resource
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESOURCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getResource() {
-    return resource;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESOURCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResource(List<String> resource) {
-    this.resource = resource;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PolicyStatementDto policyStatementDto = (PolicyStatementDto) o;
-    return Objects.equals(this.action, policyStatementDto.action) &&
-        Objects.equals(this.effect, policyStatementDto.effect) &&
-        Objects.equals(this.principal, policyStatementDto.principal) &&
-        Objects.equals(this.resource, policyStatementDto.resource);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(action, effect, principal, resource);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PolicyStatementDto {\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
-    sb.append("    principal: ").append(toIndentedString(principal)).append("\n");
-    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public PolicyStatementDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public PolicyStatementDto action(List<String> action) {
 
-    // add `action` to the URL query string
-    if (getAction() != null) {
-      for (int i = 0; i < getAction().size(); i++) {
-        try {
-          joiner.add(String.format("%saction%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getAction().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        this.action = action;
+        return this;
+    }
+
+    public PolicyStatementDto addActionItem(String actionItem) {
+        if (this.action == null) {
+            this.action = new ArrayList<>();
         }
-      }
+        this.action.add(actionItem);
+        return this;
     }
 
-    // add `effect` to the URL query string
-    if (getEffect() != null) {
-      try {
-        joiner.add(String.format("%seffect%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEffect()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get action
+     *
+     * @return action
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ACTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getAction() {
+        return action;
     }
 
-    // add `principal` to the URL query string
-    if (getPrincipal() != null) {
-      for (int i = 0; i < getPrincipal().size(); i++) {
-        try {
-          joiner.add(String.format("%sprincipal%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getPrincipal().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_ACTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAction(List<String> action) {
+        this.action = action;
+    }
+
+    public PolicyStatementDto effect(String effect) {
+
+        this.effect = effect;
+        return this;
+    }
+
+    /**
+     * Get effect
+     *
+     * @return effect
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_EFFECT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getEffect() {
+        return effect;
+    }
+
+    @JsonProperty(JSON_PROPERTY_EFFECT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setEffect(String effect) {
+        this.effect = effect;
+    }
+
+    public PolicyStatementDto principal(List<String> principal) {
+
+        this.principal = principal;
+        return this;
+    }
+
+    public PolicyStatementDto addPrincipalItem(String principalItem) {
+        if (this.principal == null) {
+            this.principal = new ArrayList<>();
         }
-      }
+        this.principal.add(principalItem);
+        return this;
     }
 
-    // add `resource` to the URL query string
-    if (getResource() != null) {
-      for (int i = 0; i < getResource().size(); i++) {
-        try {
-          joiner.add(String.format("%sresource%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getResource().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * Get principal
+     *
+     * @return principal
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getPrincipal() {
+        return principal;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPrincipal(List<String> principal) {
+        this.principal = principal;
+    }
+
+    public PolicyStatementDto resource(List<String> resource) {
+
+        this.resource = resource;
+        return this;
+    }
+
+    public PolicyStatementDto addResourceItem(String resourceItem) {
+        if (this.resource == null) {
+            this.resource = new ArrayList<>();
         }
-      }
+        this.resource.add(resourceItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get resource
+     *
+     * @return resource
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_RESOURCE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getResource() {
+        return resource;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESOURCE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setResource(List<String> resource) {
+        this.resource = resource;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PolicyStatementDto policyStatementDto = (PolicyStatementDto) o;
+        return Objects.equals(this.action, policyStatementDto.action)
+                && Objects.equals(this.effect, policyStatementDto.effect)
+                && Objects.equals(this.principal, policyStatementDto.principal)
+                && Objects.equals(this.resource, policyStatementDto.resource);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(action, effect, principal, resource);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PolicyStatementDto {\n");
+        sb.append("    action: ").append(toIndentedString(action)).append("\n");
+        sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
+        sb.append("    principal: ").append(toIndentedString(principal)).append("\n");
+        sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `action` to the URL query string
+        if (getAction() != null) {
+            for (int i = 0; i < getAction().size(); i++) {
+                try {
+                    joiner.add(String.format("%saction%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getAction().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `effect` to the URL query string
+        if (getEffect() != null) {
+            try {
+                joiner.add(String.format("%seffect%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getEffect()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `principal` to the URL query string
+        if (getPrincipal() != null) {
+            for (int i = 0; i < getPrincipal().size(); i++) {
+                try {
+                    joiner.add(String.format("%sprincipal%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getPrincipal().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `resource` to the URL query string
+        if (getResource() != null) {
+            for (int i = 0; i < getResource().size(); i++) {
+                try {
+                    joiner.add(String.format("%sresource%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getResource().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

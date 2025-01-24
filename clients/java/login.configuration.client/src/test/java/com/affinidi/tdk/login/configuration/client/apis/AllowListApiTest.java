@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
 import com.affinidi.tdk.login.configuration.client.ApiException;
@@ -40,7 +39,7 @@ public class AllowListApiTest {
      * Allow Single or Multiple Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void allowGroupsTest() throws ApiException {
@@ -49,11 +48,12 @@ public class AllowListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Disallow Single or Multiple Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void disallowGroupsTest() throws ApiException {
@@ -62,11 +62,12 @@ public class AllowListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get Allowed Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listAllowedGroupsTest() throws ApiException {

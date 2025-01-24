@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,164 +28,164 @@ import java.util.StringJoiner;
 /**
  * Input for Creating a Login Session
  */
-@JsonPropertyOrder({
-  LoginSessionForIDPInput.JSON_PROPERTY_LOGIN_CHALLENGE,
-  LoginSessionForIDPInput.JSON_PROPERTY_CLIENT_ID
-})
+@JsonPropertyOrder({ LoginSessionForIDPInput.JSON_PROPERTY_LOGIN_CHALLENGE,
+        LoginSessionForIDPInput.JSON_PROPERTY_CLIENT_ID })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LoginSessionForIDPInput {
-  public static final String JSON_PROPERTY_LOGIN_CHALLENGE = "loginChallenge";
-  private String loginChallenge;
+    public static final String JSON_PROPERTY_LOGIN_CHALLENGE = "loginChallenge";
+    private String loginChallenge;
 
-  public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
-  private String clientId;
+    public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+    private String clientId;
 
-  public LoginSessionForIDPInput() {
-  }
-
-  public LoginSessionForIDPInput loginChallenge(String loginChallenge) {
-    
-    this.loginChallenge = loginChallenge;
-    return this;
-  }
-
-  /**
-   * IDP Login Challenge to Associate the Session with
-   * @return loginChallenge
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOGIN_CHALLENGE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getLoginChallenge() {
-    return loginChallenge;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOGIN_CHALLENGE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLoginChallenge(String loginChallenge) {
-    this.loginChallenge = loginChallenge;
-  }
-
-  public LoginSessionForIDPInput clientId(String clientId) {
-    
-    this.clientId = clientId;
-    return this;
-  }
-
-  /**
-   * IDP client id to Associate the Session with
-   * @return clientId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getClientId() {
-    return clientId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LoginSessionForIDPInput loginSessionForIDPInput = (LoginSessionForIDPInput) o;
-    return Objects.equals(this.loginChallenge, loginSessionForIDPInput.loginChallenge) &&
-        Objects.equals(this.clientId, loginSessionForIDPInput.clientId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(loginChallenge, clientId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSessionForIDPInput {\n");
-    sb.append("    loginChallenge: ").append(toIndentedString(loginChallenge)).append("\n");
-    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public LoginSessionForIDPInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public LoginSessionForIDPInput loginChallenge(String loginChallenge) {
 
-    // add `loginChallenge` to the URL query string
-    if (getLoginChallenge() != null) {
-      try {
-        joiner.add(String.format("%sloginChallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoginChallenge()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.loginChallenge = loginChallenge;
+        return this;
     }
 
-    // add `clientId` to the URL query string
-    if (getClientId() != null) {
-      try {
-        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * IDP Login Challenge to Associate the Session with
+     *
+     * @return loginChallenge
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_LOGIN_CHALLENGE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getLoginChallenge() {
+        return loginChallenge;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_LOGIN_CHALLENGE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setLoginChallenge(String loginChallenge) {
+        this.loginChallenge = loginChallenge;
+    }
+
+    public LoginSessionForIDPInput clientId(String clientId) {
+
+        this.clientId = clientId;
+        return this;
+    }
+
+    /**
+     * IDP client id to Associate the Session with
+     *
+     * @return clientId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoginSessionForIDPInput loginSessionForIDPInput = (LoginSessionForIDPInput) o;
+        return Objects.equals(this.loginChallenge, loginSessionForIDPInput.loginChallenge)
+                && Objects.equals(this.clientId, loginSessionForIDPInput.clientId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loginChallenge, clientId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoginSessionForIDPInput {\n");
+        sb.append("    loginChallenge: ").append(toIndentedString(loginChallenge)).append("\n");
+        sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `loginChallenge` to the URL query string
+        if (getLoginChallenge() != null) {
+            try {
+                joiner.add(String.format("%sloginChallenge%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLoginChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `clientId` to the URL query string
+        if (getClientId() != null) {
+            try {
+                joiner.add(String.format("%sclientId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,124 @@ import java.util.StringJoiner;
 /**
  * CorsAwsExchangeCredentialsOK
  */
-@JsonPropertyOrder({
-  CorsAwsExchangeCredentialsOK.JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK
-})
+@JsonPropertyOrder({ CorsAwsExchangeCredentialsOK.JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsAwsExchangeCredentialsOK {
-  public static final String JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK = "corsAwsExchangeCredentialsOk";
-  private String corsAwsExchangeCredentialsOk;
+    public static final String JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK = "corsAwsExchangeCredentialsOk";
+    private String corsAwsExchangeCredentialsOk;
 
-  public CorsAwsExchangeCredentialsOK() {
-  }
-
-  public CorsAwsExchangeCredentialsOK corsAwsExchangeCredentialsOk(String corsAwsExchangeCredentialsOk) {
-    
-    this.corsAwsExchangeCredentialsOk = corsAwsExchangeCredentialsOk;
-    return this;
-  }
-
-  /**
-   * Get corsAwsExchangeCredentialsOk
-   * @return corsAwsExchangeCredentialsOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsAwsExchangeCredentialsOk() {
-    return corsAwsExchangeCredentialsOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsAwsExchangeCredentialsOk(String corsAwsExchangeCredentialsOk) {
-    this.corsAwsExchangeCredentialsOk = corsAwsExchangeCredentialsOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsAwsExchangeCredentialsOK corsAwsExchangeCredentialsOK = (CorsAwsExchangeCredentialsOK) o;
-    return Objects.equals(this.corsAwsExchangeCredentialsOk, corsAwsExchangeCredentialsOK.corsAwsExchangeCredentialsOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsAwsExchangeCredentialsOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsAwsExchangeCredentialsOK {\n");
-    sb.append("    corsAwsExchangeCredentialsOk: ").append(toIndentedString(corsAwsExchangeCredentialsOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsAwsExchangeCredentialsOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsAwsExchangeCredentialsOK corsAwsExchangeCredentialsOk(String corsAwsExchangeCredentialsOk) {
 
-    // add `corsAwsExchangeCredentialsOk` to the URL query string
-    if (getCorsAwsExchangeCredentialsOk() != null) {
-      try {
-        joiner.add(String.format("%scorsAwsExchangeCredentialsOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsAwsExchangeCredentialsOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsAwsExchangeCredentialsOk = corsAwsExchangeCredentialsOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsAwsExchangeCredentialsOk
+     *
+     * @return corsAwsExchangeCredentialsOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsAwsExchangeCredentialsOk() {
+        return corsAwsExchangeCredentialsOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsAwsExchangeCredentialsOk(String corsAwsExchangeCredentialsOk) {
+        this.corsAwsExchangeCredentialsOk = corsAwsExchangeCredentialsOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsAwsExchangeCredentialsOK corsAwsExchangeCredentialsOK = (CorsAwsExchangeCredentialsOK) o;
+        return Objects.equals(this.corsAwsExchangeCredentialsOk,
+                corsAwsExchangeCredentialsOK.corsAwsExchangeCredentialsOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsAwsExchangeCredentialsOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsAwsExchangeCredentialsOK {\n");
+        sb.append("    corsAwsExchangeCredentialsOk: ").append(toIndentedString(corsAwsExchangeCredentialsOk))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsAwsExchangeCredentialsOk` to the URL query string
+        if (getCorsAwsExchangeCredentialsOk() != null) {
+            try {
+                joiner.add(String.format("%scorsAwsExchangeCredentialsOk%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCorsAwsExchangeCredentialsOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

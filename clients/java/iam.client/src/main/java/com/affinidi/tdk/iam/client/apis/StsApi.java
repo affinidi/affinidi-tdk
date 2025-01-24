@@ -29,7 +29,6 @@ import com.affinidi.tdk.iam.client.models.PrincipalDoesNotBelongToProjectError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.WhoamiDto;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,193 +39,163 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StsApi extends BaseApi {
 
-  public StsApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public StsApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-   * @return CreateProjectScopedTokenOutput
-   * @throws ApiException if fails to make API call
-   */
-  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
-    return this.createProjectScopedToken(createProjectScopedTokenInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param createProjectScopedTokenInput CreateProjectScopedToken (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return CreateProjectScopedTokenOutput
-   * @throws ApiException if fails to make API call
-   */
-  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createProjectScopedTokenInput;
-    
-    // verify the required parameter 'createProjectScopedTokenInput' is set
-    if (createProjectScopedTokenInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'createProjectScopedTokenInput' when calling createProjectScopedToken");
+    public StsApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/sts/create-project-scoped-token";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    public StsApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     *
+     * @param createProjectScopedTokenInput
+     *            CreateProjectScopedToken (required)
+     *
+     * @return CreateProjectScopedTokenOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateProjectScopedTokenOutput createProjectScopedToken(
+            CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
+        return this.createProjectScopedToken(createProjectScopedTokenInput, Collections.emptyMap());
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     *
+     *
+     * @param createProjectScopedTokenInput
+     *            CreateProjectScopedToken (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return CreateProjectScopedTokenOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateProjectScopedTokenOutput createProjectScopedToken(
+            CreateProjectScopedTokenInput createProjectScopedTokenInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = createProjectScopedTokenInput;
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'createProjectScopedTokenInput' is set
+        if (createProjectScopedTokenInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'createProjectScopedTokenInput' when calling createProjectScopedToken");
+        }
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/sts/create-project-scoped-token";
 
-    TypeReference<CreateProjectScopedTokenOutput> localVarReturnType = new TypeReference<CreateProjectScopedTokenOutput>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  /**
-   * 
-   * 
-   * @return WhoamiDto
-   * @throws ApiException if fails to make API call
-   */
-  public WhoamiDto whoami() throws ApiException {
-    return this.whoami(Collections.emptyMap());
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  /**
-   * 
-   * 
-   * @param additionalHeaders additionalHeaders for this call
-   * @return WhoamiDto
-   * @throws ApiException if fails to make API call
-   */
-  public WhoamiDto whoami(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/sts/whoami";
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        TypeReference<CreateProjectScopedTokenOutput> localVarReturnType = new TypeReference<CreateProjectScopedTokenOutput>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     *
+     *
+     * @return WhoamiDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WhoamiDto whoami() throws ApiException {
+        return this.whoami(Collections.emptyMap());
+    }
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     *
+     *
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return WhoamiDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WhoamiDto whoami(Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/sts/whoami";
 
-    TypeReference<WhoamiDto> localVarReturnType = new TypeReference<WhoamiDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        TypeReference<WhoamiDto> localVarReturnType = new TypeReference<WhoamiDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,123 @@ import java.util.StringJoiner;
 /**
  * StartFileScanInput
  */
-@JsonPropertyOrder({
-  StartFileScanInput.JSON_PROPERTY_DEK
-})
+@JsonPropertyOrder({ StartFileScanInput.JSON_PROPERTY_DEK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StartFileScanInput {
-  public static final String JSON_PROPERTY_DEK = "dek";
-  private String dek;
+    public static final String JSON_PROPERTY_DEK = "dek";
+    private String dek;
 
-  public StartFileScanInput() {
-  }
-
-  public StartFileScanInput dek(String dek) {
-    
-    this.dek = dek;
-    return this;
-  }
-
-  /**
-   * A base64 encoded data encryption key, encrypted using VFS public key. This is important as this is used when starting document scan and also while uploading the file to s3
-   * @return dek
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEK)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getDek() {
-    return dek;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DEK)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDek(String dek) {
-    this.dek = dek;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    StartFileScanInput startFileScanInput = (StartFileScanInput) o;
-    return Objects.equals(this.dek, startFileScanInput.dek);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(dek);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class StartFileScanInput {\n");
-    sb.append("    dek: ").append(toIndentedString(dek)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public StartFileScanInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public StartFileScanInput dek(String dek) {
 
-    // add `dek` to the URL query string
-    if (getDek() != null) {
-      try {
-        joiner.add(String.format("%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.dek = dek;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * A base64 encoded data encryption key, encrypted using VFS public key. This is important as this is used when
+     * starting document scan and also while uploading the file to s3
+     *
+     * @return dek
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DEK)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getDek() {
+        return dek;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DEK)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setDek(String dek) {
+        this.dek = dek;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        StartFileScanInput startFileScanInput = (StartFileScanInput) o;
+        return Objects.equals(this.dek, startFileScanInput.dek);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dek);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class StartFileScanInput {\n");
+        sb.append("    dek: ").append(toIndentedString(dek)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `dek` to the URL query string
+        if (getDek() != null) {
+            try {
+                joiner.add(String.format("%sdek%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

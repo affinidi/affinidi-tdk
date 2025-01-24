@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -29,124 +28,123 @@ import java.util.StringJoiner;
 /**
  * TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
  */
-@JsonPropertyOrder({
-  TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.JSON_PROPERTY_JWKS_URI
-})
+@JsonPropertyOrder({ TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.JSON_PROPERTY_JWKS_URI })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
-  public static final String JSON_PROPERTY_JWKS_URI = "jwksUri";
-  private String jwksUri;
+    public static final String JSON_PROPERTY_JWKS_URI = "jwksUri";
+    private String jwksUri;
 
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1() {
-  }
-
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 jwksUri(String jwksUri) {
-    
-    this.jwksUri = jwksUri;
-    return this;
-  }
-
-  /**
-   * Get jwksUri
-   * @return jwksUri
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJwksUri() {
-    return jwksUri;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwksUri(String jwksUri) {
-    this.jwksUri = jwksUri;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 = (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1) o;
-    return Objects.equals(this.jwksUri, tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.jwksUri);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(jwksUri);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {\n");
-    sb.append("    jwksUri: ").append(toIndentedString(jwksUri)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 jwksUri(String jwksUri) {
 
-    // add `jwksUri` to the URL query string
-    if (getJwksUri() != null) {
-      try {
-        joiner.add(String.format("%sjwksUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.jwksUri = jwksUri;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get jwksUri
+     *
+     * @return jwksUri
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JWKS_URI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJwksUri() {
+        return jwksUri;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JWKS_URI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJwksUri(String jwksUri) {
+        this.jwksUri = jwksUri;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 = (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1) o;
+        return Objects.equals(this.jwksUri, tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.jwksUri);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(jwksUri);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {\n");
+        sb.append("    jwksUri: ").append(toIndentedString(jwksUri)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `jwksUri` to the URL query string
+        if (getJwksUri() != null) {
+            try {
+                joiner.add(String.format("%sjwksUri%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

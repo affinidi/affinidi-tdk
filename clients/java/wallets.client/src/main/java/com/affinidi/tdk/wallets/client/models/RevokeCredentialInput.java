@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
@@ -33,183 +32,185 @@ import java.util.StringJoiner;
 /**
  * RevokeCredentialInput
  */
-@JsonPropertyOrder({
-  RevokeCredentialInput.JSON_PROPERTY_REVOCATION_REASON,
-  RevokeCredentialInput.JSON_PROPERTY_CREDENTIAL_ID
-})
+@JsonPropertyOrder({ RevokeCredentialInput.JSON_PROPERTY_REVOCATION_REASON,
+        RevokeCredentialInput.JSON_PROPERTY_CREDENTIAL_ID })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class RevokeCredentialInput {
-  public static final String JSON_PROPERTY_REVOCATION_REASON = "revocationReason";
-  private JsonNullable<String> revocationReason = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_REVOCATION_REASON = "revocationReason";
+    private JsonNullable<String> revocationReason = JsonNullable.<String> undefined();
 
-  public static final String JSON_PROPERTY_CREDENTIAL_ID = "credentialId";
-  private String credentialId;
+    public static final String JSON_PROPERTY_CREDENTIAL_ID = "credentialId";
+    private String credentialId;
 
-  public RevokeCredentialInput() {
-  }
+    public RevokeCredentialInput() {
+    }
 
-  public RevokeCredentialInput revocationReason(String revocationReason) {
-    this.revocationReason = JsonNullable.<String>of(revocationReason);
-    
-    return this;
-  }
+    public RevokeCredentialInput revocationReason(String revocationReason) {
+        this.revocationReason = JsonNullable.<String> of(revocationReason);
 
-  /**
-   * Get revocationReason
-   * @return revocationReason
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+        return this;
+    }
 
-  public String getRevocationReason() {
+    /**
+     * Get revocationReason
+     *
+     * @return revocationReason
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getRevocationReason() {
         return revocationReason.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<String> getRevocationReason_JsonNullable() {
-    return revocationReason;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
-  public void setRevocationReason_JsonNullable(JsonNullable<String> revocationReason) {
-    this.revocationReason = revocationReason;
-  }
-
-  public void setRevocationReason(String revocationReason) {
-    this.revocationReason = JsonNullable.<String>of(revocationReason);
-  }
-
-  public RevokeCredentialInput credentialId(String credentialId) {
-    
-    this.credentialId = credentialId;
-    return this;
-  }
-
-  /**
-   * Get credentialId
-   * @return credentialId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCredentialId() {
-    return credentialId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialId(String credentialId) {
-    this.credentialId = credentialId;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    RevokeCredentialInput revokeCredentialInput = (RevokeCredentialInput) o;
-    return equalsNullable(this.revocationReason, revokeCredentialInput.revocationReason) &&
-        Objects.equals(this.credentialId, revokeCredentialInput.credentialId);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(hashCodeNullable(revocationReason), credentialId);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RevokeCredentialInput {\n");
-    sb.append("    revocationReason: ").append(toIndentedString(revocationReason)).append("\n");
-    sb.append("    credentialId: ").append(toIndentedString(credentialId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    // add `revocationReason` to the URL query string
-    if (getRevocationReason() != null) {
-      try {
-        joiner.add(String.format("%srevocationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationReason()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonNullable<String> getRevocationReason_JsonNullable() {
+        return revocationReason;
     }
 
-    // add `credentialId` to the URL query string
-    if (getCredentialId() != null) {
-      try {
-        joiner.add(String.format("%scredentialId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
+    public void setRevocationReason_JsonNullable(JsonNullable<String> revocationReason) {
+        this.revocationReason = revocationReason;
     }
 
-    return joiner.toString();
-  }
+    public void setRevocationReason(String revocationReason) {
+        this.revocationReason = JsonNullable.<String> of(revocationReason);
+    }
+
+    public RevokeCredentialInput credentialId(String credentialId) {
+
+        this.credentialId = credentialId;
+        return this;
+    }
+
+    /**
+     * Get credentialId
+     *
+     * @return credentialId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCredentialId() {
+        return credentialId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialId(String credentialId) {
+        this.credentialId = credentialId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RevokeCredentialInput revokeCredentialInput = (RevokeCredentialInput) o;
+        return equalsNullable(this.revocationReason, revokeCredentialInput.revocationReason)
+                && Objects.equals(this.credentialId, revokeCredentialInput.credentialId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hashCodeNullable(revocationReason), credentialId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] { a.get() }) : 31;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class RevokeCredentialInput {\n");
+        sb.append("    revocationReason: ").append(toIndentedString(revocationReason)).append("\n");
+        sb.append("    credentialId: ").append(toIndentedString(credentialId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `revocationReason` to the URL query string
+        if (getRevocationReason() != null) {
+            try {
+                joiner.add(String.format("%srevocationReason%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getRevocationReason()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `credentialId` to the URL query string
+        if (getCredentialId() != null) {
+            try {
+                joiner.add(String.format("%scredentialId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCredentialId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

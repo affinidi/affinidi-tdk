@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,246 +28,245 @@ import java.util.StringJoiner;
 /**
  * GroupDto
  */
-@JsonPropertyOrder({
-  GroupDto.JSON_PROPERTY_ARI,
-  GroupDto.JSON_PROPERTY_PROJECT_ID,
-  GroupDto.JSON_PROPERTY_GROUP_NAME,
-  GroupDto.JSON_PROPERTY_CREATION_DATE
-})
+@JsonPropertyOrder({ GroupDto.JSON_PROPERTY_ARI, GroupDto.JSON_PROPERTY_PROJECT_ID, GroupDto.JSON_PROPERTY_GROUP_NAME,
+        GroupDto.JSON_PROPERTY_CREATION_DATE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GroupDto {
-  public static final String JSON_PROPERTY_ARI = "ari";
-  private String ari;
+    public static final String JSON_PROPERTY_ARI = "ari";
+    private String ari;
 
-  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  private String projectId;
+    public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+    private String projectId;
 
-  public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
-  private String groupName;
+    public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
+    private String groupName;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+    public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    private String creationDate;
 
-  public GroupDto() {
-  }
-
-  public GroupDto ari(String ari) {
-    
-    this.ari = ari;
-    return this;
-  }
-
-  /**
-   * Group ari
-   * @return ari
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAri() {
-    return ari;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
-    this.ari = ari;
-  }
-
-  public GroupDto projectId(String projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-  /**
-   * Project id
-   * @return projectId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getProjectId() {
-    return projectId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
-    this.projectId = projectId;
-  }
-
-  public GroupDto groupName(String groupName) {
-    
-    this.groupName = groupName;
-    return this;
-  }
-
-  /**
-   * name of the group, identifier within a project
-   * @return groupName
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getGroupName() {
-    return groupName;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupName(String groupName) {
-    this.groupName = groupName;
-  }
-
-  public GroupDto creationDate(String creationDate) {
-    
-    this.creationDate = creationDate;
-    return this;
-  }
-
-  /**
-   * Group creation date
-   * @return creationDate
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCreationDate() {
-    return creationDate;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GroupDto groupDto = (GroupDto) o;
-    return Objects.equals(this.ari, groupDto.ari) &&
-        Objects.equals(this.projectId, groupDto.projectId) &&
-        Objects.equals(this.groupName, groupDto.groupName) &&
-        Objects.equals(this.creationDate, groupDto.creationDate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(ari, projectId, groupName, creationDate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GroupDto {\n");
-    sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    groupName: ").append(toIndentedString(groupName)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public GroupDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public GroupDto ari(String ari) {
 
-    // add `ari` to the URL query string
-    if (getAri() != null) {
-      try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.ari = ari;
+        return this;
     }
 
-    // add `projectId` to the URL query string
-    if (getProjectId() != null) {
-      try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Group ari
+     *
+     * @return ari
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAri() {
+        return ari;
     }
 
-    // add `groupName` to the URL query string
-    if (getGroupName() != null) {
-      try {
-        joiner.add(String.format("%sgroupName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGroupName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAri(String ari) {
+        this.ari = ari;
     }
 
-    // add `creationDate` to the URL query string
-    if (getCreationDate() != null) {
-      try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public GroupDto projectId(String projectId) {
+
+        this.projectId = projectId;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Project id
+     *
+     * @return projectId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public GroupDto groupName(String groupName) {
+
+        this.groupName = groupName;
+        return this;
+    }
+
+    /**
+     * name of the group, identifier within a project
+     *
+     * @return groupName
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public GroupDto creationDate(String creationDate) {
+
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    /**
+     * Group creation date
+     *
+     * @return creationDate
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GroupDto groupDto = (GroupDto) o;
+        return Objects.equals(this.ari, groupDto.ari) && Objects.equals(this.projectId, groupDto.projectId)
+                && Objects.equals(this.groupName, groupDto.groupName)
+                && Objects.equals(this.creationDate, groupDto.creationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ari, projectId, groupName, creationDate);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GroupDto {\n");
+        sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
+        sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+        sb.append("    groupName: ").append(toIndentedString(groupName)).append("\n");
+        sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `ari` to the URL query string
+        if (getAri() != null) {
+            try {
+                joiner.add(String.format("%sari%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `projectId` to the URL query string
+        if (getProjectId() != null) {
+            try {
+                joiner.add(String.format("%sprojectId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `groupName` to the URL query string
+        if (getGroupName() != null) {
+            try {
+                joiner.add(String.format("%sgroupName%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getGroupName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `creationDate` to the URL query string
+        if (getCreationDate() != null) {
+            try {
+                joiner.add(String.format("%screationDate%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

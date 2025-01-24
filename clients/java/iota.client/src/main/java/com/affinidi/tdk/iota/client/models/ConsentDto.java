@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,484 +28,485 @@ import java.util.StringJoiner;
 /**
  * ConsentDto
  */
-@JsonPropertyOrder({
-  ConsentDto.JSON_PROPERTY_PROJECT_ID,
-  ConsentDto.JSON_PROPERTY_ID,
-  ConsentDto.JSON_PROPERTY_USER_ID,
-  ConsentDto.JSON_PROPERTY_VC_TYPE,
-  ConsentDto.JSON_PROPERTY_STATUS,
-  ConsentDto.JSON_PROPERTY_MODIFIED_AT,
-  ConsentDto.JSON_PROPERTY_MODIFIED_BY,
-  ConsentDto.JSON_PROPERTY_CREATED_AT,
-  ConsentDto.JSON_PROPERTY_CREATED_BY
-})
+@JsonPropertyOrder({ ConsentDto.JSON_PROPERTY_PROJECT_ID, ConsentDto.JSON_PROPERTY_ID, ConsentDto.JSON_PROPERTY_USER_ID,
+        ConsentDto.JSON_PROPERTY_VC_TYPE, ConsentDto.JSON_PROPERTY_STATUS, ConsentDto.JSON_PROPERTY_MODIFIED_AT,
+        ConsentDto.JSON_PROPERTY_MODIFIED_BY, ConsentDto.JSON_PROPERTY_CREATED_AT,
+        ConsentDto.JSON_PROPERTY_CREATED_BY })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConsentDto {
-  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  private String projectId;
+    public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+    private String projectId;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_USER_ID = "userId";
-  private String userId;
+    public static final String JSON_PROPERTY_USER_ID = "userId";
+    private String userId;
 
-  public static final String JSON_PROPERTY_VC_TYPE = "vcType";
-  private String vcType;
+    public static final String JSON_PROPERTY_VC_TYPE = "vcType";
+    private String vcType;
 
-  /**
-   * Status of the consent.
-   */
-  public enum StatusEnum {
-    GIVEN("GIVEN");
+    /**
+     * Status of the consent.
+     */
+    public enum StatusEnum {
+        GIVEN("GIVEN");
 
-    private String value;
+        private String value;
 
-    StatusEnum(String value) {
-      this.value = value;
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_STATUS = "status";
+    private StatusEnum status;
+
+    public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+    private String modifiedAt;
+
+    public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+    private String modifiedBy;
+
+    public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+    private String createdAt;
+
+    public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+    private String createdBy;
+
+    public ConsentDto() {
+    }
+
+    public ConsentDto projectId(String projectId) {
+
+        this.projectId = projectId;
+        return this;
+    }
+
+    /**
+     * The ID of the project.
+     *
+     * @return projectId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public ConsentDto id(String id) {
+
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Unique identifier for the record.
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public ConsentDto userId(String userId) {
+
+        this.userId = userId;
+        return this;
+    }
+
+    /**
+     * Unique identifier for the user.
+     *
+     * @return userId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_USER_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getUserId() {
+        return userId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USER_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public ConsentDto vcType(String vcType) {
+
+        this.vcType = vcType;
+        return this;
+    }
+
+    /**
+     * Type of the VC shared by the user. It creates a consent record for each VC type shared except for the base type
+     * VerifiableCredential.
+     *
+     * @return vcType
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VC_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getVcType() {
+        return vcType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VC_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVcType(String vcType) {
+        this.vcType = vcType;
+    }
+
+    public ConsentDto status(StatusEnum status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * Status of the consent.
+     *
+     * @return status
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    public ConsentDto modifiedAt(String modifiedAt) {
+
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+
+    /**
+     * Get modifiedAt
+     *
+     * @return modifiedAt
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getModifiedAt() {
+        return modifiedAt;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setModifiedAt(String modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public ConsentDto modifiedBy(String modifiedBy) {
+
+        this.modifiedBy = modifiedBy;
+        return this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return modifiedBy
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public ConsentDto createdAt(String createdAt) {
+
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return createdAt
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREATED_AT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_AT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public ConsentDto createdBy(String createdBy) {
+
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return createdBy
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREATED_BY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_BY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ConsentDto consentDto = (ConsentDto) o;
+        return Objects.equals(this.projectId, consentDto.projectId) && Objects.equals(this.id, consentDto.id)
+                && Objects.equals(this.userId, consentDto.userId) && Objects.equals(this.vcType, consentDto.vcType)
+                && Objects.equals(this.status, consentDto.status)
+                && Objects.equals(this.modifiedAt, consentDto.modifiedAt)
+                && Objects.equals(this.modifiedBy, consentDto.modifiedBy)
+                && Objects.equals(this.createdAt, consentDto.createdAt)
+                && Objects.equals(this.createdBy, consentDto.createdBy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(projectId, id, userId, vcType, status, modifiedAt, modifiedBy, createdAt, createdBy);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ConsentDto {\n");
+        sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+        sb.append("    vcType: ").append(toIndentedString(vcType)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
+        sb.append("    modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  private StatusEnum status;
-
-  public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
-  private String modifiedAt;
-
-  public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
-  private String modifiedBy;
-
-  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
-  private String createdAt;
-
-  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
-  private String createdBy;
-
-  public ConsentDto() {
-  }
-
-  public ConsentDto projectId(String projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-  /**
-   * The ID of the project.
-   * @return projectId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getProjectId() {
-    return projectId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
-    this.projectId = projectId;
-  }
-
-  public ConsentDto id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Unique identifier for the record.
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public ConsentDto userId(String userId) {
-    
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * Unique identifier for the user.
-   * @return userId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getUserId() {
-    return userId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
-
-  public ConsentDto vcType(String vcType) {
-    
-    this.vcType = vcType;
-    return this;
-  }
-
-  /**
-   * Type of the VC shared by the user. It creates a consent record for each  VC type shared except for the base type VerifiableCredential.
-   * @return vcType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VC_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getVcType() {
-    return vcType;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VC_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVcType(String vcType) {
-    this.vcType = vcType;
-  }
-
-  public ConsentDto status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Status of the consent.
-   * @return status
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  public ConsentDto modifiedAt(String modifiedAt) {
-    
-    this.modifiedAt = modifiedAt;
-    return this;
-  }
-
-  /**
-   * Get modifiedAt
-   * @return modifiedAt
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getModifiedAt() {
-    return modifiedAt;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedAt(String modifiedAt) {
-    this.modifiedAt = modifiedAt;
-  }
-
-  public ConsentDto modifiedBy(String modifiedBy) {
-    
-    this.modifiedBy = modifiedBy;
-    return this;
-  }
-
-  /**
-   * Get modifiedBy
-   * @return modifiedBy
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getModifiedBy() {
-    return modifiedBy;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedBy(String modifiedBy) {
-    this.modifiedBy = modifiedBy;
-  }
-
-  public ConsentDto createdAt(String createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-  /**
-   * Get createdAt
-   * @return createdAt
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public ConsentDto createdBy(String createdBy) {
-    
-    this.createdBy = createdBy;
-    return this;
-  }
-
-  /**
-   * Get createdBy
-   * @return createdBy
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCreatedBy() {
-    return createdBy;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ConsentDto consentDto = (ConsentDto) o;
-    return Objects.equals(this.projectId, consentDto.projectId) &&
-        Objects.equals(this.id, consentDto.id) &&
-        Objects.equals(this.userId, consentDto.userId) &&
-        Objects.equals(this.vcType, consentDto.vcType) &&
-        Objects.equals(this.status, consentDto.status) &&
-        Objects.equals(this.modifiedAt, consentDto.modifiedAt) &&
-        Objects.equals(this.modifiedBy, consentDto.modifiedBy) &&
-        Objects.equals(this.createdAt, consentDto.createdAt) &&
-        Objects.equals(this.createdBy, consentDto.createdBy);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(projectId, id, userId, vcType, status, modifiedAt, modifiedBy, createdAt, createdBy);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConsentDto {\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    vcType: ").append(toIndentedString(vcType)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
-    sb.append("    modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `projectId` to the URL query string
-    if (getProjectId() != null) {
-      try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
 
-    // add `userId` to the URL query string
-    if (getUserId() != null) {
-      try {
-        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        StringJoiner joiner = new StringJoiner("&");
 
-    // add `vcType` to the URL query string
-    if (getVcType() != null) {
-      try {
-        joiner.add(String.format("%svcType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVcType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `projectId` to the URL query string
+        if (getProjectId() != null) {
+            try {
+                joiner.add(String.format("%sprojectId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `modifiedAt` to the URL query string
-    if (getModifiedAt() != null) {
-      try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `userId` to the URL query string
+        if (getUserId() != null) {
+            try {
+                joiner.add(String.format("%suserId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `modifiedBy` to the URL query string
-    if (getModifiedBy() != null) {
-      try {
-        joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `vcType` to the URL query string
+        if (getVcType() != null) {
+            try {
+                joiner.add(String.format("%svcType%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVcType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `createdAt` to the URL query string
-    if (getCreatedAt() != null) {
-      try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `status` to the URL query string
+        if (getStatus() != null) {
+            try {
+                joiner.add(String.format("%sstatus%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `createdBy` to the URL query string
-    if (getCreatedBy() != null) {
-      try {
-        joiner.add(String.format("%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `modifiedAt` to the URL query string
+        if (getModifiedAt() != null) {
+            try {
+                joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    return joiner.toString();
-  }
+        // add `modifiedBy` to the URL query string
+        if (getModifiedBy() != null) {
+            try {
+                joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `createdAt` to the URL query string
+        if (getCreatedAt() != null) {
+            try {
+                joiner.add(String.format("%screatedAt%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `createdBy` to the URL query string
+        if (getCreatedBy() != null) {
+            try {
+                joiner.add(String.format("%screatedBy%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

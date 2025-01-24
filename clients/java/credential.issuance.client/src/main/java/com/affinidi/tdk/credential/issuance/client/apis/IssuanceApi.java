@@ -29,7 +29,6 @@ import com.affinidi.tdk.credential.issuance.client.models.StartIssuance400Respon
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInput;
 import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceResponse;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,292 +39,268 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IssuanceApi extends BaseApi {
 
-  public IssuanceApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public IssuanceApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * Get issuance status
-   * @param issuanceId  (required)
-   * @param projectId Affinidi project id (required)
-   * @return IssuanceStateResponse
-   * @throws ApiException if fails to make API call
-   */
-  public IssuanceStateResponse issuanceState(String issuanceId, String projectId) throws ApiException {
-    return this.issuanceState(issuanceId, projectId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Get issuance status
-   * @param issuanceId  (required)
-   * @param projectId Affinidi project id (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return IssuanceStateResponse
-   * @throws ApiException if fails to make API call
-   */
-  public IssuanceStateResponse issuanceState(String issuanceId, String projectId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'issuanceId' is set
-    if (issuanceId == null) {
-      throw new ApiException(400, "Missing the required parameter 'issuanceId' when calling issuanceState");
+    public IssuanceApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling issuanceState");
+
+    public IssuanceApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{projectId}/issuance/state/{issuanceId}"
-      .replaceAll("\\{" + "issuanceId" + "\\}", apiClient.escapeString(apiClient.parameterToString(issuanceId)))
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<IssuanceStateResponse> localVarReturnType = new TypeReference<IssuanceStateResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * List all issuances for Project
-   * @param projectId Affinidi project id (required)
-   * @return ListIssuanceResponse
-   * @throws ApiException if fails to make API call
-   */
-  public ListIssuanceResponse listIssuance(String projectId) throws ApiException {
-    return this.listIssuance(projectId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * List all issuances for Project
-   * @param projectId Affinidi project id (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ListIssuanceResponse
-   * @throws ApiException if fails to make API call
-   */
-  public ListIssuanceResponse listIssuance(String projectId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling listIssuance");
+    /**
+     *
+     * Get issuance status
+     *
+     * @param issuanceId
+     *            (required)
+     * @param projectId
+     *            Affinidi project id (required)
+     *
+     * @return IssuanceStateResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IssuanceStateResponse issuanceState(String issuanceId, String projectId) throws ApiException {
+        return this.issuanceState(issuanceId, projectId, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{projectId}/issuance"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * Get issuance status
+     *
+     * @param issuanceId
+     *            (required)
+     * @param projectId
+     *            Affinidi project id (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return IssuanceStateResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IssuanceStateResponse issuanceState(String issuanceId, String projectId,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'issuanceId' is set
+        if (issuanceId == null) {
+            throw new ApiException(400, "Missing the required parameter 'issuanceId' when calling issuanceState");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400, "Missing the required parameter 'projectId' when calling issuanceState");
+        }
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/{projectId}/issuance/state/{issuanceId}"
+                .replaceAll("\\{" + "issuanceId" + "\\}",
+                        apiClient.escapeString(apiClient.parameterToString(issuanceId)))
+                .replaceAll("\\{" + "projectId" + "\\}",
+                        apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    TypeReference<ListIssuanceResponse> localVarReturnType = new TypeReference<ListIssuanceResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  /**
-   * 
-   * Endpoint used b websites to start the issuance process
-   * @param projectId Affinidi project id (required)
-   * @param startIssuanceInput Request body to start issuance (required)
-   * @return StartIssuanceResponse
-   * @throws ApiException if fails to make API call
-   */
-  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
-    return this.startIssuance(projectId, startIssuanceInput, Collections.emptyMap());
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * 
-   * Endpoint used b websites to start the issuance process
-   * @param projectId Affinidi project id (required)
-   * @param startIssuanceInput Request body to start issuance (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return StartIssuanceResponse
-   * @throws ApiException if fails to make API call
-   */
-  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = startIssuanceInput;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling startIssuance");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<IssuanceStateResponse> localVarReturnType = new TypeReference<IssuanceStateResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // verify the required parameter 'startIssuanceInput' is set
-    if (startIssuanceInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'startIssuanceInput' when calling startIssuance");
+
+    /**
+     *
+     * List all issuances for Project
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     *
+     * @return ListIssuanceResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListIssuanceResponse listIssuance(String projectId) throws ApiException {
+        return this.listIssuance(projectId, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{projectId}/issuance/start"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * List all issuances for Project
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ListIssuanceResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListIssuanceResponse listIssuance(String projectId, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400, "Missing the required parameter 'projectId' when calling listIssuance");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/{projectId}/issuance".replaceAll("\\{" + "projectId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    TypeReference<StartIssuanceResponse> localVarReturnType = new TypeReference<StartIssuanceResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarContentTypes = {
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        TypeReference<ListIssuanceResponse> localVarReturnType = new TypeReference<ListIssuanceResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+    /**
+     *
+     * Endpoint used b websites to start the issuance process
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     * @param startIssuanceInput
+     *            Request body to start issuance (required)
+     *
+     * @return StartIssuanceResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput)
+            throws ApiException {
+        return this.startIssuance(projectId, startIssuanceInput, Collections.emptyMap());
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    /**
+     *
+     * Endpoint used b websites to start the issuance process
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     * @param startIssuanceInput
+     *            Request body to start issuance (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return StartIssuanceResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = startIssuanceInput;
+
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400, "Missing the required parameter 'projectId' when calling startIssuance");
+        }
+
+        // verify the required parameter 'startIssuanceInput' is set
+        if (startIssuanceInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'startIssuanceInput' when calling startIssuance");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/{projectId}/issuance/start".replaceAll("\\{" + "projectId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(projectId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<StartIssuanceResponse> localVarReturnType = new TypeReference<StartIssuanceResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

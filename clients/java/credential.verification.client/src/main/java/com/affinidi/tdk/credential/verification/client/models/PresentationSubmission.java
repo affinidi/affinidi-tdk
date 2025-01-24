@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -33,213 +32,213 @@ import java.util.StringJoiner;
 /**
  * PresentationSubmission
  */
-@JsonPropertyOrder({
-  PresentationSubmission.JSON_PROPERTY_ID,
-  PresentationSubmission.JSON_PROPERTY_DEFINITION_ID,
-  PresentationSubmission.JSON_PROPERTY_DESCRIPTOR_MAP
-})
+@JsonPropertyOrder({ PresentationSubmission.JSON_PROPERTY_ID, PresentationSubmission.JSON_PROPERTY_DEFINITION_ID,
+        PresentationSubmission.JSON_PROPERTY_DESCRIPTOR_MAP })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PresentationSubmission {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_DEFINITION_ID = "definition_id";
-  private String definitionId;
+    public static final String JSON_PROPERTY_DEFINITION_ID = "definition_id";
+    private String definitionId;
 
-  public static final String JSON_PROPERTY_DESCRIPTOR_MAP = "descriptor_map";
-  private List<Descriptor> descriptorMap = new ArrayList<>();
+    public static final String JSON_PROPERTY_DESCRIPTOR_MAP = "descriptor_map";
+    private List<Descriptor> descriptorMap = new ArrayList<>();
 
-  public PresentationSubmission() {
-  }
-
-  public PresentationSubmission id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public PresentationSubmission definitionId(String definitionId) {
-    
-    this.definitionId = definitionId;
-    return this;
-  }
-
-  /**
-   * Get definitionId
-   * @return definitionId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getDefinitionId() {
-    return definitionId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDefinitionId(String definitionId) {
-    this.definitionId = definitionId;
-  }
-
-  public PresentationSubmission descriptorMap(List<Descriptor> descriptorMap) {
-    
-    this.descriptorMap = descriptorMap;
-    return this;
-  }
-
-  public PresentationSubmission addDescriptorMapItem(Descriptor descriptorMapItem) {
-    if (this.descriptorMap == null) {
-      this.descriptorMap = new ArrayList<>();
-    }
-    this.descriptorMap.add(descriptorMapItem);
-    return this;
-  }
-
-  /**
-   * Get descriptorMap
-   * @return descriptorMap
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DESCRIPTOR_MAP)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<Descriptor> getDescriptorMap() {
-    return descriptorMap;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTOR_MAP)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescriptorMap(List<Descriptor> descriptorMap) {
-    this.descriptorMap = descriptorMap;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PresentationSubmission presentationSubmission = (PresentationSubmission) o;
-    return Objects.equals(this.id, presentationSubmission.id) &&
-        Objects.equals(this.definitionId, presentationSubmission.definitionId) &&
-        Objects.equals(this.descriptorMap, presentationSubmission.descriptorMap);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, definitionId, descriptorMap);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PresentationSubmission {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    definitionId: ").append(toIndentedString(definitionId)).append("\n");
-    sb.append("    descriptorMap: ").append(toIndentedString(descriptorMap)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public PresentationSubmission() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public PresentationSubmission id(String id) {
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.id = id;
+        return this;
     }
 
-    // add `definition_id` to the URL query string
-    if (getDefinitionId() != null) {
-      try {
-        joiner.add(String.format("%sdefinition_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDefinitionId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
     }
 
-    // add `descriptor_map` to the URL query string
-    if (getDescriptorMap() != null) {
-      for (int i = 0; i < getDescriptorMap().size(); i++) {
-        if (getDescriptorMap().get(i) != null) {
-          joiner.add(getDescriptorMap().get(i).toUrlQueryString(String.format("%sdescriptor_map%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public PresentationSubmission definitionId(String definitionId) {
+
+        this.definitionId = definitionId;
+        return this;
+    }
+
+    /**
+     * Get definitionId
+     *
+     * @return definitionId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getDefinitionId() {
+        return definitionId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setDefinitionId(String definitionId) {
+        this.definitionId = definitionId;
+    }
+
+    public PresentationSubmission descriptorMap(List<Descriptor> descriptorMap) {
+
+        this.descriptorMap = descriptorMap;
+        return this;
+    }
+
+    public PresentationSubmission addDescriptorMapItem(Descriptor descriptorMapItem) {
+        if (this.descriptorMap == null) {
+            this.descriptorMap = new ArrayList<>();
         }
-      }
+        this.descriptorMap.add(descriptorMapItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get descriptorMap
+     *
+     * @return descriptorMap
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DESCRIPTOR_MAP)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<Descriptor> getDescriptorMap() {
+        return descriptorMap;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTOR_MAP)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setDescriptorMap(List<Descriptor> descriptorMap) {
+        this.descriptorMap = descriptorMap;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PresentationSubmission presentationSubmission = (PresentationSubmission) o;
+        return Objects.equals(this.id, presentationSubmission.id)
+                && Objects.equals(this.definitionId, presentationSubmission.definitionId)
+                && Objects.equals(this.descriptorMap, presentationSubmission.descriptorMap);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, definitionId, descriptorMap);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PresentationSubmission {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    definitionId: ").append(toIndentedString(definitionId)).append("\n");
+        sb.append("    descriptorMap: ").append(toIndentedString(descriptorMap)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `definition_id` to the URL query string
+        if (getDefinitionId() != null) {
+            try {
+                joiner.add(String.format("%sdefinition_id%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDefinitionId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `descriptor_map` to the URL query string
+        if (getDescriptorMap() != null) {
+            for (int i = 0; i < getDescriptorMap().size(); i++) {
+                if (getDescriptorMap().get(i) != null) {
+                    joiner.add(getDescriptorMap().get(i).toUrlQueryString(String.format("%sdescriptor_map%s%s", prefix,
+                            suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

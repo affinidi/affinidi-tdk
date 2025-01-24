@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -33,336 +32,335 @@ import java.util.StringJoiner;
 /**
  * PolicyDto
  */
-@JsonPropertyOrder({
-  PolicyDto.JSON_PROPERTY_NAME,
-  PolicyDto.JSON_PROPERTY_DESCRIPTION,
-  PolicyDto.JSON_PROPERTY_PRINCIPAL_ID,
-  PolicyDto.JSON_PROPERTY_PROJECT_ID,
-  PolicyDto.JSON_PROPERTY_VERSION,
-  PolicyDto.JSON_PROPERTY_STATEMENT
-})
+@JsonPropertyOrder({ PolicyDto.JSON_PROPERTY_NAME, PolicyDto.JSON_PROPERTY_DESCRIPTION,
+        PolicyDto.JSON_PROPERTY_PRINCIPAL_ID, PolicyDto.JSON_PROPERTY_PROJECT_ID, PolicyDto.JSON_PROPERTY_VERSION,
+        PolicyDto.JSON_PROPERTY_STATEMENT })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PolicyDto {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
-  private String principalId;
+    public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+    private String principalId;
 
-  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  private String projectId;
+    public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+    private String projectId;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  private String version;
+    public static final String JSON_PROPERTY_VERSION = "version";
+    private String version;
 
-  public static final String JSON_PROPERTY_STATEMENT = "statement";
-  private List<PolicyStatementDto> statement = new ArrayList<>();
+    public static final String JSON_PROPERTY_STATEMENT = "statement";
+    private List<PolicyStatementDto> statement = new ArrayList<>();
 
-  public PolicyDto() {
-  }
-
-  public PolicyDto name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public PolicyDto description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public PolicyDto principalId(String principalId) {
-    
-    this.principalId = principalId;
-    return this;
-  }
-
-  /**
-   * Get principalId
-   * @return principalId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPrincipalId() {
-    return principalId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrincipalId(String principalId) {
-    this.principalId = principalId;
-  }
-
-  public PolicyDto projectId(String projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-  /**
-   * Get projectId
-   * @return projectId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getProjectId() {
-    return projectId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectId(String projectId) {
-    this.projectId = projectId;
-  }
-
-  public PolicyDto version(String version) {
-    
-    this.version = version;
-    return this;
-  }
-
-  /**
-   * Get version
-   * @return version
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getVersion() {
-    return version;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERSION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVersion(String version) {
-    this.version = version;
-  }
-
-  public PolicyDto statement(List<PolicyStatementDto> statement) {
-    
-    this.statement = statement;
-    return this;
-  }
-
-  public PolicyDto addStatementItem(PolicyStatementDto statementItem) {
-    if (this.statement == null) {
-      this.statement = new ArrayList<>();
-    }
-    this.statement.add(statementItem);
-    return this;
-  }
-
-  /**
-   * Get statement
-   * @return statement
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATEMENT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<PolicyStatementDto> getStatement() {
-    return statement;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATEMENT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatement(List<PolicyStatementDto> statement) {
-    this.statement = statement;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PolicyDto policyDto = (PolicyDto) o;
-    return Objects.equals(this.name, policyDto.name) &&
-        Objects.equals(this.description, policyDto.description) &&
-        Objects.equals(this.principalId, policyDto.principalId) &&
-        Objects.equals(this.projectId, policyDto.projectId) &&
-        Objects.equals(this.version, policyDto.version) &&
-        Objects.equals(this.statement, policyDto.statement);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, principalId, projectId, version, statement);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PolicyDto {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    principalId: ").append(toIndentedString(principalId)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    statement: ").append(toIndentedString(statement)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public PolicyDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public PolicyDto name(String name) {
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.name = name;
+        return this;
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
     }
 
-    // add `principalId` to the URL query string
-    if (getPrincipalId() != null) {
-      try {
-        joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // add `projectId` to the URL query string
-    if (getProjectId() != null) {
-      try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public PolicyDto description(String description) {
+
+        this.description = description;
+        return this;
     }
 
-    // add `version` to the URL query string
-    if (getVersion() != null) {
-      try {
-        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
     }
 
-    // add `statement` to the URL query string
-    if (getStatement() != null) {
-      for (int i = 0; i < getStatement().size(); i++) {
-        if (getStatement().get(i) != null) {
-          joiner.add(getStatement().get(i).toUrlQueryString(String.format("%sstatement%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public PolicyDto principalId(String principalId) {
+
+        this.principalId = principalId;
+        return this;
+    }
+
+    /**
+     * Get principalId
+     *
+     * @return principalId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPrincipalId() {
+        return principalId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPrincipalId(String principalId) {
+        this.principalId = principalId;
+    }
+
+    public PolicyDto projectId(String projectId) {
+
+        this.projectId = projectId;
+        return this;
+    }
+
+    /**
+     * Get projectId
+     *
+     * @return projectId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public PolicyDto version(String version) {
+
+        this.version = version;
+        return this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return version
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VERSION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getVersion() {
+        return version;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VERSION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public PolicyDto statement(List<PolicyStatementDto> statement) {
+
+        this.statement = statement;
+        return this;
+    }
+
+    public PolicyDto addStatementItem(PolicyStatementDto statementItem) {
+        if (this.statement == null) {
+            this.statement = new ArrayList<>();
         }
-      }
+        this.statement.add(statementItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get statement
+     *
+     * @return statement
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATEMENT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<PolicyStatementDto> getStatement() {
+        return statement;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATEMENT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setStatement(List<PolicyStatementDto> statement) {
+        this.statement = statement;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PolicyDto policyDto = (PolicyDto) o;
+        return Objects.equals(this.name, policyDto.name) && Objects.equals(this.description, policyDto.description)
+                && Objects.equals(this.principalId, policyDto.principalId)
+                && Objects.equals(this.projectId, policyDto.projectId)
+                && Objects.equals(this.version, policyDto.version)
+                && Objects.equals(this.statement, policyDto.statement);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, principalId, projectId, version, statement);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PolicyDto {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    principalId: ").append(toIndentedString(principalId)).append("\n");
+        sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+        sb.append("    version: ").append(toIndentedString(version)).append("\n");
+        sb.append("    statement: ").append(toIndentedString(statement)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `principalId` to the URL query string
+        if (getPrincipalId() != null) {
+            try {
+                joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `projectId` to the URL query string
+        if (getProjectId() != null) {
+            try {
+                joiner.add(String.format("%sprojectId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `version` to the URL query string
+        if (getVersion() != null) {
+            try {
+                joiner.add(String.format("%sversion%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `statement` to the URL query string
+        if (getStatement() != null) {
+            for (int i = 0; i < getStatement().size(); i++) {
+                if (getStatement().get(i) != null) {
+                    joiner.add(getStatement().get(i).toUrlQueryString(String.format("%sstatement%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

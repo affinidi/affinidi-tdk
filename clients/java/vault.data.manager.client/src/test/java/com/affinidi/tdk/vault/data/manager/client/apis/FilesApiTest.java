@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.apis;
 
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
@@ -42,7 +41,7 @@ public class FilesApiTest {
      * Get the details of a scanned file using the textract jobId
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getScannedFileInfoTest() throws ApiException {
@@ -52,11 +51,12 @@ public class FilesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * List all the the scanned files with all the details, e.g. status and jobId
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listScannedFilesTest() throws ApiException {
@@ -64,11 +64,12 @@ public class FilesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Start a scan of the file under this node and provide a textract job
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void startFileScanTest() throws ApiException {

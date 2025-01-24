@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import org.junit.jupiter.api.Assertions;

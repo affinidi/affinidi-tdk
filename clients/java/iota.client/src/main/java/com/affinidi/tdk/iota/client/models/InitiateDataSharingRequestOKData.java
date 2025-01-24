@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,206 +28,207 @@ import java.util.StringJoiner;
 /**
  * InitiateDataSharingRequestOKData
  */
-@JsonPropertyOrder({
-  InitiateDataSharingRequestOKData.JSON_PROPERTY_JWT,
-  InitiateDataSharingRequestOKData.JSON_PROPERTY_CORRELATION_ID,
-  InitiateDataSharingRequestOKData.JSON_PROPERTY_TRANSACTION_ID
-})
+@JsonPropertyOrder({ InitiateDataSharingRequestOKData.JSON_PROPERTY_JWT,
+        InitiateDataSharingRequestOKData.JSON_PROPERTY_CORRELATION_ID,
+        InitiateDataSharingRequestOKData.JSON_PROPERTY_TRANSACTION_ID })
 @JsonTypeName("InitiateDataSharingRequestOK_data")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InitiateDataSharingRequestOKData {
-  public static final String JSON_PROPERTY_JWT = "jwt";
-  private String jwt;
+    public static final String JSON_PROPERTY_JWT = "jwt";
+    private String jwt;
 
-  public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
-  private String correlationId;
+    public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+    private String correlationId;
 
-  public static final String JSON_PROPERTY_TRANSACTION_ID = "transactionId";
-  private String transactionId;
+    public static final String JSON_PROPERTY_TRANSACTION_ID = "transactionId";
+    private String transactionId;
 
-  public InitiateDataSharingRequestOKData() {
-  }
-
-  public InitiateDataSharingRequestOKData jwt(String jwt) {
-    
-    this.jwt = jwt;
-    return this;
-  }
-
-  /**
-   * Get jwt
-   * @return jwt
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJwt() {
-    return jwt;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JWT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwt(String jwt) {
-    this.jwt = jwt;
-  }
-
-  public InitiateDataSharingRequestOKData correlationId(String correlationId) {
-    
-    this.correlationId = correlationId;
-    return this;
-  }
-
-  /**
-   * Get correlationId
-   * @return correlationId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCorrelationId() {
-    return correlationId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
-  }
-
-  public InitiateDataSharingRequestOKData transactionId(String transactionId) {
-    
-    this.transactionId = transactionId;
-    return this;
-  }
-
-  /**
-   * Get transactionId
-   * @return transactionId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getTransactionId() {
-    return transactionId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransactionId(String transactionId) {
-    this.transactionId = transactionId;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    InitiateDataSharingRequestOKData initiateDataSharingRequestOKData = (InitiateDataSharingRequestOKData) o;
-    return Objects.equals(this.jwt, initiateDataSharingRequestOKData.jwt) &&
-        Objects.equals(this.correlationId, initiateDataSharingRequestOKData.correlationId) &&
-        Objects.equals(this.transactionId, initiateDataSharingRequestOKData.transactionId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(jwt, correlationId, transactionId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InitiateDataSharingRequestOKData {\n");
-    sb.append("    jwt: ").append(toIndentedString(jwt)).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
-    sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public InitiateDataSharingRequestOKData() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public InitiateDataSharingRequestOKData jwt(String jwt) {
 
-    // add `jwt` to the URL query string
-    if (getJwt() != null) {
-      try {
-        joiner.add(String.format("%sjwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.jwt = jwt;
+        return this;
     }
 
-    // add `correlationId` to the URL query string
-    if (getCorrelationId() != null) {
-      try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get jwt
+     *
+     * @return jwt
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JWT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJwt() {
+        return jwt;
     }
 
-    // add `transactionId` to the URL query string
-    if (getTransactionId() != null) {
-      try {
-        joiner.add(String.format("%stransactionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_JWT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
     }
 
-    return joiner.toString();
-  }
+    public InitiateDataSharingRequestOKData correlationId(String correlationId) {
+
+        this.correlationId = correlationId;
+        return this;
+    }
+
+    /**
+     * Get correlationId
+     *
+     * @return correlationId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCorrelationId() {
+        return correlationId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCorrelationId(String correlationId) {
+        this.correlationId = correlationId;
+    }
+
+    public InitiateDataSharingRequestOKData transactionId(String transactionId) {
+
+        this.transactionId = transactionId;
+        return this;
+    }
+
+    /**
+     * Get transactionId
+     *
+     * @return transactionId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        InitiateDataSharingRequestOKData initiateDataSharingRequestOKData = (InitiateDataSharingRequestOKData) o;
+        return Objects.equals(this.jwt, initiateDataSharingRequestOKData.jwt)
+                && Objects.equals(this.correlationId, initiateDataSharingRequestOKData.correlationId)
+                && Objects.equals(this.transactionId, initiateDataSharingRequestOKData.transactionId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(jwt, correlationId, transactionId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class InitiateDataSharingRequestOKData {\n");
+        sb.append("    jwt: ").append(toIndentedString(jwt)).append("\n");
+        sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
+        sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `jwt` to the URL query string
+        if (getJwt() != null) {
+            try {
+                joiner.add(String.format("%sjwt%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `correlationId` to the URL query string
+        if (getCorrelationId() != null) {
+            try {
+                joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `transactionId` to the URL query string
+        if (getTransactionId() != null) {
+            try {
+                joiner.add(String.format("%stransactionId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

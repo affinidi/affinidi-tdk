@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -32,792 +31,803 @@ import java.util.StringJoiner;
 /**
  * JsonWebKeyKeysInner
  */
-@JsonPropertyOrder({
-  JsonWebKeyKeysInner.JSON_PROPERTY_ALG,
-  JsonWebKeyKeysInner.JSON_PROPERTY_CRV,
-  JsonWebKeyKeysInner.JSON_PROPERTY_D,
-  JsonWebKeyKeysInner.JSON_PROPERTY_DP,
-  JsonWebKeyKeysInner.JSON_PROPERTY_DQ,
-  JsonWebKeyKeysInner.JSON_PROPERTY_E,
-  JsonWebKeyKeysInner.JSON_PROPERTY_K,
-  JsonWebKeyKeysInner.JSON_PROPERTY_KID,
-  JsonWebKeyKeysInner.JSON_PROPERTY_KTY,
-  JsonWebKeyKeysInner.JSON_PROPERTY_N,
-  JsonWebKeyKeysInner.JSON_PROPERTY_P,
-  JsonWebKeyKeysInner.JSON_PROPERTY_Q,
-  JsonWebKeyKeysInner.JSON_PROPERTY_QI,
-  JsonWebKeyKeysInner.JSON_PROPERTY_USE,
-  JsonWebKeyKeysInner.JSON_PROPERTY_X,
-  JsonWebKeyKeysInner.JSON_PROPERTY_X5C,
-  JsonWebKeyKeysInner.JSON_PROPERTY_Y
-})
+@JsonPropertyOrder({ JsonWebKeyKeysInner.JSON_PROPERTY_ALG, JsonWebKeyKeysInner.JSON_PROPERTY_CRV,
+        JsonWebKeyKeysInner.JSON_PROPERTY_D, JsonWebKeyKeysInner.JSON_PROPERTY_DP, JsonWebKeyKeysInner.JSON_PROPERTY_DQ,
+        JsonWebKeyKeysInner.JSON_PROPERTY_E, JsonWebKeyKeysInner.JSON_PROPERTY_K, JsonWebKeyKeysInner.JSON_PROPERTY_KID,
+        JsonWebKeyKeysInner.JSON_PROPERTY_KTY, JsonWebKeyKeysInner.JSON_PROPERTY_N, JsonWebKeyKeysInner.JSON_PROPERTY_P,
+        JsonWebKeyKeysInner.JSON_PROPERTY_Q, JsonWebKeyKeysInner.JSON_PROPERTY_QI,
+        JsonWebKeyKeysInner.JSON_PROPERTY_USE, JsonWebKeyKeysInner.JSON_PROPERTY_X,
+        JsonWebKeyKeysInner.JSON_PROPERTY_X5C, JsonWebKeyKeysInner.JSON_PROPERTY_Y })
 @JsonTypeName("JsonWebKey_keys_inner")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class JsonWebKeyKeysInner {
-  public static final String JSON_PROPERTY_ALG = "alg";
-  private String alg;
+    public static final String JSON_PROPERTY_ALG = "alg";
+    private String alg;
 
-  public static final String JSON_PROPERTY_CRV = "crv";
-  private String crv;
+    public static final String JSON_PROPERTY_CRV = "crv";
+    private String crv;
 
-  public static final String JSON_PROPERTY_D = "d";
-  private String d;
+    public static final String JSON_PROPERTY_D = "d";
+    private String d;
 
-  public static final String JSON_PROPERTY_DP = "dp";
-  private String dp;
+    public static final String JSON_PROPERTY_DP = "dp";
+    private String dp;
 
-  public static final String JSON_PROPERTY_DQ = "dq";
-  private String dq;
+    public static final String JSON_PROPERTY_DQ = "dq";
+    private String dq;
 
-  public static final String JSON_PROPERTY_E = "e";
-  private String e;
+    public static final String JSON_PROPERTY_E = "e";
+    private String e;
 
-  public static final String JSON_PROPERTY_K = "k";
-  private String k;
+    public static final String JSON_PROPERTY_K = "k";
+    private String k;
 
-  public static final String JSON_PROPERTY_KID = "kid";
-  private String kid;
+    public static final String JSON_PROPERTY_KID = "kid";
+    private String kid;
 
-  public static final String JSON_PROPERTY_KTY = "kty";
-  private String kty;
+    public static final String JSON_PROPERTY_KTY = "kty";
+    private String kty;
 
-  public static final String JSON_PROPERTY_N = "n";
-  private String n;
+    public static final String JSON_PROPERTY_N = "n";
+    private String n;
 
-  public static final String JSON_PROPERTY_P = "p";
-  private String p;
+    public static final String JSON_PROPERTY_P = "p";
+    private String p;
 
-  public static final String JSON_PROPERTY_Q = "q";
-  private String q;
+    public static final String JSON_PROPERTY_Q = "q";
+    private String q;
 
-  public static final String JSON_PROPERTY_QI = "qi";
-  private String qi;
+    public static final String JSON_PROPERTY_QI = "qi";
+    private String qi;
 
-  public static final String JSON_PROPERTY_USE = "use";
-  private String use;
+    public static final String JSON_PROPERTY_USE = "use";
+    private String use;
 
-  public static final String JSON_PROPERTY_X = "x";
-  private String x;
+    public static final String JSON_PROPERTY_X = "x";
+    private String x;
 
-  public static final String JSON_PROPERTY_X5C = "x5c";
-  private List<String> x5c = new ArrayList<>();
+    public static final String JSON_PROPERTY_X5C = "x5c";
+    private List<String> x5c = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_Y = "y";
-  private String y;
+    public static final String JSON_PROPERTY_Y = "y";
+    private String y;
 
-  public JsonWebKeyKeysInner() {
-  }
-
-  public JsonWebKeyKeysInner alg(String alg) {
-    
-    this.alg = alg;
-    return this;
-  }
-
-  /**
-   * The \&quot;alg\&quot; (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \&quot;JSON Web Signature and Encryption Algorithms\&quot; registry established  by [JWA] or be a value that contains a Collision- Resistant Name. 
-   * @return alg
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAlg() {
-    return alg;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAlg(String alg) {
-    this.alg = alg;
-  }
-
-  public JsonWebKeyKeysInner crv(String crv) {
-    
-    this.crv = crv;
-    return this;
-  }
-
-  /**
-   * Get crv
-   * @return crv
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CRV)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCrv() {
-    return crv;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CRV)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCrv(String crv) {
-    this.crv = crv;
-  }
-
-  public JsonWebKeyKeysInner d(String d) {
-    
-    this.d = d;
-    return this;
-  }
-
-  /**
-   * Get d
-   * @return d
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_D)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getD() {
-    return d;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_D)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setD(String d) {
-    this.d = d;
-  }
-
-  public JsonWebKeyKeysInner dp(String dp) {
-    
-    this.dp = dp;
-    return this;
-  }
-
-  /**
-   * Get dp
-   * @return dp
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDp() {
-    return dp;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDp(String dp) {
-    this.dp = dp;
-  }
-
-  public JsonWebKeyKeysInner dq(String dq) {
-    
-    this.dq = dq;
-    return this;
-  }
-
-  /**
-   * Get dq
-   * @return dq
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DQ)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDq() {
-    return dq;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DQ)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDq(String dq) {
-    this.dq = dq;
-  }
-
-  public JsonWebKeyKeysInner e(String e) {
-    
-    this.e = e;
-    return this;
-  }
-
-  /**
-   * Get e
-   * @return e
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_E)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getE() {
-    return e;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_E)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setE(String e) {
-    this.e = e;
-  }
-
-  public JsonWebKeyKeysInner k(String k) {
-    
-    this.k = k;
-    return this;
-  }
-
-  /**
-   * Get k
-   * @return k
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_K)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getK() {
-    return k;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_K)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setK(String k) {
-    this.k = k;
-  }
-
-  public JsonWebKeyKeysInner kid(String kid) {
-    
-    this.kid = kid;
-    return this;
-  }
-
-  /**
-   * The \&quot;kid\&quot; (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \&quot;kid\&quot; value is unspecified. When \&quot;kid\&quot;  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \&quot;kid\&quot; values. (One example in which different keys might use  the same \&quot;kid\&quot; value is if they have different \&quot;kty\&quot; (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \&quot;kid\&quot; value is a case-sensitive string. 
-   * @return kid
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_KID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getKid() {
-    return kid;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_KID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKid(String kid) {
-    this.kid = kid;
-  }
-
-  public JsonWebKeyKeysInner kty(String kty) {
-    
-    this.kty = kty;
-    return this;
-  }
-
-  /**
-   * The \&quot;kty\&quot; (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \&quot;RSA\&quot; or \&quot;EC\&quot;. \&quot;kty\&quot; values should either be  registered in the IANA \&quot;JSON Web Key Types\&quot; registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \&quot;kty\&quot; value  is a case-sensitive string. 
-   * @return kty
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_KTY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getKty() {
-    return kty;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_KTY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKty(String kty) {
-    this.kty = kty;
-  }
-
-  public JsonWebKeyKeysInner n(String n) {
-    
-    this.n = n;
-    return this;
-  }
-
-  /**
-   * Get n
-   * @return n
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_N)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getN() {
-    return n;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_N)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setN(String n) {
-    this.n = n;
-  }
-
-  public JsonWebKeyKeysInner p(String p) {
-    
-    this.p = p;
-    return this;
-  }
-
-  /**
-   * Get p
-   * @return p
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_P)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getP() {
-    return p;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_P)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setP(String p) {
-    this.p = p;
-  }
-
-  public JsonWebKeyKeysInner q(String q) {
-    
-    this.q = q;
-    return this;
-  }
-
-  /**
-   * Get q
-   * @return q
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_Q)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getQ() {
-    return q;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_Q)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQ(String q) {
-    this.q = q;
-  }
-
-  public JsonWebKeyKeysInner qi(String qi) {
-    
-    this.qi = qi;
-    return this;
-  }
-
-  /**
-   * Get qi
-   * @return qi
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_QI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getQi() {
-    return qi;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_QI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQi(String qi) {
-    this.qi = qi;
-  }
-
-  public JsonWebKeyKeysInner use(String use) {
-    
-    this.use = use;
-    return this;
-  }
-
-  /**
-   * Use (\&quot;public key use\&quot;) identifies the intended use of the public key. The  \&quot;use\&quot; parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \&quot;sig\&quot; (signature) or \&quot;enc\&quot; (encryption). 
-   * @return use
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getUse() {
-    return use;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUse(String use) {
-    this.use = use;
-  }
-
-  public JsonWebKeyKeysInner x(String x) {
-    
-    this.x = x;
-    return this;
-  }
-
-  /**
-   * Get x
-   * @return x
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_X)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getX() {
-    return x;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_X)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setX(String x) {
-    this.x = x;
-  }
-
-  public JsonWebKeyKeysInner x5c(List<String> x5c) {
-    
-    this.x5c = x5c;
-    return this;
-  }
-
-  public JsonWebKeyKeysInner addX5cItem(String x5cItem) {
-    if (this.x5c == null) {
-      this.x5c = new ArrayList<>();
-    }
-    this.x5c.add(x5cItem);
-    return this;
-  }
-
-  /**
-   * The \&quot;x5c\&quot; (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
-   * @return x5c
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_X5C)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getX5c() {
-    return x5c;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_X5C)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setX5c(List<String> x5c) {
-    this.x5c = x5c;
-  }
-
-  public JsonWebKeyKeysInner y(String y) {
-    
-    this.y = y;
-    return this;
-  }
-
-  /**
-   * Get y
-   * @return y
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_Y)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getY() {
-    return y;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_Y)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setY(String y) {
-    this.y = y;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    JsonWebKeyKeysInner jsonWebKeyKeysInner = (JsonWebKeyKeysInner) o;
-    return Objects.equals(this.alg, jsonWebKeyKeysInner.alg) &&
-        Objects.equals(this.crv, jsonWebKeyKeysInner.crv) &&
-        Objects.equals(this.d, jsonWebKeyKeysInner.d) &&
-        Objects.equals(this.dp, jsonWebKeyKeysInner.dp) &&
-        Objects.equals(this.dq, jsonWebKeyKeysInner.dq) &&
-        Objects.equals(this.e, jsonWebKeyKeysInner.e) &&
-        Objects.equals(this.k, jsonWebKeyKeysInner.k) &&
-        Objects.equals(this.kid, jsonWebKeyKeysInner.kid) &&
-        Objects.equals(this.kty, jsonWebKeyKeysInner.kty) &&
-        Objects.equals(this.n, jsonWebKeyKeysInner.n) &&
-        Objects.equals(this.p, jsonWebKeyKeysInner.p) &&
-        Objects.equals(this.q, jsonWebKeyKeysInner.q) &&
-        Objects.equals(this.qi, jsonWebKeyKeysInner.qi) &&
-        Objects.equals(this.use, jsonWebKeyKeysInner.use) &&
-        Objects.equals(this.x, jsonWebKeyKeysInner.x) &&
-        Objects.equals(this.x5c, jsonWebKeyKeysInner.x5c) &&
-        Objects.equals(this.y, jsonWebKeyKeysInner.y);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(alg, crv, d, dp, dq, e, k, kid, kty, n, p, q, qi, use, x, x5c, y);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class JsonWebKeyKeysInner {\n");
-    sb.append("    alg: ").append(toIndentedString(alg)).append("\n");
-    sb.append("    crv: ").append(toIndentedString(crv)).append("\n");
-    sb.append("    d: ").append(toIndentedString(d)).append("\n");
-    sb.append("    dp: ").append(toIndentedString(dp)).append("\n");
-    sb.append("    dq: ").append(toIndentedString(dq)).append("\n");
-    sb.append("    e: ").append(toIndentedString(e)).append("\n");
-    sb.append("    k: ").append(toIndentedString(k)).append("\n");
-    sb.append("    kid: ").append(toIndentedString(kid)).append("\n");
-    sb.append("    kty: ").append(toIndentedString(kty)).append("\n");
-    sb.append("    n: ").append(toIndentedString(n)).append("\n");
-    sb.append("    p: ").append(toIndentedString(p)).append("\n");
-    sb.append("    q: ").append(toIndentedString(q)).append("\n");
-    sb.append("    qi: ").append(toIndentedString(qi)).append("\n");
-    sb.append("    use: ").append(toIndentedString(use)).append("\n");
-    sb.append("    x: ").append(toIndentedString(x)).append("\n");
-    sb.append("    x5c: ").append(toIndentedString(x5c)).append("\n");
-    sb.append("    y: ").append(toIndentedString(y)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public JsonWebKeyKeysInner() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public JsonWebKeyKeysInner alg(String alg) {
 
-    // add `alg` to the URL query string
-    if (getAlg() != null) {
-      try {
-        joiner.add(String.format("%salg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.alg = alg;
+        return this;
     }
 
-    // add `crv` to the URL query string
-    if (getCrv() != null) {
-      try {
-        joiner.add(String.format("%scrv%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The \&quot;alg\&quot; (algorithm) parameter identifies the algorithm intended for use with the key. The values
+     * used should either be registered in the IANA \&quot;JSON Web Signature and Encryption Algorithms\&quot; registry
+     * established by [JWA] or be a value that contains a Collision- Resistant Name.
+     *
+     * @return alg
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAlg() {
+        return alg;
     }
 
-    // add `d` to the URL query string
-    if (getD() != null) {
-      try {
-        joiner.add(String.format("%sd%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getD()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAlg(String alg) {
+        this.alg = alg;
     }
 
-    // add `dp` to the URL query string
-    if (getDp() != null) {
-      try {
-        joiner.add(String.format("%sdp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDp()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonWebKeyKeysInner crv(String crv) {
+
+        this.crv = crv;
+        return this;
     }
 
-    // add `dq` to the URL query string
-    if (getDq() != null) {
-      try {
-        joiner.add(String.format("%sdq%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDq()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get crv
+     *
+     * @return crv
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CRV)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCrv() {
+        return crv;
     }
 
-    // add `e` to the URL query string
-    if (getE() != null) {
-      try {
-        joiner.add(String.format("%se%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_CRV)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCrv(String crv) {
+        this.crv = crv;
     }
 
-    // add `k` to the URL query string
-    if (getK() != null) {
-      try {
-        joiner.add(String.format("%sk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getK()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonWebKeyKeysInner d(String d) {
+
+        this.d = d;
+        return this;
     }
 
-    // add `kid` to the URL query string
-    if (getKid() != null) {
-      try {
-        joiner.add(String.format("%skid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get d
+     *
+     * @return d
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_D)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getD() {
+        return d;
     }
 
-    // add `kty` to the URL query string
-    if (getKty() != null) {
-      try {
-        joiner.add(String.format("%skty%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_D)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setD(String d) {
+        this.d = d;
     }
 
-    // add `n` to the URL query string
-    if (getN() != null) {
-      try {
-        joiner.add(String.format("%sn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonWebKeyKeysInner dp(String dp) {
+
+        this.dp = dp;
+        return this;
     }
 
-    // add `p` to the URL query string
-    if (getP() != null) {
-      try {
-        joiner.add(String.format("%sp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getP()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get dp
+     *
+     * @return dp
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DP)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDp() {
+        return dp;
     }
 
-    // add `q` to the URL query string
-    if (getQ() != null) {
-      try {
-        joiner.add(String.format("%sq%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQ()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_DP)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDp(String dp) {
+        this.dp = dp;
     }
 
-    // add `qi` to the URL query string
-    if (getQi() != null) {
-      try {
-        joiner.add(String.format("%sqi%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQi()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonWebKeyKeysInner dq(String dq) {
+
+        this.dq = dq;
+        return this;
     }
 
-    // add `use` to the URL query string
-    if (getUse() != null) {
-      try {
-        joiner.add(String.format("%suse%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get dq
+     *
+     * @return dq
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DQ)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDq() {
+        return dq;
     }
 
-    // add `x` to the URL query string
-    if (getX() != null) {
-      try {
-        joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_DQ)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDq(String dq) {
+        this.dq = dq;
     }
 
-    // add `x5c` to the URL query string
-    if (getX5c() != null) {
-      for (int i = 0; i < getX5c().size(); i++) {
-        try {
-          joiner.add(String.format("%sx5c%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getX5c().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    public JsonWebKeyKeysInner e(String e) {
+
+        this.e = e;
+        return this;
+    }
+
+    /**
+     * Get e
+     *
+     * @return e
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_E)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getE() {
+        return e;
+    }
+
+    @JsonProperty(JSON_PROPERTY_E)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setE(String e) {
+        this.e = e;
+    }
+
+    public JsonWebKeyKeysInner k(String k) {
+
+        this.k = k;
+        return this;
+    }
+
+    /**
+     * Get k
+     *
+     * @return k
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_K)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getK() {
+        return k;
+    }
+
+    @JsonProperty(JSON_PROPERTY_K)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setK(String k) {
+        this.k = k;
+    }
+
+    public JsonWebKeyKeysInner kid(String kid) {
+
+        this.kid = kid;
+        return this;
+    }
+
+    /**
+     * The \&quot;kid\&quot; (key ID) parameter is used to match a specific key. This is used, for instance, to choose
+     * among a set of keys within a JWK Set during key rollover. The structure of the \&quot;kid\&quot; value is
+     * unspecified. When \&quot;kid\&quot; values are used within a JWK Set, different keys within the JWK Set SHOULD
+     * use distinct \&quot;kid\&quot; values. (One example in which different keys might use the same \&quot;kid\&quot;
+     * value is if they have different \&quot;kty\&quot; (key type) values but are considered to be equivalent
+     * alternatives by the application using them.) The \&quot;kid\&quot; value is a case-sensitive string.
+     *
+     * @return kid
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_KID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getKid() {
+        return kid;
+    }
+
+    @JsonProperty(JSON_PROPERTY_KID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setKid(String kid) {
+        this.kid = kid;
+    }
+
+    public JsonWebKeyKeysInner kty(String kty) {
+
+        this.kty = kty;
+        return this;
+    }
+
+    /**
+     * The \&quot;kty\&quot; (key type) parameter identifies the cryptographic algorithm family used with the key, such
+     * as \&quot;RSA\&quot; or \&quot;EC\&quot;. \&quot;kty\&quot; values should either be registered in the IANA
+     * \&quot;JSON Web Key Types\&quot; registry established by [JWA] or be a value that contains a Collision- Resistant
+     * Name. The \&quot;kty\&quot; value is a case-sensitive string.
+     *
+     * @return kty
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_KTY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getKty() {
+        return kty;
+    }
+
+    @JsonProperty(JSON_PROPERTY_KTY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setKty(String kty) {
+        this.kty = kty;
+    }
+
+    public JsonWebKeyKeysInner n(String n) {
+
+        this.n = n;
+        return this;
+    }
+
+    /**
+     * Get n
+     *
+     * @return n
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_N)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getN() {
+        return n;
+    }
+
+    @JsonProperty(JSON_PROPERTY_N)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setN(String n) {
+        this.n = n;
+    }
+
+    public JsonWebKeyKeysInner p(String p) {
+
+        this.p = p;
+        return this;
+    }
+
+    /**
+     * Get p
+     *
+     * @return p
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_P)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getP() {
+        return p;
+    }
+
+    @JsonProperty(JSON_PROPERTY_P)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setP(String p) {
+        this.p = p;
+    }
+
+    public JsonWebKeyKeysInner q(String q) {
+
+        this.q = q;
+        return this;
+    }
+
+    /**
+     * Get q
+     *
+     * @return q
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_Q)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getQ() {
+        return q;
+    }
+
+    @JsonProperty(JSON_PROPERTY_Q)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setQ(String q) {
+        this.q = q;
+    }
+
+    public JsonWebKeyKeysInner qi(String qi) {
+
+        this.qi = qi;
+        return this;
+    }
+
+    /**
+     * Get qi
+     *
+     * @return qi
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_QI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getQi() {
+        return qi;
+    }
+
+    @JsonProperty(JSON_PROPERTY_QI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setQi(String qi) {
+        this.qi = qi;
+    }
+
+    public JsonWebKeyKeysInner use(String use) {
+
+        this.use = use;
+        return this;
+    }
+
+    /**
+     * Use (\&quot;public key use\&quot;) identifies the intended use of the public key. The \&quot;use\&quot; parameter
+     * is employed to indicate whether a public key is used for encrypting data or verifying the signature on data.
+     * Values are commonly \&quot;sig\&quot; (signature) or \&quot;enc\&quot; (encryption).
+     *
+     * @return use
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_USE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getUse() {
+        return use;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setUse(String use) {
+        this.use = use;
+    }
+
+    public JsonWebKeyKeysInner x(String x) {
+
+        this.x = x;
+        return this;
+    }
+
+    /**
+     * Get x
+     *
+     * @return x
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_X)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getX() {
+        return x;
+    }
+
+    @JsonProperty(JSON_PROPERTY_X)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setX(String x) {
+        this.x = x;
+    }
+
+    public JsonWebKeyKeysInner x5c(List<String> x5c) {
+
+        this.x5c = x5c;
+        return this;
+    }
+
+    public JsonWebKeyKeysInner addX5cItem(String x5cItem) {
+        if (this.x5c == null) {
+            this.x5c = new ArrayList<>();
         }
-      }
+        this.x5c.add(x5cItem);
+        return this;
     }
 
-    // add `y` to the URL query string
-    if (getY() != null) {
-      try {
-        joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The \&quot;x5c\&quot; (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates
+     * [RFC5280]. The certificate chain is represented as a JSON array of certificate value strings. Each string in the
+     * array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate
+     * value. The PKIX certificate containing the key value MUST be the first certificate.
+     *
+     * @return x5c
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_X5C)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getX5c() {
+        return x5c;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_X5C)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setX5c(List<String> x5c) {
+        this.x5c = x5c;
+    }
+
+    public JsonWebKeyKeysInner y(String y) {
+
+        this.y = y;
+        return this;
+    }
+
+    /**
+     * Get y
+     *
+     * @return y
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_Y)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getY() {
+        return y;
+    }
+
+    @JsonProperty(JSON_PROPERTY_Y)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setY(String y) {
+        this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        JsonWebKeyKeysInner jsonWebKeyKeysInner = (JsonWebKeyKeysInner) o;
+        return Objects.equals(this.alg, jsonWebKeyKeysInner.alg) && Objects.equals(this.crv, jsonWebKeyKeysInner.crv)
+                && Objects.equals(this.d, jsonWebKeyKeysInner.d) && Objects.equals(this.dp, jsonWebKeyKeysInner.dp)
+                && Objects.equals(this.dq, jsonWebKeyKeysInner.dq) && Objects.equals(this.e, jsonWebKeyKeysInner.e)
+                && Objects.equals(this.k, jsonWebKeyKeysInner.k) && Objects.equals(this.kid, jsonWebKeyKeysInner.kid)
+                && Objects.equals(this.kty, jsonWebKeyKeysInner.kty) && Objects.equals(this.n, jsonWebKeyKeysInner.n)
+                && Objects.equals(this.p, jsonWebKeyKeysInner.p) && Objects.equals(this.q, jsonWebKeyKeysInner.q)
+                && Objects.equals(this.qi, jsonWebKeyKeysInner.qi) && Objects.equals(this.use, jsonWebKeyKeysInner.use)
+                && Objects.equals(this.x, jsonWebKeyKeysInner.x) && Objects.equals(this.x5c, jsonWebKeyKeysInner.x5c)
+                && Objects.equals(this.y, jsonWebKeyKeysInner.y);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(alg, crv, d, dp, dq, e, k, kid, kty, n, p, q, qi, use, x, x5c, y);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class JsonWebKeyKeysInner {\n");
+        sb.append("    alg: ").append(toIndentedString(alg)).append("\n");
+        sb.append("    crv: ").append(toIndentedString(crv)).append("\n");
+        sb.append("    d: ").append(toIndentedString(d)).append("\n");
+        sb.append("    dp: ").append(toIndentedString(dp)).append("\n");
+        sb.append("    dq: ").append(toIndentedString(dq)).append("\n");
+        sb.append("    e: ").append(toIndentedString(e)).append("\n");
+        sb.append("    k: ").append(toIndentedString(k)).append("\n");
+        sb.append("    kid: ").append(toIndentedString(kid)).append("\n");
+        sb.append("    kty: ").append(toIndentedString(kty)).append("\n");
+        sb.append("    n: ").append(toIndentedString(n)).append("\n");
+        sb.append("    p: ").append(toIndentedString(p)).append("\n");
+        sb.append("    q: ").append(toIndentedString(q)).append("\n");
+        sb.append("    qi: ").append(toIndentedString(qi)).append("\n");
+        sb.append("    use: ").append(toIndentedString(use)).append("\n");
+        sb.append("    x: ").append(toIndentedString(x)).append("\n");
+        sb.append("    x5c: ").append(toIndentedString(x5c)).append("\n");
+        sb.append("    y: ").append(toIndentedString(y)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `alg` to the URL query string
+        if (getAlg() != null) {
+            try {
+                joiner.add(String.format("%salg%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `crv` to the URL query string
+        if (getCrv() != null) {
+            try {
+                joiner.add(String.format("%scrv%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `d` to the URL query string
+        if (getD() != null) {
+            try {
+                joiner.add(String.format("%sd%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getD()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `dp` to the URL query string
+        if (getDp() != null) {
+            try {
+                joiner.add(String.format("%sdp%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDp()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `dq` to the URL query string
+        if (getDq() != null) {
+            try {
+                joiner.add(String.format("%sdq%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDq()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `e` to the URL query string
+        if (getE() != null) {
+            try {
+                joiner.add(String.format("%se%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `k` to the URL query string
+        if (getK() != null) {
+            try {
+                joiner.add(String.format("%sk%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getK()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `kid` to the URL query string
+        if (getKid() != null) {
+            try {
+                joiner.add(String.format("%skid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `kty` to the URL query string
+        if (getKty() != null) {
+            try {
+                joiner.add(String.format("%skty%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `n` to the URL query string
+        if (getN() != null) {
+            try {
+                joiner.add(String.format("%sn%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `p` to the URL query string
+        if (getP() != null) {
+            try {
+                joiner.add(String.format("%sp%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getP()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `q` to the URL query string
+        if (getQ() != null) {
+            try {
+                joiner.add(String.format("%sq%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getQ()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `qi` to the URL query string
+        if (getQi() != null) {
+            try {
+                joiner.add(String.format("%sqi%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getQi()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `use` to the URL query string
+        if (getUse() != null) {
+            try {
+                joiner.add(String.format("%suse%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `x` to the URL query string
+        if (getX() != null) {
+            try {
+                joiner.add(String.format("%sx%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `x5c` to the URL query string
+        if (getX5c() != null) {
+            for (int i = 0; i < getX5c().size(); i++) {
+                try {
+                    joiner.add(String.format("%sx5c%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getX5c().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `y` to the URL query string
+        if (getY() != null) {
+            try {
+                joiner.add(String.format("%sy%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

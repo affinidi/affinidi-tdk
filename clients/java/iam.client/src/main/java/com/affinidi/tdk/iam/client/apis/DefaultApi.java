@@ -20,8 +20,6 @@ import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
 
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,772 +30,671 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class DefaultApi extends BaseApi {
 
-  public DefaultApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public DefaultApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyDelete(String proxy) throws ApiException {
-    this.v1AuthProxyDelete(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyDelete");
+    public DefaultApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/auth/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyGet(String proxy) throws ApiException {
-    this.v1AuthProxyGet(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyGet");
+    public DefaultApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/auth/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPatch(String proxy) throws ApiException {
-    this.v1AuthProxyPatch(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPatch");
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyDelete(String proxy) throws ApiException {
+        this.v1AuthProxyDelete(proxy, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/auth/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyDelete");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/auth/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] {  };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        final String[] localVarAccepts = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPost(String proxy) throws ApiException {
-    this.v1AuthProxyPost(proxy, Collections.emptyMap());
-  }
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPost");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/auth/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPut(String proxy) throws ApiException {
-    this.v1AuthProxyPut(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1AuthProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPut");
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyGet(String proxy) throws ApiException {
+        this.v1AuthProxyGet(proxy, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/auth/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyGet");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/auth/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] {  };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "PUT",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        final String[] localVarAccepts = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyDelete(String proxy) throws ApiException {
-    this.v1IdpProxyDelete(proxy, Collections.emptyMap());
-  }
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyDelete");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/idp/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyGet(String proxy) throws ApiException {
-    this.v1IdpProxyGet(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyGet");
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPatch(String proxy) throws ApiException {
+        this.v1AuthProxyPatch(proxy, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/idp/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPatch");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/auth/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] {  };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        final String[] localVarAccepts = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPatch(String proxy) throws ApiException {
-    this.v1IdpProxyPatch(proxy, Collections.emptyMap());
-  }
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPatch");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/idp/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPost(String proxy) throws ApiException {
-    this.v1IdpProxyPost(proxy, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPost");
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPost(String proxy) throws ApiException {
+        this.v1AuthProxyPost(proxy, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/idp/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPost");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/auth/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] {  };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        final String[] localVarAccepts = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPut(String proxy) throws ApiException {
-    this.v1IdpProxyPut(proxy, Collections.emptyMap());
-  }
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * 
-   * 
-   * @param proxy  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void v1IdpProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'proxy' is set
-    if (proxy == null) {
-      throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPut");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/idp/{proxy+}"
-      .replaceAll("\\{" + "proxy" + "\\}", apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPut(String proxy) throws ApiException {
+        this.v1AuthProxyPut(proxy, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1AuthProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1AuthProxyPut");
+        }
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/auth/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
 
-    String[] localVarAuthNames = new String[] {  };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "PUT",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] {};
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyDelete(String proxy) throws ApiException {
+        this.v1IdpProxyDelete(proxy, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyDelete");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/idp/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyGet(String proxy) throws ApiException {
+        this.v1IdpProxyGet(proxy, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyGet");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/idp/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPatch(String proxy) throws ApiException {
+        this.v1IdpProxyPatch(proxy, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPatch");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/idp/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPost(String proxy) throws ApiException {
+        this.v1IdpProxyPost(proxy, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPost");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/idp/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPut(String proxy) throws ApiException {
+        this.v1IdpProxyPut(proxy, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param proxy
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void v1IdpProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'proxy' is set
+        if (proxy == null) {
+            throw new ApiException(400, "Missing the required parameter 'proxy' when calling v1IdpProxyPut");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/idp/{proxy+}".replaceAll("\\{" + "proxy" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(proxy)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

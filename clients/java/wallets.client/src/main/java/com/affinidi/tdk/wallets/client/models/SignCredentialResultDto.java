@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
@@ -30,118 +29,116 @@ import java.util.StringJoiner;
 /**
  * DTO contains signed credential
  */
-@JsonPropertyOrder({
-  SignCredentialResultDto.JSON_PROPERTY_SIGNED_CREDENTIAL
-})
+@JsonPropertyOrder({ SignCredentialResultDto.JSON_PROPERTY_SIGNED_CREDENTIAL })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SignCredentialResultDto {
-  public static final String JSON_PROPERTY_SIGNED_CREDENTIAL = "signedCredential";
-  private SignCredentialResultDtoSignedCredential signedCredential;
+    public static final String JSON_PROPERTY_SIGNED_CREDENTIAL = "signedCredential";
+    private SignCredentialResultDtoSignedCredential signedCredential;
 
-  public SignCredentialResultDto() {
-  }
-
-  public SignCredentialResultDto signedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
-    
-    this.signedCredential = signedCredential;
-    return this;
-  }
-
-  /**
-   * Get signedCredential
-   * @return signedCredential
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public SignCredentialResultDtoSignedCredential getSignedCredential() {
-    return signedCredential;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSignedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
-    this.signedCredential = signedCredential;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    SignCredentialResultDto signCredentialResultDto = (SignCredentialResultDto) o;
-    return Objects.equals(this.signedCredential, signCredentialResultDto.signedCredential);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(signedCredential);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SignCredentialResultDto {\n");
-    sb.append("    signedCredential: ").append(toIndentedString(signedCredential)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public SignCredentialResultDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public SignCredentialResultDto signedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
 
-    // add `signedCredential` to the URL query string
-    if (getSignedCredential() != null) {
-      joiner.add(getSignedCredential().toUrlQueryString(prefix + "signedCredential" + suffix));
+        this.signedCredential = signedCredential;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get signedCredential
+     *
+     * @return signedCredential
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public SignCredentialResultDtoSignedCredential getSignedCredential() {
+        return signedCredential;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setSignedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
+        this.signedCredential = signedCredential;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SignCredentialResultDto signCredentialResultDto = (SignCredentialResultDto) o;
+        return Objects.equals(this.signedCredential, signCredentialResultDto.signedCredential);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(signedCredential);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class SignCredentialResultDto {\n");
+        sb.append("    signedCredential: ").append(toIndentedString(signedCredential)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `signedCredential` to the URL query string
+        if (getSignedCredential() != null) {
+            joiner.add(getSignedCredential().toUrlQueryString(prefix + "signedCredential" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

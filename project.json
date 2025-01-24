@@ -1,6 +1,6 @@
 {
-  "name": "@affinidi-tdk/common-java",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "@affinidi-tdk/java",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
   "private": false,
@@ -9,7 +9,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "mvn --no-transfer-progress --batch-mode clean package install"
+        "command": "mvn --no-transfer-progress --batch-mode clean package install --"
       }
     },
     "semantic-release": {
@@ -20,7 +20,9 @@
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
+        "branches": [
+          "main"
+        ],
         "plugins": [
           [
             "@semantic-release/exec",
@@ -35,5 +37,8 @@
       }
     }
   },
-  "tags": ["lang:java", "kind:client"]
+  "tags": [
+    "lang:java",
+    "kind:client"
+  ]
 }

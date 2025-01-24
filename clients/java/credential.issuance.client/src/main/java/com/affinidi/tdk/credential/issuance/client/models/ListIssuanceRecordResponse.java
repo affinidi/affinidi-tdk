@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -33,172 +32,171 @@ import java.util.StringJoiner;
 /**
  * list of issuance data records
  */
-@JsonPropertyOrder({
-  ListIssuanceRecordResponse.JSON_PROPERTY_FLOW_DATA,
-  ListIssuanceRecordResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
-})
+@JsonPropertyOrder({ ListIssuanceRecordResponse.JSON_PROPERTY_FLOW_DATA,
+        ListIssuanceRecordResponse.JSON_PROPERTY_LAST_EVALUATED_KEY })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListIssuanceRecordResponse {
-  public static final String JSON_PROPERTY_FLOW_DATA = "flowData";
-  private List<FlowData> flowData = new ArrayList<>();
+    public static final String JSON_PROPERTY_FLOW_DATA = "flowData";
+    private List<FlowData> flowData = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  private String lastEvaluatedKey;
+    public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+    private String lastEvaluatedKey;
 
-  public ListIssuanceRecordResponse() {
-  }
-
-  public ListIssuanceRecordResponse flowData(List<FlowData> flowData) {
-    
-    this.flowData = flowData;
-    return this;
-  }
-
-  public ListIssuanceRecordResponse addFlowDataItem(FlowData flowDataItem) {
-    if (this.flowData == null) {
-      this.flowData = new ArrayList<>();
-    }
-    this.flowData.add(flowDataItem);
-    return this;
-  }
-
-  /**
-   * Get flowData
-   * @return flowData
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLOW_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<FlowData> getFlowData() {
-    return flowData;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FLOW_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFlowData(List<FlowData> flowData) {
-    this.flowData = flowData;
-  }
-
-  public ListIssuanceRecordResponse lastEvaluatedKey(String lastEvaluatedKey) {
-    
-    this.lastEvaluatedKey = lastEvaluatedKey;
-    return this;
-  }
-
-  /**
-   * Get lastEvaluatedKey
-   * @return lastEvaluatedKey
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLastEvaluatedKey() {
-    return lastEvaluatedKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
-    this.lastEvaluatedKey = lastEvaluatedKey;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ListIssuanceRecordResponse listIssuanceRecordResponse = (ListIssuanceRecordResponse) o;
-    return Objects.equals(this.flowData, listIssuanceRecordResponse.flowData) &&
-        Objects.equals(this.lastEvaluatedKey, listIssuanceRecordResponse.lastEvaluatedKey);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(flowData, lastEvaluatedKey);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListIssuanceRecordResponse {\n");
-    sb.append("    flowData: ").append(toIndentedString(flowData)).append("\n");
-    sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ListIssuanceRecordResponse() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ListIssuanceRecordResponse flowData(List<FlowData> flowData) {
 
-    // add `flowData` to the URL query string
-    if (getFlowData() != null) {
-      for (int i = 0; i < getFlowData().size(); i++) {
-        if (getFlowData().get(i) != null) {
-          joiner.add(getFlowData().get(i).toUrlQueryString(String.format("%sflowData%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.flowData = flowData;
+        return this;
+    }
+
+    public ListIssuanceRecordResponse addFlowDataItem(FlowData flowDataItem) {
+        if (this.flowData == null) {
+            this.flowData = new ArrayList<>();
         }
-      }
+        this.flowData.add(flowDataItem);
+        return this;
     }
 
-    // add `lastEvaluatedKey` to the URL query string
-    if (getLastEvaluatedKey() != null) {
-      try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get flowData
+     *
+     * @return flowData
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FLOW_DATA)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<FlowData> getFlowData() {
+        return flowData;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_FLOW_DATA)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFlowData(List<FlowData> flowData) {
+        this.flowData = flowData;
+    }
+
+    public ListIssuanceRecordResponse lastEvaluatedKey(String lastEvaluatedKey) {
+
+        this.lastEvaluatedKey = lastEvaluatedKey;
+        return this;
+    }
+
+    /**
+     * Get lastEvaluatedKey
+     *
+     * @return lastEvaluatedKey
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getLastEvaluatedKey() {
+        return lastEvaluatedKey;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLastEvaluatedKey(String lastEvaluatedKey) {
+        this.lastEvaluatedKey = lastEvaluatedKey;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListIssuanceRecordResponse listIssuanceRecordResponse = (ListIssuanceRecordResponse) o;
+        return Objects.equals(this.flowData, listIssuanceRecordResponse.flowData)
+                && Objects.equals(this.lastEvaluatedKey, listIssuanceRecordResponse.lastEvaluatedKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(flowData, lastEvaluatedKey);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListIssuanceRecordResponse {\n");
+        sb.append("    flowData: ").append(toIndentedString(flowData)).append("\n");
+        sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `flowData` to the URL query string
+        if (getFlowData() != null) {
+            for (int i = 0; i < getFlowData().size(); i++) {
+                if (getFlowData().get(i) != null) {
+                    joiner.add(getFlowData().get(i).toUrlQueryString(String.format("%sflowData%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `lastEvaluatedKey` to the URL query string
+        if (getLastEvaluatedKey() != null) {
+            try {
+                joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

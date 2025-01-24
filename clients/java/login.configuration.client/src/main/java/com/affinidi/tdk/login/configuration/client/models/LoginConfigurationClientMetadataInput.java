@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,205 +28,206 @@ import java.util.StringJoiner;
 /**
  * login configuration client metadata
  */
-@JsonPropertyOrder({
-  LoginConfigurationClientMetadataInput.JSON_PROPERTY_NAME,
-  LoginConfigurationClientMetadataInput.JSON_PROPERTY_ORIGIN,
-  LoginConfigurationClientMetadataInput.JSON_PROPERTY_LOGO
-})
+@JsonPropertyOrder({ LoginConfigurationClientMetadataInput.JSON_PROPERTY_NAME,
+        LoginConfigurationClientMetadataInput.JSON_PROPERTY_ORIGIN,
+        LoginConfigurationClientMetadataInput.JSON_PROPERTY_LOGO })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LoginConfigurationClientMetadataInput {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_ORIGIN = "origin";
-  private String origin;
+    public static final String JSON_PROPERTY_ORIGIN = "origin";
+    private String origin;
 
-  public static final String JSON_PROPERTY_LOGO = "logo";
-  private String logo;
+    public static final String JSON_PROPERTY_LOGO = "logo";
+    private String logo;
 
-  public LoginConfigurationClientMetadataInput() {
-  }
-
-  public LoginConfigurationClientMetadataInput name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * application name that will be displayed in consent page
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public LoginConfigurationClientMetadataInput origin(String origin) {
-    
-    this.origin = origin;
-    return this;
-  }
-
-  /**
-   * origin url that will be displayed in consent page
-   * @return origin
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getOrigin() {
-    return origin;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrigin(String origin) {
-    this.origin = origin;
-  }
-
-  public LoginConfigurationClientMetadataInput logo(String logo) {
-    
-    this.logo = logo;
-    return this;
-  }
-
-  /**
-   * logo url that will be displayed in consent page
-   * @return logo
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOGO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getLogo() {
-    return logo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOGO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLogo(String logo) {
-    this.logo = logo;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LoginConfigurationClientMetadataInput loginConfigurationClientMetadataInput = (LoginConfigurationClientMetadataInput) o;
-    return Objects.equals(this.name, loginConfigurationClientMetadataInput.name) &&
-        Objects.equals(this.origin, loginConfigurationClientMetadataInput.origin) &&
-        Objects.equals(this.logo, loginConfigurationClientMetadataInput.logo);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, origin, logo);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoginConfigurationClientMetadataInput {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
-    sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public LoginConfigurationClientMetadataInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public LoginConfigurationClientMetadataInput name(String name) {
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.name = name;
+        return this;
     }
 
-    // add `origin` to the URL query string
-    if (getOrigin() != null) {
-      try {
-        joiner.add(String.format("%sorigin%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * application name that will be displayed in consent page
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getName() {
+        return name;
     }
 
-    // add `logo` to the URL query string
-    if (getLogo() != null) {
-      try {
-        joiner.add(String.format("%slogo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setName(String name) {
+        this.name = name;
     }
 
-    return joiner.toString();
-  }
+    public LoginConfigurationClientMetadataInput origin(String origin) {
+
+        this.origin = origin;
+        return this;
+    }
+
+    /**
+     * origin url that will be displayed in consent page
+     *
+     * @return origin
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ORIGIN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ORIGIN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public LoginConfigurationClientMetadataInput logo(String logo) {
+
+        this.logo = logo;
+        return this;
+    }
+
+    /**
+     * logo url that will be displayed in consent page
+     *
+     * @return logo
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_LOGO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getLogo() {
+        return logo;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LOGO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoginConfigurationClientMetadataInput loginConfigurationClientMetadataInput = (LoginConfigurationClientMetadataInput) o;
+        return Objects.equals(this.name, loginConfigurationClientMetadataInput.name)
+                && Objects.equals(this.origin, loginConfigurationClientMetadataInput.origin)
+                && Objects.equals(this.logo, loginConfigurationClientMetadataInput.logo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, origin, logo);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoginConfigurationClientMetadataInput {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+        sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `origin` to the URL query string
+        if (getOrigin() != null) {
+            try {
+                joiner.add(String.format("%sorigin%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `logo` to the URL query string
+        if (getLogo() != null) {
+            try {
+                joiner.add(String.format("%slogo%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

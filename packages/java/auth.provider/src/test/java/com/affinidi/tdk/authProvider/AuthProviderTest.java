@@ -38,9 +38,11 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
 public class AuthProviderTest {
+
     @Nested
     @DisplayName("setting values to the authProvider configurations")
     class ConfigurationsTest {
+
         @Test
         void testAuthProviderConfiguration() throws Exception {
             AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
@@ -57,6 +59,7 @@ public class AuthProviderTest {
     @Nested
     @DisplayName("fetchProjectScopedToken method")
     class FetchProjectScopedTokenTest {
+
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
@@ -154,6 +157,7 @@ public class AuthProviderTest {
     @Nested
     @DisplayName("shouldRefreshToken method")
     class ShouldRefreshTokenTest {
+
         @Test
         @DisplayName("given no project-token, then it returns true")
         void givenNoProjectToken_thenReturnsTrue() throws ConfigurationException {

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
 import com.affinidi.tdk.login.configuration.client.ApiException;
@@ -46,7 +45,7 @@ public class GroupApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void addUserToGroupTest() throws ApiException {
@@ -56,9 +55,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createGroupTest() throws ApiException {
@@ -67,9 +67,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteGroupTest() throws ApiException {
@@ -78,9 +79,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getGroupByIdTest() throws ApiException {
@@ -89,9 +91,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listGroupUserMappingsTest() throws ApiException {
@@ -103,9 +106,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listGroupsTest() throws ApiException {
@@ -113,9 +117,10 @@ public class GroupApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void removeUserFromGroupTest() throws ApiException {

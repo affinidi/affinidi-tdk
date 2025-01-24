@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -38,10 +37,12 @@ public class CredentialsApiTest {
     private final CredentialsApi api = new CredentialsApi();
 
     /**
-     * Issue credential for end user upon presentation a valid access token. Since we don&#39;t immediate issue credential It&#39;s expected to return &#x60;transaction_id&#x60; and use this &#x60;transaction_id&#x60; to get the deferred credentials
+     * Issue credential for end user upon presentation a valid access token. Since we don&#39;t immediate issue
+     * credential It&#39;s expected to return &#x60;transaction_id&#x60; and use this &#x60;transaction_id&#x60; to get
+     * the deferred credentials
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void generateCredentialsTest() throws ApiException {

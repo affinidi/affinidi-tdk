@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -34,470 +33,477 @@ import java.util.StringJoiner;
 /**
  * CreateLoginConfigurationOutput
  */
-@JsonPropertyOrder({
-  CreateLoginConfigurationOutput.JSON_PROPERTY_ARI,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_PROJECT_ID,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_CONFIGURATION_ID,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_NAME,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_AUTH,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_REDIRECT_URIS,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_CLIENT_METADATA,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_CREATION_DATE,
-  CreateLoginConfigurationOutput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS
-})
+@JsonPropertyOrder({ CreateLoginConfigurationOutput.JSON_PROPERTY_ARI,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_PROJECT_ID,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_CONFIGURATION_ID,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_NAME, CreateLoginConfigurationOutput.JSON_PROPERTY_AUTH,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_REDIRECT_URIS,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_CLIENT_METADATA,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_CREATION_DATE,
+        CreateLoginConfigurationOutput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateLoginConfigurationOutput {
-  public static final String JSON_PROPERTY_ARI = "ari";
-  private String ari;
+    public static final String JSON_PROPERTY_ARI = "ari";
+    private String ari;
 
-  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  private String projectId;
+    public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+    private String projectId;
 
-  public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
-  private String configurationId;
+    public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+    private String configurationId;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_AUTH = "auth";
-  private CreateLoginConfigurationOutputAuth auth;
+    public static final String JSON_PROPERTY_AUTH = "auth";
+    private CreateLoginConfigurationOutputAuth auth;
 
-  public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
-  private List<String> redirectUris = new ArrayList<>();
+    public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+    private List<String> redirectUris = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
-  private LoginConfigurationClientMetadataOutput clientMetadata;
+    public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+    private LoginConfigurationClientMetadataOutput clientMetadata;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
-  private String creationDate;
+    public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+    private String creationDate;
 
-  public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
-  private List<String> postLogoutRedirectUris = new ArrayList<>();
+    public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
+    private List<String> postLogoutRedirectUris = new ArrayList<>();
 
-  public CreateLoginConfigurationOutput() {
-  }
-
-  public CreateLoginConfigurationOutput ari(String ari) {
-    
-    this.ari = ari;
-    return this;
-  }
-
-  /**
-   * Configuration ari
-   * @return ari
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAri() {
-    return ari;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
-    this.ari = ari;
-  }
-
-  public CreateLoginConfigurationOutput projectId(String projectId) {
-    
-    this.projectId = projectId;
-    return this;
-  }
-
-  /**
-   * Project id
-   * @return projectId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getProjectId() {
-    return projectId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
-    this.projectId = projectId;
-  }
-
-  public CreateLoginConfigurationOutput configurationId(String configurationId) {
-    
-    this.configurationId = configurationId;
-    return this;
-  }
-
-  /**
-   * Configuration id
-   * @return configurationId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getConfigurationId() {
-    return configurationId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationId(String configurationId) {
-    this.configurationId = configurationId;
-  }
-
-  public CreateLoginConfigurationOutput name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * User defined login configuration name
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CreateLoginConfigurationOutput auth(CreateLoginConfigurationOutputAuth auth) {
-    
-    this.auth = auth;
-    return this;
-  }
-
-  /**
-   * Get auth
-   * @return auth
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public CreateLoginConfigurationOutputAuth getAuth() {
-    return auth;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuth(CreateLoginConfigurationOutputAuth auth) {
-    this.auth = auth;
-  }
-
-  public CreateLoginConfigurationOutput redirectUris(List<String> redirectUris) {
-    
-    this.redirectUris = redirectUris;
-    return this;
-  }
-
-  public CreateLoginConfigurationOutput addRedirectUrisItem(String redirectUrisItem) {
-    if (this.redirectUris == null) {
-      this.redirectUris = new ArrayList<>();
-    }
-    this.redirectUris.add(redirectUrisItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Redirect URIs
-   * @return redirectUris
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getRedirectUris() {
-    return redirectUris;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRedirectUris(List<String> redirectUris) {
-    this.redirectUris = redirectUris;
-  }
-
-  public CreateLoginConfigurationOutput clientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
-    
-    this.clientMetadata = clientMetadata;
-    return this;
-  }
-
-  /**
-   * Get clientMetadata
-   * @return clientMetadata
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public LoginConfigurationClientMetadataOutput getClientMetadata() {
-    return clientMetadata;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
-    this.clientMetadata = clientMetadata;
-  }
-
-  public CreateLoginConfigurationOutput creationDate(String creationDate) {
-    
-    this.creationDate = creationDate;
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Client Creation Date
-   * @return creationDate
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCreationDate() {
-    return creationDate;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  public CreateLoginConfigurationOutput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
-    
-    this.postLogoutRedirectUris = postLogoutRedirectUris;
-    return this;
-  }
-
-  public CreateLoginConfigurationOutput addPostLogoutRedirectUrisItem(String postLogoutRedirectUrisItem) {
-    if (this.postLogoutRedirectUris == null) {
-      this.postLogoutRedirectUris = new ArrayList<>();
-    }
-    this.postLogoutRedirectUris.add(postLogoutRedirectUrisItem);
-    return this;
-  }
-
-  /**
-   * Post Logout Redirect URIs, Used to redirect the user&#39;s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
-   * @return postLogoutRedirectUris
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getPostLogoutRedirectUris() {
-    return postLogoutRedirectUris;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
-    this.postLogoutRedirectUris = postLogoutRedirectUris;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateLoginConfigurationOutput createLoginConfigurationOutput = (CreateLoginConfigurationOutput) o;
-    return Objects.equals(this.ari, createLoginConfigurationOutput.ari) &&
-        Objects.equals(this.projectId, createLoginConfigurationOutput.projectId) &&
-        Objects.equals(this.configurationId, createLoginConfigurationOutput.configurationId) &&
-        Objects.equals(this.name, createLoginConfigurationOutput.name) &&
-        Objects.equals(this.auth, createLoginConfigurationOutput.auth) &&
-        Objects.equals(this.redirectUris, createLoginConfigurationOutput.redirectUris) &&
-        Objects.equals(this.clientMetadata, createLoginConfigurationOutput.clientMetadata) &&
-        Objects.equals(this.creationDate, createLoginConfigurationOutput.creationDate) &&
-        Objects.equals(this.postLogoutRedirectUris, createLoginConfigurationOutput.postLogoutRedirectUris);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(ari, projectId, configurationId, name, auth, redirectUris, clientMetadata, creationDate, postLogoutRedirectUris);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateLoginConfigurationOutput {\n");
-    sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
-    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    configurationId: ").append(toIndentedString(configurationId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    auth: ").append(toIndentedString(auth)).append("\n");
-    sb.append("    redirectUris: ").append(toIndentedString(redirectUris)).append("\n");
-    sb.append("    clientMetadata: ").append(toIndentedString(clientMetadata)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    postLogoutRedirectUris: ").append(toIndentedString(postLogoutRedirectUris)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CreateLoginConfigurationOutput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CreateLoginConfigurationOutput ari(String ari) {
 
-    // add `ari` to the URL query string
-    if (getAri() != null) {
-      try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.ari = ari;
+        return this;
     }
 
-    // add `projectId` to the URL query string
-    if (getProjectId() != null) {
-      try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Configuration ari
+     *
+     * @return ari
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAri() {
+        return ari;
     }
 
-    // add `configurationId` to the URL query string
-    if (getConfigurationId() != null) {
-      try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAri(String ari) {
+        this.ari = ari;
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public CreateLoginConfigurationOutput projectId(String projectId) {
+
+        this.projectId = projectId;
+        return this;
     }
 
-    // add `auth` to the URL query string
-    if (getAuth() != null) {
-      joiner.add(getAuth().toUrlQueryString(prefix + "auth" + suffix));
+    /**
+     * Project id
+     *
+     * @return projectId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getProjectId() {
+        return projectId;
     }
 
-    // add `redirectUris` to the URL query string
-    if (getRedirectUris() != null) {
-      for (int i = 0; i < getRedirectUris().size(); i++) {
-        try {
-          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public CreateLoginConfigurationOutput configurationId(String configurationId) {
+
+        this.configurationId = configurationId;
+        return this;
+    }
+
+    /**
+     * Configuration id
+     *
+     * @return configurationId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getConfigurationId() {
+        return configurationId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setConfigurationId(String configurationId) {
+        this.configurationId = configurationId;
+    }
+
+    public CreateLoginConfigurationOutput name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * User defined login configuration name
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CreateLoginConfigurationOutput auth(CreateLoginConfigurationOutputAuth auth) {
+
+        this.auth = auth;
+        return this;
+    }
+
+    /**
+     * Get auth
+     *
+     * @return auth
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_AUTH)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public CreateLoginConfigurationOutputAuth getAuth() {
+        return auth;
+    }
+
+    @JsonProperty(JSON_PROPERTY_AUTH)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAuth(CreateLoginConfigurationOutputAuth auth) {
+        this.auth = auth;
+    }
+
+    public CreateLoginConfigurationOutput redirectUris(List<String> redirectUris) {
+
+        this.redirectUris = redirectUris;
+        return this;
+    }
+
+    public CreateLoginConfigurationOutput addRedirectUrisItem(String redirectUrisItem) {
+        if (this.redirectUris == null) {
+            this.redirectUris = new ArrayList<>();
         }
-      }
+        this.redirectUris.add(redirectUrisItem);
+        return this;
     }
 
-    // add `clientMetadata` to the URL query string
-    if (getClientMetadata() != null) {
-      try {
-        joiner.add(String.format("%sclientMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientMetadata()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OAuth 2.0 Redirect URIs
+     *
+     * @return redirectUris
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getRedirectUris() {
+        return redirectUris;
     }
 
-    // add `creationDate` to the URL query string
-    if (getCreationDate() != null) {
-      try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setRedirectUris(List<String> redirectUris) {
+        this.redirectUris = redirectUris;
     }
 
-    // add `postLogoutRedirectUris` to the URL query string
-    if (getPostLogoutRedirectUris() != null) {
-      for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
-        try {
-          joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    public CreateLoginConfigurationOutput clientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+
+        this.clientMetadata = clientMetadata;
+        return this;
+    }
+
+    /**
+     * Get clientMetadata
+     *
+     * @return clientMetadata
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public LoginConfigurationClientMetadataOutput getClientMetadata() {
+        return clientMetadata;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setClientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+        this.clientMetadata = clientMetadata;
+    }
+
+    public CreateLoginConfigurationOutput creationDate(String creationDate) {
+
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    /**
+     * OAuth 2.0 Client Creation Date
+     *
+     * @return creationDate
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public CreateLoginConfigurationOutput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+
+        this.postLogoutRedirectUris = postLogoutRedirectUris;
+        return this;
+    }
+
+    public CreateLoginConfigurationOutput addPostLogoutRedirectUrisItem(String postLogoutRedirectUrisItem) {
+        if (this.postLogoutRedirectUris == null) {
+            this.postLogoutRedirectUris = new ArrayList<>();
         }
-      }
+        this.postLogoutRedirectUris.add(postLogoutRedirectUrisItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Post Logout Redirect URIs, Used to redirect the user&#39;s browser to a specified URL after the logout process is
+     * complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
+     *
+     * @return postLogoutRedirectUris
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getPostLogoutRedirectUris() {
+        return postLogoutRedirectUris;
+    }
+
+    @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+        this.postLogoutRedirectUris = postLogoutRedirectUris;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateLoginConfigurationOutput createLoginConfigurationOutput = (CreateLoginConfigurationOutput) o;
+        return Objects.equals(this.ari, createLoginConfigurationOutput.ari)
+                && Objects.equals(this.projectId, createLoginConfigurationOutput.projectId)
+                && Objects.equals(this.configurationId, createLoginConfigurationOutput.configurationId)
+                && Objects.equals(this.name, createLoginConfigurationOutput.name)
+                && Objects.equals(this.auth, createLoginConfigurationOutput.auth)
+                && Objects.equals(this.redirectUris, createLoginConfigurationOutput.redirectUris)
+                && Objects.equals(this.clientMetadata, createLoginConfigurationOutput.clientMetadata)
+                && Objects.equals(this.creationDate, createLoginConfigurationOutput.creationDate)
+                && Objects.equals(this.postLogoutRedirectUris, createLoginConfigurationOutput.postLogoutRedirectUris);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ari, projectId, configurationId, name, auth, redirectUris, clientMetadata, creationDate,
+                postLogoutRedirectUris);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateLoginConfigurationOutput {\n");
+        sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
+        sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+        sb.append("    configurationId: ").append(toIndentedString(configurationId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    auth: ").append(toIndentedString(auth)).append("\n");
+        sb.append("    redirectUris: ").append(toIndentedString(redirectUris)).append("\n");
+        sb.append("    clientMetadata: ").append(toIndentedString(clientMetadata)).append("\n");
+        sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+        sb.append("    postLogoutRedirectUris: ").append(toIndentedString(postLogoutRedirectUris)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `ari` to the URL query string
+        if (getAri() != null) {
+            try {
+                joiner.add(String.format("%sari%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `projectId` to the URL query string
+        if (getProjectId() != null) {
+            try {
+                joiner.add(String.format("%sprojectId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `configurationId` to the URL query string
+        if (getConfigurationId() != null) {
+            try {
+                joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `auth` to the URL query string
+        if (getAuth() != null) {
+            joiner.add(getAuth().toUrlQueryString(prefix + "auth" + suffix));
+        }
+
+        // add `redirectUris` to the URL query string
+        if (getRedirectUris() != null) {
+            for (int i = 0; i < getRedirectUris().size(); i++) {
+                try {
+                    joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `clientMetadata` to the URL query string
+        if (getClientMetadata() != null) {
+            try {
+                joiner.add(String.format("%sclientMetadata%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getClientMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `creationDate` to the URL query string
+        if (getCreationDate() != null) {
+            try {
+                joiner.add(String.format("%screationDate%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `postLogoutRedirectUris` to the URL query string
+        if (getPostLogoutRedirectUris() != null) {
+            for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
+                try {
+                    joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

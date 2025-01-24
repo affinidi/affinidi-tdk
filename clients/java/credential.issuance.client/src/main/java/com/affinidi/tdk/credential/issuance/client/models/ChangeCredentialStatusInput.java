@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -29,199 +28,199 @@ import java.util.StringJoiner;
 /**
  * ChangeCredentialStatusInput
  */
-@JsonPropertyOrder({
-  ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
-  ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID
-})
+@JsonPropertyOrder({ ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
+        ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ChangeCredentialStatusInput {
-  /**
-   * reason for revocation
-   */
-  public enum ChangeReasonEnum {
-    INVALID_CREDENTIAL("INVALID_CREDENTIAL"),
-    
-    COMPROMISED_ISSUER("COMPROMISED_ISSUER");
+    /**
+     * reason for revocation
+     */
+    public enum ChangeReasonEnum {
+        INVALID_CREDENTIAL("INVALID_CREDENTIAL"),
 
-    private String value;
+        COMPROMISED_ISSUER("COMPROMISED_ISSUER");
 
-    ChangeReasonEnum(String value) {
-      this.value = value;
+        private String value;
+
+        ChangeReasonEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ChangeReasonEnum fromValue(String value) {
+            for (ChangeReasonEnum b : ChangeReasonEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_CHANGE_REASON = "changeReason";
+    private ChangeReasonEnum changeReason;
+
+    public static final String JSON_PROPERTY_ISSUANCE_RECORD_ID = "issuanceRecordId";
+    private String issuanceRecordId;
+
+    public ChangeCredentialStatusInput() {
+    }
+
+    public ChangeCredentialStatusInput changeReason(ChangeReasonEnum changeReason) {
+
+        this.changeReason = changeReason;
+        return this;
+    }
+
+    /**
+     * reason for revocation
+     *
+     * @return changeReason
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public ChangeReasonEnum getChangeReason() {
+        return changeReason;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setChangeReason(ChangeReasonEnum changeReason) {
+        this.changeReason = changeReason;
+    }
+
+    public ChangeCredentialStatusInput issuanceRecordId(String issuanceRecordId) {
+
+        this.issuanceRecordId = issuanceRecordId;
+        return this;
+    }
+
+    /**
+     * Get issuanceRecordId
+     *
+     * @return issuanceRecordId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getIssuanceRecordId() {
+        return issuanceRecordId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuanceRecordId(String issuanceRecordId) {
+        this.issuanceRecordId = issuanceRecordId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChangeCredentialStatusInput changeCredentialStatusInput = (ChangeCredentialStatusInput) o;
+        return Objects.equals(this.changeReason, changeCredentialStatusInput.changeReason)
+                && Objects.equals(this.issuanceRecordId, changeCredentialStatusInput.issuanceRecordId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(changeReason, issuanceRecordId);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ChangeCredentialStatusInput {\n");
+        sb.append("    changeReason: ").append(toIndentedString(changeReason)).append("\n");
+        sb.append("    issuanceRecordId: ").append(toIndentedString(issuanceRecordId)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static ChangeReasonEnum fromValue(String value) {
-      for (ChangeReasonEnum b : ChangeReasonEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_CHANGE_REASON = "changeReason";
-  private ChangeReasonEnum changeReason;
-
-  public static final String JSON_PROPERTY_ISSUANCE_RECORD_ID = "issuanceRecordId";
-  private String issuanceRecordId;
-
-  public ChangeCredentialStatusInput() {
-  }
-
-  public ChangeCredentialStatusInput changeReason(ChangeReasonEnum changeReason) {
-    
-    this.changeReason = changeReason;
-    return this;
-  }
-
-  /**
-   * reason for revocation
-   * @return changeReason
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ChangeReasonEnum getChangeReason() {
-    return changeReason;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChangeReason(ChangeReasonEnum changeReason) {
-    this.changeReason = changeReason;
-  }
-
-  public ChangeCredentialStatusInput issuanceRecordId(String issuanceRecordId) {
-    
-    this.issuanceRecordId = issuanceRecordId;
-    return this;
-  }
-
-  /**
-   * Get issuanceRecordId
-   * @return issuanceRecordId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIssuanceRecordId() {
-    return issuanceRecordId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuanceRecordId(String issuanceRecordId) {
-    this.issuanceRecordId = issuanceRecordId;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ChangeCredentialStatusInput changeCredentialStatusInput = (ChangeCredentialStatusInput) o;
-    return Objects.equals(this.changeReason, changeCredentialStatusInput.changeReason) &&
-        Objects.equals(this.issuanceRecordId, changeCredentialStatusInput.issuanceRecordId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(changeReason, issuanceRecordId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ChangeCredentialStatusInput {\n");
-    sb.append("    changeReason: ").append(toIndentedString(changeReason)).append("\n");
-    sb.append("    issuanceRecordId: ").append(toIndentedString(issuanceRecordId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `changeReason` to the URL query string
-    if (getChangeReason() != null) {
-      try {
-        joiner.add(String.format("%schangeReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChangeReason()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `issuanceRecordId` to the URL query string
-    if (getIssuanceRecordId() != null) {
-      try {
-        joiner.add(String.format("%sissuanceRecordId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceRecordId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
 
-    return joiner.toString();
-  }
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `changeReason` to the URL query string
+        if (getChangeReason() != null) {
+            try {
+                joiner.add(String.format("%schangeReason%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getChangeReason()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `issuanceRecordId` to the URL query string
+        if (getIssuanceRecordId() != null) {
+            try {
+                joiner.add(String.format("%sissuanceRecordId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuanceRecordId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

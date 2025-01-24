@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
@@ -41,10 +40,11 @@ public class ConsumerAuthApiTest {
     /**
      * The Consumer OAuth 2.0 Token Endpoint
      *
-     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
+     * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can
+     * find a list of libraries here https://oauth.net/code/ The Ory SDK is not yet able to this endpoint properly.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void consumerAuthTokenEndpointTest() throws ApiException {

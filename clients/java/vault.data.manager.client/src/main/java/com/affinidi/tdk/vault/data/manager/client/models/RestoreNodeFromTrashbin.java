@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,122 @@ import java.util.StringJoiner;
 /**
  * RestoreNodeFromTrashbin
  */
-@JsonPropertyOrder({
-  RestoreNodeFromTrashbin.JSON_PROPERTY_RESTORE_TO_PROFILE_ID
-})
+@JsonPropertyOrder({ RestoreNodeFromTrashbin.JSON_PROPERTY_RESTORE_TO_PROFILE_ID })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class RestoreNodeFromTrashbin {
-  public static final String JSON_PROPERTY_RESTORE_TO_PROFILE_ID = "restoreToProfileId";
-  private String restoreToProfileId;
+    public static final String JSON_PROPERTY_RESTORE_TO_PROFILE_ID = "restoreToProfileId";
+    private String restoreToProfileId;
 
-  public RestoreNodeFromTrashbin() {
-  }
-
-  public RestoreNodeFromTrashbin restoreToProfileId(String restoreToProfileId) {
-    
-    this.restoreToProfileId = restoreToProfileId;
-    return this;
-  }
-
-  /**
-   * The base64 encoded nodeId of the profile which is base64 encoded, to which node will be restored
-   * @return restoreToProfileId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getRestoreToProfileId() {
-    return restoreToProfileId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRestoreToProfileId(String restoreToProfileId) {
-    this.restoreToProfileId = restoreToProfileId;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    RestoreNodeFromTrashbin restoreNodeFromTrashbin = (RestoreNodeFromTrashbin) o;
-    return Objects.equals(this.restoreToProfileId, restoreNodeFromTrashbin.restoreToProfileId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(restoreToProfileId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RestoreNodeFromTrashbin {\n");
-    sb.append("    restoreToProfileId: ").append(toIndentedString(restoreToProfileId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public RestoreNodeFromTrashbin() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public RestoreNodeFromTrashbin restoreToProfileId(String restoreToProfileId) {
 
-    // add `restoreToProfileId` to the URL query string
-    if (getRestoreToProfileId() != null) {
-      try {
-        joiner.add(String.format("%srestoreToProfileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRestoreToProfileId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.restoreToProfileId = restoreToProfileId;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * The base64 encoded nodeId of the profile which is base64 encoded, to which node will be restored
+     *
+     * @return restoreToProfileId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getRestoreToProfileId() {
+        return restoreToProfileId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRestoreToProfileId(String restoreToProfileId) {
+        this.restoreToProfileId = restoreToProfileId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RestoreNodeFromTrashbin restoreNodeFromTrashbin = (RestoreNodeFromTrashbin) o;
+        return Objects.equals(this.restoreToProfileId, restoreNodeFromTrashbin.restoreToProfileId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(restoreToProfileId);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class RestoreNodeFromTrashbin {\n");
+        sb.append("    restoreToProfileId: ").append(toIndentedString(restoreToProfileId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `restoreToProfileId` to the URL query string
+        if (getRestoreToProfileId() != null) {
+            try {
+                joiner.add(String.format("%srestoreToProfileId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getRestoreToProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

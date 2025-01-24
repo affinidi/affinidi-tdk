@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,123 @@ import java.util.StringJoiner;
 /**
  * AwsExchangeCredentials
  */
-@JsonPropertyOrder({
-  AwsExchangeCredentials.JSON_PROPERTY_ASSERTION
-})
+@JsonPropertyOrder({ AwsExchangeCredentials.JSON_PROPERTY_ASSERTION })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AwsExchangeCredentials {
-  public static final String JSON_PROPERTY_ASSERTION = "assertion";
-  private String assertion;
+    public static final String JSON_PROPERTY_ASSERTION = "assertion";
+    private String assertion;
 
-  public AwsExchangeCredentials() {
-  }
-
-  public AwsExchangeCredentials assertion(String assertion) {
-    
-    this.assertion = assertion;
-    return this;
-  }
-
-  /**
-   * A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair&#39;s private key used to create the Personal Access Token (PAT).
-   * @return assertion
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ASSERTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAssertion() {
-    return assertion;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ASSERTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAssertion(String assertion) {
-    this.assertion = assertion;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    AwsExchangeCredentials awsExchangeCredentials = (AwsExchangeCredentials) o;
-    return Objects.equals(this.assertion, awsExchangeCredentials.assertion);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(assertion);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AwsExchangeCredentials {\n");
-    sb.append("    assertion: ").append(toIndentedString(assertion)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public AwsExchangeCredentials() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public AwsExchangeCredentials assertion(String assertion) {
 
-    // add `assertion` to the URL query string
-    if (getAssertion() != null) {
-      try {
-        joiner.add(String.format("%sassertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAssertion()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.assertion = assertion;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair&#39;s
+     * private key used to create the Personal Access Token (PAT).
+     *
+     * @return assertion
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ASSERTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAssertion() {
+        return assertion;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ASSERTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAssertion(String assertion) {
+        this.assertion = assertion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AwsExchangeCredentials awsExchangeCredentials = (AwsExchangeCredentials) o;
+        return Objects.equals(this.assertion, awsExchangeCredentials.assertion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(assertion);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class AwsExchangeCredentials {\n");
+        sb.append("    assertion: ").append(toIndentedString(assertion)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `assertion` to the URL query string
+        if (getAssertion() != null) {
+            try {
+                joiner.add(String.format("%sassertion%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAssertion()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

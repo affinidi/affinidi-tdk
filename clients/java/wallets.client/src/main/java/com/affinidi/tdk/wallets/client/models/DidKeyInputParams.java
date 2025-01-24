@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
@@ -29,238 +28,238 @@ import java.util.StringJoiner;
 /**
  * Did key input params
  */
-@JsonPropertyOrder({
-  DidKeyInputParams.JSON_PROPERTY_NAME,
-  DidKeyInputParams.JSON_PROPERTY_DESCRIPTION,
-  DidKeyInputParams.JSON_PROPERTY_DID_METHOD
-})
+@JsonPropertyOrder({ DidKeyInputParams.JSON_PROPERTY_NAME, DidKeyInputParams.JSON_PROPERTY_DESCRIPTION,
+        DidKeyInputParams.JSON_PROPERTY_DID_METHOD })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class DidKeyInputParams {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  /**
-   * Gets or Sets didMethod
-   */
-  public enum DidMethodEnum {
-    KEY("key");
+    /**
+     * Gets or Sets didMethod
+     */
+    public enum DidMethodEnum {
+        KEY("key");
 
-    private String value;
+        private String value;
 
-    DidMethodEnum(String value) {
-      this.value = value;
+        DidMethodEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static DidMethodEnum fromValue(String value) {
+            for (DidMethodEnum b : DidMethodEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_DID_METHOD = "didMethod";
+    private DidMethodEnum didMethod;
+
+    public DidKeyInputParams() {
+    }
+
+    public DidKeyInputParams name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * The name of the wallet
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public DidKeyInputParams description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * The description of the wallet
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public DidKeyInputParams didMethod(DidMethodEnum didMethod) {
+
+        this.didMethod = didMethod;
+        return this;
+    }
+
+    /**
+     * Get didMethod
+     *
+     * @return didMethod
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DID_METHOD)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public DidMethodEnum getDidMethod() {
+        return didMethod;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DID_METHOD)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDidMethod(DidMethodEnum didMethod) {
+        this.didMethod = didMethod;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DidKeyInputParams didKeyInputParams = (DidKeyInputParams) o;
+        return Objects.equals(this.name, didKeyInputParams.name)
+                && Objects.equals(this.description, didKeyInputParams.description)
+                && Objects.equals(this.didMethod, didKeyInputParams.didMethod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, didMethod);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class DidKeyInputParams {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    didMethod: ").append(toIndentedString(didMethod)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static DidMethodEnum fromValue(String value) {
-      for (DidMethodEnum b : DidMethodEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_DID_METHOD = "didMethod";
-  private DidMethodEnum didMethod;
-
-  public DidKeyInputParams() {
-  }
-
-  public DidKeyInputParams name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * The name of the wallet
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public DidKeyInputParams description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * The description of the wallet
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public DidKeyInputParams didMethod(DidMethodEnum didMethod) {
-    
-    this.didMethod = didMethod;
-    return this;
-  }
-
-  /**
-   * Get didMethod
-   * @return didMethod
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID_METHOD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public DidMethodEnum getDidMethod() {
-    return didMethod;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DID_METHOD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDidMethod(DidMethodEnum didMethod) {
-    this.didMethod = didMethod;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    DidKeyInputParams didKeyInputParams = (DidKeyInputParams) o;
-    return Objects.equals(this.name, didKeyInputParams.name) &&
-        Objects.equals(this.description, didKeyInputParams.description) &&
-        Objects.equals(this.didMethod, didKeyInputParams.didMethod);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, didMethod);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DidKeyInputParams {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    didMethod: ").append(toIndentedString(didMethod)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
 
-    // add `didMethod` to the URL query string
-    if (getDidMethod() != null) {
-      try {
-        joiner.add(String.format("%sdidMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidMethod()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        StringJoiner joiner = new StringJoiner("&");
 
-    return joiner.toString();
-  }
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `didMethod` to the URL query string
+        if (getDidMethod() != null) {
+            try {
+                joiner.add(String.format("%sdidMethod%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDidMethod()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

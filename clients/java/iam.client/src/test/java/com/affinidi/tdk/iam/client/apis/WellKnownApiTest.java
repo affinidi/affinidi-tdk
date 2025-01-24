@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
@@ -38,7 +37,7 @@ public class WellKnownApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getWellKnownDidTest() throws ApiException {
@@ -46,9 +45,10 @@ public class WellKnownApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getWellKnownJwksTest() throws ApiException {

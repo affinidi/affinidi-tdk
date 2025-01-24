@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,201 +28,199 @@ import java.util.StringJoiner;
 /**
  * StartFileScanOK
  */
-@JsonPropertyOrder({
-  StartFileScanOK.JSON_PROPERTY_JOB_ID,
-  StartFileScanOK.JSON_PROPERTY_STATUS
-})
+@JsonPropertyOrder({ StartFileScanOK.JSON_PROPERTY_JOB_ID, StartFileScanOK.JSON_PROPERTY_STATUS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StartFileScanOK {
-  public static final String JSON_PROPERTY_JOB_ID = "jobId";
-  private String jobId;
+    public static final String JSON_PROPERTY_JOB_ID = "jobId";
+    private String jobId;
 
-  /**
-   * Gets or Sets status
-   */
-  public enum StatusEnum {
-    STARTED("STARTED"),
-    
-    FAILED("FAILED"),
-    
-    COMPLETED("COMPLETED");
+    /**
+     * Gets or Sets status
+     */
+    public enum StatusEnum {
+        STARTED("STARTED"),
 
-    private String value;
+        FAILED("FAILED"),
 
-    StatusEnum(String value) {
-      this.value = value;
+        COMPLETED("COMPLETED");
+
+        private String value;
+
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_STATUS = "status";
+    private StatusEnum status;
+
+    public StartFileScanOK() {
+    }
+
+    public StartFileScanOK jobId(String jobId) {
+
+        this.jobId = jobId;
+        return this;
+    }
+
+    /**
+     * Get jobId
+     *
+     * @return jobId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JOB_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JOB_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
+
+    public StartFileScanOK status(StatusEnum status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return status
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        StartFileScanOK startFileScanOK = (StartFileScanOK) o;
+        return Objects.equals(this.jobId, startFileScanOK.jobId) && Objects.equals(this.status, startFileScanOK.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(jobId, status);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class StartFileScanOK {\n");
+        sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  private StatusEnum status;
-
-  public StartFileScanOK() {
-  }
-
-  public StartFileScanOK jobId(String jobId) {
-    
-    this.jobId = jobId;
-    return this;
-  }
-
-  /**
-   * Get jobId
-   * @return jobId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJobId() {
-    return jobId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJobId(String jobId) {
-    this.jobId = jobId;
-  }
-
-  public StartFileScanOK status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    StartFileScanOK startFileScanOK = (StartFileScanOK) o;
-    return Objects.equals(this.jobId, startFileScanOK.jobId) &&
-        Objects.equals(this.status, startFileScanOK.status);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(jobId, status);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class StartFileScanOK {\n");
-    sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `jobId` to the URL query string
-    if (getJobId() != null) {
-      try {
-        joiner.add(String.format("%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
 
-    return joiner.toString();
-  }
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `jobId` to the URL query string
+        if (getJobId() != null) {
+            try {
+                joiner.add(String.format("%sjobId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `status` to the URL query string
+        if (getStatus() != null) {
+            try {
+                joiner.add(String.format("%sstatus%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

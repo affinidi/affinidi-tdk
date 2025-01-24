@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
 import com.affinidi.tdk.iota.client.ApiException;
@@ -46,10 +45,12 @@ public class IotaApiTest {
     private final IotaApi api = new IotaApi();
 
     /**
-     * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
+     * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity
+     * credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket
+     * data-sharing mode.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void awsExchangeCredentialsTest() throws ApiException {
@@ -58,11 +59,13 @@ public class IotaApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
+     * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void awsExchangeCredentialsProjectTokenTest() throws ApiException {
@@ -71,11 +74,13 @@ public class IotaApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format after a successful data-sharing flow.
+     * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format
+     * after a successful data-sharing flow.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void fetchIotaVpResponseTest() throws ApiException {
@@ -84,11 +89,12 @@ public class IotaApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Generates the request token for the Redirect mode to initiate the data-sharing flow.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void initiateDataSharingRequestTest() throws ApiException {
@@ -97,11 +103,13 @@ public class IotaApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
+     * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void iotaExchangeCredentialsTest() throws ApiException {

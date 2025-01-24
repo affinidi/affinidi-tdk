@@ -25,7 +25,6 @@ import com.affinidi.tdk.vault.data.manager.client.models.QueryProfileDataOK;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateProfileDataInput;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateProfileDataOK;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,220 +35,202 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ProfileDataApi extends BaseApi {
 
-  public ProfileDataApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public ProfileDataApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * Retrieves information from a profile.
-   * @param nodeId the nodeId of the node being operated on (required)
-   * @param dek A base64url encoded data encryption key, encrypted using VFS public (required)
-   * @param query data query, TBD maybe encode it with base64 to make it url friendly? (optional)
-   * @return QueryProfileDataOK
-   * @throws ApiException if fails to make API call
-   */
-  public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query) throws ApiException {
-    return this.queryProfileData(nodeId, dek, query, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Retrieves information from a profile.
-   * @param nodeId the nodeId of the node being operated on (required)
-   * @param dek A base64url encoded data encryption key, encrypted using VFS public (required)
-   * @param query data query, TBD maybe encode it with base64 to make it url friendly? (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return QueryProfileDataOK
-   * @throws ApiException if fails to make API call
-   */
-  public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'nodeId' is set
-    if (nodeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'nodeId' when calling queryProfileData");
+    public ProfileDataApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // verify the required parameter 'dek' is set
-    if (dek == null) {
-      throw new ApiException(400, "Missing the required parameter 'dek' when calling queryProfileData");
+
+    public ProfileDataApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/nodes/{nodeId}/profile-data"
-      .replaceAll("\\{" + "nodeId" + "\\}", apiClient.escapeString(apiClient.parameterToString(nodeId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
-    localVarQueryParams.addAll(apiClient.parameterToPair("dek", dek));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
-
-    TypeReference<QueryProfileDataOK> localVarReturnType = new TypeReference<QueryProfileDataOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * Updates the profile with the given data
-   * @param nodeId  (required)
-   * @param updateProfileDataInput Updates the schema with the given data (required)
-   * @return UpdateProfileDataOK
-   * @throws ApiException if fails to make API call
-   */
-  public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput) throws ApiException {
-    return this.updateProfileData(nodeId, updateProfileDataInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Updates the profile with the given data
-   * @param nodeId  (required)
-   * @param updateProfileDataInput Updates the schema with the given data (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return UpdateProfileDataOK
-   * @throws ApiException if fails to make API call
-   */
-  public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = updateProfileDataInput;
-    
-    // verify the required parameter 'nodeId' is set
-    if (nodeId == null) {
-      throw new ApiException(400, "Missing the required parameter 'nodeId' when calling updateProfileData");
+    /**
+     *
+     * Retrieves information from a profile.
+     *
+     * @param nodeId
+     *            the nodeId of the node being operated on (required)
+     * @param dek
+     *            A base64url encoded data encryption key, encrypted using VFS public (required)
+     * @param query
+     *            data query, TBD maybe encode it with base64 to make it url friendly? (optional)
+     *
+     * @return QueryProfileDataOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query) throws ApiException {
+        return this.queryProfileData(nodeId, dek, query, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'updateProfileDataInput' is set
-    if (updateProfileDataInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateProfileDataInput' when calling updateProfileData");
+
+    /**
+     *
+     * Retrieves information from a profile.
+     *
+     * @param nodeId
+     *            the nodeId of the node being operated on (required)
+     * @param dek
+     *            A base64url encoded data encryption key, encrypted using VFS public (required)
+     * @param query
+     *            data query, TBD maybe encode it with base64 to make it url friendly? (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return QueryProfileDataOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'nodeId' is set
+        if (nodeId == null) {
+            throw new ApiException(400, "Missing the required parameter 'nodeId' when calling queryProfileData");
+        }
+
+        // verify the required parameter 'dek' is set
+        if (dek == null) {
+            throw new ApiException(400, "Missing the required parameter 'dek' when calling queryProfileData");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/nodes/{nodeId}/profile-data".replaceAll("\\{" + "nodeId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(nodeId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        localVarQueryParams.addAll(apiClient.parameterToPair("dek", dek));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+        TypeReference<QueryProfileDataOK> localVarReturnType = new TypeReference<QueryProfileDataOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/nodes/{nodeId}/profile-data"
-      .replaceAll("\\{" + "nodeId" + "\\}", apiClient.escapeString(apiClient.parameterToString(nodeId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * Updates the profile with the given data
+     *
+     * @param nodeId
+     *            (required)
+     * @param updateProfileDataInput
+     *            Updates the schema with the given data (required)
+     *
+     * @return UpdateProfileDataOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput)
+            throws ApiException {
+        return this.updateProfileData(nodeId, updateProfileDataInput, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     * Updates the profile with the given data
+     *
+     * @param nodeId
+     *            (required)
+     * @param updateProfileDataInput
+     *            Updates the schema with the given data (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return UpdateProfileDataOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = updateProfileDataInput;
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'nodeId' is set
+        if (nodeId == null) {
+            throw new ApiException(400, "Missing the required parameter 'nodeId' when calling updateProfileData");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'updateProfileDataInput' is set
+        if (updateProfileDataInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'updateProfileDataInput' when calling updateProfileData");
+        }
 
-    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/nodes/{nodeId}/profile-data".replaceAll("\\{" + "nodeId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(nodeId)));
 
-    TypeReference<UpdateProfileDataOK> localVarReturnType = new TypeReference<UpdateProfileDataOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
 
-    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+        TypeReference<UpdateProfileDataOK> localVarReturnType = new TypeReference<UpdateProfileDataOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

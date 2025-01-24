@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -30,159 +29,157 @@ import java.util.StringJoiner;
 /**
  * LoginSessionDto
  */
-@JsonPropertyOrder({
-  LoginSessionDto.JSON_PROPERTY_ID,
-  LoginSessionDto.JSON_PROPERTY_AUTHORIZATION_REQUEST
-})
+@JsonPropertyOrder({ LoginSessionDto.JSON_PROPERTY_ID, LoginSessionDto.JSON_PROPERTY_AUTHORIZATION_REQUEST })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LoginSessionDto {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_AUTHORIZATION_REQUEST = "authorizationRequest";
-  private LoginSessionDtoAuthorizationRequest authorizationRequest;
+    public static final String JSON_PROPERTY_AUTHORIZATION_REQUEST = "authorizationRequest";
+    private LoginSessionDtoAuthorizationRequest authorizationRequest;
 
-  public LoginSessionDto() {
-  }
-
-  public LoginSessionDto id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Session primary identifier
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public LoginSessionDto authorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
-    
-    this.authorizationRequest = authorizationRequest;
-    return this;
-  }
-
-  /**
-   * Get authorizationRequest
-   * @return authorizationRequest
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_REQUEST)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public LoginSessionDtoAuthorizationRequest getAuthorizationRequest() {
-    return authorizationRequest;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_REQUEST)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
-    this.authorizationRequest = authorizationRequest;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LoginSessionDto loginSessionDto = (LoginSessionDto) o;
-    return Objects.equals(this.id, loginSessionDto.id) &&
-        Objects.equals(this.authorizationRequest, loginSessionDto.authorizationRequest);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, authorizationRequest);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSessionDto {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    authorizationRequest: ").append(toIndentedString(authorizationRequest)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public LoginSessionDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public LoginSessionDto id(String id) {
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.id = id;
+        return this;
     }
 
-    // add `authorizationRequest` to the URL query string
-    if (getAuthorizationRequest() != null) {
-      joiner.add(getAuthorizationRequest().toUrlQueryString(prefix + "authorizationRequest" + suffix));
+    /**
+     * Session primary identifier
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public LoginSessionDto authorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
+
+        this.authorizationRequest = authorizationRequest;
+        return this;
+    }
+
+    /**
+     * Get authorizationRequest
+     *
+     * @return authorizationRequest
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_AUTHORIZATION_REQUEST)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public LoginSessionDtoAuthorizationRequest getAuthorizationRequest() {
+        return authorizationRequest;
+    }
+
+    @JsonProperty(JSON_PROPERTY_AUTHORIZATION_REQUEST)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAuthorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
+        this.authorizationRequest = authorizationRequest;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoginSessionDto loginSessionDto = (LoginSessionDto) o;
+        return Objects.equals(this.id, loginSessionDto.id)
+                && Objects.equals(this.authorizationRequest, loginSessionDto.authorizationRequest);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, authorizationRequest);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoginSessionDto {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    authorizationRequest: ").append(toIndentedString(authorizationRequest)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `authorizationRequest` to the URL query string
+        if (getAuthorizationRequest() != null) {
+            joiner.add(getAuthorizationRequest().toUrlQueryString(prefix + "authorizationRequest" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

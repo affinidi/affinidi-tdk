@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -29,246 +28,246 @@ import java.util.StringJoiner;
 /**
  * W3cCredentialStatus
  */
-@JsonPropertyOrder({
-  W3cCredentialStatus.JSON_PROPERTY_ID,
-  W3cCredentialStatus.JSON_PROPERTY_TYPE,
-  W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_INDEX,
-  W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
-})
+@JsonPropertyOrder({ W3cCredentialStatus.JSON_PROPERTY_ID, W3cCredentialStatus.JSON_PROPERTY_TYPE,
+        W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_INDEX,
+        W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class W3cCredentialStatus {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+    public static final String JSON_PROPERTY_TYPE = "type";
+    private String type;
 
-  public static final String JSON_PROPERTY_REVOCATION_LIST_INDEX = "revocationListIndex";
-  private String revocationListIndex;
+    public static final String JSON_PROPERTY_REVOCATION_LIST_INDEX = "revocationListIndex";
+    private String revocationListIndex;
 
-  public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
-  private String revocationListCredential;
+    public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
+    private String revocationListCredential;
 
-  public W3cCredentialStatus() {
-  }
-
-  public W3cCredentialStatus id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public W3cCredentialStatus type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public W3cCredentialStatus revocationListIndex(String revocationListIndex) {
-    
-    this.revocationListIndex = revocationListIndex;
-    return this;
-  }
-
-  /**
-   * Get revocationListIndex
-   * @return revocationListIndex
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_INDEX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getRevocationListIndex() {
-    return revocationListIndex;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_INDEX)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRevocationListIndex(String revocationListIndex) {
-    this.revocationListIndex = revocationListIndex;
-  }
-
-  public W3cCredentialStatus revocationListCredential(String revocationListCredential) {
-    
-    this.revocationListCredential = revocationListCredential;
-    return this;
-  }
-
-  /**
-   * Get revocationListCredential
-   * @return revocationListCredential
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getRevocationListCredential() {
-    return revocationListCredential;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRevocationListCredential(String revocationListCredential) {
-    this.revocationListCredential = revocationListCredential;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    W3cCredentialStatus w3cCredentialStatus = (W3cCredentialStatus) o;
-    return Objects.equals(this.id, w3cCredentialStatus.id) &&
-        Objects.equals(this.type, w3cCredentialStatus.type) &&
-        Objects.equals(this.revocationListIndex, w3cCredentialStatus.revocationListIndex) &&
-        Objects.equals(this.revocationListCredential, w3cCredentialStatus.revocationListCredential);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, type, revocationListIndex, revocationListCredential);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class W3cCredentialStatus {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    revocationListIndex: ").append(toIndentedString(revocationListIndex)).append("\n");
-    sb.append("    revocationListCredential: ").append(toIndentedString(revocationListCredential)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public W3cCredentialStatus() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public W3cCredentialStatus id(String id) {
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.id = id;
+        return this;
     }
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
     }
 
-    // add `revocationListIndex` to the URL query string
-    if (getRevocationListIndex() != null) {
-      try {
-        joiner.add(String.format("%srevocationListIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationListIndex()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
     }
 
-    // add `revocationListCredential` to the URL query string
-    if (getRevocationListCredential() != null) {
-      try {
-        joiner.add(String.format("%srevocationListCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationListCredential()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public W3cCredentialStatus type(String type) {
+
+        this.type = type;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get type
+     *
+     * @return type
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public W3cCredentialStatus revocationListIndex(String revocationListIndex) {
+
+        this.revocationListIndex = revocationListIndex;
+        return this;
+    }
+
+    /**
+     * Get revocationListIndex
+     *
+     * @return revocationListIndex
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_INDEX)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getRevocationListIndex() {
+        return revocationListIndex;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_INDEX)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setRevocationListIndex(String revocationListIndex) {
+        this.revocationListIndex = revocationListIndex;
+    }
+
+    public W3cCredentialStatus revocationListCredential(String revocationListCredential) {
+
+        this.revocationListCredential = revocationListCredential;
+        return this;
+    }
+
+    /**
+     * Get revocationListCredential
+     *
+     * @return revocationListCredential
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getRevocationListCredential() {
+        return revocationListCredential;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setRevocationListCredential(String revocationListCredential) {
+        this.revocationListCredential = revocationListCredential;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        W3cCredentialStatus w3cCredentialStatus = (W3cCredentialStatus) o;
+        return Objects.equals(this.id, w3cCredentialStatus.id) && Objects.equals(this.type, w3cCredentialStatus.type)
+                && Objects.equals(this.revocationListIndex, w3cCredentialStatus.revocationListIndex)
+                && Objects.equals(this.revocationListCredential, w3cCredentialStatus.revocationListCredential);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, revocationListIndex, revocationListCredential);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class W3cCredentialStatus {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    revocationListIndex: ").append(toIndentedString(revocationListIndex)).append("\n");
+        sb.append("    revocationListCredential: ").append(toIndentedString(revocationListCredential)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `type` to the URL query string
+        if (getType() != null) {
+            try {
+                joiner.add(String.format("%stype%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `revocationListIndex` to the URL query string
+        if (getRevocationListIndex() != null) {
+            try {
+                joiner.add(String.format("%srevocationListIndex%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getRevocationListIndex()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `revocationListCredential` to the URL query string
+        if (getRevocationListCredential() != null) {
+            try {
+                joiner.add(String.format("%srevocationListCredential%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getRevocationListCredential()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

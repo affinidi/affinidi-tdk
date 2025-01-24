@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -30,119 +29,117 @@ import java.util.StringJoiner;
 /**
  * TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
  */
-@JsonPropertyOrder({
-  TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.JSON_PROPERTY_JWKS
-})
+@JsonPropertyOrder({ TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.JSON_PROPERTY_JWKS })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
-  public static final String JSON_PROPERTY_JWKS = "jwks";
-  private JsonWebKeySetDto jwks;
+    public static final String JSON_PROPERTY_JWKS = "jwks";
+    private JsonWebKeySetDto jwks;
 
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf() {
-  }
-
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf jwks(JsonWebKeySetDto jwks) {
-    
-    this.jwks = jwks;
-    return this;
-  }
-
-  /**
-   * Get jwks
-   * @return jwks
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public JsonWebKeySetDto getJwks() {
-    return jwks;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JWKS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwks(JsonWebKeySetDto jwks) {
-    this.jwks = jwks;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf = (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf) o;
-    return Objects.equals(this.jwks, tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.jwks);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(jwks);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {\n");
-    sb.append("    jwks: ").append(toIndentedString(jwks)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf jwks(JsonWebKeySetDto jwks) {
 
-    // add `jwks` to the URL query string
-    if (getJwks() != null) {
-      joiner.add(getJwks().toUrlQueryString(prefix + "jwks" + suffix));
+        this.jwks = jwks;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get jwks
+     *
+     * @return jwks
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JWKS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public JsonWebKeySetDto getJwks() {
+        return jwks;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JWKS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJwks(JsonWebKeySetDto jwks) {
+        this.jwks = jwks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf = (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf) o;
+        return Objects.equals(this.jwks, tokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.jwks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(jwks);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {\n");
+        sb.append("    jwks: ").append(toIndentedString(jwks)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `jwks` to the URL query string
+        if (getJwks() != null) {
+            joiner.add(getJwks().toUrlQueryString(prefix + "jwks" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

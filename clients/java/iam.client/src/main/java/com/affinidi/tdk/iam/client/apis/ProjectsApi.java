@@ -32,7 +32,6 @@ import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.UpdateProjectInput;
 import com.affinidi.tdk.iam.client.models.UserList;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,505 +42,456 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ProjectsApi extends BaseApi {
 
-  public ProjectsApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public ProjectsApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param addUserToProjectInput AddPrincipalToProject (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput) throws ApiException {
-    this.addPrincipalToProject(addUserToProjectInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param addUserToProjectInput AddPrincipalToProject (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = addUserToProjectInput;
-    
-    // verify the required parameter 'addUserToProjectInput' is set
-    if (addUserToProjectInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'addUserToProjectInput' when calling addPrincipalToProject");
+    public ProjectsApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects/principals";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param createProjectInput CreateProject (required)
-   * @return ProjectDto
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectDto createProject(CreateProjectInput createProjectInput) throws ApiException {
-    return this.createProject(createProjectInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param createProjectInput CreateProject (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ProjectDto
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectDto createProject(CreateProjectInput createProjectInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createProjectInput;
-    
-    // verify the required parameter 'createProjectInput' is set
-    if (createProjectInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'createProjectInput' when calling createProject");
+    public ProjectsApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    TypeReference<ProjectDto> localVarReturnType = new TypeReference<ProjectDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param principalId id of principal (required)
-   * @param principalType type of principal (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void deletePrincipalFromProject(String principalId, String principalType) throws ApiException {
-    this.deletePrincipalFromProject(principalId, principalType, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param principalId id of principal (required)
-   * @param principalType type of principal (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void deletePrincipalFromProject(String principalId, String principalType, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'principalId' is set
-    if (principalId == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalId' when calling deletePrincipalFromProject");
+    /**
+     *
+     *
+     * @param addUserToProjectInput
+     *            AddPrincipalToProject (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput) throws ApiException {
+        this.addPrincipalToProject(addUserToProjectInput, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'principalType' is set
-    if (principalType == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalType' when calling deletePrincipalFromProject");
+
+    /**
+     *
+     *
+     * @param addUserToProjectInput
+     *            AddPrincipalToProject (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = addUserToProjectInput;
+
+        // verify the required parameter 'addUserToProjectInput' is set
+        if (addUserToProjectInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'addUserToProjectInput' when calling addPrincipalToProject");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/projects/principals";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects/principals/{principalId}"
-      .replaceAll("\\{" + "principalId" + "\\}", apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return UserList
-   * @throws ApiException if fails to make API call
-   */
-  public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listPrincipalsOfProject(limit, exclusiveStartKey, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return UserList
-   * @throws ApiException if fails to make API call
-   */
-  public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects/principals";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<UserList> localVarReturnType = new TypeReference<UserList>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return ProjectList
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectList listProject(Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listProject(limit, exclusiveStartKey, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ProjectList
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectList listProject(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    TypeReference<ProjectList> localVarReturnType = new TypeReference<ProjectList>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param projectId projectId (required)
-   * @param updateProjectInput UpdateProject (required)
-   * @return ProjectDto
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput) throws ApiException {
-    return this.updateProject(projectId, updateProjectInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param projectId projectId (required)
-   * @param updateProjectInput UpdateProject (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ProjectDto
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = updateProjectInput;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling updateProject");
+    /**
+     *
+     *
+     * @param createProjectInput
+     *            CreateProject (required)
+     *
+     * @return ProjectDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectDto createProject(CreateProjectInput createProjectInput) throws ApiException {
+        return this.createProject(createProjectInput, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'updateProjectInput' is set
-    if (updateProjectInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateProjectInput' when calling updateProject");
+
+    /**
+     *
+     *
+     * @param createProjectInput
+     *            CreateProject (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ProjectDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectDto createProject(CreateProjectInput createProjectInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = createProjectInput;
+
+        // verify the required parameter 'createProjectInput' is set
+        if (createProjectInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'createProjectInput' when calling createProject");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/projects";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<ProjectDto> localVarReturnType = new TypeReference<ProjectDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects/{projectId}"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param principalId
+     *            id of principal (required)
+     * @param principalType
+     *            type of principal (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deletePrincipalFromProject(String principalId, String principalType) throws ApiException {
+        this.deletePrincipalFromProject(principalId, principalType, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     *
+     * @param principalId
+     *            id of principal (required)
+     * @param principalType
+     *            type of principal (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deletePrincipalFromProject(String principalId, String principalType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'principalId' is set
+        if (principalId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'principalId' when calling deletePrincipalFromProject");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'principalType' is set
+        if (principalType == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'principalType' when calling deletePrincipalFromProject");
+        }
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/projects/principals/{principalId}".replaceAll("\\{" + "principalId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    TypeReference<ProjectDto> localVarReturnType = new TypeReference<ProjectDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return UserList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey) throws ApiException {
+        return this.listPrincipalsOfProject(limit, exclusiveStartKey, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return UserList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/projects/principals";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<UserList> localVarReturnType = new TypeReference<UserList>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return ProjectList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectList listProject(Integer limit, String exclusiveStartKey) throws ApiException {
+        return this.listProject(limit, exclusiveStartKey, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ProjectList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectList listProject(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/projects";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<ProjectList> localVarReturnType = new TypeReference<ProjectList>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     *
+     * @param projectId
+     *            projectId (required)
+     * @param updateProjectInput
+     *            UpdateProject (required)
+     *
+     * @return ProjectDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput) throws ApiException {
+        return this.updateProject(projectId, updateProjectInput, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param projectId
+     *            projectId (required)
+     * @param updateProjectInput
+     *            UpdateProject (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ProjectDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = updateProjectInput;
+
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400, "Missing the required parameter 'projectId' when calling updateProject");
+        }
+
+        // verify the required parameter 'updateProjectInput' is set
+        if (updateProjectInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'updateProjectInput' when calling updateProject");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/projects/{projectId}".replaceAll("\\{" + "projectId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(projectId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<ProjectDto> localVarReturnType = new TypeReference<ProjectDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

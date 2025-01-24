@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -35,417 +34,415 @@ import java.util.StringJoiner;
 /**
  * Constraints
  */
-@JsonPropertyOrder({
-  Constraints.JSON_PROPERTY_LIMIT_DISCLOSURE,
-  Constraints.JSON_PROPERTY_STATUSES,
-  Constraints.JSON_PROPERTY_FIELDS,
-  Constraints.JSON_PROPERTY_SUBJECT_IS_ISSUER,
-  Constraints.JSON_PROPERTY_IS_HOLDER,
-  Constraints.JSON_PROPERTY_SAME_SUBJECT
-})
+@JsonPropertyOrder({ Constraints.JSON_PROPERTY_LIMIT_DISCLOSURE, Constraints.JSON_PROPERTY_STATUSES,
+        Constraints.JSON_PROPERTY_FIELDS, Constraints.JSON_PROPERTY_SUBJECT_IS_ISSUER,
+        Constraints.JSON_PROPERTY_IS_HOLDER, Constraints.JSON_PROPERTY_SAME_SUBJECT })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Constraints {
-  /**
-   * Gets or Sets limitDisclosure
-   */
-  public enum LimitDisclosureEnum {
-    REQUIRED("required"),
-    
-    PREFERRED("preferred");
+    /**
+     * Gets or Sets limitDisclosure
+     */
+    public enum LimitDisclosureEnum {
+        REQUIRED("required"),
 
-    private String value;
+        PREFERRED("preferred");
 
-    LimitDisclosureEnum(String value) {
-      this.value = value;
+        private String value;
+
+        LimitDisclosureEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static LimitDisclosureEnum fromValue(String value) {
+            for (LimitDisclosureEnum b : LimitDisclosureEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_LIMIT_DISCLOSURE = "limit_disclosure";
+    private LimitDisclosureEnum limitDisclosure;
+
+    public static final String JSON_PROPERTY_STATUSES = "statuses";
+    private ConstraintsStatuses statuses;
+
+    public static final String JSON_PROPERTY_FIELDS = "fields";
+    private List<Field> fields = new ArrayList<>();
+
+    /**
+     * Gets or Sets subjectIsIssuer
+     */
+    public enum SubjectIsIssuerEnum {
+        REQUIRED("required"),
+
+        PREFERRED("preferred");
+
+        private String value;
+
+        SubjectIsIssuerEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static SubjectIsIssuerEnum fromValue(String value) {
+            for (SubjectIsIssuerEnum b : SubjectIsIssuerEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    public static final String JSON_PROPERTY_SUBJECT_IS_ISSUER = "subject_is_issuer";
+    private SubjectIsIssuerEnum subjectIsIssuer;
+
+    public static final String JSON_PROPERTY_IS_HOLDER = "is_holder";
+    private List<HolderSubject> isHolder = new ArrayList<>();
+
+    public static final String JSON_PROPERTY_SAME_SUBJECT = "same_subject";
+    private List<HolderSubject> sameSubject = new ArrayList<>();
+
+    public Constraints() {
+    }
+
+    public Constraints limitDisclosure(LimitDisclosureEnum limitDisclosure) {
+
+        this.limitDisclosure = limitDisclosure;
+        return this;
+    }
+
+    /**
+     * Get limitDisclosure
+     *
+     * @return limitDisclosure
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public LimitDisclosureEnum getLimitDisclosure() {
+        return limitDisclosure;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLimitDisclosure(LimitDisclosureEnum limitDisclosure) {
+        this.limitDisclosure = limitDisclosure;
+    }
+
+    public Constraints statuses(ConstraintsStatuses statuses) {
+
+        this.statuses = statuses;
+        return this;
+    }
+
+    /**
+     * Get statuses
+     *
+     * @return statuses
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_STATUSES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public ConstraintsStatuses getStatuses() {
+        return statuses;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATUSES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setStatuses(ConstraintsStatuses statuses) {
+        this.statuses = statuses;
+    }
+
+    public Constraints fields(List<Field> fields) {
+
+        this.fields = fields;
+        return this;
+    }
+
+    public Constraints addFieldsItem(Field fieldsItem) {
+        if (this.fields == null) {
+            this.fields = new ArrayList<>();
+        }
+        this.fields.add(fieldsItem);
+        return this;
+    }
+
+    /**
+     * Get fields
+     *
+     * @return fields
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FIELDS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<Field> getFields() {
+        return fields;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FIELDS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFields(List<Field> fields) {
+        this.fields = fields;
+    }
+
+    public Constraints subjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
+
+        this.subjectIsIssuer = subjectIsIssuer;
+        return this;
+    }
+
+    /**
+     * Get subjectIsIssuer
+     *
+     * @return subjectIsIssuer
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public SubjectIsIssuerEnum getSubjectIsIssuer() {
+        return subjectIsIssuer;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSubjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
+        this.subjectIsIssuer = subjectIsIssuer;
+    }
+
+    public Constraints isHolder(List<HolderSubject> isHolder) {
+
+        this.isHolder = isHolder;
+        return this;
+    }
+
+    public Constraints addIsHolderItem(HolderSubject isHolderItem) {
+        if (this.isHolder == null) {
+            this.isHolder = new ArrayList<>();
+        }
+        this.isHolder.add(isHolderItem);
+        return this;
+    }
+
+    /**
+     * Get isHolder
+     *
+     * @return isHolder
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_IS_HOLDER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<HolderSubject> getIsHolder() {
+        return isHolder;
+    }
+
+    @JsonProperty(JSON_PROPERTY_IS_HOLDER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIsHolder(List<HolderSubject> isHolder) {
+        this.isHolder = isHolder;
+    }
+
+    public Constraints sameSubject(List<HolderSubject> sameSubject) {
+
+        this.sameSubject = sameSubject;
+        return this;
+    }
+
+    public Constraints addSameSubjectItem(HolderSubject sameSubjectItem) {
+        if (this.sameSubject == null) {
+            this.sameSubject = new ArrayList<>();
+        }
+        this.sameSubject.add(sameSubjectItem);
+        return this;
+    }
+
+    /**
+     * Get sameSubject
+     *
+     * @return sameSubject
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<HolderSubject> getSameSubject() {
+        return sameSubject;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSameSubject(List<HolderSubject> sameSubject) {
+        this.sameSubject = sameSubject;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Constraints constraints = (Constraints) o;
+        return Objects.equals(this.limitDisclosure, constraints.limitDisclosure)
+                && Objects.equals(this.statuses, constraints.statuses)
+                && Objects.equals(this.fields, constraints.fields)
+                && Objects.equals(this.subjectIsIssuer, constraints.subjectIsIssuer)
+                && Objects.equals(this.isHolder, constraints.isHolder)
+                && Objects.equals(this.sameSubject, constraints.sameSubject);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(limitDisclosure, statuses, fields, subjectIsIssuer, isHolder, sameSubject);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Constraints {\n");
+        sb.append("    limitDisclosure: ").append(toIndentedString(limitDisclosure)).append("\n");
+        sb.append("    statuses: ").append(toIndentedString(statuses)).append("\n");
+        sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
+        sb.append("    subjectIsIssuer: ").append(toIndentedString(subjectIsIssuer)).append("\n");
+        sb.append("    isHolder: ").append(toIndentedString(isHolder)).append("\n");
+        sb.append("    sameSubject: ").append(toIndentedString(sameSubject)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static LimitDisclosureEnum fromValue(String value) {
-      for (LimitDisclosureEnum b : LimitDisclosureEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_LIMIT_DISCLOSURE = "limit_disclosure";
-  private LimitDisclosureEnum limitDisclosure;
-
-  public static final String JSON_PROPERTY_STATUSES = "statuses";
-  private ConstraintsStatuses statuses;
-
-  public static final String JSON_PROPERTY_FIELDS = "fields";
-  private List<Field> fields = new ArrayList<>();
-
-  /**
-   * Gets or Sets subjectIsIssuer
-   */
-  public enum SubjectIsIssuerEnum {
-    REQUIRED("required"),
-    
-    PREFERRED("preferred");
-
-    private String value;
-
-    SubjectIsIssuerEnum(String value) {
-      this.value = value;
+        return o.toString().replace("\n", "\n    ");
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SubjectIsIssuerEnum fromValue(String value) {
-      for (SubjectIsIssuerEnum b : SubjectIsIssuerEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
 
-  public static final String JSON_PROPERTY_SUBJECT_IS_ISSUER = "subject_is_issuer";
-  private SubjectIsIssuerEnum subjectIsIssuer;
+        StringJoiner joiner = new StringJoiner("&");
 
-  public static final String JSON_PROPERTY_IS_HOLDER = "is_holder";
-  private List<HolderSubject> isHolder = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SAME_SUBJECT = "same_subject";
-  private List<HolderSubject> sameSubject = new ArrayList<>();
-
-  public Constraints() {
-  }
-
-  public Constraints limitDisclosure(LimitDisclosureEnum limitDisclosure) {
-    
-    this.limitDisclosure = limitDisclosure;
-    return this;
-  }
-
-  /**
-   * Get limitDisclosure
-   * @return limitDisclosure
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public LimitDisclosureEnum getLimitDisclosure() {
-    return limitDisclosure;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimitDisclosure(LimitDisclosureEnum limitDisclosure) {
-    this.limitDisclosure = limitDisclosure;
-  }
-
-  public Constraints statuses(ConstraintsStatuses statuses) {
-    
-    this.statuses = statuses;
-    return this;
-  }
-
-  /**
-   * Get statuses
-   * @return statuses
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATUSES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ConstraintsStatuses getStatuses() {
-    return statuses;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATUSES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatuses(ConstraintsStatuses statuses) {
-    this.statuses = statuses;
-  }
-
-  public Constraints fields(List<Field> fields) {
-    
-    this.fields = fields;
-    return this;
-  }
-
-  public Constraints addFieldsItem(Field fieldsItem) {
-    if (this.fields == null) {
-      this.fields = new ArrayList<>();
-    }
-    this.fields.add(fieldsItem);
-    return this;
-  }
-
-  /**
-   * Get fields
-   * @return fields
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FIELDS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Field> getFields() {
-    return fields;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FIELDS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFields(List<Field> fields) {
-    this.fields = fields;
-  }
-
-  public Constraints subjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
-    
-    this.subjectIsIssuer = subjectIsIssuer;
-    return this;
-  }
-
-  /**
-   * Get subjectIsIssuer
-   * @return subjectIsIssuer
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SubjectIsIssuerEnum getSubjectIsIssuer() {
-    return subjectIsIssuer;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
-    this.subjectIsIssuer = subjectIsIssuer;
-  }
-
-  public Constraints isHolder(List<HolderSubject> isHolder) {
-    
-    this.isHolder = isHolder;
-    return this;
-  }
-
-  public Constraints addIsHolderItem(HolderSubject isHolderItem) {
-    if (this.isHolder == null) {
-      this.isHolder = new ArrayList<>();
-    }
-    this.isHolder.add(isHolderItem);
-    return this;
-  }
-
-  /**
-   * Get isHolder
-   * @return isHolder
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IS_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<HolderSubject> getIsHolder() {
-    return isHolder;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IS_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsHolder(List<HolderSubject> isHolder) {
-    this.isHolder = isHolder;
-  }
-
-  public Constraints sameSubject(List<HolderSubject> sameSubject) {
-    
-    this.sameSubject = sameSubject;
-    return this;
-  }
-
-  public Constraints addSameSubjectItem(HolderSubject sameSubjectItem) {
-    if (this.sameSubject == null) {
-      this.sameSubject = new ArrayList<>();
-    }
-    this.sameSubject.add(sameSubjectItem);
-    return this;
-  }
-
-  /**
-   * Get sameSubject
-   * @return sameSubject
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<HolderSubject> getSameSubject() {
-    return sameSubject;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSameSubject(List<HolderSubject> sameSubject) {
-    this.sameSubject = sameSubject;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Constraints constraints = (Constraints) o;
-    return Objects.equals(this.limitDisclosure, constraints.limitDisclosure) &&
-        Objects.equals(this.statuses, constraints.statuses) &&
-        Objects.equals(this.fields, constraints.fields) &&
-        Objects.equals(this.subjectIsIssuer, constraints.subjectIsIssuer) &&
-        Objects.equals(this.isHolder, constraints.isHolder) &&
-        Objects.equals(this.sameSubject, constraints.sameSubject);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(limitDisclosure, statuses, fields, subjectIsIssuer, isHolder, sameSubject);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Constraints {\n");
-    sb.append("    limitDisclosure: ").append(toIndentedString(limitDisclosure)).append("\n");
-    sb.append("    statuses: ").append(toIndentedString(statuses)).append("\n");
-    sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
-    sb.append("    subjectIsIssuer: ").append(toIndentedString(subjectIsIssuer)).append("\n");
-    sb.append("    isHolder: ").append(toIndentedString(isHolder)).append("\n");
-    sb.append("    sameSubject: ").append(toIndentedString(sameSubject)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
-    }
-
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `limit_disclosure` to the URL query string
-    if (getLimitDisclosure() != null) {
-      try {
-        joiner.add(String.format("%slimit_disclosure%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLimitDisclosure()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `statuses` to the URL query string
-    if (getStatuses() != null) {
-      joiner.add(getStatuses().toUrlQueryString(prefix + "statuses" + suffix));
-    }
-
-    // add `fields` to the URL query string
-    if (getFields() != null) {
-      for (int i = 0; i < getFields().size(); i++) {
-        if (getFields().get(i) != null) {
-          joiner.add(getFields().get(i).toUrlQueryString(String.format("%sfields%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        // add `limit_disclosure` to the URL query string
+        if (getLimitDisclosure() != null) {
+            try {
+                joiner.add(String.format("%slimit_disclosure%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLimitDisclosure()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
         }
-      }
-    }
 
-    // add `subject_is_issuer` to the URL query string
-    if (getSubjectIsIssuer() != null) {
-      try {
-        joiner.add(String.format("%ssubject_is_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSubjectIsIssuer()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `is_holder` to the URL query string
-    if (getIsHolder() != null) {
-      for (int i = 0; i < getIsHolder().size(); i++) {
-        if (getIsHolder().get(i) != null) {
-          joiner.add(getIsHolder().get(i).toUrlQueryString(String.format("%sis_holder%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        // add `statuses` to the URL query string
+        if (getStatuses() != null) {
+            joiner.add(getStatuses().toUrlQueryString(prefix + "statuses" + suffix));
         }
-      }
-    }
 
-    // add `same_subject` to the URL query string
-    if (getSameSubject() != null) {
-      for (int i = 0; i < getSameSubject().size(); i++) {
-        if (getSameSubject().get(i) != null) {
-          joiner.add(getSameSubject().get(i).toUrlQueryString(String.format("%ssame_subject%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        // add `fields` to the URL query string
+        if (getFields() != null) {
+            for (int i = 0; i < getFields().size(); i++) {
+                if (getFields().get(i) != null) {
+                    joiner.add(getFields().get(i).toUrlQueryString(String.format("%sfields%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
         }
-      }
-    }
 
-    return joiner.toString();
-  }
+        // add `subject_is_issuer` to the URL query string
+        if (getSubjectIsIssuer() != null) {
+            try {
+                joiner.add(String.format("%ssubject_is_issuer%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getSubjectIsIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `is_holder` to the URL query string
+        if (getIsHolder() != null) {
+            for (int i = 0; i < getIsHolder().size(); i++) {
+                if (getIsHolder().get(i) != null) {
+                    joiner.add(getIsHolder().get(i).toUrlQueryString(String.format("%sis_holder%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `same_subject` to the URL query string
+        if (getSameSubject() != null) {
+            for (int i = 0; i < getSameSubject().size(); i++) {
+                if (getSameSubject().get(i) != null) {
+                    joiner.add(getSameSubject().get(i).toUrlQueryString(String.format("%ssame_subject%s%s", prefix,
+                            suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -31,272 +30,273 @@ import java.util.StringJoiner;
 /**
  * How the Token will be authenticate against our Authorization Server
  */
-@JsonPropertyOrder({
-  TokenAuthenticationMethodDto.JSON_PROPERTY_TYPE,
-  TokenAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
-  TokenAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO
-})
+@JsonPropertyOrder({ TokenAuthenticationMethodDto.JSON_PROPERTY_TYPE,
+        TokenAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
+        TokenAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokenAuthenticationMethodDto {
-  /**
-   * Gets or Sets type
-   */
-  public enum TypeEnum {
-    PRIVATE_KEY("PRIVATE_KEY");
+    /**
+     * Gets or Sets type
+     */
+    public enum TypeEnum {
+        PRIVATE_KEY("PRIVATE_KEY");
 
-    private String value;
+        private String value;
 
-    TypeEnum(String value) {
-      this.value = value;
+        TypeEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static TypeEnum fromValue(String value) {
+            for (TypeEnum b : TypeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_TYPE = "type";
+    private TypeEnum type;
+
+    /**
+     * Gets or Sets signingAlgorithm
+     */
+    public enum SigningAlgorithmEnum {
+        RS256("RS256"),
+
+        RS512("RS512"),
+
+        ES256("ES256"),
+
+        ES512("ES512");
+
+        private String value;
+
+        SigningAlgorithmEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static SigningAlgorithmEnum fromValue(String value) {
+            for (SigningAlgorithmEnum b : SigningAlgorithmEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    public static final String JSON_PROPERTY_SIGNING_ALGORITHM = "signingAlgorithm";
+    private SigningAlgorithmEnum signingAlgorithm;
+
+    public static final String JSON_PROPERTY_PUBLIC_KEY_INFO = "publicKeyInfo";
+    private TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo;
+
+    public TokenAuthenticationMethodDto() {
+    }
+
+    public TokenAuthenticationMethodDto type(TypeEnum type) {
+
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return type
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public TypeEnum getType() {
+        return type;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setType(TypeEnum type) {
+        this.type = type;
+    }
+
+    public TokenAuthenticationMethodDto signingAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+
+        this.signingAlgorithm = signingAlgorithm;
+        return this;
+    }
+
+    /**
+     * Get signingAlgorithm
+     *
+     * @return signingAlgorithm
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public SigningAlgorithmEnum getSigningAlgorithm() {
+        return signingAlgorithm;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setSigningAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+        this.signingAlgorithm = signingAlgorithm;
+    }
+
+    public TokenAuthenticationMethodDto publicKeyInfo(
+            TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+
+        this.publicKeyInfo = publicKeyInfo;
+        return this;
+    }
+
+    /**
+     * Get publicKeyInfo
+     *
+     * @return publicKeyInfo
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo getPublicKeyInfo() {
+        return publicKeyInfo;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPublicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+        this.publicKeyInfo = publicKeyInfo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TokenAuthenticationMethodDto tokenAuthenticationMethodDto = (TokenAuthenticationMethodDto) o;
+        return Objects.equals(this.type, tokenAuthenticationMethodDto.type)
+                && Objects.equals(this.signingAlgorithm, tokenAuthenticationMethodDto.signingAlgorithm)
+                && Objects.equals(this.publicKeyInfo, tokenAuthenticationMethodDto.publicKeyInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, signingAlgorithm, publicKeyInfo);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class TokenAuthenticationMethodDto {\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    signingAlgorithm: ").append(toIndentedString(signingAlgorithm)).append("\n");
+        sb.append("    publicKeyInfo: ").append(toIndentedString(publicKeyInfo)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
-
-  /**
-   * Gets or Sets signingAlgorithm
-   */
-  public enum SigningAlgorithmEnum {
-    RS256("RS256"),
-    
-    RS512("RS512"),
-    
-    ES256("ES256"),
-    
-    ES512("ES512");
-
-    private String value;
-
-    SigningAlgorithmEnum(String value) {
-      this.value = value;
+        return o.toString().replace("\n", "\n    ");
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SigningAlgorithmEnum fromValue(String value) {
-      for (SigningAlgorithmEnum b : SigningAlgorithmEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `type` to the URL query string
+        if (getType() != null) {
+            try {
+                joiner.add(String.format("%stype%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `signingAlgorithm` to the URL query string
+        if (getSigningAlgorithm() != null) {
+            try {
+                joiner.add(String.format("%ssigningAlgorithm%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getSigningAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `publicKeyInfo` to the URL query string
+        if (getPublicKeyInfo() != null) {
+            joiner.add(getPublicKeyInfo().toUrlQueryString(prefix + "publicKeyInfo" + suffix));
+        }
+
+        return joiner.toString();
     }
-  }
-
-  public static final String JSON_PROPERTY_SIGNING_ALGORITHM = "signingAlgorithm";
-  private SigningAlgorithmEnum signingAlgorithm;
-
-  public static final String JSON_PROPERTY_PUBLIC_KEY_INFO = "publicKeyInfo";
-  private TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo;
-
-  public TokenAuthenticationMethodDto() {
-  }
-
-  public TokenAuthenticationMethodDto type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-  public TokenAuthenticationMethodDto signingAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
-    
-    this.signingAlgorithm = signingAlgorithm;
-    return this;
-  }
-
-  /**
-   * Get signingAlgorithm
-   * @return signingAlgorithm
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public SigningAlgorithmEnum getSigningAlgorithm() {
-    return signingAlgorithm;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSigningAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
-    this.signingAlgorithm = signingAlgorithm;
-  }
-
-  public TokenAuthenticationMethodDto publicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
-    
-    this.publicKeyInfo = publicKeyInfo;
-    return this;
-  }
-
-  /**
-   * Get publicKeyInfo
-   * @return publicKeyInfo
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo getPublicKeyInfo() {
-    return publicKeyInfo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPublicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
-    this.publicKeyInfo = publicKeyInfo;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    TokenAuthenticationMethodDto tokenAuthenticationMethodDto = (TokenAuthenticationMethodDto) o;
-    return Objects.equals(this.type, tokenAuthenticationMethodDto.type) &&
-        Objects.equals(this.signingAlgorithm, tokenAuthenticationMethodDto.signingAlgorithm) &&
-        Objects.equals(this.publicKeyInfo, tokenAuthenticationMethodDto.publicKeyInfo);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, signingAlgorithm, publicKeyInfo);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TokenAuthenticationMethodDto {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    signingAlgorithm: ").append(toIndentedString(signingAlgorithm)).append("\n");
-    sb.append("    publicKeyInfo: ").append(toIndentedString(publicKeyInfo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
-    }
-
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `signingAlgorithm` to the URL query string
-    if (getSigningAlgorithm() != null) {
-      try {
-        joiner.add(String.format("%ssigningAlgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSigningAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `publicKeyInfo` to the URL query string
-    if (getPublicKeyInfo() != null) {
-      joiner.add(getPublicKeyInfo().toUrlQueryString(prefix + "publicKeyInfo" + suffix));
-    }
-
-    return joiner.toString();
-  }
 
 }
-

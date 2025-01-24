@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
 import com.affinidi.tdk.iota.client.ApiException;
@@ -47,7 +46,7 @@ public class ConfigurationsApiTest {
      * Creates a new Affinidi Iota Framework configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createIotaConfigurationTest() throws ApiException {
@@ -56,11 +55,12 @@ public class ConfigurationsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Deletes an Affinidi Iota Framework configuration by ID.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteIotaConfigurationByIdTest() throws ApiException {
@@ -69,11 +69,12 @@ public class ConfigurationsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Retrieves the details of an Affinidi Iota Framework configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getIotaConfigurationByIdTest() throws ApiException {
@@ -82,11 +83,12 @@ public class ConfigurationsApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Retrieves the client metadata of an Affinidi Iota Framework configuration. 
+     * Retrieves the client metadata of an Affinidi Iota Framework configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getIotaConfigurationMetaDataTest() throws ApiException {
@@ -96,11 +98,12 @@ public class ConfigurationsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * List all Affinidi Iota Framework configurations.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listIotaConfigurationsTest() throws ApiException {
@@ -108,11 +111,12 @@ public class ConfigurationsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Updates the details of an Affinidi Iota Framework configuration by ID.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateIotaConfigurationByIdTest() throws ApiException {

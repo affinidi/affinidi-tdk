@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -33,172 +32,170 @@ import java.util.StringJoiner;
 /**
  * ListPexQueriesOK
  */
-@JsonPropertyOrder({
-  ListPexQueriesOK.JSON_PROPERTY_PEX_QUERIES,
-  ListPexQueriesOK.JSON_PROPERTY_LAST_EVALUATED_KEY
-})
+@JsonPropertyOrder({ ListPexQueriesOK.JSON_PROPERTY_PEX_QUERIES, ListPexQueriesOK.JSON_PROPERTY_LAST_EVALUATED_KEY })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListPexQueriesOK {
-  public static final String JSON_PROPERTY_PEX_QUERIES = "pexQueries";
-  private List<PexQueryDto> pexQueries = new ArrayList<>();
+    public static final String JSON_PROPERTY_PEX_QUERIES = "pexQueries";
+    private List<PexQueryDto> pexQueries = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  private String lastEvaluatedKey;
+    public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+    private String lastEvaluatedKey;
 
-  public ListPexQueriesOK() {
-  }
-
-  public ListPexQueriesOK pexQueries(List<PexQueryDto> pexQueries) {
-    
-    this.pexQueries = pexQueries;
-    return this;
-  }
-
-  public ListPexQueriesOK addPexQueriesItem(PexQueryDto pexQueriesItem) {
-    if (this.pexQueries == null) {
-      this.pexQueries = new ArrayList<>();
-    }
-    this.pexQueries.add(pexQueriesItem);
-    return this;
-  }
-
-  /**
-   * Get pexQueries
-   * @return pexQueries
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PEX_QUERIES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<PexQueryDto> getPexQueries() {
-    return pexQueries;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PEX_QUERIES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPexQueries(List<PexQueryDto> pexQueries) {
-    this.pexQueries = pexQueries;
-  }
-
-  public ListPexQueriesOK lastEvaluatedKey(String lastEvaluatedKey) {
-    
-    this.lastEvaluatedKey = lastEvaluatedKey;
-    return this;
-  }
-
-  /**
-   * Get lastEvaluatedKey
-   * @return lastEvaluatedKey
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLastEvaluatedKey() {
-    return lastEvaluatedKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
-    this.lastEvaluatedKey = lastEvaluatedKey;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ListPexQueriesOK listPexQueriesOK = (ListPexQueriesOK) o;
-    return Objects.equals(this.pexQueries, listPexQueriesOK.pexQueries) &&
-        Objects.equals(this.lastEvaluatedKey, listPexQueriesOK.lastEvaluatedKey);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(pexQueries, lastEvaluatedKey);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListPexQueriesOK {\n");
-    sb.append("    pexQueries: ").append(toIndentedString(pexQueries)).append("\n");
-    sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ListPexQueriesOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ListPexQueriesOK pexQueries(List<PexQueryDto> pexQueries) {
 
-    // add `pexQueries` to the URL query string
-    if (getPexQueries() != null) {
-      for (int i = 0; i < getPexQueries().size(); i++) {
-        if (getPexQueries().get(i) != null) {
-          joiner.add(getPexQueries().get(i).toUrlQueryString(String.format("%spexQueries%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.pexQueries = pexQueries;
+        return this;
+    }
+
+    public ListPexQueriesOK addPexQueriesItem(PexQueryDto pexQueriesItem) {
+        if (this.pexQueries == null) {
+            this.pexQueries = new ArrayList<>();
         }
-      }
+        this.pexQueries.add(pexQueriesItem);
+        return this;
     }
 
-    // add `lastEvaluatedKey` to the URL query string
-    if (getLastEvaluatedKey() != null) {
-      try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get pexQueries
+     *
+     * @return pexQueries
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PEX_QUERIES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<PexQueryDto> getPexQueries() {
+        return pexQueries;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_PEX_QUERIES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPexQueries(List<PexQueryDto> pexQueries) {
+        this.pexQueries = pexQueries;
+    }
+
+    public ListPexQueriesOK lastEvaluatedKey(String lastEvaluatedKey) {
+
+        this.lastEvaluatedKey = lastEvaluatedKey;
+        return this;
+    }
+
+    /**
+     * Get lastEvaluatedKey
+     *
+     * @return lastEvaluatedKey
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getLastEvaluatedKey() {
+        return lastEvaluatedKey;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLastEvaluatedKey(String lastEvaluatedKey) {
+        this.lastEvaluatedKey = lastEvaluatedKey;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListPexQueriesOK listPexQueriesOK = (ListPexQueriesOK) o;
+        return Objects.equals(this.pexQueries, listPexQueriesOK.pexQueries)
+                && Objects.equals(this.lastEvaluatedKey, listPexQueriesOK.lastEvaluatedKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pexQueries, lastEvaluatedKey);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListPexQueriesOK {\n");
+        sb.append("    pexQueries: ").append(toIndentedString(pexQueries)).append("\n");
+        sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `pexQueries` to the URL query string
+        if (getPexQueries() != null) {
+            for (int i = 0; i < getPexQueries().size(); i++) {
+                if (getPexQueries().get(i) != null) {
+                    joiner.add(getPexQueries().get(i).toUrlQueryString(String.format("%spexQueries%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `lastEvaluatedKey` to the URL query string
+        if (getLastEvaluatedKey() != null) {
+            try {
+                joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

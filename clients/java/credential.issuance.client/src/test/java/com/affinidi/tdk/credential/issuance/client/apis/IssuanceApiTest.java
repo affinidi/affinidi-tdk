@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -45,7 +44,7 @@ public class IssuanceApiTest {
      * Get issuance status
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void issuanceStateTest() throws ApiException {
@@ -55,11 +54,12 @@ public class IssuanceApiTest {
 
         // TODO: test validations
     }
+
     /**
      * List all issuances for Project
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listIssuanceTest() throws ApiException {
@@ -68,11 +68,12 @@ public class IssuanceApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Endpoint used b websites to start the issuance process
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void startIssuanceTest() throws ApiException {

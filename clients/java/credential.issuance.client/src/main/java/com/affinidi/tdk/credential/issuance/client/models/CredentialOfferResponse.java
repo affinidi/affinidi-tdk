@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -33,212 +32,213 @@ import java.util.StringJoiner;
 /**
  * CredentialOfferResponse
  */
-@JsonPropertyOrder({
-  CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_ISSUER,
-  CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS,
-  CredentialOfferResponse.JSON_PROPERTY_GRANTS
-})
+@JsonPropertyOrder({ CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_ISSUER,
+        CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS,
+        CredentialOfferResponse.JSON_PROPERTY_GRANTS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponse {
-  public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
-  private String credentialIssuer;
+    public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
+    private String credentialIssuer;
 
-  public static final String JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS = "credential_configuration_ids";
-  private List<String> credentialConfigurationIds = new ArrayList<>();
+    public static final String JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS = "credential_configuration_ids";
+    private List<String> credentialConfigurationIds = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_GRANTS = "grants";
-  private CredentialOfferResponseGrants grants;
+    public static final String JSON_PROPERTY_GRANTS = "grants";
+    private CredentialOfferResponseGrants grants;
 
-  public CredentialOfferResponse() {
-  }
-
-  public CredentialOfferResponse credentialIssuer(String credentialIssuer) {
-    
-    this.credentialIssuer = credentialIssuer;
-    return this;
-  }
-
-  /**
-   * The URL of the Credential Issuer
-   * @return credentialIssuer
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCredentialIssuer() {
-    return credentialIssuer;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialIssuer(String credentialIssuer) {
-    this.credentialIssuer = credentialIssuer;
-  }
-
-  public CredentialOfferResponse credentialConfigurationIds(List<String> credentialConfigurationIds) {
-    
-    this.credentialConfigurationIds = credentialConfigurationIds;
-    return this;
-  }
-
-  public CredentialOfferResponse addCredentialConfigurationIdsItem(String credentialConfigurationIdsItem) {
-    if (this.credentialConfigurationIds == null) {
-      this.credentialConfigurationIds = new ArrayList<>();
-    }
-    this.credentialConfigurationIds.add(credentialConfigurationIdsItem);
-    return this;
-  }
-
-  /**
-   * Array of unique strings that each identify one of the keys in the name/value pairs stored in the credentialSupported
-   * @return credentialConfigurationIds
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getCredentialConfigurationIds() {
-    return credentialConfigurationIds;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialConfigurationIds(List<String> credentialConfigurationIds) {
-    this.credentialConfigurationIds = credentialConfigurationIds;
-  }
-
-  public CredentialOfferResponse grants(CredentialOfferResponseGrants grants) {
-    
-    this.grants = grants;
-    return this;
-  }
-
-  /**
-   * Get grants
-   * @return grants
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GRANTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public CredentialOfferResponseGrants getGrants() {
-    return grants;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GRANTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGrants(CredentialOfferResponseGrants grants) {
-    this.grants = grants;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CredentialOfferResponse credentialOfferResponse = (CredentialOfferResponse) o;
-    return Objects.equals(this.credentialIssuer, credentialOfferResponse.credentialIssuer) &&
-        Objects.equals(this.credentialConfigurationIds, credentialOfferResponse.credentialConfigurationIds) &&
-        Objects.equals(this.grants, credentialOfferResponse.grants);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(credentialIssuer, credentialConfigurationIds, grants);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CredentialOfferResponse {\n");
-    sb.append("    credentialIssuer: ").append(toIndentedString(credentialIssuer)).append("\n");
-    sb.append("    credentialConfigurationIds: ").append(toIndentedString(credentialConfigurationIds)).append("\n");
-    sb.append("    grants: ").append(toIndentedString(grants)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CredentialOfferResponse() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CredentialOfferResponse credentialIssuer(String credentialIssuer) {
 
-    // add `credential_issuer` to the URL query string
-    if (getCredentialIssuer() != null) {
-      try {
-        joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.credentialIssuer = credentialIssuer;
+        return this;
     }
 
-    // add `credential_configuration_ids` to the URL query string
-    if (getCredentialConfigurationIds() != null) {
-      for (int i = 0; i < getCredentialConfigurationIds().size(); i++) {
-        try {
-          joiner.add(String.format("%scredential_configuration_ids%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getCredentialConfigurationIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * The URL of the Credential Issuer
+     *
+     * @return credentialIssuer
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCredentialIssuer() {
+        return credentialIssuer;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCredentialIssuer(String credentialIssuer) {
+        this.credentialIssuer = credentialIssuer;
+    }
+
+    public CredentialOfferResponse credentialConfigurationIds(List<String> credentialConfigurationIds) {
+
+        this.credentialConfigurationIds = credentialConfigurationIds;
+        return this;
+    }
+
+    public CredentialOfferResponse addCredentialConfigurationIdsItem(String credentialConfigurationIdsItem) {
+        if (this.credentialConfigurationIds == null) {
+            this.credentialConfigurationIds = new ArrayList<>();
         }
-      }
+        this.credentialConfigurationIds.add(credentialConfigurationIdsItem);
+        return this;
     }
 
-    // add `grants` to the URL query string
-    if (getGrants() != null) {
-      joiner.add(getGrants().toUrlQueryString(prefix + "grants" + suffix));
+    /**
+     * Array of unique strings that each identify one of the keys in the name/value pairs stored in the
+     * credentialSupported
+     *
+     * @return credentialConfigurationIds
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getCredentialConfigurationIds() {
+        return credentialConfigurationIds;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCredentialConfigurationIds(List<String> credentialConfigurationIds) {
+        this.credentialConfigurationIds = credentialConfigurationIds;
+    }
+
+    public CredentialOfferResponse grants(CredentialOfferResponseGrants grants) {
+
+        this.grants = grants;
+        return this;
+    }
+
+    /**
+     * Get grants
+     *
+     * @return grants
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_GRANTS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public CredentialOfferResponseGrants getGrants() {
+        return grants;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GRANTS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setGrants(CredentialOfferResponseGrants grants) {
+        this.grants = grants;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CredentialOfferResponse credentialOfferResponse = (CredentialOfferResponse) o;
+        return Objects.equals(this.credentialIssuer, credentialOfferResponse.credentialIssuer)
+                && Objects.equals(this.credentialConfigurationIds, credentialOfferResponse.credentialConfigurationIds)
+                && Objects.equals(this.grants, credentialOfferResponse.grants);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(credentialIssuer, credentialConfigurationIds, grants);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CredentialOfferResponse {\n");
+        sb.append("    credentialIssuer: ").append(toIndentedString(credentialIssuer)).append("\n");
+        sb.append("    credentialConfigurationIds: ").append(toIndentedString(credentialConfigurationIds)).append("\n");
+        sb.append("    grants: ").append(toIndentedString(grants)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `credential_issuer` to the URL query string
+        if (getCredentialIssuer() != null) {
+            try {
+                joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `credential_configuration_ids` to the URL query string
+        if (getCredentialConfigurationIds() != null) {
+            for (int i = 0; i < getCredentialConfigurationIds().size(); i++) {
+                try {
+                    joiner.add(String.format("%scredential_configuration_ids%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getCredentialConfigurationIds().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `grants` to the URL query string
+        if (getGrants() != null) {
+            joiner.add(getGrants().toUrlQueryString(prefix + "grants" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

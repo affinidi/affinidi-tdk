@@ -25,7 +25,6 @@ import com.affinidi.tdk.iota.client.models.CallbackResponseOK;
 import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,126 +35,109 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallbackApi extends BaseApi {
 
-  public CallbackApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public CallbackApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
-   * @param callbackInput CallbackRequestInput (required)
-   * @return CallbackResponseOK
-   * @throws ApiException if fails to make API call
-   */
-  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput) throws ApiException {
-    return this.iotOIDC4VPCallback(callbackInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may contain the data shared by the user, including the presentation submission, verification token, and state. Using the MQTT protocol, it communicates the completion of the request or if any error occurred. 
-   * @param callbackInput CallbackRequestInput (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return CallbackResponseOK
-   * @throws ApiException if fails to make API call
-   */
-  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = callbackInput;
-    
-    // verify the required parameter 'callbackInput' is set
-    if (callbackInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'callbackInput' when calling iotOIDC4VPCallback");
+    public CallbackApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/callback";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    public CallbackApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may
+     * contain the data shared by the user, including the presentation submission, verification token, and state. Using
+     * the MQTT protocol, it communicates the completion of the request or if any error occurred.
+     *
+     * @param callbackInput
+     *            CallbackRequestInput (required)
+     *
+     * @return CallbackResponseOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput) throws ApiException {
+        return this.iotOIDC4VPCallback(callbackInput, Collections.emptyMap());
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     *
+     * It handles the client&#39;s (e.g., Affinidi Vault) callback about the result of the data-sharing request. It may
+     * contain the data shared by the user, including the presentation submission, verification token, and state. Using
+     * the MQTT protocol, it communicates the completion of the request or if any error occurred.
+     *
+     * @param callbackInput
+     *            CallbackRequestInput (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return CallbackResponseOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = callbackInput;
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'callbackInput' is set
+        if (callbackInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'callbackInput' when calling iotOIDC4VPCallback");
+        }
 
-    String[] localVarAuthNames = new String[] {  };
+        // create path and map variables
+        String localVarPath = "/v1/callback";
 
-    TypeReference<CallbackResponseOK> localVarReturnType = new TypeReference<CallbackResponseOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] {};
 
-    String[] localVarAuthNames = new String[] {  };
+        TypeReference<CallbackResponseOK> localVarReturnType = new TypeReference<CallbackResponseOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

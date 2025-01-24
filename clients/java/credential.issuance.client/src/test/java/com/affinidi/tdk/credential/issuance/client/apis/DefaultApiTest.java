@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -45,7 +44,7 @@ public class DefaultApiTest {
      * change credential status.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void changeCredentialStatusTest() throws ApiException {
@@ -56,13 +55,14 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * List records
      *
      * Retrieve a list of issuance data records.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listIssuanceDataRecordsTest() throws ApiException {
@@ -70,7 +70,8 @@ public class DefaultApiTest {
         String configurationId = null;
         Integer limit = null;
         String exclusiveStartKey = null;
-        ListIssuanceRecordResponse response = api.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
+        ListIssuanceRecordResponse response = api.listIssuanceDataRecords(projectId, configurationId, limit,
+                exclusiveStartKey);
 
         // TODO: test validations
     }

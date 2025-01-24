@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.apis;
 
 import com.affinidi.tdk.credential.verification.client.ApiException;
@@ -42,10 +41,11 @@ public class DefaultApiTest {
     /**
      * Verifying VC
      *
-     * Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+     * Verifying Verifiable Credentials (signatures) &#x60;isValid&#x60; - true if all credentials verified
+     * &#x60;errors&#x60; contains list of error messages for invalid credentials.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void verifyCredentialsTest() throws ApiException {
@@ -54,13 +54,15 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Verifying VP
      *
-     * Verifying Verifiable Presentation (signatures)  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+     * Verifying Verifiable Presentation (signatures) &#x60;isValid&#x60; - true if presentation verified
+     * &#x60;error&#x60; verificaction error.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void verifyPresentationTest() throws ApiException {

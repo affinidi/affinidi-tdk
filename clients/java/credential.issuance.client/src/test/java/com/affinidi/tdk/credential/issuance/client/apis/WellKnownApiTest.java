@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -36,7 +35,7 @@ public class WellKnownApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getWellKnownOpenIdCredentialIssuerTest() throws ApiException {

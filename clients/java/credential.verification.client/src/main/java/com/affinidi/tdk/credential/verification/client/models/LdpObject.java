@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -32,135 +31,134 @@ import java.util.StringJoiner;
 /**
  * LdpObject
  */
-@JsonPropertyOrder({
-  LdpObject.JSON_PROPERTY_PROOF_TYPE
-})
+@JsonPropertyOrder({ LdpObject.JSON_PROPERTY_PROOF_TYPE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LdpObject {
-  public static final String JSON_PROPERTY_PROOF_TYPE = "proof_type";
-  private List<String> proofType = new ArrayList<>();
+    public static final String JSON_PROPERTY_PROOF_TYPE = "proof_type";
+    private List<String> proofType = new ArrayList<>();
 
-  public LdpObject() {
-  }
-
-  public LdpObject proofType(List<String> proofType) {
-    
-    this.proofType = proofType;
-    return this;
-  }
-
-  public LdpObject addProofTypeItem(String proofTypeItem) {
-    if (this.proofType == null) {
-      this.proofType = new ArrayList<>();
-    }
-    this.proofType.add(proofTypeItem);
-    return this;
-  }
-
-  /**
-   * List of names of the proof types
-   * @return proofType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getProofType() {
-    return proofType;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProofType(List<String> proofType) {
-    this.proofType = proofType;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LdpObject ldpObject = (LdpObject) o;
-    return Objects.equals(this.proofType, ldpObject.proofType);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(proofType);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LdpObject {\n");
-    sb.append("    proofType: ").append(toIndentedString(proofType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public LdpObject() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public LdpObject proofType(List<String> proofType) {
 
-    // add `proof_type` to the URL query string
-    if (getProofType() != null) {
-      for (int i = 0; i < getProofType().size(); i++) {
-        try {
-          joiner.add(String.format("%sproof_type%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getProofType().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        this.proofType = proofType;
+        return this;
+    }
+
+    public LdpObject addProofTypeItem(String proofTypeItem) {
+        if (this.proofType == null) {
+            this.proofType = new ArrayList<>();
         }
-      }
+        this.proofType.add(proofTypeItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * List of names of the proof types
+     *
+     * @return proofType
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getProofType() {
+        return proofType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProofType(List<String> proofType) {
+        this.proofType = proofType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LdpObject ldpObject = (LdpObject) o;
+        return Objects.equals(this.proofType, ldpObject.proofType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(proofType);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LdpObject {\n");
+        sb.append("    proofType: ").append(toIndentedString(proofType)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `proof_type` to the URL query string
+        if (getProofType() != null) {
+            for (int i = 0; i < getProofType().size(); i++) {
+                try {
+                    joiner.add(String.format("%sproof_type%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getProofType().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

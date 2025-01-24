@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -44,7 +43,7 @@ public class ConfigurationApiTest {
      * Create issuance configuration, project have only one configuration
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createIssuanceConfigTest() throws ApiException {
@@ -53,11 +52,12 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Delete project issuance configuration
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteIssuanceConfigByIdTest() throws ApiException {
@@ -66,11 +66,12 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get issuance configuration by id
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getIssuanceConfigByIdTest() throws ApiException {
@@ -79,11 +80,12 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get issuance configuration for my selected project
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getIssuanceConfigListTest() throws ApiException {
@@ -91,11 +93,12 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Update issuance configuration
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateIssuanceConfigByIdTest() throws ApiException {

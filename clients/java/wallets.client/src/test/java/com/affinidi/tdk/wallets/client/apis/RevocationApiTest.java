@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.apis;
 
 import com.affinidi.tdk.wallets.client.ApiException;
@@ -43,24 +42,26 @@ public class RevocationApiTest {
      * Get revocation status list as RevocationListCredential
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getRevocationCredentialStatusTest() throws ApiException {
         String projectId = null;
         String walletId = null;
         String statusId = null;
-        GetRevocationListCredentialResultDto response = api.getRevocationCredentialStatus(projectId, walletId, statusId);
+        GetRevocationListCredentialResultDto response = api.getRevocationCredentialStatus(projectId, walletId,
+                statusId);
 
         // TODO: test validations
     }
+
     /**
      * Return revocation list credential.
      *
      * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getRevocationListCredentialTest() throws ApiException {
@@ -70,13 +71,14 @@ public class RevocationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Revoke Credential.
      *
      * Update index/credetial at appropriate revocation list (set revoken is true).
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void revokeCredentialTest() throws ApiException {

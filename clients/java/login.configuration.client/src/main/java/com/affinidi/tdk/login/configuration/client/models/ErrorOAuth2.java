@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,287 +28,287 @@ import java.util.StringJoiner;
 /**
  * ErrorOAuth2
  */
-@JsonPropertyOrder({
-  ErrorOAuth2.JSON_PROPERTY_ERROR,
-  ErrorOAuth2.JSON_PROPERTY_ERROR_DEBUG,
-  ErrorOAuth2.JSON_PROPERTY_ERROR_DESCRIPTION,
-  ErrorOAuth2.JSON_PROPERTY_ERROR_HINT,
-  ErrorOAuth2.JSON_PROPERTY_STATUS_CODE
-})
+@JsonPropertyOrder({ ErrorOAuth2.JSON_PROPERTY_ERROR, ErrorOAuth2.JSON_PROPERTY_ERROR_DEBUG,
+        ErrorOAuth2.JSON_PROPERTY_ERROR_DESCRIPTION, ErrorOAuth2.JSON_PROPERTY_ERROR_HINT,
+        ErrorOAuth2.JSON_PROPERTY_STATUS_CODE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ErrorOAuth2 {
-  public static final String JSON_PROPERTY_ERROR = "error";
-  private String error;
+    public static final String JSON_PROPERTY_ERROR = "error";
+    private String error;
 
-  public static final String JSON_PROPERTY_ERROR_DEBUG = "error_debug";
-  private String errorDebug;
+    public static final String JSON_PROPERTY_ERROR_DEBUG = "error_debug";
+    private String errorDebug;
 
-  public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
-  private String errorDescription;
+    public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
+    private String errorDescription;
 
-  public static final String JSON_PROPERTY_ERROR_HINT = "error_hint";
-  private String errorHint;
+    public static final String JSON_PROPERTY_ERROR_HINT = "error_hint";
+    private String errorHint;
 
-  public static final String JSON_PROPERTY_STATUS_CODE = "status_code";
-  private String statusCode;
+    public static final String JSON_PROPERTY_STATUS_CODE = "status_code";
+    private String statusCode;
 
-  public ErrorOAuth2() {
-  }
-
-  public ErrorOAuth2 error(String error) {
-    
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Error
-   * @return error
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getError() {
-    return error;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(String error) {
-    this.error = error;
-  }
-
-  public ErrorOAuth2 errorDebug(String errorDebug) {
-    
-    this.errorDebug = errorDebug;
-    return this;
-  }
-
-  /**
-   * Error Debug Information. Only available in dev mode.
-   * @return errorDebug
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getErrorDebug() {
-    return errorDebug;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDebug(String errorDebug) {
-    this.errorDebug = errorDebug;
-  }
-
-  public ErrorOAuth2 errorDescription(String errorDescription) {
-    
-    this.errorDescription = errorDescription;
-    return this;
-  }
-
-  /**
-   * Error Description
-   * @return errorDescription
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getErrorDescription() {
-    return errorDescription;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrorDescription(String errorDescription) {
-    this.errorDescription = errorDescription;
-  }
-
-  public ErrorOAuth2 errorHint(String errorHint) {
-    
-    this.errorHint = errorHint;
-    return this;
-  }
-
-  /**
-   * Error Hint. Helps the user identify the error cause.
-   * @return errorHint
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_HINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getErrorHint() {
-    return errorHint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERROR_HINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorHint(String errorHint) {
-    this.errorHint = errorHint;
-  }
-
-  public ErrorOAuth2 statusCode(String statusCode) {
-    
-    this.statusCode = statusCode;
-    return this;
-  }
-
-  /**
-   * HTTP Status Code
-   * @return statusCode
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getStatusCode() {
-    return statusCode;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATUS_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatusCode(String statusCode) {
-    this.statusCode = statusCode;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ErrorOAuth2 errorOAuth2 = (ErrorOAuth2) o;
-    return Objects.equals(this.error, errorOAuth2.error) &&
-        Objects.equals(this.errorDebug, errorOAuth2.errorDebug) &&
-        Objects.equals(this.errorDescription, errorOAuth2.errorDescription) &&
-        Objects.equals(this.errorHint, errorOAuth2.errorHint) &&
-        Objects.equals(this.statusCode, errorOAuth2.statusCode);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(error, errorDebug, errorDescription, errorHint, statusCode);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorOAuth2 {\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
-    sb.append("    errorDebug: ").append(toIndentedString(errorDebug)).append("\n");
-    sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
-    sb.append("    errorHint: ").append(toIndentedString(errorHint)).append("\n");
-    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ErrorOAuth2() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ErrorOAuth2 error(String error) {
 
-    // add `error` to the URL query string
-    if (getError() != null) {
-      try {
-        joiner.add(String.format("%serror%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.error = error;
+        return this;
     }
 
-    // add `error_debug` to the URL query string
-    if (getErrorDebug() != null) {
-      try {
-        joiner.add(String.format("%serror_debug%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDebug()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Error
+     *
+     * @return error
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ERROR)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getError() {
+        return error;
     }
 
-    // add `error_description` to the URL query string
-    if (getErrorDescription() != null) {
-      try {
-        joiner.add(String.format("%serror_description%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ERROR)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setError(String error) {
+        this.error = error;
     }
 
-    // add `error_hint` to the URL query string
-    if (getErrorHint() != null) {
-      try {
-        joiner.add(String.format("%serror_hint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorHint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public ErrorOAuth2 errorDebug(String errorDebug) {
+
+        this.errorDebug = errorDebug;
+        return this;
     }
 
-    // add `status_code` to the URL query string
-    if (getStatusCode() != null) {
-      try {
-        joiner.add(String.format("%sstatus_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Error Debug Information. Only available in dev mode.
+     *
+     * @return errorDebug
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getErrorDebug() {
+        return errorDebug;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setErrorDebug(String errorDebug) {
+        this.errorDebug = errorDebug;
+    }
+
+    public ErrorOAuth2 errorDescription(String errorDescription) {
+
+        this.errorDescription = errorDescription;
+        return this;
+    }
+
+    /**
+     * Error Description
+     *
+     * @return errorDescription
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+    public ErrorOAuth2 errorHint(String errorHint) {
+
+        this.errorHint = errorHint;
+        return this;
+    }
+
+    /**
+     * Error Hint. Helps the user identify the error cause.
+     *
+     * @return errorHint
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ERROR_HINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getErrorHint() {
+        return errorHint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ERROR_HINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setErrorHint(String errorHint) {
+        this.errorHint = errorHint;
+    }
+
+    public ErrorOAuth2 statusCode(String statusCode) {
+
+        this.statusCode = statusCode;
+        return this;
+    }
+
+    /**
+     * HTTP Status Code
+     *
+     * @return statusCode
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATUS_CODE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATUS_CODE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ErrorOAuth2 errorOAuth2 = (ErrorOAuth2) o;
+        return Objects.equals(this.error, errorOAuth2.error) && Objects.equals(this.errorDebug, errorOAuth2.errorDebug)
+                && Objects.equals(this.errorDescription, errorOAuth2.errorDescription)
+                && Objects.equals(this.errorHint, errorOAuth2.errorHint)
+                && Objects.equals(this.statusCode, errorOAuth2.statusCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(error, errorDebug, errorDescription, errorHint, statusCode);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ErrorOAuth2 {\n");
+        sb.append("    error: ").append(toIndentedString(error)).append("\n");
+        sb.append("    errorDebug: ").append(toIndentedString(errorDebug)).append("\n");
+        sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
+        sb.append("    errorHint: ").append(toIndentedString(errorHint)).append("\n");
+        sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `error` to the URL query string
+        if (getError() != null) {
+            try {
+                joiner.add(String.format("%serror%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `error_debug` to the URL query string
+        if (getErrorDebug() != null) {
+            try {
+                joiner.add(String.format("%serror_debug%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getErrorDebug()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `error_description` to the URL query string
+        if (getErrorDescription() != null) {
+            try {
+                joiner.add(String.format("%serror_description%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `error_hint` to the URL query string
+        if (getErrorHint() != null) {
+            try {
+                joiner.add(String.format("%serror_hint%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getErrorHint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `status_code` to the URL query string
+        if (getStatusCode() != null) {
+            try {
+                joiner.add(String.format("%sstatus_code%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

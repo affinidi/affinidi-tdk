@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.PresentationSubmission;

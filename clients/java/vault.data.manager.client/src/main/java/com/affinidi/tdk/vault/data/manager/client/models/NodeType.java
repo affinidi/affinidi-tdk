@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -28,59 +27,60 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * type of the Node
  */
 public enum NodeType {
-  
-  VC_ROOT("VC_ROOT"),
-  
-  VC("VC"),
-  
-  FILE("FILE"),
-  
-  FOLDER("FOLDER"),
-  
-  PROFILE("PROFILE"),
-  
-  ROOT_ELEMENT("ROOT_ELEMENT"),
-  
-  TRASH_BIN("TRASH_BIN");
 
-  private String value;
+    VC_ROOT("VC_ROOT"),
 
-  NodeType(String value) {
-    this.value = value;
-  }
+    VC("VC"),
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+    FILE("FILE"),
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    FOLDER("FOLDER"),
 
-  @JsonCreator
-  public static NodeType fromValue(String value) {
-    for (NodeType b : NodeType.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
+    PROFILE("PROFILE"),
 
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    if (prefix == null) {
-      prefix = "";
+    ROOT_ELEMENT("ROOT_ELEMENT"),
+
+    TRASH_BIN("TRASH_BIN");
+
+    private String value;
+
+    NodeType(String value) {
+        this.value = value;
     }
 
-    return String.format("%s=%s", prefix, this.toString());
-  }
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static NodeType fromValue(String value) {
+        for (NodeType b : NodeType.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        if (prefix == null) {
+            prefix = "";
+        }
+
+        return String.format("%s=%s", prefix, this.toString());
+    }
 }
-

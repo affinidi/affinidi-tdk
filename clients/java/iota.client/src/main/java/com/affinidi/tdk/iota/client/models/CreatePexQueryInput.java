@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,205 +28,206 @@ import java.util.StringJoiner;
 /**
  * CreatePexQueryInput
  */
-@JsonPropertyOrder({
-  CreatePexQueryInput.JSON_PROPERTY_NAME,
-  CreatePexQueryInput.JSON_PROPERTY_VP_DEFINITION,
-  CreatePexQueryInput.JSON_PROPERTY_DESCRIPTION
-})
+@JsonPropertyOrder({ CreatePexQueryInput.JSON_PROPERTY_NAME, CreatePexQueryInput.JSON_PROPERTY_VP_DEFINITION,
+        CreatePexQueryInput.JSON_PROPERTY_DESCRIPTION })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreatePexQueryInput {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
-  private String vpDefinition;
+    public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+    private String vpDefinition;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public CreatePexQueryInput() {
-  }
-
-  public CreatePexQueryInput name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * The name of the presentation definition to quickly identify the query.
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CreatePexQueryInput vpDefinition(String vpDefinition) {
-    
-    this.vpDefinition = vpDefinition;
-    return this;
-  }
-
-  /**
-   * The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
-   * @return vpDefinition
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getVpDefinition() {
-    return vpDefinition;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVpDefinition(String vpDefinition) {
-    this.vpDefinition = vpDefinition;
-  }
-
-  public CreatePexQueryInput description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * An optional description of what the query is used for.
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreatePexQueryInput createPexQueryInput = (CreatePexQueryInput) o;
-    return Objects.equals(this.name, createPexQueryInput.name) &&
-        Objects.equals(this.vpDefinition, createPexQueryInput.vpDefinition) &&
-        Objects.equals(this.description, createPexQueryInput.description);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, vpDefinition, description);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreatePexQueryInput {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    vpDefinition: ").append(toIndentedString(vpDefinition)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CreatePexQueryInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CreatePexQueryInput name(String name) {
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.name = name;
+        return this;
     }
 
-    // add `vpDefinition` to the URL query string
-    if (getVpDefinition() != null) {
-      try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The name of the presentation definition to quickly identify the query.
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getName() {
+        return name;
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setName(String name) {
+        this.name = name;
     }
 
-    return joiner.toString();
-  }
+    public CreatePexQueryInput vpDefinition(String vpDefinition) {
+
+        this.vpDefinition = vpDefinition;
+        return this;
+    }
+
+    /**
+     * The presentation definition describing the data requirement that must be satisfied by the user. The value is in a
+     * JSON stringify format.
+     *
+     * @return vpDefinition
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getVpDefinition() {
+        return vpDefinition;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVpDefinition(String vpDefinition) {
+        this.vpDefinition = vpDefinition;
+    }
+
+    public CreatePexQueryInput description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * An optional description of what the query is used for.
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreatePexQueryInput createPexQueryInput = (CreatePexQueryInput) o;
+        return Objects.equals(this.name, createPexQueryInput.name)
+                && Objects.equals(this.vpDefinition, createPexQueryInput.vpDefinition)
+                && Objects.equals(this.description, createPexQueryInput.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, vpDefinition, description);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreatePexQueryInput {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    vpDefinition: ").append(toIndentedString(vpDefinition)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `vpDefinition` to the URL query string
+        if (getVpDefinition() != null) {
+            try {
+                joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

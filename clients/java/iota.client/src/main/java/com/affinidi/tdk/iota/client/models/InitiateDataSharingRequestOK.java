@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -30,118 +29,116 @@ import java.util.StringJoiner;
 /**
  * InitiateDataSharingRequestOK
  */
-@JsonPropertyOrder({
-  InitiateDataSharingRequestOK.JSON_PROPERTY_DATA
-})
+@JsonPropertyOrder({ InitiateDataSharingRequestOK.JSON_PROPERTY_DATA })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InitiateDataSharingRequestOK {
-  public static final String JSON_PROPERTY_DATA = "data";
-  private InitiateDataSharingRequestOKData data;
+    public static final String JSON_PROPERTY_DATA = "data";
+    private InitiateDataSharingRequestOKData data;
 
-  public InitiateDataSharingRequestOK() {
-  }
-
-  public InitiateDataSharingRequestOK data(InitiateDataSharingRequestOKData data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   * @return data
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public InitiateDataSharingRequestOKData getData() {
-    return data;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(InitiateDataSharingRequestOKData data) {
-    this.data = data;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    InitiateDataSharingRequestOK initiateDataSharingRequestOK = (InitiateDataSharingRequestOK) o;
-    return Objects.equals(this.data, initiateDataSharingRequestOK.data);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(data);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InitiateDataSharingRequestOK {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public InitiateDataSharingRequestOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public InitiateDataSharingRequestOK data(InitiateDataSharingRequestOKData data) {
 
-    // add `data` to the URL query string
-    if (getData() != null) {
-      joiner.add(getData().toUrlQueryString(prefix + "data" + suffix));
+        this.data = data;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get data
+     *
+     * @return data
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DATA)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public InitiateDataSharingRequestOKData getData() {
+        return data;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DATA)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setData(InitiateDataSharingRequestOKData data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        InitiateDataSharingRequestOK initiateDataSharingRequestOK = (InitiateDataSharingRequestOK) o;
+        return Objects.equals(this.data, initiateDataSharingRequestOK.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class InitiateDataSharingRequestOK {\n");
+        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `data` to the URL query string
+        if (getData() != null) {
+            joiner.add(getData().toUrlQueryString(prefix + "data" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

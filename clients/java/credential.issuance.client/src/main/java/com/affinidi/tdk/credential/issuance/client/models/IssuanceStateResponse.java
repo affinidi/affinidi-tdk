@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -29,203 +28,203 @@ import java.util.StringJoiner;
 /**
  * IssuanceStateResponse
  */
-@JsonPropertyOrder({
-  IssuanceStateResponse.JSON_PROPERTY_ISSUANCE_ID,
-  IssuanceStateResponse.JSON_PROPERTY_STATUS
-})
+@JsonPropertyOrder({ IssuanceStateResponse.JSON_PROPERTY_ISSUANCE_ID, IssuanceStateResponse.JSON_PROPERTY_STATUS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IssuanceStateResponse {
-  public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
-  private String issuanceId;
+    public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
+    private String issuanceId;
 
-  /**
-   * String describing the status of the issuance
-   */
-  public enum StatusEnum {
-    INIT("INIT"),
-    
-    OFFER_DELIVERED("OFFER_DELIVERED"),
-    
-    VC_CLAIMED("VC_CLAIMED"),
-    
-    TIMEOUT("TIMEOUT");
+    /**
+     * String describing the status of the issuance
+     */
+    public enum StatusEnum {
+        INIT("INIT"),
 
-    private String value;
+        OFFER_DELIVERED("OFFER_DELIVERED"),
 
-    StatusEnum(String value) {
-      this.value = value;
+        VC_CLAIMED("VC_CLAIMED"),
+
+        TIMEOUT("TIMEOUT");
+
+        private String value;
+
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_STATUS = "status";
+    private StatusEnum status;
+
+    public IssuanceStateResponse() {
+    }
+
+    public IssuanceStateResponse issuanceId(String issuanceId) {
+
+        this.issuanceId = issuanceId;
+        return this;
+    }
+
+    /**
+     * Website&#39;s internal identifier. Website may use to get info about the status of issuance flow. If it is not
+     * provided, CIS will generate one.
+     *
+     * @return issuanceId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getIssuanceId() {
+        return issuanceId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIssuanceId(String issuanceId) {
+        this.issuanceId = issuanceId;
+    }
+
+    public IssuanceStateResponse status(StatusEnum status) {
+
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * String describing the status of the issuance
+     *
+     * @return status
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    @JsonProperty(JSON_PROPERTY_STATUS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        IssuanceStateResponse issuanceStateResponse = (IssuanceStateResponse) o;
+        return Objects.equals(this.issuanceId, issuanceStateResponse.issuanceId)
+                && Objects.equals(this.status, issuanceStateResponse.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(issuanceId, status);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class IssuanceStateResponse {\n");
+        sb.append("    issuanceId: ").append(toIndentedString(issuanceId)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  private StatusEnum status;
-
-  public IssuanceStateResponse() {
-  }
-
-  public IssuanceStateResponse issuanceId(String issuanceId) {
-    
-    this.issuanceId = issuanceId;
-    return this;
-  }
-
-  /**
-   * Website&#39;s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
-   * @return issuanceId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getIssuanceId() {
-    return issuanceId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuanceId(String issuanceId) {
-    this.issuanceId = issuanceId;
-  }
-
-  public IssuanceStateResponse status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * String describing the status of the issuance
-   * @return status
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATUS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    IssuanceStateResponse issuanceStateResponse = (IssuanceStateResponse) o;
-    return Objects.equals(this.issuanceId, issuanceStateResponse.issuanceId) &&
-        Objects.equals(this.status, issuanceStateResponse.status);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(issuanceId, status);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IssuanceStateResponse {\n");
-    sb.append("    issuanceId: ").append(toIndentedString(issuanceId)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `issuanceId` to the URL query string
-    if (getIssuanceId() != null) {
-      try {
-        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
 
-    return joiner.toString();
-  }
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `issuanceId` to the URL query string
+        if (getIssuanceId() != null) {
+            try {
+                joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `status` to the URL query string
+        if (getStatus() != null) {
+            try {
+                joiner.add(String.format("%sstatus%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

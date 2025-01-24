@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
 import com.affinidi.tdk.iota.client.ApiException;
@@ -40,7 +39,7 @@ public class DefaultApiTest {
      * Lists all the logged consents for a project.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listLoggedConsentsTest() throws ApiException {

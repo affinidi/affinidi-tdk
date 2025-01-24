@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -33,131 +32,129 @@ import java.util.StringJoiner;
 /**
  * ListRootNodeChildrenOK
  */
-@JsonPropertyOrder({
-  ListRootNodeChildrenOK.JSON_PROPERTY_NODES
-})
+@JsonPropertyOrder({ ListRootNodeChildrenOK.JSON_PROPERTY_NODES })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListRootNodeChildrenOK {
-  public static final String JSON_PROPERTY_NODES = "nodes";
-  private List<NodeDto> nodes = new ArrayList<>();
+    public static final String JSON_PROPERTY_NODES = "nodes";
+    private List<NodeDto> nodes = new ArrayList<>();
 
-  public ListRootNodeChildrenOK() {
-  }
-
-  public ListRootNodeChildrenOK nodes(List<NodeDto> nodes) {
-    
-    this.nodes = nodes;
-    return this;
-  }
-
-  public ListRootNodeChildrenOK addNodesItem(NodeDto nodesItem) {
-    if (this.nodes == null) {
-      this.nodes = new ArrayList<>();
-    }
-    this.nodes.add(nodesItem);
-    return this;
-  }
-
-  /**
-   * Get nodes
-   * @return nodes
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NODES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<NodeDto> getNodes() {
-    return nodes;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NODES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNodes(List<NodeDto> nodes) {
-    this.nodes = nodes;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ListRootNodeChildrenOK listRootNodeChildrenOK = (ListRootNodeChildrenOK) o;
-    return Objects.equals(this.nodes, listRootNodeChildrenOK.nodes);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(nodes);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListRootNodeChildrenOK {\n");
-    sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ListRootNodeChildrenOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ListRootNodeChildrenOK nodes(List<NodeDto> nodes) {
 
-    // add `nodes` to the URL query string
-    if (getNodes() != null) {
-      for (int i = 0; i < getNodes().size(); i++) {
-        if (getNodes().get(i) != null) {
-          joiner.add(getNodes().get(i).toUrlQueryString(String.format("%snodes%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.nodes = nodes;
+        return this;
+    }
+
+    public ListRootNodeChildrenOK addNodesItem(NodeDto nodesItem) {
+        if (this.nodes == null) {
+            this.nodes = new ArrayList<>();
         }
-      }
+        this.nodes.add(nodesItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get nodes
+     *
+     * @return nodes
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NODES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<NodeDto> getNodes() {
+        return nodes;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NODES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setNodes(List<NodeDto> nodes) {
+        this.nodes = nodes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListRootNodeChildrenOK listRootNodeChildrenOK = (ListRootNodeChildrenOK) o;
+        return Objects.equals(this.nodes, listRootNodeChildrenOK.nodes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nodes);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListRootNodeChildrenOK {\n");
+        sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `nodes` to the URL query string
+        if (getNodes() != null) {
+            for (int i = 0; i < getNodes().size(); i++) {
+                if (getNodes().get(i) != null) {
+                    joiner.add(getNodes().get(i).toUrlQueryString(String.format("%snodes%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

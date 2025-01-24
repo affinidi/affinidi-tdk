@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -32,176 +31,174 @@ import java.util.StringJoiner;
 /**
  * BlockedUsers
  */
-@JsonPropertyOrder({
-  BlockedUsers.JSON_PROPERTY_USER_IDS,
-  BlockedUsers.JSON_PROPERTY_PAGE_TOKEN
-})
+@JsonPropertyOrder({ BlockedUsers.JSON_PROPERTY_USER_IDS, BlockedUsers.JSON_PROPERTY_PAGE_TOKEN })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class BlockedUsers {
-  public static final String JSON_PROPERTY_USER_IDS = "userIds";
-  private List<String> userIds = new ArrayList<>();
+    public static final String JSON_PROPERTY_USER_IDS = "userIds";
+    private List<String> userIds = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
-  private Object pageToken;
+    public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
+    private Object pageToken;
 
-  public BlockedUsers() {
-  }
-
-  public BlockedUsers userIds(List<String> userIds) {
-    
-    this.userIds = userIds;
-    return this;
-  }
-
-  public BlockedUsers addUserIdsItem(String userIdsItem) {
-    if (this.userIds == null) {
-      this.userIds = new ArrayList<>();
-    }
-    this.userIds.add(userIdsItem);
-    return this;
-  }
-
-  /**
-   * Get userIds
-   * @return userIds
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getUserIds() {
-    return userIds;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserIds(List<String> userIds) {
-    this.userIds = userIds;
-  }
-
-  public BlockedUsers pageToken(Object pageToken) {
-    
-    this.pageToken = pageToken;
-    return this;
-  }
-
-  /**
-   * Get pageToken
-   * @return pageToken
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getPageToken() {
-    return pageToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageToken(Object pageToken) {
-    this.pageToken = pageToken;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BlockedUsers blockedUsers = (BlockedUsers) o;
-    return Objects.equals(this.userIds, blockedUsers.userIds) &&
-        Objects.equals(this.pageToken, blockedUsers.pageToken);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(userIds, pageToken);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BlockedUsers {\n");
-    sb.append("    userIds: ").append(toIndentedString(userIds)).append("\n");
-    sb.append("    pageToken: ").append(toIndentedString(pageToken)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public BlockedUsers() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public BlockedUsers userIds(List<String> userIds) {
 
-    // add `userIds` to the URL query string
-    if (getUserIds() != null) {
-      for (int i = 0; i < getUserIds().size(); i++) {
-        try {
-          joiner.add(String.format("%suserIds%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getUserIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        this.userIds = userIds;
+        return this;
+    }
+
+    public BlockedUsers addUserIdsItem(String userIdsItem) {
+        if (this.userIds == null) {
+            this.userIds = new ArrayList<>();
         }
-      }
+        this.userIds.add(userIdsItem);
+        return this;
     }
 
-    // add `pageToken` to the URL query string
-    if (getPageToken() != null) {
-      try {
-        joiner.add(String.format("%spageToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get userIds
+     *
+     * @return userIds
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_USER_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getUserIds() {
+        return userIds;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_USER_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setUserIds(List<String> userIds) {
+        this.userIds = userIds;
+    }
+
+    public BlockedUsers pageToken(Object pageToken) {
+
+        this.pageToken = pageToken;
+        return this;
+    }
+
+    /**
+     * Get pageToken
+     *
+     * @return pageToken
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Object getPageToken() {
+        return pageToken;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPageToken(Object pageToken) {
+        this.pageToken = pageToken;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BlockedUsers blockedUsers = (BlockedUsers) o;
+        return Objects.equals(this.userIds, blockedUsers.userIds)
+                && Objects.equals(this.pageToken, blockedUsers.pageToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userIds, pageToken);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class BlockedUsers {\n");
+        sb.append("    userIds: ").append(toIndentedString(userIds)).append("\n");
+        sb.append("    pageToken: ").append(toIndentedString(pageToken)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `userIds` to the URL query string
+        if (getUserIds() != null) {
+            for (int i = 0; i < getUserIds().size(); i++) {
+                try {
+                    joiner.add(String.format("%suserIds%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getUserIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `pageToken` to the URL query string
+        if (getPageToken() != null) {
+            try {
+                joiner.add(String.format("%spageToken%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

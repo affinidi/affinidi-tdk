@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,125 @@ import java.util.StringJoiner;
 /**
  * CorsLoginSessionRejectResponseOK
  */
-@JsonPropertyOrder({
-  CorsLoginSessionRejectResponseOK.JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK
-})
+@JsonPropertyOrder({ CorsLoginSessionRejectResponseOK.JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsLoginSessionRejectResponseOK {
-  public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
-  private String corsLoginSessionRejectResponseOk;
+    public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
+    private String corsLoginSessionRejectResponseOk;
 
-  public CorsLoginSessionRejectResponseOK() {
-  }
-
-  public CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
-    
-    this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
-    return this;
-  }
-
-  /**
-   * Get corsLoginSessionRejectResponseOk
-   * @return corsLoginSessionRejectResponseOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsLoginSessionRejectResponseOk() {
-    return corsLoginSessionRejectResponseOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
-    this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOK = (CorsLoginSessionRejectResponseOK) o;
-    return Objects.equals(this.corsLoginSessionRejectResponseOk, corsLoginSessionRejectResponseOK.corsLoginSessionRejectResponseOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsLoginSessionRejectResponseOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsLoginSessionRejectResponseOK {\n");
-    sb.append("    corsLoginSessionRejectResponseOk: ").append(toIndentedString(corsLoginSessionRejectResponseOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsLoginSessionRejectResponseOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
 
-    // add `corsLoginSessionRejectResponseOk` to the URL query string
-    if (getCorsLoginSessionRejectResponseOk() != null) {
-      try {
-        joiner.add(String.format("%scorsLoginSessionRejectResponseOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsLoginSessionRejectResponseOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsLoginSessionRejectResponseOk
+     *
+     * @return corsLoginSessionRejectResponseOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsLoginSessionRejectResponseOk() {
+        return corsLoginSessionRejectResponseOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
+        this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOK = (CorsLoginSessionRejectResponseOK) o;
+        return Objects.equals(this.corsLoginSessionRejectResponseOk,
+                corsLoginSessionRejectResponseOK.corsLoginSessionRejectResponseOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsLoginSessionRejectResponseOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsLoginSessionRejectResponseOK {\n");
+        sb.append("    corsLoginSessionRejectResponseOk: ").append(toIndentedString(corsLoginSessionRejectResponseOk))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsLoginSessionRejectResponseOk` to the URL query string
+        if (getCorsLoginSessionRejectResponseOk() != null) {
+            try {
+                joiner.add(String.format("%scorsLoginSessionRejectResponseOk%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCorsLoginSessionRejectResponseOk()), "UTF-8")
+                                .replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

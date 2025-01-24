@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -32,217 +31,216 @@ import java.util.StringJoiner;
 /**
  * BlockedUsersInput
  */
-@JsonPropertyOrder({
-  BlockedUsersInput.JSON_PROPERTY_NAME,
-  BlockedUsersInput.JSON_PROPERTY_DESCRIPTION,
-  BlockedUsersInput.JSON_PROPERTY_USER_IDS
-})
+@JsonPropertyOrder({ BlockedUsersInput.JSON_PROPERTY_NAME, BlockedUsersInput.JSON_PROPERTY_DESCRIPTION,
+        BlockedUsersInput.JSON_PROPERTY_USER_IDS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class BlockedUsersInput {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public static final String JSON_PROPERTY_USER_IDS = "userIds";
-  private List<String> userIds = new ArrayList<>();
+    public static final String JSON_PROPERTY_USER_IDS = "userIds";
+    private List<String> userIds = new ArrayList<>();
 
-  public BlockedUsersInput() {
-  }
-
-  public BlockedUsersInput name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public BlockedUsersInput description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * Get description
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public BlockedUsersInput userIds(List<String> userIds) {
-    
-    this.userIds = userIds;
-    return this;
-  }
-
-  public BlockedUsersInput addUserIdsItem(String userIdsItem) {
-    if (this.userIds == null) {
-      this.userIds = new ArrayList<>();
-    }
-    this.userIds.add(userIdsItem);
-    return this;
-  }
-
-  /**
-   * Get userIds
-   * @return userIds
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getUserIds() {
-    return userIds;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserIds(List<String> userIds) {
-    this.userIds = userIds;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    BlockedUsersInput blockedUsersInput = (BlockedUsersInput) o;
-    return Objects.equals(this.name, blockedUsersInput.name) &&
-        Objects.equals(this.description, blockedUsersInput.description) &&
-        Objects.equals(this.userIds, blockedUsersInput.userIds);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, description, userIds);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class BlockedUsersInput {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    userIds: ").append(toIndentedString(userIds)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public BlockedUsersInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public BlockedUsersInput name(String name) {
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.name = name;
+        return this;
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
     }
 
-    // add `userIds` to the URL query string
-    if (getUserIds() != null) {
-      for (int i = 0; i < getUserIds().size(); i++) {
-        try {
-          joiner.add(String.format("%suserIds%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getUserIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BlockedUsersInput description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BlockedUsersInput userIds(List<String> userIds) {
+
+        this.userIds = userIds;
+        return this;
+    }
+
+    public BlockedUsersInput addUserIdsItem(String userIdsItem) {
+        if (this.userIds == null) {
+            this.userIds = new ArrayList<>();
         }
-      }
+        this.userIds.add(userIdsItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get userIds
+     *
+     * @return userIds
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_USER_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getUserIds() {
+        return userIds;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USER_IDS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setUserIds(List<String> userIds) {
+        this.userIds = userIds;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BlockedUsersInput blockedUsersInput = (BlockedUsersInput) o;
+        return Objects.equals(this.name, blockedUsersInput.name)
+                && Objects.equals(this.description, blockedUsersInput.description)
+                && Objects.equals(this.userIds, blockedUsersInput.userIds);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, userIds);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class BlockedUsersInput {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    userIds: ").append(toIndentedString(userIds)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `userIds` to the URL query string
+        if (getUserIds() != null) {
+            for (int i = 0; i < getUserIds().size(); i++) {
+                try {
+                    joiner.add(String.format("%suserIds%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getUserIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-
