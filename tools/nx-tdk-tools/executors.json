@@ -1,9 +1,0 @@
-{
-  "executors": {
-    "set-version": {
-      "implementation": "./src/executors/set-version/executor",
-      "schema": "./src/executors/set-version/schema.json",
-      "description": "set-version executor"
-    }
-  }
-}
