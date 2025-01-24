@@ -74,7 +74,7 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance
 export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';

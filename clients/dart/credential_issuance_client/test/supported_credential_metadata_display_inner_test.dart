@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // SupportedCredentialMetadataDisplayInnerLogo logo
+    // SupportedCredentialMetadataItemLogo logo
     test('to test the property `logo`', () async {
       // TODO
     });

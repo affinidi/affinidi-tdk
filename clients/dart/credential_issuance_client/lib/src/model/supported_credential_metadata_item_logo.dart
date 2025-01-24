@@ -8,42 +8,42 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'supported_credential_metadata_display_inner_logo.g.dart';
+part 'supported_credential_metadata_item_logo.g.dart';
 
-/// SupportedCredentialMetadataDisplayInnerLogo
+/// SupportedCredentialMetadataItemLogo
 ///
 /// Properties:
 /// * [url] 
 /// * [altText] 
 @BuiltValue()
-abstract class SupportedCredentialMetadataDisplayInnerLogo implements Built<SupportedCredentialMetadataDisplayInnerLogo, SupportedCredentialMetadataDisplayInnerLogoBuilder> {
+abstract class SupportedCredentialMetadataItemLogo implements Built<SupportedCredentialMetadataItemLogo, SupportedCredentialMetadataItemLogoBuilder> {
   @BuiltValueField(wireName: r'url')
   String get url;
 
   @BuiltValueField(wireName: r'altText')
   String? get altText;
 
-  SupportedCredentialMetadataDisplayInnerLogo._();
+  SupportedCredentialMetadataItemLogo._();
 
-  factory SupportedCredentialMetadataDisplayInnerLogo([void updates(SupportedCredentialMetadataDisplayInnerLogoBuilder b)]) = _$SupportedCredentialMetadataDisplayInnerLogo;
+  factory SupportedCredentialMetadataItemLogo([void updates(SupportedCredentialMetadataItemLogoBuilder b)]) = _$SupportedCredentialMetadataItemLogo;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SupportedCredentialMetadataDisplayInnerLogoBuilder b) => b;
+  static void _defaults(SupportedCredentialMetadataItemLogoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SupportedCredentialMetadataDisplayInnerLogo> get serializer => _$SupportedCredentialMetadataDisplayInnerLogoSerializer();
+  static Serializer<SupportedCredentialMetadataItemLogo> get serializer => _$SupportedCredentialMetadataItemLogoSerializer();
 }
 
-class _$SupportedCredentialMetadataDisplayInnerLogoSerializer implements PrimitiveSerializer<SupportedCredentialMetadataDisplayInnerLogo> {
+class _$SupportedCredentialMetadataItemLogoSerializer implements PrimitiveSerializer<SupportedCredentialMetadataItemLogo> {
   @override
-  final Iterable<Type> types = const [SupportedCredentialMetadataDisplayInnerLogo, _$SupportedCredentialMetadataDisplayInnerLogo];
+  final Iterable<Type> types = const [SupportedCredentialMetadataItemLogo, _$SupportedCredentialMetadataItemLogo];
 
   @override
-  final String wireName = r'SupportedCredentialMetadataDisplayInnerLogo';
+  final String wireName = r'SupportedCredentialMetadataItemLogo';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    SupportedCredentialMetadataDisplayInnerLogo object, {
+    SupportedCredentialMetadataItemLogo object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'url';
@@ -63,7 +63,7 @@ class _$SupportedCredentialMetadataDisplayInnerLogoSerializer implements Primiti
   @override
   Object serialize(
     Serializers serializers,
-    SupportedCredentialMetadataDisplayInnerLogo object, {
+    SupportedCredentialMetadataItemLogo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -74,7 +74,7 @@ class _$SupportedCredentialMetadataDisplayInnerLogoSerializer implements Primiti
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required SupportedCredentialMetadataDisplayInnerLogoBuilder result,
+    required SupportedCredentialMetadataItemLogoBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -104,12 +104,12 @@ class _$SupportedCredentialMetadataDisplayInnerLogoSerializer implements Primiti
   }
 
   @override
-  SupportedCredentialMetadataDisplayInnerLogo deserialize(
+  SupportedCredentialMetadataItemLogo deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = SupportedCredentialMetadataDisplayInnerLogoBuilder();
+    final result = SupportedCredentialMetadataItemLogoBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

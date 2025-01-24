@@ -31,7 +31,7 @@ Models/InitiateDataSharingRequestOK_data.md
 Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
 Models/IotaConfigurationDto.md
-Models/IotaConfigurationDto_clientMetadata.md
+Models/IotaConfigurationDtoClientMetadata.md
 Models/IotaExchangeCredentials.md
 Models/IotaExchangeCredentialsOK.md
 Models/IotaExchangeCredentialsOK_credentials.md
