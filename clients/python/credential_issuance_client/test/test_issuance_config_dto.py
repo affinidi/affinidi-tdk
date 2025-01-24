@@ -57,7 +57,11 @@ class TestIssuanceConfigDto(unittest.TestCase):
                 version = 1.337,
                 return_uris = [
                     ''
-                    ]
+                    ],
+                webhook = affinidi_tdk_credential_issuance_client.models.cis_configuration_webhook_setting.CisConfigurationWebhookSetting(
+                    enabled = True, 
+                    endpoint = affinidi_tdk_credential_issuance_client.models.cis_configuration_webhook_setting_endpoint.CisConfigurationWebhookSetting_endpoint(
+                        url = '', ), )
             )
         else:
             return IssuanceConfigDto(

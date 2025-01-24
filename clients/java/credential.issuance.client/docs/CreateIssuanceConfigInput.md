@@ -12,6 +12,7 @@
 | **credentialSupported**     | [**List&lt;CredentialSupportedObject&gt;**](CredentialSupportedObject.md) |                                                                                                                                                       |            |
 | **issuerMetadata**          | **Map&lt;String, Object&gt;**                                             | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] |
 | **returnUris**              | **List&lt;String&gt;**                                                    | List of allowed URIs to be returned to after issuance                                                                                                 | [optional] |
+| **webhook**                 | [**CisConfigurationWebhookSetting**](CisConfigurationWebhookSetting.md)   |                                                                                                                                                       | [optional] |
 
 ## Enum: FormatEnum
 

@@ -33,6 +33,20 @@ class TestCredentialsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_claimed_credentials(self) -> None:
+        """Test case for get_claimed_credentials
+
+        Get claimed credential in the specified range  # noqa: E501
+        """
+        pass
+
+    def test_get_issuance_id_claimed_credential(self) -> None:
+        """Test case for get_issuance_id_claimed_credential
+
+        Get claimed VC linked to the issuanceId  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

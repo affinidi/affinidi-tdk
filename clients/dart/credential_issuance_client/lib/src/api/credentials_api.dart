@@ -9,10 +9,14 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:affinidi_tdk_credential_issuance_client/src/api_util.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/generate_credentials400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_jwt_token_error.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_parameter_error.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_error.dart';
 
 class CredentialsApi {
 
@@ -114,6 +118,189 @@ class CredentialsApi {
     }
 
     return Response<CredentialResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get claimed credential in the specified range
+  /// Get claimed credential in the specified range
+  ///
+  /// Parameters:
+  /// * [projectId] - project id
+  /// * [configurationId] - configuration id
+  /// * [rangeStartTime] 
+  /// * [rangeEndTime] 
+  /// * [next] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ClaimedCredentialListResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ClaimedCredentialListResponse>> getClaimedCredentials({ 
+    required String projectId,
+    required String configurationId,
+    required String rangeStartTime,
+    String? rangeEndTime,
+    String? next,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/{projectId}/configurations/{configurationId}/credentials'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString()).replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ProjectTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'rangeStartTime': encodeQueryParameter(_serializers, rangeStartTime, const FullType(String)),
+      if (rangeEndTime != null) r'rangeEndTime': encodeQueryParameter(_serializers, rangeEndTime, const FullType(String)),
+      if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ClaimedCredentialListResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ClaimedCredentialListResponse),
+      ) as ClaimedCredentialListResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ClaimedCredentialListResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get claimed VC linked to the issuanceId
+  /// Get claimed VC linked to the issuanceId
+  ///
+  /// Parameters:
+  /// * [projectId] - project id
+  /// * [configurationId] - configuration id
+  /// * [issuanceId] - issuance id
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ClaimedCredentialResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ClaimedCredentialResponse>> getIssuanceIdClaimedCredential({ 
+    required String projectId,
+    required String configurationId,
+    required String issuanceId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString()).replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString()).replaceAll('{' r'issuanceId' '}', encodeQueryParameter(_serializers, issuanceId, const FullType(String)).toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ProjectTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ClaimedCredentialResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ClaimedCredentialResponse),
+      ) as ClaimedCredentialResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ClaimedCredentialResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

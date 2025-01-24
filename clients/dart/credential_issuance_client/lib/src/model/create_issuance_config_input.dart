@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/credential_supported_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
@@ -22,6 +23,7 @@ part 'create_issuance_config_input.g.dart';
 /// * [credentialSupported] 
 /// * [issuerMetadata] - Issuer public information wallet may want to show to user during consent confirmation
 /// * [returnUris] - List of allowed URIs to be returned to after issuance
+/// * [webhook] 
 @BuiltValue()
 abstract class CreateIssuanceConfigInput implements Built<CreateIssuanceConfigInput, CreateIssuanceConfigInputBuilder> {
   @BuiltValueField(wireName: r'name')
@@ -53,6 +55,9 @@ abstract class CreateIssuanceConfigInput implements Built<CreateIssuanceConfigIn
   /// List of allowed URIs to be returned to after issuance
   @BuiltValueField(wireName: r'returnUris')
   BuiltList<String>? get returnUris;
+
+  @BuiltValueField(wireName: r'webhook')
+  CisConfigurationWebhookSetting? get webhook;
 
   CreateIssuanceConfigInput._();
 
@@ -127,6 +132,13 @@ class _$CreateIssuanceConfigInputSerializer implements PrimitiveSerializer<Creat
       yield serializers.serialize(
         object.returnUris,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.webhook != null) {
+      yield r'webhook';
+      yield serializers.serialize(
+        object.webhook,
+        specifiedType: const FullType(CisConfigurationWebhookSetting),
       );
     }
   }
@@ -207,6 +219,13 @@ class _$CreateIssuanceConfigInputSerializer implements PrimitiveSerializer<Creat
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.returnUris.replace(valueDes);
+          break;
+        case r'webhook':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(CisConfigurationWebhookSetting),
+          ) as CisConfigurationWebhookSetting;
+          result.webhook.replace(valueDes);
           break;
         default:
           unhandled.add(key);
