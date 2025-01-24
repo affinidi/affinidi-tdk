@@ -573,6 +573,171 @@ paths:
       x-content-type: application/json
       x-accepts:
         - application/json
+  /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials:
+    get:
+      description: Get claimed VC linked to the issuanceId
+      operationId: getIssuanceIdClaimedCredential
+      parameters:
+        - description: project id
+          explode: false
+          in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: configuration id
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: issuance id
+          explode: false
+          in: path
+          name: issuanceId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimedCredentialResponse'
+          description: Ok
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ProjectTokenAuth: []
+      summary: Get claimed VC linked to the issuanceId
+      tags:
+        - credentials
+      x-accepts:
+        - application/json
+  /v1/{projectId}/configurations/{configurationId}/credentials:
+    get:
+      description: Get claimed credential in the specified range
+      operationId: getClaimedCredentials
+      parameters:
+        - description: project id
+          explode: false
+          in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - description: configuration id
+          explode: false
+          in: path
+          name: configurationId
+          required: true
+          schema:
+            type: string
+          style: simple
+        - explode: true
+          in: query
+          name: rangeStartTime
+          required: true
+          schema:
+            type: string
+          style: form
+        - explode: true
+          in: query
+          name: rangeEndTime
+          required: false
+          schema:
+            type: string
+          style: form
+        - explode: true
+          in: query
+          name: next
+          required: false
+          schema:
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimedCredentialListResponse'
+          description: Ok
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+      security:
+        - ProjectTokenAuth: []
+      summary: Get claimed credential in the specified range
+      tags:
+        - credentials
+      x-accepts:
+        - application/json
 components:
   examples:
     CredentialOfferResponse:
@@ -792,6 +957,32 @@ components:
           schema:
             $ref: '#/components/schemas/ListIssuanceResponse'
       description: Ok
+    GetIssuanceIdClaimedCredentialOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClaimedCredentialResponse'
+      description: Ok
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetClaimedCredentialsOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClaimedCredentialListResponse'
+      description: Ok
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     CorsGetWellKnownOpenIdCredentialIssuerOK:
       content:
         application/json:
@@ -824,6 +1015,32 @@ components:
           schema:
             $ref: '#/components/schemas/CorsGenerateCredentialsOK'
       description: CorsGenerateCredentialsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetIssuanceIdClaimedCredentialOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetIssuanceIdClaimedCredentialOK'
+      description: CorsGetIssuanceIdClaimedCredentialOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetClaimedCredentialsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetClaimedCredentialsOK'
+      description: CorsGetClaimedCredentialsOK
       headers:
         Access-Control-Allow-Origin:
           $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -972,6 +1189,58 @@ components:
           schema:
             $ref: '#/components/schemas/NotFoundError'
       description: NotFoundError
+    GetIssuanceIdClaimedCredentialBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetIssuanceIdClaimedCredentialNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetClaimedCredentialsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GetClaimedCredentialsNotFoundError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+      description: NotFoundError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
   schemas:
     StartIssuanceInput:
       additionalProperties: false
@@ -1241,6 +1510,38 @@ components:
       required:
         - issuances
       type: object
+    ClaimedCredentialResponse:
+      additionalProperties: false
+      description: Response for getting the claimed VC
+      example:
+        credential:
+          key: ''
+      properties:
+        credential:
+          additionalProperties: true
+          description: claimed credential
+          type: object
+      type: object
+    ClaimedCredentialListResponse:
+      additionalProperties: false
+      description: List of claimed credential
+      example:
+        next: next
+        credentials:
+          - key: ''
+          - key: ''
+      properties:
+        credentials:
+          description: list of credentials
+          items:
+            additionalProperties: true
+            description: claimed credential
+            type: object
+          type: array
+        next:
+          description: for pagination to fetch next set of records
+          type: string
+      type: object
     ListIssuanceRecordResponse:
       additionalProperties: false
       description: list of issuance data records
@@ -1381,6 +1682,10 @@ components:
         returnUris:
           - returnUris
           - returnUris
+        webhook:
+          endpoint:
+            url: url
+          enabled: false
         issuerWalletId: issuerWalletId
         credentialOfferDuration: 48435.08895908198
         name: name
@@ -1467,6 +1772,8 @@ components:
           items:
             type: string
           type: array
+        webhook:
+          $ref: '#/components/schemas/CisConfigurationWebhookSetting'
       required:
         - credentialSupported
         - issuerWalletId
@@ -1545,6 +1852,10 @@ components:
         returnUris:
           - returnUris
           - returnUris
+        webhook:
+          endpoint:
+            url: url
+          enabled: false
         issuerWalletId: issuerWalletId
         credentialOfferDuration: 48435.08895908198
         name: name
@@ -1634,6 +1945,8 @@ components:
           items:
             type: string
           type: array
+        webhook:
+          $ref: '#/components/schemas/CisConfigurationWebhookSetting'
       type: object
     CredentialOfferResponse:
       additionalProperties: false
@@ -1730,6 +2043,10 @@ components:
         returnUris:
           - returnUris
           - returnUris
+        webhook:
+          endpoint:
+            url: url
+          enabled: false
         issuerWalletId: issuerWalletId
         credentialOfferDuration: 0.8008281904610115
         format: ldp_vc
@@ -1829,6 +2146,8 @@ components:
           items:
             type: string
           type: array
+        webhook:
+          $ref: '#/components/schemas/CisConfigurationWebhookSetting'
       type: object
     IssuanceConfigListResponse:
       additionalProperties: false
@@ -2530,6 +2849,34 @@ components:
       required:
         - url
       type: object
+    CisConfigurationWebhookSetting:
+      description: Webhook setting to notify developers for claimed VC
+      example:
+        endpoint:
+          url: url
+        enabled: false
+      properties:
+        enabled:
+          default: false
+          description: flag to enabled or disabled the webhook
+          type: boolean
+        endpoint:
+          $ref: '#/components/schemas/CisConfigurationWebhookSetting_endpoint'
+      required:
+        - enabled
+      type: object
+    CorsGetIssuanceIdClaimedCredentialOK:
+      additionalProperties: false
+      properties:
+        corsGetIssuanceIdClaimedCredentialOk:
+          type: string
+      type: object
+    CorsGetClaimedCredentialsOK:
+      additionalProperties: false
+      properties:
+        corsGetClaimedCredentialsOk:
+          type: string
+      type: object
     getCredentialOffer_400_response:
       oneOf:
         - $ref: '#/components/schemas/InvalidParameterError'
@@ -2826,6 +3173,16 @@ components:
         - credentialTypeId
         - jsonLdContextUrl
         - jsonSchemaUrl
+      type: object
+    CisConfigurationWebhookSetting_endpoint:
+      example:
+        url: url
+      properties:
+        url:
+          description:
+            url endpoint where notification will be sent with issuanceId
+            after user has claimed the VC related to issuanceId
+          type: string
       type: object
   securitySchemes:
     AwsSigV4:

@@ -1950,7 +1950,6 @@ components:
         - consumerId
         - createdAt
         - createdBy
-        - description
         - modifiedAt
         - modifiedBy
         - name
@@ -2009,16 +2008,16 @@ components:
         consumerId:
           type: string
         createdAt:
-          description: '[GEN] ISO 8601 string of the creation date/time the entity'
+          description: creation date/time
           type: string
         modifiedAt:
-          description: '[GEN] ISO 8601 string of the modification date/time the entity'
+          description: modification date/time
           type: string
         createdBy:
-          description: '[GEN] Identifier of the user who created the entity'
+          description: Identifier of the user who created
           type: string
         modifiedBy:
-          description: '[GEN] Identifier of the user who last updated the entity'
+          description: Identifier of the user who last updated
           type: string
         description:
           description: Description of the node
@@ -2033,7 +2032,6 @@ components:
         - consumerId
         - createdAt
         - createdBy
-        - description
         - modifiedAt
         - modifiedBy
         - name

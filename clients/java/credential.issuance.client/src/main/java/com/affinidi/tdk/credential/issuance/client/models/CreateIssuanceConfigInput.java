@@ -15,6 +15,7 @@ package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.credential.issuance.client.models.CisConfigurationWebhookSetting;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSupportedObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -44,7 +45,8 @@ import java.util.StringJoiner;
   CreateIssuanceConfigInput.JSON_PROPERTY_FORMAT,
   CreateIssuanceConfigInput.JSON_PROPERTY_CREDENTIAL_SUPPORTED,
   CreateIssuanceConfigInput.JSON_PROPERTY_ISSUER_METADATA,
-  CreateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS
+  CreateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS,
+  CreateIssuanceConfigInput.JSON_PROPERTY_WEBHOOK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateIssuanceConfigInput {
@@ -108,6 +110,9 @@ public class CreateIssuanceConfigInput {
 
   public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
   private List<String> returnUris = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_WEBHOOK = "webhook";
+  private CisConfigurationWebhookSetting webhook;
 
   public CreateIssuanceConfigInput() {
   }
@@ -338,6 +343,31 @@ public class CreateIssuanceConfigInput {
     this.returnUris = returnUris;
   }
 
+  public CreateIssuanceConfigInput webhook(CisConfigurationWebhookSetting webhook) {
+    
+    this.webhook = webhook;
+    return this;
+  }
+
+  /**
+   * Get webhook
+   * @return webhook
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CisConfigurationWebhookSetting getWebhook() {
+    return webhook;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWebhook(CisConfigurationWebhookSetting webhook) {
+    this.webhook = webhook;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -354,12 +384,13 @@ public class CreateIssuanceConfigInput {
         Objects.equals(this.format, createIssuanceConfigInput.format) &&
         Objects.equals(this.credentialSupported, createIssuanceConfigInput.credentialSupported) &&
         Objects.equals(this.issuerMetadata, createIssuanceConfigInput.issuerMetadata) &&
-        Objects.equals(this.returnUris, createIssuanceConfigInput.returnUris);
+        Objects.equals(this.returnUris, createIssuanceConfigInput.returnUris) &&
+        Objects.equals(this.webhook, createIssuanceConfigInput.webhook);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, issuerWalletId, credentialOfferDuration, format, credentialSupported, issuerMetadata, returnUris);
+    return Objects.hash(name, description, issuerWalletId, credentialOfferDuration, format, credentialSupported, issuerMetadata, returnUris, webhook);
   }
 
   @Override
@@ -374,6 +405,7 @@ public class CreateIssuanceConfigInput {
     sb.append("    credentialSupported: ").append(toIndentedString(credentialSupported)).append("\n");
     sb.append("    issuerMetadata: ").append(toIndentedString(issuerMetadata)).append("\n");
     sb.append("    returnUris: ").append(toIndentedString(returnUris)).append("\n");
+    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -507,6 +539,11 @@ public class CreateIssuanceConfigInput {
           throw new RuntimeException(e);
         }
       }
+    }
+
+    // add `webhook` to the URL query string
+    if (getWebhook() != null) {
+      joiner.add(getWebhook().toUrlQueryString(prefix + "webhook" + suffix));
     }
 
     return joiner.toString();

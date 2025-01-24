@@ -107,25 +107,25 @@ export interface ConsumerMetadataDto {
    */
   consumerId: string
   /**
-   * [GEN] ISO 8601 string of the creation date/time the entity
+   * creation date/time
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   createdAt: string
   /**
-   * [GEN] ISO 8601 string of the modification date/time the entity
+   * modification date/time
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   modifiedAt: string
   /**
-   * [GEN] Identifier of the user who created the entity
+   * Identifier of the user who created
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   createdBy: string
   /**
-   * [GEN] Identifier of the user who last updated the entity
+   * Identifier of the user who last updated
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
@@ -135,7 +135,7 @@ export interface ConsumerMetadataDto {
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
-  description: string
+  description?: string
   /**
    *
    * @type {NodeType}
@@ -559,7 +559,7 @@ export interface GetDetailedNodeInfoOK {
    * @type {string}
    * @memberof GetDetailedNodeInfoOK
    */
-  description: string
+  description?: string
   /**
    *
    * @type {NodeType}
@@ -1055,7 +1055,7 @@ export interface NodeDto {
    * @type {string}
    * @memberof NodeDto
    */
-  description: string
+  description?: string
   /**
    *
    * @type {NodeType}

@@ -22,8 +22,14 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidd
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_issuance_id_claimed_credential_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config400_response.dart';

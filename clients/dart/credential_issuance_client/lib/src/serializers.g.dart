@@ -19,8 +19,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChangeStatusForbiddenErrorHttpStatusCodeEnum.serializer)
       ..add(ChangeStatusForbiddenErrorMessageEnum.serializer)
       ..add(ChangeStatusForbiddenErrorNameEnum.serializer)
+      ..add(CisConfigurationWebhookSetting.serializer)
+      ..add(CisConfigurationWebhookSettingEndpoint.serializer)
+      ..add(ClaimedCredentialListResponse.serializer)
+      ..add(ClaimedCredentialResponse.serializer)
       ..add(CorsGenerateCredentialsOK.serializer)
+      ..add(CorsGetClaimedCredentialsOK.serializer)
       ..add(CorsGetCredentialOfferOK.serializer)
+      ..add(CorsGetIssuanceIdClaimedCredentialOK.serializer)
       ..add(CorsGetWellKnownOpenIdCredentialIssuerOK.serializer)
       ..add(CreateCredentialInput.serializer)
       ..add(CreateIssuanceConfig400Response.serializer)
@@ -222,6 +228,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
           () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(BuiltMap, const [
+              const FullType(String),
+              const FullType.nullable(JsonObject)
+            ])
+          ]),
+          () => new ListBuilder<BuiltMap<String, JsonObject?>>())
+      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CredentialSupportedObject)]),
           () => new ListBuilder<CredentialSupportedObject>())
@@ -314,6 +328,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           ]),
           () => new ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

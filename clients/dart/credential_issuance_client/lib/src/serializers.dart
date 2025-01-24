@@ -19,8 +19,14 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidd
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_issuance_id_claimed_credential_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config400_response.dart';
@@ -85,8 +91,14 @@ part 'serializers.g.dart';
   ChangeCredentialStatus400Response,
   ChangeCredentialStatusInput,
   ChangeStatusForbiddenError,
+  CisConfigurationWebhookSetting,
+  CisConfigurationWebhookSettingEndpoint,
+  ClaimedCredentialListResponse,
+  ClaimedCredentialResponse,
   CorsGenerateCredentialsOK,
+  CorsGetClaimedCredentialsOK,
   CorsGetCredentialOfferOK,
+  CorsGetIssuanceIdClaimedCredentialOK,
   CorsGetWellKnownOpenIdCredentialIssuerOK,
   CreateCredentialInput,
   CreateIssuanceConfig400Response,
@@ -144,6 +156,10 @@ part 'serializers.g.dart';
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        () => MapBuilder<String, JsonObject>(),
+      )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

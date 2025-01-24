@@ -62,7 +62,6 @@ class TestConsumerMetadataDto(unittest.TestCase):
                 modified_at = '',
                 created_by = '',
                 modified_by = '',
-                description = '',
                 type = 'VC_ROOT',
                 consumed_file_storage = 1.337,
         )

@@ -95,7 +95,7 @@ abstract class NodeDto  {
 
   /// Description of the node
   @BuiltValueField(wireName: r'description')
-  String get description;
+  String? get description;
 
   @BuiltValueField(wireName: r'type')
   NodeType get type;
@@ -214,11 +214,13 @@ class _$NodeDtoSerializer implements PrimitiveSerializer<NodeDto> {
       object.modifiedBy,
       specifiedType: const FullType(String),
     );
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'type';
     yield serializers.serialize(
       object.type,
