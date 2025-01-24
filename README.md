@@ -1,60 +1,78 @@
 # Affinidi Trust Development Kit (Affinidi TDK)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![CodeQL](https://github.com/affinidi/affinidi-tdk/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/affinidi/affinidi-tdk/actions/workflows/github-code-scanning/codeql?branch=main)
 [![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers seamless entry into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
+The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://www.affinidi.com/product/affinidi-elements) and [Frameworks](https://www.affinidi.com/developer#lota-framework) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://www.affinidi.com/get-started).
 
 ## How do I use Affinidi TDK?
 
-The Affinidi TDK provides three type of modules:
+The Affinidi TDK provides three types of modules:
 
 - [Clients](clients), which offer methods to access Affinidi Elements services like Credential Issuance, Credential Verification, and Login Configurations, among others.
 - [Packages](packages), which are commonly used utilities/helpers that are self-contained and composable.
 - [Libraries](libs), which are high-level abstractions that combine logic and data to perform necessary business logic functionalities.
 
-Each module has its own README that you can check to better understand how to integrate it into your application.
+## Requirements
+
+To use the Affinidi TDK, you must have the recommended version of the supported programming language.
+
+| TypeScript           | Python             | Dart             | PHP             | Java             |
+|----------------------|----------------------|----------------------|----------------------|----------------------|
+| ![NodeJS](https://img.shields.io/badge/NodeJS-%E2%89%A5%2018.0-52a447?labelColor=555555&style=flat-square) | ![Python](https://img.shields.io/badge/Python-%E2%89%A5%203.7-52a447?labelColor=555555&style=flat-square) | ![Dart](https://img.shields.io/badge/Dart-%E2%89%A5%203.6-52a447?labelColor=555555&style=flat-square) | ![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%207.4-52a447?labelColor=555555&style=flat-square) | ![Java](https://img.shields.io/badge/Java-%E2%89%A5%201.8-52a447?labelColor=555555&style=flat-square) |
+
 
 ## Available modules
 
-The Affinidi TDK offers several modules depending on the type of application you are using and the programming language.
+The Affinidi TDK offers several modules depending on the type of application you are building and the programming language you are using.
 
-### For vault applications
+### Building vault applications
 
-If you are building a vault application that manages user's data, you will be interested in the following packages:
+If you are building a vault application that manages user's data and provides file management capability, use the following packages:
 
-|                           | TypeScript                                               | Dart                                               |
-| ------------------------- | -------------------------------------------------------- | -------------------------------------------------- |
-| **Packages**              |                                                          |                                                    |
-| consumer-auth-provider    | 🔴                                                       | [🟡 Link](packages/dart/consumer_auth_provider/)   |
-| **Clients**               |                                                          |                                                    |
-| vault-data-manager-client | [🟡 Link](clients/typescript/vault-data-manager-client/) | [🟡 Link](clients/dart/vault_data_manager_client/) |
+|                           | TypeScript           | Python             | Dart             | PHP             | Java             |
+| ------------------------- | ---------------------| -----------------| -----------------| -----------------| -----------------|
+| **Packages**              |                      |                  |                  |                  |                  |
+| consumer-auth-provider    | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat)    | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart/consumer_auth_provider) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat)    | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat)    |
+| **Clients**               |                      |                                                    |
+| vault-data-manager-client | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/vault-data-manager-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/vault_data_manager_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/vault_data_manager_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/VaultDataManagerClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/vault.data.manager.client) |
 
-### For issuer/verifier applications
+### Building issuer/verifier applications
 
-If you are building a site that issues or requests data from the user vaults you will be interested in the following packages:
+If you are building a site that issues credentials or requests data from the user's vault (e.g. Affinidi Vault), use the following packages:
 
-|                                | TypeScript                                                    | Python                                                    | Dart                                                    | PHP                                                                                                        |
-| ------------------------------ | ------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Packages**                   |                                                               |                                                           |                                                         |
-| auth-provider                  | [🟢 Link](packages/jsii/auth-provider/)                       | 🟢                                                        | [🟡 Link](packages/dart/auth_provider/)                 | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/AuthProvider)                         |
-| common                         | [🟢 Link](packages/jsii/common/)                              | 🟢                                                        | 🔴                                                      | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Common)                               |
+|                                | TypeScript | Python | Dart | PHP | Java |
+| ------------------------------ | ---------- | ------ | ---- | --- | ---- |
+| **Packages**                   |            |        |      |     |      |
+| auth-provider                  | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/jsii/auth-provider) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/jsii/auth-provider) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart/auth_provider) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/AuthProvider) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/java/auth.provider) |
+| common                         | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/jsii/common) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/jsii/common) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart/common) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Common/) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/packages/java/common) |
 | **Clients**                    |                                                               |                                                           |                                                         |
-| credential-issuance-client     | [🟢 Link](clients/typescript/credential-issuance-client/)     | [🟢 Link](clients/python/credential_issuance_client/)     | [🟡 Link](clients/dart/credential_issuance_client/)     | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialIssuanceClient)     |
-| credential-verification-client | [🟢 Link](clients/typescript/credential-verification-client/) | [🟢 Link](clients/python/credential_verification_client/) | [🟡 Link](clients/dart/credential_verification_client/) | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialVerificationClient) |
-| iam-client                     | [🟢 Link](clients/typescript/iam-client/)                     | [🟢 Link](clients/python/iam_client/)                     | [🟡 Link](clients/dart/iam_client/)                     | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IamClient)                    |
-| iota-client                    | [🟢 Link](clients/typescript/iota-client/)                    | [🟢 Link](clients/python/iota_client/)                    | [🟡 Link](clients/dart/iota_client/)                    | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IotaClient)                   |
-| login-configuration-client     | [🟢 Link](clients/typescript/login-configuration-client/)     | [🟢 Link](clients/python/login_configuration_client/)     | [🟡 Link](clients/dart/login_configuration_client/)     | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/LoginConfigurationClient)     |
-| wallets-client                 | [🟢 Link](clients/typescript/wallets-client/)                 | [🟢 Link](clients/python/wallets_client/)                 | [🟡 Link](clients/dart/wallets_client/)                 | [🟢 Link](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/WalletsClient)                |
+| credential-issuance-client     | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/credential_issuance_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/credential_issuance_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialIssuanceClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/credential.issuance.client) |
+| credential-verification-client | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/credential_verification_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/credential_verification_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/CredentialVerificationClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/credential.verification.client) |
+| iam-client                     | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iam-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/iam_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/iam_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IamClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/iam.client) |
+| iota-client                    | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iota-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/iota_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/iota_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/IotaClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/iota.client) |
+| login-configuration-client     | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/login-configuration-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/login_configuration_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/login_configuration_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/LoginConfigurationClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/login.configuration.client) |
+| wallets-client                 | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/wallets-client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/python/wallets_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-FFEA00?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/dart/wallets_client) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk-php/tree/main/src/Clients/WalletsClient) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/clients/java/wallets.client) |
 | **Libraries**                  |                                                               |                                                           |                                                         |
-| iota-browser                   | [🟢 Link](libs/iota-browser/)                                 | 🔴                                                        | 🔴                                                      | 🔴                                                                                                         |
-| iota-core                      | [🟢 Link](libs/iota-core/)                                    | 🟢                                                        | 🔴                                                      | 🔴                                                                                                         |
+| iota-browser                   | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-browser) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) |
+| iota-core                      | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-core) | [![◯](https://img.shields.io/badge/%E2%97%AF-52a447?style=flat)](https://github.com/affinidi/affinidi-tdk/tree/main/libs/iota-core) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) | ![◯](https://img.shields.io/badge/%E2%97%AF-e74c3c?style=flat) |
 
-<br />
-🟢 Supported <br />
-🟡 Experimental <br />
-🔴 Not supported
+Click on the green and yellow boxes to view the source code of each module per language.
+
+![◯](https://img.shields.io/badge/%E2%97%AF-Supported-2ecc71?labelColor=52a447&style=flat)
+![◯](https://img.shields.io/badge/%E2%97%AF-Experimental-f9e79f?labelColor=FFEA00&style=flat)
+![◯](https://img.shields.io/badge/%E2%97%AF-Unsupported-ec7063?labelColor=e74c3c&style=flat)
+
+## Published on
+
+Affinidi publishes TDK modules to the following package repositories.
+
+| TypeScript           | Python             | Dart             | PHP             | Java             |
+|----------------------|----------------------|----------------------|----------------------|----------------------|
+| [![⚑](https://img.shields.io/badge/%E2%9A%91-npmjs.com-FF7139?labelColor=777777&style=flat-square)](https://www.npmjs.com/search?q=affinidi-tdk) | [![⚑](https://img.shields.io/badge/%E2%9A%91-pypi.org-FF7139?labelColor=777777&style=flat-square)](https://pypi.org/user/affinidi/) | TBD | [![⚑](https://img.shields.io/badge/%E2%9A%91-packagist.org-FF7139?labelColor=777777&style=flat-square)](https://packagist.org/packages/affinidi-tdk/affinidi-tdk-php) | [![⚑](https://img.shields.io/badge/%E2%9A%91-central.sonatype.com-FF7139?labelColor=777777&style=flat-square&link=https://central.sonatype.com/namespace/com.affinidi.tdk)](https://central.sonatype.com/namespace/com.affinidi.tdk)
+
 
 ## Documentation
 
