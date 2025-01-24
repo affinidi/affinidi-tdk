@@ -103,7 +103,7 @@ class _$$NodeDto extends $NodeDto {
   @override
   final String modifiedBy;
   @override
-  final String description;
+  final String? description;
   @override
   final NodeType type;
   @override
@@ -135,7 +135,7 @@ class _$$NodeDto extends $NodeDto {
       required this.modifiedAt,
       required this.createdBy,
       required this.modifiedBy,
-      required this.description,
+      this.description,
       required this.type,
       this.link,
       this.schema,
@@ -157,8 +157,6 @@ class _$$NodeDto extends $NodeDto {
     BuiltValueNullFieldError.checkNotNull(createdBy, r'$NodeDto', 'createdBy');
     BuiltValueNullFieldError.checkNotNull(
         modifiedBy, r'$NodeDto', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'$NodeDto', 'description');
     BuiltValueNullFieldError.checkNotNull(type, r'$NodeDto', 'type');
   }
 
@@ -425,8 +423,7 @@ class $NodeDtoBuilder
                 createdBy, r'$NodeDto', 'createdBy'),
             modifiedBy: BuiltValueNullFieldError.checkNotNull(
                 modifiedBy, r'$NodeDto', 'modifiedBy'),
-            description: BuiltValueNullFieldError.checkNotNull(
-                description, r'$NodeDto', 'description'),
+            description: description,
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'$NodeDto', 'type'),
             link: link,

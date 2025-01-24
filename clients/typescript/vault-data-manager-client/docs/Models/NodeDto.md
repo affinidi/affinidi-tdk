@@ -18,7 +18,7 @@
 | **modifiedAt**          | **String**                      | modification date/time of the node                                          | [default to null]            |
 | **createdBy**           | **String**                      | Identifier of the user who created the node                                 | [default to null]            |
 | **modifiedBy**          | **String**                      | Identifier of the user who last updated the node                            | [default to null]            |
-| **description**         | **String**                      | Description of the node                                                     | [default to null]            |
+| **description**         | **String**                      | Description of the node                                                     | [optional] [default to null] |
 | **type**                | [**NodeType**](NodeType.md)     |                                                                             | [default to null]            |
 | **link**                | **String**                      | id of the file, used for FILE node only                                     | [optional] [default to null] |
 | **schema**              | **String**                      | name of the schema, used for PROFILE node only                              | [optional] [default to null] |
