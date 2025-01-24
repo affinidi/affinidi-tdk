@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.31.0...@affinidi-tdk/auth-provider-v1.31.1) (2025-01-24)
+
+
+### Bug Fixes
+
+* cleanup tools ([#509](https://github.com/affinidi/affinidi-tdk/issues/509)) ([4c70188](https://github.com/affinidi/affinidi-tdk/commit/4c7018842e06c66cd52e0c14a2fb1b26b30dfc25))
+
 # [1.31.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.30.0...@affinidi-tdk/auth-provider-v1.31.0) (2025-01-13)
 
 
