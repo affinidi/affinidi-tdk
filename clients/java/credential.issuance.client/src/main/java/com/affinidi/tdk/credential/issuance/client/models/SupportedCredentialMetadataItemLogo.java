@@ -29,26 +29,25 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * SupportedCredentialMetadataDisplayInnerLogo
+ * SupportedCredentialMetadataItemLogo
  */
 @JsonPropertyOrder({
-  SupportedCredentialMetadataDisplayInnerLogo.JSON_PROPERTY_URL,
-  SupportedCredentialMetadataDisplayInnerLogo.JSON_PROPERTY_ALT_TEXT
+  SupportedCredentialMetadataItemLogo.JSON_PROPERTY_URL,
+  SupportedCredentialMetadataItemLogo.JSON_PROPERTY_ALT_TEXT
 })
-@JsonTypeName("SupportedCredentialMetadata_display_inner_logo")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class SupportedCredentialMetadataDisplayInnerLogo extends HashMap<String, Object> {
+public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
   public static final String JSON_PROPERTY_ALT_TEXT = "altText";
   private String altText;
 
-  public SupportedCredentialMetadataDisplayInnerLogo() {
+  public SupportedCredentialMetadataItemLogo() {
 
   }
 
-  public SupportedCredentialMetadataDisplayInnerLogo url(String url) {
+  public SupportedCredentialMetadataItemLogo url(String url) {
     
     this.url = url;
     return this;
@@ -73,7 +72,7 @@ public class SupportedCredentialMetadataDisplayInnerLogo extends HashMap<String,
     this.url = url;
   }
 
-  public SupportedCredentialMetadataDisplayInnerLogo altText(String altText) {
+  public SupportedCredentialMetadataItemLogo altText(String altText) {
     
     this.altText = altText;
     return this;
@@ -106,9 +105,9 @@ public class SupportedCredentialMetadataDisplayInnerLogo extends HashMap<String,
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SupportedCredentialMetadataDisplayInnerLogo supportedCredentialMetadataDisplayInnerLogo = (SupportedCredentialMetadataDisplayInnerLogo) o;
-    return Objects.equals(this.url, supportedCredentialMetadataDisplayInnerLogo.url) &&
-        Objects.equals(this.altText, supportedCredentialMetadataDisplayInnerLogo.altText) &&
+    SupportedCredentialMetadataItemLogo supportedCredentialMetadataItemLogo = (SupportedCredentialMetadataItemLogo) o;
+    return Objects.equals(this.url, supportedCredentialMetadataItemLogo.url) &&
+        Objects.equals(this.altText, supportedCredentialMetadataItemLogo.altText) &&
         super.equals(o);
   }
 
@@ -120,7 +119,7 @@ public class SupportedCredentialMetadataDisplayInnerLogo extends HashMap<String,
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SupportedCredentialMetadataDisplayInnerLogo {\n");
+    sb.append("class SupportedCredentialMetadataItemLogo {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");

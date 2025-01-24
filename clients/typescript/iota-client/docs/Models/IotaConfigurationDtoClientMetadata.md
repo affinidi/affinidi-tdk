@@ -1,4 +1,4 @@
-# IotaConfigurationDto_clientMetadata
+# IotaConfigurationDtoClientMetadata
 
 ## Properties
 

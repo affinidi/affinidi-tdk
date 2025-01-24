@@ -247,7 +247,7 @@ class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<Up
             value,
             specifiedType: const FullType(IotaConfigurationDtoClientMetadata),
           ) as IotaConfigurationDtoClientMetadata;
-          result.clientMetadata = valueDes;
+          result.clientMetadata = valueDes.toBuilder();
           break;
         case r'mode':
           final valueDes = serializers.deserialize(

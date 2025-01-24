@@ -1,4 +1,4 @@
-# affinidi_tdk_credential_issuance_client.model.SupportedCredentialMetadataDisplayInnerLogo
+# affinidi_tdk_credential_issuance_client.model.SupportedCredentialMetadataItemLogo
 
 ## Load the model package
 

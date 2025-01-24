@@ -2517,6 +2517,19 @@ components:
         - name
         - traceId
       type: object
+    SupportedCredentialMetadataItemLogo:
+      additionalProperties: true
+      example:
+        altText: altText
+        url: url
+      properties:
+        url:
+          type: string
+        altText:
+          type: string
+      required:
+        - url
+      type: object
     getCredentialOffer_400_response:
       oneOf:
         - $ref: '#/components/schemas/InvalidParameterError'
@@ -2685,19 +2698,6 @@ components:
           type: number
         - description: ISO Duration string (when VC format is JWT)
           type: string
-    SupportedCredentialMetadata_display_inner_logo:
-      additionalProperties: true
-      example:
-        altText: altText
-        url: url
-      properties:
-        url:
-          type: string
-        altText:
-          type: string
-      required:
-        - url
-      type: object
     SupportedCredentialMetadata_display_inner:
       additionalProperties: true
       example:
@@ -2716,7 +2716,7 @@ components:
           maxLength: 16
           type: string
         logo:
-          $ref: '#/components/schemas/SupportedCredentialMetadata_display_inner_logo'
+          $ref: '#/components/schemas/SupportedCredentialMetadataItemLogo'
         backgroundColor:
           type: string
         textColor:

@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
-import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadataDisplayInnerLogo;
+import com.affinidi.tdk.credential.issuance.client.models.SupportedCredentialMetadataItemLogo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

@@ -2080,10 +2080,10 @@ export interface SupportedCredentialMetadataDisplayInner {
   locale?: string
   /**
    *
-   * @type {SupportedCredentialMetadataDisplayInnerLogo}
+   * @type {SupportedCredentialMetadataItemLogo}
    * @memberof SupportedCredentialMetadataDisplayInner
    */
-  logo?: SupportedCredentialMetadataDisplayInnerLogo
+  logo?: SupportedCredentialMetadataItemLogo
   /**
    *
    * @type {string}
@@ -2100,21 +2100,21 @@ export interface SupportedCredentialMetadataDisplayInner {
 /**
  *
  * @export
- * @interface SupportedCredentialMetadataDisplayInnerLogo
+ * @interface SupportedCredentialMetadataItemLogo
  */
-export interface SupportedCredentialMetadataDisplayInnerLogo {
+export interface SupportedCredentialMetadataItemLogo {
   [key: string]: any
 
   /**
    *
    * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInnerLogo
+   * @memberof SupportedCredentialMetadataItemLogo
    */
   url: string
   /**
    *
    * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInnerLogo
+   * @memberof SupportedCredentialMetadataItemLogo
    */
   altText?: string
 }
