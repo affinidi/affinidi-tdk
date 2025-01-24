@@ -1,4 +1,6 @@
 .gitignore
+.pubignore
+LICENSE
 README.md
 analysis_options.yaml
 doc/CreateWalletInput.md
@@ -70,6 +72,7 @@ lib/src/model/wallet_dto.dart
 lib/src/model/wallet_dto_keys_inner.dart
 lib/src/model/wallets_list_dto.dart
 lib/src/serializers.dart
+project.json
 pubspec.yaml
 test/create_wallet_input_test.dart
 test/create_wallet_response_test.dart

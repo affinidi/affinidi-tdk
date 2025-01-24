@@ -1,4 +1,6 @@
 .gitignore
+.pubignore
+LICENSE
 README.md
 analysis_options.yaml
 doc/Constraints.md
@@ -96,6 +98,7 @@ lib/src/model/w3c_presentation_context.dart
 lib/src/model/w3c_presentation_context_one_of_inner.dart
 lib/src/model/w3c_proof.dart
 lib/src/serializers.dart
+project.json
 pubspec.yaml
 test/constraints_statuses_test.dart
 test/constraints_test.dart

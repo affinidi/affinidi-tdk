@@ -1,4 +1,6 @@
 .gitignore
+.pubignore
+LICENSE
 README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
@@ -112,6 +114,7 @@ lib/src/model/user_dto.dart
 lib/src/model/user_list.dart
 lib/src/model/whoami_dto.dart
 lib/src/serializers.dart
+project.json
 pubspec.yaml
 test/action_forbidden_error_test.dart
 test/add_user_to_project_input_test.dart

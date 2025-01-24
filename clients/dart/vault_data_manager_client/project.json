@@ -1,0 +1,39 @@
+{
+  "name": "@affinidi-tdk/vault-data-manager-client-dart",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "{projectRoot}",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "dart pub get && dart analyze"
+      }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": false,
+        "git": false,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"],
+        "plugins": [
+          [
+            "@semantic-release/exec",
+            {
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "sed -i \"s|^version: .*|version: ${nextRelease.version}|\" pubspec.yaml",
+              "publishCmd": "dart pub publish --force",
+              "verifyConditionsCmd": "dart --version"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "tags": ["lang:dart", "kind:client"]
+}
