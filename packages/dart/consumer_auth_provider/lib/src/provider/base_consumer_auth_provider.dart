@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:base_codecs/base_codecs.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 import 'consumer_auth_provider_abstract.dart';
@@ -36,7 +35,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         encryptionKeyHex: _encryptionKey,
       );
 
-      _consumerToken = await _tokenProvider.getToken(utf8.encode(seed));
+      _consumerToken = await _tokenProvider.getToken(hexDecode(seed));
 
       return _consumerToken!;
     } catch (e) {
