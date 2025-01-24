@@ -18,7 +18,7 @@
 | **modified_at**           | **str**                         | modification date/time of the node                                          |
 | **created_by**            | **str**                         | Identifier of the user who created the node                                 |
 | **modified_by**           | **str**                         | Identifier of the user who last updated the node                            |
-| **description**           | **str**                         | Description of the node                                                     |
+| **description**           | **str**                         | Description of the node                                                     | [optional] |
 | **type**                  | [**NodeType**](NodeType.md)     |                                                                             |
 | **link**                  | **str**                         | id of the file, used for FILE node only                                     | [optional] |
 | **var_schema**            | **str**                         | name of the schema, used for PROFILE node only                              | [optional] |

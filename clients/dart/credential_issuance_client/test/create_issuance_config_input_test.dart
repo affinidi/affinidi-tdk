@@ -52,5 +52,10 @@ void main() {
       // TODO
     });
 
+    // CisConfigurationWebhookSetting webhook
+    test('to test the property `webhook`', () async {
+      // TODO
+    });
+
   });
 }

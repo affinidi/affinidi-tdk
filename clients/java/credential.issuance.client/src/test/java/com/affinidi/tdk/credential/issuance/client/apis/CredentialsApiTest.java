@@ -14,10 +14,14 @@
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
+import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialListResponse;
+import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.CreateCredentialInput;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.GenerateCredentials400Response;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidJwtTokenError;
+import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
+import com.affinidi.tdk.credential.issuance.client.models.NotFoundError;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -48,6 +52,42 @@ public class CredentialsApiTest {
         String projectId = null;
         CreateCredentialInput createCredentialInput = null;
         CredentialResponse response = api.generateCredentials(projectId, createCredentialInput);
+
+        // TODO: test validations
+    }
+    /**
+     * Get claimed credential in the specified range
+     *
+     * Get claimed credential in the specified range
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getClaimedCredentialsTest() throws ApiException {
+        String projectId = null;
+        String configurationId = null;
+        String rangeStartTime = null;
+        String rangeEndTime = null;
+        String next = null;
+        ClaimedCredentialListResponse response = api.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next);
+
+        // TODO: test validations
+    }
+    /**
+     * Get claimed VC linked to the issuanceId
+     *
+     * Get claimed VC linked to the issuanceId
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getIssuanceIdClaimedCredentialTest() throws ApiException {
+        String projectId = null;
+        String configurationId = null;
+        String issuanceId = null;
+        ClaimedCredentialResponse response = api.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId);
 
         // TODO: test validations
     }

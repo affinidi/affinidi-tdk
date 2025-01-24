@@ -21,6 +21,7 @@ import json
 
 from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist, validator
+from affinidi_tdk_credential_issuance_client.models.cis_configuration_webhook_setting import CisConfigurationWebhookSetting
 from affinidi_tdk_credential_issuance_client.models.credential_supported_object import CredentialSupportedObject
 
 class IssuanceConfigDto(BaseModel):
@@ -40,7 +41,8 @@ class IssuanceConfigDto(BaseModel):
     issuer_metadata: Optional[Dict[str, Any]] = Field(default=None, alias="issuerMetadata", description="Issuer public information wallet may want to show to user during consent confirmation")
     version: Optional[Union[StrictFloat, StrictInt]] = None
     return_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="returnUris", description="List of allowed URIs to be returned to after issuance")
-    __properties = ["id", "name", "description", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata", "version", "returnUris"]
+    webhook: Optional[CisConfigurationWebhookSetting] = None
+    __properties = ["id", "name", "description", "issuerDid", "issuerWalletId", "credentialOfferDuration", "cNonceDuration", "format", "issuerUri", "credentialSupported", "issuerMetadata", "version", "returnUris", "webhook"]
 
     @validator('format')
     def format_validate_enum(cls, value):
@@ -83,6 +85,9 @@ class IssuanceConfigDto(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['credentialSupported'] = _items
+        # override the default output from pydantic by calling `to_dict()` of webhook
+        if self.webhook:
+            _dict['webhook'] = self.webhook.to_dict()
         return _dict
 
     @classmethod
@@ -107,7 +112,8 @@ class IssuanceConfigDto(BaseModel):
             "credential_supported": [CredentialSupportedObject.from_dict(_item) for _item in obj.get("credentialSupported")] if obj.get("credentialSupported") is not None else None,
             "issuer_metadata": obj.get("issuerMetadata"),
             "version": obj.get("version"),
-            "return_uris": obj.get("returnUris")
+            "return_uris": obj.get("returnUris"),
+            "webhook": CisConfigurationWebhookSetting.from_dict(obj.get("webhook")) if obj.get("webhook") is not None else None
         })
         return _obj
 

@@ -14,5 +14,23 @@ void main() {
       // TODO
     });
 
+    // Get claimed credential in the specified range
+    //
+    // Get claimed credential in the specified range
+    //
+    //Future<ClaimedCredentialListResponse> getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, { String rangeEndTime, String next }) async
+    test('test getClaimedCredentials', () async {
+      // TODO
+    });
+
+    // Get claimed VC linked to the issuanceId
+    //
+    // Get claimed VC linked to the issuanceId
+    //
+    //Future<ClaimedCredentialResponse> getIssuanceIdClaimedCredential(String projectId, String configurationId, String issuanceId) async
+    test('test getIssuanceIdClaimedCredential', () async {
+      // TODO
+    });
+
   });
 }

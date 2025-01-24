@@ -20,10 +20,14 @@ import com.affinidi.tdk.credential.issuance.client.BaseApi;
 import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
 
+import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialListResponse;
+import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.CreateCredentialInput;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.GenerateCredentials400Response;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidJwtTokenError;
+import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
+import com.affinidi.tdk.credential.issuance.client.models.NotFoundError;
 
 
 import java.util.ArrayList;
@@ -126,6 +130,194 @@ public class CredentialsApi extends BaseApi {
     );
   }
 
+  /**
+   * Get claimed credential in the specified range
+   * Get claimed credential in the specified range
+   * @param projectId project id (required)
+   * @param configurationId configuration id (required)
+   * @param rangeStartTime  (required)
+   * @param rangeEndTime  (optional)
+   * @param next  (optional)
+   * @return ClaimedCredentialListResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String next) throws ApiException {
+    return this.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get claimed credential in the specified range
+   * Get claimed credential in the specified range
+   * @param projectId project id (required)
+   * @param configurationId configuration id (required)
+   * @param rangeStartTime  (required)
+   * @param rangeEndTime  (optional)
+   * @param next  (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ClaimedCredentialListResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String next, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getClaimedCredentials");
+    }
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getClaimedCredentials");
+    }
+    
+    // verify the required parameter 'rangeStartTime' is set
+    if (rangeStartTime == null) {
+      throw new ApiException(400, "Missing the required parameter 'rangeStartTime' when calling getClaimedCredentials");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/configurations/{configurationId}/credentials"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("rangeStartTime", rangeStartTime));
+    localVarQueryParams.addAll(apiClient.parameterToPair("rangeEndTime", rangeEndTime));
+    localVarQueryParams.addAll(apiClient.parameterToPair("next", next));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<ClaimedCredentialListResponse> localVarReturnType = new TypeReference<ClaimedCredentialListResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Get claimed VC linked to the issuanceId
+   * Get claimed VC linked to the issuanceId
+   * @param projectId project id (required)
+   * @param configurationId configuration id (required)
+   * @param issuanceId issuance id (required)
+   * @return ClaimedCredentialResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(String projectId, String configurationId, String issuanceId) throws ApiException {
+    return this.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get claimed VC linked to the issuanceId
+   * Get claimed VC linked to the issuanceId
+   * @param projectId project id (required)
+   * @param configurationId configuration id (required)
+   * @param issuanceId issuance id (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ClaimedCredentialResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(String projectId, String configurationId, String issuanceId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getIssuanceIdClaimedCredential");
+    }
+    
+    // verify the required parameter 'configurationId' is set
+    if (configurationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getIssuanceIdClaimedCredential");
+    }
+    
+    // verify the required parameter 'issuanceId' is set
+    if (issuanceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'issuanceId' when calling getIssuanceIdClaimedCredential");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
+      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)))
+      .replaceAll("\\{" + "issuanceId" + "\\}", apiClient.escapeString(apiClient.parameterToString(issuanceId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<ClaimedCredentialResponse> localVarReturnType = new TypeReference<ClaimedCredentialResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
   @Override
   public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
     String localVarPath = url.replace(apiClient.getBaseURL(), "");
@@ -144,11 +336,11 @@ public class CredentialsApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
     return apiClient.invokeAPI(
       localVarPath,

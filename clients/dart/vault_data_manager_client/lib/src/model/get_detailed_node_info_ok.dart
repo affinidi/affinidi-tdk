@@ -103,11 +103,13 @@ class _$GetDetailedNodeInfoOKSerializer implements PrimitiveSerializer<GetDetail
         specifiedType: const FullType(String),
       );
     }
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'parentNodeId';
     yield serializers.serialize(
       object.parentNodeId,
