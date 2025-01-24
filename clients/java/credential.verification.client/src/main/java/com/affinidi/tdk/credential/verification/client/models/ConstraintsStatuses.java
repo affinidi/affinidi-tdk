@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -30,191 +29,188 @@ import java.util.StringJoiner;
 /**
  * ConstraintsStatuses
  */
-@JsonPropertyOrder({
-  ConstraintsStatuses.JSON_PROPERTY_ACTIVE,
-  ConstraintsStatuses.JSON_PROPERTY_SUSPENDED,
-  ConstraintsStatuses.JSON_PROPERTY_REVOKED
-})
+@JsonPropertyOrder({ ConstraintsStatuses.JSON_PROPERTY_ACTIVE, ConstraintsStatuses.JSON_PROPERTY_SUSPENDED,
+        ConstraintsStatuses.JSON_PROPERTY_REVOKED })
 @JsonTypeName("Constraints_statuses")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConstraintsStatuses {
-  public static final String JSON_PROPERTY_ACTIVE = "active";
-  private PdStatus active;
+    public static final String JSON_PROPERTY_ACTIVE = "active";
+    private PdStatus active;
 
-  public static final String JSON_PROPERTY_SUSPENDED = "suspended";
-  private PdStatus suspended;
+    public static final String JSON_PROPERTY_SUSPENDED = "suspended";
+    private PdStatus suspended;
 
-  public static final String JSON_PROPERTY_REVOKED = "revoked";
-  private PdStatus revoked;
+    public static final String JSON_PROPERTY_REVOKED = "revoked";
+    private PdStatus revoked;
 
-  public ConstraintsStatuses() {
-  }
-
-  public ConstraintsStatuses active(PdStatus active) {
-    
-    this.active = active;
-    return this;
-  }
-
-  /**
-   * Get active
-   * @return active
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACTIVE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public PdStatus getActive() {
-    return active;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ACTIVE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActive(PdStatus active) {
-    this.active = active;
-  }
-
-  public ConstraintsStatuses suspended(PdStatus suspended) {
-    
-    this.suspended = suspended;
-    return this;
-  }
-
-  /**
-   * Get suspended
-   * @return suspended
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SUSPENDED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public PdStatus getSuspended() {
-    return suspended;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SUSPENDED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuspended(PdStatus suspended) {
-    this.suspended = suspended;
-  }
-
-  public ConstraintsStatuses revoked(PdStatus revoked) {
-    
-    this.revoked = revoked;
-    return this;
-  }
-
-  /**
-   * Get revoked
-   * @return revoked
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REVOKED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public PdStatus getRevoked() {
-    return revoked;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REVOKED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevoked(PdStatus revoked) {
-    this.revoked = revoked;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ConstraintsStatuses constraintsStatuses = (ConstraintsStatuses) o;
-    return Objects.equals(this.active, constraintsStatuses.active) &&
-        Objects.equals(this.suspended, constraintsStatuses.suspended) &&
-        Objects.equals(this.revoked, constraintsStatuses.revoked);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(active, suspended, revoked);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConstraintsStatuses {\n");
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
-    sb.append("    suspended: ").append(toIndentedString(suspended)).append("\n");
-    sb.append("    revoked: ").append(toIndentedString(revoked)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ConstraintsStatuses() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ConstraintsStatuses active(PdStatus active) {
 
-    // add `active` to the URL query string
-    if (getActive() != null) {
-      joiner.add(getActive().toUrlQueryString(prefix + "active" + suffix));
+        this.active = active;
+        return this;
     }
 
-    // add `suspended` to the URL query string
-    if (getSuspended() != null) {
-      joiner.add(getSuspended().toUrlQueryString(prefix + "suspended" + suffix));
+    /**
+     * Get active
+     *
+     * @return active
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ACTIVE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public PdStatus getActive() {
+        return active;
     }
 
-    // add `revoked` to the URL query string
-    if (getRevoked() != null) {
-      joiner.add(getRevoked().toUrlQueryString(prefix + "revoked" + suffix));
+    @JsonProperty(JSON_PROPERTY_ACTIVE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setActive(PdStatus active) {
+        this.active = active;
     }
 
-    return joiner.toString();
-  }
+    public ConstraintsStatuses suspended(PdStatus suspended) {
+
+        this.suspended = suspended;
+        return this;
+    }
+
+    /**
+     * Get suspended
+     *
+     * @return suspended
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SUSPENDED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public PdStatus getSuspended() {
+        return suspended;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SUSPENDED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSuspended(PdStatus suspended) {
+        this.suspended = suspended;
+    }
+
+    public ConstraintsStatuses revoked(PdStatus revoked) {
+
+        this.revoked = revoked;
+        return this;
+    }
+
+    /**
+     * Get revoked
+     *
+     * @return revoked
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REVOKED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public PdStatus getRevoked() {
+        return revoked;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REVOKED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRevoked(PdStatus revoked) {
+        this.revoked = revoked;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ConstraintsStatuses constraintsStatuses = (ConstraintsStatuses) o;
+        return Objects.equals(this.active, constraintsStatuses.active)
+                && Objects.equals(this.suspended, constraintsStatuses.suspended)
+                && Objects.equals(this.revoked, constraintsStatuses.revoked);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(active, suspended, revoked);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ConstraintsStatuses {\n");
+        sb.append("    active: ").append(toIndentedString(active)).append("\n");
+        sb.append("    suspended: ").append(toIndentedString(suspended)).append("\n");
+        sb.append("    revoked: ").append(toIndentedString(revoked)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `active` to the URL query string
+        if (getActive() != null) {
+            joiner.add(getActive().toUrlQueryString(prefix + "active" + suffix));
+        }
+
+        // add `suspended` to the URL query string
+        if (getSuspended() != null) {
+            joiner.add(getSuspended().toUrlQueryString(prefix + "suspended" + suffix));
+        }
+
+        // add `revoked` to the URL query string
+        if (getRevoked() != null) {
+            joiner.add(getRevoked().toUrlQueryString(prefix + "revoked" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

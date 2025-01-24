@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.apis;
 
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
@@ -50,7 +49,7 @@ public class NodesApiTest {
      * creates node
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createNodeTest() throws ApiException {
@@ -59,11 +58,13 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Mark a node and any attached files for deletion. If the node is a folder, perform the same action for all its children if the profile type is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN node.
+     * Mark a node and any attached files for deletion. If the node is a folder, perform the same action for all its
+     * children if the profile type is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN node.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteNodeTest() throws ApiException {
@@ -72,11 +73,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Gets detailed information about the node
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getDetailedNodeInfoTest() throws ApiException {
@@ -86,11 +88,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Initialize root node, and TRASH_BIN
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void initNodesTest() throws ApiException {
@@ -98,11 +101,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * lists children of the node
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listNodeChildrenTest() throws ApiException {
@@ -113,11 +117,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * lists children of the root node for the consumer
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listRootNodeChildrenTest() throws ApiException {
@@ -125,11 +130,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Moves a node from source to destination along with the hierarchy
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void moveNodeTest() throws ApiException {
@@ -139,11 +145,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Permanently delete a node from TRASH_BIN, if the node is not in the TRASH_BIN it cannot delete.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void permanentlyDeleteNodeTest() throws ApiException {
@@ -153,11 +160,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Restore node marked for deletion from TRASH_BIN
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void restoreNodeFromTrashbinTest() throws ApiException {
@@ -168,11 +176,12 @@ public class NodesApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Updates a node
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateNodeTest() throws ApiException {

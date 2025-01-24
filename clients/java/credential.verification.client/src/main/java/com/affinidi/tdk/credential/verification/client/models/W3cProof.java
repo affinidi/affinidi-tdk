@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -33,420 +32,425 @@ import java.util.StringJoiner;
 /**
  * W3cProof
  */
-@JsonPropertyOrder({
-  W3cProof.JSON_PROPERTY_TYPE,
-  W3cProof.JSON_PROPERTY_CREATED,
-  W3cProof.JSON_PROPERTY_VERIFICATION_METHOD,
-  W3cProof.JSON_PROPERTY_PROOF_PURPOSE,
-  W3cProof.JSON_PROPERTY_JWS,
-  W3cProof.JSON_PROPERTY_PROOF_VALUE,
-  W3cProof.JSON_PROPERTY_NONCE
-})
+@JsonPropertyOrder({ W3cProof.JSON_PROPERTY_TYPE, W3cProof.JSON_PROPERTY_CREATED,
+        W3cProof.JSON_PROPERTY_VERIFICATION_METHOD, W3cProof.JSON_PROPERTY_PROOF_PURPOSE, W3cProof.JSON_PROPERTY_JWS,
+        W3cProof.JSON_PROPERTY_PROOF_VALUE, W3cProof.JSON_PROPERTY_NONCE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class W3cProof {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private JsonNullable<String> type = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_TYPE = "type";
+    private JsonNullable<String> type = JsonNullable.<String> undefined();
 
-  public static final String JSON_PROPERTY_CREATED = "created";
-  private JsonNullable<String> created = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_CREATED = "created";
+    private JsonNullable<String> created = JsonNullable.<String> undefined();
 
-  public static final String JSON_PROPERTY_VERIFICATION_METHOD = "verificationMethod";
-  private String verificationMethod;
+    public static final String JSON_PROPERTY_VERIFICATION_METHOD = "verificationMethod";
+    private String verificationMethod;
 
-  public static final String JSON_PROPERTY_PROOF_PURPOSE = "proofPurpose";
-  private String proofPurpose;
+    public static final String JSON_PROPERTY_PROOF_PURPOSE = "proofPurpose";
+    private String proofPurpose;
 
-  public static final String JSON_PROPERTY_JWS = "jws";
-  private JsonNullable<String> jws = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_JWS = "jws";
+    private JsonNullable<String> jws = JsonNullable.<String> undefined();
 
-  public static final String JSON_PROPERTY_PROOF_VALUE = "proofValue";
-  private JsonNullable<String> proofValue = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_PROOF_VALUE = "proofValue";
+    private JsonNullable<String> proofValue = JsonNullable.<String> undefined();
 
-  public static final String JSON_PROPERTY_NONCE = "nonce";
-  private JsonNullable<String> nonce = JsonNullable.<String>undefined();
+    public static final String JSON_PROPERTY_NONCE = "nonce";
+    private JsonNullable<String> nonce = JsonNullable.<String> undefined();
 
-  public W3cProof() {
-  }
+    public W3cProof() {
+    }
 
-  public W3cProof type(String type) {
-    this.type = JsonNullable.<String>of(type);
-    
-    return this;
-  }
+    public W3cProof type(String type) {
+        this.type = JsonNullable.<String> of(type);
 
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+        return this;
+    }
 
-  public String getType() {
+    /**
+     * Get type
+     *
+     * @return type
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getType() {
         return type.orElse(null);
-  }
+    }
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getType_JsonNullable() {
-    return type;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  public void setType_JsonNullable(JsonNullable<String> type) {
-    this.type = type;
-  }
+    public JsonNullable<String> getType_JsonNullable() {
+        return type;
+    }
 
-  public void setType(String type) {
-    this.type = JsonNullable.<String>of(type);
-  }
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    public void setType_JsonNullable(JsonNullable<String> type) {
+        this.type = type;
+    }
 
-  public W3cProof created(String created) {
-    this.created = JsonNullable.<String>of(created);
-    
-    return this;
-  }
+    public void setType(String type) {
+        this.type = JsonNullable.<String> of(type);
+    }
 
-  /**
-   * Get created
-   * @return created
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+    public W3cProof created(String created) {
+        this.created = JsonNullable.<String> of(created);
 
-  public String getCreated() {
+        return this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return created
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getCreated() {
         return created.orElse(null);
-  }
+    }
 
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    @JsonProperty(JSON_PROPERTY_CREATED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getCreated_JsonNullable() {
-    return created;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  public void setCreated_JsonNullable(JsonNullable<String> created) {
-    this.created = created;
-  }
+    public JsonNullable<String> getCreated_JsonNullable() {
+        return created;
+    }
 
-  public void setCreated(String created) {
-    this.created = JsonNullable.<String>of(created);
-  }
+    @JsonProperty(JSON_PROPERTY_CREATED)
+    public void setCreated_JsonNullable(JsonNullable<String> created) {
+        this.created = created;
+    }
 
-  public W3cProof verificationMethod(String verificationMethod) {
-    
-    this.verificationMethod = verificationMethod;
-    return this;
-  }
+    public void setCreated(String created) {
+        this.created = JsonNullable.<String> of(created);
+    }
 
-  /**
-   * Get verificationMethod
-   * @return verificationMethod
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public W3cProof verificationMethod(String verificationMethod) {
 
-  public String getVerificationMethod() {
-    return verificationMethod;
-  }
+        this.verificationMethod = verificationMethod;
+        return this;
+    }
 
+    /**
+     * Get verificationMethod
+     *
+     * @return verificationMethod
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerificationMethod(String verificationMethod) {
-    this.verificationMethod = verificationMethod;
-  }
+    public String getVerificationMethod() {
+        return verificationMethod;
+    }
 
-  public W3cProof proofPurpose(String proofPurpose) {
-    
-    this.proofPurpose = proofPurpose;
-    return this;
-  }
+    @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVerificationMethod(String verificationMethod) {
+        this.verificationMethod = verificationMethod;
+    }
 
-  /**
-   * Get proofPurpose
-   * @return proofPurpose
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROOF_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public W3cProof proofPurpose(String proofPurpose) {
 
-  public String getProofPurpose() {
-    return proofPurpose;
-  }
+        this.proofPurpose = proofPurpose;
+        return this;
+    }
 
+    /**
+     * Get proofPurpose
+     *
+     * @return proofPurpose
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROOF_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  @JsonProperty(JSON_PROPERTY_PROOF_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProofPurpose(String proofPurpose) {
-    this.proofPurpose = proofPurpose;
-  }
+    public String getProofPurpose() {
+        return proofPurpose;
+    }
 
-  public W3cProof jws(String jws) {
-    this.jws = JsonNullable.<String>of(jws);
-    
-    return this;
-  }
+    @JsonProperty(JSON_PROPERTY_PROOF_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProofPurpose(String proofPurpose) {
+        this.proofPurpose = proofPurpose;
+    }
 
-  /**
-   * Get jws
-   * @return jws
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+    public W3cProof jws(String jws) {
+        this.jws = JsonNullable.<String> of(jws);
 
-  public String getJws() {
+        return this;
+    }
+
+    /**
+     * Get jws
+     *
+     * @return jws
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getJws() {
         return jws.orElse(null);
-  }
+    }
 
-  @JsonProperty(JSON_PROPERTY_JWS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    @JsonProperty(JSON_PROPERTY_JWS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getJws_JsonNullable() {
-    return jws;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_JWS)
-  public void setJws_JsonNullable(JsonNullable<String> jws) {
-    this.jws = jws;
-  }
+    public JsonNullable<String> getJws_JsonNullable() {
+        return jws;
+    }
 
-  public void setJws(String jws) {
-    this.jws = JsonNullable.<String>of(jws);
-  }
+    @JsonProperty(JSON_PROPERTY_JWS)
+    public void setJws_JsonNullable(JsonNullable<String> jws) {
+        this.jws = jws;
+    }
 
-  public W3cProof proofValue(String proofValue) {
-    this.proofValue = JsonNullable.<String>of(proofValue);
-    
-    return this;
-  }
+    public void setJws(String jws) {
+        this.jws = JsonNullable.<String> of(jws);
+    }
 
-  /**
-   * Get proofValue
-   * @return proofValue
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+    public W3cProof proofValue(String proofValue) {
+        this.proofValue = JsonNullable.<String> of(proofValue);
 
-  public String getProofValue() {
+        return this;
+    }
+
+    /**
+     * Get proofValue
+     *
+     * @return proofValue
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getProofValue() {
         return proofValue.orElse(null);
-  }
+    }
 
-  @JsonProperty(JSON_PROPERTY_PROOF_VALUE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    @JsonProperty(JSON_PROPERTY_PROOF_VALUE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getProofValue_JsonNullable() {
-    return proofValue;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_PROOF_VALUE)
-  public void setProofValue_JsonNullable(JsonNullable<String> proofValue) {
-    this.proofValue = proofValue;
-  }
+    public JsonNullable<String> getProofValue_JsonNullable() {
+        return proofValue;
+    }
 
-  public void setProofValue(String proofValue) {
-    this.proofValue = JsonNullable.<String>of(proofValue);
-  }
+    @JsonProperty(JSON_PROPERTY_PROOF_VALUE)
+    public void setProofValue_JsonNullable(JsonNullable<String> proofValue) {
+        this.proofValue = proofValue;
+    }
 
-  public W3cProof nonce(String nonce) {
-    this.nonce = JsonNullable.<String>of(nonce);
-    
-    return this;
-  }
+    public void setProofValue(String proofValue) {
+        this.proofValue = JsonNullable.<String> of(proofValue);
+    }
 
-  /**
-   * Get nonce
-   * @return nonce
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
+    public W3cProof nonce(String nonce) {
+        this.nonce = JsonNullable.<String> of(nonce);
 
-  public String getNonce() {
+        return this;
+    }
+
+    /**
+     * Get nonce
+     *
+     * @return nonce
+     */
+    @javax.annotation.Nullable
+    @JsonIgnore
+
+    public String getNonce() {
         return nonce.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_NONCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<String> getNonce_JsonNullable() {
-    return nonce;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_NONCE)
-  public void setNonce_JsonNullable(JsonNullable<String> nonce) {
-    this.nonce = nonce;
-  }
-
-  public void setNonce(String nonce) {
-    this.nonce = JsonNullable.<String>of(nonce);
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    W3cProof w3cProof = (W3cProof) o;
-    return equalsNullable(this.type, w3cProof.type) &&
-        equalsNullable(this.created, w3cProof.created) &&
-        Objects.equals(this.verificationMethod, w3cProof.verificationMethod) &&
-        Objects.equals(this.proofPurpose, w3cProof.proofPurpose) &&
-        equalsNullable(this.jws, w3cProof.jws) &&
-        equalsNullable(this.proofValue, w3cProof.proofValue) &&
-        equalsNullable(this.nonce, w3cProof.nonce);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(hashCodeNullable(type), hashCodeNullable(created), verificationMethod, proofPurpose, hashCodeNullable(jws), hashCodeNullable(proofValue), hashCodeNullable(nonce));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class W3cProof {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
-    sb.append("    proofPurpose: ").append(toIndentedString(proofPurpose)).append("\n");
-    sb.append("    jws: ").append(toIndentedString(jws)).append("\n");
-    sb.append("    proofValue: ").append(toIndentedString(proofValue)).append("\n");
-    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    @JsonProperty(JSON_PROPERTY_NONCE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public JsonNullable<String> getNonce_JsonNullable() {
+        return nonce;
     }
 
-    // add `created` to the URL query string
-    if (getCreated() != null) {
-      try {
-        joiner.add(String.format("%screated%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreated()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_NONCE)
+    public void setNonce_JsonNullable(JsonNullable<String> nonce) {
+        this.nonce = nonce;
     }
 
-    // add `verificationMethod` to the URL query string
-    if (getVerificationMethod() != null) {
-      try {
-        joiner.add(String.format("%sverificationMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerificationMethod()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public void setNonce(String nonce) {
+        this.nonce = JsonNullable.<String> of(nonce);
     }
 
-    // add `proofPurpose` to the URL query string
-    if (getProofPurpose() != null) {
-      try {
-        joiner.add(String.format("%sproofPurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProofPurpose()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        W3cProof w3cProof = (W3cProof) o;
+        return equalsNullable(this.type, w3cProof.type) && equalsNullable(this.created, w3cProof.created)
+                && Objects.equals(this.verificationMethod, w3cProof.verificationMethod)
+                && Objects.equals(this.proofPurpose, w3cProof.proofPurpose) && equalsNullable(this.jws, w3cProof.jws)
+                && equalsNullable(this.proofValue, w3cProof.proofValue) && equalsNullable(this.nonce, w3cProof.nonce);
     }
 
-    // add `jws` to the URL query string
-    if (getJws() != null) {
-      try {
-        joiner.add(String.format("%sjws%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJws()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
-    // add `proofValue` to the URL query string
-    if (getProofValue() != null) {
-      try {
-        joiner.add(String.format("%sproofValue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProofValue()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @Override
+    public int hashCode() {
+        return Objects.hash(hashCodeNullable(type), hashCodeNullable(created), verificationMethod, proofPurpose,
+                hashCodeNullable(jws), hashCodeNullable(proofValue), hashCodeNullable(nonce));
     }
 
-    // add `nonce` to the URL query string
-    if (getNonce() != null) {
-      try {
-        joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] { a.get() }) : 31;
     }
 
-    return joiner.toString();
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class W3cProof {\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    created: ").append(toIndentedString(created)).append("\n");
+        sb.append("    verificationMethod: ").append(toIndentedString(verificationMethod)).append("\n");
+        sb.append("    proofPurpose: ").append(toIndentedString(proofPurpose)).append("\n");
+        sb.append("    jws: ").append(toIndentedString(jws)).append("\n");
+        sb.append("    proofValue: ").append(toIndentedString(proofValue)).append("\n");
+        sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `type` to the URL query string
+        if (getType() != null) {
+            try {
+                joiner.add(String.format("%stype%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `created` to the URL query string
+        if (getCreated() != null) {
+            try {
+                joiner.add(String.format("%screated%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCreated()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `verificationMethod` to the URL query string
+        if (getVerificationMethod() != null) {
+            try {
+                joiner.add(String.format("%sverificationMethod%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVerificationMethod()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `proofPurpose` to the URL query string
+        if (getProofPurpose() != null) {
+            try {
+                joiner.add(String.format("%sproofPurpose%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProofPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `jws` to the URL query string
+        if (getJws() != null) {
+            try {
+                joiner.add(String.format("%sjws%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJws()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `proofValue` to the URL query string
+        if (getProofValue() != null) {
+            try {
+                joiner.add(String.format("%sproofValue%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProofValue()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `nonce` to the URL query string
+        if (getNonce() != null) {
+            try {
+                joiner.add(String.format("%snonce%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
@@ -29,164 +28,162 @@ import java.util.StringJoiner;
 /**
  * DTO contains parts of JWT to be signed
  */
-@JsonPropertyOrder({
-  SignJwtToken.JSON_PROPERTY_HEADER,
-  SignJwtToken.JSON_PROPERTY_PAYLOAD
-})
+@JsonPropertyOrder({ SignJwtToken.JSON_PROPERTY_HEADER, SignJwtToken.JSON_PROPERTY_PAYLOAD })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SignJwtToken {
-  public static final String JSON_PROPERTY_HEADER = "header";
-  private Object header;
+    public static final String JSON_PROPERTY_HEADER = "header";
+    private Object header;
 
-  public static final String JSON_PROPERTY_PAYLOAD = "payload";
-  private Object payload;
+    public static final String JSON_PROPERTY_PAYLOAD = "payload";
+    private Object payload;
 
-  public SignJwtToken() {
-  }
-
-  public SignJwtToken header(Object header) {
-    
-    this.header = header;
-    return this;
-  }
-
-  /**
-   * Get header
-   * @return header
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HEADER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Object getHeader() {
-    return header;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HEADER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHeader(Object header) {
-    this.header = header;
-  }
-
-  public SignJwtToken payload(Object payload) {
-    
-    this.payload = payload;
-    return this;
-  }
-
-  /**
-   * Get payload
-   * @return payload
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PAYLOAD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Object getPayload() {
-    return payload;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PAYLOAD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPayload(Object payload) {
-    this.payload = payload;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    SignJwtToken signJwtToken = (SignJwtToken) o;
-    return Objects.equals(this.header, signJwtToken.header) &&
-        Objects.equals(this.payload, signJwtToken.payload);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(header, payload);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SignJwtToken {\n");
-    sb.append("    header: ").append(toIndentedString(header)).append("\n");
-    sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public SignJwtToken() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public SignJwtToken header(Object header) {
 
-    // add `header` to the URL query string
-    if (getHeader() != null) {
-      try {
-        joiner.add(String.format("%sheader%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHeader()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.header = header;
+        return this;
     }
 
-    // add `payload` to the URL query string
-    if (getPayload() != null) {
-      try {
-        joiner.add(String.format("%spayload%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPayload()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get header
+     *
+     * @return header
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_HEADER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Object getHeader() {
+        return header;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_HEADER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setHeader(Object header) {
+        this.header = header;
+    }
+
+    public SignJwtToken payload(Object payload) {
+
+        this.payload = payload;
+        return this;
+    }
+
+    /**
+     * Get payload
+     *
+     * @return payload
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PAYLOAD)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Object getPayload() {
+        return payload;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PAYLOAD)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPayload(Object payload) {
+        this.payload = payload;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SignJwtToken signJwtToken = (SignJwtToken) o;
+        return Objects.equals(this.header, signJwtToken.header) && Objects.equals(this.payload, signJwtToken.payload);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(header, payload);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class SignJwtToken {\n");
+        sb.append("    header: ").append(toIndentedString(header)).append("\n");
+        sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `header` to the URL query string
+        if (getHeader() != null) {
+            try {
+                joiner.add(String.format("%sheader%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getHeader()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `payload` to the URL query string
+        if (getPayload() != null) {
+            try {
+                joiner.add(String.format("%spayload%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPayload()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

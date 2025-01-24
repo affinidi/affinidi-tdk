@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -28,208 +27,215 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * Object specifying whether the Authorization Server expects presentation of a Transaction Code by the End-User along with the Token Request in a Pre-Authorized Code Flow
+ * Object specifying whether the Authorization Server expects presentation of a Transaction Code by the End-User along
+ * with the Token Request in a Pre-Authorized Code Flow
  */
 @JsonPropertyOrder({
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_LENGTH,
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_INPUT_MODE,
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_DESCRIPTION
-})
+        CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_LENGTH,
+        CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_INPUT_MODE,
+        CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_DESCRIPTION })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {
-  public static final String JSON_PROPERTY_LENGTH = "length";
-  private BigDecimal length;
+    public static final String JSON_PROPERTY_LENGTH = "length";
+    private BigDecimal length;
 
-  public static final String JSON_PROPERTY_INPUT_MODE = "input_mode";
-  private String inputMode;
+    public static final String JSON_PROPERTY_INPUT_MODE = "input_mode";
+    private String inputMode;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode() {
-  }
-
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode length(BigDecimal length) {
-    
-    this.length = length;
-    return this;
-  }
-
-  /**
-   * Integer specifying the length of the Transaction Code
-   * @return length
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getLength() {
-    return length;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLength(BigDecimal length) {
-    this.length = length;
-  }
-
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode inputMode(String inputMode) {
-    
-    this.inputMode = inputMode;
-    return this;
-  }
-
-  /**
-   * String specifying the input character set. Possible values are numeric (only digits) and text (any characters).
-   * @return inputMode
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INPUT_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getInputMode() {
-    return inputMode;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INPUT_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInputMode(String inputMode) {
-    this.inputMode = inputMode;
-  }
-
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * String containing guidance for the Holder of the Wallet on how to obtain the Transaction Code
-   * @return description
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode = (CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode) o;
-    return Objects.equals(this.length, credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.length) &&
-        Objects.equals(this.inputMode, credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.inputMode) &&
-        Objects.equals(this.description, credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.description);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(length, inputMode, description);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {\n");
-    sb.append("    length: ").append(toIndentedString(length)).append("\n");
-    sb.append("    inputMode: ").append(toIndentedString(inputMode)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode length(BigDecimal length) {
 
-    // add `length` to the URL query string
-    if (getLength() != null) {
-      try {
-        joiner.add(String.format("%slength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLength()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.length = length;
+        return this;
     }
 
-    // add `input_mode` to the URL query string
-    if (getInputMode() != null) {
-      try {
-        joiner.add(String.format("%sinput_mode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInputMode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Integer specifying the length of the Transaction Code
+     *
+     * @return length
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public BigDecimal getLength() {
+        return length;
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLength(BigDecimal length) {
+        this.length = length;
     }
 
-    return joiner.toString();
-  }
+    public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode inputMode(String inputMode) {
+
+        this.inputMode = inputMode;
+        return this;
+    }
+
+    /**
+     * String specifying the input character set. Possible values are numeric (only digits) and text (any characters).
+     *
+     * @return inputMode
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_INPUT_MODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getInputMode() {
+        return inputMode;
+    }
+
+    @JsonProperty(JSON_PROPERTY_INPUT_MODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setInputMode(String inputMode) {
+        this.inputMode = inputMode;
+    }
+
+    public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode description(
+            String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * String containing guidance for the Holder of the Wallet on how to obtain the Transaction Code
+     *
+     * @return description
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode = (CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode) o;
+        return Objects.equals(this.length,
+                credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.length)
+                && Objects.equals(this.inputMode,
+                        credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.inputMode)
+                && Objects.equals(this.description,
+                        credentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(length, inputMode, description);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {\n");
+        sb.append("    length: ").append(toIndentedString(length)).append("\n");
+        sb.append("    inputMode: ").append(toIndentedString(inputMode)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `length` to the URL query string
+        if (getLength() != null) {
+            try {
+                joiner.add(String.format("%slength%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLength()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `input_mode` to the URL query string
+        if (getInputMode() != null) {
+            try {
+                joiner.add(String.format("%sinput_mode%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getInputMode()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

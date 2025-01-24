@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
 import com.affinidi.tdk.login.configuration.client.ApiException;
@@ -42,7 +41,7 @@ public class DenyListApiTest {
      * Block Single or Multiple Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void blockGroupsTest() throws ApiException {
@@ -51,11 +50,12 @@ public class DenyListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Block Single or Multiple user ids
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void blockUsersTest() throws ApiException {
@@ -64,11 +64,12 @@ public class DenyListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get Blocked Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listBlockedGroupsTest() throws ApiException {
@@ -77,11 +78,12 @@ public class DenyListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get List of Blocked Users
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listBlockedUsersTest() throws ApiException {
@@ -90,11 +92,12 @@ public class DenyListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Unblock Single or Multiple Groups
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void unblockGroupsTest() throws ApiException {
@@ -103,11 +106,12 @@ public class DenyListApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Unblock Single or Multiple user ids
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void unblockUsersTest() throws ApiException {

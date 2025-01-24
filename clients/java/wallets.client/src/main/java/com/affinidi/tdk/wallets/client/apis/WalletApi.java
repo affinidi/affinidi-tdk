@@ -34,7 +34,6 @@ import com.affinidi.tdk.wallets.client.models.UpdateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 import com.affinidi.tdk.wallets.client.models.WalletsListDto;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,584 +44,531 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class WalletApi extends BaseApi {
 
-  public WalletApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public WalletApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * creates a wallet
-   * @param createWalletInput CreateWallet (optional)
-   * @return CreateWalletResponse
-   * @throws ApiException if fails to make API call
-   */
-  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput) throws ApiException {
-    return this.createWallet(createWalletInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * creates a wallet
-   * @param createWalletInput CreateWallet (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return CreateWalletResponse
-   * @throws ApiException if fails to make API call
-   */
-  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createWalletInput;
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<CreateWalletResponse> localVarReturnType = new TypeReference<CreateWalletResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * delete wallet by walletId
-   * @param walletId id of the wallet (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteWallet(String walletId) throws ApiException {
-    this.deleteWallet(walletId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * delete wallet by walletId
-   * @param walletId id of the wallet (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling deleteWallet");
+    public WalletApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * get wallet details using wallet Id.
-   * @param walletId id of the wallet (required)
-   * @return WalletDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletDto getWallet(String walletId) throws ApiException {
-    return this.getWallet(walletId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * get wallet details using wallet Id.
-   * @param walletId id of the wallet (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return WalletDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletDto getWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getWallet");
+    public WalletApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * lists all wallets
-   * @param didType  (optional)
-   * @return WalletsListDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletsListDto listWallets(String didType) throws ApiException {
-    return this.listWallets(didType, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * lists all wallets
-   * @param didType  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return WalletsListDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletsListDto listWallets(String didType, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("didType", didType));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<WalletsListDto> localVarReturnType = new TypeReference<WalletsListDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * signs credential with the wallet
-   * @param walletId id of the wallet (required)
-   * @param signCredentialInputDto SignCredential (required)
-   * @return SignCredentialResultDto
-   * @throws ApiException if fails to make API call
-   */
-  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto) throws ApiException {
-    return this.signCredential(walletId, signCredentialInputDto, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * signs credential with the wallet
-   * @param walletId id of the wallet (required)
-   * @param signCredentialInputDto SignCredential (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SignCredentialResultDto
-   * @throws ApiException if fails to make API call
-   */
-  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = signCredentialInputDto;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredential");
+    /**
+     *
+     * creates a wallet
+     *
+     * @param createWalletInput
+     *            CreateWallet (optional)
+     *
+     * @return CreateWalletResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateWalletResponse createWallet(CreateWalletInput createWalletInput) throws ApiException {
+        return this.createWallet(createWalletInput, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'signCredentialInputDto' is set
-    if (signCredentialInputDto == null) {
-      throw new ApiException(400, "Missing the required parameter 'signCredentialInputDto' when calling signCredential");
+
+    /**
+     *
+     * creates a wallet
+     *
+     * @param createWalletInput
+     *            CreateWallet (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return CreateWalletResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateWalletResponse createWallet(CreateWalletInput createWalletInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = createWalletInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<CreateWalletResponse> localVarReturnType = new TypeReference<CreateWalletResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}/sign-credential"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<SignCredentialResultDto> localVarReturnType = new TypeReference<SignCredentialResultDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * signs a jwt token with the wallet
-   * @param walletId id of the wallet. (required)
-   * @param signJwtToken SignJwtToken (required)
-   * @return SignJwtTokenOK
-   * @throws ApiException if fails to make API call
-   */
-  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken) throws ApiException {
-    return this.signJwtToken(walletId, signJwtToken, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * signs a jwt token with the wallet
-   * @param walletId id of the wallet. (required)
-   * @param signJwtToken SignJwtToken (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SignJwtTokenOK
-   * @throws ApiException if fails to make API call
-   */
-  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = signJwtToken;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtToken");
+    /**
+     *
+     * delete wallet by walletId
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteWallet(String walletId) throws ApiException {
+        this.deleteWallet(walletId, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'signJwtToken' is set
-    if (signJwtToken == null) {
-      throw new ApiException(400, "Missing the required parameter 'signJwtToken' when calling signJwtToken");
+
+    /**
+     *
+     * delete wallet by walletId
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling deleteWallet");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = {
+
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}/sign-jwt"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<SignJwtTokenOK> localVarReturnType = new TypeReference<SignJwtTokenOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * update wallet details using wallet Id.
-   * @param walletId id of the wallet (required)
-   * @param updateWalletInput UpdateWallet (required)
-   * @return WalletDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
-    return this.updateWallet(walletId, updateWalletInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * update wallet details using wallet Id.
-   * @param walletId id of the wallet (required)
-   * @param updateWalletInput UpdateWallet (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return WalletDto
-   * @throws ApiException if fails to make API call
-   */
-  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = updateWalletInput;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling updateWallet");
+    /**
+     *
+     * get wallet details using wallet Id.
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     *
+     * @return WalletDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletDto getWallet(String walletId) throws ApiException {
+        return this.getWallet(walletId, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'updateWalletInput' is set
-    if (updateWalletInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateWalletInput' when calling updateWallet");
+
+    /**
+     *
+     * get wallet details using wallet Id.
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return WalletDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletDto getWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling getWallet");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * lists all wallets
+     *
+     * @param didType
+     *            (optional)
+     *
+     * @return WalletsListDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletsListDto listWallets(String didType) throws ApiException {
+        return this.listWallets(didType, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     * lists all wallets
+     *
+     * @param didType
+     *            (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return WalletsListDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletsListDto listWallets(String didType, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/wallets";
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        localVarQueryParams.addAll(apiClient.parameterToPair("didType", didType));
 
-    TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        TypeReference<WalletsListDto> localVarReturnType = new TypeReference<WalletsListDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    /**
+     *
+     * signs credential with the wallet
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param signCredentialInputDto
+     *            SignCredential (required)
+     *
+     * @return SignCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto)
+            throws ApiException {
+        return this.signCredential(walletId, signCredentialInputDto, Collections.emptyMap());
+    }
+
+    /**
+     *
+     * signs credential with the wallet
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param signCredentialInputDto
+     *            SignCredential (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return SignCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = signCredentialInputDto;
+
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredential");
+        }
+
+        // verify the required parameter 'signCredentialInputDto' is set
+        if (signCredentialInputDto == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'signCredentialInputDto' when calling signCredential");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}/sign-credential".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<SignCredentialResultDto> localVarReturnType = new TypeReference<SignCredentialResultDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     * signs a jwt token with the wallet
+     *
+     * @param walletId
+     *            id of the wallet. (required)
+     * @param signJwtToken
+     *            SignJwtToken (required)
+     *
+     * @return SignJwtTokenOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken) throws ApiException {
+        return this.signJwtToken(walletId, signJwtToken, Collections.emptyMap());
+    }
+
+    /**
+     *
+     * signs a jwt token with the wallet
+     *
+     * @param walletId
+     *            id of the wallet. (required)
+     * @param signJwtToken
+     *            SignJwtToken (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return SignJwtTokenOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = signJwtToken;
+
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtToken");
+        }
+
+        // verify the required parameter 'signJwtToken' is set
+        if (signJwtToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'signJwtToken' when calling signJwtToken");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}/sign-jwt".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<SignJwtTokenOK> localVarReturnType = new TypeReference<SignJwtTokenOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     * update wallet details using wallet Id.
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param updateWalletInput
+     *            UpdateWallet (required)
+     *
+     * @return WalletDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
+        return this.updateWallet(walletId, updateWalletInput, Collections.emptyMap());
+    }
+
+    /**
+     *
+     * update wallet details using wallet Id.
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param updateWalletInput
+     *            UpdateWallet (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return WalletDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = updateWalletInput;
+
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling updateWallet");
+        }
+
+        // verify the required parameter 'updateWalletInput' is set
+        if (updateWalletInput == null) {
+            throw new ApiException(400, "Missing the required parameter 'updateWalletInput' when calling updateWallet");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<WalletDto> localVarReturnType = new TypeReference<WalletDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

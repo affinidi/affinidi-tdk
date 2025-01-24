@@ -24,7 +24,6 @@ import com.affinidi.tdk.iota.client.models.InvalidParameterError;
 import com.affinidi.tdk.iota.client.models.ListLoggedConsentsOK;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,131 +34,123 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class DefaultApi extends BaseApi {
 
-  public DefaultApi() {
-    super(Configuration.getDefaultApiClient());
-  }
+    public DefaultApi() {
+        super(Configuration.getDefaultApiClient());
+    }
 
-  public DefaultApi(ApiClient apiClient) {
-    super(apiClient);
-  }
+    public DefaultApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-  /**
-   * 
-   * Lists all the logged consents for a project.
-   * @param configurationId  (optional)
-   * @param userId  (optional)
-   * @param limit The maximum number of records to fetch from the list of logged consents. (optional)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return ListLoggedConsentsOK
-   * @throws ApiException if fails to make API call
-   */
-  public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey, Collections.emptyMap());
-  }
+    /**
+     *
+     * Lists all the logged consents for a project.
+     *
+     * @param configurationId
+     *            (optional)
+     * @param userId
+     *            (optional)
+     * @param limit
+     *            The maximum number of records to fetch from the list of logged consents. (optional)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return ListLoggedConsentsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit,
+            String exclusiveStartKey) throws ApiException {
+        return this.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey, Collections.emptyMap());
+    }
 
+    /**
+     *
+     * Lists all the logged consents for a project.
+     *
+     * @param configurationId
+     *            (optional)
+     * @param userId
+     *            (optional)
+     * @param limit
+     *            The maximum number of records to fetch from the list of logged consents. (optional)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ListLoggedConsentsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit,
+            String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-  /**
-   * 
-   * Lists all the logged consents for a project.
-   * @param configurationId  (optional)
-   * @param userId  (optional)
-   * @param limit The maximum number of records to fetch from the list of logged consents. (optional)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ListLoggedConsentsOK
-   * @throws ApiException if fails to make API call
-   */
-  public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/logged-consents";
+        // create path and map variables
+        String localVarPath = "/v1/logged-consents";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("configurationId", configurationId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("userId", userId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarQueryParams.addAll(apiClient.parameterToPair("configurationId", configurationId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("userId", userId));
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        final String[] localVarContentTypes = {
 
-    TypeReference<ListLoggedConsentsOK> localVarReturnType = new TypeReference<ListLoggedConsentsOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        TypeReference<ListLoggedConsentsOK> localVarReturnType = new TypeReference<ListLoggedConsentsOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

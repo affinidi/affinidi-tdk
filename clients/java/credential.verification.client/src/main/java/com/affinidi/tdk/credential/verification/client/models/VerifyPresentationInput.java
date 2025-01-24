@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -30,277 +29,279 @@ import java.util.StringJoiner;
 /**
  * Request model of /verify-vp
  */
-@JsonPropertyOrder({
-  VerifyPresentationInput.JSON_PROPERTY_VERIFIABLE_PRESENTATION,
-  VerifyPresentationInput.JSON_PROPERTY_SIGNED_PRESENTATION,
-  VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_DEFINITION,
-  VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
-  VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
-})
+@JsonPropertyOrder({ VerifyPresentationInput.JSON_PROPERTY_VERIFIABLE_PRESENTATION,
+        VerifyPresentationInput.JSON_PROPERTY_SIGNED_PRESENTATION,
+        VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_DEFINITION,
+        VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+        VerifyPresentationInput.JSON_PROPERTY_CHALLENGE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyPresentationInput {
-  public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
-  private W3cPresentation verifiablePresentation;
+    public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
+    private W3cPresentation verifiablePresentation;
 
-  public static final String JSON_PROPERTY_SIGNED_PRESENTATION = "signedPresentation";
-  private W3cPresentation signedPresentation;
+    public static final String JSON_PROPERTY_SIGNED_PRESENTATION = "signedPresentation";
+    private W3cPresentation signedPresentation;
 
-  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
-  private Object presentationDefinition;
+    public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+    private Object presentationDefinition;
 
-  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
-  private Object presentationSubmission;
+    public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
+    private Object presentationSubmission;
 
-  public static final String JSON_PROPERTY_CHALLENGE = "challenge";
-  private String challenge;
+    public static final String JSON_PROPERTY_CHALLENGE = "challenge";
+    private String challenge;
 
-  public VerifyPresentationInput() {
-  }
-
-  public VerifyPresentationInput verifiablePresentation(W3cPresentation verifiablePresentation) {
-    
-    this.verifiablePresentation = verifiablePresentation;
-    return this;
-  }
-
-  /**
-   * Get verifiablePresentation
-   * @return verifiablePresentation
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public W3cPresentation getVerifiablePresentation() {
-    return verifiablePresentation;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerifiablePresentation(W3cPresentation verifiablePresentation) {
-    this.verifiablePresentation = verifiablePresentation;
-  }
-
-  public VerifyPresentationInput signedPresentation(W3cPresentation signedPresentation) {
-    
-    this.signedPresentation = signedPresentation;
-    return this;
-  }
-
-  /**
-   * Get signedPresentation
-   * @return signedPresentation
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public W3cPresentation getSignedPresentation() {
-    return signedPresentation;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSignedPresentation(W3cPresentation signedPresentation) {
-    this.signedPresentation = signedPresentation;
-  }
-
-  public VerifyPresentationInput presentationDefinition(Object presentationDefinition) {
-    
-    this.presentationDefinition = presentationDefinition;
-    return this;
-  }
-
-  /**
-   * Get presentationDefinition
-   * @return presentationDefinition
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getPresentationDefinition() {
-    return presentationDefinition;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(Object presentationDefinition) {
-    this.presentationDefinition = presentationDefinition;
-  }
-
-  public VerifyPresentationInput presentationSubmission(Object presentationSubmission) {
-    
-    this.presentationSubmission = presentationSubmission;
-    return this;
-  }
-
-  /**
-   * Get presentationSubmission
-   * @return presentationSubmission
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getPresentationSubmission() {
-    return presentationSubmission;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(Object presentationSubmission) {
-    this.presentationSubmission = presentationSubmission;
-  }
-
-  public VerifyPresentationInput challenge(String challenge) {
-    
-    this.challenge = challenge;
-    return this;
-  }
-
-  /**
-   * Get challenge
-   * @return challenge
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getChallenge() {
-    return challenge;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChallenge(String challenge) {
-    this.challenge = challenge;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VerifyPresentationInput verifyPresentationInput = (VerifyPresentationInput) o;
-    return Objects.equals(this.verifiablePresentation, verifyPresentationInput.verifiablePresentation) &&
-        Objects.equals(this.signedPresentation, verifyPresentationInput.signedPresentation) &&
-        Objects.equals(this.presentationDefinition, verifyPresentationInput.presentationDefinition) &&
-        Objects.equals(this.presentationSubmission, verifyPresentationInput.presentationSubmission) &&
-        Objects.equals(this.challenge, verifyPresentationInput.challenge);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(verifiablePresentation, signedPresentation, presentationDefinition, presentationSubmission, challenge);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VerifyPresentationInput {\n");
-    sb.append("    verifiablePresentation: ").append(toIndentedString(verifiablePresentation)).append("\n");
-    sb.append("    signedPresentation: ").append(toIndentedString(signedPresentation)).append("\n");
-    sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
-    sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
-    sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public VerifyPresentationInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public VerifyPresentationInput verifiablePresentation(W3cPresentation verifiablePresentation) {
 
-    // add `verifiablePresentation` to the URL query string
-    if (getVerifiablePresentation() != null) {
-      joiner.add(getVerifiablePresentation().toUrlQueryString(prefix + "verifiablePresentation" + suffix));
+        this.verifiablePresentation = verifiablePresentation;
+        return this;
     }
 
-    // add `signedPresentation` to the URL query string
-    if (getSignedPresentation() != null) {
-      joiner.add(getSignedPresentation().toUrlQueryString(prefix + "signedPresentation" + suffix));
+    /**
+     * Get verifiablePresentation
+     *
+     * @return verifiablePresentation
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public W3cPresentation getVerifiablePresentation() {
+        return verifiablePresentation;
     }
 
-    // add `presentationDefinition` to the URL query string
-    if (getPresentationDefinition() != null) {
-      try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setVerifiablePresentation(W3cPresentation verifiablePresentation) {
+        this.verifiablePresentation = verifiablePresentation;
     }
 
-    // add `presentationSubmission` to the URL query string
-    if (getPresentationSubmission() != null) {
-      try {
-        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public VerifyPresentationInput signedPresentation(W3cPresentation signedPresentation) {
+
+        this.signedPresentation = signedPresentation;
+        return this;
     }
 
-    // add `challenge` to the URL query string
-    if (getChallenge() != null) {
-      try {
-        joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get signedPresentation
+     *
+     * @return signedPresentation
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public W3cPresentation getSignedPresentation() {
+        return signedPresentation;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSignedPresentation(W3cPresentation signedPresentation) {
+        this.signedPresentation = signedPresentation;
+    }
+
+    public VerifyPresentationInput presentationDefinition(Object presentationDefinition) {
+
+        this.presentationDefinition = presentationDefinition;
+        return this;
+    }
+
+    /**
+     * Get presentationDefinition
+     *
+     * @return presentationDefinition
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Object getPresentationDefinition() {
+        return presentationDefinition;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPresentationDefinition(Object presentationDefinition) {
+        this.presentationDefinition = presentationDefinition;
+    }
+
+    public VerifyPresentationInput presentationSubmission(Object presentationSubmission) {
+
+        this.presentationSubmission = presentationSubmission;
+        return this;
+    }
+
+    /**
+     * Get presentationSubmission
+     *
+     * @return presentationSubmission
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Object getPresentationSubmission() {
+        return presentationSubmission;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPresentationSubmission(Object presentationSubmission) {
+        this.presentationSubmission = presentationSubmission;
+    }
+
+    public VerifyPresentationInput challenge(String challenge) {
+
+        this.challenge = challenge;
+        return this;
+    }
+
+    /**
+     * Get challenge
+     *
+     * @return challenge
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CHALLENGE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getChallenge() {
+        return challenge;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CHALLENGE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setChallenge(String challenge) {
+        this.challenge = challenge;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        VerifyPresentationInput verifyPresentationInput = (VerifyPresentationInput) o;
+        return Objects.equals(this.verifiablePresentation, verifyPresentationInput.verifiablePresentation)
+                && Objects.equals(this.signedPresentation, verifyPresentationInput.signedPresentation)
+                && Objects.equals(this.presentationDefinition, verifyPresentationInput.presentationDefinition)
+                && Objects.equals(this.presentationSubmission, verifyPresentationInput.presentationSubmission)
+                && Objects.equals(this.challenge, verifyPresentationInput.challenge);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(verifiablePresentation, signedPresentation, presentationDefinition, presentationSubmission,
+                challenge);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class VerifyPresentationInput {\n");
+        sb.append("    verifiablePresentation: ").append(toIndentedString(verifiablePresentation)).append("\n");
+        sb.append("    signedPresentation: ").append(toIndentedString(signedPresentation)).append("\n");
+        sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
+        sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
+        sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `verifiablePresentation` to the URL query string
+        if (getVerifiablePresentation() != null) {
+            joiner.add(getVerifiablePresentation().toUrlQueryString(prefix + "verifiablePresentation" + suffix));
+        }
+
+        // add `signedPresentation` to the URL query string
+        if (getSignedPresentation() != null) {
+            joiner.add(getSignedPresentation().toUrlQueryString(prefix + "signedPresentation" + suffix));
+        }
+
+        // add `presentationDefinition` to the URL query string
+        if (getPresentationDefinition() != null) {
+            try {
+                joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `presentationSubmission` to the URL query string
+        if (getPresentationSubmission() != null) {
+            try {
+                joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `challenge` to the URL query string
+        if (getChallenge() != null) {
+            try {
+                joiner.add(String.format("%schallenge%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client.apis;
 
 import com.affinidi.tdk.wallets.client.ApiException;
@@ -50,7 +49,7 @@ public class WalletApiTest {
      * creates a wallet
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createWalletTest() throws ApiException {
@@ -59,11 +58,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * delete wallet by walletId
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteWalletTest() throws ApiException {
@@ -72,11 +72,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * get wallet details using wallet Id.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getWalletTest() throws ApiException {
@@ -85,11 +86,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * lists all wallets
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listWalletsTest() throws ApiException {
@@ -98,11 +100,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * signs credential with the wallet
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void signCredentialTest() throws ApiException {
@@ -112,11 +115,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * signs a jwt token with the wallet
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void signJwtTokenTest() throws ApiException {
@@ -126,11 +130,12 @@ public class WalletApiTest {
 
         // TODO: test validations
     }
+
     /**
      * update wallet details using wallet Id.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateWalletTest() throws ApiException {

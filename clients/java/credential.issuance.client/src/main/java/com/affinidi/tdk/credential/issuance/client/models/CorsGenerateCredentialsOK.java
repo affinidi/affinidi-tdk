@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,122 @@ import java.util.StringJoiner;
 /**
  * CorsGenerateCredentialsOK
  */
-@JsonPropertyOrder({
-  CorsGenerateCredentialsOK.JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK
-})
+@JsonPropertyOrder({ CorsGenerateCredentialsOK.JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsGenerateCredentialsOK {
-  public static final String JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK = "corsGenerateCredentialsOk";
-  private String corsGenerateCredentialsOk;
+    public static final String JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK = "corsGenerateCredentialsOk";
+    private String corsGenerateCredentialsOk;
 
-  public CorsGenerateCredentialsOK() {
-  }
-
-  public CorsGenerateCredentialsOK corsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
-    
-    this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
-    return this;
-  }
-
-  /**
-   * Get corsGenerateCredentialsOk
-   * @return corsGenerateCredentialsOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsGenerateCredentialsOk() {
-    return corsGenerateCredentialsOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
-    this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsGenerateCredentialsOK corsGenerateCredentialsOK = (CorsGenerateCredentialsOK) o;
-    return Objects.equals(this.corsGenerateCredentialsOk, corsGenerateCredentialsOK.corsGenerateCredentialsOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsGenerateCredentialsOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsGenerateCredentialsOK {\n");
-    sb.append("    corsGenerateCredentialsOk: ").append(toIndentedString(corsGenerateCredentialsOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsGenerateCredentialsOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsGenerateCredentialsOK corsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
 
-    // add `corsGenerateCredentialsOk` to the URL query string
-    if (getCorsGenerateCredentialsOk() != null) {
-      try {
-        joiner.add(String.format("%scorsGenerateCredentialsOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsGenerateCredentialsOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsGenerateCredentialsOk
+     *
+     * @return corsGenerateCredentialsOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsGenerateCredentialsOk() {
+        return corsGenerateCredentialsOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
+        this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsGenerateCredentialsOK corsGenerateCredentialsOK = (CorsGenerateCredentialsOK) o;
+        return Objects.equals(this.corsGenerateCredentialsOk, corsGenerateCredentialsOK.corsGenerateCredentialsOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsGenerateCredentialsOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsGenerateCredentialsOK {\n");
+        sb.append("    corsGenerateCredentialsOk: ").append(toIndentedString(corsGenerateCredentialsOk)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsGenerateCredentialsOk` to the URL query string
+        if (getCorsGenerateCredentialsOk() != null) {
+            try {
+                joiner.add(String.format("%scorsGenerateCredentialsOk%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCorsGenerateCredentialsOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

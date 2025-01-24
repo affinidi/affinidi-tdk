@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -34,213 +33,212 @@ import java.util.StringJoiner;
 /**
  * GroupUserMappingsList
  */
-@JsonPropertyOrder({
-  GroupUserMappingsList.JSON_PROPERTY_USERS,
-  GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
-  GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT
-})
+@JsonPropertyOrder({ GroupUserMappingsList.JSON_PROPERTY_USERS, GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
+        GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GroupUserMappingsList {
-  public static final String JSON_PROPERTY_USERS = "users";
-  private List<GroupUserMappingDto> users = new ArrayList<>();
+    public static final String JSON_PROPERTY_USERS = "users";
+    private List<GroupUserMappingDto> users = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  private String lastEvaluatedKey;
+    public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+    private String lastEvaluatedKey;
 
-  public static final String JSON_PROPERTY_TOTAL_USER_COUNT = "totalUserCount";
-  private BigDecimal totalUserCount;
+    public static final String JSON_PROPERTY_TOTAL_USER_COUNT = "totalUserCount";
+    private BigDecimal totalUserCount;
 
-  public GroupUserMappingsList() {
-  }
-
-  public GroupUserMappingsList users(List<GroupUserMappingDto> users) {
-    
-    this.users = users;
-    return this;
-  }
-
-  public GroupUserMappingsList addUsersItem(GroupUserMappingDto usersItem) {
-    if (this.users == null) {
-      this.users = new ArrayList<>();
-    }
-    this.users.add(usersItem);
-    return this;
-  }
-
-  /**
-   * Get users
-   * @return users
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<GroupUserMappingDto> getUsers() {
-    return users;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsers(List<GroupUserMappingDto> users) {
-    this.users = users;
-  }
-
-  public GroupUserMappingsList lastEvaluatedKey(String lastEvaluatedKey) {
-    
-    this.lastEvaluatedKey = lastEvaluatedKey;
-    return this;
-  }
-
-  /**
-   * Get lastEvaluatedKey
-   * @return lastEvaluatedKey
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLastEvaluatedKey() {
-    return lastEvaluatedKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
-    this.lastEvaluatedKey = lastEvaluatedKey;
-  }
-
-  public GroupUserMappingsList totalUserCount(BigDecimal totalUserCount) {
-    
-    this.totalUserCount = totalUserCount;
-    return this;
-  }
-
-  /**
-   * Get totalUserCount
-   * @return totalUserCount
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public BigDecimal getTotalUserCount() {
-    return totalUserCount;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalUserCount(BigDecimal totalUserCount) {
-    this.totalUserCount = totalUserCount;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GroupUserMappingsList groupUserMappingsList = (GroupUserMappingsList) o;
-    return Objects.equals(this.users, groupUserMappingsList.users) &&
-        Objects.equals(this.lastEvaluatedKey, groupUserMappingsList.lastEvaluatedKey) &&
-        Objects.equals(this.totalUserCount, groupUserMappingsList.totalUserCount);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(users, lastEvaluatedKey, totalUserCount);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GroupUserMappingsList {\n");
-    sb.append("    users: ").append(toIndentedString(users)).append("\n");
-    sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
-    sb.append("    totalUserCount: ").append(toIndentedString(totalUserCount)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public GroupUserMappingsList() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public GroupUserMappingsList users(List<GroupUserMappingDto> users) {
 
-    // add `users` to the URL query string
-    if (getUsers() != null) {
-      for (int i = 0; i < getUsers().size(); i++) {
-        if (getUsers().get(i) != null) {
-          joiner.add(getUsers().get(i).toUrlQueryString(String.format("%susers%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.users = users;
+        return this;
+    }
+
+    public GroupUserMappingsList addUsersItem(GroupUserMappingDto usersItem) {
+        if (this.users == null) {
+            this.users = new ArrayList<>();
         }
-      }
+        this.users.add(usersItem);
+        return this;
     }
 
-    // add `lastEvaluatedKey` to the URL query string
-    if (getLastEvaluatedKey() != null) {
-      try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get users
+     *
+     * @return users
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_USERS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<GroupUserMappingDto> getUsers() {
+        return users;
     }
 
-    // add `totalUserCount` to the URL query string
-    if (getTotalUserCount() != null) {
-      try {
-        joiner.add(String.format("%stotalUserCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTotalUserCount()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_USERS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setUsers(List<GroupUserMappingDto> users) {
+        this.users = users;
     }
 
-    return joiner.toString();
-  }
+    public GroupUserMappingsList lastEvaluatedKey(String lastEvaluatedKey) {
+
+        this.lastEvaluatedKey = lastEvaluatedKey;
+        return this;
+    }
+
+    /**
+     * Get lastEvaluatedKey
+     *
+     * @return lastEvaluatedKey
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getLastEvaluatedKey() {
+        return lastEvaluatedKey;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLastEvaluatedKey(String lastEvaluatedKey) {
+        this.lastEvaluatedKey = lastEvaluatedKey;
+    }
+
+    public GroupUserMappingsList totalUserCount(BigDecimal totalUserCount) {
+
+        this.totalUserCount = totalUserCount;
+        return this;
+    }
+
+    /**
+     * Get totalUserCount
+     *
+     * @return totalUserCount
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public BigDecimal getTotalUserCount() {
+        return totalUserCount;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setTotalUserCount(BigDecimal totalUserCount) {
+        this.totalUserCount = totalUserCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GroupUserMappingsList groupUserMappingsList = (GroupUserMappingsList) o;
+        return Objects.equals(this.users, groupUserMappingsList.users)
+                && Objects.equals(this.lastEvaluatedKey, groupUserMappingsList.lastEvaluatedKey)
+                && Objects.equals(this.totalUserCount, groupUserMappingsList.totalUserCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(users, lastEvaluatedKey, totalUserCount);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GroupUserMappingsList {\n");
+        sb.append("    users: ").append(toIndentedString(users)).append("\n");
+        sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
+        sb.append("    totalUserCount: ").append(toIndentedString(totalUserCount)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `users` to the URL query string
+        if (getUsers() != null) {
+            for (int i = 0; i < getUsers().size(); i++) {
+                if (getUsers().get(i) != null) {
+                    joiner.add(getUsers().get(i).toUrlQueryString(String.format("%susers%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `lastEvaluatedKey` to the URL query string
+        if (getLastEvaluatedKey() != null) {
+            try {
+                joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `totalUserCount` to the URL query string
+        if (getTotalUserCount() != null) {
+            try {
+                joiner.add(String.format("%stotalUserCount%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getTotalUserCount()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

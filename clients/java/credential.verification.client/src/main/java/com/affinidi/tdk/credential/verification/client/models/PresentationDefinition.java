@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -37,392 +36,393 @@ import java.util.StringJoiner;
 /**
  * Presentation definition
  */
-@JsonPropertyOrder({
-  PresentationDefinition.JSON_PROPERTY_ID,
-  PresentationDefinition.JSON_PROPERTY_NAME,
-  PresentationDefinition.JSON_PROPERTY_PURPOSE,
-  PresentationDefinition.JSON_PROPERTY_FORMAT,
-  PresentationDefinition.JSON_PROPERTY_SUBMISSION_REQUIREMENTS,
-  PresentationDefinition.JSON_PROPERTY_INPUT_DESCRIPTORS,
-  PresentationDefinition.JSON_PROPERTY_FRAME
-})
+@JsonPropertyOrder({ PresentationDefinition.JSON_PROPERTY_ID, PresentationDefinition.JSON_PROPERTY_NAME,
+        PresentationDefinition.JSON_PROPERTY_PURPOSE, PresentationDefinition.JSON_PROPERTY_FORMAT,
+        PresentationDefinition.JSON_PROPERTY_SUBMISSION_REQUIREMENTS,
+        PresentationDefinition.JSON_PROPERTY_INPUT_DESCRIPTORS, PresentationDefinition.JSON_PROPERTY_FRAME })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PresentationDefinition {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_PURPOSE = "purpose";
-  private String purpose;
+    public static final String JSON_PROPERTY_PURPOSE = "purpose";
+    private String purpose;
 
-  public static final String JSON_PROPERTY_FORMAT = "format";
-  private Format format;
+    public static final String JSON_PROPERTY_FORMAT = "format";
+    private Format format;
 
-  public static final String JSON_PROPERTY_SUBMISSION_REQUIREMENTS = "submission_requirements";
-  private List<SubmissionRequirement> submissionRequirements = new ArrayList<>();
+    public static final String JSON_PROPERTY_SUBMISSION_REQUIREMENTS = "submission_requirements";
+    private List<SubmissionRequirement> submissionRequirements = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_INPUT_DESCRIPTORS = "input_descriptors";
-  private List<InputDescriptor> inputDescriptors = new ArrayList<>();
+    public static final String JSON_PROPERTY_INPUT_DESCRIPTORS = "input_descriptors";
+    private List<InputDescriptor> inputDescriptors = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_FRAME = "frame";
-  private Map<String, Object> frame = new HashMap<>();
+    public static final String JSON_PROPERTY_FRAME = "frame";
+    private Map<String, Object> frame = new HashMap<>();
 
-  public PresentationDefinition() {
-  }
-
-  public PresentationDefinition id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Definition id
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public PresentationDefinition name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Definition name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public PresentationDefinition purpose(String purpose) {
-    
-    this.purpose = purpose;
-    return this;
-  }
-
-  /**
-   * Definition purpose
-   * @return purpose
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPurpose() {
-    return purpose;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
-  public PresentationDefinition format(Format format) {
-    
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Get format
-   * @return format
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Format getFormat() {
-    return format;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(Format format) {
-    this.format = format;
-  }
-
-  public PresentationDefinition submissionRequirements(List<SubmissionRequirement> submissionRequirements) {
-    
-    this.submissionRequirements = submissionRequirements;
-    return this;
-  }
-
-  public PresentationDefinition addSubmissionRequirementsItem(SubmissionRequirement submissionRequirementsItem) {
-    if (this.submissionRequirements == null) {
-      this.submissionRequirements = new ArrayList<>();
-    }
-    this.submissionRequirements.add(submissionRequirementsItem);
-    return this;
-  }
-
-  /**
-   * Get submissionRequirements
-   * @return submissionRequirements
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<SubmissionRequirement> getSubmissionRequirements() {
-    return submissionRequirements;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubmissionRequirements(List<SubmissionRequirement> submissionRequirements) {
-    this.submissionRequirements = submissionRequirements;
-  }
-
-  public PresentationDefinition inputDescriptors(List<InputDescriptor> inputDescriptors) {
-    
-    this.inputDescriptors = inputDescriptors;
-    return this;
-  }
-
-  public PresentationDefinition addInputDescriptorsItem(InputDescriptor inputDescriptorsItem) {
-    if (this.inputDescriptors == null) {
-      this.inputDescriptors = new ArrayList<>();
-    }
-    this.inputDescriptors.add(inputDescriptorsItem);
-    return this;
-  }
-
-  /**
-   * Get inputDescriptors
-   * @return inputDescriptors
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<InputDescriptor> getInputDescriptors() {
-    return inputDescriptors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInputDescriptors(List<InputDescriptor> inputDescriptors) {
-    this.inputDescriptors = inputDescriptors;
-  }
-
-  public PresentationDefinition frame(Map<String, Object> frame) {
-    
-    this.frame = frame;
-    return this;
-  }
-
-  public PresentationDefinition putFrameItem(String key, Object frameItem) {
-    if (this.frame == null) {
-      this.frame = new HashMap<>();
-    }
-    this.frame.put(key, frameItem);
-    return this;
-  }
-
-  /**
-   * Dynamic model
-   * @return frame
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FRAME)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Map<String, Object> getFrame() {
-    return frame;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FRAME)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrame(Map<String, Object> frame) {
-    this.frame = frame;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PresentationDefinition presentationDefinition = (PresentationDefinition) o;
-    return Objects.equals(this.id, presentationDefinition.id) &&
-        Objects.equals(this.name, presentationDefinition.name) &&
-        Objects.equals(this.purpose, presentationDefinition.purpose) &&
-        Objects.equals(this.format, presentationDefinition.format) &&
-        Objects.equals(this.submissionRequirements, presentationDefinition.submissionRequirements) &&
-        Objects.equals(this.inputDescriptors, presentationDefinition.inputDescriptors) &&
-        Objects.equals(this.frame, presentationDefinition.frame);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, purpose, format, submissionRequirements, inputDescriptors, frame);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PresentationDefinition {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    submissionRequirements: ").append(toIndentedString(submissionRequirements)).append("\n");
-    sb.append("    inputDescriptors: ").append(toIndentedString(inputDescriptors)).append("\n");
-    sb.append("    frame: ").append(toIndentedString(frame)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public PresentationDefinition() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public PresentationDefinition id(String id) {
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.id = id;
+        return this;
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Definition id
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
     }
 
-    // add `purpose` to the URL query string
-    if (getPurpose() != null) {
-      try {
-        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
     }
 
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      joiner.add(getFormat().toUrlQueryString(prefix + "format" + suffix));
+    public PresentationDefinition name(String name) {
+
+        this.name = name;
+        return this;
     }
 
-    // add `submission_requirements` to the URL query string
-    if (getSubmissionRequirements() != null) {
-      for (int i = 0; i < getSubmissionRequirements().size(); i++) {
-        if (getSubmissionRequirements().get(i) != null) {
-          joiner.add(getSubmissionRequirements().get(i).toUrlQueryString(String.format("%ssubmission_requirements%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    /**
+     * Definition name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public PresentationDefinition purpose(String purpose) {
+
+        this.purpose = purpose;
+        return this;
+    }
+
+    /**
+     * Definition purpose
+     *
+     * @return purpose
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public PresentationDefinition format(Format format) {
+
+        this.format = format;
+        return this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return format
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Format getFormat() {
+        return format;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormat(Format format) {
+        this.format = format;
+    }
+
+    public PresentationDefinition submissionRequirements(List<SubmissionRequirement> submissionRequirements) {
+
+        this.submissionRequirements = submissionRequirements;
+        return this;
+    }
+
+    public PresentationDefinition addSubmissionRequirementsItem(SubmissionRequirement submissionRequirementsItem) {
+        if (this.submissionRequirements == null) {
+            this.submissionRequirements = new ArrayList<>();
         }
-      }
+        this.submissionRequirements.add(submissionRequirementsItem);
+        return this;
     }
 
-    // add `input_descriptors` to the URL query string
-    if (getInputDescriptors() != null) {
-      for (int i = 0; i < getInputDescriptors().size(); i++) {
-        if (getInputDescriptors().get(i) != null) {
-          joiner.add(getInputDescriptors().get(i).toUrlQueryString(String.format("%sinput_descriptors%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    /**
+     * Get submissionRequirements
+     *
+     * @return submissionRequirements
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<SubmissionRequirement> getSubmissionRequirements() {
+        return submissionRequirements;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setSubmissionRequirements(List<SubmissionRequirement> submissionRequirements) {
+        this.submissionRequirements = submissionRequirements;
+    }
+
+    public PresentationDefinition inputDescriptors(List<InputDescriptor> inputDescriptors) {
+
+        this.inputDescriptors = inputDescriptors;
+        return this;
+    }
+
+    public PresentationDefinition addInputDescriptorsItem(InputDescriptor inputDescriptorsItem) {
+        if (this.inputDescriptors == null) {
+            this.inputDescriptors = new ArrayList<>();
         }
-      }
+        this.inputDescriptors.add(inputDescriptorsItem);
+        return this;
     }
 
-    // add `frame` to the URL query string
-    if (getFrame() != null) {
-      for (String _key : getFrame().keySet()) {
-        try {
-          joiner.add(String.format("%sframe%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getFrame().get(_key), URLEncoder.encode(String.valueOf(getFrame().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * Get inputDescriptors
+     *
+     * @return inputDescriptors
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<InputDescriptor> getInputDescriptors() {
+        return inputDescriptors;
+    }
+
+    @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setInputDescriptors(List<InputDescriptor> inputDescriptors) {
+        this.inputDescriptors = inputDescriptors;
+    }
+
+    public PresentationDefinition frame(Map<String, Object> frame) {
+
+        this.frame = frame;
+        return this;
+    }
+
+    public PresentationDefinition putFrameItem(String key, Object frameItem) {
+        if (this.frame == null) {
+            this.frame = new HashMap<>();
         }
-      }
+        this.frame.put(key, frameItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Dynamic model
+     *
+     * @return frame
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FRAME)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Map<String, Object> getFrame() {
+        return frame;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FRAME)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFrame(Map<String, Object> frame) {
+        this.frame = frame;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PresentationDefinition presentationDefinition = (PresentationDefinition) o;
+        return Objects.equals(this.id, presentationDefinition.id)
+                && Objects.equals(this.name, presentationDefinition.name)
+                && Objects.equals(this.purpose, presentationDefinition.purpose)
+                && Objects.equals(this.format, presentationDefinition.format)
+                && Objects.equals(this.submissionRequirements, presentationDefinition.submissionRequirements)
+                && Objects.equals(this.inputDescriptors, presentationDefinition.inputDescriptors)
+                && Objects.equals(this.frame, presentationDefinition.frame);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, purpose, format, submissionRequirements, inputDescriptors, frame);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PresentationDefinition {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
+        sb.append("    format: ").append(toIndentedString(format)).append("\n");
+        sb.append("    submissionRequirements: ").append(toIndentedString(submissionRequirements)).append("\n");
+        sb.append("    inputDescriptors: ").append(toIndentedString(inputDescriptors)).append("\n");
+        sb.append("    frame: ").append(toIndentedString(frame)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `purpose` to the URL query string
+        if (getPurpose() != null) {
+            try {
+                joiner.add(String.format("%spurpose%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `format` to the URL query string
+        if (getFormat() != null) {
+            joiner.add(getFormat().toUrlQueryString(prefix + "format" + suffix));
+        }
+
+        // add `submission_requirements` to the URL query string
+        if (getSubmissionRequirements() != null) {
+            for (int i = 0; i < getSubmissionRequirements().size(); i++) {
+                if (getSubmissionRequirements().get(i) != null) {
+                    joiner.add(getSubmissionRequirements().get(i).toUrlQueryString(String.format(
+                            "%ssubmission_requirements%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `input_descriptors` to the URL query string
+        if (getInputDescriptors() != null) {
+            for (int i = 0; i < getInputDescriptors().size(); i++) {
+                if (getInputDescriptors().get(i) != null) {
+                    joiner.add(getInputDescriptors().get(i).toUrlQueryString(String.format("%sinput_descriptors%s%s",
+                            prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `frame` to the URL query string
+        if (getFrame() != null) {
+            for (String _key : getFrame().keySet()) {
+                try {
+                    joiner.add(String.format("%sframe%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+                            getFrame().get(_key),
+                            URLEncoder.encode(String.valueOf(getFrame().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

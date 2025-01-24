@@ -8,12 +8,63 @@
         <groupId>com.affinidi.tdk</groupId>
         <artifactId>java</artifactId>
         <version>${revision}</version>
+        <relativePath>../../..</relativePath>
     </parent>
     <packaging>jar</packaging>
     <groupId>com.affinidi.tdk</groupId>
     <artifactId>auth.provider</artifactId>
     <name>auth.provider</name>
     <description>Affinidi TDK Java auth.provider package</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin> 
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId> 
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId> 
+            </plugin>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -74,55 +125,5 @@
             <artifactId>gson</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-            </plugin> 
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId> 
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-install-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <artifactId>maven-project-info-reports-plugin</artifactId> 
-            </plugin>
-            <plugin>
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

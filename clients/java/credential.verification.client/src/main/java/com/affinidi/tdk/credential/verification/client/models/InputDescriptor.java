@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -34,330 +33,328 @@ import java.util.StringJoiner;
 /**
  * InputDescriptor
  */
-@JsonPropertyOrder({
-  InputDescriptor.JSON_PROPERTY_ID,
-  InputDescriptor.JSON_PROPERTY_CONSTRAINTS,
-  InputDescriptor.JSON_PROPERTY_NAME,
-  InputDescriptor.JSON_PROPERTY_PURPOSE,
-  InputDescriptor.JSON_PROPERTY_FORMAT,
-  InputDescriptor.JSON_PROPERTY_GROUP
-})
+@JsonPropertyOrder({ InputDescriptor.JSON_PROPERTY_ID, InputDescriptor.JSON_PROPERTY_CONSTRAINTS,
+        InputDescriptor.JSON_PROPERTY_NAME, InputDescriptor.JSON_PROPERTY_PURPOSE, InputDescriptor.JSON_PROPERTY_FORMAT,
+        InputDescriptor.JSON_PROPERTY_GROUP })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class InputDescriptor {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
-  private Constraints constraints;
+    public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
+    private Constraints constraints;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_PURPOSE = "purpose";
-  private String purpose;
+    public static final String JSON_PROPERTY_PURPOSE = "purpose";
+    private String purpose;
 
-  public static final String JSON_PROPERTY_FORMAT = "format";
-  private Format format;
+    public static final String JSON_PROPERTY_FORMAT = "format";
+    private Format format;
 
-  public static final String JSON_PROPERTY_GROUP = "group";
-  private List<String> group = new ArrayList<>();
+    public static final String JSON_PROPERTY_GROUP = "group";
+    private List<String> group = new ArrayList<>();
 
-  public InputDescriptor() {
-  }
-
-  public InputDescriptor id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public InputDescriptor constraints(Constraints constraints) {
-    
-    this.constraints = constraints;
-    return this;
-  }
-
-  /**
-   * Get constraints
-   * @return constraints
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Constraints getConstraints() {
-    return constraints;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConstraints(Constraints constraints) {
-    this.constraints = constraints;
-  }
-
-  public InputDescriptor name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public InputDescriptor purpose(String purpose) {
-    
-    this.purpose = purpose;
-    return this;
-  }
-
-  /**
-   * Get purpose
-   * @return purpose
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPurpose() {
-    return purpose;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
-  public InputDescriptor format(Format format) {
-    
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Get format
-   * @return format
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Format getFormat() {
-    return format;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(Format format) {
-    this.format = format;
-  }
-
-  public InputDescriptor group(List<String> group) {
-    
-    this.group = group;
-    return this;
-  }
-
-  public InputDescriptor addGroupItem(String groupItem) {
-    if (this.group == null) {
-      this.group = new ArrayList<>();
-    }
-    this.group.add(groupItem);
-    return this;
-  }
-
-  /**
-   * Get group
-   * @return group
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GROUP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getGroup() {
-    return group;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GROUP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroup(List<String> group) {
-    this.group = group;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    InputDescriptor inputDescriptor = (InputDescriptor) o;
-    return Objects.equals(this.id, inputDescriptor.id) &&
-        Objects.equals(this.constraints, inputDescriptor.constraints) &&
-        Objects.equals(this.name, inputDescriptor.name) &&
-        Objects.equals(this.purpose, inputDescriptor.purpose) &&
-        Objects.equals(this.format, inputDescriptor.format) &&
-        Objects.equals(this.group, inputDescriptor.group);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, constraints, name, purpose, format, group);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class InputDescriptor {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    group: ").append(toIndentedString(group)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public InputDescriptor() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public InputDescriptor id(String id) {
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.id = id;
+        return this;
     }
 
-    // add `constraints` to the URL query string
-    if (getConstraints() != null) {
-      joiner.add(getConstraints().toUrlQueryString(prefix + "constraints" + suffix));
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getId() {
+        return id;
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setId(String id) {
+        this.id = id;
     }
 
-    // add `purpose` to the URL query string
-    if (getPurpose() != null) {
-      try {
-        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public InputDescriptor constraints(Constraints constraints) {
+
+        this.constraints = constraints;
+        return this;
     }
 
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      joiner.add(getFormat().toUrlQueryString(prefix + "format" + suffix));
+    /**
+     * Get constraints
+     *
+     * @return constraints
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Constraints getConstraints() {
+        return constraints;
     }
 
-    // add `group` to the URL query string
-    if (getGroup() != null) {
-      for (int i = 0; i < getGroup().size(); i++) {
-        try {
-          joiner.add(String.format("%sgroup%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getGroup().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setConstraints(Constraints constraints) {
+        this.constraints = constraints;
+    }
+
+    public InputDescriptor name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public InputDescriptor purpose(String purpose) {
+
+        this.purpose = purpose;
+        return this;
+    }
+
+    /**
+     * Get purpose
+     *
+     * @return purpose
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public InputDescriptor format(Format format) {
+
+        this.format = format;
+        return this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return format
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Format getFormat() {
+        return format;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormat(Format format) {
+        this.format = format;
+    }
+
+    public InputDescriptor group(List<String> group) {
+
+        this.group = group;
+        return this;
+    }
+
+    public InputDescriptor addGroupItem(String groupItem) {
+        if (this.group == null) {
+            this.group = new ArrayList<>();
         }
-      }
+        this.group.add(groupItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get group
+     *
+     * @return group
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_GROUP)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getGroup() {
+        return group;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GROUP)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setGroup(List<String> group) {
+        this.group = group;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        InputDescriptor inputDescriptor = (InputDescriptor) o;
+        return Objects.equals(this.id, inputDescriptor.id)
+                && Objects.equals(this.constraints, inputDescriptor.constraints)
+                && Objects.equals(this.name, inputDescriptor.name)
+                && Objects.equals(this.purpose, inputDescriptor.purpose)
+                && Objects.equals(this.format, inputDescriptor.format)
+                && Objects.equals(this.group, inputDescriptor.group);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, constraints, name, purpose, format, group);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class InputDescriptor {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    constraints: ").append(toIndentedString(constraints)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
+        sb.append("    format: ").append(toIndentedString(format)).append("\n");
+        sb.append("    group: ").append(toIndentedString(group)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `constraints` to the URL query string
+        if (getConstraints() != null) {
+            joiner.add(getConstraints().toUrlQueryString(prefix + "constraints" + suffix));
+        }
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `purpose` to the URL query string
+        if (getPurpose() != null) {
+            try {
+                joiner.add(String.format("%spurpose%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `format` to the URL query string
+        if (getFormat() != null) {
+            joiner.add(getFormat().toUrlQueryString(prefix + "format" + suffix));
+        }
+
+        // add `group` to the URL query string
+        if (getGroup() != null) {
+            for (int i = 0; i < getGroup().size(); i++) {
+                try {
+                    joiner.add(String.format("%sgroup%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getGroup().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

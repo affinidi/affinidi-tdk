@@ -17,8 +17,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Class that add parsing/formatting support for Java 8+ {@code OffsetDateTime} class.
- * It's generated for java clients when {@code AbstractJavaCodegen#dateLibrary} specified as {@code java8}.
+ * Class that add parsing/formatting support for Java 8+ {@code OffsetDateTime} class. It's generated for java clients
+ * when {@code AbstractJavaCodegen#dateLibrary} specified as {@code java8}.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class JavaTimeFormatter {
@@ -27,6 +27,7 @@ public class JavaTimeFormatter {
 
     /**
      * Get the date format used to parse/format {@code OffsetDateTime} parameters.
+     *
      * @return DateTimeFormatter
      */
     public DateTimeFormatter getOffsetDateTimeFormatter() {
@@ -35,7 +36,9 @@ public class JavaTimeFormatter {
 
     /**
      * Set the date format used to parse/format {@code OffsetDateTime} parameters.
-     * @param offsetDateTimeFormatter {@code DateTimeFormatter}
+     *
+     * @param offsetDateTimeFormatter
+     *            {@code DateTimeFormatter}
      */
     public void setOffsetDateTimeFormatter(DateTimeFormatter offsetDateTimeFormatter) {
         this.offsetDateTimeFormatter = offsetDateTimeFormatter;
@@ -43,7 +46,10 @@ public class JavaTimeFormatter {
 
     /**
      * Parse the given string into {@code OffsetDateTime} object.
-     * @param str String
+     *
+     * @param str
+     *            String
+     *
      * @return {@code OffsetDateTime}
      */
     public OffsetDateTime parseOffsetDateTime(String str) {
@@ -53,9 +59,13 @@ public class JavaTimeFormatter {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * Format the given {@code OffsetDateTime} object into string.
-     * @param offsetDateTime {@code OffsetDateTime}
+     *
+     * @param offsetDateTime
+     *            {@code OffsetDateTime}
+     *
      * @return {@code OffsetDateTime} in string format
      */
     public String formatOffsetDateTime(OffsetDateTime offsetDateTime) {

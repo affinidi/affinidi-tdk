@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
@@ -35,7 +34,7 @@ public class DefaultApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1AuthProxyDeleteTest() throws ApiException {
@@ -44,9 +43,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1AuthProxyGetTest() throws ApiException {
@@ -55,9 +55,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1AuthProxyPatchTest() throws ApiException {
@@ -66,9 +67,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1AuthProxyPostTest() throws ApiException {
@@ -77,9 +79,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1AuthProxyPutTest() throws ApiException {
@@ -88,9 +91,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1IdpProxyDeleteTest() throws ApiException {
@@ -99,9 +103,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1IdpProxyGetTest() throws ApiException {
@@ -110,9 +115,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1IdpProxyPatchTest() throws ApiException {
@@ -121,9 +127,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1IdpProxyPostTest() throws ApiException {
@@ -132,9 +139,10 @@ public class DefaultApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void v1IdpProxyPutTest() throws ApiException {

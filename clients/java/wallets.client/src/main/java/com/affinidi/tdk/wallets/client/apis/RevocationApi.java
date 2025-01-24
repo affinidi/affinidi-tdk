@@ -27,7 +27,6 @@ import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialInput;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,309 +37,290 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class RevocationApi extends BaseApi {
 
-  public RevocationApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public RevocationApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * Get revocation status list as RevocationListCredential
-   * @param projectId Description for projectId. (required)
-   * @param walletId Description for walletId. (required)
-   * @param statusId Description for statusId. (required)
-   * @return GetRevocationListCredentialResultDto
-   * @throws ApiException if fails to make API call
-   */
-  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId) throws ApiException {
-    return this.getRevocationCredentialStatus(projectId, walletId, statusId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Get revocation status list as RevocationListCredential
-   * @param projectId Description for projectId. (required)
-   * @param walletId Description for walletId. (required)
-   * @param statusId Description for statusId. (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return GetRevocationListCredentialResultDto
-   * @throws ApiException if fails to make API call
-   */
-  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getRevocationCredentialStatus");
+    public RevocationApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getRevocationCredentialStatus");
+
+    public RevocationApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // verify the required parameter 'statusId' is set
-    if (statusId == null) {
-      throw new ApiException(400, "Missing the required parameter 'statusId' when calling getRevocationCredentialStatus");
+
+    /**
+     *
+     * Get revocation status list as RevocationListCredential
+     *
+     * @param projectId
+     *            Description for projectId. (required)
+     * @param walletId
+     *            Description for walletId. (required)
+     * @param statusId
+     *            Description for statusId. (required)
+     *
+     * @return GetRevocationListCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId,
+            String statusId) throws ApiException {
+        return this.getRevocationCredentialStatus(projectId, walletId, statusId, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)))
-      .replaceAll("\\{" + "statusId" + "\\}", apiClient.escapeString(apiClient.parameterToString(statusId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * Get revocation status list as RevocationListCredential
+     *
+     * @param projectId
+     *            Description for projectId. (required)
+     * @param walletId
+     *            Description for walletId. (required)
+     * @param statusId
+     *            Description for statusId. (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return GetRevocationListCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId,
+            String statusId, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'projectId' when calling getRevocationCredentialStatus");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'walletId' when calling getRevocationCredentialStatus");
+        }
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'statusId' is set
+        if (statusId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'statusId' when calling getRevocationCredentialStatus");
+        }
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}"
+                .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)))
+                .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)))
+                .replaceAll("\\{" + "statusId" + "\\}", apiClient.escapeString(apiClient.parameterToString(statusId)));
 
-    TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  /**
-   * Return revocation list credential.
-   * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
-   * @param listId  (required)
-   * @param walletId id of the wallet (required)
-   * @return GetRevocationListCredentialResultDto
-   * @throws ApiException if fails to make API call
-   * @deprecated
-   */
-  @Deprecated
-  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId) throws ApiException {
-    return this.getRevocationListCredential(listId, walletId, Collections.emptyMap());
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  /**
-   * Return revocation list credential.
-   * Get revocation list 2020 Credential (required to check if VC revoked). It is a public endpoint.
-   * @param listId  (required)
-   * @param walletId id of the wallet (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return GetRevocationListCredentialResultDto
-   * @throws ApiException if fails to make API call
-   * @deprecated
-   */
-  @Deprecated
-  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'listId' is set
-    if (listId == null) {
-      throw new ApiException(400, "Missing the required parameter 'listId' when calling getRevocationListCredential");
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling getRevocationListCredential");
+
+    /**
+     * Return revocation list credential. Get revocation list 2020 Credential (required to check if VC revoked). It is a
+     * public endpoint.
+     *
+     * @param listId
+     *            (required)
+     * @param walletId
+     *            id of the wallet (required)
+     *
+     * @return GetRevocationListCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     *
+     * @deprecated
+     */
+    @Deprecated
+    public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId)
+            throws ApiException {
+        return this.getRevocationListCredential(listId, walletId, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}/revocation-list/{listId}"
-      .replaceAll("\\{" + "listId" + "\\}", apiClient.escapeString(apiClient.parameterToString(listId)))
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * Return revocation list credential. Get revocation list 2020 Credential (required to check if VC revoked). It is a
+     * public endpoint.
+     *
+     * @param listId
+     *            (required)
+     * @param walletId
+     *            id of the wallet (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return GetRevocationListCredentialResultDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     *
+     * @deprecated
+     */
+    @Deprecated
+    public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'listId' is set
+        if (listId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'listId' when calling getRevocationListCredential");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'walletId' when calling getRevocationListCredential");
+        }
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}/revocation-list/{listId}"
+                .replaceAll("\\{" + "listId" + "\\}", apiClient.escapeString(apiClient.parameterToString(listId)))
+                .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  /**
-   * Revoke Credential.
-   * Update index/credetial at appropriate revocation list (set revoken is true).
-   * @param walletId id of the wallet (required)
-   * @param revokeCredentialInput RevokeCredential (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
-    this.revokeCredential(walletId, revokeCredentialInput, Collections.emptyMap());
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
+        final String[] localVarContentTypes = {
 
-  /**
-   * Revoke Credential.
-   * Update index/credetial at appropriate revocation list (set revoken is true).
-   * @param walletId id of the wallet (required)
-   * @param revokeCredentialInput RevokeCredential (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = revokeCredentialInput;
-    
-    // verify the required parameter 'walletId' is set
-    if (walletId == null) {
-      throw new ApiException(400, "Missing the required parameter 'walletId' when calling revokeCredential");
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<GetRevocationListCredentialResultDto> localVarReturnType = new TypeReference<GetRevocationListCredentialResultDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // verify the required parameter 'revokeCredentialInput' is set
-    if (revokeCredentialInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'revokeCredentialInput' when calling revokeCredential");
+
+    /**
+     * Revoke Credential. Update index/credetial at appropriate revocation list (set revoken is true).
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param revokeCredentialInput
+     *            RevokeCredential (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
+        this.revokeCredential(walletId, revokeCredentialInput, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/wallets/{walletId}/revoke"
-      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * Revoke Credential. Update index/credetial at appropriate revocation list (set revoken is true).
+     *
+     * @param walletId
+     *            id of the wallet (required)
+     * @param revokeCredentialInput
+     *            RevokeCredential (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = revokeCredentialInput;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'walletId' is set
+        if (walletId == null) {
+            throw new ApiException(400, "Missing the required parameter 'walletId' when calling revokeCredential");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'revokeCredentialInput' is set
+        if (revokeCredentialInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'revokeCredentialInput' when calling revokeCredential");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/wallets/{walletId}/revoke".replaceAll("\\{" + "walletId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(walletId)));
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

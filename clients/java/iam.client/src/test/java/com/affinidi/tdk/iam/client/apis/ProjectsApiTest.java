@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
@@ -46,7 +45,7 @@ public class ProjectsApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void addPrincipalToProjectTest() throws ApiException {
@@ -55,9 +54,10 @@ public class ProjectsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createProjectTest() throws ApiException {
@@ -66,9 +66,10 @@ public class ProjectsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deletePrincipalFromProjectTest() throws ApiException {
@@ -78,9 +79,10 @@ public class ProjectsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listPrincipalsOfProjectTest() throws ApiException {
@@ -90,9 +92,10 @@ public class ProjectsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listProjectTest() throws ApiException {
@@ -102,9 +105,10 @@ public class ProjectsApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateProjectTest() throws ApiException {

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -25,54 +24,58 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Requested Client Authentication method for the Token Endpoint. The options are: &#x60;client_secret_post&#x60;: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. &#x60;client_secret_basic&#x60;: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. &#x60;none&#x60;: For public clients (native/mobile apps) which can not have secret. 
+ * Requested Client Authentication method for the Token Endpoint. The options are: &#x60;client_secret_post&#x60;:
+ * (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body.
+ * &#x60;client_secret_basic&#x60;: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the
+ * HTTP Authorization header. &#x60;none&#x60;: For public clients (native/mobile apps) which can not have secret.
  */
 public enum TokenEndpointAuthMethod {
-  
-  CLIENT_SECRET_BASIC("client_secret_basic"),
-  
-  CLIENT_SECRET_POST("client_secret_post"),
-  
-  NONE("none");
 
-  private String value;
+    CLIENT_SECRET_BASIC("client_secret_basic"),
 
-  TokenEndpointAuthMethod(String value) {
-    this.value = value;
-  }
+    CLIENT_SECRET_POST("client_secret_post"),
 
-  @JsonValue
-  public String getValue() {
-    return value;
-  }
+    NONE("none");
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    private String value;
 
-  @JsonCreator
-  public static TokenEndpointAuthMethod fromValue(String value) {
-    for (TokenEndpointAuthMethod b : TokenEndpointAuthMethod.values()) {
-      if (b.value.equals(value)) {
-        return b;
-      }
-    }
-    throw new IllegalArgumentException("Unexpected value '" + value + "'");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    if (prefix == null) {
-      prefix = "";
+    TokenEndpointAuthMethod(String value) {
+        this.value = value;
     }
 
-    return String.format("%s=%s", prefix, this.toString());
-  }
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TokenEndpointAuthMethod fromValue(String value) {
+        for (TokenEndpointAuthMethod b : TokenEndpointAuthMethod.values()) {
+            if (b.value.equals(value)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        if (prefix == null) {
+            prefix = "";
+        }
+
+        return String.format("%s=%s", prefix, this.toString());
+    }
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -32,211 +31,209 @@ import java.util.StringJoiner;
 /**
  * HolderSubject
  */
-@JsonPropertyOrder({
-  HolderSubject.JSON_PROPERTY_FIELD_ID,
-  HolderSubject.JSON_PROPERTY_DIRECTIVE
-})
+@JsonPropertyOrder({ HolderSubject.JSON_PROPERTY_FIELD_ID, HolderSubject.JSON_PROPERTY_DIRECTIVE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class HolderSubject {
-  public static final String JSON_PROPERTY_FIELD_ID = "field_id";
-  private List<String> fieldId = new ArrayList<>();
+    public static final String JSON_PROPERTY_FIELD_ID = "field_id";
+    private List<String> fieldId = new ArrayList<>();
 
-  /**
-   * Gets or Sets directive
-   */
-  public enum DirectiveEnum {
-    REQUIRED("required"),
-    
-    PREFERRED("preferred");
+    /**
+     * Gets or Sets directive
+     */
+    public enum DirectiveEnum {
+        REQUIRED("required"),
 
-    private String value;
+        PREFERRED("preferred");
 
-    DirectiveEnum(String value) {
-      this.value = value;
+        private String value;
+
+        DirectiveEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static DirectiveEnum fromValue(String value) {
+            for (DirectiveEnum b : DirectiveEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_DIRECTIVE = "directive";
+    private DirectiveEnum directive;
+
+    public HolderSubject() {
+    }
+
+    public HolderSubject fieldId(List<String> fieldId) {
+
+        this.fieldId = fieldId;
+        return this;
+    }
+
+    public HolderSubject addFieldIdItem(String fieldIdItem) {
+        if (this.fieldId == null) {
+            this.fieldId = new ArrayList<>();
+        }
+        this.fieldId.add(fieldIdItem);
+        return this;
+    }
+
+    /**
+     * Get fieldId
+     *
+     * @return fieldId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_FIELD_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getFieldId() {
+        return fieldId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FIELD_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setFieldId(List<String> fieldId) {
+        this.fieldId = fieldId;
+    }
+
+    public HolderSubject directive(DirectiveEnum directive) {
+
+        this.directive = directive;
+        return this;
+    }
+
+    /**
+     * Get directive
+     *
+     * @return directive
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DIRECTIVE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public DirectiveEnum getDirective() {
+        return directive;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DIRECTIVE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setDirective(DirectiveEnum directive) {
+        this.directive = directive;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        HolderSubject holderSubject = (HolderSubject) o;
+        return Objects.equals(this.fieldId, holderSubject.fieldId)
+                && Objects.equals(this.directive, holderSubject.directive);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fieldId, directive);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class HolderSubject {\n");
+        sb.append("    fieldId: ").append(toIndentedString(fieldId)).append("\n");
+        sb.append("    directive: ").append(toIndentedString(directive)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static DirectiveEnum fromValue(String value) {
-      for (DirectiveEnum b : DirectiveEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_DIRECTIVE = "directive";
-  private DirectiveEnum directive;
-
-  public HolderSubject() {
-  }
-
-  public HolderSubject fieldId(List<String> fieldId) {
-    
-    this.fieldId = fieldId;
-    return this;
-  }
-
-  public HolderSubject addFieldIdItem(String fieldIdItem) {
-    if (this.fieldId == null) {
-      this.fieldId = new ArrayList<>();
-    }
-    this.fieldId.add(fieldIdItem);
-    return this;
-  }
-
-  /**
-   * Get fieldId
-   * @return fieldId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FIELD_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getFieldId() {
-    return fieldId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FIELD_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFieldId(List<String> fieldId) {
-    this.fieldId = fieldId;
-  }
-
-  public HolderSubject directive(DirectiveEnum directive) {
-    
-    this.directive = directive;
-    return this;
-  }
-
-  /**
-   * Get directive
-   * @return directive
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DIRECTIVE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public DirectiveEnum getDirective() {
-    return directive;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DIRECTIVE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDirective(DirectiveEnum directive) {
-    this.directive = directive;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    HolderSubject holderSubject = (HolderSubject) o;
-    return Objects.equals(this.fieldId, holderSubject.fieldId) &&
-        Objects.equals(this.directive, holderSubject.directive);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(fieldId, directive);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class HolderSubject {\n");
-    sb.append("    fieldId: ").append(toIndentedString(fieldId)).append("\n");
-    sb.append("    directive: ").append(toIndentedString(directive)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
 
-    // add `field_id` to the URL query string
-    if (getFieldId() != null) {
-      for (int i = 0; i < getFieldId().size(); i++) {
-        try {
-          joiner.add(String.format("%sfield_id%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getFieldId().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-    }
 
-    // add `directive` to the URL query string
-    if (getDirective() != null) {
-      try {
-        joiner.add(String.format("%sdirective%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDirective()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        StringJoiner joiner = new StringJoiner("&");
 
-    return joiner.toString();
-  }
+        // add `field_id` to the URL query string
+        if (getFieldId() != null) {
+            for (int i = 0; i < getFieldId().size(); i++) {
+                try {
+                    joiner.add(String.format("%sfield_id%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getFieldId().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `directive` to the URL query string
+        if (getDirective() != null) {
+            try {
+                joiner.add(String.format("%sdirective%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDirective()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.wallets.client;
 
 import java.util.Map;
@@ -24,7 +23,8 @@ public class ApiException extends Exception {
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
 
-    public ApiException() {}
+    public ApiException() {
+    }
 
     public ApiException(Throwable throwable) {
         super(throwable);
@@ -34,7 +34,8 @@ public class ApiException extends Exception {
         super(message);
     }
 
-    public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders, String responseBody) {
+    public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders,
+            String responseBody) {
         super(message, throwable);
         this.code = code;
         this.responseHeaders = responseHeaders;
@@ -50,7 +51,8 @@ public class ApiException extends Exception {
     }
 
     public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-        this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders, responseBody);
+        this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders,
+                responseBody);
     }
 
     public ApiException(int code, String message) {
@@ -93,10 +95,7 @@ public class ApiException extends Exception {
 
     @Override
     public String toString() {
-        return "ApiException{" +
-                "code=" + code +
-                ", responseHeaders=" + responseHeaders +
-                ", responseBody='" + responseBody + '\'' +
-                '}';
+        return "ApiException{" + "code=" + code + ", responseHeaders=" + responseHeaders + ", responseBody='"
+                + responseBody + '\'' + '}';
     }
 }

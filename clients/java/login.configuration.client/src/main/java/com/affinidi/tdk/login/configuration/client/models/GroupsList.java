@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -33,131 +32,129 @@ import java.util.StringJoiner;
 /**
  * GroupsList
  */
-@JsonPropertyOrder({
-  GroupsList.JSON_PROPERTY_GROUPS
-})
+@JsonPropertyOrder({ GroupsList.JSON_PROPERTY_GROUPS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GroupsList {
-  public static final String JSON_PROPERTY_GROUPS = "groups";
-  private List<GroupDto> groups = new ArrayList<>();
+    public static final String JSON_PROPERTY_GROUPS = "groups";
+    private List<GroupDto> groups = new ArrayList<>();
 
-  public GroupsList() {
-  }
-
-  public GroupsList groups(List<GroupDto> groups) {
-    
-    this.groups = groups;
-    return this;
-  }
-
-  public GroupsList addGroupsItem(GroupDto groupsItem) {
-    if (this.groups == null) {
-      this.groups = new ArrayList<>();
-    }
-    this.groups.add(groupsItem);
-    return this;
-  }
-
-  /**
-   * Get groups
-   * @return groups
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GROUPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<GroupDto> getGroups() {
-    return groups;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GROUPS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroups(List<GroupDto> groups) {
-    this.groups = groups;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GroupsList groupsList = (GroupsList) o;
-    return Objects.equals(this.groups, groupsList.groups);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(groups);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GroupsList {\n");
-    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public GroupsList() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public GroupsList groups(List<GroupDto> groups) {
 
-    // add `groups` to the URL query string
-    if (getGroups() != null) {
-      for (int i = 0; i < getGroups().size(); i++) {
-        if (getGroups().get(i) != null) {
-          joiner.add(getGroups().get(i).toUrlQueryString(String.format("%sgroups%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.groups = groups;
+        return this;
+    }
+
+    public GroupsList addGroupsItem(GroupDto groupsItem) {
+        if (this.groups == null) {
+            this.groups = new ArrayList<>();
         }
-      }
+        this.groups.add(groupsItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get groups
+     *
+     * @return groups
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_GROUPS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<GroupDto> getGroups() {
+        return groups;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GROUPS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setGroups(List<GroupDto> groups) {
+        this.groups = groups;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GroupsList groupsList = (GroupsList) o;
+        return Objects.equals(this.groups, groupsList.groups);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groups);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GroupsList {\n");
+        sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `groups` to the URL query string
+        if (getGroups() != null) {
+            for (int i = 0; i < getGroups().size(); i++) {
+                if (getGroups().get(i) != null) {
+                    joiner.add(getGroups().get(i).toUrlQueryString(String.format("%sgroups%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

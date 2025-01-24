@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -31,209 +30,211 @@ import java.util.StringJoiner;
 /**
  * It contains information about the requester or verifier.
  */
-@JsonPropertyOrder({
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_NAME,
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_ORIGIN,
-  IotaConfigurationDtoClientMetadata.JSON_PROPERTY_LOGO
-})
+@JsonPropertyOrder({ IotaConfigurationDtoClientMetadata.JSON_PROPERTY_NAME,
+        IotaConfigurationDtoClientMetadata.JSON_PROPERTY_ORIGIN,
+        IotaConfigurationDtoClientMetadata.JSON_PROPERTY_LOGO })
 @JsonTypeName("IotaConfigurationDto_clientMetadata")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> {
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_ORIGIN = "origin";
-  private String origin;
+    public static final String JSON_PROPERTY_ORIGIN = "origin";
+    private String origin;
 
-  public static final String JSON_PROPERTY_LOGO = "logo";
-  private String logo;
+    public static final String JSON_PROPERTY_LOGO = "logo";
+    private String logo;
 
-  public IotaConfigurationDtoClientMetadata() {
+    public IotaConfigurationDtoClientMetadata() {
 
-  }
-
-  public IotaConfigurationDtoClientMetadata name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website&#39;s name.
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public IotaConfigurationDtoClientMetadata origin(String origin) {
-    
-    this.origin = origin;
-    return this;
-  }
-
-  /**
-   * The URL of the requester displayed on the consent page indicates the request&#39;s origin.
-   * @return origin
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getOrigin() {
-    return origin;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrigin(String origin) {
-    this.origin = origin;
-  }
-
-  public IotaConfigurationDtoClientMetadata logo(String logo) {
-    
-    this.logo = logo;
-    return this;
-  }
-
-  /**
-   * The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
-   * @return logo
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOGO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getLogo() {
-    return logo;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOGO)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLogo(String logo) {
-    this.logo = logo;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    IotaConfigurationDtoClientMetadata iotaConfigurationDtoClientMetadata = (IotaConfigurationDtoClientMetadata) o;
-    return Objects.equals(this.name, iotaConfigurationDtoClientMetadata.name) &&
-        Objects.equals(this.origin, iotaConfigurationDtoClientMetadata.origin) &&
-        Objects.equals(this.logo, iotaConfigurationDtoClientMetadata.logo) &&
-        super.equals(o);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, origin, logo, super.hashCode());
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IotaConfigurationDtoClientMetadata {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
-    sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public IotaConfigurationDtoClientMetadata name(String name) {
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.name = name;
+        return this;
     }
 
-    // add `origin` to the URL query string
-    if (getOrigin() != null) {
-      try {
-        joiner.add(String.format("%sorigin%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The name displayed on the consent page indicates who is requesting data from the user. It can be the application
+     * or website&#39;s name.
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getName() {
+        return name;
     }
 
-    // add `logo` to the URL query string
-    if (getLogo() != null) {
-      try {
-        joiner.add(String.format("%slogo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setName(String name) {
+        this.name = name;
     }
 
-    return joiner.toString();
-  }
+    public IotaConfigurationDtoClientMetadata origin(String origin) {
+
+        this.origin = origin;
+        return this;
+    }
+
+    /**
+     * The URL of the requester displayed on the consent page indicates the request&#39;s origin.
+     *
+     * @return origin
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ORIGIN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ORIGIN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public IotaConfigurationDtoClientMetadata logo(String logo) {
+
+        this.logo = logo;
+        return this;
+    }
+
+    /**
+     * The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the
+     * data.
+     *
+     * @return logo
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_LOGO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getLogo() {
+        return logo;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LOGO)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        IotaConfigurationDtoClientMetadata iotaConfigurationDtoClientMetadata = (IotaConfigurationDtoClientMetadata) o;
+        return Objects.equals(this.name, iotaConfigurationDtoClientMetadata.name)
+                && Objects.equals(this.origin, iotaConfigurationDtoClientMetadata.origin)
+                && Objects.equals(this.logo, iotaConfigurationDtoClientMetadata.logo) && super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, origin, logo, super.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class IotaConfigurationDtoClientMetadata {\n");
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+        sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `origin` to the URL query string
+        if (getOrigin() != null) {
+            try {
+                joiner.add(String.format("%sorigin%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `logo` to the URL query string
+        if (getLogo() != null) {
+            try {
+                joiner.add(String.format("%slogo%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

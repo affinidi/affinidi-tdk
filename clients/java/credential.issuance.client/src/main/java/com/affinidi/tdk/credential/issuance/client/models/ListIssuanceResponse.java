@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -33,131 +32,129 @@ import java.util.StringJoiner;
 /**
  * ListIssuanceResponse
  */
-@JsonPropertyOrder({
-  ListIssuanceResponse.JSON_PROPERTY_ISSUANCES
-})
+@JsonPropertyOrder({ ListIssuanceResponse.JSON_PROPERTY_ISSUANCES })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListIssuanceResponse {
-  public static final String JSON_PROPERTY_ISSUANCES = "issuances";
-  private List<ListIssuanceResponseIssuancesInner> issuances = new ArrayList<>();
+    public static final String JSON_PROPERTY_ISSUANCES = "issuances";
+    private List<ListIssuanceResponseIssuancesInner> issuances = new ArrayList<>();
 
-  public ListIssuanceResponse() {
-  }
-
-  public ListIssuanceResponse issuances(List<ListIssuanceResponseIssuancesInner> issuances) {
-    
-    this.issuances = issuances;
-    return this;
-  }
-
-  public ListIssuanceResponse addIssuancesItem(ListIssuanceResponseIssuancesInner issuancesItem) {
-    if (this.issuances == null) {
-      this.issuances = new ArrayList<>();
-    }
-    this.issuances.add(issuancesItem);
-    return this;
-  }
-
-  /**
-   * The list of all issuances for the Project
-   * @return issuances
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUANCES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<ListIssuanceResponseIssuancesInner> getIssuances() {
-    return issuances;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUANCES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuances(List<ListIssuanceResponseIssuancesInner> issuances) {
-    this.issuances = issuances;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ListIssuanceResponse listIssuanceResponse = (ListIssuanceResponse) o;
-    return Objects.equals(this.issuances, listIssuanceResponse.issuances);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(issuances);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListIssuanceResponse {\n");
-    sb.append("    issuances: ").append(toIndentedString(issuances)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ListIssuanceResponse() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ListIssuanceResponse issuances(List<ListIssuanceResponseIssuancesInner> issuances) {
 
-    // add `issuances` to the URL query string
-    if (getIssuances() != null) {
-      for (int i = 0; i < getIssuances().size(); i++) {
-        if (getIssuances().get(i) != null) {
-          joiner.add(getIssuances().get(i).toUrlQueryString(String.format("%sissuances%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.issuances = issuances;
+        return this;
+    }
+
+    public ListIssuanceResponse addIssuancesItem(ListIssuanceResponseIssuancesInner issuancesItem) {
+        if (this.issuances == null) {
+            this.issuances = new ArrayList<>();
         }
-      }
+        this.issuances.add(issuancesItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * The list of all issuances for the Project
+     *
+     * @return issuances
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ISSUANCES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<ListIssuanceResponseIssuancesInner> getIssuances() {
+        return issuances;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUANCES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIssuances(List<ListIssuanceResponseIssuancesInner> issuances) {
+        this.issuances = issuances;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListIssuanceResponse listIssuanceResponse = (ListIssuanceResponse) o;
+        return Objects.equals(this.issuances, listIssuanceResponse.issuances);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(issuances);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListIssuanceResponse {\n");
+        sb.append("    issuances: ").append(toIndentedString(issuances)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `issuances` to the URL query string
+        if (getIssuances() != null) {
+            for (int i = 0; i < getIssuances().size(); i++) {
+                if (getIssuances().get(i) != null) {
+                    joiner.add(getIssuances().get(i).toUrlQueryString(String.format("%sissuances%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

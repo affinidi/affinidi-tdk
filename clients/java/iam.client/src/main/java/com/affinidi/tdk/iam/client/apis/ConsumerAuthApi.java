@@ -26,7 +26,6 @@ import com.affinidi.tdk.iam.client.models.InvalidDIDError;
 import com.affinidi.tdk.iam.client.models.UnauthorizedError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,126 +36,109 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConsumerAuthApi extends BaseApi {
 
-  public ConsumerAuthApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public ConsumerAuthApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * The Consumer OAuth 2.0 Token Endpoint
-   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
-   * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-   * @return ConsumerAuthTokenEndpointOutput
-   * @throws ApiException if fails to make API call
-   */
-  public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput) throws ApiException {
-    return this.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * The Consumer OAuth 2.0 Token Endpoint
-   * Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/  The Ory SDK is not yet able to this endpoint properly.
-   * @param consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ConsumerAuthTokenEndpointOutput
-   * @throws ApiException if fails to make API call
-   */
-  public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = consumerAuthTokenEndpointInput;
-    
-    // verify the required parameter 'consumerAuthTokenEndpointInput' is set
-    if (consumerAuthTokenEndpointInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'consumerAuthTokenEndpointInput' when calling consumerAuthTokenEndpoint");
+    public ConsumerAuthApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/consumer/oauth2/token";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    public ConsumerAuthApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     * The Consumer OAuth 2.0 Token Endpoint Use open source libraries to perform OAuth 2.0 and OpenID Connect available
+     * for any programming language. You can find a list of libraries here https://oauth.net/code/ The Ory SDK is not
+     * yet able to this endpoint properly.
+     *
+     * @param consumerAuthTokenEndpointInput
+     *            ConsumerAuthTokenEndpoint (required)
+     *
+     * @return ConsumerAuthTokenEndpointOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(
+            ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput) throws ApiException {
+        return this.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput, Collections.emptyMap());
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     * The Consumer OAuth 2.0 Token Endpoint Use open source libraries to perform OAuth 2.0 and OpenID Connect available
+     * for any programming language. You can find a list of libraries here https://oauth.net/code/ The Ory SDK is not
+     * yet able to this endpoint properly.
+     *
+     * @param consumerAuthTokenEndpointInput
+     *            ConsumerAuthTokenEndpoint (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ConsumerAuthTokenEndpointOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ConsumerAuthTokenEndpointOutput consumerAuthTokenEndpoint(
+            ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = consumerAuthTokenEndpointInput;
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'consumerAuthTokenEndpointInput' is set
+        if (consumerAuthTokenEndpointInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'consumerAuthTokenEndpointInput' when calling consumerAuthTokenEndpoint");
+        }
 
-    String[] localVarAuthNames = new String[] {  };
+        // create path and map variables
+        String localVarPath = "/v1/consumer/oauth2/token";
 
-    TypeReference<ConsumerAuthTokenEndpointOutput> localVarReturnType = new TypeReference<ConsumerAuthTokenEndpointOutput>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] {};
 
-    String[] localVarAuthNames = new String[] {  };
+        TypeReference<ConsumerAuthTokenEndpointOutput> localVarReturnType = new TypeReference<ConsumerAuthTokenEndpointOutput>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

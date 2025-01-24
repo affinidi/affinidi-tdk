@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -29,164 +28,164 @@ import java.util.StringJoiner;
 /**
  * AddUserToProjectInput
  */
-@JsonPropertyOrder({
-  AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_ID,
-  AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_TYPE
-})
+@JsonPropertyOrder({ AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_ID,
+        AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_TYPE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AddUserToProjectInput {
-  public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
-  private String principalId;
+    public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+    private String principalId;
 
-  public static final String JSON_PROPERTY_PRINCIPAL_TYPE = "principalType";
-  private String principalType;
+    public static final String JSON_PROPERTY_PRINCIPAL_TYPE = "principalType";
+    private String principalType;
 
-  public AddUserToProjectInput() {
-  }
-
-  public AddUserToProjectInput principalId(String principalId) {
-    
-    this.principalId = principalId;
-    return this;
-  }
-
-  /**
-   * Get principalId
-   * @return principalId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getPrincipalId() {
-    return principalId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalId(String principalId) {
-    this.principalId = principalId;
-  }
-
-  public AddUserToProjectInput principalType(String principalType) {
-    
-    this.principalType = principalType;
-    return this;
-  }
-
-  /**
-   * Get principalType
-   * @return principalType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getPrincipalType() {
-    return principalType;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalType(String principalType) {
-    this.principalType = principalType;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    AddUserToProjectInput addUserToProjectInput = (AddUserToProjectInput) o;
-    return Objects.equals(this.principalId, addUserToProjectInput.principalId) &&
-        Objects.equals(this.principalType, addUserToProjectInput.principalType);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(principalId, principalType);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AddUserToProjectInput {\n");
-    sb.append("    principalId: ").append(toIndentedString(principalId)).append("\n");
-    sb.append("    principalType: ").append(toIndentedString(principalType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public AddUserToProjectInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public AddUserToProjectInput principalId(String principalId) {
 
-    // add `principalId` to the URL query string
-    if (getPrincipalId() != null) {
-      try {
-        joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.principalId = principalId;
+        return this;
     }
 
-    // add `principalType` to the URL query string
-    if (getPrincipalType() != null) {
-      try {
-        joiner.add(String.format("%sprincipalType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get principalId
+     *
+     * @return principalId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getPrincipalId() {
+        return principalId;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPrincipalId(String principalId) {
+        this.principalId = principalId;
+    }
+
+    public AddUserToProjectInput principalType(String principalType) {
+
+        this.principalType = principalType;
+        return this;
+    }
+
+    /**
+     * Get principalType
+     *
+     * @return principalType
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getPrincipalType() {
+        return principalType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPrincipalType(String principalType) {
+        this.principalType = principalType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AddUserToProjectInput addUserToProjectInput = (AddUserToProjectInput) o;
+        return Objects.equals(this.principalId, addUserToProjectInput.principalId)
+                && Objects.equals(this.principalType, addUserToProjectInput.principalType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(principalId, principalType);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class AddUserToProjectInput {\n");
+        sb.append("    principalId: ").append(toIndentedString(principalId)).append("\n");
+        sb.append("    principalType: ").append(toIndentedString(principalType)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `principalId` to the URL query string
+        if (getPrincipalId() != null) {
+            try {
+                joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `principalType` to the URL query string
+        if (getPrincipalType() != null) {
+            try {
+                joiner.add(String.format("%sprincipalType%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPrincipalType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

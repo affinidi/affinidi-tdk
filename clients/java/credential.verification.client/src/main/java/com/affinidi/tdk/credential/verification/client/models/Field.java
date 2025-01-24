@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -33,329 +32,325 @@ import java.util.StringJoiner;
 /**
  * Field
  */
-@JsonPropertyOrder({
-  Field.JSON_PROPERTY_ID,
-  Field.JSON_PROPERTY_PATH,
-  Field.JSON_PROPERTY_PURPOSE,
-  Field.JSON_PROPERTY_FILTER,
-  Field.JSON_PROPERTY_PREDICATE
-})
+@JsonPropertyOrder({ Field.JSON_PROPERTY_ID, Field.JSON_PROPERTY_PATH, Field.JSON_PROPERTY_PURPOSE,
+        Field.JSON_PROPERTY_FILTER, Field.JSON_PROPERTY_PREDICATE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Field {
-  public static final String JSON_PROPERTY_ID = "id";
-  private String id;
+    public static final String JSON_PROPERTY_ID = "id";
+    private String id;
 
-  public static final String JSON_PROPERTY_PATH = "path";
-  private List<String> path = new ArrayList<>();
+    public static final String JSON_PROPERTY_PATH = "path";
+    private List<String> path = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_PURPOSE = "purpose";
-  private String purpose;
+    public static final String JSON_PROPERTY_PURPOSE = "purpose";
+    private String purpose;
 
-  public static final String JSON_PROPERTY_FILTER = "filter";
-  private Filter filter;
+    public static final String JSON_PROPERTY_FILTER = "filter";
+    private Filter filter;
 
-  /**
-   * Gets or Sets predicate
-   */
-  public enum PredicateEnum {
-    REQUIRED("required"),
-    
-    PREFERRED("preferred");
+    /**
+     * Gets or Sets predicate
+     */
+    public enum PredicateEnum {
+        REQUIRED("required"),
 
-    private String value;
+        PREFERRED("preferred");
 
-    PredicateEnum(String value) {
-      this.value = value;
+        private String value;
+
+        PredicateEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static PredicateEnum fromValue(String value) {
+            for (PredicateEnum b : PredicateEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_PREDICATE = "predicate";
+    private PredicateEnum predicate;
+
+    public Field() {
+    }
+
+    public Field id(String id) {
+
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getId() {
+        return id;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Field path(List<String> path) {
+
+        this.path = path;
+        return this;
+    }
+
+    public Field addPathItem(String pathItem) {
+        if (this.path == null) {
+            this.path = new ArrayList<>();
+        }
+        this.path.add(pathItem);
+        return this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return path
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PATH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getPath() {
+        return path;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PATH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPath(List<String> path) {
+        this.path = path;
+    }
+
+    public Field purpose(String purpose) {
+
+        this.purpose = purpose;
+        return this;
+    }
+
+    /**
+     * Get purpose
+     *
+     * @return purpose
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PURPOSE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public Field filter(Filter filter) {
+
+        this.filter = filter;
+        return this;
+    }
+
+    /**
+     * Get filter
+     *
+     * @return filter
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FILTER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FILTER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFilter(Filter filter) {
+        this.filter = filter;
+    }
+
+    public Field predicate(PredicateEnum predicate) {
+
+        this.predicate = predicate;
+        return this;
+    }
+
+    /**
+     * Get predicate
+     *
+     * @return predicate
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PREDICATE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public PredicateEnum getPredicate() {
+        return predicate;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PREDICATE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPredicate(PredicateEnum predicate) {
+        this.predicate = predicate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Field field = (Field) o;
+        return Objects.equals(this.id, field.id) && Objects.equals(this.path, field.path)
+                && Objects.equals(this.purpose, field.purpose) && Objects.equals(this.filter, field.filter)
+                && Objects.equals(this.predicate, field.predicate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, path, purpose, filter, predicate);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Field {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    path: ").append(toIndentedString(path)).append("\n");
+        sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
+        sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+        sb.append("    predicate: ").append(toIndentedString(predicate)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static PredicateEnum fromValue(String value) {
-      for (PredicateEnum b : PredicateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_PREDICATE = "predicate";
-  private PredicateEnum predicate;
-
-  public Field() {
-  }
-
-  public Field id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public Field path(List<String> path) {
-    
-    this.path = path;
-    return this;
-  }
-
-  public Field addPathItem(String pathItem) {
-    if (this.path == null) {
-      this.path = new ArrayList<>();
-    }
-    this.path.add(pathItem);
-    return this;
-  }
-
-  /**
-   * Get path
-   * @return path
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PATH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getPath() {
-    return path;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PATH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPath(List<String> path) {
-    this.path = path;
-  }
-
-  public Field purpose(String purpose) {
-    
-    this.purpose = purpose;
-    return this;
-  }
-
-  /**
-   * Get purpose
-   * @return purpose
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPurpose() {
-    return purpose;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
-    this.purpose = purpose;
-  }
-
-  public Field filter(Filter filter) {
-    
-    this.filter = filter;
-    return this;
-  }
-
-  /**
-   * Get filter
-   * @return filter
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FILTER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Filter getFilter() {
-    return filter;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FILTER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilter(Filter filter) {
-    this.filter = filter;
-  }
-
-  public Field predicate(PredicateEnum predicate) {
-    
-    this.predicate = predicate;
-    return this;
-  }
-
-  /**
-   * Get predicate
-   * @return predicate
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREDICATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public PredicateEnum getPredicate() {
-    return predicate;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PREDICATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredicate(PredicateEnum predicate) {
-    this.predicate = predicate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Field field = (Field) o;
-    return Objects.equals(this.id, field.id) &&
-        Objects.equals(this.path, field.path) &&
-        Objects.equals(this.purpose, field.purpose) &&
-        Objects.equals(this.filter, field.filter) &&
-        Objects.equals(this.predicate, field.predicate);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, path, purpose, filter, predicate);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Field {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    path: ").append(toIndentedString(path)).append("\n");
-    sb.append("    purpose: ").append(toIndentedString(purpose)).append("\n");
-    sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
-    sb.append("    predicate: ").append(toIndentedString(predicate)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `path` to the URL query string
-    if (getPath() != null) {
-      for (int i = 0; i < getPath().size(); i++) {
-        try {
-          joiner.add(String.format("%spath%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getPath().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-    }
 
-    // add `purpose` to the URL query string
-    if (getPurpose() != null) {
-      try {
-        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        StringJoiner joiner = new StringJoiner("&");
 
-    // add `filter` to the URL query string
-    if (getFilter() != null) {
-      joiner.add(getFilter().toUrlQueryString(prefix + "filter" + suffix));
-    }
+        // add `id` to the URL query string
+        if (getId() != null) {
+            try {
+                joiner.add(String.format("%sid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
 
-    // add `predicate` to the URL query string
-    if (getPredicate() != null) {
-      try {
-        joiner.add(String.format("%spredicate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPredicate()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
+        // add `path` to the URL query string
+        if (getPath() != null) {
+            for (int i = 0; i < getPath().size(); i++) {
+                try {
+                    joiner.add(String.format("%spath%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getPath().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 
-    return joiner.toString();
-  }
+        // add `purpose` to the URL query string
+        if (getPurpose() != null) {
+            try {
+                joiner.add(String.format("%spurpose%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `filter` to the URL query string
+        if (getFilter() != null) {
+            joiner.add(getFilter().toUrlQueryString(prefix + "filter" + suffix));
+        }
+
+        // add `predicate` to the URL query string
+        if (getPredicate() != null) {
+            try {
+                joiner.add(String.format("%spredicate%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPredicate()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

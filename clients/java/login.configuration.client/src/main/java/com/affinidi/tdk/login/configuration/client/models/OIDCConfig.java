@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -33,1517 +32,1598 @@ import java.util.StringJoiner;
 /**
  * OIDCConfig
  */
-@JsonPropertyOrder({
-  OIDCConfig.JSON_PROPERTY_AUTHORIZATION_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_CLAIMS_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00,
-  OIDCConfig.JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00,
-  OIDCConfig.JSON_PROPERTY_END_SESSION_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_GRANT_TYPES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG,
-  OIDCConfig.JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_ISSUER,
-  OIDCConfig.JSON_PROPERTY_JWKS_URI,
-  OIDCConfig.JSON_PROPERTY_REGISTRATION_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION,
-  OIDCConfig.JSON_PROPERTY_RESPONSE_MODES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_REVOCATION_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_SCOPES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_TOKEN_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED,
-  OIDCConfig.JSON_PROPERTY_USERINFO_ENDPOINT,
-  OIDCConfig.JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG,
-  OIDCConfig.JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED
-})
+@JsonPropertyOrder({ OIDCConfig.JSON_PROPERTY_AUTHORIZATION_ENDPOINT,
+        OIDCConfig.JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED, OIDCConfig.JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_CLAIMS_SUPPORTED, OIDCConfig.JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00, OIDCConfig.JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00,
+        OIDCConfig.JSON_PROPERTY_END_SESSION_ENDPOINT, OIDCConfig.JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED, OIDCConfig.JSON_PROPERTY_GRANT_TYPES_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG,
+        OIDCConfig.JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED, OIDCConfig.JSON_PROPERTY_ISSUER,
+        OIDCConfig.JSON_PROPERTY_JWKS_URI, OIDCConfig.JSON_PROPERTY_REGISTRATION_ENDPOINT,
+        OIDCConfig.JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED, OIDCConfig.JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION, OIDCConfig.JSON_PROPERTY_RESPONSE_MODES_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED, OIDCConfig.JSON_PROPERTY_REVOCATION_ENDPOINT,
+        OIDCConfig.JSON_PROPERTY_SCOPES_SUPPORTED, OIDCConfig.JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_TOKEN_ENDPOINT, OIDCConfig.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED,
+        OIDCConfig.JSON_PROPERTY_USERINFO_ENDPOINT, OIDCConfig.JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG,
+        OIDCConfig.JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class OIDCConfig {
-  public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
-  private String authorizationEndpoint;
+    public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
+    private String authorizationEndpoint;
 
-  public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED = "backchannel_logout_session_supported";
-  private Boolean backchannelLogoutSessionSupported;
+    public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED = "backchannel_logout_session_supported";
+    private Boolean backchannelLogoutSessionSupported;
 
-  public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED = "backchannel_logout_supported";
-  private Boolean backchannelLogoutSupported;
+    public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED = "backchannel_logout_supported";
+    private Boolean backchannelLogoutSupported;
 
-  public static final String JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED = "claims_parameter_supported";
-  private Boolean claimsParameterSupported;
+    public static final String JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED = "claims_parameter_supported";
+    private Boolean claimsParameterSupported;
 
-  public static final String JSON_PROPERTY_CLAIMS_SUPPORTED = "claims_supported";
-  private List<String> claimsSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_CLAIMS_SUPPORTED = "claims_supported";
+    private List<String> claimsSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED = "code_challenge_methods_supported";
-  private List<String> codeChallengeMethodsSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED = "code_challenge_methods_supported";
+    private List<String> codeChallengeMethodsSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00 = "credentials_endpoint_draft_00";
-  private String credentialsEndpointDraft00;
+    public static final String JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00 = "credentials_endpoint_draft_00";
+    private String credentialsEndpointDraft00;
 
-  public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00 = "credentials_supported_draft_00";
-  private List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00 = new ArrayList<>();
+    public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00 = "credentials_supported_draft_00";
+    private List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00 = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_END_SESSION_ENDPOINT = "end_session_endpoint";
-  private String endSessionEndpoint;
+    public static final String JSON_PROPERTY_END_SESSION_ENDPOINT = "end_session_endpoint";
+    private String endSessionEndpoint;
 
-  public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED = "frontchannel_logout_session_supported";
-  private Boolean frontchannelLogoutSessionSupported;
+    public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED = "frontchannel_logout_session_supported";
+    private Boolean frontchannelLogoutSessionSupported;
 
-  public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED = "frontchannel_logout_supported";
-  private Boolean frontchannelLogoutSupported;
+    public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED = "frontchannel_logout_supported";
+    private Boolean frontchannelLogoutSupported;
 
-  public static final String JSON_PROPERTY_GRANT_TYPES_SUPPORTED = "grant_types_supported";
-  private List<String> grantTypesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_GRANT_TYPES_SUPPORTED = "grant_types_supported";
+    private List<String> grantTypesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG = "id_token_signed_response_alg";
-  private List<String> idTokenSignedResponseAlg = new ArrayList<>();
+    public static final String JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG = "id_token_signed_response_alg";
+    private List<String> idTokenSignedResponseAlg = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED = "id_token_signing_alg_values_supported";
-  private List<String> idTokenSigningAlgValuesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED = "id_token_signing_alg_values_supported";
+    private List<String> idTokenSigningAlgValuesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ISSUER = "issuer";
-  private String issuer;
+    public static final String JSON_PROPERTY_ISSUER = "issuer";
+    private String issuer;
 
-  public static final String JSON_PROPERTY_JWKS_URI = "jwks_uri";
-  private String jwksUri;
+    public static final String JSON_PROPERTY_JWKS_URI = "jwks_uri";
+    private String jwksUri;
 
-  public static final String JSON_PROPERTY_REGISTRATION_ENDPOINT = "registration_endpoint";
-  private String registrationEndpoint;
+    public static final String JSON_PROPERTY_REGISTRATION_ENDPOINT = "registration_endpoint";
+    private String registrationEndpoint;
 
-  public static final String JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED = "request_object_signing_alg_values_supported";
-  private List<String> requestObjectSigningAlgValuesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED = "request_object_signing_alg_values_supported";
+    private List<String> requestObjectSigningAlgValuesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED = "request_parameter_supported";
-  private Boolean requestParameterSupported;
+    public static final String JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED = "request_parameter_supported";
+    private Boolean requestParameterSupported;
 
-  public static final String JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED = "request_uri_parameter_supported";
-  private Boolean requestUriParameterSupported;
+    public static final String JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED = "request_uri_parameter_supported";
+    private Boolean requestUriParameterSupported;
 
-  public static final String JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION = "require_request_uri_registration";
-  private Boolean requireRequestUriRegistration;
+    public static final String JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION = "require_request_uri_registration";
+    private Boolean requireRequestUriRegistration;
 
-  public static final String JSON_PROPERTY_RESPONSE_MODES_SUPPORTED = "response_modes_supported";
-  private List<String> responseModesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_RESPONSE_MODES_SUPPORTED = "response_modes_supported";
+    private List<String> responseModesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED = "response_types_supported";
-  private List<String> responseTypesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED = "response_types_supported";
+    private List<String> responseTypesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_REVOCATION_ENDPOINT = "revocation_endpoint";
-  private String revocationEndpoint;
+    public static final String JSON_PROPERTY_REVOCATION_ENDPOINT = "revocation_endpoint";
+    private String revocationEndpoint;
 
-  public static final String JSON_PROPERTY_SCOPES_SUPPORTED = "scopes_supported";
-  private List<String> scopesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_SCOPES_SUPPORTED = "scopes_supported";
+    private List<String> scopesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED = "subject_types_supported";
-  private List<String> subjectTypesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED = "subject_types_supported";
+    private List<String> subjectTypesSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_TOKEN_ENDPOINT = "token_endpoint";
-  private String tokenEndpoint;
+    public static final String JSON_PROPERTY_TOKEN_ENDPOINT = "token_endpoint";
+    private String tokenEndpoint;
 
-  public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
-  private List<String> tokenEndpointAuthMethodsSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
+    private List<String> tokenEndpointAuthMethodsSupported = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_USERINFO_ENDPOINT = "userinfo_endpoint";
-  private String userinfoEndpoint;
+    public static final String JSON_PROPERTY_USERINFO_ENDPOINT = "userinfo_endpoint";
+    private String userinfoEndpoint;
 
-  public static final String JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG = "userinfo_signed_response_alg";
-  private List<String> userinfoSignedResponseAlg = new ArrayList<>();
+    public static final String JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG = "userinfo_signed_response_alg";
+    private List<String> userinfoSignedResponseAlg = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED = "userinfo_signing_alg_values_supported";
-  private List<String> userinfoSigningAlgValuesSupported = new ArrayList<>();
+    public static final String JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED = "userinfo_signing_alg_values_supported";
+    private List<String> userinfoSigningAlgValuesSupported = new ArrayList<>();
 
-  public OIDCConfig() {
-  }
-
-  public OIDCConfig authorizationEndpoint(String authorizationEndpoint) {
-    
-    this.authorizationEndpoint = authorizationEndpoint;
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Authorization Endpoint URL
-   * @return authorizationEndpoint
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAuthorizationEndpoint() {
-    return authorizationEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthorizationEndpoint(String authorizationEndpoint) {
-    this.authorizationEndpoint = authorizationEndpoint;
-  }
-
-  public OIDCConfig backchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
-    
-    this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Back-Channel Logout Session Required. Boolean value specifying whether the OP can pass a sid (session ID)  Claim in the Logout Token to identify the RP session with the OP. If  supported, the sid Claim is also included in ID Tokens issued by the OP 
-   * @return backchannelLogoutSessionSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getBackchannelLogoutSessionSupported() {
-    return backchannelLogoutSessionSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
-    this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
-  }
-
-  public OIDCConfig backchannelLogoutSupported(Boolean backchannelLogoutSupported) {
-    
-    this.backchannelLogoutSupported = backchannelLogoutSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Back-Channel Logout Supported. Boolean value specifying whether the OP supports  back-channel logout, with true indicating support. 
-   * @return backchannelLogoutSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getBackchannelLogoutSupported() {
-    return backchannelLogoutSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackchannelLogoutSupported(Boolean backchannelLogoutSupported) {
-    this.backchannelLogoutSupported = backchannelLogoutSupported;
-  }
-
-  public OIDCConfig claimsParameterSupported(Boolean claimsParameterSupported) {
-    
-    this.claimsParameterSupported = claimsParameterSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Claims Parameter Parameter Supported Boolean value specifying whether the OP supports use  of the claims parameter, with true indicating support. 
-   * @return claimsParameterSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getClaimsParameterSupported() {
-    return claimsParameterSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimsParameterSupported(Boolean claimsParameterSupported) {
-    this.claimsParameterSupported = claimsParameterSupported;
-  }
-
-  public OIDCConfig claimsSupported(List<String> claimsSupported) {
-    
-    this.claimsSupported = claimsSupported;
-    return this;
-  }
-
-  public OIDCConfig addClaimsSupportedItem(String claimsSupportedItem) {
-    if (this.claimsSupported == null) {
-      this.claimsSupported = new ArrayList<>();
-    }
-    this.claimsSupported.add(claimsSupportedItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Supported Claims   JSON array containing a list of the Claim Names of the  Claims that the OpenID Provider MAY be able to supply  values for. Note that for privacy or other reasons,  this might not be an exhaustive list. 
-   * @return claimsSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getClaimsSupported() {
-    return claimsSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimsSupported(List<String> claimsSupported) {
-    this.claimsSupported = claimsSupported;
-  }
-
-  public OIDCConfig codeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
-    
-    this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
-    return this;
-  }
-
-  public OIDCConfig addCodeChallengeMethodsSupportedItem(String codeChallengeMethodsSupportedItem) {
-    if (this.codeChallengeMethodsSupported == null) {
-      this.codeChallengeMethodsSupported = new ArrayList<>();
-    }
-    this.codeChallengeMethodsSupported.add(codeChallengeMethodsSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 PKCE Supported Code Challenge Methods JSON array containing a list of Proof Key for Code  Exchange (PKCE) [RFC7636] code challenge methods  supported by this authorization server. 
-   * @return codeChallengeMethodsSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getCodeChallengeMethodsSupported() {
-    return codeChallengeMethodsSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCodeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
-    this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
-  }
-
-  public OIDCConfig credentialsEndpointDraft00(String credentialsEndpointDraft00) {
-    
-    this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Verifiable Credentials Endpoint Contains the URL of the Verifiable Credentials Endpoint. 
-   * @return credentialsEndpointDraft00
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCredentialsEndpointDraft00() {
-    return credentialsEndpointDraft00;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsEndpointDraft00(String credentialsEndpointDraft00) {
-    this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
-  }
-
-  public OIDCConfig credentialsSupportedDraft00(List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
-    
-    this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
-    return this;
-  }
-
-  public OIDCConfig addCredentialsSupportedDraft00Item(OIDCConfigCredentialsSupportedDraft00Inner credentialsSupportedDraft00Item) {
-    if (this.credentialsSupportedDraft00 == null) {
-      this.credentialsSupportedDraft00 = new ArrayList<>();
-    }
-    this.credentialsSupportedDraft00.add(credentialsSupportedDraft00Item);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable  Credentials supported by this authorization server. 
-   * @return credentialsSupportedDraft00
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<OIDCConfigCredentialsSupportedDraft00Inner> getCredentialsSupportedDraft00() {
-    return credentialsSupportedDraft00;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsSupportedDraft00(List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
-    this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
-  }
-
-  public OIDCConfig endSessionEndpoint(String endSessionEndpoint) {
-    
-    this.endSessionEndpoint = endSessionEndpoint;
-    return this;
-  }
-
-  /**
-   * OpenID Connect End-Session Endpoint URL at the OP to which an RP can perform  a redirect to request that the End-User be  logged out at the OP. 
-   * @return endSessionEndpoint
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getEndSessionEndpoint() {
-    return endSessionEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndSessionEndpoint(String endSessionEndpoint) {
-    this.endSessionEndpoint = endSessionEndpoint;
-  }
-
-  public OIDCConfig frontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
-    
-    this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Front-Channel Logout Session Required Boolean value specifying whether the OP can pass iss  (issuer) and sid (session ID) query parameters to identify  the RP session with the OP when the frontchannel_logout_uri  is used. If supported, the sid Claim is also included in ID  Tokens issued by the OP. 
-   * @return frontchannelLogoutSessionSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getFrontchannelLogoutSessionSupported() {
-    return frontchannelLogoutSessionSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
-    this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
-  }
-
-  public OIDCConfig frontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
-    
-    this.frontchannelLogoutSupported = frontchannelLogoutSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Front-Channel Logout Supported Boolean value specifying whether the OP supports HTTP-based logout, with true indicating support. 
-   * @return frontchannelLogoutSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getFrontchannelLogoutSupported() {
-    return frontchannelLogoutSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
-    this.frontchannelLogoutSupported = frontchannelLogoutSupported;
-  }
-
-  public OIDCConfig grantTypesSupported(List<String> grantTypesSupported) {
-    
-    this.grantTypesSupported = grantTypesSupported;
-    return this;
-  }
-
-  public OIDCConfig addGrantTypesSupportedItem(String grantTypesSupportedItem) {
-    if (this.grantTypesSupported == null) {
-      this.grantTypesSupported = new ArrayList<>();
-    }
-    this.grantTypesSupported.add(grantTypesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Supported Grant Types JSON array containing a list of the OAuth 2.0 Grant Type values that this OP supports. 
-   * @return grantTypesSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getGrantTypesSupported() {
-    return grantTypesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrantTypesSupported(List<String> grantTypesSupported) {
-    this.grantTypesSupported = grantTypesSupported;
-  }
-
-  public OIDCConfig idTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
-    
-    this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
-    return this;
-  }
-
-  public OIDCConfig addIdTokenSignedResponseAlgItem(String idTokenSignedResponseAlgItem) {
-    if (this.idTokenSignedResponseAlg == null) {
-      this.idTokenSignedResponseAlg = new ArrayList<>();
-    }
-    this.idTokenSignedResponseAlg.add(idTokenSignedResponseAlgItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Default ID Token Signing Algorithms Algorithm used to sign OpenID Connect ID Tokens. 
-   * @return idTokenSignedResponseAlg
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getIdTokenSignedResponseAlg() {
-    return idTokenSignedResponseAlg;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
-    this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
-  }
-
-  public OIDCConfig idTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
-    
-    this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
-    return this;
-  }
-
-  public OIDCConfig addIdTokenSigningAlgValuesSupportedItem(String idTokenSigningAlgValuesSupportedItem) {
-    if (this.idTokenSigningAlgValuesSupported == null) {
-      this.idTokenSigningAlgValuesSupported = new ArrayList<>();
-    }
-    this.idTokenSigningAlgValuesSupported.add(idTokenSigningAlgValuesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Supported ID Token Signing Algorithms JSON array containing a list of the JWS signing algorithms  (alg values) supported by the OP for the ID Token to encode the Claims in a JWT. 
-   * @return idTokenSigningAlgValuesSupported
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getIdTokenSigningAlgValuesSupported() {
-    return idTokenSigningAlgValuesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
-    this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
-  }
-
-  public OIDCConfig issuer(String issuer) {
-    
-    this.issuer = issuer;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component that the OP asserts as its IssuerURL Identifier. If IssuerURL discovery  is supported , this value MUST be identical to the issuer value returned by WebFinger.  This also MUST be identical to the iss Claim value in ID Tokens issued from this IssuerURL. 
-   * @return issuer
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getIssuer() {
-    return issuer;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuer(String issuer) {
-    this.issuer = issuer;
-  }
-
-  public OIDCConfig jwksUri(String jwksUri) {
-    
-    this.jwksUri = jwksUri;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Well-Known JSON Web Keys URL URL of the OP&#39;s JSON Web Key Set [JWK] document. This contains the signing key(s) the RP  uses to validate signatures from the OP. The JWK Set MAY also contain the Server&#39;s  encryption key(s), which are used by RPs to encrypt requests to the Server. When both  signing and encryption keys are made available, a use (Key Use) parameter value is REQUIRED  for all keys in the referenced JWK Set to indicate each key&#39;s intended usage. Although some  algorithms allow the same key to be used for both signatures and encryption, doing so is  NOT RECOMMENDED, as it is less secure. The JWK x5c parameter MAY be used to provide X.509  representations of keys provided. When used, the bare key values MUST still be present and  MUST match those in the certificate. 
-   * @return jwksUri
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJwksUri() {
-    return jwksUri;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwksUri(String jwksUri) {
-    this.jwksUri = jwksUri;
-  }
-
-  public OIDCConfig registrationEndpoint(String registrationEndpoint) {
-    
-    this.registrationEndpoint = registrationEndpoint;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Dynamic Client Registration Endpoint URL 
-   * @return registrationEndpoint
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getRegistrationEndpoint() {
-    return registrationEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRegistrationEndpoint(String registrationEndpoint) {
-    this.registrationEndpoint = registrationEndpoint;
-  }
-
-  public OIDCConfig requestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
-    
-    this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
-    return this;
-  }
-
-  public OIDCConfig addRequestObjectSigningAlgValuesSupportedItem(String requestObjectSigningAlgValuesSupportedItem) {
-    if (this.requestObjectSigningAlgValuesSupported == null) {
-      this.requestObjectSigningAlgValuesSupported = new ArrayList<>();
-    }
-    this.requestObjectSigningAlgValuesSupported.add(requestObjectSigningAlgValuesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Supported Request Object Signing Algorithms JSON array containing a list of the JWS signing algorithms (alg values) supported by  the OP for Request Objects, which are described in Section 6.1 of  OpenID Connect Core 1.0 [OpenID.Core]. These algorithms are used both when the  Request Object is passed by value (using the request parameter) and when it is  passed by reference (using the request_uri parameter). 
-   * @return requestObjectSigningAlgValuesSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getRequestObjectSigningAlgValuesSupported() {
-    return requestObjectSigningAlgValuesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
-    this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
-  }
-
-  public OIDCConfig requestParameterSupported(Boolean requestParameterSupported) {
-    
-    this.requestParameterSupported = requestParameterSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Request Parameter Supported Boolean value specifying whether the OP supports use of the request parameter, with true indicating support. 
-   * @return requestParameterSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getRequestParameterSupported() {
-    return requestParameterSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestParameterSupported(Boolean requestParameterSupported) {
-    this.requestParameterSupported = requestParameterSupported;
-  }
-
-  public OIDCConfig requestUriParameterSupported(Boolean requestUriParameterSupported) {
-    
-    this.requestUriParameterSupported = requestUriParameterSupported;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Request URI Parameter Supported Boolean value specifying whether the OP supports use of the request_uri parameter, with true indicating support. 
-   * @return requestUriParameterSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getRequestUriParameterSupported() {
-    return requestUriParameterSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestUriParameterSupported(Boolean requestUriParameterSupported) {
-    this.requestUriParameterSupported = requestUriParameterSupported;
-  }
-
-  public OIDCConfig requireRequestUriRegistration(Boolean requireRequestUriRegistration) {
-    
-    this.requireRequestUriRegistration = requireRequestUriRegistration;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Requires Request URI Registration Boolean value specifying whether the OP requires any request_uri values used to be  pre-registered using the request_uris registration parameter. 
-   * @return requireRequestUriRegistration
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getRequireRequestUriRegistration() {
-    return requireRequestUriRegistration;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequireRequestUriRegistration(Boolean requireRequestUriRegistration) {
-    this.requireRequestUriRegistration = requireRequestUriRegistration;
-  }
-
-  public OIDCConfig responseModesSupported(List<String> responseModesSupported) {
-    
-    this.responseModesSupported = responseModesSupported;
-    return this;
-  }
-
-  public OIDCConfig addResponseModesSupportedItem(String responseModesSupportedItem) {
-    if (this.responseModesSupported == null) {
-      this.responseModesSupported = new ArrayList<>();
-    }
-    this.responseModesSupported.add(responseModesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Supported Response Modes JSON array containing a list of the OAuth 2.0 response_mode values that this OP supports. 
-   * @return responseModesSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getResponseModesSupported() {
-    return responseModesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResponseModesSupported(List<String> responseModesSupported) {
-    this.responseModesSupported = responseModesSupported;
-  }
-
-  public OIDCConfig responseTypesSupported(List<String> responseTypesSupported) {
-    
-    this.responseTypesSupported = responseTypesSupported;
-    return this;
-  }
-
-  public OIDCConfig addResponseTypesSupportedItem(String responseTypesSupportedItem) {
-    if (this.responseTypesSupported == null) {
-      this.responseTypesSupported = new ArrayList<>();
-    }
-    this.responseTypesSupported.add(responseTypesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Supported Response Types JSON array containing a list of the OAuth 2.0 response_type values that this OP supports.  Dynamic OpenID Providers MUST support the code, id_token, and the token id_token Response Type values. 
-   * @return responseTypesSupported
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getResponseTypesSupported() {
-    return responseTypesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResponseTypesSupported(List<String> responseTypesSupported) {
-    this.responseTypesSupported = responseTypesSupported;
-  }
-
-  public OIDCConfig revocationEndpoint(String revocationEndpoint) {
-    
-    this.revocationEndpoint = revocationEndpoint;
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Token Revocation URL URL of the authorization server&#39;s OAuth 2.0 revocation endpoint. 
-   * @return revocationEndpoint
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getRevocationEndpoint() {
-    return revocationEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevocationEndpoint(String revocationEndpoint) {
-    this.revocationEndpoint = revocationEndpoint;
-  }
-
-  public OIDCConfig scopesSupported(List<String> scopesSupported) {
-    
-    this.scopesSupported = scopesSupported;
-    return this;
-  }
-
-  public OIDCConfig addScopesSupportedItem(String scopesSupportedItem) {
-    if (this.scopesSupported == null) {
-      this.scopesSupported = new ArrayList<>();
-    }
-    this.scopesSupported.add(scopesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Supported Scope Values JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that this server supports.  The server MUST support the openid scope value. Servers MAY choose not to advertise  some supported scope values even when this parameter is used 
-   * @return scopesSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getScopesSupported() {
-    return scopesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScopesSupported(List<String> scopesSupported) {
-    this.scopesSupported = scopesSupported;
-  }
-
-  public OIDCConfig subjectTypesSupported(List<String> subjectTypesSupported) {
-    
-    this.subjectTypesSupported = subjectTypesSupported;
-    return this;
-  }
-
-  public OIDCConfig addSubjectTypesSupportedItem(String subjectTypesSupportedItem) {
-    if (this.subjectTypesSupported == null) {
-      this.subjectTypesSupported = new ArrayList<>();
-    }
-    this.subjectTypesSupported.add(subjectTypesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Supported Subject Types JSON array containing a list of the Subject Identifier types that this OP supports.  Valid types include pairwise and public. 
-   * @return subjectTypesSupported
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getSubjectTypesSupported() {
-    return subjectTypesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSubjectTypesSupported(List<String> subjectTypesSupported) {
-    this.subjectTypesSupported = subjectTypesSupported;
-  }
-
-  public OIDCConfig tokenEndpoint(String tokenEndpoint) {
-    
-    this.tokenEndpoint = tokenEndpoint;
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Token Endpoint URL
-   * @return tokenEndpoint
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getTokenEndpoint() {
-    return tokenEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTokenEndpoint(String tokenEndpoint) {
-    this.tokenEndpoint = tokenEndpoint;
-  }
-
-  public OIDCConfig tokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
-    
-    this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
-    return this;
-  }
-
-  public OIDCConfig addTokenEndpointAuthMethodsSupportedItem(String tokenEndpointAuthMethodsSupportedItem) {
-    if (this.tokenEndpointAuthMethodsSupported == null) {
-      this.tokenEndpointAuthMethodsSupported = new ArrayList<>();
-    }
-    this.tokenEndpointAuthMethodsSupported.add(tokenEndpointAuthMethodsSupportedItem);
-    return this;
-  }
-
-  /**
-   * OAuth 2.0 Supported Client Authentication Methods JSON array containing a list of Client Authentication methods supported by this Token Endpoint.  The options are client_secret_post, client_secret_basic, client_secret_jwt,  and private_key_jwt, as described in Section 9 of OpenID Connect Core 1.0 
-   * @return tokenEndpointAuthMethodsSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getTokenEndpointAuthMethodsSupported() {
-    return tokenEndpointAuthMethodsSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
-    this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
-  }
-
-  public OIDCConfig userinfoEndpoint(String userinfoEndpoint) {
-    
-    this.userinfoEndpoint = userinfoEndpoint;
-    return this;
-  }
-
-  /**
-   * OpenID Connect Userinfo URL URL of the OP&#39;s UserInfo Endpoint. 
-   * @return userinfoEndpoint
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getUserinfoEndpoint() {
-    return userinfoEndpoint;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserinfoEndpoint(String userinfoEndpoint) {
-    this.userinfoEndpoint = userinfoEndpoint;
-  }
-
-  public OIDCConfig userinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
-    
-    this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
-    return this;
-  }
-
-  public OIDCConfig addUserinfoSignedResponseAlgItem(String userinfoSignedResponseAlgItem) {
-    if (this.userinfoSignedResponseAlg == null) {
-      this.userinfoSignedResponseAlg = new ArrayList<>();
-    }
-    this.userinfoSignedResponseAlg.add(userinfoSignedResponseAlgItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect User Userinfo Signing Algorithm Algorithm used to sign OpenID Connect Userinfo Responses. 
-   * @return userinfoSignedResponseAlg
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getUserinfoSignedResponseAlg() {
-    return userinfoSignedResponseAlg;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
-    this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
-  }
-
-  public OIDCConfig userinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
-    
-    this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
-    return this;
-  }
-
-  public OIDCConfig addUserinfoSigningAlgValuesSupportedItem(String userinfoSigningAlgValuesSupportedItem) {
-    if (this.userinfoSigningAlgValuesSupported == null) {
-      this.userinfoSigningAlgValuesSupported = new ArrayList<>();
-    }
-    this.userinfoSigningAlgValuesSupported.add(userinfoSigningAlgValuesSupportedItem);
-    return this;
-  }
-
-  /**
-   * OpenID Connect Supported Userinfo Signing Algorithm JSON array containing a list of the JWS [JWS] signing algorithms (alg values) [JWA]  supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT]. 
-   * @return userinfoSigningAlgValuesSupported
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getUserinfoSigningAlgValuesSupported() {
-    return userinfoSigningAlgValuesSupported;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
-    this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    OIDCConfig oiDCConfig = (OIDCConfig) o;
-    return Objects.equals(this.authorizationEndpoint, oiDCConfig.authorizationEndpoint) &&
-        Objects.equals(this.backchannelLogoutSessionSupported, oiDCConfig.backchannelLogoutSessionSupported) &&
-        Objects.equals(this.backchannelLogoutSupported, oiDCConfig.backchannelLogoutSupported) &&
-        Objects.equals(this.claimsParameterSupported, oiDCConfig.claimsParameterSupported) &&
-        Objects.equals(this.claimsSupported, oiDCConfig.claimsSupported) &&
-        Objects.equals(this.codeChallengeMethodsSupported, oiDCConfig.codeChallengeMethodsSupported) &&
-        Objects.equals(this.credentialsEndpointDraft00, oiDCConfig.credentialsEndpointDraft00) &&
-        Objects.equals(this.credentialsSupportedDraft00, oiDCConfig.credentialsSupportedDraft00) &&
-        Objects.equals(this.endSessionEndpoint, oiDCConfig.endSessionEndpoint) &&
-        Objects.equals(this.frontchannelLogoutSessionSupported, oiDCConfig.frontchannelLogoutSessionSupported) &&
-        Objects.equals(this.frontchannelLogoutSupported, oiDCConfig.frontchannelLogoutSupported) &&
-        Objects.equals(this.grantTypesSupported, oiDCConfig.grantTypesSupported) &&
-        Objects.equals(this.idTokenSignedResponseAlg, oiDCConfig.idTokenSignedResponseAlg) &&
-        Objects.equals(this.idTokenSigningAlgValuesSupported, oiDCConfig.idTokenSigningAlgValuesSupported) &&
-        Objects.equals(this.issuer, oiDCConfig.issuer) &&
-        Objects.equals(this.jwksUri, oiDCConfig.jwksUri) &&
-        Objects.equals(this.registrationEndpoint, oiDCConfig.registrationEndpoint) &&
-        Objects.equals(this.requestObjectSigningAlgValuesSupported, oiDCConfig.requestObjectSigningAlgValuesSupported) &&
-        Objects.equals(this.requestParameterSupported, oiDCConfig.requestParameterSupported) &&
-        Objects.equals(this.requestUriParameterSupported, oiDCConfig.requestUriParameterSupported) &&
-        Objects.equals(this.requireRequestUriRegistration, oiDCConfig.requireRequestUriRegistration) &&
-        Objects.equals(this.responseModesSupported, oiDCConfig.responseModesSupported) &&
-        Objects.equals(this.responseTypesSupported, oiDCConfig.responseTypesSupported) &&
-        Objects.equals(this.revocationEndpoint, oiDCConfig.revocationEndpoint) &&
-        Objects.equals(this.scopesSupported, oiDCConfig.scopesSupported) &&
-        Objects.equals(this.subjectTypesSupported, oiDCConfig.subjectTypesSupported) &&
-        Objects.equals(this.tokenEndpoint, oiDCConfig.tokenEndpoint) &&
-        Objects.equals(this.tokenEndpointAuthMethodsSupported, oiDCConfig.tokenEndpointAuthMethodsSupported) &&
-        Objects.equals(this.userinfoEndpoint, oiDCConfig.userinfoEndpoint) &&
-        Objects.equals(this.userinfoSignedResponseAlg, oiDCConfig.userinfoSignedResponseAlg) &&
-        Objects.equals(this.userinfoSigningAlgValuesSupported, oiDCConfig.userinfoSigningAlgValuesSupported);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(authorizationEndpoint, backchannelLogoutSessionSupported, backchannelLogoutSupported, claimsParameterSupported, claimsSupported, codeChallengeMethodsSupported, credentialsEndpointDraft00, credentialsSupportedDraft00, endSessionEndpoint, frontchannelLogoutSessionSupported, frontchannelLogoutSupported, grantTypesSupported, idTokenSignedResponseAlg, idTokenSigningAlgValuesSupported, issuer, jwksUri, registrationEndpoint, requestObjectSigningAlgValuesSupported, requestParameterSupported, requestUriParameterSupported, requireRequestUriRegistration, responseModesSupported, responseTypesSupported, revocationEndpoint, scopesSupported, subjectTypesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported, userinfoEndpoint, userinfoSignedResponseAlg, userinfoSigningAlgValuesSupported);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OIDCConfig {\n");
-    sb.append("    authorizationEndpoint: ").append(toIndentedString(authorizationEndpoint)).append("\n");
-    sb.append("    backchannelLogoutSessionSupported: ").append(toIndentedString(backchannelLogoutSessionSupported)).append("\n");
-    sb.append("    backchannelLogoutSupported: ").append(toIndentedString(backchannelLogoutSupported)).append("\n");
-    sb.append("    claimsParameterSupported: ").append(toIndentedString(claimsParameterSupported)).append("\n");
-    sb.append("    claimsSupported: ").append(toIndentedString(claimsSupported)).append("\n");
-    sb.append("    codeChallengeMethodsSupported: ").append(toIndentedString(codeChallengeMethodsSupported)).append("\n");
-    sb.append("    credentialsEndpointDraft00: ").append(toIndentedString(credentialsEndpointDraft00)).append("\n");
-    sb.append("    credentialsSupportedDraft00: ").append(toIndentedString(credentialsSupportedDraft00)).append("\n");
-    sb.append("    endSessionEndpoint: ").append(toIndentedString(endSessionEndpoint)).append("\n");
-    sb.append("    frontchannelLogoutSessionSupported: ").append(toIndentedString(frontchannelLogoutSessionSupported)).append("\n");
-    sb.append("    frontchannelLogoutSupported: ").append(toIndentedString(frontchannelLogoutSupported)).append("\n");
-    sb.append("    grantTypesSupported: ").append(toIndentedString(grantTypesSupported)).append("\n");
-    sb.append("    idTokenSignedResponseAlg: ").append(toIndentedString(idTokenSignedResponseAlg)).append("\n");
-    sb.append("    idTokenSigningAlgValuesSupported: ").append(toIndentedString(idTokenSigningAlgValuesSupported)).append("\n");
-    sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
-    sb.append("    jwksUri: ").append(toIndentedString(jwksUri)).append("\n");
-    sb.append("    registrationEndpoint: ").append(toIndentedString(registrationEndpoint)).append("\n");
-    sb.append("    requestObjectSigningAlgValuesSupported: ").append(toIndentedString(requestObjectSigningAlgValuesSupported)).append("\n");
-    sb.append("    requestParameterSupported: ").append(toIndentedString(requestParameterSupported)).append("\n");
-    sb.append("    requestUriParameterSupported: ").append(toIndentedString(requestUriParameterSupported)).append("\n");
-    sb.append("    requireRequestUriRegistration: ").append(toIndentedString(requireRequestUriRegistration)).append("\n");
-    sb.append("    responseModesSupported: ").append(toIndentedString(responseModesSupported)).append("\n");
-    sb.append("    responseTypesSupported: ").append(toIndentedString(responseTypesSupported)).append("\n");
-    sb.append("    revocationEndpoint: ").append(toIndentedString(revocationEndpoint)).append("\n");
-    sb.append("    scopesSupported: ").append(toIndentedString(scopesSupported)).append("\n");
-    sb.append("    subjectTypesSupported: ").append(toIndentedString(subjectTypesSupported)).append("\n");
-    sb.append("    tokenEndpoint: ").append(toIndentedString(tokenEndpoint)).append("\n");
-    sb.append("    tokenEndpointAuthMethodsSupported: ").append(toIndentedString(tokenEndpointAuthMethodsSupported)).append("\n");
-    sb.append("    userinfoEndpoint: ").append(toIndentedString(userinfoEndpoint)).append("\n");
-    sb.append("    userinfoSignedResponseAlg: ").append(toIndentedString(userinfoSignedResponseAlg)).append("\n");
-    sb.append("    userinfoSigningAlgValuesSupported: ").append(toIndentedString(userinfoSigningAlgValuesSupported)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public OIDCConfig() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public OIDCConfig authorizationEndpoint(String authorizationEndpoint) {
 
-    // add `authorization_endpoint` to the URL query string
-    if (getAuthorizationEndpoint() != null) {
-      try {
-        joiner.add(String.format("%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.authorizationEndpoint = authorizationEndpoint;
+        return this;
     }
 
-    // add `backchannel_logout_session_supported` to the URL query string
-    if (getBackchannelLogoutSessionSupported() != null) {
-      try {
-        joiner.add(String.format("%sbackchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OAuth 2.0 Authorization Endpoint URL
+     *
+     * @return authorizationEndpoint
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAuthorizationEndpoint() {
+        return authorizationEndpoint;
     }
 
-    // add `backchannel_logout_supported` to the URL query string
-    if (getBackchannelLogoutSupported() != null) {
-      try {
-        joiner.add(String.format("%sbackchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAuthorizationEndpoint(String authorizationEndpoint) {
+        this.authorizationEndpoint = authorizationEndpoint;
     }
 
-    // add `claims_parameter_supported` to the URL query string
-    if (getClaimsParameterSupported() != null) {
-      try {
-        joiner.add(String.format("%sclaims_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimsParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public OIDCConfig backchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
+
+        this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
+        return this;
     }
 
-    // add `claims_supported` to the URL query string
-    if (getClaimsSupported() != null) {
-      for (int i = 0; i < getClaimsSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sclaims_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getClaimsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect Back-Channel Logout Session Required. Boolean value specifying whether the OP can pass a sid
+     * (session ID) Claim in the Logout Token to identify the RP session with the OP. If supported, the sid Claim is
+     * also included in ID Tokens issued by the OP
+     *
+     * @return backchannelLogoutSessionSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getBackchannelLogoutSessionSupported() {
+        return backchannelLogoutSessionSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setBackchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
+        this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
+    }
+
+    public OIDCConfig backchannelLogoutSupported(Boolean backchannelLogoutSupported) {
+
+        this.backchannelLogoutSupported = backchannelLogoutSupported;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Back-Channel Logout Supported. Boolean value specifying whether the OP supports back-channel
+     * logout, with true indicating support.
+     *
+     * @return backchannelLogoutSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getBackchannelLogoutSupported() {
+        return backchannelLogoutSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setBackchannelLogoutSupported(Boolean backchannelLogoutSupported) {
+        this.backchannelLogoutSupported = backchannelLogoutSupported;
+    }
+
+    public OIDCConfig claimsParameterSupported(Boolean claimsParameterSupported) {
+
+        this.claimsParameterSupported = claimsParameterSupported;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Claims Parameter Parameter Supported Boolean value specifying whether the OP supports use of the
+     * claims parameter, with true indicating support.
+     *
+     * @return claimsParameterSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getClaimsParameterSupported() {
+        return claimsParameterSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setClaimsParameterSupported(Boolean claimsParameterSupported) {
+        this.claimsParameterSupported = claimsParameterSupported;
+    }
+
+    public OIDCConfig claimsSupported(List<String> claimsSupported) {
+
+        this.claimsSupported = claimsSupported;
+        return this;
+    }
+
+    public OIDCConfig addClaimsSupportedItem(String claimsSupportedItem) {
+        if (this.claimsSupported == null) {
+            this.claimsSupported = new ArrayList<>();
         }
-      }
+        this.claimsSupported.add(claimsSupportedItem);
+        return this;
     }
 
-    // add `code_challenge_methods_supported` to the URL query string
-    if (getCodeChallengeMethodsSupported() != null) {
-      for (int i = 0; i < getCodeChallengeMethodsSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%scode_challenge_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getCodeChallengeMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect Supported Claims JSON array containing a list of the Claim Names of the Claims that the OpenID
+     * Provider MAY be able to supply values for. Note that for privacy or other reasons, this might not be an
+     * exhaustive list.
+     *
+     * @return claimsSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getClaimsSupported() {
+        return claimsSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setClaimsSupported(List<String> claimsSupported) {
+        this.claimsSupported = claimsSupported;
+    }
+
+    public OIDCConfig codeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
+
+        this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
+        return this;
+    }
+
+    public OIDCConfig addCodeChallengeMethodsSupportedItem(String codeChallengeMethodsSupportedItem) {
+        if (this.codeChallengeMethodsSupported == null) {
+            this.codeChallengeMethodsSupported = new ArrayList<>();
         }
-      }
+        this.codeChallengeMethodsSupported.add(codeChallengeMethodsSupportedItem);
+        return this;
     }
 
-    // add `credentials_endpoint_draft_00` to the URL query string
-    if (getCredentialsEndpointDraft00() != null) {
-      try {
-        joiner.add(String.format("%scredentials_endpoint_draft_00%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialsEndpointDraft00()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OAuth 2.0 PKCE Supported Code Challenge Methods JSON array containing a list of Proof Key for Code Exchange
+     * (PKCE) [RFC7636] code challenge methods supported by this authorization server.
+     *
+     * @return codeChallengeMethodsSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getCodeChallengeMethodsSupported() {
+        return codeChallengeMethodsSupported;
     }
 
-    // add `credentials_supported_draft_00` to the URL query string
-    if (getCredentialsSupportedDraft00() != null) {
-      for (int i = 0; i < getCredentialsSupportedDraft00().size(); i++) {
-        if (getCredentialsSupportedDraft00().get(i) != null) {
-          joiner.add(getCredentialsSupportedDraft00().get(i).toUrlQueryString(String.format("%scredentials_supported_draft_00%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCodeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
+        this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
+    }
+
+    public OIDCConfig credentialsEndpointDraft00(String credentialsEndpointDraft00) {
+
+        this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Verifiable Credentials Endpoint Contains the URL of the Verifiable Credentials Endpoint.
+     *
+     * @return credentialsEndpointDraft00
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCredentialsEndpointDraft00() {
+        return credentialsEndpointDraft00;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialsEndpointDraft00(String credentialsEndpointDraft00) {
+        this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
+    }
+
+    public OIDCConfig credentialsSupportedDraft00(
+            List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
+
+        this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
+        return this;
+    }
+
+    public OIDCConfig addCredentialsSupportedDraft00Item(
+            OIDCConfigCredentialsSupportedDraft00Inner credentialsSupportedDraft00Item) {
+        if (this.credentialsSupportedDraft00 == null) {
+            this.credentialsSupportedDraft00 = new ArrayList<>();
         }
-      }
+        this.credentialsSupportedDraft00.add(credentialsSupportedDraft00Item);
+        return this;
     }
 
-    // add `end_session_endpoint` to the URL query string
-    if (getEndSessionEndpoint() != null) {
-      try {
-        joiner.add(String.format("%send_session_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEndSessionEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable Credentials
+     * supported by this authorization server.
+     *
+     * @return credentialsSupportedDraft00
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<OIDCConfigCredentialsSupportedDraft00Inner> getCredentialsSupportedDraft00() {
+        return credentialsSupportedDraft00;
     }
 
-    // add `frontchannel_logout_session_supported` to the URL query string
-    if (getFrontchannelLogoutSessionSupported() != null) {
-      try {
-        joiner.add(String.format("%sfrontchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialsSupportedDraft00(
+            List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
+        this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
     }
 
-    // add `frontchannel_logout_supported` to the URL query string
-    if (getFrontchannelLogoutSupported() != null) {
-      try {
-        joiner.add(String.format("%sfrontchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public OIDCConfig endSessionEndpoint(String endSessionEndpoint) {
+
+        this.endSessionEndpoint = endSessionEndpoint;
+        return this;
     }
 
-    // add `grant_types_supported` to the URL query string
-    if (getGrantTypesSupported() != null) {
-      for (int i = 0; i < getGrantTypesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sgrant_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getGrantTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect End-Session Endpoint URL at the OP to which an RP can perform a redirect to request that the
+     * End-User be logged out at the OP.
+     *
+     * @return endSessionEndpoint
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getEndSessionEndpoint() {
+        return endSessionEndpoint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setEndSessionEndpoint(String endSessionEndpoint) {
+        this.endSessionEndpoint = endSessionEndpoint;
+    }
+
+    public OIDCConfig frontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
+
+        this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Front-Channel Logout Session Required Boolean value specifying whether the OP can pass iss
+     * (issuer) and sid (session ID) query parameters to identify the RP session with the OP when the
+     * frontchannel_logout_uri is used. If supported, the sid Claim is also included in ID Tokens issued by the OP.
+     *
+     * @return frontchannelLogoutSessionSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getFrontchannelLogoutSessionSupported() {
+        return frontchannelLogoutSessionSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFrontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
+        this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
+    }
+
+    public OIDCConfig frontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
+
+        this.frontchannelLogoutSupported = frontchannelLogoutSupported;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Front-Channel Logout Supported Boolean value specifying whether the OP supports HTTP-based logout,
+     * with true indicating support.
+     *
+     * @return frontchannelLogoutSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getFrontchannelLogoutSupported() {
+        return frontchannelLogoutSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFrontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
+        this.frontchannelLogoutSupported = frontchannelLogoutSupported;
+    }
+
+    public OIDCConfig grantTypesSupported(List<String> grantTypesSupported) {
+
+        this.grantTypesSupported = grantTypesSupported;
+        return this;
+    }
+
+    public OIDCConfig addGrantTypesSupportedItem(String grantTypesSupportedItem) {
+        if (this.grantTypesSupported == null) {
+            this.grantTypesSupported = new ArrayList<>();
         }
-      }
+        this.grantTypesSupported.add(grantTypesSupportedItem);
+        return this;
     }
 
-    // add `id_token_signed_response_alg` to the URL query string
-    if (getIdTokenSignedResponseAlg() != null) {
-      for (int i = 0; i < getIdTokenSignedResponseAlg().size(); i++) {
-        try {
-          joiner.add(String.format("%sid_token_signed_response_alg%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getIdTokenSignedResponseAlg().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OAuth 2.0 Supported Grant Types JSON array containing a list of the OAuth 2.0 Grant Type values that this OP
+     * supports.
+     *
+     * @return grantTypesSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getGrantTypesSupported() {
+        return grantTypesSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setGrantTypesSupported(List<String> grantTypesSupported) {
+        this.grantTypesSupported = grantTypesSupported;
+    }
+
+    public OIDCConfig idTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
+
+        this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
+        return this;
+    }
+
+    public OIDCConfig addIdTokenSignedResponseAlgItem(String idTokenSignedResponseAlgItem) {
+        if (this.idTokenSignedResponseAlg == null) {
+            this.idTokenSignedResponseAlg = new ArrayList<>();
         }
-      }
+        this.idTokenSignedResponseAlg.add(idTokenSignedResponseAlgItem);
+        return this;
     }
 
-    // add `id_token_signing_alg_values_supported` to the URL query string
-    if (getIdTokenSigningAlgValuesSupported() != null) {
-      for (int i = 0; i < getIdTokenSigningAlgValuesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sid_token_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getIdTokenSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect Default ID Token Signing Algorithms Algorithm used to sign OpenID Connect ID Tokens.
+     *
+     * @return idTokenSignedResponseAlg
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getIdTokenSignedResponseAlg() {
+        return idTokenSignedResponseAlg;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIdTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
+        this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
+    }
+
+    public OIDCConfig idTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
+
+        this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
+        return this;
+    }
+
+    public OIDCConfig addIdTokenSigningAlgValuesSupportedItem(String idTokenSigningAlgValuesSupportedItem) {
+        if (this.idTokenSigningAlgValuesSupported == null) {
+            this.idTokenSigningAlgValuesSupported = new ArrayList<>();
         }
-      }
+        this.idTokenSigningAlgValuesSupported.add(idTokenSigningAlgValuesSupportedItem);
+        return this;
     }
 
-    // add `issuer` to the URL query string
-    if (getIssuer() != null) {
-      try {
-        joiner.add(String.format("%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OpenID Connect Supported ID Token Signing Algorithms JSON array containing a list of the JWS signing algorithms
+     * (alg values) supported by the OP for the ID Token to encode the Claims in a JWT.
+     *
+     * @return idTokenSigningAlgValuesSupported
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getIdTokenSigningAlgValuesSupported() {
+        return idTokenSigningAlgValuesSupported;
     }
 
-    // add `jwks_uri` to the URL query string
-    if (getJwksUri() != null) {
-      try {
-        joiner.add(String.format("%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIdTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
+        this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
     }
 
-    // add `registration_endpoint` to the URL query string
-    if (getRegistrationEndpoint() != null) {
-      try {
-        joiner.add(String.format("%sregistration_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRegistrationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public OIDCConfig issuer(String issuer) {
+
+        this.issuer = issuer;
+        return this;
     }
 
-    // add `request_object_signing_alg_values_supported` to the URL query string
-    if (getRequestObjectSigningAlgValuesSupported() != null) {
-      for (int i = 0; i < getRequestObjectSigningAlgValuesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%srequest_object_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getRequestObjectSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component that the OP asserts
+     * as its IssuerURL Identifier. If IssuerURL discovery is supported , this value MUST be identical to the issuer
+     * value returned by WebFinger. This also MUST be identical to the iss Claim value in ID Tokens issued from this
+     * IssuerURL.
+     *
+     * @return issuer
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
+    }
+
+    public OIDCConfig jwksUri(String jwksUri) {
+
+        this.jwksUri = jwksUri;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Well-Known JSON Web Keys URL URL of the OP&#39;s JSON Web Key Set [JWK] document. This contains
+     * the signing key(s) the RP uses to validate signatures from the OP. The JWK Set MAY also contain the Server&#39;s
+     * encryption key(s), which are used by RPs to encrypt requests to the Server. When both signing and encryption keys
+     * are made available, a use (Key Use) parameter value is REQUIRED for all keys in the referenced JWK Set to
+     * indicate each key&#39;s intended usage. Although some algorithms allow the same key to be used for both
+     * signatures and encryption, doing so is NOT RECOMMENDED, as it is less secure. The JWK x5c parameter MAY be used
+     * to provide X.509 representations of keys provided. When used, the bare key values MUST still be present and MUST
+     * match those in the certificate.
+     *
+     * @return jwksUri
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JWKS_URI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJwksUri() {
+        return jwksUri;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JWKS_URI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJwksUri(String jwksUri) {
+        this.jwksUri = jwksUri;
+    }
+
+    public OIDCConfig registrationEndpoint(String registrationEndpoint) {
+
+        this.registrationEndpoint = registrationEndpoint;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Dynamic Client Registration Endpoint URL
+     *
+     * @return registrationEndpoint
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getRegistrationEndpoint() {
+        return registrationEndpoint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRegistrationEndpoint(String registrationEndpoint) {
+        this.registrationEndpoint = registrationEndpoint;
+    }
+
+    public OIDCConfig requestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
+
+        this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
+        return this;
+    }
+
+    public OIDCConfig addRequestObjectSigningAlgValuesSupportedItem(String requestObjectSigningAlgValuesSupportedItem) {
+        if (this.requestObjectSigningAlgValuesSupported == null) {
+            this.requestObjectSigningAlgValuesSupported = new ArrayList<>();
         }
-      }
+        this.requestObjectSigningAlgValuesSupported.add(requestObjectSigningAlgValuesSupportedItem);
+        return this;
     }
 
-    // add `request_parameter_supported` to the URL query string
-    if (getRequestParameterSupported() != null) {
-      try {
-        joiner.add(String.format("%srequest_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OpenID Connect Supported Request Object Signing Algorithms JSON array containing a list of the JWS signing
+     * algorithms (alg values) supported by the OP for Request Objects, which are described in Section 6.1 of OpenID
+     * Connect Core 1.0 [OpenID.Core]. These algorithms are used both when the Request Object is passed by value (using
+     * the request parameter) and when it is passed by reference (using the request_uri parameter).
+     *
+     * @return requestObjectSigningAlgValuesSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getRequestObjectSigningAlgValuesSupported() {
+        return requestObjectSigningAlgValuesSupported;
     }
 
-    // add `request_uri_parameter_supported` to the URL query string
-    if (getRequestUriParameterSupported() != null) {
-      try {
-        joiner.add(String.format("%srequest_uri_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestUriParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRequestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
+        this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
     }
 
-    // add `require_request_uri_registration` to the URL query string
-    if (getRequireRequestUriRegistration() != null) {
-      try {
-        joiner.add(String.format("%srequire_request_uri_registration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequireRequestUriRegistration()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public OIDCConfig requestParameterSupported(Boolean requestParameterSupported) {
+
+        this.requestParameterSupported = requestParameterSupported;
+        return this;
     }
 
-    // add `response_modes_supported` to the URL query string
-    if (getResponseModesSupported() != null) {
-      for (int i = 0; i < getResponseModesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sresponse_modes_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getResponseModesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect Request Parameter Supported Boolean value specifying whether the OP supports use of the request
+     * parameter, with true indicating support.
+     *
+     * @return requestParameterSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getRequestParameterSupported() {
+        return requestParameterSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRequestParameterSupported(Boolean requestParameterSupported) {
+        this.requestParameterSupported = requestParameterSupported;
+    }
+
+    public OIDCConfig requestUriParameterSupported(Boolean requestUriParameterSupported) {
+
+        this.requestUriParameterSupported = requestUriParameterSupported;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Request URI Parameter Supported Boolean value specifying whether the OP supports use of the
+     * request_uri parameter, with true indicating support.
+     *
+     * @return requestUriParameterSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getRequestUriParameterSupported() {
+        return requestUriParameterSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRequestUriParameterSupported(Boolean requestUriParameterSupported) {
+        this.requestUriParameterSupported = requestUriParameterSupported;
+    }
+
+    public OIDCConfig requireRequestUriRegistration(Boolean requireRequestUriRegistration) {
+
+        this.requireRequestUriRegistration = requireRequestUriRegistration;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Requires Request URI Registration Boolean value specifying whether the OP requires any request_uri
+     * values used to be pre-registered using the request_uris registration parameter.
+     *
+     * @return requireRequestUriRegistration
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Boolean getRequireRequestUriRegistration() {
+        return requireRequestUriRegistration;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRequireRequestUriRegistration(Boolean requireRequestUriRegistration) {
+        this.requireRequestUriRegistration = requireRequestUriRegistration;
+    }
+
+    public OIDCConfig responseModesSupported(List<String> responseModesSupported) {
+
+        this.responseModesSupported = responseModesSupported;
+        return this;
+    }
+
+    public OIDCConfig addResponseModesSupportedItem(String responseModesSupportedItem) {
+        if (this.responseModesSupported == null) {
+            this.responseModesSupported = new ArrayList<>();
         }
-      }
+        this.responseModesSupported.add(responseModesSupportedItem);
+        return this;
     }
 
-    // add `response_types_supported` to the URL query string
-    if (getResponseTypesSupported() != null) {
-      for (int i = 0; i < getResponseTypesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sresponse_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getResponseTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OAuth 2.0 Supported Response Modes JSON array containing a list of the OAuth 2.0 response_mode values that this
+     * OP supports.
+     *
+     * @return responseModesSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getResponseModesSupported() {
+        return responseModesSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setResponseModesSupported(List<String> responseModesSupported) {
+        this.responseModesSupported = responseModesSupported;
+    }
+
+    public OIDCConfig responseTypesSupported(List<String> responseTypesSupported) {
+
+        this.responseTypesSupported = responseTypesSupported;
+        return this;
+    }
+
+    public OIDCConfig addResponseTypesSupportedItem(String responseTypesSupportedItem) {
+        if (this.responseTypesSupported == null) {
+            this.responseTypesSupported = new ArrayList<>();
         }
-      }
+        this.responseTypesSupported.add(responseTypesSupportedItem);
+        return this;
     }
 
-    // add `revocation_endpoint` to the URL query string
-    if (getRevocationEndpoint() != null) {
-      try {
-        joiner.add(String.format("%srevocation_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OAuth 2.0 Supported Response Types JSON array containing a list of the OAuth 2.0 response_type values that this
+     * OP supports. Dynamic OpenID Providers MUST support the code, id_token, and the token id_token Response Type
+     * values.
+     *
+     * @return responseTypesSupported
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getResponseTypesSupported() {
+        return responseTypesSupported;
     }
 
-    // add `scopes_supported` to the URL query string
-    if (getScopesSupported() != null) {
-      for (int i = 0; i < getScopesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%sscopes_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getScopesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setResponseTypesSupported(List<String> responseTypesSupported) {
+        this.responseTypesSupported = responseTypesSupported;
+    }
+
+    public OIDCConfig revocationEndpoint(String revocationEndpoint) {
+
+        this.revocationEndpoint = revocationEndpoint;
+        return this;
+    }
+
+    /**
+     * OAuth 2.0 Token Revocation URL URL of the authorization server&#39;s OAuth 2.0 revocation endpoint.
+     *
+     * @return revocationEndpoint
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getRevocationEndpoint() {
+        return revocationEndpoint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRevocationEndpoint(String revocationEndpoint) {
+        this.revocationEndpoint = revocationEndpoint;
+    }
+
+    public OIDCConfig scopesSupported(List<String> scopesSupported) {
+
+        this.scopesSupported = scopesSupported;
+        return this;
+    }
+
+    public OIDCConfig addScopesSupportedItem(String scopesSupportedItem) {
+        if (this.scopesSupported == null) {
+            this.scopesSupported = new ArrayList<>();
         }
-      }
+        this.scopesSupported.add(scopesSupportedItem);
+        return this;
     }
 
-    // add `subject_types_supported` to the URL query string
-    if (getSubjectTypesSupported() != null) {
-      for (int i = 0; i < getSubjectTypesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%ssubject_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getSubjectTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OAuth 2.0 Supported Scope Values JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that this
+     * server supports. The server MUST support the openid scope value. Servers MAY choose not to advertise some
+     * supported scope values even when this parameter is used
+     *
+     * @return scopesSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getScopesSupported() {
+        return scopesSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setScopesSupported(List<String> scopesSupported) {
+        this.scopesSupported = scopesSupported;
+    }
+
+    public OIDCConfig subjectTypesSupported(List<String> subjectTypesSupported) {
+
+        this.subjectTypesSupported = subjectTypesSupported;
+        return this;
+    }
+
+    public OIDCConfig addSubjectTypesSupportedItem(String subjectTypesSupportedItem) {
+        if (this.subjectTypesSupported == null) {
+            this.subjectTypesSupported = new ArrayList<>();
         }
-      }
+        this.subjectTypesSupported.add(subjectTypesSupportedItem);
+        return this;
     }
 
-    // add `token_endpoint` to the URL query string
-    if (getTokenEndpoint() != null) {
-      try {
-        joiner.add(String.format("%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OpenID Connect Supported Subject Types JSON array containing a list of the Subject Identifier types that this OP
+     * supports. Valid types include pairwise and public.
+     *
+     * @return subjectTypesSupported
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getSubjectTypesSupported() {
+        return subjectTypesSupported;
     }
 
-    // add `token_endpoint_auth_methods_supported` to the URL query string
-    if (getTokenEndpointAuthMethodsSupported() != null) {
-      for (int i = 0; i < getTokenEndpointAuthMethodsSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setSubjectTypesSupported(List<String> subjectTypesSupported) {
+        this.subjectTypesSupported = subjectTypesSupported;
+    }
+
+    public OIDCConfig tokenEndpoint(String tokenEndpoint) {
+
+        this.tokenEndpoint = tokenEndpoint;
+        return this;
+    }
+
+    /**
+     * OAuth 2.0 Token Endpoint URL
+     *
+     * @return tokenEndpoint
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getTokenEndpoint() {
+        return tokenEndpoint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setTokenEndpoint(String tokenEndpoint) {
+        this.tokenEndpoint = tokenEndpoint;
+    }
+
+    public OIDCConfig tokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
+
+        this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
+        return this;
+    }
+
+    public OIDCConfig addTokenEndpointAuthMethodsSupportedItem(String tokenEndpointAuthMethodsSupportedItem) {
+        if (this.tokenEndpointAuthMethodsSupported == null) {
+            this.tokenEndpointAuthMethodsSupported = new ArrayList<>();
         }
-      }
+        this.tokenEndpointAuthMethodsSupported.add(tokenEndpointAuthMethodsSupportedItem);
+        return this;
     }
 
-    // add `userinfo_endpoint` to the URL query string
-    if (getUserinfoEndpoint() != null) {
-      try {
-        joiner.add(String.format("%suserinfo_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserinfoEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * OAuth 2.0 Supported Client Authentication Methods JSON array containing a list of Client Authentication methods
+     * supported by this Token Endpoint. The options are client_secret_post, client_secret_basic, client_secret_jwt, and
+     * private_key_jwt, as described in Section 9 of OpenID Connect Core 1.0
+     *
+     * @return tokenEndpointAuthMethodsSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getTokenEndpointAuthMethodsSupported() {
+        return tokenEndpointAuthMethodsSupported;
     }
 
-    // add `userinfo_signed_response_alg` to the URL query string
-    if (getUserinfoSignedResponseAlg() != null) {
-      for (int i = 0; i < getUserinfoSignedResponseAlg().size(); i++) {
-        try {
-          joiner.add(String.format("%suserinfo_signed_response_alg%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getUserinfoSignedResponseAlg().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setTokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
+        this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
+    }
+
+    public OIDCConfig userinfoEndpoint(String userinfoEndpoint) {
+
+        this.userinfoEndpoint = userinfoEndpoint;
+        return this;
+    }
+
+    /**
+     * OpenID Connect Userinfo URL URL of the OP&#39;s UserInfo Endpoint.
+     *
+     * @return userinfoEndpoint
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getUserinfoEndpoint() {
+        return userinfoEndpoint;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setUserinfoEndpoint(String userinfoEndpoint) {
+        this.userinfoEndpoint = userinfoEndpoint;
+    }
+
+    public OIDCConfig userinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
+
+        this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
+        return this;
+    }
+
+    public OIDCConfig addUserinfoSignedResponseAlgItem(String userinfoSignedResponseAlgItem) {
+        if (this.userinfoSignedResponseAlg == null) {
+            this.userinfoSignedResponseAlg = new ArrayList<>();
         }
-      }
+        this.userinfoSignedResponseAlg.add(userinfoSignedResponseAlgItem);
+        return this;
     }
 
-    // add `userinfo_signing_alg_values_supported` to the URL query string
-    if (getUserinfoSigningAlgValuesSupported() != null) {
-      for (int i = 0; i < getUserinfoSigningAlgValuesSupported().size(); i++) {
-        try {
-          joiner.add(String.format("%suserinfo_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getUserinfoSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * OpenID Connect User Userinfo Signing Algorithm Algorithm used to sign OpenID Connect Userinfo Responses.
+     *
+     * @return userinfoSignedResponseAlg
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getUserinfoSignedResponseAlg() {
+        return userinfoSignedResponseAlg;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setUserinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
+        this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
+    }
+
+    public OIDCConfig userinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
+
+        this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
+        return this;
+    }
+
+    public OIDCConfig addUserinfoSigningAlgValuesSupportedItem(String userinfoSigningAlgValuesSupportedItem) {
+        if (this.userinfoSigningAlgValuesSupported == null) {
+            this.userinfoSigningAlgValuesSupported = new ArrayList<>();
         }
-      }
+        this.userinfoSigningAlgValuesSupported.add(userinfoSigningAlgValuesSupportedItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * OpenID Connect Supported Userinfo Signing Algorithm JSON array containing a list of the JWS [JWS] signing
+     * algorithms (alg values) [JWA] supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT].
+     *
+     * @return userinfoSigningAlgValuesSupported
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<String> getUserinfoSigningAlgValuesSupported() {
+        return userinfoSigningAlgValuesSupported;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setUserinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
+        this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OIDCConfig oiDCConfig = (OIDCConfig) o;
+        return Objects.equals(this.authorizationEndpoint, oiDCConfig.authorizationEndpoint)
+                && Objects.equals(this.backchannelLogoutSessionSupported, oiDCConfig.backchannelLogoutSessionSupported)
+                && Objects.equals(this.backchannelLogoutSupported, oiDCConfig.backchannelLogoutSupported)
+                && Objects.equals(this.claimsParameterSupported, oiDCConfig.claimsParameterSupported)
+                && Objects.equals(this.claimsSupported, oiDCConfig.claimsSupported)
+                && Objects.equals(this.codeChallengeMethodsSupported, oiDCConfig.codeChallengeMethodsSupported)
+                && Objects.equals(this.credentialsEndpointDraft00, oiDCConfig.credentialsEndpointDraft00)
+                && Objects.equals(this.credentialsSupportedDraft00, oiDCConfig.credentialsSupportedDraft00)
+                && Objects.equals(this.endSessionEndpoint, oiDCConfig.endSessionEndpoint)
+                && Objects.equals(this.frontchannelLogoutSessionSupported,
+                        oiDCConfig.frontchannelLogoutSessionSupported)
+                && Objects.equals(this.frontchannelLogoutSupported, oiDCConfig.frontchannelLogoutSupported)
+                && Objects.equals(this.grantTypesSupported, oiDCConfig.grantTypesSupported)
+                && Objects.equals(this.idTokenSignedResponseAlg, oiDCConfig.idTokenSignedResponseAlg)
+                && Objects.equals(this.idTokenSigningAlgValuesSupported, oiDCConfig.idTokenSigningAlgValuesSupported)
+                && Objects.equals(this.issuer, oiDCConfig.issuer) && Objects.equals(this.jwksUri, oiDCConfig.jwksUri)
+                && Objects.equals(this.registrationEndpoint, oiDCConfig.registrationEndpoint)
+                && Objects.equals(this.requestObjectSigningAlgValuesSupported,
+                        oiDCConfig.requestObjectSigningAlgValuesSupported)
+                && Objects.equals(this.requestParameterSupported, oiDCConfig.requestParameterSupported)
+                && Objects.equals(this.requestUriParameterSupported, oiDCConfig.requestUriParameterSupported)
+                && Objects.equals(this.requireRequestUriRegistration, oiDCConfig.requireRequestUriRegistration)
+                && Objects.equals(this.responseModesSupported, oiDCConfig.responseModesSupported)
+                && Objects.equals(this.responseTypesSupported, oiDCConfig.responseTypesSupported)
+                && Objects.equals(this.revocationEndpoint, oiDCConfig.revocationEndpoint)
+                && Objects.equals(this.scopesSupported, oiDCConfig.scopesSupported)
+                && Objects.equals(this.subjectTypesSupported, oiDCConfig.subjectTypesSupported)
+                && Objects.equals(this.tokenEndpoint, oiDCConfig.tokenEndpoint)
+                && Objects.equals(this.tokenEndpointAuthMethodsSupported, oiDCConfig.tokenEndpointAuthMethodsSupported)
+                && Objects.equals(this.userinfoEndpoint, oiDCConfig.userinfoEndpoint)
+                && Objects.equals(this.userinfoSignedResponseAlg, oiDCConfig.userinfoSignedResponseAlg)
+                && Objects.equals(this.userinfoSigningAlgValuesSupported, oiDCConfig.userinfoSigningAlgValuesSupported);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(authorizationEndpoint, backchannelLogoutSessionSupported, backchannelLogoutSupported,
+                claimsParameterSupported, claimsSupported, codeChallengeMethodsSupported, credentialsEndpointDraft00,
+                credentialsSupportedDraft00, endSessionEndpoint, frontchannelLogoutSessionSupported,
+                frontchannelLogoutSupported, grantTypesSupported, idTokenSignedResponseAlg,
+                idTokenSigningAlgValuesSupported, issuer, jwksUri, registrationEndpoint,
+                requestObjectSigningAlgValuesSupported, requestParameterSupported, requestUriParameterSupported,
+                requireRequestUriRegistration, responseModesSupported, responseTypesSupported, revocationEndpoint,
+                scopesSupported, subjectTypesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported,
+                userinfoEndpoint, userinfoSignedResponseAlg, userinfoSigningAlgValuesSupported);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OIDCConfig {\n");
+        sb.append("    authorizationEndpoint: ").append(toIndentedString(authorizationEndpoint)).append("\n");
+        sb.append("    backchannelLogoutSessionSupported: ").append(toIndentedString(backchannelLogoutSessionSupported))
+                .append("\n");
+        sb.append("    backchannelLogoutSupported: ").append(toIndentedString(backchannelLogoutSupported)).append("\n");
+        sb.append("    claimsParameterSupported: ").append(toIndentedString(claimsParameterSupported)).append("\n");
+        sb.append("    claimsSupported: ").append(toIndentedString(claimsSupported)).append("\n");
+        sb.append("    codeChallengeMethodsSupported: ").append(toIndentedString(codeChallengeMethodsSupported))
+                .append("\n");
+        sb.append("    credentialsEndpointDraft00: ").append(toIndentedString(credentialsEndpointDraft00)).append("\n");
+        sb.append("    credentialsSupportedDraft00: ").append(toIndentedString(credentialsSupportedDraft00))
+                .append("\n");
+        sb.append("    endSessionEndpoint: ").append(toIndentedString(endSessionEndpoint)).append("\n");
+        sb.append("    frontchannelLogoutSessionSupported: ")
+                .append(toIndentedString(frontchannelLogoutSessionSupported)).append("\n");
+        sb.append("    frontchannelLogoutSupported: ").append(toIndentedString(frontchannelLogoutSupported))
+                .append("\n");
+        sb.append("    grantTypesSupported: ").append(toIndentedString(grantTypesSupported)).append("\n");
+        sb.append("    idTokenSignedResponseAlg: ").append(toIndentedString(idTokenSignedResponseAlg)).append("\n");
+        sb.append("    idTokenSigningAlgValuesSupported: ").append(toIndentedString(idTokenSigningAlgValuesSupported))
+                .append("\n");
+        sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
+        sb.append("    jwksUri: ").append(toIndentedString(jwksUri)).append("\n");
+        sb.append("    registrationEndpoint: ").append(toIndentedString(registrationEndpoint)).append("\n");
+        sb.append("    requestObjectSigningAlgValuesSupported: ")
+                .append(toIndentedString(requestObjectSigningAlgValuesSupported)).append("\n");
+        sb.append("    requestParameterSupported: ").append(toIndentedString(requestParameterSupported)).append("\n");
+        sb.append("    requestUriParameterSupported: ").append(toIndentedString(requestUriParameterSupported))
+                .append("\n");
+        sb.append("    requireRequestUriRegistration: ").append(toIndentedString(requireRequestUriRegistration))
+                .append("\n");
+        sb.append("    responseModesSupported: ").append(toIndentedString(responseModesSupported)).append("\n");
+        sb.append("    responseTypesSupported: ").append(toIndentedString(responseTypesSupported)).append("\n");
+        sb.append("    revocationEndpoint: ").append(toIndentedString(revocationEndpoint)).append("\n");
+        sb.append("    scopesSupported: ").append(toIndentedString(scopesSupported)).append("\n");
+        sb.append("    subjectTypesSupported: ").append(toIndentedString(subjectTypesSupported)).append("\n");
+        sb.append("    tokenEndpoint: ").append(toIndentedString(tokenEndpoint)).append("\n");
+        sb.append("    tokenEndpointAuthMethodsSupported: ").append(toIndentedString(tokenEndpointAuthMethodsSupported))
+                .append("\n");
+        sb.append("    userinfoEndpoint: ").append(toIndentedString(userinfoEndpoint)).append("\n");
+        sb.append("    userinfoSignedResponseAlg: ").append(toIndentedString(userinfoSignedResponseAlg)).append("\n");
+        sb.append("    userinfoSigningAlgValuesSupported: ").append(toIndentedString(userinfoSigningAlgValuesSupported))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `authorization_endpoint` to the URL query string
+        if (getAuthorizationEndpoint() != null) {
+            try {
+                joiner.add(String.format("%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `backchannel_logout_session_supported` to the URL query string
+        if (getBackchannelLogoutSessionSupported() != null) {
+            try {
+                joiner.add(String.format("%sbackchannel_logout_session_supported%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getBackchannelLogoutSessionSupported()), "UTF-8")
+                                .replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `backchannel_logout_supported` to the URL query string
+        if (getBackchannelLogoutSupported() != null) {
+            try {
+                joiner.add(String.format("%sbackchannel_logout_supported%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getBackchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `claims_parameter_supported` to the URL query string
+        if (getClaimsParameterSupported() != null) {
+            try {
+                joiner.add(String.format("%sclaims_parameter_supported%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getClaimsParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `claims_supported` to the URL query string
+        if (getClaimsSupported() != null) {
+            for (int i = 0; i < getClaimsSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sclaims_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getClaimsSupported().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `code_challenge_methods_supported` to the URL query string
+        if (getCodeChallengeMethodsSupported() != null) {
+            for (int i = 0; i < getCodeChallengeMethodsSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%scode_challenge_methods_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getCodeChallengeMethodsSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `credentials_endpoint_draft_00` to the URL query string
+        if (getCredentialsEndpointDraft00() != null) {
+            try {
+                joiner.add(String.format("%scredentials_endpoint_draft_00%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCredentialsEndpointDraft00()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `credentials_supported_draft_00` to the URL query string
+        if (getCredentialsSupportedDraft00() != null) {
+            for (int i = 0; i < getCredentialsSupportedDraft00().size(); i++) {
+                if (getCredentialsSupportedDraft00().get(i) != null) {
+                    joiner.add(getCredentialsSupportedDraft00().get(i).toUrlQueryString(String.format(
+                            "%scredentials_supported_draft_00%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `end_session_endpoint` to the URL query string
+        if (getEndSessionEndpoint() != null) {
+            try {
+                joiner.add(String.format("%send_session_endpoint%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getEndSessionEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `frontchannel_logout_session_supported` to the URL query string
+        if (getFrontchannelLogoutSessionSupported() != null) {
+            try {
+                joiner.add(String.format("%sfrontchannel_logout_session_supported%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getFrontchannelLogoutSessionSupported()), "UTF-8")
+                                .replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `frontchannel_logout_supported` to the URL query string
+        if (getFrontchannelLogoutSupported() != null) {
+            try {
+                joiner.add(String.format("%sfrontchannel_logout_supported%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getFrontchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `grant_types_supported` to the URL query string
+        if (getGrantTypesSupported() != null) {
+            for (int i = 0; i < getGrantTypesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sgrant_types_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getGrantTypesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `id_token_signed_response_alg` to the URL query string
+        if (getIdTokenSignedResponseAlg() != null) {
+            for (int i = 0; i < getIdTokenSignedResponseAlg().size(); i++) {
+                try {
+                    joiner.add(String.format("%sid_token_signed_response_alg%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getIdTokenSignedResponseAlg().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `id_token_signing_alg_values_supported` to the URL query string
+        if (getIdTokenSigningAlgValuesSupported() != null) {
+            for (int i = 0; i < getIdTokenSigningAlgValuesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sid_token_signing_alg_values_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getIdTokenSigningAlgValuesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `issuer` to the URL query string
+        if (getIssuer() != null) {
+            try {
+                joiner.add(String.format("%sissuer%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `jwks_uri` to the URL query string
+        if (getJwksUri() != null) {
+            try {
+                joiner.add(String.format("%sjwks_uri%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `registration_endpoint` to the URL query string
+        if (getRegistrationEndpoint() != null) {
+            try {
+                joiner.add(String.format("%sregistration_endpoint%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getRegistrationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `request_object_signing_alg_values_supported` to the URL query string
+        if (getRequestObjectSigningAlgValuesSupported() != null) {
+            for (int i = 0; i < getRequestObjectSigningAlgValuesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%srequest_object_signing_alg_values_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder
+                                    .encode(String.valueOf(getRequestObjectSigningAlgValuesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `request_parameter_supported` to the URL query string
+        if (getRequestParameterSupported() != null) {
+            try {
+                joiner.add(String.format("%srequest_parameter_supported%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getRequestParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `request_uri_parameter_supported` to the URL query string
+        if (getRequestUriParameterSupported() != null) {
+            try {
+                joiner.add(String.format("%srequest_uri_parameter_supported%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getRequestUriParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `require_request_uri_registration` to the URL query string
+        if (getRequireRequestUriRegistration() != null) {
+            try {
+                joiner.add(String.format("%srequire_request_uri_registration%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getRequireRequestUriRegistration()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `response_modes_supported` to the URL query string
+        if (getResponseModesSupported() != null) {
+            for (int i = 0; i < getResponseModesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sresponse_modes_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getResponseModesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `response_types_supported` to the URL query string
+        if (getResponseTypesSupported() != null) {
+            for (int i = 0; i < getResponseTypesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sresponse_types_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getResponseTypesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `revocation_endpoint` to the URL query string
+        if (getRevocationEndpoint() != null) {
+            try {
+                joiner.add(String.format("%srevocation_endpoint%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getRevocationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `scopes_supported` to the URL query string
+        if (getScopesSupported() != null) {
+            for (int i = 0; i < getScopesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%sscopes_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getScopesSupported().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `subject_types_supported` to the URL query string
+        if (getSubjectTypesSupported() != null) {
+            for (int i = 0; i < getSubjectTypesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%ssubject_types_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getSubjectTypesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `token_endpoint` to the URL query string
+        if (getTokenEndpoint() != null) {
+            try {
+                joiner.add(String.format("%stoken_endpoint%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `token_endpoint_auth_methods_supported` to the URL query string
+        if (getTokenEndpointAuthMethodsSupported() != null) {
+            for (int i = 0; i < getTokenEndpointAuthMethodsSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethodsSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `userinfo_endpoint` to the URL query string
+        if (getUserinfoEndpoint() != null) {
+            try {
+                joiner.add(String.format("%suserinfo_endpoint%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getUserinfoEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `userinfo_signed_response_alg` to the URL query string
+        if (getUserinfoSignedResponseAlg() != null) {
+            for (int i = 0; i < getUserinfoSignedResponseAlg().size(); i++) {
+                try {
+                    joiner.add(String.format("%suserinfo_signed_response_alg%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getUserinfoSignedResponseAlg().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `userinfo_signing_alg_values_supported` to the URL query string
+        if (getUserinfoSigningAlgValuesSupported() != null) {
+            for (int i = 0; i < getUserinfoSigningAlgValuesSupported().size(); i++) {
+                try {
+                    joiner.add(String.format("%suserinfo_signing_alg_values_supported%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getUserinfoSigningAlgValuesSupported().get(i)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

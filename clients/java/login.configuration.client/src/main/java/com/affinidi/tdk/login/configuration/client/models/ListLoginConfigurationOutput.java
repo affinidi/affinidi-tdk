@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -33,178 +32,178 @@ import java.util.StringJoiner;
 /**
  * ListLoginConfigurationOutput
  */
-@JsonPropertyOrder({
-  ListLoginConfigurationOutput.JSON_PROPERTY_CONFIGURATIONS,
-  ListLoginConfigurationOutput.JSON_PROPERTY_LAST_EVALUATED_KEY
-})
+@JsonPropertyOrder({ ListLoginConfigurationOutput.JSON_PROPERTY_CONFIGURATIONS,
+        ListLoginConfigurationOutput.JSON_PROPERTY_LAST_EVALUATED_KEY })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ListLoginConfigurationOutput {
-  public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
-  private List<LoginConfigurationObject> configurations = new ArrayList<>();
+    public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
+    private List<LoginConfigurationObject> configurations = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
-  private String lastEvaluatedKey;
+    public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+    private String lastEvaluatedKey;
 
-  public ListLoginConfigurationOutput() {
-  }
-
-  public ListLoginConfigurationOutput configurations(List<LoginConfigurationObject> configurations) {
-    
-    this.configurations = configurations;
-    return this;
-  }
-
-  public ListLoginConfigurationOutput addConfigurationsItem(LoginConfigurationObject configurationsItem) {
-    if (this.configurations == null) {
-      this.configurations = new ArrayList<>();
-    }
-    this.configurations.add(configurationsItem);
-    return this;
-  }
-
-  /**
-   * Get configurations
-   * @return configurations
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<LoginConfigurationObject> getConfigurations() {
-    return configurations;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurations(List<LoginConfigurationObject> configurations) {
-    this.configurations = configurations;
-  }
-
-  public ListLoginConfigurationOutput lastEvaluatedKey(String lastEvaluatedKey) {
-    
-    this.lastEvaluatedKey = lastEvaluatedKey;
-    return this;
-  }
-
-  /**
-   * Get lastEvaluatedKey
-   * @return lastEvaluatedKey
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getLastEvaluatedKey() {
-    return lastEvaluatedKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
-    this.lastEvaluatedKey = lastEvaluatedKey;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ListLoginConfigurationOutput listLoginConfigurationOutput = (ListLoginConfigurationOutput) o;
-    return Objects.equals(this.configurations, listLoginConfigurationOutput.configurations) &&
-        Objects.equals(this.lastEvaluatedKey, listLoginConfigurationOutput.lastEvaluatedKey);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(configurations, lastEvaluatedKey);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ListLoginConfigurationOutput {\n");
-    sb.append("    configurations: ").append(toIndentedString(configurations)).append("\n");
-    sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public ListLoginConfigurationOutput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public ListLoginConfigurationOutput configurations(List<LoginConfigurationObject> configurations) {
 
-    // add `configurations` to the URL query string
-    if (getConfigurations() != null) {
-      for (int i = 0; i < getConfigurations().size(); i++) {
-        if (getConfigurations().get(i) != null) {
-          try {
-            joiner.add(String.format("%sconfigurations%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-                URLEncoder.encode(String.valueOf(getConfigurations().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-          } catch (UnsupportedEncodingException e) {
-            // Should never happen, UTF-8 is always supported
-            throw new RuntimeException(e);
-          }
+        this.configurations = configurations;
+        return this;
+    }
+
+    public ListLoginConfigurationOutput addConfigurationsItem(LoginConfigurationObject configurationsItem) {
+        if (this.configurations == null) {
+            this.configurations = new ArrayList<>();
         }
-      }
+        this.configurations.add(configurationsItem);
+        return this;
     }
 
-    // add `lastEvaluatedKey` to the URL query string
-    if (getLastEvaluatedKey() != null) {
-      try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get configurations
+     *
+     * @return configurations
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<LoginConfigurationObject> getConfigurations() {
+        return configurations;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setConfigurations(List<LoginConfigurationObject> configurations) {
+        this.configurations = configurations;
+    }
+
+    public ListLoginConfigurationOutput lastEvaluatedKey(String lastEvaluatedKey) {
+
+        this.lastEvaluatedKey = lastEvaluatedKey;
+        return this;
+    }
+
+    /**
+     * Get lastEvaluatedKey
+     *
+     * @return lastEvaluatedKey
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getLastEvaluatedKey() {
+        return lastEvaluatedKey;
+    }
+
+    @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setLastEvaluatedKey(String lastEvaluatedKey) {
+        this.lastEvaluatedKey = lastEvaluatedKey;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ListLoginConfigurationOutput listLoginConfigurationOutput = (ListLoginConfigurationOutput) o;
+        return Objects.equals(this.configurations, listLoginConfigurationOutput.configurations)
+                && Objects.equals(this.lastEvaluatedKey, listLoginConfigurationOutput.lastEvaluatedKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(configurations, lastEvaluatedKey);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ListLoginConfigurationOutput {\n");
+        sb.append("    configurations: ").append(toIndentedString(configurations)).append("\n");
+        sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `configurations` to the URL query string
+        if (getConfigurations() != null) {
+            for (int i = 0; i < getConfigurations().size(); i++) {
+                if (getConfigurations().get(i) != null) {
+                    try {
+                        joiner.add(String.format("%sconfigurations%s%s=%s", prefix, suffix,
+                                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                                URLEncoder.encode(String.valueOf(getConfigurations().get(i)), "UTF-8").replaceAll("\\+",
+                                        "%20")));
+                    } catch (UnsupportedEncodingException e) {
+                        // Should never happen, UTF-8 is always supported
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        }
+
+        // add `lastEvaluatedKey` to the URL query string
+        if (getLastEvaluatedKey() != null) {
+            try {
+                joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.apis;
 
 import com.affinidi.tdk.login.configuration.client.ApiException;
@@ -47,10 +46,13 @@ public class ConfigurationApiTest {
     /**
      * Create a new login configuration
      *
-     * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
+     * Create a new login configuration &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings
+     * that provide user email VP presentation definitions. An essential default definition is in place when it comes to
+     * the login process for end users using the Chrome extension. This definition requires users to input their email
+     * address as OIDCVP compliant, which is then verified by the Affinidi verification service.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createLoginConfigurationsTest() throws ApiException {
@@ -59,13 +61,14 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Delete login configurations by ID
      *
      * Delete login configurations by ID
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteLoginConfigurationsByIdTest() throws ApiException {
@@ -74,13 +77,14 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
-     * Get Client Metadata By  OAuth 2.0 Client ID
+     * Get Client Metadata By OAuth 2.0 Client ID
      *
-     * Get Client Metadata By  OAuth 2.0 Client ID
+     * Get Client Metadata By OAuth 2.0 Client ID
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getClientMetadataByClientIdTest() throws ApiException {
@@ -89,13 +93,14 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Get login configuration by ID
      *
      * Get login configuration by ID
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getLoginConfigurationsByIdTest() throws ApiException {
@@ -104,13 +109,14 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * List login configurations
      *
      * Endpoint to retrieve list of login configurations
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listLoginConfigurationsTest() throws ApiException {
@@ -120,19 +126,21 @@ public class ConfigurationApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Update login configurations by ID
      *
      * Update login configurations by ID
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateLoginConfigurationsByIdTest() throws ApiException {
         String configurationId = null;
         UpdateLoginConfigurationInput updateLoginConfigurationInput = null;
-        LoginConfigurationObject response = api.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput);
+        LoginConfigurationObject response = api.updateLoginConfigurationsById(configurationId,
+                updateLoginConfigurationInput);
 
         // TODO: test validations
     }

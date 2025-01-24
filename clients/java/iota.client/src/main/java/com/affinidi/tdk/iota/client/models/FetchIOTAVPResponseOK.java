@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -31,212 +30,216 @@ import java.util.StringJoiner;
 /**
  * FetchIOTAVPResponseOK
  */
-@JsonPropertyOrder({
-  FetchIOTAVPResponseOK.JSON_PROPERTY_CORRELATION_ID,
-  FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
-  FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
-})
+@JsonPropertyOrder({ FetchIOTAVPResponseOK.JSON_PROPERTY_CORRELATION_ID,
+        FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION, FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
-  public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
-  private String correlationId;
+    public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+    private String correlationId;
 
-  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
-  private String presentationSubmission;
+    public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
+    private String presentationSubmission;
 
-  public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
-  private String vpToken;
+    public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
+    private String vpToken;
 
-  public FetchIOTAVPResponseOK() {
+    public FetchIOTAVPResponseOK() {
 
-  }
-
-  public FetchIOTAVPResponseOK correlationId(String correlationId) {
-    
-    this.correlationId = correlationId;
-    return this;
-  }
-
-  /**
-   * A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
-   * @return correlationId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorrelationId() {
-    return correlationId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
-  }
-
-  public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
-    
-    this.presentationSubmission = presentationSubmission;
-    return this;
-  }
-
-  /**
-   * A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-   * @return presentationSubmission
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPresentationSubmission() {
-    return presentationSubmission;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(String presentationSubmission) {
-    this.presentationSubmission = presentationSubmission;
-  }
-
-  public FetchIOTAVPResponseOK vpToken(String vpToken) {
-    
-    this.vpToken = vpToken;
-    return this;
-  }
-
-  /**
-   * A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-   * @return vpToken
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getVpToken() {
-    return vpToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpToken(String vpToken) {
-    this.vpToken = vpToken;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FetchIOTAVPResponseOK fetchIOTAVPResponseOK = (FetchIOTAVPResponseOK) o;
-    return Objects.equals(this.correlationId, fetchIOTAVPResponseOK.correlationId) &&
-        Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
-        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
-        super.equals(o);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(correlationId, presentationSubmission, vpToken, super.hashCode());
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FetchIOTAVPResponseOK {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
-    sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
-    sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public FetchIOTAVPResponseOK correlationId(String correlationId) {
 
-    // add `correlationId` to the URL query string
-    if (getCorrelationId() != null) {
-      try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.correlationId = correlationId;
+        return this;
     }
 
-    // add `presentation_submission` to the URL query string
-    if (getPresentationSubmission() != null) {
-      try {
-        joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * A unique, randomly generated identifier that correlates the request and response in the data-sharing request
+     * flow.
+     *
+     * @return correlationId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorrelationId() {
+        return correlationId;
     }
 
-    // add `vp_token` to the URL query string
-    if (getVpToken() != null) {
-      try {
-        joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorrelationId(String correlationId) {
+        this.correlationId = correlationId;
     }
 
-    return joiner.toString();
-  }
+    public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
+
+        this.presentationSubmission = presentationSubmission;
+        return this;
+    }
+
+    /**
+     * A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for
+     * the verifier. The presentation submission follows the OID4VP standard.
+     *
+     * @return presentationSubmission
+     *
+     * @deprecated
+     */
+    @Deprecated
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPresentationSubmission() {
+        return presentationSubmission;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPresentationSubmission(String presentationSubmission) {
+        this.presentationSubmission = presentationSubmission;
+    }
+
+    public FetchIOTAVPResponseOK vpToken(String vpToken) {
+
+        this.vpToken = vpToken;
+        return this;
+    }
+
+    /**
+     * A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP
+     * Token follows the OID4VP standard.
+     *
+     * @return vpToken
+     *
+     * @deprecated
+     */
+    @Deprecated
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getVpToken() {
+        return vpToken;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setVpToken(String vpToken) {
+        this.vpToken = vpToken;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FetchIOTAVPResponseOK fetchIOTAVPResponseOK = (FetchIOTAVPResponseOK) o;
+        return Objects.equals(this.correlationId, fetchIOTAVPResponseOK.correlationId)
+                && Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission)
+                && Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) && super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(correlationId, presentationSubmission, vpToken, super.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class FetchIOTAVPResponseOK {\n");
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
+        sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
+        sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `correlationId` to the URL query string
+        if (getCorrelationId() != null) {
+            try {
+                joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `presentation_submission` to the URL query string
+        if (getPresentationSubmission() != null) {
+            try {
+                joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `vp_token` to the URL query string
+        if (getVpToken() != null) {
+            try {
+                joiner.add(String.format("%svp_token%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

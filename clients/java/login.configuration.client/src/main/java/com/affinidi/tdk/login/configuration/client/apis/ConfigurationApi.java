@@ -32,7 +32,6 @@ import com.affinidi.tdk.login.configuration.client.models.NotFoundError;
 import com.affinidi.tdk.login.configuration.client.models.ResourceCreationError;
 import com.affinidi.tdk.login.configuration.client.models.UpdateLoginConfigurationInput;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,493 +42,454 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConfigurationApi extends BaseApi {
 
-  public ConfigurationApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public ConfigurationApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * Create a new login configuration
-   * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
-   * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-   * @return CreateLoginConfigurationOutput
-   * @throws ApiException if fails to make API call
-   */
-  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
-    return this.createLoginConfigurations(createLoginConfigurationInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * Create a new login configuration
-   * Create a new login configuration  &#x60;vpDefinition&#x60; and &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions.  An essential default definition is in place when it comes to the login process for end users using the Chrome extension.  This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service. 
-   * @param createLoginConfigurationInput CreateLoginConfigurations (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return CreateLoginConfigurationOutput
-   * @throws ApiException if fails to make API call
-   */
-  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createLoginConfigurationInput;
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<CreateLoginConfigurationOutput> localVarReturnType = new TypeReference<CreateLoginConfigurationOutput>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Delete login configurations by ID
-   * Delete login configurations by ID
-   * @param configurationId The id of the login configuration (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteLoginConfigurationsById(String configurationId) throws ApiException {
-    this.deleteLoginConfigurationsById(configurationId, Collections.emptyMap());
-  }
-
-
-  /**
-   * Delete login configurations by ID
-   * Delete login configurations by ID
-   * @param configurationId The id of the login configuration (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'configurationId' is set
-    if (configurationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling deleteLoginConfigurationsById");
+    public ConfigurationApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations/{configurationId}"
-      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * Get Client Metadata By  OAuth 2.0 Client ID
-   * Get Client Metadata By  OAuth 2.0 Client ID
-   * @param clientId OAuth 2.0 Client ID (required)
-   * @return LoginConfigurationClientMetadataOutput
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId) throws ApiException {
-    return this.getClientMetadataByClientId(clientId, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get Client Metadata By  OAuth 2.0 Client ID
-   * Get Client Metadata By  OAuth 2.0 Client ID
-   * @param clientId OAuth 2.0 Client ID (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return LoginConfigurationClientMetadataOutput
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'clientId' is set
-    if (clientId == null) {
-      throw new ApiException(400, "Missing the required parameter 'clientId' when calling getClientMetadataByClientId");
+    public ConfigurationApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations/metadata/{clientId}"
-      .replaceAll("\\{" + "clientId" + "\\}", apiClient.escapeString(apiClient.parameterToString(clientId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    TypeReference<LoginConfigurationClientMetadataOutput> localVarReturnType = new TypeReference<LoginConfigurationClientMetadataOutput>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get login configuration by ID
-   * Get login configuration by ID
-   * @param configurationId The id of the login configuration (required)
-   * @return LoginConfigurationObject
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationObject getLoginConfigurationsById(String configurationId) throws ApiException {
-    return this.getLoginConfigurationsById(configurationId, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get login configuration by ID
-   * Get login configuration by ID
-   * @param configurationId The id of the login configuration (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return LoginConfigurationObject
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationObject getLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'configurationId' is set
-    if (configurationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling getLoginConfigurationsById");
+    /**
+     * Create a new login configuration Create a new login configuration &#x60;vpDefinition&#x60; and
+     * &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions. An
+     * essential default definition is in place when it comes to the login process for end users using the Chrome
+     * extension. This definition requires users to input their email address as OIDCVP compliant, which is then
+     * verified by the Affinidi verification service.
+     *
+     * @param createLoginConfigurationInput
+     *            CreateLoginConfigurations (optional)
+     *
+     * @return CreateLoginConfigurationOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateLoginConfigurationOutput createLoginConfigurations(
+            CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
+        return this.createLoginConfigurations(createLoginConfigurationInput, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations/{configurationId}"
-      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * Create a new login configuration Create a new login configuration &#x60;vpDefinition&#x60; and
+     * &#x60;idTokenMapping&#x60; have default settings that provide user email VP presentation definitions. An
+     * essential default definition is in place when it comes to the login process for end users using the Chrome
+     * extension. This definition requires users to input their email address as OIDCVP compliant, which is then
+     * verified by the Affinidi verification service.
+     *
+     * @param createLoginConfigurationInput
+     *            CreateLoginConfigurations (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return CreateLoginConfigurationOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CreateLoginConfigurationOutput createLoginConfigurations(
+            CreateLoginConfigurationInput createLoginConfigurationInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = createLoginConfigurationInput;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations";
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-  /**
-   * List login configurations
-   * Endpoint to retrieve list of login configurations
-   * @param limit Maximum number of records to fetch in a list (optional)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return ListLoginConfigurationOutput
-   * @throws ApiException if fails to make API call
-   */
-  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listLoginConfigurations(limit, exclusiveStartKey, Collections.emptyMap());
-  }
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-
-  /**
-   * List login configurations
-   * Endpoint to retrieve list of login configurations
-   * @param limit Maximum number of records to fetch in a list (optional)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ListLoginConfigurationOutput
-   * @throws ApiException if fails to make API call
-   */
-  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<ListLoginConfigurationOutput> localVarReturnType = new TypeReference<ListLoginConfigurationOutput>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Update login configurations by ID
-   * Update login configurations by ID
-   * @param configurationId The id of the login configuration (required)
-   * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-   * @return LoginConfigurationObject
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
-    return this.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * Update login configurations by ID
-   * Update login configurations by ID
-   * @param configurationId The id of the login configuration (required)
-   * @param updateLoginConfigurationInput UpdateLoginConfigurationsById (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return LoginConfigurationObject
-   * @throws ApiException if fails to make API call
-   */
-  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = updateLoginConfigurationInput;
-    
-    // verify the required parameter 'configurationId' is set
-    if (configurationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'configurationId' when calling updateLoginConfigurationsById");
+        TypeReference<CreateLoginConfigurationOutput> localVarReturnType = new TypeReference<CreateLoginConfigurationOutput>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/login/configurations/{configurationId}"
-      .replaceAll("\\{" + "configurationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     * Delete login configurations by ID Delete login configurations by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteLoginConfigurationsById(String configurationId) throws ApiException {
+        this.deleteLoginConfigurationsById(configurationId, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     * Delete login configurations by ID Delete login configurations by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'configurationId' when calling deleteLoginConfigurationsById");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations/{configurationId}".replaceAll("\\{" + "configurationId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(configurationId)));
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    /**
+     * Get Client Metadata By OAuth 2.0 Client ID Get Client Metadata By OAuth 2.0 Client ID
+     *
+     * @param clientId
+     *            OAuth 2.0 Client ID (required)
+     *
+     * @return LoginConfigurationClientMetadataOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId) throws ApiException {
+        return this.getClientMetadataByClientId(clientId, Collections.emptyMap());
+    }
+
+    /**
+     * Get Client Metadata By OAuth 2.0 Client ID Get Client Metadata By OAuth 2.0 Client ID
+     *
+     * @param clientId
+     *            OAuth 2.0 Client ID (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return LoginConfigurationClientMetadataOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'clientId' is set
+        if (clientId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'clientId' when calling getClientMetadataByClientId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations/metadata/{clientId}".replaceAll("\\{" + "clientId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(clientId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        TypeReference<LoginConfigurationClientMetadataOutput> localVarReturnType = new TypeReference<LoginConfigurationClientMetadataOutput>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get login configuration by ID Get login configuration by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     *
+     * @return LoginConfigurationObject
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationObject getLoginConfigurationsById(String configurationId) throws ApiException {
+        return this.getLoginConfigurationsById(configurationId, Collections.emptyMap());
+    }
+
+    /**
+     * Get login configuration by ID Get login configuration by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return LoginConfigurationObject
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationObject getLoginConfigurationsById(String configurationId,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'configurationId' when calling getLoginConfigurationsById");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations/{configurationId}".replaceAll("\\{" + "configurationId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * List login configurations Endpoint to retrieve list of login configurations
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return ListLoginConfigurationOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey)
+            throws ApiException {
+        return this.listLoginConfigurations(limit, exclusiveStartKey, Collections.emptyMap());
+    }
+
+    /**
+     * List login configurations Endpoint to retrieve list of login configurations
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ListLoginConfigurationOutput
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<ListLoginConfigurationOutput> localVarReturnType = new TypeReference<ListLoginConfigurationOutput>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Update login configurations by ID Update login configurations by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     * @param updateLoginConfigurationInput
+     *            UpdateLoginConfigurationsById (optional)
+     *
+     * @return LoginConfigurationObject
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationObject updateLoginConfigurationsById(String configurationId,
+            UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
+        return this.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput,
+                Collections.emptyMap());
+    }
+
+    /**
+     * Update login configurations by ID Update login configurations by ID
+     *
+     * @param configurationId
+     *            The id of the login configuration (required)
+     * @param updateLoginConfigurationInput
+     *            UpdateLoginConfigurationsById (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return LoginConfigurationObject
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public LoginConfigurationObject updateLoginConfigurationsById(String configurationId,
+            UpdateLoginConfigurationInput updateLoginConfigurationInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = updateLoginConfigurationInput;
+
+        // verify the required parameter 'configurationId' is set
+        if (configurationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'configurationId' when calling updateLoginConfigurationsById");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/login/configurations/{configurationId}".replaceAll("\\{" + "configurationId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(configurationId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<LoginConfigurationObject> localVarReturnType = new TypeReference<LoginConfigurationObject>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

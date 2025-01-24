@@ -24,7 +24,6 @@ import com.affinidi.tdk.login.configuration.client.models.GroupNames;
 import com.affinidi.tdk.login.configuration.client.models.GroupNamesInput;
 import com.affinidi.tdk.login.configuration.client.models.InvalidGroupsError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,254 +34,216 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AllowListApi extends BaseApi {
 
-  public AllowListApi() {
-    super(Configuration.getDefaultApiClient());
-  }
+    public AllowListApi() {
+        super(Configuration.getDefaultApiClient());
+    }
 
-  public AllowListApi(ApiClient apiClient) {
-    super(apiClient);
-  }
+    public AllowListApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-  /**
-   * 
-   * Allow Single or Multiple Groups
-   * @param groupNamesInput List of group names as input (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void allowGroups(GroupNamesInput groupNamesInput) throws ApiException {
-    this.allowGroups(groupNamesInput, Collections.emptyMap());
-  }
+    /**
+     *
+     * Allow Single or Multiple Groups
+     *
+     * @param groupNamesInput
+     *            List of group names as input (optional)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void allowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+        this.allowGroups(groupNamesInput, Collections.emptyMap());
+    }
 
+    /**
+     *
+     * Allow Single or Multiple Groups
+     *
+     * @param groupNamesInput
+     *            List of group names as input (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void allowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = groupNamesInput;
 
-  /**
-   * 
-   * Allow Single or Multiple Groups
-   * @param groupNamesInput List of group names as input (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void allowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = groupNamesInput;
-    
-    // create path and map variables
-    String localVarPath = "/v1/allow-list/groups/add";
+        // create path and map variables
+        String localVarPath = "/v1/allow-list/groups/add";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
 
-  /**
-   * 
-   * Disallow Single or Multiple Groups
-   * @param groupNamesInput List of group names as input (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void disallowGroups(GroupNamesInput groupNamesInput) throws ApiException {
-    this.disallowGroups(groupNamesInput, Collections.emptyMap());
-  }
+    /**
+     *
+     * Disallow Single or Multiple Groups
+     *
+     * @param groupNamesInput
+     *            List of group names as input (optional)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void disallowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+        this.disallowGroups(groupNamesInput, Collections.emptyMap());
+    }
 
+    /**
+     *
+     * Disallow Single or Multiple Groups
+     *
+     * @param groupNamesInput
+     *            List of group names as input (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void disallowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = groupNamesInput;
 
-  /**
-   * 
-   * Disallow Single or Multiple Groups
-   * @param groupNamesInput List of group names as input (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void disallowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = groupNamesInput;
-    
-    // create path and map variables
-    String localVarPath = "/v1/allow-list/groups/remove";
+        // create path and map variables
+        String localVarPath = "/v1/allow-list/groups/remove";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
+        apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
 
-  /**
-   * 
-   * Get Allowed Groups
-   * @param pageToken  (optional)
-   * @return GroupNames
-   * @throws ApiException if fails to make API call
-   */
-  public GroupNames listAllowedGroups(String pageToken) throws ApiException {
-    return this.listAllowedGroups(pageToken, Collections.emptyMap());
-  }
+    /**
+     *
+     * Get Allowed Groups
+     *
+     * @param pageToken
+     *            (optional)
+     *
+     * @return GroupNames
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GroupNames listAllowedGroups(String pageToken) throws ApiException {
+        return this.listAllowedGroups(pageToken, Collections.emptyMap());
+    }
 
+    /**
+     *
+     * Get Allowed Groups
+     *
+     * @param pageToken
+     *            (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return GroupNames
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GroupNames listAllowedGroups(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-  /**
-   * 
-   * Get Allowed Groups
-   * @param pageToken  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return GroupNames
-   * @throws ApiException if fails to make API call
-   */
-  public GroupNames listAllowedGroups(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/allow-list/groups";
+        // create path and map variables
+        String localVarPath = "/v1/allow-list/groups";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("pageToken", pageToken));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarQueryParams.addAll(apiClient.parameterToPair("pageToken", pageToken));
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        final String[] localVarContentTypes = {
 
-    TypeReference<GroupNames> localVarReturnType = new TypeReference<GroupNames>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        TypeReference<GroupNames> localVarReturnType = new TypeReference<GroupNames>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

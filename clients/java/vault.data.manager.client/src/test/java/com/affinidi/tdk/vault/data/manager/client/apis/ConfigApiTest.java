@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.apis;
 
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
@@ -36,10 +35,11 @@ public class ConfigApiTest {
     private final ConfigApi api = new ConfigApi();
 
     /**
-     * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
+     * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39;
+     * and 1, respectively.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getConfigTest() throws ApiException {

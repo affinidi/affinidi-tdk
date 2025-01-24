@@ -63,7 +63,7 @@ public class AuthProviderTest {
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
-        @ValueSource(strings = {"complicated-word"})
+        @ValueSource(strings = { "complicated-word" })
         void givenInvalidPrivateKey_thenThrows(String phrase) {
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
                 AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")

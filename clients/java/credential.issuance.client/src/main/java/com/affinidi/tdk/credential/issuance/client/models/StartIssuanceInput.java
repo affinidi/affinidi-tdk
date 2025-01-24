@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -33,291 +32,295 @@ import java.util.StringJoiner;
 /**
  * StartIssuanceInput
  */
-@JsonPropertyOrder({
-  StartIssuanceInput.JSON_PROPERTY_CLAIM_MODE,
-  StartIssuanceInput.JSON_PROPERTY_HOLDER_DID,
-  StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID,
-  StartIssuanceInput.JSON_PROPERTY_DATA
-})
+@JsonPropertyOrder({ StartIssuanceInput.JSON_PROPERTY_CLAIM_MODE, StartIssuanceInput.JSON_PROPERTY_HOLDER_DID,
+        StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID, StartIssuanceInput.JSON_PROPERTY_DATA })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class StartIssuanceInput {
-  /**
-   * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
-   */
-  public enum ClaimModeEnum {
-    NORMAL("NORMAL"),
-    
-    TX_CODE("TX_CODE"),
-    
-    FIXED_HOLDER("FIXED_HOLDER");
+    /**
+     * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects
+     * presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be
+     * present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
+     */
+    public enum ClaimModeEnum {
+        NORMAL("NORMAL"),
 
-    private String value;
+        TX_CODE("TX_CODE"),
 
-    ClaimModeEnum(String value) {
-      this.value = value;
+        FIXED_HOLDER("FIXED_HOLDER");
+
+        private String value;
+
+        ClaimModeEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ClaimModeEnum fromValue(String value) {
+            for (ClaimModeEnum b : ClaimModeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
     }
 
-    @JsonValue
-    public String getValue() {
-      return value;
+    public static final String JSON_PROPERTY_CLAIM_MODE = "claimMode";
+    private ClaimModeEnum claimMode;
+
+    public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
+    private String holderDid;
+
+    public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
+    private String issuanceId;
+
+    public static final String JSON_PROPERTY_DATA = "data";
+    private List<StartIssuanceInputDataInner> data = new ArrayList<>();
+
+    public StartIssuanceInput() {
+    }
+
+    public StartIssuanceInput claimMode(ClaimModeEnum claimMode) {
+
+        this.claimMode = claimMode;
+        return this;
+    }
+
+    /**
+     * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects
+     * presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be
+     * present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
+     *
+     * @return claimMode
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public ClaimModeEnum getClaimMode() {
+        return claimMode;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setClaimMode(ClaimModeEnum claimMode) {
+        this.claimMode = claimMode;
+    }
+
+    public StartIssuanceInput holderDid(String holderDid) {
+
+        this.holderDid = holderDid;
+        return this;
+    }
+
+    /**
+     * Holder DID
+     *
+     * @return holderDid
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getHolderDid() {
+        return holderDid;
+    }
+
+    @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setHolderDid(String holderDid) {
+        this.holderDid = holderDid;
+    }
+
+    public StartIssuanceInput issuanceId(String issuanceId) {
+
+        this.issuanceId = issuanceId;
+        return this;
+    }
+
+    /**
+     * Website&#39;s internal identifier. Website may use to get info about the status of issuance flow. If it is not
+     * provided, CIS will generate one.
+     *
+     * @return issuanceId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getIssuanceId() {
+        return issuanceId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuanceId(String issuanceId) {
+        this.issuanceId = issuanceId;
+    }
+
+    public StartIssuanceInput data(List<StartIssuanceInputDataInner> data) {
+
+        this.data = data;
+        return this;
+    }
+
+    public StartIssuanceInput addDataItem(StartIssuanceInputDataInner dataItem) {
+        if (this.data == null) {
+            this.data = new ArrayList<>();
+        }
+        this.data.add(dataItem);
+        return this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return data
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DATA)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<StartIssuanceInputDataInner> getData() {
+        return data;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DATA)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setData(List<StartIssuanceInputDataInner> data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        StartIssuanceInput startIssuanceInput = (StartIssuanceInput) o;
+        return Objects.equals(this.claimMode, startIssuanceInput.claimMode)
+                && Objects.equals(this.holderDid, startIssuanceInput.holderDid)
+                && Objects.equals(this.issuanceId, startIssuanceInput.issuanceId)
+                && Objects.equals(this.data, startIssuanceInput.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(claimMode, holderDid, issuanceId, data);
     }
 
     @Override
     public String toString() {
-      return String.valueOf(value);
+        StringBuilder sb = new StringBuilder();
+        sb.append("class StartIssuanceInput {\n");
+        sb.append("    claimMode: ").append(toIndentedString(claimMode)).append("\n");
+        sb.append("    holderDid: ").append(toIndentedString(holderDid)).append("\n");
+        sb.append("    issuanceId: ").append(toIndentedString(issuanceId)).append("\n");
+        sb.append("    data: ").append(toIndentedString(data)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
-    @JsonCreator
-    public static ClaimModeEnum fromValue(String value) {
-      for (ClaimModeEnum b : ClaimModeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
         }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_CLAIM_MODE = "claimMode";
-  private ClaimModeEnum claimMode;
-
-  public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
-  private String holderDid;
-
-  public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
-  private String issuanceId;
-
-  public static final String JSON_PROPERTY_DATA = "data";
-  private List<StartIssuanceInputDataInner> data = new ArrayList<>();
-
-  public StartIssuanceInput() {
-  }
-
-  public StartIssuanceInput claimMode(ClaimModeEnum claimMode) {
-    
-    this.claimMode = claimMode;
-    return this;
-  }
-
-  /**
-   * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
-   * @return claimMode
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public ClaimModeEnum getClaimMode() {
-    return claimMode;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimMode(ClaimModeEnum claimMode) {
-    this.claimMode = claimMode;
-  }
-
-  public StartIssuanceInput holderDid(String holderDid) {
-    
-    this.holderDid = holderDid;
-    return this;
-  }
-
-  /**
-   * Holder DID
-   * @return holderDid
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getHolderDid() {
-    return holderDid;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHolderDid(String holderDid) {
-    this.holderDid = holderDid;
-  }
-
-  public StartIssuanceInput issuanceId(String issuanceId) {
-    
-    this.issuanceId = issuanceId;
-    return this;
-  }
-
-  /**
-   * Website&#39;s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
-   * @return issuanceId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIssuanceId() {
-    return issuanceId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuanceId(String issuanceId) {
-    this.issuanceId = issuanceId;
-  }
-
-  public StartIssuanceInput data(List<StartIssuanceInputDataInner> data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  public StartIssuanceInput addDataItem(StartIssuanceInputDataInner dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
-    }
-    this.data.add(dataItem);
-    return this;
-  }
-
-  /**
-   * Get data
-   * @return data
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<StartIssuanceInputDataInner> getData() {
-    return data;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setData(List<StartIssuanceInputDataInner> data) {
-    this.data = data;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    StartIssuanceInput startIssuanceInput = (StartIssuanceInput) o;
-    return Objects.equals(this.claimMode, startIssuanceInput.claimMode) &&
-        Objects.equals(this.holderDid, startIssuanceInput.holderDid) &&
-        Objects.equals(this.issuanceId, startIssuanceInput.issuanceId) &&
-        Objects.equals(this.data, startIssuanceInput.data);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(claimMode, holderDid, issuanceId, data);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class StartIssuanceInput {\n");
-    sb.append("    claimMode: ").append(toIndentedString(claimMode)).append("\n");
-    sb.append("    holderDid: ").append(toIndentedString(holderDid)).append("\n");
-    sb.append("    issuanceId: ").append(toIndentedString(issuanceId)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+        return o.toString().replace("\n", "\n    ");
     }
 
-    StringJoiner joiner = new StringJoiner("&");
-
-    // add `claimMode` to the URL query string
-    if (getClaimMode() != null) {
-      try {
-        joiner.add(String.format("%sclaimMode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimMode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
     }
 
-    // add `holderDid` to the URL query string
-    if (getHolderDid() != null) {
-      try {
-        joiner.add(String.format("%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `issuanceId` to the URL query string
-    if (getIssuanceId() != null) {
-      try {
-        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `data` to the URL query string
-    if (getData() != null) {
-      for (int i = 0; i < getData().size(); i++) {
-        if (getData().get(i) != null) {
-          joiner.add(getData().get(i).toUrlQueryString(String.format("%sdata%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
         }
-      }
-    }
 
-    return joiner.toString();
-  }
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `claimMode` to the URL query string
+        if (getClaimMode() != null) {
+            try {
+                joiner.add(String.format("%sclaimMode%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getClaimMode()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `holderDid` to the URL query string
+        if (getHolderDid() != null) {
+            try {
+                joiner.add(String.format("%sholderDid%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `issuanceId` to the URL query string
+        if (getIssuanceId() != null) {
+            try {
+                joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `data` to the URL query string
+        if (getData() != null) {
+            for (int i = 0; i < getData().size(); i++) {
+                if (getData().get(i) != null) {
+                    joiner.add(getData().get(i).toUrlQueryString(String.format("%sdata%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

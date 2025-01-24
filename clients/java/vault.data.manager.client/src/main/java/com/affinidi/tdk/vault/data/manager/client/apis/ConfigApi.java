@@ -23,7 +23,6 @@ import com.affinidi.tdk.vault.data.manager.client.Pair;
 import com.affinidi.tdk.vault.data.manager.client.models.GetConfigOK;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,119 +33,99 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ConfigApi extends BaseApi {
 
-  public ConfigApi() {
-    super(Configuration.getDefaultApiClient());
-  }
+    public ConfigApi() {
+        super(Configuration.getDefaultApiClient());
+    }
 
-  public ConfigApi(ApiClient apiClient) {
-    super(apiClient);
-  }
+    public ConfigApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-  /**
-   * 
-   * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
-   * @return GetConfigOK
-   * @throws ApiException if fails to make API call
-   */
-  public GetConfigOK getConfig() throws ApiException {
-    return this.getConfig(Collections.emptyMap());
-  }
+    /**
+     *
+     * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39;
+     * and 1, respectively.
+     *
+     * @return GetConfigOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GetConfigOK getConfig() throws ApiException {
+        return this.getConfig(Collections.emptyMap());
+    }
 
+    /**
+     *
+     * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39;
+     * and 1, respectively.
+     *
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return GetConfigOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GetConfigOK getConfig(Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-  /**
-   * 
-   * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
-   * @param additionalHeaders additionalHeaders for this call
-   * @return GetConfigOK
-   * @throws ApiException if fails to make API call
-   */
-  public GetConfigOK getConfig(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/config";
+        // create path and map variables
+        String localVarPath = "/v1/config";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {
 
-    String[] localVarAuthNames = new String[] { "AwsSigV4" };
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    TypeReference<GetConfigOK> localVarReturnType = new TypeReference<GetConfigOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        String[] localVarAuthNames = new String[] { "AwsSigV4" };
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<GetConfigOK> localVarReturnType = new TypeReference<GetConfigOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    localVarHeaderParams.putAll(additionalHeaders);
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    String[] localVarAuthNames = new String[] { "AwsSigV4" };
+        final String[] localVarContentTypes = {
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "AwsSigV4" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

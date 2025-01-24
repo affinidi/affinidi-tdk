@@ -33,7 +33,6 @@ import com.affinidi.tdk.iota.client.models.IotaExchangeCredentialsOK;
 import com.affinidi.tdk.iota.client.models.NotFoundError;
 import com.affinidi.tdk.iota.client.models.OperationForbiddenError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -44,422 +43,394 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IotaApi extends BaseApi {
 
-  public IotaApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public IotaApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
-   * @param awsExchangeCredentials AwsExchangeCredentials (required)
-   * @return AwsExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials) throws ApiException {
-    return this.awsExchangeCredentials(awsExchangeCredentials, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket data-sharing mode.
-   * @param awsExchangeCredentials AwsExchangeCredentials (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return AwsExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = awsExchangeCredentials;
-    
-    // verify the required parameter 'awsExchangeCredentials' is set
-    if (awsExchangeCredentials == null) {
-      throw new ApiException(400, "Missing the required parameter 'awsExchangeCredentials' when calling awsExchangeCredentials");
+    public IotaApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/aws-exchange-credentials";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] {  };
-
-    TypeReference<AwsExchangeCredentialsOK> localVarReturnType = new TypeReference<AwsExchangeCredentialsOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
-   * @param awsExchangeCredentialsProjectToken AwsExchangeCredentialsProjectToken (required)
-   * @return IotaExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken) throws ApiException {
-    return this.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
-   * @param awsExchangeCredentialsProjectToken AwsExchangeCredentialsProjectToken (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return IotaExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = awsExchangeCredentialsProjectToken;
-    
-    // verify the required parameter 'awsExchangeCredentialsProjectToken' is set
-    if (awsExchangeCredentialsProjectToken == null) {
-      throw new ApiException(400, "Missing the required parameter 'awsExchangeCredentialsProjectToken' when calling awsExchangeCredentialsProjectToken");
+    public IotaApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/aws-exchange-credentials/project-token";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<IotaExchangeCredentialsOK> localVarReturnType = new TypeReference<IotaExchangeCredentialsOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format after a successful data-sharing flow.
-   * @param fetchIOTAVPResponseInput FetchIOTAVPResponseInput (required)
-   * @return FetchIOTAVPResponseOK
-   * @throws ApiException if fails to make API call
-   */
-  public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput) throws ApiException {
-    return this.fetchIotaVpResponse(fetchIOTAVPResponseInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format after a successful data-sharing flow.
-   * @param fetchIOTAVPResponseInput FetchIOTAVPResponseInput (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return FetchIOTAVPResponseOK
-   * @throws ApiException if fails to make API call
-   */
-  public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = fetchIOTAVPResponseInput;
-    
-    // verify the required parameter 'fetchIOTAVPResponseInput' is set
-    if (fetchIOTAVPResponseInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'fetchIOTAVPResponseInput' when calling fetchIotaVpResponse");
+    /**
+     *
+     * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity
+     * credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket
+     * data-sharing mode.
+     *
+     * @param awsExchangeCredentials
+     *            AwsExchangeCredentials (required)
+     *
+     * @return AwsExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials)
+            throws ApiException {
+        return this.awsExchangeCredentials(awsExchangeCredentials, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/fetch-iota-response";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * Exchange a limited-scoped token into a Cognito credential to generate the identity credential. The identity
+     * credential initiates the secure WebSocket connection from the client. This method is used only in WebSocket
+     * data-sharing mode.
+     *
+     * @param awsExchangeCredentials
+     *            AwsExchangeCredentials (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return AwsExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = awsExchangeCredentials;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'awsExchangeCredentials' is set
+        if (awsExchangeCredentials == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'awsExchangeCredentials' when calling awsExchangeCredentials");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/aws-exchange-credentials";
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    TypeReference<FetchIOTAVPResponseOK> localVarReturnType = new TypeReference<FetchIOTAVPResponseOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  /**
-   * 
-   * Generates the request token for the Redirect mode to initiate the data-sharing flow.
-   * @param initiateDataSharingRequestInput InitiateDataSharingRequestInput (required)
-   * @return InitiateDataSharingRequestOK
-   * @throws ApiException if fails to make API call
-   */
-  public InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput initiateDataSharingRequestInput) throws ApiException {
-    return this.initiateDataSharingRequest(initiateDataSharingRequestInput, Collections.emptyMap());
-  }
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
+        String[] localVarAuthNames = new String[] {};
 
-  /**
-   * 
-   * Generates the request token for the Redirect mode to initiate the data-sharing flow.
-   * @param initiateDataSharingRequestInput InitiateDataSharingRequestInput (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return InitiateDataSharingRequestOK
-   * @throws ApiException if fails to make API call
-   */
-  public InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput initiateDataSharingRequestInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = initiateDataSharingRequestInput;
-    
-    // verify the required parameter 'initiateDataSharingRequestInput' is set
-    if (initiateDataSharingRequestInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'initiateDataSharingRequestInput' when calling initiateDataSharingRequest");
+        TypeReference<AwsExchangeCredentialsOK> localVarReturnType = new TypeReference<AwsExchangeCredentialsOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/initiate-data-sharing-request";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<InitiateDataSharingRequestOK> localVarReturnType = new TypeReference<InitiateDataSharingRequestOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
-   * @param iotaExchangeCredentials IotaAwsExchangeCredentials (required)
-   * @return IotaExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials) throws ApiException {
-    return this.iotaExchangeCredentials(iotaExchangeCredentials, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection. This method is used only in WebSocket data-sharing mode.
-   * @param iotaExchangeCredentials IotaAwsExchangeCredentials (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return IotaExchangeCredentialsOK
-   * @throws ApiException if fails to make API call
-   */
-  public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = iotaExchangeCredentials;
-    
-    // verify the required parameter 'iotaExchangeCredentials' is set
-    if (iotaExchangeCredentials == null) {
-      throw new ApiException(400, "Missing the required parameter 'iotaExchangeCredentials' when calling iotaExchangeCredentials");
+    /**
+     *
+     * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
+     *
+     * @param awsExchangeCredentialsProjectToken
+     *            AwsExchangeCredentialsProjectToken (required)
+     *
+     * @return IotaExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(
+            AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken) throws ApiException {
+        return this.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/exchange-credentials";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     * Exchange a Project Scoped Token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
+     *
+     * @param awsExchangeCredentialsProjectToken
+     *            AwsExchangeCredentialsProjectToken (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return IotaExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(
+            AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = awsExchangeCredentialsProjectToken;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'awsExchangeCredentialsProjectToken' is set
+        if (awsExchangeCredentialsProjectToken == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'awsExchangeCredentialsProjectToken' when calling awsExchangeCredentialsProjectToken");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/aws-exchange-credentials/project-token";
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] {  };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    TypeReference<IotaExchangeCredentialsOK> localVarReturnType = new TypeReference<IotaExchangeCredentialsOK>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        TypeReference<IotaExchangeCredentialsOK> localVarReturnType = new TypeReference<IotaExchangeCredentialsOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+    /**
+     *
+     * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format
+     * after a successful data-sharing flow.
+     *
+     * @param fetchIOTAVPResponseInput
+     *            FetchIOTAVPResponseInput (required)
+     *
+     * @return FetchIOTAVPResponseOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput)
+            throws ApiException {
+        return this.fetchIotaVpResponse(fetchIOTAVPResponseInput, Collections.emptyMap());
+    }
 
-    String[] localVarAuthNames = new String[] {  };
+    /**
+     *
+     * Fetches the client&#39;s callback that contains the user&#39;s shared data in a Verifiable Presentation format
+     * after a successful data-sharing flow.
+     *
+     * @param fetchIOTAVPResponseInput
+     *            FetchIOTAVPResponseInput (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return FetchIOTAVPResponseOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = fetchIOTAVPResponseInput;
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        // verify the required parameter 'fetchIOTAVPResponseInput' is set
+        if (fetchIOTAVPResponseInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'fetchIOTAVPResponseInput' when calling fetchIotaVpResponse");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/fetch-iota-response";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<FetchIOTAVPResponseOK> localVarReturnType = new TypeReference<FetchIOTAVPResponseOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     * Generates the request token for the Redirect mode to initiate the data-sharing flow.
+     *
+     * @param initiateDataSharingRequestInput
+     *            InitiateDataSharingRequestInput (required)
+     *
+     * @return InitiateDataSharingRequestOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public InitiateDataSharingRequestOK initiateDataSharingRequest(
+            InitiateDataSharingRequestInput initiateDataSharingRequestInput) throws ApiException {
+        return this.initiateDataSharingRequest(initiateDataSharingRequestInput, Collections.emptyMap());
+    }
+
+    /**
+     *
+     * Generates the request token for the Redirect mode to initiate the data-sharing flow.
+     *
+     * @param initiateDataSharingRequestInput
+     *            InitiateDataSharingRequestInput (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return InitiateDataSharingRequestOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public InitiateDataSharingRequestOK initiateDataSharingRequest(
+            InitiateDataSharingRequestInput initiateDataSharingRequestInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = initiateDataSharingRequestInput;
+
+        // verify the required parameter 'initiateDataSharingRequestInput' is set
+        if (initiateDataSharingRequestInput == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'initiateDataSharingRequestInput' when calling initiateDataSharingRequest");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/initiate-data-sharing-request";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<InitiateDataSharingRequestOK> localVarReturnType = new TypeReference<InitiateDataSharingRequestOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
+     *
+     * @param iotaExchangeCredentials
+     *            IotaAwsExchangeCredentials (required)
+     *
+     * @return IotaExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials)
+            throws ApiException {
+        return this.iotaExchangeCredentials(iotaExchangeCredentials, Collections.emptyMap());
+    }
+
+    /**
+     *
+     * Exchange a limited-scoped token into an identity credential directly to initiate a secure WebSocket connection.
+     * This method is used only in WebSocket data-sharing mode.
+     *
+     * @param iotaExchangeCredentials
+     *            IotaAwsExchangeCredentials (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return IotaExchangeCredentialsOK
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = iotaExchangeCredentials;
+
+        // verify the required parameter 'iotaExchangeCredentials' is set
+        if (iotaExchangeCredentials == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'iotaExchangeCredentials' when calling iotaExchangeCredentials");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/exchange-credentials";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        TypeReference<IotaExchangeCredentialsOK> localVarReturnType = new TypeReference<IotaExchangeCredentialsOK>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

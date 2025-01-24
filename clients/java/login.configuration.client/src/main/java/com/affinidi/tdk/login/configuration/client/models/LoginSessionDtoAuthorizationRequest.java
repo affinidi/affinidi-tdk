@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,288 +28,292 @@ import java.util.StringJoiner;
 /**
  * LoginSessionDtoAuthorizationRequest
  */
-@JsonPropertyOrder({
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_STATE,
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_PRESENTATION_DEFINITION,
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_ARI,
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_CLIENT_ID,
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE
-})
+@JsonPropertyOrder({ LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_STATE,
+        LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_PRESENTATION_DEFINITION,
+        LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_ARI,
+        LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_CLIENT_ID,
+        LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE })
 @JsonTypeName("LoginSessionDto_authorizationRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class LoginSessionDtoAuthorizationRequest {
-  public static final String JSON_PROPERTY_STATE = "state";
-  private String state;
+    public static final String JSON_PROPERTY_STATE = "state";
+    private String state;
 
-  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
-  private String presentationDefinition;
+    public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+    private String presentationDefinition;
 
-  public static final String JSON_PROPERTY_ARI = "ari";
-  private String ari;
+    public static final String JSON_PROPERTY_ARI = "ari";
+    private String ari;
 
-  public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
-  private String clientId;
+    public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+    private String clientId;
 
-  public static final String JSON_PROPERTY_NONCE = "nonce";
-  private String nonce;
+    public static final String JSON_PROPERTY_NONCE = "nonce";
+    private String nonce;
 
-  public LoginSessionDtoAuthorizationRequest() {
-  }
-
-  public LoginSessionDtoAuthorizationRequest state(String state) {
-    
-    this.state = state;
-    return this;
-  }
-
-  /**
-   * State parameter
-   * @return state
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getState() {
-    return state;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public LoginSessionDtoAuthorizationRequest presentationDefinition(String presentationDefinition) {
-    
-    this.presentationDefinition = presentationDefinition;
-    return this;
-  }
-
-  /**
-   * Presentation Definition to ask from the user. In JSON Stringify format.
-   * @return presentationDefinition
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getPresentationDefinition() {
-    return presentationDefinition;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPresentationDefinition(String presentationDefinition) {
-    this.presentationDefinition = presentationDefinition;
-  }
-
-  public LoginSessionDtoAuthorizationRequest ari(String ari) {
-    
-    this.ari = ari;
-    return this;
-  }
-
-  /**
-   * ARI is used for analytics proposals.
-   * @return ari
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getAri() {
-    return ari;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAri(String ari) {
-    this.ari = ari;
-  }
-
-  public LoginSessionDtoAuthorizationRequest clientId(String clientId) {
-    
-    this.clientId = clientId;
-    return this;
-  }
-
-  /**
-   * clientId used for detect origin.
-   * @return clientId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getClientId() {
-    return clientId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
-  }
-
-  public LoginSessionDtoAuthorizationRequest nonce(String nonce) {
-    
-    this.nonce = nonce;
-    return this;
-  }
-
-  /**
-   * nonce for VP Token proof challenge
-   * @return nonce
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NONCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getNonce() {
-    return nonce;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NONCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNonce(String nonce) {
-    this.nonce = nonce;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    LoginSessionDtoAuthorizationRequest loginSessionDtoAuthorizationRequest = (LoginSessionDtoAuthorizationRequest) o;
-    return Objects.equals(this.state, loginSessionDtoAuthorizationRequest.state) &&
-        Objects.equals(this.presentationDefinition, loginSessionDtoAuthorizationRequest.presentationDefinition) &&
-        Objects.equals(this.ari, loginSessionDtoAuthorizationRequest.ari) &&
-        Objects.equals(this.clientId, loginSessionDtoAuthorizationRequest.clientId) &&
-        Objects.equals(this.nonce, loginSessionDtoAuthorizationRequest.nonce);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(state, presentationDefinition, ari, clientId, nonce);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoginSessionDtoAuthorizationRequest {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
-    sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
-    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public LoginSessionDtoAuthorizationRequest() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public LoginSessionDtoAuthorizationRequest state(String state) {
 
-    // add `state` to the URL query string
-    if (getState() != null) {
-      try {
-        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.state = state;
+        return this;
     }
 
-    // add `presentationDefinition` to the URL query string
-    if (getPresentationDefinition() != null) {
-      try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * State parameter
+     *
+     * @return state
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_STATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getState() {
+        return state;
     }
 
-    // add `ari` to the URL query string
-    if (getAri() != null) {
-      try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_STATE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setState(String state) {
+        this.state = state;
     }
 
-    // add `clientId` to the URL query string
-    if (getClientId() != null) {
-      try {
-        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public LoginSessionDtoAuthorizationRequest presentationDefinition(String presentationDefinition) {
+
+        this.presentationDefinition = presentationDefinition;
+        return this;
     }
 
-    // add `nonce` to the URL query string
-    if (getNonce() != null) {
-      try {
-        joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Presentation Definition to ask from the user. In JSON Stringify format.
+     *
+     * @return presentationDefinition
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getPresentationDefinition() {
+        return presentationDefinition;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setPresentationDefinition(String presentationDefinition) {
+        this.presentationDefinition = presentationDefinition;
+    }
+
+    public LoginSessionDtoAuthorizationRequest ari(String ari) {
+
+        this.ari = ari;
+        return this;
+    }
+
+    /**
+     * ARI is used for analytics proposals.
+     *
+     * @return ari
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getAri() {
+        return ari;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setAri(String ari) {
+        this.ari = ari;
+    }
+
+    public LoginSessionDtoAuthorizationRequest clientId(String clientId) {
+
+        this.clientId = clientId;
+        return this;
+    }
+
+    /**
+     * clientId used for detect origin.
+     *
+     * @return clientId
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public LoginSessionDtoAuthorizationRequest nonce(String nonce) {
+
+        this.nonce = nonce;
+        return this;
+    }
+
+    /**
+     * nonce for VP Token proof challenge
+     *
+     * @return nonce
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NONCE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getNonce() {
+        return nonce;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NONCE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setNonce(String nonce) {
+        this.nonce = nonce;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoginSessionDtoAuthorizationRequest loginSessionDtoAuthorizationRequest = (LoginSessionDtoAuthorizationRequest) o;
+        return Objects.equals(this.state, loginSessionDtoAuthorizationRequest.state)
+                && Objects.equals(this.presentationDefinition,
+                        loginSessionDtoAuthorizationRequest.presentationDefinition)
+                && Objects.equals(this.ari, loginSessionDtoAuthorizationRequest.ari)
+                && Objects.equals(this.clientId, loginSessionDtoAuthorizationRequest.clientId)
+                && Objects.equals(this.nonce, loginSessionDtoAuthorizationRequest.nonce);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(state, presentationDefinition, ari, clientId, nonce);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoginSessionDtoAuthorizationRequest {\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
+        sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
+        sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+        sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `state` to the URL query string
+        if (getState() != null) {
+            try {
+                joiner.add(String.format("%sstate%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `presentationDefinition` to the URL query string
+        if (getPresentationDefinition() != null) {
+            try {
+                joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `ari` to the URL query string
+        if (getAri() != null) {
+            try {
+                joiner.add(String.format("%sari%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `clientId` to the URL query string
+        if (getClientId() != null) {
+            try {
+                joiner.add(String.format("%sclientId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `nonce` to the URL query string
+        if (getNonce() != null) {
+            try {
+                joiner.add(String.format("%snonce%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

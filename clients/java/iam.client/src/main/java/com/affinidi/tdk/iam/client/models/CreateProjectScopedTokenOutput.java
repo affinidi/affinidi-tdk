@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
@@ -29,205 +28,205 @@ import java.util.StringJoiner;
 /**
  * CreateProjectScopedTokenOutput
  */
-@JsonPropertyOrder({
-  CreateProjectScopedTokenOutput.JSON_PROPERTY_ACCESS_TOKEN,
-  CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN,
-  CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE
-})
+@JsonPropertyOrder({ CreateProjectScopedTokenOutput.JSON_PROPERTY_ACCESS_TOKEN,
+        CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN, CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateProjectScopedTokenOutput {
-  public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
-  private String accessToken;
+    public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
+    private String accessToken;
 
-  public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
-  private Integer expiresIn;
+    public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
+    private Integer expiresIn;
 
-  public static final String JSON_PROPERTY_SCOPE = "scope";
-  private String scope;
+    public static final String JSON_PROPERTY_SCOPE = "scope";
+    private String scope;
 
-  public CreateProjectScopedTokenOutput() {
-  }
-
-  public CreateProjectScopedTokenOutput accessToken(String accessToken) {
-    
-    this.accessToken = accessToken;
-    return this;
-  }
-
-  /**
-   * Get accessToken
-   * @return accessToken
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAccessToken() {
-    return accessToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  public CreateProjectScopedTokenOutput expiresIn(Integer expiresIn) {
-    
-    this.expiresIn = expiresIn;
-    return this;
-  }
-
-  /**
-   * Get expiresIn
-   * @return expiresIn
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Integer getExpiresIn() {
-    return expiresIn;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiresIn(Integer expiresIn) {
-    this.expiresIn = expiresIn;
-  }
-
-  public CreateProjectScopedTokenOutput scope(String scope) {
-    
-    this.scope = scope;
-    return this;
-  }
-
-  /**
-   * Get scope
-   * @return scope
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCOPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getScope() {
-    return scope;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SCOPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateProjectScopedTokenOutput createProjectScopedTokenOutput = (CreateProjectScopedTokenOutput) o;
-    return Objects.equals(this.accessToken, createProjectScopedTokenOutput.accessToken) &&
-        Objects.equals(this.expiresIn, createProjectScopedTokenOutput.expiresIn) &&
-        Objects.equals(this.scope, createProjectScopedTokenOutput.scope);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(accessToken, expiresIn, scope);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateProjectScopedTokenOutput {\n");
-    sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CreateProjectScopedTokenOutput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CreateProjectScopedTokenOutput accessToken(String accessToken) {
 
-    // add `accessToken` to the URL query string
-    if (getAccessToken() != null) {
-      try {
-        joiner.add(String.format("%saccessToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.accessToken = accessToken;
+        return this;
     }
 
-    // add `expiresIn` to the URL query string
-    if (getExpiresIn() != null) {
-      try {
-        joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get accessToken
+     *
+     * @return accessToken
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    // add `scope` to the URL query string
-    if (getScope() != null) {
-      try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    return joiner.toString();
-  }
+    public CreateProjectScopedTokenOutput expiresIn(Integer expiresIn) {
+
+        this.expiresIn = expiresIn;
+        return this;
+    }
+
+    /**
+     * Get expiresIn
+     *
+     * @return expiresIn
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Integer getExpiresIn() {
+        return expiresIn;
+    }
+
+    @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setExpiresIn(Integer expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public CreateProjectScopedTokenOutput scope(String scope) {
+
+        this.scope = scope;
+        return this;
+    }
+
+    /**
+     * Get scope
+     *
+     * @return scope
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SCOPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getScope() {
+        return scope;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SCOPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateProjectScopedTokenOutput createProjectScopedTokenOutput = (CreateProjectScopedTokenOutput) o;
+        return Objects.equals(this.accessToken, createProjectScopedTokenOutput.accessToken)
+                && Objects.equals(this.expiresIn, createProjectScopedTokenOutput.expiresIn)
+                && Objects.equals(this.scope, createProjectScopedTokenOutput.scope);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessToken, expiresIn, scope);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateProjectScopedTokenOutput {\n");
+        sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
+        sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
+        sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `accessToken` to the URL query string
+        if (getAccessToken() != null) {
+            try {
+                joiner.add(String.format("%saccessToken%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `expiresIn` to the URL query string
+        if (getExpiresIn() != null) {
+            try {
+                joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `scope` to the URL query string
+        if (getScope() != null) {
+            try {
+                joiner.add(String.format("%sscope%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

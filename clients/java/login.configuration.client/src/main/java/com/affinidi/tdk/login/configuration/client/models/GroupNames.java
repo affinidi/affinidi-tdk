@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -32,176 +31,175 @@ import java.util.StringJoiner;
 /**
  * GroupNames
  */
-@JsonPropertyOrder({
-  GroupNames.JSON_PROPERTY_GROUP_NAMES,
-  GroupNames.JSON_PROPERTY_PAGE_TOKEN
-})
+@JsonPropertyOrder({ GroupNames.JSON_PROPERTY_GROUP_NAMES, GroupNames.JSON_PROPERTY_PAGE_TOKEN })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GroupNames {
-  public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
-  private List<String> groupNames = new ArrayList<>();
+    public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
+    private List<String> groupNames = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
-  private Object pageToken;
+    public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
+    private Object pageToken;
 
-  public GroupNames() {
-  }
-
-  public GroupNames groupNames(List<String> groupNames) {
-    
-    this.groupNames = groupNames;
-    return this;
-  }
-
-  public GroupNames addGroupNamesItem(String groupNamesItem) {
-    if (this.groupNames == null) {
-      this.groupNames = new ArrayList<>();
-    }
-    this.groupNames.add(groupNamesItem);
-    return this;
-  }
-
-  /**
-   * Get groupNames
-   * @return groupNames
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getGroupNames() {
-    return groupNames;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupNames(List<String> groupNames) {
-    this.groupNames = groupNames;
-  }
-
-  public GroupNames pageToken(Object pageToken) {
-    
-    this.pageToken = pageToken;
-    return this;
-  }
-
-  /**
-   * Get pageToken
-   * @return pageToken
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getPageToken() {
-    return pageToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageToken(Object pageToken) {
-    this.pageToken = pageToken;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GroupNames groupNames = (GroupNames) o;
-    return Objects.equals(this.groupNames, groupNames.groupNames) &&
-        Objects.equals(this.pageToken, groupNames.pageToken);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(groupNames, pageToken);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GroupNames {\n");
-    sb.append("    groupNames: ").append(toIndentedString(groupNames)).append("\n");
-    sb.append("    pageToken: ").append(toIndentedString(pageToken)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public GroupNames() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public GroupNames groupNames(List<String> groupNames) {
 
-    // add `groupNames` to the URL query string
-    if (getGroupNames() != null) {
-      for (int i = 0; i < getGroupNames().size(); i++) {
-        try {
-          joiner.add(String.format("%sgroupNames%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getGroupNames().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        this.groupNames = groupNames;
+        return this;
+    }
+
+    public GroupNames addGroupNamesItem(String groupNamesItem) {
+        if (this.groupNames == null) {
+            this.groupNames = new ArrayList<>();
         }
-      }
+        this.groupNames.add(groupNamesItem);
+        return this;
     }
 
-    // add `pageToken` to the URL query string
-    if (getPageToken() != null) {
-      try {
-        joiner.add(String.format("%spageToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get groupNames
+     *
+     * @return groupNames
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getGroupNames() {
+        return groupNames;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setGroupNames(List<String> groupNames) {
+        this.groupNames = groupNames;
+    }
+
+    public GroupNames pageToken(Object pageToken) {
+
+        this.pageToken = pageToken;
+        return this;
+    }
+
+    /**
+     * Get pageToken
+     *
+     * @return pageToken
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Object getPageToken() {
+        return pageToken;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPageToken(Object pageToken) {
+        this.pageToken = pageToken;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GroupNames groupNames = (GroupNames) o;
+        return Objects.equals(this.groupNames, groupNames.groupNames)
+                && Objects.equals(this.pageToken, groupNames.pageToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupNames, pageToken);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GroupNames {\n");
+        sb.append("    groupNames: ").append(toIndentedString(groupNames)).append("\n");
+        sb.append("    pageToken: ").append(toIndentedString(pageToken)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `groupNames` to the URL query string
+        if (getGroupNames() != null) {
+            for (int i = 0; i < getGroupNames().size(); i++) {
+                try {
+                    joiner.add(String.format("%sgroupNames%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getGroupNames().get(i)), "UTF-8").replaceAll("\\+",
+                                    "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // add `pageToken` to the URL query string
+        if (getPageToken() != null) {
+            try {
+                joiner.add(String.format("%spageToken%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

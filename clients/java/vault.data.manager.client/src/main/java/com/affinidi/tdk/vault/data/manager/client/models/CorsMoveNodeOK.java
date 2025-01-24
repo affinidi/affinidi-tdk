@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,122 @@ import java.util.StringJoiner;
 /**
  * CorsMoveNodeOK
  */
-@JsonPropertyOrder({
-  CorsMoveNodeOK.JSON_PROPERTY_CORS_MOVE_NODE_OK
-})
+@JsonPropertyOrder({ CorsMoveNodeOK.JSON_PROPERTY_CORS_MOVE_NODE_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsMoveNodeOK {
-  public static final String JSON_PROPERTY_CORS_MOVE_NODE_OK = "corsMoveNodeOk";
-  private String corsMoveNodeOk;
+    public static final String JSON_PROPERTY_CORS_MOVE_NODE_OK = "corsMoveNodeOk";
+    private String corsMoveNodeOk;
 
-  public CorsMoveNodeOK() {
-  }
-
-  public CorsMoveNodeOK corsMoveNodeOk(String corsMoveNodeOk) {
-    
-    this.corsMoveNodeOk = corsMoveNodeOk;
-    return this;
-  }
-
-  /**
-   * Get corsMoveNodeOk
-   * @return corsMoveNodeOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_MOVE_NODE_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsMoveNodeOk() {
-    return corsMoveNodeOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_MOVE_NODE_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsMoveNodeOk(String corsMoveNodeOk) {
-    this.corsMoveNodeOk = corsMoveNodeOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsMoveNodeOK corsMoveNodeOK = (CorsMoveNodeOK) o;
-    return Objects.equals(this.corsMoveNodeOk, corsMoveNodeOK.corsMoveNodeOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsMoveNodeOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsMoveNodeOK {\n");
-    sb.append("    corsMoveNodeOk: ").append(toIndentedString(corsMoveNodeOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsMoveNodeOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsMoveNodeOK corsMoveNodeOk(String corsMoveNodeOk) {
 
-    // add `corsMoveNodeOk` to the URL query string
-    if (getCorsMoveNodeOk() != null) {
-      try {
-        joiner.add(String.format("%scorsMoveNodeOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsMoveNodeOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsMoveNodeOk = corsMoveNodeOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsMoveNodeOk
+     *
+     * @return corsMoveNodeOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_MOVE_NODE_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsMoveNodeOk() {
+        return corsMoveNodeOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_MOVE_NODE_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsMoveNodeOk(String corsMoveNodeOk) {
+        this.corsMoveNodeOk = corsMoveNodeOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsMoveNodeOK corsMoveNodeOK = (CorsMoveNodeOK) o;
+        return Objects.equals(this.corsMoveNodeOk, corsMoveNodeOK.corsMoveNodeOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsMoveNodeOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsMoveNodeOK {\n");
+        sb.append("    corsMoveNodeOk: ").append(toIndentedString(corsMoveNodeOk)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsMoveNodeOk` to the URL query string
+        if (getCorsMoveNodeOk() != null) {
+            try {
+                joiner.add(String.format("%scorsMoveNodeOk%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCorsMoveNodeOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

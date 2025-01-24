@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -31,195 +30,194 @@ import java.util.StringJoiner;
 /**
  * CredentialResponseImmediate
  */
-@JsonPropertyOrder({
-  CredentialResponseImmediate.JSON_PROPERTY_CREDENTIAL,
-  CredentialResponseImmediate.JSON_PROPERTY_C_NONCE,
-  CredentialResponseImmediate.JSON_PROPERTY_C_NONCE_EXPIRES_IN
-})
+@JsonPropertyOrder({ CredentialResponseImmediate.JSON_PROPERTY_CREDENTIAL,
+        CredentialResponseImmediate.JSON_PROPERTY_C_NONCE,
+        CredentialResponseImmediate.JSON_PROPERTY_C_NONCE_EXPIRES_IN })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CredentialResponseImmediate {
-  public static final String JSON_PROPERTY_CREDENTIAL = "credential";
-  private CredentialResponseImmediateCredential credential;
+    public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+    private CredentialResponseImmediateCredential credential;
 
-  public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
-  private String cNonce;
+    public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
+    private String cNonce;
 
-  public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
-  private CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn;
+    public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
+    private CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn;
 
-  public CredentialResponseImmediate() {
-  }
-
-  public CredentialResponseImmediate credential(CredentialResponseImmediateCredential credential) {
-    
-    this.credential = credential;
-    return this;
-  }
-
-  /**
-   * Get credential
-   * @return credential
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public CredentialResponseImmediateCredential getCredential() {
-    return credential;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredential(CredentialResponseImmediateCredential credential) {
-    this.credential = credential;
-  }
-
-  public CredentialResponseImmediate cNonce(String cNonce) {
-    
-    this.cNonce = cNonce;
-    return this;
-  }
-
-  /**
-   * String containing a nonce to be used when creating a proof of possession of the key proof
-   * @return cNonce
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_NONCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getcNonce() {
-    return cNonce;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_C_NONCE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonce(String cNonce) {
-    this.cNonce = cNonce;
-  }
-
-  public CredentialResponseImmediate cNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
-    
-    this.cNonceExpiresIn = cNonceExpiresIn;
-    return this;
-  }
-
-  /**
-   * Get cNonceExpiresIn
-   * @return cNonceExpiresIn
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public CredentialResponseImmediateCNonceExpiresIn getcNonceExpiresIn() {
-    return cNonceExpiresIn;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
-    this.cNonceExpiresIn = cNonceExpiresIn;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CredentialResponseImmediate credentialResponseImmediate = (CredentialResponseImmediate) o;
-    return Objects.equals(this.credential, credentialResponseImmediate.credential) &&
-        Objects.equals(this.cNonce, credentialResponseImmediate.cNonce) &&
-        Objects.equals(this.cNonceExpiresIn, credentialResponseImmediate.cNonceExpiresIn);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(credential, cNonce, cNonceExpiresIn);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CredentialResponseImmediate {\n");
-    sb.append("    credential: ").append(toIndentedString(credential)).append("\n");
-    sb.append("    cNonce: ").append(toIndentedString(cNonce)).append("\n");
-    sb.append("    cNonceExpiresIn: ").append(toIndentedString(cNonceExpiresIn)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CredentialResponseImmediate() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CredentialResponseImmediate credential(CredentialResponseImmediateCredential credential) {
 
-    // add `credential` to the URL query string
-    if (getCredential() != null) {
-      joiner.add(getCredential().toUrlQueryString(prefix + "credential" + suffix));
+        this.credential = credential;
+        return this;
     }
 
-    // add `c_nonce` to the URL query string
-    if (getcNonce() != null) {
-      try {
-        joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get credential
+     *
+     * @return credential
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public CredentialResponseImmediateCredential getCredential() {
+        return credential;
     }
 
-    // add `c_nonce_expires_in` to the URL query string
-    if (getcNonceExpiresIn() != null) {
-      joiner.add(getcNonceExpiresIn().toUrlQueryString(prefix + "c_nonce_expires_in" + suffix));
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCredential(CredentialResponseImmediateCredential credential) {
+        this.credential = credential;
     }
 
-    return joiner.toString();
-  }
+    public CredentialResponseImmediate cNonce(String cNonce) {
+
+        this.cNonce = cNonce;
+        return this;
+    }
+
+    /**
+     * String containing a nonce to be used when creating a proof of possession of the key proof
+     *
+     * @return cNonce
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_C_NONCE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getcNonce() {
+        return cNonce;
+    }
+
+    @JsonProperty(JSON_PROPERTY_C_NONCE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setcNonce(String cNonce) {
+        this.cNonce = cNonce;
+    }
+
+    public CredentialResponseImmediate cNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
+
+        this.cNonceExpiresIn = cNonceExpiresIn;
+        return this;
+    }
+
+    /**
+     * Get cNonceExpiresIn
+     *
+     * @return cNonceExpiresIn
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public CredentialResponseImmediateCNonceExpiresIn getcNonceExpiresIn() {
+        return cNonceExpiresIn;
+    }
+
+    @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setcNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
+        this.cNonceExpiresIn = cNonceExpiresIn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CredentialResponseImmediate credentialResponseImmediate = (CredentialResponseImmediate) o;
+        return Objects.equals(this.credential, credentialResponseImmediate.credential)
+                && Objects.equals(this.cNonce, credentialResponseImmediate.cNonce)
+                && Objects.equals(this.cNonceExpiresIn, credentialResponseImmediate.cNonceExpiresIn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(credential, cNonce, cNonceExpiresIn);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CredentialResponseImmediate {\n");
+        sb.append("    credential: ").append(toIndentedString(credential)).append("\n");
+        sb.append("    cNonce: ").append(toIndentedString(cNonce)).append("\n");
+        sb.append("    cNonceExpiresIn: ").append(toIndentedString(cNonceExpiresIn)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `credential` to the URL query string
+        if (getCredential() != null) {
+            joiner.add(getCredential().toUrlQueryString(prefix + "credential" + suffix));
+        }
+
+        // add `c_nonce` to the URL query string
+        if (getcNonce() != null) {
+            try {
+                joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `c_nonce_expires_in` to the URL query string
+        if (getcNonceExpiresIn() != null) {
+            joiner.add(getcNonceExpiresIn().toUrlQueryString(prefix + "c_nonce_expires_in" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

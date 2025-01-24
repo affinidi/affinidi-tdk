@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,328 +28,329 @@ import java.util.StringJoiner;
 /**
  * PexQueryDto
  */
-@JsonPropertyOrder({
-  PexQueryDto.JSON_PROPERTY_ARI,
-  PexQueryDto.JSON_PROPERTY_QUERY_ID,
-  PexQueryDto.JSON_PROPERTY_NAME,
-  PexQueryDto.JSON_PROPERTY_DESCRIPTION,
-  PexQueryDto.JSON_PROPERTY_CONFIGURATION_ARI,
-  PexQueryDto.JSON_PROPERTY_VP_DEFINITION
-})
+@JsonPropertyOrder({ PexQueryDto.JSON_PROPERTY_ARI, PexQueryDto.JSON_PROPERTY_QUERY_ID, PexQueryDto.JSON_PROPERTY_NAME,
+        PexQueryDto.JSON_PROPERTY_DESCRIPTION, PexQueryDto.JSON_PROPERTY_CONFIGURATION_ARI,
+        PexQueryDto.JSON_PROPERTY_VP_DEFINITION })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PexQueryDto {
-  public static final String JSON_PROPERTY_ARI = "ari";
-  private String ari;
+    public static final String JSON_PROPERTY_ARI = "ari";
+    private String ari;
 
-  public static final String JSON_PROPERTY_QUERY_ID = "queryId";
-  private String queryId;
+    public static final String JSON_PROPERTY_QUERY_ID = "queryId";
+    private String queryId;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  private String name;
+    public static final String JSON_PROPERTY_NAME = "name";
+    private String name;
 
-  public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private String description;
+    public static final String JSON_PROPERTY_DESCRIPTION = "description";
+    private String description;
 
-  public static final String JSON_PROPERTY_CONFIGURATION_ARI = "configurationAri";
-  private String configurationAri;
+    public static final String JSON_PROPERTY_CONFIGURATION_ARI = "configurationAri";
+    private String configurationAri;
 
-  public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
-  private String vpDefinition;
+    public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+    private String vpDefinition;
 
-  public PexQueryDto() {
-  }
-
-  public PexQueryDto ari(String ari) {
-    
-    this.ari = ari;
-    return this;
-  }
-
-  /**
-   * The unique resource identifier of the qeuery.
-   * @return ari
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAri() {
-    return ari;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
-    this.ari = ari;
-  }
-
-  public PexQueryDto queryId(String queryId) {
-    
-    this.queryId = queryId;
-    return this;
-  }
-
-  /**
-   * The ID of the query.
-   * @return queryId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getQueryId() {
-    return queryId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryId(String queryId) {
-    this.queryId = queryId;
-  }
-
-  public PexQueryDto name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * The name of the presentation definition to quickly identify the query.
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public PexQueryDto description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-  /**
-   * An optional description of what the query is used for.
-   * @return description
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public PexQueryDto configurationAri(String configurationAri) {
-    
-    this.configurationAri = configurationAri;
-    return this;
-  }
-
-  /**
-   * The unique resource identifier of the related configuration where the query is defined.
-   * @return configurationAri
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getConfigurationAri() {
-    return configurationAri;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ARI)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurationAri(String configurationAri) {
-    this.configurationAri = configurationAri;
-  }
-
-  public PexQueryDto vpDefinition(String vpDefinition) {
-    
-    this.vpDefinition = vpDefinition;
-    return this;
-  }
-
-  /**
-   * The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
-   * @return vpDefinition
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getVpDefinition() {
-    return vpDefinition;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVpDefinition(String vpDefinition) {
-    this.vpDefinition = vpDefinition;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    PexQueryDto pexQueryDto = (PexQueryDto) o;
-    return Objects.equals(this.ari, pexQueryDto.ari) &&
-        Objects.equals(this.queryId, pexQueryDto.queryId) &&
-        Objects.equals(this.name, pexQueryDto.name) &&
-        Objects.equals(this.description, pexQueryDto.description) &&
-        Objects.equals(this.configurationAri, pexQueryDto.configurationAri) &&
-        Objects.equals(this.vpDefinition, pexQueryDto.vpDefinition);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(ari, queryId, name, description, configurationAri, vpDefinition);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PexQueryDto {\n");
-    sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
-    sb.append("    queryId: ").append(toIndentedString(queryId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    configurationAri: ").append(toIndentedString(configurationAri)).append("\n");
-    sb.append("    vpDefinition: ").append(toIndentedString(vpDefinition)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public PexQueryDto() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public PexQueryDto ari(String ari) {
 
-    // add `ari` to the URL query string
-    if (getAri() != null) {
-      try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.ari = ari;
+        return this;
     }
 
-    // add `queryId` to the URL query string
-    if (getQueryId() != null) {
-      try {
-        joiner.add(String.format("%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The unique resource identifier of the qeuery.
+     *
+     * @return ari
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAri() {
+        return ari;
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAri(String ari) {
+        this.ari = ari;
     }
 
-    // add `description` to the URL query string
-    if (getDescription() != null) {
-      try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public PexQueryDto queryId(String queryId) {
+
+        this.queryId = queryId;
+        return this;
     }
 
-    // add `configurationAri` to the URL query string
-    if (getConfigurationAri() != null) {
-      try {
-        joiner.add(String.format("%sconfigurationAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationAri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The ID of the query.
+     *
+     * @return queryId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_QUERY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getQueryId() {
+        return queryId;
     }
 
-    // add `vpDefinition` to the URL query string
-    if (getVpDefinition() != null) {
-      try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_QUERY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setQueryId(String queryId) {
+        this.queryId = queryId;
     }
 
-    return joiner.toString();
-  }
+    public PexQueryDto name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * The name of the presentation definition to quickly identify the query.
+     *
+     * @return name
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public PexQueryDto description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * An optional description of what the query is used for.
+     *
+     * @return description
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public PexQueryDto configurationAri(String configurationAri) {
+
+        this.configurationAri = configurationAri;
+        return this;
+    }
+
+    /**
+     * The unique resource identifier of the related configuration where the query is defined.
+     *
+     * @return configurationAri
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CONFIGURATION_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getConfigurationAri() {
+        return configurationAri;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CONFIGURATION_ARI)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setConfigurationAri(String configurationAri) {
+        this.configurationAri = configurationAri;
+    }
+
+    public PexQueryDto vpDefinition(String vpDefinition) {
+
+        this.vpDefinition = vpDefinition;
+        return this;
+    }
+
+    /**
+     * The presentation definition describing the data requirement that must be satisfied by the user. The value is in a
+     * JSON stringify format.
+     *
+     * @return vpDefinition
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getVpDefinition() {
+        return vpDefinition;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVpDefinition(String vpDefinition) {
+        this.vpDefinition = vpDefinition;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PexQueryDto pexQueryDto = (PexQueryDto) o;
+        return Objects.equals(this.ari, pexQueryDto.ari) && Objects.equals(this.queryId, pexQueryDto.queryId)
+                && Objects.equals(this.name, pexQueryDto.name)
+                && Objects.equals(this.description, pexQueryDto.description)
+                && Objects.equals(this.configurationAri, pexQueryDto.configurationAri)
+                && Objects.equals(this.vpDefinition, pexQueryDto.vpDefinition);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ari, queryId, name, description, configurationAri, vpDefinition);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PexQueryDto {\n");
+        sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
+        sb.append("    queryId: ").append(toIndentedString(queryId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    configurationAri: ").append(toIndentedString(configurationAri)).append("\n");
+        sb.append("    vpDefinition: ").append(toIndentedString(vpDefinition)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `ari` to the URL query string
+        if (getAri() != null) {
+            try {
+                joiner.add(String.format("%sari%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `queryId` to the URL query string
+        if (getQueryId() != null) {
+            try {
+                joiner.add(String.format("%squeryId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `name` to the URL query string
+        if (getName() != null) {
+            try {
+                joiner.add(String.format("%sname%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `description` to the URL query string
+        if (getDescription() != null) {
+            try {
+                joiner.add(String.format("%sdescription%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `configurationAri` to the URL query string
+        if (getConfigurationAri() != null) {
+            try {
+                joiner.add(String.format("%sconfigurationAri%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getConfigurationAri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `vpDefinition` to the URL query string
+        if (getVpDefinition() != null) {
+            try {
+                joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
@@ -39,7 +38,7 @@ public class OfferApiTest {
      * Endpoint used to return Credential Offer details, used with &#x60;credential_offer_uri&#x60; response
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getCredentialOfferTest() throws ApiException {

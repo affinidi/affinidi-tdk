@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -32,176 +31,174 @@ import java.util.StringJoiner;
 /**
  * EvaluateVpOutput
  */
-@JsonPropertyOrder({
-  EvaluateVpOutput.JSON_PROPERTY_RESULT,
-  EvaluateVpOutput.JSON_PROPERTY_ERRORS
-})
+@JsonPropertyOrder({ EvaluateVpOutput.JSON_PROPERTY_RESULT, EvaluateVpOutput.JSON_PROPERTY_ERRORS })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class EvaluateVpOutput {
-  public static final String JSON_PROPERTY_RESULT = "result";
-  private Boolean result;
+    public static final String JSON_PROPERTY_RESULT = "result";
+    private Boolean result;
 
-  public static final String JSON_PROPERTY_ERRORS = "errors";
-  private List<String> errors = new ArrayList<>();
+    public static final String JSON_PROPERTY_ERRORS = "errors";
+    private List<String> errors = new ArrayList<>();
 
-  public EvaluateVpOutput() {
-  }
-
-  public EvaluateVpOutput result(Boolean result) {
-    
-    this.result = result;
-    return this;
-  }
-
-  /**
-   * Get result
-   * @return result
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Boolean getResult() {
-    return result;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESULT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResult(Boolean result) {
-    this.result = result;
-  }
-
-  public EvaluateVpOutput errors(List<String> errors) {
-    
-    this.errors = errors;
-    return this;
-  }
-
-  public EvaluateVpOutput addErrorsItem(String errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
-  /**
-   * Get errors
-   * @return errors
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ERRORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getErrors() {
-    return errors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ERRORS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(List<String> errors) {
-    this.errors = errors;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    EvaluateVpOutput evaluateVpOutput = (EvaluateVpOutput) o;
-    return Objects.equals(this.result, evaluateVpOutput.result) &&
-        Objects.equals(this.errors, evaluateVpOutput.errors);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(result, errors);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EvaluateVpOutput {\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public EvaluateVpOutput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public EvaluateVpOutput result(Boolean result) {
 
-    // add `result` to the URL query string
-    if (getResult() != null) {
-      try {
-        joiner.add(String.format("%sresult%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResult()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.result = result;
+        return this;
     }
 
-    // add `errors` to the URL query string
-    if (getErrors() != null) {
-      for (int i = 0; i < getErrors().size(); i++) {
-        try {
-          joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * Get result
+     *
+     * @return result
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_RESULT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public Boolean getResult() {
+        return result;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESULT)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setResult(Boolean result) {
+        this.result = result;
+    }
+
+    public EvaluateVpOutput errors(List<String> errors) {
+
+        this.errors = errors;
+        return this;
+    }
+
+    public EvaluateVpOutput addErrorsItem(String errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
         }
-      }
+        this.errors.add(errorsItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get errors
+     *
+     * @return errors
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ERRORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<String> getErrors() {
+        return errors;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ERRORS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setErrors(List<String> errors) {
+        this.errors = errors;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        EvaluateVpOutput evaluateVpOutput = (EvaluateVpOutput) o;
+        return Objects.equals(this.result, evaluateVpOutput.result)
+                && Objects.equals(this.errors, evaluateVpOutput.errors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(result, errors);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class EvaluateVpOutput {\n");
+        sb.append("    result: ").append(toIndentedString(result)).append("\n");
+        sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `result` to the URL query string
+        if (getResult() != null) {
+            try {
+                joiner.add(String.format("%sresult%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getResult()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `errors` to the URL query string
+        if (getErrors() != null) {
+            for (int i = 0; i < getErrors().size(); i++) {
+                try {
+                    joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                            URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

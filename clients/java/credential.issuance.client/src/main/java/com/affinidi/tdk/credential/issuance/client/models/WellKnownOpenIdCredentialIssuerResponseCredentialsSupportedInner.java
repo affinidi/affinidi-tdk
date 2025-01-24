@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -29,206 +28,210 @@ import java.util.StringJoiner;
 /**
  * WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
  */
-@JsonPropertyOrder({
-  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_CREDENTIAL_TYPE_ID,
-  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_SCHEMA_URL,
-  WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL
-})
+@JsonPropertyOrder({ WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_CREDENTIAL_TYPE_ID,
+        WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_SCHEMA_URL,
+        WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL })
 @JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
-  public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
-  private String credentialTypeId;
+    public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
+    private String credentialTypeId;
 
-  public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
-  private String jsonSchemaUrl;
+    public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
+    private String jsonSchemaUrl;
 
-  public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
-  private String jsonLdContextUrl;
+    public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
+    private String jsonLdContextUrl;
 
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner() {
-  }
-
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner credentialTypeId(String credentialTypeId) {
-    
-    this.credentialTypeId = credentialTypeId;
-    return this;
-  }
-
-  /**
-   * It is a String that identifies a Credential that is being requested to be issued.
-   * @return credentialTypeId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getCredentialTypeId() {
-    return credentialTypeId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialTypeId(String credentialTypeId) {
-    this.credentialTypeId = credentialTypeId;
-  }
-
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonSchemaUrl(String jsonSchemaUrl) {
-    
-    this.jsonSchemaUrl = jsonSchemaUrl;
-    return this;
-  }
-
-  /**
-   * credential jsonLdContextUrl
-   * @return jsonSchemaUrl
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJsonSchemaUrl() {
-    return jsonSchemaUrl;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonSchemaUrl(String jsonSchemaUrl) {
-    this.jsonSchemaUrl = jsonSchemaUrl;
-  }
-
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonLdContextUrl(String jsonLdContextUrl) {
-    
-    this.jsonLdContextUrl = jsonLdContextUrl;
-    return this;
-  }
-
-  /**
-   * credential jsonSchemaUrl
-   * @return jsonLdContextUrl
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getJsonLdContextUrl() {
-    return jsonLdContextUrl;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonLdContextUrl(String jsonLdContextUrl) {
-    this.jsonLdContextUrl = jsonLdContextUrl;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner = (WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner) o;
-    return Objects.equals(this.credentialTypeId, wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.credentialTypeId) &&
-        Objects.equals(this.jsonSchemaUrl, wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.jsonSchemaUrl) &&
-        Objects.equals(this.jsonLdContextUrl, wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.jsonLdContextUrl);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(credentialTypeId, jsonSchemaUrl, jsonLdContextUrl);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {\n");
-    sb.append("    credentialTypeId: ").append(toIndentedString(credentialTypeId)).append("\n");
-    sb.append("    jsonSchemaUrl: ").append(toIndentedString(jsonSchemaUrl)).append("\n");
-    sb.append("    jsonLdContextUrl: ").append(toIndentedString(jsonLdContextUrl)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner credentialTypeId(String credentialTypeId) {
 
-    // add `credentialTypeId` to the URL query string
-    if (getCredentialTypeId() != null) {
-      try {
-        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.credentialTypeId = credentialTypeId;
+        return this;
     }
 
-    // add `jsonSchemaUrl` to the URL query string
-    if (getJsonSchemaUrl() != null) {
-      try {
-        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * It is a String that identifies a Credential that is being requested to be issued.
+     *
+     * @return credentialTypeId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getCredentialTypeId() {
+        return credentialTypeId;
     }
 
-    // add `jsonLdContextUrl` to the URL query string
-    if (getJsonLdContextUrl() != null) {
-      try {
-        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCredentialTypeId(String credentialTypeId) {
+        this.credentialTypeId = credentialTypeId;
     }
 
-    return joiner.toString();
-  }
+    public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonSchemaUrl(String jsonSchemaUrl) {
+
+        this.jsonSchemaUrl = jsonSchemaUrl;
+        return this;
+    }
+
+    /**
+     * credential jsonLdContextUrl
+     *
+     * @return jsonSchemaUrl
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJsonSchemaUrl() {
+        return jsonSchemaUrl;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJsonSchemaUrl(String jsonSchemaUrl) {
+        this.jsonSchemaUrl = jsonSchemaUrl;
+    }
+
+    public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonLdContextUrl(String jsonLdContextUrl) {
+
+        this.jsonLdContextUrl = jsonLdContextUrl;
+        return this;
+    }
+
+    /**
+     * credential jsonSchemaUrl
+     *
+     * @return jsonLdContextUrl
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getJsonLdContextUrl() {
+        return jsonLdContextUrl;
+    }
+
+    @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setJsonLdContextUrl(String jsonLdContextUrl) {
+        this.jsonLdContextUrl = jsonLdContextUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner = (WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner) o;
+        return Objects.equals(this.credentialTypeId,
+                wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.credentialTypeId)
+                && Objects.equals(this.jsonSchemaUrl,
+                        wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.jsonSchemaUrl)
+                && Objects.equals(this.jsonLdContextUrl,
+                        wellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.jsonLdContextUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(credentialTypeId, jsonSchemaUrl, jsonLdContextUrl);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {\n");
+        sb.append("    credentialTypeId: ").append(toIndentedString(credentialTypeId)).append("\n");
+        sb.append("    jsonSchemaUrl: ").append(toIndentedString(jsonSchemaUrl)).append("\n");
+        sb.append("    jsonLdContextUrl: ").append(toIndentedString(jsonLdContextUrl)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `credentialTypeId` to the URL query string
+        if (getCredentialTypeId() != null) {
+            try {
+                joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `jsonSchemaUrl` to the URL query string
+        if (getJsonSchemaUrl() != null) {
+            try {
+                joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `jsonLdContextUrl` to the URL query string
+        if (getJsonLdContextUrl() != null) {
+            try {
+                joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

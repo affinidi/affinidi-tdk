@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iam.client.apis;
 
 import com.affinidi.tdk.iam.client.ApiException;
@@ -45,7 +44,7 @@ public class TokensApiTest {
 
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createTokenTest() throws ApiException {
@@ -54,9 +53,10 @@ public class TokensApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deleteTokenTest() throws ApiException {
@@ -65,9 +65,10 @@ public class TokensApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getTokenTest() throws ApiException {
@@ -76,9 +77,10 @@ public class TokensApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listProjectsOfTokenTest() throws ApiException {
@@ -89,9 +91,10 @@ public class TokensApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listTokenTest() throws ApiException {
@@ -101,9 +104,10 @@ public class TokensApiTest {
 
         // TODO: test validations
     }
+
     /**
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateTokenTest() throws ApiException {

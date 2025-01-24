@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -30,164 +29,163 @@ import java.util.StringJoiner;
 /**
  * GetConfigOK
  */
-@JsonPropertyOrder({
-  GetConfigOK.JSON_PROPERTY_PROFILE_NAME,
-  GetConfigOK.JSON_PROPERTY_MAXIMUM_PROFILES
-})
+@JsonPropertyOrder({ GetConfigOK.JSON_PROPERTY_PROFILE_NAME, GetConfigOK.JSON_PROPERTY_MAXIMUM_PROFILES })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GetConfigOK {
-  public static final String JSON_PROPERTY_PROFILE_NAME = "profileName";
-  private String profileName;
+    public static final String JSON_PROPERTY_PROFILE_NAME = "profileName";
+    private String profileName;
 
-  public static final String JSON_PROPERTY_MAXIMUM_PROFILES = "maximumProfiles";
-  private BigDecimal maximumProfiles;
+    public static final String JSON_PROPERTY_MAXIMUM_PROFILES = "maximumProfiles";
+    private BigDecimal maximumProfiles;
 
-  public GetConfigOK() {
-  }
-
-  public GetConfigOK profileName(String profileName) {
-    
-    this.profileName = profileName;
-    return this;
-  }
-
-  /**
-   * Get profileName
-   * @return profileName
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getProfileName() {
-    return profileName;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileName(String profileName) {
-    this.profileName = profileName;
-  }
-
-  public GetConfigOK maximumProfiles(BigDecimal maximumProfiles) {
-    
-    this.maximumProfiles = maximumProfiles;
-    return this;
-  }
-
-  /**
-   * Get maximumProfiles
-   * @return maximumProfiles
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_PROFILES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public BigDecimal getMaximumProfiles() {
-    return maximumProfiles;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_PROFILES)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMaximumProfiles(BigDecimal maximumProfiles) {
-    this.maximumProfiles = maximumProfiles;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GetConfigOK getConfigOK = (GetConfigOK) o;
-    return Objects.equals(this.profileName, getConfigOK.profileName) &&
-        Objects.equals(this.maximumProfiles, getConfigOK.maximumProfiles);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(profileName, maximumProfiles);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetConfigOK {\n");
-    sb.append("    profileName: ").append(toIndentedString(profileName)).append("\n");
-    sb.append("    maximumProfiles: ").append(toIndentedString(maximumProfiles)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public GetConfigOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public GetConfigOK profileName(String profileName) {
 
-    // add `profileName` to the URL query string
-    if (getProfileName() != null) {
-      try {
-        joiner.add(String.format("%sprofileName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.profileName = profileName;
+        return this;
     }
 
-    // add `maximumProfiles` to the URL query string
-    if (getMaximumProfiles() != null) {
-      try {
-        joiner.add(String.format("%smaximumProfiles%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMaximumProfiles()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get profileName
+     *
+     * @return profileName
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getProfileName() {
+        return profileName;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
+
+    public GetConfigOK maximumProfiles(BigDecimal maximumProfiles) {
+
+        this.maximumProfiles = maximumProfiles;
+        return this;
+    }
+
+    /**
+     * Get maximumProfiles
+     *
+     * @return maximumProfiles
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_MAXIMUM_PROFILES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public BigDecimal getMaximumProfiles() {
+        return maximumProfiles;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MAXIMUM_PROFILES)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setMaximumProfiles(BigDecimal maximumProfiles) {
+        this.maximumProfiles = maximumProfiles;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GetConfigOK getConfigOK = (GetConfigOK) o;
+        return Objects.equals(this.profileName, getConfigOK.profileName)
+                && Objects.equals(this.maximumProfiles, getConfigOK.maximumProfiles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(profileName, maximumProfiles);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class GetConfigOK {\n");
+        sb.append("    profileName: ").append(toIndentedString(profileName)).append("\n");
+        sb.append("    maximumProfiles: ").append(toIndentedString(maximumProfiles)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `profileName` to the URL query string
+        if (getProfileName() != null) {
+            try {
+                joiner.add(String.format("%sprofileName%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getProfileName()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `maximumProfiles` to the URL query string
+        if (getMaximumProfiles() != null) {
+            try {
+                joiner.add(String.format("%smaximumProfiles%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getMaximumProfiles()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

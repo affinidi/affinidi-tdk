@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.apis;
 
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
@@ -41,7 +40,7 @@ public class ProfileDataApiTest {
      * Retrieves information from a profile.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void queryProfileDataTest() throws ApiException {
@@ -52,11 +51,12 @@ public class ProfileDataApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Updates the profile with the given data
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updateProfileDataTest() throws ApiException {

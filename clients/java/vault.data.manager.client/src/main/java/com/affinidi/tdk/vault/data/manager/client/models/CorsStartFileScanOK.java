@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,122 @@ import java.util.StringJoiner;
 /**
  * CorsStartFileScanOK
  */
-@JsonPropertyOrder({
-  CorsStartFileScanOK.JSON_PROPERTY_CORS_START_FILE_SCAN_OK
-})
+@JsonPropertyOrder({ CorsStartFileScanOK.JSON_PROPERTY_CORS_START_FILE_SCAN_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsStartFileScanOK {
-  public static final String JSON_PROPERTY_CORS_START_FILE_SCAN_OK = "corsStartFileScanOk";
-  private String corsStartFileScanOk;
+    public static final String JSON_PROPERTY_CORS_START_FILE_SCAN_OK = "corsStartFileScanOk";
+    private String corsStartFileScanOk;
 
-  public CorsStartFileScanOK() {
-  }
-
-  public CorsStartFileScanOK corsStartFileScanOk(String corsStartFileScanOk) {
-    
-    this.corsStartFileScanOk = corsStartFileScanOk;
-    return this;
-  }
-
-  /**
-   * Get corsStartFileScanOk
-   * @return corsStartFileScanOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_START_FILE_SCAN_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsStartFileScanOk() {
-    return corsStartFileScanOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_START_FILE_SCAN_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsStartFileScanOk(String corsStartFileScanOk) {
-    this.corsStartFileScanOk = corsStartFileScanOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsStartFileScanOK corsStartFileScanOK = (CorsStartFileScanOK) o;
-    return Objects.equals(this.corsStartFileScanOk, corsStartFileScanOK.corsStartFileScanOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsStartFileScanOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsStartFileScanOK {\n");
-    sb.append("    corsStartFileScanOk: ").append(toIndentedString(corsStartFileScanOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsStartFileScanOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsStartFileScanOK corsStartFileScanOk(String corsStartFileScanOk) {
 
-    // add `corsStartFileScanOk` to the URL query string
-    if (getCorsStartFileScanOk() != null) {
-      try {
-        joiner.add(String.format("%scorsStartFileScanOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsStartFileScanOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsStartFileScanOk = corsStartFileScanOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsStartFileScanOk
+     *
+     * @return corsStartFileScanOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_START_FILE_SCAN_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsStartFileScanOk() {
+        return corsStartFileScanOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_START_FILE_SCAN_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsStartFileScanOk(String corsStartFileScanOk) {
+        this.corsStartFileScanOk = corsStartFileScanOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsStartFileScanOK corsStartFileScanOK = (CorsStartFileScanOK) o;
+        return Objects.equals(this.corsStartFileScanOk, corsStartFileScanOK.corsStartFileScanOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsStartFileScanOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsStartFileScanOK {\n");
+        sb.append("    corsStartFileScanOk: ").append(toIndentedString(corsStartFileScanOk)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsStartFileScanOk` to the URL query string
+        if (getCorsStartFileScanOk() != null) {
+            try {
+                joiner.add(String.format("%scorsStartFileScanOk%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getCorsStartFileScanOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

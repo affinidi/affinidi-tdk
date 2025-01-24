@@ -31,7 +31,6 @@ import java.util.UUID;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 import com.affinidi.tdk.iam.client.models.UpdateTokenInput;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -42,509 +41,458 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class TokensApi extends BaseApi {
 
-  public TokensApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public TokensApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param createTokenInput CreateToken (required)
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto createToken(CreateTokenInput createTokenInput) throws ApiException {
-    return this.createToken(createTokenInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param createTokenInput CreateToken (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto createToken(CreateTokenInput createTokenInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createTokenInput;
-    
-    // verify the required parameter 'createTokenInput' is set
-    if (createTokenInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'createTokenInput' when calling createToken");
+    public TokensApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens";
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteToken(UUID tokenId) throws ApiException {
-    this.deleteToken(tokenId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'tokenId' is set
-    if (tokenId == null) {
-      throw new ApiException(400, "Missing the required parameter 'tokenId' when calling deleteToken");
+    public TokensApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens/{tokenId}"
-      .replaceAll("\\{" + "tokenId" + "\\}", apiClient.escapeString(apiClient.parameterToString(tokenId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    apiClient.invokeAPI(
-        localVarPath,
-        "DELETE",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        null
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto getToken(UUID tokenId) throws ApiException {
-    return this.getToken(tokenId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto getToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'tokenId' is set
-    if (tokenId == null) {
-      throw new ApiException(400, "Missing the required parameter 'tokenId' when calling getToken");
+    /**
+     *
+     *
+     * @param createTokenInput
+     *            CreateToken (required)
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto createToken(CreateTokenInput createTokenInput) throws ApiException {
+        return this.createToken(createTokenInput, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens/{tokenId}"
-      .replaceAll("\\{" + "tokenId" + "\\}", apiClient.escapeString(apiClient.parameterToString(tokenId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param createTokenInput
+     *            CreateToken (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto createToken(CreateTokenInput createTokenInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = createTokenInput;
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'createTokenInput' is set
+        if (createTokenInput == null) {
+            throw new ApiException(400, "Missing the required parameter 'createTokenInput' when calling createToken");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // create path and map variables
+        String localVarPath = "/v1/tokens";
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return ProjectWithPolicyList
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listProjectsOfToken(tokenId, limit, exclusiveStartKey, Collections.emptyMap());
-  }
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return ProjectWithPolicyList
-   * @throws ApiException if fails to make API call
-   */
-  public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'tokenId' is set
-    if (tokenId == null) {
-      throw new ApiException(400, "Missing the required parameter 'tokenId' when calling listProjectsOfToken");
+        TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens/{tokenId}/projects"
-      .replaceAll("\\{" + "tokenId" + "\\}", apiClient.escapeString(apiClient.parameterToString(tokenId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    TypeReference<ProjectWithPolicyList> localVarReturnType = new TypeReference<ProjectWithPolicyList>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @return TokenList
-   * @throws ApiException if fails to make API call
-   */
-  public TokenList listToken(Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listToken(limit, exclusiveStartKey, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param limit Maximum number of records to fetch in a list (optional, default to 100)
-   * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return TokenList
-   * @throws ApiException if fails to make API call
-   */
-  public TokenList listToken(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
-
-    TypeReference<TokenList> localVarReturnType = new TypeReference<TokenList>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param updateTokenInput UpdateToken (required)
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput) throws ApiException {
-    return this.updateToken(tokenId, updateTokenInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param tokenId  (required)
-   * @param updateTokenInput UpdateToken (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return TokenDto
-   * @throws ApiException if fails to make API call
-   */
-  public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = updateTokenInput;
-    
-    // verify the required parameter 'tokenId' is set
-    if (tokenId == null) {
-      throw new ApiException(400, "Missing the required parameter 'tokenId' when calling updateToken");
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteToken(UUID tokenId) throws ApiException {
+        this.deleteToken(tokenId, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'updateTokenInput' is set
-    if (updateTokenInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateTokenInput' when calling updateToken");
+
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'tokenId' is set
+        if (tokenId == null) {
+            throw new ApiException(400, "Missing the required parameter 'tokenId' when calling deleteToken");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/tokens/{tokenId}".replaceAll("\\{" + "tokenId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(tokenId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/tokens/{tokenId}"
-      .replaceAll("\\{" + "tokenId" + "\\}", apiClient.escapeString(apiClient.parameterToString(tokenId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto getToken(UUID tokenId) throws ApiException {
+        return this.getToken(tokenId, Collections.emptyMap());
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto getToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'tokenId' is set
+        if (tokenId == null) {
+            throw new ApiException(400, "Missing the required parameter 'tokenId' when calling getToken");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // create path and map variables
+        String localVarPath = "/v1/tokens/{tokenId}".replaceAll("\\{" + "tokenId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(tokenId)));
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PATCH",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        localVarHeaderParams.putAll(additionalHeaders);
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
 
-    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+        TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return ProjectWithPolicyList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey)
+            throws ApiException {
+        return this.listProjectsOfToken(tokenId, limit, exclusiveStartKey, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return ProjectWithPolicyList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'tokenId' is set
+        if (tokenId == null) {
+            throw new ApiException(400, "Missing the required parameter 'tokenId' when calling listProjectsOfToken");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/tokens/{tokenId}/projects".replaceAll("\\{" + "tokenId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(tokenId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<ProjectWithPolicyList> localVarReturnType = new TypeReference<ProjectWithPolicyList>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     *
+     * @return TokenList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenList listToken(Integer limit, String exclusiveStartKey) throws ApiException {
+        return this.listToken(limit, exclusiveStartKey, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param limit
+     *            Maximum number of records to fetch in a list (optional, default to 100)
+     * @param exclusiveStartKey
+     *            The base64url encoded key of the first item that this operation will evaluate (it is not returned).
+     *            Use the value that was returned in the previous operation. (optional)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return TokenList
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenList listToken(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/tokens";
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<TokenList> localVarReturnType = new TypeReference<TokenList>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param updateTokenInput
+     *            UpdateToken (required)
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput) throws ApiException {
+        return this.updateToken(tokenId, updateTokenInput, Collections.emptyMap());
+    }
+
+    /**
+     *
+     *
+     * @param tokenId
+     *            (required)
+     * @param updateTokenInput
+     *            UpdateToken (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return TokenDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = updateTokenInput;
+
+        // verify the required parameter 'tokenId' is set
+        if (tokenId == null) {
+            throw new ApiException(400, "Missing the required parameter 'tokenId' when calling updateToken");
+        }
+
+        // verify the required parameter 'updateTokenInput' is set
+        if (updateTokenInput == null) {
+            throw new ApiException(400, "Missing the required parameter 'updateTokenInput' when calling updateToken");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/tokens/{tokenId}".replaceAll("\\{" + "tokenId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(tokenId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        TypeReference<TokenDto> localVarReturnType = new TypeReference<TokenDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

@@ -25,7 +25,6 @@ import com.affinidi.tdk.iam.client.models.NotFoundError;
 import com.affinidi.tdk.iam.client.models.PolicyDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,225 +35,202 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class PoliciesApi extends BaseApi {
 
-  public PoliciesApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public PoliciesApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param principalId  (required)
-   * @param principalType  (required)
-   * @return PolicyDto
-   * @throws ApiException if fails to make API call
-   */
-  public PolicyDto getPolicies(String principalId, String principalType) throws ApiException {
-    return this.getPolicies(principalId, principalType, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param principalId  (required)
-   * @param principalType  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return PolicyDto
-   * @throws ApiException if fails to make API call
-   */
-  public PolicyDto getPolicies(String principalId, String principalType, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'principalId' is set
-    if (principalId == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalId' when calling getPolicies");
+    public PoliciesApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // verify the required parameter 'principalType' is set
-    if (principalType == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalType' when calling getPolicies");
+
+    public PoliciesApi(ApiClient apiClient) {
+        super(apiClient);
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/policies/principals/{principalId}"
-      .replaceAll("\\{" + "principalId" + "\\}", apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
-
-    TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * 
-   * 
-   * @param principalId  (required)
-   * @param principalType  (required)
-   * @param policyDto UpdatePolicies (required)
-   * @return PolicyDto
-   * @throws ApiException if fails to make API call
-   */
-  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
-    return this.updatePolicies(principalId, principalType, policyDto, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param principalId  (required)
-   * @param principalType  (required)
-   * @param policyDto UpdatePolicies (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return PolicyDto
-   * @throws ApiException if fails to make API call
-   */
-  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = policyDto;
-    
-    // verify the required parameter 'principalId' is set
-    if (principalId == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalId' when calling updatePolicies");
+    /**
+     *
+     *
+     * @param principalId
+     *            (required)
+     * @param principalType
+     *            (required)
+     *
+     * @return PolicyDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public PolicyDto getPolicies(String principalId, String principalType) throws ApiException {
+        return this.getPolicies(principalId, principalType, Collections.emptyMap());
     }
-    
-    // verify the required parameter 'principalType' is set
-    if (principalType == null) {
-      throw new ApiException(400, "Missing the required parameter 'principalType' when calling updatePolicies");
+
+    /**
+     *
+     *
+     * @param principalId
+     *            (required)
+     * @param principalType
+     *            (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return PolicyDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public PolicyDto getPolicies(String principalId, String principalType, Map<String, String> additionalHeaders)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'principalId' is set
+        if (principalId == null) {
+            throw new ApiException(400, "Missing the required parameter 'principalId' when calling getPolicies");
+        }
+
+        // verify the required parameter 'principalType' is set
+        if (principalType == null) {
+            throw new ApiException(400, "Missing the required parameter 'principalType' when calling getPolicies");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/policies/principals/{principalId}".replaceAll("\\{" + "principalId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(principalId)));
+
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
-    
-    // verify the required parameter 'policyDto' is set
-    if (policyDto == null) {
-      throw new ApiException(400, "Missing the required parameter 'policyDto' when calling updatePolicies");
+
+    /**
+     *
+     *
+     * @param principalId
+     *            (required)
+     * @param principalType
+     *            (required)
+     * @param policyDto
+     *            UpdatePolicies (required)
+     *
+     * @return PolicyDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
+        return this.updatePolicies(principalId, principalType, policyDto, Collections.emptyMap());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/policies/principals/{principalId}"
-      .replaceAll("\\{" + "principalId" + "\\}", apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    /**
+     *
+     *
+     * @param principalId
+     *            (required)
+     * @param principalType
+     *            (required)
+     * @param policyDto
+     *            UpdatePolicies (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return PolicyDto
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = policyDto;
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+        // verify the required parameter 'principalId' is set
+        if (principalId == null) {
+            throw new ApiException(400, "Missing the required parameter 'principalId' when calling updatePolicies");
+        }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        // verify the required parameter 'principalType' is set
+        if (principalType == null) {
+            throw new ApiException(400, "Missing the required parameter 'principalType' when calling updatePolicies");
+        }
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'policyDto' is set
+        if (policyDto == null) {
+            throw new ApiException(400, "Missing the required parameter 'policyDto' when calling updatePolicies");
+        }
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        // create path and map variables
+        String localVarPath = "/v1/policies/principals/{principalId}".replaceAll("\\{" + "principalId" + "\\}",
+                apiClient.escapeString(apiClient.parameterToString(principalId)));
 
-    TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "PUT",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarQueryParams.addAll(apiClient.parameterToPair("principalType", principalType));
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        TypeReference<PolicyDto> localVarReturnType = new TypeReference<PolicyDto>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }

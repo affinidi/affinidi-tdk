@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -35,184 +34,185 @@ import java.util.StringJoiner;
 /**
  * Request model of /verify-vcs
  */
-@JsonPropertyOrder({
-  VerifyCredentialInput.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
-  VerifyCredentialInput.JSON_PROPERTY_ISSUER_DID_DOCUMENT
-})
+@JsonPropertyOrder({ VerifyCredentialInput.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
+        VerifyCredentialInput.JSON_PROPERTY_ISSUER_DID_DOCUMENT })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyCredentialInput {
-  public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
-  private List<W3cCredential> verifiableCredentials = new ArrayList<>();
+    public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
+    private List<W3cCredential> verifiableCredentials = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
-  private Map<String, Object> issuerDidDocument = new HashMap<>();
+    public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
+    private Map<String, Object> issuerDidDocument = new HashMap<>();
 
-  public VerifyCredentialInput() {
-  }
-
-  public VerifyCredentialInput verifiableCredentials(List<W3cCredential> verifiableCredentials) {
-    
-    this.verifiableCredentials = verifiableCredentials;
-    return this;
-  }
-
-  public VerifyCredentialInput addVerifiableCredentialsItem(W3cCredential verifiableCredentialsItem) {
-    if (this.verifiableCredentials == null) {
-      this.verifiableCredentials = new ArrayList<>();
-    }
-    this.verifiableCredentials.add(verifiableCredentialsItem);
-    return this;
-  }
-
-  /**
-   * List of VCs
-   * @return verifiableCredentials
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<W3cCredential> getVerifiableCredentials() {
-    return verifiableCredentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerifiableCredentials(List<W3cCredential> verifiableCredentials) {
-    this.verifiableCredentials = verifiableCredentials;
-  }
-
-  public VerifyCredentialInput issuerDidDocument(Map<String, Object> issuerDidDocument) {
-    
-    this.issuerDidDocument = issuerDidDocument;
-    return this;
-  }
-
-  public VerifyCredentialInput putIssuerDidDocumentItem(String key, Object issuerDidDocumentItem) {
-    if (this.issuerDidDocument == null) {
-      this.issuerDidDocument = new HashMap<>();
-    }
-    this.issuerDidDocument.put(key, issuerDidDocumentItem);
-    return this;
-  }
-
-  /**
-   * Dynamic model
-   * @return issuerDidDocument
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Map<String, Object> getIssuerDidDocument() {
-    return issuerDidDocument;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDidDocument(Map<String, Object> issuerDidDocument) {
-    this.issuerDidDocument = issuerDidDocument;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    VerifyCredentialInput verifyCredentialInput = (VerifyCredentialInput) o;
-    return Objects.equals(this.verifiableCredentials, verifyCredentialInput.verifiableCredentials) &&
-        Objects.equals(this.issuerDidDocument, verifyCredentialInput.issuerDidDocument);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(verifiableCredentials, issuerDidDocument);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VerifyCredentialInput {\n");
-    sb.append("    verifiableCredentials: ").append(toIndentedString(verifiableCredentials)).append("\n");
-    sb.append("    issuerDidDocument: ").append(toIndentedString(issuerDidDocument)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public VerifyCredentialInput() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public VerifyCredentialInput verifiableCredentials(List<W3cCredential> verifiableCredentials) {
 
-    // add `verifiableCredentials` to the URL query string
-    if (getVerifiableCredentials() != null) {
-      for (int i = 0; i < getVerifiableCredentials().size(); i++) {
-        if (getVerifiableCredentials().get(i) != null) {
-          joiner.add(getVerifiableCredentials().get(i).toUrlQueryString(String.format("%sverifiableCredentials%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        this.verifiableCredentials = verifiableCredentials;
+        return this;
+    }
+
+    public VerifyCredentialInput addVerifiableCredentialsItem(W3cCredential verifiableCredentialsItem) {
+        if (this.verifiableCredentials == null) {
+            this.verifiableCredentials = new ArrayList<>();
         }
-      }
+        this.verifiableCredentials.add(verifiableCredentialsItem);
+        return this;
     }
 
-    // add `issuerDidDocument` to the URL query string
-    if (getIssuerDidDocument() != null) {
-      for (String _key : getIssuerDidDocument().keySet()) {
-        try {
-          joiner.add(String.format("%sissuerDidDocument%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getIssuerDidDocument().get(_key), URLEncoder.encode(String.valueOf(getIssuerDidDocument().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+    /**
+     * List of VCs
+     *
+     * @return verifiableCredentials
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public List<W3cCredential> getVerifiableCredentials() {
+        return verifiableCredentials;
+    }
+
+    @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setVerifiableCredentials(List<W3cCredential> verifiableCredentials) {
+        this.verifiableCredentials = verifiableCredentials;
+    }
+
+    public VerifyCredentialInput issuerDidDocument(Map<String, Object> issuerDidDocument) {
+
+        this.issuerDidDocument = issuerDidDocument;
+        return this;
+    }
+
+    public VerifyCredentialInput putIssuerDidDocumentItem(String key, Object issuerDidDocumentItem) {
+        if (this.issuerDidDocument == null) {
+            this.issuerDidDocument = new HashMap<>();
         }
-      }
+        this.issuerDidDocument.put(key, issuerDidDocumentItem);
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Dynamic model
+     *
+     * @return issuerDidDocument
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Map<String, Object> getIssuerDidDocument() {
+        return issuerDidDocument;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
+    @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+    public void setIssuerDidDocument(Map<String, Object> issuerDidDocument) {
+        this.issuerDidDocument = issuerDidDocument;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        VerifyCredentialInput verifyCredentialInput = (VerifyCredentialInput) o;
+        return Objects.equals(this.verifiableCredentials, verifyCredentialInput.verifiableCredentials)
+                && Objects.equals(this.issuerDidDocument, verifyCredentialInput.issuerDidDocument);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(verifiableCredentials, issuerDidDocument);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class VerifyCredentialInput {\n");
+        sb.append("    verifiableCredentials: ").append(toIndentedString(verifiableCredentials)).append("\n");
+        sb.append("    issuerDidDocument: ").append(toIndentedString(issuerDidDocument)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `verifiableCredentials` to the URL query string
+        if (getVerifiableCredentials() != null) {
+            for (int i = 0; i < getVerifiableCredentials().size(); i++) {
+                if (getVerifiableCredentials().get(i) != null) {
+                    joiner.add(getVerifiableCredentials().get(i).toUrlQueryString(String.format(
+                            "%sverifiableCredentials%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `issuerDidDocument` to the URL query string
+        if (getIssuerDidDocument() != null) {
+            for (String _key : getIssuerDidDocument().keySet()) {
+                try {
+                    joiner.add(String.format("%sissuerDidDocument%s%s=%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+                            getIssuerDidDocument().get(_key),
+                            URLEncoder.encode(String.valueOf(getIssuerDidDocument().get(_key)), "UTF-8")
+                                    .replaceAll("\\+", "%20")));
+                } catch (UnsupportedEncodingException e) {
+                    // Should never happen, UTF-8 is always supported
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
@@ -32,162 +31,160 @@ import java.util.StringJoiner;
 /**
  * CreateCredentialInput
  */
-@JsonPropertyOrder({
-  CreateCredentialInput.JSON_PROPERTY_CREDENTIAL_IDENTIFIER,
-  CreateCredentialInput.JSON_PROPERTY_PROOF
-})
+@JsonPropertyOrder({ CreateCredentialInput.JSON_PROPERTY_CREDENTIAL_IDENTIFIER,
+        CreateCredentialInput.JSON_PROPERTY_PROOF })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateCredentialInput extends HashMap<String, Object> {
-  public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIER = "credential_identifier";
-  private String credentialIdentifier;
+    public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIER = "credential_identifier";
+    private String credentialIdentifier;
 
-  public static final String JSON_PROPERTY_PROOF = "proof";
-  private CredentialProof proof;
+    public static final String JSON_PROPERTY_PROOF = "proof";
+    private CredentialProof proof;
 
-  public CreateCredentialInput() {
+    public CreateCredentialInput() {
 
-  }
-
-  public CreateCredentialInput credentialIdentifier(String credentialIdentifier) {
-    
-    this.credentialIdentifier = credentialIdentifier;
-    return this;
-  }
-
-  /**
-   * It is a String that identifies a Credential that is being requested to be issued.
-   * @return credentialIdentifier
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCredentialIdentifier() {
-    return credentialIdentifier;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialIdentifier(String credentialIdentifier) {
-    this.credentialIdentifier = credentialIdentifier;
-  }
-
-  public CreateCredentialInput proof(CredentialProof proof) {
-    
-    this.proof = proof;
-    return this;
-  }
-
-  /**
-   * Get proof
-   * @return proof
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROOF)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public CredentialProof getProof() {
-    return proof;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROOF)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProof(CredentialProof proof) {
-    this.proof = proof;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateCredentialInput createCredentialInput = (CreateCredentialInput) o;
-    return Objects.equals(this.credentialIdentifier, createCredentialInput.credentialIdentifier) &&
-        Objects.equals(this.proof, createCredentialInput.proof) &&
-        super.equals(o);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(credentialIdentifier, proof, super.hashCode());
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateCredentialInput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    credentialIdentifier: ").append(toIndentedString(credentialIdentifier)).append("\n");
-    sb.append("    proof: ").append(toIndentedString(proof)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CreateCredentialInput credentialIdentifier(String credentialIdentifier) {
 
-    // add `credential_identifier` to the URL query string
-    if (getCredentialIdentifier() != null) {
-      try {
-        joiner.add(String.format("%scredential_identifier%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIdentifier()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.credentialIdentifier = credentialIdentifier;
+        return this;
     }
 
-    // add `proof` to the URL query string
-    if (getProof() != null) {
-      joiner.add(getProof().toUrlQueryString(prefix + "proof" + suffix));
+    /**
+     * It is a String that identifies a Credential that is being requested to be issued.
+     *
+     * @return credentialIdentifier
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCredentialIdentifier() {
+        return credentialIdentifier;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCredentialIdentifier(String credentialIdentifier) {
+        this.credentialIdentifier = credentialIdentifier;
+    }
+
+    public CreateCredentialInput proof(CredentialProof proof) {
+
+        this.proof = proof;
+        return this;
+    }
+
+    /**
+     * Get proof
+     *
+     * @return proof
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_PROOF)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public CredentialProof getProof() {
+        return proof;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PROOF)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setProof(CredentialProof proof) {
+        this.proof = proof;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateCredentialInput createCredentialInput = (CreateCredentialInput) o;
+        return Objects.equals(this.credentialIdentifier, createCredentialInput.credentialIdentifier)
+                && Objects.equals(this.proof, createCredentialInput.proof) && super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(credentialIdentifier, proof, super.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateCredentialInput {\n");
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("    credentialIdentifier: ").append(toIndentedString(credentialIdentifier)).append("\n");
+        sb.append("    proof: ").append(toIndentedString(proof)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `credential_identifier` to the URL query string
+        if (getCredentialIdentifier() != null) {
+            try {
+                joiner.add(String.format("%scredential_identifier%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCredentialIdentifier()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `proof` to the URL query string
+        if (getProof() != null) {
+            joiner.add(getProof().toUrlQueryString(prefix + "proof" + suffix));
+        }
+
+        return joiner.toString();
+    }
 
 }
-

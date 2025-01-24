@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,124 @@ import java.util.StringJoiner;
 /**
  * CorsRestoreNodeFromTrashbinOK
  */
-@JsonPropertyOrder({
-  CorsRestoreNodeFromTrashbinOK.JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK
-})
+@JsonPropertyOrder({ CorsRestoreNodeFromTrashbinOK.JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsRestoreNodeFromTrashbinOK {
-  public static final String JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK = "corsRestoreNodeFromTrashbinOk";
-  private String corsRestoreNodeFromTrashbinOk;
+    public static final String JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK = "corsRestoreNodeFromTrashbinOk";
+    private String corsRestoreNodeFromTrashbinOk;
 
-  public CorsRestoreNodeFromTrashbinOK() {
-  }
-
-  public CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
-    
-    this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
-    return this;
-  }
-
-  /**
-   * Get corsRestoreNodeFromTrashbinOk
-   * @return corsRestoreNodeFromTrashbinOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsRestoreNodeFromTrashbinOk() {
-    return corsRestoreNodeFromTrashbinOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
-    this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOK = (CorsRestoreNodeFromTrashbinOK) o;
-    return Objects.equals(this.corsRestoreNodeFromTrashbinOk, corsRestoreNodeFromTrashbinOK.corsRestoreNodeFromTrashbinOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsRestoreNodeFromTrashbinOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsRestoreNodeFromTrashbinOK {\n");
-    sb.append("    corsRestoreNodeFromTrashbinOk: ").append(toIndentedString(corsRestoreNodeFromTrashbinOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsRestoreNodeFromTrashbinOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
 
-    // add `corsRestoreNodeFromTrashbinOk` to the URL query string
-    if (getCorsRestoreNodeFromTrashbinOk() != null) {
-      try {
-        joiner.add(String.format("%scorsRestoreNodeFromTrashbinOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsRestoreNodeFromTrashbinOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsRestoreNodeFromTrashbinOk
+     *
+     * @return corsRestoreNodeFromTrashbinOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsRestoreNodeFromTrashbinOk() {
+        return corsRestoreNodeFromTrashbinOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
+        this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOK = (CorsRestoreNodeFromTrashbinOK) o;
+        return Objects.equals(this.corsRestoreNodeFromTrashbinOk,
+                corsRestoreNodeFromTrashbinOK.corsRestoreNodeFromTrashbinOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsRestoreNodeFromTrashbinOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsRestoreNodeFromTrashbinOK {\n");
+        sb.append("    corsRestoreNodeFromTrashbinOk: ").append(toIndentedString(corsRestoreNodeFromTrashbinOk))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsRestoreNodeFromTrashbinOk` to the URL query string
+        if (getCorsRestoreNodeFromTrashbinOk() != null) {
+            try {
+                joiner.add(String.format("%scorsRestoreNodeFromTrashbinOk%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCorsRestoreNodeFromTrashbinOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

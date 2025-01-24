@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.vault.data.manager.client.models;
 
 import com.affinidi.tdk.vault.data.manager.client.models.NodeStatus;

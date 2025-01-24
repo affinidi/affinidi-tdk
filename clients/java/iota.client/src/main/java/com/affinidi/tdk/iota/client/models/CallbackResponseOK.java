@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,205 +28,206 @@ import java.util.StringJoiner;
 /**
  * CallbackResponseOK
  */
-@JsonPropertyOrder({
-  CallbackResponseOK.JSON_PROPERTY_REDIRECT_URI,
-  CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
-  CallbackResponseOK.JSON_PROPERTY_MESSAGE
-})
+@JsonPropertyOrder({ CallbackResponseOK.JSON_PROPERTY_REDIRECT_URI, CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
+        CallbackResponseOK.JSON_PROPERTY_MESSAGE })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CallbackResponseOK {
-  public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
-  private String redirectUri;
+    public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
+    private String redirectUri;
 
-  public static final String JSON_PROPERTY_RESPONSE_CODE = "response_code";
-  private String responseCode;
+    public static final String JSON_PROPERTY_RESPONSE_CODE = "response_code";
+    private String responseCode;
 
-  public static final String JSON_PROPERTY_MESSAGE = "message";
-  private String message;
+    public static final String JSON_PROPERTY_MESSAGE = "message";
+    private String message;
 
-  public CallbackResponseOK() {
-  }
-
-  public CallbackResponseOK redirectUri(String redirectUri) {
-    
-    this.redirectUri = redirectUri;
-    return this;
-  }
-
-  /**
-   * The URL to which Affinidi Vault will redirect the user.
-   * @return redirectUri
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getRedirectUri() {
-    return redirectUri;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUri(String redirectUri) {
-    this.redirectUri = redirectUri;
-  }
-
-  public CallbackResponseOK responseCode(String responseCode) {
-    
-    this.responseCode = responseCode;
-    return this;
-  }
-
-  /**
-   * A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.
-   * @return responseCode
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getResponseCode() {
-    return responseCode;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResponseCode(String responseCode) {
-    this.responseCode = responseCode;
-  }
-
-  public CallbackResponseOK message(String message) {
-    
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * A message to the Affinidi Vault indicating that the update was successful.
-   * @return message
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getMessage() {
-    return message;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CallbackResponseOK callbackResponseOK = (CallbackResponseOK) o;
-    return Objects.equals(this.redirectUri, callbackResponseOK.redirectUri) &&
-        Objects.equals(this.responseCode, callbackResponseOK.responseCode) &&
-        Objects.equals(this.message, callbackResponseOK.message);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(redirectUri, responseCode, message);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CallbackResponseOK {\n");
-    sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
-    sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CallbackResponseOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CallbackResponseOK redirectUri(String redirectUri) {
 
-    // add `redirect_uri` to the URL query string
-    if (getRedirectUri() != null) {
-      try {
-        joiner.add(String.format("%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.redirectUri = redirectUri;
+        return this;
     }
 
-    // add `response_code` to the URL query string
-    if (getResponseCode() != null) {
-      try {
-        joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * The URL to which Affinidi Vault will redirect the user.
+     *
+     * @return redirectUri
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getRedirectUri() {
+        return redirectUri;
     }
 
-    // add `message` to the URL query string
-    if (getMessage() != null) {
-      try {
-        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
     }
 
-    return joiner.toString();
-  }
+    public CallbackResponseOK responseCode(String responseCode) {
+
+        this.responseCode = responseCode;
+        return this;
+    }
+
+    /**
+     * A unique identifier to fetch the callback response data. Send this value together with the transactionId to
+     * successfully fetch the data.
+     *
+     * @return responseCode
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getResponseCode() {
+        return responseCode;
+    }
+
+    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
+    }
+
+    public CallbackResponseOK message(String message) {
+
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * A message to the Affinidi Vault indicating that the update was successful.
+     *
+     * @return message
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_MESSAGE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getMessage() {
+        return message;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MESSAGE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CallbackResponseOK callbackResponseOK = (CallbackResponseOK) o;
+        return Objects.equals(this.redirectUri, callbackResponseOK.redirectUri)
+                && Objects.equals(this.responseCode, callbackResponseOK.responseCode)
+                && Objects.equals(this.message, callbackResponseOK.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(redirectUri, responseCode, message);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CallbackResponseOK {\n");
+        sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+        sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
+        sb.append("    message: ").append(toIndentedString(message)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `redirect_uri` to the URL query string
+        if (getRedirectUri() != null) {
+            try {
+                joiner.add(String.format("%sredirect_uri%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `response_code` to the URL query string
+        if (getResponseCode() != null) {
+            try {
+                joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `message` to the URL query string
+        if (getMessage() != null) {
+            try {
+                joiner.add(String.format("%smessage%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
@@ -34,794 +33,791 @@ import java.util.StringJoiner;
 /**
  * FilterItems
  */
-@JsonPropertyOrder({
-  FilterItems.JSON_PROPERTY_CONST,
-  FilterItems.JSON_PROPERTY_ENUM,
-  FilterItems.JSON_PROPERTY_EXCLUSIVE_MINIMUM,
-  FilterItems.JSON_PROPERTY_EXCLUSIVE_MAXIMUM,
-  FilterItems.JSON_PROPERTY_FORMAT,
-  FilterItems.JSON_PROPERTY_FORMAT_MAXIMUM,
-  FilterItems.JSON_PROPERTY_FORMAT_MINIMUM,
-  FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM,
-  FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM,
-  FilterItems.JSON_PROPERTY_MIN_LENGTH,
-  FilterItems.JSON_PROPERTY_MAX_LENGTH,
-  FilterItems.JSON_PROPERTY_MINIMUM,
-  FilterItems.JSON_PROPERTY_MAXIMUM,
-  FilterItems.JSON_PROPERTY_NOT,
-  FilterItems.JSON_PROPERTY_PATTERN,
-  FilterItems.JSON_PROPERTY_CONTAINS,
-  FilterItems.JSON_PROPERTY_ITEMS,
-  FilterItems.JSON_PROPERTY_TYPE
-})
+@JsonPropertyOrder({ FilterItems.JSON_PROPERTY_CONST, FilterItems.JSON_PROPERTY_ENUM,
+        FilterItems.JSON_PROPERTY_EXCLUSIVE_MINIMUM, FilterItems.JSON_PROPERTY_EXCLUSIVE_MAXIMUM,
+        FilterItems.JSON_PROPERTY_FORMAT, FilterItems.JSON_PROPERTY_FORMAT_MAXIMUM,
+        FilterItems.JSON_PROPERTY_FORMAT_MINIMUM, FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM,
+        FilterItems.JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM, FilterItems.JSON_PROPERTY_MIN_LENGTH,
+        FilterItems.JSON_PROPERTY_MAX_LENGTH, FilterItems.JSON_PROPERTY_MINIMUM, FilterItems.JSON_PROPERTY_MAXIMUM,
+        FilterItems.JSON_PROPERTY_NOT, FilterItems.JSON_PROPERTY_PATTERN, FilterItems.JSON_PROPERTY_CONTAINS,
+        FilterItems.JSON_PROPERTY_ITEMS, FilterItems.JSON_PROPERTY_TYPE })
 @JsonTypeName("Filter_items")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class FilterItems {
-  public static final String JSON_PROPERTY_CONST = "_const";
-  private FilterConst _const;
+    public static final String JSON_PROPERTY_CONST = "_const";
+    private FilterConst _const;
 
-  public static final String JSON_PROPERTY_ENUM = "_enum";
-  private List<FilterConst> _enum = new ArrayList<>();
+    public static final String JSON_PROPERTY_ENUM = "_enum";
+    private List<FilterConst> _enum = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_EXCLUSIVE_MINIMUM = "exclusiveMinimum";
-  private FilterConst exclusiveMinimum;
+    public static final String JSON_PROPERTY_EXCLUSIVE_MINIMUM = "exclusiveMinimum";
+    private FilterConst exclusiveMinimum;
 
-  public static final String JSON_PROPERTY_EXCLUSIVE_MAXIMUM = "exclusiveMaximum";
-  private FilterConst exclusiveMaximum;
+    public static final String JSON_PROPERTY_EXCLUSIVE_MAXIMUM = "exclusiveMaximum";
+    private FilterConst exclusiveMaximum;
 
-  public static final String JSON_PROPERTY_FORMAT = "format";
-  private String format;
+    public static final String JSON_PROPERTY_FORMAT = "format";
+    private String format;
 
-  public static final String JSON_PROPERTY_FORMAT_MAXIMUM = "formatMaximum";
-  private String formatMaximum;
+    public static final String JSON_PROPERTY_FORMAT_MAXIMUM = "formatMaximum";
+    private String formatMaximum;
 
-  public static final String JSON_PROPERTY_FORMAT_MINIMUM = "formatMinimum";
-  private String formatMinimum;
+    public static final String JSON_PROPERTY_FORMAT_MINIMUM = "formatMinimum";
+    private String formatMinimum;
 
-  public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM = "formatExclusiveMaximum";
-  private String formatExclusiveMaximum;
+    public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM = "formatExclusiveMaximum";
+    private String formatExclusiveMaximum;
 
-  public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM = "formatExclusiveMinimum";
-  private String formatExclusiveMinimum;
+    public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM = "formatExclusiveMinimum";
+    private String formatExclusiveMinimum;
 
-  public static final String JSON_PROPERTY_MIN_LENGTH = "minLength";
-  private Integer minLength;
+    public static final String JSON_PROPERTY_MIN_LENGTH = "minLength";
+    private Integer minLength;
 
-  public static final String JSON_PROPERTY_MAX_LENGTH = "maxLength";
-  private Integer maxLength;
+    public static final String JSON_PROPERTY_MAX_LENGTH = "maxLength";
+    private Integer maxLength;
 
-  public static final String JSON_PROPERTY_MINIMUM = "minimum";
-  private FilterConst minimum;
+    public static final String JSON_PROPERTY_MINIMUM = "minimum";
+    private FilterConst minimum;
 
-  public static final String JSON_PROPERTY_MAXIMUM = "maximum";
-  private FilterConst maximum;
+    public static final String JSON_PROPERTY_MAXIMUM = "maximum";
+    private FilterConst maximum;
 
-  public static final String JSON_PROPERTY_NOT = "not";
-  private Object not;
+    public static final String JSON_PROPERTY_NOT = "not";
+    private Object not;
 
-  public static final String JSON_PROPERTY_PATTERN = "pattern";
-  private String pattern;
+    public static final String JSON_PROPERTY_PATTERN = "pattern";
+    private String pattern;
 
-  public static final String JSON_PROPERTY_CONTAINS = "contains";
-  private Filter contains;
+    public static final String JSON_PROPERTY_CONTAINS = "contains";
+    private Filter contains;
 
-  public static final String JSON_PROPERTY_ITEMS = "items";
-  private FilterItems items;
+    public static final String JSON_PROPERTY_ITEMS = "items";
+    private FilterItems items;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private String type;
+    public static final String JSON_PROPERTY_TYPE = "type";
+    private String type;
 
-  public FilterItems() {
-  }
-
-  public FilterItems _const(FilterConst _const) {
-    
-    this._const = _const;
-    return this;
-  }
-
-  /**
-   * Get _const
-   * @return _const
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterConst getConst() {
-    return _const;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONST)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConst(FilterConst _const) {
-    this._const = _const;
-  }
-
-  public FilterItems _enum(List<FilterConst> _enum) {
-    
-    this._enum = _enum;
-    return this;
-  }
-
-  public FilterItems addEnumItem(FilterConst _enumItem) {
-    if (this._enum == null) {
-      this._enum = new ArrayList<>();
-    }
-    this._enum.add(_enumItem);
-    return this;
-  }
-
-  /**
-   * Get _enum
-   * @return _enum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<FilterConst> getEnum() {
-    return _enum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ENUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnum(List<FilterConst> _enum) {
-    this._enum = _enum;
-  }
-
-  public FilterItems exclusiveMinimum(FilterConst exclusiveMinimum) {
-    
-    this.exclusiveMinimum = exclusiveMinimum;
-    return this;
-  }
-
-  /**
-   * Get exclusiveMinimum
-   * @return exclusiveMinimum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterConst getExclusiveMinimum() {
-    return exclusiveMinimum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExclusiveMinimum(FilterConst exclusiveMinimum) {
-    this.exclusiveMinimum = exclusiveMinimum;
-  }
-
-  public FilterItems exclusiveMaximum(FilterConst exclusiveMaximum) {
-    
-    this.exclusiveMaximum = exclusiveMaximum;
-    return this;
-  }
-
-  /**
-   * Get exclusiveMaximum
-   * @return exclusiveMaximum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterConst getExclusiveMaximum() {
-    return exclusiveMaximum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExclusiveMaximum(FilterConst exclusiveMaximum) {
-    this.exclusiveMaximum = exclusiveMaximum;
-  }
-
-  public FilterItems format(String format) {
-    
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Get format
-   * @return format
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFormat() {
-    return format;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(String format) {
-    this.format = format;
-  }
-
-  public FilterItems formatMaximum(String formatMaximum) {
-    
-    this.formatMaximum = formatMaximum;
-    return this;
-  }
-
-  /**
-   * Get formatMaximum
-   * @return formatMaximum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFormatMaximum() {
-    return formatMaximum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatMaximum(String formatMaximum) {
-    this.formatMaximum = formatMaximum;
-  }
-
-  public FilterItems formatMinimum(String formatMinimum) {
-    
-    this.formatMinimum = formatMinimum;
-    return this;
-  }
-
-  /**
-   * Get formatMinimum
-   * @return formatMinimum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFormatMinimum() {
-    return formatMinimum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatMinimum(String formatMinimum) {
-    this.formatMinimum = formatMinimum;
-  }
-
-  public FilterItems formatExclusiveMaximum(String formatExclusiveMaximum) {
-    
-    this.formatExclusiveMaximum = formatExclusiveMaximum;
-    return this;
-  }
-
-  /**
-   * Get formatExclusiveMaximum
-   * @return formatExclusiveMaximum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFormatExclusiveMaximum() {
-    return formatExclusiveMaximum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatExclusiveMaximum(String formatExclusiveMaximum) {
-    this.formatExclusiveMaximum = formatExclusiveMaximum;
-  }
-
-  public FilterItems formatExclusiveMinimum(String formatExclusiveMinimum) {
-    
-    this.formatExclusiveMinimum = formatExclusiveMinimum;
-    return this;
-  }
-
-  /**
-   * Get formatExclusiveMinimum
-   * @return formatExclusiveMinimum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getFormatExclusiveMinimum() {
-    return formatExclusiveMinimum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatExclusiveMinimum(String formatExclusiveMinimum) {
-    this.formatExclusiveMinimum = formatExclusiveMinimum;
-  }
-
-  public FilterItems minLength(Integer minLength) {
-    
-    this.minLength = minLength;
-    return this;
-  }
-
-  /**
-   * Get minLength
-   * @return minLength
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getMinLength() {
-    return minLength;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinLength(Integer minLength) {
-    this.minLength = minLength;
-  }
-
-  public FilterItems maxLength(Integer maxLength) {
-    
-    this.maxLength = maxLength;
-    return this;
-  }
-
-  /**
-   * Get maxLength
-   * @return maxLength
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getMaxLength() {
-    return maxLength;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxLength(Integer maxLength) {
-    this.maxLength = maxLength;
-  }
-
-  public FilterItems minimum(FilterConst minimum) {
-    
-    this.minimum = minimum;
-    return this;
-  }
-
-  /**
-   * Get minimum
-   * @return minimum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterConst getMinimum() {
-    return minimum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MINIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimum(FilterConst minimum) {
-    this.minimum = minimum;
-  }
-
-  public FilterItems maximum(FilterConst maximum) {
-    
-    this.maximum = maximum;
-    return this;
-  }
-
-  /**
-   * Get maximum
-   * @return maximum
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterConst getMaximum() {
-    return maximum;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_MAXIMUM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximum(FilterConst maximum) {
-    this.maximum = maximum;
-  }
-
-  public FilterItems not(Object not) {
-    
-    this.not = not;
-    return this;
-  }
-
-  /**
-   * Get not
-   * @return not
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NOT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getNot() {
-    return not;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NOT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNot(Object not) {
-    this.not = not;
-  }
-
-  public FilterItems pattern(String pattern) {
-    
-    this.pattern = pattern;
-    return this;
-  }
-
-  /**
-   * Get pattern
-   * @return pattern
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PATTERN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getPattern() {
-    return pattern;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PATTERN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPattern(String pattern) {
-    this.pattern = pattern;
-  }
-
-  public FilterItems contains(Filter contains) {
-    
-    this.contains = contains;
-    return this;
-  }
-
-  /**
-   * Get contains
-   * @return contains
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONTAINS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Filter getContains() {
-    return contains;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONTAINS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContains(Filter contains) {
-    this.contains = contains;
-  }
-
-  public FilterItems items(FilterItems items) {
-    
-    this.items = items;
-    return this;
-  }
-
-  /**
-   * Get items
-   * @return items
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ITEMS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FilterItems getItems() {
-    return items;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ITEMS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItems(FilterItems items) {
-    this.items = items;
-  }
-
-  public FilterItems type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    FilterItems filterItems = (FilterItems) o;
-    return Objects.equals(this._const, filterItems._const) &&
-        Objects.equals(this._enum, filterItems._enum) &&
-        Objects.equals(this.exclusiveMinimum, filterItems.exclusiveMinimum) &&
-        Objects.equals(this.exclusiveMaximum, filterItems.exclusiveMaximum) &&
-        Objects.equals(this.format, filterItems.format) &&
-        Objects.equals(this.formatMaximum, filterItems.formatMaximum) &&
-        Objects.equals(this.formatMinimum, filterItems.formatMinimum) &&
-        Objects.equals(this.formatExclusiveMaximum, filterItems.formatExclusiveMaximum) &&
-        Objects.equals(this.formatExclusiveMinimum, filterItems.formatExclusiveMinimum) &&
-        Objects.equals(this.minLength, filterItems.minLength) &&
-        Objects.equals(this.maxLength, filterItems.maxLength) &&
-        Objects.equals(this.minimum, filterItems.minimum) &&
-        Objects.equals(this.maximum, filterItems.maximum) &&
-        Objects.equals(this.not, filterItems.not) &&
-        Objects.equals(this.pattern, filterItems.pattern) &&
-        Objects.equals(this.contains, filterItems.contains) &&
-        Objects.equals(this.items, filterItems.items) &&
-        Objects.equals(this.type, filterItems.type);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(_const, _enum, exclusiveMinimum, exclusiveMaximum, format, formatMaximum, formatMinimum, formatExclusiveMaximum, formatExclusiveMinimum, minLength, maxLength, minimum, maximum, not, pattern, contains, items, type);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FilterItems {\n");
-    sb.append("    _const: ").append(toIndentedString(_const)).append("\n");
-    sb.append("    _enum: ").append(toIndentedString(_enum)).append("\n");
-    sb.append("    exclusiveMinimum: ").append(toIndentedString(exclusiveMinimum)).append("\n");
-    sb.append("    exclusiveMaximum: ").append(toIndentedString(exclusiveMaximum)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    formatMaximum: ").append(toIndentedString(formatMaximum)).append("\n");
-    sb.append("    formatMinimum: ").append(toIndentedString(formatMinimum)).append("\n");
-    sb.append("    formatExclusiveMaximum: ").append(toIndentedString(formatExclusiveMaximum)).append("\n");
-    sb.append("    formatExclusiveMinimum: ").append(toIndentedString(formatExclusiveMinimum)).append("\n");
-    sb.append("    minLength: ").append(toIndentedString(minLength)).append("\n");
-    sb.append("    maxLength: ").append(toIndentedString(maxLength)).append("\n");
-    sb.append("    minimum: ").append(toIndentedString(minimum)).append("\n");
-    sb.append("    maximum: ").append(toIndentedString(maximum)).append("\n");
-    sb.append("    not: ").append(toIndentedString(not)).append("\n");
-    sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
-    sb.append("    contains: ").append(toIndentedString(contains)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public FilterItems() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public FilterItems _const(FilterConst _const) {
 
-    // add `_const` to the URL query string
-    if (getConst() != null) {
-      joiner.add(getConst().toUrlQueryString(prefix + "_const" + suffix));
+        this._const = _const;
+        return this;
     }
 
-    // add `_enum` to the URL query string
-    if (getEnum() != null) {
-      for (int i = 0; i < getEnum().size(); i++) {
-        if (getEnum().get(i) != null) {
-          joiner.add(getEnum().get(i).toUrlQueryString(String.format("%s_enum%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+    /**
+     * Get _const
+     *
+     * @return _const
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CONST)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterConst getConst() {
+        return _const;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CONST)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setConst(FilterConst _const) {
+        this._const = _const;
+    }
+
+    public FilterItems _enum(List<FilterConst> _enum) {
+
+        this._enum = _enum;
+        return this;
+    }
+
+    public FilterItems addEnumItem(FilterConst _enumItem) {
+        if (this._enum == null) {
+            this._enum = new ArrayList<>();
         }
-      }
+        this._enum.add(_enumItem);
+        return this;
     }
 
-    // add `exclusiveMinimum` to the URL query string
-    if (getExclusiveMinimum() != null) {
-      joiner.add(getExclusiveMinimum().toUrlQueryString(prefix + "exclusiveMinimum" + suffix));
+    /**
+     * Get _enum
+     *
+     * @return _enum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ENUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public List<FilterConst> getEnum() {
+        return _enum;
     }
 
-    // add `exclusiveMaximum` to the URL query string
-    if (getExclusiveMaximum() != null) {
-      joiner.add(getExclusiveMaximum().toUrlQueryString(prefix + "exclusiveMaximum" + suffix));
+    @JsonProperty(JSON_PROPERTY_ENUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setEnum(List<FilterConst> _enum) {
+        this._enum = _enum;
     }
 
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      try {
-        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public FilterItems exclusiveMinimum(FilterConst exclusiveMinimum) {
+
+        this.exclusiveMinimum = exclusiveMinimum;
+        return this;
     }
 
-    // add `formatMaximum` to the URL query string
-    if (getFormatMaximum() != null) {
-      try {
-        joiner.add(String.format("%sformatMaximum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatMaximum()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get exclusiveMinimum
+     *
+     * @return exclusiveMinimum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterConst getExclusiveMinimum() {
+        return exclusiveMinimum;
     }
 
-    // add `formatMinimum` to the URL query string
-    if (getFormatMinimum() != null) {
-      try {
-        joiner.add(String.format("%sformatMinimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatMinimum()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setExclusiveMinimum(FilterConst exclusiveMinimum) {
+        this.exclusiveMinimum = exclusiveMinimum;
     }
 
-    // add `formatExclusiveMaximum` to the URL query string
-    if (getFormatExclusiveMaximum() != null) {
-      try {
-        joiner.add(String.format("%sformatExclusiveMaximum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatExclusiveMaximum()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public FilterItems exclusiveMaximum(FilterConst exclusiveMaximum) {
+
+        this.exclusiveMaximum = exclusiveMaximum;
+        return this;
     }
 
-    // add `formatExclusiveMinimum` to the URL query string
-    if (getFormatExclusiveMinimum() != null) {
-      try {
-        joiner.add(String.format("%sformatExclusiveMinimum%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormatExclusiveMinimum()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get exclusiveMaximum
+     *
+     * @return exclusiveMaximum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterConst getExclusiveMaximum() {
+        return exclusiveMaximum;
     }
 
-    // add `minLength` to the URL query string
-    if (getMinLength() != null) {
-      try {
-        joiner.add(String.format("%sminLength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMinLength()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setExclusiveMaximum(FilterConst exclusiveMaximum) {
+        this.exclusiveMaximum = exclusiveMaximum;
     }
 
-    // add `maxLength` to the URL query string
-    if (getMaxLength() != null) {
-      try {
-        joiner.add(String.format("%smaxLength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMaxLength()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public FilterItems format(String format) {
+
+        this.format = format;
+        return this;
     }
 
-    // add `minimum` to the URL query string
-    if (getMinimum() != null) {
-      joiner.add(getMinimum().toUrlQueryString(prefix + "minimum" + suffix));
+    /**
+     * Get format
+     *
+     * @return format
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getFormat() {
+        return format;
     }
 
-    // add `maximum` to the URL query string
-    if (getMaximum() != null) {
-      joiner.add(getMaximum().toUrlQueryString(prefix + "maximum" + suffix));
+    @JsonProperty(JSON_PROPERTY_FORMAT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormat(String format) {
+        this.format = format;
     }
 
-    // add `not` to the URL query string
-    if (getNot() != null) {
-      try {
-        joiner.add(String.format("%snot%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNot()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public FilterItems formatMaximum(String formatMaximum) {
+
+        this.formatMaximum = formatMaximum;
+        return this;
     }
 
-    // add `pattern` to the URL query string
-    if (getPattern() != null) {
-      try {
-        joiner.add(String.format("%spattern%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPattern()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get formatMaximum
+     *
+     * @return formatMaximum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getFormatMaximum() {
+        return formatMaximum;
     }
 
-    // add `contains` to the URL query string
-    if (getContains() != null) {
-      joiner.add(getContains().toUrlQueryString(prefix + "contains" + suffix));
+    @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormatMaximum(String formatMaximum) {
+        this.formatMaximum = formatMaximum;
     }
 
-    // add `items` to the URL query string
-    if (getItems() != null) {
-      joiner.add(getItems().toUrlQueryString(prefix + "items" + suffix));
+    public FilterItems formatMinimum(String formatMinimum) {
+
+        this.formatMinimum = formatMinimum;
+        return this;
     }
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get formatMinimum
+     *
+     * @return formatMinimum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getFormatMinimum() {
+        return formatMinimum;
     }
 
-    return joiner.toString();
-  }
+    @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormatMinimum(String formatMinimum) {
+        this.formatMinimum = formatMinimum;
+    }
+
+    public FilterItems formatExclusiveMaximum(String formatExclusiveMaximum) {
+
+        this.formatExclusiveMaximum = formatExclusiveMaximum;
+        return this;
+    }
+
+    /**
+     * Get formatExclusiveMaximum
+     *
+     * @return formatExclusiveMaximum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getFormatExclusiveMaximum() {
+        return formatExclusiveMaximum;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormatExclusiveMaximum(String formatExclusiveMaximum) {
+        this.formatExclusiveMaximum = formatExclusiveMaximum;
+    }
+
+    public FilterItems formatExclusiveMinimum(String formatExclusiveMinimum) {
+
+        this.formatExclusiveMinimum = formatExclusiveMinimum;
+        return this;
+    }
+
+    /**
+     * Get formatExclusiveMinimum
+     *
+     * @return formatExclusiveMinimum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getFormatExclusiveMinimum() {
+        return formatExclusiveMinimum;
+    }
+
+    @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setFormatExclusiveMinimum(String formatExclusiveMinimum) {
+        this.formatExclusiveMinimum = formatExclusiveMinimum;
+    }
+
+    public FilterItems minLength(Integer minLength) {
+
+        this.minLength = minLength;
+        return this;
+    }
+
+    /**
+     * Get minLength
+     *
+     * @return minLength
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Integer getMinLength() {
+        return minLength;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setMinLength(Integer minLength) {
+        this.minLength = minLength;
+    }
+
+    public FilterItems maxLength(Integer maxLength) {
+
+        this.maxLength = maxLength;
+        return this;
+    }
+
+    /**
+     * Get maxLength
+     *
+     * @return maxLength
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Integer getMaxLength() {
+        return maxLength;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setMaxLength(Integer maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    public FilterItems minimum(FilterConst minimum) {
+
+        this.minimum = minimum;
+        return this;
+    }
+
+    /**
+     * Get minimum
+     *
+     * @return minimum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterConst getMinimum() {
+        return minimum;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MINIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setMinimum(FilterConst minimum) {
+        this.minimum = minimum;
+    }
+
+    public FilterItems maximum(FilterConst maximum) {
+
+        this.maximum = maximum;
+        return this;
+    }
+
+    /**
+     * Get maximum
+     *
+     * @return maximum
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterConst getMaximum() {
+        return maximum;
+    }
+
+    @JsonProperty(JSON_PROPERTY_MAXIMUM)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setMaximum(FilterConst maximum) {
+        this.maximum = maximum;
+    }
+
+    public FilterItems not(Object not) {
+
+        this.not = not;
+        return this;
+    }
+
+    /**
+     * Get not
+     *
+     * @return not
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_NOT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Object getNot() {
+        return not;
+    }
+
+    @JsonProperty(JSON_PROPERTY_NOT)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setNot(Object not) {
+        this.not = not;
+    }
+
+    public FilterItems pattern(String pattern) {
+
+        this.pattern = pattern;
+        return this;
+    }
+
+    /**
+     * Get pattern
+     *
+     * @return pattern
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_PATTERN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    @JsonProperty(JSON_PROPERTY_PATTERN)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public FilterItems contains(Filter contains) {
+
+        this.contains = contains;
+        return this;
+    }
+
+    /**
+     * Get contains
+     *
+     * @return contains
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CONTAINS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public Filter getContains() {
+        return contains;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CONTAINS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setContains(Filter contains) {
+        this.contains = contains;
+    }
+
+    public FilterItems items(FilterItems items) {
+
+        this.items = items;
+        return this;
+    }
+
+    /**
+     * Get items
+     *
+     * @return items
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_ITEMS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public FilterItems getItems() {
+        return items;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ITEMS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setItems(FilterItems items) {
+        this.items = items;
+    }
+
+    public FilterItems type(String type) {
+
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return type
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty(JSON_PROPERTY_TYPE)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FilterItems filterItems = (FilterItems) o;
+        return Objects.equals(this._const, filterItems._const) && Objects.equals(this._enum, filterItems._enum)
+                && Objects.equals(this.exclusiveMinimum, filterItems.exclusiveMinimum)
+                && Objects.equals(this.exclusiveMaximum, filterItems.exclusiveMaximum)
+                && Objects.equals(this.format, filterItems.format)
+                && Objects.equals(this.formatMaximum, filterItems.formatMaximum)
+                && Objects.equals(this.formatMinimum, filterItems.formatMinimum)
+                && Objects.equals(this.formatExclusiveMaximum, filterItems.formatExclusiveMaximum)
+                && Objects.equals(this.formatExclusiveMinimum, filterItems.formatExclusiveMinimum)
+                && Objects.equals(this.minLength, filterItems.minLength)
+                && Objects.equals(this.maxLength, filterItems.maxLength)
+                && Objects.equals(this.minimum, filterItems.minimum)
+                && Objects.equals(this.maximum, filterItems.maximum) && Objects.equals(this.not, filterItems.not)
+                && Objects.equals(this.pattern, filterItems.pattern)
+                && Objects.equals(this.contains, filterItems.contains) && Objects.equals(this.items, filterItems.items)
+                && Objects.equals(this.type, filterItems.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_const, _enum, exclusiveMinimum, exclusiveMaximum, format, formatMaximum, formatMinimum,
+                formatExclusiveMaximum, formatExclusiveMinimum, minLength, maxLength, minimum, maximum, not, pattern,
+                contains, items, type);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class FilterItems {\n");
+        sb.append("    _const: ").append(toIndentedString(_const)).append("\n");
+        sb.append("    _enum: ").append(toIndentedString(_enum)).append("\n");
+        sb.append("    exclusiveMinimum: ").append(toIndentedString(exclusiveMinimum)).append("\n");
+        sb.append("    exclusiveMaximum: ").append(toIndentedString(exclusiveMaximum)).append("\n");
+        sb.append("    format: ").append(toIndentedString(format)).append("\n");
+        sb.append("    formatMaximum: ").append(toIndentedString(formatMaximum)).append("\n");
+        sb.append("    formatMinimum: ").append(toIndentedString(formatMinimum)).append("\n");
+        sb.append("    formatExclusiveMaximum: ").append(toIndentedString(formatExclusiveMaximum)).append("\n");
+        sb.append("    formatExclusiveMinimum: ").append(toIndentedString(formatExclusiveMinimum)).append("\n");
+        sb.append("    minLength: ").append(toIndentedString(minLength)).append("\n");
+        sb.append("    maxLength: ").append(toIndentedString(maxLength)).append("\n");
+        sb.append("    minimum: ").append(toIndentedString(minimum)).append("\n");
+        sb.append("    maximum: ").append(toIndentedString(maximum)).append("\n");
+        sb.append("    not: ").append(toIndentedString(not)).append("\n");
+        sb.append("    pattern: ").append(toIndentedString(pattern)).append("\n");
+        sb.append("    contains: ").append(toIndentedString(contains)).append("\n");
+        sb.append("    items: ").append(toIndentedString(items)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `_const` to the URL query string
+        if (getConst() != null) {
+            joiner.add(getConst().toUrlQueryString(prefix + "_const" + suffix));
+        }
+
+        // add `_enum` to the URL query string
+        if (getEnum() != null) {
+            for (int i = 0; i < getEnum().size(); i++) {
+                if (getEnum().get(i) != null) {
+                    joiner.add(getEnum().get(i).toUrlQueryString(String.format("%s_enum%s%s", prefix, suffix,
+                            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+                }
+            }
+        }
+
+        // add `exclusiveMinimum` to the URL query string
+        if (getExclusiveMinimum() != null) {
+            joiner.add(getExclusiveMinimum().toUrlQueryString(prefix + "exclusiveMinimum" + suffix));
+        }
+
+        // add `exclusiveMaximum` to the URL query string
+        if (getExclusiveMaximum() != null) {
+            joiner.add(getExclusiveMaximum().toUrlQueryString(prefix + "exclusiveMaximum" + suffix));
+        }
+
+        // add `format` to the URL query string
+        if (getFormat() != null) {
+            try {
+                joiner.add(String.format("%sformat%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `formatMaximum` to the URL query string
+        if (getFormatMaximum() != null) {
+            try {
+                joiner.add(String.format("%sformatMaximum%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getFormatMaximum()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `formatMinimum` to the URL query string
+        if (getFormatMinimum() != null) {
+            try {
+                joiner.add(String.format("%sformatMinimum%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getFormatMinimum()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `formatExclusiveMaximum` to the URL query string
+        if (getFormatExclusiveMaximum() != null) {
+            try {
+                joiner.add(String.format("%sformatExclusiveMaximum%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getFormatExclusiveMaximum()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `formatExclusiveMinimum` to the URL query string
+        if (getFormatExclusiveMinimum() != null) {
+            try {
+                joiner.add(String.format("%sformatExclusiveMinimum%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getFormatExclusiveMinimum()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `minLength` to the URL query string
+        if (getMinLength() != null) {
+            try {
+                joiner.add(String.format("%sminLength%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getMinLength()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `maxLength` to the URL query string
+        if (getMaxLength() != null) {
+            try {
+                joiner.add(String.format("%smaxLength%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getMaxLength()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `minimum` to the URL query string
+        if (getMinimum() != null) {
+            joiner.add(getMinimum().toUrlQueryString(prefix + "minimum" + suffix));
+        }
+
+        // add `maximum` to the URL query string
+        if (getMaximum() != null) {
+            joiner.add(getMaximum().toUrlQueryString(prefix + "maximum" + suffix));
+        }
+
+        // add `not` to the URL query string
+        if (getNot() != null) {
+            try {
+                joiner.add(String.format("%snot%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getNot()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `pattern` to the URL query string
+        if (getPattern() != null) {
+            try {
+                joiner.add(String.format("%spattern%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getPattern()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `contains` to the URL query string
+        if (getContains() != null) {
+            joiner.add(getContains().toUrlQueryString(prefix + "contains" + suffix));
+        }
+
+        // add `items` to the URL query string
+        if (getItems() != null) {
+            joiner.add(getItems().toUrlQueryString(prefix + "items" + suffix));
+        }
+
+        // add `type` to the URL query string
+        if (getType() != null) {
+            try {
+                joiner.add(String.format("%stype%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

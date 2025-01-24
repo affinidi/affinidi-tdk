@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.apis;
 
 import com.affinidi.tdk.iota.client.ApiException;
@@ -48,7 +47,7 @@ public class PexQueryApiTest {
      * Creates a new Presentation Definition in the configuration to query data.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void createPexQueryTest() throws ApiException {
@@ -58,11 +57,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Deletes all Presentation Definition queries of a configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deletePexQueriesTest() throws ApiException {
@@ -72,11 +72,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Deletes a Presentation Definition in the configuration by ID.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void deletePexQueryByIdTest() throws ApiException {
@@ -86,11 +87,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Retrieves a Presentation Definition in the configuration by ID.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getPexQueryByIdTest() throws ApiException {
@@ -100,11 +102,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Lists all Presentation Definitions in the configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void listPexQueriesTest() throws ApiException {
@@ -115,11 +118,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Saves all Presentation Definition queries of a configuration.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void savePexQueriesTest() throws ApiException {
@@ -129,11 +133,12 @@ public class PexQueryApiTest {
 
         // TODO: test validations
     }
+
     /**
      * Updates the Presentation Definition in the configuration by ID.
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void updatePexQueryByIdTest() throws ApiException {

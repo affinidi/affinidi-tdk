@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
@@ -29,247 +28,249 @@ import java.util.StringJoiner;
 /**
  * IotaExchangeCredentialsOKCredentials
  */
-@JsonPropertyOrder({
-  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_ACCESS_KEY_ID,
-  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SECRET_KEY,
-  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SESSION_TOKEN,
-  IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_EXPIRATION
-})
+@JsonPropertyOrder({ IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_ACCESS_KEY_ID,
+        IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SECRET_KEY,
+        IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_SESSION_TOKEN,
+        IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_EXPIRATION })
 @JsonTypeName("IotaExchangeCredentialsOK_credentials")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IotaExchangeCredentialsOKCredentials {
-  public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
-  private String accessKeyId;
+    public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
+    private String accessKeyId;
 
-  public static final String JSON_PROPERTY_SECRET_KEY = "secretKey";
-  private String secretKey;
+    public static final String JSON_PROPERTY_SECRET_KEY = "secretKey";
+    private String secretKey;
 
-  public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
-  private String sessionToken;
+    public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
+    private String sessionToken;
 
-  public static final String JSON_PROPERTY_EXPIRATION = "expiration";
-  private String expiration;
+    public static final String JSON_PROPERTY_EXPIRATION = "expiration";
+    private String expiration;
 
-  public IotaExchangeCredentialsOKCredentials() {
-  }
-
-  public IotaExchangeCredentialsOKCredentials accessKeyId(String accessKeyId) {
-    
-    this.accessKeyId = accessKeyId;
-    return this;
-  }
-
-  /**
-   * Get accessKeyId
-   * @return accessKeyId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAccessKeyId() {
-    return accessKeyId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccessKeyId(String accessKeyId) {
-    this.accessKeyId = accessKeyId;
-  }
-
-  public IotaExchangeCredentialsOKCredentials secretKey(String secretKey) {
-    
-    this.secretKey = secretKey;
-    return this;
-  }
-
-  /**
-   * Get secretKey
-   * @return secretKey
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getSecretKey() {
-    return secretKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSecretKey(String secretKey) {
-    this.secretKey = secretKey;
-  }
-
-  public IotaExchangeCredentialsOKCredentials sessionToken(String sessionToken) {
-    
-    this.sessionToken = sessionToken;
-    return this;
-  }
-
-  /**
-   * Get sessionToken
-   * @return sessionToken
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getSessionToken() {
-    return sessionToken;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSessionToken(String sessionToken) {
-    this.sessionToken = sessionToken;
-  }
-
-  public IotaExchangeCredentialsOKCredentials expiration(String expiration) {
-    
-    this.expiration = expiration;
-    return this;
-  }
-
-  /**
-   * Get expiration
-   * @return expiration
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRATION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getExpiration() {
-    return expiration;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EXPIRATION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiration(String expiration) {
-    this.expiration = expiration;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    IotaExchangeCredentialsOKCredentials iotaExchangeCredentialsOKCredentials = (IotaExchangeCredentialsOKCredentials) o;
-    return Objects.equals(this.accessKeyId, iotaExchangeCredentialsOKCredentials.accessKeyId) &&
-        Objects.equals(this.secretKey, iotaExchangeCredentialsOKCredentials.secretKey) &&
-        Objects.equals(this.sessionToken, iotaExchangeCredentialsOKCredentials.sessionToken) &&
-        Objects.equals(this.expiration, iotaExchangeCredentialsOKCredentials.expiration);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(accessKeyId, secretKey, sessionToken, expiration);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IotaExchangeCredentialsOKCredentials {\n");
-    sb.append("    accessKeyId: ").append(toIndentedString(accessKeyId)).append("\n");
-    sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
-    sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
-    sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public IotaExchangeCredentialsOKCredentials() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public IotaExchangeCredentialsOKCredentials accessKeyId(String accessKeyId) {
 
-    // add `accessKeyId` to the URL query string
-    if (getAccessKeyId() != null) {
-      try {
-        joiner.add(String.format("%saccessKeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessKeyId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.accessKeyId = accessKeyId;
+        return this;
     }
 
-    // add `secretKey` to the URL query string
-    if (getSecretKey() != null) {
-      try {
-        joiner.add(String.format("%ssecretKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSecretKey()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    /**
+     * Get accessKeyId
+     *
+     * @return accessKeyId
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getAccessKeyId() {
+        return accessKeyId;
     }
 
-    // add `sessionToken` to the URL query string
-    if (getSessionToken() != null) {
-      try {
-        joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setAccessKeyId(String accessKeyId) {
+        this.accessKeyId = accessKeyId;
     }
 
-    // add `expiration` to the URL query string
-    if (getExpiration() != null) {
-      try {
-        joiner.add(String.format("%sexpiration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiration()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    public IotaExchangeCredentialsOKCredentials secretKey(String secretKey) {
+
+        this.secretKey = secretKey;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get secretKey
+     *
+     * @return secretKey
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public IotaExchangeCredentialsOKCredentials sessionToken(String sessionToken) {
+
+        this.sessionToken = sessionToken;
+        return this;
+    }
+
+    /**
+     * Get sessionToken
+     *
+     * @return sessionToken
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getSessionToken() {
+        return sessionToken;
+    }
+
+    @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
+    }
+
+    public IotaExchangeCredentialsOKCredentials expiration(String expiration) {
+
+        this.expiration = expiration;
+        return this;
+    }
+
+    /**
+     * Get expiration
+     *
+     * @return expiration
+     */
+    @javax.annotation.Nonnull
+    @JsonProperty(JSON_PROPERTY_EXPIRATION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+    public String getExpiration() {
+        return expiration;
+    }
+
+    @JsonProperty(JSON_PROPERTY_EXPIRATION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setExpiration(String expiration) {
+        this.expiration = expiration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        IotaExchangeCredentialsOKCredentials iotaExchangeCredentialsOKCredentials = (IotaExchangeCredentialsOKCredentials) o;
+        return Objects.equals(this.accessKeyId, iotaExchangeCredentialsOKCredentials.accessKeyId)
+                && Objects.equals(this.secretKey, iotaExchangeCredentialsOKCredentials.secretKey)
+                && Objects.equals(this.sessionToken, iotaExchangeCredentialsOKCredentials.sessionToken)
+                && Objects.equals(this.expiration, iotaExchangeCredentialsOKCredentials.expiration);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessKeyId, secretKey, sessionToken, expiration);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class IotaExchangeCredentialsOKCredentials {\n");
+        sb.append("    accessKeyId: ").append(toIndentedString(accessKeyId)).append("\n");
+        sb.append("    secretKey: ").append(toIndentedString(secretKey)).append("\n");
+        sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
+        sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `accessKeyId` to the URL query string
+        if (getAccessKeyId() != null) {
+            try {
+                joiner.add(String.format("%saccessKeyId%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getAccessKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `secretKey` to the URL query string
+        if (getSecretKey() != null) {
+            try {
+                joiner.add(String.format("%ssecretKey%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getSecretKey()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `sessionToken` to the URL query string
+        if (getSessionToken() != null) {
+            try {
+                joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        // add `expiration` to the URL query string
+        if (getExpiration() != null) {
+            try {
+                joiner.add(String.format("%sexpiration%s=%s", prefix, suffix,
+                        URLEncoder.encode(String.valueOf(getExpiration()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
@@ -29,123 +28,122 @@ import java.util.StringJoiner;
 /**
  * CorsLoginSessionForIdpOK
  */
-@JsonPropertyOrder({
-  CorsLoginSessionForIdpOK.JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK
-})
+@JsonPropertyOrder({ CorsLoginSessionForIdpOK.JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CorsLoginSessionForIdpOK {
-  public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK = "corsLoginSessionForIdpOk";
-  private String corsLoginSessionForIdpOk;
+    public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK = "corsLoginSessionForIdpOk";
+    private String corsLoginSessionForIdpOk;
 
-  public CorsLoginSessionForIdpOK() {
-  }
-
-  public CorsLoginSessionForIdpOK corsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
-    
-    this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
-    return this;
-  }
-
-  /**
-   * Get corsLoginSessionForIdpOk
-   * @return corsLoginSessionForIdpOk
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getCorsLoginSessionForIdpOk() {
-    return corsLoginSessionForIdpOk;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
-    this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CorsLoginSessionForIdpOK corsLoginSessionForIdpOK = (CorsLoginSessionForIdpOK) o;
-    return Objects.equals(this.corsLoginSessionForIdpOk, corsLoginSessionForIdpOK.corsLoginSessionForIdpOk);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(corsLoginSessionForIdpOk);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CorsLoginSessionForIdpOK {\n");
-    sb.append("    corsLoginSessionForIdpOk: ").append(toIndentedString(corsLoginSessionForIdpOk)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @return URL query string
-   */
-  public String toUrlQueryString() {
-    return toUrlQueryString(null);
-  }
-
-  /**
-   * Convert the instance into URL query string.
-   *
-   * @param prefix prefix of the query string
-   * @return URL query string
-   */
-  public String toUrlQueryString(String prefix) {
-    String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
-    if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
-      prefix = "";
-    } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
-      prefix = prefix + "[";
-      suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
+    public CorsLoginSessionForIdpOK() {
     }
 
-    StringJoiner joiner = new StringJoiner("&");
+    public CorsLoginSessionForIdpOK corsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
 
-    // add `corsLoginSessionForIdpOk` to the URL query string
-    if (getCorsLoginSessionForIdpOk() != null) {
-      try {
-        joiner.add(String.format("%scorsLoginSessionForIdpOk%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorsLoginSessionForIdpOk()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+        this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
+        return this;
     }
 
-    return joiner.toString();
-  }
+    /**
+     * Get corsLoginSessionForIdpOk
+     *
+     * @return corsLoginSessionForIdpOk
+     */
+    @javax.annotation.Nullable
+    @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+    public String getCorsLoginSessionForIdpOk() {
+        return corsLoginSessionForIdpOk;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCorsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
+        this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CorsLoginSessionForIdpOK corsLoginSessionForIdpOK = (CorsLoginSessionForIdpOK) o;
+        return Objects.equals(this.corsLoginSessionForIdpOk, corsLoginSessionForIdpOK.corsLoginSessionForIdpOk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(corsLoginSessionForIdpOk);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CorsLoginSessionForIdpOK {\n");
+        sb.append("    corsLoginSessionForIdpOk: ").append(toIndentedString(corsLoginSessionForIdpOk)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString() {
+        return toUrlQueryString(null);
+    }
+
+    /**
+     * Convert the instance into URL query string.
+     *
+     * @param prefix
+     *            prefix of the query string
+     *
+     * @return URL query string
+     */
+    public String toUrlQueryString(String prefix) {
+        String suffix = "";
+        String containerSuffix = "";
+        String containerPrefix = "";
+        if (prefix == null) {
+            // style=form, explode=true, e.g. /pet?name=cat&type=manx
+            prefix = "";
+        } else {
+            // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+            prefix = prefix + "[";
+            suffix = "]";
+            containerSuffix = "]";
+            containerPrefix = "[";
+        }
+
+        StringJoiner joiner = new StringJoiner("&");
+
+        // add `corsLoginSessionForIdpOk` to the URL query string
+        if (getCorsLoginSessionForIdpOk() != null) {
+            try {
+                joiner.add(String.format("%scorsLoginSessionForIdpOk%s=%s", prefix, suffix, URLEncoder
+                        .encode(String.valueOf(getCorsLoginSessionForIdpOk()), "UTF-8").replaceAll("\\+", "%20")));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen, UTF-8 is always supported
+                throw new RuntimeException(e);
+            }
+        }
+
+        return joiner.toString();
+    }
 
 }
-

@@ -22,7 +22,6 @@ import com.affinidi.tdk.credential.issuance.client.Pair;
 
 import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponse;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -33,127 +32,109 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class WellKnownApi extends BaseApi {
 
-  public WellKnownApi() {
-    super(Configuration.getDefaultApiClient());
-  }
-
-  public WellKnownApi(ApiClient apiClient) {
-    super(apiClient);
-  }
-
-  /**
-   * 
-   * 
-   * @param projectId Affinidi project id (required)
-   * @return WellKnownOpenIdCredentialIssuerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId) throws ApiException {
-    return this.getWellKnownOpenIdCredentialIssuer(projectId, Collections.emptyMap());
-  }
-
-
-  /**
-   * 
-   * 
-   * @param projectId Affinidi project id (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return WellKnownOpenIdCredentialIssuerResponse
-   * @throws ApiException if fails to make API call
-   */
-  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getWellKnownOpenIdCredentialIssuer");
+    public WellKnownApi() {
+        super(Configuration.getDefaultApiClient());
     }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{projectId}/.well-known/openid-credential-issuer"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+    public WellKnownApi(ApiClient apiClient) {
+        super(apiClient);
+    }
 
-    
-    localVarHeaderParams.putAll(additionalHeaders);
+    /**
+     *
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     *
+     * @return WellKnownOpenIdCredentialIssuerResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId)
+            throws ApiException {
+        return this.getWellKnownOpenIdCredentialIssuer(projectId, Collections.emptyMap());
+    }
 
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+    /**
+     *
+     *
+     * @param projectId
+     *            Affinidi project id (required)
+     * @param additionalHeaders
+     *            additionalHeaders for this call
+     *
+     * @return WellKnownOpenIdCredentialIssuerResponse
+     *
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId,
+            Map<String, String> additionalHeaders) throws ApiException {
+        Object localVarPostBody = null;
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        // verify the required parameter 'projectId' is set
+        if (projectId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'projectId' when calling getWellKnownOpenIdCredentialIssuer");
+        }
 
-    String[] localVarAuthNames = new String[] {  };
+        // create path and map variables
+        String localVarPath = "/v1/{projectId}/.well-known/openid-credential-issuer".replaceAll(
+                "\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
 
-    TypeReference<WellKnownOpenIdCredentialIssuerResponse> localVarReturnType = new TypeReference<WellKnownOpenIdCredentialIssuerResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        String localVarQueryParameterBaseName;
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        localVarHeaderParams.putAll(additionalHeaders);
 
-    localVarHeaderParams.putAll(additionalHeaders);
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String[] localVarContentTypes = {
 
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] {};
 
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        TypeReference<WellKnownOpenIdCredentialIssuerResponse> localVarReturnType = new TypeReference<WellKnownOpenIdCredentialIssuerResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    @Override
+    public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType,
+            Map<String, String> additionalHeaders) throws ApiException {
+        String localVarPath = url.replace(apiClient.getBaseURL(), "");
+        StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarHeaderParams.putAll(additionalHeaders);
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        return apiClient.invokeAPI(localVarPath, method, localVarQueryParams, localVarCollectionQueryParams,
+                localVarQueryStringJoiner.toString(), request, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, returnType);
+    }
 }
