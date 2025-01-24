@@ -25,17 +25,17 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for SupportedCredentialMetadataDisplayInnerLogo
+ * Model tests for SupportedCredentialMetadataItemLogo
  */
-class SupportedCredentialMetadataDisplayInnerLogoTest {
-    private final SupportedCredentialMetadataDisplayInnerLogo model = new SupportedCredentialMetadataDisplayInnerLogo();
+class SupportedCredentialMetadataItemLogoTest {
+    private final SupportedCredentialMetadataItemLogo model = new SupportedCredentialMetadataItemLogo();
 
     /**
-     * Model tests for SupportedCredentialMetadataDisplayInnerLogo
+     * Model tests for SupportedCredentialMetadataItemLogo
      */
     @Test
-    void testSupportedCredentialMetadataDisplayInnerLogo() {
-        // TODO: test SupportedCredentialMetadataDisplayInnerLogo
+    void testSupportedCredentialMetadataItemLogo() {
+        // TODO: test SupportedCredentialMetadataItemLogo
     }
 
     /**

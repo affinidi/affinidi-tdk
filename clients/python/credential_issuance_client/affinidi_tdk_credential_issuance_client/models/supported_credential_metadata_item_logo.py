@@ -22,9 +22,9 @@ import json
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
-class SupportedCredentialMetadataDisplayInnerLogo(BaseModel):
+class SupportedCredentialMetadataItemLogo(BaseModel):
     """
-    SupportedCredentialMetadataDisplayInnerLogo
+    SupportedCredentialMetadataItemLogo
     """
     url: StrictStr = Field(...)
     alt_text: Optional[StrictStr] = Field(default=None, alias="altText")
@@ -45,8 +45,8 @@ class SupportedCredentialMetadataDisplayInnerLogo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SupportedCredentialMetadataDisplayInnerLogo:
-        """Create an instance of SupportedCredentialMetadataDisplayInnerLogo from a JSON string"""
+    def from_json(cls, json_str: str) -> SupportedCredentialMetadataItemLogo:
+        """Create an instance of SupportedCredentialMetadataItemLogo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -64,15 +64,15 @@ class SupportedCredentialMetadataDisplayInnerLogo(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SupportedCredentialMetadataDisplayInnerLogo:
-        """Create an instance of SupportedCredentialMetadataDisplayInnerLogo from a dict"""
+    def from_dict(cls, obj: dict) -> SupportedCredentialMetadataItemLogo:
+        """Create an instance of SupportedCredentialMetadataItemLogo from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SupportedCredentialMetadataDisplayInnerLogo.parse_obj(obj)
+            return SupportedCredentialMetadataItemLogo.parse_obj(obj)
 
-        _obj = SupportedCredentialMetadataDisplayInnerLogo.parse_obj({
+        _obj = SupportedCredentialMetadataItemLogo.parse_obj({
             "url": obj.get("url"),
             "alt_text": obj.get("altText")
         })

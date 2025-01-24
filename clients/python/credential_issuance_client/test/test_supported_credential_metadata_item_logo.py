@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_display_inner_logo import SupportedCredentialMetadataDisplayInnerLogo  # noqa: E501
+from affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_item_logo import SupportedCredentialMetadataItemLogo  # noqa: E501
 
-class TestSupportedCredentialMetadataDisplayInnerLogo(unittest.TestCase):
-    """SupportedCredentialMetadataDisplayInnerLogo unit test stubs"""
+class TestSupportedCredentialMetadataItemLogo(unittest.TestCase):
+    """SupportedCredentialMetadataItemLogo unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,27 +27,27 @@ class TestSupportedCredentialMetadataDisplayInnerLogo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SupportedCredentialMetadataDisplayInnerLogo:
-        """Test SupportedCredentialMetadataDisplayInnerLogo
+    def make_instance(self, include_optional) -> SupportedCredentialMetadataItemLogo:
+        """Test SupportedCredentialMetadataItemLogo
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `SupportedCredentialMetadataDisplayInnerLogo`
+        # uncomment below to create an instance of `SupportedCredentialMetadataItemLogo`
         """
-        model = SupportedCredentialMetadataDisplayInnerLogo()  # noqa: E501
+        model = SupportedCredentialMetadataItemLogo()  # noqa: E501
         if include_optional:
-            return SupportedCredentialMetadataDisplayInnerLogo(
+            return SupportedCredentialMetadataItemLogo(
                 url = '',
                 alt_text = ''
             )
         else:
-            return SupportedCredentialMetadataDisplayInnerLogo(
+            return SupportedCredentialMetadataItemLogo(
                 url = '',
         )
         """
 
-    def testSupportedCredentialMetadataDisplayInnerLogo(self):
-        """Test SupportedCredentialMetadataDisplayInnerLogo"""
+    def testSupportedCredentialMetadataItemLogo(self):
+        """Test SupportedCredentialMetadataItemLogo"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
