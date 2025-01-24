@@ -222,6 +222,70 @@ export type ChangeStatusForbiddenErrorHttpStatusCodeEnum =
   (typeof ChangeStatusForbiddenErrorHttpStatusCodeEnum)[keyof typeof ChangeStatusForbiddenErrorHttpStatusCodeEnum]
 
 /**
+ * Webhook setting to notify developers for claimed VC
+ * @export
+ * @interface CisConfigurationWebhookSetting
+ */
+export interface CisConfigurationWebhookSetting {
+  /**
+   * flag to enabled or disabled the webhook
+   * @type {boolean}
+   * @memberof CisConfigurationWebhookSetting
+   */
+  enabled: boolean
+  /**
+   *
+   * @type {CisConfigurationWebhookSettingEndpoint}
+   * @memberof CisConfigurationWebhookSetting
+   */
+  endpoint?: CisConfigurationWebhookSettingEndpoint
+}
+/**
+ *
+ * @export
+ * @interface CisConfigurationWebhookSettingEndpoint
+ */
+export interface CisConfigurationWebhookSettingEndpoint {
+  /**
+   * url endpoint where notification will be sent with issuanceId after user has claimed the VC related to issuanceId
+   * @type {string}
+   * @memberof CisConfigurationWebhookSettingEndpoint
+   */
+  url?: string
+}
+/**
+ * List of claimed credential
+ * @export
+ * @interface ClaimedCredentialListResponse
+ */
+export interface ClaimedCredentialListResponse {
+  /**
+   * list of credentials
+   * @type {Array<{ [key: string]: any; }>}
+   * @memberof ClaimedCredentialListResponse
+   */
+  credentials?: Array<{ [key: string]: any }>
+  /**
+   * for pagination to fetch next set of records
+   * @type {string}
+   * @memberof ClaimedCredentialListResponse
+   */
+  next?: string
+}
+/**
+ * Response for getting the claimed VC
+ * @export
+ * @interface ClaimedCredentialResponse
+ */
+export interface ClaimedCredentialResponse {
+  /**
+   * claimed credential
+   * @type {{ [key: string]: any; }}
+   * @memberof ClaimedCredentialResponse
+   */
+  credential?: { [key: string]: any }
+}
+/**
  *
  * @export
  * @interface CorsGenerateCredentialsOK
@@ -237,6 +301,19 @@ export interface CorsGenerateCredentialsOK {
 /**
  *
  * @export
+ * @interface CorsGetClaimedCredentialsOK
+ */
+export interface CorsGetClaimedCredentialsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetClaimedCredentialsOK
+   */
+  corsGetClaimedCredentialsOk?: string
+}
+/**
+ *
+ * @export
  * @interface CorsGetCredentialOfferOK
  */
 export interface CorsGetCredentialOfferOK {
@@ -246,6 +323,19 @@ export interface CorsGetCredentialOfferOK {
    * @memberof CorsGetCredentialOfferOK
    */
   corsGetCredentialOfferOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsGetIssuanceIdClaimedCredentialOK
+ */
+export interface CorsGetIssuanceIdClaimedCredentialOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetIssuanceIdClaimedCredentialOK
+   */
+  corsGetIssuanceIdClaimedCredentialOk?: string
 }
 /**
  *
@@ -344,6 +434,12 @@ export interface CreateIssuanceConfigInput {
    * @memberof CreateIssuanceConfigInput
    */
   returnUris?: Array<string>
+  /**
+   *
+   * @type {CisConfigurationWebhookSetting}
+   * @memberof CreateIssuanceConfigInput
+   */
+  webhook?: CisConfigurationWebhookSetting
 }
 
 export const CreateIssuanceConfigInputFormatEnum = {
@@ -1418,6 +1514,12 @@ export interface IssuanceConfigDto {
    * @memberof IssuanceConfigDto
    */
   returnUris?: Array<string>
+  /**
+   *
+   * @type {CisConfigurationWebhookSetting}
+   * @memberof IssuanceConfigDto
+   */
+  webhook?: CisConfigurationWebhookSetting
 }
 
 export const IssuanceConfigDtoFormatEnum = {
@@ -2178,6 +2280,12 @@ export interface UpdateIssuanceConfigInput {
    * @memberof UpdateIssuanceConfigInput
    */
   returnUris?: Array<string>
+  /**
+   *
+   * @type {CisConfigurationWebhookSetting}
+   * @memberof UpdateIssuanceConfigInput
+   */
+  webhook?: CisConfigurationWebhookSetting
 }
 
 export const UpdateIssuanceConfigInputFormatEnum = {
@@ -3087,6 +3195,171 @@ export const CredentialsApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Get claimed credential in the specified range
+     * @summary Get claimed credential in the specified range
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} rangeStartTime
+     * @param {string} [rangeEndTime]
+     * @param {string} [next]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClaimedCredentials: async (
+      projectId: string,
+      configurationId: string,
+      rangeStartTime: string,
+      rangeEndTime?: string,
+      next?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('getClaimedCredentials', 'projectId', projectId)
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'getClaimedCredentials',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'rangeStartTime' is not null or undefined
+      assertParamExists(
+        'getClaimedCredentials',
+        'rangeStartTime',
+        rangeStartTime,
+      )
+      const localVarPath =
+        `/v1/{projectId}/configurations/{configurationId}/credentials`
+          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (rangeStartTime !== undefined) {
+        localVarQueryParameter['rangeStartTime'] = rangeStartTime
+      }
+
+      if (rangeEndTime !== undefined) {
+        localVarQueryParameter['rangeEndTime'] = rangeEndTime
+      }
+
+      if (next !== undefined) {
+        localVarQueryParameter['next'] = next
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Get claimed VC linked to the issuanceId
+     * @summary Get claimed VC linked to the issuanceId
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} issuanceId issuance id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getIssuanceIdClaimedCredential: async (
+      projectId: string,
+      configurationId: string,
+      issuanceId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists(
+        'getIssuanceIdClaimedCredential',
+        'projectId',
+        projectId,
+      )
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'getIssuanceIdClaimedCredential',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'issuanceId' is not null or undefined
+      assertParamExists(
+        'getIssuanceIdClaimedCredential',
+        'issuanceId',
+        issuanceId,
+      )
+      const localVarPath =
+        `/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials`
+          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'issuanceId'}}`, encodeURIComponent(String(issuanceId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -3134,6 +3407,92 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
+    /**
+     * Get claimed credential in the specified range
+     * @summary Get claimed credential in the specified range
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} rangeStartTime
+     * @param {string} [rangeEndTime]
+     * @param {string} [next]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getClaimedCredentials(
+      projectId: string,
+      configurationId: string,
+      rangeStartTime: string,
+      rangeEndTime?: string,
+      next?: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ClaimedCredentialListResponse>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getClaimedCredentials(
+          projectId,
+          configurationId,
+          rangeStartTime,
+          rangeEndTime,
+          next,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['CredentialsApi.getClaimedCredentials']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Get claimed VC linked to the issuanceId
+     * @summary Get claimed VC linked to the issuanceId
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} issuanceId issuance id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getIssuanceIdClaimedCredential(
+      projectId: string,
+      configurationId: string,
+      issuanceId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ClaimedCredentialResponse>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getIssuanceIdClaimedCredential(
+          projectId,
+          configurationId,
+          issuanceId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['CredentialsApi.getIssuanceIdClaimedCredential']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
   }
 }
 
@@ -3164,6 +3523,60 @@ export const CredentialsApiFactory = function (
         .generateCredentials(projectId, createCredentialInput, options)
         .then((request) => request(axios, basePath))
     },
+    /**
+     * Get claimed credential in the specified range
+     * @summary Get claimed credential in the specified range
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} rangeStartTime
+     * @param {string} [rangeEndTime]
+     * @param {string} [next]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getClaimedCredentials(
+      projectId: string,
+      configurationId: string,
+      rangeStartTime: string,
+      rangeEndTime?: string,
+      next?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ClaimedCredentialListResponse> {
+      return localVarFp
+        .getClaimedCredentials(
+          projectId,
+          configurationId,
+          rangeStartTime,
+          rangeEndTime,
+          next,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Get claimed VC linked to the issuanceId
+     * @summary Get claimed VC linked to the issuanceId
+     * @param {string} projectId project id
+     * @param {string} configurationId configuration id
+     * @param {string} issuanceId issuance id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getIssuanceIdClaimedCredential(
+      projectId: string,
+      configurationId: string,
+      issuanceId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ClaimedCredentialResponse> {
+      return localVarFp
+        .getIssuanceIdClaimedCredential(
+          projectId,
+          configurationId,
+          issuanceId,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -3189,6 +3602,64 @@ export class CredentialsApi extends BaseAPI {
   ) {
     return CredentialsApiFp(this.configuration)
       .generateCredentials(projectId, createCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get claimed credential in the specified range
+   * @summary Get claimed credential in the specified range
+   * @param {string} projectId project id
+   * @param {string} configurationId configuration id
+   * @param {string} rangeStartTime
+   * @param {string} [rangeEndTime]
+   * @param {string} [next]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CredentialsApi
+   */
+  public getClaimedCredentials(
+    projectId: string,
+    configurationId: string,
+    rangeStartTime: string,
+    rangeEndTime?: string,
+    next?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return CredentialsApiFp(this.configuration)
+      .getClaimedCredentials(
+        projectId,
+        configurationId,
+        rangeStartTime,
+        rangeEndTime,
+        next,
+        options,
+      )
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Get claimed VC linked to the issuanceId
+   * @summary Get claimed VC linked to the issuanceId
+   * @param {string} projectId project id
+   * @param {string} configurationId configuration id
+   * @param {string} issuanceId issuance id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CredentialsApi
+   */
+  public getIssuanceIdClaimedCredential(
+    projectId: string,
+    configurationId: string,
+    issuanceId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return CredentialsApiFp(this.configuration)
+      .getIssuanceIdClaimedCredential(
+        projectId,
+        configurationId,
+        issuanceId,
+        options,
+      )
       .then((request) => request(this.axios, this.basePath))
   }
 }

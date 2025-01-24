@@ -13,6 +13,7 @@
 
 package com.affinidi.tdk.credential.issuance.client.models;
 
+import com.affinidi.tdk.credential.issuance.client.models.CisConfigurationWebhookSetting;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSupportedObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -105,6 +106,14 @@ class CreateIssuanceConfigInputTest {
     @Test
     void returnUrisTest() {
         // TODO: test returnUris
+    }
+
+    /**
+     * Test the property 'webhook'
+     */
+    @Test
+    void webhookTest() {
+        // TODO: test webhook
     }
 
 }

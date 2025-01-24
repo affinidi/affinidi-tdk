@@ -30,7 +30,7 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
   @override
   final String modifiedBy;
   @override
-  final String description;
+  final String? description;
   @override
   final NodeType type;
   @override
@@ -52,7 +52,7 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
       required this.modifiedAt,
       required this.createdBy,
       required this.modifiedBy,
-      required this.description,
+      this.description,
       required this.type,
       required this.consumedFileStorage})
       : super._() {
@@ -71,8 +71,6 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
         createdBy, r'ConsumerMetadataDto', 'createdBy');
     BuiltValueNullFieldError.checkNotNull(
         modifiedBy, r'ConsumerMetadataDto', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'ConsumerMetadataDto', 'description');
     BuiltValueNullFieldError.checkNotNull(type, r'ConsumerMetadataDto', 'type');
     BuiltValueNullFieldError.checkNotNull(
         consumedFileStorage, r'ConsumerMetadataDto', 'consumedFileStorage');
@@ -272,8 +270,7 @@ class ConsumerMetadataDtoBuilder
               createdBy, r'ConsumerMetadataDto', 'createdBy'),
           modifiedBy: BuiltValueNullFieldError.checkNotNull(
               modifiedBy, r'ConsumerMetadataDto', 'modifiedBy'),
-          description: BuiltValueNullFieldError.checkNotNull(
-              description, r'ConsumerMetadataDto', 'description'),
+          description: description,
           type: BuiltValueNullFieldError.checkNotNull(
               type, r'ConsumerMetadataDto', 'type'),
           consumedFileStorage: BuiltValueNullFieldError.checkNotNull(

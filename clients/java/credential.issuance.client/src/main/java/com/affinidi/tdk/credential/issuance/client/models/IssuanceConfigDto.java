@@ -15,6 +15,7 @@ package com.affinidi.tdk.credential.issuance.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.credential.issuance.client.models.CisConfigurationWebhookSetting;
 import com.affinidi.tdk.credential.issuance.client.models.CredentialSupportedObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,7 +50,8 @@ import java.util.StringJoiner;
   IssuanceConfigDto.JSON_PROPERTY_CREDENTIAL_SUPPORTED,
   IssuanceConfigDto.JSON_PROPERTY_ISSUER_METADATA,
   IssuanceConfigDto.JSON_PROPERTY_VERSION,
-  IssuanceConfigDto.JSON_PROPERTY_RETURN_URIS
+  IssuanceConfigDto.JSON_PROPERTY_RETURN_URIS,
+  IssuanceConfigDto.JSON_PROPERTY_WEBHOOK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class IssuanceConfigDto {
@@ -128,6 +130,9 @@ public class IssuanceConfigDto {
 
   public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
   private List<String> returnUris = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_WEBHOOK = "webhook";
+  private CisConfigurationWebhookSetting webhook;
 
   public IssuanceConfigDto() {
   }
@@ -481,6 +486,31 @@ public class IssuanceConfigDto {
     this.returnUris = returnUris;
   }
 
+  public IssuanceConfigDto webhook(CisConfigurationWebhookSetting webhook) {
+    
+    this.webhook = webhook;
+    return this;
+  }
+
+  /**
+   * Get webhook
+   * @return webhook
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public CisConfigurationWebhookSetting getWebhook() {
+    return webhook;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWebhook(CisConfigurationWebhookSetting webhook) {
+    this.webhook = webhook;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -502,12 +532,13 @@ public class IssuanceConfigDto {
         Objects.equals(this.credentialSupported, issuanceConfigDto.credentialSupported) &&
         Objects.equals(this.issuerMetadata, issuanceConfigDto.issuerMetadata) &&
         Objects.equals(this.version, issuanceConfigDto.version) &&
-        Objects.equals(this.returnUris, issuanceConfigDto.returnUris);
+        Objects.equals(this.returnUris, issuanceConfigDto.returnUris) &&
+        Objects.equals(this.webhook, issuanceConfigDto.webhook);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, issuerDid, issuerWalletId, credentialOfferDuration, cNonceDuration, format, issuerUri, credentialSupported, issuerMetadata, version, returnUris);
+    return Objects.hash(id, name, description, issuerDid, issuerWalletId, credentialOfferDuration, cNonceDuration, format, issuerUri, credentialSupported, issuerMetadata, version, returnUris, webhook);
   }
 
   @Override
@@ -527,6 +558,7 @@ public class IssuanceConfigDto {
     sb.append("    issuerMetadata: ").append(toIndentedString(issuerMetadata)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    returnUris: ").append(toIndentedString(returnUris)).append("\n");
+    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -710,6 +742,11 @@ public class IssuanceConfigDto {
           throw new RuntimeException(e);
         }
       }
+    }
+
+    // add `webhook` to the URL query string
+    if (getWebhook() != null) {
+      joiner.add(getWebhook().toUrlQueryString(prefix + "webhook" + suffix));
     }
 
     return joiner.toString();

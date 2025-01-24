@@ -2,22 +2,22 @@
 
 ## Properties
 
-| Name                      | Type                            | Description                                                    | Notes      |
-| ------------------------- | ------------------------------- | -------------------------------------------------------------- | ---------- |
-| **node_id**               | **str**                         |                                                                |
-| **status**                | [**NodeStatus**](NodeStatus.md) |                                                                |
-| **file_count**            | **float**                       |                                                                | [optional] |
-| **folder_count**          | **float**                       |                                                                | [optional] |
-| **profile_count**         | **float**                       |                                                                | [optional] |
-| **name**                  | **str**                         |                                                                |
-| **consumer_id**           | **str**                         |                                                                |
-| **created_at**            | **str**                         | [GEN] ISO 8601 string of the creation date/time the entity     |
-| **modified_at**           | **str**                         | [GEN] ISO 8601 string of the modification date/time the entity |
-| **created_by**            | **str**                         | [GEN] Identifier of the user who created the entity            |
-| **modified_by**           | **str**                         | [GEN] Identifier of the user who last updated the entity       |
-| **description**           | **str**                         | Description of the node                                        |
-| **type**                  | [**NodeType**](NodeType.md)     |                                                                |
-| **consumed_file_storage** | **float**                       | Tracks the amount of bytes used by the stored data.            |
+| Name                      | Type                            | Description                                         | Notes      |
+| ------------------------- | ------------------------------- | --------------------------------------------------- | ---------- |
+| **node_id**               | **str**                         |                                                     |
+| **status**                | [**NodeStatus**](NodeStatus.md) |                                                     |
+| **file_count**            | **float**                       |                                                     | [optional] |
+| **folder_count**          | **float**                       |                                                     | [optional] |
+| **profile_count**         | **float**                       |                                                     | [optional] |
+| **name**                  | **str**                         |                                                     |
+| **consumer_id**           | **str**                         |                                                     |
+| **created_at**            | **str**                         | creation date/time                                  |
+| **modified_at**           | **str**                         | modification date/time                              |
+| **created_by**            | **str**                         | Identifier of the user who created                  |
+| **modified_by**           | **str**                         | Identifier of the user who last updated             |
+| **description**           | **str**                         | Description of the node                             | [optional] |
+| **type**                  | [**NodeType**](NodeType.md)     |                                                     |
+| **consumed_file_storage** | **float**                       | Tracks the amount of bytes used by the stored data. |
 
 ## Example
 

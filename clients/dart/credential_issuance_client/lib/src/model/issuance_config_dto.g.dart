@@ -96,6 +96,8 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
   final int? version;
   @override
   final BuiltList<String>? returnUris;
+  @override
+  final CisConfigurationWebhookSetting? webhook;
 
   factory _$IssuanceConfigDto(
           [void Function(IssuanceConfigDtoBuilder)? updates]) =>
@@ -114,7 +116,8 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
       this.credentialSupported,
       this.issuerMetadata,
       this.version,
-      this.returnUris})
+      this.returnUris,
+      this.webhook})
       : super._();
 
   @override
@@ -141,7 +144,8 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
         credentialSupported == other.credentialSupported &&
         issuerMetadata == other.issuerMetadata &&
         version == other.version &&
-        returnUris == other.returnUris;
+        returnUris == other.returnUris &&
+        webhook == other.webhook;
   }
 
   @override
@@ -160,6 +164,7 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
     _$hash = $jc(_$hash, issuerMetadata.hashCode);
     _$hash = $jc(_$hash, version.hashCode);
     _$hash = $jc(_$hash, returnUris.hashCode);
+    _$hash = $jc(_$hash, webhook.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -179,7 +184,8 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
           ..add('credentialSupported', credentialSupported)
           ..add('issuerMetadata', issuerMetadata)
           ..add('version', version)
-          ..add('returnUris', returnUris))
+          ..add('returnUris', returnUris)
+          ..add('webhook', webhook))
         .toString();
   }
 }
@@ -251,6 +257,12 @@ class IssuanceConfigDtoBuilder
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
+  CisConfigurationWebhookSettingBuilder? _webhook;
+  CisConfigurationWebhookSettingBuilder get webhook =>
+      _$this._webhook ??= new CisConfigurationWebhookSettingBuilder();
+  set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
+      _$this._webhook = webhook;
+
   IssuanceConfigDtoBuilder() {
     IssuanceConfigDto._defaults(this);
   }
@@ -271,6 +283,7 @@ class IssuanceConfigDtoBuilder
       _issuerMetadata = $v.issuerMetadata?.toBuilder();
       _version = $v.version;
       _returnUris = $v.returnUris?.toBuilder();
+      _webhook = $v.webhook?.toBuilder();
       _$v = null;
     }
     return this;
@@ -308,6 +321,7 @@ class IssuanceConfigDtoBuilder
             issuerMetadata: _issuerMetadata?.build(),
             version: version,
             returnUris: _returnUris?.build(),
+            webhook: _webhook?.build(),
           );
     } catch (_) {
       late String _$failedField;
@@ -319,6 +333,8 @@ class IssuanceConfigDtoBuilder
 
         _$failedField = 'returnUris';
         _returnUris?.build();
+        _$failedField = 'webhook';
+        _webhook?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'IssuanceConfigDto', _$failedField, e.toString());

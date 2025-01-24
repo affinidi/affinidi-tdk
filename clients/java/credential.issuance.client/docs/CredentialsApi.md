@@ -2,9 +2,11 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                           | HTTP request                        | Description |
-| ---------------------------------------------------------------- | ----------------------------------- | ----------- |
-| [**generateCredentials**](CredentialsApi.md#generateCredentials) | **POST** /v1/{projectId}/credential |             |
+| Method                                                                                 | HTTP request                                                                                | Description                                   |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                               |
+| [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
+| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
 
 ## generateCredentials
 
@@ -76,3 +78,161 @@ public class Example {
 | **200**     | Ok                | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError   | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **401**     | UnauthorizedError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+## getClaimedCredentials
+
+> ClaimedCredentialListResponse getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next)
+
+Get claimed credential in the specified range
+
+Get claimed credential in the specified range
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.ApiException;
+import com.affinidi.tdk.credential.issuance.client.Configuration;
+import com.affinidi.tdk.credential.issuance.client.auth.*;
+import com.affinidi.tdk.credential.issuance.client.models.*;
+import com.affinidi.tdk.credential.issuance.client.apis.CredentialsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        CredentialsApi apiInstance = new CredentialsApi(defaultClient);
+        String projectId = "projectId_example"; // String | project id
+        String configurationId = "configurationId_example"; // String | configuration id
+        String rangeStartTime = "rangeStartTime_example"; // String |
+        String rangeEndTime = "rangeEndTime_example"; // String |
+        String next = "next_example"; // String |
+        try {
+            ClaimedCredentialListResponse result = apiInstance.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CredentialsApi#getClaimedCredentials");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                | Type       | Description      | Notes      |
+| ------------------- | ---------- | ---------------- | ---------- |
+| **projectId**       | **String** | project id       |            |
+| **configurationId** | **String** | configuration id |            |
+| **rangeStartTime**  | **String** |                  |            |
+| **rangeEndTime**    | **String** |                  | [optional] |
+| **next**            | **String** |                  | [optional] |
+
+### Return type
+
+[**ClaimedCredentialListResponse**](ClaimedCredentialListResponse.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Ok              | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **404**     | NotFoundError   | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+## getIssuanceIdClaimedCredential
+
+> ClaimedCredentialResponse getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId)
+
+Get claimed VC linked to the issuanceId
+
+Get claimed VC linked to the issuanceId
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.ApiException;
+import com.affinidi.tdk.credential.issuance.client.Configuration;
+import com.affinidi.tdk.credential.issuance.client.auth.*;
+import com.affinidi.tdk.credential.issuance.client.models.*;
+import com.affinidi.tdk.credential.issuance.client.apis.CredentialsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        CredentialsApi apiInstance = new CredentialsApi(defaultClient);
+        String projectId = "projectId_example"; // String | project id
+        String configurationId = "configurationId_example"; // String | configuration id
+        String issuanceId = "issuanceId_example"; // String | issuance id
+        try {
+            ClaimedCredentialResponse result = apiInstance.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CredentialsApi#getIssuanceIdClaimedCredential");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                | Type       | Description      | Notes |
+| ------------------- | ---------- | ---------------- | ----- |
+| **projectId**       | **String** | project id       |       |
+| **configurationId** | **String** | configuration id |       |
+| **issuanceId**      | **String** | issuance id      |       |
+
+### Return type
+
+[**ClaimedCredentialResponse**](ClaimedCredentialResponse.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Ok              | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **404**     | NotFoundError   | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |

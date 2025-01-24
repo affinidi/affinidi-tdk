@@ -22,6 +22,10 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 
+from typing import Optional
+
+from affinidi_tdk_credential_issuance_client.models.claimed_credential_list_response import ClaimedCredentialListResponse
+from affinidi_tdk_credential_issuance_client.models.claimed_credential_response import ClaimedCredentialResponse
 from affinidi_tdk_credential_issuance_client.models.create_credential_input import CreateCredentialInput
 from affinidi_tdk_credential_issuance_client.models.credential_response import CredentialResponse
 
@@ -187,6 +191,338 @@ class CredentialsApi:
 
         return self.api_client.call_api(
             '/v1/{projectId}/credential', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_claimed_credentials(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, next : Optional[StrictStr] = None, **kwargs) -> ClaimedCredentialListResponse:  # noqa: E501
+        """Get claimed credential in the specified range  # noqa: E501
+
+        Get claimed credential in the specified range  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time, next, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: project id (required)
+        :type project_id: str
+        :param configuration_id: configuration id (required)
+        :type configuration_id: str
+        :param range_start_time: (required)
+        :type range_start_time: str
+        :param range_end_time:
+        :type range_end_time: str
+        :param next:
+        :type next: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ClaimedCredentialListResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_claimed_credentials_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, next, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_claimed_credentials_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, next : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Get claimed credential in the specified range  # noqa: E501
+
+        Get claimed credential in the specified range  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, next, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: project id (required)
+        :type project_id: str
+        :param configuration_id: configuration id (required)
+        :type configuration_id: str
+        :param range_start_time: (required)
+        :type range_start_time: str
+        :param range_end_time:
+        :type range_end_time: str
+        :param next:
+        :type next: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ClaimedCredentialListResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'project_id',
+            'configuration_id',
+            'range_start_time',
+            'range_end_time',
+            'next'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_claimed_credentials" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['project_id'] is not None:
+            _path_params['projectId'] = _params['project_id']
+
+        if _params['configuration_id'] is not None:
+            _path_params['configurationId'] = _params['configuration_id']
+
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('range_start_time') is not None:  # noqa: E501
+            _query_params.append(('rangeStartTime', _params['range_start_time']))
+
+        if _params.get('range_end_time') is not None:  # noqa: E501
+            _query_params.append(('rangeEndTime', _params['range_end_time']))
+
+        if _params.get('next') is not None:  # noqa: E501
+            _query_params.append(('next', _params['next']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ClaimedCredentialListResponse",
+            '400': "InvalidParameterError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/{projectId}/configurations/{configurationId}/credentials', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_issuance_id_claimed_credential(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], issuance_id : Annotated[StrictStr, Field(..., description="issuance id")], **kwargs) -> ClaimedCredentialResponse:  # noqa: E501
+        """Get claimed VC linked to the issuanceId  # noqa: E501
+
+        Get claimed VC linked to the issuanceId  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_issuance_id_claimed_credential(project_id, configuration_id, issuance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: project id (required)
+        :type project_id: str
+        :param configuration_id: configuration id (required)
+        :type configuration_id: str
+        :param issuance_id: issuance id (required)
+        :type issuance_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ClaimedCredentialResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_issuance_id_claimed_credential_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_issuance_id_claimed_credential_with_http_info(project_id, configuration_id, issuance_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_issuance_id_claimed_credential_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], issuance_id : Annotated[StrictStr, Field(..., description="issuance id")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Get claimed VC linked to the issuanceId  # noqa: E501
+
+        Get claimed VC linked to the issuanceId  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_issuance_id_claimed_credential_with_http_info(project_id, configuration_id, issuance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param project_id: project id (required)
+        :type project_id: str
+        :param configuration_id: configuration id (required)
+        :type configuration_id: str
+        :param issuance_id: issuance id (required)
+        :type issuance_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ClaimedCredentialResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'project_id',
+            'configuration_id',
+            'issuance_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_issuance_id_claimed_credential" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['project_id'] is not None:
+            _path_params['projectId'] = _params['project_id']
+
+        if _params['configuration_id'] is not None:
+            _path_params['configurationId'] = _params['configuration_id']
+
+        if _params['issuance_id'] is not None:
+            _path_params['issuanceId'] = _params['issuance_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ClaimedCredentialResponse",
+            '400': "InvalidParameterError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials', 'GET',
             _path_params,
             _query_params,
             _header_params,

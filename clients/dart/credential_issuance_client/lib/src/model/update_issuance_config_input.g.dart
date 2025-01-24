@@ -95,6 +95,8 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
   final BuiltMap<String, JsonObject?>? issuerMetadata;
   @override
   final BuiltList<String>? returnUris;
+  @override
+  final CisConfigurationWebhookSetting? webhook;
 
   factory _$UpdateIssuanceConfigInput(
           [void Function(UpdateIssuanceConfigInputBuilder)? updates]) =>
@@ -109,7 +111,8 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
       this.issuerUri,
       this.credentialSupported,
       this.issuerMetadata,
-      this.returnUris})
+      this.returnUris,
+      this.webhook})
       : super._();
 
   @override
@@ -133,7 +136,8 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
         issuerUri == other.issuerUri &&
         credentialSupported == other.credentialSupported &&
         issuerMetadata == other.issuerMetadata &&
-        returnUris == other.returnUris;
+        returnUris == other.returnUris &&
+        webhook == other.webhook;
   }
 
   @override
@@ -148,6 +152,7 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
     _$hash = $jc(_$hash, credentialSupported.hashCode);
     _$hash = $jc(_$hash, issuerMetadata.hashCode);
     _$hash = $jc(_$hash, returnUris.hashCode);
+    _$hash = $jc(_$hash, webhook.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -163,7 +168,8 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
           ..add('issuerUri', issuerUri)
           ..add('credentialSupported', credentialSupported)
           ..add('issuerMetadata', issuerMetadata)
-          ..add('returnUris', returnUris))
+          ..add('returnUris', returnUris)
+          ..add('webhook', webhook))
         .toString();
   }
 }
@@ -220,6 +226,12 @@ class UpdateIssuanceConfigInputBuilder
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
+  CisConfigurationWebhookSettingBuilder? _webhook;
+  CisConfigurationWebhookSettingBuilder get webhook =>
+      _$this._webhook ??= new CisConfigurationWebhookSettingBuilder();
+  set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
+      _$this._webhook = webhook;
+
   UpdateIssuanceConfigInputBuilder() {
     UpdateIssuanceConfigInput._defaults(this);
   }
@@ -236,6 +248,7 @@ class UpdateIssuanceConfigInputBuilder
       _credentialSupported = $v.credentialSupported?.toBuilder();
       _issuerMetadata = $v.issuerMetadata?.toBuilder();
       _returnUris = $v.returnUris?.toBuilder();
+      _webhook = $v.webhook?.toBuilder();
       _$v = null;
     }
     return this;
@@ -269,6 +282,7 @@ class UpdateIssuanceConfigInputBuilder
             credentialSupported: _credentialSupported?.build(),
             issuerMetadata: _issuerMetadata?.build(),
             returnUris: _returnUris?.build(),
+            webhook: _webhook?.build(),
           );
     } catch (_) {
       late String _$failedField;
@@ -279,6 +293,8 @@ class UpdateIssuanceConfigInputBuilder
         _issuerMetadata?.build();
         _$failedField = 'returnUris';
         _returnUris?.build();
+        _$failedField = 'webhook';
+        _webhook?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'UpdateIssuanceConfigInput', _$failedField, e.toString());
