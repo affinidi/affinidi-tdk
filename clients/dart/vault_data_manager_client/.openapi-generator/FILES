@@ -1,4 +1,6 @@
 .gitignore
+.pubignore
+LICENSE
 README.md
 analysis_options.yaml
 doc/AwsCredentialExchangeOperationOK.md
@@ -112,6 +114,7 @@ lib/src/model/update_node_input.dart
 lib/src/model/update_profile_data_input.dart
 lib/src/model/update_profile_data_ok.dart
 lib/src/serializers.dart
+project.json
 pubspec.yaml
 test/aws_credential_exchange_operation_ok_test.dart
 test/config_api_test.dart
