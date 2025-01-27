@@ -341,11 +341,4 @@ public class AuthProvider {
     public String getProjectScopeToken() {
         return projectScopeToken;
     }
-
-    /**
-     * @return String
-     */
-    void setProjectScopeToken(String projectScopeToken) {
-        this.projectScopeToken = projectScopeToken;
-    }
 }

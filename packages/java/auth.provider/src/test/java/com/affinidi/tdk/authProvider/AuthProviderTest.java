@@ -165,11 +165,8 @@ public class AuthProviderTest {
                     .willReturn(okJson(API_KEY_RESPONSE_JSON)));
 
             // act
-            Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                final AuthProvider provider = buildAuthProvider(TEST_KEY);
-                provider.setProjectScopeToken("test-project-scope-token");
-                provider.fetchProjectScopedToken();
-            });
+            Exception exception = assertThrows(PSTGenerationException.class,
+                    () -> buildAuthProvider(TEST_KEY).fetchProjectScopedToken());
 
             // assert
             assertTrue(exception.getMessage()
@@ -220,8 +217,6 @@ public class AuthProviderTest {
 
             // act
             final AuthProvider provider = buildAuthProvider(TEST_KEY);
-            // provider.setApiGatewayUrl(apiUrl);
-            provider.setProjectScopeToken("test-project-scope-token");
 
             // assert
             assertTrue(provider.shouldRefreshToken());
@@ -235,7 +230,6 @@ public class AuthProviderTest {
             givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
                     .willReturn(okJson(API_KEY_RESPONSE_JSON)));
             final AuthProvider provider = buildAuthProvider(TEST_KEY);
-            provider.setProjectScopeToken("test-project-scope-token");
 
             // act and assert
             assertTrue(provider.shouldRefreshToken());
