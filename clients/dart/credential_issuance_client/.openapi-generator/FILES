@@ -1,4 +1,6 @@
 .gitignore
+.pubignore
+LICENSE
 README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
@@ -160,6 +162,7 @@ lib/src/model/vc_claimed_error.dart
 lib/src/model/well_known_open_id_credential_issuer_response.dart
 lib/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart
 lib/src/serializers.dart
+project.json
 pubspec.yaml
 test/action_forbidden_error_details_inner_test.dart
 test/action_forbidden_error_test.dart
