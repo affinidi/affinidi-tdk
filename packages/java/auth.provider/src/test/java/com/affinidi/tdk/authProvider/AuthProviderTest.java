@@ -61,8 +61,10 @@ public class AuthProviderTest {
     static {
         try {
             TEST_PRIVATE_KEY = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt");
-            TEST_ENCRYPTED_PRIVATE_KEY = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt");
-            API_KEY_RESPONSE_JSON = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json");
+            TEST_ENCRYPTED_PRIVATE_KEY = stringFrom(
+                    "src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt");
+            API_KEY_RESPONSE_JSON = stringFrom(
+                    "src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json");
 
         } catch (IOException ex) {
             throw new RuntimeException(ex);
@@ -126,11 +128,10 @@ public class AuthProviderTest {
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
-        @ValueSource(strings = {"complicated-word"})
+        @ValueSource(strings = { "complicated-word" })
         void givenInvalidPrivateKey_thenThrows(String phrase) {
-            final Exception exception = assertThrows(PSTGenerationException.class, ()
-                    -> buildAuthProvider("invalid-key").fetchProjectScopedToken()
-            );
+            final Exception exception = assertThrows(PSTGenerationException.class,
+                    () -> buildAuthProvider("invalid-key").fetchProjectScopedToken());
 
             assertTrue(exception.getMessage().startsWith("Could not derive private key out of the configurations."));
         }
@@ -146,9 +147,8 @@ public class AuthProviderTest {
                         .thenThrow(new JwtGenerationException(mockErrorMessage));
 
                 // act
-                final Exception exception = assertThrows(PSTGenerationException.class, ()
-                        -> buildAuthProvider(TEST_KEY).fetchProjectScopedToken()
-                );
+                final Exception exception = assertThrows(PSTGenerationException.class,
+                        () -> buildAuthProvider(TEST_KEY).fetchProjectScopedToken());
 
                 // assert
                 assertEquals(mockErrorMessage, exception.getMessage());
@@ -157,13 +157,12 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given an invalid private-key, when the api-key endpoint returns a response and it fails to sign the payload, then it throws")
-        void givenInvalidPrivateKey_AndApiKeyResponse_thenThrows()
-                throws IOException, URISyntaxException {
+        void givenInvalidPrivateKey_AndApiKeyResponse_thenThrows() throws IOException, URISyntaxException {
             // arrange
-            givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
-            givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
+                    .willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
+                    .willReturn(okJson(API_KEY_RESPONSE_JSON)));
 
             // act
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
@@ -183,8 +182,8 @@ public class AuthProviderTest {
                 throws IOException, URISyntaxException, ConfigurationException {
             // arrange
             final AuthProvider provider = buildAuthProvider(TEST_PRIVATE_KEY);
-            givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
+                    .willReturn(okJson(API_KEY_RESPONSE_JSON)));
             givenThat(post("/auth-token").withHost(equalToHost())
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
             givenThat(post(AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH).withHost(equalToHost())
@@ -221,7 +220,7 @@ public class AuthProviderTest {
 
             // act
             final AuthProvider provider = buildAuthProvider(TEST_KEY);
-            //     provider.setApiGatewayUrl(apiUrl);
+            // provider.setApiGatewayUrl(apiUrl);
             provider.setProjectScopeToken("test-project-scope-token");
 
             // assert
@@ -233,8 +232,8 @@ public class AuthProviderTest {
         void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue()
                 throws URISyntaxException, IOException, ConfigurationException {
             // arrange
-            givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
+                    .willReturn(okJson(API_KEY_RESPONSE_JSON)));
             final AuthProvider provider = buildAuthProvider(TEST_KEY);
             provider.setProjectScopeToken("test-project-scope-token");
 
@@ -251,9 +250,8 @@ public class AuthProviderTest {
         @Test
         @DisplayName("given an invalid private-key, then it throws")
         void givenInvalidPrivateKey_thenThrows() {
-            Exception exception = assertThrows(AccessTokenGenerationException.class, ()
-                    -> buildAuthProvider("invalid-key").getUserAccessToken()
-            );
+            Exception exception = assertThrows(AccessTokenGenerationException.class,
+                    () -> buildAuthProvider("invalid-key").getUserAccessToken());
 
             assertTrue(exception.getMessage().startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
         }
@@ -268,9 +266,8 @@ public class AuthProviderTest {
                     .willReturn(aResponse().withStatus(400)));
 
             // act
-            final Exception exception = assertThrows(AccessTokenGenerationException.class, ()
-                    -> buildAuthProvider(TEST_PRIVATE_KEY).getUserAccessToken()
-            );
+            final Exception exception = assertThrows(AccessTokenGenerationException.class,
+                    () -> buildAuthProvider(TEST_PRIVATE_KEY).getUserAccessToken());
 
             // assert
             assertTrue(exception.getMessage().contains("Could not retrieve access_token from the token end point"));
@@ -291,13 +288,15 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given a valid encrypted private-key, when the token-endpoint call succeeds, then it returns a JWT")
-        void givenValidEncryptedPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT() throws URISyntaxException, IOException, ConfigurationException {
+        void givenValidEncryptedPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT()
+                throws URISyntaxException, IOException, ConfigurationException {
             // arrange
             givenThat(post("/auth-token").withHost(equalToHost())
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
 
             // act and assert
-            String token = assertDoesNotThrow(() -> buildAuthProvider(TEST_ENCRYPTED_PRIVATE_KEY, "test-pass-phrase").getUserAccessToken());
+            String token = assertDoesNotThrow(
+                    () -> buildAuthProvider(TEST_ENCRYPTED_PRIVATE_KEY, "test-pass-phrase").getUserAccessToken());
             assertEquals("some-access-token", token);
         }
     }
@@ -310,9 +309,9 @@ public class AuthProviderTest {
         @Test
         @DisplayName("given an invalid private-key, then it throws")
         void givenInvalidPrivateKey_thenThrows() {
-            final Exception exception = assertThrows(JwtGenerationException.class, ()
-                    -> buildAuthProvider("invalid-key").signIotaJwt("test-iota-config-id", "test-did", "test-session-id")
-            );
+            final Exception exception = assertThrows(JwtGenerationException.class,
+                    () -> buildAuthProvider("invalid-key").signIotaJwt("test-iota-config-id", "test-did",
+                            "test-session-id"));
             assertTrue(exception.getMessage().startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
         }
 

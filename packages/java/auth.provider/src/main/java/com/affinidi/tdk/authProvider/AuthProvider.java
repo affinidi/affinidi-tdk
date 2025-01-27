@@ -27,8 +27,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * This class provides utility functions in order to generate projectScopeToken
- * required to call Affinidi Services.
+ * This class provides utility functions in order to generate projectScopeToken required to call Affinidi Services.
  *
  *
  * @author Priyanka
@@ -62,12 +61,11 @@ public class AuthProvider {
     }
 
     /**
-     * This method identifies if the current AuthProvider has a valid existing
-     * projectScopeToken or not. This helps to reuse the valid tokens without
-     * always generating a new.
+     * This method identifies if the current AuthProvider has a valid existing projectScopeToken or not. This helps to
+     * reuse the valid tokens without always generating a new.
      *
-     * The validation involves verifying token's signature against the public
-     * (verification) key; validating token's expiration or malformation.
+     * The validation involves verifying token's signature against the public (verification) key; validating token's
+     * expiration or malformation.
      *
      * @return boolean
      */
@@ -77,20 +75,17 @@ public class AuthProvider {
     }
 
     /**
-     * This method generates a projectScopeToken required to call Affinidi
-     * services.
+     * This method generates a projectScopeToken required to call Affinidi services.
      *
-     * In case there is an existing projectScopeToken in the authProvider
-     * instance; it is first validated and a new one is generated only if
-     * needed.
+     * In case there is an existing projectScopeToken in the authProvider instance; it is first validated and a new one
+     * is generated only if needed.
      *
-     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)} for
-     * validation details
+     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)} for validation details
      *
      * @return String
      *
-     * @throws PSTGenerationException incase access_token generation has issues
-     * or projectScopeToken end point
+     * @throws PSTGenerationException
+     *             incase access_token generation has issues or projectScopeToken end point
      */
     public String fetchProjectScopedToken() throws PSTGenerationException {
         if (shouldRefreshToken()) {
@@ -100,13 +95,12 @@ public class AuthProvider {
     }
 
     /**
-     * This method generates a user-access-token which is required as an API
-     * authorization token.
+     * This method generates a user-access-token which is required as an API authorization token.
      *
      * @return String
      *
-     * @throws AccessTokenGenerationException in case the access token could not
-     * be generated
+     * @throws AccessTokenGenerationException
+     *             in case the access token could not be generated
      */
     public String getUserAccessToken() throws AccessTokenGenerationException {
         try {
@@ -139,8 +133,7 @@ public class AuthProvider {
     }
 
     /**
-     * This method generates a projectScopeToken for the configuration values
-     * associated to the AuthProvider.
+     * This method generates a projectScopeToken for the configuration values associated to the AuthProvider.
      *
      * @return String
      *
@@ -210,9 +203,8 @@ public class AuthProvider {
     }
 
     /**
-     * This class provides a way to pass configurations to the AuthProvider It
-     * also helps to build an instance of AuthProvider which uses these
-     * configurations.
+     * This class provides a way to pass configurations to the AuthProvider It also helps to build an instance of
+     * AuthProvider which uses these configurations.
      */
     public static class Configurations {
 
@@ -248,8 +240,7 @@ public class AuthProvider {
         }
 
         /**
-         * This method builds an instance of AuthProvider with the values passed
-         * through {@link Configuration}.
+         * This method builds an instance of AuthProvider with the values passed through {@link Configuration}.
          *
          * @return
          *
@@ -264,8 +255,7 @@ public class AuthProvider {
         }
 
         /**
-         * This method builds an instance of AuthProvider with the configuration
-         * values present in the .env file.
+         * This method builds an instance of AuthProvider with the configuration values present in the .env file.
          *
          * @return
          *
