@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.mockStatic;
 
 import com.affinidi.tdk.authProvider.exception.AccessTokenGenerationException;
 import com.affinidi.tdk.authProvider.exception.ConfigurationException;
@@ -29,7 +31,7 @@ import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
 import com.affinidi.tdk.authProvider.helper.AuthProviderConstants;
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
 import com.affinidi.tdk.authProvider.types.IotaJwtOutput;
-
+import com.affinidi.tdk.common.EnvironmentUtil;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -39,37 +41,96 @@ import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import com.github.tomakehurst.wiremock.http.Fault;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import com.github.tomakehurst.wiremock.matching.StringValuePattern;
 
 public class AuthProviderTest {
-    @Nested
-    @DisplayName("setting values to the authProvider configurations")
-    class ConfigurationsTest {
-        @Test
-        void testAuthProviderConfiguration() throws Exception {
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey("test-key").build();
 
-            assertNotNull(provider);
-            assertEquals("test-project", provider.getProjectId());
-            assertEquals("test-token", provider.getTokenId());
-            assertEquals("test-key", provider.getPrivateKey());
+    static final String TEST_PROJECT_ID = "test-project";
+    static final String TEST_TOKEN_ID = "test-token";
+    static final String TEST_KEY = "test-key";
+
+    static final String TEST_PRIVATE_KEY;
+    static final String TEST_ENCRYPTED_PRIVATE_KEY;
+
+    static final String API_KEY_RESPONSE_JSON;
+
+    private static String stringFrom(String path) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(path)));
+    }
+
+    static {
+        try {
+            TEST_PRIVATE_KEY = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt");
+            TEST_ENCRYPTED_PRIVATE_KEY = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt");
+            API_KEY_RESPONSE_JSON = stringFrom("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json");
+
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
     @WireMockTest(proxyMode = true)
+    abstract class BaseTest {
+
+        protected String host;
+        protected String apiUrl;
+        protected String fakeTokenUrl;
+
+        @BeforeEach
+        @SuppressWarnings("unused")
+        void beforeEach(WireMockRuntimeInfo wmRuntimeInfo) throws URISyntaxException {
+            apiUrl = wmRuntimeInfo.getHttpBaseUrl();
+            host = new URI(apiUrl).getHost();
+            fakeTokenUrl = apiUrl + "/auth-token";
+        }
+
+        AuthProvider buildAuthProvider(String testPrivateKey) throws ConfigurationException {
+            return buildAuthProvider(testPrivateKey, "");
+        }
+
+        AuthProvider buildAuthProvider(String testPrivateKey, String passphrase) throws ConfigurationException {
+            try (MockedStatic mocked = mockStatic(EnvironmentUtil.class)) {
+                mocked.when(EnvironmentUtil::getElementAuthTokenUrlForEnvironment).thenReturn(fakeTokenUrl);
+                mocked.when(EnvironmentUtil::getApiGatewayUrlForEnvironment).thenReturn(apiUrl);
+                return new AuthProvider.Configurations().projectId(TEST_PROJECT_ID).tokenId(TEST_TOKEN_ID)
+                        .privateKey(testPrivateKey).passphrase(passphrase).build();
+            }
+        }
+
+        StringValuePattern equalToHost() {
+            return equalTo(host);
+        }
+    }
+
+    @Nested
+    @DisplayName("setting values to the authProvider configurations")
+    @SuppressWarnings("unused")
+    class ConfigurationsTest extends BaseTest {
+
+        @Test
+        void testAuthProviderConfiguration() throws Exception {
+            final AuthProvider provider = buildAuthProvider(TEST_KEY);
+
+            assertNotNull(provider);
+            assertEquals(TEST_PROJECT_ID, provider.getProjectId());
+            assertEquals(TEST_TOKEN_ID, provider.getTokenId());
+            assertEquals(TEST_KEY, provider.getPrivateKey());
+        }
+    }
+
     @Nested
     @DisplayName("fetchProjectScopedToken method")
-    class FetchProjectScopedTokenTest {
+    @SuppressWarnings("unused")
+    class FetchProjectScopedTokenTest extends BaseTest {
+
         @ParameterizedTest
         @DisplayName("given an invalid private-key and a empty or non-empty passphrase, the it throws")
         @EmptySource
-        @ValueSource(strings = { "complicated-word" })
+        @ValueSource(strings = {"complicated-word"})
         void givenInvalidPrivateKey_thenThrows(String phrase) {
-            Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                        .tokenId("test-token").privateKey("invalid-key").passphrase(phrase).build();
-                provider.fetchProjectScopedToken();
-            });
+            final Exception exception = assertThrows(PSTGenerationException.class, ()
+                    -> buildAuthProvider("invalid-key").fetchProjectScopedToken()
+            );
 
             assertTrue(exception.getMessage().startsWith("Could not derive private key out of the configurations."));
         }
@@ -85,11 +146,9 @@ public class AuthProviderTest {
                         .thenThrow(new JwtGenerationException(mockErrorMessage));
 
                 // act
-                Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                    AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                            .tokenId("test-token").privateKey("test-key").build();
-                    provider.fetchProjectScopedToken();
-                });
+                final Exception exception = assertThrows(PSTGenerationException.class, ()
+                        -> buildAuthProvider(TEST_KEY).fetchProjectScopedToken()
+                );
 
                 // assert
                 assertEquals(mockErrorMessage, exception.getMessage());
@@ -98,22 +157,17 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given an invalid private-key, when the api-key endpoint returns a response and it fails to sign the payload, then it throws")
-        void givenInvalidPrivateKey_AndApiKeyResponse_thenThrows(WireMockRuntimeInfo wmRuntimeInfo)
+        void givenInvalidPrivateKey_AndApiKeyResponse_thenThrows()
                 throws IOException, URISyntaxException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String apiKeyJson = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
             givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
 
             // act
             Exception exception = assertThrows(PSTGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                        .tokenId("test-token").privateKey("test-key").passphrase("").build();
-                provider.setApiGatewayUrl(apiUrl);
+                final AuthProvider provider = buildAuthProvider(TEST_KEY);
                 provider.setProjectScopeToken("test-project-scope-token");
                 provider.fetchProjectScopedToken();
             });
@@ -124,27 +178,16 @@ public class AuthProviderTest {
         }
 
         @Test
-        @DisplayName("happy path: given a valid private-key, when all the endponts succesfully returns 200, then it returns a JWT")
-        void givenValidApiKeyResponse_AndSuccessfulApiCalls_thenReturnsAJWT(WireMockRuntimeInfo wmRuntimeInfo)
+        @DisplayName("happy path: given a valid private-key, when all the endpoints successfully returns 200, then it returns a JWT")
+        void givenValidApiKeyResponse_AndSuccessfulApiCalls_thenReturnsAJWT()
                 throws IOException, URISyntaxException, ConfigurationException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String fakeTokenUrl = apiUrl + "/auth-token";
-            String apiKeyJson = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey(testPrivateKey).passphrase("").build();
-            provider.setApiGatewayUrl(apiUrl);
-            provider.setTokenEndPoint(fakeTokenUrl);
+            final AuthProvider provider = buildAuthProvider(TEST_PRIVATE_KEY);
             givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
-            givenThat(post("/auth-token").withHost(equalTo(host))
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            givenThat(post("/auth-token").withHost(equalToHost())
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
-            givenThat(post(AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH).withHost(equalTo(host))
+            givenThat(post(AuthProviderConstants.PROJECT_SCOPE_TOKEN_API_PATH).withHost(equalToHost())
                     .willReturn(okJson("{accessToken: \"some-project-scope-token\"}")));
 
             // act and assert
@@ -153,16 +196,16 @@ public class AuthProviderTest {
         }
     }
 
-    @WireMockTest(proxyMode = true)
     @Nested
     @DisplayName("shouldRefreshToken method")
-    class ShouldRefreshTokenTest {
+    @SuppressWarnings("unused")
+    class ShouldRefreshTokenTest extends BaseTest {
+
         @Test
         @DisplayName("given no project-token, then it returns true")
         void givenNoProjectToken_thenReturnsTrue() throws ConfigurationException {
             // arrange
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey("test-key").build();
+            final AuthProvider provider = buildAuthProvider(TEST_KEY);
 
             // act and assert
             assertTrue(provider.shouldRefreshToken());
@@ -170,19 +213,15 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given a project-token, when the api-key endpoint call fails, then it returns true")
-        void givenProjectToken_whenTheApiKeyEndpointCallFails_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
+        void givenProjectToken_whenTheApiKeyEndpointCallFails_thenReturnsTrue()
                 throws ConfigurationException, URISyntaxException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host))
+            givenThat(get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost())
                     .willReturn(aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
 
             // act
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey("test-key").passphrase("").build();
-            provider.setApiGatewayUrl(apiUrl);
+            final AuthProvider provider = buildAuthProvider(TEST_KEY);
+            //     provider.setApiGatewayUrl(apiUrl);
             provider.setProjectScopeToken("test-project-scope-token");
 
             // assert
@@ -191,19 +230,12 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given an invalid project-token, when the api-key endpoint call succeeds, then it returns true")
-        void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue(WireMockRuntimeInfo wmRuntimeInfo)
+        void givenInvalidPrivateKey_WhenTheApiKeyEndpointCallSucceeds_thenReturnsTrue()
                 throws URISyntaxException, IOException, ConfigurationException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String apiKeyJson = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/api-key-response.json")));
             givenThat(
-                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalTo(host)).willReturn(okJson(apiKeyJson)));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey("test-key").passphrase("").build();
-            provider.setApiGatewayUrl(apiUrl);
+                    get(AuthProviderConstants.PUBLIC_KEY_PATH).withHost(equalToHost()).willReturn(okJson(API_KEY_RESPONSE_JSON)));
+            final AuthProvider provider = buildAuthProvider(TEST_KEY);
             provider.setProjectScopeToken("test-project-scope-token");
 
             // act and assert
@@ -211,42 +243,34 @@ public class AuthProviderTest {
         }
     }
 
-    @WireMockTest(proxyMode = true)
     @Nested
     @DisplayName("getUserAccessToken method")
-    class GetUserAccessTokenTest {
+    @SuppressWarnings("unused")
+    class GetUserAccessTokenTest extends BaseTest {
+
         @Test
         @DisplayName("given an invalid private-key, then it throws")
         void givenInvalidPrivateKey_thenThrows() {
-            Exception exception = assertThrows(AccessTokenGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                        .tokenId("test-token").privateKey("invalid-key").passphrase("").build();
-                provider.getUserAccessToken();
-            });
+            Exception exception = assertThrows(AccessTokenGenerationException.class, ()
+                    -> buildAuthProvider("invalid-key").getUserAccessToken()
+            );
 
             assertTrue(exception.getMessage().startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
         }
 
         @Test
         @DisplayName("given a valid private-key, when the token-endpoint call fails, then it throws")
-        void givenValidPrivateKey_WhenTheTokenEndpointCallFails_thenThrows(WireMockRuntimeInfo wmRuntimeInfo)
+        void givenValidPrivateKey_WhenTheTokenEndpointCallFails_thenThrows()
                 throws URISyntaxException, IOException, ConfigurationException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String fakeTokenUrl = apiUrl + "/auth-token";
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
-            givenThat(post("/auth-token").withHost(equalTo(host))
+            givenThat(post("/auth-token").withHost(equalToHost())
                     // .willReturn(aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
                     .willReturn(aResponse().withStatus(400)));
-            Exception exception = assertThrows(AccessTokenGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                        .tokenId("test-token").privateKey(testPrivateKey).passphrase("").build();
-                provider.setTokenEndPoint(fakeTokenUrl);
-                provider.getUserAccessToken();
-            });
+
+            // act
+            final Exception exception = assertThrows(AccessTokenGenerationException.class, ()
+                    -> buildAuthProvider(TEST_PRIVATE_KEY).getUserAccessToken()
+            );
 
             // assert
             assertTrue(exception.getMessage().contains("Could not retrieve access_token from the token end point"));
@@ -254,60 +278,41 @@ public class AuthProviderTest {
 
         @Test
         @DisplayName("given a valid private-key, when the token-endpoint call succeeds, then it returns a JWT")
-        void givenValidPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT(WireMockRuntimeInfo wmRuntimeInfo)
+        void givenValidPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT()
                 throws URISyntaxException, IOException, ConfigurationException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String fakeTokenUrl = apiUrl + "/auth-token";
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey(testPrivateKey).passphrase("").build();
-            provider.setTokenEndPoint(fakeTokenUrl);
-            givenThat(post("/auth-token").withHost(equalTo(host))
+            givenThat(post("/auth-token").withHost(equalToHost())
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
 
             // act and assert
-            String token = assertDoesNotThrow(() -> provider.getUserAccessToken());
+            String token = assertDoesNotThrow(() -> buildAuthProvider(TEST_PRIVATE_KEY).getUserAccessToken());
             assertEquals("some-access-token", token);
         }
 
         @Test
         @DisplayName("given a valid encrypted private-key, when the token-endpoint call succeeds, then it returns a JWT")
-        void givenValidEncryptedPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT(
-                WireMockRuntimeInfo wmRuntimeInfo) throws URISyntaxException, IOException, ConfigurationException {
+        void givenValidEncryptedPrivateKey_WhenTheTokenEndpointCallSucceeds_thenReturnsAJWT() throws URISyntaxException, IOException, ConfigurationException {
             // arrange
-            String apiUrl = wmRuntimeInfo.getHttpBaseUrl();
-            URI uri = new URI(apiUrl);
-            String host = uri.getHost();
-            String fakeTokenUrl = apiUrl + "/auth-token";
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey(testPrivateKey).passphrase("test-pass-phrase").build();
-            provider.setTokenEndPoint(fakeTokenUrl);
-            givenThat(post("/auth-token").withHost(equalTo(host))
+            givenThat(post("/auth-token").withHost(equalToHost())
                     .willReturn(okJson("{access_token: \"some-access-token\"}")));
 
             // act and assert
-            String token = assertDoesNotThrow(() -> provider.getUserAccessToken());
+            String token = assertDoesNotThrow(() -> buildAuthProvider(TEST_ENCRYPTED_PRIVATE_KEY, "test-pass-phrase").getUserAccessToken());
             assertEquals("some-access-token", token);
         }
     }
 
     @Nested
     @DisplayName("signIotaJwt method")
-    class SignIotaJwtTest {
+    @SuppressWarnings("unused")
+    class SignIotaJwtTest extends BaseTest {
+
         @Test
         @DisplayName("given an invalid private-key, then it throws")
         void givenInvalidPrivateKey_thenThrows() {
-            Exception exception = assertThrows(JwtGenerationException.class, () -> {
-                AuthProvider provider = new AuthProvider.Configurations().projectId("test-project")
-                        .tokenId("test-token").privateKey("invalid-key").passphrase("").build();
-                provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id");
-            });
+            final Exception exception = assertThrows(JwtGenerationException.class, ()
+                    -> buildAuthProvider("invalid-key").signIotaJwt("test-iota-config-id", "test-did", "test-session-id")
+            );
             assertTrue(exception.getMessage().startsWith(AuthProviderConstants.COULD_NOT_DERIVE_PRIVATE_KEY_ERROR_MSG));
         }
 
@@ -315,13 +320,10 @@ public class AuthProviderTest {
         @DisplayName("given a valid private-key, then it returns a IotaJwtOutput")
         void givenValidPrivateKey_thenReturnsIotaJwtOutput() throws ConfigurationException, IOException {
             // arrange
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey(testPrivateKey).passphrase("").build();
+            final AuthProvider provider = buildAuthProvider(TEST_PRIVATE_KEY);
 
             // act and assert
-            IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
+            final IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
                     () -> provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id"));
             assertNotNull(iotaJwtOutput);
             assertNotNull(iotaJwtOutput.getIotaSessionId());
@@ -332,13 +334,10 @@ public class AuthProviderTest {
         @DisplayName("given a valid encrypted private-key, then it returns a IotaJwtOutput")
         void givenValidEncryptedPrivateKey_thenReturnsIotaJwtOutput() throws ConfigurationException, IOException {
             // arrange
-            String testPrivateKey = new String(Files.readAllBytes(
-                    Paths.get("src/test/java/com/affinidi/tdk/authProvider/resources/test-encrypted-private-key.txt")));
-            AuthProvider provider = new AuthProvider.Configurations().projectId("test-project").tokenId("test-token")
-                    .privateKey(testPrivateKey).passphrase("test-pass-phrase").build();
+            final AuthProvider provider = buildAuthProvider(TEST_ENCRYPTED_PRIVATE_KEY, "test-pass-phrase");
 
             // act and assert
-            IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
+            final IotaJwtOutput iotaJwtOutput = assertDoesNotThrow(
                     () -> provider.signIotaJwt("test-iota-config-id", "test-did", "test-session-id"));
             assertNotNull(iotaJwtOutput);
             assertNotNull(iotaJwtOutput.getIotaSessionId());
