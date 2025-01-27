@@ -46,6 +46,11 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.6.0
+
       - name: install python tools
         run: |
           pip install twine
