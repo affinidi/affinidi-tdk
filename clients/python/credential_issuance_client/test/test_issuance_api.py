@@ -33,6 +33,12 @@ class TestIssuanceApi(unittest.TestCase):
         """
         pass
 
+    def test_issue_credentials(self) -> None:
+        """Test case for issue_credentials
+
+        """
+        pass
+
     def test_list_issuance(self) -> None:
         """Test case for list_issuance
 

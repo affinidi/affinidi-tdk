@@ -172,6 +172,50 @@ paths:
       x-content-type: application/json
       x-accepts:
         - application/json
+  /v1/{projectId}/credential/issue:
+    post:
+      description:
+        Endpoint to issue credentials directly without following OID4VCI
+        flow
+      operationId: issueCredentials
+      parameters:
+        - description: Affinidi project id
+          explode: false
+          in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/StartIssuance'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialResponse'
+          description: Ok
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidJwtTokenError'
+          description: UnauthorizedError
+      security:
+        - ProjectTokenAuth: []
+      tags:
+        - issuance
+      x-content-type: application/json
+      x-accepts:
+        - application/json
   /v1/{projectId}/issuance/start:
     post:
       description: Endpoint used b websites to start the issuance process
@@ -1087,6 +1131,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    IssueCredentialsUnauthorizedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidJwtTokenError'
+      description: UnauthorizedError
     StartIssuanceBadRequestError:
       content:
         application/json:
