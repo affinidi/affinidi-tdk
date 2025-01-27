@@ -2,11 +2,12 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                            | HTTP request                                        | Description |
-| ------------------------------------------------- | --------------------------------------------------- | ----------- |
-| [**issuanceState**](IssuanceApi.md#issuanceState) | **GET** /v1/{projectId}/issuance/state/{issuanceId} |             |
-| [**listIssuance**](IssuanceApi.md#listIssuance)   | **GET** /v1/{projectId}/issuance                    |             |
-| [**startIssuance**](IssuanceApi.md#startIssuance) | **POST** /v1/{projectId}/issuance/start             |             |
+| Method                                                  | HTTP request                                        | Description |
+| ------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| [**issuanceState**](IssuanceApi.md#issuanceState)       | **GET** /v1/{projectId}/issuance/state/{issuanceId} |             |
+| [**issueCredentials**](IssuanceApi.md#issueCredentials) | **POST** /v1/{projectId}/credential/issue           |             |
+| [**listIssuance**](IssuanceApi.md#listIssuance)         | **GET** /v1/{projectId}/issuance                    |             |
+| [**startIssuance**](IssuanceApi.md#startIssuance)       | **POST** /v1/{projectId}/issuance/start             |             |
 
 <a name="issuanceState"></a>
 
@@ -34,6 +35,34 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="issueCredentials"></a>
+
+# **issueCredentials**
+
+> CredentialResponse issueCredentials(projectId, StartIssuanceInput)
+
+    Endpoint to issue credentials directly without following OID4VCI flow
+
+### Parameters
+
+| Name                   | Type                                                      | Description                    | Notes             |
+| ---------------------- | --------------------------------------------------------- | ------------------------------ | ----------------- |
+| **projectId**          | **String**                                                | Affinidi project id            | [default to null] |
+| **StartIssuanceInput** | [**StartIssuanceInput**](../Models/StartIssuanceInput.md) | Request body to start issuance |                   |
+
+### Return type
+
+[**CredentialResponse**](../Models/CredentialResponse.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="listIssuance"></a>

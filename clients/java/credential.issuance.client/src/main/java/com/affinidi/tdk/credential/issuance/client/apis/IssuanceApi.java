@@ -21,6 +21,8 @@ import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
 
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenError;
+import com.affinidi.tdk.credential.issuance.client.models.CredentialResponse;
+import com.affinidi.tdk.credential.issuance.client.models.InvalidJwtTokenError;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
 import com.affinidi.tdk.credential.issuance.client.models.IssuanceStateResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ListIssuanceResponse;
@@ -117,6 +119,88 @@ public class IssuanceApi extends BaseApi {
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Endpoint to issue credentials directly without following OID4VCI flow
+   * @param projectId Affinidi project id (required)
+   * @param startIssuanceInput Request body to start issuance (required)
+   * @return CredentialResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CredentialResponse issueCredentials(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
+    return this.issueCredentials(projectId, startIssuanceInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Endpoint to issue credentials directly without following OID4VCI flow
+   * @param projectId Affinidi project id (required)
+   * @param startIssuanceInput Request body to start issuance (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CredentialResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CredentialResponse issueCredentials(String projectId, StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = startIssuanceInput;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling issueCredentials");
+    }
+    
+    // verify the required parameter 'startIssuanceInput' is set
+    if (startIssuanceInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'startIssuanceInput' when calling issueCredentials");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/{projectId}/credential/issue"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<CredentialResponse> localVarReturnType = new TypeReference<CredentialResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),

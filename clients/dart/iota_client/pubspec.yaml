@@ -1,7 +1,7 @@
 name: affinidi_tdk_iota_client
 version: 1.0.0
-description: OpenAPI API client
-homepage: homepage
+description: Affinidi TDK dart client for Affinidi IOTA
+homepage: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: '>=2.15.0 <4.0.0'

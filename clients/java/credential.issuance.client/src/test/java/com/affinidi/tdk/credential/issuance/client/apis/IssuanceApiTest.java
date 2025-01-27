@@ -15,6 +15,8 @@ package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
 import com.affinidi.tdk.credential.issuance.client.models.ActionForbiddenError;
+import com.affinidi.tdk.credential.issuance.client.models.CredentialResponse;
+import com.affinidi.tdk.credential.issuance.client.models.InvalidJwtTokenError;
 import com.affinidi.tdk.credential.issuance.client.models.InvalidParameterError;
 import com.affinidi.tdk.credential.issuance.client.models.IssuanceStateResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ListIssuanceResponse;
@@ -52,6 +54,20 @@ public class IssuanceApiTest {
         String issuanceId = null;
         String projectId = null;
         IssuanceStateResponse response = api.issuanceState(issuanceId, projectId);
+
+        // TODO: test validations
+    }
+    /**
+     * Endpoint to issue credentials directly without following OID4VCI flow
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void issueCredentialsTest() throws ApiException {
+        String projectId = null;
+        StartIssuanceInput startIssuanceInput = null;
+        CredentialResponse response = api.issueCredentials(projectId, startIssuanceInput);
 
         // TODO: test validations
     }

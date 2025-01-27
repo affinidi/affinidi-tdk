@@ -14,6 +14,13 @@ void main() {
       // TODO
     });
 
+    // Endpoint to issue credentials directly without following OID4VCI flow
+    //
+    //Future<CredentialResponse> issueCredentials(String projectId, StartIssuanceInput startIssuanceInput) async
+    test('test issueCredentials', () async {
+      // TODO
+    });
+
     // List all issuances for Project
     //
     //Future<ListIssuanceResponse> listIssuance(String projectId) async
