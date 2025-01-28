@@ -1,3 +1,15 @@
+# [1.21.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.20.0...@affinidi-tdk/iota-browser-v1.21.0) (2025-01-28)
+
+
+### Bug Fixes
+
+* cleanup tools ([#509](https://github.com/affinidi/affinidi-tdk/issues/509)) ([4c70188](https://github.com/affinidi/affinidi-tdk/commit/4c7018842e06c66cd52e0c14a2fb1b26b30dfc25))
+
+
+### Features
+
+* add dart clients versioning ([#406](https://github.com/affinidi/affinidi-tdk/issues/406)) ([21dee9a](https://github.com/affinidi/affinidi-tdk/commit/21dee9a8c53d7ec35717781f8cb203d53f8e0b74))
+
 # [1.20.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.19.0...@affinidi-tdk/iota-browser-v1.20.0) (2024-12-09)
 
 
