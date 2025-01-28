@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
+
 import 'environment.dart';
 
 void main() {

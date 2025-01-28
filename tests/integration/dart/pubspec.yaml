@@ -15,11 +15,18 @@ dev_dependencies:
     path: ../../../clients/dart/credential_issuance_client
   affinidi_tdk_vault_data_manager_client:
     path: ../../../clients/dart/vault_data_manager_client
+  affinidi_tdk_credential_verification_client:
+    # path: ../../../clients/dart/credential_verification_client
+    path: ../../../../openapi-sdk-generator/.github/affinidi-tdk/clients/dart/credential_verification_client
+  affinidi_tdk_cryptography: ^1.0.0
+  vault_file_system_encryption_service:
+    path: ../../../../tdk-dart-bussiness-layer/packages/vault_file_system_encryption_service
   dotenv: ^4.2.0
   lints: ^5.0.0
   test: ^1.24.0
   pointycastle: ^3.9.1
   dart_jsonwebtoken: ^2.12.0
   built_collection: ^5.1.1
+  built_value: ^8.9.3
   dio: '^5.2.0'
   one_of: ^1.5.0
