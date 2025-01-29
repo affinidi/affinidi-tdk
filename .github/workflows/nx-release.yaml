@@ -13,7 +13,7 @@ jobs:
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
-      contents: read
+      contents: write
       issues: write
       pull-requests: write
     steps:
@@ -90,70 +90,4 @@ jobs:
           TWINE_USERNAME: '__token__'
           TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
           POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
-         
-  publish:
-    concurrency: publish
-    runs-on: ubuntu-latest
-    environment: main
-    permissions:
-      # IMPORTANT: this permission is mandatory for trusted publishing
-      id-token: write
-      contents: read
-    needs: ['release']
-    steps:
-      - name: Generate token from app token #https://github.com/tibdex/github-app-token
-        id: generate_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
-          private_key: ${{ secrets.RELEASE_BOT_PKEY }}
-
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.ref }}
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@affinidi-tdk'
-      - run: npm ci
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
-      
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: 3.6.0
-
-      - name: install python tools
-        run: |
-          pip install twine
-          pip install poetry
-
-      - name: Mint pypi token
-        id: mint
-        uses: tschm/token-mint-action@v1.0.3
-
-      - name: build
-        run: |
-          npx nx run-many -t build --parallel=false
-      - name: package
-        run: |
-          npx nx run-many -t package
-      # Publish to npm,pypi  with new nx release publish functionality
-      - run: |
-          npx nx release publish --verbose
-        name: publish
-        env:
-          TWINE_USERNAME: '__token__'
-          TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
-          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} #publib-npm expects this
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

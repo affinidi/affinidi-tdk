@@ -3,7 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/iota-core",
   "projectType": "library",
-  "private": false,
   "targets": {
     "install-node-modules": {
       "executor": "nx:run-commands",
@@ -30,26 +29,23 @@
       "dependsOn": ["build"],
       "outputs": ["{projectRoot}/dist/"]
     },
-    "nx-release-publish": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}",
-        "commands": ["npm run publish-pypi", "npm run publish-npm"]
-      }
-    },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "dependsOn": ["package"],
       "options": {
         "changelog": true,
         "github": true,
-        "npm": true,
+        "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [
-            "@semantic-release/npm",
+            "@semantic-release/exec",
             {
-              "npmPublish": true
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "npm version ${nextRelease.version}",
+              "publishCmd": "npm run publish-pypi && npm run publish-npm",
+              "verifyConditionsCmd": "npm version"
             }
           ]
         ]
