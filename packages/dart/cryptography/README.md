@@ -1,39 +1,61 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Affinidi TDK - Cryptography
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+`affinidi_tdk_cryptography` is a library that provides encryption and decryption utilities for the Affinidi TDK, allowing developers to perform secure cryptographic operations in Dart applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
+## Table of Contents
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+- [Affinidi TDK - Cryptography](#affinidi-tdk---cryptography)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Getting Started
 
-## Getting started
+Add the following to your `pubspec.yaml` file:
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  affinidi_tdk_cryptography: ^<version_number>
+```
+
+Then run:
+
+```bash
+dart pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
+Here is an example of how to use the cryptographic utilities:
 ```dart
-const like = 'sample';
+import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+
+void main() {
+  const password = 'password';
+  const salt = 'fixed_salt';
+
+  // Encryption
+  final cryptographyService = CryptographyService();
+  final passwordEncryptionKey = await cryptographyService.Pbkdf2(
+    password: password,
+    nonce: utf8.encode(salt),
+  );
+  final encryptionKey = cryptographyService.getRandomBytes(32);
+  final encryptedPassword = await cryptographyService.Aes256Encrypt(
+    key: encryptionKey,
+    data: passwordEncryptionKey,
+  );
+
+  ...
+
+  // Decryption
+  final passwordBytes = await cryptographyService.Aes256Decrypt(
+    encryptedData: encryptedPassword,
+    key: encryptionKey,
+  );
+  if (passwordBytes == null) {
+    throw Exception('Failed to decrypt passwordBytes');
+  }
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.

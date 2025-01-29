@@ -1,8 +1,16 @@
 # Affinidi TDK - Consumer Auth Provider
 
-[[_TOC_]]
+The `affinidi_tdk_consumer_auth_provider` package helps developers manage Consumer authentication for secure access to Affinidi services. It exchanges an encrypted seed and encryption key for a consumer token, which authenticates subsequent API requests.
 
-## Installation
+## Table of Contents
+
+- [Affinidi TDK - Consumer Auth Provider](#affinidi-tdk---consumer-auth-provider)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+    - [Initialize the provider](#initialize-the-provider)
+
+## Getting Started
 
 Add the following to your `pubspec.yaml` file:
 
@@ -17,7 +25,7 @@ Then run:
 dart pub get
 ```
 
-## Getting Started
+## Usage
 
 Once you've installed the TDK, import it into your Dart code:
 
@@ -40,7 +48,7 @@ void main() {
   // Actual Consumer client that accepts a hook for
   // the token which requires a separate import
   final apiClient = AffinidiTdkVaultDataManagerClient(
-    authTokenHook: consumerAuthProvider.fetchConsumerToken,
+    authTokenHook: consumerAuthProvider.fetchConsumerToken, // getting the token from the provider
   );
 }
 ```
