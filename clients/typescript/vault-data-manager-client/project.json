@@ -18,25 +18,22 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
-    "nx-release-publish": {
-      "options": {
-        "access": "public"
-      }
-    },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "dependsOn": ["build"],
       "options": {
         "changelog": false,
         "git": false,
         "github": true,
         "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "repositoryUrl": "git@github.com:maratsh/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [
             "@semantic-release/npm",
             {
-              "npmPublish": true
+              "npmPublish": true,
+              "pkgRoot": "{projectRoot}"
             }
           ]
         ]
