@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/affinidi_tdk_common",
+  "name": "@affinidi-tdk/affinidi_tdk_common_dart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
