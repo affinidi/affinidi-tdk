@@ -45,9 +45,9 @@ public class AuthProvider {
     private final String privateKey;
     private final String keyId;
     private final String passphrase;
-    private String tokenEndPoint;
-    private String apiGatewayUrl;
-    private String publicKey;
+    private final String tokenEndPoint;
+    private final String apiGatewayUrl;
+
     private String projectScopeToken;
 
     private AuthProvider(Configurations configurations) {
@@ -56,8 +56,8 @@ public class AuthProvider {
         this.privateKey = configurations.privateKey;
         this.keyId = configurations.keyId;
         this.passphrase = configurations.passphrase;
-        this.apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment();
         this.tokenEndPoint = EnvironmentUtil.getElementAuthTokenUrlForEnvironment();
+        this.apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment();
     }
 
     /**
@@ -328,10 +328,6 @@ public class AuthProvider {
         return apiGatewayUrl;
     }
 
-    public void setApiGatewayUrl(String apiGatewayUrl) {
-        this.apiGatewayUrl = apiGatewayUrl;
-    }
-
     /**
      * @return String
      */
@@ -339,35 +335,10 @@ public class AuthProvider {
         return tokenEndPoint;
     }
 
-    public void setTokenEndPoint(String tokenEndPoint) {
-        this.tokenEndPoint = tokenEndPoint;
-    }
-
-    /**
-     * @return String
-     */
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    /**
-     * @return String
-     */
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
-    }
-
     /**
      * @return String
      */
     public String getProjectScopeToken() {
         return projectScopeToken;
-    }
-
-    /**
-     * @return String
-     */
-    public void setProjectScopeToken(String projectScopeToken) {
-        this.projectScopeToken = projectScopeToken;
     }
 }
