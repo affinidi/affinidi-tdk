@@ -2,13 +2,19 @@
 
 `affinidi_tdk_cryptography` is a library that provides encryption and decryption utilities for the Affinidi TDK, allowing developers to perform secure cryptographic operations in Dart applications.
 
+> **💡NOTE:** In most cases there is no need to use this package directly and instead use a higher level package or library, like [affinidi_tdk_consumer_auth_provider](../consumer_auth_provider/) or [affinidi_tdk_auth_provider](../auth_provider/).
+
 ## Table of Contents
 
 - [Affinidi TDK - Cryptography](#affinidi-tdk---cryptography)
   - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
   - [Getting Started](#getting-started)
   - [Usage](#usage)
 
+## Requirements
+
+- Dart SDK version ^3.6.0
 
 ## Getting Started
 
@@ -28,6 +34,7 @@ dart pub get
 ## Usage
 
 Here is an example of how to use the cryptographic utilities:
+
 ```dart
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 

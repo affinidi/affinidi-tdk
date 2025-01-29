@@ -1,14 +1,19 @@
 # Affinidi TDK - Consumer Auth Provider
 
-The `affinidi_tdk_consumer_auth_provider` package helps developers manage Consumer authentication for secure access to Affinidi services. It exchanges an encrypted seed and encryption key for a consumer token, which authenticates subsequent API requests.
+The `affinidi_tdk_consumer_auth_provider` package helps developers manage Consumer authentication for secure access to Affinidi Vault services. It exchanges an encrypted seed and encryption key for a consumer token, which authenticates subsequent API requests.
 
 ## Table of Contents
 
 - [Affinidi TDK - Consumer Auth Provider](#affinidi-tdk---consumer-auth-provider)
   - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
   - [Getting Started](#getting-started)
   - [Usage](#usage)
     - [Initialize the provider](#initialize-the-provider)
+
+## Requirements
+
+- Dart SDK version ^3.6.0
 
 ## Getting Started
 
