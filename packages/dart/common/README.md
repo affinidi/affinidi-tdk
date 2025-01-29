@@ -1,39 +1,74 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Affinidi TDK - Common
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+This package provides common utilities for Affinidi TDK for Dart. It provides Vault utility functions to resolve Affinidi Vault links to issue or request credentials.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Other than that it is usually only used internally by Affinidi as a dependency for other packages. It provides URL resolution basend on the environment, but users should not concern with this and use the default production environment.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Table of Contents
 
-## Features
+- [Affinidi TDK - Common](#affinidi-tdk---common)
+  - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+    - [Vault claim link](#vault-claim-link)
+    - [Vault share link](#vault-share-link)
+    - [Environment URL resolution](#environment-url-resolution)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Requirements
 
-## Getting started
+- Dart SDK version ^3.6.0
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Getting Started
+
+Add the following to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  affinidi_tdk_common: ^<version_number>
+```
+
+Then run:
+
+```bash
+dart pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### Vault claim link
+
+When issuing a credential, you can use this package vault utilities to build the credential claim link to Affinidi Vault:
 
 ```dart
-const like = 'sample';
+  import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+  final affinidiVaultClaimLink =
+      VaultUtils.buildClaimLink(credentialOfferUri);
 ```
 
-## Additional information
+For a complete example check [claim_credential_example.dart](./example/claim_credential_example.dart)
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+### Vault share link
+
+When requesting a credential, you can use this package vault utilities to build the credential share link from Affinidi Vault:
+
+```dart
+  import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+  final affinidiVaultClaimLink =
+      VaultUtils.buildShareLink(iotaRequestJwt, clientId);
+```
+
+For a complete example check [share_credential_example.dart](./example/share_credential_example.dart)
+
+### Environment URL resolution
+
+> **💡NOTE:** This is for internal use only. Users should default to production environment.
+
+```dart
+  import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+  final Environment development =
+      Environment.environments[EnvironmentType.dev]!;
+  final devApiGwUrl = Environment.fetchApiGwUrl(development);
+```
+
+For a complete example check [environment_example.dart](./example/environment_example.dart)
