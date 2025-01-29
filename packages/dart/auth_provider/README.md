@@ -1,4 +1,4 @@
-# Affinidi TDK Auth Provider
+# Affinidi TDK - Auth Provider
 
 This package generates authorisation tokens to initialise TDK clients and access Affinidi services.
 
@@ -55,6 +55,7 @@ Initialise AuthProvider with your PAT credentials, and you can use it with TDK c
 ```bash
 dart pub add affinidi_tdk_auth_provider affinidi_tdk_wallets_client
 ```
+
 > This example defines the Personal Access Token (PAT) credentials inside the env file.
 
 For a better developer experience, we initialise TDK clients with `authTokenHook`, which will refresh the auth token on your behalf once it is expired.
@@ -85,11 +86,3 @@ void main() async {
   // ...
 }
 ```
-
-## Contributing
-
-When contributing to this package, please first discuss the change you wish to make by creating a new [GitHub issue](https://github.com/affinidi/affinidi-tdk/issues/new).
-
-> **💡NOTE:** Affinidi generates clients internally based on our APIs. So, please don't update the client code but instead create an issue.
-
-Visit our Developer Portal to [know more](https://docs.affinidi.com/dev-tools).
