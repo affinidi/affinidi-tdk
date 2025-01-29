@@ -34,11 +34,11 @@
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "dependsOn": ["package"],
       "options": {
-        "changelog": false,
-        "git": false,
-        "github": false,
-        "npm": true,
-        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "changelog": true,
+        "git": true,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:maratsh/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [

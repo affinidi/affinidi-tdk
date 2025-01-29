@@ -37,18 +37,20 @@
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "dependsOn": ["package"],
       "options": {
-        "changelog": false,
-        "git": false,
-        "github": false,
-        "npm": true,
+        "changelog": true,
+        "github": true,
+        "git": true,
+        "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [
-            "@semantic-release/npm",
+            "@semantic-release/exec",
             {
-              "npmPublish": true,
-              "pkgRoot": "{projectRoot}"
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "npm version ${nextRelease.version}",
+              "publishCmd": "npm run publish-pypi && npm run publish-npm",
+              "verifyConditionsCmd": "npm version"
             }
           ]
         ]
