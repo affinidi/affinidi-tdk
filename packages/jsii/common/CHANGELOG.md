@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.23.1...@affinidi-tdk/common-v1.23.2) (2025-01-30)
+
+
+### Bug Fixes
+
+* publish ts & jsii via semantic release ([#535](https://github.com/affinidi/affinidi-tdk/issues/535)) ([aac2e3a](https://github.com/affinidi/affinidi-tdk/commit/aac2e3a3cf0c4ef1d1895dd7047e3ccb7691ab63))
+
 ## [1.23.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.23.0...@affinidi-tdk/common-v1.23.1) (2025-01-28)
 
 
