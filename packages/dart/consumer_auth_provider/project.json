@@ -32,7 +32,7 @@
           "sed -i \"s|^version: .*|version: {args.releaseVersion}|\" pubspec.yaml",
           "dart pub publish --force"
         ],
-        "parrallel": false
+        "parallel": false
       }
     }
   },
