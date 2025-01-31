@@ -3,7 +3,7 @@
   "version": "1.39.1",
   "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL ISSUANCE",
   "author": "Affinidi",
-  "private": "false",
+  "private": false,
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

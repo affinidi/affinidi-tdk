@@ -3,7 +3,7 @@
   "version": "1.34.0",
   "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL VERIFICATION",
   "author": "Affinidi",
-  "private": "false",
+  "private": false,
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
