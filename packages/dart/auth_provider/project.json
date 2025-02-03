@@ -29,7 +29,6 @@
       "options": {
         "cwd": "{projectRoot}",
         "commands": [
-          "[ -z \"$RELEASE_VERSION\" ] && echo 'ERROR: RELEASE_VERSION is not set.' && exit 1",
           "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
           "dart pub publish --skip-validation --force"
         ],
