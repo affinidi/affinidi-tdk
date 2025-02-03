@@ -29,7 +29,7 @@
       "options": {
         "cwd": "{projectRoot}",
         "commands": [
-          "sed -i '' \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
+          "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
           "dart pub publish --skip-validation --force"
         ],
         "parallel": false
