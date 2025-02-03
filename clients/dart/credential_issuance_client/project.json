@@ -1,5 +1,5 @@
 {
-  "name": "@affinidi-tdk/credential-issuance-client-dart",
+  "name": "affinidi_tdk_credential_issuance_client",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
@@ -20,18 +20,19 @@
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": ["main"],
-        "plugins": [
-          [
-            "@semantic-release/exec",
-            {
-              "execCwd": "{projectRoot}",
-              "prepareCmd": "sed -i \"s|^version: .*|version: ${nextRelease.version}|\" pubspec.yaml",
-              "publishCmd": "dart pub publish --force",
-              "verifyConditionsCmd": "dart --version"
-            }
-          ]
-        ]
+        "branches": ["main"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": [
+          "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
+          "dart pub publish --skip-validation --force"
+        ],
+        "parallel": false
       }
     }
   },
