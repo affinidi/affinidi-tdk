@@ -38,4 +38,4 @@ jobs:
         run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF#refs/tags/} | cut -d'-' -f2 | cut -c2-)" >> $GITHUB_ENV
 
       - name: Publish Tagged Project
-        run: npx nx run ${{ env.PROJECT_NAME }}:publish --args="--releaseVersion=${{ env.RELEASE_VERSION }}"
+        run: npx nx run ${{ env.PROJECT_NAME }}:publish"
