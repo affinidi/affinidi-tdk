@@ -1,5 +1,5 @@
 {
-  "name": "affinidi_tdk_cryptography_dart",
+  "name": "affinidi_tdk_cryptography",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
