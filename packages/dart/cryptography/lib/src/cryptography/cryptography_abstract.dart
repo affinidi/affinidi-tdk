@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:affinidi_tdk_cryptography_dart/affinidi_tdk_cryptography.dart';
 
 abstract class CryptographyServiceAbstract
     implements CryptographyServiceInterface {

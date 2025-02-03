@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
-import 'package:affinidi_tdk_cryptography/src/models/verify_jwt_result.dart';
+import 'package:affinidi_tdk_cryptography_dart/src/models/verify_jwt_result.dart';
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:cryptography/cryptography.dart' as cryptography;
 import 'package:convert/convert.dart';
