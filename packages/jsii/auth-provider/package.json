@@ -1,11 +1,16 @@
 {
   "name": "@affinidi-tdk/auth-provider",
-  "version": "1.31.1",
+  "version": "1.31.2",
   "description": "Internal module for managing access tokens",
   "author": "Affinidi",
   "repository": {
     "type": "git",
     "url": "https://github.com/affinidi/affinidi-tdk"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "affinidi-tdk",

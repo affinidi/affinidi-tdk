@@ -1,5 +1,5 @@
 name: affinidi_tdk_auth_provider
-description: Provider of project scoped token
+description: Auth provider that allows creating project scoped tokens to access Affinidi services
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

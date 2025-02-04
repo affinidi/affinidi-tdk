@@ -3,6 +3,11 @@
   "version": "1.33.0",
   "description": "Affinidi TDK typescript client for Affinidi IAM",
   "author": "Affinidi",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iam-client"

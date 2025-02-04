@@ -1,0 +1,40 @@
+{
+  "name": "affinidi_tdk_cryptography_dart",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "{projectRoot}",
+  "projectType": "library",
+  "private": false,
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "dart pub get && dart analyze --no-fatal-warnings"
+      }
+    },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "options": {
+        "changelog": false,
+        "git": false,
+        "github": true,
+        "npm": false,
+        "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
+        "branches": ["main"]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": [
+          "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
+          "dart pub publish --skip-validation --force"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": ["lang:dart", "kind:package"]
+}

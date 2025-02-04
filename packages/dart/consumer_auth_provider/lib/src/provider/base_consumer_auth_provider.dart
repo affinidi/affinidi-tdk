@@ -1,16 +1,23 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:base_codecs/base_codecs.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 import 'consumer_auth_provider_abstract.dart';
-import 'consumer_token_provider.dart';
+import 'token_provider.dart';
 
 class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   final String _encryptedSeed;
   final String _encryptionKey;
 
   late final CryptographyService _cryptographyService;
-  late final ConsumerTokenProvider _tokenProvider;
+  late final ConsumerTokenProvider _consumerTokenProvider;
+  late final CisTokenProvider _cisTokenProvider;
+  late final Uint8List _seedBytes = hexDecode(_cryptographyService.decryptSeed(
+    encryptedSeedHex: _encryptedSeed,
+    encryptionKeyHex: _encryptionKey,
+  ));
 
   String? _consumerToken;
 
@@ -20,7 +27,8 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   })  : _encryptedSeed = encryptedSeed,
         _encryptionKey = encryptionKey {
     _cryptographyService = CryptographyService();
-    _tokenProvider = ConsumerTokenProvider();
+    _consumerTokenProvider = ConsumerTokenProvider();
+    _cisTokenProvider = CisTokenProvider();
   }
 
   @override
@@ -30,17 +38,17 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         return _consumerToken!;
       }
 
-      final seed = _cryptographyService.decryptSeed(
-        encryptedSeedHex: _encryptedSeed,
-        encryptionKeyHex: _encryptionKey,
-      );
-
-      _consumerToken = await _tokenProvider.getToken(hexDecode(seed));
+      _consumerToken = await _consumerTokenProvider.getToken(_seedBytes);
 
       return _consumerToken!;
     } catch (e) {
       throw Exception('Failed to fetch consumer token');
     }
+  }
+
+  @override
+  Future<String> fetchCisToken() async {
+    return await _cisTokenProvider.getToken(_seedBytes);
   }
 
   bool _isTokenExpired(String token) {

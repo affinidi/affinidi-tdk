@@ -6,7 +6,10 @@
     "build": "nx run-many --verbose --target=build",
     "create:sample": "./scripts/create-sample.sh"
   },
-  "private": true,
+  "private": "true",
+  "publishConfig": {
+    "access": "restricted"
+  },
   "dependencies": {
     "tslib": "^2.6.2"
   },

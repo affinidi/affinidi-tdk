@@ -1,5 +1,5 @@
 name: affinidi_tdk_consumer_auth_provider
-description: Provider of Consumer auth token
+description: Auth provider that allows creating consumer scoped tokens to access Affinidi Vault services
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

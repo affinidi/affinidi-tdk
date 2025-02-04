@@ -1,11 +1,16 @@
 {
   "name": "@affinidi-tdk/iota-core",
-  "version": "1.22.1",
+  "version": "1.22.2",
   "description": "Affinidi Iota Framework core library primarily used in the backend",
   "author": "Affinidi",
   "repository": {
     "type": "git",
     "url": "https://github.com/affinidi/affinidi-tdk"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "affinidi-tdk",

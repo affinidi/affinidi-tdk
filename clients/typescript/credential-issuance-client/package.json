@@ -1,8 +1,13 @@
 {
   "name": "@affinidi-tdk/credential-issuance-client",
-  "version": "1.39.0",
+  "version": "1.39.1",
   "description": "Affinidi TDK typescript client for Affinidi CREDENTIAL ISSUANCE",
   "author": "Affinidi",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/credential-issuance-client"

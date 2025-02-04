@@ -1,8 +1,13 @@
 {
   "name": "@affinidi-tdk/iota-browser",
-  "version": "1.21.0",
+  "version": "1.21.1",
   "description": "Browser module to fetch data through Affinidi Iota Framework",
   "author": "Affinidi",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/affinidi/affinidi-tdk"

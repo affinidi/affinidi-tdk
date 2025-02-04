@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.21.0...@affinidi-tdk/iota-browser-v1.21.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* publish ts & jsii via semantic release ([#535](https://github.com/affinidi/affinidi-tdk/issues/535)) ([aac2e3a](https://github.com/affinidi/affinidi-tdk/commit/aac2e3a3cf0c4ef1d1895dd7047e3ccb7691ab63))
+
 # [1.21.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.20.0...@affinidi-tdk/iota-browser-v1.21.0) (2025-01-28)
 
 
