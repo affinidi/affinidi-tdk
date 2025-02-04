@@ -31,4 +31,10 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   Future<String> fetchConsumerToken() async {
     return await ConsumerAuthProviderAbstract.instance.fetchConsumerToken();
   }
+
+  /// Retrieves a CIS token.
+  @override
+  Future<String> fetchCisToken() async {
+    return await ConsumerAuthProviderAbstract.instance.fetchCisToken();
+  }
 }
