@@ -3,7 +3,7 @@
   "version": "1.33.0",
   "description": "Affinidi TDK typescript client for Affinidi IAM",
   "author": "Affinidi",
-  "private": "false",
+  "private": false,
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
