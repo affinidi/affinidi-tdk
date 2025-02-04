@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                                   | HTTP request                                          | Description |
 | ------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**create_node**](NodesApi.md#create_node)                               | **POST** /v1/nodes                                    |
+| [**create_profile**](NodesApi.md#create_profile)                         | **POST** /v1/nodes/create-profile                     |
 | [**delete_node**](NodesApi.md#delete_node)                               | **DELETE** /v1/nodes/{nodeId}                         |
 | [**get_detailed_node_info**](NodesApi.md#get_detailed_node_info)         | **GET** /v1/nodes/{nodeId}                            |
 | [**init_nodes**](NodesApi.md#init_nodes)                                 | **POST** /v1/nodes/init                               |
@@ -105,6 +106,99 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_profile**
+
+> CreateNodeOK create_profile(create_profile_input)
+
+creates Profile with control plane
+
+### Example
+
+- Api Key Authentication (ConsumerTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_vault_data_manager_client
+from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
+from affinidi_tdk_vault_data_manager_client.models.create_profile_input import CreateProfileInput
+from affinidi_tdk_vault_data_manager_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.vault.affinidi.com/vfs
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_vault_data_manager_client.Configuration(
+    host = "https://api.vault.affinidi.com/vfs"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ConsumerTokenAuth
+configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
+    create_profile_input = affinidi_tdk_vault_data_manager_client.CreateProfileInput() # CreateProfileInput | CreateNode
+
+    try:
+        api_response = api_instance.create_profile(create_profile_input)
+        print("The response of NodesApi->create_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling NodesApi->create_profile: %s\n" % e)
+```
+
+### Parameters
+
+| Name                     | Type                                            | Description | Notes |
+| ------------------------ | ----------------------------------------------- | ----------- | ----- |
+| **create_profile_input** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | -                                                                                                                 |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

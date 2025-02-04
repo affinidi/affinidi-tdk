@@ -20,10 +20,10 @@ part 'consumer_metadata_dto.g.dart';
 /// * [profileCount] 
 /// * [name] 
 /// * [consumerId] 
-/// * [createdAt] - creation date/time
-/// * [modifiedAt] - modification date/time
-/// * [createdBy] - Identifier of the user who created
-/// * [modifiedBy] - Identifier of the user who last updated
+/// * [createdAt] - [GEN] ISO 8601 string of the creation date/time the entity
+/// * [modifiedAt] - [GEN] ISO 8601 string of the modification date/time the entity
+/// * [createdBy] - [GEN] Identifier of the user who created the entity
+/// * [modifiedBy] - [GEN] Identifier of the user who last updated the entity
 /// * [description] - Description of the node
 /// * [type] 
 /// * [consumedFileStorage] - Tracks the amount of bytes used by the stored data.
@@ -51,25 +51,25 @@ abstract class ConsumerMetadataDto implements Built<ConsumerMetadataDto, Consume
   @BuiltValueField(wireName: r'consumerId')
   String get consumerId;
 
-  /// creation date/time
+  /// [GEN] ISO 8601 string of the creation date/time the entity
   @BuiltValueField(wireName: r'createdAt')
   String get createdAt;
 
-  /// modification date/time
+  /// [GEN] ISO 8601 string of the modification date/time the entity
   @BuiltValueField(wireName: r'modifiedAt')
   String get modifiedAt;
 
-  /// Identifier of the user who created
+  /// [GEN] Identifier of the user who created the entity
   @BuiltValueField(wireName: r'createdBy')
   String get createdBy;
 
-  /// Identifier of the user who last updated
+  /// [GEN] Identifier of the user who last updated the entity
   @BuiltValueField(wireName: r'modifiedBy')
   String get modifiedBy;
 
   /// Description of the node
   @BuiltValueField(wireName: r'description')
-  String? get description;
+  String get description;
 
   @BuiltValueField(wireName: r'type')
   NodeType get type;
@@ -163,13 +163,11 @@ class _$ConsumerMetadataDtoSerializer implements PrimitiveSerializer<ConsumerMet
       object.modifiedBy,
       specifiedType: const FullType(String),
     );
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
+    );
     yield r'type';
     yield serializers.serialize(
       object.type,

@@ -15,7 +15,6 @@ package com.affinidi.tdk.vault.data.manager.client.apis;
 
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
-import com.affinidi.tdk.vault.data.manager.client.models.QueryProfileDataOK;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateProfileDataInput;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateProfileDataOK;
 import org.junit.jupiter.api.Assertions;
@@ -37,21 +36,6 @@ public class ProfileDataApiTest {
 
     private final ProfileDataApi api = new ProfileDataApi();
 
-    /**
-     * Retrieves information from a profile.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void queryProfileDataTest() throws ApiException {
-        String nodeId = null;
-        String dek = null;
-        String query = null;
-        QueryProfileDataOK response = api.queryProfileData(nodeId, dek, query);
-
-        // TODO: test validations
-    }
     /**
      * Updates the profile with the given data
      *

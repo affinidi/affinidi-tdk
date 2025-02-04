@@ -38,7 +38,7 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
   @override
   final String modifiedBy;
   @override
-  final String? description;
+  final String description;
   @override
   final NodeType type;
   @override
@@ -72,7 +72,7 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
       required this.modifiedAt,
       required this.createdBy,
       required this.modifiedBy,
-      this.description,
+      required this.description,
       required this.type,
       this.link,
       this.schema,
@@ -100,6 +100,8 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
         createdBy, r'GetDetailedNodeInfoOK', 'createdBy');
     BuiltValueNullFieldError.checkNotNull(
         modifiedBy, r'GetDetailedNodeInfoOK', 'modifiedBy');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GetDetailedNodeInfoOK', 'description');
     BuiltValueNullFieldError.checkNotNull(
         type, r'GetDetailedNodeInfoOK', 'type');
   }
@@ -380,7 +382,8 @@ class GetDetailedNodeInfoOKBuilder
                 createdBy, r'GetDetailedNodeInfoOK', 'createdBy'),
             modifiedBy: BuiltValueNullFieldError.checkNotNull(
                 modifiedBy, r'GetDetailedNodeInfoOK', 'modifiedBy'),
-            description: description,
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GetDetailedNodeInfoOK', 'description'),
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'GetDetailedNodeInfoOK', 'type'),
             link: link,

@@ -42,25 +42,25 @@ void main() {
       // TODO
     });
 
-    // creation date/time
+    // [GEN] ISO 8601 string of the creation date/time the entity
     // String createdAt
     test('to test the property `createdAt`', () async {
       // TODO
     });
 
-    // modification date/time
+    // [GEN] ISO 8601 string of the modification date/time the entity
     // String modifiedAt
     test('to test the property `modifiedAt`', () async {
       // TODO
     });
 
-    // Identifier of the user who created
+    // [GEN] Identifier of the user who created the entity
     // String createdBy
     test('to test the property `createdBy`', () async {
       // TODO
     });
 
-    // Identifier of the user who last updated
+    // [GEN] Identifier of the user who last updated the entity
     // String modifiedBy
     test('to test the property `modifiedBy`', () async {
       // TODO
