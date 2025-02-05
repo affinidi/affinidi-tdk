@@ -16,6 +16,7 @@ package com.affinidi.tdk.vault.data.manager.client.apis;
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeOK;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateProfileInput;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteNodeDto;
 import com.affinidi.tdk.vault.data.manager.client.models.GetDetailedNodeInfoOK;
 import com.affinidi.tdk.vault.data.manager.client.models.InitNodesOK;
@@ -56,6 +57,19 @@ public class NodesApiTest {
     public void createNodeTest() throws ApiException {
         CreateNodeInput createNodeInput = null;
         CreateNodeOK response = api.createNode(createNodeInput);
+
+        // TODO: test validations
+    }
+    /**
+     * creates Profile with control plane
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createProfileTest() throws ApiException {
+        CreateProfileInput createProfileInput = null;
+        CreateNodeOK response = api.createProfile(createProfileInput);
 
         // TODO: test validations
     }

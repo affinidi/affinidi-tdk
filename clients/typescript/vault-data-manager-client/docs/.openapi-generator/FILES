@@ -21,6 +21,7 @@ Models/CorsStartFileScanOK.md
 Models/CorsUpdateProfileDataOK.md
 Models/CreateNodeInput.md
 Models/CreateNodeOK.md
+Models/CreateProfileInput.md
 Models/DeleteNodeDto.md
 Models/EdekInfo.md
 Models/GetConfigOK.md

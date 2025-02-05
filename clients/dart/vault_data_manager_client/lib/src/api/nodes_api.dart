@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api_util.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_profile_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/get_detailed_node_info_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/init_nodes_ok.dart';
@@ -80,6 +81,108 @@ class NodesApi {
     try {
       const _type = FullType(CreateNodeInput);
       _bodyData = _serializers.serialize(createNodeInput, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CreateNodeOK? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CreateNodeOK),
+      ) as CreateNodeOK;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CreateNodeOK>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// createProfile
+  /// creates Profile with control plane
+  ///
+  /// Parameters:
+  /// * [createProfileInput] - CreateNode
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CreateNodeOK] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CreateNodeOK>> createProfile({ 
+    required CreateProfileInput createProfileInput,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/nodes/create-profile';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ConsumerTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateProfileInput);
+      _bodyData = _serializers.serialize(createProfileInput, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -31,6 +31,7 @@ affinidi_tdk_vault_data_manager_client/models/cors_start_file_scan_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_update_profile_data_ok.py
 affinidi_tdk_vault_data_manager_client/models/create_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_ok.py
+affinidi_tdk_vault_data_manager_client/models/create_profile_input.py
 affinidi_tdk_vault_data_manager_client/models/delete_node_dto.py
 affinidi_tdk_vault_data_manager_client/models/edek_info.py
 affinidi_tdk_vault_data_manager_client/models/get_config_ok.py
@@ -80,6 +81,7 @@ docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
+docs/CreateProfileInput.md
 docs/DeleteNodeDto.md
 docs/EdekInfo.md
 docs/FilesApi.md
@@ -137,6 +139,7 @@ test/test_cors_start_file_scan_ok.py
 test/test_cors_update_profile_data_ok.py
 test/test_create_node_input.py
 test/test_create_node_ok.py
+test/test_create_profile_input.py
 test/test_delete_node_dto.py
 test/test_edek_info.py
 test/test_files_api.py

@@ -14,6 +14,13 @@ void main() {
       // TODO
     });
 
+    // creates Profile with control plane
+    //
+    //Future<CreateNodeOK> createProfile(CreateProfileInput createProfileInput) async
+    test('test createProfile', () async {
+      // TODO
+    });
+
     // Mark a node and any attached files for deletion. If the node is a folder, perform the same action for all its children if the profile type is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN node.
     //
     //Future<DeleteNodeDto> deleteNode(String nodeId) async

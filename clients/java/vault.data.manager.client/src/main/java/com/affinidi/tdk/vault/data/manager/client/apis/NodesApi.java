@@ -22,6 +22,7 @@ import com.affinidi.tdk.vault.data.manager.client.Pair;
 
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeOK;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateProfileInput;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteNodeDto;
 import com.affinidi.tdk.vault.data.manager.client.models.GetDetailedNodeInfoOK;
 import com.affinidi.tdk.vault.data.manager.client.models.InitNodesOK;
@@ -83,6 +84,80 @@ public class NodesApi extends BaseApi {
     
     // create path and map variables
     String localVarPath = "/v1/nodes";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<CreateNodeOK> localVarReturnType = new TypeReference<CreateNodeOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * creates Profile with control plane
+   * @param createProfileInput CreateNode (required)
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createProfile(CreateProfileInput createProfileInput) throws ApiException {
+    return this.createProfile(createProfileInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * creates Profile with control plane
+   * @param createProfileInput CreateNode (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createProfile(CreateProfileInput createProfileInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createProfileInput;
+    
+    // verify the required parameter 'createProfileInput' is set
+    if (createProfileInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createProfileInput' when calling createProfile");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/nodes/create-profile";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;

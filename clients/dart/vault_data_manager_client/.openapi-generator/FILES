@@ -22,6 +22,7 @@ doc/CorsStartFileScanOK.md
 doc/CorsUpdateProfileDataOK.md
 doc/CreateNodeInput.md
 doc/CreateNodeOK.md
+doc/CreateProfileInput.md
 doc/DeleteNodeDto.md
 doc/EdekInfo.md
 doc/FilesApi.md
@@ -84,6 +85,7 @@ lib/src/model/cors_start_file_scan_ok.dart
 lib/src/model/cors_update_profile_data_ok.dart
 lib/src/model/create_node_input.dart
 lib/src/model/create_node_ok.dart
+lib/src/model/create_profile_input.dart
 lib/src/model/date.dart
 lib/src/model/delete_node_dto.dart
 lib/src/model/edek_info.dart
@@ -135,6 +137,7 @@ test/cors_start_file_scan_ok_test.dart
 test/cors_update_profile_data_ok_test.dart
 test/create_node_input_test.dart
 test/create_node_ok_test.dart
+test/create_profile_input_test.dart
 test/delete_node_dto_test.dart
 test/edek_info_test.dart
 test/files_api_test.dart

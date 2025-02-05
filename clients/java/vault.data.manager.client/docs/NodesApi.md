@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |             |
+| [**createProfile**](NodesApi.md#createProfile)                     | **POST** /v1/nodes/create-profile                     |             |
 | [**deleteNode**](NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |             |
 | [**initNodes**](NodesApi.md#initNodes)                             | **POST** /v1/nodes/init                               |             |
@@ -84,6 +85,76 @@ public class Example {
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+## createProfile
+
+> CreateNodeOK createProfile(createProfileInput)
+
+creates Profile with control plane
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.vault.data.manager.client.ApiClient;
+import com.affinidi.tdk.vault.data.manager.client.ApiException;
+import com.affinidi.tdk.vault.data.manager.client.Configuration;
+import com.affinidi.tdk.vault.data.manager.client.auth.*;
+import com.affinidi.tdk.vault.data.manager.client.models.*;
+import com.affinidi.tdk.vault.data.manager.client.apis.NodesApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.vault.affinidi.com/vfs");
+
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ConsumerTokenAuth.setApiKeyPrefix("Token");
+
+        NodesApi apiInstance = new NodesApi(defaultClient);
+        CreateProfileInput createProfileInput = new CreateProfileInput(); // CreateProfileInput | CreateNode
+        try {
+            CreateNodeOK result = apiInstance.createProfile(createProfileInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NodesApi#createProfile");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **createProfileInput** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |       |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | -                                                                                                                 |
 
 ## deleteNode
 

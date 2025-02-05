@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |             |
+| [**createProfile**](NodesApi.md#createProfile)                     | **POST** /v1/nodes/create-profile                     |             |
 | [**deleteNode**](NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |             |
 | [**initNodes**](NodesApi.md#initNodes)                             | **POST** /v1/nodes/init                               |             |
@@ -28,6 +29,33 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Name                | Type                                                | Description | Notes |
 | ------------------- | --------------------------------------------------- | ----------- | ----- |
 | **CreateNodeInput** | [**CreateNodeInput**](../Models/CreateNodeInput.md) | CreateNode  |       |
+
+### Return type
+
+[**CreateNodeOK**](../Models/CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="createProfile"></a>
+
+# **createProfile**
+
+> CreateNodeOK createProfile(CreateProfileInput)
+
+    creates Profile with control plane
+
+### Parameters
+
+| Name                   | Type                                                      | Description | Notes |
+| ---------------------- | --------------------------------------------------------- | ----------- | ----- |
+| **CreateProfileInput** | [**CreateProfileInput**](../Models/CreateProfileInput.md) | CreateNode  |       |
 
 ### Return type
 

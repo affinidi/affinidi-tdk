@@ -11,6 +11,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
+| [**createProfile**](NodesApi.md#createprofile)                     | **POST** /v1/nodes/create-profile                     |
 | [**deleteNode**](NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
 | [**getDetailedNodeInfo**](NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
 | [**initNodes**](NodesApi.md#initnodes)                             | **POST** /v1/nodes/init                               |
@@ -52,6 +53,53 @@ try {
 | Name                | Type                                      | Description | Notes |
 | ------------------- | ----------------------------------------- | ----------- | ----- |
 | **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createProfile**
+
+> CreateNodeOK createProfile(createProfileInput)
+
+creates Profile with control plane
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
+// TODO Configure API key authorization: ConsumerTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final CreateProfileInput createProfileInput = ; // CreateProfileInput | CreateNode
+
+try {
+    final response = api.createProfile(createProfileInput);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling NodesApi->createProfile: $e\n');
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **createProfileInput** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |
 
 ### Return type
 
