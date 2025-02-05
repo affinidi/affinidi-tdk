@@ -14,12 +14,15 @@ import 'package:web3dart/crypto.dart';
 part 'consumer_token_provider.dart';
 part 'cis_token_provider.dart';
 
+/// TokenProvider abstract class
 abstract class TokenProvider {
   static const _etheriumIdentityKey = "m/44'/60'/0'/0/0";
 
+  /// Gets a signed JWT token using the provided seed bytes.
   Future<String> getToken(Uint8List seedBytes);
 
-  Future<String> _getJwtToken(Uint8List seedBytes, Map<String, dynamic> header, String tokenEndpoint) async {
+  Future<String> _getJwtToken(Uint8List seedBytes, Map<String, dynamic> header,
+      String tokenEndpoint) async {
     final myDiD = _getDID(seedBytes);
     final jsonHeader = json.encode(header);
     final payload = json.encode(
@@ -27,7 +30,8 @@ abstract class TokenProvider {
     );
     final b64header = _base64Unpadded(base64UrlEncode(utf8.encode(jsonHeader)));
     final b64payload = _base64Unpadded(base64UrlEncode(utf8.encode(payload)));
-    final msgHashHex = sha256.convert(utf8.encode("$b64header.$b64payload")).bytes;
+    final msgHashHex =
+        sha256.convert(utf8.encode("$b64header.$b64payload")).bytes;
 
     final walletKey = _getKey(seedBytes);
     final assertion = (walletKey.sign(Uint8List.fromList(msgHashHex)));
@@ -60,7 +64,8 @@ abstract class TokenProvider {
   }
 
   Map<String, dynamic> _getPayload(String did, String tokenEndpoint) {
-    final issueTimeS = (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+    final issueTimeS =
+        (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
     final payload = {
       'iss': did,
       'sub': did,

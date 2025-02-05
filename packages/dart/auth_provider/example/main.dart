@@ -2,10 +2,10 @@ import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:dotenv/dotenv.dart';
 
 void main() async {
-  final env = DotEnv(includePlatformEnvironment: true)..load();
+  var env = DotEnv()..load();
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
     print(
-        'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY');
+        'Missing variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
     return;
   }
   // Workaround for dotenv multiline limitations
@@ -20,11 +20,26 @@ void main() async {
     passphrase: env['PASSPHRASE'],
   );
 
+  // Fetch project scoped token
   try {
-    // Fetch project scoped token
     final projectScopedToken = await provider.fetchProjectScopedToken();
     print('Successfully obtained project scoped token:');
     print(projectScopedToken);
+  } catch (e) {
+    print('Error obtaining token: $e');
+  }
+
+  // Fetch iota token (websocket).
+  // DID is usually obtained at runtime from the registered user
+  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'DID'])) {
+    print('Missing variables. Please provide IOTA_CONFIG_ID and DID');
+    return;
+  }
+  try {
+    final iotaToken = provider.createIotaToken(
+        iotaConfigId: env['IOTA_CONFIG_ID']!, did: env['DID']!);
+    print('Successfully obtained iota token:');
+    print(iotaToken);
   } catch (e) {
     print('Error obtaining token: $e');
   }

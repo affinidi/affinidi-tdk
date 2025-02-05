@@ -8,6 +8,7 @@ import 'cryptography/base_cryptography_service.dart';
 import 'cryptography/cryptography_abstract.dart';
 import 'cryptography_interface.dart';
 
+/// A service class that provides cryptographic operations.
 class CryptographyService implements CryptographyServiceInterface {
   /// A service class that provides cryptographic operations.
   ///
