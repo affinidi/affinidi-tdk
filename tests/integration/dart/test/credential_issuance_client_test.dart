@@ -24,17 +24,22 @@ void main() {
       );
 
       // issuance client
-      final dio = Dio(BaseOptions(
-        baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 5),
-      ));
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
-          dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
+          dio: Dio(BaseOptions(
+            baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 5),
+          )),
+          authTokenHook: authProvider.fetchProjectScopedToken);
       configurationApi = issuanceClient.getConfigurationApi();
 
       // wallet client
       final walletClient = AffinidiTdkWalletsClient(
+          dio: Dio(BaseOptions(
+            baseUrl: AffinidiTdkWalletsClient.basePath,
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 5),
+          )),
           authTokenHook: authProvider.fetchProjectScopedToken);
       walletApi = walletClient.getWalletApi();
 
