@@ -60,10 +60,10 @@ jobs:
         id: mint
         uses: tschm/token-mint-action@v1.0.3
 
-      - name: Install gpg secret key for java Maven
-        run: |
-          echo "${{ secrets.MAVEN_GPG_SECRET_KEY }}" | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
+      # - name: Install gpg secret key for java Maven
+      #   run: |
+      #     echo "${{ secrets.MAVEN_GPG_SECRET_KEY }}" | gpg --batch --import
+      #     gpg --list-secret-keys --keyid-format LONG
 
       - name: Set up JDK for deploy to Sonatype
         uses: actions/setup-java@v4
@@ -75,7 +75,7 @@ jobs:
           server-password: MAVEN_CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
-          
+
       - run: npm ci
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
