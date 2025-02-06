@@ -75,11 +75,11 @@ jobs:
           server-password: MAVEN_CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
-
+          
       - run: npm ci
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
-      - run: npx nx run-many  -t semantic-release --parallel=false
+      - run: npx nx run-many  -t semantic-release --parallel=false --base=$BASE_SHA --head=HEAD
         name: semantic release
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -91,3 +91,4 @@ jobs:
           TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
           POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          BASE_SHA: ${{ github.event.before }}
