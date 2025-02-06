@@ -1,5 +1,7 @@
 part of 'token_provider.dart';
 
+/// Auth provider that generates consumer scoped tokens used by Vault to call
+/// Affinidi Vault services such as Vault Data Manager (VDM).
 class ConsumerTokenProvider extends TokenProvider {
   static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
 
@@ -20,7 +22,8 @@ class ConsumerTokenProvider extends TokenProvider {
     final dioInstance = Dio();
     final data = {
       "grant_type": 'client_credentials',
-      "client_assertion_type": 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+      "client_assertion_type":
+          'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
       "client_assertion": clientAssertion,
       "client_id": did,
     };

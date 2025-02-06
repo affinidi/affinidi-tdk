@@ -1,5 +1,6 @@
 part of 'token_provider.dart';
 
+/// CIS Token Provider class for generating tokens required to claim credentials.
 class CisTokenProvider extends TokenProvider {
   static final String _tokenEndpoint = Environment.fetchConsumerCisUrl();
 

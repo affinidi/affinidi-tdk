@@ -17,6 +17,7 @@ import 'package:secp256k1/secp256k1.dart' as secp256k1;
 
 import 'cryptography_abstract.dart';
 
+/// Base class for cryptographic operations. Implements the `CryptographyServiceAbstract` interface.
 class BaseCryptographyService implements CryptographyServiceAbstract {
   final _aes256NonceLength = 16;
   final _aes256MacLength = 32;
@@ -36,6 +37,7 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
   final _secureRandom = pce.FortunaRandom();
   final _didMethodSeparator = '++';
 
+  /// Constructor to initialize cryptography service with a secure random seed.
   BaseCryptographyService() {
     _initializeSecureRandomSeed();
   }
