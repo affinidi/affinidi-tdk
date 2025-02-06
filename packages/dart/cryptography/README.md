@@ -4,10 +4,10 @@
 
 > **💡NOTE:** In most cases there is no need to use this package directly and instead use a higher level package or library, like [affinidi_tdk_consumer_auth_provider](../consumer_auth_provider/) or [affinidi_tdk_auth_provider](../auth_provider/).
 
-## Table of Contents
+## Table of Content s . asdfasf
 
 - [Affinidi TDK - Cryptography](#affinidi-tdk---cryptography)
-  - [Table of Contents](#table-of-contents)
+  - [Table of Content s . asdfasf](#table-of-content-s--asdfasf)
   - [Requirements](#requirements)
   - [Getting Started](#getting-started)
   - [Usage](#usage)
