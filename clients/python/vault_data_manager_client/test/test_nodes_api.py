@@ -33,6 +33,12 @@ class TestNodesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_profile(self) -> None:
+        """Test case for create_profile
+
+        """
+        pass
+
     def test_delete_node(self) -> None:
         """Test case for delete_node
 

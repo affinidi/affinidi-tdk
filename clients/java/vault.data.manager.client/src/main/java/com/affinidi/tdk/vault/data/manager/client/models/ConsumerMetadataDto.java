@@ -277,7 +277,7 @@ public class ConsumerMetadataDto {
   }
 
   /**
-   * creation date/time
+   * [GEN] ISO 8601 string of the creation date/time the entity
    * @return createdAt
    */
   @javax.annotation.Nonnull
@@ -302,7 +302,7 @@ public class ConsumerMetadataDto {
   }
 
   /**
-   * modification date/time
+   * [GEN] ISO 8601 string of the modification date/time the entity
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
@@ -327,7 +327,7 @@ public class ConsumerMetadataDto {
   }
 
   /**
-   * Identifier of the user who created
+   * [GEN] Identifier of the user who created the entity
    * @return createdBy
    */
   @javax.annotation.Nonnull
@@ -352,7 +352,7 @@ public class ConsumerMetadataDto {
   }
 
   /**
-   * Identifier of the user who last updated
+   * [GEN] Identifier of the user who last updated the entity
    * @return modifiedBy
    */
   @javax.annotation.Nonnull
@@ -380,9 +380,9 @@ public class ConsumerMetadataDto {
    * Description of the node
    * @return description
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDescription() {
     return description;
@@ -390,7 +390,7 @@ public class ConsumerMetadataDto {
 
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDescription(String description) {
     this.description = description;
   }

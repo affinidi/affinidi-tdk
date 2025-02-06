@@ -32,6 +32,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_start_file
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_update_profile_data_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_profile_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/edek_info.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/get_config_ok.dart';
@@ -82,6 +83,7 @@ part 'serializers.g.dart';
   CorsUpdateProfileDataOK,
   CreateNodeInput,
   CreateNodeOK,
+  CreateProfileInput,
   DeleteNodeDto,
   EdekInfo,
   GetConfigOK,

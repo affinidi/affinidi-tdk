@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |             |
+| [**createProfile**](NodesApi.md#createProfile)                     | **POST** /v1/nodes/create-profile                     |             |
 | [**deleteNode**](NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |             |
 | [**initNodes**](NodesApi.md#initNodes)                             | **POST** /v1/nodes/init                               |             |
@@ -17,7 +18,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## createNode
 
-> CreateNodeOK createNode(createNodeInput)
+> CreateNodeOK createNode(createNodeInput, ownerDid)
 
 creates node
 
@@ -45,8 +46,9 @@ public class Example {
 
         NodesApi apiInstance = new NodesApi(defaultClient);
         CreateNodeInput createNodeInput = new CreateNodeInput(); // CreateNodeInput | CreateNode
+        String ownerDid = "ownerDid_example"; // String | DID of the Node owner
         try {
-            CreateNodeOK result = apiInstance.createNode(createNodeInput);
+            CreateNodeOK result = apiInstance.createNode(createNodeInput, ownerDid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#createNode");
@@ -61,9 +63,10 @@ public class Example {
 
 ### Parameters
 
-| Name                | Type                                      | Description | Notes |
-| ------------------- | ----------------------------------------- | ----------- | ----- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |       |
+| Name                | Type                                      | Description           | Notes      |
+| ------------------- | ----------------------------------------- | --------------------- | ---------- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode            |            |
+| **ownerDid**        | **String**                                | DID of the Node owner | [optional] |
 
 ### Return type
 
@@ -84,6 +87,76 @@ public class Example {
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+## createProfile
+
+> CreateNodeOK createProfile(createProfileInput)
+
+creates Profile with control plane
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.vault.data.manager.client.ApiClient;
+import com.affinidi.tdk.vault.data.manager.client.ApiException;
+import com.affinidi.tdk.vault.data.manager.client.Configuration;
+import com.affinidi.tdk.vault.data.manager.client.auth.*;
+import com.affinidi.tdk.vault.data.manager.client.models.*;
+import com.affinidi.tdk.vault.data.manager.client.apis.NodesApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.vault.affinidi.com/vfs");
+
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ConsumerTokenAuth.setApiKeyPrefix("Token");
+
+        NodesApi apiInstance = new NodesApi(defaultClient);
+        CreateProfileInput createProfileInput = new CreateProfileInput(); // CreateProfileInput | CreateNode
+        try {
+            CreateNodeOK result = apiInstance.createProfile(createProfileInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NodesApi#createProfile");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **createProfileInput** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |       |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | -                                                                                                                 |
 
 ## deleteNode
 
@@ -157,7 +230,7 @@ public class Example {
 
 ## getDetailedNodeInfo
 
-> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek)
+> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek, ownerDid)
 
 Gets detailed information about the node
 
@@ -186,8 +259,9 @@ public class Example {
         NodesApi apiInstance = new NodesApi(defaultClient);
         String nodeId = "nodeId_example"; // String |
         String dek = "dek_example"; // String | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+        String ownerDid = "ownerDid_example"; // String | DID of the Node owner
         try {
-            GetDetailedNodeInfoOK result = apiInstance.getDetailedNodeInfo(nodeId, dek);
+            GetDetailedNodeInfoOK result = apiInstance.getDetailedNodeInfo(nodeId, dek, ownerDid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#getDetailedNodeInfo");
@@ -202,10 +276,11 @@ public class Example {
 
 ### Parameters
 
-| Name       | Type       | Description                                                                                                                 | Notes      |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **nodeId** | **String** |                                                                                                                             |            |
-| **dek**    | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| Name         | Type       | Description                                                                                                                 | Notes      |
+| ------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **nodeId**   | **String** |                                                                                                                             |            |
+| **dek**      | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| **ownerDid** | **String** | DID of the Node owner                                                                                                       | [optional] |
 
 ### Return type
 
@@ -296,7 +371,7 @@ This endpoint does not need any parameter.
 
 ## listNodeChildren
 
-> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey)
+> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid)
 
 lists children of the node
 
@@ -326,8 +401,9 @@ public class Example {
         String nodeId = "nodeId_example"; // String | Description for nodeId.
         Integer limit = 10; // Integer | Maximum number of records to fetch in a list
         String exclusiveStartKey = "exclusiveStartKey_example"; // String | exclusiveStartKey for retrieving the next batch of data.
+        String ownerDid = "ownerDid_example"; // String | DID of the Node owner
         try {
-            ListNodeChildrenOK result = apiInstance.listNodeChildren(nodeId, limit, exclusiveStartKey);
+            ListNodeChildrenOK result = apiInstance.listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#listNodeChildren");
@@ -347,6 +423,7 @@ public class Example {
 | **nodeId**            | **String**  | Description for nodeId.                                  |                            |
 | **limit**             | **Integer** | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| **ownerDid**          | **String**  | DID of the Node owner                                    | [optional]                 |
 
 ### Return type
 
@@ -370,7 +447,7 @@ public class Example {
 
 ## listRootNodeChildren
 
-> ListRootNodeChildrenOK listRootNodeChildren()
+> ListRootNodeChildrenOK listRootNodeChildren(ownerDid)
 
 lists children of the root node for the consumer
 
@@ -397,8 +474,9 @@ public class Example {
         //ConsumerTokenAuth.setApiKeyPrefix("Token");
 
         NodesApi apiInstance = new NodesApi(defaultClient);
+        String ownerDid = "ownerDid_example"; // String | DID of the Node owner
         try {
-            ListRootNodeChildrenOK result = apiInstance.listRootNodeChildren();
+            ListRootNodeChildrenOK result = apiInstance.listRootNodeChildren(ownerDid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#listRootNodeChildren");
@@ -413,7 +491,9 @@ public class Example {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name         | Type       | Description           | Notes      |
+| ------------ | ---------- | --------------------- | ---------- |
+| **ownerDid** | **String** | DID of the Node owner | [optional] |
 
 ### Return type
 

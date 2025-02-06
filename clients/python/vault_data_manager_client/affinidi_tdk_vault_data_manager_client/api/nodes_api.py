@@ -26,6 +26,7 @@ from typing import Optional
 
 from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput
 from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
+from affinidi_tdk_vault_data_manager_client.models.create_profile_input import CreateProfileInput
 from affinidi_tdk_vault_data_manager_client.models.delete_node_dto import DeleteNodeDto
 from affinidi_tdk_vault_data_manager_client.models.get_detailed_node_info_ok import GetDetailedNodeInfoOK
 from affinidi_tdk_vault_data_manager_client.models.init_nodes_ok import InitNodesOK
@@ -58,18 +59,20 @@ class NodesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_node(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], **kwargs) -> CreateNodeOK:  # noqa: E501
+    def create_node(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> CreateNodeOK:  # noqa: E501
         """create_node  # noqa: E501
 
         creates node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_node(create_node_input, async_req=True)
+        >>> thread = api.create_node(create_node_input, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param create_node_input: CreateNode (required)
         :type create_node_input: CreateNodeInput
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -85,21 +88,23 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_node_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_node_with_http_info(create_node_input, **kwargs)  # noqa: E501
+        return self.create_node_with_http_info(create_node_input, owner_did, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_node_with_http_info(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_node_with_http_info(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """create_node  # noqa: E501
 
         creates node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_node_with_http_info(create_node_input, async_req=True)
+        >>> thread = api.create_node_with_http_info(create_node_input, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param create_node_input: CreateNode (required)
         :type create_node_input: CreateNodeInput
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -128,7 +133,8 @@ class NodesApi:
         _params = locals()
 
         _all_params = [
-            'create_node_input'
+            'create_node_input',
+            'owner_did'
         ]
         _all_params.extend(
             [
@@ -159,6 +165,9 @@ class NodesApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('owner_did') is not None:  # noqa: E501
+            _query_params.append(('ownerDid', _params['owner_did']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -190,6 +199,154 @@ class NodesApi:
 
         return self.api_client.call_api(
             '/v1/nodes', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def create_profile(self, create_profile_input : Annotated[CreateProfileInput, Field(..., description="CreateNode")], **kwargs) -> CreateNodeOK:  # noqa: E501
+        """create_profile  # noqa: E501
+
+        creates Profile with control plane  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_profile(create_profile_input, async_req=True)
+        >>> result = thread.get()
+
+        :param create_profile_input: CreateNode (required)
+        :type create_profile_input: CreateProfileInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: CreateNodeOK
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the create_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.create_profile_with_http_info(create_profile_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def create_profile_with_http_info(self, create_profile_input : Annotated[CreateProfileInput, Field(..., description="CreateNode")], **kwargs) -> ApiResponse:  # noqa: E501
+        """create_profile  # noqa: E501
+
+        creates Profile with control plane  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_profile_with_http_info(create_profile_input, async_req=True)
+        >>> result = thread.get()
+
+        :param create_profile_input: CreateNode (required)
+        :type create_profile_input: CreateProfileInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(CreateNodeOK, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'create_profile_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_profile" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['create_profile_input'] is not None:
+            _body_params = _params['create_profile_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ConsumerTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "CreateNodeOK",
+            '400': "InvalidParameterError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/nodes/create-profile', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -347,20 +504,22 @@ class NodesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_detailed_node_info(self, node_id : constr(strict=True), dek : Annotated[Optional[StrictStr], Field(description="A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided")] = None, **kwargs) -> GetDetailedNodeInfoOK:  # noqa: E501
+    def get_detailed_node_info(self, node_id : constr(strict=True), dek : Annotated[Optional[StrictStr], Field(description="A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided")] = None, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> GetDetailedNodeInfoOK:  # noqa: E501
         """get_detailed_node_info  # noqa: E501
 
         Gets detailed information about the node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_detailed_node_info(node_id, dek, async_req=True)
+        >>> thread = api.get_detailed_node_info(node_id, dek, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param node_id: (required)
         :type node_id: str
         :param dek: A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
         :type dek: str
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -376,23 +535,25 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_detailed_node_info_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_detailed_node_info_with_http_info(node_id, dek, **kwargs)  # noqa: E501
+        return self.get_detailed_node_info_with_http_info(node_id, dek, owner_did, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_detailed_node_info_with_http_info(self, node_id : constr(strict=True), dek : Annotated[Optional[StrictStr], Field(description="A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_detailed_node_info_with_http_info(self, node_id : constr(strict=True), dek : Annotated[Optional[StrictStr], Field(description="A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided")] = None, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """get_detailed_node_info  # noqa: E501
 
         Gets detailed information about the node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_detailed_node_info_with_http_info(node_id, dek, async_req=True)
+        >>> thread = api.get_detailed_node_info_with_http_info(node_id, dek, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param node_id: (required)
         :type node_id: str
         :param dek: A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
         :type dek: str
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -422,7 +583,8 @@ class NodesApi:
 
         _all_params = [
             'node_id',
-            'dek'
+            'dek',
+            'owner_did'
         ]
         _all_params.extend(
             [
@@ -458,6 +620,9 @@ class NodesApi:
         _query_params = []
         if _params.get('dek') is not None:  # noqa: E501
             _query_params.append(('dek', _params['dek']))
+
+        if _params.get('owner_did') is not None:  # noqa: E501
+            _query_params.append(('ownerDid', _params['owner_did']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -631,14 +796,14 @@ class NodesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_node_children(self, node_id : Annotated[StrictStr, Field(..., description="Description for nodeId.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ListNodeChildrenOK:  # noqa: E501
+    def list_node_children(self, node_id : Annotated[StrictStr, Field(..., description="Description for nodeId.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ListNodeChildrenOK:  # noqa: E501
         """list_node_children  # noqa: E501
 
         lists children of the node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_node_children(node_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_node_children(node_id, limit, exclusive_start_key, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param node_id: Description for nodeId. (required)
@@ -647,6 +812,8 @@ class NodesApi:
         :type limit: int
         :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
         :type exclusive_start_key: str
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -662,17 +829,17 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_node_children_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_node_children_with_http_info(node_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
+        return self.list_node_children_with_http_info(node_id, limit, exclusive_start_key, owner_did, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_node_children_with_http_info(self, node_id : Annotated[StrictStr, Field(..., description="Description for nodeId.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_node_children_with_http_info(self, node_id : Annotated[StrictStr, Field(..., description="Description for nodeId.")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_node_children  # noqa: E501
 
         lists children of the node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_node_children_with_http_info(node_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_node_children_with_http_info(node_id, limit, exclusive_start_key, owner_did, async_req=True)
         >>> result = thread.get()
 
         :param node_id: Description for nodeId. (required)
@@ -681,6 +848,8 @@ class NodesApi:
         :type limit: int
         :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
         :type exclusive_start_key: str
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -711,7 +880,8 @@ class NodesApi:
         _all_params = [
             'node_id',
             'limit',
-            'exclusive_start_key'
+            'exclusive_start_key',
+            'owner_did'
         ]
         _all_params.extend(
             [
@@ -751,6 +921,9 @@ class NodesApi:
         if _params.get('exclusive_start_key') is not None:  # noqa: E501
             _query_params.append(('exclusiveStartKey', _params['exclusive_start_key']))
 
+        if _params.get('owner_did') is not None:  # noqa: E501
+            _query_params.append(('ownerDid', _params['owner_did']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -788,16 +961,18 @@ class NodesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_root_node_children(self, **kwargs) -> ListRootNodeChildrenOK:  # noqa: E501
+    def list_root_node_children(self, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ListRootNodeChildrenOK:  # noqa: E501
         """list_root_node_children  # noqa: E501
 
         lists children of the root node for the consumer  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_root_node_children(async_req=True)
+        >>> thread = api.list_root_node_children(owner_did, async_req=True)
         >>> result = thread.get()
 
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -813,19 +988,21 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_root_node_children_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_root_node_children_with_http_info(**kwargs)  # noqa: E501
+        return self.list_root_node_children_with_http_info(owner_did, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_root_node_children_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_root_node_children_with_http_info(self, owner_did : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="DID of the Node owner")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_root_node_children  # noqa: E501
 
         lists children of the root node for the consumer  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_root_node_children_with_http_info(async_req=True)
+        >>> thread = api.list_root_node_children_with_http_info(owner_did, async_req=True)
         >>> result = thread.get()
 
+        :param owner_did: DID of the Node owner
+        :type owner_did: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -854,6 +1031,7 @@ class NodesApi:
         _params = locals()
 
         _all_params = [
+            'owner_did'
         ]
         _all_params.extend(
             [
@@ -884,6 +1062,9 @@ class NodesApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('owner_did') is not None:  # noqa: E501
+            _query_params.append(('ownerDid', _params['owner_did']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

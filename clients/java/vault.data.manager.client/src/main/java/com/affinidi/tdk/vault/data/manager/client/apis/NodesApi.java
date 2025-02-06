@@ -22,6 +22,7 @@ import com.affinidi.tdk.vault.data.manager.client.Pair;
 
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeOK;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateProfileInput;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteNodeDto;
 import com.affinidi.tdk.vault.data.manager.client.models.GetDetailedNodeInfoOK;
 import com.affinidi.tdk.vault.data.manager.client.models.InitNodesOK;
@@ -57,11 +58,12 @@ public class NodesApi extends BaseApi {
    * 
    * creates node
    * @param createNodeInput CreateNode (required)
+   * @param ownerDid DID of the Node owner (optional)
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(CreateNodeInput createNodeInput) throws ApiException {
-    return this.createNode(createNodeInput, Collections.emptyMap());
+  public CreateNodeOK createNode(CreateNodeInput createNodeInput, String ownerDid) throws ApiException {
+    return this.createNode(createNodeInput, ownerDid, Collections.emptyMap());
   }
 
 
@@ -69,11 +71,12 @@ public class NodesApi extends BaseApi {
    * 
    * creates node
    * @param createNodeInput CreateNode (required)
+   * @param ownerDid DID of the Node owner (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(CreateNodeInput createNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateNodeOK createNode(CreateNodeInput createNodeInput, String ownerDid, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createNodeInput;
     
     // verify the required parameter 'createNodeInput' is set
@@ -83,6 +86,81 @@ public class NodesApi extends BaseApi {
     
     // create path and map variables
     String localVarPath = "/v1/nodes";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("ownerDid", ownerDid));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<CreateNodeOK> localVarReturnType = new TypeReference<CreateNodeOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * creates Profile with control plane
+   * @param createProfileInput CreateNode (required)
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createProfile(CreateProfileInput createProfileInput) throws ApiException {
+    return this.createProfile(createProfileInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * creates Profile with control plane
+   * @param createProfileInput CreateNode (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createProfile(CreateProfileInput createProfileInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createProfileInput;
+    
+    // verify the required parameter 'createProfileInput' is set
+    if (createProfileInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createProfileInput' when calling createProfile");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/nodes/create-profile";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -207,11 +285,12 @@ public class NodesApi extends BaseApi {
    * Gets detailed information about the node
    * @param nodeId  (required)
    * @param dek A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided (optional)
+   * @param ownerDid DID of the Node owner (optional)
    * @return GetDetailedNodeInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek) throws ApiException {
-    return this.getDetailedNodeInfo(nodeId, dek, Collections.emptyMap());
+  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek, String ownerDid) throws ApiException {
+    return this.getDetailedNodeInfo(nodeId, dek, ownerDid, Collections.emptyMap());
   }
 
 
@@ -220,11 +299,12 @@ public class NodesApi extends BaseApi {
    * Gets detailed information about the node
    * @param nodeId  (required)
    * @param dek A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided (optional)
+   * @param ownerDid DID of the Node owner (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return GetDetailedNodeInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek, Map<String, String> additionalHeaders) throws ApiException {
+  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek, String ownerDid, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -245,6 +325,7 @@ public class NodesApi extends BaseApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPair("dek", dek));
+    localVarQueryParams.addAll(apiClient.parameterToPair("ownerDid", ownerDid));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -357,11 +438,12 @@ public class NodesApi extends BaseApi {
    * @param nodeId Description for nodeId. (required)
    * @param limit Maximum number of records to fetch in a list (optional, default to 10)
    * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
+   * @param ownerDid DID of the Node owner (optional)
    * @return ListNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey) throws ApiException {
-    return this.listNodeChildren(nodeId, limit, exclusiveStartKey, Collections.emptyMap());
+  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey, String ownerDid) throws ApiException {
+    return this.listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid, Collections.emptyMap());
   }
 
 
@@ -371,11 +453,12 @@ public class NodesApi extends BaseApi {
    * @param nodeId Description for nodeId. (required)
    * @param limit Maximum number of records to fetch in a list (optional, default to 10)
    * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
+   * @param ownerDid DID of the Node owner (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return ListNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey, String ownerDid, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -397,6 +480,7 @@ public class NodesApi extends BaseApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+    localVarQueryParams.addAll(apiClient.parameterToPair("ownerDid", ownerDid));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -435,22 +519,24 @@ public class NodesApi extends BaseApi {
   /**
    * 
    * lists children of the root node for the consumer
+   * @param ownerDid DID of the Node owner (optional)
    * @return ListRootNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListRootNodeChildrenOK listRootNodeChildren() throws ApiException {
-    return this.listRootNodeChildren(Collections.emptyMap());
+  public ListRootNodeChildrenOK listRootNodeChildren(String ownerDid) throws ApiException {
+    return this.listRootNodeChildren(ownerDid, Collections.emptyMap());
   }
 
 
   /**
    * 
    * lists children of the root node for the consumer
+   * @param ownerDid DID of the Node owner (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return ListRootNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListRootNodeChildrenOK listRootNodeChildren(Map<String, String> additionalHeaders) throws ApiException {
+  public ListRootNodeChildrenOK listRootNodeChildren(String ownerDid, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -464,6 +550,7 @@ public class NodesApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPair("ownerDid", ownerDid));
     
     localVarHeaderParams.putAll(additionalHeaders);
 

@@ -234,6 +234,15 @@ paths:
           schema:
             type: string
           style: form
+        - description: DID of the Node owner
+          explode: true
+          in: query
+          name: ownerDid
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
       responses:
         '200':
           content:
@@ -523,69 +532,6 @@ paths:
       x-accepts:
         - application/json
   /v1/nodes/{nodeId}/profile-data:
-    get:
-      description: Retrieves information from a profile.
-      operationId: queryProfileData
-      parameters:
-        - description: the nodeId of the node being operated on
-          explode: false
-          in: path
-          name: nodeId
-          required: true
-          schema:
-            type: string
-          style: simple
-        - description: 'data query, TBD maybe encode it with base64 to make it url friendly?'
-          explode: true
-          in: query
-          name: query
-          required: false
-          schema:
-            type: string
-          style: form
-        - description:
-            "A base64url encoded data encryption key, encrypted using VFS\
-            \ public"
-          explode: true
-          in: query
-          name: dek
-          required: true
-          schema:
-            type: string
-          style: form
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/QueryProfileDataOK'
-          description: QueryProfileDataOK
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Methods:
-              $ref: '#/components/headers/Access-Control-Allow-Methods'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InvalidParameterError'
-          description: BadRequestError
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Methods:
-              $ref: '#/components/headers/Access-Control-Allow-Methods'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
-      security:
-        - ConsumerTokenAuth: []
-      tags:
-        - profile-data
-      x-accepts:
-        - application/json
     patch:
       description: Updates the profile with the given data
       operationId: updateProfileData
@@ -638,6 +584,16 @@ paths:
     get:
       description: lists children of the root node for the consumer
       operationId: listRootNodeChildren
+      parameters:
+        - description: DID of the Node owner
+          explode: true
+          in: query
+          name: ownerDid
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
       responses:
         '200':
           content:
@@ -674,6 +630,16 @@ paths:
     post:
       description: creates node
       operationId: createNode
+      parameters:
+        - description: DID of the Node owner
+          explode: true
+          in: query
+          name: ownerDid
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
       requestBody:
         $ref: '#/components/requestBodies/CreateNodeInput'
       responses:
@@ -748,6 +714,39 @@ paths:
         - nodes
       x-accepts:
         - application/json
+  /v1/nodes/create-profile:
+    post:
+      description: creates Profile with control plane
+      operationId: createProfile
+      requestBody:
+        $ref: '#/components/requestBodies/CreateProfileInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNodeOK'
+          description: CreateNodeOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - nodes
+      x-content-type: application/json
+      x-accepts:
+        - application/json
   /v1/nodes/{nodeId}/children:
     get:
       description: lists children of the node
@@ -776,6 +775,15 @@ paths:
           explode: true
           in: query
           name: exclusiveStartKey
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
+        - description: DID of the Node owner
+          explode: true
+          in: query
+          name: ownerDid
           required: false
           schema:
             maxLength: 3000
@@ -845,6 +853,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/CreateNodeInput'
+      description: CreateNode
+      required: true
+    CreateProfileInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateProfileInput'
       description: CreateNode
       required: true
     MoveNodeInput:
@@ -1643,6 +1658,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateProfileBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
     ListNodeChildrenBadRequestError:
       content:
         application/json:
@@ -1950,6 +1971,7 @@ components:
         - consumerId
         - createdAt
         - createdBy
+        - description
         - modifiedAt
         - modifiedBy
         - name
@@ -2008,16 +2030,16 @@ components:
         consumerId:
           type: string
         createdAt:
-          description: creation date/time
+          description: '[GEN] ISO 8601 string of the creation date/time the entity'
           type: string
         modifiedAt:
-          description: modification date/time
+          description: '[GEN] ISO 8601 string of the modification date/time the entity'
           type: string
         createdBy:
-          description: Identifier of the user who created
+          description: '[GEN] Identifier of the user who created the entity'
           type: string
         modifiedBy:
-          description: Identifier of the user who last updated
+          description: '[GEN] Identifier of the user who last updated the entity'
           type: string
         description:
           description: Description of the node
@@ -2032,6 +2054,7 @@ components:
         - consumerId
         - createdAt
         - createdBy
+        - description
         - modifiedAt
         - modifiedBy
         - name
@@ -2181,6 +2204,54 @@ components:
       required:
         - name
         - type
+      type: object
+    CreateProfileInput:
+      additionalProperties: false
+      example:
+        metadata: metadata
+        edekInfo:
+          dekekId: dekekId
+          edek: edek
+        rights:
+          - READ
+          - READ
+        name: name
+        description: description
+        dek: dek
+        subjectDid: subjectDid
+      properties:
+        name:
+          description: Name of the item
+          maxLength: 128
+          type: string
+        description:
+          description: description of profile
+          type: string
+        edekInfo:
+          $ref: '#/components/schemas/EdekInfo'
+        dek:
+          description:
+            "A base64 encoded data encryption key, encrypted using VFS\
+            \ public key, required for node types [FILE, PROFILE]"
+          type: string
+        metadata:
+          description: metadata of the node in stringified json format
+          type: string
+        subjectDid:
+          description: DID to grant access to Profile
+          type: string
+        rights:
+          description: types of access to grant
+          items:
+            enum:
+              - READ
+              - WRITE
+            type: string
+          type: array
+      required:
+        - dek
+        - edekInfo
+        - name
       type: object
     MoveNodeInput:
       additionalProperties: false
@@ -2401,8 +2472,6 @@ components:
       type: object
     QueryProfileDataOK:
       additionalProperties: false
-      example:
-        data: '{}'
       properties:
         data:
           type: object

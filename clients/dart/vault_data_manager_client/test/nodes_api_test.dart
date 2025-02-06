@@ -9,8 +9,15 @@ void main() {
   group(NodesApi, () {
     // creates node
     //
-    //Future<CreateNodeOK> createNode(CreateNodeInput createNodeInput) async
+    //Future<CreateNodeOK> createNode(CreateNodeInput createNodeInput, { String ownerDid }) async
     test('test createNode', () async {
+      // TODO
+    });
+
+    // creates Profile with control plane
+    //
+    //Future<CreateNodeOK> createProfile(CreateProfileInput createProfileInput) async
+    test('test createProfile', () async {
       // TODO
     });
 
@@ -23,7 +30,7 @@ void main() {
 
     // Gets detailed information about the node
     //
-    //Future<GetDetailedNodeInfoOK> getDetailedNodeInfo(String nodeId, { String dek }) async
+    //Future<GetDetailedNodeInfoOK> getDetailedNodeInfo(String nodeId, { String dek, String ownerDid }) async
     test('test getDetailedNodeInfo', () async {
       // TODO
     });
@@ -37,14 +44,14 @@ void main() {
 
     // lists children of the node
     //
-    //Future<ListNodeChildrenOK> listNodeChildren(String nodeId, { int limit, String exclusiveStartKey }) async
+    //Future<ListNodeChildrenOK> listNodeChildren(String nodeId, { int limit, String exclusiveStartKey, String ownerDid }) async
     test('test listNodeChildren', () async {
       // TODO
     });
 
     // lists children of the root node for the consumer
     //
-    //Future<ListRootNodeChildrenOK> listRootNodeChildren() async
+    //Future<ListRootNodeChildrenOK> listRootNodeChildren({ String ownerDid }) async
     test('test listRootNodeChildren', () async {
       // TODO
     });

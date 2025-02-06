@@ -11,6 +11,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
+| [**createProfile**](NodesApi.md#createprofile)                     | **POST** /v1/nodes/create-profile                     |
 | [**deleteNode**](NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
 | [**getDetailedNodeInfo**](NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
 | [**initNodes**](NodesApi.md#initnodes)                             | **POST** /v1/nodes/init                               |
@@ -23,7 +24,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **createNode**
 
-> CreateNodeOK createNode(createNodeInput)
+> CreateNodeOK createNode(createNodeInput, ownerDid)
 
 creates node
 
@@ -38,9 +39,10 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 
 final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 final CreateNodeInput createNodeInput = ; // CreateNodeInput | CreateNode
+final String ownerDid = ownerDid_example; // String | DID of the Node owner
 
 try {
-    final response = api.createNode(createNodeInput);
+    final response = api.createNode(createNodeInput, ownerDid);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->createNode: $e\n');
@@ -49,9 +51,57 @@ try {
 
 ### Parameters
 
-| Name                | Type                                      | Description | Notes |
-| ------------------- | ----------------------------------------- | ----------- | ----- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |
+| Name                | Type                                      | Description           | Notes      |
+| ------------------- | ----------------------------------------- | --------------------- | ---------- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode            |
+| **ownerDid**        | **String**                                | DID of the Node owner | [optional] |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createProfile**
+
+> CreateNodeOK createProfile(createProfileInput)
+
+creates Profile with control plane
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
+// TODO Configure API key authorization: ConsumerTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final CreateProfileInput createProfileInput = ; // CreateProfileInput | CreateNode
+
+try {
+    final response = api.createProfile(createProfileInput);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling NodesApi->createProfile: $e\n');
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description | Notes |
+| ---------------------- | ----------------------------------------------- | ----------- | ----- |
+| **createProfileInput** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |
 
 ### Return type
 
@@ -117,7 +167,7 @@ try {
 
 # **getDetailedNodeInfo**
 
-> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek)
+> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek, ownerDid)
 
 Gets detailed information about the node
 
@@ -133,9 +183,10 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 final String nodeId = nodeId_example; // String |
 final String dek = dek_example; // String | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+final String ownerDid = ownerDid_example; // String | DID of the Node owner
 
 try {
-    final response = api.getDetailedNodeInfo(nodeId, dek);
+    final response = api.getDetailedNodeInfo(nodeId, dek, ownerDid);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->getDetailedNodeInfo: $e\n');
@@ -144,10 +195,11 @@ try {
 
 ### Parameters
 
-| Name       | Type       | Description                                                                                                                 | Notes      |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **nodeId** | **String** |                                                                                                                             |
-| **dek**    | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| Name         | Type       | Description                                                                                                                 | Notes      |
+| ------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **nodeId**   | **String** |                                                                                                                             |
+| **dek**      | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| **ownerDid** | **String** | DID of the Node owner                                                                                                       | [optional] |
 
 ### Return type
 
@@ -210,7 +262,7 @@ This endpoint does not need any parameter.
 
 # **listNodeChildren**
 
-> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey)
+> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid)
 
 lists children of the node
 
@@ -227,9 +279,10 @@ final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 final String nodeId = nodeId_example; // String | Description for nodeId.
 final int limit = 56; // int | Maximum number of records to fetch in a list
 final String exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
+final String ownerDid = ownerDid_example; // String | DID of the Node owner
 
 try {
-    final response = api.listNodeChildren(nodeId, limit, exclusiveStartKey);
+    final response = api.listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->listNodeChildren: $e\n');
@@ -243,6 +296,7 @@ try {
 | **nodeId**            | **String** | Description for nodeId.                                  |
 | **limit**             | **int**    | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusiveStartKey** | **String** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| **ownerDid**          | **String** | DID of the Node owner                                    | [optional]                 |
 
 ### Return type
 
@@ -261,7 +315,7 @@ try {
 
 # **listRootNodeChildren**
 
-> ListRootNodeChildrenOK listRootNodeChildren()
+> ListRootNodeChildrenOK listRootNodeChildren(ownerDid)
 
 lists children of the root node for the consumer
 
@@ -275,9 +329,10 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
+final String ownerDid = ownerDid_example; // String | DID of the Node owner
 
 try {
-    final response = api.listRootNodeChildren();
+    final response = api.listRootNodeChildren(ownerDid);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->listRootNodeChildren: $e\n');
@@ -286,7 +341,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name         | Type       | Description           | Notes      |
+| ------------ | ---------- | --------------------- | ---------- |
+| **ownerDid** | **String** | DID of the Node owner | [optional] |
 
 ### Return type
 

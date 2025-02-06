@@ -107,25 +107,25 @@ export interface ConsumerMetadataDto {
    */
   consumerId: string
   /**
-   * creation date/time
+   * [GEN] ISO 8601 string of the creation date/time the entity
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   createdAt: string
   /**
-   * modification date/time
+   * [GEN] ISO 8601 string of the modification date/time the entity
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   modifiedAt: string
   /**
-   * Identifier of the user who created
+   * [GEN] Identifier of the user who created the entity
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
   createdBy: string
   /**
-   * Identifier of the user who last updated
+   * [GEN] Identifier of the user who last updated the entity
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
@@ -135,7 +135,7 @@ export interface ConsumerMetadataDto {
    * @type {string}
    * @memberof ConsumerMetadataDto
    */
-  description?: string
+  description: string
   /**
    *
    * @type {NodeType}
@@ -416,6 +416,64 @@ export interface CreateNodeOK {
 /**
  *
  * @export
+ * @interface CreateProfileInput
+ */
+export interface CreateProfileInput {
+  /**
+   * Name of the item
+   * @type {string}
+   * @memberof CreateProfileInput
+   */
+  name: string
+  /**
+   * description of profile
+   * @type {string}
+   * @memberof CreateProfileInput
+   */
+  description?: string
+  /**
+   *
+   * @type {EdekInfo}
+   * @memberof CreateProfileInput
+   */
+  edekInfo: EdekInfo
+  /**
+   * A base64 encoded data encryption key, encrypted using VFS public key, required for node types [FILE, PROFILE]
+   * @type {string}
+   * @memberof CreateProfileInput
+   */
+  dek: string
+  /**
+   * metadata of the node in stringified json format
+   * @type {string}
+   * @memberof CreateProfileInput
+   */
+  metadata?: string
+  /**
+   * DID to grant access to Profile
+   * @type {string}
+   * @memberof CreateProfileInput
+   */
+  subjectDid?: string
+  /**
+   * types of access to grant
+   * @type {Array<string>}
+   * @memberof CreateProfileInput
+   */
+  rights?: Array<CreateProfileInputRightsEnum>
+}
+
+export const CreateProfileInputRightsEnum = {
+  Read: 'READ',
+  Write: 'WRITE',
+} as const
+
+export type CreateProfileInputRightsEnum =
+  (typeof CreateProfileInputRightsEnum)[keyof typeof CreateProfileInputRightsEnum]
+
+/**
+ *
+ * @export
  * @interface DeleteNodeDto
  */
 export interface DeleteNodeDto {
@@ -559,7 +617,7 @@ export interface GetDetailedNodeInfoOK {
    * @type {string}
    * @memberof GetDetailedNodeInfoOK
    */
-  description?: string
+  description: string
   /**
    *
    * @type {NodeType}
@@ -1055,7 +1113,7 @@ export interface NodeDto {
    * @type {string}
    * @memberof NodeDto
    */
-  description?: string
+  description: string
   /**
    *
    * @type {NodeType}
@@ -1922,16 +1980,82 @@ export const NodesApiAxiosParamCreator = function (
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createNode: async (
       createNodeInput: CreateNodeInput,
+      ownerDid?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createNodeInput' is not null or undefined
       assertParamExists('createNode', 'createNodeInput', createNodeInput)
       const localVarPath = `/v1/nodes`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (ownerDid !== undefined) {
+        localVarQueryParameter['ownerDid'] = ownerDid
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createNodeInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * creates Profile with control plane
+     * @param {CreateProfileInput} createProfileInput CreateNode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProfile: async (
+      createProfileInput: CreateProfileInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createProfileInput' is not null or undefined
+      assertParamExists(
+        'createProfile',
+        'createProfileInput',
+        createProfileInput,
+      )
+      const localVarPath = `/v1/nodes/create-profile`
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -1965,7 +2089,7 @@ export const NodesApiAxiosParamCreator = function (
         ...options.headers,
       }
       localVarRequestOptions.data = serializeDataIfNeeded(
-        createNodeInput,
+        createProfileInput,
         localVarRequestOptions,
         configuration,
       )
@@ -2031,12 +2155,14 @@ export const NodesApiAxiosParamCreator = function (
      * Gets detailed information about the node
      * @param {string} nodeId
      * @param {string} [dek] A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getDetailedNodeInfo: async (
       nodeId: string,
       dek?: string,
+      ownerDid?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'nodeId' is not null or undefined
@@ -2069,6 +2195,10 @@ export const NodesApiAxiosParamCreator = function (
 
       if (dek !== undefined) {
         localVarQueryParameter['dek'] = dek
+      }
+
+      if (ownerDid !== undefined) {
+        localVarQueryParameter['ownerDid'] = ownerDid
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -2136,6 +2266,7 @@ export const NodesApiAxiosParamCreator = function (
      * @param {string} nodeId Description for nodeId.
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2143,6 +2274,7 @@ export const NodesApiAxiosParamCreator = function (
       nodeId: string,
       limit?: number,
       exclusiveStartKey?: string,
+      ownerDid?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'nodeId' is not null or undefined
@@ -2181,6 +2313,10 @@ export const NodesApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      if (ownerDid !== undefined) {
+        localVarQueryParameter['ownerDid'] = ownerDid
+      }
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2197,10 +2333,12 @@ export const NodesApiAxiosParamCreator = function (
     },
     /**
      * lists children of the root node for the consumer
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listRootNodeChildren: async (
+      ownerDid?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/nodes`
@@ -2225,6 +2363,10 @@ export const NodesApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (ownerDid !== undefined) {
+        localVarQueryParameter['ownerDid'] = ownerDid
+      }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2518,22 +2660,54 @@ export const NodesApiFp = function (configuration?: Configuration) {
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async createNode(
       createNodeInput: CreateNodeInput,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateNodeOK>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(
         createNodeInput,
+        ownerDid,
         options,
       )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['NodesApi.createNode']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * creates Profile with control plane
+     * @param {CreateProfileInput} createProfileInput CreateNode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createProfile(
+      createProfileInput: CreateProfileInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateNodeOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createProfile(
+        createProfileInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['NodesApi.createProfile']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -2577,12 +2751,14 @@ export const NodesApiFp = function (configuration?: Configuration) {
      * Gets detailed information about the node
      * @param {string} nodeId
      * @param {string} [dek] A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getDetailedNodeInfo(
       nodeId: string,
       dek?: string,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -2594,6 +2770,7 @@ export const NodesApiFp = function (configuration?: Configuration) {
         await localVarAxiosParamCreator.getDetailedNodeInfo(
           nodeId,
           dek,
+          ownerDid,
           options,
         )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -2639,6 +2816,7 @@ export const NodesApiFp = function (configuration?: Configuration) {
      * @param {string} nodeId Description for nodeId.
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2646,6 +2824,7 @@ export const NodesApiFp = function (configuration?: Configuration) {
       nodeId: string,
       limit?: number,
       exclusiveStartKey?: string,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -2658,6 +2837,7 @@ export const NodesApiFp = function (configuration?: Configuration) {
           nodeId,
           limit,
           exclusiveStartKey,
+          ownerDid,
           options,
         )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -2675,10 +2855,12 @@ export const NodesApiFp = function (configuration?: Configuration) {
     },
     /**
      * lists children of the root node for the consumer
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listRootNodeChildren(
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -2687,7 +2869,7 @@ export const NodesApiFp = function (configuration?: Configuration) {
       ) => AxiosPromise<ListRootNodeChildrenOK>
     > {
       const localVarAxiosArgs =
-        await localVarAxiosParamCreator.listRootNodeChildren(options)
+        await localVarAxiosParamCreator.listRootNodeChildren(ownerDid, options)
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['NodesApi.listRootNodeChildren']?.[
@@ -2850,15 +3032,31 @@ export const NodesApiFactory = function (
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createNode(
       createNodeInput: CreateNodeInput,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<CreateNodeOK> {
       return localVarFp
-        .createNode(createNodeInput, options)
+        .createNode(createNodeInput, ownerDid, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * creates Profile with control plane
+     * @param {CreateProfileInput} createProfileInput CreateNode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createProfile(
+      createProfileInput: CreateProfileInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateNodeOK> {
+      return localVarFp
+        .createProfile(createProfileInput, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2879,16 +3077,18 @@ export const NodesApiFactory = function (
      * Gets detailed information about the node
      * @param {string} nodeId
      * @param {string} [dek] A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getDetailedNodeInfo(
       nodeId: string,
       dek?: string,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<GetDetailedNodeInfoOK> {
       return localVarFp
-        .getDetailedNodeInfo(nodeId, dek, options)
+        .getDetailedNodeInfo(nodeId, dek, ownerDid, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2907,6 +3107,7 @@ export const NodesApiFactory = function (
      * @param {string} nodeId Description for nodeId.
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2914,22 +3115,25 @@ export const NodesApiFactory = function (
       nodeId: string,
       limit?: number,
       exclusiveStartKey?: string,
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<ListNodeChildrenOK> {
       return localVarFp
-        .listNodeChildren(nodeId, limit, exclusiveStartKey, options)
+        .listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid, options)
         .then((request) => request(axios, basePath))
     },
     /**
      * lists children of the root node for the consumer
+     * @param {string} [ownerDid] DID of the Node owner
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listRootNodeChildren(
+      ownerDid?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<ListRootNodeChildrenOK> {
       return localVarFp
-        .listRootNodeChildren(options)
+        .listRootNodeChildren(ownerDid, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3016,16 +3220,34 @@ export class NodesApi extends BaseAPI {
   /**
    * creates node
    * @param {CreateNodeInput} createNodeInput CreateNode
+   * @param {string} [ownerDid] DID of the Node owner
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
    */
   public createNode(
     createNodeInput: CreateNodeInput,
+    ownerDid?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return NodesApiFp(this.configuration)
-      .createNode(createNodeInput, options)
+      .createNode(createNodeInput, ownerDid, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * creates Profile with control plane
+   * @param {CreateProfileInput} createProfileInput CreateNode
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof NodesApi
+   */
+  public createProfile(
+    createProfileInput: CreateProfileInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return NodesApiFp(this.configuration)
+      .createProfile(createProfileInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3046,6 +3268,7 @@ export class NodesApi extends BaseAPI {
    * Gets detailed information about the node
    * @param {string} nodeId
    * @param {string} [dek] A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+   * @param {string} [ownerDid] DID of the Node owner
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
@@ -3053,10 +3276,11 @@ export class NodesApi extends BaseAPI {
   public getDetailedNodeInfo(
     nodeId: string,
     dek?: string,
+    ownerDid?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return NodesApiFp(this.configuration)
-      .getDetailedNodeInfo(nodeId, dek, options)
+      .getDetailedNodeInfo(nodeId, dek, ownerDid, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3078,6 +3302,7 @@ export class NodesApi extends BaseAPI {
    * @param {string} nodeId Description for nodeId.
    * @param {number} [limit] Maximum number of records to fetch in a list
    * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+   * @param {string} [ownerDid] DID of the Node owner
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
@@ -3086,22 +3311,27 @@ export class NodesApi extends BaseAPI {
     nodeId: string,
     limit?: number,
     exclusiveStartKey?: string,
+    ownerDid?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return NodesApiFp(this.configuration)
-      .listNodeChildren(nodeId, limit, exclusiveStartKey, options)
+      .listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
   /**
    * lists children of the root node for the consumer
+   * @param {string} [ownerDid] DID of the Node owner
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
    */
-  public listRootNodeChildren(options?: RawAxiosRequestConfig) {
+  public listRootNodeChildren(
+    ownerDid?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
     return NodesApiFp(this.configuration)
-      .listRootNodeChildren(options)
+      .listRootNodeChildren(ownerDid, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3194,72 +3424,6 @@ export const ProfileDataApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    queryProfileData: async (
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options: RawAxiosRequestConfig = {},
-    ): Promise<RequestArgs> => {
-      // verify required parameter 'nodeId' is not null or undefined
-      assertParamExists('queryProfileData', 'nodeId', nodeId)
-      // verify required parameter 'dek' is not null or undefined
-      assertParamExists('queryProfileData', 'dek', dek)
-      const localVarPath = `/v1/nodes/{nodeId}/profile-data`.replace(
-        `{${'nodeId'}}`,
-        encodeURIComponent(String(nodeId)),
-      )
-      // use dummy base URL string because the URL constructor only accepts absolute URLs.
-      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
-      let baseOptions
-      if (configuration) {
-        baseOptions = configuration.baseOptions
-      }
-
-      const localVarRequestOptions = {
-        method: 'GET',
-        ...baseOptions,
-        ...options,
-      }
-      const localVarHeaderParameter = {} as any
-      const localVarQueryParameter = {} as any
-
-      // authentication ConsumerTokenAuth required
-      await setApiKeyToObject(
-        localVarHeaderParameter,
-        'authorization',
-        configuration,
-      )
-
-      if (query !== undefined) {
-        localVarQueryParameter['query'] = query
-      }
-
-      if (dek !== undefined) {
-        localVarQueryParameter['dek'] = dek
-      }
-
-      setSearchParams(localVarUrlObj, localVarQueryParameter)
-      let headersFromBaseOptions =
-        baseOptions && baseOptions.headers ? baseOptions.headers : {}
-      localVarRequestOptions.headers = {
-        ...localVarHeaderParameter,
-        ...headersFromBaseOptions,
-        ...options.headers,
-      }
-
-      return {
-        url: toPathString(localVarUrlObj),
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3338,45 +3502,6 @@ export const ProfileDataApiFp = function (configuration?: Configuration) {
     ProfileDataApiAxiosParamCreator(configuration)
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async queryProfileData(
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options?: RawAxiosRequestConfig,
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string,
-      ) => AxiosPromise<QueryProfileDataOK>
-    > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.queryProfileData(
-          nodeId,
-          dek,
-          query,
-          options,
-        )
-      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
-      const localVarOperationServerBasePath =
-        operationServerMap['ProfileDataApi.queryProfileData']?.[
-          localVarOperationServerIndex
-        ]?.url
-      return (axios, basePath) =>
-        createRequestFunction(
-          localVarAxiosArgs,
-          globalAxios,
-          BASE_PATH,
-          configuration,
-        )(axios, localVarOperationServerBasePath || basePath)
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3427,24 +3552,6 @@ export const ProfileDataApiFactory = function (
   const localVarFp = ProfileDataApiFp(configuration)
   return {
     /**
-     * Retrieves information from a profile.
-     * @param {string} nodeId the nodeId of the node being operated on
-     * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-     * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    queryProfileData(
-      nodeId: string,
-      dek: string,
-      query?: string,
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<QueryProfileDataOK> {
-      return localVarFp
-        .queryProfileData(nodeId, dek, query, options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
      * Updates the profile with the given data
      * @param {string} nodeId
      * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
@@ -3470,26 +3577,6 @@ export const ProfileDataApiFactory = function (
  * @extends {BaseAPI}
  */
 export class ProfileDataApi extends BaseAPI {
-  /**
-   * Retrieves information from a profile.
-   * @param {string} nodeId the nodeId of the node being operated on
-   * @param {string} dek A base64url encoded data encryption key, encrypted using VFS public
-   * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof ProfileDataApi
-   */
-  public queryProfileData(
-    nodeId: string,
-    dek: string,
-    query?: string,
-    options?: RawAxiosRequestConfig,
-  ) {
-    return ProfileDataApiFp(this.configuration)
-      .queryProfileData(nodeId, dek, query, options)
-      .then((request) => request(this.axios, this.basePath))
-  }
-
   /**
    * Updates the profile with the given data
    * @param {string} nodeId

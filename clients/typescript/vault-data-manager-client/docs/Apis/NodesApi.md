@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**createNode**](NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |             |
+| [**createProfile**](NodesApi.md#createProfile)                     | **POST** /v1/nodes/create-profile                     |             |
 | [**deleteNode**](NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |             |
 | [**initNodes**](NodesApi.md#initNodes)                             | **POST** /v1/nodes/init                               |             |
@@ -19,15 +20,43 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **createNode**
 
-> CreateNodeOK createNode(CreateNodeInput)
+> CreateNodeOK createNode(CreateNodeInput, ownerDid)
 
     creates node
 
 ### Parameters
 
-| Name                | Type                                                | Description | Notes |
-| ------------------- | --------------------------------------------------- | ----------- | ----- |
-| **CreateNodeInput** | [**CreateNodeInput**](../Models/CreateNodeInput.md) | CreateNode  |       |
+| Name                | Type                                                | Description           | Notes                        |
+| ------------------- | --------------------------------------------------- | --------------------- | ---------------------------- |
+| **CreateNodeInput** | [**CreateNodeInput**](../Models/CreateNodeInput.md) | CreateNode            |                              |
+| **ownerDid**        | **String**                                          | DID of the Node owner | [optional] [default to null] |
+
+### Return type
+
+[**CreateNodeOK**](../Models/CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="createProfile"></a>
+
+# **createProfile**
+
+> CreateNodeOK createProfile(CreateProfileInput)
+
+    creates Profile with control plane
+
+### Parameters
+
+| Name                   | Type                                                      | Description | Notes |
+| ---------------------- | --------------------------------------------------------- | ----------- | ----- |
+| **CreateProfileInput** | [**CreateProfileInput**](../Models/CreateProfileInput.md) | CreateNode  |       |
 
 ### Return type
 
@@ -73,16 +102,17 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **getDetailedNodeInfo**
 
-> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek)
+> GetDetailedNodeInfoOK getDetailedNodeInfo(nodeId, dek, ownerDid)
 
     Gets detailed information about the node
 
 ### Parameters
 
-| Name       | Type       | Description                                                                                                                 | Notes                        |
-| ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| **nodeId** | **String** |                                                                                                                             | [default to null]            |
-| **dek**    | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] [default to null] |
+| Name         | Type       | Description                                                                                                                 | Notes                        |
+| ------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| **nodeId**   | **String** |                                                                                                                             | [default to null]            |
+| **dek**      | **String** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] [default to null] |
+| **ownerDid** | **String** | DID of the Node owner                                                                                                       | [optional] [default to null] |
 
 ### Return type
 
@@ -126,7 +156,7 @@ This endpoint does not need any parameter.
 
 # **listNodeChildren**
 
-> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey)
+> ListNodeChildrenOK listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid)
 
     lists children of the node
 
@@ -137,6 +167,7 @@ This endpoint does not need any parameter.
 | **nodeId**            | **String**  | Description for nodeId.                                  | [default to null]            |
 | **limit**             | **Integer** | Maximum number of records to fetch in a list             | [optional] [default to 10]   |
 | **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data. | [optional] [default to null] |
+| **ownerDid**          | **String**  | DID of the Node owner                                    | [optional] [default to null] |
 
 ### Return type
 
@@ -155,13 +186,15 @@ This endpoint does not need any parameter.
 
 # **listRootNodeChildren**
 
-> ListRootNodeChildrenOK listRootNodeChildren()
+> ListRootNodeChildrenOK listRootNodeChildren(ownerDid)
 
     lists children of the root node for the consumer
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name         | Type       | Description           | Notes                        |
+| ------------ | ---------- | --------------------- | ---------------------------- |
+| **ownerDid** | **String** | DID of the Node owner | [optional] [default to null] |
 
 ### Return type
 

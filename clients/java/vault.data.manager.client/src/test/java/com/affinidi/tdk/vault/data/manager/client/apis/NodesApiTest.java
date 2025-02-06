@@ -16,6 +16,7 @@ package com.affinidi.tdk.vault.data.manager.client.apis;
 import com.affinidi.tdk.vault.data.manager.client.ApiException;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeOK;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateProfileInput;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteNodeDto;
 import com.affinidi.tdk.vault.data.manager.client.models.GetDetailedNodeInfoOK;
 import com.affinidi.tdk.vault.data.manager.client.models.InitNodesOK;
@@ -55,7 +56,21 @@ public class NodesApiTest {
     @Test
     public void createNodeTest() throws ApiException {
         CreateNodeInput createNodeInput = null;
-        CreateNodeOK response = api.createNode(createNodeInput);
+        String ownerDid = null;
+        CreateNodeOK response = api.createNode(createNodeInput, ownerDid);
+
+        // TODO: test validations
+    }
+    /**
+     * creates Profile with control plane
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createProfileTest() throws ApiException {
+        CreateProfileInput createProfileInput = null;
+        CreateNodeOK response = api.createProfile(createProfileInput);
 
         // TODO: test validations
     }
@@ -82,7 +97,8 @@ public class NodesApiTest {
     public void getDetailedNodeInfoTest() throws ApiException {
         String nodeId = null;
         String dek = null;
-        GetDetailedNodeInfoOK response = api.getDetailedNodeInfo(nodeId, dek);
+        String ownerDid = null;
+        GetDetailedNodeInfoOK response = api.getDetailedNodeInfo(nodeId, dek, ownerDid);
 
         // TODO: test validations
     }
@@ -109,7 +125,8 @@ public class NodesApiTest {
         String nodeId = null;
         Integer limit = null;
         String exclusiveStartKey = null;
-        ListNodeChildrenOK response = api.listNodeChildren(nodeId, limit, exclusiveStartKey);
+        String ownerDid = null;
+        ListNodeChildrenOK response = api.listNodeChildren(nodeId, limit, exclusiveStartKey, ownerDid);
 
         // TODO: test validations
     }
@@ -121,7 +138,8 @@ public class NodesApiTest {
      */
     @Test
     public void listRootNodeChildrenTest() throws ApiException {
-        ListRootNodeChildrenOK response = api.listRootNodeChildren();
+        String ownerDid = null;
+        ListRootNodeChildrenOK response = api.listRootNodeChildren(ownerDid);
 
         // TODO: test validations
     }

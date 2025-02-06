@@ -26,6 +26,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CorsUpdateProfileDataOK.serializer)
       ..add(CreateNodeInput.serializer)
       ..add(CreateNodeOK.serializer)
+      ..add(CreateProfileInput.serializer)
+      ..add(CreateProfileInputRightsEnum.serializer)
       ..add(DeleteNodeDto.serializer)
       ..add(EdekInfo.serializer)
       ..add(GetConfigOK.serializer)
@@ -63,6 +65,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UpdateNodeInput.serializer)
       ..add(UpdateProfileDataInput.serializer)
       ..add(UpdateProfileDataOK.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(CreateProfileInputRightsEnum)]),
+          () => new ListBuilder<CreateProfileInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),

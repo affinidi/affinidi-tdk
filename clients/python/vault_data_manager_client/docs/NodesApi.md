@@ -5,6 +5,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Method                                                                   | HTTP request                                          | Description |
 | ------------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
 | [**create_node**](NodesApi.md#create_node)                               | **POST** /v1/nodes                                    |
+| [**create_profile**](NodesApi.md#create_profile)                         | **POST** /v1/nodes/create-profile                     |
 | [**delete_node**](NodesApi.md#delete_node)                               | **DELETE** /v1/nodes/{nodeId}                         |
 | [**get_detailed_node_info**](NodesApi.md#get_detailed_node_info)         | **GET** /v1/nodes/{nodeId}                            |
 | [**init_nodes**](NodesApi.md#init_nodes)                                 | **POST** /v1/nodes/init                               |
@@ -17,7 +18,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **create_node**
 
-> CreateNodeOK create_node(create_node_input)
+> CreateNodeOK create_node(create_node_input, owner_did=owner_did)
 
 creates node
 
@@ -71,9 +72,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
     # Create an instance of the API class
     api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
     create_node_input = affinidi_tdk_vault_data_manager_client.CreateNodeInput() # CreateNodeInput | CreateNode
+    owner_did = 'owner_did_example' # str | DID of the Node owner (optional)
 
     try:
-        api_response = api_instance.create_node(create_node_input)
+        api_response = api_instance.create_node(create_node_input, owner_did=owner_did)
         print("The response of NodesApi->create_node:\n")
         pprint(api_response)
     except Exception as e:
@@ -82,9 +84,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 ### Parameters
 
-| Name                  | Type                                      | Description | Notes |
-| --------------------- | ----------------------------------------- | ----------- | ----- |
-| **create_node_input** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |
+| Name                  | Type                                      | Description           | Notes      |
+| --------------------- | ----------------------------------------- | --------------------- | ---------- |
+| **create_node_input** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode            |
+| **owner_did**         | **str**                                   | DID of the Node owner | [optional] |
 
 ### Return type
 
@@ -105,6 +108,99 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_profile**
+
+> CreateNodeOK create_profile(create_profile_input)
+
+creates Profile with control plane
+
+### Example
+
+- Api Key Authentication (ConsumerTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_vault_data_manager_client
+from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
+from affinidi_tdk_vault_data_manager_client.models.create_profile_input import CreateProfileInput
+from affinidi_tdk_vault_data_manager_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.vault.affinidi.com/vfs
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_vault_data_manager_client.Configuration(
+    host = "https://api.vault.affinidi.com/vfs"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ConsumerTokenAuth
+configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
+    create_profile_input = affinidi_tdk_vault_data_manager_client.CreateProfileInput() # CreateProfileInput | CreateNode
+
+    try:
+        api_response = api_instance.create_profile(create_profile_input)
+        print("The response of NodesApi->create_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling NodesApi->create_profile: %s\n" % e)
+```
+
+### Parameters
+
+| Name                     | Type                                            | Description | Notes |
+| ------------------------ | ----------------------------------------------- | ----------- | ----- |
+| **create_profile_input** | [**CreateProfileInput**](CreateProfileInput.md) | CreateNode  |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | -                                                                                                                 |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -202,7 +298,7 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 # **get_detailed_node_info**
 
-> GetDetailedNodeInfoOK get_detailed_node_info(node_id, dek=dek)
+> GetDetailedNodeInfoOK get_detailed_node_info(node_id, dek=dek, owner_did=owner_did)
 
 Gets detailed information about the node
 
@@ -256,9 +352,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
     api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
     node_id = 'node_id_example' # str |
     dek = 'dek_example' # str | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided (optional)
+    owner_did = 'owner_did_example' # str | DID of the Node owner (optional)
 
     try:
-        api_response = api_instance.get_detailed_node_info(node_id, dek=dek)
+        api_response = api_instance.get_detailed_node_info(node_id, dek=dek, owner_did=owner_did)
         print("The response of NodesApi->get_detailed_node_info:\n")
         pprint(api_response)
     except Exception as e:
@@ -267,10 +364,11 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 ### Parameters
 
-| Name        | Type    | Description                                                                                                                 | Notes      |
-| ----------- | ------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **node_id** | **str** |                                                                                                                             |
-| **dek**     | **str** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| Name          | Type    | Description                                                                                                                 | Notes      |
+| ------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **node_id**   | **str** |                                                                                                                             |
+| **dek**       | **str** | A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided | [optional] |
+| **owner_did** | **str** | DID of the Node owner                                                                                                       | [optional] |
 
 ### Return type
 
@@ -385,7 +483,7 @@ This endpoint does not need any parameter.
 
 # **list_node_children**
 
-> ListNodeChildrenOK list_node_children(node_id, limit=limit, exclusive_start_key=exclusive_start_key)
+> ListNodeChildrenOK list_node_children(node_id, limit=limit, exclusive_start_key=exclusive_start_key, owner_did=owner_did)
 
 lists children of the node
 
@@ -440,9 +538,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
     node_id = 'node_id_example' # str | Description for nodeId.
     limit = 10 # int | Maximum number of records to fetch in a list (optional) (default to 10)
     exclusive_start_key = 'exclusive_start_key_example' # str | exclusiveStartKey for retrieving the next batch of data. (optional)
+    owner_did = 'owner_did_example' # str | DID of the Node owner (optional)
 
     try:
-        api_response = api_instance.list_node_children(node_id, limit=limit, exclusive_start_key=exclusive_start_key)
+        api_response = api_instance.list_node_children(node_id, limit=limit, exclusive_start_key=exclusive_start_key, owner_did=owner_did)
         print("The response of NodesApi->list_node_children:\n")
         pprint(api_response)
     except Exception as e:
@@ -456,6 +555,7 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 | **node_id**             | **str** | Description for nodeId.                                  |
 | **limit**               | **int** | Maximum number of records to fetch in a list             | [optional] [default to 10] |
 | **exclusive_start_key** | **str** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| **owner_did**           | **str** | DID of the Node owner                                    | [optional]                 |
 
 ### Return type
 
@@ -481,7 +581,7 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 # **list_root_node_children**
 
-> ListRootNodeChildrenOK list_root_node_children()
+> ListRootNodeChildrenOK list_root_node_children(owner_did=owner_did)
 
 lists children of the root node for the consumer
 
@@ -533,9 +633,10 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
+    owner_did = 'owner_did_example' # str | DID of the Node owner (optional)
 
     try:
-        api_response = api_instance.list_root_node_children()
+        api_response = api_instance.list_root_node_children(owner_did=owner_did)
         print("The response of NodesApi->list_root_node_children:\n")
         pprint(api_response)
     except Exception as e:
@@ -544,7 +645,9 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name          | Type    | Description           | Notes      |
+| ------------- | ------- | --------------------- | ---------- |
+| **owner_did** | **str** | DID of the Node owner | [optional] |
 
 ### Return type
 
