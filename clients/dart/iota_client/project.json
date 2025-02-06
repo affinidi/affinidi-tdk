@@ -1,5 +1,5 @@
 {
-  "name": "affinidi_tdk_iota_client",
+  "name": "affinidi_tdk_iota_client_dart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",

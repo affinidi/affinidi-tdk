@@ -18,9 +18,9 @@ analyzer:
 
 # Uncomment the following section to specify additional rules.
 
-# linter:
-#   rules:
-#     - camel_case_types
+linter:
+  rules:
+    - public_member_api_docs
 
 # analyzer:
 #   exclude:

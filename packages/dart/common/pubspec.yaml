@@ -1,5 +1,5 @@
 name: affinidi_tdk_common
-description: Common package for Affinidi TDK
+description: Common package for Affinidi TDK with Vault utilities to generate claim and share links
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

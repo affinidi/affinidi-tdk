@@ -7,6 +7,8 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'consumer_auth_provider_abstract.dart';
 import 'token_provider.dart';
 
+/// Base class for consumer authentication provider. It handles the decryption
+/// of the seed, and generation of tokens, and validation of tokens.
 class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
   final String _encryptedSeed;
   final String _encryptionKey;
@@ -21,6 +23,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
 
   String? _consumerToken;
 
+  /// Constructor for [BaseConsumerAuthProvider] from encrypted seed and encryption key.
   BaseConsumerAuthProvider({
     required String encryptedSeed,
     required String encryptionKey,
