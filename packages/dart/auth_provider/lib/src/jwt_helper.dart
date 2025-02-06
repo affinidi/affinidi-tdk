@@ -7,7 +7,9 @@ import 'package:pointycastle/export.dart' as pce;
 
 import 'iam_client.dart';
 
+/// Helper class for creating and signing JWT tokens.
 class JWTHelper {
+  /// Signs a payload with the given private key and returns the JWT token.
   static String signPayload({
     required String audience,
     required String tokenId,
@@ -43,6 +45,7 @@ class JWTHelper {
     return token;
   }
 
+  /// Fetches the public key from the IAM client and returns it as an ECPublicKey.
   static Future<ECPublicKey> fetchPublicKey(IamClient iamClient) async {
     final jwk = await iamClient.getPublicKeyJWKS();
     return ECPublicKey.raw(_jwkToPublicKey(jwk));

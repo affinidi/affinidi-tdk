@@ -1,5 +1,5 @@
 name: affinidi_tdk_cryptography
-description: Cryptography package for Affinidi TDK
+description: Cryptography package for Affinidi TDK that provides cryptographic functionalities for secure token management, encryption and decryption.
 version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 

@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+/// IAM Client for interacting with the IAM service.
 class IamClient {
+  /// Creates a new instance of [IamClient].
   IamClient({
     required String apiGatewayUrl,
     http.Client? httpClient,
@@ -12,6 +14,7 @@ class IamClient {
   final http.Client _httpClient;
   final String _apiGatewayUrl;
 
+  /// Fetches the public key from the IAM service.
   Future<Map<String, dynamic>> getPublicKeyJWKS() async {
     final response = await _httpClient.get(
       Uri.parse('$_apiGatewayUrl/iam/.well-known/jwks.json'),
