@@ -6,10 +6,12 @@ Apis/ProfileDataApi.md
 Models/AwsCredentialExchangeOperationOK.md
 Models/ConsumerMetadataDto.md
 Models/CorsAwsCredentialExchangeOK.md
+Models/CorsCreateProfileOK.md
 Models/CorsDeleteNodeOK.md
 Models/CorsGetConfigOK.md
 Models/CorsGetScannedFileInfoOK.md
 Models/CorsGetWellKnownJwksOK.md
+Models/CorsGrantAccessOK.md
 Models/CorsInitNodesOK.md
 Models/CorsListNodeChildrenOK.md
 Models/CorsListRootNodeChildrenOK.md
@@ -21,11 +23,13 @@ Models/CorsStartFileScanOK.md
 Models/CorsUpdateProfileDataOK.md
 Models/CreateNodeInput.md
 Models/CreateNodeOK.md
+Models/CreateProfileInput.md
 Models/DeleteNodeDto.md
 Models/EdekInfo.md
 Models/GetConfigOK.md
 Models/GetDetailedNodeInfoOK.md
 Models/GetScannedFileInfoOK.md
+Models/GrantAccessInput.md
 Models/InitNodesOK.md
 Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
