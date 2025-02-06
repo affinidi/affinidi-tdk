@@ -1,5 +1,5 @@
 {
-  "name": "affinidi_tdk_wallets_client",
+  "name": "affinidi_tdk_wallets_client_dart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
