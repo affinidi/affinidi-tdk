@@ -33,6 +33,12 @@ class TestNodesApi(unittest.TestCase):
         """
         pass
 
+    def test_create_profile(self) -> None:
+        """Test case for create_profile
+
+        """
+        pass
+
     def test_delete_node(self) -> None:
         """Test case for delete_node
 
@@ -41,6 +47,12 @@ class TestNodesApi(unittest.TestCase):
 
     def test_get_detailed_node_info(self) -> None:
         """Test case for get_detailed_node_info
+
+        """
+        pass
+
+    def test_grant_access(self) -> None:
+        """Test case for grant_access
 
         """
         pass

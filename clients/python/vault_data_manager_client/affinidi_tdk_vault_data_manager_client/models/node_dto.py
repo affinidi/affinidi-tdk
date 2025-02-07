@@ -43,7 +43,7 @@ class NodeDto(BaseModel):
     modified_at: StrictStr = Field(default=..., alias="modifiedAt", description="modification date/time of the node")
     created_by: StrictStr = Field(default=..., alias="createdBy", description="Identifier of the user who created the node")
     modified_by: StrictStr = Field(default=..., alias="modifiedBy", description="Identifier of the user who last updated the node")
-    description: Optional[StrictStr] = Field(default=None, description="Description of the node")
+    description: StrictStr = Field(default=..., description="Description of the node")
     type: NodeType = Field(...)
     link: Optional[StrictStr] = Field(default=None, description="id of the file, used for FILE node only")
     var_schema: Optional[StrictStr] = Field(default=None, alias="schema", description="name of the schema, used for PROFILE node only")

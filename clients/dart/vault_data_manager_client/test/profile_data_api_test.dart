@@ -7,13 +7,6 @@ void main() {
   final instance = AffinidiTdkVaultDataManagerClient().getProfileDataApi();
 
   group(ProfileDataApi, () {
-    // Retrieves information from a profile.
-    //
-    //Future<QueryProfileDataOK> queryProfileData(String nodeId, String dek, { String query }) async
-    test('test queryProfileData', () async {
-      // TODO
-    });
-
     // Updates the profile with the given data
     //
     //Future<UpdateProfileDataOK> updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput) async

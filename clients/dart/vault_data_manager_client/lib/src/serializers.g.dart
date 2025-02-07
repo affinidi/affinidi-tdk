@@ -11,10 +11,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AwsCredentialExchangeOperationOK.serializer)
       ..add(ConsumerMetadataDto.serializer)
       ..add(CorsAwsCredentialExchangeOK.serializer)
+      ..add(CorsCreateProfileOK.serializer)
       ..add(CorsDeleteNodeOK.serializer)
       ..add(CorsGetConfigOK.serializer)
       ..add(CorsGetScannedFileInfoOK.serializer)
       ..add(CorsGetWellKnownJwksOK.serializer)
+      ..add(CorsGrantAccessOK.serializer)
       ..add(CorsInitNodesOK.serializer)
       ..add(CorsListNodeChildrenOK.serializer)
       ..add(CorsListRootNodeChildrenOK.serializer)
@@ -26,11 +28,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CorsUpdateProfileDataOK.serializer)
       ..add(CreateNodeInput.serializer)
       ..add(CreateNodeOK.serializer)
+      ..add(CreateProfileInput.serializer)
       ..add(DeleteNodeDto.serializer)
       ..add(EdekInfo.serializer)
       ..add(GetConfigOK.serializer)
       ..add(GetDetailedNodeInfoOK.serializer)
       ..add(GetScannedFileInfoOK.serializer)
+      ..add(GrantAccessInput.serializer)
+      ..add(GrantAccessInputRightsEnum.serializer)
+      ..add(GrantAccessInputRightsEnum.serializer)
       ..add(InitNodesOK.serializer)
       ..add(InvalidParameterError.serializer)
       ..add(InvalidParameterErrorDetailsInner.serializer)
@@ -63,6 +69,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UpdateNodeInput.serializer)
       ..add(UpdateProfileDataInput.serializer)
       ..add(UpdateProfileDataOK.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GrantAccessInputRightsEnum)]),
+          () => new ListBuilder<GrantAccessInputRightsEnum>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GrantAccessInputRightsEnum)]),
+          () => new ListBuilder<GrantAccessInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),

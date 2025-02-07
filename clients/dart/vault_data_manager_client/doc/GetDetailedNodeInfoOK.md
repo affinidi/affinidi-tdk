@@ -24,7 +24,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 | **modifiedAt**          | **String**                      | modification date/time of the node                                          |
 | **createdBy**           | **String**                      | Identifier of the user who created the node                                 |
 | **modifiedBy**          | **String**                      | Identifier of the user who last updated the node                            |
-| **description**         | **String**                      | Description of the node                                                     | [optional] |
+| **description**         | **String**                      | Description of the node                                                     |
 | **type**                | [**NodeType**](NodeType.md)     |                                                                             |
 | **link**                | **String**                      | id of the file, used for FILE node only                                     | [optional] |
 | **schema**              | **String**                      | name of the schema, used for PROFILE node only                              | [optional] |

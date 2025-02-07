@@ -77,8 +77,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [_FilesApi_](doc/FilesApi.md)             | [**listScannedFiles**](doc/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
 | [_FilesApi_](doc/FilesApi.md)             | [**startFileScan**](doc/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
 | [_NodesApi_](doc/NodesApi.md)             | [**createNode**](doc/NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
+| [_NodesApi_](doc/NodesApi.md)             | [**createProfile**](doc/NodesApi.md#createprofile)                     | **POST** /v1/nodes/create-profile                     |
 | [_NodesApi_](doc/NodesApi.md)             | [**deleteNode**](doc/NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
 | [_NodesApi_](doc/NodesApi.md)             | [**getDetailedNodeInfo**](doc/NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
+| [_NodesApi_](doc/NodesApi.md)             | [**grantAccess**](doc/NodesApi.md#grantaccess)                         | **POST** /v1/nodes/grant-access                       |
 | [_NodesApi_](doc/NodesApi.md)             | [**initNodes**](doc/NodesApi.md#initnodes)                             | **POST** /v1/nodes/init                               |
 | [_NodesApi_](doc/NodesApi.md)             | [**listNodeChildren**](doc/NodesApi.md#listnodechildren)               | **GET** /v1/nodes/{nodeId}/children                   |
 | [_NodesApi_](doc/NodesApi.md)             | [**listRootNodeChildren**](doc/NodesApi.md#listrootnodechildren)       | **GET** /v1/nodes                                     |
@@ -86,7 +88,6 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [_NodesApi_](doc/NodesApi.md)             | [**permanentlyDeleteNode**](doc/NodesApi.md#permanentlydeletenode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
 | [_NodesApi_](doc/NodesApi.md)             | [**restoreNodeFromTrashbin**](doc/NodesApi.md#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
 | [_NodesApi_](doc/NodesApi.md)             | [**updateNode**](doc/NodesApi.md#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          |
-| [_ProfileDataApi_](doc/ProfileDataApi.md) | [**queryProfileData**](doc/ProfileDataApi.md#queryprofiledata)         | **GET** /v1/nodes/{nodeId}/profile-data               |
 | [_ProfileDataApi_](doc/ProfileDataApi.md) | [**updateProfileData**](doc/ProfileDataApi.md#updateprofiledata)       | **PATCH** /v1/nodes/{nodeId}/profile-data             |
 
 ## Documentation For Models
@@ -94,10 +95,12 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [AwsCredentialExchangeOperationOK](doc/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](doc/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](doc/CorsAwsCredentialExchangeOK.md)
+- [CorsCreateProfileOK](doc/CorsCreateProfileOK.md)
 - [CorsDeleteNodeOK](doc/CorsDeleteNodeOK.md)
 - [CorsGetConfigOK](doc/CorsGetConfigOK.md)
 - [CorsGetScannedFileInfoOK](doc/CorsGetScannedFileInfoOK.md)
 - [CorsGetWellKnownJwksOK](doc/CorsGetWellKnownJwksOK.md)
+- [CorsGrantAccessOK](doc/CorsGrantAccessOK.md)
 - [CorsInitNodesOK](doc/CorsInitNodesOK.md)
 - [CorsListNodeChildrenOK](doc/CorsListNodeChildrenOK.md)
 - [CorsListRootNodeChildrenOK](doc/CorsListRootNodeChildrenOK.md)
@@ -109,11 +112,13 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsUpdateProfileDataOK](doc/CorsUpdateProfileDataOK.md)
 - [CreateNodeInput](doc/CreateNodeInput.md)
 - [CreateNodeOK](doc/CreateNodeOK.md)
+- [CreateProfileInput](doc/CreateProfileInput.md)
 - [DeleteNodeDto](doc/DeleteNodeDto.md)
 - [EdekInfo](doc/EdekInfo.md)
 - [GetConfigOK](doc/GetConfigOK.md)
 - [GetDetailedNodeInfoOK](doc/GetDetailedNodeInfoOK.md)
 - [GetScannedFileInfoOK](doc/GetScannedFileInfoOK.md)
+- [GrantAccessInput](doc/GrantAccessInput.md)
 - [InitNodesOK](doc/InitNodesOK.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)
 - [InvalidParameterErrorDetailsInner](doc/InvalidParameterErrorDetailsInner.md)

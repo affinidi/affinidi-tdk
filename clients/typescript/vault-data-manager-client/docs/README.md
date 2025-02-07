@@ -13,8 +13,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _FilesApi_       | [**listScannedFiles**](Apis/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            | List all the the scanned files with all the details, e.g. status and jobId                                                                                                                                                    |
 | _FilesApi_       | [**startFileScan**](Apis/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 | Start a scan of the file under this node and provide a textract job                                                                                                                                                           |
 | _NodesApi_       | [**createNode**](Apis/NodesApi.md#createnode)                           | **POST** /v1/nodes                                    | creates node                                                                                                                                                                                                                  |
+| _NodesApi_       | [**createProfile**](Apis/NodesApi.md#createprofile)                     | **POST** /v1/nodes/create-profile                     | creates Profile with control plane                                                                                                                                                                                            |
 | _NodesApi_       | [**deleteNode**](Apis/NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         | Mark a node and any attached files for deletion. If the node is a folder, perform the same action for all its children if the profile type is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN node. |
 | _NodesApi_       | [**getDetailedNodeInfo**](Apis/NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            | Gets detailed information about the node                                                                                                                                                                                      |
+| _NodesApi_       | [**grantAccess**](Apis/NodesApi.md#grantaccess)                         | **POST** /v1/nodes/grant-access                       | grants access to another consumer to access nodes hierarchy                                                                                                                                                                   |
 | _NodesApi_       | [**initNodes**](Apis/NodesApi.md#initnodes)                             | **POST** /v1/nodes/init                               | Initialize root node, and TRASH_BIN                                                                                                                                                                                           |
 | _NodesApi_       | [**listNodeChildren**](Apis/NodesApi.md#listnodechildren)               | **GET** /v1/nodes/{nodeId}/children                   | lists children of the node                                                                                                                                                                                                    |
 | _NodesApi_       | [**listRootNodeChildren**](Apis/NodesApi.md#listrootnodechildren)       | **GET** /v1/nodes                                     | lists children of the root node for the consumer                                                                                                                                                                              |
@@ -22,7 +24,6 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _NodesApi_       | [**permanentlyDeleteNode**](Apis/NodesApi.md#permanentlydeletenode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} | Permanently delete a node from TRASH_BIN, if the node is not in the TRASH_BIN it cannot delete.                                                                                                                               |
 | _NodesApi_       | [**restoreNodeFromTrashbin**](Apis/NodesApi.md#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} | Restore node marked for deletion from TRASH_BIN                                                                                                                                                                               |
 | _NodesApi_       | [**updateNode**](Apis/NodesApi.md#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          | Updates a node                                                                                                                                                                                                                |
-| _ProfileDataApi_ | [**queryProfileData**](Apis/ProfileDataApi.md#queryprofiledata)         | **GET** /v1/nodes/{nodeId}/profile-data               | Retrieves information from a profile.                                                                                                                                                                                         |
 | _ProfileDataApi_ | [**updateProfileData**](Apis/ProfileDataApi.md#updateprofiledata)       | **PATCH** /v1/nodes/{nodeId}/profile-data             | Updates the profile with the given data                                                                                                                                                                                       |
 
 <a name="documentation-for-models"></a>
@@ -32,10 +33,12 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [AwsCredentialExchangeOperationOK](./Models/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](./Models/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](./Models/CorsAwsCredentialExchangeOK.md)
+- [CorsCreateProfileOK](./Models/CorsCreateProfileOK.md)
 - [CorsDeleteNodeOK](./Models/CorsDeleteNodeOK.md)
 - [CorsGetConfigOK](./Models/CorsGetConfigOK.md)
 - [CorsGetScannedFileInfoOK](./Models/CorsGetScannedFileInfoOK.md)
 - [CorsGetWellKnownJwksOK](./Models/CorsGetWellKnownJwksOK.md)
+- [CorsGrantAccessOK](./Models/CorsGrantAccessOK.md)
 - [CorsInitNodesOK](./Models/CorsInitNodesOK.md)
 - [CorsListNodeChildrenOK](./Models/CorsListNodeChildrenOK.md)
 - [CorsListRootNodeChildrenOK](./Models/CorsListRootNodeChildrenOK.md)
@@ -47,11 +50,13 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsUpdateProfileDataOK](./Models/CorsUpdateProfileDataOK.md)
 - [CreateNodeInput](./Models/CreateNodeInput.md)
 - [CreateNodeOK](./Models/CreateNodeOK.md)
+- [CreateProfileInput](./Models/CreateProfileInput.md)
 - [DeleteNodeDto](./Models/DeleteNodeDto.md)
 - [EdekInfo](./Models/EdekInfo.md)
 - [GetConfigOK](./Models/GetConfigOK.md)
 - [GetDetailedNodeInfoOK](./Models/GetDetailedNodeInfoOK.md)
 - [GetScannedFileInfoOK](./Models/GetScannedFileInfoOK.md)
+- [GrantAccessInput](./Models/GrantAccessInput.md)
 - [InitNodesOK](./Models/InitNodesOK.md)
 - [InvalidParameterError](./Models/InvalidParameterError.md)
 - [InvalidParameterError_details_inner](./Models/InvalidParameterError_details_inner.md)

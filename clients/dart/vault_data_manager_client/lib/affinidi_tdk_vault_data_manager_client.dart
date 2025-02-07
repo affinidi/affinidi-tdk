@@ -18,10 +18,12 @@ export 'package:affinidi_tdk_vault_data_manager_client/src/api/profile_data_api.
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/aws_credential_exchange_operation_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/consumer_metadata_dto.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_aws_credential_exchange_ok.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_create_profile_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_node_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_config_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_scanned_file_info_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_well_known_jwks_ok.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_grant_access_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_init_nodes_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_node_children_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_root_node_children_ok.dart';
@@ -33,11 +35,13 @@ export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_start_file
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_update_profile_data_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_profile_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/edek_info.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/get_config_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/get_detailed_node_info_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/get_scanned_file_info_ok.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/grant_access_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/init_nodes_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error_details_inner.dart';

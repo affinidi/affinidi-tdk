@@ -113,8 +113,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _FilesApi_       | [**list_scanned_files**](docs/FilesApi.md#list_scanned_files)                 | **GET** /v1/scanned-files/                            |
 | _FilesApi_       | [**start_file_scan**](docs/FilesApi.md#start_file_scan)                       | **POST** /v1/nodes/{nodeId}/file/scan                 |
 | _NodesApi_       | [**create_node**](docs/NodesApi.md#create_node)                               | **POST** /v1/nodes                                    |
+| _NodesApi_       | [**create_profile**](docs/NodesApi.md#create_profile)                         | **POST** /v1/nodes/create-profile                     |
 | _NodesApi_       | [**delete_node**](docs/NodesApi.md#delete_node)                               | **DELETE** /v1/nodes/{nodeId}                         |
 | _NodesApi_       | [**get_detailed_node_info**](docs/NodesApi.md#get_detailed_node_info)         | **GET** /v1/nodes/{nodeId}                            |
+| _NodesApi_       | [**grant_access**](docs/NodesApi.md#grant_access)                             | **POST** /v1/nodes/grant-access                       |
 | _NodesApi_       | [**init_nodes**](docs/NodesApi.md#init_nodes)                                 | **POST** /v1/nodes/init                               |
 | _NodesApi_       | [**list_node_children**](docs/NodesApi.md#list_node_children)                 | **GET** /v1/nodes/{nodeId}/children                   |
 | _NodesApi_       | [**list_root_node_children**](docs/NodesApi.md#list_root_node_children)       | **GET** /v1/nodes                                     |
@@ -122,7 +124,6 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _NodesApi_       | [**permanently_delete_node**](docs/NodesApi.md#permanently_delete_node)       | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
 | _NodesApi_       | [**restore_node_from_trashbin**](docs/NodesApi.md#restore_node_from_trashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
 | _NodesApi_       | [**update_node**](docs/NodesApi.md#update_node)                               | **PATCH** /v1/nodes/{nodeId}                          |
-| _ProfileDataApi_ | [**query_profile_data**](docs/ProfileDataApi.md#query_profile_data)           | **GET** /v1/nodes/{nodeId}/profile-data               |
 | _ProfileDataApi_ | [**update_profile_data**](docs/ProfileDataApi.md#update_profile_data)         | **PATCH** /v1/nodes/{nodeId}/profile-data             |
 
 ## Documentation For Models
@@ -130,10 +131,12 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [AwsCredentialExchangeOperationOK](docs/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](docs/CorsAwsCredentialExchangeOK.md)
+- [CorsCreateProfileOK](docs/CorsCreateProfileOK.md)
 - [CorsDeleteNodeOK](docs/CorsDeleteNodeOK.md)
 - [CorsGetConfigOK](docs/CorsGetConfigOK.md)
 - [CorsGetScannedFileInfoOK](docs/CorsGetScannedFileInfoOK.md)
 - [CorsGetWellKnownJwksOK](docs/CorsGetWellKnownJwksOK.md)
+- [CorsGrantAccessOK](docs/CorsGrantAccessOK.md)
 - [CorsInitNodesOK](docs/CorsInitNodesOK.md)
 - [CorsListNodeChildrenOK](docs/CorsListNodeChildrenOK.md)
 - [CorsListRootNodeChildrenOK](docs/CorsListRootNodeChildrenOK.md)
@@ -145,11 +148,13 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsUpdateProfileDataOK](docs/CorsUpdateProfileDataOK.md)
 - [CreateNodeInput](docs/CreateNodeInput.md)
 - [CreateNodeOK](docs/CreateNodeOK.md)
+- [CreateProfileInput](docs/CreateProfileInput.md)
 - [DeleteNodeDto](docs/DeleteNodeDto.md)
 - [EdekInfo](docs/EdekInfo.md)
 - [GetConfigOK](docs/GetConfigOK.md)
 - [GetDetailedNodeInfoOK](docs/GetDetailedNodeInfoOK.md)
 - [GetScannedFileInfoOK](docs/GetScannedFileInfoOK.md)
+- [GrantAccessInput](docs/GrantAccessInput.md)
 - [InitNodesOK](docs/InitNodesOK.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)

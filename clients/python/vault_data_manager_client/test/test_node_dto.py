@@ -73,6 +73,7 @@ class TestNodeDto(unittest.TestCase):
                 modified_at = '',
                 created_by = '',
                 modified_by = '',
+                description = '',
                 type = 'VC_ROOT',
         )
         """

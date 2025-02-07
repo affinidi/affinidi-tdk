@@ -11,8 +11,10 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api_util.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_profile_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/get_detailed_node_info_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/init_nodes_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_node_children_ok.dart';
@@ -36,6 +38,7 @@ class NodesApi {
   ///
   /// Parameters:
   /// * [createNodeInput] - CreateNode
+  /// * [ownerDid] - DID of the Node owner
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -47,6 +50,7 @@ class NodesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateNodeOK>> createNode({ 
     required CreateNodeInput createNodeInput,
+    String? ownerDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -75,11 +79,119 @@ class NodesApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (ownerDid != null) r'ownerDid': encodeQueryParameter(_serializers, ownerDid, const FullType(String)),
+    };
+
     dynamic _bodyData;
 
     try {
       const _type = FullType(CreateNodeInput);
       _bodyData = _serializers.serialize(createNodeInput, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CreateNodeOK? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CreateNodeOK),
+      ) as CreateNodeOK;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CreateNodeOK>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// createProfile
+  /// creates Profile with control plane
+  ///
+  /// Parameters:
+  /// * [createProfileInput] - CreateNode
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CreateNodeOK] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CreateNodeOK>> createProfile({ 
+    required CreateProfileInput createProfileInput,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/nodes/create-profile';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ConsumerTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateProfileInput);
+      _bodyData = _serializers.serialize(createProfileInput, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -221,6 +333,7 @@ class NodesApi {
   /// Parameters:
   /// * [nodeId] 
   /// * [dek] - A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
+  /// * [ownerDid] - DID of the Node owner
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -233,6 +346,7 @@ class NodesApi {
   Future<Response<GetDetailedNodeInfoOK>> getDetailedNodeInfo({ 
     required String nodeId,
     String? dek,
+    String? ownerDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -262,6 +376,7 @@ class NodesApi {
 
     final _queryParameters = <String, dynamic>{
       if (dek != null) r'dek': encodeQueryParameter(_serializers, dek, const FullType(String)),
+      if (ownerDid != null) r'ownerDid': encodeQueryParameter(_serializers, ownerDid, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -302,6 +417,80 @@ class NodesApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+  }
+
+  /// grantAccess
+  /// grants access to another consumer to access nodes hierarchy
+  ///
+  /// Parameters:
+  /// * [grantAccessInput] - CreateNode
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> grantAccess({ 
+    required GrantAccessInput grantAccessInput,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/nodes/grant-access';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ConsumerTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(GrantAccessInput);
+      _bodyData = _serializers.serialize(grantAccessInput, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
   }
 
   /// initNodes
@@ -392,6 +581,7 @@ class NodesApi {
   /// * [nodeId] - Description for nodeId.
   /// * [limit] - Maximum number of records to fetch in a list
   /// * [exclusiveStartKey] - exclusiveStartKey for retrieving the next batch of data.
+  /// * [ownerDid] - DID of the Node owner
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -405,6 +595,7 @@ class NodesApi {
     required String nodeId,
     int? limit = 10,
     String? exclusiveStartKey,
+    String? ownerDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -435,6 +626,7 @@ class NodesApi {
     final _queryParameters = <String, dynamic>{
       if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
       if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (ownerDid != null) r'ownerDid': encodeQueryParameter(_serializers, ownerDid, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -481,6 +673,7 @@ class NodesApi {
   /// lists children of the root node for the consumer
   ///
   /// Parameters:
+  /// * [ownerDid] - DID of the Node owner
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -491,6 +684,7 @@ class NodesApi {
   /// Returns a [Future] containing a [Response] with a [ListRootNodeChildrenOK] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ListRootNodeChildrenOK>> listRootNodeChildren({ 
+    String? ownerDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -518,9 +712,14 @@ class NodesApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (ownerDid != null) r'ownerDid': encodeQueryParameter(_serializers, ownerDid, const FullType(String)),
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
