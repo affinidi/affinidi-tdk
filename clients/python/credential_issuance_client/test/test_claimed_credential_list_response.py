@@ -40,7 +40,7 @@ class TestClaimedCredentialListResponse(unittest.TestCase):
                 credentials = [
                     { }
                     ],
-                next = ''
+                last_evaluated_key = ''
             )
         else:
             return ClaimedCredentialListResponse(
