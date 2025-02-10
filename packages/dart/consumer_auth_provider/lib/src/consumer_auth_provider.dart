@@ -14,7 +14,7 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   ///```dart
   ///void main() {
   ///  final consumerAuthProvider = ConsumerAuthProvider(
-  ///    seedBytes: [173,32],
+  ///    seedBytes: seedBytes,
   ///  );
   ///  final token = await consumerAuthProvider.fetchConsumerToken();
   ///}
@@ -23,7 +23,7 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
     required Uint8List seedBytes,
   }) {
     ConsumerAuthProviderAbstract.instance = BaseConsumerAuthProvider(
-      seedBytes: Uint8List.fromList([1, 2, 3]),
+      seedBytes: seedBytes,
     );
   }
 
