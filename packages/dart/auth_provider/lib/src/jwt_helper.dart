@@ -99,6 +99,13 @@ class JWTHelper {
     return result;
   }
 
+  /// Mapping of AES-CBC OIDs to key sizes
+  static final Map<String, int> aesKeySizes = {
+    "2.16.840.1.101.3.4.1.42": 32, // AES-256-CBC
+    "2.16.840.1.101.3.4.1.22": 24, // AES-192-CBC
+    "2.16.840.1.101.3.4.1.2": 16,  // AES-128-CBC
+  };
+
   /// Converts the decrypted private key to PEM format.
   static String _privateKeyToPem(Uint8List privateKey) {
     final base64Key = base64.encode(privateKey);
@@ -150,11 +157,19 @@ class JWTHelper {
     final encryptionParams = (pbes2Params.elements[1] as ASN1Sequence);
     final iv = (encryptionParams.elements[1] as ASN1OctetString).valueBytes!();
 
+    final cipherOid = (encryptionParams.elements[0] as ASN1ObjectIdentifier).identifier;
+    final keySize = aesKeySizes[cipherOid];
+
+    // Determine AES key size from OID
+    if (keySize == null) {
+      throw Exception("Unsupported encryption algorithm: $cipherOid");
+    }
+
     // Extract encrypted private key data
     final encryptedData = (asn1Sequence.elements[1] as ASN1OctetString).valueBytes!();
 
     // Derive the decryption key from the passphrase
-    final key = _deriveKey(passphrase, salt, iterations, 32);
+    final key = _deriveKey(passphrase, salt, iterations, keySize);
 
     // Decrypt the private key using AES-256-CBC
     return _decryptAES256CBC(key, iv, encryptedData);

@@ -158,7 +158,7 @@ void main() {
         );
         expect(token, isNotEmpty);
         validateJWTClaims(token, mockAudience, mockTokenId);
-      }, skip: 'encrypted keys are not yet supported');
+      });
 
       test('creates JWT from OpenSSL AES-192 encrypted RSA 2048 key', () {
         final token = JWTHelper.signPayload(
@@ -169,7 +169,7 @@ void main() {
         );
         expect(token, isNotEmpty);
         validateJWTClaims(token, mockAudience, mockTokenId);
-      }, skip: 'encrypted keys are not yet supported');
+      });
 
       test('creates JWT from OpenSSL AES-256 encrypted RSA 2048 key', () {
         final token = JWTHelper.signPayload(
@@ -180,7 +180,7 @@ void main() {
         );
         expect(token, isNotEmpty);
         validateJWTClaims(token, mockAudience, mockTokenId);
-      }, skip: 'encrypted keys are not yet supported');
+      });
 
       test('creates JWT from ssh-keygen encrypted RSA 4096 key', () {
         final token = JWTHelper.signPayload(
