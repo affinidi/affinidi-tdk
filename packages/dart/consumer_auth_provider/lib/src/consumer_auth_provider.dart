@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'provider/base_consumer_auth_provider.dart';
 import 'provider/consumer_auth_provider_abstract.dart';
 import 'consumer_auth_provider_interface.dart';
@@ -12,19 +14,16 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   ///```dart
   ///void main() {
   ///  final consumerAuthProvider = ConsumerAuthProvider(
-  ///    encryptedSeed: 'encryptedSeed',
-  ///    encryptionKey: 'encryptionKey',
+  ///    seedBytes: [173,32],
   ///  );
   ///  final token = await consumerAuthProvider.fetchConsumerToken();
   ///}
   ///```
   ConsumerAuthProvider({
-    required String encryptedSeed,
-    required String encryptionKey,
+    required Uint8List seedBytes,
   }) {
     ConsumerAuthProviderAbstract.instance = BaseConsumerAuthProvider(
-      encryptedSeed: encryptedSeed,
-      encryptionKey: encryptionKey,
+      seedBytes: Uint8List.fromList([1, 2, 3]),
     );
   }
 

@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
-import 'package:base_codecs/base_codecs.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 import 'consumer_auth_provider_abstract.dart';
@@ -10,26 +8,17 @@ import 'token_provider.dart';
 /// Base class for consumer authentication provider. It handles the decryption
 /// of the seed, and generation of tokens, and validation of tokens.
 class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
-  final String _encryptedSeed;
-  final String _encryptionKey;
+  final Uint8List _seedBytes;
 
-  late final CryptographyService _cryptographyService;
   late final ConsumerTokenProvider _consumerTokenProvider;
   late final CisTokenProvider _cisTokenProvider;
-  late final Uint8List _seedBytes = hexDecode(_cryptographyService.decryptSeed(
-    encryptedSeedHex: _encryptedSeed,
-    encryptionKeyHex: _encryptionKey,
-  ));
 
   String? _consumerToken;
 
   /// Constructor for [BaseConsumerAuthProvider] from encrypted seed and encryption key.
   BaseConsumerAuthProvider({
-    required String encryptedSeed,
-    required String encryptionKey,
-  })  : _encryptedSeed = encryptedSeed,
-        _encryptionKey = encryptionKey {
-    _cryptographyService = CryptographyService();
+    required Uint8List seedBytes,
+  }) : _seedBytes = seedBytes {
     _consumerTokenProvider = ConsumerTokenProvider();
     _cisTokenProvider = CisTokenProvider();
   }
