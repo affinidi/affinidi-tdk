@@ -14,8 +14,8 @@ void main() {
     });
 
     // for pagination to fetch next set of records
-    // String next
-    test('to test the property `next`', () async {
+    // String lastEvaluatedKey
+    test('to test the property `lastEvaluatedKey`', () async {
       // TODO
     });
 
