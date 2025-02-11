@@ -18,7 +18,7 @@ void main() {
     //
     // Get claimed credential in the specified range
     //
-    //Future<ClaimedCredentialListResponse> getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, { String rangeEndTime, String next }) async
+    //Future<ClaimedCredentialListResponse> getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, { String rangeEndTime, String exclusiveStartKey, int limit }) async
     test('test getClaimedCredentials', () async {
       // TODO
     });

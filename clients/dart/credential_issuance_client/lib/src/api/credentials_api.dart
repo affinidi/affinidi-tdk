@@ -137,7 +137,8 @@ class CredentialsApi {
   /// * [configurationId] - configuration id
   /// * [rangeStartTime] 
   /// * [rangeEndTime] 
-  /// * [next] 
+  /// * [exclusiveStartKey] - exclusiveStartKey for retrieving the next batch of data.
+  /// * [limit] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -152,7 +153,8 @@ class CredentialsApi {
     required String configurationId,
     required String rangeStartTime,
     String? rangeEndTime,
-    String? next,
+    String? exclusiveStartKey,
+    int? limit = 20,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -183,7 +185,8 @@ class CredentialsApi {
     final _queryParameters = <String, dynamic>{
       r'rangeStartTime': encodeQueryParameter(_serializers, rangeStartTime, const FullType(String)),
       if (rangeEndTime != null) r'rangeEndTime': encodeQueryParameter(_serializers, rangeEndTime, const FullType(String)),
-      if (next != null) r'next': encodeQueryParameter(_serializers, next, const FullType(String)),
+      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(

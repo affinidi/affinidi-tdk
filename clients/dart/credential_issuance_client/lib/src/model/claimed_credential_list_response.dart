@@ -14,7 +14,7 @@ part 'claimed_credential_list_response.g.dart';
 ///
 /// Properties:
 /// * [credentials] - list of credentials
-/// * [next] - for pagination to fetch next set of records
+/// * [lastEvaluatedKey] - for pagination to fetch next set of records
 @BuiltValue()
 abstract class ClaimedCredentialListResponse implements Built<ClaimedCredentialListResponse, ClaimedCredentialListResponseBuilder> {
   /// list of credentials
@@ -22,8 +22,8 @@ abstract class ClaimedCredentialListResponse implements Built<ClaimedCredentialL
   BuiltList<BuiltMap<String, JsonObject?>>? get credentials;
 
   /// for pagination to fetch next set of records
-  @BuiltValueField(wireName: r'next')
-  String? get next;
+  @BuiltValueField(wireName: r'lastEvaluatedKey')
+  String? get lastEvaluatedKey;
 
   ClaimedCredentialListResponse._();
 
@@ -55,10 +55,10 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
         specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
       );
     }
-    if (object.next != null) {
-      yield r'next';
+    if (object.lastEvaluatedKey != null) {
+      yield r'lastEvaluatedKey';
       yield serializers.serialize(
-        object.next,
+        object.lastEvaluatedKey,
         specifiedType: const FullType(String),
       );
     }
@@ -92,12 +92,12 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
           ) as BuiltList<BuiltMap<String, JsonObject?>>;
           result.credentials.replace(valueDes);
           break;
-        case r'next':
+        case r'lastEvaluatedKey':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.next = valueDes;
+          result.lastEvaluatedKey = valueDes;
           break;
         default:
           unhandled.add(key);

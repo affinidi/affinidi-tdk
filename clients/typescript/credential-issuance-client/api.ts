@@ -270,7 +270,7 @@ export interface ClaimedCredentialListResponse {
    * @type {string}
    * @memberof ClaimedCredentialListResponse
    */
-  next?: string
+  lastEvaluatedKey?: string
 }
 /**
  * Response for getting the claimed VC
@@ -3202,7 +3202,8 @@ export const CredentialsApiAxiosParamCreator = function (
      * @param {string} configurationId configuration id
      * @param {string} rangeStartTime
      * @param {string} [rangeEndTime]
-     * @param {string} [next]
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3211,7 +3212,8 @@ export const CredentialsApiAxiosParamCreator = function (
       configurationId: string,
       rangeStartTime: string,
       rangeEndTime?: string,
-      next?: string,
+      exclusiveStartKey?: string,
+      limit?: number,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'projectId' is not null or undefined
@@ -3265,8 +3267,12 @@ export const CredentialsApiAxiosParamCreator = function (
         localVarQueryParameter['rangeEndTime'] = rangeEndTime
       }
 
-      if (next !== undefined) {
-        localVarQueryParameter['next'] = next
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
       }
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
@@ -3414,7 +3420,8 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
      * @param {string} configurationId configuration id
      * @param {string} rangeStartTime
      * @param {string} [rangeEndTime]
-     * @param {string} [next]
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3423,7 +3430,8 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
       configurationId: string,
       rangeStartTime: string,
       rangeEndTime?: string,
-      next?: string,
+      exclusiveStartKey?: string,
+      limit?: number,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -3437,7 +3445,8 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
           configurationId,
           rangeStartTime,
           rangeEndTime,
-          next,
+          exclusiveStartKey,
+          limit,
           options,
         )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -3530,7 +3539,8 @@ export const CredentialsApiFactory = function (
      * @param {string} configurationId configuration id
      * @param {string} rangeStartTime
      * @param {string} [rangeEndTime]
-     * @param {string} [next]
+     * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+     * @param {number} [limit]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3539,7 +3549,8 @@ export const CredentialsApiFactory = function (
       configurationId: string,
       rangeStartTime: string,
       rangeEndTime?: string,
-      next?: string,
+      exclusiveStartKey?: string,
+      limit?: number,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<ClaimedCredentialListResponse> {
       return localVarFp
@@ -3548,7 +3559,8 @@ export const CredentialsApiFactory = function (
           configurationId,
           rangeStartTime,
           rangeEndTime,
-          next,
+          exclusiveStartKey,
+          limit,
           options,
         )
         .then((request) => request(axios, basePath))
@@ -3612,7 +3624,8 @@ export class CredentialsApi extends BaseAPI {
    * @param {string} configurationId configuration id
    * @param {string} rangeStartTime
    * @param {string} [rangeEndTime]
-   * @param {string} [next]
+   * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
+   * @param {number} [limit]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof CredentialsApi
@@ -3622,7 +3635,8 @@ export class CredentialsApi extends BaseAPI {
     configurationId: string,
     rangeStartTime: string,
     rangeEndTime?: string,
-    next?: string,
+    exclusiveStartKey?: string,
+    limit?: number,
     options?: RawAxiosRequestConfig,
   ) {
     return CredentialsApiFp(this.configuration)
@@ -3631,7 +3645,8 @@ export class CredentialsApi extends BaseAPI {
         configurationId,
         rangeStartTime,
         rangeEndTime,
-        next,
+        exclusiveStartKey,
+        limit,
         options,
       )
       .then((request) => request(this.axios, this.basePath))
