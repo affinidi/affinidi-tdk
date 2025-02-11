@@ -61,7 +61,7 @@ try {
 
 # **getClaimedCredentials**
 
-> ClaimedCredentialListResponse getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next)
+> ClaimedCredentialListResponse getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit)
 
 Get claimed credential in the specified range
 
@@ -81,10 +81,11 @@ final String projectId = projectId_example; // String | project id
 final String configurationId = configurationId_example; // String | configuration id
 final String rangeStartTime = rangeStartTime_example; // String |
 final String rangeEndTime = rangeEndTime_example; // String |
-final String next = next_example; // String |
+final String exclusiveStartKey = exclusiveStartKey_example; // String | exclusiveStartKey for retrieving the next batch of data.
+final int limit = 56; // int |
 
 try {
-    final response = api.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next);
+    final response = api.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CredentialsApi->getClaimedCredentials: $e\n');
@@ -93,13 +94,14 @@ try {
 
 ### Parameters
 
-| Name                | Type       | Description      | Notes      |
-| ------------------- | ---------- | ---------------- | ---------- |
-| **projectId**       | **String** | project id       |
-| **configurationId** | **String** | configuration id |
-| **rangeStartTime**  | **String** |                  |
-| **rangeEndTime**    | **String** |                  | [optional] |
-| **next**            | **String** |                  | [optional] |
+| Name                  | Type       | Description                                              | Notes                      |
+| --------------------- | ---------- | -------------------------------------------------------- | -------------------------- |
+| **projectId**         | **String** | project id                                               |
+| **configurationId**   | **String** | configuration id                                         |
+| **rangeStartTime**    | **String** |                                                          |
+| **rangeEndTime**      | **String** |                                                          | [optional]                 |
+| **exclusiveStartKey** | **String** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| **limit**             | **int**    |                                                          | [optional] [default to 20] |
 
 ### Return type
 
