@@ -20,6 +20,3 @@ analysis_options.yaml
 
 # Temporary or private files
 .env
-
-# Assets
-example/
