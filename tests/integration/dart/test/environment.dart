@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dotenv/dotenv.dart';
 
 class ProjectEnvironment {
@@ -17,12 +19,10 @@ class ProjectEnvironment {
 }
 
 class VaultEnvironment {
-  final String encryptedSeed;
-  final String encryptionKey;
+  final Uint8List seedBytes;
 
   VaultEnvironment({
-    required this.encryptedSeed,
-    required this.encryptionKey,
+    required this.seedBytes,
   });
 }
 
@@ -53,16 +53,16 @@ ProjectEnvironment getProjectEnvironment() {
 VaultEnvironment getVaultEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['VAULT_ENCRYPTED_SEED', 'VAULT_ENCRYPTION_KEY'])) {
+  if (!env.isEveryDefined(['VAULT_SEED_BYTES'])) {
     throw Exception(
-        'Missing environment variables. Please provide VAULT_ENCRYPTED_SEED and VAULT_ENCRYPTION_KEY');
+        'Missing environment variables. Please provide VAULT_SEED_BYTES.');
   }
 
-  final encryptedSeed = env['VAULT_ENCRYPTED_SEED']!;
-  final encryptionKey = env['VAULT_ENCRYPTION_KEY']!;
+  final encryptedSeedStringified = env['VAULT_SEED_BYTES']!;
+  final List<int> encryptedSeedBytes =
+      encryptedSeedStringified.split(',').map((e) => int.parse(e)).toList();
 
   return VaultEnvironment(
-    encryptedSeed: encryptedSeed,
-    encryptionKey: encryptionKey,
+    seedBytes: Uint8List.fromList(encryptedSeedBytes),
   );
 }
