@@ -4,10 +4,10 @@ List of claimed credential
 
 ## Properties
 
-| Name            | Type                        | Description                                 | Notes      |
-| --------------- | --------------------------- | ------------------------------------------- | ---------- |
-| **credentials** | **List[Dict[str, object]]** | list of credentials                         | [optional] |
-| **next**        | **str**                     | for pagination to fetch next set of records | [optional] |
+| Name                   | Type                        | Description                                 | Notes      |
+| ---------------------- | --------------------------- | ------------------------------------------- | ---------- |
+| **credentials**        | **List[Dict[str, object]]** | list of credentials                         | [optional] |
+| **last_evaluated_key** | **str**                     | for pagination to fetch next set of records | [optional] |
 
 ## Example
 
