@@ -27,8 +27,8 @@ class ClaimedCredentialListResponse(BaseModel):
     List of claimed credential  # noqa: E501
     """
     credentials: Optional[conlist(Dict[str, Any])] = Field(default=None, description="list of credentials")
-    next: Optional[StrictStr] = Field(default=None, description="for pagination to fetch next set of records")
-    __properties = ["credentials", "next"]
+    last_evaluated_key: Optional[StrictStr] = Field(default=None, alias="lastEvaluatedKey", description="for pagination to fetch next set of records")
+    __properties = ["credentials", "lastEvaluatedKey"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +67,7 @@ class ClaimedCredentialListResponse(BaseModel):
 
         _obj = ClaimedCredentialListResponse.parse_obj({
             "credentials": obj.get("credentials"),
-            "next": obj.get("next")
+            "last_evaluated_key": obj.get("lastEvaluatedKey")
         })
         return _obj
 
