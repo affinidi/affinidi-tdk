@@ -5,20 +5,17 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'consumer_auth_provider_abstract.dart';
 import 'token_provider.dart';
 
-/// Base class for consumer authentication provider. It handles the decryption
-/// of the seed, and generation of tokens, and validation of tokens.
+/// Base class for consumer authentication provider. It handles the  generation and validation of tokens.
 class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
-  final Uint8List _seedBytes;
+  final Uint8List _seed;
 
   late final ConsumerTokenProvider _consumerTokenProvider;
   late final CisTokenProvider _cisTokenProvider;
 
   String? _consumerToken;
 
-  /// Constructor for [BaseConsumerAuthProvider] from encrypted seed and encryption key.
-  BaseConsumerAuthProvider({
-    required Uint8List seedBytes,
-  }) : _seedBytes = seedBytes {
+  /// Constructor for [BaseConsumerAuthProvider] using the [seed] in bytes
+  BaseConsumerAuthProvider({required Uint8List seed}) : _seed = seed {
     _consumerTokenProvider = ConsumerTokenProvider();
     _cisTokenProvider = CisTokenProvider();
   }
@@ -30,7 +27,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         return _consumerToken!;
       }
 
-      _consumerToken = await _consumerTokenProvider.getToken(_seedBytes);
+      _consumerToken = await _consumerTokenProvider.getToken(_seed);
 
       return _consumerToken!;
     } catch (e) {
@@ -40,7 +37,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
 
   @override
   Future<String> fetchCisToken() async {
-    return await _cisTokenProvider.getToken(_seedBytes);
+    return await _cisTokenProvider.getToken(_seed);
   }
 
   bool _isTokenExpired(String token) {

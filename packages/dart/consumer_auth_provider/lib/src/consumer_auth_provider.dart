@@ -10,21 +10,18 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   /// A provider for handling consumer auth token, which is used for Vault API
   /// requests to Affinidi services like Vault Data Manager (VDM).
   ///
+  /// The `seed` parameter is a `Uint8List` representing the raw seed bytes of your Wallet.
+  ///
   /// Example usage:
   ///```dart
   ///void main() {
-  ///  final consumerAuthProvider = ConsumerAuthProvider(
-  ///    seedBytes: seedBytes,
-  ///  );
+  ///  final consumerAuthProvider = ConsumerAuthProvider(seed: seed);
   ///  final token = await consumerAuthProvider.fetchConsumerToken();
   ///}
   ///```
-  ConsumerAuthProvider({
-    required Uint8List seedBytes,
-  }) {
-    ConsumerAuthProviderAbstract.instance = BaseConsumerAuthProvider(
-      seedBytes: seedBytes,
-    );
+  ConsumerAuthProvider({required Uint8List seed}) {
+    ConsumerAuthProviderAbstract.instance =
+        BaseConsumerAuthProvider(seed: seed);
   }
 
   /// Fetches a consumer scoped token to be used for API calls to Affinidi

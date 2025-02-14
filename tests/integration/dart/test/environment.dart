@@ -20,11 +20,9 @@ class ProjectEnvironment {
 }
 
 class VaultEnvironment {
-  final Uint8List seedBytes;
+  final Uint8List seed;
 
-  VaultEnvironment({
-    required this.seedBytes,
-  });
+  VaultEnvironment({required this.seed});
 }
 
 ProjectEnvironment getProjectEnvironment() {
@@ -32,7 +30,8 @@ ProjectEnvironment getProjectEnvironment() {
 
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
     throw Exception(
-        'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
+      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY',
+    );
   }
 
   // Workaround for dotenv multiline limitations
@@ -56,14 +55,12 @@ VaultEnvironment getVaultEnvironment() {
 
   if (!env.isEveryDefined(['VAULT_SEED_BYTES_HEX_ENCODED'])) {
     throw Exception(
-        'Missing environment variables. Please provide VAULT_SEED_BYTES_HEX_ENCODED.');
+      'Missing environment variables. Please provide VAULT_SEED_BYTES_HEX_ENCODED.',
+    );
   }
 
-  final encryptedSeedHexEncoded = env['VAULT_SEED_BYTES_HEX_ENCODED']!;
-  final Uint8List encryptedSeedBytes =
-      Uint8List.fromList(hex.decode(encryptedSeedHexEncoded));
+  final seedHexEncoded = env['VAULT_SEED_BYTES_HEX_ENCODED']!;
+  final Uint8List seed = Uint8List.fromList(hex.decode(seedHexEncoded));
 
-  return VaultEnvironment(
-    seedBytes: encryptedSeedBytes,
-  );
+  return VaultEnvironment(seed: seed);
 }

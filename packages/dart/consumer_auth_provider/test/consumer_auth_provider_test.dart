@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 void main() {
   group('Cryptography Unit Tests', () {
     test('Decrypt seed', () async {
-      final seedBytes = [
+      final seed = [
         127,
         207,
         117,
@@ -47,8 +47,9 @@ void main() {
       final mockAudience = 'https://apse1.api.affinidi.io/cis';
       final validTimeInSeconds = 5 * 60;
 
-      final provider =
-          ConsumerAuthProvider(seedBytes: Uint8List.fromList(seedBytes));
+      final provider = ConsumerAuthProvider(
+        seed: Uint8List.fromList(seed),
+      );
 
       final currentTime = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       final cisToken = await provider.fetchCisToken();

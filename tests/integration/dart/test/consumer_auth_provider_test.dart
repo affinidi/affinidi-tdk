@@ -11,9 +11,7 @@ void main() {
     });
 
     test('obtain consumer scoped token and cache it', () async {
-      final consumerAuthProvider = ConsumerAuthProvider(
-        seedBytes: env.seedBytes,
-      );
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
       final consumerAuthToken1 =
           await consumerAuthProvider.fetchConsumerToken();
       expect(consumerAuthToken1, isNotEmpty);
@@ -24,9 +22,7 @@ void main() {
     });
 
     test('obtain cis scoped token', () async {
-      final consumerAuthProvider = ConsumerAuthProvider(
-        seedBytes: env.seedBytes,
-      );
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
       final cisAuthToken = await consumerAuthProvider.fetchCisToken();
       expect(cisAuthToken, isNotEmpty);
     });

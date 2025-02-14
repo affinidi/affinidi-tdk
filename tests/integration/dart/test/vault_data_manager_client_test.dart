@@ -12,9 +12,7 @@ void main() {
 
     setUp(() async {
       final env = getVaultEnvironment();
-      final consumerAuthProvider = ConsumerAuthProvider(
-        seedBytes: env.seedBytes,
-      );
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
       final apiClient = AffinidiTdkVaultDataManagerClient(
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
       );
