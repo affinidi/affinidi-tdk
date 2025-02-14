@@ -4,6 +4,10 @@ This package provides common utilities for Affinidi TDK for Dart. It provides Va
 
 Other than that it is usually only used internally by Affinidi as a dependency for other packages. It provides URL resolution basend on the environment, but users should not concern with this and use the default production environment.
 
+......
+
+
+
 ## Table of Contents
 
 - [Affinidi TDK - Common](#affinidi-tdk---common)
