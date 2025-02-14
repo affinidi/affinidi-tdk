@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:base_codecs/base_codecs.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:test/test.dart';
@@ -44,7 +43,7 @@ void main() {
       ];
 
       final mockDid =
-          'did:key:zQ3shpqTRqPjMV2S3kowWNayqd9ugQHAeajMv65yG92PC2M7u';
+          'did:key:zQ3shNmTiqpJoYGRm7bbvtwamCptUJAbBtggt4ip7N7MYe17W';
       final mockAudience = 'https://apse1.api.affinidi.io/cis';
       final validTimeInSeconds = 5 * 60;
 
