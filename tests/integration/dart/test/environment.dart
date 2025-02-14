@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:convert/convert.dart';
 import 'package:dotenv/dotenv.dart';
 
 class ProjectEnvironment {
@@ -53,16 +54,16 @@ ProjectEnvironment getProjectEnvironment() {
 VaultEnvironment getVaultEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['VAULT_SEED_BYTES'])) {
+  if (!env.isEveryDefined(['VAULT_SEED_BYTES_HEX_ENCODED'])) {
     throw Exception(
-        'Missing environment variables. Please provide VAULT_SEED_BYTES.');
+        'Missing environment variables. Please provide VAULT_SEED_BYTES_HEX_ENCODED.');
   }
 
-  final encryptedSeedStringified = env['VAULT_SEED_BYTES']!;
-  final List<int> encryptedSeedBytes =
-      encryptedSeedStringified.split(',').map((e) => int.parse(e)).toList();
+  final encryptedSeedHexEncoded = env['VAULT_SEED_BYTES_HEX_ENCODED']!;
+  final Uint8List encryptedSeedBytes =
+      Uint8List.fromList(hex.decode(encryptedSeedHexEncoded));
 
   return VaultEnvironment(
-    seedBytes: Uint8List.fromList(encryptedSeedBytes),
+    seedBytes: encryptedSeedBytes,
   );
 }
