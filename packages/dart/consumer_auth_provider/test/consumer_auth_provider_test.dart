@@ -8,7 +8,40 @@ import 'package:test/test.dart';
 void main() {
   group('Cryptography Unit Tests', () {
     test('Decrypt seed', () async {
-      final seedBytes = [1, 2, 3];
+      final seedBytes = [
+        127,
+        207,
+        117,
+        151,
+        251,
+        83,
+        173,
+        138,
+        126,
+        164,
+        8,
+        230,
+        146,
+        6,
+        194,
+        84,
+        244,
+        160,
+        132,
+        252,
+        138,
+        118,
+        178,
+        144,
+        207,
+        241,
+        7,
+        61,
+        120,
+        124,
+        22,
+        82,
+      ];
 
       final mockDid =
           'did:key:zQ3shpqTRqPjMV2S3kowWNayqd9ugQHAeajMv65yG92PC2M7u';
