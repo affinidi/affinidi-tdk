@@ -137,12 +137,13 @@ public class CredentialsApi extends BaseApi {
    * @param configurationId configuration id (required)
    * @param rangeStartTime  (required)
    * @param rangeEndTime  (optional)
-   * @param next  (optional)
+   * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
+   * @param limit  (optional, default to 20)
    * @return ClaimedCredentialListResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String next) throws ApiException {
-    return this.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next, Collections.emptyMap());
+  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String exclusiveStartKey, Integer limit) throws ApiException {
+    return this.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit, Collections.emptyMap());
   }
 
 
@@ -153,12 +154,13 @@ public class CredentialsApi extends BaseApi {
    * @param configurationId configuration id (required)
    * @param rangeStartTime  (required)
    * @param rangeEndTime  (optional)
-   * @param next  (optional)
+   * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
+   * @param limit  (optional, default to 20)
    * @param additionalHeaders additionalHeaders for this call
    * @return ClaimedCredentialListResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String next, Map<String, String> additionalHeaders) throws ApiException {
+  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String exclusiveStartKey, Integer limit, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -191,7 +193,8 @@ public class CredentialsApi extends BaseApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPair("rangeStartTime", rangeStartTime));
     localVarQueryParams.addAll(apiClient.parameterToPair("rangeEndTime", rangeEndTime));
-    localVarQueryParams.addAll(apiClient.parameterToPair("next", next));
+    localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
+    localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
     
     localVarHeaderParams.putAll(additionalHeaders);
 

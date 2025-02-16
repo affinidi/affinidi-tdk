@@ -728,12 +728,24 @@ paths:
           schema:
             type: string
           style: form
-        - explode: true
+        - description: exclusiveStartKey for retrieving the next batch of data.
+          explode: true
           in: query
-          name: next
+          name: exclusiveStartKey
           required: false
           schema:
+            maxLength: 3000
             type: string
+          style: form
+        - explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            default: 20
+            maximum: 20
+            minimum: 1
+            type: integer
           style: form
       responses:
         '200':
@@ -1576,10 +1588,10 @@ components:
       additionalProperties: false
       description: List of claimed credential
       example:
-        next: next
         credentials:
           - key: ''
           - key: ''
+        lastEvaluatedKey: lastEvaluatedKey
       properties:
         credentials:
           description: list of credentials
@@ -1588,7 +1600,7 @@ components:
             description: claimed credential
             type: object
           type: array
-        next:
+        lastEvaluatedKey:
           description: for pagination to fetch next set of records
           type: string
       type: object
