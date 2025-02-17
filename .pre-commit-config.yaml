@@ -8,6 +8,8 @@ repos:
     hooks:
       - id: commitizen
         name: Run commit lint
+        stages:
+          - commit-msg
   - repo: local
     hooks:
       - id: npm-audit
