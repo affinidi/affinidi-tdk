@@ -11,22 +11,18 @@ void main() {
     });
 
     test('obtain consumer scoped token and cache it', () async {
-      final consumerAuthProvider = ConsumerAuthProvider(
-        encryptedSeed: env.encryptedSeed,
-        encryptionKey: env.encryptionKey,
-      );
-      final consumerAuthToken1 = await consumerAuthProvider.fetchConsumerToken();
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
+      final consumerAuthToken1 =
+          await consumerAuthProvider.fetchConsumerToken();
       expect(consumerAuthToken1, isNotEmpty);
 
-      final consumerAuthToken2 = await consumerAuthProvider.fetchConsumerToken();
+      final consumerAuthToken2 =
+          await consumerAuthProvider.fetchConsumerToken();
       expect(consumerAuthToken2, equals(consumerAuthToken1));
     });
 
     test('obtain cis scoped token', () async {
-      final consumerAuthProvider = ConsumerAuthProvider(
-        encryptedSeed: env.encryptedSeed,
-        encryptionKey: env.encryptionKey,
-      );
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
       final cisAuthToken = await consumerAuthProvider.fetchCisToken();
       expect(cisAuthToken, isNotEmpty);
     });

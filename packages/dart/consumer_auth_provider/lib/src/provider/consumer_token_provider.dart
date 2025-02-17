@@ -6,10 +6,10 @@ class ConsumerTokenProvider extends TokenProvider {
   static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
 
   @override
-  Future<String> getToken(Uint8List seedBytes) async {
-    final myDiD = _getDID(seedBytes);
+  Future<String> getToken(Uint8List seed) async {
+    final myDiD = _getDID(seed);
     final header = _getHeader(_getKid(myDiD));
-    final jwt = await _getJwtToken(seedBytes, header, _tokenEndpoint);
+    final jwt = await _getJwtToken(seed, header, _tokenEndpoint);
     final token = await _getConsumerToken(jwt, myDiD);
     return token;
   }

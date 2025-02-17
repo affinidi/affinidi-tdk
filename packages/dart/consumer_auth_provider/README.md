@@ -46,8 +46,8 @@ import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_m
 
 void main() {
   final consumerAuthProvider = ConsumerAuthProvider(
-    encryptedSeed: 'encryptedSeed',
-    encryptionKey: 'encryptionKey',
+    seed: seed,
+
   );
 
   // Actual Consumer client that accepts a hook for
