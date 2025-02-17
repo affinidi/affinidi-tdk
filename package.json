@@ -5,7 +5,8 @@
   "scripts": {
     "build": "nx run-many --verbose --target=build",
     "create:sample": "./scripts/create-sample.sh",
-    "postinstall": "pre-commit install -t commit-msg -t pre-commit"
+    "install-hooks": "pre-commit install -t commit-msg -t pre-commit",
+    "postinstall": "[[ -z \"$CI\" ]] && npm run install-hooks || echo 'Skipping postinstall in CI'"
   },
   "private": "true",
   "publishConfig": {
