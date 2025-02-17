@@ -2,11 +2,11 @@ import 'dart:typed_data';
 
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-import 'consumer_auth_provider_abstract.dart';
+import '../consumer_auth_provider_interface.dart';
 import 'token_provider.dart';
 
 /// Base class for consumer authentication provider. It handles the  generation and validation of tokens.
-class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
+class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
   final Uint8List _seed;
 
   late final ConsumerTokenProvider _consumerTokenProvider;
