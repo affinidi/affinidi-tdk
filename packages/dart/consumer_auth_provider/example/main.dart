@@ -1,12 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 
 Future<void> main() async {
-  final vaultEncryptedSeed = ''; // Replace with your Vault's encrypted seed
-  final vaultPassword = ''; // Replace with your Vault's password
+  final vaultSeed =
+      List<int>.generate(32, (index) => index); // Mocked seed bytes
 
   final consumerAuthProvider = ConsumerAuthProvider(
-    encryptedSeed: vaultEncryptedSeed,
-    encryptionKey: vaultPassword,
+    seed: Uint8List.fromList(vaultSeed),
   );
 
   print('Fetching consumer token...');

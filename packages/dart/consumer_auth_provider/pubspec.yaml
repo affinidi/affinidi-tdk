@@ -10,7 +10,6 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.0.0
-  affinidi_tdk_cryptography: ^1.0.0
   jwt_decoder: ^2.0.1
   bip32: ^2.0.0
   web3dart: ^2.7.3

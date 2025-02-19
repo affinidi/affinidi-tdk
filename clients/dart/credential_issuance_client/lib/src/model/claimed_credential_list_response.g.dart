@@ -10,13 +10,14 @@ class _$ClaimedCredentialListResponse extends ClaimedCredentialListResponse {
   @override
   final BuiltList<BuiltMap<String, JsonObject?>>? credentials;
   @override
-  final String? next;
+  final String? lastEvaluatedKey;
 
   factory _$ClaimedCredentialListResponse(
           [void Function(ClaimedCredentialListResponseBuilder)? updates]) =>
       (new ClaimedCredentialListResponseBuilder()..update(updates))._build();
 
-  _$ClaimedCredentialListResponse._({this.credentials, this.next}) : super._();
+  _$ClaimedCredentialListResponse._({this.credentials, this.lastEvaluatedKey})
+      : super._();
 
   @override
   ClaimedCredentialListResponse rebuild(
@@ -32,14 +33,14 @@ class _$ClaimedCredentialListResponse extends ClaimedCredentialListResponse {
     if (identical(other, this)) return true;
     return other is ClaimedCredentialListResponse &&
         credentials == other.credentials &&
-        next == other.next;
+        lastEvaluatedKey == other.lastEvaluatedKey;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, credentials.hashCode);
-    _$hash = $jc(_$hash, next.hashCode);
+    _$hash = $jc(_$hash, lastEvaluatedKey.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -48,7 +49,7 @@ class _$ClaimedCredentialListResponse extends ClaimedCredentialListResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'ClaimedCredentialListResponse')
           ..add('credentials', credentials)
-          ..add('next', next))
+          ..add('lastEvaluatedKey', lastEvaluatedKey))
         .toString();
   }
 }
@@ -65,9 +66,10 @@ class ClaimedCredentialListResponseBuilder
   set credentials(ListBuilder<BuiltMap<String, JsonObject?>>? credentials) =>
       _$this._credentials = credentials;
 
-  String? _next;
-  String? get next => _$this._next;
-  set next(String? next) => _$this._next = next;
+  String? _lastEvaluatedKey;
+  String? get lastEvaluatedKey => _$this._lastEvaluatedKey;
+  set lastEvaluatedKey(String? lastEvaluatedKey) =>
+      _$this._lastEvaluatedKey = lastEvaluatedKey;
 
   ClaimedCredentialListResponseBuilder() {
     ClaimedCredentialListResponse._defaults(this);
@@ -77,7 +79,7 @@ class ClaimedCredentialListResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _credentials = $v.credentials?.toBuilder();
-      _next = $v.next;
+      _lastEvaluatedKey = $v.lastEvaluatedKey;
       _$v = null;
     }
     return this;
@@ -103,7 +105,7 @@ class ClaimedCredentialListResponseBuilder
       _$result = _$v ??
           new _$ClaimedCredentialListResponse._(
             credentials: _credentials?.build(),
-            next: next,
+            lastEvaluatedKey: lastEvaluatedKey,
           );
     } catch (_) {
       late String _$failedField;
