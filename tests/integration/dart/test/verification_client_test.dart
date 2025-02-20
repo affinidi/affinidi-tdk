@@ -21,13 +21,12 @@ void main() {
         keyId: env.keyId,
         passphrase: env.passphrase,
       );
-      final dio = Dio(BaseOptions(
+      final apiClient = AffinidiTdkCredentialVerificationClient(
+          dio: Dio(BaseOptions(
         baseUrl: AffinidiTdkCredentialVerificationClient.basePath,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
-      ));
-      final apiClient = AffinidiTdkCredentialVerificationClient(
-          dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
+      )), authTokenHook: authProvider.fetchProjectScopedToken);
       verificationApi = apiClient.getDefaultApi();
     });
 
