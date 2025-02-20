@@ -21,6 +21,7 @@ void main() {
         keyId: env.keyId,
         passphrase: env.passphrase,
       );
+
       final apiClient = AffinidiTdkCredentialVerificationClient(
           dio: Dio(BaseOptions(
         baseUrl: AffinidiTdkCredentialVerificationClient.basePath,
