@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:uuid/uuid.dart';
 import 'package:pointycastle/export.dart' as pce;
+import 'package:asn1lib/asn1lib.dart';
 
 import 'iam_client.dart';
 
@@ -15,7 +16,7 @@ class JWTHelper {
     required String tokenId,
     required String privateKey,
     String? keyId,
-    String? passphrase, // TODO: Implement passphrase
+    String? passphrase,
     dynamic additionalPayload,
   }) {
     final issueTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
@@ -37,8 +38,15 @@ class JWTHelper {
       },
     );
 
+    String privateKeyString = privateKey;
+
+    if (passphrase != null && passphrase.isNotEmpty) {
+      final decryptedPrivateKey = _decryptPrivateKey(privateKeyString, passphrase);
+      privateKeyString = _privateKeyToPem(decryptedPrivateKey);
+    }
+
     final token = jwt.sign(
-      RSAPrivateKey(privateKey),
+      RSAPrivateKey(privateKeyString),
       algorithm: algorithm,
     );
 
@@ -89,5 +97,81 @@ class JWTHelper {
       result += BigInt.from(bytes[i]) << (8 * (bytes.length - i - 1));
     }
     return result;
+  }
+
+  /// Mapping of AES-CBC OIDs to key sizes
+  static final Map<String, int> aesKeySizes = {
+    "2.16.840.1.101.3.4.1.42": 32, // AES-256-CBC
+    "2.16.840.1.101.3.4.1.22": 24, // AES-192-CBC
+    "2.16.840.1.101.3.4.1.2": 16,  // AES-128-CBC
+  };
+
+  /// Converts the decrypted private key to PEM format.
+  static String _privateKeyToPem(Uint8List privateKey) {
+    final base64Key = base64.encode(privateKey);
+    return '-----BEGIN PRIVATE KEY-----\n$base64Key\n-----END PRIVATE KEY-----';
+  }
+
+  /// Derives the encryption key using PBKDF2 from the passphrase.
+  static Uint8List _deriveKey(String passphrase, Uint8List salt, int iterations, int keyLength) {
+    final keyDerivator = pce.PBKDF2KeyDerivator(pce.HMac(pce.SHA256Digest(), 64))
+      ..init(pce.Pbkdf2Parameters(salt, iterations, keyLength));
+    return keyDerivator.process(Uint8List.fromList(utf8.encode(passphrase)));
+  }
+
+  /// Decrypts an AES-256-CBC encrypted private key.
+  static Uint8List _decryptAES256CBC(Uint8List key, Uint8List iv, Uint8List ciphertext) {
+    final cipher = pce.PaddedBlockCipher('AES/CBC/PKCS7')
+      ..init(false, pce.PaddedBlockCipherParameters(pce.ParametersWithIV(pce.KeyParameter(key), iv), null));
+
+    return cipher.process(ciphertext);
+  }
+
+  /// Decrypts an RSA private key that is encrypted with AES-256-CBC using a passphrase.
+  static Uint8List _decryptPrivateKey(String encryptedKeyPem, String passphrase) {
+    // Decode the PEM-encoded private key
+    final base64Key = encryptedKeyPem
+        .replaceAll('-----BEGIN ENCRYPTED PRIVATE KEY-----', '')
+        .replaceAll('-----END ENCRYPTED PRIVATE KEY-----', '')
+        .replaceAll('\n', '');
+
+    final encryptedPrivateKey = base64.decode(base64Key);
+
+    final asn1Parser = ASN1Parser(encryptedPrivateKey);
+    final asn1Sequence = asn1Parser.nextObject() as ASN1Sequence;
+
+    // Extract PBES2 parameters
+    final pbes2Params = (asn1Sequence.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
+    final pbkdf2Params = (pbes2Params.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
+
+    final salt = (pbkdf2Params.elements[0] as ASN1OctetString).valueBytes!();
+    final iterations = (pbkdf2Params.elements[1] as ASN1Integer).intValue!;
+    final hmacAlgo = (pbkdf2Params.elements[2] as ASN1Sequence).elements[0] as ASN1ObjectIdentifier;
+
+    // Ensure HMAC algorithm is SHA-256
+    if (hmacAlgo.identifier != '1.2.840.113549.2.9') {
+      throw ArgumentError('Unsupported HMAC algorithm: ${hmacAlgo.identifier}');
+    }
+
+    // Extract AES-CBC IV
+    final encryptionParams = (pbes2Params.elements[1] as ASN1Sequence);
+    final iv = (encryptionParams.elements[1] as ASN1OctetString).valueBytes!();
+
+    final cipherOid = (encryptionParams.elements[0] as ASN1ObjectIdentifier).identifier;
+    final keySize = aesKeySizes[cipherOid];
+
+    // Determine AES key size from OID
+    if (keySize == null) {
+      throw Exception("Unsupported encryption algorithm: $cipherOid");
+    }
+
+    // Extract encrypted private key data
+    final encryptedData = (asn1Sequence.elements[1] as ASN1OctetString).valueBytes!();
+
+    // Derive the decryption key from the passphrase
+    final key = _deriveKey(passphrase, salt, iterations, keySize);
+
+    // Decrypt the private key using AES-256-CBC
+    return _decryptAES256CBC(key, iv, encryptedData);
   }
 }

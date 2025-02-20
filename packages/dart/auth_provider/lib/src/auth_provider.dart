@@ -92,7 +92,7 @@ class AuthProvider {
       tokenId: tokenId,
       privateKey: privateKey,
       keyId: keyId,
-      // passphrase: passphrase,
+      passphrase: passphrase,
     );
 
     final response = await http.post(
