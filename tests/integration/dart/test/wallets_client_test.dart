@@ -3,6 +3,7 @@ import 'package:one_of/one_of.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
+
 import 'environment.dart';
 
 void main() {
@@ -41,7 +42,6 @@ void main() {
       final createdWallet = (await walletApi.createWallet(
               createWalletInput: walletInputBuilder.build()))
           .data;
-      print(createdWallet);
       expect(createdWallet, isNotNull);
       expect(createdWallet!.wallet, isNotNull);
       expect(createdWallet.wallet!.id, isNotEmpty);
@@ -53,6 +53,8 @@ void main() {
       expect(createdWallet.wallet!.keys!.length, greaterThan(0));
       expect(createdWallet.wallet!.keys!.first.id, isNotEmpty);
       expect(createdWallet.wallet!.keys!.first.ari, isNotEmpty);
+
+      await walletApi.deleteWallet(walletId: createdWallet.wallet!.id!);
     });
   });
 }
