@@ -90,7 +90,7 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 # **get_claimed_credentials**
 
-> ClaimedCredentialListResponse get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time=range_end_time, next=next)
+> ClaimedCredentialListResponse get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time=range_end_time, exclusive_start_key=exclusive_start_key, limit=limit)
 
 Get claimed credential in the specified range
 
@@ -148,11 +148,12 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
     configuration_id = 'configuration_id_example' # str | configuration id
     range_start_time = 'range_start_time_example' # str |
     range_end_time = 'range_end_time_example' # str |  (optional)
-    next = 'next_example' # str |  (optional)
+    exclusive_start_key = 'exclusive_start_key_example' # str | exclusiveStartKey for retrieving the next batch of data. (optional)
+    limit = 20 # int |  (optional) (default to 20)
 
     try:
         # Get claimed credential in the specified range
-        api_response = api_instance.get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time=range_end_time, next=next)
+        api_response = api_instance.get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time=range_end_time, exclusive_start_key=exclusive_start_key, limit=limit)
         print("The response of CredentialsApi->get_claimed_credentials:\n")
         pprint(api_response)
     except Exception as e:
@@ -161,13 +162,14 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 ### Parameters
 
-| Name                 | Type    | Description      | Notes      |
-| -------------------- | ------- | ---------------- | ---------- |
-| **project_id**       | **str** | project id       |
-| **configuration_id** | **str** | configuration id |
-| **range_start_time** | **str** |                  |
-| **range_end_time**   | **str** |                  | [optional] |
-| **next**             | **str** |                  | [optional] |
+| Name                    | Type    | Description                                              | Notes                      |
+| ----------------------- | ------- | -------------------------------------------------------- | -------------------------- |
+| **project_id**          | **str** | project id                                               |
+| **configuration_id**    | **str** | configuration id                                         |
+| **range_start_time**    | **str** |                                                          |
+| **range_end_time**      | **str** |                                                          | [optional]                 |
+| **exclusive_start_key** | **str** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| **limit**               | **int** |                                                          | [optional] [default to 20] |
 
 ### Return type
 
