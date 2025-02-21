@@ -82,9 +82,11 @@ abstract interface class CryptographyServiceInterface {
   /// Decrypts the given bytes using the provided key.
   Uint8List? decryptFromBytes(Uint8List key, Uint8List ivAndBytes);
 
-  /// Decrypts the given encrypted seed using the provided encryption key.
-  String decryptSeed({
-    required String encryptedSeedHex,
-    required String encryptionKeyHex,
+  /// Decrypts the given ciphertext using AES in CBC mode.
+  Uint8List aesCbcDecrypt({
+    required Uint8List key,
+    required Uint8List iv,
+    required Uint8List cipherText,
+    bool enforceAssertions = false,
   });
 }
