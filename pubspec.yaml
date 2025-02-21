@@ -7,4 +7,5 @@ workspace:
   - packages/dart/cryptography
   - packages/dart/auth_provider
   - packages/dart/consumer_auth_provider
+  - libs/dart/seed_cryptography
   - tests/integration/dart
