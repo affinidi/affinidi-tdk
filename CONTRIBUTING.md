@@ -17,6 +17,8 @@ Libraries and packages are created once using Typescript and then automatically 
 - [gitleaks](https://github.com/gitleaks/gitleaks)
 - [commitizen](https://github.com/commitizen-tools/commitizen)
 
+> Before proceeding to commit, please make sure hooks are installed by running 'npm run postinstall'
+
 ### Creating a new library or package
 
 To easily add a new library or package you can run a command that creates a sample Hello World Typescript module on either `libs` or `packages`:

@@ -15,10 +15,10 @@ import 'package:pointycastle/pointycastle.dart' as pc;
 import "package:pointycastle/export.dart" as pce;
 import 'package:secp256k1/secp256k1.dart' as secp256k1;
 
-import 'cryptography_abstract.dart';
+import '../cryptography_service_interface.dart';
 
-/// Base class for cryptographic operations. Implements the `CryptographyServiceAbstract` interface.
-class BaseCryptographyService implements CryptographyServiceAbstract {
+/// Base class for cryptographic operations. Implements the [CryptographyServiceInterface].
+class BaseCryptographyService implements CryptographyServiceInterface {
   final _aes256NonceLength = 16;
   final _aes256MacLength = 32;
 
@@ -35,7 +35,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
   final _ivLength = 16;
   final _blockSizeBytes = 16;
   final _secureRandom = pce.FortunaRandom();
-  final _didMethodSeparator = '++';
 
   /// Constructor to initialize cryptography service with a secure random seed.
   BaseCryptographyService() {
@@ -77,7 +76,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required List<int> nonce,
   }) async {
     print('Started creating PDKDF2');
-
     final keyDerivedFromPassword = await _pbkdf2Algorithm.deriveKeyFromPassword(
       password: password,
       nonce: nonce,
@@ -85,7 +83,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
 
     final bytes = await keyDerivedFromPassword.extractBytes();
     print('Completed creating PDKDF2');
-
     return bytes;
   }
 
@@ -95,7 +92,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required List<int> data,
   }) async {
     print('Started encrypting with AES256');
-
     final nonce = getRandomBytes(_aes256NonceLength);
     final secretKey = await _aes256Algorithm.newSecretKeyFromBytes(key);
 
@@ -106,7 +102,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     );
 
     final encryptedData = secretBox.concatenation();
-
     print('Completed encrypting with AES256');
     return encryptedData;
   }
@@ -117,7 +112,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required List<int> encryptedData,
   }) async {
     print('Started decrypting with AES256');
-
     final secretBox = cryptography.SecretBox.fromConcatenation(
       encryptedData,
       nonceLength: _aes256NonceLength,
@@ -144,10 +138,13 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required List<int> key,
     required String data,
   }) async {
+    print('Started encrypting with AES256 to hex');
     final encryptedBytes = await Aes256Encrypt(
       key: key,
       data: utf8.encode(data),
     );
+
+    print('Completed encrypting with AES256 to hex');
     return hex.encode(encryptedBytes);
   }
 
@@ -156,11 +153,13 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required List<int> key,
     required String encryptedData,
   }) async {
+    print('Started decrypting with AES256 from hex');
     final decryptedBytes = await Aes256Decrypt(
       key: key,
       encryptedData: hex.decode(encryptedData),
     );
 
+    print('Completed decrypting with AES256 from hex');
     if (decryptedBytes == null) {
       return null;
     }
@@ -170,27 +169,37 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
 
   @override
   Map<String, dynamic> decodeJwtToken({required String token}) {
+    print('Started decoding JWT token');
     final decodedToken = JwtDecoder.decode(token);
+    print('Completed decoding JWT token');
     return decodedToken;
   }
 
   @override
   String createHash({required String hashSource}) {
+    print('Started creating hash');
     List<int> bytes = utf8.encode(hashSource);
     crypto.Digest digest = crypto.sha1.convert(bytes);
 
+    print('Completed creating hash');
     return digest.toString();
   }
 
   @override
   String createSha256Hex({required List<int> bytes}) {
+    print('Started creating SHA256 HEX from bytes');
     crypto.Digest digest = crypto.sha256.convert(bytes);
+
+    print('Completed creating SHA256 HEX from bytes');
     return digest.toString();
   }
 
   @override
   String createMd5Base64({required List<int> bytes}) {
+    print('Started creating MD5 base64 from bytes');
     crypto.Digest digest = crypto.md5.convert(bytes);
+
+    print('Completed creating MD5 base64 from bytes');
     return base64.encode(digest.bytes);
   }
 
@@ -199,6 +208,7 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required String jwtToken,
     required String didKey,
   }) {
+    print('Started verifying JWT token');
     try {
       final key = _ecPublicKeyFromDid(didKey);
 
@@ -229,6 +239,8 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
         errorMessage: ex.message,
         jwtPayload: null,
       );
+    } finally {
+      print('Completed verifying JWT token');
     }
   }
 
@@ -237,6 +249,7 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     required Map<String, dynamic> jwk,
     required List<int> data,
   }) {
+    print('Started encrypting with RSA public key from JWK');
     final publicKey = _getRsaPublicKeyFromJwk(jwk);
     final encryptor = pce.OAEPEncoding.withSHA256(pce.RSAEngine());
 
@@ -245,27 +258,32 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
       pce.PublicKeyParameter<pce.RSAPublicKey>(publicKey),
     ); // true=encrypt
 
+    print('Completed encrypting with RSA public key from JWK');
     return _processInBlocks(encryptor, Uint8List.fromList(data));
   }
 
   @override
   String encryptToHex(Uint8List key, Uint8List data) {
+    print('Started encrypting to hex');
     final bytes = encryptToBytes(key, data);
 
+    print('Completed encrypting to hex');
     return hex.encode(bytes);
   }
 
   @override
   Uint8List? decryptFromHex(Uint8List key, String hexStr) {
+    print('Started decrypting from hex');
     final ivAndBytes = hex.decode(hexStr);
-
     final result = decryptFromBytes(key, Uint8List.fromList(ivAndBytes));
 
+    print('Completed decrypting from hex');
     return result;
   }
 
   @override
   Uint8List encryptToBytes(Uint8List key, Uint8List data) {
+    print('Started encrypting to bytes');
     final iv = _secureRandom.nextBytes(_ivLength);
     final bytes = _aesCbcEncrypt(
       key: key,
@@ -275,16 +293,18 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
       enforce128BitAlignment: true,
     );
 
+    print('Completed encrypting to bytes');
     return Uint8List.fromList([...iv, ...bytes]);
   }
 
   @override
   Uint8List? decryptFromBytes(Uint8List key, Uint8List ivAndBytes) {
+    print('Started decrypting from bytes');
     try {
       final iv = Uint8List.fromList(ivAndBytes.take(_ivLength).toList());
       final bytes = Uint8List.fromList(ivAndBytes.skip(_ivLength).toList());
 
-      final decryptedAndPadding = _aesCbcDecrypt(
+      final decryptedAndPadding = aesCbcDecrypt(
         key: key,
         iv: iv,
         cipherText: bytes,
@@ -294,31 +314,45 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
       return _unpad(decryptedAndPadding);
     } catch (error) {
       return null;
+    } finally {
+      print('Completed decrypting from bytes');
     }
   }
 
   @override
-  String decryptSeed({
-    required String encryptedSeedHex,
-    required String encryptionKeyHex,
+  Uint8List aesCbcDecrypt({
+    required Uint8List key,
+    required Uint8List iv,
+    required Uint8List cipherText,
+    bool enforceAssertions = false,
   }) {
-    final List<int> walletSeedBuff = hex.decode(encryptedSeedHex);
-    final nonce = walletSeedBuff.sublist(0, _ivLength);
-    final ciphertextAndMac = walletSeedBuff.sublist(_ivLength);
-    final key = hex.decode(encryptionKeyHex);
+    print('Started decrypting with AES CBC');
+    if (enforceAssertions) {
+      assert(256 == key.length * 8);
+      assert(128 == iv.length * 8);
+      assert(cipherText.length * 8 % 128 == 0);
+    }
 
-    final decryptedSeed = _aesCbcDecrypt(
-      key: Uint8List.fromList(key),
-      iv: Uint8List.fromList(nonce),
-      cipherText: Uint8List.fromList(ciphertextAndMac),
-    );
+    // Create a CBC block cipher with AES, and initialize with key and IV
 
-    final decryptedSeedEncoded = utf8.decode(decryptedSeed);
-    final [seed, ...didMethod] = decryptedSeedEncoded.split(
-      _didMethodSeparator,
-    );
+    final cbc = pce.CBCBlockCipher(pce.AESEngine())
+      ..init(
+        false,
+        pc.ParametersWithIV(pc.KeyParameter(key), iv),
+      ); // false=decrypt
 
-    return seed;
+    final paddedPlainText = Uint8List(cipherText.length); // allocate space
+
+    var offset = 0;
+
+    while (offset < cipherText.length) {
+      offset += cbc.processBlock(cipherText, offset, paddedPlainText, offset);
+    }
+
+    assert(offset == cipherText.length);
+
+    print('Completed decrypting with AES CBC');
+    return paddedPlainText;
   }
 
   void _initializeSecureRandomSeed() {
@@ -482,39 +516,6 @@ class BaseCryptographyService implements CryptographyServiceAbstract {
     assert(offset == paddedPlaintext.length);
 
     return cipherText;
-  }
-
-  Uint8List _aesCbcDecrypt({
-    required Uint8List key,
-    required Uint8List iv,
-    required Uint8List cipherText,
-    bool enforceAssertions = false,
-  }) {
-    if (enforceAssertions) {
-      assert(256 == key.length * 8);
-      assert(128 == iv.length * 8);
-      assert(cipherText.length * 8 % 128 == 0);
-    }
-
-    // Create a CBC block cipher with AES, and initialize with key and IV
-
-    final cbc = pce.CBCBlockCipher(pce.AESEngine())
-      ..init(
-        false,
-        pc.ParametersWithIV(pc.KeyParameter(key), iv),
-      ); // false=decrypt
-
-    final paddedPlainText = Uint8List(cipherText.length); // allocate space
-
-    var offset = 0;
-
-    while (offset < cipherText.length) {
-      offset += cbc.processBlock(cipherText, offset, paddedPlainText, offset);
-    }
-
-    assert(offset == cipherText.length);
-
-    return paddedPlainText;
   }
 
   Uint8List _pad(List<int> bytes, int blockSizeBytes) {

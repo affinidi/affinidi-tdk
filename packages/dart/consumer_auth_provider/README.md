@@ -45,10 +45,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 
 void main() {
-  final consumerAuthProvider = ConsumerAuthProvider(
-    seed: seed,
-
-  );
+  final consumerAuthProvider = ConsumerAuthProvider(seed: seed);
 
   // Actual Consumer client that accepts a hook for
   // the token which requires a separate import
