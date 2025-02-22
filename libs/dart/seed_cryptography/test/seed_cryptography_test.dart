@@ -49,13 +49,13 @@ void main() {
     test('decrypt seed created from Vault package', () async {
       final vaultEncryptedSeed =
           'de89f59515126a7450a7fa207cf28aeafc6b6500d4c05467550509ea49b3fa75d1cc0275031e5051ce48dce3f6031292cd0266681a9cd871fa820c08585e7c4c06f260ebf0a08bf37922e3cff914157ad2388095283c6809fc62958e59c63871';
-      final vaultPassword =
+      final vaultSeedEncryptionKey =
           '6fbde8894959226724cefd4d7afd8d26c0de971afddb4f021f69a3e4badfc0ac';
       final passphrase = 'passphrase';
 
       final decryptedSeed = await SeedCryptographyService.decryptSeed(
         encryptedSeedHex: vaultEncryptedSeed,
-        encryptionKeyHex: vaultPassword,
+        encryptionKeyHex: vaultSeedEncryptionKey,
       );
       final walletMaterials = await SeedCryptographyService.encryptSeed(
         seed: decryptedSeed,
