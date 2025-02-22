@@ -1,11 +1,14 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:affinidi_tdk_seed_cryptography/src/exceptions/unsupported_seed_exception.dart';
 import 'package:affinidi_tdk_seed_cryptography/src/models/wallet_materials.dart';
 import 'package:convert/convert.dart';
 
-import 'exceptions/incompatible_decryption_exception.dart';
+import 'exceptions/seed_decryption_exception.dart';
 
 /// A service class responsible for handling cryptographic operations
 /// related to wallet seed. This class provides methods to encrypt,
@@ -29,6 +32,9 @@ import 'exceptions/incompatible_decryption_exception.dart';
 /// );
 /// ```
 class SeedCryptographyService {
+  static const JS_ENCRYPTED_SEED_LENGTH = 192;
+  static const DART_ENCRYPTED_SEED_LENGTH = 384;
+
   static final CryptographyService _cryptographyService = CryptographyService();
 
   /// This method uses PBKDF2 to derive a key from the [passphrase] and a random nonce,
@@ -78,25 +84,30 @@ class SeedCryptographyService {
     print('Started decrypting seed');
 
     try {
-      final decryptedSeed =
-          await _cryptographyService.Aes256DecryptStringFromHex(
-        key: hex.decode(encryptionKeyHex),
-        encryptedData: encryptedSeedHex,
-      );
-      if (decryptedSeed == null) {
-        throw IncompatibleDecryptionException();
-      }
+      switch (encryptedSeedHex.length) {
+        case JS_ENCRYPTED_SEED_LENGTH:
+          print('Completed decrypting seed');
+          return _decryptLegacySeed(
+            encryptedSeedHex: encryptedSeedHex,
+            encryptionKeyHex: encryptionKeyHex,
+          );
+        case DART_ENCRYPTED_SEED_LENGTH:
+          final decryptedSeed =
+              await _cryptographyService.Aes256DecryptStringFromHex(
+            key: hex.decode(encryptionKeyHex),
+            encryptedData: encryptedSeedHex,
+          );
+          if (decryptedSeed == null) {
+            throw Exception('Decryption failed');
+          }
 
-      print('Completed decrypting seed');
-      return Uint8List.fromList(hex.decode(decryptedSeed));
-    } on IncompatibleDecryptionException catch (_) {
-      return _decryptLegacySeed(
-        encryptedSeedHex: encryptedSeedHex,
-        encryptionKeyHex: encryptionKeyHex,
-      );
+          print('Completed decrypting seed');
+          return Uint8List.fromList(hex.decode(decryptedSeed));
+        default:
+          throw UnsupportedSeedException();
+      }
     } catch (e) {
-      print('Error decrypting seed: $e');
-      rethrow;
+      throw SeedDecryptionException(e);
     }
   }
 
