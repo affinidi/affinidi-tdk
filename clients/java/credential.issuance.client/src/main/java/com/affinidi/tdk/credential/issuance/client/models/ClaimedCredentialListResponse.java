@@ -35,15 +35,15 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   ClaimedCredentialListResponse.JSON_PROPERTY_CREDENTIALS,
-  ClaimedCredentialListResponse.JSON_PROPERTY_NEXT
+  ClaimedCredentialListResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ClaimedCredentialListResponse {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   private List<Map<String, Object>> credentials = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_NEXT = "next";
-  private String next;
+  public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  private String lastEvaluatedKey;
 
   public ClaimedCredentialListResponse() {
   }
@@ -81,29 +81,29 @@ public class ClaimedCredentialListResponse {
     this.credentials = credentials;
   }
 
-  public ClaimedCredentialListResponse next(String next) {
+  public ClaimedCredentialListResponse lastEvaluatedKey(String lastEvaluatedKey) {
     
-    this.next = next;
+    this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
   }
 
   /**
    * for pagination to fetch next set of records
-   * @return next
+   * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NEXT)
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getNext() {
-    return next;
+  public String getLastEvaluatedKey() {
+    return lastEvaluatedKey;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NEXT)
+  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNext(String next) {
-    this.next = next;
+  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+    this.lastEvaluatedKey = lastEvaluatedKey;
   }
 
   @Override
@@ -116,12 +116,12 @@ public class ClaimedCredentialListResponse {
     }
     ClaimedCredentialListResponse claimedCredentialListResponse = (ClaimedCredentialListResponse) o;
     return Objects.equals(this.credentials, claimedCredentialListResponse.credentials) &&
-        Objects.equals(this.next, claimedCredentialListResponse.next);
+        Objects.equals(this.lastEvaluatedKey, claimedCredentialListResponse.lastEvaluatedKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentials, next);
+    return Objects.hash(credentials, lastEvaluatedKey);
   }
 
   @Override
@@ -129,7 +129,7 @@ public class ClaimedCredentialListResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClaimedCredentialListResponse {\n");
     sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    next: ").append(toIndentedString(next)).append("\n");
+    sb.append("    lastEvaluatedKey: ").append(toIndentedString(lastEvaluatedKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,10 +191,10 @@ public class ClaimedCredentialListResponse {
       }
     }
 
-    // add `next` to the URL query string
-    if (getNext() != null) {
+    // add `lastEvaluatedKey` to the URL query string
+    if (getLastEvaluatedKey() != null) {
       try {
-        joiner.add(String.format("%snext%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNext()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
