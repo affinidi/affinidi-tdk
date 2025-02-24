@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Cryptography Unit Tests', () {
-    test('Decrypt seed', () async {
+    test('Test ConsumerAuthProvider', () async {
       final seed = [
         127,
         207,
