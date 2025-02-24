@@ -3,17 +3,17 @@ import 'package:test/test.dart';
 import 'package:affinidi_tdk_seed_cryptography/affinidi_tdk_seed_cryptography.dart';
 
 void main() {
-  group('SeedCryptographyService', () {
+  group('SeedCryptography', () {
     test('encrypt then decrypt seed', () async {
       final seed = Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8]);
       final passphrase = 'passphrase';
 
-      final walletMaterials = await SeedCryptographyService.encryptSeed(
+      final walletMaterials = await SeedCryptography.encryptSeed(
         seed: seed,
         passphrase: passphrase,
       );
 
-      final decryptedSeed = await SeedCryptographyService.decryptSeed(
+      final decryptedSeed = await SeedCryptography.decryptSeed(
         encryptedSeedHex: walletMaterials.encryptedSeed,
         encryptionKeyHex: walletMaterials.encryptionKey,
       );
@@ -30,15 +30,15 @@ void main() {
           "685bec30c54bffcf54bf57f34876b4e103c6c93641f80a08a479e0e10eed6b18";
       final passphrase = 'passphrase';
 
-      final decryptedSeed = await SeedCryptographyService.decryptSeed(
+      final decryptedSeed = await SeedCryptography.decryptSeed(
         encryptedSeedHex: walletEncryptedSeed,
         encryptionKeyHex: walletEncryptionKey,
       );
-      final walletMaterials = await SeedCryptographyService.encryptSeed(
+      final walletMaterials = await SeedCryptography.encryptSeed(
         seed: decryptedSeed,
         passphrase: passphrase,
       );
-      final decryptedSeed2 = await SeedCryptographyService.decryptSeed(
+      final decryptedSeed2 = await SeedCryptography.decryptSeed(
         encryptedSeedHex: walletMaterials.encryptedSeed,
         encryptionKeyHex: walletMaterials.encryptionKey,
       );
@@ -53,15 +53,15 @@ void main() {
           '6fbde8894959226724cefd4d7afd8d26c0de971afddb4f021f69a3e4badfc0ac';
       final passphrase = 'passphrase';
 
-      final decryptedSeed = await SeedCryptographyService.decryptSeed(
+      final decryptedSeed = await SeedCryptography.decryptSeed(
         encryptedSeedHex: vaultEncryptedSeed,
         encryptionKeyHex: vaultSeedEncryptionKey,
       );
-      final walletMaterials = await SeedCryptographyService.encryptSeed(
+      final walletMaterials = await SeedCryptography.encryptSeed(
         seed: decryptedSeed,
         passphrase: passphrase,
       );
-      final decryptedSeed2 = await SeedCryptographyService.decryptSeed(
+      final decryptedSeed2 = await SeedCryptography.decryptSeed(
         encryptedSeedHex: walletMaterials.encryptedSeed,
         encryptionKeyHex: walletMaterials.encryptionKey,
       );
@@ -73,13 +73,13 @@ void main() {
       final seed = Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8]);
       final passphrase = 'passphrase';
 
-      final walletMaterials = await SeedCryptographyService.encryptSeed(
+      final walletMaterials = await SeedCryptography.encryptSeed(
         seed: seed,
         passphrase: passphrase,
       );
 
       expect(
-        () async => await SeedCryptographyService.decryptSeed(
+        () async => await SeedCryptography.decryptSeed(
           encryptedSeedHex: walletMaterials.encryptedSeed,
           encryptionKeyHex: 'wrong_key',
         ),

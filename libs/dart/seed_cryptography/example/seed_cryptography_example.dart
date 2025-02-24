@@ -16,19 +16,19 @@ Future<void> main() async {
     encryptionKey: vaultSeedEncryptionKey,
   );
 
-  final decryptedSeed = await SeedCryptographyService.decryptSeed(
+  final decryptedSeed = await SeedCryptography.decryptSeed(
     encryptedSeedHex: walletMaterials.encryptedSeed,
     encryptionKeyHex: walletMaterials.encryptionKey,
   );
   print('Decrypted Seed: ${hex.encode(decryptedSeed)}');
 
-  final walletMaterials2 = await SeedCryptographyService.encryptSeed(
+  final walletMaterials2 = await SeedCryptography.encryptSeed(
     seed: decryptedSeed,
     passphrase: passphrase,
   );
   print('Wallet materials vary everytime: ${walletMaterials2.toJson()}');
 
-  final decryptedSeed2 = await SeedCryptographyService.decryptSeed(
+  final decryptedSeed2 = await SeedCryptography.decryptSeed(
     encryptedSeedHex: walletMaterials.encryptedSeed,
     encryptionKeyHex: walletMaterials.encryptionKey,
   );

@@ -40,14 +40,14 @@ void main() {
   final seed = Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8]);
   final passphrase = 'passphrase';
 
-  final walletMaterials = await SeedCryptographyService.encryptSeed(
+  final walletMaterials = await SeedCryptography.encryptSeed(
     seed: seed,
     passphrase: passphrase,
   );
   print('encryptedSeed: {walletMaterials.encryptedSeed}');
   print('encryptionKey: {walletMaterials.encryptionKey}');
 
-  final decryptedSeed = await SeedCryptographyService.decryptSeed(
+  final decryptedSeed = await SeedCryptography.decryptSeed(
     encryptedSeedHex: walletMaterials.encryptedSeed,
     encryptionKeyHex: walletMaterials.encryptionKey,
   );

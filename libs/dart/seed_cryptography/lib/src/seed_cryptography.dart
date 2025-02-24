@@ -20,18 +20,18 @@ import 'exceptions/seed_decryption_exception.dart';
 /// final passphrase = 'mySecretPassphrase';
 ///
 /// // Encrypt the seed
-/// final walletMaterials = await SeedCryptographyService.encryptSeed(
+/// final walletMaterials = await SeedCryptography.encryptSeed(
 ///   seed: seed,
 ///   passphrase: passphrase,
 /// );
 ///
 /// // Decrypt the seed
-/// final decryptedSeed = await SeedCryptographyService.decryptSeed(
+/// final decryptedSeed = await SeedCryptography.decryptSeed(
 ///   encryptedSeedHex: walletMaterials.encryptedSeed,
 ///   encryptionKeyHex: walletMaterials.encryptionKey,
 /// );
 /// ```
-class SeedCryptographyService {
+class SeedCryptography {
   static const JS_ENCRYPTED_SEED_LENGTH = 192;
   static const DART_ENCRYPTED_SEED_LENGTH = 384;
 
