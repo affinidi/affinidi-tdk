@@ -1,15 +1,32 @@
+import 'dart:convert';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 
 Future<void> main() async {
-  final vaultEncryptedSeed = ''; // Replace with your Vault's encrypted seed
-  final vaultPassword = ''; // Replace with your Vault's password
-
   final cryptographyService = CryptographyService();
 
-  final String decryptedSeed = cryptographyService.decryptSeed(
-    encryptedSeedHex: vaultEncryptedSeed,
-    encryptionKeyHex: vaultPassword,
+  const password = 'password';
+  const salt = 'fixed_salt';
+  const dataToEncrypt = 'Hello, Affinidi!';
+
+  // Derive encryption key using PBKDF2
+  final encryptionKey = await cryptographyService.Pbkdf2(
+    password: password,
+    nonce: utf8.encode(salt),
   );
 
-  print('Decrypted Seed: $decryptedSeed');
+  // Encrypt the data
+  final encryptedData = await cryptographyService.Aes256EncryptStringToHex(
+    key: encryptionKey,
+    data: dataToEncrypt,
+  );
+
+  print('Encrypted Data: $encryptedData');
+
+  // Decrypt the data
+  final decryptedData = await cryptographyService.Aes256DecryptStringFromHex(
+    key: encryptionKey,
+    encryptedData: encryptedData,
+  );
+
+  print('Decrypted Data: $decryptedData');
 }
