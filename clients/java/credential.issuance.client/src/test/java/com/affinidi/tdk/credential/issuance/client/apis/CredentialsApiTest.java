@@ -69,8 +69,9 @@ public class CredentialsApiTest {
         String configurationId = null;
         String rangeStartTime = null;
         String rangeEndTime = null;
-        String next = null;
-        ClaimedCredentialListResponse response = api.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next);
+        String exclusiveStartKey = null;
+        Integer limit = null;
+        ClaimedCredentialListResponse response = api.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit);
 
         // TODO: test validations
     }
