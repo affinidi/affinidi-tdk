@@ -40,7 +40,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 # **getClaimedCredentials**
 
-> ClaimedCredentialListResponse getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, next)
+> ClaimedCredentialListResponse getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit)
 
 Get claimed credential in the specified range
 
@@ -48,13 +48,14 @@ Get claimed credential in the specified range
 
 ### Parameters
 
-| Name                | Type       | Description      | Notes                        |
-| ------------------- | ---------- | ---------------- | ---------------------------- |
-| **projectId**       | **String** | project id       | [default to null]            |
-| **configurationId** | **String** | configuration id | [default to null]            |
-| **rangeStartTime**  | **String** |                  | [default to null]            |
-| **rangeEndTime**    | **String** |                  | [optional] [default to null] |
-| **next**            | **String** |                  | [optional] [default to null] |
+| Name                  | Type        | Description                                              | Notes                        |
+| --------------------- | ----------- | -------------------------------------------------------- | ---------------------------- |
+| **projectId**         | **String**  | project id                                               | [default to null]            |
+| **configurationId**   | **String**  | configuration id                                         | [default to null]            |
+| **rangeStartTime**    | **String**  |                                                          | [default to null]            |
+| **rangeEndTime**      | **String**  |                                                          | [optional] [default to null] |
+| **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data. | [optional] [default to null] |
+| **limit**             | **Integer** |                                                          | [optional] [default to 20]   |
 
 ### Return type
 
