@@ -4,7 +4,7 @@ Affinidi TDK dart client for Affinidi LOGIN CONFIGURATION
 
 ## Requirements
 
-- Dart 2.15.0+ or Flutter 2.8.0+
+- Dart 2.15.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
