@@ -20,7 +20,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictStr, conint, constr
 
 from typing import Optional
 
@@ -207,14 +207,14 @@ class CredentialsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_claimed_credentials(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, next : Optional[StrictStr] = None, **kwargs) -> ClaimedCredentialListResponse:  # noqa: E501
+    def get_claimed_credentials(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, limit : Optional[conint(strict=True, le=20, ge=1)] = None, **kwargs) -> ClaimedCredentialListResponse:  # noqa: E501
         """Get claimed credential in the specified range  # noqa: E501
 
         Get claimed credential in the specified range  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time, next, async_req=True)
+        >>> thread = api.get_claimed_credentials(project_id, configuration_id, range_start_time, range_end_time, exclusive_start_key, limit, async_req=True)
         >>> result = thread.get()
 
         :param project_id: project id (required)
@@ -225,8 +225,10 @@ class CredentialsApi:
         :type range_start_time: str
         :param range_end_time:
         :type range_end_time: str
-        :param next:
-        :type next: str
+        :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
+        :type exclusive_start_key: str
+        :param limit:
+        :type limit: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -242,17 +244,17 @@ class CredentialsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_claimed_credentials_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, next, **kwargs)  # noqa: E501
+        return self.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, exclusive_start_key, limit, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_claimed_credentials_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, next : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_claimed_credentials_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="project id")], configuration_id : Annotated[StrictStr, Field(..., description="configuration id")], range_start_time : StrictStr, range_end_time : Optional[StrictStr] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, limit : Optional[conint(strict=True, le=20, ge=1)] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get claimed credential in the specified range  # noqa: E501
 
         Get claimed credential in the specified range  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, next, async_req=True)
+        >>> thread = api.get_claimed_credentials_with_http_info(project_id, configuration_id, range_start_time, range_end_time, exclusive_start_key, limit, async_req=True)
         >>> result = thread.get()
 
         :param project_id: project id (required)
@@ -263,8 +265,10 @@ class CredentialsApi:
         :type range_start_time: str
         :param range_end_time:
         :type range_end_time: str
-        :param next:
-        :type next: str
+        :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
+        :type exclusive_start_key: str
+        :param limit:
+        :type limit: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -297,7 +301,8 @@ class CredentialsApi:
             'configuration_id',
             'range_start_time',
             'range_end_time',
-            'next'
+            'exclusive_start_key',
+            'limit'
         ]
         _all_params.extend(
             [
@@ -340,8 +345,11 @@ class CredentialsApi:
         if _params.get('range_end_time') is not None:  # noqa: E501
             _query_params.append(('rangeEndTime', _params['range_end_time']))
 
-        if _params.get('next') is not None:  # noqa: E501
-            _query_params.append(('next', _params['next']))
+        if _params.get('exclusive_start_key') is not None:  # noqa: E501
+            _query_params.append(('exclusiveStartKey', _params['exclusive_start_key']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
