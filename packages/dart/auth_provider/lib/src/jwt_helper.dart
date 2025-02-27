@@ -19,7 +19,6 @@ class JWTHelper {
     String? passphrase,
     dynamic additionalPayload,
   }) {
-    final issueTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
     final algorithm = JWTAlgorithm.RS256;
 
     final jwt = JWT(
@@ -28,8 +27,6 @@ class JWTHelper {
         'sub': tokenId,
         'aud': audience,
         'jti': Uuid().v4(),
-        'exp': issueTimeInSeconds + 5 * 60,
-        'iat': issueTimeInSeconds,
         if (additionalPayload != null) ...additionalPayload,
       },
       header: {
@@ -41,14 +38,13 @@ class JWTHelper {
     String privateKeyString = privateKey;
 
     if (passphrase != null && passphrase.isNotEmpty) {
-      final decryptedPrivateKey = _decryptPrivateKey(privateKeyString, passphrase);
+      final decryptedPrivateKey =
+          _decryptPrivateKey(privateKeyString, passphrase);
       privateKeyString = _privateKeyToPem(decryptedPrivateKey);
     }
 
-    final token = jwt.sign(
-      RSAPrivateKey(privateKeyString),
-      algorithm: algorithm,
-    );
+    final token = jwt.sign(RSAPrivateKey(privateKeyString),
+        algorithm: algorithm, expiresIn: Duration(minutes: 5));
 
     return token;
   }
@@ -103,7 +99,7 @@ class JWTHelper {
   static final Map<String, int> aesKeySizes = {
     "2.16.840.1.101.3.4.1.42": 32, // AES-256-CBC
     "2.16.840.1.101.3.4.1.22": 24, // AES-192-CBC
-    "2.16.840.1.101.3.4.1.2": 16,  // AES-128-CBC
+    "2.16.840.1.101.3.4.1.2": 16, // AES-128-CBC
   };
 
   /// Converts the decrypted private key to PEM format.
@@ -113,22 +109,29 @@ class JWTHelper {
   }
 
   /// Derives the encryption key using PBKDF2 from the passphrase.
-  static Uint8List _deriveKey(String passphrase, Uint8List salt, int iterations, int keyLength) {
-    final keyDerivator = pce.PBKDF2KeyDerivator(pce.HMac(pce.SHA256Digest(), 64))
-      ..init(pce.Pbkdf2Parameters(salt, iterations, keyLength));
+  static Uint8List _deriveKey(
+      String passphrase, Uint8List salt, int iterations, int keyLength) {
+    final keyDerivator =
+        pce.PBKDF2KeyDerivator(pce.HMac(pce.SHA256Digest(), 64))
+          ..init(pce.Pbkdf2Parameters(salt, iterations, keyLength));
     return keyDerivator.process(Uint8List.fromList(utf8.encode(passphrase)));
   }
 
   /// Decrypts an AES-256-CBC encrypted private key.
-  static Uint8List _decryptAES256CBC(Uint8List key, Uint8List iv, Uint8List ciphertext) {
+  static Uint8List _decryptAES256CBC(
+      Uint8List key, Uint8List iv, Uint8List ciphertext) {
     final cipher = pce.PaddedBlockCipher('AES/CBC/PKCS7')
-      ..init(false, pce.PaddedBlockCipherParameters(pce.ParametersWithIV(pce.KeyParameter(key), iv), null));
+      ..init(
+          false,
+          pce.PaddedBlockCipherParameters(
+              pce.ParametersWithIV(pce.KeyParameter(key), iv), null));
 
     return cipher.process(ciphertext);
   }
 
   /// Decrypts an RSA private key that is encrypted with AES-256-CBC using a passphrase.
-  static Uint8List _decryptPrivateKey(String encryptedKeyPem, String passphrase) {
+  static Uint8List _decryptPrivateKey(
+      String encryptedKeyPem, String passphrase) {
     // Decode the PEM-encoded private key
     final base64Key = encryptedKeyPem
         .replaceAll('-----BEGIN ENCRYPTED PRIVATE KEY-----', '')
@@ -141,12 +144,15 @@ class JWTHelper {
     final asn1Sequence = asn1Parser.nextObject() as ASN1Sequence;
 
     // Extract PBES2 parameters
-    final pbes2Params = (asn1Sequence.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
-    final pbkdf2Params = (pbes2Params.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
+    final pbes2Params =
+        (asn1Sequence.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
+    final pbkdf2Params =
+        (pbes2Params.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
 
     final salt = (pbkdf2Params.elements[0] as ASN1OctetString).valueBytes!();
     final iterations = (pbkdf2Params.elements[1] as ASN1Integer).intValue!;
-    final hmacAlgo = (pbkdf2Params.elements[2] as ASN1Sequence).elements[0] as ASN1ObjectIdentifier;
+    final hmacAlgo = (pbkdf2Params.elements[2] as ASN1Sequence).elements[0]
+        as ASN1ObjectIdentifier;
 
     // Ensure HMAC algorithm is SHA-256
     if (hmacAlgo.identifier != '1.2.840.113549.2.9') {
@@ -157,7 +163,8 @@ class JWTHelper {
     final encryptionParams = (pbes2Params.elements[1] as ASN1Sequence);
     final iv = (encryptionParams.elements[1] as ASN1OctetString).valueBytes!();
 
-    final cipherOid = (encryptionParams.elements[0] as ASN1ObjectIdentifier).identifier;
+    final cipherOid =
+        (encryptionParams.elements[0] as ASN1ObjectIdentifier).identifier;
     final keySize = aesKeySizes[cipherOid];
 
     // Determine AES key size from OID
@@ -166,7 +173,8 @@ class JWTHelper {
     }
 
     // Extract encrypted private key data
-    final encryptedData = (asn1Sequence.elements[1] as ASN1OctetString).valueBytes!();
+    final encryptedData =
+        (asn1Sequence.elements[1] as ASN1OctetString).valueBytes!();
 
     // Derive the decryption key from the passphrase
     final key = _deriveKey(passphrase, salt, iterations, keySize);
