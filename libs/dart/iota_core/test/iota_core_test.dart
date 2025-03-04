@@ -2,10 +2,9 @@ import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_core/affinidi_tdk_iota_core.dart';
 import 'package:test/test.dart';
 import 'package:dotenv/dotenv.dart';
-import 'dart:typed_data';
 
 void main() {
-  group('IotaCore', () {
+  group('Iota core', () {
     late AuthProvider authProvider;
     final env = DotEnv()..load();
 

@@ -5,9 +5,9 @@ import 'package:dotenv/dotenv.dart';
 
 void main() async {
   var env = DotEnv()..load();
-  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
-    print(
-        'Missing variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
+  // DID is usually obtained at runtime from the registered user
+  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY', 'IOTA_CONFIG_ID', 'DID'])) {
+    print('Missing variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY, IOTA_CONFIG_ID and DID');
     return;
   }
   // Workaround for dotenv multiline limitations
@@ -23,16 +23,10 @@ void main() async {
   );
 
   // Fetch iota token (websocket).
-  // DID is usually obtained at runtime from the registered user
-  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'DID'])) {
-    print('Missing variables. Please provide IOTA_CONFIG_ID and DID');
-    return;
-  }
   try {
-    final iotaToken = provider.createIotaToken(
-        iotaConfigId: env['IOTA_CONFIG_ID']!, did: env['DID']!);
-
+    final iotaToken = provider.createIotaToken(iotaConfigId: env['IOTA_CONFIG_ID']!, did: env['DID']!);
     final iotaCredentials = await IotaCore.limitedTokenToIotaCredentials(iotaToken.iotaJwt);
+
     print(iotaCredentials.credentials.accessKeyId);
     print(iotaCredentials.connectionClientId);
   } catch (e) {

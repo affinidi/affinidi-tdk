@@ -30,12 +30,12 @@ void main() {
       configurationsApi = apiClient.getConfigurationsApi();
     });
 
-    // test('List Iota configurations', () async {
-    //   final listIotaConfigurations = (await configurationsApi.listIotaConfigurations()).data;
+    test('List Iota configurations', () async {
+      final listIotaConfigurations = (await configurationsApi.listIotaConfigurations()).data;
 
-    //   print(listIotaConfigurations);
-    //   expect(listIotaConfigurations, isNotNull);
-    // });
+      print(listIotaConfigurations);
+      expect(listIotaConfigurations, isNotNull);
+    });
 
     test('Iota redirect flow', () async {
       final envIota = getIotaEnvironment();
