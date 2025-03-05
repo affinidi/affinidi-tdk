@@ -9,9 +9,6 @@ import jakarta.ws.rs.core.UriBuilder;
 /**
  * This class provides utility functions required to create vault specific links. Refer {@EnvironmentUtil} for more
  * information.
- *
- *
- * @author Priyanka
  */
 public final class VaultUtil {
 

@@ -12,8 +12,6 @@ import io.github.cdimascio.dotenv.DotenvBuilder;
  * This class provides utility functions required to access environment specific configurations. The environment can be
  * specified in the .env file at the project base using AFFINIDI_TDK_PROPERTY_NAME or
  * NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as dev, local or prod.
- *
- * @author Priyanka
  */
 public class EnvironmentUtil {
 
