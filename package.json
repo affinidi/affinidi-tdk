@@ -28,7 +28,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@nx/eslint": "^19.0.0",
     "@nx/eslint-plugin": "^19.0.0",
-    "@nx/jest": "20.0.8",
+    "@nx/jest": "20.5.0",
     "@nx/js": "19.3.0",
     "@nx/plugin": "^19.3.0",
     "@swc-node/register": "~1.9.1",
