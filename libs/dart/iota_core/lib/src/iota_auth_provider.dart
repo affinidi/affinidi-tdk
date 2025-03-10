@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
-import 'package:aws_signature_v4/aws_signature_v4.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
