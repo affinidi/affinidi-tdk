@@ -78,28 +78,29 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.affinidi.tdk.vault.data.manager.client.*;
 import com.affinidi.tdk.vault.data.manager.client.auth.*;
 import com.affinidi.tdk.vault.data.manager.client.models.*;
-import com.affinidi.tdk.vault.data.manager.client.apis.ConfigApi;
+import com.affinidi.tdk.vault.data.manager.client.apis.AccountsApi;
 
-public class ConfigApiExample {
+public class AccountsApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://api.vault.affinidi.com/vfs");
 
-        // Configure API key authorization: AwsSigV4
-        ApiKeyAuth AwsSigV4 = (ApiKeyAuth) defaultClient.getAuthentication("AwsSigV4");
-        AwsSigV4.setApiKey("YOUR API KEY");
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        // AwsSigV4.setApiKeyPrefix("Token");
+        // ConsumerTokenAuth.setApiKeyPrefix("Token");
         // ❗️Uncomment the following line to set a dynamic hook to get auth token for authorization instead of setApiKey
         // defaultClient.setAuthTokenHook(authTokenHook);
 
-        ConfigApi apiInstance = new ConfigApi(defaultClient);
+        AccountsApi apiInstance = new AccountsApi(defaultClient);
+        String accountNumber = "accountNumber_example"; // String |
         try {
-            GetConfigOK result = apiInstance.getConfig();
+            DeleteAccountDto result = apiInstance.deleteAccount(accountNumber);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ConfigApi#getConfig");
+            System.err.println("Exception when calling AccountsApi#deleteAccount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -116,7 +117,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Class            | Method                                                                  | HTTP request                                          | Description |
 | ---------------- | ----------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| _AccountsApi_    | [**deleteAccount**](docs/AccountsApi.md#deleteAccount)                  | **DELETE** /v1/accounts/{accountNumber}               |
+| _AccountsApi_    | [**listAccounts**](docs/AccountsApi.md#listAccounts)                    | **GET** /v1/accounts                                  |
 | _ConfigApi_      | [**getConfig**](docs/ConfigApi.md#getConfig)                            | **GET** /v1/config                                    |
+| _DefaultApi_     | [**createAccount**](docs/DefaultApi.md#createAccount)                   | **POST** /v1/accounts                                 |
 | _FilesApi_       | [**getScannedFileInfo**](docs/FilesApi.md#getScannedFileInfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | _FilesApi_       | [**listScannedFiles**](docs/FilesApi.md#listScannedFiles)               | **GET** /v1/scanned-files/                            |
 | _FilesApi_       | [**startFileScan**](docs/FilesApi.md#startFileScan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
@@ -135,6 +139,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## Documentation for Models
 
+- [AccountDto](docs/AccountDto.md)
 - [AwsCredentialExchangeOperationOK](docs/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](docs/CorsAwsCredentialExchangeOK.md)
@@ -151,8 +156,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](docs/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](docs/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](docs/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](docs/CreateAccountInput.md)
+- [CreateAccountOK](docs/CreateAccountOK.md)
 - [CreateNodeInput](docs/CreateNodeInput.md)
 - [CreateNodeOK](docs/CreateNodeOK.md)
+- [DeleteAccountDto](docs/DeleteAccountDto.md)
 - [DeleteNodeDto](docs/DeleteNodeDto.md)
 - [EdekInfo](docs/EdekInfo.md)
 - [GetConfigOK](docs/GetConfigOK.md)
@@ -163,6 +171,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
 - [JsonWebKeyDto](docs/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
+- [ListAccountsDto](docs/ListAccountsDto.md)
 - [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
 - [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](docs/ListScannedFilesOK.md)

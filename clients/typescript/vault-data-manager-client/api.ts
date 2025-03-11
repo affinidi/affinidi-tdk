@@ -42,6 +42,25 @@ import {
 /**
  *
  * @export
+ * @interface AccountDto
+ */
+export interface AccountDto {
+  /**
+   * Account number
+   * @type {string}
+   * @memberof AccountDto
+   */
+  accountNumber?: string
+  /**
+   * Profile DID
+   * @type {string}
+   * @memberof AccountDto
+   */
+  did?: string
+}
+/**
+ *
+ * @export
  * @interface AwsCredentialExchangeOperationOK
  */
 export interface AwsCredentialExchangeOperationOK {
@@ -335,6 +354,50 @@ export interface CorsUpdateProfileDataOK {
 /**
  *
  * @export
+ * @interface CreateAccountInput
+ */
+export interface CreateAccountInput {
+  /**
+   * number that is used for profile DID derivation
+   * @type {string}
+   * @memberof CreateAccountInput
+   */
+  accountNumber: string
+  /**
+   * DID that is associated with the account number
+   * @type {string}
+   * @memberof CreateAccountInput
+   */
+  profileDid: string
+  /**
+   * JWT that proves ownership of profile DID by requester
+   * @type {string}
+   * @memberof CreateAccountInput
+   */
+  didProof: string
+}
+/**
+ *
+ * @export
+ * @interface CreateAccountOK
+ */
+export interface CreateAccountOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CreateAccountOK
+   */
+  accountNumber: string
+  /**
+   *
+   * @type {string}
+   * @memberof CreateAccountOK
+   */
+  profileDid: string
+}
+/**
+ *
+ * @export
  * @interface CreateNodeInput
  */
 export interface CreateNodeInput {
@@ -412,6 +475,19 @@ export interface CreateNodeOK {
    * @memberof CreateNodeOK
    */
   fields?: { [key: string]: any }
+}
+/**
+ *
+ * @export
+ * @interface DeleteAccountDto
+ */
+export interface DeleteAccountDto {
+  /**
+   *
+   * @type {string}
+   * @memberof DeleteAccountDto
+   */
+  accountNumber?: string
 }
 /**
  *
@@ -839,6 +915,19 @@ export interface JsonWebKeySetDto {
    * @memberof JsonWebKeySetDto
    */
   keys: Array<JsonWebKeyDto>
+}
+/**
+ *
+ * @export
+ * @interface ListAccountsDto
+ */
+export interface ListAccountsDto {
+  /**
+   *
+   * @type {Array<AccountDto>}
+   * @memberof ListAccountsDto
+   */
+  nodes?: Array<AccountDto>
 }
 /**
  *
@@ -1369,6 +1458,257 @@ export interface UpdateProfileDataOK {
 }
 
 /**
+ * AccountsApi - axios parameter creator
+ * @export
+ */
+export const AccountsApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Delete account.
+     * @param {string} accountNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccount: async (
+      accountNumber: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'accountNumber' is not null or undefined
+      assertParamExists('deleteAccount', 'accountNumber', accountNumber)
+      const localVarPath = `/v1/accounts/{accountNumber}`.replace(
+        `{${'accountNumber'}}`,
+        encodeURIComponent(String(accountNumber)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List accounts of associated profiles.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccounts: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * AccountsApi - functional programming interface
+ * @export
+ */
+export const AccountsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = AccountsApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Delete account.
+     * @param {string} accountNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteAccount(
+      accountNumber: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<DeleteAccountDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAccount(
+        accountNumber,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.deleteAccount']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * List accounts of associated profiles.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAccounts(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListAccountsDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAccounts(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listAccounts']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * AccountsApi - factory interface
+ * @export
+ */
+export const AccountsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = AccountsApiFp(configuration)
+  return {
+    /**
+     * Delete account.
+     * @param {string} accountNumber
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccount(
+      accountNumber: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<DeleteAccountDto> {
+      return localVarFp
+        .deleteAccount(accountNumber, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * List accounts of associated profiles.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccounts(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListAccountsDto> {
+      return localVarFp
+        .listAccounts(options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * AccountsApi - object-oriented interface
+ * @export
+ * @class AccountsApi
+ * @extends {BaseAPI}
+ */
+export class AccountsApi extends BaseAPI {
+  /**
+   * Delete account.
+   * @param {string} accountNumber
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public deleteAccount(accountNumber: string, options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .deleteAccount(accountNumber, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List accounts of associated profiles.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public listAccounts(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listAccounts(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * ConfigApi - axios parameter creator
  * @export
  */
@@ -1499,6 +1839,171 @@ export class ConfigApi extends BaseAPI {
   public getConfig(options?: RawAxiosRequestConfig) {
     return ConfigApiFp(this.configuration)
       .getConfig(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * creates account
+     * @param {CreateAccountInput} createAccountInput CreateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccount: async (
+      createAccountInput: CreateAccountInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createAccountInput' is not null or undefined
+      assertParamExists(
+        'createAccount',
+        'createAccountInput',
+        createAccountInput,
+      )
+      const localVarPath = `/v1/accounts`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createAccountInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * creates account
+     * @param {CreateAccountInput} createAccountInput CreateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createAccount(
+      createAccountInput: CreateAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<CreateAccountOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createAccount(
+        createAccountInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.createAccount']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = DefaultApiFp(configuration)
+  return {
+    /**
+     * creates account
+     * @param {CreateAccountInput} createAccountInput CreateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccount(
+      createAccountInput: CreateAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateAccountOK> {
+      return localVarFp
+        .createAccount(createAccountInput, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+  /**
+   * creates account
+   * @param {CreateAccountInput} createAccountInput CreateAccount
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public createAccount(
+    createAccountInput: CreateAccountInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .createAccount(createAccountInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

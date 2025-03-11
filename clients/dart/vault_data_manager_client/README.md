@@ -55,13 +55,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 
 
-final api = AffinidiTdkVaultDataManagerClient().getConfigApi();
+final api = AffinidiTdkVaultDataManagerClient().getAccountsApi();
+final String accountNumber = accountNumber_example; // String |
 
 try {
-    final response = await api.getConfig();
+    final response = await api.deleteAccount(accountNumber);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling ConfigApi->getConfig: $e\n");
+    print("Exception when calling AccountsApi->deleteAccount: $e\n");
 }
 
 ```
@@ -72,7 +73,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Class                                     | Method                                                                 | HTTP request                                          | Description |
 | ----------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| [_AccountsApi_](doc/AccountsApi.md)       | [**deleteAccount**](doc/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountNumber}               |
+| [_AccountsApi_](doc/AccountsApi.md)       | [**listAccounts**](doc/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  |
 | [_ConfigApi_](doc/ConfigApi.md)           | [**getConfig**](doc/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    |
+| [_DefaultApi_](doc/DefaultApi.md)         | [**createAccount**](doc/DefaultApi.md#createaccount)                   | **POST** /v1/accounts                                 |
 | [_FilesApi_](doc/FilesApi.md)             | [**getScannedFileInfo**](doc/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | [_FilesApi_](doc/FilesApi.md)             | [**listScannedFiles**](doc/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
 | [_FilesApi_](doc/FilesApi.md)             | [**startFileScan**](doc/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
@@ -91,6 +95,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## Documentation For Models
 
+- [AccountDto](doc/AccountDto.md)
 - [AwsCredentialExchangeOperationOK](doc/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](doc/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](doc/CorsAwsCredentialExchangeOK.md)
@@ -107,8 +112,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](doc/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](doc/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](doc/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](doc/CreateAccountInput.md)
+- [CreateAccountOK](doc/CreateAccountOK.md)
 - [CreateNodeInput](doc/CreateNodeInput.md)
 - [CreateNodeOK](doc/CreateNodeOK.md)
+- [DeleteAccountDto](doc/DeleteAccountDto.md)
 - [DeleteNodeDto](doc/DeleteNodeDto.md)
 - [EdekInfo](doc/EdekInfo.md)
 - [GetConfigOK](doc/GetConfigOK.md)
@@ -119,6 +127,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [InvalidParameterErrorDetailsInner](doc/InvalidParameterErrorDetailsInner.md)
 - [JsonWebKeyDto](doc/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](doc/JsonWebKeySetDto.md)
+- [ListAccountsDto](doc/ListAccountsDto.md)
 - [ListNodeChildrenOK](doc/ListNodeChildrenOK.md)
 - [ListRootNodeChildrenOK](doc/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](doc/ListScannedFilesOK.md)
