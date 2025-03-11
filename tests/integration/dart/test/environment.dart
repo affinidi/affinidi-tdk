@@ -25,6 +25,50 @@ class VaultEnvironment {
   VaultEnvironment({required this.seed});
 }
 
+class IotaEnvironment {
+  final String configurationId;
+  final String queryId;
+  final String did;
+  final String redirectUri;
+  final String presentationSubmission;
+  final String vpToken;
+
+  IotaEnvironment({
+    required this.configurationId,
+    required this.queryId,
+    required this.did,
+    required this.redirectUri,
+    required this.presentationSubmission,
+    required this.vpToken,
+  });
+}
+
+IotaEnvironment getIotaEnvironment() {
+  final env = DotEnv()..load(['../../.env']);
+
+  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'QUERY_ID', 'REDIRECT_URI', 'DID', 'PRESENTATION_SUBMISSION', 'VP_TOKEN'])) {
+    throw Exception(
+      'Missing environment variables. Please provide IOTA_CONFIG_ID, QUERY_ID, REDIRECT_URI, DID, PRESENTATION_SUBMISSION, VP_TOKEN',
+    );
+  }
+
+  final configurationId = env['IOTA_CONFIG_ID']!;
+  final queryId = env['QUERY_ID']!;
+  final did = env['REDIRECT_URI']!;
+  final redirectUri = env['REDIRECT_URI']!;
+  final presentationSubmission = env['PRESENTATION_SUBMISSION']!;
+  final vpToken = env['VP_TOKEN']!;
+
+  return IotaEnvironment(
+    configurationId: configurationId,
+    queryId: queryId,
+    did: did,
+    redirectUri: redirectUri,
+    presentationSubmission: presentationSubmission,
+    vpToken: vpToken,
+  );
+}
+
 ProjectEnvironment getProjectEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
