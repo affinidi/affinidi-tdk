@@ -1,0 +1,43 @@
+name: Integration tests for Dart
+
+on:
+  # we need to keep on push as target because of this issue https://github.com/orgs/community/discussions/65321
+  push:
+    branches:
+     - '**'
+     - '!main'
+    # paths:
+    #   - 'packages/dart/**' # run only if any packages are updated
+
+jobs:
+  integration_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.6.0
+
+      - name: Install dependencies
+        run: dart pub get
+        working-directory: tests/integration/dart
+
+      - name: Cache testing env file
+        uses: actions/cache@v4
+        id: testing-env-cache
+        with:
+          path: tests/.env
+          key: ${{ runner.os }}-testing-env-${{ hashFiles('tests/.env') }}
+
+      - if: ${{ steps.testing-env-cache.outputs.cache-hit != 'true' }}
+        name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Run integration tests
+        run: dart test
+        working-directory: tests/integration/dart
