@@ -34,6 +34,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
 
 # System Files
 .DS_Store

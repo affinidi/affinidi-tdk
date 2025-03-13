@@ -25,7 +25,8 @@ void main() {
 
     test('list root node children', () async {
       final children = (await nodesApi.listRootNodeChildren()).data;
-      print(children);
+      // print(children);
+      expect(children, isNotNull);
     });
   });
 }

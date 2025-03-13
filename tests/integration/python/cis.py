@@ -20,23 +20,11 @@ def configure_client(auth_provider) -> Configuration:
     return configuration
 
 def start_issuance(api_instance: IssuanceApi, projectId):
-    request = {
-        "holderDid": "did:key:zQ3shNb7dEAa7z4LY8eAbPafNM4iSxppwuvndoHkTUUp8Hbt6",
-        "data": [
-            {
-                "credentialTypeId": "SkillBadge",
-                "credentialData": {
-                    "studentId": "123",
-                    "skillId": "456",
-                    "rating": "5"
-                }
-            }
-        ],
-        "claimMode": "NORMAL"
-    }
+    env_vars = dotenv_values('../../.env')
+    credential_issuance_data = json.loads(env_vars['CREDENTIAL_ISSUANCE_DATA'])
 
     try:
-        api_response = api_instance.start_issuance(projectId, request)
+        api_response = api_instance.start_issuance(projectId, credential_issuance_data)
         data = json.loads(api_response.json())
         print("CIS -> start_issuance:", data)
     except ApiException as e:

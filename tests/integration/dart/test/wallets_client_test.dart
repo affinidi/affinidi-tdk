@@ -41,7 +41,7 @@ void main() {
       final createdWallet = (await walletApi.createWallet(
               createWalletInput: walletInputBuilder.build()))
           .data;
-      print(createdWallet);
+
       expect(createdWallet, isNotNull);
       expect(createdWallet!.wallet, isNotNull);
       expect(createdWallet.wallet!.id, isNotEmpty);
@@ -53,6 +53,18 @@ void main() {
       expect(createdWallet.wallet!.keys!.length, greaterThan(0));
       expect(createdWallet.wallet!.keys!.first.id, isNotEmpty);
       expect(createdWallet.wallet!.keys!.first.ari, isNotEmpty);
+
+      // delete newly created ^^ test wallet
+      final walletId = createdWallet.wallet?.id ?? '';
+
+      if (walletId.isNotEmpty) {
+        await walletApi.deleteWallet(walletId: walletId);
+
+        expectLater(
+          walletApi.getWallet(walletId: walletId),
+          throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+        );
+      }
     });
   });
 }
