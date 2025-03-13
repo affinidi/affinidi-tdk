@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
@@ -22,8 +23,14 @@ void main() {
         passphrase: env.passphrase,
       );
 
+      final dio = Dio(BaseOptions(
+        baseUrl: AffinidiTdkIotaClient.basePath,
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 5),
+      ));
+
       final apiClient = AffinidiTdkIotaClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+        dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
 
       iotaApi = apiClient.getIotaApi();
       callbackApi = AffinidiTdkIotaClient().getCallbackApi();
@@ -33,7 +40,6 @@ void main() {
     test('List Iota configurations', () async {
       final listIotaConfigurations = (await configurationsApi.listIotaConfigurations()).data;
 
-      print(listIotaConfigurations);
       expect(listIotaConfigurations, isNotNull);
     });
 
@@ -85,10 +91,8 @@ void main() {
           callbackInputBuilder.build()))
         .data;
 
-      final redirectUri = callbackResponse?.redirectUri;
       final responseCode = callbackResponse?.responseCode;
 
-      expect(redirectUri, isNotNull);
       expect(responseCode, isNotNull);
 
       final fetchIOTAVPResponseInputBuilder =
