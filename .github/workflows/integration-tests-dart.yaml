@@ -6,8 +6,8 @@ on:
     branches:
      - '**'
      - '!main'
-    # paths:
-    #   - 'packages/dart/**' # run only if any packages are updated
+    paths:
+      - 'packages/dart/**' # run only if any packages are updated
 
 jobs:
   integration_tests:
