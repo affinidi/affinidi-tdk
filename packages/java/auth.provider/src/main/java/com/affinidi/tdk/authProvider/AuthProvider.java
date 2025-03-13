@@ -28,10 +28,6 @@ import com.google.gson.JsonObject;
 
 /**
  * This class provides utility functions in order to generate projectScopeToken required to call Affinidi Services.
- *
- *
- * @author Priyanka
- *
  */
 public class AuthProvider {
 
