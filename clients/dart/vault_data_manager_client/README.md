@@ -73,6 +73,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Class                                     | Method                                                                 | HTTP request                                          | Description |
 | ----------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
 | [_ConfigApi_](doc/ConfigApi.md)           | [**getConfig**](doc/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    |
+| [_DefaultApi_](doc/DefaultApi.md)         | [**createAccount**](doc/DefaultApi.md#createaccount)                   | **POST** /v1/accounts                                 |
 | [_FilesApi_](doc/FilesApi.md)             | [**getScannedFileInfo**](doc/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | [_FilesApi_](doc/FilesApi.md)             | [**listScannedFiles**](doc/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
 | [_FilesApi_](doc/FilesApi.md)             | [**startFileScan**](doc/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
@@ -107,6 +108,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](doc/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](doc/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](doc/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](doc/CreateAccountInput.md)
+- [CreateAccountOK](doc/CreateAccountOK.md)
 - [CreateNodeInput](doc/CreateNodeInput.md)
 - [CreateNodeOK](doc/CreateNodeOK.md)
 - [DeleteNodeDto](doc/DeleteNodeDto.md)

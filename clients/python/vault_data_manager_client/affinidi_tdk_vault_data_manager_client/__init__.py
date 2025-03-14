@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from affinidi_tdk_vault_data_manager_client.api.config_api import ConfigApi
+from affinidi_tdk_vault_data_manager_client.api.default_api import DefaultApi
 from affinidi_tdk_vault_data_manager_client.api.files_api import FilesApi
 from affinidi_tdk_vault_data_manager_client.api.nodes_api import NodesApi
 from affinidi_tdk_vault_data_manager_client.api.profile_data_api import ProfileDataApi
@@ -51,6 +52,8 @@ from affinidi_tdk_vault_data_manager_client.models.cors_permanently_delete_node_
 from affinidi_tdk_vault_data_manager_client.models.cors_restore_node_from_trashbin_ok import CorsRestoreNodeFromTrashbinOK
 from affinidi_tdk_vault_data_manager_client.models.cors_start_file_scan_ok import CorsStartFileScanOK
 from affinidi_tdk_vault_data_manager_client.models.cors_update_profile_data_ok import CorsUpdateProfileDataOK
+from affinidi_tdk_vault_data_manager_client.models.create_account_input import CreateAccountInput
+from affinidi_tdk_vault_data_manager_client.models.create_account_ok import CreateAccountOK
 from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput
 from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
 from affinidi_tdk_vault_data_manager_client.models.delete_node_dto import DeleteNodeDto

@@ -814,6 +814,31 @@ paths:
         - nodes
       x-accepts:
         - application/json
+  /v1/accounts:
+    post:
+      description: creates account
+      operationId: createAccount
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAccountInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAccountOK'
+          description: CreateAccountOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags: []
+      x-content-type: application/json
+      x-accepts:
+        - application/json
 components:
   examples: {}
   headers:
@@ -846,6 +871,13 @@ components:
           schema:
             $ref: '#/components/schemas/CreateNodeInput'
       description: CreateNode
+      required: true
+    CreateAccountInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAccountInput'
+      description: CreateAccount
       required: true
     MoveNodeInput:
       content:
@@ -928,6 +960,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateAccountOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAccountOK'
+      description: CreateAccountOK
     UpdateProfileDataOK:
       content:
         application/json:
@@ -1669,6 +1707,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateAccountBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
     GetWellKnownJwksBadRequestError:
       content:
         application/json:
@@ -2182,6 +2226,28 @@ components:
         - name
         - type
       type: object
+    CreateAccountInput:
+      additionalProperties: false
+      example:
+        accountIndex: accountIndex
+        profileDid: profileDid
+        didProof: didProof
+      properties:
+        accountIndex:
+          description: number that is used for profile DID derivation
+          type: string
+        profileDid:
+          description: DID that is associated with the account number
+          pattern: ^did:.*$
+          type: string
+        didProof:
+          description: JWT that proves ownership of profile DID by requester
+          type: string
+      required:
+        - accountIndex
+        - didProof
+        - profileDid
+      type: object
     MoveNodeInput:
       additionalProperties: false
       example:
@@ -2264,6 +2330,20 @@ components:
           type: object
       required:
         - nodeId
+      type: object
+    CreateAccountOK:
+      additionalProperties: false
+      example:
+        accountIndex: accountIndex
+        profileDid: profileDid
+      properties:
+        accountIndex:
+          type: string
+        profileDid:
+          type: string
+      required:
+        - accountIndex
+        - profileDid
       type: object
     UpdateNodeInput:
       additionalProperties: false

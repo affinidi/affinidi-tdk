@@ -10,6 +10,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/auth/basic_auth.dart'
 import 'package:affinidi_tdk_vault_data_manager_client/src/auth/bearer_auth.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/auth/oauth.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/config_api.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/api/default_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/files_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/nodes_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/profile_data_api.dart';
@@ -62,6 +63,43 @@ class AffinidiTdkVaultDataManagerClient {
       // Add the authTokenInterceptor to Dio
       this.dio.interceptors.add(authTokenInterceptor);
     }
+
+    // NOTE: global error-handling interceptor
+    this.dio.interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioException e, ErrorInterceptorHandler handler) {
+          if (e.response != null) {
+            final statusCode = e.response?.statusCode;
+            final errorData = e.response?.data;
+
+            String formattedError = 'HTTP $statusCode Error\n';
+
+            if (errorData is Map<String, dynamic>) {
+              final errorName = errorData['name'] ?? 'Unknown Error';
+              final traceId = errorData['traceId']?.toString().isNotEmpty == true ? errorData['traceId'] : 'N/A';
+              final errorMessage = errorData['message'] ?? 'No error message provided';
+              final details = errorData['details'] != null ? errorData['details'].toString() : 'No details available';
+
+              formattedError += '- Error Type: $errorName\n';
+              formattedError += '- Trace ID: $traceId\n';
+              formattedError += '- Message: $errorMessage\n';
+              formattedError += '- Details: $details\n';
+            } else {
+              formattedError += 'Response Body: ${e.response?.data?.toString() ?? "No response body"}';
+            }
+
+            handler.reject(DioException(
+              requestOptions: e.requestOptions,
+              response: e.response,
+              type: e.type,
+              error: formattedError,
+            ));
+          } else {
+            handler.next(e);
+          }
+        },
+      ),
+    );
   }
 
   void setOAuthToken(String name, String token) {
@@ -92,6 +130,12 @@ class AffinidiTdkVaultDataManagerClient {
   /// by doing that all interceptors will not be executed
   ConfigApi getConfigApi() {
     return ConfigApi(dio, serializers);
+  }
+
+  /// Get DefaultApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  DefaultApi getDefaultApi() {
+    return DefaultApi(dio, serializers);
   }
 
   /// Get FilesApi instance, base route and serializer can be overridden by a given but be careful,
