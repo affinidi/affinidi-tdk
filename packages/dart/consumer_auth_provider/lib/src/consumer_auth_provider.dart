@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:dio/dio.dart';
 
 import 'provider/base_consumer_auth_provider.dart';
 import 'consumer_auth_provider_interface.dart';
@@ -23,8 +24,8 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   ///   final token = await consumerAuthProvider.fetchConsumerToken();
   /// }
   ///```
-  factory ConsumerAuthProvider({required Uint8List seed}) {
-    return ConsumerAuthProvider._(BaseConsumerAuthProvider(seed: seed));
+  factory ConsumerAuthProvider({required Uint8List seed, Dio? client}) {
+    return ConsumerAuthProvider._(BaseConsumerAuthProvider(seed: seed, client: client));
   }
 
   /// Fetches a consumer scoped token to be used for API calls to Affinidi
