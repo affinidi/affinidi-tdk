@@ -20,8 +20,11 @@ doc/CorsPermanentlyDeleteNodeOK.md
 doc/CorsRestoreNodeFromTrashbinOK.md
 doc/CorsStartFileScanOK.md
 doc/CorsUpdateProfileDataOK.md
+doc/CreateAccountInput.md
+doc/CreateAccountOK.md
 doc/CreateNodeInput.md
 doc/CreateNodeOK.md
+doc/DefaultApi.md
 doc/DeleteNodeDto.md
 doc/EdekInfo.md
 doc/FilesApi.md
@@ -56,6 +59,7 @@ doc/UpdateProfileDataOK.md
 lib/affinidi_tdk_vault_data_manager_client.dart
 lib/src/api.dart
 lib/src/api/config_api.dart
+lib/src/api/default_api.dart
 lib/src/api/files_api.dart
 lib/src/api/nodes_api.dart
 lib/src/api/profile_data_api.dart
@@ -82,6 +86,8 @@ lib/src/model/cors_permanently_delete_node_ok.dart
 lib/src/model/cors_restore_node_from_trashbin_ok.dart
 lib/src/model/cors_start_file_scan_ok.dart
 lib/src/model/cors_update_profile_data_ok.dart
+lib/src/model/create_account_input.dart
+lib/src/model/create_account_ok.dart
 lib/src/model/create_node_input.dart
 lib/src/model/create_node_ok.dart
 lib/src/model/date.dart
@@ -133,8 +139,11 @@ test/cors_permanently_delete_node_ok_test.dart
 test/cors_restore_node_from_trashbin_ok_test.dart
 test/cors_start_file_scan_ok_test.dart
 test/cors_update_profile_data_ok_test.dart
+test/create_account_input_test.dart
+test/create_account_ok_test.dart
 test/create_node_input_test.dart
 test/create_node_ok_test.dart
+test/default_api_test.dart
 test/delete_node_dto_test.dart
 test/edek_info_test.dart
 test/files_api_test.dart

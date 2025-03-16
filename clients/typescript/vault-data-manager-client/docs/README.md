@@ -9,6 +9,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | Class            | Method                                                                  | HTTP request                                          | Description                                                                                                                                                                                                                   |
 | ---------------- | ----------------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | _ConfigApi_      | [**getConfig**](Apis/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    | Retrieves the user profile name and the maximum number of profiles, with default values set to 'default' and 1, respectively.                                                                                                 |
+| _DefaultApi_     | [**createAccount**](Apis/DefaultApi.md#createaccount)                   | **POST** /v1/accounts                                 | creates account                                                                                                                                                                                                               |
 | _FilesApi_       | [**getScannedFileInfo**](Apis/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          | Get the details of a scanned file using the textract jobId                                                                                                                                                                    |
 | _FilesApi_       | [**listScannedFiles**](Apis/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            | List all the the scanned files with all the details, e.g. status and jobId                                                                                                                                                    |
 | _FilesApi_       | [**startFileScan**](Apis/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 | Start a scan of the file under this node and provide a textract job                                                                                                                                                           |
@@ -45,6 +46,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](./Models/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](./Models/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](./Models/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](./Models/CreateAccountInput.md)
+- [CreateAccountOK](./Models/CreateAccountOK.md)
 - [CreateNodeInput](./Models/CreateNodeInput.md)
 - [CreateNodeOK](./Models/CreateNodeOK.md)
 - [DeleteNodeDto](./Models/DeleteNodeDto.md)

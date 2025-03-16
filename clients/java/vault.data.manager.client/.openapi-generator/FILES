@@ -21,8 +21,11 @@ docs/CorsPermanentlyDeleteNodeOK.md
 docs/CorsRestoreNodeFromTrashbinOK.md
 docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
+docs/CreateAccountInput.md
+docs/CreateAccountOK.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
+docs/DefaultApi.md
 docs/DeleteNodeDto.md
 docs/EdekInfo.md
 docs/FilesApi.md
@@ -74,6 +77,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerConfiguration.jav
 src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/StringUtil.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigApi.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/DefaultApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/FilesApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/NodesApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/ProfileDataApi.java
@@ -97,6 +101,8 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsPermanentlyD
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsRestoreNodeFromTrashbinOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsStartFileScanOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsUpdateProfileDataOK.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountInput.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/DeleteNodeDto.java
@@ -128,6 +134,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateNodeInput.
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataOK.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigApiTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/DefaultApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/FilesApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/NodesApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/ProfileDataApiTest.java
@@ -147,6 +154,8 @@ src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsPermanentlyD
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsRestoreNodeFromTrashbinOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsStartFileScanOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsUpdateProfileDataOKTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountInputTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeInputTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/DeleteNodeDtoTest.java
