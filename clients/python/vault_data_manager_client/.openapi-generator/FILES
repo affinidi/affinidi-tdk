@@ -5,6 +5,7 @@ README.md
 affinidi_tdk_vault_data_manager_client/__init__.py
 affinidi_tdk_vault_data_manager_client/api/__init__.py
 affinidi_tdk_vault_data_manager_client/api/config_api.py
+affinidi_tdk_vault_data_manager_client/api/default_api.py
 affinidi_tdk_vault_data_manager_client/api/files_api.py
 affinidi_tdk_vault_data_manager_client/api/nodes_api.py
 affinidi_tdk_vault_data_manager_client/api/profile_data_api.py
@@ -29,6 +30,8 @@ affinidi_tdk_vault_data_manager_client/models/cors_permanently_delete_node_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_restore_node_from_trashbin_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_start_file_scan_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_update_profile_data_ok.py
+affinidi_tdk_vault_data_manager_client/models/create_account_input.py
+affinidi_tdk_vault_data_manager_client/models/create_account_ok.py
 affinidi_tdk_vault_data_manager_client/models/create_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_ok.py
 affinidi_tdk_vault_data_manager_client/models/delete_node_dto.py
@@ -78,8 +81,11 @@ docs/CorsPermanentlyDeleteNodeOK.md
 docs/CorsRestoreNodeFromTrashbinOK.md
 docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
+docs/CreateAccountInput.md
+docs/CreateAccountOK.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
+docs/DefaultApi.md
 docs/DeleteNodeDto.md
 docs/EdekInfo.md
 docs/FilesApi.md
@@ -135,8 +141,11 @@ test/test_cors_permanently_delete_node_ok.py
 test/test_cors_restore_node_from_trashbin_ok.py
 test/test_cors_start_file_scan_ok.py
 test/test_cors_update_profile_data_ok.py
+test/test_create_account_input.py
+test/test_create_account_ok.py
 test/test_create_node_input.py
 test/test_create_node_ok.py
+test/test_default_api.py
 test/test_delete_node_dto.py
 test/test_edek_info.py
 test/test_files_api.py
