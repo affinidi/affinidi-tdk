@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:dio/dio.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../consumer_auth_provider_interface.dart';
@@ -15,8 +16,8 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
   String? _consumerToken;
 
   /// Constructor for [BaseConsumerAuthProvider] using the [seed] in bytes
-  BaseConsumerAuthProvider({required Uint8List seed}) : _seed = seed {
-    _consumerTokenProvider = ConsumerTokenProvider();
+  BaseConsumerAuthProvider({required Uint8List seed, Dio? client}) : _seed = seed {
+    _consumerTokenProvider = ConsumerTokenProvider(client: client);
     _cisTokenProvider = CisTokenProvider();
   }
 
