@@ -5,18 +5,37 @@
   "projectType": "library",
   "private": false,
   "targets": {
-    "build": {
+    "prepare": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart pub get && dart analyze --no-fatal-warnings"
+        "command": "dart pub get"
       }
+    },
+    "lint": {
+      "dependsOn": ["prepare"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "dart analyze --no-fatal-warnings"
+      }
+    },
+    "test": {
+      "dependsOn": ["prepare"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "dart test"
+      }
+    },
+    "build": {
+      "dependsOn": ["lint", "test"]
     },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
-        "changelog": false,
-        "git": false,
+        "changelog": true,
+        "git": true,
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",

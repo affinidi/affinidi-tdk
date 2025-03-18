@@ -8,15 +8,34 @@ import 'package:uuid/uuid.dart';
 import 'iam_client.dart';
 import 'jwt_helper.dart';
 
+/// An authentication provider to make use of Affinidi services that require
+/// project scoped tokens.
 class AuthProvider {
+  /// The project ID of your Affinidi project.
   final String projectId;
+
+  /// The ID of the Personal Access Token (PAT) registered with Affinidi.
   final String tokenId;
+
+  /// The private key that was used when creating the PAT.
   final String privateKey;
+
+  /// The key ID that was used when creating the PAT, if provided.
   final String? keyId;
+
+  /// The passphrase that was used when creating the PAT, if provided.
   final String? passphrase;
+
+  /// (Internal) The URL of the Affinidi API Gateway that you want to
+  /// authenticate against. Defaults to the production environment.
   final String apiGatewayUrl;
+
+  /// (Internal) The URL of the Affinidi Elements Token Endpoint. Defaults to
+  /// the production environment.
   final String tokenEndpoint;
 
+  /// Creates a new instance of the AuthProvider from the Personal Access Token
+  ///  (PAT) that you have registered with Affinidi.
   AuthProvider({
     required this.projectId,
     required this.tokenId,
@@ -26,6 +45,8 @@ class AuthProvider {
   })  : apiGatewayUrl = Environment.fetchApiGwUrl(),
         tokenEndpoint = Environment.fetchElementsAuthTokenUrl();
 
+  /// Constructor for internal use only. Allows for custom API Gateway and
+  /// token endpoint.
   AuthProvider.withEnv({
     required this.projectId,
     required this.tokenId,
@@ -54,6 +75,9 @@ class AuthProvider {
     }
   }
 
+  /// Fetches a project scoped token from Affinidi Elements to be used for
+  /// API calls to Affinidi services. This function can be provided to clients
+  /// to authenticate their requests, allowing for token refresh after expiration.
   Future<String> fetchProjectScopedToken() async {
     if (await _shouldFetchToken()) {
       _projectScopedToken =
@@ -114,6 +138,9 @@ class AuthProvider {
     return data['accessToken'];
   }
 
+  /// Generates an iota token to be used when setting up an iota websockets
+  /// connection. This token is only used when using iota with websockets,
+  /// and not when using iota through redirects.
   ({String iotaJwt, String iotaSessionId}) createIotaToken({
     required String iotaConfigId,
     required String did,

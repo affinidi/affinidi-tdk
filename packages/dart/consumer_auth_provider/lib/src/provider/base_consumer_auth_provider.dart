@@ -1,33 +1,23 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
-import 'package:base_codecs/base_codecs.dart';
+import 'package:dio/dio.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-import 'consumer_auth_provider_abstract.dart';
+import '../consumer_auth_provider_interface.dart';
 import 'token_provider.dart';
 
-class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
-  final String _encryptedSeed;
-  final String _encryptionKey;
+/// Base class for consumer authentication provider. It handles the  generation and validation of tokens.
+class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
+  final Uint8List _seed;
 
-  late final CryptographyService _cryptographyService;
   late final ConsumerTokenProvider _consumerTokenProvider;
   late final CisTokenProvider _cisTokenProvider;
-  late final Uint8List _seedBytes = hexDecode(_cryptographyService.decryptSeed(
-    encryptedSeedHex: _encryptedSeed,
-    encryptionKeyHex: _encryptionKey,
-  ));
 
   String? _consumerToken;
 
-  BaseConsumerAuthProvider({
-    required String encryptedSeed,
-    required String encryptionKey,
-  })  : _encryptedSeed = encryptedSeed,
-        _encryptionKey = encryptionKey {
-    _cryptographyService = CryptographyService();
-    _consumerTokenProvider = ConsumerTokenProvider();
+  /// Constructor for [BaseConsumerAuthProvider] using the [seed] in bytes
+  BaseConsumerAuthProvider({required Uint8List seed, Dio? client}) : _seed = seed {
+    _consumerTokenProvider = ConsumerTokenProvider(client: client);
     _cisTokenProvider = CisTokenProvider();
   }
 
@@ -38,7 +28,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
         return _consumerToken!;
       }
 
-      _consumerToken = await _consumerTokenProvider.getToken(_seedBytes);
+      _consumerToken = await _consumerTokenProvider.getToken(_seed);
 
       return _consumerToken!;
     } catch (e) {
@@ -48,7 +38,7 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderAbstract {
 
   @override
   Future<String> fetchCisToken() async {
-    return await _cisTokenProvider.getToken(_seedBytes);
+    return await _cisTokenProvider.getToken(_seed);
   }
 
   bool _isTokenExpired(String token) {

@@ -49,11 +49,11 @@ class ClaimedCredentialListResponseTest {
     }
 
     /**
-     * Test the property 'next'
+     * Test the property 'lastEvaluatedKey'
      */
     @Test
-    void nextTest() {
-        // TODO: test next
+    void lastEvaluatedKeyTest() {
+        // TODO: test lastEvaluatedKey
     }
 
 }

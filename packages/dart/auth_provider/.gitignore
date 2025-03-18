@@ -9,3 +9,6 @@ pubspec.lock
 # env files
 .env*
 !.env.example
+
+# FVM Version Cache
+.fvm/

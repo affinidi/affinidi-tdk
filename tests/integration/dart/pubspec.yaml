@@ -7,7 +7,8 @@ resolution: workspace
 
 dev_dependencies:
   affinidi_tdk_common: ^1.0.0
-  affinidi_tdk_auth_provider: ^1.0.0
+  affinidi_tdk_auth_provider:
+    path: ../../../packages/dart/auth_provider
   affinidi_tdk_consumer_auth_provider: ^1.0.0
   affinidi_tdk_wallets_client:
     path: ../../../clients/dart/wallets_client
@@ -18,15 +19,21 @@ dev_dependencies:
   affinidi_tdk_credential_verification_client:
     # path: ../../../clients/dart/credential_verification_client
     path: ../../../../openapi-sdk-generator/.github/affinidi-tdk/clients/dart/credential_verification_client
-  affinidi_tdk_cryptography: ^1.0.0
-  vault_file_system_encryption_service:
-    path: ../../../../tdk-dart-bussiness-layer/packages/vault_file_system_encryption_service
+  affinidi_tdk_cryptography:
+    path: ../../../packages/dart/cryptography
+  affinidi_tdk_vault_data_manager_encryption_service:
+    path: ../../../../tdk-dart-bussiness-layer/packages/vault_data_manager_encryption_service
+  affinidi_tdk_iota_client:
+    path: ../../../clients/dart/iota_client
   dotenv: ^4.2.0
   lints: ^5.0.0
   test: ^1.24.0
   pointycastle: ^3.9.1
-  dart_jsonwebtoken: ^2.12.0
+  dart_jsonwebtoken: ^2.17.0
   built_collection: ^5.1.1
   built_value: ^8.9.3
   dio: '^5.2.0'
   one_of: ^1.5.0
+  convert: ^3.1.2
+  uuid: ^4.5.1
+  jwt_decode: ^0.3.1

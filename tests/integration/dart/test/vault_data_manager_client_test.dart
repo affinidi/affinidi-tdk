@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
-import 'package:vault_file_system_encryption_service/vault_file_system_encryption_service.dart';
+import 'package:affinidi_tdk_vault_data_manager_encryption_service/vault_data_manager_encryption_service.dart';
 
 import 'environment.dart';
 
@@ -13,7 +13,7 @@ const rootNodeIdBase64Encoded = 'NzY3ZjY=';
 const vfsSalt =
     '031b96f9b4641f508702c03b5643fd5de8d90465fdb0bdf6abe5d6c1c8a667a8';
 
-Future<Map<String, dynamic>> getVaultFileSystemPublicKey() async {
+Future<Map<String, dynamic>> getVaultDataManagerPublicKey() async {
   final Dio dio = Dio();
   final absoluteUrl =
       "${AffinidiTdkVaultDataManagerClient.basePath}/.well-known/jwks.json";
@@ -26,21 +26,18 @@ void main() {
   group('Vault Data Manager Client Integration Tests', () {
     late NodesApi nodesApi;
     late Map<String, dynamic> vfsPublicKey;
-    late VaultFileSystemEncryptionService vaultFileSystemEncryptionService;
+    late VaultDataManagerEncryptionService vaultDataManagerEncryptionService;
 
     setUp(() async {
       final env = getVaultEnvironment();
-      final consumerAuthProvider = ConsumerAuthProvider(
-        encryptedSeed: env.encryptedSeed,
-        encryptionKey: env.encryptionKey,
-      );
+      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
       final apiClient = AffinidiTdkVaultDataManagerClient(
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
       );
       nodesApi = apiClient.getNodesApi();
 
-      vfsPublicKey = await getVaultFileSystemPublicKey();
-      vaultFileSystemEncryptionService = VaultFileSystemEncryptionService(
+      vfsPublicKey = await getVaultDataManagerPublicKey();
+      vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
         cryptographyService: CryptographyService(),
         jwk: vfsPublicKey,
         encryptedSeed: env.encryptedSeed,
@@ -57,7 +54,7 @@ void main() {
 
       // add a new profile
       final dekGenerateModel =
-          await vaultFileSystemEncryptionService.generateDek();
+          await vaultDataManagerEncryptionService.generateDek();
       final edekInfoBuilder = EdekInfoBuilder()
         ..edek =
             base64.encode(dekGenerateModel.dekEncryptedByWalletCryptoMaterial)

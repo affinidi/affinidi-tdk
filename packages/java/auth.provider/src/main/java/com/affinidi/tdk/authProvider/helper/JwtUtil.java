@@ -43,8 +43,6 @@ import io.jsonwebtoken.security.Jwks;
 /**
  * This class provides utility functions required by {@link AuthProvider} related for processing(creating, signing,
  * validation) of JWT.
- *
- * @author Priyanka
  */
 public class JwtUtil {
 

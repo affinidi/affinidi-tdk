@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:convert/convert.dart';
 import 'package:dotenv/dotenv.dart';
 
 class ProjectEnvironment {
@@ -17,13 +20,53 @@ class ProjectEnvironment {
 }
 
 class VaultEnvironment {
-  final String encryptedSeed;
-  final String encryptionKey;
+  final Uint8List seed;
 
-  VaultEnvironment({
-    required this.encryptedSeed,
-    required this.encryptionKey,
+  VaultEnvironment({required this.seed});
+}
+
+class IotaEnvironment {
+  final String configurationId;
+  final String queryId;
+  final String did;
+  final String redirectUri;
+  final String presentationSubmission;
+  final String vpToken;
+
+  IotaEnvironment({
+    required this.configurationId,
+    required this.queryId,
+    required this.did,
+    required this.redirectUri,
+    required this.presentationSubmission,
+    required this.vpToken,
   });
+}
+
+IotaEnvironment getIotaEnvironment() {
+  final env = DotEnv()..load(['../../.env']);
+
+  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'QUERY_ID', 'REDIRECT_URI', 'DID', 'PRESENTATION_SUBMISSION', 'VP_TOKEN'])) {
+    throw Exception(
+      'Missing environment variables. Please provide IOTA_CONFIG_ID, QUERY_ID, REDIRECT_URI, DID, PRESENTATION_SUBMISSION, VP_TOKEN',
+    );
+  }
+
+  final configurationId = env['IOTA_CONFIG_ID']!;
+  final queryId = env['QUERY_ID']!;
+  final did = env['REDIRECT_URI']!;
+  final redirectUri = env['REDIRECT_URI']!;
+  final presentationSubmission = env['PRESENTATION_SUBMISSION']!;
+  final vpToken = env['VP_TOKEN']!;
+
+  return IotaEnvironment(
+    configurationId: configurationId,
+    queryId: queryId,
+    did: did,
+    redirectUri: redirectUri,
+    presentationSubmission: presentationSubmission,
+    vpToken: vpToken,
+  );
 }
 
 ProjectEnvironment getProjectEnvironment() {
@@ -31,7 +74,8 @@ ProjectEnvironment getProjectEnvironment() {
 
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
     throw Exception(
-        'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY');
+      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY',
+    );
   }
 
   // Workaround for dotenv multiline limitations
@@ -53,16 +97,14 @@ ProjectEnvironment getProjectEnvironment() {
 VaultEnvironment getVaultEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['VAULT_ENCRYPTED_SEED', 'VAULT_ENCRYPTION_KEY'])) {
+  if (!env.isEveryDefined(['VAULT_SEED_BYTES_HEX_ENCODED'])) {
     throw Exception(
-        'Missing environment variables. Please provide VAULT_ENCRYPTED_SEED and VAULT_ENCRYPTION_KEY');
+      'Missing environment variables. Please provide VAULT_SEED_BYTES_HEX_ENCODED.',
+    );
   }
 
-  final encryptedSeed = env['VAULT_ENCRYPTED_SEED']!;
-  final encryptionKey = env['VAULT_ENCRYPTION_KEY']!;
+  final seedHexEncoded = env['VAULT_SEED_BYTES_HEX_ENCODED']!;
+  final Uint8List seed = Uint8List.fromList(hex.decode(seedHexEncoded));
 
-  return VaultEnvironment(
-    encryptedSeed: encryptedSeed,
-    encryptionKey: encryptionKey,
-  );
+  return VaultEnvironment(seed: seed);
 }

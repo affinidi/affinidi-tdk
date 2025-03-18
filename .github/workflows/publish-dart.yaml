@@ -3,7 +3,7 @@ name: Publish Affected Dart Projects
 on:
   push:
     tags:
-      - '*dart-v*'  
+      - '**dart-v**'  
 
 jobs:
   publish:
