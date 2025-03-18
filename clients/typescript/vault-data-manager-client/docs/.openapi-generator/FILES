@@ -1,5 +1,6 @@
 .openapi-generator-ignore
 Apis/ConfigApi.md
+Apis/DefaultApi.md
 Apis/FilesApi.md
 Apis/NodesApi.md
 Apis/ProfileDataApi.md
@@ -19,6 +20,8 @@ Models/CorsPermanentlyDeleteNodeOK.md
 Models/CorsRestoreNodeFromTrashbinOK.md
 Models/CorsStartFileScanOK.md
 Models/CorsUpdateProfileDataOK.md
+Models/CreateAccountInput.md
+Models/CreateAccountOK.md
 Models/CreateNodeInput.md
 Models/CreateNodeOK.md
 Models/DeleteNodeDto.md
