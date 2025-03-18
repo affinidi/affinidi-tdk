@@ -40,9 +40,8 @@ void main() {
       vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
         cryptographyService: CryptographyService(),
         jwk: vfsPublicKey,
-        encryptedSeed: env.encryptedSeed,
-        walletPassword: env.encryptionKey,
-        vfsNonce: utf8.encode(vfsSalt),
+        encryptionKey: env.seedHexEncoded,
+        encryptionKeyNonce: utf8.encode(vfsSalt),
       );
     });
 
@@ -54,7 +53,7 @@ void main() {
 
       // add a new profile
       final dekGenerateModel =
-          await vaultDataManagerEncryptionService.generateDek();
+          await vaultDataManagerEncryptionService.generateDataEncryptionMaterial();
       final edekInfoBuilder = EdekInfoBuilder()
         ..edek =
             base64.encode(dekGenerateModel.dekEncryptedByWalletCryptoMaterial)
