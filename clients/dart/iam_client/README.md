@@ -55,14 +55,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 
-final api = AffinidiTdkIamClient().getConsumerAuthApi();
-final ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput = ; // ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+final api = AffinidiTdkIamClient().getAuthzApi();
+final GrantAccessInput grantAccessInput = ; // GrantAccessInput | Grant access to virtual file system
 
 try {
-    final response = await api.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput);
+    final response = await api.grantAccessVfs(grantAccessInput);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling ConsumerAuthApi->consumerAuthTokenEndpoint: $e\n");
+    print("Exception when calling AuthzApi->grantAccessVfs: $e\n");
 }
 
 ```
@@ -71,9 +71,10 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
-| Class                                       | Method                                                                            | HTTP request                                     | Description                           |
-| ------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------- |
-| [_ConsumerAuthApi_](doc/ConsumerAuthApi.md) | [**consumerAuthTokenEndpoint**](doc/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint |
+| Class                                       | Method                                                                            | HTTP request                                     | Description                             |
+| ------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| [_AuthzApi_](doc/AuthzApi.md)               | [**grantAccessVfs**](doc/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| [_ConsumerAuthApi_](doc/ConsumerAuthApi.md) | [**consumerAuthTokenEndpoint**](doc/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | [_DefaultApi_](doc/DefaultApi.md)           | [**v1AuthProxyDelete**](doc/DefaultApi.md#v1authproxydelete)                      | **DELETE** /v1/auth/{proxy+}                     |
 | [_DefaultApi_](doc/DefaultApi.md)           | [**v1AuthProxyGet**](doc/DefaultApi.md#v1authproxyget)                            | **GET** /v1/auth/{proxy+}                        |
 | [_DefaultApi_](doc/DefaultApi.md)           | [**v1AuthProxyPatch**](doc/DefaultApi.md#v1authproxypatch)                        | **PATCH** /v1/auth/{proxy+}                      |
@@ -115,6 +116,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenOutput](doc/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](doc/CreateTokenInput.md)
 - [GetWellKnownDidOK](doc/GetWellKnownDidOK.md)
+- [GrantAccessInput](doc/GrantAccessInput.md)
+- [GrantAccessOutput](doc/GrantAccessOutput.md)
 - [InvalidDIDError](doc/InvalidDIDError.md)
 - [InvalidJwtTokenError](doc/InvalidJwtTokenError.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)
