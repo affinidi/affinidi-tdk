@@ -18,6 +18,7 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from affinidi_tdk_iam_client.api.authz_api import AuthzApi
 from affinidi_tdk_iam_client.api.consumer_auth_api import ConsumerAuthApi
 from affinidi_tdk_iam_client.api.default_api import DefaultApi
 from affinidi_tdk_iam_client.api.policies_api import PoliciesApi
@@ -48,6 +49,8 @@ from affinidi_tdk_iam_client.models.create_project_scoped_token_input import Cre
 from affinidi_tdk_iam_client.models.create_project_scoped_token_output import CreateProjectScopedTokenOutput
 from affinidi_tdk_iam_client.models.create_token_input import CreateTokenInput
 from affinidi_tdk_iam_client.models.get_well_known_did_ok import GetWellKnownDidOK
+from affinidi_tdk_iam_client.models.grant_access_input import GrantAccessInput
+from affinidi_tdk_iam_client.models.grant_access_output import GrantAccessOutput
 from affinidi_tdk_iam_client.models.invalid_did_error import InvalidDIDError
 from affinidi_tdk_iam_client.models.invalid_jwt_token_error import InvalidJwtTokenError
 from affinidi_tdk_iam_client.models.invalid_parameter_error import InvalidParameterError

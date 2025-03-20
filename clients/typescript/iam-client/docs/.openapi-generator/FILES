@@ -1,4 +1,5 @@
 .openapi-generator-ignore
+Apis/AuthzApi.md
 Apis/ConsumerAuthApi.md
 Apis/DefaultApi.md
 Apis/PoliciesApi.md
@@ -15,6 +16,8 @@ Models/CreateProjectInput.md
 Models/CreateProjectScopedTokenInput.md
 Models/CreateProjectScopedTokenOutput.md
 Models/CreateTokenInput.md
+Models/GrantAccessInput.md
+Models/GrantAccessOutput.md
 Models/InvalidDIDError.md
 Models/InvalidJwtTokenError.md
 Models/InvalidParameterError.md
