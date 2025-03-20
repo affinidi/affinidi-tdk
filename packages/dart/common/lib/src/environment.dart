@@ -88,7 +88,7 @@ class Environment {
 
   /// Fetches the current environment based on the provided environment variable.
   static Environment fetchEnvironment() {
-    final envValue = String.fromEnvironment(enviromentVariableName);
+    final envValue = const String.fromEnvironment(enviromentVariableName);
     final environmentType = EnvironmentType.values.firstWhere(
       (e) => e.value == envValue,
       orElse: () => EnvironmentType.prod,
