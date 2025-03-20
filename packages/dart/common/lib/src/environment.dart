@@ -88,7 +88,16 @@ class Environment {
 
   /// Fetches the current environment based on the provided environment variable.
   static Environment fetchEnvironment() {
-    final envValue = String.fromEnvironment(enviromentVariableName);
+    const compileTimeEnv = String.fromEnvironment(enviromentVariableName);
+    final String envValue;
+    if (compileTimeEnv.isEmpty) {
+      // just in time environment (dart run)
+      envValue = String.fromEnvironment(enviromentVariableName);
+    } else {
+      // compile time environment (dart compile)
+      envValue = compileTimeEnv;
+    }
+
     final environmentType = EnvironmentType.values.firstWhere(
       (e) => e.value == envValue,
       orElse: () => EnvironmentType.prod,
