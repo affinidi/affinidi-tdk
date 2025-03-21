@@ -9,6 +9,7 @@ class ProjectEnvironment {
   final String privateKey;
   final String? keyId;
   final String? passphrase;
+  final String did;
 
   ProjectEnvironment({
     required this.projectId,
@@ -16,13 +17,17 @@ class ProjectEnvironment {
     required this.privateKey,
     this.keyId,
     this.passphrase,
+    required this.did,
   });
 }
 
 class VaultEnvironment {
   final Uint8List seed;
+  // NOTE: returning Hex encoded string since VaultDataManager client
+  //       does not support plain seed yet
+  final String seedHexEncoded;
 
-  VaultEnvironment({required this.seed});
+  VaultEnvironment({required this.seed, required this.seedHexEncoded});
 }
 
 class IotaEnvironment {
@@ -54,7 +59,7 @@ IotaEnvironment getIotaEnvironment() {
 
   final configurationId = env['IOTA_CONFIG_ID']!;
   final queryId = env['QUERY_ID']!;
-  final did = env['REDIRECT_URI']!;
+  final did = env['DID']!;
   final redirectUri = env['REDIRECT_URI']!;
   final presentationSubmission = env['PRESENTATION_SUBMISSION']!;
   final vpToken = env['VP_TOKEN']!;
@@ -72,9 +77,9 @@ IotaEnvironment getIotaEnvironment() {
 ProjectEnvironment getProjectEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
+  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY', 'DID'])) {
     throw Exception(
-      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID and PRIVATE_KEY',
+      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY, DID',
     );
   }
 
@@ -84,6 +89,7 @@ ProjectEnvironment getProjectEnvironment() {
   final projectId = env['PROJECT_ID']!;
   final keyId = env['KEY_ID'] ?? '';
   final passphrase = env['PASSPHRASE'] ?? '';
+  final did = env['DID']!;
 
   return ProjectEnvironment(
     projectId: projectId,
@@ -91,6 +97,7 @@ ProjectEnvironment getProjectEnvironment() {
     privateKey: privateKey,
     keyId: keyId,
     passphrase: passphrase,
+    did: did,
   );
 }
 
@@ -106,5 +113,5 @@ VaultEnvironment getVaultEnvironment() {
   final seedHexEncoded = env['VAULT_SEED_BYTES_HEX_ENCODED']!;
   final Uint8List seed = Uint8List.fromList(hex.decode(seedHexEncoded));
 
-  return VaultEnvironment(seed: seed);
+  return VaultEnvironment(seed: seed, seedHexEncoded: seedHexEncoded);
 }
