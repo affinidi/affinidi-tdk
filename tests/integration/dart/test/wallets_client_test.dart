@@ -11,6 +11,7 @@ void main() {
   group('Wallets Client 👾', () {
     late WalletApi walletApi;
     late String walletId;
+    late String walletIdDidWeb;
     late String holderDid;
 
     setUp(() async {
@@ -34,7 +35,7 @@ void main() {
       holderDid = env?.did ?? '';
     });
 
-    test('Create wallet', () async {
+    test('Create wallet: DID Key', () async {
       final name = 'Test Wallet';
       final description = 'Test wallet description';
 
@@ -61,6 +62,39 @@ void main() {
       expect(createdWallet.wallet!.keys!.first.ari, isNotEmpty);
 
       walletId = createdWallet.wallet?.id ?? '';
+    });
+
+    test('Create wallet: DID Web', () async {
+      final name = 'Test DID Web Wallet';
+      final description = 'Test wallet description';
+      final didWebUrl = 'didweb.com';
+
+      final didWebInputBuilder = DidWebInputParamsBuilder()
+        ..name = name
+        ..description = description
+        ..didMethod = DidWebInputParamsDidMethodEnum.web
+        ..didWebUrl = didWebUrl;
+      final walletInputBuilder = CreateWalletInputBuilder()
+        ..oneOf = OneOf2<DidKeyInputParams, DidWebInputParams>(
+            value: didWebInputBuilder.build(), typeIndex: 1);
+
+      final createdWallet = (await walletApi.createWallet(
+              createWalletInput: walletInputBuilder.build()))
+          .data;
+
+      expect(createdWallet, isNotNull);
+      expect(createdWallet!.wallet, isNotNull);
+      expect(createdWallet.wallet!.id, isNotEmpty);
+      expect(createdWallet.wallet!.did, isNotEmpty);
+      expect(createdWallet.wallet!.name, equals(name));
+      expect(createdWallet.wallet!.description, equals(description));
+      expect(createdWallet.wallet!.ari, isNotEmpty);
+      expect(createdWallet.wallet!.keys, isNotNull);
+      expect(createdWallet.wallet!.keys!.length, greaterThan(0));
+      expect(createdWallet.wallet!.keys!.first.id, isNotEmpty);
+      expect(createdWallet.wallet!.keys!.first.ari, isNotEmpty);
+
+      walletIdDidWeb = createdWallet.wallet?.id ?? '';
     });
 
     test('Sign Credential', () async {
@@ -160,6 +194,15 @@ void main() {
 
         expectLater(
           walletApi.getWallet(walletId: walletId),
+          throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+        );
+      }
+
+      if (walletIdDidWeb.isNotEmpty) {
+        await walletApi.deleteWallet(walletId: walletIdDidWeb);
+
+        expectLater(
+          walletApi.getWallet(walletId: walletIdDidWeb),
           throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
         );
       }
