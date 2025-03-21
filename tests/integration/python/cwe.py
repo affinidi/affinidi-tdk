@@ -32,10 +32,11 @@ def list_wallets(api_instance: WalletApi):
 
 def sign_unsigned_credential(api_instance: WalletApi):
     env_vars = dotenv_values('../../.env')
+    wallet_id = env_vars['WALLET_ID']
     unsigned_credential = json.loads(env_vars['UNSIGNED_CREDENTIAL'])
 
     try:
-        api_response = api_instance.sign_credential('cc64266957a88423c76605188b27d7e0', { 'unsignedCredential': unsigned_credential })
+        api_response = api_instance.sign_credential(wallet_id, { 'unsignedCredential': unsigned_credential })
         data = json.loads(api_response.json())
         # print("CWE -> sign_credential:", data.get('signed_credential', []))
         assert data.get('signed_credential', []) != [], "signed_credential is empty"
@@ -46,9 +47,10 @@ def sign_unsigned_credential(api_instance: WalletApi):
 def sign_unsigned_params_credential(api_instance: WalletApi):
     env_vars = dotenv_values('../../.env')
     unsigned_credential_params = json.loads(env_vars['UNSIGNED_CREDENTIAL_PARAMS'])
+    wallet_id = env_vars['WALLET_ID']
 
     try:
-        api_response = api_instance.sign_credential('cc64266957a88423c76605188b27d7e0', { 'unsigned_credential_params': unsigned_credential_params })
+        api_response = api_instance.sign_credential(wallet_id, { 'unsigned_credential_params': unsigned_credential_params })
         data = json.loads(api_response.json())
         # print("CWE -> sign_credential:", data.get('signed_credential', []))
         assert data.get('signed_credential', []) != [], "signed_credential is empty"

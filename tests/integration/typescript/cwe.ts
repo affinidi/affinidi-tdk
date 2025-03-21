@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { WalletApi, Configuration as WalletConfiguration } from '@affinidi-tdk/wallets-client'
-import { apiKey, unsignedCredential, unsignedCredentialParams } from './helpers'
+import { apiKey, walletId, unsignedCredential, unsignedCredentialParams } from './helpers'
 
 describe('wallets-client', function () {
   it('returns listWallets', async () => {
@@ -16,7 +16,7 @@ describe('wallets-client', function () {
     const walletConfiguration = new WalletConfiguration({ apiKey })
     const api = new WalletApi(walletConfiguration)
 
-    const { data } = await api.signCredential('cc64266957a88423c76605188b27d7e0', { unsignedCredentialParams: JSON.parse(unsignedCredentialParams) })
+    const { data } = await api.signCredential(walletId, { unsignedCredentialParams: JSON.parse(unsignedCredentialParams) })
 
     expect(data).to.have.a.property('signedCredential')
   })
@@ -25,7 +25,7 @@ describe('wallets-client', function () {
     const walletConfiguration = new WalletConfiguration({ apiKey })
     const api = new WalletApi(walletConfiguration)
 
-    const { data } = await api.signCredential('cc64266957a88423c76605188b27d7e0', { unsignedCredential: JSON.parse(unsignedCredential) })
+    const { data } = await api.signCredential(walletId, { unsignedCredential: JSON.parse(unsignedCredential) })
 
     expect(data).to.have.a.property('signedCredential')
   })

@@ -18,6 +18,7 @@ const {
   VP_TOKEN: vp_token ='',
   UNSIGNED_CREDENTIAL: unsignedCredential ='',
   UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams ='',
+  WALLET_ID: walletId ='',
 } = process.env
 
 // 🍌 init AuthProvider
@@ -38,4 +39,5 @@ export {
   vp_token,
   unsignedCredential,
   unsignedCredentialParams,
+  walletId,
 }
