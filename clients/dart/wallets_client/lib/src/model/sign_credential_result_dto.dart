@@ -3,7 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_result_dto_signed_credential.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +17,7 @@ part 'sign_credential_result_dto.g.dart';
 @BuiltValue()
 abstract class SignCredentialResultDto implements Built<SignCredentialResultDto, SignCredentialResultDtoBuilder> {
   @BuiltValueField(wireName: r'signedCredential')
-  SignCredentialResultDtoSignedCredential get signedCredential;
+  BuiltMap<String, JsonObject?> get signedCredential;
 
   SignCredentialResultDto._();
 
@@ -44,7 +45,7 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
     yield r'signedCredential';
     yield serializers.serialize(
       object.signedCredential,
-      specifiedType: const FullType(SignCredentialResultDtoSignedCredential),
+      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
   }
 
@@ -72,8 +73,8 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
         case r'signedCredential':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SignCredentialResultDtoSignedCredential),
-          ) as SignCredentialResultDtoSignedCredential;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
           result.signedCredential.replace(valueDes);
           break;
         default:

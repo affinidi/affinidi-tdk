@@ -19,15 +19,14 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Any, Dict
 from pydantic import BaseModel, Field
-from affinidi_tdk_wallets_client.models.sign_credential_result_dto_signed_credential import SignCredentialResultDtoSignedCredential
 
 class SignCredentialResultDto(BaseModel):
     """
     DTO contains signed credential  # noqa: E501
     """
-    signed_credential: SignCredentialResultDtoSignedCredential = Field(default=..., alias="signedCredential")
+    signed_credential: Dict[str, Any] = Field(default=..., alias="signedCredential")
     __properties = ["signedCredential"]
 
     class Config:
@@ -54,9 +53,6 @@ class SignCredentialResultDto(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of signed_credential
-        if self.signed_credential:
-            _dict['signedCredential'] = self.signed_credential.to_dict()
         return _dict
 
     @classmethod
@@ -69,7 +65,7 @@ class SignCredentialResultDto(BaseModel):
             return SignCredentialResultDto.parse_obj(obj)
 
         _obj = SignCredentialResultDto.parse_obj({
-            "signed_credential": SignCredentialResultDtoSignedCredential.from_dict(obj.get("signedCredential")) if obj.get("signedCredential") is not None else None
+            "signed_credential": obj.get("signedCredential")
         })
         return _obj
 
