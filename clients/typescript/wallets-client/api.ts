@@ -680,17 +680,11 @@ export interface SignCredentialInputDtoUnsignedCredentialParams {
 export interface SignCredentialResultDto {
   /**
    *
-   * @type {SignCredentialResultDtoSignedCredential}
+   * @type {{ [key: string]: any; }}
    * @memberof SignCredentialResultDto
    */
-  signedCredential: SignCredentialResultDtoSignedCredential
+  signedCredential: { [key: string]: any }
 }
-/**
- * @type SignCredentialResultDtoSignedCredential
- * @export
- */
-export type SignCredentialResultDtoSignedCredential = object | string
-
 /**
  * DTO contains parts of JWT to be signed
  * @export

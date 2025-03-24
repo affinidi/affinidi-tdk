@@ -47,7 +47,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SignCredentialInputDtoCredentialFormatEnum.serializer)
       ..add(SignCredentialInputDtoUnsignedCredentialParams.serializer)
       ..add(SignCredentialResultDto.serializer)
-      ..add(SignCredentialResultDtoSignedCredential.serializer)
       ..add(SignJwtToken.serializer)
       ..add(SignJwtTokenOK.serializer)
       ..add(SigningFailedError.serializer)
@@ -96,6 +95,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDtoKeysInner)]),
           () => new ListBuilder<WalletDtoKeysInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

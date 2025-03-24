@@ -836,10 +836,12 @@ components:
     SignCredentialResultDto:
       description: DTO contains signed credential
       example:
-        signedCredential: '{}'
+        signedCredential:
+          key: ''
       properties:
         signedCredential:
-          $ref: '#/components/schemas/SignCredentialResultDto_signedCredential'
+          additionalProperties: true
+          type: object
       required:
         - signedCredential
       type: object
@@ -1207,10 +1209,6 @@ components:
         - jsonSchemaUrl
         - typeName
       type: object
-    SignCredentialResultDto_signedCredential:
-      oneOf:
-        - type: object
-        - type: string
     ServiceErrorResponse_details_inner:
       additionalProperties: false
       example:

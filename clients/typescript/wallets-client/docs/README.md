@@ -41,7 +41,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialInputDto](./Models/SignCredentialInputDto.md)
 - [SignCredentialInputDto_unsignedCredentialParams](./Models/SignCredentialInputDto_unsignedCredentialParams.md)
 - [SignCredentialResultDto](./Models/SignCredentialResultDto.md)
-- [SignCredentialResultDto_signedCredential](./Models/SignCredentialResultDto_signedCredential.md)
 - [SignJwtToken](./Models/SignJwtToken.md)
 - [SignJwtTokenOK](./Models/SignJwtTokenOK.md)
 - [SigningFailedError](./Models/SigningFailedError.md)
