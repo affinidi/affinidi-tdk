@@ -63,7 +63,7 @@ void main() {
         ..type = NodeType.PROFILE
         ..parentNodeId = rootNodeIdBase64Encoded
         ..edekInfo = edekInfoBuilder
-        ..dek = base64.encode(dekGenerateModel.dekEncryptedByVfsPublicKey);
+        ..dek = base64.encode(dekGenerateModel.dekEncryptedByApiPublicKey);
       final newProfile = (await nodesApi.createNode(
               createNodeInput: createNodeInputBuilder.build()))
           .data;
