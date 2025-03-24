@@ -20,6 +20,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateProjectScopedTokenOutput.serializer)
       ..add(CreateTokenInput.serializer)
       ..add(GetWellKnownDidOK.serializer)
+      ..add(GrantAccessInput.serializer)
+      ..add(GrantAccessInputRightsEnum.serializer)
+      ..add(GrantAccessOutput.serializer)
       ..add(InvalidDIDError.serializer)
       ..add(InvalidDIDErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidDIDErrorMessageEnum.serializer)
@@ -87,6 +90,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserDto.serializer)
       ..add(UserList.serializer)
       ..add(WhoamiDto.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GrantAccessInputRightsEnum)]),
+          () => new ListBuilder<GrantAccessInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
           () => new ListBuilder<JsonWebKeyDto>())

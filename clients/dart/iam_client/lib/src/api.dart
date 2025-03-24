@@ -9,6 +9,7 @@ import 'package:affinidi_tdk_iam_client/src/auth/api_key_auth.dart';
 import 'package:affinidi_tdk_iam_client/src/auth/basic_auth.dart';
 import 'package:affinidi_tdk_iam_client/src/auth/bearer_auth.dart';
 import 'package:affinidi_tdk_iam_client/src/auth/oauth.dart';
+import 'package:affinidi_tdk_iam_client/src/api/authz_api.dart';
 import 'package:affinidi_tdk_iam_client/src/api/consumer_auth_api.dart';
 import 'package:affinidi_tdk_iam_client/src/api/default_api.dart';
 import 'package:affinidi_tdk_iam_client/src/api/policies_api.dart';
@@ -65,6 +66,43 @@ class AffinidiTdkIamClient {
       // Add the authTokenInterceptor to Dio
       this.dio.interceptors.add(authTokenInterceptor);
     }
+
+    // NOTE: global error-handling interceptor
+    this.dio.interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioException e, ErrorInterceptorHandler handler) {
+          if (e.response != null) {
+            final statusCode = e.response?.statusCode;
+            final errorData = e.response?.data;
+
+            String formattedError = 'HTTP $statusCode Error\n';
+
+            if (errorData is Map<String, dynamic>) {
+              final errorName = errorData['name'] ?? 'Unknown Error';
+              final traceId = errorData['traceId']?.toString().isNotEmpty == true ? errorData['traceId'] : 'N/A';
+              final errorMessage = errorData['message'] ?? 'No error message provided';
+              final details = errorData['details'] != null ? errorData['details'].toString() : 'No details available';
+
+              formattedError += '- Error Type: $errorName\n';
+              formattedError += '- Trace ID: $traceId\n';
+              formattedError += '- Message: $errorMessage\n';
+              formattedError += '- Details: $details\n';
+            } else {
+              formattedError += 'Response Body: ${e.response?.data?.toString() ?? "No response body"}';
+            }
+
+            handler.reject(DioException(
+              requestOptions: e.requestOptions,
+              response: e.response,
+              type: e.type,
+              error: formattedError,
+            ));
+          } else {
+            handler.next(e);
+          }
+        },
+      ),
+    );
   }
 
   void setOAuthToken(String name, String token) {
@@ -89,6 +127,12 @@ class AffinidiTdkIamClient {
     if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
       (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys[name] = apiKey;
     }
+  }
+
+  /// Get AuthzApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AuthzApi getAuthzApi() {
+    return AuthzApi(dio, serializers);
   }
 
   /// Get ConsumerAuthApi instance, base route and serializer can be overridden by a given but be careful,

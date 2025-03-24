@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SignCredentialResultDto, () {
-    // SignCredentialResultDtoSignedCredential signedCredential
+    // BuiltMap<String, JsonObject> signedCredential
     test('to test the property `signedCredential`', () async {
       // TODO
     });

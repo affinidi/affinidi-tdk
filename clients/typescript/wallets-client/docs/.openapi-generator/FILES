@@ -19,7 +19,6 @@ Models/ServiceErrorResponse_details_inner.md
 Models/SignCredentialInputDto.md
 Models/SignCredentialInputDto_unsignedCredentialParams.md
 Models/SignCredentialResultDto.md
-Models/SignCredentialResultDto_signedCredential.md
 Models/SignJwtToken.md
 Models/SignJwtTokenOK.md
 Models/SigningFailedError.md

@@ -10,6 +10,7 @@ export 'package:affinidi_tdk_iam_client/src/auth/oauth.dart';
 export 'package:affinidi_tdk_iam_client/src/serializers.dart';
 export 'package:affinidi_tdk_iam_client/src/model/date.dart';
 
+export 'package:affinidi_tdk_iam_client/src/api/authz_api.dart';
 export 'package:affinidi_tdk_iam_client/src/api/consumer_auth_api.dart';
 export 'package:affinidi_tdk_iam_client/src/api/default_api.dart';
 export 'package:affinidi_tdk_iam_client/src/api/policies_api.dart';
@@ -28,6 +29,8 @@ export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_in
 export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/get_well_known_did_ok.dart';
+export 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
+export 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/invalid_did_error.dart';
 export 'package:affinidi_tdk_iam_client/src/model/invalid_jwt_token_error.dart';
 export 'package:affinidi_tdk_iam_client/src/model/invalid_parameter_error.dart';
