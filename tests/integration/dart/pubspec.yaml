@@ -25,11 +25,6 @@ dev_dependencies:
   affinidi_tdk_iota_client:
     path: ../../../clients/dart/iota_client
   affinidi_tdk_cryptography: ^2.0.0
-  affinidi_tdk_vault_data_manager_encryption_service:
-    git:
-      url: git@gitlab.com:affinidi/foundational/dev-ex/tdk-dart-bussiness-layer.git
-      path: packages/vault_data_manager_encryption_service
-      ref: main
   dotenv: ^4.2.0
   lints: ^5.0.0
   test: ^1.24.0
