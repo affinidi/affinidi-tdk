@@ -37,11 +37,11 @@ class TestSignCredentialResultDto(unittest.TestCase):
         model = SignCredentialResultDto()  # noqa: E501
         if include_optional:
             return SignCredentialResultDto(
-                signed_credential = None
+                signed_credential = { }
             )
         else:
             return SignCredentialResultDto(
-                signed_credential = None,
+                signed_credential = { },
         )
         """
 

@@ -15,12 +15,13 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.SignCredentialResultDtoSignedCredential;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,14 +37,19 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class SignCredentialResultDto {
   public static final String JSON_PROPERTY_SIGNED_CREDENTIAL = "signedCredential";
-  private SignCredentialResultDtoSignedCredential signedCredential;
+  private Map<String, Object> signedCredential = new HashMap<>();
 
   public SignCredentialResultDto() {
   }
 
-  public SignCredentialResultDto signedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
+  public SignCredentialResultDto signedCredential(Map<String, Object> signedCredential) {
     
     this.signedCredential = signedCredential;
+    return this;
+  }
+
+  public SignCredentialResultDto putSignedCredentialItem(String key, Object signedCredentialItem) {
+    this.signedCredential.put(key, signedCredentialItem);
     return this;
   }
 
@@ -53,16 +59,16 @@ public class SignCredentialResultDto {
    */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
-  public SignCredentialResultDtoSignedCredential getSignedCredential() {
+  public Map<String, Object> getSignedCredential() {
     return signedCredential;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSignedCredential(SignCredentialResultDtoSignedCredential signedCredential) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  public void setSignedCredential(Map<String, Object> signedCredential) {
     this.signedCredential = signedCredential;
   }
 
@@ -137,7 +143,16 @@ public class SignCredentialResultDto {
 
     // add `signedCredential` to the URL query string
     if (getSignedCredential() != null) {
-      joiner.add(getSignedCredential().toUrlQueryString(prefix + "signedCredential" + suffix));
+      for (String _key : getSignedCredential().keySet()) {
+        try {
+          joiner.add(String.format("%ssignedCredential%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getSignedCredential().get(_key), URLEncoder.encode(String.valueOf(getSignedCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
     }
 
     return joiner.toString();
