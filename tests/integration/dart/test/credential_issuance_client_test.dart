@@ -1,17 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
-import 'package:one_of/one_of.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
-import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
 import 'environment.dart';
 
 void main() {
   group('Credential Issuance Client Integration Tests', () {
     late ConfigurationApi configurationApi;
-    late WalletApi walletApi;
     late String configurationId;
     late String walletId;
 

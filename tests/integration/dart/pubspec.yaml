@@ -24,6 +24,8 @@ dev_dependencies:
     path: ../../../clients/dart/credential_verification_client
   affinidi_tdk_iota_client:
     path: ../../../clients/dart/iota_client
+  affinidi_tdk_login_configuration_client:
+    path: ../../../clients/dart/login_configuration_client
   affinidi_tdk_cryptography: ^2.0.0
   dotenv: ^4.2.0
   lints: ^5.0.0
