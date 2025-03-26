@@ -8,7 +8,7 @@ import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 import 'environment.dart';
 
 void main() {
-  group('Wallets Client 👾', () {
+  group('Wallets Client  Integration Tests', () {
     late WalletApi walletApi;
     late String walletId;
     late String walletIdDidWeb;
@@ -125,7 +125,6 @@ void main() {
       .data;
 
       expect(signedVC?.signedCredential, isNotNull);
-      // TODO: get data from SignCredentialResultDtoSignedCredential
     });
 
     test('Sign JWT', () async {

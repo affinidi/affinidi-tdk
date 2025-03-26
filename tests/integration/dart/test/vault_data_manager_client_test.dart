@@ -34,7 +34,9 @@ void main() {
       nodesApi = apiClient.getNodesApi();
     });
 
-    test('CRUDL Root Nodes', () async {
+    // NOTE: APIs are dependent on encryption service which is under development.
+    // TODO: Uncomment tests after encryption service is public.
+    test('CRUD Root Nodes', () async {
       // get list of profiles
       var initialProfiles = (await nodesApi.listRootNodeChildren()).data;
       expect(initialProfiles, isNotNull);

@@ -10,6 +10,7 @@ class ProjectEnvironment {
   final String? keyId;
   final String? passphrase;
   final String did;
+  final String walletId;
 
   ProjectEnvironment({
     required this.projectId,
@@ -18,6 +19,7 @@ class ProjectEnvironment {
     this.keyId,
     this.passphrase,
     required this.did,
+    required this.walletId,
   });
 }
 
@@ -34,26 +36,30 @@ class IotaEnvironment {
   final String configurationId;
   final String queryId;
   final String did;
+  final String walletAri;
   final String redirectUri;
   final String presentationSubmission;
   final String vpToken;
+  final String vpDefinition;
 
   IotaEnvironment({
     required this.configurationId,
     required this.queryId,
     required this.did,
+    required this.walletAri,
     required this.redirectUri,
     required this.presentationSubmission,
     required this.vpToken,
+    required this.vpDefinition,
   });
 }
 
 IotaEnvironment getIotaEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'QUERY_ID', 'REDIRECT_URI', 'DID', 'PRESENTATION_SUBMISSION', 'VP_TOKEN'])) {
+  if (!env.isEveryDefined(['IOTA_CONFIG_ID', 'QUERY_ID', 'REDIRECT_URI', 'DID', 'PRESENTATION_SUBMISSION', 'VP_TOKEN', 'WALLET_ARI', 'VP_DEFINITION'])) {
     throw Exception(
-      'Missing environment variables. Please provide IOTA_CONFIG_ID, QUERY_ID, REDIRECT_URI, DID, PRESENTATION_SUBMISSION, VP_TOKEN',
+      'Missing environment variables. Please provide IOTA_CONFIG_ID, QUERY_ID, REDIRECT_URI, DID, PRESENTATION_SUBMISSION, VP_TOKEN, WALLET_ARI, VP_DEFINITION',
     );
   }
 
@@ -63,6 +69,8 @@ IotaEnvironment getIotaEnvironment() {
   final redirectUri = env['REDIRECT_URI']!;
   final presentationSubmission = env['PRESENTATION_SUBMISSION']!;
   final vpToken = env['VP_TOKEN']!;
+  final walletAri = env['WALLET_ARI']!;
+  final vpDefinition = env['VP_DEFINITION']!;
 
   return IotaEnvironment(
     configurationId: configurationId,
@@ -71,15 +79,17 @@ IotaEnvironment getIotaEnvironment() {
     redirectUri: redirectUri,
     presentationSubmission: presentationSubmission,
     vpToken: vpToken,
+    walletAri: walletAri,
+    vpDefinition: vpDefinition,
   );
 }
 
 ProjectEnvironment getProjectEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
-  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY', 'DID'])) {
+  if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY', 'DID', 'WALLET_ID'])) {
     throw Exception(
-      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY, DID',
+      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY, DID, WALLET_ID',
     );
   }
 
@@ -90,6 +100,7 @@ ProjectEnvironment getProjectEnvironment() {
   final keyId = env['KEY_ID'] ?? '';
   final passphrase = env['PASSPHRASE'] ?? '';
   final did = env['DID']!;
+  final walletId = env['WALLET_ID']!;
 
   return ProjectEnvironment(
     projectId: projectId,
@@ -98,6 +109,7 @@ ProjectEnvironment getProjectEnvironment() {
     keyId: keyId,
     passphrase: passphrase,
     did: did,
+    walletId: walletId,
   );
 }
 
