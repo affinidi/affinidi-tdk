@@ -814,6 +814,108 @@ paths:
         - nodes
       x-accepts:
         - application/json
+  /v1/accounts:
+    get:
+      description: List accounts of associated profiles.
+      operationId: listAccounts
+      parameters:
+        - description: Maximum number of accounts to fetch in a list
+          explode: true
+          in: query
+          name: limit
+          required: false
+          schema:
+            default: 50
+            maximum: 100
+            minimum: 1
+            type: integer
+          style: form
+        - description:
+            The base64url encoded key of the first item that this operation
+            will evaluate (it is not returned). Use the value that was returned in the
+            previous operation.
+          explode: true
+          in: query
+          name: exclusiveStartKey
+          required: false
+          schema:
+            maxLength: 3000
+            type: string
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAccountsDto'
+          description: ListAccountsOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - accounts
+      x-accepts:
+        - application/json
+    post:
+      description: creates account
+      operationId: createAccount
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAccountInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAccountOK'
+          description: CreateAccountOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags: []
+      x-content-type: application/json
+      x-accepts:
+        - application/json
+  /v1/accounts/{accountIndex}:
+    delete:
+      description: Delete account.
+      operationId: deleteAccount
+      parameters:
+        - explode: false
+          in: path
+          name: accountIndex
+          required: true
+          schema:
+            type: integer
+          style: simple
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAccountDto'
+          description: DeleteAccountOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - accounts
+      x-accepts:
+        - application/json
 components:
   examples: {}
   headers:
@@ -846,6 +948,13 @@ components:
           schema:
             $ref: '#/components/schemas/CreateNodeInput'
       description: CreateNode
+      required: true
+    CreateAccountInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAccountInput'
+      description: CreateAccount
       required: true
     MoveNodeInput:
       content:
@@ -928,6 +1037,24 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CreateAccountOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAccountOK'
+      description: CreateAccountOK
+    ListAccountsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListAccountsDto'
+      description: ListAccountsOK
+    DeleteAccountOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DeleteAccountDto'
+      description: DeleteAccountOK
     UpdateProfileDataOK:
       content:
         application/json:
@@ -1669,6 +1796,24 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    ListAccountsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    CreateAccountBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+    DeleteAccountBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
     GetWellKnownJwksBadRequestError:
       content:
         application/json:
@@ -1855,6 +2000,50 @@ components:
         - INITIALIZED
         - CREATED
       type: string
+    ListAccountsDto:
+      additionalProperties: false
+      example:
+        records:
+          - accountIndex: 0.8008281904610115
+            profileDid: profileDid
+          - accountIndex: 0.8008281904610115
+            profileDid: profileDid
+        lastEvaluatedKey: lastEvaluatedKey
+      properties:
+        records:
+          items:
+            $ref: '#/components/schemas/AccountDto'
+          type: array
+        lastEvaluatedKey:
+          type: string
+      required:
+        - records
+      type: object
+    AccountDto:
+      additionalProperties: false
+      example:
+        accountIndex: 0.8008281904610115
+        profileDid: profileDid
+      properties:
+        accountIndex:
+          description: number that is used for profile DID derivation
+          type: number
+        profileDid:
+          description: Profile DID that is associated with the account number
+          pattern: ^did:.*$
+          type: string
+      required:
+        - accountIndex
+        - profileDid
+      type: object
+    DeleteAccountDto:
+      additionalProperties: false
+      example:
+        accountIndex: 0.8008281904610115
+      properties:
+        accountIndex:
+          type: number
+      type: object
     NodeDto:
       additionalProperties: false
       example:
@@ -2182,6 +2371,28 @@ components:
         - name
         - type
       type: object
+    CreateAccountInput:
+      additionalProperties: false
+      example:
+        accountIndex: 0.8008281904610115
+        profileDid: profileDid
+        didProof: didProof
+      properties:
+        accountIndex:
+          description: number that is used for profile DID derivation
+          type: number
+        profileDid:
+          description: DID that is associated with the account number
+          pattern: ^did:.*$
+          type: string
+        didProof:
+          description: JWT that proves ownership of profile DID by requester
+          type: string
+      required:
+        - accountIndex
+        - didProof
+        - profileDid
+      type: object
     MoveNodeInput:
       additionalProperties: false
       example:
@@ -2264,6 +2475,20 @@ components:
           type: object
       required:
         - nodeId
+      type: object
+    CreateAccountOK:
+      additionalProperties: false
+      example:
+        accountIndex: 0.8008281904610115
+        profileDid: profileDid
+      properties:
+        accountIndex:
+          type: number
+        profileDid:
+          type: string
+      required:
+        - accountIndex
+        - profileDid
       type: object
     UpdateNodeInput:
       additionalProperties: false
