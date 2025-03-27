@@ -5,6 +5,7 @@ README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
 doc/AddUserToProjectInput.md
+doc/AuthzApi.md
 doc/ConsumerAuthApi.md
 doc/ConsumerAuthTokenEndpointInput.md
 doc/ConsumerAuthTokenEndpointOutput.md
@@ -15,6 +16,8 @@ doc/CreateProjectScopedTokenOutput.md
 doc/CreateTokenInput.md
 doc/DefaultApi.md
 doc/GetWellKnownDidOK.md
+doc/GrantAccessInput.md
+doc/GrantAccessOutput.md
 doc/InvalidDIDError.md
 doc/InvalidJwtTokenError.md
 doc/InvalidParameterError.md
@@ -55,6 +58,7 @@ doc/WellKnownApi.md
 doc/WhoamiDto.md
 lib/affinidi_tdk_iam_client.dart
 lib/src/api.dart
+lib/src/api/authz_api.dart
 lib/src/api/consumer_auth_api.dart
 lib/src/api/default_api.dart
 lib/src/api/policies_api.dart
@@ -80,6 +84,8 @@ lib/src/model/create_project_scoped_token_output.dart
 lib/src/model/create_token_input.dart
 lib/src/model/date.dart
 lib/src/model/get_well_known_did_ok.dart
+lib/src/model/grant_access_input.dart
+lib/src/model/grant_access_output.dart
 lib/src/model/invalid_did_error.dart
 lib/src/model/invalid_jwt_token_error.dart
 lib/src/model/invalid_parameter_error.dart
@@ -118,6 +124,7 @@ project.json
 pubspec.yaml
 test/action_forbidden_error_test.dart
 test/add_user_to_project_input_test.dart
+test/authz_api_test.dart
 test/consumer_auth_api_test.dart
 test/consumer_auth_token_endpoint_input_test.dart
 test/consumer_auth_token_endpoint_output_test.dart
@@ -128,6 +135,8 @@ test/create_project_scoped_token_output_test.dart
 test/create_token_input_test.dart
 test/default_api_test.dart
 test/get_well_known_did_ok_test.dart
+test/grant_access_input_test.dart
+test/grant_access_output_test.dart
 test/invalid_did_error_test.dart
 test/invalid_jwt_token_error_test.dart
 test/invalid_parameter_error_test.dart

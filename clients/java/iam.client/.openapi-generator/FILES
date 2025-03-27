@@ -6,6 +6,7 @@ build.gradle
 build.sbt
 docs/ActionForbiddenError.md
 docs/AddUserToProjectInput.md
+docs/AuthzApi.md
 docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
@@ -16,6 +17,8 @@ docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
 docs/GetWellKnownDidOK.md
+docs/GrantAccessInput.md
+docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
 docs/InvalidJwtTokenError.md
 docs/InvalidParameterError.md
@@ -73,6 +76,7 @@ src/main/java/com/affinidi/tdk/iam/client/RFC3339DateFormat.java
 src/main/java/com/affinidi/tdk/iam/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/iam/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/iam/client/StringUtil.java
+src/main/java/com/affinidi/tdk/iam/client/apis/AuthzApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/ConsumerAuthApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/DefaultApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/PoliciesApi.java
@@ -94,6 +98,8 @@ src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInput.j
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GetWellKnownDidOK.java
+src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessInput.java
+src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidDIDError.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidJwtTokenError.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidParameterError.java
@@ -127,6 +133,7 @@ src/main/java/com/affinidi/tdk/iam/client/models/UpdateTokenPrivateKeyAuthentica
 src/main/java/com/affinidi/tdk/iam/client/models/UserDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/UserList.java
 src/main/java/com/affinidi/tdk/iam/client/models/WhoamiDto.java
+src/test/java/com/affinidi/tdk/iam/client/apis/AuthzApiTest.java
 src/test/java/com/affinidi/tdk/iam/client/apis/ConsumerAuthApiTest.java
 src/test/java/com/affinidi/tdk/iam/client/apis/DefaultApiTest.java
 src/test/java/com/affinidi/tdk/iam/client/apis/PoliciesApiTest.java
@@ -144,6 +151,8 @@ src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInputTe
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateTokenInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/GetWellKnownDidOKTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/GrantAccessInputTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/GrantAccessOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/InvalidDIDErrorTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/InvalidJwtTokenErrorTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/InvalidParameterErrorTest.java

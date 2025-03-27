@@ -23,6 +23,8 @@ tags:
     name: projects
   - description: CRUD for authorization policies
     name: policies
+  - description: Authorization operations
+    name: authz
   - description: CRUD for Tokens
     name: tokens
   - description: CORS Definitions
@@ -869,6 +871,42 @@ paths:
       x-content-type: application/json
       x-accepts:
         - application/json
+  /v1/authz/vfs/access:
+    post:
+      description: Grants access rights to a subject for the virtual file system
+      operationId: grantAccessVfs
+      requestBody:
+        $ref: '#/components/requestBodies/GrantAccess'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GrantAccessOutput'
+          description: Successfully granted access to Service
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: ForbiddenError
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+          description: UnexpectedError
+      security:
+        - ConsumerTokenAuth: []
+      summary: Grant access to the virtual file system
+      tags:
+        - authz
+      x-amazon-apigateway-auth:
+        type: AWS_IAM
+        owner_did: true
+      x-content-type: application/json
+      x-accepts:
+        - application/json
   /v1/auth/{proxy+}:
     delete:
       parameters:
@@ -1171,6 +1209,13 @@ components:
             $ref: '#/components/schemas/UpdateTokenInput'
       description: UpdateToken
       required: true
+    GrantAccess:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GrantAccessInput'
+      description: Grant access to virtual file system
+      required: true
     ConsumerAuthTokenEndpoint:
       content:
         application/json:
@@ -1276,6 +1321,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GrantAccessOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GrantAccessOutput'
+      description: Successfully granted access to Service
     CorsConsumerAuthTokenEndpointOK:
       content:
         application/json:
@@ -1629,6 +1680,18 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    GrantAccessVfsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: ForbiddenError
+    GrantAccessVfsUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
   schemas:
     ServiceErrorResponse:
       additionalProperties: false
@@ -2502,6 +2565,44 @@ components:
           type: string
       required:
         - grant_type
+      type: object
+    GrantAccessInput:
+      additionalProperties: false
+      example:
+        rights:
+          - vfs-read
+          - vfs-read
+        subjectDID: subjectDID
+      properties:
+        subjectDID:
+          description: DID of the subject being granted access
+          type: string
+        rights:
+          description: List of rights to grant to the subject
+          items:
+            enum:
+              - vfs-read
+              - vfs-write
+            type: string
+          type: array
+      required:
+        - rights
+        - subjectDID
+      type: object
+    GrantAccessOutput:
+      additionalProperties: false
+      example:
+        grantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        success: true
+      properties:
+        success:
+          type: boolean
+        grantId:
+          description: Unique identifier for the access grant
+          format: uuid
+          type: string
+      required:
+        - success
       type: object
     ConsumerAuthTokenEndpointOutput:
       additionalProperties: false

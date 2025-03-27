@@ -8,7 +8,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Class            | Method                                                                  | HTTP request                                          | Description                                                                                                                                                                                                                   |
 | ---------------- | ----------------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _AccountsApi_    | [**deleteAccount**](Apis/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountIndex}                | Delete account.                                                                                                                                                                                                               |
+| _AccountsApi_    | [**listAccounts**](Apis/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  | List accounts of associated profiles.                                                                                                                                                                                         |
 | _ConfigApi_      | [**getConfig**](Apis/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    | Retrieves the user profile name and the maximum number of profiles, with default values set to 'default' and 1, respectively.                                                                                                 |
+| _DefaultApi_     | [**createAccount**](Apis/DefaultApi.md#createaccount)                   | **POST** /v1/accounts                                 | creates account                                                                                                                                                                                                               |
 | _FilesApi_       | [**getScannedFileInfo**](Apis/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          | Get the details of a scanned file using the textract jobId                                                                                                                                                                    |
 | _FilesApi_       | [**listScannedFiles**](Apis/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            | List all the the scanned files with all the details, e.g. status and jobId                                                                                                                                                    |
 | _FilesApi_       | [**startFileScan**](Apis/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 | Start a scan of the file under this node and provide a textract job                                                                                                                                                           |
@@ -29,6 +32,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## Documentation for Models
 
+- [AccountDto](./Models/AccountDto.md)
 - [AwsCredentialExchangeOperationOK](./Models/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](./Models/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](./Models/CorsAwsCredentialExchangeOK.md)
@@ -45,8 +49,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](./Models/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](./Models/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](./Models/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](./Models/CreateAccountInput.md)
+- [CreateAccountOK](./Models/CreateAccountOK.md)
 - [CreateNodeInput](./Models/CreateNodeInput.md)
 - [CreateNodeOK](./Models/CreateNodeOK.md)
+- [DeleteAccountDto](./Models/DeleteAccountDto.md)
 - [DeleteNodeDto](./Models/DeleteNodeDto.md)
 - [EdekInfo](./Models/EdekInfo.md)
 - [GetConfigOK](./Models/GetConfigOK.md)
@@ -57,6 +64,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [InvalidParameterError_details_inner](./Models/InvalidParameterError_details_inner.md)
 - [JsonWebKeyDto](./Models/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](./Models/JsonWebKeySetDto.md)
+- [ListAccountsDto](./Models/ListAccountsDto.md)
 - [ListNodeChildrenOK](./Models/ListNodeChildrenOK.md)
 - [ListRootNodeChildrenOK](./Models/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](./Models/ListScannedFilesOK.md)

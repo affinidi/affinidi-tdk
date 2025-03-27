@@ -66,8 +66,8 @@ configuration = affinidi_tdk_vault_data_manager_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: AwsSigV4
-configuration.api_key['AwsSigV4'] = os.environ["API_KEY"]
+# Configure API key authorization: ConsumerTokenAuth
+configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
 
 # Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
 import affinidi_tdk_auth_provider
@@ -85,20 +85,21 @@ authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
 configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['AwsSigV4'] = 'Bearer'
+# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
 
 
 # Enter a context with an instance of the API client
 with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = affinidi_tdk_vault_data_manager_client.ConfigApi(api_client)
+    api_instance = affinidi_tdk_vault_data_manager_client.AccountsApi(api_client)
+    account_index = 56 # int |
 
     try:
-        api_response = api_instance.get_config()
-        print("The response of ConfigApi->get_config:\n")
+        api_response = api_instance.delete_account(account_index)
+        print("The response of AccountsApi->delete_account:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ConfigApi->get_config: %s\n" % e)
+        print("Exception when calling AccountsApi->delete_account: %s\n" % e)
 
 ```
 
@@ -108,7 +109,10 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Class            | Method                                                                        | HTTP request                                          | Description |
 | ---------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| _AccountsApi_    | [**delete_account**](docs/AccountsApi.md#delete_account)                      | **DELETE** /v1/accounts/{accountIndex}                |
+| _AccountsApi_    | [**list_accounts**](docs/AccountsApi.md#list_accounts)                        | **GET** /v1/accounts                                  |
 | _ConfigApi_      | [**get_config**](docs/ConfigApi.md#get_config)                                | **GET** /v1/config                                    |
+| _DefaultApi_     | [**create_account**](docs/DefaultApi.md#create_account)                       | **POST** /v1/accounts                                 |
 | _FilesApi_       | [**get_scanned_file_info**](docs/FilesApi.md#get_scanned_file_info)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | _FilesApi_       | [**list_scanned_files**](docs/FilesApi.md#list_scanned_files)                 | **GET** /v1/scanned-files/                            |
 | _FilesApi_       | [**start_file_scan**](docs/FilesApi.md#start_file_scan)                       | **POST** /v1/nodes/{nodeId}/file/scan                 |
@@ -127,6 +131,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## Documentation For Models
 
+- [AccountDto](docs/AccountDto.md)
 - [AwsCredentialExchangeOperationOK](docs/AwsCredentialExchangeOperationOK.md)
 - [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
 - [CorsAwsCredentialExchangeOK](docs/CorsAwsCredentialExchangeOK.md)
@@ -143,8 +148,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsRestoreNodeFromTrashbinOK](docs/CorsRestoreNodeFromTrashbinOK.md)
 - [CorsStartFileScanOK](docs/CorsStartFileScanOK.md)
 - [CorsUpdateProfileDataOK](docs/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](docs/CreateAccountInput.md)
+- [CreateAccountOK](docs/CreateAccountOK.md)
 - [CreateNodeInput](docs/CreateNodeInput.md)
 - [CreateNodeOK](docs/CreateNodeOK.md)
+- [DeleteAccountDto](docs/DeleteAccountDto.md)
 - [DeleteNodeDto](docs/DeleteNodeDto.md)
 - [EdekInfo](docs/EdekInfo.md)
 - [GetConfigOK](docs/GetConfigOK.md)
@@ -155,6 +163,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
 - [JsonWebKeyDto](docs/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
+- [ListAccountsDto](docs/ListAccountsDto.md)
 - [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
 - [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](docs/ListScannedFilesOK.md)
