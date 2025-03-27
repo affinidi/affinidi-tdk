@@ -98,10 +98,10 @@ void main() {
     });
 
     test('Sign Credential', () async {
-      final jsonLdContextUrl = "https://schema.affinidi.io/TPassportV1R0.jsonld";
-      final jsonSchemaUrl = "https://schema.affinidi.io/TPassportV1R0.json";
-      final typeName = "VerifiableCredential";
-      final expiresAt = "10";
+      final jsonLdContextUrl = 'https://schema.affinidi.io/TPassportV1R0.jsonld';
+      final jsonSchemaUrl = 'https://schema.affinidi.io/TPassportV1R0.json';
+      final typeName = 'VerifiableCredential';
+      final expiresAt = '10';
 
       final params = SignCredentialInputDtoUnsignedCredentialParamsBuilder()
         ..jsonLdContextUrl = jsonLdContextUrl
@@ -129,14 +129,14 @@ void main() {
 
     test('Sign JWT', () async {
       final header = {
-        "alg": "HS256",
-        "typ": "JWT"
+        'alg': 'HS256',
+        'typ': 'JWT'
       };
 
       final payload = {
-        "sub": "dc9c399b-eb50-4761-a91c-deee13a47054",
-        "iat": DateTime.now().millisecondsSinceEpoch ~/ 1000,
-        "exp": (DateTime.now().add(Duration(hours: 1))).millisecondsSinceEpoch ~/ 1000
+        'sub': 'dc9c399b-eb50-4761-a91c-deee13a47054',
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+        'exp': (DateTime.now().add(Duration(hours: 1))).millisecondsSinceEpoch ~/ 1000
       };
 
       final jsonHeader = JsonObject(header);

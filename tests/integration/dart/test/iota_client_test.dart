@@ -46,127 +46,130 @@ void main() {
       pexQueryApi = apiClient.getPexQueryApi();
     });
 
-    test('Creates Iota configuration', () async {
-      String walletAri = envIota.walletAri;
-      String redirectUri = envIota.redirectUri;
+    group('Iota Configurations', () {
+      test('Creates Iota configuration', () async {
+        String walletAri = envIota.walletAri;
+        String redirectUri = envIota.redirectUri;
 
-      final clientMetadata = IotaConfigurationDtoClientMetadataBuilder()
-        ..name = 'TestName'
-        ..logo = 'https://example.com/logo.png'
-        ..origin = 'https://example.com'
-        ..build();
+        final clientMetadata = IotaConfigurationDtoClientMetadataBuilder()
+          ..name = 'TestName'
+          ..logo = 'https://example.com/logo.png'
+          ..origin = 'https://example.com'
+          ..build();
 
-      final createIotaConfigurationInput = CreateIotaConfigurationInputBuilder()
-        ..name ='TestIotaConfiguration'
-        ..walletAri = walletAri
-        ..redirectUris = ListBuilder<String>([redirectUri])
-        ..enableVerification = false
-        ..enableConsentAuditLog = false
-        ..clientMetadata = clientMetadata
-        ..description = 'description'
-        ..mode = CreateIotaConfigurationInputModeEnum.redirect
-        ..enableIdvProviders = false;
+        final createIotaConfigurationInput = CreateIotaConfigurationInputBuilder()
+          ..name ='TestIotaConfiguration'
+          ..walletAri = walletAri
+          ..redirectUris = ListBuilder<String>([redirectUri])
+          ..enableVerification = false
+          ..enableConsentAuditLog = false
+          ..clientMetadata = clientMetadata
+          ..description = 'description'
+          ..mode = CreateIotaConfigurationInputModeEnum.redirect
+          ..enableIdvProviders = false;
 
-      final configuration = (await configurationsApi.createIotaConfiguration(createIotaConfigurationInput: createIotaConfigurationInput.build())).data;
+        final configuration = (await configurationsApi.createIotaConfiguration(createIotaConfigurationInput: createIotaConfigurationInput.build())).data;
 
-      expect(configuration, isNotNull);
-      expect(configuration!.walletAri, walletAri);
-      expect(configuration!.mode, IotaConfigurationDtoModeEnum.redirect);
+        expect(configuration, isNotNull);
+        expect(configuration!.walletAri, walletAri);
+        expect(configuration!.mode, IotaConfigurationDtoModeEnum.redirect);
 
-      configurationId = configuration!.configurationId;
-    });
+        configurationId = configuration!.configurationId;
+      });
 
-    test('Reads Iota configurations', () async {
-      final result = (await configurationsApi.listIotaConfigurations()).data;
+      test('Reads Iota configurations', () async {
+        final result = (await configurationsApi.listIotaConfigurations()).data;
 
-      expect(result!.configurations, isNotNull);
-      expect(result!.configurations!.length, greaterThan(0));
-    });
+        expect(result!.configurations, isNotNull);
+        expect(result!.configurations!.length, greaterThan(0));
+      });
 
-    test('Updates Iota configuration', () async {
-      String updatedName = 'UpdatedName';
+      test('Updates Iota configuration', () async {
+        String updatedName = 'UpdatedName';
 
-      final updateConfigurationByIdInput = UpdateConfigurationByIdInputBuilder()
-        ..name = updatedName;
+        final updateConfigurationByIdInput = UpdateConfigurationByIdInputBuilder()
+          ..name = updatedName;
 
-      final configuration = (await configurationsApi.updateIotaConfigurationById(
-        configurationId: configurationId,
-        updateConfigurationByIdInput: updateConfigurationByIdInput.build()))
-      .data;
+        final configuration = (await configurationsApi.updateIotaConfigurationById(
+          configurationId: configurationId,
+          updateConfigurationByIdInput: updateConfigurationByIdInput.build()))
+        .data;
 
-      expect(configuration, isNotNull);
-      expect(configuration!.name, updatedName);
-    });
+        expect(configuration, isNotNull);
+        expect(configuration!.name, updatedName);
+      });
 
+      group('PEX queries', () {
+        test('Creates PEX query', () async {
+          final createPexQueryInput = CreatePexQueryInputBuilder()
+            ..name ='TestQuery'
+            ..vpDefinition = envIota.vpDefinition
+            ..description = '';
 
-    test('Creates PEX query', () async {
-      final createPexQueryInput = CreatePexQueryInputBuilder()
-        ..name ='TestQuery'
-        ..vpDefinition = envIota.vpDefinition
-        ..description = '';
+          final query = (await pexQueryApi.createPexQuery(
+            configurationId: configurationId,
+            createPexQueryInput: createPexQueryInput.build()))
+          .data;
 
-      final query = (await pexQueryApi.createPexQuery(
-        configurationId: configurationId,
-        createPexQueryInput: createPexQueryInput.build()))
-      .data;
+          expect(query, isNotNull);
+          expect(query!.ari, isNotNull);
 
-      expect(query, isNotNull);
-      expect(query!.ari, isNotNull);
+          queryId = query!.queryId;
+        });
 
-      queryId = query!.queryId;
-    });
+        test('Reads PEX queries', () async {
+          final result = (await pexQueryApi.listPexQueries(configurationId: configurationId)).data;
 
-    test('Reads PEX queries', () async {
-      final result = (await pexQueryApi.listPexQueries(configurationId: configurationId)).data;
+          expect(result!.pexQueries, isNotNull);
+          expect(result!.pexQueries!.length, greaterThan(0));
+        });
 
-      expect(result!.pexQueries, isNotNull);
-      expect(result!.pexQueries!.length, greaterThan(0));
-    });
+        test('Updates PEX query', () async {
+          String updatedDescription = 'UpdatedDescription';
 
-    test('Updates PEX query', () async {
-      String updatedDescription = 'UpdatedDescription';
+          final updatePexQueryInput = UpdatePexQueryInputBuilder()
+            ..description = updatedDescription;
 
-      final updatePexQueryInput = UpdatePexQueryInputBuilder()
-        ..description = updatedDescription;
+          final query = (await pexQueryApi.updatePexQueryById(
+            configurationId: configurationId,
+            queryId: queryId,
+            updatePexQueryInput: updatePexQueryInput.build()))
+          .data;
 
-      final query = (await pexQueryApi.updatePexQueryById(
-        configurationId: configurationId,
-        queryId: queryId,
-        updatePexQueryInput: updatePexQueryInput.build()))
-      .data;
+          expect(query, isNotNull);
+          expect(query!.description, updatedDescription);
+        });
 
-      expect(query, isNotNull);
-      expect(query!.description, updatedDescription);
-    });
+        test('Deletes PEX query', () async {
+          final response = (await pexQueryApi.deletePexQueryById(
+            configurationId: configurationId,
+            queryId: queryId,
+          ));
 
-    test('Deletes PEX query', () async {
-      final response = (await pexQueryApi.deletePexQueryById(
-        configurationId: configurationId,
-        queryId: queryId,
-      ));
+          expect(response.statusCode, 204);
+        });
 
-      expect(response.statusCode, 204);
-    });
+        test('Reads PEX query', () async {
+          expectLater(
+            pexQueryApi.getPexQueryById(configurationId: configurationId, queryId: queryId),
+            throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+          );
+        });
+      });
 
-    test('Reads PEX query', () async {
-      expectLater(
-        pexQueryApi.getPexQueryById(configurationId: configurationId, queryId: queryId),
-        throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
-      );
-    });
+      test('Deletes Iota configuration', () async {
+        final response = (await configurationsApi.deleteIotaConfigurationById(
+          configurationId: configurationId));
 
-    test('Deletes Iota configuration', () async {
-      final response = (await configurationsApi.deleteIotaConfigurationById(
-        configurationId: configurationId));
+        expect(response.statusCode, 204);
+      });
 
-      expect(response.statusCode, 204);
-    });
-
-    test('Reads Iota configuration', () async {
-      expectLater(
-        configurationsApi.getIotaConfigurationById(configurationId: configurationId),
-        throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
-      );
+      test('Reads Iota configuration', () async {
+        expectLater(
+          configurationsApi.getIotaConfigurationById(configurationId: configurationId),
+          throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+        );
+      });
     });
 
     test('Iota redirect flow', () async {
