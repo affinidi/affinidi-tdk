@@ -23,7 +23,6 @@ doc/SignCredential400Response.md
 doc/SignCredentialInputDto.md
 doc/SignCredentialInputDtoUnsignedCredentialParams.md
 doc/SignCredentialResultDto.md
-doc/SignCredentialResultDtoSignedCredential.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
 doc/SigningFailedError.md
@@ -63,7 +62,6 @@ lib/src/model/sign_credential400_response.dart
 lib/src/model/sign_credential_input_dto.dart
 lib/src/model/sign_credential_input_dto_unsigned_credential_params.dart
 lib/src/model/sign_credential_result_dto.dart
-lib/src/model/sign_credential_result_dto_signed_credential.dart
 lib/src/model/sign_jwt_token.dart
 lib/src/model/sign_jwt_token_ok.dart
 lib/src/model/signing_failed_error.dart
@@ -93,7 +91,6 @@ test/service_error_response_test.dart
 test/sign_credential400_response_test.dart
 test/sign_credential_input_dto_test.dart
 test/sign_credential_input_dto_unsigned_credential_params_test.dart
-test/sign_credential_result_dto_signed_credential_test.dart
 test/sign_credential_result_dto_test.dart
 test/sign_jwt_token_ok_test.dart
 test/sign_jwt_token_test.dart

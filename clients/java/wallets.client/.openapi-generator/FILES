@@ -24,7 +24,6 @@ docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
 docs/SignCredentialInputDtoUnsignedCredentialParams.md
 docs/SignCredentialResultDto.md
-docs/SignCredentialResultDtoSignedCredential.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
 docs/SigningFailedError.md
@@ -77,7 +76,6 @@ src/main/java/com/affinidi/tdk/wallets/client/models/SignCredential400Response.j
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialInputDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialInputDtoUnsignedCredentialParams.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialResultDto.java
-src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialResultDtoSignedCredential.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtToken.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtTokenOK.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SigningFailedError.java
@@ -105,7 +103,6 @@ src/test/java/com/affinidi/tdk/wallets/client/models/ServiceErrorResponseTest.ja
 src/test/java/com/affinidi/tdk/wallets/client/models/SignCredential400ResponseTest.java
 src/test/java/com/affinidi/tdk/wallets/client/models/SignCredentialInputDtoTest.java
 src/test/java/com/affinidi/tdk/wallets/client/models/SignCredentialInputDtoUnsignedCredentialParamsTest.java
-src/test/java/com/affinidi/tdk/wallets/client/models/SignCredentialResultDtoSignedCredentialTest.java
 src/test/java/com/affinidi/tdk/wallets/client/models/SignCredentialResultDtoTest.java
 src/test/java/com/affinidi/tdk/wallets/client/models/SignJwtTokenOKTest.java
 src/test/java/com/affinidi/tdk/wallets/client/models/SignJwtTokenTest.java
