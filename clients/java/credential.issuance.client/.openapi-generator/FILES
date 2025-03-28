@@ -6,6 +6,10 @@ build.gradle
 build.sbt
 docs/ActionForbiddenError.md
 docs/ActionForbiddenErrorDetailsInner.md
+docs/BatchCredentialInput.md
+docs/BatchCredentialInputCredentialRequestsInner.md
+docs/BatchCredentialResponse.md
+docs/BatchCredentialResponseCredentialResponsesInner.md
 docs/ChangeCredentialStatus400Response.md
 docs/ChangeCredentialStatusInput.md
 docs/ChangeStatusForbiddenError.md
@@ -109,6 +113,10 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/auth/HttpBasicAuth.jav
 src/main/java/com/affinidi/tdk/credential/issuance/client/auth/HttpBearerAuth.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenErrorDetailsInner.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialInput.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialInputCredentialRequestsInner.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialResponse.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialResponseCredentialResponsesInner.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ChangeCredentialStatus400Response.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ChangeCredentialStatusInput.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ChangeStatusForbiddenError.java
@@ -183,6 +191,10 @@ src/test/java/com/affinidi/tdk/credential/issuance/client/apis/OfferApiTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/apis/WellKnownApiTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenErrorDetailsInnerTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ActionForbiddenErrorTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialInputCredentialRequestsInnerTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialInputTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialResponseCredentialResponsesInnerTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/BatchCredentialResponseTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ChangeCredentialStatus400ResponseTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ChangeCredentialStatusInputTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ChangeStatusForbiddenErrorTest.java

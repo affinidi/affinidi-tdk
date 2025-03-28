@@ -129,6 +129,76 @@ export interface ActionForbiddenErrorDetailsInner {
   location?: string
 }
 /**
+ *
+ * @export
+ * @interface BatchCredentialInput
+ */
+export interface BatchCredentialInput {
+  /**
+   * Array that contains Credential Request objects.
+   * @type {Array<BatchCredentialInputCredentialRequestsInner>}
+   * @memberof BatchCredentialInput
+   */
+  credential_requests: Array<BatchCredentialInputCredentialRequestsInner>
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialInputCredentialRequestsInner
+ */
+export interface BatchCredentialInputCredentialRequestsInner {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof BatchCredentialInputCredentialRequestsInner
+   */
+  credential_identifier?: string
+  /**
+   *
+   * @type {CredentialProof}
+   * @memberof BatchCredentialInputCredentialRequestsInner
+   */
+  proof: CredentialProof
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialResponse
+ */
+export interface BatchCredentialResponse {
+  /**
+   *
+   * @type {Array<BatchCredentialResponseCredentialResponsesInner>}
+   * @memberof BatchCredentialResponse
+   */
+  credential_responses: Array<BatchCredentialResponseCredentialResponsesInner>
+  /**
+   *
+   * @type {string}
+   * @memberof BatchCredentialResponse
+   */
+  c_nonce?: string
+  /**
+   * Expiration time in seconds
+   * @type {number}
+   * @memberof BatchCredentialResponse
+   */
+  c_nonce_expires_in?: number
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialResponseCredentialResponsesInner
+ */
+export interface BatchCredentialResponseCredentialResponsesInner {
+  /**
+   * Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
+   * @type {any}
+   * @memberof BatchCredentialResponseCredentialResponsesInner
+   */
+  credential: any
+}
+/**
  * @type ChangeCredentialStatus400Response
  * @export
  */
@@ -3132,6 +3202,71 @@ export const CredentialsApiAxiosParamCreator = function (
 ) {
   return {
     /**
+     * Allows wallet\'s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
+     * @summary Batch credential
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    batchCredential: async (
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('batchCredential', 'projectId', projectId)
+      // verify required parameter 'batchCredentialInput' is not null or undefined
+      assertParamExists(
+        'batchCredential',
+        'batchCredentialInput',
+        batchCredentialInput,
+      )
+      const localVarPath = `/v1/{projectId}/batch_credential`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication bearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        batchCredentialInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3378,6 +3513,42 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
     CredentialsApiAxiosParamCreator(configuration)
   return {
     /**
+     * Allows wallet\'s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
+     * @summary Batch credential
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async batchCredential(
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<BatchCredentialResponse>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.batchCredential(
+        projectId,
+        batchCredentialInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['CredentialsApi.batchCredential']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3517,6 +3688,23 @@ export const CredentialsApiFactory = function (
   const localVarFp = CredentialsApiFp(configuration)
   return {
     /**
+     * Allows wallet\'s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
+     * @summary Batch credential
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    batchCredential(
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<BatchCredentialResponse> {
+      return localVarFp
+        .batchCredential(projectId, batchCredentialInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3599,6 +3787,25 @@ export const CredentialsApiFactory = function (
  * @extends {BaseAPI}
  */
 export class CredentialsApi extends BaseAPI {
+  /**
+   * Allows wallet\'s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
+   * @summary Batch credential
+   * @param {string} projectId Affinidi project id
+   * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CredentialsApi
+   */
+  public batchCredential(
+    projectId: string,
+    batchCredentialInput: BatchCredentialInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return CredentialsApiFp(this.configuration)
+      .batchCredential(projectId, batchCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
    * @param {string} projectId Affinidi project id

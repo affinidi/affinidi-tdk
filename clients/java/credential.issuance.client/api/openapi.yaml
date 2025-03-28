@@ -794,6 +794,39 @@ paths:
         - credentials
       x-accepts:
         - application/json
+  /v1/{projectId}/batch_credential:
+    post:
+      description:
+        "Allows wallet's to claim multiple credentials at once, For authentication\
+        \ it use token from  authorization server (hydra),and token is validated internally\
+        \ in th function"
+      operationId: batchCredential
+      parameters:
+        - description: Affinidi project id
+          explode: false
+          in: path
+          name: projectId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/BatchCredential'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchCredentialResponse'
+          description: Ok
+      security:
+        - bearerAuth: []
+      summary: Batch credential
+      tags:
+        - credentials
+      x-content-type: application/json
+      x-accepts:
+        - application/json
 components:
   examples:
     CredentialOfferResponse:
@@ -907,6 +940,13 @@ components:
             $ref: '#/components/schemas/ChangeCredentialStatusInput'
       description: Request body for changing credential status
       required: true
+    BatchCredential:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchCredentialInput'
+      description: Request body for batch credential
+      required: true
   responses:
     GetIssuanceConfigListResponseOk:
       content:
@@ -943,6 +983,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    BatchCredentialOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchCredentialResponse'
+      description: Ok
     StartIssuanceOk:
       content:
         application/json:
@@ -1505,6 +1551,27 @@ components:
           nullable: false
           type: string
       type: object
+    BatchCredentialInput:
+      additionalProperties: false
+      example:
+        credential_requests:
+          - credential_identifier: credential_identifier
+            proof:
+              proof_type: jwt
+              jwt: jwt
+          - credential_identifier: credential_identifier
+            proof:
+              proof_type: jwt
+              jwt: jwt
+      properties:
+        credential_requests:
+          description: Array that contains Credential Request objects.
+          items:
+            $ref: '#/components/schemas/BatchCredentialInput_credential_requests_inner'
+          type: array
+      required:
+        - credential_requests
+      type: object
     StartIssuanceResponse:
       additionalProperties: false
       example:
@@ -1724,6 +1791,27 @@ components:
       oneOf:
         - $ref: '#/components/schemas/CredentialResponseImmediate'
         - $ref: '#/components/schemas/CredentialResponseDeferred'
+    BatchCredentialResponse:
+      additionalProperties: false
+      example:
+        c_nonce_expires_in: 0
+        c_nonce: c_nonce
+        credential_responses:
+          - credential: ''
+          - credential: ''
+      properties:
+        credential_responses:
+          items:
+            $ref: '#/components/schemas/BatchCredentialResponse_credential_responses_inner'
+          type: array
+        c_nonce:
+          type: string
+        c_nonce_expires_in:
+          description: Expiration time in seconds
+          type: integer
+      required:
+        - credential_responses
+      type: object
     DeferredCredentialResponse:
       $ref: '#/components/schemas/CredentialResponseImmediate'
     DeferredCredentialInput:
@@ -3083,6 +3171,23 @@ components:
         - statusListIndex
         - statusListPurpose
       type: object
+    BatchCredentialInput_credential_requests_inner:
+      example:
+        credential_identifier: credential_identifier
+        proof:
+          proof_type: jwt
+          jwt: jwt
+      properties:
+        credential_identifier:
+          description:
+            It is a String that identifies a Credential that is being requested
+            to be issued.
+          type: string
+        proof:
+          $ref: '#/components/schemas/CredentialProof'
+      required:
+        - proof
+      type: object
     ListIssuanceResponse_issuances_inner:
       example:
         id: id
@@ -3107,6 +3212,18 @@ components:
           type: number
         - description: ISO Duration string (when VC format is JWT)
           type: string
+    BatchCredentialResponse_credential_responses_inner:
+      additionalProperties: false
+      example:
+        credential: ''
+      properties:
+        credential:
+          description:
+            "Issued Credential, It can be a string or an object, depending\
+            \ on the Credential format. default format  is `ldp_vc`."
+      required:
+        - credential
+      type: object
     SupportedCredentialMetadata_display_inner:
       additionalProperties: true
       example:

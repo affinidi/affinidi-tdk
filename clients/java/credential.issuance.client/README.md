@@ -122,6 +122,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | _ConfigurationApi_ | [**getIssuanceConfigById**](docs/ConfigurationApi.md#getIssuanceConfigById)                       | **GET** /v1/configurations/{configurationId}                                                |
 | _ConfigurationApi_ | [**getIssuanceConfigList**](docs/ConfigurationApi.md#getIssuanceConfigList)                       | **GET** /v1/configurations                                                                  |
 | _ConfigurationApi_ | [**updateIssuanceConfigById**](docs/ConfigurationApi.md#updateIssuanceConfigById)                 | **PUT** /v1/configurations/{configurationId}                                                |
+| _CredentialsApi_   | [**batchCredential**](docs/CredentialsApi.md#batchCredential)                                     | **POST** /v1/{projectId}/batch_credential                                                   | Batch credential                              |
 | _CredentialsApi_   | [**generateCredentials**](docs/CredentialsApi.md#generateCredentials)                             | **POST** /v1/{projectId}/credential                                                         |
 | _CredentialsApi_   | [**getClaimedCredentials**](docs/CredentialsApi.md#getClaimedCredentials)                         | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
 | _CredentialsApi_   | [**getIssuanceIdClaimedCredential**](docs/CredentialsApi.md#getIssuanceIdClaimedCredential)       | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
@@ -138,6 +139,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 - [ActionForbiddenError](docs/ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](docs/ActionForbiddenErrorDetailsInner.md)
+- [BatchCredentialInput](docs/BatchCredentialInput.md)
+- [BatchCredentialInputCredentialRequestsInner](docs/BatchCredentialInputCredentialRequestsInner.md)
+- [BatchCredentialResponse](docs/BatchCredentialResponse.md)
+- [BatchCredentialResponseCredentialResponsesInner](docs/BatchCredentialResponseCredentialResponsesInner.md)
 - [ChangeCredentialStatus400Response](docs/ChangeCredentialStatus400Response.md)
 - [ChangeCredentialStatusInput](docs/ChangeCredentialStatusInput.md)
 - [ChangeStatusForbiddenError](docs/ChangeStatusForbiddenError.md)

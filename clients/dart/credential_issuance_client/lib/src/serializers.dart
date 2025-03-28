@@ -16,6 +16,10 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error_details_inner.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input_credential_requests_inner.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response_credential_responses_inner.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
@@ -88,6 +92,10 @@ part 'serializers.g.dart';
 @SerializersFor([
   ActionForbiddenError,
   ActionForbiddenErrorDetailsInner,
+  BatchCredentialInput,
+  BatchCredentialInputCredentialRequestsInner,
+  BatchCredentialResponse,
+  BatchCredentialResponseCredentialResponsesInner,
   ChangeCredentialStatus400Response,
   ChangeCredentialStatusInput,
   ChangeStatusForbiddenError,
