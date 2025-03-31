@@ -4,15 +4,18 @@ README.md
 README.md
 affinidi_tdk_vault_data_manager_client/__init__.py
 affinidi_tdk_vault_data_manager_client/api/__init__.py
+affinidi_tdk_vault_data_manager_client/api/accounts_api.py
 affinidi_tdk_vault_data_manager_client/api/config_api.py
 affinidi_tdk_vault_data_manager_client/api/files_api.py
 affinidi_tdk_vault_data_manager_client/api/nodes_api.py
 affinidi_tdk_vault_data_manager_client/api/profile_data_api.py
+affinidi_tdk_vault_data_manager_client/api/well_known_api.py
 affinidi_tdk_vault_data_manager_client/api_client.py
 affinidi_tdk_vault_data_manager_client/api_response.py
 affinidi_tdk_vault_data_manager_client/configuration.py
 affinidi_tdk_vault_data_manager_client/exceptions.py
 affinidi_tdk_vault_data_manager_client/models/__init__.py
+affinidi_tdk_vault_data_manager_client/models/account_dto.py
 affinidi_tdk_vault_data_manager_client/models/aws_credential_exchange_operation_ok.py
 affinidi_tdk_vault_data_manager_client/models/consumer_metadata_dto.py
 affinidi_tdk_vault_data_manager_client/models/cors_aws_credential_exchange_ok.py
@@ -29,8 +32,11 @@ affinidi_tdk_vault_data_manager_client/models/cors_permanently_delete_node_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_restore_node_from_trashbin_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_start_file_scan_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_update_profile_data_ok.py
+affinidi_tdk_vault_data_manager_client/models/create_account_input.py
+affinidi_tdk_vault_data_manager_client/models/create_account_ok.py
 affinidi_tdk_vault_data_manager_client/models/create_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_ok.py
+affinidi_tdk_vault_data_manager_client/models/delete_account_dto.py
 affinidi_tdk_vault_data_manager_client/models/delete_node_dto.py
 affinidi_tdk_vault_data_manager_client/models/edek_info.py
 affinidi_tdk_vault_data_manager_client/models/get_config_ok.py
@@ -41,6 +47,7 @@ affinidi_tdk_vault_data_manager_client/models/invalid_parameter_error.py
 affinidi_tdk_vault_data_manager_client/models/invalid_parameter_error_details_inner.py
 affinidi_tdk_vault_data_manager_client/models/json_web_key_dto.py
 affinidi_tdk_vault_data_manager_client/models/json_web_key_set_dto.py
+affinidi_tdk_vault_data_manager_client/models/list_accounts_dto.py
 affinidi_tdk_vault_data_manager_client/models/list_node_children_ok.py
 affinidi_tdk_vault_data_manager_client/models/list_root_node_children_ok.py
 affinidi_tdk_vault_data_manager_client/models/list_scanned_files_ok.py
@@ -61,6 +68,8 @@ affinidi_tdk_vault_data_manager_client/models/update_profile_data_input.py
 affinidi_tdk_vault_data_manager_client/models/update_profile_data_ok.py
 affinidi_tdk_vault_data_manager_client/py.typed
 affinidi_tdk_vault_data_manager_client/rest.py
+docs/AccountDto.md
+docs/AccountsApi.md
 docs/AwsCredentialExchangeOperationOK.md
 docs/ConfigApi.md
 docs/ConsumerMetadataDto.md
@@ -78,8 +87,11 @@ docs/CorsPermanentlyDeleteNodeOK.md
 docs/CorsRestoreNodeFromTrashbinOK.md
 docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
+docs/CreateAccountInput.md
+docs/CreateAccountOK.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
+docs/DeleteAccountDto.md
 docs/DeleteNodeDto.md
 docs/EdekInfo.md
 docs/FilesApi.md
@@ -91,6 +103,7 @@ docs/InvalidParameterError.md
 docs/InvalidParameterErrorDetailsInner.md
 docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
+docs/ListAccountsDto.md
 docs/ListNodeChildrenOK.md
 docs/ListRootNodeChildrenOK.md
 docs/ListScannedFilesOK.md
@@ -111,6 +124,7 @@ docs/UnexpectedError.md
 docs/UpdateNodeInput.md
 docs/UpdateProfileDataInput.md
 docs/UpdateProfileDataOK.md
+docs/WellKnownApi.md
 project.json
 pyproject.toml
 requirements.txt
@@ -118,6 +132,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_account_dto.py
+test/test_accounts_api.py
 test/test_aws_credential_exchange_operation_ok.py
 test/test_config_api.py
 test/test_consumer_metadata_dto.py
@@ -135,8 +151,11 @@ test/test_cors_permanently_delete_node_ok.py
 test/test_cors_restore_node_from_trashbin_ok.py
 test/test_cors_start_file_scan_ok.py
 test/test_cors_update_profile_data_ok.py
+test/test_create_account_input.py
+test/test_create_account_ok.py
 test/test_create_node_input.py
 test/test_create_node_ok.py
+test/test_delete_account_dto.py
 test/test_delete_node_dto.py
 test/test_edek_info.py
 test/test_files_api.py
@@ -148,6 +167,7 @@ test/test_invalid_parameter_error.py
 test/test_invalid_parameter_error_details_inner.py
 test/test_json_web_key_dto.py
 test/test_json_web_key_set_dto.py
+test/test_list_accounts_dto.py
 test/test_list_node_children_ok.py
 test/test_list_root_node_children_ok.py
 test/test_list_scanned_files_ok.py
@@ -168,4 +188,5 @@ test/test_unexpected_error.py
 test/test_update_node_input.py
 test/test_update_profile_data_input.py
 test/test_update_profile_data_ok.py
+test/test_well_known_api.py
 tox.ini

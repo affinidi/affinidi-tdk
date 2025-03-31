@@ -1,8 +1,11 @@
 .openapi-generator-ignore
+Apis/AccountsApi.md
 Apis/ConfigApi.md
 Apis/FilesApi.md
 Apis/NodesApi.md
 Apis/ProfileDataApi.md
+Apis/WellKnownApi.md
+Models/AccountDto.md
 Models/AwsCredentialExchangeOperationOK.md
 Models/ConsumerMetadataDto.md
 Models/CorsAwsCredentialExchangeOK.md
@@ -19,8 +22,11 @@ Models/CorsPermanentlyDeleteNodeOK.md
 Models/CorsRestoreNodeFromTrashbinOK.md
 Models/CorsStartFileScanOK.md
 Models/CorsUpdateProfileDataOK.md
+Models/CreateAccountInput.md
+Models/CreateAccountOK.md
 Models/CreateNodeInput.md
 Models/CreateNodeOK.md
+Models/DeleteAccountDto.md
 Models/DeleteNodeDto.md
 Models/EdekInfo.md
 Models/GetConfigOK.md
@@ -31,6 +37,7 @@ Models/InvalidParameterError.md
 Models/InvalidParameterError_details_inner.md
 Models/JsonWebKeyDto.md
 Models/JsonWebKeySetDto.md
+Models/ListAccountsDto.md
 Models/ListNodeChildrenOK.md
 Models/ListRootNodeChildrenOK.md
 Models/ListScannedFilesOK.md
