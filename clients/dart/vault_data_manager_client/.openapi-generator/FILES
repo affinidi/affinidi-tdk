@@ -3,6 +3,8 @@
 LICENSE
 README.md
 analysis_options.yaml
+doc/AccountDto.md
+doc/AccountsApi.md
 doc/AwsCredentialExchangeOperationOK.md
 doc/ConfigApi.md
 doc/ConsumerMetadataDto.md
@@ -20,8 +22,11 @@ doc/CorsPermanentlyDeleteNodeOK.md
 doc/CorsRestoreNodeFromTrashbinOK.md
 doc/CorsStartFileScanOK.md
 doc/CorsUpdateProfileDataOK.md
+doc/CreateAccountInput.md
+doc/CreateAccountOK.md
 doc/CreateNodeInput.md
 doc/CreateNodeOK.md
+doc/DeleteAccountDto.md
 doc/DeleteNodeDto.md
 doc/EdekInfo.md
 doc/FilesApi.md
@@ -33,6 +38,7 @@ doc/InvalidParameterError.md
 doc/InvalidParameterErrorDetailsInner.md
 doc/JsonWebKeyDto.md
 doc/JsonWebKeySetDto.md
+doc/ListAccountsDto.md
 doc/ListNodeChildrenOK.md
 doc/ListRootNodeChildrenOK.md
 doc/ListScannedFilesOK.md
@@ -53,12 +59,15 @@ doc/UnexpectedError.md
 doc/UpdateNodeInput.md
 doc/UpdateProfileDataInput.md
 doc/UpdateProfileDataOK.md
+doc/WellKnownApi.md
 lib/affinidi_tdk_vault_data_manager_client.dart
 lib/src/api.dart
+lib/src/api/accounts_api.dart
 lib/src/api/config_api.dart
 lib/src/api/files_api.dart
 lib/src/api/nodes_api.dart
 lib/src/api/profile_data_api.dart
+lib/src/api/well_known_api.dart
 lib/src/api_util.dart
 lib/src/auth/api_key_auth.dart
 lib/src/auth/auth.dart
@@ -66,6 +75,7 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/account_dto.dart
 lib/src/model/aws_credential_exchange_operation_ok.dart
 lib/src/model/consumer_metadata_dto.dart
 lib/src/model/cors_aws_credential_exchange_ok.dart
@@ -82,9 +92,12 @@ lib/src/model/cors_permanently_delete_node_ok.dart
 lib/src/model/cors_restore_node_from_trashbin_ok.dart
 lib/src/model/cors_start_file_scan_ok.dart
 lib/src/model/cors_update_profile_data_ok.dart
+lib/src/model/create_account_input.dart
+lib/src/model/create_account_ok.dart
 lib/src/model/create_node_input.dart
 lib/src/model/create_node_ok.dart
 lib/src/model/date.dart
+lib/src/model/delete_account_dto.dart
 lib/src/model/delete_node_dto.dart
 lib/src/model/edek_info.dart
 lib/src/model/get_config_ok.dart
@@ -95,6 +108,7 @@ lib/src/model/invalid_parameter_error.dart
 lib/src/model/invalid_parameter_error_details_inner.dart
 lib/src/model/json_web_key_dto.dart
 lib/src/model/json_web_key_set_dto.dart
+lib/src/model/list_accounts_dto.dart
 lib/src/model/list_node_children_ok.dart
 lib/src/model/list_root_node_children_ok.dart
 lib/src/model/list_scanned_files_ok.dart
@@ -116,6 +130,8 @@ lib/src/model/update_profile_data_ok.dart
 lib/src/serializers.dart
 project.json
 pubspec.yaml
+test/account_dto_test.dart
+test/accounts_api_test.dart
 test/aws_credential_exchange_operation_ok_test.dart
 test/config_api_test.dart
 test/consumer_metadata_dto_test.dart
@@ -133,8 +149,11 @@ test/cors_permanently_delete_node_ok_test.dart
 test/cors_restore_node_from_trashbin_ok_test.dart
 test/cors_start_file_scan_ok_test.dart
 test/cors_update_profile_data_ok_test.dart
+test/create_account_input_test.dart
+test/create_account_ok_test.dart
 test/create_node_input_test.dart
 test/create_node_ok_test.dart
+test/delete_account_dto_test.dart
 test/delete_node_dto_test.dart
 test/edek_info_test.dart
 test/files_api_test.dart
@@ -146,6 +165,7 @@ test/invalid_parameter_error_details_inner_test.dart
 test/invalid_parameter_error_test.dart
 test/json_web_key_dto_test.dart
 test/json_web_key_set_dto_test.dart
+test/list_accounts_dto_test.dart
 test/list_node_children_ok_test.dart
 test/list_root_node_children_ok_test.dart
 test/list_scanned_files_ok_scanned_files_inner_test.dart
@@ -166,3 +186,4 @@ test/unexpected_error_test.dart
 test/update_node_input_test.dart
 test/update_profile_data_input_test.dart
 test/update_profile_data_ok_test.dart
+test/well_known_api_test.dart
