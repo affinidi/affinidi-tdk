@@ -35,7 +35,7 @@ jobs:
 
       - name: install python tools
         run: |
-          pip install poetry@1.8.5
+          pip install poetry==1.8.5
 
       - name: Set up specific jdk
         uses: actions/setup-java@v4

@@ -54,7 +54,7 @@ jobs:
       - name: install python tools
         run: |
           pip install twine
-          pip install poetry@1.8.5
+          pip install poetry==@1.8.5
 
       - name: Mint pypi token
         id: mint
