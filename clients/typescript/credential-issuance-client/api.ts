@@ -129,6 +129,76 @@ export interface ActionForbiddenErrorDetailsInner {
   location?: string
 }
 /**
+ *
+ * @export
+ * @interface BatchCredentialInput
+ */
+export interface BatchCredentialInput {
+  /**
+   * Array that contains Credential Request objects.
+   * @type {Array<BatchCredentialInputCredentialRequestsInner>}
+   * @memberof BatchCredentialInput
+   */
+  credential_requests: Array<BatchCredentialInputCredentialRequestsInner>
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialInputCredentialRequestsInner
+ */
+export interface BatchCredentialInputCredentialRequestsInner {
+  /**
+   * It is a String that identifies a Credential that is being requested to be issued.
+   * @type {string}
+   * @memberof BatchCredentialInputCredentialRequestsInner
+   */
+  credential_identifier?: string
+  /**
+   *
+   * @type {CredentialProof}
+   * @memberof BatchCredentialInputCredentialRequestsInner
+   */
+  proof: CredentialProof
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialResponse
+ */
+export interface BatchCredentialResponse {
+  /**
+   *
+   * @type {Array<BatchCredentialResponseCredentialResponsesInner>}
+   * @memberof BatchCredentialResponse
+   */
+  credential_responses: Array<BatchCredentialResponseCredentialResponsesInner>
+  /**
+   *
+   * @type {string}
+   * @memberof BatchCredentialResponse
+   */
+  c_nonce?: string
+  /**
+   * Expiration time in seconds
+   * @type {number}
+   * @memberof BatchCredentialResponse
+   */
+  c_nonce_expires_in?: number
+}
+/**
+ *
+ * @export
+ * @interface BatchCredentialResponseCredentialResponsesInner
+ */
+export interface BatchCredentialResponseCredentialResponsesInner {
+  /**
+   * Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
+   * @type {any}
+   * @memberof BatchCredentialResponseCredentialResponsesInner
+   */
+  credential: any
+}
+/**
  * @type ChangeCredentialStatus400Response
  * @export
  */

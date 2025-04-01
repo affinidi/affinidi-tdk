@@ -7,6 +7,10 @@ Apis/OfferApi.md
 Apis/WellKnownApi.md
 Models/ActionForbiddenError.md
 Models/ActionForbiddenError_details_inner.md
+Models/BatchCredentialInput.md
+Models/BatchCredentialInput_credential_requests_inner.md
+Models/BatchCredentialResponse.md
+Models/BatchCredentialResponse_credential_responses_inner.md
 Models/ChangeCredentialStatusInput.md
 Models/ChangeStatusForbiddenError.md
 Models/CisConfigurationWebhookSetting.md
