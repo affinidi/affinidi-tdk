@@ -32,15 +32,15 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   AccountDto.JSON_PROPERTY_ACCOUNT_INDEX,
-  AccountDto.JSON_PROPERTY_PROFILE_DID
+  AccountDto.JSON_PROPERTY_ACCOUNT_DID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AccountDto {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
   private BigDecimal accountIndex;
 
-  public static final String JSON_PROPERTY_PROFILE_DID = "profileDid";
-  private String profileDid;
+  public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
+  private String accountDid;
 
   public AccountDto() {
   }
@@ -70,29 +70,29 @@ public class AccountDto {
     this.accountIndex = accountIndex;
   }
 
-  public AccountDto profileDid(String profileDid) {
+  public AccountDto accountDid(String accountDid) {
     
-    this.profileDid = profileDid;
+    this.accountDid = accountDid;
     return this;
   }
 
   /**
    * Profile DID that is associated with the account number
-   * @return profileDid
+   * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_DID)
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getProfileDid() {
-    return profileDid;
+  public String getAccountDid() {
+    return accountDid;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_DID)
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileDid(String profileDid) {
-    this.profileDid = profileDid;
+  public void setAccountDid(String accountDid) {
+    this.accountDid = accountDid;
   }
 
   @Override
@@ -105,12 +105,12 @@ public class AccountDto {
     }
     AccountDto accountDto = (AccountDto) o;
     return Objects.equals(this.accountIndex, accountDto.accountIndex) &&
-        Objects.equals(this.profileDid, accountDto.profileDid);
+        Objects.equals(this.accountDid, accountDto.accountDid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndex, profileDid);
+    return Objects.hash(accountIndex, accountDid);
   }
 
   @Override
@@ -118,7 +118,7 @@ public class AccountDto {
     StringBuilder sb = new StringBuilder();
     sb.append("class AccountDto {\n");
     sb.append("    accountIndex: ").append(toIndentedString(accountIndex)).append("\n");
-    sb.append("    profileDid: ").append(toIndentedString(profileDid)).append("\n");
+    sb.append("    accountDid: ").append(toIndentedString(accountDid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,10 +176,10 @@ public class AccountDto {
       }
     }
 
-    // add `profileDid` to the URL query string
-    if (getProfileDid() != null) {
+    // add `accountDid` to the URL query string
+    if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%sprofileDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

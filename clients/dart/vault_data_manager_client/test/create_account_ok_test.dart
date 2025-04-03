@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // String profileDid
-    test('to test the property `profileDid`', () async {
+    // String accountDid
+    test('to test the property `accountDid`', () async {
       // TODO
     });
 

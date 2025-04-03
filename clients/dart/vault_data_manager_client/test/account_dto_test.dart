@@ -14,8 +14,8 @@ void main() {
     });
 
     // Profile DID that is associated with the account number
-    // String profileDid
-    test('to test the property `profileDid`', () async {
+    // String accountDid
+    test('to test the property `accountDid`', () async {
       // TODO
     });
 

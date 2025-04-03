@@ -12,7 +12,7 @@ part 'create_account_input.g.dart';
 ///
 /// Properties:
 /// * [accountIndex] - number that is used for profile DID derivation
-/// * [profileDid] - DID that is associated with the account number
+/// * [accountDid] - DID that is associated with the account number
 /// * [didProof] - JWT that proves ownership of profile DID by requester
 @BuiltValue()
 abstract class CreateAccountInput implements Built<CreateAccountInput, CreateAccountInputBuilder> {
@@ -21,8 +21,8 @@ abstract class CreateAccountInput implements Built<CreateAccountInput, CreateAcc
   int get accountIndex;
 
   /// DID that is associated with the account number
-  @BuiltValueField(wireName: r'profileDid')
-  String get profileDid;
+  @BuiltValueField(wireName: r'accountDid')
+  String get accountDid;
 
   /// JWT that proves ownership of profile DID by requester
   @BuiltValueField(wireName: r'didProof')
@@ -56,9 +56,9 @@ class _$CreateAccountInputSerializer implements PrimitiveSerializer<CreateAccoun
       object.accountIndex,
       specifiedType: const FullType(int),
     );
-    yield r'profileDid';
+    yield r'accountDid';
     yield serializers.serialize(
-      object.profileDid,
+      object.accountDid,
       specifiedType: const FullType(String),
     );
     yield r'didProof';
@@ -96,12 +96,12 @@ class _$CreateAccountInputSerializer implements PrimitiveSerializer<CreateAccoun
           ) as int;
           result.accountIndex = valueDes;
           break;
-        case r'profileDid':
+        case r'accountDid':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.profileDid = valueDes;
+          result.accountDid = valueDes;
           break;
         case r'didProof':
           final valueDes = serializers.deserialize(

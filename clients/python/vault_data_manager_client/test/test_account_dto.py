@@ -38,12 +38,12 @@ class TestAccountDto(unittest.TestCase):
         if include_optional:
             return AccountDto(
                 account_index = 1.337,
-                profile_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj'
+                account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj'
             )
         else:
             return AccountDto(
                 account_index = 1.337,
-                profile_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj',
+                account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj',
         )
         """
 

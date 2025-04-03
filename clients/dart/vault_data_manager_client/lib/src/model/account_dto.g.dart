@@ -10,17 +10,17 @@ class _$AccountDto extends AccountDto {
   @override
   final int accountIndex;
   @override
-  final String profileDid;
+  final String accountDid;
 
   factory _$AccountDto([void Function(AccountDtoBuilder)? updates]) =>
       (new AccountDtoBuilder()..update(updates))._build();
 
-  _$AccountDto._({required this.accountIndex, required this.profileDid})
+  _$AccountDto._({required this.accountIndex, required this.accountDid})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'AccountDto', 'accountIndex');
     BuiltValueNullFieldError.checkNotNull(
-        profileDid, r'AccountDto', 'profileDid');
+        accountDid, r'AccountDto', 'accountDid');
   }
 
   @override
@@ -35,14 +35,14 @@ class _$AccountDto extends AccountDto {
     if (identical(other, this)) return true;
     return other is AccountDto &&
         accountIndex == other.accountIndex &&
-        profileDid == other.profileDid;
+        accountDid == other.accountDid;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, accountIndex.hashCode);
-    _$hash = $jc(_$hash, profileDid.hashCode);
+    _$hash = $jc(_$hash, accountDid.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -51,7 +51,7 @@ class _$AccountDto extends AccountDto {
   String toString() {
     return (newBuiltValueToStringHelper(r'AccountDto')
           ..add('accountIndex', accountIndex)
-          ..add('profileDid', profileDid))
+          ..add('accountDid', accountDid))
         .toString();
   }
 }
@@ -63,9 +63,9 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
   int? get accountIndex => _$this._accountIndex;
   set accountIndex(int? accountIndex) => _$this._accountIndex = accountIndex;
 
-  String? _profileDid;
-  String? get profileDid => _$this._profileDid;
-  set profileDid(String? profileDid) => _$this._profileDid = profileDid;
+  String? _accountDid;
+  String? get accountDid => _$this._accountDid;
+  set accountDid(String? accountDid) => _$this._accountDid = accountDid;
 
   AccountDtoBuilder() {
     AccountDto._defaults(this);
@@ -75,7 +75,7 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
     final $v = _$v;
     if ($v != null) {
       _accountIndex = $v.accountIndex;
-      _profileDid = $v.profileDid;
+      _accountDid = $v.accountDid;
       _$v = null;
     }
     return this;
@@ -100,8 +100,8 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
         new _$AccountDto._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'AccountDto', 'accountIndex'),
-          profileDid: BuiltValueNullFieldError.checkNotNull(
-              profileDid, r'AccountDto', 'profileDid'),
+          accountDid: BuiltValueNullFieldError.checkNotNull(
+              accountDid, r'AccountDto', 'accountDid'),
         );
     replace(_$result);
     return _$result;

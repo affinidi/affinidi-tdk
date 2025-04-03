@@ -5,7 +5,7 @@
 | Name              | Type      | Description                                            | Notes |
 | ----------------- | --------- | ------------------------------------------------------ | ----- |
 | **account_index** | **float** | number that is used for profile DID derivation         |
-| **profile_did**   | **str**   | Profile DID that is associated with the account number |
+| **account_did**   | **str**   | Profile DID that is associated with the account number |
 
 ## Example
 

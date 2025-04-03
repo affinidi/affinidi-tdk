@@ -27,11 +27,11 @@ class AccountDto(BaseModel):
     AccountDto
     """
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex", description="number that is used for profile DID derivation")
-    profile_did: constr(strict=True) = Field(default=..., alias="profileDid", description="Profile DID that is associated with the account number")
-    __properties = ["accountIndex", "profileDid"]
+    account_did: constr(strict=True) = Field(default=..., alias="accountDid", description="Profile DID that is associated with the account number")
+    __properties = ["accountIndex", "accountDid"]
 
-    @validator('profile_did')
-    def profile_did_validate_regular_expression(cls, value):
+    @validator('account_did')
+    def account_did_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^did:.*$", value):
             raise ValueError(r"must validate the regular expression /^did:.*$/")
@@ -74,7 +74,7 @@ class AccountDto(BaseModel):
 
         _obj = AccountDto.parse_obj({
             "account_index": obj.get("accountIndex"),
-            "profile_did": obj.get("profileDid")
+            "account_did": obj.get("accountDid")
         })
         return _obj
 
