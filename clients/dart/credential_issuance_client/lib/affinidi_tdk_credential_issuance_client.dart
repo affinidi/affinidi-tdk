@@ -19,6 +19,10 @@ export 'package:affinidi_tdk_credential_issuance_client/src/api/well_known_api.d
 
 export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error_details_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input_credential_requests_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response_credential_responses_inner.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';

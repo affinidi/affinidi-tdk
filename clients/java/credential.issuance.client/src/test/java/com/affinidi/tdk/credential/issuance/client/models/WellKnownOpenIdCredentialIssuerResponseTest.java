@@ -67,6 +67,14 @@ class WellKnownOpenIdCredentialIssuerResponseTest {
     }
 
     /**
+     * Test the property 'batchCredentialEndpoint'
+     */
+    @Test
+    void batchCredentialEndpointTest() {
+        // TODO: test batchCredentialEndpoint
+    }
+
+    /**
      * Test the property 'credentialsSupported'
      */
     @Test
