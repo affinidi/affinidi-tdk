@@ -907,6 +907,13 @@ components:
             $ref: '#/components/schemas/ChangeCredentialStatusInput'
       description: Request body for changing credential status
       required: true
+    BatchCredential:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchCredentialInput'
+      description: Request body for batch credential
+      required: true
   responses:
     GetIssuanceConfigListResponseOk:
       content:
@@ -943,6 +950,12 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    BatchCredentialOk:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchCredentialResponse'
+      description: Ok
     StartIssuanceOk:
       content:
         application/json:
@@ -1505,6 +1518,17 @@ components:
           nullable: false
           type: string
       type: object
+    BatchCredentialInput:
+      additionalProperties: false
+      properties:
+        credential_requests:
+          description: Array that contains Credential Request objects.
+          items:
+            $ref: '#/components/schemas/BatchCredentialInput_credential_requests_inner'
+          type: array
+      required:
+        - credential_requests
+      type: object
     StartIssuanceResponse:
       additionalProperties: false
       example:
@@ -1724,6 +1748,21 @@ components:
       oneOf:
         - $ref: '#/components/schemas/CredentialResponseImmediate'
         - $ref: '#/components/schemas/CredentialResponseDeferred'
+    BatchCredentialResponse:
+      additionalProperties: false
+      properties:
+        credential_responses:
+          items:
+            $ref: '#/components/schemas/BatchCredentialResponse_credential_responses_inner'
+          type: array
+        c_nonce:
+          type: string
+        c_nonce_expires_in:
+          description: Expiration time in seconds
+          type: integer
+      required:
+        - credential_responses
+      type: object
     DeferredCredentialResponse:
       $ref: '#/components/schemas/CredentialResponseImmediate'
     DeferredCredentialInput:
@@ -2371,6 +2410,7 @@ components:
     WellKnownOpenIdCredentialIssuerResponse:
       additionalProperties: true
       example:
+        batch_credential_endpoint: batch_credential_endpoint
         credentials_supported:
           - credentialTypeId: credentialTypeId
             jsonLdContextUrl: jsonLdContextUrl
@@ -2399,6 +2439,8 @@ components:
         credential_endpoint:
           type: string
         credential_issuer:
+          type: string
+        batch_credential_endpoint:
           type: string
         credentials_supported:
           items:
@@ -3083,6 +3125,18 @@ components:
         - statusListIndex
         - statusListPurpose
       type: object
+    BatchCredentialInput_credential_requests_inner:
+      properties:
+        credential_identifier:
+          description:
+            It is a String that identifies a Credential that is being requested
+            to be issued.
+          type: string
+        proof:
+          $ref: '#/components/schemas/CredentialProof'
+      required:
+        - proof
+      type: object
     ListIssuanceResponse_issuances_inner:
       example:
         id: id
@@ -3107,6 +3161,16 @@ components:
           type: number
         - description: ISO Duration string (when VC format is JWT)
           type: string
+    BatchCredentialResponse_credential_responses_inner:
+      additionalProperties: false
+      properties:
+        credential:
+          description:
+            "Issued Credential, It can be a string or an object, depending\
+            \ on the Credential format. default format  is `ldp_vc`."
+      required:
+        - credential
+      type: object
     SupportedCredentialMetadata_display_inner:
       additionalProperties: true
       example:

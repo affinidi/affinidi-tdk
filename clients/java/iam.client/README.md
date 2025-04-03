@@ -78,21 +78,29 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.affinidi.tdk.iam.client.*;
 import com.affinidi.tdk.iam.client.auth.*;
 import com.affinidi.tdk.iam.client.models.*;
-import com.affinidi.tdk.iam.client.apis.ConsumerAuthApi;
+import com.affinidi.tdk.iam.client.apis.AuthzApi;
 
-public class ConsumerAuthApiExample {
+public class AuthzApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
 
-        ConsumerAuthApi apiInstance = new ConsumerAuthApi(defaultClient);
-        ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput = new ConsumerAuthTokenEndpointInput(); // ConsumerAuthTokenEndpointInput | ConsumerAuthTokenEndpoint
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        // ConsumerTokenAuth.setApiKeyPrefix("Token");
+        // ❗️Uncomment the following line to set a dynamic hook to get auth token for authorization instead of setApiKey
+        // defaultClient.setAuthTokenHook(authTokenHook);
+
+        AuthzApi apiInstance = new AuthzApi(defaultClient);
+        GrantAccessInput grantAccessInput = new GrantAccessInput(); // GrantAccessInput | Grant access to virtual file system
         try {
-            ConsumerAuthTokenEndpointOutput result = apiInstance.consumerAuthTokenEndpoint(consumerAuthTokenEndpointInput);
+            GrantAccessOutput result = apiInstance.grantAccessVfs(grantAccessInput);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ConsumerAuthApi#consumerAuthTokenEndpoint");
+            System.err.println("Exception when calling AuthzApi#grantAccessVfs");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -107,9 +115,10 @@ public class ConsumerAuthApiExample {
 
 All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
-| Class             | Method                                                                             | HTTP request                                     | Description                           |
-| ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------- |
-| _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](docs/ConsumerAuthApi.md#consumerAuthTokenEndpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint |
+| Class             | Method                                                                             | HTTP request                                     | Description                             |
+| ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AuthzApi_        | [**grantAccessVfs**](docs/AuthzApi.md#grantAccessVfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](docs/ConsumerAuthApi.md#consumerAuthTokenEndpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | _DefaultApi_      | [**v1AuthProxyDelete**](docs/DefaultApi.md#v1AuthProxyDelete)                      | **DELETE** /v1/auth/{proxy+}                     |
 | _DefaultApi_      | [**v1AuthProxyGet**](docs/DefaultApi.md#v1AuthProxyGet)                            | **GET** /v1/auth/{proxy+}                        |
 | _DefaultApi_      | [**v1AuthProxyPatch**](docs/DefaultApi.md#v1AuthProxyPatch)                        | **PATCH** /v1/auth/{proxy+}                      |
@@ -151,6 +160,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenOutput](docs/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](docs/CreateTokenInput.md)
 - [GetWellKnownDidOK](docs/GetWellKnownDidOK.md)
+- [GrantAccessInput](docs/GrantAccessInput.md)
+- [GrantAccessOutput](docs/GrantAccessOutput.md)
 - [InvalidDIDError](docs/InvalidDIDError.md)
 - [InvalidJwtTokenError](docs/InvalidJwtTokenError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)

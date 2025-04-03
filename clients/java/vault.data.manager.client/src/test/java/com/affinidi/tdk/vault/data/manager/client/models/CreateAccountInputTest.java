@@ -46,11 +46,11 @@ class CreateAccountInputTest {
     }
 
     /**
-     * Test the property 'profileDid'
+     * Test the property 'accountDid'
      */
     @Test
-    void profileDidTest() {
-        // TODO: test profileDid
+    void accountDidTest() {
+        // TODO: test accountDid
     }
 
     /**

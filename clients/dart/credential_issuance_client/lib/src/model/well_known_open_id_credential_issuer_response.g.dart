@@ -227,6 +227,8 @@ class _$WellKnownOpenIdCredentialIssuerResponse
   @override
   final String? credentialIssuer;
   @override
+  final String? batchCredentialEndpoint;
+  @override
   final BuiltList<
           WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>?
       credentialsSupported;
@@ -258,6 +260,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
       {this.authorizationEndpoint,
       this.credentialEndpoint,
       this.credentialIssuer,
+      this.batchCredentialEndpoint,
       this.credentialsSupported,
       this.deferredCredentialEndpoint,
       this.grantTypesSupported,
@@ -284,6 +287,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
         authorizationEndpoint == other.authorizationEndpoint &&
         credentialEndpoint == other.credentialEndpoint &&
         credentialIssuer == other.credentialIssuer &&
+        batchCredentialEndpoint == other.batchCredentialEndpoint &&
         credentialsSupported == other.credentialsSupported &&
         deferredCredentialEndpoint == other.deferredCredentialEndpoint &&
         grantTypesSupported == other.grantTypesSupported &&
@@ -300,6 +304,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
     _$hash = $jc(_$hash, authorizationEndpoint.hashCode);
     _$hash = $jc(_$hash, credentialEndpoint.hashCode);
     _$hash = $jc(_$hash, credentialIssuer.hashCode);
+    _$hash = $jc(_$hash, batchCredentialEndpoint.hashCode);
     _$hash = $jc(_$hash, credentialsSupported.hashCode);
     _$hash = $jc(_$hash, deferredCredentialEndpoint.hashCode);
     _$hash = $jc(_$hash, grantTypesSupported.hashCode);
@@ -318,6 +323,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
           ..add('authorizationEndpoint', authorizationEndpoint)
           ..add('credentialEndpoint', credentialEndpoint)
           ..add('credentialIssuer', credentialIssuer)
+          ..add('batchCredentialEndpoint', batchCredentialEndpoint)
           ..add('credentialsSupported', credentialsSupported)
           ..add('deferredCredentialEndpoint', deferredCredentialEndpoint)
           ..add('grantTypesSupported', grantTypesSupported)
@@ -350,6 +356,11 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   String? get credentialIssuer => _$this._credentialIssuer;
   set credentialIssuer(String? credentialIssuer) =>
       _$this._credentialIssuer = credentialIssuer;
+
+  String? _batchCredentialEndpoint;
+  String? get batchCredentialEndpoint => _$this._batchCredentialEndpoint;
+  set batchCredentialEndpoint(String? batchCredentialEndpoint) =>
+      _$this._batchCredentialEndpoint = batchCredentialEndpoint;
 
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>?
       _credentialsSupported;
@@ -425,6 +436,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
       _authorizationEndpoint = $v.authorizationEndpoint;
       _credentialEndpoint = $v.credentialEndpoint;
       _credentialIssuer = $v.credentialIssuer;
+      _batchCredentialEndpoint = $v.batchCredentialEndpoint;
       _credentialsSupported = $v.credentialsSupported?.toBuilder();
       _deferredCredentialEndpoint = $v.deferredCredentialEndpoint;
       _grantTypesSupported = $v.grantTypesSupported?.toBuilder();
@@ -461,6 +473,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
             authorizationEndpoint: authorizationEndpoint,
             credentialEndpoint: credentialEndpoint,
             credentialIssuer: credentialIssuer,
+            batchCredentialEndpoint: batchCredentialEndpoint,
             credentialsSupported: _credentialsSupported?.build(),
             deferredCredentialEndpoint: deferredCredentialEndpoint,
             grantTypesSupported: _grantTypesSupported?.build(),

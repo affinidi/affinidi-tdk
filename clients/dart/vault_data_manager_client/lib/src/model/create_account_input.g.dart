@@ -10,7 +10,7 @@ class _$CreateAccountInput extends CreateAccountInput {
   @override
   final int accountIndex;
   @override
-  final String profileDid;
+  final String accountDid;
   @override
   final String didProof;
 
@@ -20,13 +20,13 @@ class _$CreateAccountInput extends CreateAccountInput {
 
   _$CreateAccountInput._(
       {required this.accountIndex,
-      required this.profileDid,
+      required this.accountDid,
       required this.didProof})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'CreateAccountInput', 'accountIndex');
     BuiltValueNullFieldError.checkNotNull(
-        profileDid, r'CreateAccountInput', 'profileDid');
+        accountDid, r'CreateAccountInput', 'accountDid');
     BuiltValueNullFieldError.checkNotNull(
         didProof, r'CreateAccountInput', 'didProof');
   }
@@ -45,7 +45,7 @@ class _$CreateAccountInput extends CreateAccountInput {
     if (identical(other, this)) return true;
     return other is CreateAccountInput &&
         accountIndex == other.accountIndex &&
-        profileDid == other.profileDid &&
+        accountDid == other.accountDid &&
         didProof == other.didProof;
   }
 
@@ -53,7 +53,7 @@ class _$CreateAccountInput extends CreateAccountInput {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, accountIndex.hashCode);
-    _$hash = $jc(_$hash, profileDid.hashCode);
+    _$hash = $jc(_$hash, accountDid.hashCode);
     _$hash = $jc(_$hash, didProof.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -63,7 +63,7 @@ class _$CreateAccountInput extends CreateAccountInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'CreateAccountInput')
           ..add('accountIndex', accountIndex)
-          ..add('profileDid', profileDid)
+          ..add('accountDid', accountDid)
           ..add('didProof', didProof))
         .toString();
   }
@@ -77,9 +77,9 @@ class CreateAccountInputBuilder
   int? get accountIndex => _$this._accountIndex;
   set accountIndex(int? accountIndex) => _$this._accountIndex = accountIndex;
 
-  String? _profileDid;
-  String? get profileDid => _$this._profileDid;
-  set profileDid(String? profileDid) => _$this._profileDid = profileDid;
+  String? _accountDid;
+  String? get accountDid => _$this._accountDid;
+  set accountDid(String? accountDid) => _$this._accountDid = accountDid;
 
   String? _didProof;
   String? get didProof => _$this._didProof;
@@ -93,7 +93,7 @@ class CreateAccountInputBuilder
     final $v = _$v;
     if ($v != null) {
       _accountIndex = $v.accountIndex;
-      _profileDid = $v.profileDid;
+      _accountDid = $v.accountDid;
       _didProof = $v.didProof;
       _$v = null;
     }
@@ -119,8 +119,8 @@ class CreateAccountInputBuilder
         new _$CreateAccountInput._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'CreateAccountInput', 'accountIndex'),
-          profileDid: BuiltValueNullFieldError.checkNotNull(
-              profileDid, r'CreateAccountInput', 'profileDid'),
+          accountDid: BuiltValueNullFieldError.checkNotNull(
+              accountDid, r'CreateAccountInput', 'accountDid'),
           didProof: BuiltValueNullFieldError.checkNotNull(
               didProof, r'CreateAccountInput', 'didProof'),
         );
