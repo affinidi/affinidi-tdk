@@ -27,8 +27,8 @@ class CreateAccountOK(BaseModel):
     CreateAccountOK
     """
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex")
-    profile_did: StrictStr = Field(default=..., alias="profileDid")
-    __properties = ["accountIndex", "profileDid"]
+    account_did: StrictStr = Field(default=..., alias="accountDid")
+    __properties = ["accountIndex", "accountDid"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +67,7 @@ class CreateAccountOK(BaseModel):
 
         _obj = CreateAccountOK.parse_obj({
             "account_index": obj.get("accountIndex"),
-            "profile_did": obj.get("profileDid")
+            "account_did": obj.get("accountDid")
         })
         return _obj
 

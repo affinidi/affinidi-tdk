@@ -56,7 +56,7 @@ export interface AccountDto {
    * @type {string}
    * @memberof AccountDto
    */
-  profileDid: string
+  accountDid: string
 }
 /**
  *
@@ -368,7 +368,7 @@ export interface CreateAccountInput {
    * @type {string}
    * @memberof CreateAccountInput
    */
-  profileDid: string
+  accountDid: string
   /**
    * JWT that proves ownership of profile DID by requester
    * @type {string}
@@ -393,7 +393,7 @@ export interface CreateAccountOK {
    * @type {string}
    * @memberof CreateAccountOK
    */
-  profileDid: string
+  accountDid: string
 }
 /**
  *

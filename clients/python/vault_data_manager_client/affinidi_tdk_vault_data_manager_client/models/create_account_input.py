@@ -27,12 +27,12 @@ class CreateAccountInput(BaseModel):
     CreateAccountInput
     """
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex", description="number that is used for profile DID derivation")
-    profile_did: constr(strict=True) = Field(default=..., alias="profileDid", description="DID that is associated with the account number")
+    account_did: constr(strict=True) = Field(default=..., alias="accountDid", description="DID that is associated with the account number")
     did_proof: StrictStr = Field(default=..., alias="didProof", description="JWT that proves ownership of profile DID by requester")
-    __properties = ["accountIndex", "profileDid", "didProof"]
+    __properties = ["accountIndex", "accountDid", "didProof"]
 
-    @validator('profile_did')
-    def profile_did_validate_regular_expression(cls, value):
+    @validator('account_did')
+    def account_did_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^did:.*$", value):
             raise ValueError(r"must validate the regular expression /^did:.*$/")
@@ -75,7 +75,7 @@ class CreateAccountInput(BaseModel):
 
         _obj = CreateAccountInput.parse_obj({
             "account_index": obj.get("accountIndex"),
-            "profile_did": obj.get("profileDid"),
+            "account_did": obj.get("accountDid"),
             "did_proof": obj.get("didProof")
         })
         return _obj

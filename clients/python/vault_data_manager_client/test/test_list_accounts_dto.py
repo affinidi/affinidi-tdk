@@ -40,7 +40,7 @@ class TestListAccountsDto(unittest.TestCase):
                 records = [
                     affinidi_tdk_vault_data_manager_client.models.account_dto.AccountDto(
                         account_index = 1.337, 
-                        profile_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj', )
+                        account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj', )
                     ],
                 last_evaluated_key = ''
             )
@@ -49,7 +49,7 @@ class TestListAccountsDto(unittest.TestCase):
                 records = [
                     affinidi_tdk_vault_data_manager_client.models.account_dto.AccountDto(
                         account_index = 1.337, 
-                        profile_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj', )
+                        account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj', )
                     ],
         )
         """

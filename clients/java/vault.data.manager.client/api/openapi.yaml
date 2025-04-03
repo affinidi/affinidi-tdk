@@ -2086,9 +2086,9 @@ components:
       example:
         records:
           - accountIndex: 0.8008281904610115
-            profileDid: profileDid
+            accountDid: accountDid
           - accountIndex: 0.8008281904610115
-            profileDid: profileDid
+            accountDid: accountDid
         lastEvaluatedKey: lastEvaluatedKey
       properties:
         records:
@@ -2104,18 +2104,18 @@ components:
       additionalProperties: false
       example:
         accountIndex: 0.8008281904610115
-        profileDid: profileDid
+        accountDid: accountDid
       properties:
         accountIndex:
           description: number that is used for profile DID derivation
           type: number
-        profileDid:
+        accountDid:
           description: Profile DID that is associated with the account number
           pattern: ^did:.*$
           type: string
       required:
+        - accountDid
         - accountIndex
-        - profileDid
       type: object
     DeleteAccountDto:
       additionalProperties: false
@@ -2456,13 +2456,13 @@ components:
       additionalProperties: false
       example:
         accountIndex: 0.8008281904610115
-        profileDid: profileDid
         didProof: didProof
+        accountDid: accountDid
       properties:
         accountIndex:
           description: number that is used for profile DID derivation
           type: number
-        profileDid:
+        accountDid:
           description: DID that is associated with the account number
           pattern: ^did:.*$
           type: string
@@ -2470,9 +2470,9 @@ components:
           description: JWT that proves ownership of profile DID by requester
           type: string
       required:
+        - accountDid
         - accountIndex
         - didProof
-        - profileDid
       type: object
     MoveNodeInput:
       additionalProperties: false
@@ -2561,15 +2561,15 @@ components:
       additionalProperties: false
       example:
         accountIndex: 0.8008281904610115
-        profileDid: profileDid
+        accountDid: accountDid
       properties:
         accountIndex:
           type: number
-        profileDid:
+        accountDid:
           type: string
       required:
+        - accountDid
         - accountIndex
-        - profileDid
       type: object
     UpdateNodeInput:
       additionalProperties: false

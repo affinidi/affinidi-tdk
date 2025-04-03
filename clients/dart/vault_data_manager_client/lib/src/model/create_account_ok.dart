@@ -12,14 +12,14 @@ part 'create_account_ok.g.dart';
 ///
 /// Properties:
 /// * [accountIndex] 
-/// * [profileDid] 
+/// * [accountDid] 
 @BuiltValue()
 abstract class CreateAccountOK implements Built<CreateAccountOK, CreateAccountOKBuilder> {
   @BuiltValueField(wireName: r'accountIndex')
   int get accountIndex;
 
-  @BuiltValueField(wireName: r'profileDid')
-  String get profileDid;
+  @BuiltValueField(wireName: r'accountDid')
+  String get accountDid;
 
   CreateAccountOK._();
 
@@ -49,9 +49,9 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
       object.accountIndex,
       specifiedType: const FullType(int),
     );
-    yield r'profileDid';
+    yield r'accountDid';
     yield serializers.serialize(
-      object.profileDid,
+      object.accountDid,
       specifiedType: const FullType(String),
     );
   }
@@ -84,12 +84,12 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
           ) as int;
           result.accountIndex = valueDes;
           break;
-        case r'profileDid':
+        case r'accountDid':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.profileDid = valueDes;
+          result.accountDid = valueDes;
           break;
         default:
           unhandled.add(key);

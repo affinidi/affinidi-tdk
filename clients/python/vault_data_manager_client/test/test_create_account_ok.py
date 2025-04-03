@@ -38,12 +38,12 @@ class TestCreateAccountOK(unittest.TestCase):
         if include_optional:
             return CreateAccountOK(
                 account_index = 1.337,
-                profile_did = ''
+                account_did = ''
             )
         else:
             return CreateAccountOK(
                 account_index = 1.337,
-                profile_did = '',
+                account_did = '',
         )
         """
 
