@@ -8,6 +8,7 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add($NodeDto.serializer)
+      ..add(AccountDto.serializer)
       ..add(AwsCredentialExchangeOperationOK.serializer)
       ..add(ConsumerMetadataDto.serializer)
       ..add(CorsAwsCredentialExchangeOK.serializer)
@@ -24,8 +25,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CorsRestoreNodeFromTrashbinOK.serializer)
       ..add(CorsStartFileScanOK.serializer)
       ..add(CorsUpdateProfileDataOK.serializer)
+      ..add(CreateAccountInput.serializer)
+      ..add(CreateAccountOK.serializer)
       ..add(CreateNodeInput.serializer)
       ..add(CreateNodeOK.serializer)
+      ..add(DeleteAccountDto.serializer)
       ..add(DeleteNodeDto.serializer)
       ..add(EdekInfo.serializer)
       ..add(GetConfigOK.serializer)
@@ -39,6 +43,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(InvalidParameterErrorNameEnum.serializer)
       ..add(JsonWebKeyDto.serializer)
       ..add(JsonWebKeySetDto.serializer)
+      ..add(ListAccountsDto.serializer)
       ..add(ListNodeChildrenOK.serializer)
       ..add(ListRootNodeChildrenOK.serializer)
       ..add(ListScannedFilesOK.serializer)
@@ -63,6 +68,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UpdateNodeInput.serializer)
       ..add(UpdateProfileDataInput.serializer)
       ..add(UpdateProfileDataOK.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AccountDto)]),
+          () => new ListBuilder<AccountDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
