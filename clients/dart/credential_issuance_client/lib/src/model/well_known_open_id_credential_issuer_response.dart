@@ -17,6 +17,7 @@ part 'well_known_open_id_credential_issuer_response.g.dart';
 /// * [authorizationEndpoint] 
 /// * [credentialEndpoint] 
 /// * [credentialIssuer] 
+/// * [batchCredentialEndpoint] 
 /// * [credentialsSupported] 
 /// * [deferredCredentialEndpoint] 
 /// * [grantTypesSupported] 
@@ -34,6 +35,9 @@ abstract class WellKnownOpenIdCredentialIssuerResponse implements Built<WellKnow
 
   @BuiltValueField(wireName: r'credential_issuer')
   String? get credentialIssuer;
+
+  @BuiltValueField(wireName: r'batch_credential_endpoint')
+  String? get batchCredentialEndpoint;
 
   @BuiltValueField(wireName: r'credentials_supported')
   BuiltList<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>? get credentialsSupported;
@@ -100,6 +104,13 @@ class _$WellKnownOpenIdCredentialIssuerResponseSerializer implements PrimitiveSe
       yield r'credential_issuer';
       yield serializers.serialize(
         object.credentialIssuer,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.batchCredentialEndpoint != null) {
+      yield r'batch_credential_endpoint';
+      yield serializers.serialize(
+        object.batchCredentialEndpoint,
         specifiedType: const FullType(String),
       );
     }
@@ -195,6 +206,13 @@ class _$WellKnownOpenIdCredentialIssuerResponseSerializer implements PrimitiveSe
             specifiedType: const FullType(String),
           ) as String;
           result.credentialIssuer = valueDes;
+          break;
+        case r'batch_credential_endpoint':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.batchCredentialEndpoint = valueDes;
           break;
         case r'credentials_supported':
           final valueDes = serializers.deserialize(

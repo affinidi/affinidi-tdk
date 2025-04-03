@@ -31,6 +31,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 - [ActionForbiddenError](./Models/ActionForbiddenError.md)
 - [ActionForbiddenError_details_inner](./Models/ActionForbiddenError_details_inner.md)
+- [BatchCredentialInput](./Models/BatchCredentialInput.md)
+- [BatchCredentialInput_credential_requests_inner](./Models/BatchCredentialInput_credential_requests_inner.md)
+- [BatchCredentialResponse](./Models/BatchCredentialResponse.md)
+- [BatchCredentialResponse_credential_responses_inner](./Models/BatchCredentialResponse_credential_responses_inner.md)
 - [ChangeCredentialStatusInput](./Models/ChangeCredentialStatusInput.md)
 - [ChangeStatusForbiddenError](./Models/ChangeStatusForbiddenError.md)
 - [CisConfigurationWebhookSetting](./Models/CisConfigurationWebhookSetting.md)

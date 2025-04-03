@@ -5,6 +5,10 @@ README.md
 analysis_options.yaml
 doc/ActionForbiddenError.md
 doc/ActionForbiddenErrorDetailsInner.md
+doc/BatchCredentialInput.md
+doc/BatchCredentialInputCredentialRequestsInner.md
+doc/BatchCredentialResponse.md
+doc/BatchCredentialResponseCredentialResponsesInner.md
 doc/ChangeCredentialStatus400Response.md
 doc/ChangeCredentialStatusInput.md
 doc/ChangeStatusForbiddenError.md
@@ -94,6 +98,10 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/action_forbidden_error.dart
 lib/src/model/action_forbidden_error_details_inner.dart
+lib/src/model/batch_credential_input.dart
+lib/src/model/batch_credential_input_credential_requests_inner.dart
+lib/src/model/batch_credential_response.dart
+lib/src/model/batch_credential_response_credential_responses_inner.dart
 lib/src/model/change_credential_status400_response.dart
 lib/src/model/change_credential_status_input.dart
 lib/src/model/change_status_forbidden_error.dart
@@ -166,6 +174,10 @@ project.json
 pubspec.yaml
 test/action_forbidden_error_details_inner_test.dart
 test/action_forbidden_error_test.dart
+test/batch_credential_input_credential_requests_inner_test.dart
+test/batch_credential_input_test.dart
+test/batch_credential_response_credential_responses_inner_test.dart
+test/batch_credential_response_test.dart
 test/change_credential_status400_response_test.dart
 test/change_credential_status_input_test.dart
 test/change_status_forbidden_error_test.dart

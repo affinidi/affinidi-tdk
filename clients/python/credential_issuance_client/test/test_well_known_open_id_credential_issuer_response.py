@@ -40,6 +40,7 @@ class TestWellKnownOpenIdCredentialIssuerResponse(unittest.TestCase):
                 authorization_endpoint = '',
                 credential_endpoint = '',
                 credential_issuer = '',
+                batch_credential_endpoint = '',
                 credentials_supported = [
                     affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response_credentials_supported_inner.WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner(
                         credential_type_id = '', 

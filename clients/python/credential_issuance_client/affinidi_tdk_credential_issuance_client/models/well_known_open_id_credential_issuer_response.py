@@ -30,6 +30,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     authorization_endpoint: Optional[StrictStr] = None
     credential_endpoint: Optional[StrictStr] = None
     credential_issuer: Optional[StrictStr] = None
+    batch_credential_endpoint: Optional[StrictStr] = None
     credentials_supported: Optional[conlist(WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner)] = None
     deferred_credential_endpoint: Optional[StrictStr] = None
     grant_types_supported: Optional[conlist(StrictStr)] = None
@@ -38,7 +39,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     token_endpoint: Optional[StrictStr] = None
     token_endpoint_auth_methods_supported: Optional[conlist(StrictStr)] = None
     additional_properties: Dict[str, Any] = {}
-    __properties = ["authorization_endpoint", "credential_endpoint", "credential_issuer", "credentials_supported", "deferred_credential_endpoint", "grant_types_supported", "jwks_uri", "scopes_supported", "token_endpoint", "token_endpoint_auth_methods_supported"]
+    __properties = ["authorization_endpoint", "credential_endpoint", "credential_issuer", "batch_credential_endpoint", "credentials_supported", "deferred_credential_endpoint", "grant_types_supported", "jwks_uri", "scopes_supported", "token_endpoint", "token_endpoint_auth_methods_supported"]
 
     @validator('grant_types_supported')
     def grant_types_supported_validate_enum(cls, value):
@@ -125,6 +126,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             "authorization_endpoint": obj.get("authorization_endpoint"),
             "credential_endpoint": obj.get("credential_endpoint"),
             "credential_issuer": obj.get("credential_issuer"),
+            "batch_credential_endpoint": obj.get("batch_credential_endpoint"),
             "credentials_supported": [WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.from_dict(_item) for _item in obj.get("credentials_supported")] if obj.get("credentials_supported") is not None else None,
             "deferred_credential_endpoint": obj.get("deferred_credential_endpoint"),
             "grant_types_supported": obj.get("grant_types_supported"),

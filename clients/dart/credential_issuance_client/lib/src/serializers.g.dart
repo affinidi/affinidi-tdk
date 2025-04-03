@@ -12,6 +12,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ActionForbiddenErrorHttpStatusCodeEnum.serializer)
       ..add(ActionForbiddenErrorMessageEnum.serializer)
       ..add(ActionForbiddenErrorNameEnum.serializer)
+      ..add(BatchCredentialInput.serializer)
+      ..add(BatchCredentialInputCredentialRequestsInner.serializer)
+      ..add(BatchCredentialResponse.serializer)
+      ..add(BatchCredentialResponseCredentialResponsesInner.serializer)
       ..add(ChangeCredentialStatus400Response.serializer)
       ..add(ChangeCredentialStatusInput.serializer)
       ..add(ChangeCredentialStatusInputChangeReasonEnum.serializer)
@@ -227,6 +231,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
           () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(BatchCredentialInputCredentialRequestsInner)
+          ]),
+          () => new ListBuilder<BatchCredentialInputCredentialRequestsInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(BatchCredentialResponseCredentialResponsesInner)
+          ]),
+          () => new ListBuilder<
+              BatchCredentialResponseCredentialResponsesInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BuiltMap, const [

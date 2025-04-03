@@ -94,6 +94,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 - [ActionForbiddenError](doc/ActionForbiddenError.md)
 - [ActionForbiddenErrorDetailsInner](doc/ActionForbiddenErrorDetailsInner.md)
+- [BatchCredentialInput](doc/BatchCredentialInput.md)
+- [BatchCredentialInputCredentialRequestsInner](doc/BatchCredentialInputCredentialRequestsInner.md)
+- [BatchCredentialResponse](doc/BatchCredentialResponse.md)
+- [BatchCredentialResponseCredentialResponsesInner](doc/BatchCredentialResponseCredentialResponsesInner.md)
 - [ChangeCredentialStatus400Response](doc/ChangeCredentialStatus400Response.md)
 - [ChangeCredentialStatusInput](doc/ChangeCredentialStatusInput.md)
 - [ChangeStatusForbiddenError](doc/ChangeStatusForbiddenError.md)
