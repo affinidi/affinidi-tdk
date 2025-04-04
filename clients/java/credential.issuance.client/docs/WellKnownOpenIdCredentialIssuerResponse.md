@@ -7,6 +7,7 @@
 | **authorizationEndpoint**             | **String**                                                                                                                                              |             | [optional] |
 | **credentialEndpoint**                | **String**                                                                                                                                              |             | [optional] |
 | **credentialIssuer**                  | **String**                                                                                                                                              |             | [optional] |
+| **batchCredentialEndpoint**           | **String**                                                                                                                                              |             | [optional] |
 | **credentialsSupported**              | [**List&lt;WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner&gt;**](WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md) |             | [optional] |
 | **deferredCredentialEndpoint**        | **String**                                                                                                                                              |             | [optional] |
 | **grantTypesSupported**               | [**List&lt;GrantTypesSupportedEnum&gt;**](#List<GrantTypesSupportedEnum>)                                                                               |             | [optional] |
