@@ -59,6 +59,7 @@ affinidi_tdk_login_configuration_client/models/login_session_reject_response_inp
 affinidi_tdk_login_configuration_client/models/login_session_reject_response_output.py
 affinidi_tdk_login_configuration_client/models/not_found_error.py
 affinidi_tdk_login_configuration_client/models/o_auth2_token.py
+affinidi_tdk_login_configuration_client/models/o_auth2_token_authorization_details_inner.py
 affinidi_tdk_login_configuration_client/models/oidc_config.py
 affinidi_tdk_login_configuration_client/models/oidc_config_credentials_supported_draft00_inner.py
 affinidi_tdk_login_configuration_client/models/redirect_response.py
@@ -122,6 +123,7 @@ docs/LoginSessionRejectResponseInput.md
 docs/LoginSessionRejectResponseOutput.md
 docs/NotFoundError.md
 docs/OAuth2Token.md
+docs/OAuth2TokenAuthorizationDetailsInner.md
 docs/OIDCConfig.md
 docs/OIDCConfigCredentialsSupportedDraft00Inner.md
 docs/RedirectResponse.md
@@ -190,6 +192,7 @@ test/test_login_session_reject_response_input.py
 test/test_login_session_reject_response_output.py
 test/test_not_found_error.py
 test/test_o_auth2_token.py
+test/test_o_auth2_token_authorization_details_inner.py
 test/test_oidc_config.py
 test/test_oidc_config_credentials_supported_draft00_inner.py
 test/test_redirect_response.py

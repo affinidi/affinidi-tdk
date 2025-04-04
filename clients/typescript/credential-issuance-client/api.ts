@@ -349,11 +349,18 @@ export interface ClaimedCredentialListResponse {
  */
 export interface ClaimedCredentialResponse {
   /**
-   * claimed credential
+   * claimed credential for a single issuance
    * @type {{ [key: string]: any; }}
    * @memberof ClaimedCredentialResponse
+   * @deprecated
    */
   credential?: { [key: string]: any }
+  /**
+   * claimed credentials for batch issuances
+   * @type {Array<{ [key: string]: any; }>}
+   * @memberof ClaimedCredentialResponse
+   */
+  credentials?: Array<{ [key: string]: any }>
 }
 /**
  *

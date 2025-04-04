@@ -55,6 +55,7 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/login_session_
 import 'package:affinidi_tdk_login_configuration_client/src/model/login_session_for_idp_input.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/not_found_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token_authorization_details_inner.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config_credentials_supported_draft00_inner.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/redirect_response.dart';
@@ -111,6 +112,7 @@ part 'serializers.g.dart';
   LoginSessionForIDPInput,
   NotFoundError,
   OAuth2Token,
+  OAuth2TokenAuthorizationDetailsInner,
   OIDCConfig,
   OIDCConfigCredentialsSupportedDraft00Inner,
   RedirectResponse,
