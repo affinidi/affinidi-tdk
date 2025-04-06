@@ -1602,11 +1602,22 @@ components:
       example:
         credential:
           key: ''
+        credentials:
+          - key: ''
+          - key: ''
       properties:
         credential:
           additionalProperties: true
-          description: claimed credential
+          deprecated: true
+          description: claimed credential for a single issuance
           type: object
+        credentials:
+          description: claimed credentials for batch issuances
+          items:
+            additionalProperties: true
+            description: claimed credential
+            type: object
+          type: array
       type: object
     ClaimedCredentialListResponse:
       additionalProperties: false

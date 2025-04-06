@@ -49,6 +49,7 @@ doc/LoginSessionDtoAuthorizationRequest.md
 doc/LoginSessionForIDPInput.md
 doc/NotFoundError.md
 doc/OAuth2Token.md
+doc/OAuth2TokenAuthorizationDetailsInner.md
 doc/OIDCConfig.md
 doc/OIDCConfigCredentialsSupportedDraft00Inner.md
 doc/RedirectResponse.md
@@ -116,6 +117,7 @@ lib/src/model/login_session_dto_authorization_request.dart
 lib/src/model/login_session_for_idp_input.dart
 lib/src/model/not_found_error.dart
 lib/src/model/o_auth2_token.dart
+lib/src/model/o_auth2_token_authorization_details_inner.dart
 lib/src/model/oidc_config.dart
 lib/src/model/oidc_config_credentials_supported_draft00_inner.dart
 lib/src/model/redirect_response.dart
@@ -175,6 +177,7 @@ test/login_session_dto_authorization_request_test.dart
 test/login_session_dto_test.dart
 test/login_session_for_idp_input_test.dart
 test/not_found_error_test.dart
+test/o_auth2_token_authorization_details_inner_test.dart
 test/o_auth2_token_test.dart
 test/oidc_config_credentials_supported_draft00_inner_test.dart
 test/oidc_config_test.dart
