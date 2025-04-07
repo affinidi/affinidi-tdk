@@ -7,12 +7,30 @@ void main() {
   final instance = AffinidiTdkIamClient().getAuthzApi();
 
   group(AuthzApi, () {
+    // delete access of subjectDiD
+    //
+    // deleteAccessVfs
+    //
+    //Future deleteAccessVfs(String subjectDID) async
+    test('test deleteAccessVfs', () async {
+      // TODO
+    });
+
     // Grant access to the virtual file system
     //
     // Grants access rights to a subject for the virtual file system
     //
     //Future<GrantAccessOutput> grantAccessVfs(GrantAccessInput grantAccessInput) async
     test('test grantAccessVfs', () async {
+      // TODO
+    });
+
+    // Update access of subjectDiD
+    //
+    // updateAccessVfs
+    //
+    //Future<UpdateAccessOutput> updateAccessVfs(String subjectDID, UpdateAccessInput updateAccessInput) async
+    test('test updateAccessVfs', () async {
       // TODO
     });
 

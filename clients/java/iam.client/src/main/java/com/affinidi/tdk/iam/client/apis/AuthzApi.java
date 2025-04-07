@@ -24,6 +24,8 @@ import com.affinidi.tdk.iam.client.models.GrantAccessInput;
 import com.affinidi.tdk.iam.client.models.GrantAccessOutput;
 import com.affinidi.tdk.iam.client.models.UnauthorizedError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
+import com.affinidi.tdk.iam.client.models.UpdateAccessInput;
+import com.affinidi.tdk.iam.client.models.UpdateAccessOutput;
 
 
 import java.util.ArrayList;
@@ -42,6 +44,78 @@ public class AuthzApi extends BaseApi {
 
   public AuthzApi(ApiClient apiClient) {
     super(apiClient);
+  }
+
+  /**
+   * delete access of subjectDiD
+   * deleteAccessVfs
+   * @param subjectDID  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAccessVfs(String subjectDID) throws ApiException {
+    this.deleteAccessVfs(subjectDID, Collections.emptyMap());
+  }
+
+
+  /**
+   * delete access of subjectDiD
+   * deleteAccessVfs
+   * @param subjectDID  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAccessVfs(String subjectDID, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'subjectDID' is set
+    if (subjectDID == null) {
+      throw new ApiException(400, "Missing the required parameter 'subjectDID' when calling deleteAccessVfs");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/authz/vfs/access/{subjectDID}"
+      .replaceAll("\\{" + "subjectDID" + "\\}", apiClient.escapeString(apiClient.parameterToString(subjectDID)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
   }
 
   /**
@@ -104,6 +178,88 @@ public class AuthzApi extends BaseApi {
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Update access of subjectDiD
+   * updateAccessVfs
+   * @param subjectDID  (required)
+   * @param updateAccessInput update access to virtual file system (required)
+   * @return UpdateAccessOutput
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccessOutput updateAccessVfs(String subjectDID, UpdateAccessInput updateAccessInput) throws ApiException {
+    return this.updateAccessVfs(subjectDID, updateAccessInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * Update access of subjectDiD
+   * updateAccessVfs
+   * @param subjectDID  (required)
+   * @param updateAccessInput update access to virtual file system (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return UpdateAccessOutput
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccessOutput updateAccessVfs(String subjectDID, UpdateAccessInput updateAccessInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateAccessInput;
+    
+    // verify the required parameter 'subjectDID' is set
+    if (subjectDID == null) {
+      throw new ApiException(400, "Missing the required parameter 'subjectDID' when calling updateAccessVfs");
+    }
+    
+    // verify the required parameter 'updateAccessInput' is set
+    if (updateAccessInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateAccessInput' when calling updateAccessVfs");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/authz/vfs/access/{subjectDID}"
+      .replaceAll("\\{" + "subjectDID" + "\\}", apiClient.escapeString(apiClient.parameterToString(subjectDID)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<UpdateAccessOutput> localVarReturnType = new TypeReference<UpdateAccessOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PUT",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
