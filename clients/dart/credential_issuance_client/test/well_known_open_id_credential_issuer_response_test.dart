@@ -22,6 +22,11 @@ void main() {
       // TODO
     });
 
+    // String batchCredentialEndpoint
+    test('to test the property `batchCredentialEndpoint`', () async {
+      // TODO
+    });
+
     // BuiltList<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported
     test('to test the property `credentialsSupported`', () async {
       // TODO

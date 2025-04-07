@@ -5,4 +5,4 @@
 | Name             | Type           | Description | Notes |
 | ---------------- | -------------- | ----------- | ----- |
 | **accountIndex** | **BigDecimal** |             |       |
-| **profileDid**   | **String**     |             |       |
+| **accountDid**   | **String**     |             |       |

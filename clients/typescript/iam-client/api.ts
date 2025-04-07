@@ -304,6 +304,53 @@ export interface GetWellKnownDidOK {
 /**
  *
  * @export
+ * @interface GrantAccessInput
+ */
+export interface GrantAccessInput {
+  /**
+   * DID of the subject being granted access
+   * @type {string}
+   * @memberof GrantAccessInput
+   */
+  subjectDID: string
+  /**
+   * List of rights to grant to the subject
+   * @type {Array<string>}
+   * @memberof GrantAccessInput
+   */
+  rights: Array<GrantAccessInputRightsEnum>
+}
+
+export const GrantAccessInputRightsEnum = {
+  Read: 'vfs-read',
+  Write: 'vfs-write',
+} as const
+
+export type GrantAccessInputRightsEnum =
+  (typeof GrantAccessInputRightsEnum)[keyof typeof GrantAccessInputRightsEnum]
+
+/**
+ *
+ * @export
+ * @interface GrantAccessOutput
+ */
+export interface GrantAccessOutput {
+  /**
+   *
+   * @type {boolean}
+   * @memberof GrantAccessOutput
+   */
+  success: boolean
+  /**
+   * Unique identifier for the access grant
+   * @type {string}
+   * @memberof GrantAccessOutput
+   */
+  grantId?: string
+}
+/**
+ *
+ * @export
  * @interface InvalidDIDError
  */
 export interface InvalidDIDError {
@@ -1426,6 +1473,171 @@ export interface WhoamiDto {
    * @memberof WhoamiDto
    */
   principalType: string
+}
+
+/**
+ * AuthzApi - axios parameter creator
+ * @export
+ */
+export const AuthzApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Grants access rights to a subject for the virtual file system
+     * @summary Grant access to the virtual file system
+     * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    grantAccessVfs: async (
+      grantAccessInput: GrantAccessInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'grantAccessInput' is not null or undefined
+      assertParamExists('grantAccessVfs', 'grantAccessInput', grantAccessInput)
+      const localVarPath = `/v1/authz/vfs/access`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        grantAccessInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * AuthzApi - functional programming interface
+ * @export
+ */
+export const AuthzApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = AuthzApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Grants access rights to a subject for the virtual file system
+     * @summary Grant access to the virtual file system
+     * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async grantAccessVfs(
+      grantAccessInput: GrantAccessInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<GrantAccessOutput>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.grantAccessVfs(
+        grantAccessInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AuthzApi.grantAccessVfs']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * AuthzApi - factory interface
+ * @export
+ */
+export const AuthzApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = AuthzApiFp(configuration)
+  return {
+    /**
+     * Grants access rights to a subject for the virtual file system
+     * @summary Grant access to the virtual file system
+     * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    grantAccessVfs(
+      grantAccessInput: GrantAccessInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<GrantAccessOutput> {
+      return localVarFp
+        .grantAccessVfs(grantAccessInput, options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * AuthzApi - object-oriented interface
+ * @export
+ * @class AuthzApi
+ * @extends {BaseAPI}
+ */
+export class AuthzApi extends BaseAPI {
+  /**
+   * Grants access rights to a subject for the virtual file system
+   * @summary Grant access to the virtual file system
+   * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthzApi
+   */
+  public grantAccessVfs(
+    grantAccessInput: GrantAccessInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return AuthzApiFp(this.configuration)
+      .grantAccessVfs(grantAccessInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
 }
 
 /**

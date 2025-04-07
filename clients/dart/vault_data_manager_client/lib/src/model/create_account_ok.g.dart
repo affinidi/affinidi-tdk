@@ -10,17 +10,17 @@ class _$CreateAccountOK extends CreateAccountOK {
   @override
   final int accountIndex;
   @override
-  final String profileDid;
+  final String accountDid;
 
   factory _$CreateAccountOK([void Function(CreateAccountOKBuilder)? updates]) =>
       (new CreateAccountOKBuilder()..update(updates))._build();
 
-  _$CreateAccountOK._({required this.accountIndex, required this.profileDid})
+  _$CreateAccountOK._({required this.accountIndex, required this.accountDid})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'CreateAccountOK', 'accountIndex');
     BuiltValueNullFieldError.checkNotNull(
-        profileDid, r'CreateAccountOK', 'profileDid');
+        accountDid, r'CreateAccountOK', 'accountDid');
   }
 
   @override
@@ -36,14 +36,14 @@ class _$CreateAccountOK extends CreateAccountOK {
     if (identical(other, this)) return true;
     return other is CreateAccountOK &&
         accountIndex == other.accountIndex &&
-        profileDid == other.profileDid;
+        accountDid == other.accountDid;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, accountIndex.hashCode);
-    _$hash = $jc(_$hash, profileDid.hashCode);
+    _$hash = $jc(_$hash, accountDid.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -52,7 +52,7 @@ class _$CreateAccountOK extends CreateAccountOK {
   String toString() {
     return (newBuiltValueToStringHelper(r'CreateAccountOK')
           ..add('accountIndex', accountIndex)
-          ..add('profileDid', profileDid))
+          ..add('accountDid', accountDid))
         .toString();
   }
 }
@@ -65,9 +65,9 @@ class CreateAccountOKBuilder
   int? get accountIndex => _$this._accountIndex;
   set accountIndex(int? accountIndex) => _$this._accountIndex = accountIndex;
 
-  String? _profileDid;
-  String? get profileDid => _$this._profileDid;
-  set profileDid(String? profileDid) => _$this._profileDid = profileDid;
+  String? _accountDid;
+  String? get accountDid => _$this._accountDid;
+  set accountDid(String? accountDid) => _$this._accountDid = accountDid;
 
   CreateAccountOKBuilder() {
     CreateAccountOK._defaults(this);
@@ -77,7 +77,7 @@ class CreateAccountOKBuilder
     final $v = _$v;
     if ($v != null) {
       _accountIndex = $v.accountIndex;
-      _profileDid = $v.profileDid;
+      _accountDid = $v.accountDid;
       _$v = null;
     }
     return this;
@@ -102,8 +102,8 @@ class CreateAccountOKBuilder
         new _$CreateAccountOK._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'CreateAccountOK', 'accountIndex'),
-          profileDid: BuiltValueNullFieldError.checkNotNull(
-              profileDid, r'CreateAccountOK', 'profileDid'),
+          accountDid: BuiltValueNullFieldError.checkNotNull(
+              accountDid, r'CreateAccountOK', 'accountDid'),
         );
     replace(_$result);
     return _$result;

@@ -5,7 +5,7 @@
 | Name              | Type      | Description | Notes |
 | ----------------- | --------- | ----------- | ----- |
 | **account_index** | **float** |             |
-| **profile_did**   | **str**   |             |
+| **account_did**   | **str**   |             |
 
 ## Example
 
