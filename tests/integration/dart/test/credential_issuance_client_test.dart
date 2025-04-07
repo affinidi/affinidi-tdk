@@ -27,8 +27,8 @@ void main() {
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
         dio: Dio(BaseOptions(
           baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
-          connectTimeout: const Duration(seconds: 5),
-          receiveTimeout: const Duration(seconds: 5),
+          connectTimeout: const Duration(seconds: 10),
+          receiveTimeout: const Duration(seconds: 10),
         )),
         authTokenHook: authProvider.fetchProjectScopedToken);
 
