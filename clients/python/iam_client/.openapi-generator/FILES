@@ -26,6 +26,7 @@ affinidi_tdk_iam_client/models/create_project_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_output.py
 affinidi_tdk_iam_client/models/create_token_input.py
+affinidi_tdk_iam_client/models/delete_access_output.py
 affinidi_tdk_iam_client/models/get_well_known_did_ok.py
 affinidi_tdk_iam_client/models/grant_access_input.py
 affinidi_tdk_iam_client/models/grant_access_output.py
@@ -56,6 +57,8 @@ affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto_publi
 affinidi_tdk_iam_client/models/typed_principal_id.py
 affinidi_tdk_iam_client/models/unauthorized_error.py
 affinidi_tdk_iam_client/models/unexpected_error.py
+affinidi_tdk_iam_client/models/update_access_input.py
+affinidi_tdk_iam_client/models/update_access_output.py
 affinidi_tdk_iam_client/models/update_project_input.py
 affinidi_tdk_iam_client/models/update_token_input.py
 affinidi_tdk_iam_client/models/update_token_private_key_authentication_method_dto.py
@@ -76,6 +79,7 @@ docs/CreateProjectScopedTokenInput.md
 docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
+docs/DeleteAccessOutput.md
 docs/GetWellKnownDidOK.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
@@ -110,6 +114,8 @@ docs/TokensApi.md
 docs/TypedPrincipalId.md
 docs/UnauthorizedError.md
 docs/UnexpectedError.md
+docs/UpdateAccessInput.md
+docs/UpdateAccessOutput.md
 docs/UpdateProjectInput.md
 docs/UpdateTokenInput.md
 docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md
@@ -136,6 +142,7 @@ test/test_create_project_scoped_token_input.py
 test/test_create_project_scoped_token_output.py
 test/test_create_token_input.py
 test/test_default_api.py
+test/test_delete_access_output.py
 test/test_get_well_known_did_ok.py
 test/test_grant_access_input.py
 test/test_grant_access_output.py
@@ -170,6 +177,8 @@ test/test_tokens_api.py
 test/test_typed_principal_id.py
 test/test_unauthorized_error.py
 test/test_unexpected_error.py
+test/test_update_access_input.py
+test/test_update_access_output.py
 test/test_update_project_input.py
 test/test_update_token_input.py
 test/test_update_token_private_key_authentication_method_dto.py

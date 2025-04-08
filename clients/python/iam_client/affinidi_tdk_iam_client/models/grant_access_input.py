@@ -27,7 +27,7 @@ class GrantAccessInput(BaseModel):
     GrantAccessInput
     """
     subject_did: StrictStr = Field(default=..., alias="subjectDID", description="DID of the subject being granted access")
-    rights: conlist(StrictStr) = Field(default=..., description="List of rights to grant to the subject")
+    rights: conlist(StrictStr, min_items=1) = Field(default=..., description="List of rights to grant to the subject")
     __properties = ["subjectDID", "rights"]
 
     @validator('rights')

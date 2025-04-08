@@ -27,10 +27,24 @@ class TestAuthzApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_delete_access_vfs(self) -> None:
+        """Test case for delete_access_vfs
+
+        delete access of subjectDiD  # noqa: E501
+        """
+        pass
+
     def test_grant_access_vfs(self) -> None:
         """Test case for grant_access_vfs
 
         Grant access to the virtual file system  # noqa: E501
+        """
+        pass
+
+    def test_update_access_vfs(self) -> None:
+        """Test case for update_access_vfs
+
+        Update access of subjectDiD  # noqa: E501
         """
         pass
 

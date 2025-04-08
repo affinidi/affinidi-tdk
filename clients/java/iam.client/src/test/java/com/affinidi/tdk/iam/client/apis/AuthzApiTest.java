@@ -18,6 +18,8 @@ import com.affinidi.tdk.iam.client.models.GrantAccessInput;
 import com.affinidi.tdk.iam.client.models.GrantAccessOutput;
 import com.affinidi.tdk.iam.client.models.UnauthorizedError;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
+import com.affinidi.tdk.iam.client.models.UpdateAccessInput;
+import com.affinidi.tdk.iam.client.models.UpdateAccessOutput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -38,6 +40,21 @@ public class AuthzApiTest {
     private final AuthzApi api = new AuthzApi();
 
     /**
+     * delete access of subjectDiD
+     *
+     * deleteAccessVfs
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteAccessVfsTest() throws ApiException {
+        String subjectDID = null;
+        api.deleteAccessVfs(subjectDID);
+
+        // TODO: test validations
+    }
+    /**
      * Grant access to the virtual file system
      *
      * Grants access rights to a subject for the virtual file system
@@ -49,6 +66,22 @@ public class AuthzApiTest {
     public void grantAccessVfsTest() throws ApiException {
         GrantAccessInput grantAccessInput = null;
         GrantAccessOutput response = api.grantAccessVfs(grantAccessInput);
+
+        // TODO: test validations
+    }
+    /**
+     * Update access of subjectDiD
+     *
+     * updateAccessVfs
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAccessVfsTest() throws ApiException {
+        String subjectDID = null;
+        UpdateAccessInput updateAccessInput = null;
+        UpdateAccessOutput response = api.updateAccessVfs(subjectDID, updateAccessInput);
 
         // TODO: test validations
     }

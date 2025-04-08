@@ -6,33 +6,35 @@ part of 'grant_access_input.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const GrantAccessInputRightsEnum _$grantAccessInputRightsEnum_read =
-    const GrantAccessInputRightsEnum._('read');
-const GrantAccessInputRightsEnum _$grantAccessInputRightsEnum_write =
-    const GrantAccessInputRightsEnum._('write');
+const UpdateAccessInputRightsEnum _$updateAccessInputRightsEnum_read =
+    const UpdateAccessInputRightsEnum._('read');
+const UpdateAccessInputRightsEnum _$updateAccessInputRightsEnum_write =
+    const UpdateAccessInputRightsEnum._('write');
 
-GrantAccessInputRightsEnum _$grantAccessInputRightsEnumValueOf(String name) {
+UpdateAccessInputRightsEnum _$updateAccessInputRightsEnumValueOf(String name) {
   switch (name) {
     case 'read':
-      return _$grantAccessInputRightsEnum_read;
+      return _$updateAccessInputRightsEnum_read;
     case 'write':
-      return _$grantAccessInputRightsEnum_write;
+      return _$updateAccessInputRightsEnum_write;
     default:
       throw new ArgumentError(name);
   }
 }
 
-final BuiltSet<GrantAccessInputRightsEnum> _$grantAccessInputRightsEnumValues =
-    new BuiltSet<GrantAccessInputRightsEnum>(const <GrantAccessInputRightsEnum>[
-  _$grantAccessInputRightsEnum_read,
-  _$grantAccessInputRightsEnum_write,
+final BuiltSet<UpdateAccessInputRightsEnum>
+    _$updateAccessInputRightsEnumValues = new BuiltSet<
+        UpdateAccessInputRightsEnum>(const <UpdateAccessInputRightsEnum>[
+  _$updateAccessInputRightsEnum_read,
+  _$updateAccessInputRightsEnum_write,
 ]);
 
-Serializer<GrantAccessInputRightsEnum> _$grantAccessInputRightsEnumSerializer =
-    new _$GrantAccessInputRightsEnumSerializer();
+Serializer<UpdateAccessInputRightsEnum>
+    _$updateAccessInputRightsEnumSerializer =
+    new _$UpdateAccessInputRightsEnumSerializer();
 
-class _$GrantAccessInputRightsEnumSerializer
-    implements PrimitiveSerializer<GrantAccessInputRightsEnum> {
+class _$UpdateAccessInputRightsEnumSerializer
+    implements PrimitiveSerializer<UpdateAccessInputRightsEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'read': 'vfs-read',
     'write': 'vfs-write',
@@ -43,20 +45,20 @@ class _$GrantAccessInputRightsEnumSerializer
   };
 
   @override
-  final Iterable<Type> types = const <Type>[GrantAccessInputRightsEnum];
+  final Iterable<Type> types = const <Type>[UpdateAccessInputRightsEnum];
   @override
-  final String wireName = 'GrantAccessInputRightsEnum';
+  final String wireName = 'UpdateAccessInputRightsEnum';
 
   @override
-  Object serialize(Serializers serializers, GrantAccessInputRightsEnum object,
+  Object serialize(Serializers serializers, UpdateAccessInputRightsEnum object,
           {FullType specifiedType = FullType.unspecified}) =>
       _toWire[object.name] ?? object.name;
 
   @override
-  GrantAccessInputRightsEnum deserialize(
+  UpdateAccessInputRightsEnum deserialize(
           Serializers serializers, Object serialized,
           {FullType specifiedType = FullType.unspecified}) =>
-      GrantAccessInputRightsEnum.valueOf(
+      UpdateAccessInputRightsEnum.valueOf(
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
@@ -64,7 +66,7 @@ class _$GrantAccessInput extends GrantAccessInput {
   @override
   final String subjectDID;
   @override
-  final BuiltList<GrantAccessInputRightsEnum> rights;
+  final BuiltList<UpdateAccessInputRightsEnum> rights;
 
   factory _$GrantAccessInput(
           [void Function(GrantAccessInputBuilder)? updates]) =>
@@ -120,10 +122,10 @@ class GrantAccessInputBuilder
   String? get subjectDID => _$this._subjectDID;
   set subjectDID(String? subjectDID) => _$this._subjectDID = subjectDID;
 
-  ListBuilder<GrantAccessInputRightsEnum>? _rights;
-  ListBuilder<GrantAccessInputRightsEnum> get rights =>
-      _$this._rights ??= new ListBuilder<GrantAccessInputRightsEnum>();
-  set rights(ListBuilder<GrantAccessInputRightsEnum>? rights) =>
+  ListBuilder<UpdateAccessInputRightsEnum>? _rights;
+  ListBuilder<UpdateAccessInputRightsEnum> get rights =>
+      _$this._rights ??= new ListBuilder<UpdateAccessInputRightsEnum>();
+  set rights(ListBuilder<UpdateAccessInputRightsEnum>? rights) =>
       _$this._rights = rights;
 
   GrantAccessInputBuilder() {
