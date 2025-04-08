@@ -7,9 +7,15 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ClaimedCredentialResponse, () {
-    // claimed credential
+    // claimed credential for a single issuance
     // BuiltMap<String, JsonObject> credential
     test('to test the property `credential`', () async {
+      // TODO
+    });
+
+    // claimed credentials for batch issuances
+    // BuiltList<BuiltMap<String, JsonObject>> credentials
+    test('to test the property `credentials`', () async {
       // TODO
     });
 
