@@ -37,14 +37,14 @@ class TestGrantAccessInput(unittest.TestCase):
         model = GrantAccessInput()  # noqa: E501
         if include_optional:
             return GrantAccessInput(
-                subject_did = '',
+                grantee_did = '',
                 rights = [
                     'vfs-read'
                     ]
             )
         else:
             return GrantAccessInput(
-                subject_did = '',
+                grantee_did = '',
                 rights = [
                     'vfs-read'
                     ],
