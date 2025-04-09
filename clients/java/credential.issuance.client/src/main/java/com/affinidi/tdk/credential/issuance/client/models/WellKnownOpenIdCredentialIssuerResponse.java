@@ -39,6 +39,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_AUTHORIZATION_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIAL_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIAL_ISSUER,
+  WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_CREDENTIALS_SUPPORTED,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_GRANT_TYPES_SUPPORTED,
@@ -57,6 +58,9 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
   private String credentialIssuer;
+
+  public static final String JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT = "batch_credential_endpoint";
+  private String batchCredentialEndpoint;
 
   public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED = "credentials_supported";
   private List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported = new ArrayList<>();
@@ -261,6 +265,31 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialIssuer(String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
+  }
+
+  public WellKnownOpenIdCredentialIssuerResponse batchCredentialEndpoint(String batchCredentialEndpoint) {
+    
+    this.batchCredentialEndpoint = batchCredentialEndpoint;
+    return this;
+  }
+
+  /**
+   * Get batchCredentialEndpoint
+   * @return batchCredentialEndpoint
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getBatchCredentialEndpoint() {
+    return batchCredentialEndpoint;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBatchCredentialEndpoint(String batchCredentialEndpoint) {
+    this.batchCredentialEndpoint = batchCredentialEndpoint;
   }
 
   public WellKnownOpenIdCredentialIssuerResponse credentialsSupported(List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
@@ -482,6 +511,7 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
     return Objects.equals(this.authorizationEndpoint, wellKnownOpenIdCredentialIssuerResponse.authorizationEndpoint) &&
         Objects.equals(this.credentialEndpoint, wellKnownOpenIdCredentialIssuerResponse.credentialEndpoint) &&
         Objects.equals(this.credentialIssuer, wellKnownOpenIdCredentialIssuerResponse.credentialIssuer) &&
+        Objects.equals(this.batchCredentialEndpoint, wellKnownOpenIdCredentialIssuerResponse.batchCredentialEndpoint) &&
         Objects.equals(this.credentialsSupported, wellKnownOpenIdCredentialIssuerResponse.credentialsSupported) &&
         Objects.equals(this.deferredCredentialEndpoint, wellKnownOpenIdCredentialIssuerResponse.deferredCredentialEndpoint) &&
         Objects.equals(this.grantTypesSupported, wellKnownOpenIdCredentialIssuerResponse.grantTypesSupported) &&
@@ -494,7 +524,7 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizationEndpoint, credentialEndpoint, credentialIssuer, credentialsSupported, deferredCredentialEndpoint, grantTypesSupported, jwksUri, scopesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported, super.hashCode());
+    return Objects.hash(authorizationEndpoint, credentialEndpoint, credentialIssuer, batchCredentialEndpoint, credentialsSupported, deferredCredentialEndpoint, grantTypesSupported, jwksUri, scopesSupported, tokenEndpoint, tokenEndpointAuthMethodsSupported, super.hashCode());
   }
 
   @Override
@@ -505,6 +535,7 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
     sb.append("    authorizationEndpoint: ").append(toIndentedString(authorizationEndpoint)).append("\n");
     sb.append("    credentialEndpoint: ").append(toIndentedString(credentialEndpoint)).append("\n");
     sb.append("    credentialIssuer: ").append(toIndentedString(credentialIssuer)).append("\n");
+    sb.append("    batchCredentialEndpoint: ").append(toIndentedString(batchCredentialEndpoint)).append("\n");
     sb.append("    credentialsSupported: ").append(toIndentedString(credentialsSupported)).append("\n");
     sb.append("    deferredCredentialEndpoint: ").append(toIndentedString(deferredCredentialEndpoint)).append("\n");
     sb.append("    grantTypesSupported: ").append(toIndentedString(grantTypesSupported)).append("\n");
@@ -583,6 +614,16 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
     if (getCredentialIssuer() != null) {
       try {
         joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `batch_credential_endpoint` to the URL query string
+    if (getBatchCredentialEndpoint() != null) {
+      try {
+        joiner.add(String.format("%sbatch_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBatchCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

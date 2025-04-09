@@ -12,7 +12,7 @@ part 'account_dto.g.dart';
 ///
 /// Properties:
 /// * [accountIndex] - number that is used for profile DID derivation
-/// * [profileDid] - Profile DID that is associated with the account number
+/// * [accountDid] - Profile DID that is associated with the account number
 @BuiltValue()
 abstract class AccountDto implements Built<AccountDto, AccountDtoBuilder> {
   /// number that is used for profile DID derivation
@@ -20,8 +20,8 @@ abstract class AccountDto implements Built<AccountDto, AccountDtoBuilder> {
   int get accountIndex;
 
   /// Profile DID that is associated with the account number
-  @BuiltValueField(wireName: r'profileDid')
-  String get profileDid;
+  @BuiltValueField(wireName: r'accountDid')
+  String get accountDid;
 
   AccountDto._();
 
@@ -51,9 +51,9 @@ class _$AccountDtoSerializer implements PrimitiveSerializer<AccountDto> {
       object.accountIndex,
       specifiedType: const FullType(int),
     );
-    yield r'profileDid';
+    yield r'accountDid';
     yield serializers.serialize(
-      object.profileDid,
+      object.accountDid,
       specifiedType: const FullType(String),
     );
   }
@@ -86,12 +86,12 @@ class _$AccountDtoSerializer implements PrimitiveSerializer<AccountDto> {
           ) as int;
           result.accountIndex = valueDes;
           break;
-        case r'profileDid':
+        case r'accountDid':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.profileDid = valueDes;
+          result.accountDid = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -32,7 +32,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   CreateAccountInput.JSON_PROPERTY_ACCOUNT_INDEX,
-  CreateAccountInput.JSON_PROPERTY_PROFILE_DID,
+  CreateAccountInput.JSON_PROPERTY_ACCOUNT_DID,
   CreateAccountInput.JSON_PROPERTY_DID_PROOF
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
@@ -40,8 +40,8 @@ public class CreateAccountInput {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
   private BigDecimal accountIndex;
 
-  public static final String JSON_PROPERTY_PROFILE_DID = "profileDid";
-  private String profileDid;
+  public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
+  private String accountDid;
 
   public static final String JSON_PROPERTY_DID_PROOF = "didProof";
   private String didProof;
@@ -74,29 +74,29 @@ public class CreateAccountInput {
     this.accountIndex = accountIndex;
   }
 
-  public CreateAccountInput profileDid(String profileDid) {
+  public CreateAccountInput accountDid(String accountDid) {
     
-    this.profileDid = profileDid;
+    this.accountDid = accountDid;
     return this;
   }
 
   /**
    * DID that is associated with the account number
-   * @return profileDid
+   * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_DID)
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getProfileDid() {
-    return profileDid;
+  public String getAccountDid() {
+    return accountDid;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_DID)
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileDid(String profileDid) {
-    this.profileDid = profileDid;
+  public void setAccountDid(String accountDid) {
+    this.accountDid = accountDid;
   }
 
   public CreateAccountInput didProof(String didProof) {
@@ -134,13 +134,13 @@ public class CreateAccountInput {
     }
     CreateAccountInput createAccountInput = (CreateAccountInput) o;
     return Objects.equals(this.accountIndex, createAccountInput.accountIndex) &&
-        Objects.equals(this.profileDid, createAccountInput.profileDid) &&
+        Objects.equals(this.accountDid, createAccountInput.accountDid) &&
         Objects.equals(this.didProof, createAccountInput.didProof);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndex, profileDid, didProof);
+    return Objects.hash(accountIndex, accountDid, didProof);
   }
 
   @Override
@@ -148,7 +148,7 @@ public class CreateAccountInput {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAccountInput {\n");
     sb.append("    accountIndex: ").append(toIndentedString(accountIndex)).append("\n");
-    sb.append("    profileDid: ").append(toIndentedString(profileDid)).append("\n");
+    sb.append("    accountDid: ").append(toIndentedString(accountDid)).append("\n");
     sb.append("    didProof: ").append(toIndentedString(didProof)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -207,10 +207,10 @@ public class CreateAccountInput {
       }
     }
 
-    // add `profileDid` to the URL query string
-    if (getProfileDid() != null) {
+    // add `accountDid` to the URL query string
+    if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%sprofileDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
