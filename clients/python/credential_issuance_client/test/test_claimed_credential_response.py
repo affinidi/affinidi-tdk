@@ -37,7 +37,10 @@ class TestClaimedCredentialResponse(unittest.TestCase):
         model = ClaimedCredentialResponse()  # noqa: E501
         if include_optional:
             return ClaimedCredentialResponse(
-                credential = { }
+                credential = { },
+                credentials = [
+                    { }
+                    ]
             )
         else:
             return ClaimedCredentialResponse(

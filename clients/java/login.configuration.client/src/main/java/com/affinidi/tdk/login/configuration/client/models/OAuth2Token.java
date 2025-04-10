@@ -15,11 +15,15 @@ package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.login.configuration.client.models.OAuth2TokenAuthorizationDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -35,7 +39,8 @@ import java.util.StringJoiner;
   OAuth2Token.JSON_PROPERTY_ID_TOKEN,
   OAuth2Token.JSON_PROPERTY_REFRESH_TOKEN,
   OAuth2Token.JSON_PROPERTY_SCOPE,
-  OAuth2Token.JSON_PROPERTY_TOKEN_TYPE
+  OAuth2Token.JSON_PROPERTY_TOKEN_TYPE,
+  OAuth2Token.JSON_PROPERTY_AUTHORIZATION_DETAILS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class OAuth2Token {
@@ -56,6 +61,9 @@ public class OAuth2Token {
 
   public static final String JSON_PROPERTY_TOKEN_TYPE = "token_type";
   private String tokenType;
+
+  public static final String JSON_PROPERTY_AUTHORIZATION_DETAILS = "authorization_details";
+  private List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails = new ArrayList<>();
 
   public OAuth2Token() {
   }
@@ -210,6 +218,39 @@ public class OAuth2Token {
     this.tokenType = tokenType;
   }
 
+  public OAuth2Token authorizationDetails(List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
+    
+    this.authorizationDetails = authorizationDetails;
+    return this;
+  }
+
+  public OAuth2Token addAuthorizationDetailsItem(OAuth2TokenAuthorizationDetailsInner authorizationDetailsItem) {
+    if (this.authorizationDetails == null) {
+      this.authorizationDetails = new ArrayList<>();
+    }
+    this.authorizationDetails.add(authorizationDetailsItem);
+    return this;
+  }
+
+  /**
+   * is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
+   * @return authorizationDetails
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<OAuth2TokenAuthorizationDetailsInner> getAuthorizationDetails() {
+    return authorizationDetails;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_DETAILS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAuthorizationDetails(List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
+    this.authorizationDetails = authorizationDetails;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -224,12 +265,13 @@ public class OAuth2Token {
         Objects.equals(this.idToken, oauth2Token.idToken) &&
         Objects.equals(this.refreshToken, oauth2Token.refreshToken) &&
         Objects.equals(this.scope, oauth2Token.scope) &&
-        Objects.equals(this.tokenType, oauth2Token.tokenType);
+        Objects.equals(this.tokenType, oauth2Token.tokenType) &&
+        Objects.equals(this.authorizationDetails, oauth2Token.authorizationDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, expiresIn, idToken, refreshToken, scope, tokenType);
+    return Objects.hash(accessToken, expiresIn, idToken, refreshToken, scope, tokenType, authorizationDetails);
   }
 
   @Override
@@ -242,6 +284,7 @@ public class OAuth2Token {
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
+    sb.append("    authorizationDetails: ").append(toIndentedString(authorizationDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -346,6 +389,16 @@ public class OAuth2Token {
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
+      }
+    }
+
+    // add `authorization_details` to the URL query string
+    if (getAuthorizationDetails() != null) {
+      for (int i = 0; i < getAuthorizationDetails().size(); i++) {
+        if (getAuthorizationDetails().get(i) != null) {
+          joiner.add(getAuthorizationDetails().get(i).toUrlQueryString(String.format("%sauthorization_details%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
       }
     }
 
