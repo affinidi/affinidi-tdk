@@ -26,9 +26,9 @@ class GrantAccessInput(BaseModel):
     """
     GrantAccessInput
     """
-    subject_did: StrictStr = Field(default=..., alias="subjectDID", description="DID of the subject being granted access")
-    rights: conlist(StrictStr) = Field(default=..., description="List of rights to grant to the subject")
-    __properties = ["subjectDID", "rights"]
+    grantee_did: StrictStr = Field(default=..., alias="granteeDid", description="DID of the subject being granted access")
+    rights: conlist(StrictStr, min_items=1) = Field(default=..., description="List of rights to grant to the subject")
+    __properties = ["granteeDid", "rights"]
 
     @validator('rights')
     def rights_validate_enum(cls, value):
@@ -74,7 +74,7 @@ class GrantAccessInput(BaseModel):
             return GrantAccessInput.parse_obj(obj)
 
         _obj = GrantAccessInput.parse_obj({
-            "subject_did": obj.get("subjectDID"),
+            "grantee_did": obj.get("granteeDid"),
             "rights": obj.get("rights")
         })
         return _obj

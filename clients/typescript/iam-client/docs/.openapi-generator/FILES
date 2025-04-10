@@ -16,6 +16,7 @@ Models/CreateProjectInput.md
 Models/CreateProjectScopedTokenInput.md
 Models/CreateProjectScopedTokenOutput.md
 Models/CreateTokenInput.md
+Models/DeleteAccessOutput.md
 Models/GrantAccessInput.md
 Models/GrantAccessOutput.md
 Models/InvalidDIDError.md
@@ -45,6 +46,8 @@ Models/TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1.md
 Models/TypedPrincipalId.md
 Models/UnauthorizedError.md
 Models/UnexpectedError.md
+Models/UpdateAccessInput.md
+Models/UpdateAccessOutput.md
 Models/UpdateProjectInput.md
 Models/UpdateTokenInput.md
 Models/UpdateTokenPrivateKeyAuthenticationMethodDto.md

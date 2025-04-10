@@ -19,8 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from affinidi_tdk_login_configuration_client.models.o_auth2_token_authorization_details_inner import OAuth2TokenAuthorizationDetailsInner
 
 class OAuth2Token(BaseModel):
     """
@@ -32,7 +33,8 @@ class OAuth2Token(BaseModel):
     refresh_token: Optional[StrictStr] = Field(default=None, description="The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. ")
     scope: Optional[StrictStr] = Field(default=None, description="The scope of the access token ")
     token_type: Optional[StrictStr] = Field(default=None, description="The type of the token issued ")
-    __properties = ["access_token", "expires_in", "id_token", "refresh_token", "scope", "token_type"]
+    authorization_details: Optional[conlist(OAuth2TokenAuthorizationDetailsInner)] = Field(default=None, description="is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. ")
+    __properties = ["access_token", "expires_in", "id_token", "refresh_token", "scope", "token_type", "authorization_details"]
 
     class Config:
         """Pydantic configuration"""
@@ -58,6 +60,13 @@ class OAuth2Token(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in authorization_details (list)
+        _items = []
+        if self.authorization_details:
+            for _item in self.authorization_details:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['authorization_details'] = _items
         return _dict
 
     @classmethod
@@ -75,7 +84,8 @@ class OAuth2Token(BaseModel):
             "id_token": obj.get("id_token"),
             "refresh_token": obj.get("refresh_token"),
             "scope": obj.get("scope"),
-            "token_type": obj.get("token_type")
+            "token_type": obj.get("token_type"),
+            "authorization_details": [OAuth2TokenAuthorizationDetailsInner.from_dict(_item) for _item in obj.get("authorization_details")] if obj.get("authorization_details") is not None else None
         })
         return _obj
 

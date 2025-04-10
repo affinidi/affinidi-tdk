@@ -145,6 +145,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [LoginSessionForIDPInput](doc/LoginSessionForIDPInput.md)
 - [NotFoundError](doc/NotFoundError.md)
 - [OAuth2Token](doc/OAuth2Token.md)
+- [OAuth2TokenAuthorizationDetailsInner](doc/OAuth2TokenAuthorizationDetailsInner.md)
 - [OIDCConfig](doc/OIDCConfig.md)
 - [OIDCConfigCredentialsSupportedDraft00Inner](doc/OIDCConfigCredentialsSupportedDraft00Inner.md)
 - [RedirectResponse](doc/RedirectResponse.md)

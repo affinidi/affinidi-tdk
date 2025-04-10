@@ -13,11 +13,15 @@
 
 package com.affinidi.tdk.login.configuration.client.models;
 
+import com.affinidi.tdk.login.configuration.client.models.OAuth2TokenAuthorizationDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -82,6 +86,14 @@ class OAuth2TokenTest {
     @Test
     void tokenTypeTest() {
         // TODO: test tokenType
+    }
+
+    /**
+     * Test the property 'authorizationDetails'
+     */
+    @Test
+    void authorizationDetailsTest() {
+        // TODO: test authorizationDetails
     }
 
 }

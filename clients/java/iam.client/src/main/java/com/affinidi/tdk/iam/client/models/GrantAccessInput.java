@@ -33,13 +33,13 @@ import java.util.StringJoiner;
  * GrantAccessInput
  */
 @JsonPropertyOrder({
-  GrantAccessInput.JSON_PROPERTY_SUBJECT_D_I_D,
+  GrantAccessInput.JSON_PROPERTY_GRANTEE_DID,
   GrantAccessInput.JSON_PROPERTY_RIGHTS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GrantAccessInput {
-  public static final String JSON_PROPERTY_SUBJECT_D_I_D = "subjectDID";
-  private String subjectDID;
+  public static final String JSON_PROPERTY_GRANTEE_DID = "granteeDid";
+  private String granteeDid;
 
   /**
    * Gets or Sets rights
@@ -82,29 +82,29 @@ public class GrantAccessInput {
   public GrantAccessInput() {
   }
 
-  public GrantAccessInput subjectDID(String subjectDID) {
+  public GrantAccessInput granteeDid(String granteeDid) {
     
-    this.subjectDID = subjectDID;
+    this.granteeDid = granteeDid;
     return this;
   }
 
   /**
    * DID of the subject being granted access
-   * @return subjectDID
+   * @return granteeDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUBJECT_D_I_D)
+  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getSubjectDID() {
-    return subjectDID;
+  public String getGranteeDid() {
+    return granteeDid;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUBJECT_D_I_D)
+  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSubjectDID(String subjectDID) {
-    this.subjectDID = subjectDID;
+  public void setGranteeDid(String granteeDid) {
+    this.granteeDid = granteeDid;
   }
 
   public GrantAccessInput rights(List<RightsEnum> rights) {
@@ -149,20 +149,20 @@ public class GrantAccessInput {
       return false;
     }
     GrantAccessInput grantAccessInput = (GrantAccessInput) o;
-    return Objects.equals(this.subjectDID, grantAccessInput.subjectDID) &&
+    return Objects.equals(this.granteeDid, grantAccessInput.granteeDid) &&
         Objects.equals(this.rights, grantAccessInput.rights);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(subjectDID, rights);
+    return Objects.hash(granteeDid, rights);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GrantAccessInput {\n");
-    sb.append("    subjectDID: ").append(toIndentedString(subjectDID)).append("\n");
+    sb.append("    granteeDid: ").append(toIndentedString(granteeDid)).append("\n");
     sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -211,10 +211,10 @@ public class GrantAccessInput {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `subjectDID` to the URL query string
-    if (getSubjectDID() != null) {
+    // add `granteeDid` to the URL query string
+    if (getGranteeDid() != null) {
       try {
-        joiner.add(String.format("%ssubjectDID%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSubjectDID()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sgranteeDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGranteeDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

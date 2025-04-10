@@ -43,5 +43,11 @@ void main() {
       // TODO
     });
 
+    // is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
+    // BuiltList<OAuth2TokenAuthorizationDetailsInner> authorizationDetails
+    test('to test the property `authorizationDetails`', () async {
+      // TODO
+    });
+
   });
 }

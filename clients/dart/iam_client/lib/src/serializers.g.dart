@@ -19,9 +19,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateProjectScopedTokenInput.serializer)
       ..add(CreateProjectScopedTokenOutput.serializer)
       ..add(CreateTokenInput.serializer)
+      ..add(DeleteAccessOutput.serializer)
       ..add(GetWellKnownDidOK.serializer)
       ..add(GrantAccessInput.serializer)
-      ..add(GrantAccessInputRightsEnum.serializer)
       ..add(GrantAccessOutput.serializer)
       ..add(InvalidDIDError.serializer)
       ..add(InvalidDIDErrorHttpStatusCodeEnum.serializer)
@@ -81,6 +81,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UnexpectedErrorHttpStatusCodeEnum.serializer)
       ..add(UnexpectedErrorMessageEnum.serializer)
       ..add(UnexpectedErrorNameEnum.serializer)
+      ..add(UpdateAccessInput.serializer)
+      ..add(UpdateAccessInputRightsEnum.serializer)
+      ..add(UpdateAccessInputRightsEnum.serializer)
+      ..add(UpdateAccessOutput.serializer)
       ..add(UpdateProjectInput.serializer)
       ..add(UpdateTokenInput.serializer)
       ..add(UpdateTokenPrivateKeyAuthenticationMethodDto.serializer)
@@ -90,10 +94,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserDto.serializer)
       ..add(UserList.serializer)
       ..add(WhoamiDto.serializer)
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(GrantAccessInputRightsEnum)]),
-          () => new ListBuilder<GrantAccessInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
           () => new ListBuilder<JsonWebKeyDto>())
@@ -166,6 +166,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TokenDto)]),
           () => new ListBuilder<TokenDto>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UpdateAccessInputRightsEnum)]),
+          () => new ListBuilder<UpdateAccessInputRightsEnum>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UpdateAccessInputRightsEnum)]),
+          () => new ListBuilder<UpdateAccessInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(UserDto)]),
           () => new ListBuilder<UserDto>()))

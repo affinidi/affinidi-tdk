@@ -184,6 +184,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [LoginSessionRejectResponseOutput](docs/LoginSessionRejectResponseOutput.md)
 - [NotFoundError](docs/NotFoundError.md)
 - [OAuth2Token](docs/OAuth2Token.md)
+- [OAuth2TokenAuthorizationDetailsInner](docs/OAuth2TokenAuthorizationDetailsInner.md)
 - [OIDCConfig](docs/OIDCConfig.md)
 - [OIDCConfigCredentialsSupportedDraft00Inner](docs/OIDCConfigCredentialsSupportedDraft00Inner.md)
 - [RedirectResponse](docs/RedirectResponse.md)
