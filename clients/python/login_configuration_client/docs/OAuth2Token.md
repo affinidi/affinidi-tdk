@@ -2,14 +2,15 @@
 
 ## Properties
 
-| Name              | Type    | Description                                                                                                                                                                            | Notes      |
-| ----------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **access_token**  | **str** | The access token issued by the authorization server.                                                                                                                                   | [optional] |
-| **expires_in**    | **int** | The lifetime in seconds of the access token. For example, the value \&quot;3600\&quot; denotes that the access token will expire in one hour from the time the response was generated. | [optional] |
-| **id_token**      | **int** | To retrieve a refresh token request the id_token scope.                                                                                                                                | [optional] |
-| **refresh_token** | **str** | The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \&quot;offline\&quot; to your access token request.                                     | [optional] |
-| **scope**         | **str** | The scope of the access token                                                                                                                                                          | [optional] |
-| **token_type**    | **str** | The type of the token issued                                                                                                                                                           | [optional] |
+| Name                      | Type                                                                                      | Description                                                                                                                                                                            | Notes      |
+| ------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **access_token**          | **str**                                                                                   | The access token issued by the authorization server.                                                                                                                                   | [optional] |
+| **expires_in**            | **int**                                                                                   | The lifetime in seconds of the access token. For example, the value \&quot;3600\&quot; denotes that the access token will expire in one hour from the time the response was generated. | [optional] |
+| **id_token**              | **int**                                                                                   | To retrieve a refresh token request the id_token scope.                                                                                                                                | [optional] |
+| **refresh_token**         | **str**                                                                                   | The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \&quot;offline\&quot; to your access token request.                                     | [optional] |
+| **scope**                 | **str**                                                                                   | The scope of the access token                                                                                                                                                          | [optional] |
+| **token_type**            | **str**                                                                                   | The type of the token issued                                                                                                                                                           | [optional] |
+| **authorization_details** | [**List[OAuth2TokenAuthorizationDetailsInner]**](OAuth2TokenAuthorizationDetailsInner.md) | is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations.                                                       | [optional] |
 
 ## Example
 

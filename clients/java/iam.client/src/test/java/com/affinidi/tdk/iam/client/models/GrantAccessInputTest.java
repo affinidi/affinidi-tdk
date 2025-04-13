@@ -40,11 +40,11 @@ class GrantAccessInputTest {
     }
 
     /**
-     * Test the property 'subjectDID'
+     * Test the property 'granteeDid'
      */
     @Test
-    void subjectDIDTest() {
-        // TODO: test subjectDID
+    void granteeDidTest() {
+        // TODO: test granteeDid
     }
 
     /**
