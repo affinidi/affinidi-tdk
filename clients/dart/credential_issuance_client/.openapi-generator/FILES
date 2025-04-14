@@ -17,6 +17,7 @@ doc/CisConfigurationWebhookSettingEndpoint.md
 doc/ClaimedCredentialListResponse.md
 doc/ClaimedCredentialResponse.md
 doc/ConfigurationApi.md
+doc/CorsBatchCredentialOK.md
 doc/CorsGenerateCredentialsOK.md
 doc/CorsGetClaimedCredentialsOK.md
 doc/CorsGetCredentialOfferOK.md
@@ -109,6 +110,7 @@ lib/src/model/cis_configuration_webhook_setting.dart
 lib/src/model/cis_configuration_webhook_setting_endpoint.dart
 lib/src/model/claimed_credential_list_response.dart
 lib/src/model/claimed_credential_response.dart
+lib/src/model/cors_batch_credential_ok.dart
 lib/src/model/cors_generate_credentials_ok.dart
 lib/src/model/cors_get_claimed_credentials_ok.dart
 lib/src/model/cors_get_credential_offer_ok.dart
@@ -186,6 +188,7 @@ test/cis_configuration_webhook_setting_test.dart
 test/claimed_credential_list_response_test.dart
 test/claimed_credential_response_test.dart
 test/configuration_api_test.dart
+test/cors_batch_credential_ok_test.dart
 test/cors_generate_credentials_ok_test.dart
 test/cors_get_claimed_credentials_ok_test.dart
 test/cors_get_credential_offer_ok_test.dart
