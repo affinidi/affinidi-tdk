@@ -18,6 +18,7 @@ docs/CisConfigurationWebhookSettingEndpoint.md
 docs/ClaimedCredentialListResponse.md
 docs/ClaimedCredentialResponse.md
 docs/ConfigurationApi.md
+docs/CorsBatchCredentialOK.md
 docs/CorsGenerateCredentialsOK.md
 docs/CorsGetClaimedCredentialsOK.md
 docs/CorsGetCredentialOfferOK.md
@@ -124,6 +125,7 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/CisConfiguratio
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CisConfigurationWebhookSettingEndpoint.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialListResponse.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialResponse.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsBatchCredentialOK.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGenerateCredentialsOK.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetClaimedCredentialsOK.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetCredentialOfferOK.java
@@ -202,6 +204,7 @@ src/test/java/com/affinidi/tdk/credential/issuance/client/models/CisConfiguratio
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/CisConfigurationWebhookSettingTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialListResponseTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialResponseTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/CorsBatchCredentialOKTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/CorsGenerateCredentialsOKTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetClaimedCredentialsOKTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetCredentialOfferOKTest.java
