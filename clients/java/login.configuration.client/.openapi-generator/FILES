@@ -54,6 +54,7 @@ docs/LoginSessionRejectResponseInput.md
 docs/LoginSessionRejectResponseOutput.md
 docs/NotFoundError.md
 docs/OAuth2Token.md
+docs/OAuth2TokenAuthorizationDetailsInner.md
 docs/OIDCConfig.md
 docs/OIDCConfigCredentialsSupportedDraft00Inner.md
 docs/RedirectResponse.md
@@ -138,6 +139,7 @@ src/main/java/com/affinidi/tdk/login/configuration/client/models/LoginSessionRej
 src/main/java/com/affinidi/tdk/login/configuration/client/models/LoginSessionRejectResponseOutput.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/NotFoundError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/OAuth2Token.java
+src/main/java/com/affinidi/tdk/login/configuration/client/models/OAuth2TokenAuthorizationDetailsInner.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/OIDCConfig.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/OIDCConfigCredentialsSupportedDraft00Inner.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/RedirectResponse.java
@@ -198,6 +200,7 @@ src/test/java/com/affinidi/tdk/login/configuration/client/models/LoginSessionFor
 src/test/java/com/affinidi/tdk/login/configuration/client/models/LoginSessionRejectResponseInputTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/LoginSessionRejectResponseOutputTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/NotFoundErrorTest.java
+src/test/java/com/affinidi/tdk/login/configuration/client/models/OAuth2TokenAuthorizationDetailsInnerTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/OAuth2TokenTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/OIDCConfigCredentialsSupportedDraft00InnerTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/OIDCConfigTest.java

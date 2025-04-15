@@ -18,7 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
@@ -44,6 +47,14 @@ class ClaimedCredentialResponseTest {
     @Test
     void credentialTest() {
         // TODO: test credential
+    }
+
+    /**
+     * Test the property 'credentials'
+     */
+    @Test
+    void credentialsTest() {
+        // TODO: test credentials
     }
 
 }
