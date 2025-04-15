@@ -7,6 +7,7 @@ import {
   BatchCredentialInput,
   OfferApi,
   BatchCredentialInputCredentialRequestsInner,
+  ConfigurationApi,
 } from '@affinidi-tdk/credential-issuance-client'
 import {
   apiKey,
@@ -24,7 +25,22 @@ describe('credential-issuance-client', function () {
   let credentialIssuer = ''
   let authorizationDetails
   let txCode = ''
-  it('tests startIssuance', async () => {
+  let configurationId = ''
+
+  it('Test get configurations', async () => {
+    const cisConfiguration = new CisConfiguration({
+      apiKey,
+      basePath: 'https://apse1.dev.api.affinidi.io/cis',
+    })
+    const api = new ConfigurationApi(cisConfiguration)
+    const { data } = await api.getIssuanceConfigList()
+    expect(data).to.have.a.property('configurations')
+    expect(data.configurations).to.be.an('array')
+    expect(data.configurations.length).to.be.greaterThan(0)
+    configurationId = data.configurations[0].id
+  })
+
+  it('Test startIssuance', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -40,7 +56,7 @@ describe('credential-issuance-client', function () {
     expect(data).to.have.a.property('issuanceId')
   })
 
-  it('test offer Uri', async () => {
+  it('Test get offer Uri', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -81,7 +97,7 @@ describe('credential-issuance-client', function () {
     authorizationDetails = response.data.authorization_details
   })
 
-  it('tests batch credential', async () => {
+  it('Test batch credential', async () => {
     const cisConfiguration = new CisConfiguration({
       accessToken: `${credentialToken}`,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -109,5 +125,20 @@ describe('credential-issuance-client', function () {
     expect(data).to.have.a.property('credential_responses')
     expect(data.credential_responses.length).to.equal(2)
     expect(data.credential_responses[0]).to.have.a.property('credential')
+  })
+
+  it('Test get issued credential for one flow', async () => {
+    const cisConfiguration = new CisConfiguration({
+      apiKey,
+      basePath: 'https://apse1.dev.api.affinidi.io/cis',
+    })
+    const api = new CredentialsApi(cisConfiguration)
+    const { data } = await api.getIssuanceIdClaimedCredential(
+      projectId,
+      configurationId,
+      issuanceId,
+    )
+    expect(data).to.have.a.property('credentials')
+    expect(data.credentials?.length).to.equal(2)
   })
 })
