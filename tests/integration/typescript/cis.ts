@@ -18,7 +18,7 @@ import {
 import axios from 'axios'
 
 describe('credential-issuance-client', function () {
-  let credentialToken = 'token'
+  let credentialToken = ''
   let offerUri = ''
   let issuanceId = ''
   let preAuthCode = ''
