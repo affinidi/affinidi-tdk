@@ -28,6 +28,7 @@ export 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
+export 'package:affinidi_tdk_iam_client/src/model/delete_access_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/get_well_known_did_ok.dart';
 export 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
@@ -58,10 +59,13 @@ export 'package:affinidi_tdk_iam_client/src/model/token_private_key_authenticati
 export 'package:affinidi_tdk_iam_client/src/model/typed_principal_id.dart';
 export 'package:affinidi_tdk_iam_client/src/model/unauthorized_error.dart';
 export 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
+export 'package:affinidi_tdk_iam_client/src/model/update_access_input.dart';
+export 'package:affinidi_tdk_iam_client/src/model/update_access_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/update_project_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/update_token_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/update_token_private_key_authentication_method_dto.dart';
 export 'package:affinidi_tdk_iam_client/src/model/user_dto.dart';
 export 'package:affinidi_tdk_iam_client/src/model/user_list.dart';
+export 'package:affinidi_tdk_iam_client/src/model/vfs_rights_enum.dart';
 export 'package:affinidi_tdk_iam_client/src/model/whoami_dto.dart';
 

@@ -3,65 +3,54 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_iam_client/src/model/vfs_rights_enum.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'grant_access_input.g.dart';
+part 'update_access_output.g.dart';
 
-/// GrantAccessInput
+/// UpdateAccessOutput
 ///
 /// Properties:
-/// * [granteeDid] - DID of the subject being granted access
-/// * [rights] 
+/// * [success] 
 @BuiltValue()
-abstract class GrantAccessInput implements Built<GrantAccessInput, GrantAccessInputBuilder> {
-  /// DID of the subject being granted access
-  @BuiltValueField(wireName: r'granteeDid')
-  String get granteeDid;
+abstract class UpdateAccessOutput implements Built<UpdateAccessOutput, UpdateAccessOutputBuilder> {
+  @BuiltValueField(wireName: r'success')
+  bool get success;
 
-  @BuiltValueField(wireName: r'rights')
-  VFSRightsEnum get rights;
+  UpdateAccessOutput._();
 
-  GrantAccessInput._();
-
-  factory GrantAccessInput([void updates(GrantAccessInputBuilder b)]) = _$GrantAccessInput;
+  factory UpdateAccessOutput([void updates(UpdateAccessOutputBuilder b)]) = _$UpdateAccessOutput;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GrantAccessInputBuilder b) => b;
+  static void _defaults(UpdateAccessOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GrantAccessInput> get serializer => _$GrantAccessInputSerializer();
+  static Serializer<UpdateAccessOutput> get serializer => _$UpdateAccessOutputSerializer();
 }
 
-class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInput> {
+class _$UpdateAccessOutputSerializer implements PrimitiveSerializer<UpdateAccessOutput> {
   @override
-  final Iterable<Type> types = const [GrantAccessInput, _$GrantAccessInput];
+  final Iterable<Type> types = const [UpdateAccessOutput, _$UpdateAccessOutput];
 
   @override
-  final String wireName = r'GrantAccessInput';
+  final String wireName = r'UpdateAccessOutput';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    GrantAccessInput object, {
+    UpdateAccessOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'granteeDid';
+    yield r'success';
     yield serializers.serialize(
-      object.granteeDid,
-      specifiedType: const FullType(String),
-    );
-    yield r'rights';
-    yield serializers.serialize(
-      object.rights,
-      specifiedType: const FullType(VFSRightsEnum),
+      object.success,
+      specifiedType: const FullType(bool),
     );
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    GrantAccessInput object, {
+    UpdateAccessOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -72,26 +61,19 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required GrantAccessInputBuilder result,
+    required UpdateAccessOutputBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'granteeDid':
+        case r'success':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.granteeDid = valueDes;
-          break;
-        case r'rights':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(VFSRightsEnum),
-          ) as VFSRightsEnum;
-          result.rights = valueDes;
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.success = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -102,12 +84,12 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
   }
 
   @override
-  GrantAccessInput deserialize(
+  UpdateAccessOutput deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = GrantAccessInputBuilder();
+    final result = UpdateAccessOutputBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
