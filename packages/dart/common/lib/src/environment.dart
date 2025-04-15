@@ -1,3 +1,4 @@
+import 'dart:io';
 /// Enum to represent different types of environments.
 enum EnvironmentType {
   /// Local environment.
@@ -48,7 +49,7 @@ class Environment {
   });
 
   /// The name of the environment variable that holds the current environment type.
-  static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
+  static const environmentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
   static const _consumerAudienceEndpoint = '/iam/v1/consumer/oauth2/token';
   static const _consumerCisEndpoint = '/cis';
 
@@ -88,7 +89,7 @@ class Environment {
 
   /// Fetches the current environment based on the provided environment variable.
   static Environment fetchEnvironment() {
-    final envValue = const String.fromEnvironment(enviromentVariableName);
+    final envValue = Platform.environment[environmentVariableName];
     final environmentType = EnvironmentType.values.firstWhere(
       (e) => e.value == envValue,
       orElse: () => EnvironmentType.prod,

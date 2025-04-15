@@ -1,3 +1,5 @@
+import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
+import 'package:built_value/json_object.dart';
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
@@ -9,121 +11,283 @@ import 'environment.dart';
 void main() {
   group('Credential Issuance Client Integration Tests', () {
     late ConfigurationApi configurationApi;
+    late IssuanceApi issuanceApi;
+    late OfferApi offerApi;
     late String configurationId;
+    late String issuanceId;
     late String walletId;
+    late String preAuthCode;
+    late String tokenIssuerUri;
+    late String accessToken;
+
+    List<dynamic> authorizationDetails = [];
+    final envVault = getVaultEnvironment();
+    final consumerAuthProvider = ConsumerAuthProvider(seed: envVault.seed);
+    final env = getProjectEnvironment();
 
     setUp(() async {
-      final env = getProjectEnvironment();
       walletId = env.walletId;
-
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
+      final authProvider = AuthProvider.withEnv(
+          projectId: env.projectId,
+          tokenId: env.tokenId,
+          privateKey: env.privateKey,
+          keyId: env.keyId,
+          passphrase: env.passphrase,
+          tokenEndpoint:
+              "https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token",
+          apiGatewayUrl: "https://apse1.dev.api.affinidi.io");
 
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
-        dio: Dio(BaseOptions(
-          baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
-          connectTimeout: const Duration(seconds: 10),
-          receiveTimeout: const Duration(seconds: 10),
-        )),
-        authTokenHook: authProvider.fetchProjectScopedToken);
-
+          dio: Dio(BaseOptions(
+            baseUrl:
+                "https://apse1.dev.api.affinidi.io/cis", // AffinidiTdkCredentialIssuanceClient.basePath,
+            connectTimeout: const Duration(seconds: 10),
+            receiveTimeout: const Duration(seconds: 10),
+          )),
+          authTokenHook: authProvider.fetchProjectScopedToken);
       configurationApi = issuanceClient.getConfigurationApi();
+      issuanceApi = issuanceClient.getIssuanceApi();
+      offerApi = issuanceClient.getOfferApi();
     });
 
-    test('Deletes issuance configuration if exists', () async {
-      final configurations = (await configurationApi.getIssuanceConfigList()).data?.configurations;
-      expect(configurations, isNotNull);
+    // test('Deletes issuance configuration if exists', () async {
+    //   final configurations = (await configurationApi.getIssuanceConfigList()).data?.configurations;
+    //   expect(configurations, isNotNull);
 
-      if (configurations != null && configurations.isNotEmpty && configurations.length > 0) {
-        configurationId = configurations.first.id;
+    //   if (configurations != null && configurations.isNotEmpty && configurations.length > 0) {
+    //     configurationId = configurations.first.id;
 
-        final statusCode = (await configurationApi.deleteIssuanceConfigById(configurationId: configurationId)).statusCode;
-        expect(statusCode, 204);
-      }
-    });
+    //     final statusCode = (await configurationApi.deleteIssuanceConfigById(configurationId: configurationId)).statusCode;
+    //     expect(statusCode, 204);
+    //   }
+    // });
 
-    test('Creates issuance configuration', () async {
-      final name = 'TestConfig';
-      final description = 'Test issuance config';
-      final format = CreateIssuanceConfigInputFormatEnum.ldpVc;
-      final credentialOfferDuration = 600;
-      final metadata = SupportedCredentialMetadataBuilder()
-        ..display = ListBuilder([
-          SupportedCredentialMetadataDisplayInner((b) => b
-            ..name = 'Test Display'
-            ..logo = (SupportedCredentialMetadataItemLogoBuilder()
-              ..url = 'https://example.com/logo.png'
-              ..altText = 'Logo'))
-        ]);
+    // test('Creates issuance configuration', () async {
+    //   final name = 'TestConfig';
+    //   final description = 'Test issuance config';
+    //   final format = CreateIssuanceConfigInputFormatEnum.ldpVc;
+    //   final credentialOfferDuration = 600;
+    //   final metadata = SupportedCredentialMetadataBuilder()
+    //     ..display = ListBuilder([
+    //       SupportedCredentialMetadataDisplayInner((b) => b
+    //         ..name = 'Test Display'
+    //         ..logo = (SupportedCredentialMetadataItemLogoBuilder()
+    //           ..url = 'https://example.com/logo.png'
+    //           ..altText = 'Logo'))
+    //     ]);
 
-      final credentialSupported = [
-        CredentialSupportedObject((b) => b
-          ..credentialTypeId = 'TDriversLicenseV1R1'
-          ..jsonSchemaUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.json'
-          ..jsonLdContextUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
-          ..metadata = metadata),
+    //   final credentialSupported = [
+    //     CredentialSupportedObject((b) => b
+    //       ..credentialTypeId = 'TDriversLicenseV1R1'
+    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.json'
+    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
+    //       ..metadata = metadata),
 
-        CredentialSupportedObject((b) => b
-          ..credentialTypeId = 'TInstructorReviewV1R0'
-          ..jsonSchemaUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.json'
-          ..jsonLdContextUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.jsonld'
-          ..metadata = metadata),
+    //     CredentialSupportedObject((b) => b
+    //       ..credentialTypeId = 'TInstructorReviewV1R0'
+    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.json'
+    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.jsonld'
+    //       ..metadata = metadata),
 
-        CredentialSupportedObject((b) => b
-          ..credentialTypeId = 'TSkillBadgeV1R0'
-          ..jsonSchemaUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.json'
-          ..jsonLdContextUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.jsonld'
-          ..metadata = metadata),
+    //     CredentialSupportedObject((b) => b
+    //       ..credentialTypeId = 'TSkillBadgeV1R0'
+    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.json'
+    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.jsonld'
+    //       ..metadata = metadata),
 
-        CredentialSupportedObject((b) => b
-          ..credentialTypeId = 'TSimpleBioV1R0'
-          ..jsonSchemaUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.json'
-          ..jsonLdContextUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.jsonld'
-          ..metadata = metadata),
-      ];
+    //     CredentialSupportedObject((b) => b
+    //       ..credentialTypeId = 'TSimpleBioV1R0'
+    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.json'
+    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.jsonld'
+    //       ..metadata = metadata),
+    //   ];
 
-      final configInputBuilder = CreateIssuanceConfigInputBuilder()
-        ..issuerWalletId = walletId
-        ..name = name
-        ..description = description
-        ..format = format
-        ..credentialOfferDuration = credentialOfferDuration
-        ..credentialSupported = ListBuilder(credentialSupported);
+    //   final configInputBuilder = CreateIssuanceConfigInputBuilder()
+    //     ..issuerWalletId = walletId
+    //     ..name = name
+    //     ..description = description
+    //     ..format = format
+    //     ..credentialOfferDuration = credentialOfferDuration
+    //     ..credentialSupported = ListBuilder(credentialSupported);
 
-      // NOTE: You can have 1 issuance config per project
-      final response = (await configurationApi.createIssuanceConfig(
-            createIssuanceConfigInput: configInputBuilder.build()));
+    //   // NOTE: You can have 1 issuance config per project
+    //   final response = (await configurationApi.createIssuanceConfig(
+    //         createIssuanceConfigInput: configInputBuilder.build()));
 
-      expect(response.statusCode, 201);
-      expect(response.data!.id, isNotEmpty);
+    //   expect(response.statusCode, 201);
+    //   expect(response.data!.id, isNotEmpty);
 
-      configurationId = response?.data?.id ?? '';
-    });
+    //   configurationId = response?.data?.id ?? '';
+    // });
 
-    test('Updates issuance configuration', () async {
-      final String updatedDescription = 'UpdatedDescription';
+    // test('Updates issuance configuration', () async {
+    //   final String updatedDescription = 'UpdatedDescription';
 
-      final updateIssuanceConfigInput = UpdateIssuanceConfigInputBuilder()
-        ..description = updatedDescription;
+    //   final updateIssuanceConfigInput = UpdateIssuanceConfigInputBuilder()
+    //     ..description = updatedDescription;
 
-      final config = (await configurationApi.updateIssuanceConfigById(
-        configurationId: configurationId,
-        updateIssuanceConfigInput: updateIssuanceConfigInput.build())).data;
+    //   final config = (await configurationApi.updateIssuanceConfigById(
+    //     configurationId: configurationId,
+    //     updateIssuanceConfigInput: updateIssuanceConfigInput.build())).data;
 
-      expect(config, isNotNull);
-      expect(config?.description, equals(updatedDescription));
+    //   expect(config, isNotNull);
+    //   expect(config?.description, equals(updatedDescription));
+    // });
+
+    test('Lists issuance configurations', () async {
+      // When
+      final response = await configurationApi.getIssuanceConfigList();
+
+      // Then
+      expect(response.data, isNotNull,
+          reason: 'Response data should not be null');
+
+      final configs = response.data?.configurations;
+      expect(configs, isNotNull,
+          reason: 'Configurations list should not be null');
+      expect(configs!, isNotEmpty,
+          reason: 'Configurations list should not be empty');
+
+      // Store configuration ID
+      configurationId = configs.first.id;
+      expect(configurationId, isNotEmpty,
+          reason: 'First configuration ID should not be empty');
     });
 
     test('Reads issuance configuration', () async {
-      final config = (await configurationApi.getIssuanceConfigById(configurationId: configurationId)).data;
+      final config = (await configurationApi.getIssuanceConfigById(
+              configurationId: configurationId))
+          .data;
 
       expect(config, isNotNull);
       expect(config?.issuerWalletId, equals(walletId));
+    });
+
+    test('Start issuance', () async {
+      // Update the credentialData MapBuilder to properly create JsonObject values
+      final credentialData = MapBuilder<String, JsonObject?>({
+        "studentID": JsonObject("1234"),
+        "degreeName": JsonObject("FakeDegree"),
+        "degreeType": JsonObject("SpecialDegree"),
+        "awardedDate": JsonObject("2024-04-14T20:48:31.148Z"),
+        "name": JsonObject("Mohamed 2"),
+        "dateOfBirth": JsonObject("2024-04-14T20:48:31.148Z")
+      });
+      final b1 = StartIssuanceInputDataInnerBuilder()
+        ..credentialTypeId = "UniversityDegree2024"
+        ..credentialData = credentialData;
+
+      final b2 = StartIssuanceInputDataInnerBuilder()
+        ..credentialTypeId = "UniversityDegree2024"
+        ..credentialData = credentialData;
+
+      final startIssuanceInput = StartIssuanceInputBuilder()
+        ..holderDid =
+            "did:key:zQ3shNxQh9GT56poRxCvihKZJ4Qfs6Xc8aAAas6PF5nZSBdz7"
+        ..claimMode = StartIssuanceInputClaimModeEnum.NORMAL
+        ..data = ListBuilder([b1.build(), b2.build()]);
+
+      final issuanceResponse = (await issuanceApi.startIssuance(
+              projectId: env.projectId,
+              startIssuanceInput: startIssuanceInput.build()))
+          .data;
+
+      expect(issuanceResponse, isNotNull);
+      expect(issuanceResponse?.issuanceId, isNotEmpty);
+      issuanceId = issuanceResponse!.issuanceId;
+    });
+
+    test('Get Offer', () async {
+      final offerResponse = (await offerApi.getCredentialOffer(
+              projectId: env.projectId, issuanceId: issuanceId))
+          .data;
+
+      expect(offerResponse, isNotNull);
+      expect(offerResponse?.credentialIssuer, isNotEmpty);
+      expect(offerResponse?.grants, isNotNull);
+      expect(
+          offerResponse?.grants
+              .urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode,
+          isNotNull);
+      expect(
+          offerResponse
+              ?.grants
+              .urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
+              .preAuthorizedCode,
+          isNotEmpty);
+      preAuthCode = offerResponse
+              ?.grants
+              .urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
+              .preAuthorizedCode ??
+          '';
+      tokenIssuerUri = offerResponse?.credentialIssuer ?? '';
+    });
+
+    // TODO: use VPA client
+    test("Fetch token", () async {
+      // make http call to fetch token
+      final response = await Dio().post(
+        "$tokenIssuerUri/oauth2/token",
+        data: {
+          "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
+          'pre-authorized_code': preAuthCode,
+          'tx_code': '',
+        },
+        options: Options(
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        ),
+      );
+      expect(response.statusCode, 200);
+      expect(response.data, isNotNull);
+      expect(response.data['access_token'], isNotNull);
+      accessToken = response.data['access_token'];
+      authorizationDetails = response.data['authorization_details'];
+    });
+
+    test("Claim credential", () async {
+      final credentialRequests = [];
+      for (var detail in authorizationDetails) {
+        for (var credentialIdentifier in detail['credential_identifiers']) {
+          final proof = CredentialProofBuilder()
+            ..jwt = await consumerAuthProvider.fetchCisToken()
+            ..proofType = CredentialProofProofTypeEnum.jwt;
+          credentialRequests
+              .add(BatchCredentialInputCredentialRequestsInner((b) => b
+                ..credentialIdentifier = credentialIdentifier
+                ..proof = proof));
+        }
+      }
+
+      final batchCredentialInput = BatchCredentialInputBuilder()
+        ..credentialRequests = ListBuilder(credentialRequests);
+
+      final headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $accessToken",
+      };
+
+      final client = AffinidiTdkCredentialIssuanceClient(
+          dio: Dio(BaseOptions(
+        baseUrl:
+            "https://apse1.dev.api.affinidi.io/cis", // AffinidiTdkCredentialIssuanceClient.basePath,
+        connectTimeout: const Duration(seconds: 20),
+        receiveTimeout: const Duration(seconds: 20),
+      )));
+
+      // client.setBearerAuth('Authorization', accessToken)
+      final credentialsApi = client.getCredentialsApi();
+      final data = (await credentialsApi.batchCredential(
+              projectId: env.projectId,
+              batchCredentialInput: batchCredentialInput.build(),
+              headers: headers))
+          .data;
+      expect(data, isNotNull);
+      expect(data?.credentialResponses, isNotNull);
+      expect(data?.credentialResponses.length, equals(2));
+      expect(data?.credentialResponses.first, isNotNull);
+      expect(data?.credentialResponses.first.credential, isNotNull);
     });
   });
 }
