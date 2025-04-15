@@ -7,50 +7,40 @@ import 'package:affinidi_tdk_iam_client/src/model/vfs_rights_enum.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'grant_access_input.g.dart';
+part 'update_access_input.g.dart';
 
-/// GrantAccessInput
+/// UpdateAccessInput
 ///
 /// Properties:
-/// * [granteeDid] - DID of the subject being granted access
 /// * [rights] 
 @BuiltValue()
-abstract class GrantAccessInput implements Built<GrantAccessInput, GrantAccessInputBuilder> {
-  /// DID of the subject being granted access
-  @BuiltValueField(wireName: r'granteeDid')
-  String get granteeDid;
-
+abstract class UpdateAccessInput implements Built<UpdateAccessInput, UpdateAccessInputBuilder> {
   @BuiltValueField(wireName: r'rights')
   VFSRightsEnum get rights;
 
-  GrantAccessInput._();
+  UpdateAccessInput._();
 
-  factory GrantAccessInput([void updates(GrantAccessInputBuilder b)]) = _$GrantAccessInput;
+  factory UpdateAccessInput([void updates(UpdateAccessInputBuilder b)]) = _$UpdateAccessInput;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GrantAccessInputBuilder b) => b;
+  static void _defaults(UpdateAccessInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GrantAccessInput> get serializer => _$GrantAccessInputSerializer();
+  static Serializer<UpdateAccessInput> get serializer => _$UpdateAccessInputSerializer();
 }
 
-class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInput> {
+class _$UpdateAccessInputSerializer implements PrimitiveSerializer<UpdateAccessInput> {
   @override
-  final Iterable<Type> types = const [GrantAccessInput, _$GrantAccessInput];
+  final Iterable<Type> types = const [UpdateAccessInput, _$UpdateAccessInput];
 
   @override
-  final String wireName = r'GrantAccessInput';
+  final String wireName = r'UpdateAccessInput';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    GrantAccessInput object, {
+    UpdateAccessInput object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'granteeDid';
-    yield serializers.serialize(
-      object.granteeDid,
-      specifiedType: const FullType(String),
-    );
     yield r'rights';
     yield serializers.serialize(
       object.rights,
@@ -61,7 +51,7 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
   @override
   Object serialize(
     Serializers serializers,
-    GrantAccessInput object, {
+    UpdateAccessInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -72,20 +62,13 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required GrantAccessInputBuilder result,
+    required UpdateAccessInputBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'granteeDid':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.granteeDid = valueDes;
-          break;
         case r'rights':
           final valueDes = serializers.deserialize(
             value,
@@ -102,12 +85,12 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
   }
 
   @override
-  GrantAccessInput deserialize(
+  UpdateAccessInput deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = GrantAccessInputBuilder();
+    final result = UpdateAccessInputBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
