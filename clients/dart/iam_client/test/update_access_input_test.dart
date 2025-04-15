@@ -1,18 +1,12 @@
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
-// tests for GrantAccessInput
+// tests for UpdateAccessInput
 void main() {
-  final instance = GrantAccessInputBuilder();
+  final instance = UpdateAccessInputBuilder();
   // TODO add properties to the builder and call build()
 
-  group(GrantAccessInput, () {
-    // DID of the subject being granted access
-    // String granteeDid
-    test('to test the property `granteeDid`', () async {
-      // TODO
-    });
-
+  group(UpdateAccessInput, () {
     // List of rights to grant to the subject
     // BuiltList<String> rights
     test('to test the property `rights`', () async {
