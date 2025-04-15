@@ -56,13 +56,12 @@ import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 
 final api = AffinidiTdkIamClient().getAuthzApi();
-final GrantAccessInput grantAccessInput = ; // GrantAccessInput | Grant access to virtual file system
+final String granteeDid = granteeDid_example; // String |
 
 try {
-    final response = await api.grantAccessVfs(grantAccessInput);
-    print(response);
+    api.deleteAccessVfs(granteeDid);
 } catch on DioException (e) {
-    print("Exception when calling AuthzApi->grantAccessVfs: $e\n");
+    print("Exception when calling AuthzApi->deleteAccessVfs: $e\n");
 }
 
 ```
@@ -73,7 +72,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class                                       | Method                                                                            | HTTP request                                     | Description                             |
 | ------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
-| [_AuthzApi_](doc/AuthzApi.md)               | [**grantAccessVfs**](doc/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| [_AuthzApi_](doc/AuthzApi.md)               | [**deleteAccessVfs**](doc/AuthzApi.md#deleteaccessvfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
+| [_AuthzApi_](doc/AuthzApi.md)               | [**grantAccessVfs**](doc/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access/{granteeDid}       | Grant access to the virtual file system |
+| [_AuthzApi_](doc/AuthzApi.md)               | [**updateAccessVfs**](doc/AuthzApi.md#updateaccessvfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
 | [_ConsumerAuthApi_](doc/ConsumerAuthApi.md) | [**consumerAuthTokenEndpoint**](doc/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | [_DefaultApi_](doc/DefaultApi.md)           | [**v1AuthProxyDelete**](doc/DefaultApi.md#v1authproxydelete)                      | **DELETE** /v1/auth/{proxy+}                     |
 | [_DefaultApi_](doc/DefaultApi.md)           | [**v1AuthProxyGet**](doc/DefaultApi.md#v1authproxyget)                            | **GET** /v1/auth/{proxy+}                        |
@@ -115,8 +116,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenInput](doc/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](doc/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](doc/CreateTokenInput.md)
+- [DeleteAccessOutput](doc/DeleteAccessOutput.md)
 - [GetWellKnownDidOK](doc/GetWellKnownDidOK.md)
-- [GrantAccessInput](doc/GrantAccessInput.md)
 - [GrantAccessOutput](doc/GrantAccessOutput.md)
 - [InvalidDIDError](doc/InvalidDIDError.md)
 - [InvalidJwtTokenError](doc/InvalidJwtTokenError.md)
@@ -145,11 +146,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [TypedPrincipalId](doc/TypedPrincipalId.md)
 - [UnauthorizedError](doc/UnauthorizedError.md)
 - [UnexpectedError](doc/UnexpectedError.md)
+- [UpdateAccessOutput](doc/UpdateAccessOutput.md)
 - [UpdateProjectInput](doc/UpdateProjectInput.md)
 - [UpdateTokenInput](doc/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](doc/UpdateTokenPrivateKeyAuthenticationMethodDto.md)
 - [UserDto](doc/UserDto.md)
 - [UserList](doc/UserList.md)
+- [VFSAccessRight](doc/VFSAccessRight.md)
 - [WhoamiDto](doc/WhoamiDto.md)
 
 ## Documentation For Authorization

@@ -23,8 +23,8 @@ import 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
+import 'package:affinidi_tdk_iam_client/src/model/delete_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/get_well_known_did_ok.dart';
-import 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/invalid_did_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/invalid_jwt_token_error.dart';
@@ -53,11 +53,13 @@ import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authenticati
 import 'package:affinidi_tdk_iam_client/src/model/typed_principal_id.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unauthorized_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
+import 'package:affinidi_tdk_iam_client/src/model/update_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_token_private_key_authentication_method_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/user_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/user_list.dart';
+import 'package:affinidi_tdk_iam_client/src/model/vfs_access_right.dart';
 import 'package:affinidi_tdk_iam_client/src/model/whoami_dto.dart';
 
 part 'serializers.g.dart';
@@ -72,8 +74,8 @@ part 'serializers.g.dart';
   CreateProjectScopedTokenInput,
   CreateProjectScopedTokenOutput,
   CreateTokenInput,
+  DeleteAccessOutput,
   GetWellKnownDidOK,
-  GrantAccessInput,
   GrantAccessOutput,
   InvalidDIDError,
   InvalidJwtTokenError,
@@ -102,11 +104,13 @@ part 'serializers.g.dart';
   TypedPrincipalId,
   UnauthorizedError,
   UnexpectedError,
+  UpdateAccessOutput,
   UpdateProjectInput,
   UpdateTokenInput,
   UpdateTokenPrivateKeyAuthenticationMethodDto,
   UserDto,
   UserList,
+  VFSAccessRight,
   WhoamiDto,
 ])
 Serializers serializers = (_$serializers.toBuilder()
