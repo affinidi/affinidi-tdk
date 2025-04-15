@@ -8,8 +8,8 @@ void main() {
 
   group(GrantAccessInput, () {
     // DID of the subject being granted access
-    // String subjectDID
-    test('to test the property `subjectDID`', () async {
+    // String granteeDid
+    test('to test the property `granteeDid`', () async {
       // TODO
     });
 

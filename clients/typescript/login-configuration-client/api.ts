@@ -1729,7 +1729,46 @@ export interface OAuth2Token {
    * @memberof OAuth2Token
    */
   token_type?: string
+  /**
+   * is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations.
+   * @type {Array<OAuth2TokenAuthorizationDetailsInner>}
+   * @memberof OAuth2Token
+   */
+  authorization_details?: Array<OAuth2TokenAuthorizationDetailsInner>
 }
+/**
+ *
+ * @export
+ * @interface OAuth2TokenAuthorizationDetailsInner
+ */
+export interface OAuth2TokenAuthorizationDetailsInner {
+  /**
+   * String that determines the authorization details type.
+   * @type {string}
+   * @memberof OAuth2TokenAuthorizationDetailsInner
+   */
+  type: OAuth2TokenAuthorizationDetailsInnerTypeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof OAuth2TokenAuthorizationDetailsInner
+   */
+  credential_configuration_id: string
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof OAuth2TokenAuthorizationDetailsInner
+   */
+  credential_identifiers?: Array<string>
+}
+
+export const OAuth2TokenAuthorizationDetailsInnerTypeEnum = {
+  OpenidCredential: 'openid_credential',
+} as const
+
+export type OAuth2TokenAuthorizationDetailsInnerTypeEnum =
+  (typeof OAuth2TokenAuthorizationDetailsInnerTypeEnum)[keyof typeof OAuth2TokenAuthorizationDetailsInnerTypeEnum]
+
 /**
  *
  * @export
