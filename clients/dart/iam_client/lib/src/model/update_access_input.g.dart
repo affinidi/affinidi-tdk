@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'grant_access_input.dart';
+part of 'update_access_input.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -62,44 +62,36 @@ class _$UpdateAccessInputRightsEnumSerializer
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
-class _$GrantAccessInput extends GrantAccessInput {
-  @override
-  final String granteeDid;
+class _$UpdateAccessInput extends UpdateAccessInput {
   @override
   final BuiltList<UpdateAccessInputRightsEnum> rights;
 
-  factory _$GrantAccessInput(
-          [void Function(GrantAccessInputBuilder)? updates]) =>
-      (new GrantAccessInputBuilder()..update(updates))._build();
+  factory _$UpdateAccessInput(
+          [void Function(UpdateAccessInputBuilder)? updates]) =>
+      (new UpdateAccessInputBuilder()..update(updates))._build();
 
-  _$GrantAccessInput._({required this.granteeDid, required this.rights})
-      : super._() {
+  _$UpdateAccessInput._({required this.rights}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        granteeDid, r'GrantAccessInput', 'granteeDid');
-    BuiltValueNullFieldError.checkNotNull(
-        rights, r'GrantAccessInput', 'rights');
+        rights, r'UpdateAccessInput', 'rights');
   }
 
   @override
-  GrantAccessInput rebuild(void Function(GrantAccessInputBuilder) updates) =>
+  UpdateAccessInput rebuild(void Function(UpdateAccessInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GrantAccessInputBuilder toBuilder() =>
-      new GrantAccessInputBuilder()..replace(this);
+  UpdateAccessInputBuilder toBuilder() =>
+      new UpdateAccessInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GrantAccessInput &&
-        granteeDid == other.granteeDid &&
-        rights == other.rights;
+    return other is UpdateAccessInput && rights == other.rights;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, granteeDid.hashCode);
     _$hash = $jc(_$hash, rights.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -107,20 +99,15 @@ class _$GrantAccessInput extends GrantAccessInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GrantAccessInput')
-          ..add('granteeDid', granteeDid)
+    return (newBuiltValueToStringHelper(r'UpdateAccessInput')
           ..add('rights', rights))
         .toString();
   }
 }
 
-class GrantAccessInputBuilder
-    implements Builder<GrantAccessInput, GrantAccessInputBuilder> {
-  _$GrantAccessInput? _$v;
-
-  String? _granteeDid;
-  String? get granteeDid => _$this._granteeDid;
-  set granteeDid(String? granteeDid) => _$this._granteeDid = granteeDid;
+class UpdateAccessInputBuilder
+    implements Builder<UpdateAccessInput, UpdateAccessInputBuilder> {
+  _$UpdateAccessInput? _$v;
 
   ListBuilder<UpdateAccessInputRightsEnum>? _rights;
   ListBuilder<UpdateAccessInputRightsEnum> get rights =>
@@ -128,14 +115,13 @@ class GrantAccessInputBuilder
   set rights(ListBuilder<UpdateAccessInputRightsEnum>? rights) =>
       _$this._rights = rights;
 
-  GrantAccessInputBuilder() {
-    GrantAccessInput._defaults(this);
+  UpdateAccessInputBuilder() {
+    UpdateAccessInput._defaults(this);
   }
 
-  GrantAccessInputBuilder get _$this {
+  UpdateAccessInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _granteeDid = $v.granteeDid;
       _rights = $v.rights.toBuilder();
       _$v = null;
     }
@@ -143,26 +129,24 @@ class GrantAccessInputBuilder
   }
 
   @override
-  void replace(GrantAccessInput other) {
+  void replace(UpdateAccessInput other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GrantAccessInput;
+    _$v = other as _$UpdateAccessInput;
   }
 
   @override
-  void update(void Function(GrantAccessInputBuilder)? updates) {
+  void update(void Function(UpdateAccessInputBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GrantAccessInput build() => _build();
+  UpdateAccessInput build() => _build();
 
-  _$GrantAccessInput _build() {
-    _$GrantAccessInput _$result;
+  _$UpdateAccessInput _build() {
+    _$UpdateAccessInput _$result;
     try {
       _$result = _$v ??
-          new _$GrantAccessInput._(
-            granteeDid: BuiltValueNullFieldError.checkNotNull(
-                granteeDid, r'GrantAccessInput', 'granteeDid'),
+          new _$UpdateAccessInput._(
             rights: rights.build(),
           );
     } catch (_) {
@@ -172,7 +156,7 @@ class GrantAccessInputBuilder
         rights.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GrantAccessInput', _$failedField, e.toString());
+            r'UpdateAccessInput', _$failedField, e.toString());
       }
       rethrow;
     }
