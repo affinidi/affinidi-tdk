@@ -28,20 +28,17 @@ void main() {
 
     setUp(() async {
       walletId = env.walletId;
-      final authProvider = AuthProvider.withEnv(
-          projectId: env.projectId,
-          tokenId: env.tokenId,
-          privateKey: env.privateKey,
-          keyId: env.keyId,
-          passphrase: env.passphrase,
-          tokenEndpoint:
-              "https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token",
-          apiGatewayUrl: "https://apse1.dev.api.affinidi.io");
+      final authProvider = AuthProvider(
+        projectId: env.projectId,
+        tokenId: env.tokenId,
+        privateKey: env.privateKey,
+        keyId: env.keyId,
+        passphrase: env.passphrase,
+      );
 
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
           dio: Dio(BaseOptions(
-            baseUrl:
-                "https://apse1.dev.api.affinidi.io/cis", // AffinidiTdkCredentialIssuanceClient.basePath,
+            baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
             connectTimeout: const Duration(seconds: 10),
             receiveTimeout: const Duration(seconds: 10),
           )),
@@ -301,8 +298,7 @@ void main() {
 
       final client = AffinidiTdkCredentialIssuanceClient(
           dio: Dio(BaseOptions(
-        baseUrl:
-            "https://apse1.dev.api.affinidi.io/cis", // AffinidiTdkCredentialIssuanceClient.basePath,
+        baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
         connectTimeout: const Duration(seconds: 20),
         receiveTimeout: const Duration(seconds: 20),
       )));
