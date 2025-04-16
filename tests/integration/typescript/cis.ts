@@ -14,12 +14,11 @@ import {
   projectId,
   credentialIssuanceData,
   getCisToken,
+  walletId,
 } from './helpers'
-import axios from 'axios'
 
 describe('credential-issuance-client', function () {
   let credentialToken = ''
-  let offerUri = ''
   let issuanceId = ''
   let preAuthCode = ''
   let credentialIssuer = ''
@@ -27,7 +26,76 @@ describe('credential-issuance-client', function () {
   let txCode = ''
   let configurationId = ''
 
-  it('Test get configurations', async () => {
+  it('Should successfully delete existing issuance configuration if any exists', async () => {
+    const cisConfiguration = new CisConfiguration({
+      apiKey,
+      basePath: 'https://apse1.dev.api.affinidi.io/cis',
+    })
+    const api = new ConfigurationApi(cisConfiguration)
+
+    const { data } = await api.getIssuanceConfigList()
+    if (data.configurations.length > 0) {
+      const configId = data.configurations[0].id
+      const response = await api.deleteIssuanceConfigById(configId)
+      expect(response.status).to.equal(204)
+    } else {
+      expect(data.configurations).to.be.an('array')
+      expect(data.configurations.length).to.equal(0)
+    }
+  })
+
+  it('Should successfully create a new issuance configuration with multiple credential types', async () => {
+    const cisConfiguration = new CisConfiguration({
+      apiKey,
+      basePath: 'https://apse1.dev.api.affinidi.io/cis',
+    })
+    const api = new ConfigurationApi(cisConfiguration)
+    const { data } = await api.createIssuanceConfig({
+      issuerWalletId: walletId,
+      credentialSupported: [
+        {
+          credentialTypeId: 'TInstructorReviewV1R0',
+          jsonSchemaUrl:
+            'https://schema.affinidi.io/TInstructorReviewV1R0.json',
+          jsonLdContextUrl:
+            'https://schema.affinidi.io/TInstructorReviewV1R0.jsonld',
+        },
+        {
+          credentialTypeId: 'TDriversLicenseV1R1',
+          jsonSchemaUrl: 'https://schema.affinidi.io/TDriversLicenseV1R1.json',
+          jsonLdContextUrl:
+            'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld',
+        },
+        {
+          credentialTypeId: 'TSkillBadgeV1R0',
+          jsonSchemaUrl: 'https://schema.affinidi.io/TSkillBadgeV1R0.json',
+          jsonLdContextUrl: 'https://schema.affinidi.io/TSkillBadgeV1R0.jsonld',
+        },
+        {
+          credentialTypeId: 'TSimpleBioV1R0',
+          jsonSchemaUrl: 'https://schema.affinidi.io/TSimpleBioV1R0.json',
+          jsonLdContextUrl: 'https://schema.affinidi.io/TSimpleBioV1R0.jsonld',
+        },
+        {
+          credentialTypeId: 'UniversityDegree2024',
+          jsonSchemaUrl:
+            'https://schema.affinidi.io/AnyTUniversityDegreeV1R1.json',
+          jsonLdContextUrl:
+            'https://schema.affinidi.io/AnyTUniversityDegreeV1R1.jsonld',
+        },
+      ],
+      webhook: {
+        enabled: true,
+        endpoint: {
+          url: 'https://affinidi.com/webhook',
+        },
+      },
+    })
+    expect(data).to.have.a.property('id')
+    configurationId = data.id!
+  })
+
+  it('Should successfully retrieve list of issuance configurations', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -40,7 +108,7 @@ describe('credential-issuance-client', function () {
     configurationId = data.configurations[0].id
   })
 
-  it('Test startIssuance', async () => {
+  it('Should successfully initiate credential issuance process', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -50,13 +118,14 @@ describe('credential-issuance-client', function () {
     const request: StartIssuanceInput = JSON.parse(credentialIssuanceData)
 
     const { data } = await api.startIssuance(projectId, request)
-    offerUri = data.credentialOfferUri
+
     issuanceId = data.issuanceId
+    txCode = data.txCode ?? ''
     expect(data).to.have.a.property('credentialOfferUri')
     expect(data).to.have.a.property('issuanceId')
   })
 
-  it('Test get offer Uri', async () => {
+  it('Should successfully retrieve credential offer URI', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
@@ -79,29 +148,32 @@ describe('credential-issuance-client', function () {
     credentialIssuer = data.credential_issuer
   })
 
-  it('Test fetch credential token', async () => {
-    const response = await axios.post(
-      `${credentialIssuer}/oauth2/token`,
-      {
+  it('Should successfully obtain credential token using pre-authorized code', async () => {
+    const response = await fetch(`${credentialIssuer}/oauth2/token`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
         grant_type: 'urn:ietf:params:oauth:grant-type:pre-authorized_code',
         'pre-authorized_code': preAuthCode,
         tx_code: txCode,
-      },
-      {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      },
-    )
+      }),
+    })
 
+    const data = await response.json()
     expect(response.status).to.equal(200)
-    credentialToken = response.data.access_token
-    authorizationDetails = response.data.authorization_details
+    expect(data).to.have.a.property('access_token')
+    credentialToken = data.access_token
+    authorizationDetails = data.authorization_details
   })
 
-  it('Test batch credential', async () => {
+  it('Should successfully process batch credential requests', async () => {
     const cisConfiguration = new CisConfiguration({
       accessToken: `${credentialToken}`,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',
     })
+
     const api = new CredentialsApi(cisConfiguration)
     const credentialRequests: Array<BatchCredentialInputCredentialRequestsInner> =
       []
@@ -111,7 +183,7 @@ describe('credential-issuance-client', function () {
           credential_identifier: credentialIdentifier,
           proof: {
             proof_type: 'jwt',
-            jwt: getCisToken(),
+            jwt: getCisToken(cisConfiguration.basePath),
           },
         }
         credentialRequests.push(credentialRequest)
@@ -127,7 +199,7 @@ describe('credential-issuance-client', function () {
     expect(data.credential_responses[0]).to.have.a.property('credential')
   })
 
-  it('Test get issued credential for one flow', async () => {
+  it('Should successfully retrieve issued credentials for the issuance flow', async () => {
     const cisConfiguration = new CisConfiguration({
       apiKey,
       basePath: 'https://apse1.dev.api.affinidi.io/cis',

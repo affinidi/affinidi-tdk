@@ -30,7 +30,6 @@
   "keywords": [],
   "dependencies": {
     "@affinidi/common": "^4.9.1",
-    "axios": "^1.8.4",
     "base64url": "^3.0.1",
     "nanoid": "^5.1.5"
   }

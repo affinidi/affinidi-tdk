@@ -54,13 +54,12 @@ export {
   batchCredentialRequest,
 }
 
-
-export const  getCisToken = ()=>{
+export const getCisToken = (aud?: string) => {
   const authenticationService = new AuthenticationService()
-  const cisToken =  authenticationService.signAssertion(
+  const cisToken = authenticationService.signAssertion(
     encryptionSeed,
     seedPassword,
-    'https://apse1.dev.api.affinidi.io/cis',
+    aud,
   )
   return cisToken
 }
