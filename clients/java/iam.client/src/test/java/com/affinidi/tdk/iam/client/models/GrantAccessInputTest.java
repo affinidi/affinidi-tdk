@@ -13,6 +13,7 @@
 
 package com.affinidi.tdk.iam.client.models;
 
+import com.affinidi.tdk.iam.client.models.RightsEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -40,11 +41,11 @@ class GrantAccessInputTest {
     }
 
     /**
-     * Test the property 'subjectDID'
+     * Test the property 'granteeDid'
      */
     @Test
-    void subjectDIDTest() {
-        // TODO: test subjectDID
+    void granteeDidTest() {
+        // TODO: test granteeDid
     }
 
     /**

@@ -15,6 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.iam.client.models.RightsEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,48 +34,13 @@ import java.util.StringJoiner;
  * GrantAccessInput
  */
 @JsonPropertyOrder({
-  GrantAccessInput.JSON_PROPERTY_SUBJECT_D_I_D,
+  GrantAccessInput.JSON_PROPERTY_GRANTEE_DID,
   GrantAccessInput.JSON_PROPERTY_RIGHTS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class GrantAccessInput {
-  public static final String JSON_PROPERTY_SUBJECT_D_I_D = "subjectDID";
-  private String subjectDID;
-
-  /**
-   * Gets or Sets rights
-   */
-  public enum RightsEnum {
-    READ("vfs-read"),
-    
-    WRITE("vfs-write");
-
-    private String value;
-
-    RightsEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static RightsEnum fromValue(String value) {
-      for (RightsEnum b : RightsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
+  public static final String JSON_PROPERTY_GRANTEE_DID = "granteeDid";
+  private String granteeDid;
 
   public static final String JSON_PROPERTY_RIGHTS = "rights";
   private List<RightsEnum> rights = new ArrayList<>();
@@ -82,29 +48,29 @@ public class GrantAccessInput {
   public GrantAccessInput() {
   }
 
-  public GrantAccessInput subjectDID(String subjectDID) {
+  public GrantAccessInput granteeDid(String granteeDid) {
     
-    this.subjectDID = subjectDID;
+    this.granteeDid = granteeDid;
     return this;
   }
 
   /**
    * DID of the subject being granted access
-   * @return subjectDID
+   * @return granteeDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUBJECT_D_I_D)
+  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getSubjectDID() {
-    return subjectDID;
+  public String getGranteeDid() {
+    return granteeDid;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUBJECT_D_I_D)
+  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSubjectDID(String subjectDID) {
-    this.subjectDID = subjectDID;
+  public void setGranteeDid(String granteeDid) {
+    this.granteeDid = granteeDid;
   }
 
   public GrantAccessInput rights(List<RightsEnum> rights) {
@@ -149,20 +115,20 @@ public class GrantAccessInput {
       return false;
     }
     GrantAccessInput grantAccessInput = (GrantAccessInput) o;
-    return Objects.equals(this.subjectDID, grantAccessInput.subjectDID) &&
+    return Objects.equals(this.granteeDid, grantAccessInput.granteeDid) &&
         Objects.equals(this.rights, grantAccessInput.rights);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(subjectDID, rights);
+    return Objects.hash(granteeDid, rights);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GrantAccessInput {\n");
-    sb.append("    subjectDID: ").append(toIndentedString(subjectDID)).append("\n");
+    sb.append("    granteeDid: ").append(toIndentedString(granteeDid)).append("\n");
     sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -211,10 +177,10 @@ public class GrantAccessInput {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `subjectDID` to the URL query string
-    if (getSubjectDID() != null) {
+    // add `granteeDid` to the URL query string
+    if (getGranteeDid() != null) {
       try {
-        joiner.add(String.format("%ssubjectDID%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSubjectDID()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sgranteeDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGranteeDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -224,13 +190,15 @@ public class GrantAccessInput {
     // add `rights` to the URL query string
     if (getRights() != null) {
       for (int i = 0; i < getRights().size(); i++) {
-        try {
-          joiner.add(String.format("%srights%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getRights().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
+        if (getRights().get(i) != null) {
+          try {
+            joiner.add(String.format("%srights%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                URLEncoder.encode(String.valueOf(getRights().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+          } catch (UnsupportedEncodingException e) {
+            // Should never happen, UTF-8 is always supported
+            throw new RuntimeException(e);
+          }
         }
       }
     }
