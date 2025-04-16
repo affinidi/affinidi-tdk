@@ -1,28 +1,28 @@
 # affinidi_tdk_credential_issuance_client.api.IssuanceApi
 
 ## Load the API package
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 ```
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                  | HTTP request                                        | Description |
-| ------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| [**issuanceState**](IssuanceApi.md#issuancestate)       | **GET** /v1/{projectId}/issuance/state/{issuanceId} |
-| [**issueCredentials**](IssuanceApi.md#issuecredentials) | **POST** /v1/{projectId}/credential/issue           |
-| [**listIssuance**](IssuanceApi.md#listissuance)         | **GET** /v1/{projectId}/issuance                    |
-| [**startIssuance**](IssuanceApi.md#startissuance)       | **POST** /v1/{projectId}/issuance/start             |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**issuanceState**](IssuanceApi.md#issuancestate) | **GET** /v1/{projectId}/issuance/state/{issuanceId} | 
+[**issueCredentials**](IssuanceApi.md#issuecredentials) | **POST** /v1/{projectId}/credential/issue | 
+[**listIssuance**](IssuanceApi.md#listissuance) | **GET** /v1/{projectId}/issuance | 
+[**startIssuance**](IssuanceApi.md#startissuance) | **POST** /v1/{projectId}/issuance/start | 
+
 
 # **issuanceState**
-
 > IssuanceStateResponse issuanceState(issuanceId, projectId)
+
+
 
 Get issuance status
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -31,7 +31,7 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api = AffinidiTdkCredentialIssuanceClient().getIssuanceApi();
-final String issuanceId = issuanceId_example; // String |
+final String issuanceId = issuanceId_example; // String | 
 final String projectId = projectId_example; // String | Affinidi project id
 
 try {
@@ -44,10 +44,10 @@ try {
 
 ### Parameters
 
-| Name           | Type       | Description         | Notes |
-| -------------- | ---------- | ------------------- | ----- |
-| **issuanceId** | **String** |                     |
-| **projectId**  | **String** | Affinidi project id |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **issuanceId** | **String**|  | 
+ **projectId** | **String**| Affinidi project id | 
 
 ### Return type
 
@@ -59,19 +59,19 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issueCredentials**
-
 > CredentialResponse issueCredentials(projectId, startIssuanceInput)
+
+
 
 Endpoint to issue credentials directly without following OID4VCI flow
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -93,10 +93,10 @@ try {
 
 ### Parameters
 
-| Name                   | Type                                            | Description                    | Notes |
-| ---------------------- | ----------------------------------------------- | ------------------------------ | ----- |
-| **projectId**          | **String**                                      | Affinidi project id            |
-| **startIssuanceInput** | [**StartIssuanceInput**](StartIssuanceInput.md) | Request body to start issuance |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String**| Affinidi project id | 
+ **startIssuanceInput** | [**StartIssuanceInput**](StartIssuanceInput.md)| Request body to start issuance | 
 
 ### Return type
 
@@ -108,19 +108,19 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listIssuance**
-
 > ListIssuanceResponse listIssuance(projectId)
+
+
 
 List all issuances for Project
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -141,9 +141,9 @@ try {
 
 ### Parameters
 
-| Name          | Type       | Description         | Notes |
-| ------------- | ---------- | ------------------- | ----- |
-| **projectId** | **String** | Affinidi project id |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String**| Affinidi project id | 
 
 ### Return type
 
@@ -155,19 +155,19 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **startIssuance**
-
 > StartIssuanceResponse startIssuance(projectId, startIssuanceInput)
+
+
 
 Endpoint used b websites to start the issuance process
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -189,10 +189,10 @@ try {
 
 ### Parameters
 
-| Name                   | Type                                            | Description                    | Notes |
-| ---------------------- | ----------------------------------------------- | ------------------------------ | ----- |
-| **projectId**          | **String**                                      | Affinidi project id            |
-| **startIssuanceInput** | [**StartIssuanceInput**](StartIssuanceInput.md) | Request body to start issuance |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String**| Affinidi project id | 
+ **startIssuanceInput** | [**StartIssuanceInput**](StartIssuanceInput.md)| Request body to start issuance | 
 
 ### Return type
 
@@ -204,7 +204,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

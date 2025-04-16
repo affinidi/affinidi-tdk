@@ -54,6 +54,15 @@ class IotaEnvironment {
   });
 }
 
+class CredentialIssuanceEnvironment{
+  final String credentialIssuanceData;
+
+  CredentialIssuanceEnvironment({
+    required this.credentialIssuanceData,
+  });
+
+}
+
 IotaEnvironment getIotaEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
@@ -126,4 +135,20 @@ VaultEnvironment getVaultEnvironment() {
   final Uint8List seed = Uint8List.fromList(hex.decode(seedHexEncoded));
 
   return VaultEnvironment(seed: seed, seedHexEncoded: seedHexEncoded);
+}
+
+CredentialIssuanceEnvironment getCredentialIssuanceEnvironment() {
+  final env = DotEnv()..load(['../../.env']);
+
+  if (!env.isEveryDefined(['CREDENTIAL_ISSUANCE_DATA'])) {
+    throw Exception(
+      'Missing environment variables. Please provide CREDENTIAL_ISSUANCE_DATA.',
+    );
+  }
+
+  final credentialIssuanceData = env['CREDENTIAL_ISSUANCE_DATA']!;
+
+  return CredentialIssuanceEnvironment(
+    credentialIssuanceData: credentialIssuanceData,
+  );
 }

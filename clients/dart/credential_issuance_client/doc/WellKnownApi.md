@@ -1,23 +1,23 @@
 # affinidi_tdk_credential_issuance_client.api.WellKnownApi
 
 ## Load the API package
-
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 ```
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                                                       | HTTP request                                                 | Description |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------- |
-| [**getWellKnownOpenIdCredentialIssuer**](WellKnownApi.md#getwellknownopenidcredentialissuer) | **GET** /v1/{projectId}/.well-known/openid-credential-issuer |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**getWellKnownOpenIdCredentialIssuer**](WellKnownApi.md#getwellknownopenidcredentialissuer) | **GET** /v1/{projectId}/.well-known/openid-credential-issuer | 
+
 
 # **getWellKnownOpenIdCredentialIssuer**
-
 > WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(projectId)
 
-### Example
 
+
+### Example
 ```dart
 import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
@@ -34,9 +34,9 @@ try {
 
 ### Parameters
 
-| Name          | Type       | Description         | Notes |
-| ------------- | ---------- | ------------------- | ----- |
-| **projectId** | **String** | Affinidi project id |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String**| Affinidi project id | 
 
 ### Return type
 
@@ -48,7 +48,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
