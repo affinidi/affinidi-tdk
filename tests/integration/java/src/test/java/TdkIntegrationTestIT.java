@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Order;
 
 import com.affinidi.tdk.authProvider.AuthProvider;
 import com.affinidi.tdk.authProvider.exception.PSTGenerationException;
@@ -11,10 +16,22 @@ import com.affinidi.tdk.login.configuration.client.apis.ConfigurationApi;
 import com.affinidi.tdk.login.configuration.client.models.ListLoginConfigurationOutput;
 import com.affinidi.tdk.iota.client.apis.ConfigurationsApi;
 import com.affinidi.tdk.iota.client.models.ListConfigurationOK;
+import com.affinidi.tdk.credential.issuance.client.apis.CredentialsApi;
 import com.affinidi.tdk.credential.issuance.client.apis.IssuanceApi;
+import com.affinidi.tdk.credential.issuance.client.apis.OfferApi;
+import com.affinidi.tdk.credential.issuance.client.models.CredentialOfferResponse;
+import com.affinidi.tdk.credential.issuance.client.models.IssuanceConfigDto;
+import com.affinidi.tdk.credential.issuance.client.models.IssuanceConfigListResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ListIssuanceResponse;
+import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInput;
+import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInput.ClaimModeEnum;
+import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceInputDataInner;
+import com.affinidi.tdk.credential.issuance.client.models.StartIssuanceResponse;
 
 import io.github.cdimascio.dotenv.Dotenv;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -127,16 +144,128 @@ public class TdkIntegrationTestIT {
     assertTrue(response.getConfigurations().size() > 0);
   }
 
-  @Test
-  void testIssuanceClient() throws Exception {
-    com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration.getDefaultApiClient();
-    com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+  @Nested
+  @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+  @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+  class CredentialIssuanceTests {
 
-    ProjectTokenAuth.setApiKeySupplier(tokenSupplier); // Set projectScopedTokenHook
+    private String configurationId;
+    private String issuanceId;
 
-    IssuanceApi apiInstance = new IssuanceApi(defaultClient);
-    ListIssuanceResponse response = apiInstance.listIssuance(projectId);
+    @Test
+    @Order(1)
+    void listIssuanceConfiguration() throws Exception {
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
 
-    assertNotNull(response);
+      com.affinidi.tdk.credential.issuance.client.apis.ConfigurationApi apiInstance = new com.affinidi.tdk.credential.issuance.client.apis.ConfigurationApi(
+          defaultClient);
+      IssuanceConfigListResponse response = apiInstance.getIssuanceConfigList();
+      assertNotNull(response);
+      assertNotNull(response.getConfigurations());
+      assertTrue(response.getConfigurations().size() > 0);
+      configurationId = response.getConfigurations().get(0).getId();
+
+    }
+
+    @Test
+    @Order(2)
+    void getIssuanceConfigurationById() throws Exception {
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
+
+      com.affinidi.tdk.credential.issuance.client.apis.ConfigurationApi apiInstance = new com.affinidi.tdk.credential.issuance.client.apis.ConfigurationApi(
+          defaultClient);
+      IssuanceConfigDto response = apiInstance.getIssuanceConfigById(configurationId);
+      assertNotNull(response);
+      assertNotNull(response.getId());
+      assertNotNull(response.getIssuerWalletId());
+      assertNotNull(response.getCredentialSupported());
+    }
+
+    @Test
+    @Order(3)
+    void startIssuance() throws Exception {
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
+      IssuanceApi apiInstance = new IssuanceApi(defaultClient);
+
+      StartIssuanceInput startIssuanceInput = new StartIssuanceInput();
+      startIssuanceInput.setClaimMode(ClaimModeEnum.TX_CODE);
+      StartIssuanceInputDataInner dataItem = new StartIssuanceInputDataInner();
+      dataItem.setCredentialTypeId("TSimpleBioV1R0");
+      Map<String, Object> credentialData = new HashMap<>();
+      credentialData.put("firstName", "John");
+      credentialData.put("lastName", "Doe");
+      dataItem.setCredentialData(credentialData);
+      startIssuanceInput.addDataItem(dataItem);
+      startIssuanceInput.addDataItem(dataItem);
+
+      StartIssuanceResponse response = apiInstance.startIssuance(projectId, startIssuanceInput);
+      assertNotNull(response);
+      issuanceId = response.getIssuanceId();
+      assertNotNull(issuanceId);
+    }
+
+    @Test
+    @Order(4)
+    void listProjectIssuance() throws Exception {
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
+      IssuanceApi apiInstance = new IssuanceApi(defaultClient);
+      ListIssuanceResponse response = apiInstance.listIssuance(projectId);
+      assertNotNull(response);
+      assertNotNull(response.getIssuances());
+      assertTrue(response.getIssuances().size() > 0);
+    }
+
+    @Test
+    @Order(5)
+    void getCredentialOffer() throws Exception {
+      assertNotNull(issuanceId, "Issuance ID is null");
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
+      OfferApi apiInstance = new OfferApi(defaultClient);
+      CredentialOfferResponse response = apiInstance.getCredentialOffer(projectId, issuanceId);
+      assertNotNull(response);
+      assertNotNull(response.getCredentialIssuer());
+    }
+
+    @Test
+    @Order(5)
+    void getIssuanceIdClaimedCredential() throws Exception {
+      com.affinidi.tdk.credential.issuance.client.ApiClient defaultClient = com.affinidi.tdk.credential.issuance.client.Configuration
+          .getDefaultApiClient();
+      com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth ProjectTokenAuth = (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) defaultClient
+          .getAuthentication("ProjectTokenAuth");
+      ProjectTokenAuth.setApiKeySupplier(tokenSupplier);
+      CredentialsApi apiInstance = new CredentialsApi(defaultClient);
+
+      // Test should throw exception since credential has not been claimed yet
+      try {
+        apiInstance.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId);
+      } catch (com.affinidi.tdk.credential.issuance.client.ApiException e) {
+        assertTrue(e.getCode() == 404);
+        assertTrue(e.getMessage().contains("No claimed credential found for this issuanceId"));
+      }
+    }
   }
 }
