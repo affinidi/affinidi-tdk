@@ -12,6 +12,7 @@ void main() {
   group('Credential Issuance Client Integration Tests', () {
     late ConfigurationApi configurationApi;
     late IssuanceApi issuanceApi;
+    late CredentialsApi credentialsApi;
     late OfferApi offerApi;
     late String configurationId;
     late String issuanceId;
@@ -48,91 +49,114 @@ void main() {
       configurationApi = issuanceClient.getConfigurationApi();
       issuanceApi = issuanceClient.getIssuanceApi();
       offerApi = issuanceClient.getOfferApi();
+      credentialsApi = issuanceClient.getCredentialsApi();
     });
 
-    // test('Deletes issuance configuration if exists', () async {
-    //   final configurations = (await configurationApi.getIssuanceConfigList()).data?.configurations;
-    //   expect(configurations, isNotNull);
+    test('Deletes issuance configuration if exists', () async {
+      final configurations =
+          (await configurationApi.getIssuanceConfigList()).data?.configurations;
+      expect(configurations, isNotNull);
 
-    //   if (configurations != null && configurations.isNotEmpty && configurations.length > 0) {
-    //     configurationId = configurations.first.id;
+      if (configurations != null &&
+          configurations.isNotEmpty &&
+          configurations.length > 0) {
+        configurationId = configurations.first.id;
 
-    //     final statusCode = (await configurationApi.deleteIssuanceConfigById(configurationId: configurationId)).statusCode;
-    //     expect(statusCode, 204);
-    //   }
-    // });
+        final statusCode = (await configurationApi.deleteIssuanceConfigById(
+                configurationId: configurationId))
+            .statusCode;
+        expect(statusCode, 204);
+      }
+    });
 
-    // test('Creates issuance configuration', () async {
-    //   final name = 'TestConfig';
-    //   final description = 'Test issuance config';
-    //   final format = CreateIssuanceConfigInputFormatEnum.ldpVc;
-    //   final credentialOfferDuration = 600;
-    //   final metadata = SupportedCredentialMetadataBuilder()
-    //     ..display = ListBuilder([
-    //       SupportedCredentialMetadataDisplayInner((b) => b
-    //         ..name = 'Test Display'
-    //         ..logo = (SupportedCredentialMetadataItemLogoBuilder()
-    //           ..url = 'https://example.com/logo.png'
-    //           ..altText = 'Logo'))
-    //     ]);
+    test('Creates issuance configuration', () async {
+      final name = 'TestConfig';
+      final description = 'Test issuance config';
+      final format = CreateIssuanceConfigInputFormatEnum.ldpVc;
+      final credentialOfferDuration = 600;
+      final metadata = SupportedCredentialMetadataBuilder()
+        ..display = ListBuilder([
+          SupportedCredentialMetadataDisplayInner((b) => b
+            ..name = 'Test Display'
+            ..logo = (SupportedCredentialMetadataItemLogoBuilder()
+              ..url = 'https://example.com/logo.png'
+              ..altText = 'Logo'))
+        ]);
 
-    //   final credentialSupported = [
-    //     CredentialSupportedObject((b) => b
-    //       ..credentialTypeId = 'TDriversLicenseV1R1'
-    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.json'
-    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
-    //       ..metadata = metadata),
+      final credentialSupported = [
+        CredentialSupportedObject((b) => b
+          ..credentialTypeId = 'TDriversLicenseV1R1'
+          ..jsonSchemaUrl =
+              'https://schema.affinidi.io/TDriversLicenseV1R1.json'
+          ..jsonLdContextUrl =
+              'https://schema.affinidi.io/TDriversLicenseV1R1.jsonld'
+          ..metadata = metadata),
+        CredentialSupportedObject((b) => b
+          ..credentialTypeId = 'TInstructorReviewV1R0'
+          ..jsonSchemaUrl =
+              'https://schema.affinidi.io/TInstructorReviewV1R0.json'
+          ..jsonLdContextUrl =
+              'https://schema.affinidi.io/TInstructorReviewV1R0.jsonld'
+          ..metadata = metadata),
+        CredentialSupportedObject((b) => b
+          ..credentialTypeId = 'TSkillBadgeV1R0'
+          ..jsonSchemaUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.json'
+          ..jsonLdContextUrl =
+              'https://schema.affinidi.io/TSkillBadgeV1R0.jsonld'
+          ..metadata = metadata),
+        CredentialSupportedObject((b) => b
+          ..credentialTypeId = 'TSimpleBioV1R0'
+          ..jsonSchemaUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.json'
+          ..jsonLdContextUrl =
+              'https://schema.affinidi.io/TSimpleBioV1R0.jsonld'
+          ..metadata = metadata),
+        CredentialSupportedObject((b) => b
+          ..credentialTypeId = 'UniversityDegree2024'
+          ..jsonSchemaUrl =
+              'https://schema.affinidi.io/AnyTUniversityDegreeV1R1.json'
+          ..jsonLdContextUrl =
+              'https://schema.affinidi.io/AnyTUniversityDegreeV1R1.jsonld'
+          ..metadata = metadata),
+      ];
 
-    //     CredentialSupportedObject((b) => b
-    //       ..credentialTypeId = 'TInstructorReviewV1R0'
-    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.json'
-    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TInstructorReviewV1R0.jsonld'
-    //       ..metadata = metadata),
+      final webhookEndpoint = CisConfigurationWebhookSettingEndpointBuilder()
+        ..url = "https://affinidi.com";
+      final webhook = CisConfigurationWebhookSettingBuilder()
+        ..enabled = true
+        ..endpoint = webhookEndpoint;
 
-    //     CredentialSupportedObject((b) => b
-    //       ..credentialTypeId = 'TSkillBadgeV1R0'
-    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.json'
-    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TSkillBadgeV1R0.jsonld'
-    //       ..metadata = metadata),
+      final configInputBuilder = CreateIssuanceConfigInputBuilder()
+        ..issuerWalletId = walletId
+        ..name = name
+        ..description = description
+        ..format = format
+        ..credentialOfferDuration = credentialOfferDuration
+        ..credentialSupported = ListBuilder(credentialSupported)
+        ..webhook = webhook;
 
-    //     CredentialSupportedObject((b) => b
-    //       ..credentialTypeId = 'TSimpleBioV1R0'
-    //       ..jsonSchemaUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.json'
-    //       ..jsonLdContextUrl = 'https://schema.affinidi.io/TSimpleBioV1R0.jsonld'
-    //       ..metadata = metadata),
-    //   ];
+      // NOTE: You can have 1 issuance config per project
+      final response = (await configurationApi.createIssuanceConfig(
+          createIssuanceConfigInput: configInputBuilder.build()));
 
-    //   final configInputBuilder = CreateIssuanceConfigInputBuilder()
-    //     ..issuerWalletId = walletId
-    //     ..name = name
-    //     ..description = description
-    //     ..format = format
-    //     ..credentialOfferDuration = credentialOfferDuration
-    //     ..credentialSupported = ListBuilder(credentialSupported);
+      expect(response.statusCode, 201);
+      expect(response.data!.id, isNotEmpty);
+      configurationId = response.data?.id ?? '';
+    });
 
-    //   // NOTE: You can have 1 issuance config per project
-    //   final response = (await configurationApi.createIssuanceConfig(
-    //         createIssuanceConfigInput: configInputBuilder.build()));
+    test('Updates issuance configuration', () async {
+      final String updatedDescription = 'UpdatedDescription';
 
-    //   expect(response.statusCode, 201);
-    //   expect(response.data!.id, isNotEmpty);
+      final updateIssuanceConfigInput = UpdateIssuanceConfigInputBuilder()
+        ..description = updatedDescription;
 
-    //   configurationId = response?.data?.id ?? '';
-    // });
+      final config = (await configurationApi.updateIssuanceConfigById(
+              configurationId: configurationId,
+              updateIssuanceConfigInput: updateIssuanceConfigInput.build()))
+          .data;
 
-    // test('Updates issuance configuration', () async {
-    //   final String updatedDescription = 'UpdatedDescription';
-
-    //   final updateIssuanceConfigInput = UpdateIssuanceConfigInputBuilder()
-    //     ..description = updatedDescription;
-
-    //   final config = (await configurationApi.updateIssuanceConfigById(
-    //     configurationId: configurationId,
-    //     updateIssuanceConfigInput: updateIssuanceConfigInput.build())).data;
-
-    //   expect(config, isNotNull);
-    //   expect(config?.description, equals(updatedDescription));
-    // });
+      expect(config, isNotNull);
+      expect(config?.description, equals(updatedDescription));
+    });
 
     test('Lists issuance configurations', () async {
       // When
@@ -177,15 +201,22 @@ void main() {
         ..credentialTypeId = "UniversityDegree2024"
         ..credentialData = credentialData;
 
-      final b2 = StartIssuanceInputDataInnerBuilder()
-        ..credentialTypeId = "UniversityDegree2024"
-        ..credentialData = credentialData;
-
       final startIssuanceInput = StartIssuanceInputBuilder()
         ..holderDid =
             "did:key:zQ3shNxQh9GT56poRxCvihKZJ4Qfs6Xc8aAAas6PF5nZSBdz7"
         ..claimMode = StartIssuanceInputClaimModeEnum.NORMAL
-        ..data = ListBuilder([b1.build(), b2.build()]);
+        ..data = ListBuilder([
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+          b1.build(),
+        ]);
 
       final issuanceResponse = (await issuanceApi.startIssuance(
               projectId: env.projectId,
@@ -276,7 +307,6 @@ void main() {
         receiveTimeout: const Duration(seconds: 20),
       )));
 
-      // client.setBearerAuth('Authorization', accessToken)
       final credentialsApi = client.getCredentialsApi();
       final data = (await credentialsApi.batchCredential(
               projectId: env.projectId,
@@ -285,9 +315,20 @@ void main() {
           .data;
       expect(data, isNotNull);
       expect(data?.credentialResponses, isNotNull);
-      expect(data?.credentialResponses.length, equals(2));
+      expect(data?.credentialResponses.length, equals(10));
       expect(data?.credentialResponses.first, isNotNull);
       expect(data?.credentialResponses.first.credential, isNotNull);
+    });
+
+    test('Get issued credentials for specific flow', () async {
+      final data = (await credentialsApi.getIssuanceIdClaimedCredential(
+              configurationId: configurationId,
+              projectId: env.projectId,
+              issuanceId: issuanceId))
+          .data;
+      expect(data, isNotNull);
+      expect(data?.credentials, isNotNull);
+      expect(data?.credentials?.length, equals(10));
     });
   });
 }
