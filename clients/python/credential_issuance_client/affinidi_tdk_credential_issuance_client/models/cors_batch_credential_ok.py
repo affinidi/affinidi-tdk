@@ -19,16 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, conlist
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr
 
-class ClaimedCredentialResponse(BaseModel):
+class CorsBatchCredentialOK(BaseModel):
     """
-    Response for getting the claimed VC  # noqa: E501
+    CorsBatchCredentialOK
     """
-    credential: Optional[Dict[str, Any]] = Field(default=None, description="claimed credential for a single issuance")
-    credentials: Optional[conlist(Dict[str, Any])] = Field(default=None, description="claimed credentials for batch issuances")
-    __properties = ["credential", "credentials"]
+    cors_batch_credential_ok: Optional[StrictStr] = Field(default=None, alias="corsBatchCredentialOk")
+    __properties = ["corsBatchCredentialOk"]
 
     class Config:
         """Pydantic configuration"""
@@ -44,8 +43,8 @@ class ClaimedCredentialResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ClaimedCredentialResponse:
-        """Create an instance of ClaimedCredentialResponse from a JSON string"""
+    def from_json(cls, json_str: str) -> CorsBatchCredentialOK:
+        """Create an instance of CorsBatchCredentialOK from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -57,17 +56,16 @@ class ClaimedCredentialResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ClaimedCredentialResponse:
-        """Create an instance of ClaimedCredentialResponse from a dict"""
+    def from_dict(cls, obj: dict) -> CorsBatchCredentialOK:
+        """Create an instance of CorsBatchCredentialOK from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ClaimedCredentialResponse.parse_obj(obj)
+            return CorsBatchCredentialOK.parse_obj(obj)
 
-        _obj = ClaimedCredentialResponse.parse_obj({
-            "credential": obj.get("credential"),
-            "credentials": obj.get("credentials")
+        _obj = CorsBatchCredentialOK.parse_obj({
+            "cors_batch_credential_ok": obj.get("corsBatchCredentialOk")
         })
         return _obj
 
