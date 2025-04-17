@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from affinidi_tdk_credential_issuance_client.models.claimed_credential_response import ClaimedCredentialResponse  # noqa: E501
+from affinidi_tdk_credential_issuance_client.models.cors_batch_credential_ok import CorsBatchCredentialOK  # noqa: E501
 
-class TestClaimedCredentialResponse(unittest.TestCase):
-    """ClaimedCredentialResponse unit test stubs"""
+class TestCorsBatchCredentialOK(unittest.TestCase):
+    """CorsBatchCredentialOK unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,28 +27,25 @@ class TestClaimedCredentialResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ClaimedCredentialResponse:
-        """Test ClaimedCredentialResponse
+    def make_instance(self, include_optional) -> CorsBatchCredentialOK:
+        """Test CorsBatchCredentialOK
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ClaimedCredentialResponse`
+        # uncomment below to create an instance of `CorsBatchCredentialOK`
         """
-        model = ClaimedCredentialResponse()  # noqa: E501
+        model = CorsBatchCredentialOK()  # noqa: E501
         if include_optional:
-            return ClaimedCredentialResponse(
-                credential = { },
-                credentials = [
-                    { }
-                    ]
+            return CorsBatchCredentialOK(
+                cors_batch_credential_ok = ''
             )
         else:
-            return ClaimedCredentialResponse(
+            return CorsBatchCredentialOK(
         )
         """
 
-    def testClaimedCredentialResponse(self):
-        """Test ClaimedCredentialResponse"""
+    def testCorsBatchCredentialOK(self):
+        """Test CorsBatchCredentialOK"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
