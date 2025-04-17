@@ -20,8 +20,6 @@ import com.affinidi.tdk.credential.issuance.client.BaseApi;
 import com.affinidi.tdk.credential.issuance.client.Configuration;
 import com.affinidi.tdk.credential.issuance.client.Pair;
 
-import com.affinidi.tdk.credential.issuance.client.models.BatchCredentialInput;
-import com.affinidi.tdk.credential.issuance.client.models.BatchCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialListResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.CreateCredentialInput;
@@ -48,88 +46,6 @@ public class CredentialsApi extends BaseApi {
 
   public CredentialsApi(ApiClient apiClient) {
     super(apiClient);
-  }
-
-  /**
-   * Batch credential
-   * Allows wallet&#39;s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
-   * @param projectId Affinidi project id (required)
-   * @param batchCredentialInput Request body for batch credential (required)
-   * @return BatchCredentialResponse
-   * @throws ApiException if fails to make API call
-   */
-  public BatchCredentialResponse batchCredential(String projectId, BatchCredentialInput batchCredentialInput) throws ApiException {
-    return this.batchCredential(projectId, batchCredentialInput, Collections.emptyMap());
-  }
-
-
-  /**
-   * Batch credential
-   * Allows wallet&#39;s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
-   * @param projectId Affinidi project id (required)
-   * @param batchCredentialInput Request body for batch credential (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return BatchCredentialResponse
-   * @throws ApiException if fails to make API call
-   */
-  public BatchCredentialResponse batchCredential(String projectId, BatchCredentialInput batchCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = batchCredentialInput;
-    
-    // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling batchCredential");
-    }
-    
-    // verify the required parameter 'batchCredentialInput' is set
-    if (batchCredentialInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'batchCredentialInput' when calling batchCredential");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v1/{projectId}/batch_credential"
-      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "bearerAuth" };
-
-    TypeReference<BatchCredentialResponse> localVarReturnType = new TypeReference<BatchCredentialResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
   }
 
   /**

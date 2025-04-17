@@ -78,7 +78,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | [_ConfigurationApi_](doc/ConfigurationApi.md) | [**getIssuanceConfigById**](doc/ConfigurationApi.md#getissuanceconfigbyid)                       | **GET** /v1/configurations/{configurationId}                                                |
 | [_ConfigurationApi_](doc/ConfigurationApi.md) | [**getIssuanceConfigList**](doc/ConfigurationApi.md#getissuanceconfiglist)                       | **GET** /v1/configurations                                                                  |
 | [_ConfigurationApi_](doc/ConfigurationApi.md) | [**updateIssuanceConfigById**](doc/ConfigurationApi.md#updateissuanceconfigbyid)                 | **PUT** /v1/configurations/{configurationId}                                                |
-| [_CredentialsApi_](doc/CredentialsApi.md)     | [**batchCredential**](doc/CredentialsApi.md#batchcredential)                                     | **POST** /v1/{projectId}/batch_credential                                                   | Batch credential                              |
 | [_CredentialsApi_](doc/CredentialsApi.md)     | [**generateCredentials**](doc/CredentialsApi.md#generatecredentials)                             | **POST** /v1/{projectId}/credential                                                         |
 | [_CredentialsApi_](doc/CredentialsApi.md)     | [**getClaimedCredentials**](doc/CredentialsApi.md#getclaimedcredentials)                         | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
 | [_CredentialsApi_](doc/CredentialsApi.md)     | [**getIssuanceIdClaimedCredential**](doc/CredentialsApi.md#getissuanceidclaimedcredential)       | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
@@ -106,7 +105,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CisConfigurationWebhookSettingEndpoint](doc/CisConfigurationWebhookSettingEndpoint.md)
 - [ClaimedCredentialListResponse](doc/ClaimedCredentialListResponse.md)
 - [ClaimedCredentialResponse](doc/ClaimedCredentialResponse.md)
-- [CorsBatchCredentialOK](doc/CorsBatchCredentialOK.md)
 - [CorsGenerateCredentialsOK](doc/CorsGenerateCredentialsOK.md)
 - [CorsGetClaimedCredentialsOK](doc/CorsGetClaimedCredentialsOK.md)
 - [CorsGetCredentialOfferOK](doc/CorsGetCredentialOfferOK.md)

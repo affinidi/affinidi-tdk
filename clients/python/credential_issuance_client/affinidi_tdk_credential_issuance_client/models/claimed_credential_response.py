@@ -19,16 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, conlist
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
 
 class ClaimedCredentialResponse(BaseModel):
     """
     Response for getting the claimed VC  # noqa: E501
     """
-    credential: Optional[Dict[str, Any]] = Field(default=None, description="claimed credential for a single issuance")
-    credentials: Optional[conlist(Dict[str, Any])] = Field(default=None, description="claimed credentials for batch issuances")
-    __properties = ["credential", "credentials"]
+    credential: Optional[Dict[str, Any]] = Field(default=None, description="claimed credential")
+    __properties = ["credential"]
 
     class Config:
         """Pydantic configuration"""
@@ -66,8 +65,7 @@ class ClaimedCredentialResponse(BaseModel):
             return ClaimedCredentialResponse.parse_obj(obj)
 
         _obj = ClaimedCredentialResponse.parse_obj({
-            "credential": obj.get("credential"),
-            "credentials": obj.get("credentials")
+            "credential": obj.get("credential")
         })
         return _obj
 

@@ -14,8 +14,6 @@
 package com.affinidi.tdk.credential.issuance.client.apis;
 
 import com.affinidi.tdk.credential.issuance.client.ApiException;
-import com.affinidi.tdk.credential.issuance.client.models.BatchCredentialInput;
-import com.affinidi.tdk.credential.issuance.client.models.BatchCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialListResponse;
 import com.affinidi.tdk.credential.issuance.client.models.ClaimedCredentialResponse;
 import com.affinidi.tdk.credential.issuance.client.models.CreateCredentialInput;
@@ -43,22 +41,6 @@ public class CredentialsApiTest {
 
     private final CredentialsApi api = new CredentialsApi();
 
-    /**
-     * Batch credential
-     *
-     * Allows wallet&#39;s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void batchCredentialTest() throws ApiException {
-        String projectId = null;
-        BatchCredentialInput batchCredentialInput = null;
-        BatchCredentialResponse response = api.batchCredential(projectId, batchCredentialInput);
-
-        // TODO: test validations
-    }
     /**
      * Issue credential for end user upon presentation a valid access token. Since we don&#39;t immediate issue credential It&#39;s expected to return &#x60;transaction_id&#x60; and use this &#x60;transaction_id&#x60; to get the deferred credentials
      *

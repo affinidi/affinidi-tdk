@@ -17,7 +17,6 @@ Models/CisConfigurationWebhookSetting.md
 Models/CisConfigurationWebhookSetting_endpoint.md
 Models/ClaimedCredentialListResponse.md
 Models/ClaimedCredentialResponse.md
-Models/CorsBatchCredentialOK.md
 Models/CorsGenerateCredentialsOK.md
 Models/CorsGetClaimedCredentialsOK.md
 Models/CorsGetCredentialOfferOK.md

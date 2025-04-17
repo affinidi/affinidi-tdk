@@ -30,7 +30,6 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configurat
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_batch_credential_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';

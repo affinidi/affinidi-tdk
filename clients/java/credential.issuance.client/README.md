@@ -122,7 +122,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 | _ConfigurationApi_ | [**getIssuanceConfigById**](docs/ConfigurationApi.md#getIssuanceConfigById)                       | **GET** /v1/configurations/{configurationId}                                                |
 | _ConfigurationApi_ | [**getIssuanceConfigList**](docs/ConfigurationApi.md#getIssuanceConfigList)                       | **GET** /v1/configurations                                                                  |
 | _ConfigurationApi_ | [**updateIssuanceConfigById**](docs/ConfigurationApi.md#updateIssuanceConfigById)                 | **PUT** /v1/configurations/{configurationId}                                                |
-| _CredentialsApi_   | [**batchCredential**](docs/CredentialsApi.md#batchCredential)                                     | **POST** /v1/{projectId}/batch_credential                                                   | Batch credential                              |
 | _CredentialsApi_   | [**generateCredentials**](docs/CredentialsApi.md#generateCredentials)                             | **POST** /v1/{projectId}/credential                                                         |
 | _CredentialsApi_   | [**getClaimedCredentials**](docs/CredentialsApi.md#getClaimedCredentials)                         | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
 | _CredentialsApi_   | [**getIssuanceIdClaimedCredential**](docs/CredentialsApi.md#getIssuanceIdClaimedCredential)       | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
@@ -150,7 +149,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [CisConfigurationWebhookSettingEndpoint](docs/CisConfigurationWebhookSettingEndpoint.md)
 - [ClaimedCredentialListResponse](docs/ClaimedCredentialListResponse.md)
 - [ClaimedCredentialResponse](docs/ClaimedCredentialResponse.md)
-- [CorsBatchCredentialOK](docs/CorsBatchCredentialOK.md)
 - [CorsGenerateCredentialsOK](docs/CorsGenerateCredentialsOK.md)
 - [CorsGetClaimedCredentialsOK](docs/CorsGetClaimedCredentialsOK.md)
 - [CorsGetCredentialOfferOK](docs/CorsGetCredentialOfferOK.md)
