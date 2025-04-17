@@ -907,6 +907,80 @@ paths:
       x-content-type: application/json
       x-accepts:
         - application/json
+  /v1/authz/vfs/access/{granteeDid}:
+    delete:
+      description: deleteAccessVfs
+      operationId: deleteAccessVfs
+      parameters:
+        - explode: false
+          in: path
+          name: granteeDid
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '204':
+          description: Ok
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: ForbiddenError
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+          description: UnexpectedError
+      security:
+        - ConsumerTokenAuth: []
+      summary: delete access of granteeDid
+      tags:
+        - authz
+      x-accepts:
+        - application/json
+    put:
+      description: updateAccessVfs
+      operationId: updateAccessVfs
+      parameters:
+        - explode: false
+          in: path
+          name: granteeDid
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateAccess'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAccessOutput'
+          description: Successfully updated access to Service
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: ForbiddenError
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+          description: UnexpectedError
+      security:
+        - ConsumerTokenAuth: []
+      summary: Update access of granteeDid
+      tags:
+        - authz
+      x-content-type: application/json
+      x-accepts:
+        - application/json
   /v1/auth/{proxy+}:
     delete:
       parameters:
@@ -1216,6 +1290,13 @@ components:
             $ref: '#/components/schemas/GrantAccessInput'
       description: Grant access to virtual file system
       required: true
+    UpdateAccess:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateAccessInput'
+      description: update access to virtual file system
+      required: true
     ConsumerAuthTokenEndpoint:
       content:
         application/json:
@@ -1327,6 +1408,12 @@ components:
           schema:
             $ref: '#/components/schemas/GrantAccessOutput'
       description: Successfully granted access to Service
+    UpdateAccessOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateAccessOutput'
+      description: Successfully updated access to Service
     CorsConsumerAuthTokenEndpointOK:
       content:
         application/json:
@@ -1687,6 +1774,30 @@ components:
             $ref: '#/components/schemas/UnauthorizedError'
       description: ForbiddenError
     GrantAccessVfsUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
+    UpdateAccessVfsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: ForbiddenError
+    UpdateAccessVfsUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
+    DeleteAccessVfsForbiddenError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+      description: ForbiddenError
+    DeleteAccessVfsUnexpectedError:
       content:
         application/json:
           schema:
@@ -2566,28 +2677,47 @@ components:
       required:
         - grant_type
       type: object
+    RightsEnum:
+      enum:
+        - vfs-read
+        - vfs-write
+      type: string
     GrantAccessInput:
       additionalProperties: false
       example:
+        granteeDid: granteeDid
         rights:
           - vfs-read
           - vfs-read
-        subjectDID: subjectDID
       properties:
-        subjectDID:
+        granteeDid:
           description: DID of the subject being granted access
           type: string
         rights:
           description: List of rights to grant to the subject
           items:
-            enum:
-              - vfs-read
-              - vfs-write
-            type: string
+            $ref: '#/components/schemas/RightsEnum'
+          minItems: 1
+          type: array
+      required:
+        - granteeDid
+        - rights
+      type: object
+    UpdateAccessInput:
+      additionalProperties: false
+      example:
+        rights:
+          - vfs-read
+          - vfs-read
+      properties:
+        rights:
+          description: List of rights to update access
+          items:
+            $ref: '#/components/schemas/RightsEnum'
+          minItems: 1
           type: array
       required:
         - rights
-        - subjectDID
       type: object
     GrantAccessOutput:
       additionalProperties: false
@@ -2601,6 +2731,24 @@ components:
           description: Unique identifier for the access grant
           format: uuid
           type: string
+      required:
+        - success
+      type: object
+    UpdateAccessOutput:
+      additionalProperties: false
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      required:
+        - success
+      type: object
+    DeleteAccessOutput:
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
       required:
         - success
       type: object

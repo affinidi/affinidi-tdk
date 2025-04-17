@@ -42,7 +42,15 @@ class TestOAuth2Token(unittest.TestCase):
                 id_token = 56,
                 refresh_token = '',
                 scope = '',
-                token_type = ''
+                token_type = '',
+                authorization_details = [
+                    affinidi_tdk_login_configuration_client.models.o_auth2_token_authorization_details_inner.OAuth2Token_authorization_details_inner(
+                        type = 'openid_credential', 
+                        credential_configuration_id = '', 
+                        credential_identifiers = [
+                            ''
+                            ], )
+                    ]
             )
         else:
             return OAuth2Token(

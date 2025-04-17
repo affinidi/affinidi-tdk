@@ -23,6 +23,7 @@ import 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
+import 'package:affinidi_tdk_iam_client/src/model/delete_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/get_well_known_did_ok.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
@@ -41,6 +42,7 @@ import 'package:affinidi_tdk_iam_client/src/model/project_list.dart';
 import 'package:affinidi_tdk_iam_client/src/model/project_with_policy_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/project_with_policy_list.dart';
 import 'package:affinidi_tdk_iam_client/src/model/public_key_cannot_be_resolved_from_did_error.dart';
+import 'package:affinidi_tdk_iam_client/src/model/rights_enum.dart';
 import 'package:affinidi_tdk_iam_client/src/model/service_error_response.dart';
 import 'package:affinidi_tdk_iam_client/src/model/service_error_response_details_inner.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_authentication_method_dto.dart';
@@ -53,6 +55,8 @@ import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authenticati
 import 'package:affinidi_tdk_iam_client/src/model/typed_principal_id.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unauthorized_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
+import 'package:affinidi_tdk_iam_client/src/model/update_access_input.dart';
+import 'package:affinidi_tdk_iam_client/src/model/update_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_token_private_key_authentication_method_dto.dart';
@@ -72,6 +76,7 @@ part 'serializers.g.dart';
   CreateProjectScopedTokenInput,
   CreateProjectScopedTokenOutput,
   CreateTokenInput,
+  DeleteAccessOutput,
   GetWellKnownDidOK,
   GrantAccessInput,
   GrantAccessOutput,
@@ -90,6 +95,7 @@ part 'serializers.g.dart';
   ProjectWithPolicyDto,
   ProjectWithPolicyList,
   PublicKeyCannotBeResolvedFromDidError,
+  RightsEnum,
   ServiceErrorResponse,
   ServiceErrorResponseDetailsInner,
   TokenAuthenticationMethodDto,
@@ -102,6 +108,8 @@ part 'serializers.g.dart';
   TypedPrincipalId,
   UnauthorizedError,
   UnexpectedError,
+  UpdateAccessInput,
+  UpdateAccessOutput,
   UpdateProjectInput,
   UpdateTokenInput,
   UpdateTokenPrivateKeyAuthenticationMethodDto,

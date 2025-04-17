@@ -19,9 +19,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateProjectScopedTokenInput.serializer)
       ..add(CreateProjectScopedTokenOutput.serializer)
       ..add(CreateTokenInput.serializer)
+      ..add(DeleteAccessOutput.serializer)
       ..add(GetWellKnownDidOK.serializer)
       ..add(GrantAccessInput.serializer)
-      ..add(GrantAccessInputRightsEnum.serializer)
       ..add(GrantAccessOutput.serializer)
       ..add(InvalidDIDError.serializer)
       ..add(InvalidDIDErrorHttpStatusCodeEnum.serializer)
@@ -59,6 +59,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum.serializer)
       ..add(PublicKeyCannotBeResolvedFromDidErrorMessageEnum.serializer)
       ..add(PublicKeyCannotBeResolvedFromDidErrorNameEnum.serializer)
+      ..add(RightsEnum.serializer)
       ..add(ServiceErrorResponse.serializer)
       ..add(ServiceErrorResponseDetailsInner.serializer)
       ..add(TokenAuthenticationMethodDto.serializer)
@@ -81,6 +82,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UnexpectedErrorHttpStatusCodeEnum.serializer)
       ..add(UnexpectedErrorMessageEnum.serializer)
       ..add(UnexpectedErrorNameEnum.serializer)
+      ..add(UpdateAccessInput.serializer)
+      ..add(UpdateAccessOutput.serializer)
       ..add(UpdateProjectInput.serializer)
       ..add(UpdateTokenInput.serializer)
       ..add(UpdateTokenPrivateKeyAuthenticationMethodDto.serializer)
@@ -90,10 +93,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserDto.serializer)
       ..add(UserList.serializer)
       ..add(WhoamiDto.serializer)
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(GrantAccessInputRightsEnum)]),
-          () => new ListBuilder<GrantAccessInputRightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
           () => new ListBuilder<JsonWebKeyDto>())
@@ -107,6 +106,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(ProjectWithPolicyDto)]),
           () => new ListBuilder<ProjectWithPolicyDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(RightsEnum)]),
+          () => new ListBuilder<RightsEnum>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(RightsEnum)]),
+          () => new ListBuilder<RightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),

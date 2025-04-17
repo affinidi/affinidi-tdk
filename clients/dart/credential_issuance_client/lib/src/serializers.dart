@@ -27,6 +27,7 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configurat
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_batch_credential_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
@@ -103,6 +104,7 @@ part 'serializers.g.dart';
   CisConfigurationWebhookSettingEndpoint,
   ClaimedCredentialListResponse,
   ClaimedCredentialResponse,
+  CorsBatchCredentialOK,
   CorsGenerateCredentialsOK,
   CorsGetClaimedCredentialsOK,
   CorsGetCredentialOfferOK,

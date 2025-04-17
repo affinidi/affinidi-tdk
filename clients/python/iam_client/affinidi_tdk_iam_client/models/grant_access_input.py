@@ -20,23 +20,16 @@ import json
 
 
 from typing import List
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from pydantic import BaseModel, Field, StrictStr, conlist
+from affinidi_tdk_iam_client.models.rights_enum import RightsEnum
 
 class GrantAccessInput(BaseModel):
     """
     GrantAccessInput
     """
-    subject_did: StrictStr = Field(default=..., alias="subjectDID", description="DID of the subject being granted access")
-    rights: conlist(StrictStr) = Field(default=..., description="List of rights to grant to the subject")
-    __properties = ["subjectDID", "rights"]
-
-    @validator('rights')
-    def rights_validate_enum(cls, value):
-        """Validates the enum"""
-        for i in value:
-            if i not in ('vfs-read', 'vfs-write'):
-                raise ValueError("each list item must be one of ('vfs-read', 'vfs-write')")
-        return value
+    grantee_did: StrictStr = Field(default=..., alias="granteeDid", description="DID of the subject being granted access")
+    rights: conlist(RightsEnum, min_items=1) = Field(default=..., description="List of rights to grant to the subject")
+    __properties = ["granteeDid", "rights"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,7 +67,7 @@ class GrantAccessInput(BaseModel):
             return GrantAccessInput.parse_obj(obj)
 
         _obj = GrantAccessInput.parse_obj({
-            "subject_did": obj.get("subjectDID"),
+            "grantee_did": obj.get("granteeDid"),
             "rights": obj.get("rights")
         })
         return _obj

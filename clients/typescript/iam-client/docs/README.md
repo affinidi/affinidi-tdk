@@ -8,7 +8,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class             | Method                                                                             | HTTP request                                     | Description                             |
 | ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AuthzApi_        | [**deleteAccessVfs**](Apis/AuthzApi.md#deleteaccessvfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
 | _AuthzApi_        | [**grantAccessVfs**](Apis/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| _AuthzApi_        | [**updateAccessVfs**](Apis/AuthzApi.md#updateaccessvfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
 | _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](Apis/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | _DefaultApi_      | [**v1AuthProxyDelete**](Apis/DefaultApi.md#v1authproxydelete)                      | **DELETE** /v1/auth/{proxy+}                     |                                         |
 | _DefaultApi_      | [**v1AuthProxyGet**](Apis/DefaultApi.md#v1authproxyget)                            | **GET** /v1/auth/{proxy+}                        |                                         |
@@ -52,6 +54,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenInput](./Models/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](./Models/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](./Models/CreateTokenInput.md)
+- [DeleteAccessOutput](./Models/DeleteAccessOutput.md)
 - [GrantAccessInput](./Models/GrantAccessInput.md)
 - [GrantAccessOutput](./Models/GrantAccessOutput.md)
 - [InvalidDIDError](./Models/InvalidDIDError.md)
@@ -69,6 +72,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectWithPolicyDto](./Models/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](./Models/ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](./Models/PublicKeyCannotBeResolvedFromDidError.md)
+- [RightsEnum](./Models/RightsEnum.md)
 - [ServiceErrorResponse](./Models/ServiceErrorResponse.md)
 - [ServiceErrorResponse_details_inner](./Models/ServiceErrorResponse_details_inner.md)
 - [TokenAuthenticationMethodDto](./Models/TokenAuthenticationMethodDto.md)
@@ -81,6 +85,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [TypedPrincipalId](./Models/TypedPrincipalId.md)
 - [UnauthorizedError](./Models/UnauthorizedError.md)
 - [UnexpectedError](./Models/UnexpectedError.md)
+- [UpdateAccessInput](./Models/UpdateAccessInput.md)
+- [UpdateAccessOutput](./Models/UpdateAccessOutput.md)
 - [UpdateProjectInput](./Models/UpdateProjectInput.md)
 - [UpdateTokenInput](./Models/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](./Models/UpdateTokenPrivateKeyAuthenticationMethodDto.md)

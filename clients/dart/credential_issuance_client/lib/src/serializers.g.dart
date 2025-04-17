@@ -27,6 +27,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CisConfigurationWebhookSettingEndpoint.serializer)
       ..add(ClaimedCredentialListResponse.serializer)
       ..add(ClaimedCredentialResponse.serializer)
+      ..add(CorsBatchCredentialOK.serializer)
       ..add(CorsGenerateCredentialsOK.serializer)
       ..add(CorsGetClaimedCredentialsOK.serializer)
       ..add(CorsGetCredentialOfferOK.serializer)
@@ -355,6 +356,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType.nullable(JsonObject)
           ]),
           () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(BuiltMap, const [
+              const FullType(String),
+              const FullType.nullable(JsonObject)
+            ])
+          ]),
+          () => new ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

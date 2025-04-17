@@ -16,6 +16,7 @@ docs/CreateProjectScopedTokenInput.md
 docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
+docs/DeleteAccessOutput.md
 docs/GetWellKnownDidOK.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
@@ -36,6 +37,7 @@ docs/ProjectWithPolicyDto.md
 docs/ProjectWithPolicyList.md
 docs/ProjectsApi.md
 docs/PublicKeyCannotBeResolvedFromDidError.md
+docs/RightsEnum.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/StsApi.md
@@ -50,6 +52,8 @@ docs/TokensApi.md
 docs/TypedPrincipalId.md
 docs/UnauthorizedError.md
 docs/UnexpectedError.md
+docs/UpdateAccessInput.md
+docs/UpdateAccessOutput.md
 docs/UpdateProjectInput.md
 docs/UpdateTokenInput.md
 docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md
@@ -97,6 +101,7 @@ src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateTokenInput.java
+src/main/java/com/affinidi/tdk/iam/client/models/DeleteAccessOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GetWellKnownDidOK.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessOutput.java
@@ -115,6 +120,7 @@ src/main/java/com/affinidi/tdk/iam/client/models/ProjectList.java
 src/main/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyList.java
 src/main/java/com/affinidi/tdk/iam/client/models/PublicKeyCannotBeResolvedFromDidError.java
+src/main/java/com/affinidi/tdk/iam/client/models/RightsEnum.java
 src/main/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponse.java
 src/main/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseDetailsInner.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenAuthenticationMethodDto.java
@@ -127,6 +133,8 @@ src/main/java/com/affinidi/tdk/iam/client/models/TokenPrivateKeyAuthenticationMe
 src/main/java/com/affinidi/tdk/iam/client/models/TypedPrincipalId.java
 src/main/java/com/affinidi/tdk/iam/client/models/UnauthorizedError.java
 src/main/java/com/affinidi/tdk/iam/client/models/UnexpectedError.java
+src/main/java/com/affinidi/tdk/iam/client/models/UpdateAccessInput.java
+src/main/java/com/affinidi/tdk/iam/client/models/UpdateAccessOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateProjectInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateTokenPrivateKeyAuthenticationMethodDto.java
@@ -150,6 +158,7 @@ src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateTokenInputTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/DeleteAccessOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/GetWellKnownDidOKTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/GrantAccessInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/GrantAccessOutputTest.java
@@ -168,6 +177,7 @@ src/test/java/com/affinidi/tdk/iam/client/models/ProjectListTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyDtoTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyListTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/PublicKeyCannotBeResolvedFromDidErrorTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/RightsEnumTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseDetailsInnerTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/TokenAuthenticationMethodDtoTest.java
@@ -180,6 +190,8 @@ src/test/java/com/affinidi/tdk/iam/client/models/TokenPrivateKeyAuthenticationMe
 src/test/java/com/affinidi/tdk/iam/client/models/TypedPrincipalIdTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/UnauthorizedErrorTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/UnexpectedErrorTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/UpdateAccessInputTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/UpdateAccessOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/UpdateProjectInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/UpdateTokenInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/UpdateTokenPrivateKeyAuthenticationMethodDtoTest.java

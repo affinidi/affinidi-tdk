@@ -19,6 +19,8 @@ class _$OAuth2Token extends OAuth2Token {
   final String? scope;
   @override
   final String? tokenType;
+  @override
+  final BuiltList<OAuth2TokenAuthorizationDetailsInner>? authorizationDetails;
 
   factory _$OAuth2Token([void Function(OAuth2TokenBuilder)? updates]) =>
       (new OAuth2TokenBuilder()..update(updates))._build();
@@ -29,7 +31,8 @@ class _$OAuth2Token extends OAuth2Token {
       this.idToken,
       this.refreshToken,
       this.scope,
-      this.tokenType})
+      this.tokenType,
+      this.authorizationDetails})
       : super._();
 
   @override
@@ -48,7 +51,8 @@ class _$OAuth2Token extends OAuth2Token {
         idToken == other.idToken &&
         refreshToken == other.refreshToken &&
         scope == other.scope &&
-        tokenType == other.tokenType;
+        tokenType == other.tokenType &&
+        authorizationDetails == other.authorizationDetails;
   }
 
   @override
@@ -60,6 +64,7 @@ class _$OAuth2Token extends OAuth2Token {
     _$hash = $jc(_$hash, refreshToken.hashCode);
     _$hash = $jc(_$hash, scope.hashCode);
     _$hash = $jc(_$hash, tokenType.hashCode);
+    _$hash = $jc(_$hash, authorizationDetails.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -72,7 +77,8 @@ class _$OAuth2Token extends OAuth2Token {
           ..add('idToken', idToken)
           ..add('refreshToken', refreshToken)
           ..add('scope', scope)
-          ..add('tokenType', tokenType))
+          ..add('tokenType', tokenType)
+          ..add('authorizationDetails', authorizationDetails))
         .toString();
   }
 }
@@ -104,6 +110,15 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
   String? get tokenType => _$this._tokenType;
   set tokenType(String? tokenType) => _$this._tokenType = tokenType;
 
+  ListBuilder<OAuth2TokenAuthorizationDetailsInner>? _authorizationDetails;
+  ListBuilder<OAuth2TokenAuthorizationDetailsInner> get authorizationDetails =>
+      _$this._authorizationDetails ??=
+          new ListBuilder<OAuth2TokenAuthorizationDetailsInner>();
+  set authorizationDetails(
+          ListBuilder<OAuth2TokenAuthorizationDetailsInner>?
+              authorizationDetails) =>
+      _$this._authorizationDetails = authorizationDetails;
+
   OAuth2TokenBuilder() {
     OAuth2Token._defaults(this);
   }
@@ -117,6 +132,7 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
       _refreshToken = $v.refreshToken;
       _scope = $v.scope;
       _tokenType = $v.tokenType;
+      _authorizationDetails = $v.authorizationDetails?.toBuilder();
       _$v = null;
     }
     return this;
@@ -137,15 +153,29 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
   OAuth2Token build() => _build();
 
   _$OAuth2Token _build() {
-    final _$result = _$v ??
-        new _$OAuth2Token._(
-          accessToken: accessToken,
-          expiresIn: expiresIn,
-          idToken: idToken,
-          refreshToken: refreshToken,
-          scope: scope,
-          tokenType: tokenType,
-        );
+    _$OAuth2Token _$result;
+    try {
+      _$result = _$v ??
+          new _$OAuth2Token._(
+            accessToken: accessToken,
+            expiresIn: expiresIn,
+            idToken: idToken,
+            refreshToken: refreshToken,
+            scope: scope,
+            tokenType: tokenType,
+            authorizationDetails: _authorizationDetails?.build(),
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'authorizationDetails';
+        _authorizationDetails?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'OAuth2Token', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

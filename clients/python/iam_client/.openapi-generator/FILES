@@ -26,6 +26,7 @@ affinidi_tdk_iam_client/models/create_project_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_output.py
 affinidi_tdk_iam_client/models/create_token_input.py
+affinidi_tdk_iam_client/models/delete_access_output.py
 affinidi_tdk_iam_client/models/get_well_known_did_ok.py
 affinidi_tdk_iam_client/models/grant_access_input.py
 affinidi_tdk_iam_client/models/grant_access_output.py
@@ -44,6 +45,7 @@ affinidi_tdk_iam_client/models/project_list.py
 affinidi_tdk_iam_client/models/project_with_policy_dto.py
 affinidi_tdk_iam_client/models/project_with_policy_list.py
 affinidi_tdk_iam_client/models/public_key_cannot_be_resolved_from_did_error.py
+affinidi_tdk_iam_client/models/rights_enum.py
 affinidi_tdk_iam_client/models/service_error_response.py
 affinidi_tdk_iam_client/models/service_error_response_details_inner.py
 affinidi_tdk_iam_client/models/token_authentication_method_dto.py
@@ -56,6 +58,8 @@ affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto_publi
 affinidi_tdk_iam_client/models/typed_principal_id.py
 affinidi_tdk_iam_client/models/unauthorized_error.py
 affinidi_tdk_iam_client/models/unexpected_error.py
+affinidi_tdk_iam_client/models/update_access_input.py
+affinidi_tdk_iam_client/models/update_access_output.py
 affinidi_tdk_iam_client/models/update_project_input.py
 affinidi_tdk_iam_client/models/update_token_input.py
 affinidi_tdk_iam_client/models/update_token_private_key_authentication_method_dto.py
@@ -76,6 +80,7 @@ docs/CreateProjectScopedTokenInput.md
 docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
+docs/DeleteAccessOutput.md
 docs/GetWellKnownDidOK.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
@@ -96,6 +101,7 @@ docs/ProjectWithPolicyDto.md
 docs/ProjectWithPolicyList.md
 docs/ProjectsApi.md
 docs/PublicKeyCannotBeResolvedFromDidError.md
+docs/RightsEnum.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/StsApi.md
@@ -110,6 +116,8 @@ docs/TokensApi.md
 docs/TypedPrincipalId.md
 docs/UnauthorizedError.md
 docs/UnexpectedError.md
+docs/UpdateAccessInput.md
+docs/UpdateAccessOutput.md
 docs/UpdateProjectInput.md
 docs/UpdateTokenInput.md
 docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md
@@ -136,6 +144,7 @@ test/test_create_project_scoped_token_input.py
 test/test_create_project_scoped_token_output.py
 test/test_create_token_input.py
 test/test_default_api.py
+test/test_delete_access_output.py
 test/test_get_well_known_did_ok.py
 test/test_grant_access_input.py
 test/test_grant_access_output.py
@@ -156,6 +165,7 @@ test/test_project_with_policy_dto.py
 test/test_project_with_policy_list.py
 test/test_projects_api.py
 test/test_public_key_cannot_be_resolved_from_did_error.py
+test/test_rights_enum.py
 test/test_service_error_response.py
 test/test_service_error_response_details_inner.py
 test/test_sts_api.py
@@ -170,6 +180,8 @@ test/test_tokens_api.py
 test/test_typed_principal_id.py
 test/test_unauthorized_error.py
 test/test_unexpected_error.py
+test/test_update_access_input.py
+test/test_update_access_output.py
 test/test_update_project_input.py
 test/test_update_token_input.py
 test/test_update_token_private_key_authentication_method_dto.py
