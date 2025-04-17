@@ -9,15 +9,12 @@ part of 'claimed_credential_response.dart';
 class _$ClaimedCredentialResponse extends ClaimedCredentialResponse {
   @override
   final BuiltMap<String, JsonObject?>? credential;
-  @override
-  final BuiltList<BuiltMap<String, JsonObject?>>? credentials;
 
   factory _$ClaimedCredentialResponse(
           [void Function(ClaimedCredentialResponseBuilder)? updates]) =>
       (new ClaimedCredentialResponseBuilder()..update(updates))._build();
 
-  _$ClaimedCredentialResponse._({this.credential, this.credentials})
-      : super._();
+  _$ClaimedCredentialResponse._({this.credential}) : super._();
 
   @override
   ClaimedCredentialResponse rebuild(
@@ -31,16 +28,13 @@ class _$ClaimedCredentialResponse extends ClaimedCredentialResponse {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ClaimedCredentialResponse &&
-        credential == other.credential &&
-        credentials == other.credentials;
+    return other is ClaimedCredentialResponse && credential == other.credential;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, credential.hashCode);
-    _$hash = $jc(_$hash, credentials.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -48,8 +42,7 @@ class _$ClaimedCredentialResponse extends ClaimedCredentialResponse {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ClaimedCredentialResponse')
-          ..add('credential', credential)
-          ..add('credentials', credentials))
+          ..add('credential', credential))
         .toString();
   }
 }
@@ -65,12 +58,6 @@ class ClaimedCredentialResponseBuilder
   set credential(MapBuilder<String, JsonObject?>? credential) =>
       _$this._credential = credential;
 
-  ListBuilder<BuiltMap<String, JsonObject?>>? _credentials;
-  ListBuilder<BuiltMap<String, JsonObject?>> get credentials =>
-      _$this._credentials ??= new ListBuilder<BuiltMap<String, JsonObject?>>();
-  set credentials(ListBuilder<BuiltMap<String, JsonObject?>>? credentials) =>
-      _$this._credentials = credentials;
-
   ClaimedCredentialResponseBuilder() {
     ClaimedCredentialResponse._defaults(this);
   }
@@ -79,7 +66,6 @@ class ClaimedCredentialResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _credential = $v.credential?.toBuilder();
-      _credentials = $v.credentials?.toBuilder();
       _$v = null;
     }
     return this;
@@ -105,15 +91,12 @@ class ClaimedCredentialResponseBuilder
       _$result = _$v ??
           new _$ClaimedCredentialResponse._(
             credential: _credential?.build(),
-            credentials: _credentials?.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'credential';
         _credential?.build();
-        _$failedField = 'credentials';
-        _credentials?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'ClaimedCredentialResponse', _$failedField, e.toString());

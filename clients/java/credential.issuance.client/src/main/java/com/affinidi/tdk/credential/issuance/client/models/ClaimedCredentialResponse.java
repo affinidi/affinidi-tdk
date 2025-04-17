@@ -20,10 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -35,16 +32,12 @@ import java.util.StringJoiner;
  * Response for getting the claimed VC
  */
 @JsonPropertyOrder({
-  ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIAL,
-  ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIALS
+  ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIAL
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class ClaimedCredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   private Map<String, Object> credential = new HashMap<>();
-
-  public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  private List<Map<String, Object>> credentials = new ArrayList<>();
 
   public ClaimedCredentialResponse() {
   }
@@ -64,11 +57,9 @@ public class ClaimedCredentialResponse {
   }
 
   /**
-   * claimed credential for a single issuance
+   * claimed credential
    * @return credential
-   * @deprecated
    */
-  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREDENTIAL)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
@@ -84,39 +75,6 @@ public class ClaimedCredentialResponse {
     this.credential = credential;
   }
 
-  public ClaimedCredentialResponse credentials(List<Map<String, Object>> credentials) {
-    
-    this.credentials = credentials;
-    return this;
-  }
-
-  public ClaimedCredentialResponse addCredentialsItem(Map<String, Object> credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
-    }
-    this.credentials.add(credentialsItem);
-    return this;
-  }
-
-  /**
-   * claimed credentials for batch issuances
-   * @return credentials
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<Map<String, Object>> getCredentials() {
-    return credentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<Map<String, Object>> credentials) {
-    this.credentials = credentials;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,13 +84,12 @@ public class ClaimedCredentialResponse {
       return false;
     }
     ClaimedCredentialResponse claimedCredentialResponse = (ClaimedCredentialResponse) o;
-    return Objects.equals(this.credential, claimedCredentialResponse.credential) &&
-        Objects.equals(this.credentials, claimedCredentialResponse.credentials);
+    return Objects.equals(this.credential, claimedCredentialResponse.credential);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credential, credentials);
+    return Objects.hash(credential);
   }
 
   @Override
@@ -140,7 +97,6 @@ public class ClaimedCredentialResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClaimedCredentialResponse {\n");
     sb.append("    credential: ").append(toIndentedString(credential)).append("\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -195,20 +151,6 @@ public class ClaimedCredentialResponse {
           joiner.add(String.format("%scredential%s%s=%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
               getCredential().get(_key), URLEncoder.encode(String.valueOf(getCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
-        }
-      }
-    }
-
-    // add `credentials` to the URL query string
-    if (getCredentials() != null) {
-      for (int i = 0; i < getCredentials().size(); i++) {
-        try {
-          joiner.add(String.format("%scredentials%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
           throw new RuntimeException(e);

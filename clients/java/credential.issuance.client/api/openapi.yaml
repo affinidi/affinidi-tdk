@@ -794,46 +794,6 @@ paths:
         - credentials
       x-accepts:
         - application/json
-  /v1/{projectId}/batch_credential:
-    post:
-      description:
-        "Allows wallet's to claim multiple credentials at once, For authentication\
-        \ it use token from  authorization server (hydra),and token is validated internally\
-        \ in th function"
-      operationId: batchCredential
-      parameters:
-        - description: Affinidi project id
-          explode: false
-          in: path
-          name: projectId
-          required: true
-          schema:
-            type: string
-          style: simple
-      requestBody:
-        $ref: '#/components/requestBodies/BatchCredential'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BatchCredentialResponse'
-          description: Ok
-          headers:
-            Access-Control-Allow-Origin:
-              $ref: '#/components/headers/Access-Control-Allow-Origin'
-            Access-Control-Allow-Methods:
-              $ref: '#/components/headers/Access-Control-Allow-Methods'
-            Access-Control-Allow-Headers:
-              $ref: '#/components/headers/Access-Control-Allow-Headers'
-      security:
-        - bearerAuth: []
-      summary: Batch credential
-      tags:
-        - credentials
-      x-content-type: application/json
-      x-accepts:
-        - application/json
 components:
   examples:
     CredentialOfferResponse:
@@ -996,13 +956,6 @@ components:
           schema:
             $ref: '#/components/schemas/BatchCredentialResponse'
       description: Ok
-      headers:
-        Access-Control-Allow-Origin:
-          $ref: '#/components/headers/Access-Control-Allow-Origin'
-        Access-Control-Allow-Methods:
-          $ref: '#/components/headers/Access-Control-Allow-Methods'
-        Access-Control-Allow-Headers:
-          $ref: '#/components/headers/Access-Control-Allow-Headers'
     StartIssuanceOk:
       content:
         application/json:
@@ -1157,19 +1110,6 @@ components:
           schema:
             $ref: '#/components/schemas/CorsGetClaimedCredentialsOK'
       description: CorsGetClaimedCredentialsOK
-      headers:
-        Access-Control-Allow-Origin:
-          $ref: '#/components/headers/Access-Control-Allow-Origin'
-        Access-Control-Allow-Methods:
-          $ref: '#/components/headers/Access-Control-Allow-Methods'
-        Access-Control-Allow-Headers:
-          $ref: '#/components/headers/Access-Control-Allow-Headers'
-    CorsBatchCredentialOK:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CorsBatchCredentialOK'
-      description: CorsBatchCredentialOK
       headers:
         Access-Control-Allow-Origin:
           $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -1580,16 +1520,6 @@ components:
       type: object
     BatchCredentialInput:
       additionalProperties: false
-      example:
-        credential_requests:
-          - credential_identifier: credential_identifier
-            proof:
-              proof_type: jwt
-              jwt: jwt
-          - credential_identifier: credential_identifier
-            proof:
-              proof_type: jwt
-              jwt: jwt
       properties:
         credential_requests:
           description: Array that contains Credential Request objects.
@@ -1672,22 +1602,11 @@ components:
       example:
         credential:
           key: ''
-        credentials:
-          - key: ''
-          - key: ''
       properties:
         credential:
           additionalProperties: true
-          deprecated: true
-          description: claimed credential for a single issuance
+          description: claimed credential
           type: object
-        credentials:
-          description: claimed credentials for batch issuances
-          items:
-            additionalProperties: true
-            description: claimed credential
-            type: object
-          type: array
       type: object
     ClaimedCredentialListResponse:
       additionalProperties: false
@@ -1831,12 +1750,6 @@ components:
         - $ref: '#/components/schemas/CredentialResponseDeferred'
     BatchCredentialResponse:
       additionalProperties: false
-      example:
-        c_nonce_expires_in: 0
-        c_nonce: c_nonce
-        credential_responses:
-          - credential: ''
-          - credential: ''
       properties:
         credential_responses:
           items:
@@ -3068,12 +2981,6 @@ components:
         corsGetClaimedCredentialsOk:
           type: string
       type: object
-    CorsBatchCredentialOK:
-      additionalProperties: false
-      properties:
-        corsBatchCredentialOk:
-          type: string
-      type: object
     getCredentialOffer_400_response:
       oneOf:
         - $ref: '#/components/schemas/InvalidParameterError'
@@ -3219,11 +3126,6 @@ components:
         - statusListPurpose
       type: object
     BatchCredentialInput_credential_requests_inner:
-      example:
-        credential_identifier: credential_identifier
-        proof:
-          proof_type: jwt
-          jwt: jwt
       properties:
         credential_identifier:
           description:
@@ -3261,8 +3163,6 @@ components:
           type: string
     BatchCredentialResponse_credential_responses_inner:
       additionalProperties: false
-      example:
-        credential: ''
       properties:
         credential:
           description:

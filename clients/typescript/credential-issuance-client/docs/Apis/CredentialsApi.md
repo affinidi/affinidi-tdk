@@ -4,40 +4,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
 | Method                                                                                 | HTTP request                                                                                | Description                                   |
 | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [**batchCredential**](CredentialsApi.md#batchCredential)                               | **POST** /v1/{projectId}/batch_credential                                                   | Batch credential                              |
 | [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                               |
 | [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
 | [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
-
-<a name="batchCredential"></a>
-
-# **batchCredential**
-
-> BatchCredentialResponse batchCredential(projectId, BatchCredentialInput)
-
-Batch credential
-
-    Allows wallet&#39;s to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
-
-### Parameters
-
-| Name                     | Type                                                          | Description                       | Notes             |
-| ------------------------ | ------------------------------------------------------------- | --------------------------------- | ----------------- |
-| **projectId**            | **String**                                                    | Affinidi project id               | [default to null] |
-| **BatchCredentialInput** | [**BatchCredentialInput**](../Models/BatchCredentialInput.md) | Request body for batch credential |                   |
-
-### Return type
-
-[**BatchCredentialResponse**](../Models/BatchCredentialResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
 
 <a name="generateCredentials"></a>
 

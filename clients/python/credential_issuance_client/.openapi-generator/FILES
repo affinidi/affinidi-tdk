@@ -28,7 +28,6 @@ affinidi_tdk_credential_issuance_client/models/cis_configuration_webhook_setting
 affinidi_tdk_credential_issuance_client/models/cis_configuration_webhook_setting_endpoint.py
 affinidi_tdk_credential_issuance_client/models/claimed_credential_list_response.py
 affinidi_tdk_credential_issuance_client/models/claimed_credential_response.py
-affinidi_tdk_credential_issuance_client/models/cors_batch_credential_ok.py
 affinidi_tdk_credential_issuance_client/models/cors_generate_credentials_ok.py
 affinidi_tdk_credential_issuance_client/models/cors_get_claimed_credentials_ok.py
 affinidi_tdk_credential_issuance_client/models/cors_get_credential_offer_ok.py
@@ -104,7 +103,6 @@ docs/CisConfigurationWebhookSettingEndpoint.md
 docs/ClaimedCredentialListResponse.md
 docs/ClaimedCredentialResponse.md
 docs/ConfigurationApi.md
-docs/CorsBatchCredentialOK.md
 docs/CorsGenerateCredentialsOK.md
 docs/CorsGetClaimedCredentialsOK.md
 docs/CorsGetCredentialOfferOK.md
@@ -190,7 +188,6 @@ test/test_cis_configuration_webhook_setting_endpoint.py
 test/test_claimed_credential_list_response.py
 test/test_claimed_credential_response.py
 test/test_configuration_api.py
-test/test_cors_batch_credential_ok.py
 test/test_cors_generate_credentials_ok.py
 test/test_cors_get_claimed_credentials_ok.py
 test/test_cors_get_credential_offer_ok.py

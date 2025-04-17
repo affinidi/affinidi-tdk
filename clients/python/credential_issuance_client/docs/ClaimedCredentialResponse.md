@@ -4,10 +4,9 @@ Response for getting the claimed VC
 
 ## Properties
 
-| Name            | Type                        | Description                              | Notes      |
-| --------------- | --------------------------- | ---------------------------------------- | ---------- |
-| **credential**  | **Dict[str, object]**       | claimed credential for a single issuance | [optional] |
-| **credentials** | **List[Dict[str, object]]** | claimed credentials for batch issuances  | [optional] |
+| Name           | Type                  | Description        | Notes      |
+| -------------- | --------------------- | ------------------ | ---------- |
+| **credential** | **Dict[str, object]** | claimed credential | [optional] |
 
 ## Example
 
