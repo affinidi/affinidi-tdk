@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name            | Type          | Description                             | Notes |
-| --------------- | ------------- | --------------------------------------- | ----- |
-| **subject_did** | **str**       | DID of the subject being granted access |
-| **rights**      | **List[str]** | List of rights to grant to the subject  |
+| Name            | Type                                  | Description                             | Notes |
+| --------------- | ------------------------------------- | --------------------------------------- | ----- |
+| **grantee_did** | **str**                               | DID of the subject being granted access |
+| **rights**      | [**List[RightsEnum]**](RightsEnum.md) | List of rights to grant to the subject  |
 
 ## Example
 
