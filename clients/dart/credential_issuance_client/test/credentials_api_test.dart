@@ -7,6 +7,15 @@ void main() {
   final instance = AffinidiTdkCredentialIssuanceClient().getCredentialsApi();
 
   group(CredentialsApi, () {
+    // Batch credential
+    //
+    // Allows wallet's to claim multiple credentials at once, For authentication it use token from  authorization server (hydra),and token is validated internally in th function
+    //
+    //Future<BatchCredentialResponse> batchCredential(String projectId, BatchCredentialInput batchCredentialInput) async
+    test('test batchCredential', () async {
+      // TODO
+    });
+
     // Issue credential for end user upon presentation a valid access token. Since we don't immediate issue credential It's expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
     //
     //Future<CredentialResponse> generateCredentials(String projectId, CreateCredentialInput createCredentialInput) async
