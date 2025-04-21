@@ -15,6 +15,7 @@ doc/CreateProjectScopedTokenInput.md
 doc/CreateProjectScopedTokenOutput.md
 doc/CreateTokenInput.md
 doc/DefaultApi.md
+doc/DeleteAccessOutput.md
 doc/GetWellKnownDidOK.md
 doc/GrantAccessInput.md
 doc/GrantAccessOutput.md
@@ -35,6 +36,7 @@ doc/ProjectWithPolicyDto.md
 doc/ProjectWithPolicyList.md
 doc/ProjectsApi.md
 doc/PublicKeyCannotBeResolvedFromDidError.md
+doc/RightsEnum.md
 doc/ServiceErrorResponse.md
 doc/ServiceErrorResponseDetailsInner.md
 doc/StsApi.md
@@ -49,6 +51,8 @@ doc/TokensApi.md
 doc/TypedPrincipalId.md
 doc/UnauthorizedError.md
 doc/UnexpectedError.md
+doc/UpdateAccessInput.md
+doc/UpdateAccessOutput.md
 doc/UpdateProjectInput.md
 doc/UpdateTokenInput.md
 doc/UpdateTokenPrivateKeyAuthenticationMethodDto.md
@@ -83,6 +87,7 @@ lib/src/model/create_project_scoped_token_input.dart
 lib/src/model/create_project_scoped_token_output.dart
 lib/src/model/create_token_input.dart
 lib/src/model/date.dart
+lib/src/model/delete_access_output.dart
 lib/src/model/get_well_known_did_ok.dart
 lib/src/model/grant_access_input.dart
 lib/src/model/grant_access_output.dart
@@ -101,6 +106,7 @@ lib/src/model/project_list.dart
 lib/src/model/project_with_policy_dto.dart
 lib/src/model/project_with_policy_list.dart
 lib/src/model/public_key_cannot_be_resolved_from_did_error.dart
+lib/src/model/rights_enum.dart
 lib/src/model/service_error_response.dart
 lib/src/model/service_error_response_details_inner.dart
 lib/src/model/token_authentication_method_dto.dart
@@ -113,6 +119,8 @@ lib/src/model/token_private_key_authentication_method_dto_public_key_info_one_of
 lib/src/model/typed_principal_id.dart
 lib/src/model/unauthorized_error.dart
 lib/src/model/unexpected_error.dart
+lib/src/model/update_access_input.dart
+lib/src/model/update_access_output.dart
 lib/src/model/update_project_input.dart
 lib/src/model/update_token_input.dart
 lib/src/model/update_token_private_key_authentication_method_dto.dart
@@ -134,6 +142,7 @@ test/create_project_scoped_token_input_test.dart
 test/create_project_scoped_token_output_test.dart
 test/create_token_input_test.dart
 test/default_api_test.dart
+test/delete_access_output_test.dart
 test/get_well_known_did_ok_test.dart
 test/grant_access_input_test.dart
 test/grant_access_output_test.dart
@@ -154,6 +163,7 @@ test/project_with_policy_dto_test.dart
 test/project_with_policy_list_test.dart
 test/projects_api_test.dart
 test/public_key_cannot_be_resolved_from_did_error_test.dart
+test/rights_enum_test.dart
 test/service_error_response_details_inner_test.dart
 test/service_error_response_test.dart
 test/sts_api_test.dart
@@ -168,6 +178,8 @@ test/tokens_api_test.dart
 test/typed_principal_id_test.dart
 test/unauthorized_error_test.dart
 test/unexpected_error_test.dart
+test/update_access_input_test.dart
+test/update_access_output_test.dart
 test/update_project_input_test.dart
 test/update_token_input_test.dart
 test/update_token_private_key_authentication_method_dto_test.dart

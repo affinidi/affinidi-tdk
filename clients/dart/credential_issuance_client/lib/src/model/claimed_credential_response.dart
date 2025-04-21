@@ -13,12 +13,18 @@ part 'claimed_credential_response.g.dart';
 /// Response for getting the claimed VC
 ///
 /// Properties:
-/// * [credential] - claimed credential
+/// * [credential] - claimed credential for a single issuance
+/// * [credentials] - claimed credentials for batch issuances
 @BuiltValue()
 abstract class ClaimedCredentialResponse implements Built<ClaimedCredentialResponse, ClaimedCredentialResponseBuilder> {
-  /// claimed credential
+  /// claimed credential for a single issuance
+  @Deprecated('credential has been deprecated')
   @BuiltValueField(wireName: r'credential')
   BuiltMap<String, JsonObject?>? get credential;
+
+  /// claimed credentials for batch issuances
+  @BuiltValueField(wireName: r'credentials')
+  BuiltList<BuiltMap<String, JsonObject?>>? get credentials;
 
   ClaimedCredentialResponse._();
 
@@ -50,6 +56,13 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
         specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
+    if (object.credentials != null) {
+      yield r'credentials';
+      yield serializers.serialize(
+        object.credentials,
+        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+      );
+    }
   }
 
   @override
@@ -79,6 +92,13 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
             specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.credential.replace(valueDes);
+          break;
+        case r'credentials':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+          result.credentials.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -92,15 +92,13 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_iam_client.AuthzApi(api_client)
-    grant_access_input = affinidi_tdk_iam_client.GrantAccessInput() # GrantAccessInput | Grant access to virtual file system
+    grantee_did = 'grantee_did_example' # str |
 
     try:
-        # Grant access to the virtual file system
-        api_response = api_instance.grant_access_vfs(grant_access_input)
-        print("The response of AuthzApi->grant_access_vfs:\n")
-        pprint(api_response)
+        # delete access of granteeDid
+        api_instance.delete_access_vfs(grantee_did)
     except ApiException as e:
-        print("Exception when calling AuthzApi->grant_access_vfs: %s\n" % e)
+        print("Exception when calling AuthzApi->delete_access_vfs: %s\n" % e)
 
 ```
 
@@ -110,7 +108,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class             | Method                                                                                   | HTTP request                                     | Description                             |
 | ----------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AuthzApi_        | [**delete_access_vfs**](docs/AuthzApi.md#delete_access_vfs)                              | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
 | _AuthzApi_        | [**grant_access_vfs**](docs/AuthzApi.md#grant_access_vfs)                                | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| _AuthzApi_        | [**update_access_vfs**](docs/AuthzApi.md#update_access_vfs)                              | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
 | _ConsumerAuthApi_ | [**consumer_auth_token_endpoint**](docs/ConsumerAuthApi.md#consumer_auth_token_endpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | _DefaultApi_      | [**v1_auth_proxy_delete**](docs/DefaultApi.md#v1_auth_proxy_delete)                      | **DELETE** /v1/auth/{proxy+}                     |
 | _DefaultApi_      | [**v1_auth_proxy_get**](docs/DefaultApi.md#v1_auth_proxy_get)                            | **GET** /v1/auth/{proxy+}                        |
@@ -152,6 +152,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenInput](docs/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](docs/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](docs/CreateTokenInput.md)
+- [DeleteAccessOutput](docs/DeleteAccessOutput.md)
 - [GetWellKnownDidOK](docs/GetWellKnownDidOK.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
@@ -170,6 +171,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectWithPolicyDto](docs/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](docs/ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](docs/PublicKeyCannotBeResolvedFromDidError.md)
+- [RightsEnum](docs/RightsEnum.md)
 - [ServiceErrorResponse](docs/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](docs/ServiceErrorResponseDetailsInner.md)
 - [TokenAuthenticationMethodDto](docs/TokenAuthenticationMethodDto.md)
@@ -182,6 +184,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [TypedPrincipalId](docs/TypedPrincipalId.md)
 - [UnauthorizedError](docs/UnauthorizedError.md)
 - [UnexpectedError](docs/UnexpectedError.md)
+- [UpdateAccessInput](docs/UpdateAccessInput.md)
+- [UpdateAccessOutput](docs/UpdateAccessOutput.md)
 - [UpdateProjectInput](docs/UpdateProjectInput.md)
 - [UpdateTokenInput](docs/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md)

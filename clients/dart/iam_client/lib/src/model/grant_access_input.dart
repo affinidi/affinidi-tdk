@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:affinidi_tdk_iam_client/src/model/rights_enum.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,18 +13,17 @@ part 'grant_access_input.g.dart';
 /// GrantAccessInput
 ///
 /// Properties:
-/// * [subjectDID] - DID of the subject being granted access
+/// * [granteeDid] - DID of the subject being granted access
 /// * [rights] - List of rights to grant to the subject
 @BuiltValue()
 abstract class GrantAccessInput implements Built<GrantAccessInput, GrantAccessInputBuilder> {
   /// DID of the subject being granted access
-  @BuiltValueField(wireName: r'subjectDID')
-  String get subjectDID;
+  @BuiltValueField(wireName: r'granteeDid')
+  String get granteeDid;
 
   /// List of rights to grant to the subject
   @BuiltValueField(wireName: r'rights')
-  BuiltList<GrantAccessInputRightsEnum> get rights;
-  // enum rightsEnum {  vfs-read,  vfs-write,  };
+  BuiltList<RightsEnum> get rights;
 
   GrantAccessInput._();
 
@@ -48,15 +48,15 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
     GrantAccessInput object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'subjectDID';
+    yield r'granteeDid';
     yield serializers.serialize(
-      object.subjectDID,
+      object.granteeDid,
       specifiedType: const FullType(String),
     );
     yield r'rights';
     yield serializers.serialize(
       object.rights,
-      specifiedType: const FullType(BuiltList, [FullType(GrantAccessInputRightsEnum)]),
+      specifiedType: const FullType(BuiltList, [FullType(RightsEnum)]),
     );
   }
 
@@ -81,18 +81,18 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'subjectDID':
+        case r'granteeDid':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.subjectDID = valueDes;
+          result.granteeDid = valueDes;
           break;
         case r'rights':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(GrantAccessInputRightsEnum)]),
-          ) as BuiltList<GrantAccessInputRightsEnum>;
+            specifiedType: const FullType(BuiltList, [FullType(RightsEnum)]),
+          ) as BuiltList<RightsEnum>;
           result.rights.replace(valueDes);
           break;
         default:
@@ -122,20 +122,5 @@ class _$GrantAccessInputSerializer implements PrimitiveSerializer<GrantAccessInp
     );
     return result.build();
   }
-}
-
-class GrantAccessInputRightsEnum extends EnumClass {
-
-  @BuiltValueEnumConst(wireName: r'vfs-read')
-  static const GrantAccessInputRightsEnum read = _$grantAccessInputRightsEnum_read;
-  @BuiltValueEnumConst(wireName: r'vfs-write')
-  static const GrantAccessInputRightsEnum write = _$grantAccessInputRightsEnum_write;
-
-  static Serializer<GrantAccessInputRightsEnum> get serializer => _$grantAccessInputRightsEnumSerializer;
-
-  const GrantAccessInputRightsEnum._(String name): super(name);
-
-  static BuiltSet<GrantAccessInputRightsEnum> get values => _$grantAccessInputRightsEnumValues;
-  static GrantAccessInputRightsEnum valueOf(String name) => _$grantAccessInputRightsEnumValueOf(name);
 }
 
