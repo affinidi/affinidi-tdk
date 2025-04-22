@@ -2,11 +2,83 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                                                 | HTTP request                                                                                | Description                                   |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                               |
-| [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
-| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
+| Method                                                                                 | HTTP request                                                                                | Description                                           |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [**batchCredential**](CredentialsApi.md#batchCredential)                               | **POST** /v1/{projectId}/batch_credential                                                   | Allows wallets to claim multiple credentials at once. |
+| [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                                       |
+| [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range         |
+| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId               |
+
+## batchCredential
+
+> BatchCredentialResponse batchCredential(projectId, batchCredentialInput)
+
+Allows wallets to claim multiple credentials at once.
+
+Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.credential.issuance.client.ApiClient;
+import com.affinidi.tdk.credential.issuance.client.ApiException;
+import com.affinidi.tdk.credential.issuance.client.Configuration;
+import com.affinidi.tdk.credential.issuance.client.auth.*;
+import com.affinidi.tdk.credential.issuance.client.models.*;
+import com.affinidi.tdk.credential.issuance.client.apis.CredentialsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cis");
+
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        CredentialsApi apiInstance = new CredentialsApi(defaultClient);
+        String projectId = "projectId_example"; // String | Affinidi project id
+        BatchCredentialInput batchCredentialInput = new BatchCredentialInput(); // BatchCredentialInput | Request body for batch credential
+        try {
+            BatchCredentialResponse result = apiInstance.batchCredential(projectId, batchCredentialInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CredentialsApi#batchCredential");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                     | Type                                                | Description                       | Notes |
+| ------------------------ | --------------------------------------------------- | --------------------------------- | ----- |
+| **projectId**            | **String**                                          | Affinidi project id               |       |
+| **batchCredentialInput** | [**BatchCredentialInput**](BatchCredentialInput.md) | Request body for batch credential |       |
+
+### Return type
+
+[**BatchCredentialResponse**](BatchCredentialResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers                                                                                                  |
+| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Ok          | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## generateCredentials
 

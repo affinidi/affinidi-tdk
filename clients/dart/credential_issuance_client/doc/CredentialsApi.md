@@ -8,11 +8,59 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                                                 | HTTP request                                                                                | Description                                   |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| Method                                                                                 | HTTP request                                                                                | Description                                           |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [**batchCredential**](CredentialsApi.md#batchcredential)                               | **POST** /v1/{projectId}/batch_credential                                                   | Allows wallets to claim multiple credentials at once. |
 | [**generateCredentials**](CredentialsApi.md#generatecredentials)                       | **POST** /v1/{projectId}/credential                                                         |
-| [**getClaimedCredentials**](CredentialsApi.md#getclaimedcredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
-| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getissuanceidclaimedcredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
+| [**getClaimedCredentials**](CredentialsApi.md#getclaimedcredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range         |
+| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getissuanceidclaimedcredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId               |
+
+# **batchCredential**
+
+> BatchCredentialResponse batchCredential(projectId, batchCredentialInput)
+
+Allows wallets to claim multiple credentials at once.
+
+Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_credential_issuance_client/api.dart';
+
+final api = AffinidiTdkCredentialIssuanceClient().getCredentialsApi();
+final String projectId = projectId_example; // String | Affinidi project id
+final BatchCredentialInput batchCredentialInput = ; // BatchCredentialInput | Request body for batch credential
+
+try {
+    final response = api.batchCredential(projectId, batchCredentialInput);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CredentialsApi->batchCredential: $e\n');
+}
+```
+
+### Parameters
+
+| Name                     | Type                                                | Description                       | Notes |
+| ------------------------ | --------------------------------------------------- | --------------------------------- | ----- |
+| **projectId**            | **String**                                          | Affinidi project id               |
+| **batchCredentialInput** | [**BatchCredentialInput**](BatchCredentialInput.md) | Request body for batch credential |
+
+### Return type
+
+[**BatchCredentialResponse**](BatchCredentialResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **generateCredentials**
 
