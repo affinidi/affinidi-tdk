@@ -27,6 +27,13 @@ class TestCredentialsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_batch_credential(self) -> None:
+        """Test case for batch_credential
+
+        Allows wallets to claim multiple credentials at once.  # noqa: E501
+        """
+        pass
+
     def test_generate_credentials(self) -> None:
         """Test case for generate_credentials
 

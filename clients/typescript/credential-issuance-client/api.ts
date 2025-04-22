@@ -349,11 +349,31 @@ export interface ClaimedCredentialListResponse {
  */
 export interface ClaimedCredentialResponse {
   /**
-   * claimed credential
+   * claimed credential for a single issuance
    * @type {{ [key: string]: any; }}
    * @memberof ClaimedCredentialResponse
+   * @deprecated
    */
   credential?: { [key: string]: any }
+  /**
+   * claimed credentials for batch issuances
+   * @type {Array<{ [key: string]: any; }>}
+   * @memberof ClaimedCredentialResponse
+   */
+  credentials?: Array<{ [key: string]: any }>
+}
+/**
+ *
+ * @export
+ * @interface CorsBatchCredentialOK
+ */
+export interface CorsBatchCredentialOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsBatchCredentialOK
+   */
+  corsBatchCredentialOk?: string
 }
 /**
  *
@@ -3208,6 +3228,71 @@ export const CredentialsApiAxiosParamCreator = function (
 ) {
   return {
     /**
+     * Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+     * @summary Allows wallets to claim multiple credentials at once.
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    batchCredential: async (
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('batchCredential', 'projectId', projectId)
+      // verify required parameter 'batchCredentialInput' is not null or undefined
+      assertParamExists(
+        'batchCredential',
+        'batchCredentialInput',
+        batchCredentialInput,
+      )
+      const localVarPath = `/v1/{projectId}/batch_credential`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication bearerAuth required
+      // http bearer authentication required
+      await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        batchCredentialInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3454,6 +3539,42 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
     CredentialsApiAxiosParamCreator(configuration)
   return {
     /**
+     * Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+     * @summary Allows wallets to claim multiple credentials at once.
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async batchCredential(
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<BatchCredentialResponse>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.batchCredential(
+        projectId,
+        batchCredentialInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['CredentialsApi.batchCredential']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3593,6 +3714,23 @@ export const CredentialsApiFactory = function (
   const localVarFp = CredentialsApiFp(configuration)
   return {
     /**
+     * Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+     * @summary Allows wallets to claim multiple credentials at once.
+     * @param {string} projectId Affinidi project id
+     * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    batchCredential(
+      projectId: string,
+      batchCredentialInput: BatchCredentialInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<BatchCredentialResponse> {
+      return localVarFp
+        .batchCredential(projectId, batchCredentialInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
      * @param {string} projectId Affinidi project id
      * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
@@ -3675,6 +3813,25 @@ export const CredentialsApiFactory = function (
  * @extends {BaseAPI}
  */
 export class CredentialsApi extends BaseAPI {
+  /**
+   * Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+   * @summary Allows wallets to claim multiple credentials at once.
+   * @param {string} projectId Affinidi project id
+   * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof CredentialsApi
+   */
+  public batchCredential(
+    projectId: string,
+    batchCredentialInput: BatchCredentialInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return CredentialsApiFp(this.configuration)
+      .batchCredential(projectId, batchCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Issue credential for end user upon presentation a valid access token. Since we don\'t immediate issue credential It\'s expected to return `transaction_id` and use this `transaction_id` to get the deferred credentials
    * @param {string} projectId Affinidi project id

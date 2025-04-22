@@ -18,43 +18,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for ClaimedCredentialResponse
+ * Model tests for CorsBatchCredentialOK
  */
-class ClaimedCredentialResponseTest {
-    private final ClaimedCredentialResponse model = new ClaimedCredentialResponse();
+class CorsBatchCredentialOKTest {
+    private final CorsBatchCredentialOK model = new CorsBatchCredentialOK();
 
     /**
-     * Model tests for ClaimedCredentialResponse
+     * Model tests for CorsBatchCredentialOK
      */
     @Test
-    void testClaimedCredentialResponse() {
-        // TODO: test ClaimedCredentialResponse
+    void testCorsBatchCredentialOK() {
+        // TODO: test CorsBatchCredentialOK
     }
 
     /**
-     * Test the property 'credential'
+     * Test the property 'corsBatchCredentialOk'
      */
     @Test
-    void credentialTest() {
-        // TODO: test credential
-    }
-
-    /**
-     * Test the property 'credentials'
-     */
-    @Test
-    void credentialsTest() {
-        // TODO: test credentials
+    void corsBatchCredentialOkTest() {
+        // TODO: test corsBatchCredentialOk
     }
 
 }

@@ -2,11 +2,42 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cis*
 
-| Method                                                                                 | HTTP request                                                                                | Description                                   |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                               |
-| [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range |
-| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId       |
+| Method                                                                                 | HTTP request                                                                                | Description                                           |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [**batchCredential**](CredentialsApi.md#batchCredential)                               | **POST** /v1/{projectId}/batch_credential                                                   | Allows wallets to claim multiple credentials at once. |
+| [**generateCredentials**](CredentialsApi.md#generateCredentials)                       | **POST** /v1/{projectId}/credential                                                         |                                                       |
+| [**getClaimedCredentials**](CredentialsApi.md#getClaimedCredentials)                   | **GET** /v1/{projectId}/configurations/{configurationId}/credentials                        | Get claimed credential in the specified range         |
+| [**getIssuanceIdClaimedCredential**](CredentialsApi.md#getIssuanceIdClaimedCredential) | **GET** /v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials | Get claimed VC linked to the issuanceId               |
+
+<a name="batchCredential"></a>
+
+# **batchCredential**
+
+> BatchCredentialResponse batchCredential(projectId, BatchCredentialInput)
+
+Allows wallets to claim multiple credentials at once.
+
+    Allows wallets to claim multiple credentials at once. For authentication, it uses a token from the authorization server
+
+### Parameters
+
+| Name                     | Type                                                          | Description                       | Notes             |
+| ------------------------ | ------------------------------------------------------------- | --------------------------------- | ----------------- |
+| **projectId**            | **String**                                                    | Affinidi project id               | [default to null] |
+| **BatchCredentialInput** | [**BatchCredentialInput**](../Models/BatchCredentialInput.md) | Request body for batch credential |                   |
+
+### Return type
+
+[**BatchCredentialResponse**](../Models/BatchCredentialResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 <a name="generateCredentials"></a>
 
