@@ -2918,6 +2918,17 @@ components:
       example:
         access_token: access_token
         refresh_token: refresh_token
+        authorization_details:
+          - credential_configuration_id: credential_configuration_id
+            credential_identifiers:
+              - credential_identifiers
+              - credential_identifiers
+            type: openid_credential
+          - credential_configuration_id: credential_configuration_id
+            credential_identifiers:
+              - credential_identifiers
+              - credential_identifiers
+            type: openid_credential
         scope: scope
         id_token: 6
         token_type: token_type
@@ -2947,6 +2958,13 @@ components:
           description: |
             The type of the token issued
           type: string
+        authorization_details:
+          description: |
+            is used to request issuance of a certain Credential type.
+            This optional field is only applicable in batch credential operations.
+          items:
+            $ref: '#/components/schemas/OAuth2Token_authorization_details_inner'
+          type: array
       type: object
     GetUserInfo:
       example:
@@ -3706,6 +3724,31 @@ components:
           items:
             type: string
           type: array
+      type: object
+    OAuth2Token_authorization_details_inner:
+      example:
+        credential_configuration_id: credential_configuration_id
+        credential_identifiers:
+          - credential_identifiers
+          - credential_identifiers
+        type: openid_credential
+      properties:
+        type:
+          default: openid_credential
+          description: |
+            String that determines the authorization details type.
+          enum:
+            - openid_credential
+          type: string
+        credential_configuration_id:
+          type: string
+        credential_identifiers:
+          items:
+            type: string
+          type: array
+      required:
+        - credential_configuration_id
+        - type
       type: object
   securitySchemes:
     AwsSigV4:
