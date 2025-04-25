@@ -91,6 +91,15 @@ void main() {
   });
 
   group('Vault Utils Tests', () {
+    test('Vault URLs are correct', () {
+      expect(
+          VaultUtils.fetchVaultUrl(local), equals('http://localhost:3000'));
+      expect(VaultUtils.fetchVaultUrl(dev),
+          equals('https://dev.api.vault.affinidi.com'));
+      expect(VaultUtils.fetchVaultUrl(prod),
+          equals('https://api.vault.affinidi.com'));
+    });
+
     test('Web Vault URLs are correct', () {
       expect(
           VaultUtils.fetchWebVaultUrl(local), equals('http://localhost:3001'));
@@ -98,6 +107,11 @@ void main() {
           equals('https://vault.dev.affinidi.com'));
       expect(VaultUtils.fetchWebVaultUrl(prod),
           equals('https://vault.affinidi.com'));
+    });
+
+    test('Vault URL defaults to prod', () {
+      expect(
+          VaultUtils.fetchVaultUrl(), equals('https://api.vault.affinidi.com'));
     });
 
     test('Web Vault URL defaults to prod', () {

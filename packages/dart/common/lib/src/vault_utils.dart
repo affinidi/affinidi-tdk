@@ -13,6 +13,12 @@ class VaultUtils {
     return env.webVaultUrl;
   }
 
+  /// Fetches the vault URL.
+  static String fetchVaultUrl([Environment? env]) {
+    env ??= Environment.fetchEnvironment();
+    return env.vaultUrl;
+  }
+
   /// Builds a credential share link for the given request and client ID.
   static String buildShareLink(String request, String clientId,
       [Environment? env]) {
