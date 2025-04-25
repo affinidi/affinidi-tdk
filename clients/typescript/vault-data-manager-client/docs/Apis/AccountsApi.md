@@ -7,6 +7,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**createAccount**](AccountsApi.md#createAccount) | **POST** /v1/accounts                  |             |
 | [**deleteAccount**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{accountIndex} |             |
 | [**listAccounts**](AccountsApi.md#listAccounts)   | **GET** /v1/accounts                   |             |
+| [**updateAccount**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountIndex}    |             |
 
 <a name="createAccount"></a>
 
@@ -88,4 +89,32 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="updateAccount"></a>
+
+# **updateAccount**
+
+> UpdateAccountDto updateAccount(accountIndex, UpdateAccountInput)
+
+    Update account.
+
+### Parameters
+
+| Name                   | Type                                                      | Description   | Notes             |
+| ---------------------- | --------------------------------------------------------- | ------------- | ----------------- |
+| **accountIndex**       | **Integer**                                               |               | [default to null] |
+| **UpdateAccountInput** | [**UpdateAccountInput**](../Models/UpdateAccountInput.md) | UpdateAccount |                   |
+
+### Return type
+
+[**UpdateAccountDto**](../Models/UpdateAccountDto.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json

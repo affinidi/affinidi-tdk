@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,6 +15,9 @@ part 'create_account_input.g.dart';
 /// * [accountIndex] - number that is used for profile DID derivation
 /// * [accountDid] - DID that is associated with the account number
 /// * [didProof] - JWT that proves ownership of profile DID by requester
+/// * [alias] - Alias of account
+/// * [metadata] - Metadata of account
+/// * [description] - Description of account
 @BuiltValue()
 abstract class CreateAccountInput implements Built<CreateAccountInput, CreateAccountInputBuilder> {
   /// number that is used for profile DID derivation
@@ -27,6 +31,18 @@ abstract class CreateAccountInput implements Built<CreateAccountInput, CreateAcc
   /// JWT that proves ownership of profile DID by requester
   @BuiltValueField(wireName: r'didProof')
   String get didProof;
+
+  /// Alias of account
+  @BuiltValueField(wireName: r'alias')
+  String? get alias;
+
+  /// Metadata of account
+  @BuiltValueField(wireName: r'metadata')
+  JsonObject? get metadata;
+
+  /// Description of account
+  @BuiltValueField(wireName: r'description')
+  String? get description;
 
   CreateAccountInput._();
 
@@ -66,6 +82,27 @@ class _$CreateAccountInputSerializer implements PrimitiveSerializer<CreateAccoun
       object.didProof,
       specifiedType: const FullType(String),
     );
+    if (object.alias != null) {
+      yield r'alias';
+      yield serializers.serialize(
+        object.alias,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -109,6 +146,27 @@ class _$CreateAccountInputSerializer implements PrimitiveSerializer<CreateAccoun
             specifiedType: const FullType(String),
           ) as String;
           result.didProof = valueDes;
+          break;
+        case r'alias':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.alias = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.metadata = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         default:
           unhandled.add(key);

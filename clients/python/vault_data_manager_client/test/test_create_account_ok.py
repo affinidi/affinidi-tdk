@@ -38,7 +38,8 @@ class TestCreateAccountOK(unittest.TestCase):
         if include_optional:
             return CreateAccountOK(
                 account_index = 1.337,
-                account_did = ''
+                account_did = '',
+                metadata = None
             )
         else:
             return CreateAccountOK(

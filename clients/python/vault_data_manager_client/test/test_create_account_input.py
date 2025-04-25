@@ -39,7 +39,10 @@ class TestCreateAccountInput(unittest.TestCase):
             return CreateAccountInput(
                 account_index = 1.337,
                 account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj',
-                did_proof = ''
+                did_proof = '',
+                alias = '',
+                metadata = None,
+                description = ''
             )
         else:
             return CreateAccountInput(

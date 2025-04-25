@@ -53,6 +53,8 @@ Models/RestoreNodeFromTrashbin.md
 Models/StartFileScanInput.md
 Models/StartFileScanOK.md
 Models/UnexpectedError.md
+Models/UpdateAccountDto.md
+Models/UpdateAccountInput.md
 Models/UpdateNodeInput.md
 Models/UpdateProfileDataInput.md
 Models/UpdateProfileDataOK.md

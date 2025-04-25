@@ -11,11 +11,14 @@ class _$CreateAccountOK extends CreateAccountOK {
   final int accountIndex;
   @override
   final String accountDid;
+  @override
+  final JsonObject? metadata;
 
   factory _$CreateAccountOK([void Function(CreateAccountOKBuilder)? updates]) =>
       (new CreateAccountOKBuilder()..update(updates))._build();
 
-  _$CreateAccountOK._({required this.accountIndex, required this.accountDid})
+  _$CreateAccountOK._(
+      {required this.accountIndex, required this.accountDid, this.metadata})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'CreateAccountOK', 'accountIndex');
@@ -36,7 +39,8 @@ class _$CreateAccountOK extends CreateAccountOK {
     if (identical(other, this)) return true;
     return other is CreateAccountOK &&
         accountIndex == other.accountIndex &&
-        accountDid == other.accountDid;
+        accountDid == other.accountDid &&
+        metadata == other.metadata;
   }
 
   @override
@@ -44,6 +48,7 @@ class _$CreateAccountOK extends CreateAccountOK {
     var _$hash = 0;
     _$hash = $jc(_$hash, accountIndex.hashCode);
     _$hash = $jc(_$hash, accountDid.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -52,7 +57,8 @@ class _$CreateAccountOK extends CreateAccountOK {
   String toString() {
     return (newBuiltValueToStringHelper(r'CreateAccountOK')
           ..add('accountIndex', accountIndex)
-          ..add('accountDid', accountDid))
+          ..add('accountDid', accountDid)
+          ..add('metadata', metadata))
         .toString();
   }
 }
@@ -69,6 +75,10 @@ class CreateAccountOKBuilder
   String? get accountDid => _$this._accountDid;
   set accountDid(String? accountDid) => _$this._accountDid = accountDid;
 
+  JsonObject? _metadata;
+  JsonObject? get metadata => _$this._metadata;
+  set metadata(JsonObject? metadata) => _$this._metadata = metadata;
+
   CreateAccountOKBuilder() {
     CreateAccountOK._defaults(this);
   }
@@ -78,6 +88,7 @@ class CreateAccountOKBuilder
     if ($v != null) {
       _accountIndex = $v.accountIndex;
       _accountDid = $v.accountDid;
+      _metadata = $v.metadata;
       _$v = null;
     }
     return this;
@@ -104,6 +115,7 @@ class CreateAccountOKBuilder
               accountIndex, r'CreateAccountOK', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(
               accountDid, r'CreateAccountOK', 'accountDid'),
+          metadata: metadata,
         );
     replace(_$result);
     return _$result;
