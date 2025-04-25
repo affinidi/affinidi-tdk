@@ -28,8 +28,8 @@ class Environment {
   /// The URL of the IoT service.
   final String iotUrl;
 
-  /// The URL of the Vault.
-  final String vaultUrl;
+  /// The URL of the Vault API services.
+  final String elementsVaultApiUrl;
 
   /// The URL of the Web Vault.
   final String webVaultUrl;
@@ -45,7 +45,7 @@ class Environment {
     required this.apiGwUrl,
     required this.elementsAuthTokenUrl,
     required this.iotUrl,
-    required this.vaultUrl,
+    required this.elementsVaultApiUrl,
     required this.webVaultUrl,
     required this.consumerAudienceEndpoint,
     required this.consumerCisEndpoint,
@@ -64,7 +64,7 @@ class Environment {
       elementsAuthTokenUrl:
           'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-      vaultUrl: 'http://localhost:3000',
+      elementsVaultApiUrl: 'http://localhost:3000',
       webVaultUrl: 'http://localhost:3001',
       consumerAudienceEndpoint: _consumerAudienceEndpoint,
       consumerCisEndpoint: _consumerCisEndpoint,
@@ -75,7 +75,7 @@ class Environment {
       elementsAuthTokenUrl:
           'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-      vaultUrl: 'https://dev.api.vault.affinidi.com',
+      elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
       webVaultUrl: 'https://vault.dev.affinidi.com',
       consumerAudienceEndpoint: _consumerAudienceEndpoint,
       consumerCisEndpoint: _consumerCisEndpoint,
@@ -86,7 +86,7 @@ class Environment {
       elementsAuthTokenUrl:
           'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
       iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
-      vaultUrl: 'https://api.vault.affinidi.com',
+      elementsVaultApiUrl: 'https://api.vault.affinidi.com',
       webVaultUrl: 'https://vault.affinidi.com',
       consumerAudienceEndpoint: _consumerAudienceEndpoint,
       consumerCisEndpoint: _consumerCisEndpoint,

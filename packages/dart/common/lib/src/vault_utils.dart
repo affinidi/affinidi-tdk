@@ -13,10 +13,10 @@ class VaultUtils {
     return env.webVaultUrl;
   }
 
-  /// Fetches the vault URL.
-  static String fetchVaultUrl([Environment? env]) {
+  /// Fetches the Elements Vault API URL.
+  static String fetchElementsVaultApiUrl([Environment? env]) {
     env ??= Environment.fetchEnvironment();
-    return env.vaultUrl;
+    return env.elementsVaultApiUrl;
   }
 
   /// Builds a credential share link for the given request and client ID.
