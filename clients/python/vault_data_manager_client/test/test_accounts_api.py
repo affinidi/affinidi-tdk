@@ -45,6 +45,12 @@ class TestAccountsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_account(self) -> None:
+        """Test case for update_account
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -19,6 +19,8 @@ import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountOK;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
 import com.affinidi.tdk.vault.data.manager.client.models.ListAccountsDto;
+import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountDto;
+import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountInput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -75,6 +77,20 @@ public class AccountsApiTest {
         Integer limit = null;
         String exclusiveStartKey = null;
         ListAccountsDto response = api.listAccounts(limit, exclusiveStartKey);
+
+        // TODO: test validations
+    }
+    /**
+     * Update account.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAccountTest() throws ApiException {
+        Integer accountIndex = null;
+        UpdateAccountInput updateAccountInput = null;
+        UpdateAccountDto response = api.updateAccount(accountIndex, updateAccountInput);
 
         // TODO: test validations
     }

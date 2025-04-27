@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
+from typing import Any, Dict, Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
 
 class CreateAccountOK(BaseModel):
@@ -28,7 +28,8 @@ class CreateAccountOK(BaseModel):
     """
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex")
     account_did: StrictStr = Field(default=..., alias="accountDid")
-    __properties = ["accountIndex", "accountDid"]
+    metadata: Optional[Dict[str, Any]] = None
+    __properties = ["accountIndex", "accountDid", "metadata"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +68,8 @@ class CreateAccountOK(BaseModel):
 
         _obj = CreateAccountOK.parse_obj({
             "account_index": obj.get("accountIndex"),
-            "account_did": obj.get("accountDid")
+            "account_did": obj.get("accountDid"),
+            "metadata": obj.get("metadata")
         })
         return _obj
 

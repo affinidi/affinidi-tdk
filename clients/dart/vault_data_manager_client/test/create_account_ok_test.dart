@@ -17,5 +17,10 @@ void main() {
       // TODO
     });
 
+    // JsonObject metadata
+    test('to test the property `metadata`', () async {
+      // TODO
+    });
+
   });
 }

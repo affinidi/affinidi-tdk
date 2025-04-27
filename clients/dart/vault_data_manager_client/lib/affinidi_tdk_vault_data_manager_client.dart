@@ -65,6 +65,8 @@ export 'package:affinidi_tdk_vault_data_manager_client/src/model/restore_node_fr
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/unexpected_error.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_dto.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_node_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_ok.dart';

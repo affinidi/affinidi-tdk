@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,6 +14,7 @@ part 'create_account_ok.g.dart';
 /// Properties:
 /// * [accountIndex] 
 /// * [accountDid] 
+/// * [metadata] 
 @BuiltValue()
 abstract class CreateAccountOK implements Built<CreateAccountOK, CreateAccountOKBuilder> {
   @BuiltValueField(wireName: r'accountIndex')
@@ -20,6 +22,9 @@ abstract class CreateAccountOK implements Built<CreateAccountOK, CreateAccountOK
 
   @BuiltValueField(wireName: r'accountDid')
   String get accountDid;
+
+  @BuiltValueField(wireName: r'metadata')
+  JsonObject? get metadata;
 
   CreateAccountOK._();
 
@@ -54,6 +59,13 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
       object.accountDid,
       specifiedType: const FullType(String),
     );
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
   }
 
   @override
@@ -90,6 +102,13 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
             specifiedType: const FullType(String),
           ) as String;
           result.accountDid = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.metadata = valueDes;
           break;
         default:
           unhandled.add(key);

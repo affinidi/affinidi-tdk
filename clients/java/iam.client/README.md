@@ -95,12 +95,11 @@ public class AuthzApiExample {
         // defaultClient.setAuthTokenHook(authTokenHook);
 
         AuthzApi apiInstance = new AuthzApi(defaultClient);
-        GrantAccessInput grantAccessInput = new GrantAccessInput(); // GrantAccessInput | Grant access to virtual file system
+        String granteeDid = "granteeDid_example"; // String |
         try {
-            GrantAccessOutput result = apiInstance.grantAccessVfs(grantAccessInput);
-            System.out.println(result);
+            apiInstance.deleteAccessVfs(granteeDid);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AuthzApi#grantAccessVfs");
+            System.err.println("Exception when calling AuthzApi#deleteAccessVfs");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -117,7 +116,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class             | Method                                                                             | HTTP request                                     | Description                             |
 | ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AuthzApi_        | [**deleteAccessVfs**](docs/AuthzApi.md#deleteAccessVfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
 | _AuthzApi_        | [**grantAccessVfs**](docs/AuthzApi.md#grantAccessVfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
+| _AuthzApi_        | [**updateAccessVfs**](docs/AuthzApi.md#updateAccessVfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
 | _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](docs/ConsumerAuthApi.md#consumerAuthTokenEndpoint) | **POST** /v1/consumer/oauth2/token               | The Consumer OAuth 2.0 Token Endpoint   |
 | _DefaultApi_      | [**v1AuthProxyDelete**](docs/DefaultApi.md#v1AuthProxyDelete)                      | **DELETE** /v1/auth/{proxy+}                     |
 | _DefaultApi_      | [**v1AuthProxyGet**](docs/DefaultApi.md#v1AuthProxyGet)                            | **GET** /v1/auth/{proxy+}                        |
@@ -159,6 +160,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenInput](docs/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](docs/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](docs/CreateTokenInput.md)
+- [DeleteAccessOutput](docs/DeleteAccessOutput.md)
 - [GetWellKnownDidOK](docs/GetWellKnownDidOK.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
@@ -177,6 +179,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectWithPolicyDto](docs/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](docs/ProjectWithPolicyList.md)
 - [PublicKeyCannotBeResolvedFromDidError](docs/PublicKeyCannotBeResolvedFromDidError.md)
+- [RightsEnum](docs/RightsEnum.md)
 - [ServiceErrorResponse](docs/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](docs/ServiceErrorResponseDetailsInner.md)
 - [TokenAuthenticationMethodDto](docs/TokenAuthenticationMethodDto.md)
@@ -189,6 +192,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [TypedPrincipalId](docs/TypedPrincipalId.md)
 - [UnauthorizedError](docs/UnauthorizedError.md)
 - [UnexpectedError](docs/UnexpectedError.md)
+- [UpdateAccessInput](docs/UpdateAccessInput.md)
+- [UpdateAccessOutput](docs/UpdateAccessOutput.md)
 - [UpdateProjectInput](docs/UpdateProjectInput.md)
 - [UpdateTokenInput](docs/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md)

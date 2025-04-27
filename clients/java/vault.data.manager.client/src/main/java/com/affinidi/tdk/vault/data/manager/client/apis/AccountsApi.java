@@ -25,6 +25,8 @@ import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountOK;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
 import com.affinidi.tdk.vault.data.manager.client.models.ListAccountsDto;
+import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountDto;
+import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountInput;
 
 
 import java.util.ArrayList;
@@ -267,6 +269,88 @@ public class AccountsApi extends BaseApi {
     );
   }
 
+  /**
+   * 
+   * Update account.
+   * @param accountIndex  (required)
+   * @param updateAccountInput UpdateAccount (required)
+   * @return UpdateAccountDto
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccountDto updateAccount(Integer accountIndex, UpdateAccountInput updateAccountInput) throws ApiException {
+    return this.updateAccount(accountIndex, updateAccountInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Update account.
+   * @param accountIndex  (required)
+   * @param updateAccountInput UpdateAccount (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return UpdateAccountDto
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccountDto updateAccount(Integer accountIndex, UpdateAccountInput updateAccountInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = updateAccountInput;
+    
+    // verify the required parameter 'accountIndex' is set
+    if (accountIndex == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountIndex' when calling updateAccount");
+    }
+    
+    // verify the required parameter 'updateAccountInput' is set
+    if (updateAccountInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateAccountInput' when calling updateAccount");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/accounts/{accountIndex}"
+      .replaceAll("\\{" + "accountIndex" + "\\}", apiClient.escapeString(apiClient.parameterToString(accountIndex)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<UpdateAccountDto> localVarReturnType = new TypeReference<UpdateAccountDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PUT",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
   @Override
   public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
     String localVarPath = url.replace(apiClient.getBaseURL(), "");
@@ -285,7 +369,7 @@ public class AccountsApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

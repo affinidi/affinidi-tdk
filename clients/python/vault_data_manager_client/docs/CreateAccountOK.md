@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name              | Type      | Description | Notes |
-| ----------------- | --------- | ----------- | ----- |
-| **account_index** | **float** |             |
-| **account_did**   | **str**   |             |
+| Name              | Type       | Description | Notes      |
+| ----------------- | ---------- | ----------- | ---------- |
+| **account_index** | **float**  |             |
+| **account_did**   | **str**    |             |
+| **metadata**      | **object** |             | [optional] |
 
 ## Example
 
