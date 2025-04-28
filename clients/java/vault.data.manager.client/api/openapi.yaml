@@ -919,6 +919,39 @@ paths:
         - accounts
       x-accepts:
         - application/json
+    put:
+      description: Update account.
+      operationId: updateAccount
+      parameters:
+        - explode: false
+          in: path
+          name: accountIndex
+          required: true
+          schema:
+            type: integer
+          style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateAccountInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAccountDto'
+          description: UpdateAccountOK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidParameterError'
+          description: BadRequestError
+      security:
+        - ConsumerTokenAuth: []
+      tags:
+        - accounts
+      x-content-type: application/json
+      x-accepts:
+        - application/json
   /.well-known/jwks.json:
     get:
       operationId: getWellKnownJwks
@@ -1021,6 +1054,13 @@ components:
             $ref: '#/components/schemas/UpdateNodeInput'
       description: UpdateNodeInput
       required: true
+    UpdateAccountInput:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateAccountInput'
+      description: UpdateAccount
+      required: true
     UpdateProfileDataInput:
       content:
         application/json:
@@ -1106,6 +1146,12 @@ components:
           schema:
             $ref: '#/components/schemas/DeleteAccountDto'
       description: DeleteAccountOK
+    UpdateAccountOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateAccountDto'
+      description: UpdateAccountOK
     UpdateProfileDataOK:
       content:
         application/json:
@@ -1865,6 +1911,12 @@ components:
           schema:
             $ref: '#/components/schemas/InvalidParameterError'
       description: BadRequestError
+    UpdateAccountBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
     GetWellKnownJwksBadRequestError:
       content:
         application/json:
@@ -2124,6 +2176,26 @@ components:
       properties:
         accountIndex:
           type: number
+      type: object
+    UpdateAccountDto:
+      additionalProperties: false
+      example:
+        accountIndex: 0.8008281904610115
+        metadata: '{}'
+        accountDid: accountDid
+      properties:
+        accountIndex:
+          type: number
+        accountDid:
+          description: Profile DID that is associated with the account number
+          pattern: ^did:.*$
+          type: string
+        metadata:
+          properties: {}
+          type: object
+      required:
+        - accountDid
+        - accountIndex
       type: object
     NodeDto:
       additionalProperties: false
@@ -2457,6 +2529,9 @@ components:
       example:
         accountIndex: 0.8008281904610115
         didProof: didProof
+        metadata: '{}'
+        alias: alias
+        description: description
         accountDid: accountDid
       properties:
         accountIndex:
@@ -2468,6 +2543,16 @@ components:
           type: string
         didProof:
           description: JWT that proves ownership of profile DID by requester
+          type: string
+        alias:
+          description: Alias of account
+          type: string
+        metadata:
+          description: Metadata of account
+          properties: {}
+          type: object
+        description:
+          description: Description of account
           type: string
       required:
         - accountDid
@@ -2561,12 +2646,16 @@ components:
       additionalProperties: false
       example:
         accountIndex: 0.8008281904610115
+        metadata: '{}'
         accountDid: accountDid
       properties:
         accountIndex:
           type: number
         accountDid:
           type: string
+        metadata:
+          properties: {}
+          type: object
       required:
         - accountDid
         - accountIndex
@@ -2588,6 +2677,41 @@ components:
         metadata:
           description: metadata of the node in stringified json format
           type: string
+      type: object
+    UpdateAccountInput:
+      additionalProperties: false
+      example:
+        didProof: didProof
+        metadata: '{}'
+        name: name
+        description: description
+        alias: alias
+        accountDid: accountDid
+      properties:
+        name:
+          description: Name of the account
+          type: string
+        description:
+          description: Description of the account
+          type: string
+        alias:
+          description: Alias of the account
+          type: string
+        didProof:
+          description: JWT that proves ownership of profile DID by requester
+          type: string
+        metadata:
+          description: Description of metadata
+          properties: {}
+          type: object
+        accountDid:
+          description: DID that is associated with the account number
+          type: string
+      required:
+        - accountDid
+        - description
+        - didProof
+        - name
       type: object
     ListNodeChildrenOK:
       additionalProperties: false

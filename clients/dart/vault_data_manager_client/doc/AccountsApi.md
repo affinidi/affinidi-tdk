@@ -13,6 +13,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**createAccount**](AccountsApi.md#createaccount) | **POST** /v1/accounts                  |
 | [**deleteAccount**](AccountsApi.md#deleteaccount) | **DELETE** /v1/accounts/{accountIndex} |
 | [**listAccounts**](AccountsApi.md#listaccounts)   | **GET** /v1/accounts                   |
+| [**updateAccount**](AccountsApi.md#updateaccount) | **PUT** /v1/accounts/{accountIndex}    |
 
 # **createAccount**
 
@@ -153,6 +154,55 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateAccount**
+
+> UpdateAccountDto updateAccount(accountIndex, updateAccountInput)
+
+Update account.
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
+// TODO Configure API key authorization: ConsumerTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkVaultDataManagerClient().getAccountsApi();
+final int accountIndex = 56; // int |
+final UpdateAccountInput updateAccountInput = ; // UpdateAccountInput | UpdateAccount
+
+try {
+    final response = api.updateAccount(accountIndex, updateAccountInput);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AccountsApi->updateAccount: $e\n');
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description   | Notes |
+| ---------------------- | ----------------------------------------------- | ------------- | ----- |
+| **accountIndex**       | **int**                                         |               |
+| **updateAccountInput** | [**UpdateAccountInput**](UpdateAccountInput.md) | UpdateAccount |
+
+### Return type
+
+[**UpdateAccountDto**](UpdateAccountDto.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

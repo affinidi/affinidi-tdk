@@ -76,6 +76,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [_AccountsApi_](doc/AccountsApi.md)       | [**createAccount**](doc/AccountsApi.md#createaccount)                  | **POST** /v1/accounts                                 |
 | [_AccountsApi_](doc/AccountsApi.md)       | [**deleteAccount**](doc/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountIndex}                |
 | [_AccountsApi_](doc/AccountsApi.md)       | [**listAccounts**](doc/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  |
+| [_AccountsApi_](doc/AccountsApi.md)       | [**updateAccount**](doc/AccountsApi.md#updateaccount)                  | **PUT** /v1/accounts/{accountIndex}                   |
 | [_ConfigApi_](doc/ConfigApi.md)           | [**getConfig**](doc/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    |
 | [_FilesApi_](doc/FilesApi.md)             | [**getScannedFileInfo**](doc/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | [_FilesApi_](doc/FilesApi.md)             | [**listScannedFiles**](doc/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
@@ -144,6 +145,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [StartFileScanInput](doc/StartFileScanInput.md)
 - [StartFileScanOK](doc/StartFileScanOK.md)
 - [UnexpectedError](doc/UnexpectedError.md)
+- [UpdateAccountDto](doc/UpdateAccountDto.md)
+- [UpdateAccountInput](doc/UpdateAccountInput.md)
 - [UpdateNodeInput](doc/UpdateNodeInput.md)
 - [UpdateProfileDataInput](doc/UpdateProfileDataInput.md)
 - [UpdateProfileDataOK](doc/UpdateProfileDataOK.md)

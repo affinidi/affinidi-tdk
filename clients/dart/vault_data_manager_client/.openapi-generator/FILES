@@ -56,6 +56,8 @@ doc/RestoreNodeFromTrashbin.md
 doc/StartFileScanInput.md
 doc/StartFileScanOK.md
 doc/UnexpectedError.md
+doc/UpdateAccountDto.md
+doc/UpdateAccountInput.md
 doc/UpdateNodeInput.md
 doc/UpdateProfileDataInput.md
 doc/UpdateProfileDataOK.md
@@ -124,6 +126,8 @@ lib/src/model/restore_node_from_trashbin.dart
 lib/src/model/start_file_scan_input.dart
 lib/src/model/start_file_scan_ok.dart
 lib/src/model/unexpected_error.dart
+lib/src/model/update_account_dto.dart
+lib/src/model/update_account_input.dart
 lib/src/model/update_node_input.dart
 lib/src/model/update_profile_data_input.dart
 lib/src/model/update_profile_data_ok.dart
@@ -183,6 +187,8 @@ test/restore_node_from_trashbin_test.dart
 test/start_file_scan_input_test.dart
 test/start_file_scan_ok_test.dart
 test/unexpected_error_test.dart
+test/update_account_dto_test.dart
+test/update_account_input_test.dart
 test/update_node_input_test.dart
 test/update_profile_data_input_test.dart
 test/update_profile_data_ok_test.dart

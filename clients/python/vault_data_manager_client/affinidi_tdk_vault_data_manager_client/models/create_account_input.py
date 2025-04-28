@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
+from typing import Any, Dict, Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, constr, validator
 
 class CreateAccountInput(BaseModel):
@@ -29,7 +29,10 @@ class CreateAccountInput(BaseModel):
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex", description="number that is used for profile DID derivation")
     account_did: constr(strict=True) = Field(default=..., alias="accountDid", description="DID that is associated with the account number")
     did_proof: StrictStr = Field(default=..., alias="didProof", description="JWT that proves ownership of profile DID by requester")
-    __properties = ["accountIndex", "accountDid", "didProof"]
+    alias: Optional[StrictStr] = Field(default=None, description="Alias of account")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata of account")
+    description: Optional[StrictStr] = Field(default=None, description="Description of account")
+    __properties = ["accountIndex", "accountDid", "didProof", "alias", "metadata", "description"]
 
     @validator('account_did')
     def account_did_validate_regular_expression(cls, value):
@@ -76,7 +79,10 @@ class CreateAccountInput(BaseModel):
         _obj = CreateAccountInput.parse_obj({
             "account_index": obj.get("accountIndex"),
             "account_did": obj.get("accountDid"),
-            "did_proof": obj.get("didProof")
+            "did_proof": obj.get("didProof"),
+            "alias": obj.get("alias"),
+            "metadata": obj.get("metadata"),
+            "description": obj.get("description")
         })
         return _obj
 

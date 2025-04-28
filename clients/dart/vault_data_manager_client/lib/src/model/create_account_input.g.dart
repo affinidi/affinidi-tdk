@@ -13,6 +13,12 @@ class _$CreateAccountInput extends CreateAccountInput {
   final String accountDid;
   @override
   final String didProof;
+  @override
+  final String? alias;
+  @override
+  final JsonObject? metadata;
+  @override
+  final String? description;
 
   factory _$CreateAccountInput(
           [void Function(CreateAccountInputBuilder)? updates]) =>
@@ -21,7 +27,10 @@ class _$CreateAccountInput extends CreateAccountInput {
   _$CreateAccountInput._(
       {required this.accountIndex,
       required this.accountDid,
-      required this.didProof})
+      required this.didProof,
+      this.alias,
+      this.metadata,
+      this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'CreateAccountInput', 'accountIndex');
@@ -46,7 +55,10 @@ class _$CreateAccountInput extends CreateAccountInput {
     return other is CreateAccountInput &&
         accountIndex == other.accountIndex &&
         accountDid == other.accountDid &&
-        didProof == other.didProof;
+        didProof == other.didProof &&
+        alias == other.alias &&
+        metadata == other.metadata &&
+        description == other.description;
   }
 
   @override
@@ -55,6 +67,9 @@ class _$CreateAccountInput extends CreateAccountInput {
     _$hash = $jc(_$hash, accountIndex.hashCode);
     _$hash = $jc(_$hash, accountDid.hashCode);
     _$hash = $jc(_$hash, didProof.hashCode);
+    _$hash = $jc(_$hash, alias.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -64,7 +79,10 @@ class _$CreateAccountInput extends CreateAccountInput {
     return (newBuiltValueToStringHelper(r'CreateAccountInput')
           ..add('accountIndex', accountIndex)
           ..add('accountDid', accountDid)
-          ..add('didProof', didProof))
+          ..add('didProof', didProof)
+          ..add('alias', alias)
+          ..add('metadata', metadata)
+          ..add('description', description))
         .toString();
   }
 }
@@ -85,6 +103,18 @@ class CreateAccountInputBuilder
   String? get didProof => _$this._didProof;
   set didProof(String? didProof) => _$this._didProof = didProof;
 
+  String? _alias;
+  String? get alias => _$this._alias;
+  set alias(String? alias) => _$this._alias = alias;
+
+  JsonObject? _metadata;
+  JsonObject? get metadata => _$this._metadata;
+  set metadata(JsonObject? metadata) => _$this._metadata = metadata;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   CreateAccountInputBuilder() {
     CreateAccountInput._defaults(this);
   }
@@ -95,6 +125,9 @@ class CreateAccountInputBuilder
       _accountIndex = $v.accountIndex;
       _accountDid = $v.accountDid;
       _didProof = $v.didProof;
+      _alias = $v.alias;
+      _metadata = $v.metadata;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -123,6 +156,9 @@ class CreateAccountInputBuilder
               accountDid, r'CreateAccountInput', 'accountDid'),
           didProof: BuiltValueNullFieldError.checkNotNull(
               didProof, r'CreateAccountInput', 'didProof'),
+          alias: alias,
+          metadata: metadata,
+          description: description,
         );
     replace(_$result);
     return _$result;

@@ -296,6 +296,19 @@ export interface CreateTokenInput {
 /**
  *
  * @export
+ * @interface DeleteAccessOutput
+ */
+export interface DeleteAccessOutput {
+  /**
+   *
+   * @type {boolean}
+   * @memberof DeleteAccessOutput
+   */
+  success: boolean
+}
+/**
+ *
+ * @export
  * @interface GetWellKnownDidOK
  */
 export interface GetWellKnownDidOK {
@@ -312,23 +325,14 @@ export interface GrantAccessInput {
    * @type {string}
    * @memberof GrantAccessInput
    */
-  subjectDID: string
+  granteeDid: string
   /**
    * List of rights to grant to the subject
-   * @type {Array<string>}
+   * @type {Array<RightsEnum>}
    * @memberof GrantAccessInput
    */
-  rights: Array<GrantAccessInputRightsEnum>
+  rights: Array<RightsEnum>
 }
-
-export const GrantAccessInputRightsEnum = {
-  Read: 'vfs-read',
-  Write: 'vfs-write',
-} as const
-
-export type GrantAccessInputRightsEnum =
-  (typeof GrantAccessInputRightsEnum)[keyof typeof GrantAccessInputRightsEnum]
-
 /**
  *
  * @export
@@ -1009,6 +1013,19 @@ export type PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum =
 /**
  *
  * @export
+ * @enum {string}
+ */
+
+export const RightsEnum = {
+  Read: 'vfs-read',
+  Write: 'vfs-write',
+} as const
+
+export type RightsEnum = (typeof RightsEnum)[keyof typeof RightsEnum]
+
+/**
+ *
+ * @export
  * @interface ServiceErrorResponse
  */
 export interface ServiceErrorResponse {
@@ -1345,6 +1362,32 @@ export type UnexpectedErrorHttpStatusCodeEnum =
 /**
  *
  * @export
+ * @interface UpdateAccessInput
+ */
+export interface UpdateAccessInput {
+  /**
+   * List of rights to update access
+   * @type {Array<RightsEnum>}
+   * @memberof UpdateAccessInput
+   */
+  rights: Array<RightsEnum>
+}
+/**
+ *
+ * @export
+ * @interface UpdateAccessOutput
+ */
+export interface UpdateAccessOutput {
+  /**
+   *
+   * @type {boolean}
+   * @memberof UpdateAccessOutput
+   */
+  success: boolean
+}
+/**
+ *
+ * @export
  * @interface UpdateProjectInput
  */
 export interface UpdateProjectInput {
@@ -1484,6 +1527,59 @@ export const AuthzApiAxiosParamCreator = function (
 ) {
   return {
     /**
+     * deleteAccessVfs
+     * @summary delete access of granteeDid
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccessVfs: async (
+      granteeDid: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'granteeDid' is not null or undefined
+      assertParamExists('deleteAccessVfs', 'granteeDid', granteeDid)
+      const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
+        `{${'granteeDid'}}`,
+        encodeURIComponent(String(granteeDid)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
      * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
@@ -1540,6 +1636,74 @@ export const AuthzApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * updateAccessVfs
+     * @summary Update access of granteeDid
+     * @param {string} granteeDid
+     * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccessVfs: async (
+      granteeDid: string,
+      updateAccessInput: UpdateAccessInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'granteeDid' is not null or undefined
+      assertParamExists('updateAccessVfs', 'granteeDid', granteeDid)
+      // verify required parameter 'updateAccessInput' is not null or undefined
+      assertParamExists(
+        'updateAccessVfs',
+        'updateAccessInput',
+        updateAccessInput,
+      )
+      const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
+        `{${'granteeDid'}}`,
+        encodeURIComponent(String(granteeDid)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateAccessInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1550,6 +1714,36 @@ export const AuthzApiAxiosParamCreator = function (
 export const AuthzApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = AuthzApiAxiosParamCreator(configuration)
   return {
+    /**
+     * deleteAccessVfs
+     * @summary delete access of granteeDid
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteAccessVfs(
+      granteeDid: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAccessVfs(
+        granteeDid,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AuthzApi.deleteAccessVfs']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
     /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
@@ -1583,6 +1777,42 @@ export const AuthzApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
+    /**
+     * updateAccessVfs
+     * @summary Update access of granteeDid
+     * @param {string} granteeDid
+     * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateAccessVfs(
+      granteeDid: string,
+      updateAccessInput: UpdateAccessInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<UpdateAccessOutput>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateAccessVfs(
+        granteeDid,
+        updateAccessInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AuthzApi.updateAccessVfs']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
   }
 }
 
@@ -1598,6 +1828,21 @@ export const AuthzApiFactory = function (
   const localVarFp = AuthzApiFp(configuration)
   return {
     /**
+     * deleteAccessVfs
+     * @summary delete access of granteeDid
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteAccessVfs(
+      granteeDid: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deleteAccessVfs(granteeDid, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
      * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
@@ -1612,6 +1857,23 @@ export const AuthzApiFactory = function (
         .grantAccessVfs(grantAccessInput, options)
         .then((request) => request(axios, basePath))
     },
+    /**
+     * updateAccessVfs
+     * @summary Update access of granteeDid
+     * @param {string} granteeDid
+     * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccessVfs(
+      granteeDid: string,
+      updateAccessInput: UpdateAccessInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<UpdateAccessOutput> {
+      return localVarFp
+        .updateAccessVfs(granteeDid, updateAccessInput, options)
+        .then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -1622,6 +1884,20 @@ export const AuthzApiFactory = function (
  * @extends {BaseAPI}
  */
 export class AuthzApi extends BaseAPI {
+  /**
+   * deleteAccessVfs
+   * @summary delete access of granteeDid
+   * @param {string} granteeDid
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthzApi
+   */
+  public deleteAccessVfs(granteeDid: string, options?: RawAxiosRequestConfig) {
+    return AuthzApiFp(this.configuration)
+      .deleteAccessVfs(granteeDid, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * Grants access rights to a subject for the virtual file system
    * @summary Grant access to the virtual file system
@@ -1636,6 +1912,25 @@ export class AuthzApi extends BaseAPI {
   ) {
     return AuthzApiFp(this.configuration)
       .grantAccessVfs(grantAccessInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * updateAccessVfs
+   * @summary Update access of granteeDid
+   * @param {string} granteeDid
+   * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthzApi
+   */
+  public updateAccessVfs(
+    granteeDid: string,
+    updateAccessInput: UpdateAccessInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return AuthzApiFp(this.configuration)
+      .updateAccessVfs(granteeDid, updateAccessInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

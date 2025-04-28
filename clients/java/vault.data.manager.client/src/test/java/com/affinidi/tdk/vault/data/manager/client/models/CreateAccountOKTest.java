@@ -53,4 +53,12 @@ class CreateAccountOKTest {
         // TODO: test accountDid
     }
 
+    /**
+     * Test the property 'metadata'
+     */
+    @Test
+    void metadataTest() {
+        // TODO: test metadata
+    }
+
 }

@@ -80,6 +80,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(NotFoundErrorMessageEnum.serializer)
       ..add(NotFoundErrorNameEnum.serializer)
       ..add(OAuth2Token.serializer)
+      ..add(OAuth2TokenAuthorizationDetailsInner.serializer)
+      ..add(OAuth2TokenAuthorizationDetailsInnerTypeEnum.serializer)
       ..add(OIDCConfig.serializer)
       ..add(OIDCConfigCredentialsSupportedDraft00Inner.serializer)
       ..add(RedirectResponse.serializer)
@@ -170,8 +172,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<LoginConfigurationObject>())
       ..addBuilderFactory(
           const FullType(BuiltList,
+              const [const FullType(OAuth2TokenAuthorizationDetailsInner)]),
+          () => new ListBuilder<OAuth2TokenAuthorizationDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
           () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
