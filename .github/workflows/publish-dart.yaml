@@ -1,9 +1,10 @@
-name: Publish Affected Dart Projects
+name: publish dart
 
 on:
   push:
     tags:
       - '**dart-v**'  
+  workflow_dispatch:
 
 jobs:
   publish:
