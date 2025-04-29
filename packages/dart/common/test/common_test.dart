@@ -2,13 +2,20 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final Environment local = Environment.environments[EnvironmentType.local]!;
-  final Environment dev = Environment.environments[EnvironmentType.dev]!;
-  final Environment prod = Environment.environments[EnvironmentType.prod]!;
+  final mumbaiRegion = ElementsRegion.apSouth1;
+  final envTypeLocal = EnvironmentType.local;
+  final envTypeDev = EnvironmentType.dev;
+  final envTypeProd = EnvironmentType.prod;
+  final Environment local = Environment.getEnvironmentConfig(envTypeLocal);
+  final Environment dev = Environment.getEnvironmentConfig(envTypeDev);
+  final Environment prod = Environment.getEnvironmentConfig(envTypeProd);
 
   group('Environment Tests', () {
     test('fetchEnvironment returns prod by default', () {
-      expect(Environment.fetchEnvironment(), equals(prod));
+      expect(Environment.fetchEnvironment().environmentName,
+          equals(prod.environmentName));
+      expect(Environment.fetchEnvironment().apiGwUrl,
+          equals(prod.apiGwUrl));
     });
 
     test('API Gateway URLs are correct', () {
@@ -18,11 +25,21 @@ void main() {
           equals('https://apse1.dev.api.affinidi.io'));
       expect(Environment.fetchApiGwUrl(prod),
           equals('https://apse1.api.affinidi.io'));
+      expect(Environment.fetchApiGwUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.api.affinidi.io'));
+      expect(Environment.fetchApiGwUrl(null, envTypeDev, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io'));
+      expect(Environment.fetchApiGwUrl(null, envTypeLocal, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io'));
     });
 
     test('API Gateway URL defaults to prod', () {
       expect(
           Environment.fetchApiGwUrl(), equals('https://apse1.api.affinidi.io'));
+      expect(Environment.fetchEnvironment(region: mumbaiRegion).environmentName,
+          equals(prod.environmentName));
+      expect(Environment.fetchEnvironment(region: mumbaiRegion).apiGwUrl,
+          equals('https://aps1.api.affinidi.io'));
     });
 
     test('Elements Auth Token URLs are correct', () {
@@ -36,6 +53,16 @@ void main() {
               'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
       expect(Environment.fetchElementsAuthTokenUrl(prod),
           equals('https://apse1.auth.developer.affinidi.io/auth/oauth2/token'));
+      expect(
+          Environment.fetchElementsAuthTokenUrl(null, envTypeLocal, mumbaiRegion),
+          equals(
+              'https://aps1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
+      expect(
+          Environment.fetchElementsAuthTokenUrl(null, envTypeDev, mumbaiRegion),
+          equals(
+              'https://aps1.dev.auth.developer.affinidi.io/auth/oauth2/token'));
+      expect(Environment.fetchElementsAuthTokenUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.auth.developer.affinidi.io/auth/oauth2/token'));
     });
 
     test('Elements Auth Token URL defaults to prod', () {
@@ -68,6 +95,16 @@ void main() {
               'https://apse1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
       expect(Environment.fetchConsumerAudienceUrl(prod),
           equals('https://apse1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+      expect(
+          Environment.fetchConsumerAudienceUrl(null, envTypeLocal, mumbaiRegion),
+          equals(
+              'https://aps1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+      expect(
+          Environment.fetchConsumerAudienceUrl(null, envTypeDev, mumbaiRegion),
+          equals(
+              'https://aps1.dev.api.affinidi.io/iam/v1/consumer/oauth2/token'));
+      expect(Environment.fetchConsumerAudienceUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.api.affinidi.io/iam/v1/consumer/oauth2/token'));
     });
 
     test('Consumer Audience URL defaults to prod', () {
@@ -82,11 +119,37 @@ void main() {
           equals('https://apse1.dev.api.affinidi.io/cis'));
       expect(Environment.fetchConsumerCisUrl(prod),
           equals('https://apse1.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(null, envTypeLocal, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(null, envTypeDev, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/cis'));
+      expect(Environment.fetchConsumerCisUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.api.affinidi.io/cis'));
     });
 
     test('Consumer CIS URL defaults to prod', () {
       expect(Environment.fetchConsumerCisUrl(),
           equals('https://apse1.api.affinidi.io/cis'));
+    });
+
+    test('Vault account audience URLs are correct', () {
+      expect(Environment.fetchVaultAccountsAudienceUrl(local),
+          equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchVaultAccountsAudienceUrl(dev),
+          equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchVaultAccountsAudienceUrl(prod),
+          equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeLocal, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeDev, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.api.affinidi.io/vfs/v1/accounts'));
+    });
+
+    test('Vault account audience URL defaults to prod', () {
+      expect(Environment.fetchVaultAccountsAudienceUrl(),
+          equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
     });
   });
 
