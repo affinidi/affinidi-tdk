@@ -45,6 +45,7 @@ Models/LoginSessionForIDPInput.md
 Models/LoginSessionRejectResponseInput.md
 Models/NotFoundError.md
 Models/OAuth2Token.md
+Models/OAuth2Token_authorization_details_inner.md
 Models/OIDCConfig.md
 Models/OIDCConfig_credentials_supported_draft_00_inner.md
 Models/RedirectResponse.md
