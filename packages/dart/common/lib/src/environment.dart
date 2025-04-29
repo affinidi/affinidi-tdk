@@ -14,6 +14,28 @@ enum EnvironmentType {
   const EnvironmentType(this.value);
 }
 
+/// Enum to represent supported regions and their codes.
+enum ElementsRegion {
+  apSoutheast1('ap-southeast-1', 'apse1'),
+  apSouth1('ap-south-1', 'aps1');
+
+  /// Full AWS region name (e.g., `ap-southeast-1`)
+  final String awsRegion;
+
+  /// Short region code used in endpoints (e.g., `apse1`)
+  final String regionCode;
+
+  const ElementsRegion(this.awsRegion, this.regionCode);
+
+  /// Utility to get enum from a region string.
+  static ElementsRegion fromString(String region) {
+    return ElementsRegion.values.firstWhere(
+      (e) => e.awsRegion == region,
+      orElse: () => throw ArgumentError('Unsupported region: $region'),
+    );
+  }
+}
+
 /// Environment class to hold the environment specific values.
 class Environment {
   /// The name of the environment.
@@ -60,17 +82,11 @@ class Environment {
   static const _consumerAudienceEndpoint = '/iam/v1/consumer/oauth2/token';
   static const _consumerCisEndpoint = '/cis';
 
-  static const defaultRegion = 'ap-southeast-1';
-  static const _elementsRegionMap = {
-    'ap-southeast-1': 'apse1',
-    'ap-south-1': 'aps1',
-  };
+  static const _defaultRegion = ElementsRegion.apSoutheast1;
 
-  static Environment environments(EnvironmentType envType, [String region = defaultRegion]) {
-    final _region = _elementsRegionMap[region];
-    if (_region == null) {
-      throw ArgumentError('Unsupported region: $region');
-    }
+  /// The list of available environments with their respective configurations.
+  static Environment getEnvironmentConfig(EnvironmentType envType, [ElementsRegion region = _defaultRegion]) {
+    final _region = region.regionCode;
 
     switch (envType) {
       case EnvironmentType.local:
@@ -118,10 +134,10 @@ class Environment {
     }
   }
 
-  /// The list of available environments with their respective configurations.
+  /// Fetches the current environment based on the provided environment variable.
   static Environment fetchEnvironment({
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   }) {
     final resolvedEnvType = envType ??
         EnvironmentType.values.firstWhere(
@@ -129,14 +145,14 @@ class Environment {
           orElse: () => EnvironmentType.prod,
         );
 
-    return environments(resolvedEnvType, region);
+    return getEnvironmentConfig(resolvedEnvType, region);
   }
 
   /// Fetches the API Gateway URL for the current environment.
   static String fetchApiGwUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl;
@@ -146,7 +162,7 @@ class Environment {
   static String fetchElementsAuthTokenUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.elementsAuthTokenUrl;
@@ -156,7 +172,7 @@ class Environment {
   static String fetchIotUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.iotUrl;
@@ -166,7 +182,7 @@ class Environment {
   static String fetchConsumerAudienceUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl + env.consumerAudienceEndpoint;
@@ -176,7 +192,7 @@ class Environment {
   static String fetchConsumerCisUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl + env.consumerCisEndpoint;
@@ -186,7 +202,7 @@ class Environment {
   static String fetchvaultAccountsAudienceUrl([
     Environment? env,
     EnvironmentType? envType,
-    String region = defaultRegion,
+    ElementsRegion region = _defaultRegion,
   ]) {
     env ??= fetchEnvironment(envType: envType, region: region);
     return env.vaultAccountsAudienceEndpoint;

@@ -2,13 +2,13 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final mumbaiRegion = 'ap-south-1';
+  final mumbaiRegion = ElementsRegion.apSouth1;
   final envTypeLocal = EnvironmentType.local;
   final envTypeDev = EnvironmentType.dev;
   final envTypeProd = EnvironmentType.prod;
-  final Environment local = Environment.environments(envTypeLocal);
-  final Environment dev = Environment.environments(envTypeDev);
-  final Environment prod = Environment.environments(envTypeProd);
+  final Environment local = Environment.getEnvironmentConfig(envTypeLocal);
+  final Environment dev = Environment.getEnvironmentConfig(envTypeDev);
+  final Environment prod = Environment.getEnvironmentConfig(envTypeProd);
 
   group('Environment Tests', () {
     test('fetchEnvironment returns prod by default', () {
