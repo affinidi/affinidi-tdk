@@ -133,22 +133,22 @@ void main() {
     });
 
     test('Vault account audience URLs are correct', () {
-      expect(Environment.fetchvaultAccountsAudienceUrl(local),
+      expect(Environment.fetchVaultAccountsAudienceUrl(local),
           equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
-      expect(Environment.fetchvaultAccountsAudienceUrl(dev),
+      expect(Environment.fetchVaultAccountsAudienceUrl(dev),
           equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
-      expect(Environment.fetchvaultAccountsAudienceUrl(prod),
+      expect(Environment.fetchVaultAccountsAudienceUrl(prod),
           equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
-      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeLocal, mumbaiRegion),
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeLocal, mumbaiRegion),
           equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
-      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeDev, mumbaiRegion),
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeDev, mumbaiRegion),
           equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
-      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeProd, mumbaiRegion),
+      expect(Environment.fetchVaultAccountsAudienceUrl(null, envTypeProd, mumbaiRegion),
           equals('https://aps1.api.affinidi.io/vfs/v1/accounts'));
     });
 
     test('Vault account audience URL defaults to prod', () {
-      expect(Environment.fetchvaultAccountsAudienceUrl(),
+      expect(Environment.fetchVaultAccountsAudienceUrl(),
           equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
     });
   });

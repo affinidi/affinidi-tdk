@@ -199,7 +199,7 @@ class Environment {
   }
 
   /// Fetches the Vault account audience URL for the current environment.
-  static String fetchvaultAccountsAudienceUrl([
+  static String fetchVaultAccountsAudienceUrl([
     Environment? env,
     EnvironmentType? envType,
     ElementsRegion region = _defaultRegion,
