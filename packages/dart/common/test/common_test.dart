@@ -131,6 +131,26 @@ void main() {
       expect(Environment.fetchConsumerCisUrl(),
           equals('https://apse1.api.affinidi.io/cis'));
     });
+
+    test('Vault account audience URLs are correct', () {
+      expect(Environment.fetchvaultAccountsAudienceUrl(local),
+          equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchvaultAccountsAudienceUrl(dev),
+          equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchvaultAccountsAudienceUrl(prod),
+          equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeLocal, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeDev, mumbaiRegion),
+          equals('https://aps1.dev.api.affinidi.io/vfs/v1/accounts'));
+      expect(Environment.fetchvaultAccountsAudienceUrl(null, envTypeProd, mumbaiRegion),
+          equals('https://aps1.api.affinidi.io/vfs/v1/accounts'));
+    });
+
+    test('Vault account audience URL defaults to prod', () {
+      expect(Environment.fetchvaultAccountsAudienceUrl(),
+          equals('https://apse1.api.affinidi.io/vfs/v1/accounts'));
+    });
   });
 
   group('Vault Utils Tests', () {

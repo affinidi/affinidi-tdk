@@ -40,6 +40,9 @@ class Environment {
   /// The URL of the Consumer CIS endpoint.
   final String consumerCisEndpoint;
 
+  /// The URL of the Vautl accounts audience.
+  final String vaultAccountsAudienceEndpoint;
+
   const Environment._({
     required this.environmentName,
     required this.apiGwUrl,
@@ -49,6 +52,7 @@ class Environment {
     required this.webVaultUrl,
     required this.consumerAudienceEndpoint,
     required this.consumerCisEndpoint,
+    required this.vaultAccountsAudienceEndpoint,
   });
 
   /// The name of the environment variable that holds the current environment type.
@@ -80,6 +84,8 @@ class Environment {
           webVaultUrl: 'http://localhost:3001',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
+          vaultAccountsAudienceEndpoint:
+            'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.dev:
         return Environment._(
@@ -92,6 +98,8 @@ class Environment {
           webVaultUrl: 'https://vault.dev.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
+          vaultAccountsAudienceEndpoint:
+            'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.prod:
         return Environment._(
@@ -104,6 +112,8 @@ class Environment {
           webVaultUrl: 'https://vault.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
+          vaultAccountsAudienceEndpoint:
+            'https://$_region.api.affinidi.io/vfs/v1/accounts',
         );
     }
   }
@@ -172,6 +182,16 @@ class Environment {
     return env.apiGwUrl + env.consumerCisEndpoint;
   }
 
+  /// Fetches the Vault account audience URL for the current environment.
+  static String fetchvaultAccountsAudienceUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
+    return env.vaultAccountsAudienceEndpoint;
+  }
+
   @override
   String toString() {
     return '''{
@@ -182,7 +202,8 @@ class Environment {
     "elementsVaultApiUrl": "$elementsVaultApiUrl",
     "webVaultUrl": "$webVaultUrl",
     "consumerAudienceEndpoint": "$consumerAudienceEndpoint",
-    "consumerCisEndpoint": "$consumerCisEndpoint"
+    "consumerCisEndpoint": "$consumerCisEndpoint",
+    "vaultAccountsAudienceEndpoint": "$vaultAccountsAudienceEndpoint",
   }''';
   }
 }
