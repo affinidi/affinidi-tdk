@@ -56,81 +56,133 @@ class Environment {
   static const _consumerAudienceEndpoint = '/iam/v1/consumer/oauth2/token';
   static const _consumerCisEndpoint = '/cis';
 
-  /// The list of available environments with their respective configurations.
-  static final environments = {
-    EnvironmentType.local: Environment._(
-      environmentName: EnvironmentType.local.value,
-      apiGwUrl: 'https://apse1.dev.api.affinidi.io',
-      elementsAuthTokenUrl:
-          'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-      iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-      elementsVaultApiUrl: 'http://localhost:3000',
-      webVaultUrl: 'http://localhost:3001',
-      consumerAudienceEndpoint: _consumerAudienceEndpoint,
-      consumerCisEndpoint: _consumerCisEndpoint,
-    ),
-    EnvironmentType.dev: Environment._(
-      environmentName: EnvironmentType.dev.value,
-      apiGwUrl: 'https://apse1.dev.api.affinidi.io',
-      elementsAuthTokenUrl:
-          'https://apse1.dev.auth.developer.affinidi.io/auth/oauth2/token',
-      iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-      elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
-      webVaultUrl: 'https://vault.dev.affinidi.com',
-      consumerAudienceEndpoint: _consumerAudienceEndpoint,
-      consumerCisEndpoint: _consumerCisEndpoint,
-    ),
-    EnvironmentType.prod: Environment._(
-      environmentName: EnvironmentType.prod.value,
-      apiGwUrl: 'https://apse1.api.affinidi.io',
-      elementsAuthTokenUrl:
-          'https://apse1.auth.developer.affinidi.io/auth/oauth2/token',
-      iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
-      elementsVaultApiUrl: 'https://api.vault.affinidi.com',
-      webVaultUrl: 'https://vault.affinidi.com',
-      consumerAudienceEndpoint: _consumerAudienceEndpoint,
-      consumerCisEndpoint: _consumerCisEndpoint,
-    ),
+  static const defaultRegion = 'ap-southeast-1';
+  static const _elementsRegionMap = {
+    'ap-southeast-1': 'apse1',
+    'ap-south-1': 'aps1',
   };
 
-  /// Fetches the current environment based on the provided environment variable.
-  static Environment fetchEnvironment() {
-    final envValue = const String.fromEnvironment(enviromentVariableName);
-    final environmentType = EnvironmentType.values.firstWhere(
-      (e) => e.value == envValue,
-      orElse: () => EnvironmentType.prod,
-    );
+  static Environment environments(EnvironmentType envType, [String region = defaultRegion]) {
+    final _region = _elementsRegionMap[region];
+    if (_region == null) {
+      throw ArgumentError('Unsupported region: $region');
+    }
 
-    return environments[environmentType] ?? environments[EnvironmentType.prod]!;
+    switch (envType) {
+      case EnvironmentType.local:
+        return Environment._(
+          environmentName: envType.value,
+          apiGwUrl: 'https://$_region.dev.api.affinidi.io',
+          elementsAuthTokenUrl:
+            'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+          iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+          elementsVaultApiUrl: 'http://localhost:3000',
+          webVaultUrl: 'http://localhost:3001',
+          consumerAudienceEndpoint: _consumerAudienceEndpoint,
+          consumerCisEndpoint: _consumerCisEndpoint,
+        );
+      case EnvironmentType.dev:
+        return Environment._(
+          environmentName: envType.value,
+          apiGwUrl: 'https://$_region.dev.api.affinidi.io',
+          elementsAuthTokenUrl:
+            'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+          iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
+          elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
+          webVaultUrl: 'https://vault.dev.affinidi.com',
+          consumerAudienceEndpoint: _consumerAudienceEndpoint,
+          consumerCisEndpoint: _consumerCisEndpoint,
+        );
+      case EnvironmentType.prod:
+        return Environment._(
+          environmentName: envType.value,
+          apiGwUrl: 'https://$_region.api.affinidi.io',
+          elementsAuthTokenUrl:
+            'https://$_region.auth.developer.affinidi.io/auth/oauth2/token',
+          iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
+          elementsVaultApiUrl: 'https://api.vault.affinidi.com',
+          webVaultUrl: 'https://vault.affinidi.com',
+          consumerAudienceEndpoint: _consumerAudienceEndpoint,
+          consumerCisEndpoint: _consumerCisEndpoint,
+        );
+    }
+  }
+
+  /// The list of available environments with their respective configurations.
+  static Environment fetchEnvironment({
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  }) {
+    final resolvedEnvType = envType ??
+        EnvironmentType.values.firstWhere(
+          (e) => e.value == const String.fromEnvironment(enviromentVariableName),
+          orElse: () => EnvironmentType.prod,
+        );
+
+    return environments(resolvedEnvType, region);
   }
 
   /// Fetches the API Gateway URL for the current environment.
-  static String fetchApiGwUrl([Environment? env]) {
-    env ??= fetchEnvironment();
+  static String fetchApiGwUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl;
   }
 
   /// Fetches the Elements Auth Token URL for the current environment.
-  static String fetchElementsAuthTokenUrl([Environment? env]) {
-    env ??= fetchEnvironment();
+  static String fetchElementsAuthTokenUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
     return env.elementsAuthTokenUrl;
   }
 
   /// Fetches the Elements URL for the current environment.
-  static String fetchIotUrl([Environment? env]) {
-    env ??= fetchEnvironment();
+  static String fetchIotUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
     return env.iotUrl;
   }
 
   /// Fetches the Consumer Audience URL for the current environment.
-  static String fetchConsumerAudienceUrl([Environment? env]) {
-    env ??= fetchEnvironment();
+  static String fetchConsumerAudienceUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl + env.consumerAudienceEndpoint;
   }
 
   /// Fetches the Consumer CIS URL for the current environment.
-  static String fetchConsumerCisUrl([Environment? env]) {
-    env ??= fetchEnvironment();
+  static String fetchConsumerCisUrl([
+    Environment? env,
+    EnvironmentType? envType,
+    String region = defaultRegion,
+  ]) {
+    env ??= fetchEnvironment(envType: envType, region: region);
     return env.apiGwUrl + env.consumerCisEndpoint;
+  }
+
+  @override
+  String toString() {
+    return '''{
+    "environmentName": "$environmentName",
+    "apiGwUrl": "$apiGwUrl",
+    "elementsAuthTokenUrl": "$elementsAuthTokenUrl",
+    "iotUrl": "$iotUrl",
+    "elementsVaultApiUrl": "$elementsVaultApiUrl",
+    "webVaultUrl": "$webVaultUrl",
+    "consumerAudienceEndpoint": "$consumerAudienceEndpoint",
+    "consumerCisEndpoint": "$consumerCisEndpoint"
+  }''';
   }
 }
