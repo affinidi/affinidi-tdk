@@ -33,7 +33,10 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CreateAccountInput.JSON_PROPERTY_ACCOUNT_INDEX,
   CreateAccountInput.JSON_PROPERTY_ACCOUNT_DID,
-  CreateAccountInput.JSON_PROPERTY_DID_PROOF
+  CreateAccountInput.JSON_PROPERTY_DID_PROOF,
+  CreateAccountInput.JSON_PROPERTY_ALIAS,
+  CreateAccountInput.JSON_PROPERTY_METADATA,
+  CreateAccountInput.JSON_PROPERTY_DESCRIPTION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateAccountInput {
@@ -45,6 +48,15 @@ public class CreateAccountInput {
 
   public static final String JSON_PROPERTY_DID_PROOF = "didProof";
   private String didProof;
+
+  public static final String JSON_PROPERTY_ALIAS = "alias";
+  private String alias;
+
+  public static final String JSON_PROPERTY_METADATA = "metadata";
+  private Object metadata;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
   public CreateAccountInput() {
   }
@@ -124,6 +136,81 @@ public class CreateAccountInput {
     this.didProof = didProof;
   }
 
+  public CreateAccountInput alias(String alias) {
+    
+    this.alias = alias;
+    return this;
+  }
+
+  /**
+   * Alias of account
+   * @return alias
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getAlias() {
+    return alias;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlias(String alias) {
+    this.alias = alias;
+  }
+
+  public CreateAccountInput metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  /**
+   * Metadata of account
+   * @return metadata
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+  public CreateAccountInput description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Description of account
+   * @return description
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -135,12 +222,15 @@ public class CreateAccountInput {
     CreateAccountInput createAccountInput = (CreateAccountInput) o;
     return Objects.equals(this.accountIndex, createAccountInput.accountIndex) &&
         Objects.equals(this.accountDid, createAccountInput.accountDid) &&
-        Objects.equals(this.didProof, createAccountInput.didProof);
+        Objects.equals(this.didProof, createAccountInput.didProof) &&
+        Objects.equals(this.alias, createAccountInput.alias) &&
+        Objects.equals(this.metadata, createAccountInput.metadata) &&
+        Objects.equals(this.description, createAccountInput.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndex, accountDid, didProof);
+    return Objects.hash(accountIndex, accountDid, didProof, alias, metadata, description);
   }
 
   @Override
@@ -150,6 +240,9 @@ public class CreateAccountInput {
     sb.append("    accountIndex: ").append(toIndentedString(accountIndex)).append("\n");
     sb.append("    accountDid: ").append(toIndentedString(accountDid)).append("\n");
     sb.append("    didProof: ").append(toIndentedString(didProof)).append("\n");
+    sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +314,36 @@ public class CreateAccountInput {
     if (getDidProof() != null) {
       try {
         joiner.add(String.format("%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `alias` to the URL query string
+    if (getAlias() != null) {
+      try {
+        joiner.add(String.format("%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `metadata` to the URL query string
+    if (getMetadata() != null) {
+      try {
+        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

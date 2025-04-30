@@ -63,6 +63,8 @@ affinidi_tdk_vault_data_manager_client/models/restore_node_from_trashbin.py
 affinidi_tdk_vault_data_manager_client/models/start_file_scan_input.py
 affinidi_tdk_vault_data_manager_client/models/start_file_scan_ok.py
 affinidi_tdk_vault_data_manager_client/models/unexpected_error.py
+affinidi_tdk_vault_data_manager_client/models/update_account_dto.py
+affinidi_tdk_vault_data_manager_client/models/update_account_input.py
 affinidi_tdk_vault_data_manager_client/models/update_node_input.py
 affinidi_tdk_vault_data_manager_client/models/update_profile_data_input.py
 affinidi_tdk_vault_data_manager_client/models/update_profile_data_ok.py
@@ -121,6 +123,8 @@ docs/RestoreNodeFromTrashbin.md
 docs/StartFileScanInput.md
 docs/StartFileScanOK.md
 docs/UnexpectedError.md
+docs/UpdateAccountDto.md
+docs/UpdateAccountInput.md
 docs/UpdateNodeInput.md
 docs/UpdateProfileDataInput.md
 docs/UpdateProfileDataOK.md
@@ -185,6 +189,8 @@ test/test_restore_node_from_trashbin.py
 test/test_start_file_scan_input.py
 test/test_start_file_scan_ok.py
 test/test_unexpected_error.py
+test/test_update_account_dto.py
+test/test_update_account_input.py
 test/test_update_node_input.py
 test/test_update_profile_data_input.py
 test/test_update_profile_data_ok.py

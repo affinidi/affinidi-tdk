@@ -32,7 +32,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   CreateAccountOK.JSON_PROPERTY_ACCOUNT_INDEX,
-  CreateAccountOK.JSON_PROPERTY_ACCOUNT_DID
+  CreateAccountOK.JSON_PROPERTY_ACCOUNT_DID,
+  CreateAccountOK.JSON_PROPERTY_METADATA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateAccountOK {
@@ -41,6 +42,9 @@ public class CreateAccountOK {
 
   public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
   private String accountDid;
+
+  public static final String JSON_PROPERTY_METADATA = "metadata";
+  private Object metadata;
 
   public CreateAccountOK() {
   }
@@ -95,6 +99,31 @@ public class CreateAccountOK {
     this.accountDid = accountDid;
   }
 
+  public CreateAccountOK metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  /**
+   * Get metadata
+   * @return metadata
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,12 +134,13 @@ public class CreateAccountOK {
     }
     CreateAccountOK createAccountOK = (CreateAccountOK) o;
     return Objects.equals(this.accountIndex, createAccountOK.accountIndex) &&
-        Objects.equals(this.accountDid, createAccountOK.accountDid);
+        Objects.equals(this.accountDid, createAccountOK.accountDid) &&
+        Objects.equals(this.metadata, createAccountOK.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndex, accountDid);
+    return Objects.hash(accountIndex, accountDid, metadata);
   }
 
   @Override
@@ -119,6 +149,7 @@ public class CreateAccountOK {
     sb.append("class CreateAccountOK {\n");
     sb.append("    accountIndex: ").append(toIndentedString(accountIndex)).append("\n");
     sb.append("    accountDid: ").append(toIndentedString(accountDid)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +211,16 @@ public class CreateAccountOK {
     if (getAccountDid() != null) {
       try {
         joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `metadata` to the URL query string
+    if (getMetadata() != null) {
+      try {
+        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

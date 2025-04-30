@@ -62,6 +62,8 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/restore_node_fr
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/unexpected_error.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_dto.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_ok.dart';
@@ -117,6 +119,8 @@ part 'serializers.g.dart';
   StartFileScanInput,
   StartFileScanOK,
   UnexpectedError,
+  UpdateAccountDto,
+  UpdateAccountInput,
   UpdateNodeInput,
   UpdateProfileDataInput,
   UpdateProfileDataOK,

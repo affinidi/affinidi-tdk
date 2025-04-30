@@ -11,6 +11,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _AccountsApi_    | [**createAccount**](Apis/AccountsApi.md#createaccount)                  | **POST** /v1/accounts                                 | creates account                                                                                                                                                                                                               |
 | _AccountsApi_    | [**deleteAccount**](Apis/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountIndex}                | Delete account.                                                                                                                                                                                                               |
 | _AccountsApi_    | [**listAccounts**](Apis/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  | List accounts of associated profiles.                                                                                                                                                                                         |
+| _AccountsApi_    | [**updateAccount**](Apis/AccountsApi.md#updateaccount)                  | **PUT** /v1/accounts/{accountIndex}                   | Update account.                                                                                                                                                                                                               |
 | _ConfigApi_      | [**getConfig**](Apis/ConfigApi.md#getconfig)                            | **GET** /v1/config                                    | Retrieves the user profile name and the maximum number of profiles, with default values set to 'default' and 1, respectively.                                                                                                 |
 | _FilesApi_       | [**getScannedFileInfo**](Apis/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          | Get the details of a scanned file using the textract jobId                                                                                                                                                                    |
 | _FilesApi_       | [**listScannedFiles**](Apis/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            | List all the the scanned files with all the details, e.g. status and jobId                                                                                                                                                    |
@@ -81,6 +82,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [StartFileScanInput](./Models/StartFileScanInput.md)
 - [StartFileScanOK](./Models/StartFileScanOK.md)
 - [UnexpectedError](./Models/UnexpectedError.md)
+- [UpdateAccountDto](./Models/UpdateAccountDto.md)
+- [UpdateAccountInput](./Models/UpdateAccountInput.md)
 - [UpdateNodeInput](./Models/UpdateNodeInput.md)
 - [UpdateProfileDataInput](./Models/UpdateProfileDataInput.md)
 - [UpdateProfileDataOK](./Models/UpdateProfileDataOK.md)

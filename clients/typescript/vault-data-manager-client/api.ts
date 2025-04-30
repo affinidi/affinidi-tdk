@@ -57,6 +57,24 @@ export interface AccountDto {
    * @memberof AccountDto
    */
   accountDid: string
+  /**
+   * Alias of account
+   * @type {string}
+   * @memberof AccountDto
+   */
+  alias?: string
+  /**
+   * Metadata of account
+   * @type {object}
+   * @memberof AccountDto
+   */
+  metadata?: object
+  /**
+   * Description of account
+   * @type {string}
+   * @memberof AccountDto
+   */
+  description?: string
 }
 /**
  *
@@ -375,6 +393,24 @@ export interface CreateAccountInput {
    * @memberof CreateAccountInput
    */
   didProof: string
+  /**
+   * Alias of account
+   * @type {string}
+   * @memberof CreateAccountInput
+   */
+  alias?: string
+  /**
+   * Metadata of account
+   * @type {object}
+   * @memberof CreateAccountInput
+   */
+  metadata?: object
+  /**
+   * Description of account
+   * @type {string}
+   * @memberof CreateAccountInput
+   */
+  description?: string
 }
 /**
  *
@@ -394,6 +430,12 @@ export interface CreateAccountOK {
    * @memberof CreateAccountOK
    */
   accountDid: string
+  /**
+   *
+   * @type {object}
+   * @memberof CreateAccountOK
+   */
+  metadata?: object
 }
 /**
  *
@@ -1408,6 +1450,74 @@ export type UnexpectedErrorHttpStatusCodeEnum =
 /**
  *
  * @export
+ * @interface UpdateAccountDto
+ */
+export interface UpdateAccountDto {
+  /**
+   *
+   * @type {number}
+   * @memberof UpdateAccountDto
+   */
+  accountIndex: number
+  /**
+   * Profile DID that is associated with the account number
+   * @type {string}
+   * @memberof UpdateAccountDto
+   */
+  accountDid: string
+  /**
+   *
+   * @type {object}
+   * @memberof UpdateAccountDto
+   */
+  metadata?: object
+}
+/**
+ *
+ * @export
+ * @interface UpdateAccountInput
+ */
+export interface UpdateAccountInput {
+  /**
+   * Name of the account
+   * @type {string}
+   * @memberof UpdateAccountInput
+   */
+  name: string
+  /**
+   * Description of the account
+   * @type {string}
+   * @memberof UpdateAccountInput
+   */
+  description: string
+  /**
+   * Alias of the account
+   * @type {string}
+   * @memberof UpdateAccountInput
+   */
+  alias?: string
+  /**
+   * JWT that proves ownership of profile DID by requester
+   * @type {string}
+   * @memberof UpdateAccountInput
+   */
+  didProof: string
+  /**
+   * Description of metadata
+   * @type {object}
+   * @memberof UpdateAccountInput
+   */
+  metadata?: object
+  /**
+   * DID that is associated with the account number
+   * @type {string}
+   * @memberof UpdateAccountInput
+   */
+  accountDid: string
+}
+/**
+ *
+ * @export
  * @interface UpdateNodeInput
  */
 export interface UpdateNodeInput {
@@ -1640,6 +1750,73 @@ export const AccountsApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Update account.
+     * @param {number} accountIndex
+     * @param {UpdateAccountInput} updateAccountInput UpdateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccount: async (
+      accountIndex: number,
+      updateAccountInput: UpdateAccountInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'accountIndex' is not null or undefined
+      assertParamExists('updateAccount', 'accountIndex', accountIndex)
+      // verify required parameter 'updateAccountInput' is not null or undefined
+      assertParamExists(
+        'updateAccount',
+        'updateAccountInput',
+        updateAccountInput,
+      )
+      const localVarPath = `/v1/accounts/{accountIndex}`.replace(
+        `{${'accountIndex'}}`,
+        encodeURIComponent(String(accountIndex)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PUT',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateAccountInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1749,6 +1926,41 @@ export const AccountsApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
+    /**
+     * Update account.
+     * @param {number} accountIndex
+     * @param {UpdateAccountInput} updateAccountInput UpdateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateAccount(
+      accountIndex: number,
+      updateAccountInput: UpdateAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<UpdateAccountDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateAccount(
+        accountIndex,
+        updateAccountInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.updateAccount']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
   }
 }
 
@@ -1807,6 +2019,22 @@ export const AccountsApiFactory = function (
         .listAccounts(limit, exclusiveStartKey, options)
         .then((request) => request(axios, basePath))
     },
+    /**
+     * Update account.
+     * @param {number} accountIndex
+     * @param {UpdateAccountInput} updateAccountInput UpdateAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateAccount(
+      accountIndex: number,
+      updateAccountInput: UpdateAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<UpdateAccountDto> {
+      return localVarFp
+        .updateAccount(accountIndex, updateAccountInput, options)
+        .then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -1861,6 +2089,24 @@ export class AccountsApi extends BaseAPI {
   ) {
     return AccountsApiFp(this.configuration)
       .listAccounts(limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update account.
+   * @param {number} accountIndex
+   * @param {UpdateAccountInput} updateAccountInput UpdateAccount
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public updateAccount(
+    accountIndex: number,
+    updateAccountInput: UpdateAccountInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return AccountsApiFp(this.configuration)
+      .updateAccount(accountIndex, updateAccountInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

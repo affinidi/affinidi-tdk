@@ -57,6 +57,8 @@ docs/RestoreNodeFromTrashbin.md
 docs/StartFileScanInput.md
 docs/StartFileScanOK.md
 docs/UnexpectedError.md
+docs/UpdateAccountDto.md
+docs/UpdateAccountInput.md
 docs/UpdateNodeInput.md
 docs/UpdateProfileDataInput.md
 docs/UpdateProfileDataOK.md
@@ -138,6 +140,8 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/RestoreNodeFromT
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/StartFileScanInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/StartFileScanOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UnexpectedError.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateAccountDto.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateAccountInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataOK.java
@@ -195,6 +199,8 @@ src/test/java/com/affinidi/tdk/vault/data/manager/client/models/RestoreNodeFromT
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/StartFileScanInputTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/StartFileScanOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UnexpectedErrorTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateAccountDtoTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateAccountInputTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateNodeInputTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataInputTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataOKTest.java

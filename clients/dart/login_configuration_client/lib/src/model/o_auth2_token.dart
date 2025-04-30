@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token_authorization_details_inner.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,6 +19,7 @@ part 'o_auth2_token.g.dart';
 /// * [refreshToken] - The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. 
 /// * [scope] - The scope of the access token 
 /// * [tokenType] - The type of the token issued 
+/// * [authorizationDetails] - is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
 @BuiltValue()
 abstract class OAuth2Token implements Built<OAuth2Token, OAuth2TokenBuilder> {
   /// The access token issued by the authorization server. 
@@ -42,6 +45,10 @@ abstract class OAuth2Token implements Built<OAuth2Token, OAuth2TokenBuilder> {
   /// The type of the token issued 
   @BuiltValueField(wireName: r'token_type')
   String? get tokenType;
+
+  /// is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
+  @BuiltValueField(wireName: r'authorization_details')
+  BuiltList<OAuth2TokenAuthorizationDetailsInner>? get authorizationDetails;
 
   OAuth2Token._();
 
@@ -108,6 +115,13 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
         specifiedType: const FullType(String),
       );
     }
+    if (object.authorizationDetails != null) {
+      yield r'authorization_details';
+      yield serializers.serialize(
+        object.authorizationDetails,
+        specifiedType: const FullType(BuiltList, [FullType(OAuth2TokenAuthorizationDetailsInner)]),
+      );
+    }
   }
 
   @override
@@ -172,6 +186,13 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
             specifiedType: const FullType(String),
           ) as String;
           result.tokenType = valueDes;
+          break;
+        case r'authorization_details':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(OAuth2TokenAuthorizationDetailsInner)]),
+          ) as BuiltList<OAuth2TokenAuthorizationDetailsInner>;
+          result.authorizationDetails.replace(valueDes);
           break;
         default:
           unhandled.add(key);

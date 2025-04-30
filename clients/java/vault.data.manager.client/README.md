@@ -120,6 +120,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _AccountsApi_    | [**createAccount**](docs/AccountsApi.md#createAccount)                  | **POST** /v1/accounts                                 |
 | _AccountsApi_    | [**deleteAccount**](docs/AccountsApi.md#deleteAccount)                  | **DELETE** /v1/accounts/{accountIndex}                |
 | _AccountsApi_    | [**listAccounts**](docs/AccountsApi.md#listAccounts)                    | **GET** /v1/accounts                                  |
+| _AccountsApi_    | [**updateAccount**](docs/AccountsApi.md#updateAccount)                  | **PUT** /v1/accounts/{accountIndex}                   |
 | _ConfigApi_      | [**getConfig**](docs/ConfigApi.md#getConfig)                            | **GET** /v1/config                                    |
 | _FilesApi_       | [**getScannedFileInfo**](docs/FilesApi.md#getScannedFileInfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | _FilesApi_       | [**listScannedFiles**](docs/FilesApi.md#listScannedFiles)               | **GET** /v1/scanned-files/                            |
@@ -188,6 +189,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [StartFileScanInput](docs/StartFileScanInput.md)
 - [StartFileScanOK](docs/StartFileScanOK.md)
 - [UnexpectedError](docs/UnexpectedError.md)
+- [UpdateAccountDto](docs/UpdateAccountDto.md)
+- [UpdateAccountInput](docs/UpdateAccountInput.md)
 - [UpdateNodeInput](docs/UpdateNodeInput.md)
 - [UpdateProfileDataInput](docs/UpdateProfileDataInput.md)
 - [UpdateProfileDataOK](docs/UpdateProfileDataOK.md)

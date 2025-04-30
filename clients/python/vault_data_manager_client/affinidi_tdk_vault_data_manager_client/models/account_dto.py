@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
-from pydantic import BaseModel, Field, StrictFloat, StrictInt, constr, validator
+from typing import Any, Dict, Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, constr, validator
 
 class AccountDto(BaseModel):
     """
@@ -28,7 +28,10 @@ class AccountDto(BaseModel):
     """
     account_index: Union[StrictFloat, StrictInt] = Field(default=..., alias="accountIndex", description="number that is used for profile DID derivation")
     account_did: constr(strict=True) = Field(default=..., alias="accountDid", description="Profile DID that is associated with the account number")
-    __properties = ["accountIndex", "accountDid"]
+    alias: Optional[StrictStr] = Field(default=None, description="Alias of account")
+    metadata: Optional[Dict[str, Any]] = Field(default=None, description="Metadata of account")
+    description: Optional[StrictStr] = Field(default=None, description="Description of account")
+    __properties = ["accountIndex", "accountDid", "alias", "metadata", "description"]
 
     @validator('account_did')
     def account_did_validate_regular_expression(cls, value):
@@ -74,7 +77,10 @@ class AccountDto(BaseModel):
 
         _obj = AccountDto.parse_obj({
             "account_index": obj.get("accountIndex"),
-            "account_did": obj.get("accountDid")
+            "account_did": obj.get("accountDid"),
+            "alias": obj.get("alias"),
+            "metadata": obj.get("metadata"),
+            "description": obj.get("description")
         })
         return _obj
 

@@ -28,5 +28,12 @@ void main() {
       // TODO
     });
 
+    // Update account.
+    //
+    //Future<UpdateAccountDto> updateAccount(int accountIndex, UpdateAccountInput updateAccountInput) async
+    test('test updateAccount', () async {
+      // TODO
+    });
+
   });
 }

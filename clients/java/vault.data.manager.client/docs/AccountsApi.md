@@ -7,6 +7,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**createAccount**](AccountsApi.md#createAccount) | **POST** /v1/accounts                  |             |
 | [**deleteAccount**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{accountIndex} |             |
 | [**listAccounts**](AccountsApi.md#listAccounts)   | **GET** /v1/accounts                   |             |
+| [**updateAccount**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountIndex}    |             |
 
 ## createAccount
 
@@ -218,4 +219,76 @@ public class Example {
 | Status code | Description     | Response headers |
 | ----------- | --------------- | ---------------- |
 | **200**     | ListAccountsOK  | -                |
+| **400**     | BadRequestError | -                |
+
+## updateAccount
+
+> UpdateAccountDto updateAccount(accountIndex, updateAccountInput)
+
+Update account.
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.vault.data.manager.client.ApiClient;
+import com.affinidi.tdk.vault.data.manager.client.ApiException;
+import com.affinidi.tdk.vault.data.manager.client.Configuration;
+import com.affinidi.tdk.vault.data.manager.client.auth.*;
+import com.affinidi.tdk.vault.data.manager.client.models.*;
+import com.affinidi.tdk.vault.data.manager.client.apis.AccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.vault.affinidi.com/vfs");
+
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ConsumerTokenAuth.setApiKeyPrefix("Token");
+
+        AccountsApi apiInstance = new AccountsApi(defaultClient);
+        Integer accountIndex = 56; // Integer |
+        UpdateAccountInput updateAccountInput = new UpdateAccountInput(); // UpdateAccountInput | UpdateAccount
+        try {
+            UpdateAccountDto result = apiInstance.updateAccount(accountIndex, updateAccountInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#updateAccount");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                   | Type                                            | Description   | Notes |
+| ---------------------- | ----------------------------------------------- | ------------- | ----- |
+| **accountIndex**       | **Integer**                                     |               |       |
+| **updateAccountInput** | [**UpdateAccountInput**](UpdateAccountInput.md) | UpdateAccount |       |
+
+### Return type
+
+[**UpdateAccountDto**](UpdateAccountDto.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | UpdateAccountOK | -                |
 | **400**     | BadRequestError | -                |

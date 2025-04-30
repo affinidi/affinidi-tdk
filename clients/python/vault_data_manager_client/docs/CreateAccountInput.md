@@ -2,11 +2,14 @@
 
 ## Properties
 
-| Name              | Type      | Description                                           | Notes |
-| ----------------- | --------- | ----------------------------------------------------- | ----- |
-| **account_index** | **float** | number that is used for profile DID derivation        |
-| **account_did**   | **str**   | DID that is associated with the account number        |
-| **did_proof**     | **str**   | JWT that proves ownership of profile DID by requester |
+| Name              | Type       | Description                                           | Notes      |
+| ----------------- | ---------- | ----------------------------------------------------- | ---------- |
+| **account_index** | **float**  | number that is used for profile DID derivation        |
+| **account_did**   | **str**    | DID that is associated with the account number        |
+| **did_proof**     | **str**    | JWT that proves ownership of profile DID by requester |
+| **alias**         | **str**    | Alias of account                                      | [optional] |
+| **metadata**      | **object** | Metadata of account                                   | [optional] |
+| **description**   | **str**    | Description of account                                | [optional] |
 
 ## Example
 
