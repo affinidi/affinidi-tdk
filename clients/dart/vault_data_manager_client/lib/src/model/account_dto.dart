@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,6 +14,9 @@ part 'account_dto.g.dart';
 /// Properties:
 /// * [accountIndex] - number that is used for profile DID derivation
 /// * [accountDid] - Profile DID that is associated with the account number
+/// * [alias] - Alias of account
+/// * [metadata] - Metadata of account
+/// * [description] - Description of account
 @BuiltValue()
 abstract class AccountDto implements Built<AccountDto, AccountDtoBuilder> {
   /// number that is used for profile DID derivation
@@ -22,6 +26,18 @@ abstract class AccountDto implements Built<AccountDto, AccountDtoBuilder> {
   /// Profile DID that is associated with the account number
   @BuiltValueField(wireName: r'accountDid')
   String get accountDid;
+
+  /// Alias of account
+  @BuiltValueField(wireName: r'alias')
+  String? get alias;
+
+  /// Metadata of account
+  @BuiltValueField(wireName: r'metadata')
+  JsonObject? get metadata;
+
+  /// Description of account
+  @BuiltValueField(wireName: r'description')
+  String? get description;
 
   AccountDto._();
 
@@ -56,6 +72,27 @@ class _$AccountDtoSerializer implements PrimitiveSerializer<AccountDto> {
       object.accountDid,
       specifiedType: const FullType(String),
     );
+    if (object.alias != null) {
+      yield r'alias';
+      yield serializers.serialize(
+        object.alias,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.metadata != null) {
+      yield r'metadata';
+      yield serializers.serialize(
+        object.metadata,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -92,6 +129,27 @@ class _$AccountDtoSerializer implements PrimitiveSerializer<AccountDto> {
             specifiedType: const FullType(String),
           ) as String;
           result.accountDid = valueDes;
+          break;
+        case r'alias':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.alias = valueDes;
+          break;
+        case r'metadata':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.metadata = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         default:
           unhandled.add(key);

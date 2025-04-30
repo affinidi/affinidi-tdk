@@ -19,5 +19,23 @@ void main() {
       // TODO
     });
 
+    // Alias of account
+    // String alias
+    test('to test the property `alias`', () async {
+      // TODO
+    });
+
+    // Metadata of account
+    // JsonObject metadata
+    test('to test the property `metadata`', () async {
+      // TODO
+    });
+
+    // Description of account
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
   });
 }

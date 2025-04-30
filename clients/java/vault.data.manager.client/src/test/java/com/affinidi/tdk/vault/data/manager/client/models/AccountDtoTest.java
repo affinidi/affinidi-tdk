@@ -53,4 +53,28 @@ class AccountDtoTest {
         // TODO: test accountDid
     }
 
+    /**
+     * Test the property 'alias'
+     */
+    @Test
+    void aliasTest() {
+        // TODO: test alias
+    }
+
+    /**
+     * Test the property 'metadata'
+     */
+    @Test
+    void metadataTest() {
+        // TODO: test metadata
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    void descriptionTest() {
+        // TODO: test description
+    }
+
 }

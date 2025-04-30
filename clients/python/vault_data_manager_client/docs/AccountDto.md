@@ -2,10 +2,13 @@
 
 ## Properties
 
-| Name              | Type      | Description                                            | Notes |
-| ----------------- | --------- | ------------------------------------------------------ | ----- |
-| **account_index** | **float** | number that is used for profile DID derivation         |
-| **account_did**   | **str**   | Profile DID that is associated with the account number |
+| Name              | Type       | Description                                            | Notes      |
+| ----------------- | ---------- | ------------------------------------------------------ | ---------- |
+| **account_index** | **float**  | number that is used for profile DID derivation         |
+| **account_did**   | **str**    | Profile DID that is associated with the account number |
+| **alias**         | **str**    | Alias of account                                       | [optional] |
+| **metadata**      | **object** | Metadata of account                                    | [optional] |
+| **description**   | **str**    | Description of account                                 | [optional] |
 
 ## Example
 
