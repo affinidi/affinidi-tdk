@@ -2138,8 +2138,14 @@ components:
       example:
         records:
           - accountIndex: 0.8008281904610115
+            metadata: '{}'
+            alias: alias
+            description: description
             accountDid: accountDid
           - accountIndex: 0.8008281904610115
+            metadata: '{}'
+            alias: alias
+            description: description
             accountDid: accountDid
         lastEvaluatedKey: lastEvaluatedKey
       properties:
@@ -2156,6 +2162,9 @@ components:
       additionalProperties: false
       example:
         accountIndex: 0.8008281904610115
+        metadata: '{}'
+        alias: alias
+        description: description
         accountDid: accountDid
       properties:
         accountIndex:
@@ -2164,6 +2173,16 @@ components:
         accountDid:
           description: Profile DID that is associated with the account number
           pattern: ^did:.*$
+          type: string
+        alias:
+          description: Alias of account
+          type: string
+        metadata:
+          description: Metadata of account
+          properties: {}
+          type: object
+        description:
+          description: Description of account
           type: string
       required:
         - accountDid

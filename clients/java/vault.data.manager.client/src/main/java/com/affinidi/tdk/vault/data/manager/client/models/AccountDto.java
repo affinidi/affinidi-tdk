@@ -32,7 +32,10 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   AccountDto.JSON_PROPERTY_ACCOUNT_INDEX,
-  AccountDto.JSON_PROPERTY_ACCOUNT_DID
+  AccountDto.JSON_PROPERTY_ACCOUNT_DID,
+  AccountDto.JSON_PROPERTY_ALIAS,
+  AccountDto.JSON_PROPERTY_METADATA,
+  AccountDto.JSON_PROPERTY_DESCRIPTION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class AccountDto {
@@ -41,6 +44,15 @@ public class AccountDto {
 
   public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
   private String accountDid;
+
+  public static final String JSON_PROPERTY_ALIAS = "alias";
+  private String alias;
+
+  public static final String JSON_PROPERTY_METADATA = "metadata";
+  private Object metadata;
+
+  public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  private String description;
 
   public AccountDto() {
   }
@@ -95,6 +107,81 @@ public class AccountDto {
     this.accountDid = accountDid;
   }
 
+  public AccountDto alias(String alias) {
+    
+    this.alias = alias;
+    return this;
+  }
+
+  /**
+   * Alias of account
+   * @return alias
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getAlias() {
+    return alias;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlias(String alias) {
+    this.alias = alias;
+  }
+
+  public AccountDto metadata(Object metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  /**
+   * Metadata of account
+   * @return metadata
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getMetadata() {
+    return metadata;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
+  }
+
+  public AccountDto description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Description of account
+   * @return description
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,12 +192,15 @@ public class AccountDto {
     }
     AccountDto accountDto = (AccountDto) o;
     return Objects.equals(this.accountIndex, accountDto.accountIndex) &&
-        Objects.equals(this.accountDid, accountDto.accountDid);
+        Objects.equals(this.accountDid, accountDto.accountDid) &&
+        Objects.equals(this.alias, accountDto.alias) &&
+        Objects.equals(this.metadata, accountDto.metadata) &&
+        Objects.equals(this.description, accountDto.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndex, accountDid);
+    return Objects.hash(accountIndex, accountDid, alias, metadata, description);
   }
 
   @Override
@@ -119,6 +209,9 @@ public class AccountDto {
     sb.append("class AccountDto {\n");
     sb.append("    accountIndex: ").append(toIndentedString(accountIndex)).append("\n");
     sb.append("    accountDid: ").append(toIndentedString(accountDid)).append("\n");
+    sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +273,36 @@ public class AccountDto {
     if (getAccountDid() != null) {
       try {
         joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `alias` to the URL query string
+    if (getAlias() != null) {
+      try {
+        joiner.add(String.format("%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `metadata` to the URL query string
+    if (getMetadata() != null) {
+      try {
+        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `description` to the URL query string
+    if (getDescription() != null) {
+      try {
+        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

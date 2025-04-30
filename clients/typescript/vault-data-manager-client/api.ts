@@ -57,6 +57,24 @@ export interface AccountDto {
    * @memberof AccountDto
    */
   accountDid: string
+  /**
+   * Alias of account
+   * @type {string}
+   * @memberof AccountDto
+   */
+  alias?: string
+  /**
+   * Metadata of account
+   * @type {object}
+   * @memberof AccountDto
+   */
+  metadata?: object
+  /**
+   * Description of account
+   * @type {string}
+   * @memberof AccountDto
+   */
+  description?: string
 }
 /**
  *

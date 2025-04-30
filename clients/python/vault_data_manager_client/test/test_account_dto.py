@@ -38,7 +38,10 @@ class TestAccountDto(unittest.TestCase):
         if include_optional:
             return AccountDto(
                 account_index = 1.337,
-                account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj'
+                account_did = 'did:jUR,rZ#UM/?R,Fp^l6$ARj',
+                alias = '',
+                metadata = affinidi_tdk_vault_data_manager_client.models.metadata.metadata(),
+                description = ''
             )
         else:
             return AccountDto(

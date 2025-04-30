@@ -11,11 +11,22 @@ class _$AccountDto extends AccountDto {
   final int accountIndex;
   @override
   final String accountDid;
+  @override
+  final String? alias;
+  @override
+  final JsonObject? metadata;
+  @override
+  final String? description;
 
   factory _$AccountDto([void Function(AccountDtoBuilder)? updates]) =>
       (new AccountDtoBuilder()..update(updates))._build();
 
-  _$AccountDto._({required this.accountIndex, required this.accountDid})
+  _$AccountDto._(
+      {required this.accountIndex,
+      required this.accountDid,
+      this.alias,
+      this.metadata,
+      this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accountIndex, r'AccountDto', 'accountIndex');
@@ -35,7 +46,10 @@ class _$AccountDto extends AccountDto {
     if (identical(other, this)) return true;
     return other is AccountDto &&
         accountIndex == other.accountIndex &&
-        accountDid == other.accountDid;
+        accountDid == other.accountDid &&
+        alias == other.alias &&
+        metadata == other.metadata &&
+        description == other.description;
   }
 
   @override
@@ -43,6 +57,9 @@ class _$AccountDto extends AccountDto {
     var _$hash = 0;
     _$hash = $jc(_$hash, accountIndex.hashCode);
     _$hash = $jc(_$hash, accountDid.hashCode);
+    _$hash = $jc(_$hash, alias.hashCode);
+    _$hash = $jc(_$hash, metadata.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -51,7 +68,10 @@ class _$AccountDto extends AccountDto {
   String toString() {
     return (newBuiltValueToStringHelper(r'AccountDto')
           ..add('accountIndex', accountIndex)
-          ..add('accountDid', accountDid))
+          ..add('accountDid', accountDid)
+          ..add('alias', alias)
+          ..add('metadata', metadata)
+          ..add('description', description))
         .toString();
   }
 }
@@ -67,6 +87,18 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
   String? get accountDid => _$this._accountDid;
   set accountDid(String? accountDid) => _$this._accountDid = accountDid;
 
+  String? _alias;
+  String? get alias => _$this._alias;
+  set alias(String? alias) => _$this._alias = alias;
+
+  JsonObject? _metadata;
+  JsonObject? get metadata => _$this._metadata;
+  set metadata(JsonObject? metadata) => _$this._metadata = metadata;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   AccountDtoBuilder() {
     AccountDto._defaults(this);
   }
@@ -76,6 +108,9 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
     if ($v != null) {
       _accountIndex = $v.accountIndex;
       _accountDid = $v.accountDid;
+      _alias = $v.alias;
+      _metadata = $v.metadata;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -102,6 +137,9 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
               accountIndex, r'AccountDto', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(
               accountDid, r'AccountDto', 'accountDid'),
+          alias: alias,
+          metadata: metadata,
+          description: description,
         );
     replace(_$result);
     return _$result;
