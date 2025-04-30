@@ -57,8 +57,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(W3cCredentialHolder.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cPresentation.serializer)
-      ..add(W3cPresentationContext.serializer)
-      ..add(W3cPresentationContextOneOfInner.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Descriptor)]),
@@ -111,15 +109,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(W3cCredential)]),
-          () => new ListBuilder<W3cCredential>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),
           () => new ListBuilder<SubmissionRequirement>())
@@ -144,7 +133,28 @@ Serializers _$serializers = (new Serializers().toBuilder()
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>()))
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => new MapBuilder<String, JsonObject?>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(W3cCredential)]),
+          () => new ListBuilder<W3cCredential>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/presentation_submission.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -26,7 +25,7 @@ part 'w3c_presentation.g.dart';
 @BuiltValue()
 abstract class W3cPresentation implements Built<W3cPresentation, W3cPresentationBuilder> {
   @BuiltValueField(wireName: r'@context')
-  W3cPresentationContext get atContext;
+  BuiltMap<String, JsonObject?> get atContext;
 
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -72,7 +71,7 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
     yield r'@context';
     yield serializers.serialize(
       object.atContext,
-      specifiedType: const FullType(W3cPresentationContext),
+      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
     if (object.id != null) {
       yield r'id';
@@ -134,8 +133,8 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
         case r'@context':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(W3cPresentationContext),
-          ) as W3cPresentationContext;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
           result.atContext.replace(valueDes);
           break;
         case r'id':

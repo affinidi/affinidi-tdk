@@ -8,7 +8,7 @@ part of 'w3c_credential.dart';
 
 class _$W3cCredential extends W3cCredential {
   @override
-  final W3cPresentationContext atContext;
+  final BuiltMap<String, JsonObject?> atContext;
   @override
   final String? id;
   @override
@@ -121,10 +121,10 @@ class W3cCredentialBuilder
     implements Builder<W3cCredential, W3cCredentialBuilder> {
   _$W3cCredential? _$v;
 
-  W3cPresentationContextBuilder? _atContext;
-  W3cPresentationContextBuilder get atContext =>
-      _$this._atContext ??= new W3cPresentationContextBuilder();
-  set atContext(W3cPresentationContextBuilder? atContext) =>
+  MapBuilder<String, JsonObject?>? _atContext;
+  MapBuilder<String, JsonObject?> get atContext =>
+      _$this._atContext ??= new MapBuilder<String, JsonObject?>();
+  set atContext(MapBuilder<String, JsonObject?>? atContext) =>
       _$this._atContext = atContext;
 
   String? _id;

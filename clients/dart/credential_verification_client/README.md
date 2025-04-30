@@ -2,26 +2,23 @@
 
 Affinidi TDK dart client for Affinidi CREDENTIAL VERIFICATION
 
+
 ## Requirements
 
-- Dart 2.15.0+
-- Dio 5.0.0+ (https://pub.dev/packages/dio)
+* Dart 2.15.0+
+* Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
 
 ### pub.dev
-
 To use the package from [pub.dev](https://pub.dev), please include the following in pubspec.yaml
-
 ```yaml
 dependencies:
   affinidi_tdk_credential_verification_client: ^1.0.0
 ```
 
 ### Github
-
 This Dart package is published to Github, please include the following in pubspec.yaml
-
 ```yaml
 dependencies:
   affinidi_tdk_credential_verification_client:
@@ -32,9 +29,7 @@ dependencies:
 ```
 
 ### Local development
-
 To use the package from your local drive, please include the following in pubspec.yaml
-
 ```yaml
 dependencies:
   affinidi_tdk_credential_verification_client:
@@ -71,59 +66,59 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Class                             | Method                                                         | HTTP request                     | Description  |
-| --------------------------------- | -------------------------------------------------------------- | -------------------------------- | ------------ |
-| [_DefaultApi_](doc/DefaultApi.md) | [**verifyCredentials**](doc/DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
-| [_DefaultApi_](doc/DefaultApi.md) | [**verifyPresentation**](doc/DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+[*DefaultApi*](doc/DefaultApi.md) | [**verifyCredentials**](doc/DefaultApi.md#verifycredentials) | **POST** /v1/verifier/verify-vcs | Verifying VC
+[*DefaultApi*](doc/DefaultApi.md) | [**verifyPresentation**](doc/DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp | Verifying VP
+
 
 ## Documentation For Models
 
-- [Constraints](doc/Constraints.md)
-- [ConstraintsStatuses](doc/ConstraintsStatuses.md)
-- [CredentialRequirements](doc/CredentialRequirements.md)
-- [CredentialRequirementsConstraints](doc/CredentialRequirementsConstraints.md)
-- [Descriptor](doc/Descriptor.md)
-- [Error](doc/Error.md)
-- [ErrorDetail](doc/ErrorDetail.md)
-- [EvaluateVpOutput](doc/EvaluateVpOutput.md)
-- [Field](doc/Field.md)
-- [Filter](doc/Filter.md)
-- [FilterConst](doc/FilterConst.md)
-- [FilterItems](doc/FilterItems.md)
-- [Format](doc/Format.md)
-- [HolderSubject](doc/HolderSubject.md)
-- [InputDescriptor](doc/InputDescriptor.md)
-- [InvalidParameterError](doc/InvalidParameterError.md)
-- [JwtObject](doc/JwtObject.md)
-- [LdpObject](doc/LdpObject.md)
-- [NestedDescriptor](doc/NestedDescriptor.md)
-- [NotFoundError](doc/NotFoundError.md)
-- [NotFoundErrorDetailsInner](doc/NotFoundErrorDetailsInner.md)
-- [PdStatus](doc/PdStatus.md)
-- [PresentationDefinition](doc/PresentationDefinition.md)
-- [PresentationSubmission](doc/PresentationSubmission.md)
-- [SubmissionRequirement](doc/SubmissionRequirement.md)
-- [ValidateJwtInput](doc/ValidateJwtInput.md)
-- [ValidateJwtOutput](doc/ValidateJwtOutput.md)
-- [VerifyCredentialInput](doc/VerifyCredentialInput.md)
-- [VerifyCredentialOutput](doc/VerifyCredentialOutput.md)
-- [VerifyPresentationInput](doc/VerifyPresentationInput.md)
-- [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
-- [VerifyPresentationOutputErrors](doc/VerifyPresentationOutputErrors.md)
-- [W3cCredential](doc/W3cCredential.md)
-- [W3cCredentialCredentialSchema](doc/W3cCredentialCredentialSchema.md)
-- [W3cCredentialCredentialSubject](doc/W3cCredentialCredentialSubject.md)
-- [W3cCredentialHolder](doc/W3cCredentialHolder.md)
-- [W3cCredentialStatus](doc/W3cCredentialStatus.md)
-- [W3cPresentation](doc/W3cPresentation.md)
-- [W3cPresentationContext](doc/W3cPresentationContext.md)
-- [W3cPresentationContextOneOfInner](doc/W3cPresentationContextOneOfInner.md)
-- [W3cProof](doc/W3cProof.md)
+ - [Constraints](doc/Constraints.md)
+ - [ConstraintsStatuses](doc/ConstraintsStatuses.md)
+ - [CredentialRequirements](doc/CredentialRequirements.md)
+ - [CredentialRequirementsConstraints](doc/CredentialRequirementsConstraints.md)
+ - [Descriptor](doc/Descriptor.md)
+ - [Error](doc/Error.md)
+ - [ErrorDetail](doc/ErrorDetail.md)
+ - [EvaluateVpOutput](doc/EvaluateVpOutput.md)
+ - [Field](doc/Field.md)
+ - [Filter](doc/Filter.md)
+ - [FilterConst](doc/FilterConst.md)
+ - [FilterItems](doc/FilterItems.md)
+ - [Format](doc/Format.md)
+ - [HolderSubject](doc/HolderSubject.md)
+ - [InputDescriptor](doc/InputDescriptor.md)
+ - [InvalidParameterError](doc/InvalidParameterError.md)
+ - [JwtObject](doc/JwtObject.md)
+ - [LdpObject](doc/LdpObject.md)
+ - [NestedDescriptor](doc/NestedDescriptor.md)
+ - [NotFoundError](doc/NotFoundError.md)
+ - [NotFoundErrorDetailsInner](doc/NotFoundErrorDetailsInner.md)
+ - [PdStatus](doc/PdStatus.md)
+ - [PresentationDefinition](doc/PresentationDefinition.md)
+ - [PresentationSubmission](doc/PresentationSubmission.md)
+ - [SubmissionRequirement](doc/SubmissionRequirement.md)
+ - [ValidateJwtInput](doc/ValidateJwtInput.md)
+ - [ValidateJwtOutput](doc/ValidateJwtOutput.md)
+ - [VerifyCredentialInput](doc/VerifyCredentialInput.md)
+ - [VerifyCredentialOutput](doc/VerifyCredentialOutput.md)
+ - [VerifyPresentationInput](doc/VerifyPresentationInput.md)
+ - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
+ - [VerifyPresentationOutputErrors](doc/VerifyPresentationOutputErrors.md)
+ - [W3cCredential](doc/W3cCredential.md)
+ - [W3cCredentialCredentialSchema](doc/W3cCredentialCredentialSchema.md)
+ - [W3cCredentialCredentialSubject](doc/W3cCredentialCredentialSubject.md)
+ - [W3cCredentialHolder](doc/W3cCredentialHolder.md)
+ - [W3cCredentialStatus](doc/W3cCredentialStatus.md)
+ - [W3cPresentation](doc/W3cPresentation.md)
+ - [W3cProof](doc/W3cProof.md)
+
 
 ## Documentation For Authorization
 
-Authentication schemes defined for the API:
 
+Authentication schemes defined for the API:
 ### UserTokenAuth
 
 - **Type**: API key
@@ -136,6 +131,8 @@ Authentication schemes defined for the API:
 - **API key parameter name**: authorization
 - **Location**: HTTP header
 
+
 ## Author
 
 info@affinidi.com
+

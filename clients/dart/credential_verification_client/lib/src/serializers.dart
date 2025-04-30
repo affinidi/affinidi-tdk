@@ -52,8 +52,6 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_creden
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context_one_of_inner.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 
 part 'serializers.g.dart';
@@ -97,8 +95,6 @@ part 'serializers.g.dart';
   W3cCredentialHolder,
   W3cCredentialStatus,
   W3cPresentation,
-  W3cPresentationContext,
-  W3cPresentationContextOneOfInner,
   W3cProof,
 ])
 Serializers serializers = (_$serializers.toBuilder()

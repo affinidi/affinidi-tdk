@@ -7,8 +7,8 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
+import 'package:built_value/json_object.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -32,7 +32,7 @@ part 'w3c_credential.g.dart';
 @BuiltValue()
 abstract class W3cCredential implements Built<W3cCredential, W3cCredentialBuilder> {
   @BuiltValueField(wireName: r'@context')
-  W3cPresentationContext get atContext;
+  BuiltMap<String, JsonObject?> get atContext;
 
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -90,7 +90,7 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
     yield r'@context';
     yield serializers.serialize(
       object.atContext,
-      specifiedType: const FullType(W3cPresentationContext),
+      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
     if (object.id != null) {
       yield r'id';
@@ -178,8 +178,8 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
         case r'@context':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(W3cPresentationContext),
-          ) as W3cPresentationContext;
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
           result.atContext.replace(valueDes);
           break;
         case r'id':
