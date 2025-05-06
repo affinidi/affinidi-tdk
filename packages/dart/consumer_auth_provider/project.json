@@ -39,10 +39,7 @@
         "github": false,
         "npm": false,
         "repositoryUrl": "https://github.com/marat-affinidi/affinidi-tdk.git",
-        "branches": [
-          "master",
-          { "name": "main", "channel": "prerelease", "prerelease": "dev" }
-        ]
+        "branches": ["main"]
       }
     },
     "publish": {
