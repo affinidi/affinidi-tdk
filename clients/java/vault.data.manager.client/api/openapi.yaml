@@ -851,12 +851,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListAccountsDto'
           description: ListAccountsOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '400':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidParameterError'
           description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       tags:
@@ -875,12 +889,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateAccountOK'
           description: CreateAccountOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '400':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidParameterError'
           description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       tags:
@@ -907,12 +935,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteAccountDto'
           description: DeleteAccountOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '400':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidParameterError'
           description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       tags:
@@ -939,12 +981,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/UpdateAccountDto'
           description: UpdateAccountOK
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '400':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidParameterError'
           description: BadRequestError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       tags:
@@ -1134,24 +1190,52 @@ components:
           schema:
             $ref: '#/components/schemas/CreateAccountOK'
       description: CreateAccountOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     ListAccountsOK:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ListAccountsDto'
       description: ListAccountsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     DeleteAccountOK:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/DeleteAccountDto'
       description: DeleteAccountOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateAccountOK:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateAccountDto'
       description: UpdateAccountOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateProfileDataOK:
       content:
         application/json:
@@ -1496,6 +1580,32 @@ components:
           schema:
             $ref: '#/components/schemas/CorsRestoreNodeFromTrashbinOK'
       description: CorsRestoreNodeFromTrashbinOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListAccountsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsListAccountsOK'
+      description: CorsListAccountsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsDeleteAccountOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsDeleteAccountOK'
+      description: CorsDeleteAccountOK
       headers:
         Access-Control-Allow-Origin:
           $ref: '#/components/headers/Access-Control-Allow-Origin'
@@ -1899,24 +2009,78 @@ components:
           schema:
             $ref: '#/components/schemas/InvalidParameterError'
       description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     CreateAccountBadRequestError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/InvalidParameterError'
       description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsListAccountsBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     DeleteAccountBadRequestError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/InvalidParameterError'
       description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateAccountBadRequestError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/InvalidParameterError'
       description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsDeleteAccountBadRequestError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidParameterError'
+      description: BadRequestError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     GetWellKnownJwksBadRequestError:
       content:
         application/json:
@@ -3075,6 +3239,18 @@ components:
       additionalProperties: false
       properties:
         corsRestoreNodeFromTrashbinOk:
+          type: string
+      type: object
+    CorsListAccountsOK:
+      additionalProperties: false
+      properties:
+        corsListAccountsOk:
+          type: string
+      type: object
+    CorsDeleteAccountOK:
+      additionalProperties: false
+      properties:
+        corsDeleteAccountOk:
           type: string
       type: object
     InvalidParameterError_details_inner:

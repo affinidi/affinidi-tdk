@@ -18,11 +18,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/account_dto.dar
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/aws_credential_exchange_operation_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/consumer_metadata_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_aws_credential_exchange_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_account_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_node_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_config_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_scanned_file_info_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_well_known_jwks_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_init_nodes_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_accounts_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_root_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_scanned_files_ok.dart';
@@ -75,11 +77,13 @@ part 'serializers.g.dart';
   AwsCredentialExchangeOperationOK,
   ConsumerMetadataDto,
   CorsAwsCredentialExchangeOK,
+  CorsDeleteAccountOK,
   CorsDeleteNodeOK,
   CorsGetConfigOK,
   CorsGetScannedFileInfoOK,
   CorsGetWellKnownJwksOK,
   CorsInitNodesOK,
+  CorsListAccountsOK,
   CorsListNodeChildrenOK,
   CorsListRootNodeChildrenOK,
   CorsListScannedFilesOK,

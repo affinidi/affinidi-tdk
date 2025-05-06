@@ -24,6 +24,8 @@ export 'package:affinidi_tdk_iam_client/src/model/add_user_to_project_input.dart
 export 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_output.dart';
 export 'package:affinidi_tdk_iam_client/src/model/cors_consumer_auth_token_endpoint_ok.dart';
+export 'package:affinidi_tdk_iam_client/src/model/cors_grant_access_vfs_ok.dart';
+export 'package:affinidi_tdk_iam_client/src/model/cors_update_access_vfs_ok.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 export 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
