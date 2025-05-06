@@ -9,7 +9,6 @@ jobs:
   release:
     concurrency: release
     runs-on: ubuntu-latest
-    environment: main
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
@@ -17,22 +16,11 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - name: Generate token from app token #https://github.com/tibdex/github-app-token
-        id: generate_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: ${{ secrets.RELEASE_BOT_APP_ID }}
-          private_key: ${{ secrets.RELEASE_BOT_PKEY }}
-
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ steps.generate_token.outputs.token }}
 
-      - name: configure git
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       # Setup cache, npm
       - uses: actions/setup-node@v4
         with:
@@ -41,40 +29,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@affinidi-tdk'
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
-
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
           sdk: 3.6.0
-
-      - name: install python tools
-        run: |
-          pip install twine
-          pip install poetry==1.8.5
-
-      - name: Mint pypi token
-        id: mint
-        uses: tschm/token-mint-action@v1.0.3
-
-      - name: Install gpg secret key for java Maven
-        run: |
-          echo "${{ secrets.MAVEN_GPG_SECRET_KEY }}" | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
-
-      - name: Set up JDK for deploy to Sonatype
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'corretto'
-          java-version: 21
-          server-id: central
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_CENTRAL_TOKEN
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
 
       - run: npm ci
       # Generate tag/changelog with semantic release
@@ -82,13 +40,6 @@ jobs:
       - run: npx nx affected  -t semantic-release --parallel=false --base=$BASE_SHA --head=HEAD
         name: semantic release
         env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
-          MAVEN_GPG_SECRET_KEY_PASSWORD: ${{ secrets.MAVEN_GPG_SECRET_KEY_PASSWORD }}
-          TWINE_USERNAME: '__token__'
-          TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
-          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           BASE_SHA: ${{ github.event.before }}
