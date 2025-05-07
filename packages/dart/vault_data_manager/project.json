@@ -17,7 +17,7 @@
       "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart format -l 120 --set-exit-if-changed . && dart analyze --fatal-infos"
+        "command": "dart format --set-exit-if-changed . && dart analyze --fatal-infos"
       }
     },
     "test": {
@@ -51,9 +51,8 @@
       "options": {
         "cwd": "{projectRoot}",
         "commands": [
-          "export "
-          // "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
-          // "dart pub publish --skip-validation --force"
+          "sed -i \"s|^version: .*|version: ${RELEASE_VERSION}|\" pubspec.yaml",
+          "dart pub publish --skip-validation --force"
         ],
         "parallel": false
       }
