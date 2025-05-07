@@ -1,8 +1,8 @@
-import 'dart:typed_data';
 import 'package:dio/dio.dart';
+import 'package:ssi/ssi.dart';
 
-import 'provider/base_consumer_auth_provider.dart';
 import 'consumer_auth_provider_interface.dart';
+import 'provider/base_consumer_auth_provider.dart';
 
 /// A class that implements the `ConsumerAuthProviderInterface` and provides
 /// functionality for handling consumer auth tokens.
@@ -12,26 +12,16 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   /// Private constructor for `ConsumerAuthProvider`, it can only be instantiated via the factory constructor.
   ConsumerAuthProvider._(this._implementation);
 
-  /// A provider for handling consumer auth token, which is used for Vault API
-  /// requests to Affinidi services like Vault Data Manager (VDM).
+  /// Factory constructor for creating an instance of [ConsumerAuthProvider].
   ///
-  /// The `seed` parameter is a `Uint8List` representing the raw seed bytes of your Wallet.
-  ///
-  /// Example usage:
-  ///```dart
-  /// void main() {
-  ///   final consumerAuthProvider = ConsumerAuthProvider(seed: seed);
-  ///   final token = await consumerAuthProvider.fetchConsumerToken();
-  /// }
-  ///```
-  factory ConsumerAuthProvider({required Uint8List seed, Dio? client}) {
-    return ConsumerAuthProvider._(BaseConsumerAuthProvider(seed: seed, client: client));
+  /// - [signer] (required) - instance of [DidSigner] used for signing operations.
+  /// - [client] (optional) - optional instance of [Dio] for handling HTTP requests. If not provided,
+  ///   a default client will be used.
+  factory ConsumerAuthProvider({required DidSigner signer, Dio? client}) {
+    return ConsumerAuthProvider._(
+        BaseConsumerAuthProvider(signer: signer, client: client));
   }
 
-  /// Fetches a consumer scoped token to be used for API calls to Affinidi
-  /// Vault services. This function can be provided to clients, such as Vault
-  /// Data Manager (VDM) client to authenticate their requests, allowing for
-  /// token refresh after expiration.
   @override
   Future<String> fetchConsumerToken() => _implementation.fetchConsumerToken();
 
@@ -39,4 +29,8 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   /// credentials issued to it.
   @override
   Future<String> fetchCisToken() => _implementation.fetchCisToken();
+
+  @override
+  Future<String> fetchDelegatedToken({required String profileDid}) =>
+      _implementation.fetchDelegatedToken(profileDid: profileDid);
 }

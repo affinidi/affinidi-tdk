@@ -7,6 +7,7 @@ workspace:
   - packages/dart/cryptography
   - packages/dart/auth_provider
   - packages/dart/consumer_auth_provider
+  - packages/dart/consumer_auth_provider/example
   - libs/dart/seed_cryptography
   - libs/dart/iota_core
   - tests/integration/dart
