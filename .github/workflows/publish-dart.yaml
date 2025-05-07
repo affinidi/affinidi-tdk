@@ -3,7 +3,7 @@ name: publish dart
 on:
   push:
     tags:
-      - '**dart-v**'  
+      - '**dart-v**'
   workflow_dispatch:
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
         run: echo "PROJECT_NAME=$(echo ${GITHUB_REF#refs/tags/} | cut -d'-' -f1)" >> $GITHUB_ENV
 
       - name: Extract Release Version from Tag
-        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF#refs/tags/} | cut -d'-' -f2 | cut -c2-)" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF#refs/tags/} | cut -d'-' -f2,3)" >> $GITHUB_ENV
 
       - name: Publish Tagged Project
         run: npx nx run ${{ env.PROJECT_NAME }}:publish
