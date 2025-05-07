@@ -1,50 +1,61 @@
-part of 'token_provider.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:dio/dio.dart';
+import 'package:ssi/ssi.dart';
 
-/// Auth provider that generates consumer scoped tokens used by Vault to call
-/// Affinidi Vault services such as Vault Data Manager (VDM).
+import 'token_provider.dart';
+
+/// A provider class that extends `TokenProvider` to handle consumer-specific
+/// token management functionality.
 class ConsumerTokenProvider extends TokenProvider {
-  /// Creates an instance of [ConsumerTokenProvider].
-  ///
-  /// The [client] parameter specifies a [Dio] client for network requests. When not provided, it creates a default [Dio] instance.
-  ConsumerTokenProvider({Dio? client}) : _client = client ?? Dio();
+  final DidSigner _signer;
+  final Dio _dioInstance;
 
   static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
-  final Dio _client;
+  static final int _consumerTokenExpiration = 5 * 60; // 5 minutes
 
-  @override
-  Future<String> getToken(Uint8List seed) async {
-    final myDiD = _getDID(seed);
-    final header = _getHeader(_getKid(myDiD));
-    final jwt = await _getJwtToken(seed, header, _tokenEndpoint);
-    final token = await _getConsumerToken(jwt, myDiD);
-    return token;
+  /// Constructor for [ConsumerTokenProvider] using the [signer] and optional [Dio] http client.
+  ConsumerTokenProvider({
+    required DidSigner signer,
+    Dio? client,
+  })  : _signer = signer,
+        _dioInstance = client ?? Dio();
+
+  /// Method to retrieves a consumer token.
+  ///
+  /// Returns [Future] that resolves to a [String] representing the token.
+  Future<String> getToken() async {
+    final token = await getJwtToken(
+        signer: _signer,
+        expiration: _consumerTokenExpiration,
+        audience: _tokenEndpoint);
+    final did = _signer.did;
+    return _fetchConsumerToken(clientAssertion: token, did: did);
   }
 
-  Map<String, dynamic> _getHeader(String kid) {
-    return {'alg': 'ES256K', 'kid': kid};
-  }
-
-  Future<String> _getConsumerToken(String clientAssertion, String did) async {
+  Future<String> _fetchConsumerToken({
+    required String clientAssertion,
+    required String did,
+  }) async {
     final data = {
-      "grant_type": 'client_credentials',
-      "client_assertion_type":
+      'grant_type': 'client_credentials',
+      'client_assertion_type':
           'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-      "client_assertion": clientAssertion,
-      "client_id": did,
+      'client_assertion': clientAssertion,
+      'client_id': did,
     };
 
-    final response = await _client.post(
+    final response = await _dioInstance.post<Map<String, dynamic>>(
       _tokenEndpoint,
       data: data,
       options: Options(
         contentType: 'application/json',
         headers: {
           'Content-Type': 'application/json',
-          "Accept": 'application/json',
+          'Accept': 'application/json',
         },
       ),
     );
 
-    return response.data['access_token'];
+    return response.data!['access_token'] as String;
   }
 }

@@ -1,24 +1,29 @@
-import 'dart:typed_data';
-
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:affinidi_tdk_consumer_auth_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:dio/dio.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:ssi/ssi.dart';
 
 import '../consumer_auth_provider_interface.dart';
-import 'token_provider.dart';
+import 'cis_token_provider.dart';
+import 'consumer_token_provider.dart';
+import 'delegated_token_provider.dart';
 
 /// Base class for consumer authentication provider. It handles the  generation and validation of tokens.
 class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
-  final Uint8List _seed;
-
   late final ConsumerTokenProvider _consumerTokenProvider;
   late final CisTokenProvider _cisTokenProvider;
+  late final DelegatedTokenProvider _delegatedTokenProvider;
 
   String? _consumerToken;
 
-  /// Constructor for [BaseConsumerAuthProvider] using the [seed] in bytes
-  BaseConsumerAuthProvider({required Uint8List seed, Dio? client}) : _seed = seed {
-    _consumerTokenProvider = ConsumerTokenProvider(client: client);
-    _cisTokenProvider = CisTokenProvider();
+  /// Constructor for [BaseConsumerAuthProvider] using the [signer] and optional [Dio] http client.
+  BaseConsumerAuthProvider({required DidSigner signer, Dio? client}) {
+    _consumerTokenProvider =
+        ConsumerTokenProvider(signer: signer, client: client);
+    _cisTokenProvider = CisTokenProvider(signer: signer, client: client);
+    _delegatedTokenProvider =
+        DelegatedTokenProvider(signer: signer, client: client);
   }
 
   @override
@@ -28,20 +33,30 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
         return _consumerToken!;
       }
 
-      _consumerToken = await _consumerTokenProvider.getToken(_seed);
+      _consumerToken = await _consumerTokenProvider.getToken();
 
       return _consumerToken!;
-    } catch (e) {
-      throw Exception('Failed to fetch consumer token');
+    } catch (e, stackTrace) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Failed to fetch consumer token',
+            code: TdkExceptionType.failedToFetchConsumerToken.code),
+        stackTrace,
+      );
     }
   }
 
   @override
   Future<String> fetchCisToken() async {
-    return await _cisTokenProvider.getToken(_seed);
+    return await _cisTokenProvider.getToken();
   }
 
   bool _isTokenExpired(String token) {
     return JwtDecoder.isExpired(token);
+  }
+
+  @override
+  Future<String> fetchDelegatedToken({required String profileDid}) {
+    return _delegatedTokenProvider.getToken(profileDid: profileDid);
   }
 }

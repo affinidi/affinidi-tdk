@@ -16,6 +16,7 @@ dependencies:
   base_codecs: ^1.0.1
   uuid: ^4.5.1
   crypto: ^3.0.6
+  ssi: 1.0.0-dev.22
   dio: ^5.7.0
 
 dev_dependencies:

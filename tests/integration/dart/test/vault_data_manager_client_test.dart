@@ -1,10 +1,10 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
-import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+
+import 'package:ssi/ssi.dart';
+import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 
 import 'environment.dart';
 
@@ -24,10 +24,25 @@ Future<Map<String, dynamic>> getVaultDataManagerPublicKey() async {
 void main() {
   group('Vault Data Manager Client Integration Tests', () {
     late NodesApi nodesApi;
+    late ConsumerAuthProvider consumerAuthProvider;
 
     setUp(() async {
       final env = getVaultEnvironment();
-      final consumerAuthProvider = ConsumerAuthProvider(seed: env.seed);
+
+      // Create DidSigner from seed
+      final keyStore = InMemoryKeyStore();
+      final wallet = await Bip32Wallet.fromSeed(env.seed, keyStore);
+      final keyPair =
+          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
+      final didDoc = DidKey.generateDocument(keyPair.publicKey);
+      final didSigner = DidSigner(
+        didDocument: didDoc,
+        didKeyId: didDoc.verificationMethod.first.id,
+        keyPair: keyPair,
+        signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
+      );
+
+      consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
       final apiClient = AffinidiTdkVaultDataManagerClient(
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
       );

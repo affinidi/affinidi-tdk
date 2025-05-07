@@ -1,17 +1,40 @@
-part of 'token_provider.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:dio/dio.dart';
+import 'package:ssi/ssi.dart';
+
+import 'token_provider.dart';
 
 /// CIS Token Provider class for generating tokens required to claim credentials.
 class CisTokenProvider extends TokenProvider {
   static final String _tokenEndpoint = Environment.fetchConsumerCisUrl();
+  static final int _cisTokenExpiration = 5 * 60; // 5 minutes
 
-  @override
-  Future<String> getToken(Uint8List seed) async {
-    final myDiD = _getDID(seed);
-    final header = _getHeader(_getKid(myDiD));
-    return await _getJwtToken(seed, header, _tokenEndpoint);
+  final DidSigner _signer;
+
+  /// Constructor for [CisTokenProvider] using the [signer] and optional [Dio] http client.
+
+  CisTokenProvider({
+    required DidSigner signer,
+    Dio? client,
+  }) : _signer = signer;
+
+  /// Method to retrieve CIS token
+  ///
+  /// Returns [Future] that resolves to the token as a [String].
+  Future<String> getToken() async {
+    final token = await getJwtToken(
+      signer: _signer,
+      expiration: _cisTokenExpiration, // 5 minutes
+      audience: _tokenEndpoint,
+    );
+    return token;
   }
 
-  Map<String, dynamic> _getHeader(String kid) {
-    return {'alg': 'ES256K', 'kid': kid, 'typ': 'openid4vci-proof+jwt'};
+  @override
+  Map<String, dynamic> getHeader({required String alg, required String kid}) {
+    return {
+      ...super.getHeader(alg: alg, kid: kid),
+      'typ': 'openid4vci-proof+jwt'
+    };
   }
 }

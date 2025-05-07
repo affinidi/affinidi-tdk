@@ -6,4 +6,9 @@ abstract interface class ConsumerAuthProviderInterface {
 
   /// Retrieves a credential issuance (CIS) token.
   Future<String> fetchCisToken();
+
+  ///Retrieves a delegated token to access shared profile
+  ///
+  /// - [profileDid] - DID of shared profile
+  Future<String> fetchDelegatedToken({required String profileDid});
 }

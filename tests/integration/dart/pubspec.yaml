@@ -39,3 +39,5 @@ dev_dependencies:
   convert: ^3.1.2
   uuid: ^4.5.1
   jwt_decode: ^0.3.1
+dependencies:
+  ssi: ^1.0.0-dev.22
