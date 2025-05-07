@@ -1,6 +1,6 @@
 name: affinidi_tdk_claim_verifiable_credential
 description: The Affinidi TDK - Claim Verifiable Credential package the libraries for claiming credentials.
-version: 1.0.0-dev.1
+version: 1.0.0-dev.2
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:

@@ -1,15 +1,15 @@
-name: vault_flutter_utils
-description: "A new Flutter package project."
-version: 1.0.0-dev.1
+name: affinidi_tdk_vault_flutter_utils
+description: 'Affinidi Tdk vault flutter utils'
+version: 1.0.0-dev.2
 
 environment:
   sdk: ^3.6.0
-  flutter: ">=1.17.0"
+  flutter: '>=1.17.0'
 
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_vault: 1.0.0-dev.1
+  affinidi_tdk_vault: 1.0.0-dev.2
   flutter:
     sdk: flutter
   flutter_secure_storage: ^9.2.4
