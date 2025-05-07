@@ -1,15 +1,31 @@
 name: affinidi_tdk_vault_storages
-description: Affinidi TDK vault storages
+description: The Affinidi TDK Vault Storage package provides the storage layer of the Affinidi TDK Vault integrated into your Dart applications.
 version: 1.0.0-dev.1
-# repository: https://github.com/my_org/my_repo
 
 environment:
   sdk: ^3.6.0
 
-# Add regular dependencies here.
+resolution: workspace
+
 dependencies:
-  # path: ^1.8.0
+  affinidi_tdk_common: ^1.3.0
+  affinidi_tdk_consumer_auth_provider: ^4.0.0
+  affinidi_tdk_cryptography: ^2.1.0
+  affinidi_tdk_iam_client: ^1.6.0
+  affinidi_tdk_vault: 1.0.0-dev.1
+  affinidi_tdk_vault_data_manager: 1.0.0-dev.1
+  affinidi_tdk_vault_data_manager_client: ^1.8.0
+  built_collection: ^5.1.1
+  convert: ^3.1.2
+  dio: ^5.8.0+1
+  meta: ^1.15.0
+  path: ^1.8.0
+  ssi: 1.0.0-dev.22
 
 dev_dependencies:
-  lints: ^5.0.0
+  build_runner: ^2.4.6
+  built_value: ^8.9.5
+  coverage: ^1.11.1
+  dart_flutter_team_lints: ^3.2.1
+  mocktail: ^1.0.4
   test: ^1.24.0
