@@ -10,6 +10,8 @@ doc/ConsumerAuthApi.md
 doc/ConsumerAuthTokenEndpointInput.md
 doc/ConsumerAuthTokenEndpointOutput.md
 doc/CorsConsumerAuthTokenEndpointOK.md
+doc/CorsGrantAccessVfsOK.md
+doc/CorsUpdateAccessVfsOK.md
 doc/CreateProjectInput.md
 doc/CreateProjectScopedTokenInput.md
 doc/CreateProjectScopedTokenOutput.md
@@ -82,6 +84,8 @@ lib/src/model/add_user_to_project_input.dart
 lib/src/model/consumer_auth_token_endpoint_input.dart
 lib/src/model/consumer_auth_token_endpoint_output.dart
 lib/src/model/cors_consumer_auth_token_endpoint_ok.dart
+lib/src/model/cors_grant_access_vfs_ok.dart
+lib/src/model/cors_update_access_vfs_ok.dart
 lib/src/model/create_project_input.dart
 lib/src/model/create_project_scoped_token_input.dart
 lib/src/model/create_project_scoped_token_output.dart
@@ -137,6 +141,8 @@ test/consumer_auth_api_test.dart
 test/consumer_auth_token_endpoint_input_test.dart
 test/consumer_auth_token_endpoint_output_test.dart
 test/cors_consumer_auth_token_endpoint_ok_test.dart
+test/cors_grant_access_vfs_ok_test.dart
+test/cors_update_access_vfs_ok_test.dart
 test/create_project_input_test.dart
 test/create_project_scoped_token_input_test.dart
 test/create_project_scoped_token_output_test.dart
