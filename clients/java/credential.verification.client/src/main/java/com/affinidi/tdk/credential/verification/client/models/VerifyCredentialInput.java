@@ -191,8 +191,14 @@ public class VerifyCredentialInput {
     if (getVerifiableCredentials() != null) {
       for (int i = 0; i < getVerifiableCredentials().size(); i++) {
         if (getVerifiableCredentials().get(i) != null) {
-          joiner.add(getVerifiableCredentials().get(i).toUrlQueryString(String.format("%sverifiableCredentials%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          try {
+            joiner.add(String.format("%sverifiableCredentials%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                URLEncoder.encode(String.valueOf(getVerifiableCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+          } catch (UnsupportedEncodingException e) {
+            // Should never happen, UTF-8 is always supported
+            throw new RuntimeException(e);
+          }
         }
       }
     }

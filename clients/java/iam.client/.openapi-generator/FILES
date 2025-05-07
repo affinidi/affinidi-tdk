@@ -11,6 +11,8 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/CorsGrantAccessVfsOK.md
+docs/CorsUpdateAccessVfsOK.md
 docs/CreateProjectInput.md
 docs/CreateProjectScopedTokenInput.md
 docs/CreateProjectScopedTokenOutput.md
@@ -97,6 +99,8 @@ src/main/java/com/affinidi/tdk/iam/client/models/AddUserToProjectInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/ConsumerAuthTokenEndpointInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/ConsumerAuthTokenEndpointOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CorsConsumerAuthTokenEndpointOK.java
+src/main/java/com/affinidi/tdk/iam/client/models/CorsGrantAccessVfsOK.java
+src/main/java/com/affinidi/tdk/iam/client/models/CorsUpdateAccessVfsOK.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutput.java
@@ -154,6 +158,8 @@ src/test/java/com/affinidi/tdk/iam/client/models/AddUserToProjectInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ConsumerAuthTokenEndpointInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ConsumerAuthTokenEndpointOutputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CorsConsumerAuthTokenEndpointOKTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/CorsGrantAccessVfsOKTest.java
+src/test/java/com/affinidi/tdk/iam/client/models/CorsUpdateAccessVfsOKTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInputTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutputTest.java

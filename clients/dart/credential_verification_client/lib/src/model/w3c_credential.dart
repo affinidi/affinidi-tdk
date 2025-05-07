@@ -7,9 +7,7 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,11 +16,8 @@ part 'w3c_credential.g.dart';
 /// W3cCredential
 ///
 /// Properties:
-/// * [atContext] 
 /// * [id] 
 /// * [type] 
-/// * [holder] 
-/// * [credentialSubject] 
 /// * [credentialStatus] 
 /// * [issuanceDate] 
 /// * [issuer] 
@@ -31,20 +26,11 @@ part 'w3c_credential.g.dart';
 /// * [credentialSchema] 
 @BuiltValue()
 abstract class W3cCredential implements Built<W3cCredential, W3cCredentialBuilder> {
-  @BuiltValueField(wireName: r'@context')
-  W3cPresentationContext get atContext;
-
   @BuiltValueField(wireName: r'id')
   String? get id;
 
   @BuiltValueField(wireName: r'type')
   BuiltList<String> get type;
-
-  @BuiltValueField(wireName: r'holder')
-  W3cCredentialHolder? get holder;
-
-  @BuiltValueField(wireName: r'credentialSubject')
-  W3cCredentialCredentialSubject get credentialSubject;
 
   @BuiltValueField(wireName: r'credentialStatus')
   W3cCredentialStatus? get credentialStatus;
@@ -87,11 +73,6 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
     W3cCredential object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'@context';
-    yield serializers.serialize(
-      object.atContext,
-      specifiedType: const FullType(W3cPresentationContext),
-    );
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -103,18 +84,6 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
     yield serializers.serialize(
       object.type,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    if (object.holder != null) {
-      yield r'holder';
-      yield serializers.serialize(
-        object.holder,
-        specifiedType: const FullType(W3cCredentialHolder),
-      );
-    }
-    yield r'credentialSubject';
-    yield serializers.serialize(
-      object.credentialSubject,
-      specifiedType: const FullType(W3cCredentialCredentialSubject),
     );
     if (object.credentialStatus != null) {
       yield r'credentialStatus';
@@ -175,13 +144,6 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'@context':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(W3cPresentationContext),
-          ) as W3cPresentationContext;
-          result.atContext.replace(valueDes);
-          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
@@ -196,20 +158,6 @@ class _$W3cCredentialSerializer implements PrimitiveSerializer<W3cCredential> {
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.type.replace(valueDes);
-          break;
-        case r'holder':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(W3cCredentialHolder),
-          ) as W3cCredentialHolder;
-          result.holder.replace(valueDes);
-          break;
-        case r'credentialSubject':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(W3cCredentialCredentialSubject),
-          ) as W3cCredentialCredentialSubject;
-          result.credentialSubject.replace(valueDes);
           break;
         case r'credentialStatus':
           final valueDes = serializers.deserialize(

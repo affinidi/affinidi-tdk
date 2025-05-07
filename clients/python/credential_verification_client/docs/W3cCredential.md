@@ -2,19 +2,16 @@
 
 ## Properties
 
-| Name                   | Type                                                                    | Description | Notes      |
-| ---------------------- | ----------------------------------------------------------------------- | ----------- | ---------- |
-| **context**            | [**W3cPresentationContext**](W3cPresentationContext.md)                 |             |
-| **id**                 | **str**                                                                 |             | [optional] |
-| **type**               | **List[str]**                                                           |             |
-| **holder**             | [**W3cCredentialHolder**](W3cCredentialHolder.md)                       |             | [optional] |
-| **credential_subject** | [**W3cCredentialCredentialSubject**](W3cCredentialCredentialSubject.md) |             |
-| **credential_status**  | [**W3cCredentialStatus**](W3cCredentialStatus.md)                       |             | [optional] |
-| **issuance_date**      | **str**                                                                 |             |
-| **issuer**             | **str**                                                                 |             |
-| **expiration_date**    | **str**                                                                 |             | [optional] |
-| **proof**              | [**W3cProof**](W3cProof.md)                                             |             |
-| **credential_schema**  | [**W3cCredentialCredentialSchema**](W3cCredentialCredentialSchema.md)   |             | [optional] |
+| Name                  | Type                                                                  | Description | Notes      |
+| --------------------- | --------------------------------------------------------------------- | ----------- | ---------- |
+| **id**                | **str**                                                               |             | [optional] |
+| **type**              | **List[str]**                                                         |             |
+| **credential_status** | [**W3cCredentialStatus**](W3cCredentialStatus.md)                     |             | [optional] |
+| **issuance_date**     | **str**                                                               |             |
+| **issuer**            | **str**                                                               |             |
+| **expiration_date**   | **str**                                                               |             | [optional] |
+| **proof**             | [**W3cProof**](W3cProof.md)                                           |             |
+| **credential_schema** | [**W3cCredentialCredentialSchema**](W3cCredentialCredentialSchema.md) |             | [optional] |
 
 ## Example
 

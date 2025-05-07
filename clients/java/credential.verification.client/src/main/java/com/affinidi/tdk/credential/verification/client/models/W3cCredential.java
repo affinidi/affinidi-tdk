@@ -16,10 +16,7 @@ package com.affinidi.tdk.credential.verification.client.models;
 import java.util.Objects;
 import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSchema;
-import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSubject;
-import com.affinidi.tdk.credential.verification.client.models.W3cCredentialHolder;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialStatus;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.affinidi.tdk.credential.verification.client.models.W3cProof;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,7 +25,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -43,11 +42,8 @@ import java.util.StringJoiner;
  * W3cCredential
  */
 @JsonPropertyOrder({
-  W3cCredential.JSON_PROPERTY_AT_CONTEXT,
   W3cCredential.JSON_PROPERTY_ID,
   W3cCredential.JSON_PROPERTY_TYPE,
-  W3cCredential.JSON_PROPERTY_HOLDER,
-  W3cCredential.JSON_PROPERTY_CREDENTIAL_SUBJECT,
   W3cCredential.JSON_PROPERTY_CREDENTIAL_STATUS,
   W3cCredential.JSON_PROPERTY_ISSUANCE_DATE,
   W3cCredential.JSON_PROPERTY_ISSUER,
@@ -56,21 +52,12 @@ import java.util.StringJoiner;
   W3cCredential.JSON_PROPERTY_CREDENTIAL_SCHEMA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class W3cCredential {
-  public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
-  private W3cPresentationContext atContext;
-
+public class W3cCredential extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_ID = "id";
   private JsonNullable<String> id = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private List<String> type = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_HOLDER = "holder";
-  private W3cCredentialHolder holder;
-
-  public static final String JSON_PROPERTY_CREDENTIAL_SUBJECT = "credentialSubject";
-  private W3cCredentialCredentialSubject credentialSubject;
 
   public static final String JSON_PROPERTY_CREDENTIAL_STATUS = "credentialStatus";
   private W3cCredentialStatus credentialStatus;
@@ -91,31 +78,7 @@ public class W3cCredential {
   private W3cCredentialCredentialSchema credentialSchema;
 
   public W3cCredential() {
-  }
 
-  public W3cCredential atContext(W3cPresentationContext atContext) {
-    
-    this.atContext = atContext;
-    return this;
-  }
-
-  /**
-   * Get atContext
-   * @return atContext
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public W3cPresentationContext getAtContext() {
-    return atContext;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAtContext(W3cPresentationContext atContext) {
-    this.atContext = atContext;
   }
 
   public W3cCredential id(String id) {
@@ -182,56 +145,6 @@ public class W3cCredential {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(List<String> type) {
     this.type = type;
-  }
-
-  public W3cCredential holder(W3cCredentialHolder holder) {
-    
-    this.holder = holder;
-    return this;
-  }
-
-  /**
-   * Get holder
-   * @return holder
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public W3cCredentialHolder getHolder() {
-    return holder;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHolder(W3cCredentialHolder holder) {
-    this.holder = holder;
-  }
-
-  public W3cCredential credentialSubject(W3cCredentialCredentialSubject credentialSubject) {
-    
-    this.credentialSubject = credentialSubject;
-    return this;
-  }
-
-  /**
-   * Get credentialSubject
-   * @return credentialSubject
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public W3cCredentialCredentialSubject getCredentialSubject() {
-    return credentialSubject;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialSubject(W3cCredentialCredentialSubject credentialSubject) {
-    this.credentialSubject = credentialSubject;
   }
 
   public W3cCredential credentialStatus(W3cCredentialStatus credentialStatus) {
@@ -401,17 +314,15 @@ public class W3cCredential {
       return false;
     }
     W3cCredential w3cCredential = (W3cCredential) o;
-    return Objects.equals(this.atContext, w3cCredential.atContext) &&
-        equalsNullable(this.id, w3cCredential.id) &&
+    return equalsNullable(this.id, w3cCredential.id) &&
         Objects.equals(this.type, w3cCredential.type) &&
-        Objects.equals(this.holder, w3cCredential.holder) &&
-        Objects.equals(this.credentialSubject, w3cCredential.credentialSubject) &&
         Objects.equals(this.credentialStatus, w3cCredential.credentialStatus) &&
         Objects.equals(this.issuanceDate, w3cCredential.issuanceDate) &&
         Objects.equals(this.issuer, w3cCredential.issuer) &&
         equalsNullable(this.expirationDate, w3cCredential.expirationDate) &&
         Objects.equals(this.proof, w3cCredential.proof) &&
-        Objects.equals(this.credentialSchema, w3cCredential.credentialSchema);
+        Objects.equals(this.credentialSchema, w3cCredential.credentialSchema) &&
+        super.equals(o);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -420,7 +331,7 @@ public class W3cCredential {
 
   @Override
   public int hashCode() {
-    return Objects.hash(atContext, hashCodeNullable(id), type, holder, credentialSubject, credentialStatus, issuanceDate, issuer, hashCodeNullable(expirationDate), proof, credentialSchema);
+    return Objects.hash(hashCodeNullable(id), type, credentialStatus, issuanceDate, issuer, hashCodeNullable(expirationDate), proof, credentialSchema, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -434,11 +345,9 @@ public class W3cCredential {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class W3cCredential {\n");
-    sb.append("    atContext: ").append(toIndentedString(atContext)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    holder: ").append(toIndentedString(holder)).append("\n");
-    sb.append("    credentialSubject: ").append(toIndentedString(credentialSubject)).append("\n");
     sb.append("    credentialStatus: ").append(toIndentedString(credentialStatus)).append("\n");
     sb.append("    issuanceDate: ").append(toIndentedString(issuanceDate)).append("\n");
     sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
@@ -492,11 +401,6 @@ public class W3cCredential {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `@context` to the URL query string
-    if (getAtContext() != null) {
-      joiner.add(getAtContext().toUrlQueryString(prefix + "@context" + suffix));
-    }
-
     // add `id` to the URL query string
     if (getId() != null) {
       try {
@@ -519,16 +423,6 @@ public class W3cCredential {
           throw new RuntimeException(e);
         }
       }
-    }
-
-    // add `holder` to the URL query string
-    if (getHolder() != null) {
-      joiner.add(getHolder().toUrlQueryString(prefix + "holder" + suffix));
-    }
-
-    // add `credentialSubject` to the URL query string
-    if (getCredentialSubject() != null) {
-      joiner.add(getCredentialSubject().toUrlQueryString(prefix + "credentialSubject" + suffix));
     }
 
     // add `credentialStatus` to the URL query string

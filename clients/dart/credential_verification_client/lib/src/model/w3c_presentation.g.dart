@@ -8,13 +8,9 @@ part of 'w3c_presentation.dart';
 
 class _$W3cPresentation extends W3cPresentation {
   @override
-  final W3cPresentationContext atContext;
-  @override
   final String? id;
   @override
   final BuiltList<String> type;
-  @override
-  final JsonObject holder;
   @override
   final BuiltList<W3cCredential> verifiableCredential;
   @override
@@ -26,18 +22,13 @@ class _$W3cPresentation extends W3cPresentation {
       (new W3cPresentationBuilder()..update(updates))._build();
 
   _$W3cPresentation._(
-      {required this.atContext,
-      this.id,
+      {this.id,
       required this.type,
-      required this.holder,
       required this.verifiableCredential,
       this.presentationSubmission,
       required this.proof})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        atContext, r'W3cPresentation', 'atContext');
     BuiltValueNullFieldError.checkNotNull(type, r'W3cPresentation', 'type');
-    BuiltValueNullFieldError.checkNotNull(holder, r'W3cPresentation', 'holder');
     BuiltValueNullFieldError.checkNotNull(
         verifiableCredential, r'W3cPresentation', 'verifiableCredential');
     BuiltValueNullFieldError.checkNotNull(proof, r'W3cPresentation', 'proof');
@@ -55,10 +46,8 @@ class _$W3cPresentation extends W3cPresentation {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is W3cPresentation &&
-        atContext == other.atContext &&
         id == other.id &&
         type == other.type &&
-        holder == other.holder &&
         verifiableCredential == other.verifiableCredential &&
         presentationSubmission == other.presentationSubmission &&
         proof == other.proof;
@@ -67,10 +56,8 @@ class _$W3cPresentation extends W3cPresentation {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, atContext.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
-    _$hash = $jc(_$hash, holder.hashCode);
     _$hash = $jc(_$hash, verifiableCredential.hashCode);
     _$hash = $jc(_$hash, presentationSubmission.hashCode);
     _$hash = $jc(_$hash, proof.hashCode);
@@ -81,10 +68,8 @@ class _$W3cPresentation extends W3cPresentation {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'W3cPresentation')
-          ..add('atContext', atContext)
           ..add('id', id)
           ..add('type', type)
-          ..add('holder', holder)
           ..add('verifiableCredential', verifiableCredential)
           ..add('presentationSubmission', presentationSubmission)
           ..add('proof', proof))
@@ -96,12 +81,6 @@ class W3cPresentationBuilder
     implements Builder<W3cPresentation, W3cPresentationBuilder> {
   _$W3cPresentation? _$v;
 
-  W3cPresentationContextBuilder? _atContext;
-  W3cPresentationContextBuilder get atContext =>
-      _$this._atContext ??= new W3cPresentationContextBuilder();
-  set atContext(W3cPresentationContextBuilder? atContext) =>
-      _$this._atContext = atContext;
-
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
@@ -109,10 +88,6 @@ class W3cPresentationBuilder
   ListBuilder<String>? _type;
   ListBuilder<String> get type => _$this._type ??= new ListBuilder<String>();
   set type(ListBuilder<String>? type) => _$this._type = type;
-
-  JsonObject? _holder;
-  JsonObject? get holder => _$this._holder;
-  set holder(JsonObject? holder) => _$this._holder = holder;
 
   ListBuilder<W3cCredential>? _verifiableCredential;
   ListBuilder<W3cCredential> get verifiableCredential =>
@@ -138,10 +113,8 @@ class W3cPresentationBuilder
   W3cPresentationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _atContext = $v.atContext.toBuilder();
       _id = $v.id;
       _type = $v.type.toBuilder();
-      _holder = $v.holder;
       _verifiableCredential = $v.verifiableCredential.toBuilder();
       _presentationSubmission = $v.presentationSubmission?.toBuilder();
       _proof = $v.proof;
@@ -169,11 +142,8 @@ class W3cPresentationBuilder
     try {
       _$result = _$v ??
           new _$W3cPresentation._(
-            atContext: atContext.build(),
             id: id,
             type: type.build(),
-            holder: BuiltValueNullFieldError.checkNotNull(
-                holder, r'W3cPresentation', 'holder'),
             verifiableCredential: verifiableCredential.build(),
             presentationSubmission: _presentationSubmission?.build(),
             proof: BuiltValueNullFieldError.checkNotNull(
@@ -182,12 +152,8 @@ class W3cPresentationBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'atContext';
-        atContext.build();
-
         _$failedField = 'type';
         type.build();
-
         _$failedField = 'verifiableCredential';
         verifiableCredential.build();
         _$failedField = 'presentationSubmission';

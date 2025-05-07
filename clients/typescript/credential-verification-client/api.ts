@@ -1042,12 +1042,8 @@ export interface VerifyPresentationOutputErrors {}
  * @interface W3cCredential
  */
 export interface W3cCredential {
-  /**
-   *
-   * @type {W3cPresentationContext}
-   * @memberof W3cCredential
-   */
-  '@context': W3cPresentationContext
+  [key: string]: any
+
   /**
    *
    * @type {string}
@@ -1060,18 +1056,6 @@ export interface W3cCredential {
    * @memberof W3cCredential
    */
   type: Array<string>
-  /**
-   *
-   * @type {W3cCredentialHolder}
-   * @memberof W3cCredential
-   */
-  holder?: W3cCredentialHolder
-  /**
-   *
-   * @type {W3cCredentialCredentialSubject}
-   * @memberof W3cCredential
-   */
-  credentialSubject: W3cCredentialCredentialSubject
   /**
    *
    * @type {W3cCredentialStatus}
@@ -1129,18 +1113,6 @@ export interface W3cCredentialCredentialSchema {
   type?: string
 }
 /**
- * @type W3cCredentialCredentialSubject
- * @export
- */
-export type W3cCredentialCredentialSubject = Array<string> | object
-
-/**
- * @type W3cCredentialHolder
- * @export
- */
-export type W3cCredentialHolder = object | string
-
-/**
  *
  * @export
  * @interface W3cCredentialStatus
@@ -1177,12 +1149,8 @@ export interface W3cCredentialStatus {
  * @interface W3cPresentation
  */
 export interface W3cPresentation {
-  /**
-   *
-   * @type {W3cPresentationContext}
-   * @memberof W3cPresentation
-   */
-  '@context': W3cPresentationContext
+  [key: string]: any
+
   /**
    *
    * @type {string}
@@ -1195,12 +1163,6 @@ export interface W3cPresentation {
    * @memberof W3cPresentation
    */
   type: Array<string>
-  /**
-   *
-   * @type {object}
-   * @memberof W3cPresentation
-   */
-  holder: object
   /**
    *
    * @type {Array<W3cCredential>}
@@ -1220,21 +1182,6 @@ export interface W3cPresentation {
    */
   proof: object
 }
-/**
- * @type W3cPresentationContext
- * @export
- */
-export type W3cPresentationContext =
-  | Array<W3cPresentationContextOneOfInner>
-  | string
-  | { [key: string]: any }
-
-/**
- * @type W3cPresentationContextOneOfInner
- * @export
- */
-export type W3cPresentationContextOneOfInner = string | { [key: string]: any }
-
 /**
  *
  * @export

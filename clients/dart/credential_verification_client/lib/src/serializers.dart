@@ -48,12 +48,8 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/verify_pre
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output_errors.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context_one_of_inner.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 
 part 'serializers.g.dart';
@@ -93,12 +89,8 @@ part 'serializers.g.dart';
   VerifyPresentationOutputErrors,
   W3cCredential,
   W3cCredentialCredentialSchema,
-  W3cCredentialCredentialSubject,
-  W3cCredentialHolder,
   W3cCredentialStatus,
   W3cPresentation,
-  W3cPresentationContext,
-  W3cPresentationContextOneOfInner,
   W3cProof,
 ])
 Serializers serializers = (_$serializers.toBuilder()
