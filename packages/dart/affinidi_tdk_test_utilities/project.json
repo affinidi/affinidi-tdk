@@ -16,7 +16,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart test --coverage=../../coverage"
+        "command": "dart test --coverage=../../../coverage"
       }
     },
     "build": {
