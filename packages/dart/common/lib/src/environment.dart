@@ -1,3 +1,5 @@
+import 'package:affinidi_tdk_common/src/logger/log_level.dart';
+
 /// Enum to represent different types of environments.
 enum EnvironmentType {
   /// Local environment.
@@ -16,7 +18,10 @@ enum EnvironmentType {
 
 /// Enum to represent supported regions and their codes.
 enum ElementsRegion {
+  /// Asia Pacific (Singapore) region
   apSoutheast1('ap-southeast-1', 'apse1'),
+
+  /// Asia Pacific (Mumbai) region
   apSouth1('ap-south-1', 'aps1');
 
   /// Full AWS region name (e.g., `ap-southeast-1`)
@@ -84,8 +89,27 @@ class Environment {
 
   static const _defaultRegion = ElementsRegion.apSoutheast1;
 
+  static final Map<String, LogLevel> _levels = {
+    'ALL': LogLevel.all,
+    'FINEST': LogLevel.finest,
+    'FINER': LogLevel.finer,
+    'FINE': LogLevel.fine,
+    'CONFIG': LogLevel.config,
+    'INFO': LogLevel.info,
+    'WARNING': LogLevel.warning,
+    'SEVERE': LogLevel.severe,
+    'SHOUT': LogLevel.shout,
+    'OFF': LogLevel.off,
+  };
+
+  /// Gets the current log level from the environment variable 'AFFINIDI_TDK_LOG_LEVEL'.
+  LogLevel get logLevel =>
+      _levels[const String.fromEnvironment('AFFINIDI_TDK_LOG_LEVEL')] ??
+      LogLevel.off;
+
   /// The list of available environments with their respective configurations.
-  static Environment getEnvironmentConfig(EnvironmentType envType, [ElementsRegion region = _defaultRegion]) {
+  static Environment getEnvironmentConfig(EnvironmentType envType,
+      [ElementsRegion region = _defaultRegion]) {
     final _region = region.regionCode;
 
     switch (envType) {
@@ -94,42 +118,42 @@ class Environment {
           environmentName: envType.value,
           apiGwUrl: 'https://$_region.dev.api.affinidi.io',
           elementsAuthTokenUrl:
-            'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'http://localhost:3000',
           webVaultUrl: 'http://localhost:3001',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-            'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
+              'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.dev:
         return Environment._(
           environmentName: envType.value,
           apiGwUrl: 'https://$_region.dev.api.affinidi.io',
           elementsAuthTokenUrl:
-            'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
           webVaultUrl: 'https://vault.dev.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-            'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
+              'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.prod:
         return Environment._(
           environmentName: envType.value,
           apiGwUrl: 'https://$_region.api.affinidi.io',
           elementsAuthTokenUrl:
-            'https://$_region.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$_region.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'https://api.vault.affinidi.com',
           webVaultUrl: 'https://vault.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-            'https://$_region.api.affinidi.io/vfs/v1/accounts',
+              'https://$_region.api.affinidi.io/vfs/v1/accounts',
         );
     }
   }
@@ -141,7 +165,8 @@ class Environment {
   }) {
     final resolvedEnvType = envType ??
         EnvironmentType.values.firstWhere(
-          (e) => e.value == const String.fromEnvironment(enviromentVariableName),
+          (e) =>
+              e.value == const String.fromEnvironment(enviromentVariableName),
           orElse: () => EnvironmentType.prod,
         );
 
