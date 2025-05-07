@@ -1,1 +1,1 @@
-Pacakge is Coming soon
+Package is coming soon
