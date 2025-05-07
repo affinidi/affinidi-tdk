@@ -72,3 +72,12 @@ For a complete example check [share_credential_example.dart](./example/share_cre
 ```
 
 For a complete example check [environment_example.dart](./example/environment_example.dart)
+
+### Logging
+
+```dart
+  import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+  final logger = Logger.instance;
+  logger.log(LogLevel.warning, "This is a warning");
+  logger.warning("This is also a warning");
+```

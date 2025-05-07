@@ -1,9 +1,8 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 void main() {
-  final Environment local = Environment.environments[EnvironmentType.local]!;
-  final Environment development =
-      Environment.environments[EnvironmentType.dev]!;
+  final Environment local = Environment.getEnvironmentConfig(EnvironmentType.local);
+  final Environment development = Environment.getEnvironmentConfig(EnvironmentType.dev);
 
   final localApiGwUrl = Environment.fetchApiGwUrl(local);
   final devApiGwUrl = Environment.fetchApiGwUrl(development);
