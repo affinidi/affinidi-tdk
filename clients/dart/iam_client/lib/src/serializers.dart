@@ -19,6 +19,8 @@ import 'package:affinidi_tdk_iam_client/src/model/add_user_to_project_input.dart
 import 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/cors_consumer_auth_token_endpoint_ok.dart';
+import 'package:affinidi_tdk_iam_client/src/model/cors_grant_access_vfs_ok.dart';
+import 'package:affinidi_tdk_iam_client/src/model/cors_update_access_vfs_ok.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
@@ -72,6 +74,8 @@ part 'serializers.g.dart';
   ConsumerAuthTokenEndpointInput,
   ConsumerAuthTokenEndpointOutput,
   CorsConsumerAuthTokenEndpointOK,
+  CorsGrantAccessVfsOK,
+  CorsUpdateAccessVfsOK,
   CreateProjectInput,
   CreateProjectScopedTokenInput,
   CreateProjectScopedTokenOutput,

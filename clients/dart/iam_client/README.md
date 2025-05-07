@@ -112,6 +112,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ConsumerAuthTokenEndpointInput](doc/ConsumerAuthTokenEndpointInput.md)
 - [ConsumerAuthTokenEndpointOutput](doc/ConsumerAuthTokenEndpointOutput.md)
 - [CorsConsumerAuthTokenEndpointOK](doc/CorsConsumerAuthTokenEndpointOK.md)
+- [CorsGrantAccessVfsOK](doc/CorsGrantAccessVfsOK.md)
+- [CorsUpdateAccessVfsOK](doc/CorsUpdateAccessVfsOK.md)
 - [CreateProjectInput](doc/CreateProjectInput.md)
 - [CreateProjectScopedTokenInput](doc/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](doc/CreateProjectScopedTokenOutput.md)
