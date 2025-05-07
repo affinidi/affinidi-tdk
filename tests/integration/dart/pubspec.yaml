@@ -3,8 +3,6 @@ name: dart_tdk_integration_tests
 environment:
   sdk: ^3.6.0
 
-resolution: workspace
-
 dev_dependencies:
   affinidi_tdk_common:
     path: ../../../packages/dart/common
