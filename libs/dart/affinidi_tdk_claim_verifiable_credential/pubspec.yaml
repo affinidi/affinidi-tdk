@@ -1,0 +1,15 @@
+name: affinidi_tdk_claim_verifiable_credential
+description: Affinidi TDK claim verifable credential.
+version: 1.0.0-dev.1
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.7.2
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.24.0
