@@ -5,14 +5,23 @@
   "projectType": "library",
   "private": false,
   "targets": {
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "dart pub get"
+      }
+    },
     "lint": {
       "executor": "nx:run-commands",
+      "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
         "command": "dart format -l 120 --set-exit-if-changed . && dart analyze --fatal-infos"
       }
     },
     "test": {
+      "dependsOn": ["prepare"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
