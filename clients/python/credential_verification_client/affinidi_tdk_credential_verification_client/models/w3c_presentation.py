@@ -23,20 +23,18 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_credential_verification_client.models.presentation_submission import PresentationSubmission
 from affinidi_tdk_credential_verification_client.models.w3c_credential import W3cCredential
-from affinidi_tdk_credential_verification_client.models.w3c_presentation_context import W3cPresentationContext
 
 class W3cPresentation(BaseModel):
     """
     W3cPresentation
     """
-    context: W3cPresentationContext = Field(default=..., alias="@context")
     id: Optional[StrictStr] = None
     type: conlist(StrictStr) = Field(...)
-    holder: Dict[str, Any] = Field(...)
     verifiable_credential: conlist(W3cCredential) = Field(default=..., alias="verifiableCredential")
     presentation_submission: Optional[PresentationSubmission] = None
     proof: Dict[str, Any] = Field(...)
-    __properties = ["@context", "id", "type", "holder", "verifiableCredential", "presentation_submission", "proof"]
+    additional_properties: Dict[str, Any] = {}
+    __properties = ["id", "type", "verifiableCredential", "presentation_submission", "proof"]
 
     class Config:
         """Pydantic configuration"""
@@ -60,11 +58,9 @@ class W3cPresentation(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
+                            "additional_properties"
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of context
-        if self.context:
-            _dict['@context'] = self.context.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in verifiable_credential (list)
         _items = []
         if self.verifiable_credential:
@@ -75,6 +71,11 @@ class W3cPresentation(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of presentation_submission
         if self.presentation_submission:
             _dict['presentation_submission'] = self.presentation_submission.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if id (nullable) is None
         # and __fields_set__ contains the field
         if self.id is None and "id" in self.__fields_set__:
@@ -92,14 +93,17 @@ class W3cPresentation(BaseModel):
             return W3cPresentation.parse_obj(obj)
 
         _obj = W3cPresentation.parse_obj({
-            "context": W3cPresentationContext.from_dict(obj.get("@context")) if obj.get("@context") is not None else None,
             "id": obj.get("id"),
             "type": obj.get("type"),
-            "holder": obj.get("holder"),
             "verifiable_credential": [W3cCredential.from_dict(_item) for _item in obj.get("verifiableCredential")] if obj.get("verifiableCredential") is not None else None,
             "presentation_submission": PresentationSubmission.from_dict(obj.get("presentation_submission")) if obj.get("presentation_submission") is not None else None,
             "proof": obj.get("proof")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

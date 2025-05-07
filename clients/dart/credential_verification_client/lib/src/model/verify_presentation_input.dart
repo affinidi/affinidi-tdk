@@ -121,14 +121,14 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
             value,
             specifiedType: const FullType(W3cPresentation),
           ) as W3cPresentation;
-          result.verifiablePresentation.replace(valueDes);
+          result.verifiablePresentation = valueDes;
           break;
         case r'signedPresentation':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(W3cPresentation),
           ) as W3cPresentation;
-          result.signedPresentation.replace(valueDes);
+          result.signedPresentation = valueDes;
           break;
         case r'presentationDefinition':
           final valueDes = serializers.deserialize(

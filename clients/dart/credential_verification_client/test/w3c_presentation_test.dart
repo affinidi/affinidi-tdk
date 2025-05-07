@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(W3cPresentation, () {
-    // W3cPresentationContext atContext
-    test('to test the property `atContext`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
       // TODO
@@ -19,11 +14,6 @@ void main() {
 
     // BuiltList<String> type
     test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // JsonObject holder
-    test('to test the property `holder`', () async {
       // TODO
     });
 
