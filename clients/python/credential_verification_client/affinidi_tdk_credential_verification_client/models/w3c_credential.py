@@ -22,28 +22,23 @@ import json
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema import W3cCredentialCredentialSchema
-from affinidi_tdk_credential_verification_client.models.w3c_credential_credential_subject import W3cCredentialCredentialSubject
-from affinidi_tdk_credential_verification_client.models.w3c_credential_holder import W3cCredentialHolder
 from affinidi_tdk_credential_verification_client.models.w3c_credential_status import W3cCredentialStatus
-from affinidi_tdk_credential_verification_client.models.w3c_presentation_context import W3cPresentationContext
 from affinidi_tdk_credential_verification_client.models.w3c_proof import W3cProof
 
 class W3cCredential(BaseModel):
     """
     W3cCredential
     """
-    context: W3cPresentationContext = Field(default=..., alias="@context")
     id: Optional[StrictStr] = None
     type: conlist(StrictStr) = Field(...)
-    holder: Optional[W3cCredentialHolder] = None
-    credential_subject: W3cCredentialCredentialSubject = Field(default=..., alias="credentialSubject")
     credential_status: Optional[W3cCredentialStatus] = Field(default=None, alias="credentialStatus")
     issuance_date: StrictStr = Field(default=..., alias="issuanceDate")
     issuer: StrictStr = Field(...)
     expiration_date: Optional[StrictStr] = Field(default=None, alias="expirationDate")
     proof: W3cProof = Field(...)
     credential_schema: Optional[W3cCredentialCredentialSchema] = Field(default=None, alias="credentialSchema")
-    __properties = ["@context", "id", "type", "holder", "credentialSubject", "credentialStatus", "issuanceDate", "issuer", "expirationDate", "proof", "credentialSchema"]
+    additional_properties: Dict[str, Any] = {}
+    __properties = ["id", "type", "credentialStatus", "issuanceDate", "issuer", "expirationDate", "proof", "credentialSchema"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,17 +62,9 @@ class W3cCredential(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
+                            "additional_properties"
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of context
-        if self.context:
-            _dict['@context'] = self.context.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of holder
-        if self.holder:
-            _dict['holder'] = self.holder.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of credential_subject
-        if self.credential_subject:
-            _dict['credentialSubject'] = self.credential_subject.to_dict()
         # override the default output from pydantic by calling `to_dict()` of credential_status
         if self.credential_status:
             _dict['credentialStatus'] = self.credential_status.to_dict()
@@ -87,6 +74,11 @@ class W3cCredential(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of credential_schema
         if self.credential_schema:
             _dict['credentialSchema'] = self.credential_schema.to_dict()
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         # set to None if id (nullable) is None
         # and __fields_set__ contains the field
         if self.id is None and "id" in self.__fields_set__:
@@ -109,11 +101,8 @@ class W3cCredential(BaseModel):
             return W3cCredential.parse_obj(obj)
 
         _obj = W3cCredential.parse_obj({
-            "context": W3cPresentationContext.from_dict(obj.get("@context")) if obj.get("@context") is not None else None,
             "id": obj.get("id"),
             "type": obj.get("type"),
-            "holder": W3cCredentialHolder.from_dict(obj.get("holder")) if obj.get("holder") is not None else None,
-            "credential_subject": W3cCredentialCredentialSubject.from_dict(obj.get("credentialSubject")) if obj.get("credentialSubject") is not None else None,
             "credential_status": W3cCredentialStatus.from_dict(obj.get("credentialStatus")) if obj.get("credentialStatus") is not None else None,
             "issuance_date": obj.get("issuanceDate"),
             "issuer": obj.get("issuer"),
@@ -121,6 +110,11 @@ class W3cCredential(BaseModel):
             "proof": W3cProof.from_dict(obj.get("proof")) if obj.get("proof") is not None else None,
             "credential_schema": W3cCredentialCredentialSchema.from_dict(obj.get("credentialSchema")) if obj.get("credentialSchema") is not None else None
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

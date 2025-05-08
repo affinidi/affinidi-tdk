@@ -22,6 +22,8 @@ affinidi_tdk_iam_client/models/add_user_to_project_input.py
 affinidi_tdk_iam_client/models/consumer_auth_token_endpoint_input.py
 affinidi_tdk_iam_client/models/consumer_auth_token_endpoint_output.py
 affinidi_tdk_iam_client/models/cors_consumer_auth_token_endpoint_ok.py
+affinidi_tdk_iam_client/models/cors_grant_access_vfs_ok.py
+affinidi_tdk_iam_client/models/cors_update_access_vfs_ok.py
 affinidi_tdk_iam_client/models/create_project_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_input.py
 affinidi_tdk_iam_client/models/create_project_scoped_token_output.py
@@ -75,6 +77,8 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/CorsGrantAccessVfsOK.md
+docs/CorsUpdateAccessVfsOK.md
 docs/CreateProjectInput.md
 docs/CreateProjectScopedTokenInput.md
 docs/CreateProjectScopedTokenOutput.md
@@ -139,6 +143,8 @@ test/test_consumer_auth_api.py
 test/test_consumer_auth_token_endpoint_input.py
 test/test_consumer_auth_token_endpoint_output.py
 test/test_cors_consumer_auth_token_endpoint_ok.py
+test/test_cors_grant_access_vfs_ok.py
+test/test_cors_update_access_vfs_ok.py
 test/test_create_project_input.py
 test/test_create_project_scoped_token_input.py
 test/test_create_project_scoped_token_output.py

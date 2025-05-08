@@ -15,7 +15,6 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.PresentationSubmission;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -23,7 +22,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -47,14 +48,6 @@ class W3cPresentationTest {
     }
 
     /**
-     * Test the property 'atContext'
-     */
-    @Test
-    void atContextTest() {
-        // TODO: test atContext
-    }
-
-    /**
      * Test the property 'id'
      */
     @Test
@@ -68,14 +61,6 @@ class W3cPresentationTest {
     @Test
     void typeTest() {
         // TODO: test type
-    }
-
-    /**
-     * Test the property 'holder'
-     */
-    @Test
-    void holderTest() {
-        // TODO: test holder
     }
 
     /**

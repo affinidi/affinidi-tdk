@@ -35,10 +35,6 @@ Models/VerifyPresentationOutput_errors.md
 Models/W3cCredential.md
 Models/W3cCredentialStatus.md
 Models/W3cCredential_credentialSchema.md
-Models/W3cCredential_credentialSubject.md
-Models/W3cCredential_holder.md
 Models/W3cPresentation.md
-Models/W3cPresentation__context.md
-Models/W3cPresentation__context_oneOf_inner.md
 Models/W3cProof.md
 README.md

@@ -156,12 +156,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyPresentationOutputErrors](docs/VerifyPresentationOutputErrors.md)
 - [W3cCredential](docs/W3cCredential.md)
 - [W3cCredentialCredentialSchema](docs/W3cCredentialCredentialSchema.md)
-- [W3cCredentialCredentialSubject](docs/W3cCredentialCredentialSubject.md)
-- [W3cCredentialHolder](docs/W3cCredentialHolder.md)
 - [W3cCredentialStatus](docs/W3cCredentialStatus.md)
 - [W3cPresentation](docs/W3cPresentation.md)
-- [W3cPresentationContext](docs/W3cPresentationContext.md)
-- [W3cPresentationContextOneOfInner](docs/W3cPresentationContextOneOfInner.md)
 - [W3cProof](docs/W3cProof.md)
 
 <a id="documentation-for-authorization"></a>

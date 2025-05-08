@@ -8,15 +8,9 @@ part of 'w3c_credential.dart';
 
 class _$W3cCredential extends W3cCredential {
   @override
-  final W3cPresentationContext atContext;
-  @override
   final String? id;
   @override
   final BuiltList<String> type;
-  @override
-  final W3cCredentialHolder? holder;
-  @override
-  final W3cCredentialCredentialSubject credentialSubject;
   @override
   final W3cCredentialStatus? credentialStatus;
   @override
@@ -34,11 +28,8 @@ class _$W3cCredential extends W3cCredential {
       (new W3cCredentialBuilder()..update(updates))._build();
 
   _$W3cCredential._(
-      {required this.atContext,
-      this.id,
+      {this.id,
       required this.type,
-      this.holder,
-      required this.credentialSubject,
       this.credentialStatus,
       required this.issuanceDate,
       required this.issuer,
@@ -46,11 +37,7 @@ class _$W3cCredential extends W3cCredential {
       required this.proof,
       this.credentialSchema})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        atContext, r'W3cCredential', 'atContext');
     BuiltValueNullFieldError.checkNotNull(type, r'W3cCredential', 'type');
-    BuiltValueNullFieldError.checkNotNull(
-        credentialSubject, r'W3cCredential', 'credentialSubject');
     BuiltValueNullFieldError.checkNotNull(
         issuanceDate, r'W3cCredential', 'issuanceDate');
     BuiltValueNullFieldError.checkNotNull(issuer, r'W3cCredential', 'issuer');
@@ -68,11 +55,8 @@ class _$W3cCredential extends W3cCredential {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is W3cCredential &&
-        atContext == other.atContext &&
         id == other.id &&
         type == other.type &&
-        holder == other.holder &&
-        credentialSubject == other.credentialSubject &&
         credentialStatus == other.credentialStatus &&
         issuanceDate == other.issuanceDate &&
         issuer == other.issuer &&
@@ -84,11 +68,8 @@ class _$W3cCredential extends W3cCredential {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, atContext.hashCode);
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
-    _$hash = $jc(_$hash, holder.hashCode);
-    _$hash = $jc(_$hash, credentialSubject.hashCode);
     _$hash = $jc(_$hash, credentialStatus.hashCode);
     _$hash = $jc(_$hash, issuanceDate.hashCode);
     _$hash = $jc(_$hash, issuer.hashCode);
@@ -102,11 +83,8 @@ class _$W3cCredential extends W3cCredential {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'W3cCredential')
-          ..add('atContext', atContext)
           ..add('id', id)
           ..add('type', type)
-          ..add('holder', holder)
-          ..add('credentialSubject', credentialSubject)
           ..add('credentialStatus', credentialStatus)
           ..add('issuanceDate', issuanceDate)
           ..add('issuer', issuer)
@@ -121,12 +99,6 @@ class W3cCredentialBuilder
     implements Builder<W3cCredential, W3cCredentialBuilder> {
   _$W3cCredential? _$v;
 
-  W3cPresentationContextBuilder? _atContext;
-  W3cPresentationContextBuilder get atContext =>
-      _$this._atContext ??= new W3cPresentationContextBuilder();
-  set atContext(W3cPresentationContextBuilder? atContext) =>
-      _$this._atContext = atContext;
-
   String? _id;
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
@@ -134,18 +106,6 @@ class W3cCredentialBuilder
   ListBuilder<String>? _type;
   ListBuilder<String> get type => _$this._type ??= new ListBuilder<String>();
   set type(ListBuilder<String>? type) => _$this._type = type;
-
-  W3cCredentialHolderBuilder? _holder;
-  W3cCredentialHolderBuilder get holder =>
-      _$this._holder ??= new W3cCredentialHolderBuilder();
-  set holder(W3cCredentialHolderBuilder? holder) => _$this._holder = holder;
-
-  W3cCredentialCredentialSubjectBuilder? _credentialSubject;
-  W3cCredentialCredentialSubjectBuilder get credentialSubject =>
-      _$this._credentialSubject ??= new W3cCredentialCredentialSubjectBuilder();
-  set credentialSubject(
-          W3cCredentialCredentialSubjectBuilder? credentialSubject) =>
-      _$this._credentialSubject = credentialSubject;
 
   W3cCredentialStatusBuilder? _credentialStatus;
   W3cCredentialStatusBuilder get credentialStatus =>
@@ -184,11 +144,8 @@ class W3cCredentialBuilder
   W3cCredentialBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _atContext = $v.atContext.toBuilder();
       _id = $v.id;
       _type = $v.type.toBuilder();
-      _holder = $v.holder?.toBuilder();
-      _credentialSubject = $v.credentialSubject.toBuilder();
       _credentialStatus = $v.credentialStatus?.toBuilder();
       _issuanceDate = $v.issuanceDate;
       _issuer = $v.issuer;
@@ -219,11 +176,8 @@ class W3cCredentialBuilder
     try {
       _$result = _$v ??
           new _$W3cCredential._(
-            atContext: atContext.build(),
             id: id,
             type: type.build(),
-            holder: _holder?.build(),
-            credentialSubject: credentialSubject.build(),
             credentialStatus: _credentialStatus?.build(),
             issuanceDate: BuiltValueNullFieldError.checkNotNull(
                 issuanceDate, r'W3cCredential', 'issuanceDate'),
@@ -236,15 +190,8 @@ class W3cCredentialBuilder
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'atContext';
-        atContext.build();
-
         _$failedField = 'type';
         type.build();
-        _$failedField = 'holder';
-        _holder?.build();
-        _$failedField = 'credentialSubject';
-        credentialSubject.build();
         _$failedField = 'credentialStatus';
         _credentialStatus?.build();
 

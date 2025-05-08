@@ -4,10 +4,8 @@
 
 | Name                        | Type                                                    | Description | Notes      |
 | --------------------------- | ------------------------------------------------------- | ----------- | ---------- |
-| **context**                 | [**W3cPresentationContext**](W3cPresentationContext.md) |             |
 | **id**                      | **str**                                                 |             | [optional] |
 | **type**                    | **List[str]**                                           |             |
-| **holder**                  | **object**                                              |             |
 | **verifiable_credential**   | [**List[W3cCredential]**](W3cCredential.md)             |             |
 | **presentation_submission** | [**PresentationSubmission**](PresentationSubmission.md) |             | [optional] |
 | **proof**                   | **object**                                              |             |

@@ -37,38 +37,12 @@ class TestW3cPresentation(unittest.TestCase):
         model = W3cPresentation()  # noqa: E501
         if include_optional:
             return W3cPresentation(
-                context = None,
                 id = '',
                 type = [
                     ''
                     ],
-                holder = affinidi_tdk_credential_verification_client.models.holder.holder(),
                 verifiable_credential = [
-                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential(
-                        @context = null, 
-                        id = '', 
-                        type = [
-                            ''
-                            ], 
-                        holder = null, 
-                        credential_subject = null, 
-                        credential_status = affinidi_tdk_credential_verification_client.models.w3c_credential_status.W3cCredentialStatus(
-                            id = '', 
-                            type = '', 
-                            revocation_list_index = '', 
-                            revocation_list_credential = '', ), 
-                        issuance_date = '', 
-                        issuer = '', 
-                        expiration_date = '', 
-                        proof = affinidi_tdk_credential_verification_client.models.w3c_proof.W3cProof(
-                            created = '', 
-                            verification_method = '', 
-                            proof_purpose = '', 
-                            jws = '', 
-                            proof_value = '', 
-                            nonce = '', ), 
-                        credential_schema = affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema.W3cCredential_credentialSchema(
-                            id = '', ), )
+                    { }
                     ],
                 presentation_submission = affinidi_tdk_credential_verification_client.models.presentation_submission.PresentationSubmission(
                     id = '', 
@@ -83,43 +57,17 @@ class TestW3cPresentation(unittest.TestCase):
                                 format = '', ), 
                             format = '', )
                         ], ),
-                proof = affinidi_tdk_credential_verification_client.models.proof.proof()
+                proof = None
             )
         else:
             return W3cPresentation(
-                context = None,
                 type = [
                     ''
                     ],
-                holder = affinidi_tdk_credential_verification_client.models.holder.holder(),
                 verifiable_credential = [
-                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential(
-                        @context = null, 
-                        id = '', 
-                        type = [
-                            ''
-                            ], 
-                        holder = null, 
-                        credential_subject = null, 
-                        credential_status = affinidi_tdk_credential_verification_client.models.w3c_credential_status.W3cCredentialStatus(
-                            id = '', 
-                            type = '', 
-                            revocation_list_index = '', 
-                            revocation_list_credential = '', ), 
-                        issuance_date = '', 
-                        issuer = '', 
-                        expiration_date = '', 
-                        proof = affinidi_tdk_credential_verification_client.models.w3c_proof.W3cProof(
-                            created = '', 
-                            verification_method = '', 
-                            proof_purpose = '', 
-                            jws = '', 
-                            proof_value = '', 
-                            nonce = '', ), 
-                        credential_schema = affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema.W3cCredential_credentialSchema(
-                            id = '', ), )
+                    { }
                     ],
-                proof = affinidi_tdk_credential_verification_client.models.proof.proof(),
+                proof = None,
         )
         """
 

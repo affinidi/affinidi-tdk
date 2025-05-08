@@ -74,10 +74,10 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | CreateAccountOK | -                |
-| **400**     | BadRequestError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateAccountOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## deleteAccount
 
@@ -144,10 +144,10 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **202**     | DeleteAccountOK | -                |
-| **400**     | BadRequestError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **202**     | DeleteAccountOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## listAccounts
 
@@ -216,10 +216,10 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | ListAccountsOK  | -                |
-| **400**     | BadRequestError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | ListAccountsOK  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## updateAccount
 
@@ -288,7 +288,7 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | UpdateAccountOK | -                |
-| **400**     | BadRequestError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | UpdateAccountOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |

@@ -884,18 +884,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/GrantAccessOutput'
           description: Successfully granted access to Service
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '403':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
           description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '500':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnexpectedError'
           description: UnexpectedError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       summary: Grant access to the virtual file system
@@ -961,18 +982,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/UpdateAccessOutput'
           description: Successfully updated access to Service
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '403':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedError'
           description: ForbiddenError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
         '500':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnexpectedError'
           description: UnexpectedError
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: '#/components/headers/Access-Control-Allow-Origin'
+            Access-Control-Allow-Methods:
+              $ref: '#/components/headers/Access-Control-Allow-Methods'
+            Access-Control-Allow-Headers:
+              $ref: '#/components/headers/Access-Control-Allow-Headers'
       security:
         - ConsumerTokenAuth: []
       summary: Update access of granteeDid
@@ -1408,12 +1450,26 @@ components:
           schema:
             $ref: '#/components/schemas/GrantAccessOutput'
       description: Successfully granted access to Service
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateAccessOK:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateAccessOutput'
       description: Successfully updated access to Service
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     CorsConsumerAuthTokenEndpointOK:
       content:
         application/json:
@@ -1433,6 +1489,32 @@ components:
           schema:
             $ref: '#/components/schemas/GetWellKnownDidOK'
       description: GetWellKnownDidOK
+    CorsGrantAccessVfsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGrantAccessVfsOK'
+      description: CorsGrantAccessVfsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsUpdateAccessVfsOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsUpdateAccessVfsOK'
+      description: CorsUpdateAccessVfsOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     GetWellKnownJwksUnexpectedError:
       content:
         application/json:
@@ -1773,24 +1855,65 @@ components:
           schema:
             $ref: '#/components/schemas/UnauthorizedError'
       description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     GrantAccessVfsUnexpectedError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnexpectedError'
       description: UnexpectedError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGrantAccessVfsUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateAccessVfsForbiddenError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnauthorizedError'
       description: ForbiddenError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     UpdateAccessVfsUnexpectedError:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/UnexpectedError'
       description: UnexpectedError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     DeleteAccessVfsForbiddenError:
       content:
         application/json:
@@ -1803,6 +1926,19 @@ components:
           schema:
             $ref: '#/components/schemas/UnexpectedError'
       description: UnexpectedError
+    CorsUpdateAccessVfsUnexpectedError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedError'
+      description: UnexpectedError
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
   schemas:
     ServiceErrorResponse:
       additionalProperties: false
@@ -2973,6 +3109,18 @@ components:
         - message
         - name
         - traceId
+      type: object
+    CorsGrantAccessVfsOK:
+      additionalProperties: false
+      properties:
+        corsGrantAccessVfsOk:
+          type: string
+      type: object
+    CorsUpdateAccessVfsOK:
+      additionalProperties: false
+      properties:
+        corsUpdateAccessVfsOk:
+          type: string
       type: object
     ServiceErrorResponse_details_inner:
       additionalProperties: false

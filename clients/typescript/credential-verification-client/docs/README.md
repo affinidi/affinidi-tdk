@@ -50,11 +50,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [W3cCredential](./Models/W3cCredential.md)
 - [W3cCredentialStatus](./Models/W3cCredentialStatus.md)
 - [W3cCredential_credentialSchema](./Models/W3cCredential_credentialSchema.md)
-- [W3cCredential_credentialSubject](./Models/W3cCredential_credentialSubject.md)
-- [W3cCredential_holder](./Models/W3cCredential_holder.md)
 - [W3cPresentation](./Models/W3cPresentation.md)
-- [W3cPresentation\_\_context](./Models/W3cPresentation__context.md)
-- [W3cPresentation\_\_context_oneOf_inner](./Models/W3cPresentation__context_oneOf_inner.md)
 - [W3cProof](./Models/W3cProof.md)
 
 <a name="documentation-for-authorization"></a>

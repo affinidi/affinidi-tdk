@@ -53,12 +53,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VerifyPresentationOutputErrors.serializer)
       ..add(W3cCredential.serializer)
       ..add(W3cCredentialCredentialSchema.serializer)
-      ..add(W3cCredentialCredentialSubject.serializer)
-      ..add(W3cCredentialHolder.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cPresentation.serializer)
-      ..add(W3cPresentationContext.serializer)
-      ..add(W3cPresentationContextOneOfInner.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Descriptor)]),
