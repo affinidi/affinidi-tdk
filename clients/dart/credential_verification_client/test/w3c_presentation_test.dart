@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(W3cPresentation, () {
-    // W3cPresentationContext atContext
+    // BuiltMap<String, JsonObject> atContext
     test('to test the property `atContext`', () async {
       // TODO
     });

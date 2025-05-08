@@ -1,28 +1,26 @@
 # affinidi_tdk_credential_verification_client.api.DefaultApi
 
 ## Load the API package
-
 ```dart
 import 'package:affinidi_tdk_credential_verification_client/api.dart';
 ```
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Method                                                     | HTTP request                     | Description  |
-| ---------------------------------------------------------- | -------------------------------- | ------------ |
-| [**verifyCredentials**](DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
-| [**verifyPresentation**](DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**verifyCredentials**](DefaultApi.md#verifycredentials) | **POST** /v1/verifier/verify-vcs | Verifying VC
+[**verifyPresentation**](DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp | Verifying VP
+
 
 # **verifyCredentials**
-
 > VerifyCredentialOutput verifyCredentials(verifyCredentialInput)
 
 Verifying VC
 
-Verifying Verifiable Credentials (signatures) `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_verification_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -43,9 +41,9 @@ try {
 
 ### Parameters
 
-| Name                      | Type                                                  | Description       | Notes |
-| ------------------------- | ----------------------------------------------------- | ----------------- | ----- |
-| **verifyCredentialInput** | [**VerifyCredentialInput**](VerifyCredentialInput.md) | VerifyCredentials |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **verifyCredentialInput** | [**VerifyCredentialInput**](VerifyCredentialInput.md)| VerifyCredentials | 
 
 ### Return type
 
@@ -57,21 +55,19 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verifyPresentation**
-
 > VerifyPresentationOutput verifyPresentation(verifyPresentationInput)
 
 Verifying VP
 
-Verifying Verifiable Presentation (signatures) `isValid` - true if presentation verified `error` verificaction error.
+Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
 
 ### Example
-
 ```dart
 import 'package:affinidi_tdk_credential_verification_client/api.dart';
 // TODO Configure API key authorization: ProjectTokenAuth
@@ -92,9 +88,9 @@ try {
 
 ### Parameters
 
-| Name                        | Type                                                      | Description        | Notes |
-| --------------------------- | --------------------------------------------------------- | ------------------ | ----- |
-| **verifyPresentationInput** | [**VerifyPresentationInput**](VerifyPresentationInput.md) | VerifyPresentation |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **verifyPresentationInput** | [**VerifyPresentationInput**](VerifyPresentationInput.md)| VerifyPresentation | 
 
 ### Return type
 
@@ -106,7 +102,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

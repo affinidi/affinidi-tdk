@@ -42,8 +42,6 @@ doc/W3cCredentialCredentialSubject.md
 doc/W3cCredentialHolder.md
 doc/W3cCredentialStatus.md
 doc/W3cPresentation.md
-doc/W3cPresentationContext.md
-doc/W3cPresentationContextOneOfInner.md
 doc/W3cProof.md
 lib/affinidi_tdk_credential_verification_client.dart
 lib/src/api.dart
@@ -94,8 +92,6 @@ lib/src/model/w3c_credential_credential_subject.dart
 lib/src/model/w3c_credential_holder.dart
 lib/src/model/w3c_credential_status.dart
 lib/src/model/w3c_presentation.dart
-lib/src/model/w3c_presentation_context.dart
-lib/src/model/w3c_presentation_context_one_of_inner.dart
 lib/src/model/w3c_proof.dart
 lib/src/serializers.dart
 project.json
@@ -138,7 +134,5 @@ test/w3c_credential_credential_subject_test.dart
 test/w3c_credential_holder_test.dart
 test/w3c_credential_status_test.dart
 test/w3c_credential_test.dart
-test/w3c_presentation_context_one_of_inner_test.dart
-test/w3c_presentation_context_test.dart
 test/w3c_presentation_test.dart
 test/w3c_proof_test.dart
