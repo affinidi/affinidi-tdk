@@ -12,6 +12,8 @@ Models/AddUserToProjectInput.md
 Models/ConsumerAuthTokenEndpointInput.md
 Models/ConsumerAuthTokenEndpointOutput.md
 Models/CorsConsumerAuthTokenEndpointOK.md
+Models/CorsGrantAccessVfsOK.md
+Models/CorsUpdateAccessVfsOK.md
 Models/CreateProjectInput.md
 Models/CreateProjectScopedTokenInput.md
 Models/CreateProjectScopedTokenOutput.md

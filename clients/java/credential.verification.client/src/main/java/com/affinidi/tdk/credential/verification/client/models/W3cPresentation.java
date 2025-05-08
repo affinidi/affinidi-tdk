@@ -17,7 +17,6 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.affinidi.tdk.credential.verification.client.models.PresentationSubmission;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -25,7 +24,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -40,27 +41,19 @@ import java.util.StringJoiner;
  * W3cPresentation
  */
 @JsonPropertyOrder({
-  W3cPresentation.JSON_PROPERTY_AT_CONTEXT,
   W3cPresentation.JSON_PROPERTY_ID,
   W3cPresentation.JSON_PROPERTY_TYPE,
-  W3cPresentation.JSON_PROPERTY_HOLDER,
   W3cPresentation.JSON_PROPERTY_VERIFIABLE_CREDENTIAL,
   W3cPresentation.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   W3cPresentation.JSON_PROPERTY_PROOF
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class W3cPresentation {
-  public static final String JSON_PROPERTY_AT_CONTEXT = "@context";
-  private W3cPresentationContext atContext;
-
+public class W3cPresentation extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_ID = "id";
   private JsonNullable<String> id = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private List<String> type = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_HOLDER = "holder";
-  private Object holder;
 
   public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIAL = "verifiableCredential";
   private List<W3cCredential> verifiableCredential = new ArrayList<>();
@@ -72,31 +65,7 @@ public class W3cPresentation {
   private Object proof;
 
   public W3cPresentation() {
-  }
 
-  public W3cPresentation atContext(W3cPresentationContext atContext) {
-    
-    this.atContext = atContext;
-    return this;
-  }
-
-  /**
-   * Get atContext
-   * @return atContext
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public W3cPresentationContext getAtContext() {
-    return atContext;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AT_CONTEXT)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAtContext(W3cPresentationContext atContext) {
-    this.atContext = atContext;
   }
 
   public W3cPresentation id(String id) {
@@ -163,31 +132,6 @@ public class W3cPresentation {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(List<String> type) {
     this.type = type;
-  }
-
-  public W3cPresentation holder(Object holder) {
-    
-    this.holder = holder;
-    return this;
-  }
-
-  /**
-   * Get holder
-   * @return holder
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public Object getHolder() {
-    return holder;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HOLDER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHolder(Object holder) {
-    this.holder = holder;
   }
 
   public W3cPresentation verifiableCredential(List<W3cCredential> verifiableCredential) {
@@ -282,13 +226,12 @@ public class W3cPresentation {
       return false;
     }
     W3cPresentation w3cPresentation = (W3cPresentation) o;
-    return Objects.equals(this.atContext, w3cPresentation.atContext) &&
-        equalsNullable(this.id, w3cPresentation.id) &&
+    return equalsNullable(this.id, w3cPresentation.id) &&
         Objects.equals(this.type, w3cPresentation.type) &&
-        Objects.equals(this.holder, w3cPresentation.holder) &&
         Objects.equals(this.verifiableCredential, w3cPresentation.verifiableCredential) &&
         Objects.equals(this.presentationSubmission, w3cPresentation.presentationSubmission) &&
-        Objects.equals(this.proof, w3cPresentation.proof);
+        Objects.equals(this.proof, w3cPresentation.proof) &&
+        super.equals(o);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -297,7 +240,7 @@ public class W3cPresentation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(atContext, hashCodeNullable(id), type, holder, verifiableCredential, presentationSubmission, proof);
+    return Objects.hash(hashCodeNullable(id), type, verifiableCredential, presentationSubmission, proof, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -311,10 +254,9 @@ public class W3cPresentation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class W3cPresentation {\n");
-    sb.append("    atContext: ").append(toIndentedString(atContext)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    holder: ").append(toIndentedString(holder)).append("\n");
     sb.append("    verifiableCredential: ").append(toIndentedString(verifiableCredential)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    proof: ").append(toIndentedString(proof)).append("\n");
@@ -365,11 +307,6 @@ public class W3cPresentation {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `@context` to the URL query string
-    if (getAtContext() != null) {
-      joiner.add(getAtContext().toUrlQueryString(prefix + "@context" + suffix));
-    }
-
     // add `id` to the URL query string
     if (getId() != null) {
       try {
@@ -394,22 +331,18 @@ public class W3cPresentation {
       }
     }
 
-    // add `holder` to the URL query string
-    if (getHolder() != null) {
-      try {
-        joiner.add(String.format("%sholder%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolder()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     // add `verifiableCredential` to the URL query string
     if (getVerifiableCredential() != null) {
       for (int i = 0; i < getVerifiableCredential().size(); i++) {
         if (getVerifiableCredential().get(i) != null) {
-          joiner.add(getVerifiableCredential().get(i).toUrlQueryString(String.format("%sverifiableCredential%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          try {
+            joiner.add(String.format("%sverifiableCredential%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                URLEncoder.encode(String.valueOf(getVerifiableCredential().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+          } catch (UnsupportedEncodingException e) {
+            // Should never happen, UTF-8 is always supported
+            throw new RuntimeException(e);
+          }
         }
       }
     }

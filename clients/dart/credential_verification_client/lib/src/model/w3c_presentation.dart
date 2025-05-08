@@ -5,7 +5,6 @@
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/presentation_submission.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -16,26 +15,18 @@ part 'w3c_presentation.g.dart';
 /// W3cPresentation
 ///
 /// Properties:
-/// * [atContext] 
 /// * [id] 
 /// * [type] 
-/// * [holder] 
 /// * [verifiableCredential] 
 /// * [presentationSubmission] 
 /// * [proof] 
 @BuiltValue()
 abstract class W3cPresentation implements Built<W3cPresentation, W3cPresentationBuilder> {
-  @BuiltValueField(wireName: r'@context')
-  W3cPresentationContext get atContext;
-
   @BuiltValueField(wireName: r'id')
   String? get id;
 
   @BuiltValueField(wireName: r'type')
   BuiltList<String> get type;
-
-  @BuiltValueField(wireName: r'holder')
-  JsonObject get holder;
 
   @BuiltValueField(wireName: r'verifiableCredential')
   BuiltList<W3cCredential> get verifiableCredential;
@@ -69,11 +60,6 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
     W3cPresentation object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'@context';
-    yield serializers.serialize(
-      object.atContext,
-      specifiedType: const FullType(W3cPresentationContext),
-    );
     if (object.id != null) {
       yield r'id';
       yield serializers.serialize(
@@ -85,11 +71,6 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
     yield serializers.serialize(
       object.type,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    yield r'holder';
-    yield serializers.serialize(
-      object.holder,
-      specifiedType: const FullType(JsonObject),
     );
     yield r'verifiableCredential';
     yield serializers.serialize(
@@ -131,13 +112,6 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'@context':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(W3cPresentationContext),
-          ) as W3cPresentationContext;
-          result.atContext.replace(valueDes);
-          break;
         case r'id':
           final valueDes = serializers.deserialize(
             value,
@@ -152,13 +126,6 @@ class _$W3cPresentationSerializer implements PrimitiveSerializer<W3cPresentation
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.type.replace(valueDes);
-          break;
-        case r'holder':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.holder = valueDes;
           break;
         case r'verifiableCredential':
           final valueDes = serializers.deserialize(

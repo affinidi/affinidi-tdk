@@ -14,10 +14,7 @@
 package com.affinidi.tdk.credential.verification.client.models;
 
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSchema;
-import com.affinidi.tdk.credential.verification.client.models.W3cCredentialCredentialSubject;
-import com.affinidi.tdk.credential.verification.client.models.W3cCredentialHolder;
 import com.affinidi.tdk.credential.verification.client.models.W3cCredentialStatus;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentationContext;
 import com.affinidi.tdk.credential.verification.client.models.W3cProof;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -50,14 +49,6 @@ class W3cCredentialTest {
     }
 
     /**
-     * Test the property 'atContext'
-     */
-    @Test
-    void atContextTest() {
-        // TODO: test atContext
-    }
-
-    /**
      * Test the property 'id'
      */
     @Test
@@ -71,22 +62,6 @@ class W3cCredentialTest {
     @Test
     void typeTest() {
         // TODO: test type
-    }
-
-    /**
-     * Test the property 'holder'
-     */
-    @Test
-    void holderTest() {
-        // TODO: test holder
-    }
-
-    /**
-     * Test the property 'credentialSubject'
-     */
-    @Test
-    void credentialSubjectTest() {
-        // TODO: test credentialSubject
     }
 
     /**

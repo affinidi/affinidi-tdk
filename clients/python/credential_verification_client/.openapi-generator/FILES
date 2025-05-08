@@ -44,12 +44,8 @@ affinidi_tdk_credential_verification_client/models/verify_presentation_output.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_output_errors.py
 affinidi_tdk_credential_verification_client/models/w3c_credential.py
 affinidi_tdk_credential_verification_client/models/w3c_credential_credential_schema.py
-affinidi_tdk_credential_verification_client/models/w3c_credential_credential_subject.py
-affinidi_tdk_credential_verification_client/models/w3c_credential_holder.py
 affinidi_tdk_credential_verification_client/models/w3c_credential_status.py
 affinidi_tdk_credential_verification_client/models/w3c_presentation.py
-affinidi_tdk_credential_verification_client/models/w3c_presentation_context.py
-affinidi_tdk_credential_verification_client/models/w3c_presentation_context_one_of_inner.py
 affinidi_tdk_credential_verification_client/models/w3c_proof.py
 affinidi_tdk_credential_verification_client/py.typed
 affinidi_tdk_credential_verification_client/rest.py
@@ -88,12 +84,8 @@ docs/VerifyPresentationOutput.md
 docs/VerifyPresentationOutputErrors.md
 docs/W3cCredential.md
 docs/W3cCredentialCredentialSchema.md
-docs/W3cCredentialCredentialSubject.md
-docs/W3cCredentialHolder.md
 docs/W3cCredentialStatus.md
 docs/W3cPresentation.md
-docs/W3cPresentationContext.md
-docs/W3cPresentationContextOneOfInner.md
 docs/W3cProof.md
 project.json
 pyproject.toml
@@ -137,11 +129,7 @@ test/test_verify_presentation_output.py
 test/test_verify_presentation_output_errors.py
 test/test_w3c_credential.py
 test/test_w3c_credential_credential_schema.py
-test/test_w3c_credential_credential_subject.py
-test/test_w3c_credential_holder.py
 test/test_w3c_credential_status.py
 test/test_w3c_presentation.py
-test/test_w3c_presentation_context.py
-test/test_w3c_presentation_context_one_of_inner.py
 test/test_w3c_proof.py
 tox.ini

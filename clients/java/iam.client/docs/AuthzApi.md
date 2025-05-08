@@ -147,11 +147,11 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description                            | Response headers |
-| ----------- | -------------------------------------- | ---------------- |
-| **200**     | Successfully granted access to Service | -                |
-| **403**     | ForbiddenError                         | -                |
-| **500**     | UnexpectedError                        | -                |
+| Status code | Description                            | Response headers                                                                                                  |
+| ----------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Successfully granted access to Service | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **403**     | ForbiddenError                         | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **500**     | UnexpectedError                        | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## updateAccessVfs
 
@@ -222,8 +222,8 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description                            | Response headers |
-| ----------- | -------------------------------------- | ---------------- |
-| **200**     | Successfully updated access to Service | -                |
-| **403**     | ForbiddenError                         | -                |
-| **500**     | UnexpectedError                        | -                |
+| Status code | Description                            | Response headers                                                                                                  |
+| ----------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | Successfully updated access to Service | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **403**     | ForbiddenError                         | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **500**     | UnexpectedError                        | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
