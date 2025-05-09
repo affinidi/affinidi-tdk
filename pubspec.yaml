@@ -4,6 +4,7 @@ environment:
   sdk: ^3.6.0
 workspace:
   - packages/dart/common
+  - packages/dart/common/example
   - packages/dart/cryptography
   - packages/dart/auth_provider
   - packages/dart/consumer_auth_provider

@@ -1,0 +1,14 @@
+name: common_example
+description: Affinidi TDK Common package example
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  affinidi_tdk_common: ^1.4.0
+  affinidi_tdk_credential_issuance_client: ^1.7.0
+  affinidi_tdk_iota_client: ^1.4.0
