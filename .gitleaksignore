@@ -1,5 +1,6 @@
-tests/integration/dart/test/credential_issuance_client_test.dart:generic-api-key:111
-tests/integration/dart/test/credential_issuance_client_test.dart:generic-api-key:198
+tests/integration/dart/test/credential_issuance_client_test.dart:generic-api-key:96
+tests/integration/dart/test/credential_issuance_client_test.dart:generic-api-key:108
+tests/integration/dart/test/credential_issuance_client_test.dart:generic-api-key:200
 
 
 tests/integration/python/cis.py:generic-api-key:58

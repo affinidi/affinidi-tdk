@@ -166,50 +166,31 @@ class AuthProvider {
     );
   }
 
-  Future<Map<String, dynamic>> _getIssuerMetadata(
-      {required String issuerUrl}) async {
-    final response = await http.get(
-      Uri.parse('$issuerUrl/.well-known/openid-credential-issuer'),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to fetch issuer metadata');
-    }
-
-    return jsonDecode(response.body);
-  }
-
-  /// This method performs the token exchange flow by:
-  /// 1. Fetching the OIDC configuration from the issuer URL
-  /// 2. Extracting the token endpoint from the configuration
-  /// 3. Making a token request with the pre-auth code and transaction code
+  /// Exchanges a pre-authorization code for an access token and authorization details.
+  /// This method is used in the OID4CVI flow to obtain a token after sharing an offer, allowing the vault to claim credentials.
   ///
-  /// @param issuerUrl The URL of the OpenID Connect issuer
-  /// @param preAuthCode The pre-authorization code to exchange
-  /// @param txCode The transaction code associated with the pre-auth code
-  /// @returns A Map containing the token response data
-  /// @throws Exception if the OIDC configuration cannot be fetched or token exchange fails
-  Future exchangePreAuthCodeForToken(
-      {required String issuerUrl,
-      required String preAuthCode,
-      required String txCode}) async {
-    final issuerMetadata = await _getIssuerMetadata(issuerUrl: issuerUrl);
-    final tokenEndpoint = issuerMetadata['token_endpoint'];
-
-    if (tokenEndpoint == null) {
-      throw Exception('Token endpoint not found in OIDC configuration');
-    }
-
+  /// Parameters:
+  /// - tokenEndpoint: The token endpoint URL where the exchange request will be sent
+  /// - preAuthCode: The pre-authorization_code received from the offer details
+  /// - txCode: The transaction code associated with the issuance request. Required only when claim mode is TX_CODE
+  ///
+  /// Returns a record containing:
+  /// - accessToken: The access token received from the token endpoint
+  /// - authorizationDetails: Optional list of authorization details. This is only returned for batch issuance
+  ///
+  /// Throws an Exception if the exchange request fails
+  Future<({String accessToken, List<dynamic>? authorizationDetails})>
+      exchangePreAuthCodeForToken(
+          {required String tokenEndpoint,
+          required String preAuthCode,
+          String? txCode}) async {
     final response = await http.post(
       Uri.parse(tokenEndpoint),
-      body: jsonEncode({
+      body: {
         "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
         'pre-authorized_code': preAuthCode,
-        'tx_code': txCode,
-      }),
+        if (txCode != null) 'tx_code': txCode,
+      },
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -220,6 +201,9 @@ class AuthProvider {
     }
 
     final data = jsonDecode(response.body);
-    return data;
+    return (
+      accessToken: data['access_token'] as String,
+      authorizationDetails: data['authorization_details'] as List<dynamic>?
+    );
   }
 }
