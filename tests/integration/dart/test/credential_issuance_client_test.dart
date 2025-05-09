@@ -37,7 +37,7 @@ void main() {
       final keyStore = InMemoryKeyStore();
       final wallet = await Bip32Wallet.fromSeed(envVault.seed, keyStore);
       final keyPair =
-          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
+          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0/0");
       final didDoc = DidKey.generateDocument(keyPair.publicKey);
       final didSigner = DidSigner(
         didDocument: didDoc,
