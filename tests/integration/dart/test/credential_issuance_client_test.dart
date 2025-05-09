@@ -1,6 +1,8 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
-import 'package:built_value/json_object.dart';
+import 'package:built_value/json_object.dart' as built_value;
 import 'package:dio/dio.dart';
+import 'package:ssi/ssi.dart';
+import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
@@ -17,9 +19,9 @@ void main() {
     late WellKnownApi wellKnownApi;
     late String configurationId;
     late String walletId;
-
+    late ConsumerAuthProvider consumerAuthProvider;
     final envVault = getVaultEnvironment();
-    final consumerAuthProvider = ConsumerAuthProvider(seed: envVault.seed);
+
     final env = getProjectEnvironment();
 
     setUp(() async {
@@ -31,6 +33,19 @@ void main() {
         keyId: env.keyId,
         passphrase: env.passphrase,
       );
+
+      final keyStore = InMemoryKeyStore();
+      final wallet = await Bip32Wallet.fromSeed(envVault.seed, keyStore);
+      final keyPair =
+          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
+      final didDoc = DidKey.generateDocument(keyPair.publicKey);
+      final didSigner = DidSigner(
+        didDocument: didDoc,
+        didKeyId: didDoc.verificationMethod.first.id,
+        keyPair: keyPair,
+        signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
+      );
+      consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
 
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
           dio: Dio(BaseOptions(
@@ -187,13 +202,13 @@ void main() {
 
       test('Start issuance', () async {
         // Update the credentialData MapBuilder to properly create JsonObject values
-        final credentialData = MapBuilder<String, JsonObject?>({
-          "studentID": JsonObject("1234"),
-          "degreeName": JsonObject("FakeDegree"),
-          "degreeType": JsonObject("SpecialDegree"),
-          "awardedDate": JsonObject("2024-04-14T20:48:31.148Z"),
-          "name": JsonObject("Mohamed 2"),
-          "dateOfBirth": JsonObject("2024-04-14T20:48:31.148Z")
+        final credentialData = MapBuilder<String, built_value.JsonObject?>({
+          "studentID": built_value.JsonObject("1234"),
+          "degreeName": built_value.JsonObject("FakeDegree"),
+          "degreeType": built_value.JsonObject("SpecialDegree"),
+          "awardedDate": built_value.JsonObject("2024-04-14T20:48:31.148Z"),
+          "name": built_value.JsonObject("Mohamed 2"),
+          "dateOfBirth": built_value.JsonObject("2024-04-14T20:48:31.148Z"),
         });
         final b1 = StartIssuanceInputDataInnerBuilder()
           ..credentialTypeId = "UniversityDegree2024"
