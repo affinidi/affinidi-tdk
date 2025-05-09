@@ -165,4 +165,61 @@ class AuthProvider {
       iotaSessionId: sessionId,
     );
   }
+
+  Future<Map<String, dynamic>> _getIssuerMetadata(
+      {required String issuerUrl}) async {
+    final response = await http.get(
+      Uri.parse('$issuerUrl/.well-known/openid-credential-issuer'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to fetch issuer metadata');
+    }
+
+    return jsonDecode(response.body);
+  }
+
+  /// This method performs the token exchange flow by:
+  /// 1. Fetching the OIDC configuration from the issuer URL
+  /// 2. Extracting the token endpoint from the configuration
+  /// 3. Making a token request with the pre-auth code and transaction code
+  ///
+  /// @param issuerUrl The URL of the OpenID Connect issuer
+  /// @param preAuthCode The pre-authorization code to exchange
+  /// @param txCode The transaction code associated with the pre-auth code
+  /// @returns A Map containing the token response data
+  /// @throws Exception if the OIDC configuration cannot be fetched or token exchange fails
+  Future exchangePreAuthCodeForToken(
+      {required String issuerUrl,
+      required String preAuthCode,
+      required String txCode}) async {
+    final issuerMetadata = await _getIssuerMetadata(issuerUrl: issuerUrl);
+    final tokenEndpoint = issuerMetadata['token_endpoint'];
+
+    if (tokenEndpoint == null) {
+      throw Exception('Token endpoint not found in OIDC configuration');
+    }
+
+    final response = await http.post(
+      Uri.parse(tokenEndpoint),
+      body: jsonEncode({
+        "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
+        'pre-authorized_code': preAuthCode,
+        'tx_code': txCode,
+      }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to exchange pre-auth code for token');
+    }
+
+    final data = jsonDecode(response.body);
+    return data;
+  }
 }

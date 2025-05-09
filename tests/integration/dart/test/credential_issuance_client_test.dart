@@ -19,16 +19,14 @@ void main() {
     late String walletId;
     late String preAuthCode;
     late String tokenIssuerUri;
-    late String accessToken;
-
-    List<dynamic> authorizationDetails = [];
+    late AuthProvider authProvider;
     final envVault = getVaultEnvironment();
     final consumerAuthProvider = ConsumerAuthProvider(seed: envVault.seed);
     final env = getProjectEnvironment();
 
     setUp(() async {
       walletId = env.walletId;
-      final authProvider = AuthProvider(
+      authProvider = AuthProvider(
         projectId: env.projectId,
         tokenId: env.tokenId,
         privateKey: env.privateKey,
@@ -54,9 +52,7 @@ void main() {
           (await configurationApi.getIssuanceConfigList()).data?.configurations;
       expect(configurations, isNotNull);
 
-      if (configurations != null &&
-          configurations.isNotEmpty &&
-          configurations.length > 0) {
+      if (configurations != null && configurations.isNotEmpty) {
         configurationId = configurations.first.id;
 
         final statusCode = (await configurationApi.deleteIssuanceConfigById(
@@ -117,7 +113,7 @@ void main() {
       ];
 
       final webhookEndpoint = CisConfigurationWebhookSettingEndpointBuilder()
-        ..url = "https://affinidi.com";
+        ..url = "https://affinidi.com/webhook";
       final webhook = CisConfigurationWebhookSettingBuilder()
         ..enabled = true
         ..endpoint = webhookEndpoint;
@@ -251,30 +247,16 @@ void main() {
       tokenIssuerUri = offerResponse?.credentialIssuer ?? '';
     });
 
-    // TODO: use VPA client
-    test("Fetch token", () async {
-      // make http call to fetch token
-      final response = await Dio().post(
-        "$tokenIssuerUri/oauth2/token",
-        data: {
-          "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
-          'pre-authorized_code': preAuthCode,
-          'tx_code': '',
-        },
-        options: Options(
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        ),
-      );
-      expect(response.statusCode, 200);
-      expect(response.data, isNotNull);
-      expect(response.data['access_token'], isNotNull);
-      accessToken = response.data['access_token'];
-      authorizationDetails = response.data['authorization_details'];
-    });
-
     test("Claim credential", () async {
+      final tokenDetails = await authProvider.exchangePreAuthCodeForToken(
+          issuerUrl: tokenIssuerUri, preAuthCode: preAuthCode, txCode: '');
+
+      expect(tokenDetails['access_token'], isNotNull);
+      expect(tokenDetails['authorization_details'], isNotNull);
+
+      final accessToken = tokenDetails['access_token'];
+      List<dynamic> authorizationDetails =
+          tokenDetails['authorization_details'];
       final credentialRequests = [];
       for (var detail in authorizationDetails) {
         for (var credentialIdentifier in detail['credential_identifiers']) {
