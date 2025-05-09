@@ -165,45 +165,4 @@ class AuthProvider {
       iotaSessionId: sessionId,
     );
   }
-
-  /// Exchanges a pre-authorization code for an access token and authorization details.
-  /// This method is used in the OID4CVI flow to obtain a token after sharing an offer, allowing the vault to claim credentials.
-  ///
-  /// Parameters:
-  /// - tokenEndpoint: The token endpoint URL where the exchange request will be sent
-  /// - preAuthCode: The pre-authorization_code received from the offer details
-  /// - txCode: The transaction code associated with the issuance request. Required only when claim mode is TX_CODE
-  ///
-  /// Returns a record containing:
-  /// - accessToken: The access token received from the token endpoint
-  /// - authorizationDetails: Optional list of authorization details. This is only returned for batch issuance
-  ///
-  /// Throws an Exception if the exchange request fails
-  Future<({String accessToken, List<dynamic>? authorizationDetails})>
-      exchangePreAuthCodeForToken(
-          {required String tokenEndpoint,
-          required String preAuthCode,
-          String? txCode}) async {
-    final response = await http.post(
-      Uri.parse(tokenEndpoint),
-      body: {
-        "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
-        'pre-authorized_code': preAuthCode,
-        if (txCode != null) 'tx_code': txCode,
-      },
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    );
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to exchange pre-auth code for token');
-    }
-
-    final data = jsonDecode(response.body);
-    return (
-      accessToken: data['access_token'] as String,
-      authorizationDetails: data['authorization_details'] as List<dynamic>?
-    );
-  }
 }

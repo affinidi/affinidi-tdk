@@ -18,14 +18,13 @@ void main() {
     late String configurationId;
     late String walletId;
 
-    late AuthProvider authProvider;
     final envVault = getVaultEnvironment();
     final consumerAuthProvider = ConsumerAuthProvider(seed: envVault.seed);
     final env = getProjectEnvironment();
 
     setUp(() async {
       walletId = env.walletId;
-      authProvider = AuthProvider(
+      final authProvider = AuthProvider(
         projectId: env.projectId,
         tokenId: env.tokenId,
         privateKey: env.privateKey,
@@ -262,10 +261,11 @@ void main() {
         final tokenEndpoint = issuerMetadata?.tokenEndpoint;
         expect(tokenEndpoint, isNotNull);
 
-        final tokenDetails = await authProvider.exchangePreAuthCodeForToken(
-            tokenEndpoint: issuerMetadata?.tokenEndpoint ?? '',
-            preAuthCode: preAuthCode,
-            txCode: txCode ?? '');
+        final tokenDetails =
+            await consumerAuthProvider.exchangePreAuthCodeForToken(
+                tokenEndpoint: issuerMetadata?.tokenEndpoint ?? '',
+                preAuthCode: preAuthCode,
+                txCode: txCode ?? '');
 
         expect(tokenDetails.accessToken, isNotNull);
         expect(tokenDetails.authorizationDetails, isNotNull);
