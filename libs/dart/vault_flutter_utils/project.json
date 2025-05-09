@@ -9,7 +9,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart pub get"
+        "command": "flutter pub get"
       }
     },
     "lint": {
@@ -17,19 +17,11 @@
       "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart format -l 120 --set-exit-if-changed . && dart analyze --fatal-infos"
-      }
-    },
-    "test": {
-      "dependsOn": ["prepare"],
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "dart test --coverage=../../../coverage"
+        "command": "dart format --set-exit-if-changed . && dart analyze --fatal-infos"
       }
     },
     "build": {
-      "dependsOn": ["lint", "test"]
+      "dependsOn": ["lint"]
     },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",

@@ -42,10 +42,11 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: 21
-      
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
+
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v4
         with:
-          sdk: 3.6.0
+          channel: stable
+          version: 3.27.0
 
       - run: npx nx affected -t build --parallel=1
