@@ -1,7 +1,7 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:vault_flutter_utils/vault_flutter_utils.dart';
+import 'package:affinidi_tdk_vault_flutter_utils/vault_flutter_utils.dart';
 
 import 'vault_service_state.dart';
 
