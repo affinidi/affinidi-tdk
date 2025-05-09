@@ -9,7 +9,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.3.0
-  affinidi_tdk_consumer_auth_provider: ^4.0.0
+  affinidi_tdk_consumer_auth_provider: ^4.1.0
   affinidi_tdk_cryptography: ^2.1.0
   affinidi_tdk_iam_client: ^1.6.0
   affinidi_tdk_vault: 1.0.0-dev.2
