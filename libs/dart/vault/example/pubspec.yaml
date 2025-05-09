@@ -1,0 +1,19 @@
+name: vault_example
+description: Vault Example
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  affinidi_tdk_vault: 1.0.0-dev.2
+  affinidi_tdk_vault_storages: 1.0.0-dev.2
+  base_codecs: ^1.0.1
+  ssi: 1.0.0-dev.22
+
+dev_dependencies:
+  dart_flutter_team_lints: ^3.2.1
+  test: ^1.24.0
