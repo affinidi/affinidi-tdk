@@ -59,4 +59,8 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
   Future<String> fetchDelegatedToken({required String profileDid}) {
     return _delegatedTokenProvider.getToken(profileDid: profileDid);
   }
+
+  Future<({String accessToken, List? authorizationDetails})> exchangePreAuthCodeForToken({required String tokenEndpoint, required String preAuthCode, String? txCode}) {
+    return _cisTokenProvider.exchangePreAuthCodeForToken(tokenEndpoint: tokenEndpoint, preAuthCode: preAuthCode, txCode: txCode);
+  }
 }
