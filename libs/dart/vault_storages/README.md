@@ -60,7 +60,7 @@ void main() async {
   try {
     print('Start creating folder under profile...');
     await storageService.createFolder(folderName: 'your_folder_name');
-    print('Finish creting folder under profile');
+    print('Finish creating folder under profile');
   } catch (e) {
     print('Failed to create folder under profile: $e');
   }
