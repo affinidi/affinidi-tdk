@@ -111,6 +111,9 @@ void main() async {
       .getFolder(folderId: aliceProfile.id)
       .then((files) => files.first.id);
 
+  // Wait a bit as file might be pending
+  await Future.delayed(const Duration(seconds: 3), () {});
+
   final aliceFileContent = await aliceProfile.defaultFileStorage!
       .getFileContent(fileId: aliceFileId);
   print('[Demo] Alice file content: $aliceFileContent');
@@ -149,17 +152,23 @@ void main() async {
   final folderContent = await bobSharedStorageWAliceProfile!.getFolder();
   final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
       fileId: folderContent.first.id);
-  print('[Demo] Bob file content: ${String.fromCharCodes(fileContent)}');
+  print('[Demo] Bob file content: $fileContent');
   print(
       '[Demo] Bob available shared files from Alice ${folderContent.map((item) => item.name).join('\n')}');
 
   // Alice revokes Bob access to her profile
-  // await vaultAlice.revokeProfileAccess(profileId: aliceProfile.id, granteeDid: bobProfile.did);
+  await vaultAlice.revokeProfileAccess(
+      profileId: aliceProfile.id, granteeDid: bobProfile.did);
 
   // Bob to Access Alice files after revokal
-  // final folderContentAfterRevokal = await aliceSharedFileStorage.getFolder();
-  // print(
-  //     '[Demo] Bob available shared files from Alice after revokal: ${folderContentAfterRevokal.map((item) => item.name).join('\n')}');
+  try {
+    final folderContentAfterRevokal =
+        await bobSharedStorageWAliceProfile.getFolder();
+    print(
+        '[Demo] Bob available shared files from Alice after revokal: ${folderContentAfterRevokal.map((item) => item.name).join('\n')}');
+  } catch (error) {
+    print('[Demo] Correctly Fails to access folder as it is not longer shared');
+  }
 
   // Alice deletes all files
   print('[Demo] Alice is deleting all files...');
@@ -167,146 +176,40 @@ void main() async {
       .getFolder(folderId: aliceProfile.id);
   await Future.wait(aliceFiles.map(
       (item) => aliceProfile.defaultFileStorage!.deleteFile(fileId: item.id)));
-
-  // final rootFolderId = profile.id;
-  //
-  // // //
-  // // // Create a file
-  // // //
-  //
-  // // try {
-  // //   await profile.defaultFileStorage!.createFile(
-  // //     fileName: 'filename',
-  // //     data: Uint8List.fromList([1, 2, 3]),
-  // //     parentFolderId: rootFolderId,
-  // //   );
-  // // } on TdkException catch (error) {
-  // //   print([error.code, error.message, error.originalMessage].join('\n'));
-  // // }
-  //
-  // print('[Demo] Listing profile files ...');
-  //
-  // //
-  // // List folder content for profile
-  // //
-  //
-  // // Option 1
-  // final files = await profile.defaultFileStorage?.getFolder(folderId: rootFolderId);
-  // // Option 2
-  // // final files = await profile.fileStorages['vfs']!.getFolder(folderId: rootFolderId);
-  // print('[Demo] Files available on profile: ${files?.length ?? 0}');
-  //
-  // // //
-  // // // Delete last added file
-  // // //
-  //
-  // // final lastAddedFile = files?.lastOrNull;
-  // // if (lastAddedFile != null) {
-  // //   await profile.defaultFileStorage?.deleteFile(fileId: lastAddedFile.id);
-  // // }
-  // // final remainingFiles = await profile.defaultFileStorage?.getFolder(folderId: rootFolderId);
-  // // print('Files: ${remainingFiles?.length ?? 0}');
-  //
-  // // Grant profile access to a different DID:
-  //
-  // // final keyStorageForNewVault = MemoryKeyStorage();
-  // // final profileRepositoriesForNewVault = <String, ProfileRepository>{
-  // //   vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
-  // // };
-  //
-  // final seedNew = hexDecode(
-  //   'a1772b144344781f2a55fc4d5e49f3767bb0967205ad08454a09c76d96fd2ccd',
-  // );
-  //
-  // final keyStoreNew = InMemoryKeyStore();
-  // final walletNew = await Bip32Wallet.fromSeed(seedNew, keyStoreNew);
-  // final keyPairNew = await walletNew.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
-  // final didNew = DidKey.getDid(keyPairNew.publicKey);
-  //
-  // print('Granting access to $didNew for the profile ${profile.id}');
-  //
-  // final profileFromVault = profiles.first;
-  //
-  // await vault.revokeProfileAccess(profileId: profileFromVault.id, granteeDid: didNew);
-  //
-  // await vault.shareProfile(profileId: profileFromVault.id, toDid: didNew, permissions: Permissions.all);
-  //
-  // final vaultStore = InMemoryVaultStore();
-  // final newProfileRepositories = <String, ProfileRepository>{
-  //   vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
-  // };
-  //
-  // final vaultNew = await Vault.fromKeyStorage(vaultStore, profileRepositories: newProfileRepositories);
-  // // vaultNew.addSharedProfile(accountIndex: accountIndex, profileId: profileId, dekek: dekek);
-  //
-  // //
-  // // Delete a profile
-  // //
-  //
-  // profile = profiles.lastOrNull;
-  // if (profile == null) {
-  //   throw UnsupportedError('Profile not available');
-  // }
-  //
-  // print('[Demo] Deleting profile ...');
-  //
-  // // Option 1
-  // final profileRepository3 = vault.defaultProfileRepository;
-  // // await profileRepository3.deleteProfile(profile);
-  // // // Option 3
-  // // final profileRepository4 = vault.profileRepositories[vfsRepositoryId]!;
-  // // await profileRepository4.deleteProfile(profile);
-  //
-  // // profiles = await vault.listProfiles();
-  // // _listProfileNames(profiles, label: 'Names after deleting profile');
-  //
-  // // final vfsFileRepository = VFSFileRepository();
-  // // TODO(MA): validate that vfsFileRepository cant be mutated
-  // // profile.getFolder("folderId", fileRepository: vfsFileRepository);
-  // // profile.addFile("filename", Uint8List.fromList([1, 2, 3]), vfsFileRepository);
-  //
-  // // final gitHubFileRepository = GithubFileRepository("token");
-  // // profile.addFile("filename", Uint8List.fromList([1, 2, 3]), gitHubFileRepository);
-  //
-  // // // reopen vault
-  // // // NOTE: how can the developer know that a vault has profiles in VFS?
-  // // final reopenedVault = Vault.fromKeyStorage(keyStorage, [
-  // //   VfsProfileRepository("vfs"),
-  // // ]);
-  // // final reopenedProfiles = await reopenedVault.listProfiles();
-  // // final reopenedProfile = reopenedProfiles.first;
-  // // // NOTE: how can the developer know that a profile had VFS File and GitHub file repository?
-  // // final reopenedVfsFileRepository = VFSFileRepository();
-  // // reopenedProfile.getFolder("folderId", fileStorage: reopenedVfsFileRepository);
-  // // // NOTE: how can the developer fill the configuration of files storages?
-  // // final reopenedGitHubFileRepository = GithubFileRepository("token");
-  // // reopenedProfile.addFile("filename", Uint8List.fromList([1, 2, 3]), reopenedGitHubFileRepository);
-  //
-  // // {
-  // //   rootDid: string,
-  // //   accountIndex: string,
-  // //   did: string,
-  // //   configuration: {
-  // //     name: string,
-  // //     description: string,
-  // //     alias: string,
-  // //     fileStorages = [{id: string, metadata: json}],
-  // //     credentialStorages = [{id: string, metadata: json}],
-  // //     publicKeyId = string
-  // //   }
-  // // }
 }
 
 Future<void> _deleteProfile(Vault vault, Profile profile) async {
-  // Check if profile has files...
-  final files =
-      await profile.defaultFileStorage!.getFolder(folderId: profile.id);
+  // Delete folders recursively
+  await _deleteFolder(vault: vault, profile: profile, folderId: profile.id);
 
+  // Check if profile has credentials...
+  final credentials = await profile.defaultCredentialStorage!.listCredentials();
   // and delete them
-  await Future.wait(files
-      .map((item) => profile.defaultFileStorage!.deleteFile(fileId: item.id)));
+  await Future.wait(credentials.map((item) => profile.defaultCredentialStorage!
+      .deleteCredential(digitalCredentialId: item.id)));
 
   await vault.defaultProfileRepository.deleteProfile(profile);
+}
+
+Future<void> _deleteFolder({
+  required Vault vault,
+  required Profile profile,
+  required String folderId,
+}) async {
+  print('Deleting folderId: $folderId');
+  final items = await profile.defaultFileStorage!.getFolder(folderId: folderId);
+  for (final item in items) {
+    if (item is Folder) {
+      await _deleteFolder(vault: vault, profile: profile, folderId: item.id);
+    } else if (item is File) {
+      await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+    }
+  }
+
+  // skip root folder
+  if (folderId != profile.id) {
+    await profile.defaultFileStorage!.deleteFolder(folderId: folderId);
+  }
 }
 
 Future<int> _createProfile(Vault vault, String name, int accountIndex) async {
