@@ -9,7 +9,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart pub get"
+        "command": "flutter pub get"
       }
     },
     "lint": {
@@ -17,7 +17,7 @@
       "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart format -l 120 --set-exit-if-changed . && dart analyze --fatal-infos"
+        "command": "dart format --set-exit-if-changed . && dart analyze --fatal-infos"
       }
     },
     "test": {

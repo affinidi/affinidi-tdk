@@ -4,11 +4,18 @@ environment:
   sdk: ^3.6.0
 workspace:
   - packages/dart/common
+  - packages/dart/common/example
   - packages/dart/cryptography
   - packages/dart/auth_provider
   - packages/dart/consumer_auth_provider
   - packages/dart/consumer_auth_provider/example
   - packages/dart/test_utilities
+  - packages/dart/vault_data_manager
+  - libs/dart/claim_verifiable_credential
   - libs/dart/seed_cryptography
   - libs/dart/iota_core
-  - tests/integration/dart
+  - libs/dart/vault
+  - libs/dart/vault/example
+  - libs/dart/vault_flutter_utils
+  - libs/dart/vault_flutter_utils/example/flutter_secure_storage
+  - libs/dart/vault_storages
