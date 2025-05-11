@@ -203,6 +203,19 @@ export interface CorsAwsCredentialExchangeOK {
 /**
  *
  * @export
+ * @interface CorsDeleteAccountOK
+ */
+export interface CorsDeleteAccountOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsDeleteAccountOK
+   */
+  corsDeleteAccountOk?: string
+}
+/**
+ *
+ * @export
  * @interface CorsDeleteNodeOK
  */
 export interface CorsDeleteNodeOK {
@@ -264,6 +277,19 @@ export interface CorsInitNodesOK {
    * @memberof CorsInitNodesOK
    */
   corsInitNodesOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsListAccountsOK
+ */
+export interface CorsListAccountsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsListAccountsOK
+   */
+  corsListAccountsOk?: string
 }
 /**
  *

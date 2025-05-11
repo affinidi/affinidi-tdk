@@ -261,12 +261,22 @@ public class VerifyPresentationInput {
 
     // add `verifiablePresentation` to the URL query string
     if (getVerifiablePresentation() != null) {
-      joiner.add(getVerifiablePresentation().toUrlQueryString(prefix + "verifiablePresentation" + suffix));
+      try {
+        joiner.add(String.format("%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
     // add `signedPresentation` to the URL query string
     if (getSignedPresentation() != null) {
-      joiner.add(getSignedPresentation().toUrlQueryString(prefix + "signedPresentation" + suffix));
+      try {
+        joiner.add(String.format("%ssignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
     // add `presentationDefinition` to the URL query string
