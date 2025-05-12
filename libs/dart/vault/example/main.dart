@@ -130,6 +130,8 @@ void main() async {
     print([error.code, error.message, error.originalMessage].join('\n'));
   }
 
+  await Future.delayed(const Duration(seconds: 2), () {});
+
   print('[Demo] Listing profile files ...');
 
   //
@@ -207,13 +209,35 @@ void _listProfileNames(
 }
 
 Future<void> _deleteProfile(Vault vault, Profile profile) async {
-  // Check if profile has files...
-  final files =
-      await profile.defaultFileStorage!.getFolder(folderId: profile.id);
+  // Delete folders recursively
+  await _deleteFolder(vault: vault, profile: profile, folderId: profile.id);
 
+  // Check if profile has credentials...
+  final credentials = await profile.defaultCredentialStorage!.listCredentials();
   // and delete them
-  await Future.wait(files
-      .map((item) => profile.defaultFileStorage!.deleteFile(fileId: item.id)));
+  await Future.wait(credentials.map((item) => profile.defaultCredentialStorage!
+      .deleteCredential(digitalCredentialId: item.id)));
 
   await vault.defaultProfileRepository.deleteProfile(profile);
+}
+
+Future<void> _deleteFolder({
+  required Vault vault,
+  required Profile profile,
+  required String folderId,
+}) async {
+  print('Deleting folderId: $folderId');
+  final items = await profile.defaultFileStorage!.getFolder(folderId: folderId);
+  for (final item in items) {
+    if (item is Folder) {
+      await _deleteFolder(vault: vault, profile: profile, folderId: item.id);
+    } else if (item is File) {
+      await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+    }
+  }
+
+  // skip root folder
+  if (folderId != profile.id) {
+    await profile.defaultFileStorage!.deleteFolder(folderId: folderId);
+  }
 }
