@@ -33,4 +33,26 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
   @override
   Future<String> fetchDelegatedToken({required String profileDid}) =>
       _implementation.fetchDelegatedToken(profileDid: profileDid);
+
+  /// Exchanges a pre-authorization code for an access token and authorization details.
+  /// This method is used in the OID4CVI flow to obtain a token after sharing an offer, allowing the vault to claim credentials.
+  ///
+  /// Parameters:
+  /// - tokenEndpoint: The token endpoint URL where the exchange request will be sent
+  /// - preAuthCode: The pre-authorization_code received from the offer details
+  /// - txCode: The transaction code associated with the issuance request. Required only when claim mode is TX_CODE
+  ///
+  /// Returns a record containing:
+  /// - accessToken: The access token received from the token endpoint
+  /// - authorizationDetails: Optional list of authorization details. This is only returned for batch issuance
+  ///
+  /// Throws an Exception if the exchange request fails
+  @override
+  Future<({String accessToken, List<dynamic>? authorizationDetails})>
+      exchangePreAuthCodeForToken(
+              {required String tokenEndpoint,
+              required String preAuthCode,
+              String? txCode}) =>
+          _implementation.exchangePreAuthCodeForToken(
+              tokenEndpoint: tokenEndpoint, preAuthCode: preAuthCode);
 }

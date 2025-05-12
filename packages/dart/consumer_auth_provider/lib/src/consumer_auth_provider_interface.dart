@@ -11,4 +11,11 @@ abstract interface class ConsumerAuthProviderInterface {
   ///
   /// - [profileDid] - DID of shared profile
   Future<String> fetchDelegatedToken({required String profileDid});
+
+  /// Exchanges a pre-authorization code for an access token and authorization details.
+  Future<({String accessToken, List<dynamic>? authorizationDetails})>
+      exchangePreAuthCodeForToken(
+          {required String tokenEndpoint,
+          required String preAuthCode,
+          String? txCode});
 }
