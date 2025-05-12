@@ -37,13 +37,10 @@ class TestW3cCredential(unittest.TestCase):
         model = W3cCredential()  # noqa: E501
         if include_optional:
             return W3cCredential(
-                context = None,
                 id = '',
                 type = [
                     ''
                     ],
-                holder = None,
-                credential_subject = None,
                 credential_status = affinidi_tdk_credential_verification_client.models.w3c_credential_status.W3cCredentialStatus(
                     id = '', 
                     type = '', 
@@ -66,11 +63,9 @@ class TestW3cCredential(unittest.TestCase):
             )
         else:
             return W3cCredential(
-                context = None,
                 type = [
                     ''
                     ],
-                credential_subject = None,
                 issuance_date = '',
                 issuer = '',
                 proof = affinidi_tdk_credential_verification_client.models.w3c_proof.W3cProof(

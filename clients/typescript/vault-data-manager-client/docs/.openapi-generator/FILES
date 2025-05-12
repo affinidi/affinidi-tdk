@@ -9,11 +9,13 @@ Models/AccountDto.md
 Models/AwsCredentialExchangeOperationOK.md
 Models/ConsumerMetadataDto.md
 Models/CorsAwsCredentialExchangeOK.md
+Models/CorsDeleteAccountOK.md
 Models/CorsDeleteNodeOK.md
 Models/CorsGetConfigOK.md
 Models/CorsGetScannedFileInfoOK.md
 Models/CorsGetWellKnownJwksOK.md
 Models/CorsInitNodesOK.md
+Models/CorsListAccountsOK.md
 Models/CorsListNodeChildrenOK.md
 Models/CorsListRootNodeChildrenOK.md
 Models/CorsListScannedFilesOK.md
