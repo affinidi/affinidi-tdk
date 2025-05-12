@@ -254,6 +254,8 @@ class VfsProfileRepository implements ProfileRepository {
       kek: Uint8List(2),
     );
     await accountDataManager.deleteAccount(accountIndex: profile.accountIndex);
+
+    _clearMemoizedProfileData(profile.accountIndex);
   }
 
   @override
@@ -281,6 +283,12 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   final _dataManagers = <String, VaultDataManagerService>{};
+
+  /// Deletes any memoized data associated to the accountIndex when a profile is deleted
+  void _clearMemoizedProfileData(int accountIndex) {
+    _didSigners.remove('$accountIndex');
+    _dataManagers.remove('$accountIndex');
+  }
 
   /// Memoize dataManagerService based on the walletKeyId
   Future<VaultDataManagerService> _memoizedDataManagerService({
