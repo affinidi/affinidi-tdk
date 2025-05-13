@@ -28,7 +28,9 @@ jobs:
         uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          version: 3.27.0
+
+      - name: Setup pub.dev credentials
+        uses: flutter-actions/setup-pubdev-credentials@v1
 
       - name: Install Dependencies
         run: npm ci

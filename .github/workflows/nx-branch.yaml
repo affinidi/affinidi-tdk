@@ -1,11 +1,10 @@
 name: branch
 on:
   #we need to keep on push as target because of this issue  https://github.com/orgs/community/discussions/65321
-  push: 
-    branches: 
-     - '**'
-     - '!main'
-
+  push:
+    branches:
+      - '**'
+      - '!main'
 
 permissions:
   actions: read
@@ -47,6 +46,7 @@ jobs:
         uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          version: 3.27.0
+          cache: true
+          cache-sdk: true
 
       - run: npx nx affected -t build --parallel=1
