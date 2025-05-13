@@ -106,7 +106,7 @@ class VfsProfileRepository implements ProfileRepository {
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    final kek = CryptographyService().getRandomBytes(32); // 'dekek|$keyId'
+    final kek = CryptographyService().getRandomBytes(32);
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
     final encryptedKek = await profileKeyPair.encrypt(Uint8List.fromList(kek));
@@ -135,9 +135,9 @@ class VfsProfileRepository implements ProfileRepository {
 
     final accountMetadata = AccountMetadata(
       dekekInfo: DekekInfo(
-          encryptedDekek: base64.encode(encryptedKek), version: 'v.0.1'),
+        encryptedDekek: base64.encode(encryptedKek),
+      ),
       sharedStorageData: [],
-      version: 'v.0.1',
     );
 
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
@@ -425,7 +425,6 @@ class VfsProfileRepository implements ProfileRepository {
         ...previousAccountData.accountMetadata!.sharedStorageData,
         sharedStorageData
       ],
-      version: previousAccountData.accountMetadata!.version,
       dekekInfo: previousAccountData.accountMetadata!.dekekInfo,
     );
 
