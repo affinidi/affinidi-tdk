@@ -4,9 +4,6 @@ The Affinidi TDK - Claim Verifiable Credential package provides the libraries wi
 
 *This package is still in **EXPERIMENTAL** status.* 
 
-> **IMPORTANT:**
-> This project does not collect or process any personal data. However, when used as part of a broader system or application that handles personally identifiable information (PII), users are responsible for ensuring that any such use complies with applicable privacy laws and data protection obligations.
-
 ## Key Features
 
 - Load credential offers from URIs.

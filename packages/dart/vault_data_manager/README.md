@@ -4,10 +4,6 @@ The Affinidi TDK - Vault Data Manager package provides the interface to interact
 
 *This package is still in **EXPERIMENTAL** status.* 
 
-> **IMPORTANT:**
-> This project does not collect or process any personal data. However, when used as part of a broader system or application that handles personally identifiable information (PII), users are responsible for ensuring that any such use complies with applicable privacy laws and data protection obligations.
-
-
 ## Key Features
 
 - Secure encryption & decryption of Data Encryption Keys (DEKs).
