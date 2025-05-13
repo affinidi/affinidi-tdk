@@ -4,9 +4,6 @@ The Affinidi TDK Vault Storage package provides the storage layer of the Affinid
 
 *This package is still in **EXPERIMENTAL** status.* 
 
-> **IMPORTANT:**
-> This project does not collect or process any personal data. However, when used as part of a broader system or application that handles personally identifiable information (PII), users are responsible for ensuring that any such use complies with applicable privacy laws and data protection obligations.
-
 ## Requirements
 
 - Dart SDK version ^3.6.0
@@ -71,7 +68,7 @@ void main() async {
 
 ```
 
-For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart).
+For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault_storages/example).
 
 
 ## Support & feedback

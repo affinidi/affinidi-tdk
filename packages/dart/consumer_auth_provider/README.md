@@ -4,9 +4,6 @@ The Affinidi TDK - Consumer Auth Provider package provides the libraries to auth
 
 *This package is still in **EXPERIMENTAL** status.* 
 
-> **IMPORTANT:**
-> This project does not collect or process any personal data. However, when used as part of a broader system or application that handles personally identifiable information (PII), users are responsible for ensuring that any such use complies with applicable privacy laws and data protection obligations.
-
 ## Requirements
 
 - Dart SDK version ^3.6.0

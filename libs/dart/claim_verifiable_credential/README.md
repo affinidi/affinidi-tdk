@@ -4,9 +4,6 @@ The Affinidi TDK - Claim Verifiable Credential package provides the libraries wi
 
 *This package is still in **EXPERIMENTAL** status.* 
 
-> **IMPORTANT:**
-> This project does not collect or process any personal data. However, when used as part of a broader system or application that handles personally identifiable information (PII), users are responsible for ensuring that any such use complies with applicable privacy laws and data protection obligations.
-
 ## Key Features
 
 - Load credential offers from URIs.
@@ -57,7 +54,7 @@ void main() async {
 }
 ```
 
-For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart).
+For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/claim_verifiable_credential/example).
 
 
 ## Support & feedback
