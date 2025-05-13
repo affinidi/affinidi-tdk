@@ -57,7 +57,7 @@ void main() async {
 }
 ```
 
-For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart).
+For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/claim_verifiable_credential/example).
 
 
 ## Support & feedback

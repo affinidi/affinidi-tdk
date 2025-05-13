@@ -71,7 +71,7 @@ void main() async {
 
 ```
 
-For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart).
+For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault_storages/example).
 
 
 ## Support & feedback
