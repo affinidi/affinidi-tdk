@@ -95,7 +95,7 @@ void main() async {
   final aliceProfile = profilesAfterAccountsAlice
       .where((profile) => profile.accountIndex == aliceAccountIndex)
       .firstOrNull;
-  // TODO(MA): how can it quickly find out the profile associated with the shared Did?
+
   var bobProfile = profilesAfterAccountsBob
       .where((profile) => profile.accountIndex == bobAccountIndex)
       .firstOrNull;
