@@ -3,7 +3,7 @@ name: publish dart
 on:
   push:
     tags:
-      - '**dart-v**'  
+      - '**dart-v**'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: 3.6.0
+          sdk: 3.7.3
 
       - name: Install Dependencies
         run: npm ci
