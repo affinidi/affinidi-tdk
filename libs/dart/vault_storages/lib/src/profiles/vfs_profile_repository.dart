@@ -36,6 +36,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
+  late final VaultDataManagerService? _accountVaultDataManagerService;
 
   late VaultStore _keyStorage;
   late KeyPair _rootKeyPair;
@@ -111,10 +112,7 @@ class VfsProfileRepository implements ProfileRepository {
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
     final encryptedKek = await profileKeyPair.encrypt(Uint8List.fromList(kek));
 
-    final accountsManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootKeyPair.id,
-      kek: Uint8List.fromList(kek),
-    );
+    final accountsManagerService = await _getAccountVaultDataManagerService();
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: nextAccountIndex.toString(),
       kek: Uint8List.fromList(kek),
@@ -157,9 +155,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    // TODO: split services for root one and profile based one
-    final accountsManagerService = await _memoizedDataManagerService(
-        walletKeyId: _rootKeyPair.id, kek: Uint8List(2));
+    final accountsManagerService = await _getAccountVaultDataManagerService();
     final accounts = await accountsManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
@@ -210,13 +206,13 @@ class VfsProfileRepository implements ProfileRepository {
       profileRepositoryId: id,
       fileStorages: {
         _id: VFSFileStorage(
-          id: '_id',
+          id: _id,
           dataManagerService: profileDataManager,
         )
       },
       credentialStorages: {
         _id: VFSCredentialStorage(
-          id: '_id',
+          id: _id,
           dataManagerService: profileDataManager,
           profileId: profile.id,
         )
@@ -249,10 +245,7 @@ class VfsProfileRepository implements ProfileRepository {
     await profileDataManager.deleteProfile(profile.id);
 
     // Delete account associated to profile
-    final accountDataManager = await _memoizedDataManagerService(
-      walletKeyId: _rootKeyPair.id,
-      kek: Uint8List(2),
-    );
+    final accountDataManager = await _getAccountVaultDataManagerService();
     await accountDataManager.deleteAccount(accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
@@ -293,8 +286,9 @@ class VfsProfileRepository implements ProfileRepository {
   /// Memoize dataManagerService based on the walletKeyId
   Future<VaultDataManagerService> _memoizedDataManagerService({
     required String walletKeyId,
-    required Uint8List kek,
+    Uint8List? kek,
   }) async {
+    kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
     _dataManagers[walletKeyId] ??= await VaultDataManagerService.create(
       didSigner: await _memoizedDidSigner(walletKeyId),
       encryptionKey: kek,
@@ -404,10 +398,7 @@ class VfsProfileRepository implements ProfileRepository {
   }) async {
     // TODO: ask nucleus to add PATCH to update the only required portion of data
     // TODO: have a GET account by {accountIndex}
-    final accountDataManager = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-      kek: Uint8List(2),
-    );
+    final accountDataManager = await _getAccountVaultDataManagerService();
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$accountIndex');
     final sharedStorageData = SharedStorageData(
@@ -442,4 +433,22 @@ class VfsProfileRepository implements ProfileRepository {
 
   String _getDerivationPath(String accountIndex) =>
       "m/44'/60'/$accountIndex'/0'/0'";
+
+  Future<VaultDataManagerService>
+      _createAccountVaultDataManagerService() async {
+    return await VaultDataManagerService.create(
+      didSigner: DidSigner(
+        didDocument: DidKey.generateDocument(_rootKeyPair.publicKey),
+        didKeyId: _rootKeyPair.id,
+        keyPair: _rootKeyPair,
+        signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
+      ),
+      encryptionKey: Uint8List(2),
+    );
+  }
+
+  Future<VaultDataManagerService> _getAccountVaultDataManagerService() async {
+    return _accountVaultDataManagerService ??=
+        await _createAccountVaultDataManagerService();
+  }
 }
