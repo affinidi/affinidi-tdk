@@ -32,7 +32,7 @@ void main() {
           dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
       walletApi = apiClient.getWalletApi();
 
-      holderDid = env?.did ?? '';
+      holderDid = env.did;
     });
 
     test('Create wallet: DID Key', () async {
