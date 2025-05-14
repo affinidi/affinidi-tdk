@@ -131,51 +131,56 @@ void main() async {
       toDid: bobProfile.did,
       permissions: Permissions.all);
 
-  // Bob to accept shared profile
-  print('[Demo] Bob is accepting a shared profile ...');
-  await vaultBob.addSharedProfile(
-      profileId: bobProfile.id, sharedProfile: sharedProfile);
+  await vaultAlice.shareProfile(
+      profileId: aliceProfile.id,
+      toDid: bobProfile.did,
+      permissions: Permissions.all);
 
-  profilesBob = await vaultBob
-      .listProfiles(); // Must be called to refresh profile metadata
-  var bobProfileWithSharedStorage =
-      profilesBob.where((profile) => profile.id == bobProfile.id).firstOrNull;
-  final bobSharedStorages = bobProfileWithSharedStorage!.sharedStorages;
+  // // Bob to accept shared profile
+  // print('[Demo] Bob is accepting a shared profile ...');
+  // await vaultBob.addSharedProfile(
+  //     profileId: bobProfile.id, sharedProfile: sharedProfile);
 
-  print(
-      '[Demo] Bob available shared storages ${bobSharedStorages.map((storage) => storage.id).join(', ')}');
+  // profilesBob = await vaultBob
+  //     .listProfiles(); // Must be called to refresh profile metadata
+  // var bobProfileWithSharedStorage =
+  //     profilesBob.where((profile) => profile.id == bobProfile.id).firstOrNull;
+  // final bobSharedStorages = bobProfileWithSharedStorage!.sharedStorages;
 
-  // Bob to Access Alice files
-  final bobSharedStorageWAliceProfile = bobSharedStorages
-      .where((storage) => storage.id == aliceProfile.id)
-      .firstOrNull;
-  final folderContent = await bobSharedStorageWAliceProfile!.getFolder();
-  final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
-      fileId: folderContent.first.id);
-  print('[Demo] Bob file content: $fileContent');
-  print(
-      '[Demo] Bob available shared files from Alice ${folderContent.map((item) => item.name).join('\n')}');
+  // print(
+  //     '[Demo] Bob available shared storages ${bobSharedStorages.map((storage) => storage.id).join(', ')}');
 
-  // Alice revokes Bob access to her profile
-  await vaultAlice.revokeProfileAccess(
-      profileId: aliceProfile.id, granteeDid: bobProfile.did);
+  // // Bob to Access Alice files
+  // final bobSharedStorageWAliceProfile = bobSharedStorages
+  //     .where((storage) => storage.id == aliceProfile.id)
+  //     .firstOrNull;
+  // final folderContent = await bobSharedStorageWAliceProfile!.getFolder();
+  // final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
+  //     fileId: folderContent.first.id);
+  // print('[Demo] Bob file content: $fileContent');
+  // print(
+  //     '[Demo] Bob available shared files from Alice ${folderContent.map((item) => item.name).join('\n')}');
 
-  // Bob to Access Alice files after revokal
-  try {
-    final folderContentAfterRevokal =
-        await bobSharedStorageWAliceProfile.getFolder();
-    print(
-        '[Demo] Bob available shared files from Alice after revokal: ${folderContentAfterRevokal.map((item) => item.name).join('\n')}');
-  } catch (error) {
-    print('[Demo] Correctly Fails to access folder as it is not longer shared');
-  }
+  // // Alice revokes Bob access to her profile
+  // await vaultAlice.revokeProfileAccess(
+  //     profileId: aliceProfile.id, granteeDid: bobProfile.did);
 
-  // Alice deletes all files
-  print('[Demo] Alice is deleting all files...');
-  final aliceFiles = await aliceProfile.defaultFileStorage!
-      .getFolder(folderId: aliceProfile.id);
-  await Future.wait(aliceFiles.map(
-      (item) => aliceProfile.defaultFileStorage!.deleteFile(fileId: item.id)));
+  // // Bob to Access Alice files after revokal
+  // try {
+  //   final folderContentAfterRevokal =
+  //       await bobSharedStorageWAliceProfile.getFolder();
+  //   print(
+  //       '[Demo] Bob available shared files from Alice after revokal: ${folderContentAfterRevokal.map((item) => item.name).join('\n')}');
+  // } catch (error) {
+  //   print('[Demo] Correctly Fails to access folder as it is not longer shared');
+  // }
+
+  // // Alice deletes all files
+  // print('[Demo] Alice is deleting all files...');
+  // final aliceFiles = await aliceProfile.defaultFileStorage!
+  //     .getFolder(folderId: aliceProfile.id);
+  // await Future.wait(aliceFiles.map(
+  //     (item) => aliceProfile.defaultFileStorage!.deleteFile(fileId: item.id)));
 }
 
 Future<void> _deleteProfile(Vault vault, Profile profile) async {

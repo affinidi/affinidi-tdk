@@ -36,7 +36,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
-  late final VaultDataManagerService? _accountVaultDataManagerService;
+  late final VaultDataManagerService _accountVaultDataManagerService;
 
   late VaultStore _keyStorage;
   late KeyPair _rootKeyPair;
@@ -75,6 +75,8 @@ class VfsProfileRepository implements ProfileRepository {
     _keyStorage = configuration.keyStorage!;
 
     _rootKeyPair = await _getRootKeyPair();
+    _accountVaultDataManagerService =
+        await _createAccountVaultDataManagerService();
 
     _configured = true;
   }
@@ -112,7 +114,6 @@ class VfsProfileRepository implements ProfileRepository {
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
     final encryptedKek = await profileKeyPair.encrypt(Uint8List.fromList(kek));
 
-    final accountsManagerService = await _getAccountVaultDataManagerService();
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: nextAccountIndex.toString(),
       kek: Uint8List.fromList(kek),
@@ -139,7 +140,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
 
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    await accountsManagerService.createAccount(
+    await _accountVaultDataManagerService.createAccount(
       accountIndex: nextAccountIndex,
       accountDid: profileDid,
       didProof: profileDidProof,
@@ -155,8 +156,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    final accountsManagerService = await _getAccountVaultDataManagerService();
-    final accounts = await accountsManagerService.getAccounts();
+    final accounts = await _accountVaultDataManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
   }
@@ -245,8 +245,8 @@ class VfsProfileRepository implements ProfileRepository {
     await profileDataManager.deleteProfile(profile.id);
 
     // Delete account associated to profile
-    final accountDataManager = await _getAccountVaultDataManagerService();
-    await accountDataManager.deleteAccount(accountIndex: profile.accountIndex);
+    await _accountVaultDataManagerService.deleteAccount(
+        accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
   }
@@ -398,7 +398,6 @@ class VfsProfileRepository implements ProfileRepository {
   }) async {
     // TODO: ask nucleus to add PATCH to update the only required portion of data
     // TODO: have a GET account by {accountIndex}
-    final accountDataManager = await _getAccountVaultDataManagerService();
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$accountIndex');
     final sharedStorageData = SharedStorageData(
@@ -407,7 +406,8 @@ class VfsProfileRepository implements ProfileRepository {
       profileDid: grantedProfileDid,
     );
 
-    final accountsResponse = await accountDataManager.getAccounts();
+    final accountsResponse =
+        await _accountVaultDataManagerService.getAccounts();
     final previousAccountData = accountsResponse
         .firstWhere((account) => account.accountIndex == accountIndex);
 
@@ -423,7 +423,7 @@ class VfsProfileRepository implements ProfileRepository {
       accountIndex.toString(),
     );
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
-    await accountDataManager.updateAccount(
+    await _accountVaultDataManagerService.updateAccount(
       accountIndex: accountIndex,
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
@@ -436,7 +436,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   Future<VaultDataManagerService>
       _createAccountVaultDataManagerService() async {
-    return await VaultDataManagerService.create(
+    final vaultDataManager = await VaultDataManagerService.create(
       didSigner: DidSigner(
         didDocument: DidKey.generateDocument(_rootKeyPair.publicKey),
         didKeyId: _rootKeyPair.id,
@@ -445,10 +445,7 @@ class VfsProfileRepository implements ProfileRepository {
       ),
       encryptionKey: Uint8List(2),
     );
-  }
 
-  Future<VaultDataManagerService> _getAccountVaultDataManagerService() async {
-    return _accountVaultDataManagerService ??=
-        await _createAccountVaultDataManagerService();
+    return vaultDataManager;
   }
 }
