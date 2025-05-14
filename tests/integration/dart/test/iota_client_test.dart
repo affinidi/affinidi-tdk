@@ -1,12 +1,13 @@
-import 'package:dio/dio.dart';
-import 'package:test/test.dart';
+import 'dart:convert';
+
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
-import 'package:uuid/uuid.dart';
-import 'package:jwt_decode/jwt_decode.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:jwt_decode/jwt_decode.dart';
+import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
+
 import 'environment.dart';
 
 void main() {
