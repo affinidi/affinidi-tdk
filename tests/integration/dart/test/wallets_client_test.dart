@@ -98,7 +98,8 @@ void main() {
     });
 
     test('Sign Credential', () async {
-      final jsonLdContextUrl = 'https://schema.affinidi.io/TPassportV1R0.jsonld';
+      final jsonLdContextUrl =
+          'https://schema.affinidi.io/TPassportV1R0.jsonld';
       final jsonSchemaUrl = 'https://schema.affinidi.io/TPassportV1R0.json';
       final typeName = 'VerifiableCredential';
       final expiresAt = '10';
@@ -110,7 +111,7 @@ void main() {
         ..holderDid = holderDid
         ..expiresAt = expiresAt;
 
-      final revocable =  true;
+      final revocable = true;
       final credentialFormat = SignCredentialInputDtoCredentialFormatEnum.ldpVc;
       final unsignedCredentialParams = params;
 
@@ -120,23 +121,22 @@ void main() {
         ..unsignedCredentialParams = unsignedCredentialParams;
 
       final signedVC = (await walletApi.signCredential(
-          walletId: walletId,
-          signCredentialInputDto: signCredentialBuilder.build()))
-      .data;
+              walletId: walletId,
+              signCredentialInputDto: signCredentialBuilder.build()))
+          .data;
 
       expect(signedVC?.signedCredential, isNotNull);
     });
 
     test('Sign JWT', () async {
-      final header = {
-        'alg': 'HS256',
-        'typ': 'JWT'
-      };
+      final header = {'alg': 'HS256', 'typ': 'JWT'};
 
       final payload = {
         'sub': 'dc9c399b-eb50-4761-a91c-deee13a47054',
         'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
-        'exp': (DateTime.now().add(Duration(hours: 1))).millisecondsSinceEpoch ~/ 1000
+        'exp':
+            (DateTime.now().add(Duration(hours: 1))).millisecondsSinceEpoch ~/
+                1000
       };
 
       final jsonHeader = JsonObject(header);
@@ -146,11 +146,9 @@ void main() {
         ..header = jsonHeader
         ..payload = jsonPayload;
 
-
       final result = (await walletApi.signJwtToken(
-        walletId: walletId,
-        signJwtToken: signTokenBuilder.build()))
-      .data;
+              walletId: walletId, signJwtToken: signTokenBuilder.build()))
+          .data;
 
       expect(result?.signedJwt, isNotNull);
     });
@@ -166,7 +164,7 @@ void main() {
       final result = (await walletApi.listWallets()).data;
 
       expect(result!.wallets!.length, greaterThan(0));
-      expect(result!.wallets![0]!.did, isNotEmpty);
+      expect(result.wallets![0].did, isNotEmpty);
     });
 
     test('Update wallet', () async {
@@ -178,13 +176,13 @@ void main() {
         ..description = updatedDescription;
 
       final wallet = (await walletApi.updateWallet(
-          walletId: walletId,
-          updateWalletInput: walletInputBuilder.build()))
-      .data;
+              walletId: walletId,
+              updateWalletInput: walletInputBuilder.build()))
+          .data;
 
       expect(wallet, isNotNull);
       expect(wallet!.name, equals(updatedName));
-      expect(wallet!.description, equals(updatedDescription));
+      expect(wallet.description, equals(updatedDescription));
     });
 
     test('Delete wallet', () async {
@@ -193,7 +191,8 @@ void main() {
 
         expectLater(
           walletApi.getWallet(walletId: walletId),
-          throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+          throwsA(isA<DioException>()
+              .having((e) => e.response?.statusCode, 'status code', 404)),
         );
       }
 
@@ -202,7 +201,8 @@ void main() {
 
         expectLater(
           walletApi.getWallet(walletId: walletIdDidWeb),
-          throwsA(isA<DioException>().having((e) => e.response?.statusCode, 'status code', 404)),
+          throwsA(isA<DioException>()
+              .having((e) => e.response?.statusCode, 'status code', 404)),
         );
       }
     });
