@@ -21,14 +21,13 @@ import json
 
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-from affinidi_tdk_credential_verification_client.models.w3c_presentation import W3cPresentation
 
 class VerifyPresentationInput(BaseModel):
     """
     Request model of /verify-vp  # noqa: E501
     """
-    verifiable_presentation: Optional[W3cPresentation] = Field(default=None, alias="verifiablePresentation")
-    signed_presentation: Optional[W3cPresentation] = Field(default=None, alias="signedPresentation")
+    verifiable_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="verifiablePresentation")
+    signed_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="signedPresentation")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition")
     presentation_submission: Optional[Dict[str, Any]] = Field(default=None, alias="presentationSubmission")
     challenge: Optional[StrictStr] = None
@@ -58,12 +57,6 @@ class VerifyPresentationInput(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of verifiable_presentation
-        if self.verifiable_presentation:
-            _dict['verifiablePresentation'] = self.verifiable_presentation.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of signed_presentation
-        if self.signed_presentation:
-            _dict['signedPresentation'] = self.signed_presentation.to_dict()
         return _dict
 
     @classmethod
@@ -76,8 +69,8 @@ class VerifyPresentationInput(BaseModel):
             return VerifyPresentationInput.parse_obj(obj)
 
         _obj = VerifyPresentationInput.parse_obj({
-            "verifiable_presentation": W3cPresentation.from_dict(obj.get("verifiablePresentation")) if obj.get("verifiablePresentation") is not None else None,
-            "signed_presentation": W3cPresentation.from_dict(obj.get("signedPresentation")) if obj.get("signedPresentation") is not None else None,
+            "verifiable_presentation": obj.get("verifiablePresentation"),
+            "signed_presentation": obj.get("signedPresentation"),
             "presentation_definition": obj.get("presentationDefinition"),
             "presentation_submission": obj.get("presentationSubmission"),
             "challenge": obj.get("challenge")

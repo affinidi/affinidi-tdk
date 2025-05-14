@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +19,7 @@ part 'verify_credential_input.g.dart';
 abstract class VerifyCredentialInput implements Built<VerifyCredentialInput, VerifyCredentialInputBuilder> {
   /// List of VCs
   @BuiltValueField(wireName: r'verifiableCredentials')
-  BuiltList<W3cCredential> get verifiableCredentials;
+  BuiltList<JsonObject> get verifiableCredentials;
 
   /// Dynamic model
   @BuiltValueField(wireName: r'issuerDidDocument')
@@ -52,7 +51,7 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
     yield r'verifiableCredentials';
     yield serializers.serialize(
       object.verifiableCredentials,
-      specifiedType: const FullType(BuiltList, [FullType(W3cCredential)]),
+      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
     );
     if (object.issuerDidDocument != null) {
       yield r'issuerDidDocument';
@@ -87,8 +86,8 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
         case r'verifiableCredentials':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(W3cCredential)]),
-          ) as BuiltList<W3cCredential>;
+            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+          ) as BuiltList<JsonObject>;
           result.verifiableCredentials.replace(valueDes);
           break;
         case r'issuerDidDocument':

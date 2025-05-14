@@ -8,7 +8,7 @@ void main() {
 
   group(VerifyCredentialInput, () {
     // List of VCs
-    // BuiltList<W3cCredential> verifiableCredentials
+    // BuiltList<JsonObject> verifiableCredentials
     test('to test the property `verifiableCredentials`', () async {
       // TODO
     });

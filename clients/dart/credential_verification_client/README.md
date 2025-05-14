@@ -110,14 +110,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyPresentationInput](doc/VerifyPresentationInput.md)
 - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
 - [VerifyPresentationOutputErrors](doc/VerifyPresentationOutputErrors.md)
-- [W3cCredential](doc/W3cCredential.md)
-- [W3cCredentialCredentialSchema](doc/W3cCredentialCredentialSchema.md)
-- [W3cCredentialCredentialSubject](doc/W3cCredentialCredentialSubject.md)
-- [W3cCredentialHolder](doc/W3cCredentialHolder.md)
 - [W3cCredentialStatus](doc/W3cCredentialStatus.md)
-- [W3cPresentation](doc/W3cPresentation.md)
-- [W3cPresentationContext](doc/W3cPresentationContext.md)
-- [W3cPresentationContextOneOfInner](doc/W3cPresentationContextOneOfInner.md)
 - [W3cProof](doc/W3cProof.md)
 
 ## Documentation For Authorization

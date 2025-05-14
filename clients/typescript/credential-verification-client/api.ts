@@ -944,10 +944,10 @@ export interface ValidateJwtOutput {
 export interface VerifyCredentialInput {
   /**
    * List of VCs
-   * @type {Array<W3cCredential>}
+   * @type {Array<object>}
    * @memberof VerifyCredentialInput
    */
-  verifiableCredentials: Array<W3cCredential>
+  verifiableCredentials: Array<object>
   /**
    * Dynamic model
    * @type {{ [key: string]: any; }}
@@ -982,16 +982,16 @@ export interface VerifyCredentialOutput {
 export interface VerifyPresentationInput {
   /**
    *
-   * @type {W3cPresentation}
+   * @type {object}
    * @memberof VerifyPresentationInput
    */
-  verifiablePresentation?: W3cPresentation
+  verifiablePresentation?: object
   /**
    *
-   * @type {W3cPresentation}
+   * @type {object}
    * @memberof VerifyPresentationInput
    */
-  signedPresentation?: W3cPresentation
+  signedPresentation?: object
   /**
    *
    * @type {object}
@@ -1039,110 +1039,6 @@ export interface VerifyPresentationOutputErrors {}
 /**
  *
  * @export
- * @interface W3cCredential
- */
-export interface W3cCredential {
-  /**
-   *
-   * @type {W3cPresentationContext}
-   * @memberof W3cCredential
-   */
-  '@context': W3cPresentationContext
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredential
-   */
-  id?: string | null
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof W3cCredential
-   */
-  type: Array<string>
-  /**
-   *
-   * @type {W3cCredentialHolder}
-   * @memberof W3cCredential
-   */
-  holder?: W3cCredentialHolder
-  /**
-   *
-   * @type {W3cCredentialCredentialSubject}
-   * @memberof W3cCredential
-   */
-  credentialSubject: W3cCredentialCredentialSubject
-  /**
-   *
-   * @type {W3cCredentialStatus}
-   * @memberof W3cCredential
-   */
-  credentialStatus?: W3cCredentialStatus
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredential
-   */
-  issuanceDate: string
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredential
-   */
-  issuer: string
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredential
-   */
-  expirationDate?: string | null
-  /**
-   *
-   * @type {W3cProof}
-   * @memberof W3cCredential
-   */
-  proof: W3cProof
-  /**
-   *
-   * @type {W3cCredentialCredentialSchema}
-   * @memberof W3cCredential
-   */
-  credentialSchema?: W3cCredentialCredentialSchema
-}
-/**
- *
- * @export
- * @interface W3cCredentialCredentialSchema
- */
-export interface W3cCredentialCredentialSchema {
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredentialCredentialSchema
-   */
-  id?: string
-  /**
-   *
-   * @type {string}
-   * @memberof W3cCredentialCredentialSchema
-   */
-  type?: string
-}
-/**
- * @type W3cCredentialCredentialSubject
- * @export
- */
-export type W3cCredentialCredentialSubject = Array<string> | object
-
-/**
- * @type W3cCredentialHolder
- * @export
- */
-export type W3cCredentialHolder = object | string
-
-/**
- *
- * @export
  * @interface W3cCredentialStatus
  */
 export interface W3cCredentialStatus {
@@ -1171,70 +1067,6 @@ export interface W3cCredentialStatus {
    */
   revocationListCredential: string
 }
-/**
- *
- * @export
- * @interface W3cPresentation
- */
-export interface W3cPresentation {
-  /**
-   *
-   * @type {W3cPresentationContext}
-   * @memberof W3cPresentation
-   */
-  '@context': W3cPresentationContext
-  /**
-   *
-   * @type {string}
-   * @memberof W3cPresentation
-   */
-  id?: string | null
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof W3cPresentation
-   */
-  type: Array<string>
-  /**
-   *
-   * @type {object}
-   * @memberof W3cPresentation
-   */
-  holder: object
-  /**
-   *
-   * @type {Array<W3cCredential>}
-   * @memberof W3cPresentation
-   */
-  verifiableCredential: Array<W3cCredential>
-  /**
-   *
-   * @type {PresentationSubmission}
-   * @memberof W3cPresentation
-   */
-  presentation_submission?: PresentationSubmission
-  /**
-   *
-   * @type {object}
-   * @memberof W3cPresentation
-   */
-  proof: object
-}
-/**
- * @type W3cPresentationContext
- * @export
- */
-export type W3cPresentationContext =
-  | Array<W3cPresentationContextOneOfInner>
-  | string
-  | { [key: string]: any }
-
-/**
- * @type W3cPresentationContextOneOfInner
- * @export
- */
-export type W3cPresentationContextOneOfInner = string | { [key: string]: any }
-
 /**
  *
  * @export
