@@ -7,12 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(VerifyPresentationInput, () {
-    // W3cPresentation verifiablePresentation
+    // JsonObject verifiablePresentation
     test('to test the property `verifiablePresentation`', () async {
       // TODO
     });
 
-    // W3cPresentation signedPresentation
+    // JsonObject signedPresentation
     test('to test the property `signedPresentation`', () async {
       // TODO
     });

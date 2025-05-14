@@ -38,62 +38,14 @@ class TestVerifyCredentialInput(unittest.TestCase):
         if include_optional:
             return VerifyCredentialInput(
                 verifiable_credentials = [
-                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential(
-                        @context = null, 
-                        id = '', 
-                        type = [
-                            ''
-                            ], 
-                        holder = null, 
-                        credential_subject = null, 
-                        credential_status = affinidi_tdk_credential_verification_client.models.w3c_credential_status.W3cCredentialStatus(
-                            id = '', 
-                            type = '', 
-                            revocation_list_index = '', 
-                            revocation_list_credential = '', ), 
-                        issuance_date = '', 
-                        issuer = '', 
-                        expiration_date = '', 
-                        proof = affinidi_tdk_credential_verification_client.models.w3c_proof.W3cProof(
-                            created = '', 
-                            verification_method = '', 
-                            proof_purpose = '', 
-                            jws = '', 
-                            proof_value = '', 
-                            nonce = '', ), 
-                        credential_schema = affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema.W3cCredential_credentialSchema(
-                            id = '', ), )
+                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential()
                     ],
                 issuer_did_document = { }
             )
         else:
             return VerifyCredentialInput(
                 verifiable_credentials = [
-                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential(
-                        @context = null, 
-                        id = '', 
-                        type = [
-                            ''
-                            ], 
-                        holder = null, 
-                        credential_subject = null, 
-                        credential_status = affinidi_tdk_credential_verification_client.models.w3c_credential_status.W3cCredentialStatus(
-                            id = '', 
-                            type = '', 
-                            revocation_list_index = '', 
-                            revocation_list_credential = '', ), 
-                        issuance_date = '', 
-                        issuer = '', 
-                        expiration_date = '', 
-                        proof = affinidi_tdk_credential_verification_client.models.w3c_proof.W3cProof(
-                            created = '', 
-                            verification_method = '', 
-                            proof_purpose = '', 
-                            jws = '', 
-                            proof_value = '', 
-                            nonce = '', ), 
-                        credential_schema = affinidi_tdk_credential_verification_client.models.w3c_credential_credential_schema.W3cCredential_credentialSchema(
-                            id = '', ), )
+                    affinidi_tdk_credential_verification_client.models.w3c_credential.W3cCredential()
                     ],
         )
         """

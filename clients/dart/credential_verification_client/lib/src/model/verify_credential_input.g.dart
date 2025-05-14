@@ -8,7 +8,7 @@ part of 'verify_credential_input.dart';
 
 class _$VerifyCredentialInput extends VerifyCredentialInput {
   @override
-  final BuiltList<W3cCredential> verifiableCredentials;
+  final BuiltList<JsonObject> verifiableCredentials;
   @override
   final BuiltMap<String, JsonObject?>? issuerDidDocument;
 
@@ -62,11 +62,10 @@ class VerifyCredentialInputBuilder
     implements Builder<VerifyCredentialInput, VerifyCredentialInputBuilder> {
   _$VerifyCredentialInput? _$v;
 
-  ListBuilder<W3cCredential>? _verifiableCredentials;
-  ListBuilder<W3cCredential> get verifiableCredentials =>
-      _$this._verifiableCredentials ??= new ListBuilder<W3cCredential>();
-  set verifiableCredentials(
-          ListBuilder<W3cCredential>? verifiableCredentials) =>
+  ListBuilder<JsonObject>? _verifiableCredentials;
+  ListBuilder<JsonObject> get verifiableCredentials =>
+      _$this._verifiableCredentials ??= new ListBuilder<JsonObject>();
+  set verifiableCredentials(ListBuilder<JsonObject>? verifiableCredentials) =>
       _$this._verifiableCredentials = verifiableCredentials;
 
   MapBuilder<String, JsonObject?>? _issuerDidDocument;
