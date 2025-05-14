@@ -9,9 +9,6 @@ import 'environment.dart';
 void main() {
   group('Login Configuration Client Integration Tests', () {
     late ConfigurationApi configurationApi;
-    late GroupApi groupApi;
-    late AllowListApi allowListApi;
-    late DenyListApi denyListApi;
     late String configurationId;
 
     setUp(() async {
@@ -32,9 +29,6 @@ void main() {
           )),
           authTokenHook: authProvider.fetchProjectScopedToken);
 
-      groupApi = loginConfigurationClient.getGroupApi();
-      allowListApi = loginConfigurationClient.getAllowListApi();
-      denyListApi = loginConfigurationClient.getDenyListApi();
       configurationApi = loginConfigurationClient.getConfigurationApi();
     });
 

@@ -189,9 +189,6 @@ void main() {
       final queryId = envIota.queryId;
       final uuid = Uuid();
       final correlationId = uuid.v4();
-      final redirectUri = envIota.redirectUri;
-      final nonce = correlationId.substring(0, 10);
-      final mode = InitiateDataSharingRequestInputModeEnum.redirect;
       final configurationId = envIota.configurationId;
       final presentationSubmission = envIota.presentationSubmission;
       final vpToken = envIota.vpToken;
