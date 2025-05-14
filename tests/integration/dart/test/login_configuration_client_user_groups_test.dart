@@ -162,7 +162,7 @@ void main() {
         if (groupName.isNotEmpty) {
           await groupApi.deleteGroup(groupName: groupName);
 
-          expectLater(
+          await expectLater(
             groupApi.getGroupById(groupName: groupName),
             throwsA(isA<DioException>()
                 .having((e) => e.response?.statusCode, 'status code', 404)),

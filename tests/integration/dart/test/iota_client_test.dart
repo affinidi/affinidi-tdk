@@ -159,7 +159,7 @@ void main() {
         });
 
         test('Reads PEX query', () async {
-          expectLater(
+          await expectLater(
             pexQueryApi.getPexQueryById(
                 configurationId: configurationId, queryId: queryId),
             throwsA(isA<DioException>()
@@ -176,7 +176,7 @@ void main() {
       });
 
       test('Reads Iota configuration', () async {
-        expectLater(
+        await expectLater(
           configurationsApi.getIotaConfigurationById(
               configurationId: configurationId),
           throwsA(isA<DioException>()

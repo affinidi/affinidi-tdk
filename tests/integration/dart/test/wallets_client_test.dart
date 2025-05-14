@@ -189,7 +189,7 @@ void main() {
       if (walletId.isNotEmpty) {
         await walletApi.deleteWallet(walletId: walletId);
 
-        expectLater(
+        await expectLater(
           walletApi.getWallet(walletId: walletId),
           throwsA(isA<DioException>()
               .having((e) => e.response?.statusCode, 'status code', 404)),
@@ -199,7 +199,7 @@ void main() {
       if (walletIdDidWeb.isNotEmpty) {
         await walletApi.deleteWallet(walletId: walletIdDidWeb);
 
-        expectLater(
+        await expectLater(
           walletApi.getWallet(walletId: walletIdDidWeb),
           throwsA(isA<DioException>()
               .having((e) => e.response?.statusCode, 'status code', 404)),

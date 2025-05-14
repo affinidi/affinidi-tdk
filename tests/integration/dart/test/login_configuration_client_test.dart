@@ -98,7 +98,7 @@ void main() {
           await configurationApi.deleteLoginConfigurationsById(
               configurationId: configurationId);
 
-          expectLater(
+          await expectLater(
             configurationApi.getLoginConfigurationsById(
                 configurationId: configurationId),
             throwsA(isA<DioException>()
