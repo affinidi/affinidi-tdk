@@ -47,13 +47,13 @@ class CisTokenProvider extends TokenProvider {
     final dio = Dio();
 
     final formData = {
-      "grant_type": "urn:ietf:params:oauth:grant-type:pre-authorized_code",
+      'grant_type': 'urn:ietf:params:oauth:grant-type:pre-authorized_code',
       'pre-authorized_code': preAuthCode,
       if (txCode != null) 'tx_code': txCode,
     };
 
     try {
-      final response = await dio.post(
+      final response = await dio.post<Map<String, dynamic>>(
         tokenEndpoint,
         data: formData,
         options: Options(
@@ -62,9 +62,9 @@ class CisTokenProvider extends TokenProvider {
       );
 
       return (
-        accessToken: response.data['access_token'] as String,
+        accessToken: response.data!['access_token'] as String,
         authorizationDetails:
-            response.data['authorization_details'] as List<dynamic>?
+            response.data!['authorization_details'] as List<dynamic>?
       );
     } on DioException catch (e) {
       throw Exception(

@@ -1,12 +1,15 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:dio/dio.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:ssi/ssi.dart';
 
+import '../exceptions/tdk_exception_type.dart';
+import '../mixins/jwt_token_did_checker.dart';
 import 'token_provider.dart';
 
 /// A provider class that extends `TokenProvider` to handle consumer-specific
 /// token management functionality.
-class ConsumerTokenProvider extends TokenProvider {
+class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
   final DidSigner _signer;
   final Dio _dioInstance;
 
@@ -20,16 +23,30 @@ class ConsumerTokenProvider extends TokenProvider {
   })  : _signer = signer,
         _dioInstance = client ?? Dio();
 
-  /// Method to retrieves a consumer token.
+  /// Method to retrieve a consumer token.
   ///
   /// Returns [Future] that resolves to a [String] representing the token.
   Future<String> getToken() async {
     final token = await getJwtToken(
-        signer: _signer,
-        expiration: _consumerTokenExpiration,
-        audience: _tokenEndpoint);
+      signer: _signer,
+      expiration: _consumerTokenExpiration,
+      audience: _tokenEndpoint,
+    );
     final did = _signer.did;
-    return _fetchConsumerToken(clientAssertion: token, did: did);
+    final consumerToken =
+        await _fetchConsumerToken(clientAssertion: token, did: did);
+
+    final decodedToken = JwtDecoder.decode(consumerToken);
+    if (!hasMatchingDid(decodedToken: decodedToken, did: did)) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Consumer token DID does not match user DID',
+            code: TdkExceptionType.consumerTokenDidMismatch.code),
+        StackTrace.current,
+      );
+    }
+
+    return consumerToken;
   }
 
   Future<String> _fetchConsumerToken({

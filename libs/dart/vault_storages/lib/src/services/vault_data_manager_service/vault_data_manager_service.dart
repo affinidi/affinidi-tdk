@@ -472,11 +472,20 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     }
 
     final downloadUrl = nodeInfo.getUrl;
+    if (downloadUrl == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Failed to get file details, missing url',
+          code: TdkExceptionType.fileInfoNotFound.code,
+        ),
+        StackTrace.current,
+      );
+    }
 
     if (nodeInfo.edekInfo?.edek == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Failed to get data encryptino key, missing required edek',
+          message: 'Failed to get data encryption key, missing required edek',
           code: TdkExceptionType.dataEncryptionKeyNotFound.code,
         ),
         StackTrace.current,
@@ -489,7 +498,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     );
 
     final fileResponse = await _vaultDataManagerApiService.downloadNodeContents(
-      downloadUrl: downloadUrl!,
+      downloadUrl: downloadUrl,
       dek: dek,
     );
 

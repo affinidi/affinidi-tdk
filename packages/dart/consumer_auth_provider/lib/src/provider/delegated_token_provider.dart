@@ -1,10 +1,14 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
-import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:dio/dio.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:ssi/ssi.dart';
 
+import '../../affinidi_tdk_consumer_auth_provider.dart';
+import '../exceptions/tdk_exception_type.dart';
+import '../mixins/jwt_token_did_checker.dart';
+
 /// A provider class that extends [TokenProvider] to handle delegated token operations.
-class DelegatedTokenProvider extends TokenProvider {
+class DelegatedTokenProvider extends TokenProvider with JwtTokenDidChecker {
   final DidSigner _signer;
   final Dio _dioInstance;
 
@@ -33,6 +37,31 @@ class DelegatedTokenProvider extends TokenProvider {
     final did = _signer.did;
     final delegatedToken =
         await _fetchDelegatedToken(clientAssertion: token, did: did);
+
+    final decodedToken = JwtDecoder.decode(delegatedToken);
+    if (!hasMatchingDid(
+      decodedToken: decodedToken,
+      did: profileDid,
+    )) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Delegated token DID does not match profile DID',
+            code: TdkExceptionType.delegatedTokenDidMismatch.code),
+        StackTrace.current,
+      );
+    }
+
+    if (!hasMatchingGrantee(
+      decodedToken: decodedToken,
+      granteeDid: _signer.did,
+    )) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Delegated token DID does not match grantee DID',
+            code: TdkExceptionType.delegatedTokenGranteeDidMismatch.code),
+        StackTrace.current,
+      );
+    }
 
     return delegatedToken;
   }
