@@ -71,4 +71,45 @@ extension TdkExceptionExtension on TdkException {
         );
     }
   }
+
+  /// Creates a [TdkException] instance from a credential response error.
+  ///
+  /// This method handles error responses from the credential endpoint, including
+  /// expired credential offers, invalid proofs, and expired tokens.
+  ///
+  /// [errorData] - Map containing the error data from the response.
+  ///
+  /// Returns a [TdkException] instance representing the error.
+  static TdkException fromCredentialResponseError(
+      Map<String, dynamic> errorData) {
+    if (errorData['name'] == 'InvalidCredentialRequestError') {
+      final details = errorData['details'] as List<dynamic>?;
+      if (details != null &&
+          details.any((detail) {
+            final detailMap = detail as Map<String, dynamic>;
+            return detailMap['issue'] == 'Credential offer has been expired.';
+          })) {
+        return TdkException(
+          message: errorData['message'] as String? ??
+              'The credential offer has expired',
+          code: TdkExceptionType.credentialOfferExpired.code,
+        );
+      }
+    } else if (errorData['error'] == 'invalid_proof') {
+      return TdkException(
+        message: (errorData['error_description'] as String?) ??
+            'The proof in the Credential Request is invalid',
+        code: TdkExceptionType.invalidCredentialProof.code,
+      );
+    } else if (errorData['error'] == 'expired_token') {
+      return TdkException(
+        message: (errorData['error_description'] as String?) ??
+            'The access token has expired',
+        code: TdkExceptionType.expiredToken.code,
+      );
+    }
+
+    final errorResponse = ErrorResponse.fromJson(errorData);
+    return fromErrorResponse(errorResponse);
+  }
 }
