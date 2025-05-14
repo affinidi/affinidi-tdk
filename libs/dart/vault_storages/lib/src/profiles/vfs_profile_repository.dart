@@ -19,9 +19,6 @@ import 'jwt_helper.dart';
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
 class VfsProfileRepository implements ProfileRepository {
-  /// The derivation path for the root account.
-  static const _rootAccountDerivationPath = "m/44'/60'/0'/0'/0'";
-
   /// The key ID for the root account.
   static const _rootAccountKeyId = '0';
 
@@ -36,10 +33,8 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
-  late final VaultDataManagerService _accountVaultDataManagerService;
 
   late VaultStore _keyStorage;
-  late KeyPair _rootKeyPair;
   bool _configured = false;
 
   /// Creates a new instance of [VfsProfileRepository].
@@ -73,10 +68,6 @@ class VfsProfileRepository implements ProfileRepository {
 
     _wallet = configuration.wallet;
     _keyStorage = configuration.keyStorage!;
-
-    _rootKeyPair = await _getRootKeyPair();
-    _accountVaultDataManagerService =
-        await _createAccountVaultDataManagerService();
 
     _configured = true;
   }
@@ -139,8 +130,12 @@ class VfsProfileRepository implements ProfileRepository {
       sharedStorageData: [],
     );
 
+    final accountVaultDataManagerService = await _memoizedDataManagerService(
+      walletKeyId: _rootAccountKeyId,
+    );
+
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    await _accountVaultDataManagerService.createAccount(
+    await accountVaultDataManagerService.createAccount(
       accountIndex: nextAccountIndex,
       accountDid: profileDid,
       didProof: profileDidProof,
@@ -156,7 +151,10 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    final accounts = await _accountVaultDataManagerService.getAccounts();
+    final accountVaultDataManagerService = await _memoizedDataManagerService(
+      walletKeyId: _rootAccountKeyId,
+    );
+    final accounts = await accountVaultDataManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
   }
@@ -245,7 +243,11 @@ class VfsProfileRepository implements ProfileRepository {
     await profileDataManager.deleteProfile(profile.id);
 
     // Delete account associated to profile
-    await _accountVaultDataManagerService.deleteAccount(
+    final accountsManagerService = await _memoizedDataManagerService(
+      walletKeyId: _rootAccountKeyId,
+    );
+
+    await accountsManagerService.deleteAccount(
         accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
@@ -337,7 +339,8 @@ class VfsProfileRepository implements ProfileRepository {
         granteeDid: granteeDid, permissions: permissions);
 
     final accountsManagerService = await _memoizedDataManagerService(
-        walletKeyId: _rootAccountKeyId, kek: Uint8List.fromList([]));
+      walletKeyId: _rootAccountKeyId,
+    );
     final accounts = await accountsManagerService.getAccounts();
     final account = accounts
         .where((account) => account.accountIndex == accountIndex)
@@ -379,11 +382,6 @@ class VfsProfileRepository implements ProfileRepository {
     );
   }
 
-  Future<KeyPair> _getRootKeyPair() async {
-    return await _wallet.deriveKey(
-        derivationPath: _rootAccountDerivationPath, keyId: _rootAccountKeyId);
-  }
-
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {
     return await _wallet.deriveKey(
         derivationPath: _getDerivationPath(accountIndex), keyId: accountIndex);
@@ -405,9 +403,10 @@ class VfsProfileRepository implements ProfileRepository {
       nodePath: profileId,
       profileDid: grantedProfileDid,
     );
-
-    final accountsResponse =
-        await _accountVaultDataManagerService.getAccounts();
+    final accountVaultDataManagerService = await _memoizedDataManagerService(
+      walletKeyId: _rootAccountKeyId,
+    );
+    final accountsResponse = await accountVaultDataManagerService.getAccounts();
     final previousAccountData = accountsResponse
         .firstWhere((account) => account.accountIndex == accountIndex);
 
@@ -423,7 +422,8 @@ class VfsProfileRepository implements ProfileRepository {
       accountIndex.toString(),
     );
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
-    await _accountVaultDataManagerService.updateAccount(
+
+    await accountVaultDataManagerService.updateAccount(
       accountIndex: accountIndex,
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
@@ -433,19 +433,4 @@ class VfsProfileRepository implements ProfileRepository {
 
   String _getDerivationPath(String accountIndex) =>
       "m/44'/60'/$accountIndex'/0'/0'";
-
-  Future<VaultDataManagerService>
-      _createAccountVaultDataManagerService() async {
-    final vaultDataManager = await VaultDataManagerService.create(
-      didSigner: DidSigner(
-        didDocument: DidKey.generateDocument(_rootKeyPair.publicKey),
-        didKeyId: _rootKeyPair.id,
-        keyPair: _rootKeyPair,
-        signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
-      ),
-      encryptionKey: Uint8List(2),
-    );
-
-    return vaultDataManager;
-  }
 }
