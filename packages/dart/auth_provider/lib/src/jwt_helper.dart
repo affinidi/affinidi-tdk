@@ -149,8 +149,8 @@ class JWTHelper {
     final pbkdf2Params =
         (pbes2Params.elements[0] as ASN1Sequence).elements[1] as ASN1Sequence;
 
-    final salt = (pbkdf2Params.elements[0] as ASN1OctetString).valueBytes!();
-    final iterations = (pbkdf2Params.elements[1] as ASN1Integer).intValue!;
+    final salt = (pbkdf2Params.elements[0] as ASN1OctetString).valueBytes();
+    final iterations = (pbkdf2Params.elements[1] as ASN1Integer).intValue;
     final hmacAlgo = (pbkdf2Params.elements[2] as ASN1Sequence).elements[0]
         as ASN1ObjectIdentifier;
 
@@ -161,7 +161,7 @@ class JWTHelper {
 
     // Extract AES-CBC IV
     final encryptionParams = (pbes2Params.elements[1] as ASN1Sequence);
-    final iv = (encryptionParams.elements[1] as ASN1OctetString).valueBytes!();
+    final iv = (encryptionParams.elements[1] as ASN1OctetString).valueBytes();
 
     final cipherOid =
         (encryptionParams.elements[0] as ASN1ObjectIdentifier).identifier;
@@ -174,7 +174,7 @@ class JWTHelper {
 
     // Extract encrypted private key data
     final encryptedData =
-        (asn1Sequence.elements[1] as ASN1OctetString).valueBytes!();
+        (asn1Sequence.elements[1] as ASN1OctetString).valueBytes();
 
     // Derive the decryption key from the passphrase
     final key = _deriveKey(passphrase, salt, iterations, keySize);
