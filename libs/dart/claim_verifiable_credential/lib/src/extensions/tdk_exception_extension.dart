@@ -35,6 +35,18 @@ extension TdkExceptionExtension on TdkException {
           message: errorResponse.error,
           code: TdkExceptionType.unmatchedTxCode.code,
         );
+      case 'invalid_proof':
+        return TdkException(
+          message: errorResponse.errorDescription ??
+              'The proof in the Credential Request is invalid',
+          code: TdkExceptionType.invalidCredentialProof.code,
+        );
+      case 'expired_token':
+        return TdkException(
+          message:
+              errorResponse.errorDescription ?? 'The access token has expired',
+          code: TdkExceptionType.expiredToken.code,
+        );
       case 'invalid_request':
         if (errorResponse.errorDescription ==
             'Invalid status of pre-authorized statue VC_CLAIMED') {

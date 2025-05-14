@@ -240,6 +240,47 @@ class OID4VCIClaimVerifiableCredentialService
         _logger.error(
             'Failed claiming credential offer - ${credentialResponse.data}',
             component: _componentName);
+
+        if (credentialResponse.statusCode == 400) {
+          final errorData = credentialResponse.data as Map<String, dynamic>;
+          if (errorData['name'] == 'InvalidCredentialRequestError') {
+            final details = errorData['details'] as List<dynamic>?;
+            if (details != null &&
+                details.any((detail) {
+                  final detailMap = detail as Map<String, dynamic>;
+                  return detailMap['issue'] ==
+                      'Credential offer has been expired.';
+                })) {
+              Error.throwWithStackTrace(
+                TdkException(
+                  message: errorData['message'] as String? ??
+                      'The credential offer has expired',
+                  code: TdkExceptionType.credentialOfferExpired.code,
+                ),
+                StackTrace.current,
+              );
+            }
+          } else if (errorData['error'] == 'invalid_proof') {
+            Error.throwWithStackTrace(
+              TdkException(
+                message: (errorData['error_description'] as String?) ??
+                    'The proof in the Credential Request is invalid',
+                code: TdkExceptionType.invalidCredentialProof.code,
+              ),
+              StackTrace.current,
+            );
+          } else if (errorData['error'] == 'expired_token') {
+            Error.throwWithStackTrace(
+              TdkException(
+                message: (errorData['error_description'] as String?) ??
+                    'The access token has expired',
+                code: TdkExceptionType.expiredToken.code,
+              ),
+              StackTrace.current,
+            );
+          }
+        }
+
         final errorResponse = ErrorResponse.fromJson(
             credentialResponse.data as Map<String, dynamic>);
         Error.throwWithStackTrace(

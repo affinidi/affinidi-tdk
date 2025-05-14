@@ -3,6 +3,8 @@
 /// - [credentialOfferExpired] - indicates that the credential offer has expired.
 /// - [invalidCredentialRequest] - represents an invalid credential request error.
 /// - [credentialOfferClaimed] - indicates that the credential offer has already been claimed.
+/// - [invalidCredentialProof] - indicates that the proof in the credential request is invalid.
+/// - [expiredToken] - indicates that the access token has expired.
 /// - [failedToClaimCredential] - represents a failure to claim a credential.
 /// - [failedToLoadCredentialOffer] - indicates a failure to load the credential offer.
 /// - [failedToLoadIssuerMetadata] - represents a failure to load issuer metadata.
@@ -17,7 +19,7 @@
 /// - [jsonValue] - string representation of the exception type used for JSON serialization.
 /// - [code] - string code that uniquely identifies the exception type.
 enum TdkExceptionType {
-  /// Inndicates that the credential offer has expired.
+  /// Indicates that the credential offer has expired.
   credentialOfferExpired(
       'CredentialOfferExpiredError', 'credential_offer_expired'),
 
@@ -28,6 +30,12 @@ enum TdkExceptionType {
   /// Indicates that the credential offer has already been claimed.
   credentialOfferClaimed(
       'CredentialOfferClaimedError', 'credential_offer_claimed'),
+
+  /// Indicates the proof in the credential request is invalid.
+  invalidCredentialProof('InvalidCredentialProof', 'invalid_credential_proof'),
+
+  /// Indicates that the access token has expired.
+  expiredToken('ExpiredTokenError', 'expired_token'),
 
   /// Represents a failure to claim a credential.
   failedToClaimCredential(
