@@ -1,10 +1,10 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
-import 'package:affinidi_tdk_consumer_auth_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:dio/dio.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:ssi/ssi.dart';
 
 import '../consumer_auth_provider_interface.dart';
+import '../exceptions/tdk_exception_type.dart';
 import 'cis_token_provider.dart';
 import 'consumer_token_provider.dart';
 import 'delegated_token_provider.dart';
@@ -36,6 +36,8 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
       _consumerToken = await _consumerTokenProvider.getToken();
 
       return _consumerToken!;
+    } on TdkException catch (_) {
+      rethrow;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -60,7 +62,17 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
     return _delegatedTokenProvider.getToken(profileDid: profileDid);
   }
 
-  Future<({String accessToken, List? authorizationDetails})> exchangePreAuthCodeForToken({required String tokenEndpoint, required String preAuthCode, String? txCode}) {
-    return _cisTokenProvider.exchangePreAuthCodeForToken(tokenEndpoint: tokenEndpoint, preAuthCode: preAuthCode, txCode: txCode);
+  @override
+  Future<({String accessToken, List? authorizationDetails})>
+      exchangePreAuthCodeForToken({
+    required String tokenEndpoint,
+    required String preAuthCode,
+    String? txCode,
+  }) {
+    return _cisTokenProvider.exchangePreAuthCodeForToken(
+      tokenEndpoint: tokenEndpoint,
+      preAuthCode: preAuthCode,
+      txCode: txCode,
+    );
   }
 }

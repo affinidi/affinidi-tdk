@@ -1,10 +1,7 @@
-import 'package:built_value/json_object.dart';
-import 'package:dio/dio.dart';
-import 'package:one_of/one_of.dart';
-import 'package:test/test.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
+import 'package:dio/dio.dart';
+import 'package:test/test.dart';
 
 import 'environment.dart';
 
@@ -23,10 +20,11 @@ void main() {
       );
       final apiClient = AffinidiTdkCredentialVerificationClient(
           dio: Dio(BaseOptions(
-        baseUrl: AffinidiTdkCredentialVerificationClient.basePath,
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 5),
-      )), authTokenHook: authProvider.fetchProjectScopedToken);
+            baseUrl: AffinidiTdkCredentialVerificationClient.basePath,
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 5),
+          )),
+          authTokenHook: authProvider.fetchProjectScopedToken);
       verificationApi = apiClient.getDefaultApi();
     });
 

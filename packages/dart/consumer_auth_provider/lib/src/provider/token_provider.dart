@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
-import 'package:affinidi_tdk_consumer_auth_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
+
+import '../exceptions/tdk_exception_type.dart';
 
 /// An abstract class that defines the contract for a token provider.
 abstract class TokenProvider {
