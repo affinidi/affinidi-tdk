@@ -22,7 +22,7 @@ class IamApiService implements IamApiServiceInterface {
   }
 
   @override
-  Future<Response<GrantAccessOutput>> grantAccessVfs({
+  Future<void> grantAccessVfs({
     required String granteeDid,
     required Permissions permissions,
     CancelToken? cancelToken,
@@ -39,10 +39,35 @@ class IamApiService implements IamApiServiceInterface {
 
       final grantAccessInput = grantAccessInputBuilder.build();
 
-      final response =
+      final grantAccessVfsResponse =
           await _authzApi.grantAccessVfs(grantAccessInput: grantAccessInput);
+      final isAccessGranted = grantAccessVfsResponse.data!.success == true;
 
-      return response;
+      if (!isAccessGranted) {
+        Error.throwWithStackTrace(
+            TdkException(
+              message: 'Failed to grant access to $granteeDid',
+              code: TdkExceptionType.unableToGrantAccess.code,
+            ),
+            StackTrace.current);
+      }
+    } on DioException catch (e, stackTrace) {
+      if (e.response == null) {
+        rethrow;
+      }
+      final errorResponse = e.response!.data['error'] as Map<String, dynamic>?;
+      final isAlreadyGranted = (e.response?.statusCode == 409) ||
+          errorResponse!['type'] == 'AlreadyExistsError';
+
+      if (isAlreadyGranted) {
+        Error.throwWithStackTrace(
+            TdkException(
+              message: 'Failed to grant access to $granteeDid',
+              code: TdkExceptionType.unableToGrantAccessAlreadyGranted.code,
+              originalMessage: e.toString(),
+            ),
+            stackTrace);
+      }
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
           TdkException(

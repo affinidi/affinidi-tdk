@@ -6,6 +6,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import '../credential/vfs_credential_storage.dart';
@@ -99,7 +100,6 @@ class VfsProfileRepository implements ProfileRepository {
     final profileDid = profileDidSigner.did;
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
-    // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
     final kek = CryptographyService().getRandomBytes(32);
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
@@ -111,13 +111,6 @@ class VfsProfileRepository implements ProfileRepository {
     );
     await profileDataManager.getProfiles();
 
-    // TODO(MA): Creating a profile can fail as the profile name could be already in use.
-    // DioException [bad response]: null
-    // Error: HTTP 400 Error
-    // - Error Type: NodeCreationError
-    // - Trace ID: 1-680bbaaa-030c66ec1bebc4e953d4bd3d
-    // - Message: NodeCreationError
-    // - Details: [{issue: Profile name should be unique}]
     await profileDataManager.createProfile(
       name: name,
       description: description,
@@ -232,17 +225,11 @@ class VfsProfileRepository implements ProfileRepository {
       );
     }
 
-    // TODO(MA): Profiles with files cannot be deleted and an exception should be thrown:
-    // - Message: OperationNotAllowedError
-    // - Details: [{issue: Node with children cannot be operated for HARD_DELETE, field: fileCount, value: 1}]
-
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: profile.accountIndex.toString(),
-      kek: Uint8List(2),
     );
     await profileDataManager.deleteProfile(profile.id);
 
-    // Delete account associated to profile
     final accountsManagerService = await _memoizedDataManagerService(
       walletKeyId: _rootAccountKeyId,
     );
@@ -267,7 +254,6 @@ class VfsProfileRepository implements ProfileRepository {
 
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: profile.accountIndex.toString(),
-      kek: Uint8List(2),
     );
     await profileDataManager.updateProfileMetadata(
       id: profile.id,
@@ -326,8 +312,6 @@ class VfsProfileRepository implements ProfileRepository {
     required String granteeDid,
     required Permissions permissions,
   }) async {
-    // TODO(KS): add Already_Granted exception
-    // final didSigner = await _memoizedDidSigner(_rootAccountKeyId); // ROOT
     final didSigner = await _memoizedDidSigner('$accountIndex'); // Profile
     final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
     final iamApiService = IamApiService(
@@ -335,8 +319,11 @@ class VfsProfileRepository implements ProfileRepository {
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
       ),
     );
+
     await iamApiService.grantAccessVfs(
-        granteeDid: granteeDid, permissions: permissions);
+      granteeDid: granteeDid,
+      permissions: permissions,
+    );
 
     final accountsManagerService = await _memoizedDataManagerService(
       walletKeyId: _rootAccountKeyId,
