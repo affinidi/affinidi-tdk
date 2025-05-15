@@ -1,15 +1,3 @@
-import 'dart:io';
-
-import 'package:pubspec_parse/pubspec_parse.dart';
-
-/// Retrieves the version of the pubspec file.
-String getPubspecVersion() {
-  final pubspec = File('pubspec.yaml').readAsStringSync();
-  final parsed = Pubspec.parse(pubspec);
-
-  return parsed.version.toString();
-}
-
 /// Stores DEKEK information used for securing data in the vault.
 class DekekInfo {
   /// The encrypted DEKEK value
@@ -19,12 +7,10 @@ class DekekInfo {
   final String version;
 
   /// Creates a new DEKEK info instance.
-  DekekInfo._(this.encryptedDekek, this.version);
-
-  factory DekekInfo({required String encryptedDekek}) {
-    var version = getPubspecVersion();
-    return DekekInfo._(encryptedDekek, version);
-  }
+  DekekInfo({
+    required this.encryptedDekek,
+    this.version = '1.0.0',
+  });
 
   /// Creates a [DekekInfo] from a JSON map.
   DekekInfo.fromJson(Map<String, dynamic> json)
@@ -49,23 +35,11 @@ class AccountMetadata {
   final DekekInfo dekekInfo;
 
   /// Creates a new account metadata instance.
-  AccountMetadata._({
+  AccountMetadata({
     required this.sharedStorageData,
     required this.dekekInfo,
-    required this.version,
+    this.version = '1.0.0',
   });
-
-  /// Factory constructor to create an [AccountMetadata] with a version.
-  factory AccountMetadata({
-    required List<SharedStorageData> sharedStorageData,
-    required DekekInfo dekekInfo,
-  }) {
-    return AccountMetadata._(
-      sharedStorageData: sharedStorageData,
-      dekekInfo: dekekInfo,
-      version: getPubspecVersion(),
-    );
-  }
 
   /// Creates an [AccountMetadata] from a JSON map.
   AccountMetadata.fromJson(Map<String, dynamic> json)
