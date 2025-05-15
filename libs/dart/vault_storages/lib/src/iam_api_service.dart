@@ -52,12 +52,15 @@ class IamApiService implements IamApiServiceInterface {
             StackTrace.current);
       }
     } on DioException catch (e, stackTrace) {
-      if (e.response == null) {
+      final errorResponse = e.response;
+      if (errorResponse == null) {
         rethrow;
       }
-      final errorResponse = e.response!.data['error'] as Map<String, dynamic>?;
-      final isAlreadyGranted = (e.response?.statusCode == 409) ||
-          errorResponse!['type'] == 'AlreadyExistsError';
+
+      final isAlreadyGranted = errorResponse.statusCode == 409 &&
+          errorResponse.data != null &&
+          (errorResponse.data as Map<String, dynamic>)['type'] ==
+              'Access already granted';
 
       if (isAlreadyGranted) {
         Error.throwWithStackTrace(
