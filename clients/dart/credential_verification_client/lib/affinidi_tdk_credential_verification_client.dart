@@ -44,13 +44,6 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/verify_cre
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output_errors.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context_one_of_inner.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 

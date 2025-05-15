@@ -15,7 +15,6 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.credential.verification.client.models.W3cCredential;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,7 +41,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyCredentialInput {
   public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
-  private List<W3cCredential> verifiableCredentials = new ArrayList<>();
+  private List<Object> verifiableCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
   private Map<String, Object> issuerDidDocument = new HashMap<>();
@@ -50,13 +49,13 @@ public class VerifyCredentialInput {
   public VerifyCredentialInput() {
   }
 
-  public VerifyCredentialInput verifiableCredentials(List<W3cCredential> verifiableCredentials) {
+  public VerifyCredentialInput verifiableCredentials(List<Object> verifiableCredentials) {
     
     this.verifiableCredentials = verifiableCredentials;
     return this;
   }
 
-  public VerifyCredentialInput addVerifiableCredentialsItem(W3cCredential verifiableCredentialsItem) {
+  public VerifyCredentialInput addVerifiableCredentialsItem(Object verifiableCredentialsItem) {
     if (this.verifiableCredentials == null) {
       this.verifiableCredentials = new ArrayList<>();
     }
@@ -72,14 +71,14 @@ public class VerifyCredentialInput {
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<W3cCredential> getVerifiableCredentials() {
+  public List<Object> getVerifiableCredentials() {
     return verifiableCredentials;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerifiableCredentials(List<W3cCredential> verifiableCredentials) {
+  public void setVerifiableCredentials(List<Object> verifiableCredentials) {
     this.verifiableCredentials = verifiableCredentials;
   }
 
@@ -190,9 +189,13 @@ public class VerifyCredentialInput {
     // add `verifiableCredentials` to the URL query string
     if (getVerifiableCredentials() != null) {
       for (int i = 0; i < getVerifiableCredentials().size(); i++) {
-        if (getVerifiableCredentials().get(i) != null) {
-          joiner.add(getVerifiableCredentials().get(i).toUrlQueryString(String.format("%sverifiableCredentials%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        try {
+          joiner.add(String.format("%sverifiableCredentials%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getVerifiableCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
         }
       }
     }

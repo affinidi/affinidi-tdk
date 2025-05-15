@@ -15,7 +15,6 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.credential.verification.client.models.W3cPresentation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -40,10 +39,10 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyPresentationInput {
   public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
-  private W3cPresentation verifiablePresentation;
+  private Object verifiablePresentation;
 
   public static final String JSON_PROPERTY_SIGNED_PRESENTATION = "signedPresentation";
-  private W3cPresentation signedPresentation;
+  private Object signedPresentation;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   private Object presentationDefinition;
@@ -57,7 +56,7 @@ public class VerifyPresentationInput {
   public VerifyPresentationInput() {
   }
 
-  public VerifyPresentationInput verifiablePresentation(W3cPresentation verifiablePresentation) {
+  public VerifyPresentationInput verifiablePresentation(Object verifiablePresentation) {
     
     this.verifiablePresentation = verifiablePresentation;
     return this;
@@ -71,18 +70,18 @@ public class VerifyPresentationInput {
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public W3cPresentation getVerifiablePresentation() {
+  public Object getVerifiablePresentation() {
     return verifiablePresentation;
   }
 
 
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerifiablePresentation(W3cPresentation verifiablePresentation) {
+  public void setVerifiablePresentation(Object verifiablePresentation) {
     this.verifiablePresentation = verifiablePresentation;
   }
 
-  public VerifyPresentationInput signedPresentation(W3cPresentation signedPresentation) {
+  public VerifyPresentationInput signedPresentation(Object signedPresentation) {
     
     this.signedPresentation = signedPresentation;
     return this;
@@ -96,14 +95,14 @@ public class VerifyPresentationInput {
   @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public W3cPresentation getSignedPresentation() {
+  public Object getSignedPresentation() {
     return signedPresentation;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSignedPresentation(W3cPresentation signedPresentation) {
+  public void setSignedPresentation(Object signedPresentation) {
     this.signedPresentation = signedPresentation;
   }
 
@@ -261,12 +260,22 @@ public class VerifyPresentationInput {
 
     // add `verifiablePresentation` to the URL query string
     if (getVerifiablePresentation() != null) {
-      joiner.add(getVerifiablePresentation().toUrlQueryString(prefix + "verifiablePresentation" + suffix));
+      try {
+        joiner.add(String.format("%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
     // add `signedPresentation` to the URL query string
     if (getSignedPresentation() != null) {
-      joiner.add(getSignedPresentation().toUrlQueryString(prefix + "signedPresentation" + suffix));
+      try {
+        joiner.add(String.format("%ssignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
     }
 
     // add `presentationDefinition` to the URL query string

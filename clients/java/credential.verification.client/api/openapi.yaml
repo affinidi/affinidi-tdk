@@ -243,58 +243,8 @@ components:
       description: Request model of /verify-vcs
       example:
         verifiableCredentials:
-          - credentialSchema:
-              id: id
-              type: type
-            credentialSubject: '{}'
-            issuanceDate: issuanceDate
-            holder: '{}'
-            id: id
-            proof:
-              proofValue: proofValue
-              created: created
-              jws: jws
-              proofPurpose: proofPurpose
-              type: type
-              verificationMethod: verificationMethod
-              nonce: nonce
-            type:
-              - type
-              - type
-            '@context': W3cPresentation__context
-            issuer: issuer
-            credentialStatus:
-              revocationListIndex: revocationListIndex
-              revocationListCredential: revocationListCredential
-              id: id
-              type: type
-            expirationDate: expirationDate
-          - credentialSchema:
-              id: id
-              type: type
-            credentialSubject: '{}'
-            issuanceDate: issuanceDate
-            holder: '{}'
-            id: id
-            proof:
-              proofValue: proofValue
-              created: created
-              jws: jws
-              proofPurpose: proofPurpose
-              type: type
-              verificationMethod: verificationMethod
-              nonce: nonce
-            type:
-              - type
-              - type
-            '@context': W3cPresentation__context
-            issuer: issuer
-            credentialStatus:
-              revocationListIndex: revocationListIndex
-              revocationListCredential: revocationListCredential
-              id: id
-              type: type
-            expirationDate: expirationDate
+          - null
+          - null
         issuerDidDocument:
           key: ''
       properties:
@@ -334,175 +284,15 @@ components:
       description: Request model of /verify-vp
       example:
         presentationDefinition: '{}'
-        verifiablePresentation:
-          holder: '{}'
-          id: id
-          proof: '{}'
-          type:
-            - type
-            - type
-          '@context': W3cPresentation__context
-          verifiableCredential:
-            - credentialSchema:
-                id: id
-                type: type
-              credentialSubject: '{}'
-              issuanceDate: issuanceDate
-              holder: '{}'
-              id: id
-              proof:
-                proofValue: proofValue
-                created: created
-                jws: jws
-                proofPurpose: proofPurpose
-                type: type
-                verificationMethod: verificationMethod
-                nonce: nonce
-              type:
-                - type
-                - type
-              '@context': W3cPresentation__context
-              issuer: issuer
-              credentialStatus:
-                revocationListIndex: revocationListIndex
-                revocationListCredential: revocationListCredential
-                id: id
-                type: type
-              expirationDate: expirationDate
-            - credentialSchema:
-                id: id
-                type: type
-              credentialSubject: '{}'
-              issuanceDate: issuanceDate
-              holder: '{}'
-              id: id
-              proof:
-                proofValue: proofValue
-                created: created
-                jws: jws
-                proofPurpose: proofPurpose
-                type: type
-                verificationMethod: verificationMethod
-                nonce: nonce
-              type:
-                - type
-                - type
-              '@context': W3cPresentation__context
-              issuer: issuer
-              credentialStatus:
-                revocationListIndex: revocationListIndex
-                revocationListCredential: revocationListCredential
-                id: id
-                type: type
-              expirationDate: expirationDate
-          presentation_submission:
-            descriptor_map:
-              - path: path
-                format: format
-                path_nested:
-                  path: path
-                  format: format
-                  path_nested: null
-                  id: id
-                id: id
-              - path: path
-                format: format
-                path_nested:
-                  path: path
-                  format: format
-                  path_nested: null
-                  id: id
-                id: id
-            definition_id: definition_id
-            id: id
-        signedPresentation:
-          holder: '{}'
-          id: id
-          proof: '{}'
-          type:
-            - type
-            - type
-          '@context': W3cPresentation__context
-          verifiableCredential:
-            - credentialSchema:
-                id: id
-                type: type
-              credentialSubject: '{}'
-              issuanceDate: issuanceDate
-              holder: '{}'
-              id: id
-              proof:
-                proofValue: proofValue
-                created: created
-                jws: jws
-                proofPurpose: proofPurpose
-                type: type
-                verificationMethod: verificationMethod
-                nonce: nonce
-              type:
-                - type
-                - type
-              '@context': W3cPresentation__context
-              issuer: issuer
-              credentialStatus:
-                revocationListIndex: revocationListIndex
-                revocationListCredential: revocationListCredential
-                id: id
-                type: type
-              expirationDate: expirationDate
-            - credentialSchema:
-                id: id
-                type: type
-              credentialSubject: '{}'
-              issuanceDate: issuanceDate
-              holder: '{}'
-              id: id
-              proof:
-                proofValue: proofValue
-                created: created
-                jws: jws
-                proofPurpose: proofPurpose
-                type: type
-                verificationMethod: verificationMethod
-                nonce: nonce
-              type:
-                - type
-                - type
-              '@context': W3cPresentation__context
-              issuer: issuer
-              credentialStatus:
-                revocationListIndex: revocationListIndex
-                revocationListCredential: revocationListCredential
-                id: id
-                type: type
-              expirationDate: expirationDate
-          presentation_submission:
-            descriptor_map:
-              - path: path
-                format: format
-                path_nested:
-                  path: path
-                  format: format
-                  path_nested: null
-                  id: id
-                id: id
-              - path: path
-                format: format
-                path_nested:
-                  path: path
-                  format: format
-                  path_nested: null
-                  id: id
-                id: id
-            definition_id: definition_id
-            id: id
+        verifiablePresentation: '{}'
+        signedPresentation: '{}'
         challenge: challenge
         presentationSubmission: '{}'
       properties:
         verifiablePresentation:
-          $ref: '#/components/schemas/W3cPresentation'
+          type: object
         signedPresentation:
-          $ref: '#/components/schemas/W3cPresentation'
+          type: object
         presentationDefinition:
           type: object
         presentationSubmission:
@@ -583,189 +373,11 @@ components:
         - result
       type: object
     W3cPresentation:
-      additionalProperties: false
-      example:
-        holder: '{}'
-        id: id
-        proof: '{}'
-        type:
-          - type
-          - type
-        '@context': W3cPresentation__context
-        verifiableCredential:
-          - credentialSchema:
-              id: id
-              type: type
-            credentialSubject: '{}'
-            issuanceDate: issuanceDate
-            holder: '{}'
-            id: id
-            proof:
-              proofValue: proofValue
-              created: created
-              jws: jws
-              proofPurpose: proofPurpose
-              type: type
-              verificationMethod: verificationMethod
-              nonce: nonce
-            type:
-              - type
-              - type
-            '@context': W3cPresentation__context
-            issuer: issuer
-            credentialStatus:
-              revocationListIndex: revocationListIndex
-              revocationListCredential: revocationListCredential
-              id: id
-              type: type
-            expirationDate: expirationDate
-          - credentialSchema:
-              id: id
-              type: type
-            credentialSubject: '{}'
-            issuanceDate: issuanceDate
-            holder: '{}'
-            id: id
-            proof:
-              proofValue: proofValue
-              created: created
-              jws: jws
-              proofPurpose: proofPurpose
-              type: type
-              verificationMethod: verificationMethod
-              nonce: nonce
-            type:
-              - type
-              - type
-            '@context': W3cPresentation__context
-            issuer: issuer
-            credentialStatus:
-              revocationListIndex: revocationListIndex
-              revocationListCredential: revocationListCredential
-              id: id
-              type: type
-            expirationDate: expirationDate
-        presentation_submission:
-          descriptor_map:
-            - path: path
-              format: format
-              path_nested:
-                path: path
-                format: format
-                path_nested: null
-                id: id
-              id: id
-            - path: path
-              format: format
-              path_nested:
-                path: path
-                format: format
-                path_nested: null
-                id: id
-              id: id
-          definition_id: definition_id
-          id: id
-      properties:
-        '@context':
-          $ref: '#/components/schemas/W3cPresentation__context'
-        id:
-          nullable: true
-          type: string
-        type:
-          items:
-            type: string
-          type: array
-        holder:
-          type: object
-        verifiableCredential:
-          items:
-            $ref: '#/components/schemas/W3cCredential'
-          type: array
-        presentation_submission:
-          $ref: '#/components/schemas/PresentationSubmission'
-        proof:
-          type: object
-      required:
-        - '@context'
-        - holder
-        - proof
-        - type
-        - verifiableCredential
       type: object
     W3cCredential:
-      additionalProperties: false
-      example:
-        credentialSchema:
-          id: id
-          type: type
-        credentialSubject: '{}'
-        issuanceDate: issuanceDate
-        holder: '{}'
-        id: id
-        proof:
-          proofValue: proofValue
-          created: created
-          jws: jws
-          proofPurpose: proofPurpose
-          type: type
-          verificationMethod: verificationMethod
-          nonce: nonce
-        type:
-          - type
-          - type
-        '@context': W3cPresentation__context
-        issuer: issuer
-        credentialStatus:
-          revocationListIndex: revocationListIndex
-          revocationListCredential: revocationListCredential
-          id: id
-          type: type
-        expirationDate: expirationDate
-      properties:
-        '@context':
-          $ref: '#/components/schemas/W3cPresentation__context'
-        id:
-          nullable: true
-          type: string
-        type:
-          items:
-            type: string
-          type: array
-        holder:
-          $ref: '#/components/schemas/W3cCredential_holder'
-        credentialSubject:
-          $ref: '#/components/schemas/W3cCredential_credentialSubject'
-        credentialStatus:
-          $ref: '#/components/schemas/W3cCredentialStatus'
-        issuanceDate:
-          type: string
-        issuer:
-          type: string
-        expirationDate:
-          nullable: true
-          type: string
-        proof:
-          $ref: '#/components/schemas/W3cProof'
-        credentialSchema:
-          $ref: '#/components/schemas/W3cCredential_credentialSchema'
-      required:
-        - '@context'
-        - credentialSubject
-        - issuanceDate
-        - issuer
-        - proof
-        - type
       type: object
     W3cProof:
       additionalProperties: false
-      example:
-        proofValue: proofValue
-        created: created
-        jws: jws
-        proofPurpose: proofPurpose
-        type: type
-        verificationMethod: verificationMethod
-        nonce: nonce
       properties:
         type:
           nullable: true
@@ -792,11 +404,6 @@ components:
       type: object
     W3cCredentialStatus:
       additionalProperties: false
-      example:
-        revocationListIndex: revocationListIndex
-        revocationListCredential: revocationListCredential
-        id: id
-        type: type
       properties:
         id:
           type: string
@@ -845,26 +452,6 @@ components:
       type: object
     PresentationSubmission:
       additionalProperties: false
-      example:
-        descriptor_map:
-          - path: path
-            format: format
-            path_nested:
-              path: path
-              format: format
-              path_nested: null
-              id: id
-            id: id
-          - path: path
-            format: format
-            path_nested:
-              path: path
-              format: format
-              path_nested: null
-              id: id
-            id: id
-        definition_id: definition_id
-        id: id
       properties:
         id:
           type: string
@@ -881,15 +468,6 @@ components:
       type: object
     Descriptor:
       additionalProperties: false
-      example:
-        path: path
-        format: format
-        path_nested:
-          path: path
-          format: format
-          path_nested: null
-          id: id
-        id: id
       properties:
         id:
           type: string
@@ -906,11 +484,6 @@ components:
       type: object
     NestedDescriptor:
       additionalProperties: false
-      example:
-        path: path
-        format: format
-        path_nested: null
-        id: id
       properties:
         id:
           type: string
@@ -1233,39 +806,6 @@ components:
             type: object
           type: array
       description: Constraint list of the VC requirements
-    W3cPresentation__context_oneOf_inner:
-      oneOf:
-        - type: string
-        - additionalProperties: true
-          type: object
-    W3cPresentation__context:
-      oneOf:
-        - type: string
-        - additionalProperties: true
-          type: object
-        - items:
-            $ref: '#/components/schemas/W3cPresentation__context_oneOf_inner'
-          type: array
-    W3cCredential_holder:
-      oneOf:
-        - type: object
-        - type: string
-    W3cCredential_credentialSubject:
-      oneOf:
-        - type: object
-        - items:
-            type: string
-          type: array
-    W3cCredential_credentialSchema:
-      example:
-        id: id
-        type: type
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-      type: object
     Constraints_statuses:
       properties:
         active:
