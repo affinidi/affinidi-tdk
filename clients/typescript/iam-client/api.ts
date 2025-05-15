@@ -214,6 +214,32 @@ export interface CorsConsumerAuthTokenEndpointOK {
 /**
  *
  * @export
+ * @interface CorsGrantAccessVfsOK
+ */
+export interface CorsGrantAccessVfsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGrantAccessVfsOK
+   */
+  corsGrantAccessVfsOk?: string
+}
+/**
+ *
+ * @export
+ * @interface CorsUpdateAccessVfsOK
+ */
+export interface CorsUpdateAccessVfsOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsUpdateAccessVfsOK
+   */
+  corsUpdateAccessVfsOk?: string
+}
+/**
+ *
+ * @export
  * @interface CreateProjectInput
  */
 export interface CreateProjectInput {
