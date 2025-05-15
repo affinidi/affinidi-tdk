@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:ssi/ssi.dart';
 
@@ -129,29 +127,6 @@ class Vault {
 
     return Vault(
       wallet: wallet,
-      vaultStore: vaultStore,
-      profileRepositories: profileRepositories,
-      defaultProfileRepositoryId: defaultProfileRepositoryId,
-    );
-    // TODO: add a Wallet factory from key storage
-    // return Vault._(wallet: Bip32Wallet.fromKeyStorage(keyStorage));
-  }
-
-  /// Creates a [Vault] instance from a seed.
-  ///
-  /// [seed] - The seed to initialize the vault with.
-  /// [vaultStore] - The vault store to use.
-  /// [profileRepositories] - Map of profile repositories.
-  /// [defaultProfileRepositoryId] - Optional ID of the default profile repository.
-  static Future<Vault> fromSeed({
-    required Uint8List seed,
-    required VaultStore vaultStore,
-    required Map<String, ProfileRepository> profileRepositories,
-    String? defaultProfileRepositoryId,
-  }) async {
-    await vaultStore.setSeed(seed);
-    return Vault(
-      wallet: await Bip32Wallet.fromSeed(seed, vaultStore),
       vaultStore: vaultStore,
       profileRepositories: profileRepositories,
       defaultProfileRepositoryId: defaultProfileRepositoryId,
