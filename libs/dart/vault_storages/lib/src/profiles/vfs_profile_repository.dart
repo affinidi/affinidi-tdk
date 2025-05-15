@@ -6,7 +6,6 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import '../credential/vfs_credential_storage.dart';
@@ -34,6 +33,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
+  late final VaultDataManagerService _accountVaultDataManagerService;
 
   late VaultStore _keyStorage;
   bool _configured = false;
@@ -69,6 +69,14 @@ class VfsProfileRepository implements ProfileRepository {
 
     _wallet = configuration.wallet;
     _keyStorage = configuration.keyStorage!;
+    _accountVaultDataManagerService = await VaultDataManagerService.create(
+      didSigner: await _makeDidSigner(
+        await _getProfileKeyPair(accountIndex: _rootAccountKeyId),
+      ),
+      encryptionKey: Uint8List.fromList(
+        CryptographyService().getRandomBytes(32),
+      ),
+    );
 
     _configured = true;
   }
@@ -123,12 +131,8 @@ class VfsProfileRepository implements ProfileRepository {
       sharedStorageData: [],
     );
 
-    final accountVaultDataManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-    );
-
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    await accountVaultDataManagerService.createAccount(
+    await _accountVaultDataManagerService.createAccount(
       accountIndex: nextAccountIndex,
       accountDid: profileDid,
       didProof: profileDidProof,
@@ -144,10 +148,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    final accountVaultDataManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-    );
-    final accounts = await accountVaultDataManagerService.getAccounts();
+    final accounts = await _accountVaultDataManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
   }
@@ -230,11 +231,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
     await profileDataManager.deleteProfile(profile.id);
 
-    final accountsManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-    );
-
-    await accountsManagerService.deleteAccount(
+    await _accountVaultDataManagerService.deleteAccount(
         accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
@@ -325,10 +322,7 @@ class VfsProfileRepository implements ProfileRepository {
       permissions: permissions,
     );
 
-    final accountsManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-    );
-    final accounts = await accountsManagerService.getAccounts();
+    final accounts = await _accountVaultDataManagerService.getAccounts();
     final account = accounts
         .where((account) => account.accountIndex == accountIndex)
         .firstOrNull;
@@ -390,10 +384,9 @@ class VfsProfileRepository implements ProfileRepository {
       nodePath: profileId,
       profileDid: grantedProfileDid,
     );
-    final accountVaultDataManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-    );
-    final accountsResponse = await accountVaultDataManagerService.getAccounts();
+
+    final accountsResponse =
+        await _accountVaultDataManagerService.getAccounts();
     final previousAccountData = accountsResponse
         .firstWhere((account) => account.accountIndex == accountIndex);
 
@@ -410,7 +403,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
-    await accountVaultDataManagerService.updateAccount(
+    await _accountVaultDataManagerService.updateAccount(
       accountIndex: accountIndex,
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
