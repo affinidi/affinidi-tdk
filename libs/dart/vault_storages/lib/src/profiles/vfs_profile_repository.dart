@@ -33,7 +33,6 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
-  late final VaultDataManagerService _accountVaultDataManagerService;
 
   late VaultStore _keyStorage;
   bool _configured = false;
@@ -69,14 +68,6 @@ class VfsProfileRepository implements ProfileRepository {
 
     _wallet = configuration.wallet;
     _keyStorage = configuration.keyStorage!;
-    _accountVaultDataManagerService = await VaultDataManagerService.create(
-      didSigner: await _makeDidSigner(
-        await _getProfileKeyPair(accountIndex: _rootAccountKeyId),
-      ),
-      encryptionKey: Uint8List.fromList(
-        CryptographyService().getRandomBytes(32),
-      ),
-    );
 
     _configured = true;
   }
@@ -132,7 +123,9 @@ class VfsProfileRepository implements ProfileRepository {
     );
 
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    await _accountVaultDataManagerService.createAccount(
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    await accountVaultDataManagerService.createAccount(
       accountIndex: nextAccountIndex,
       accountDid: profileDid,
       didProof: profileDidProof,
@@ -148,7 +141,9 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    final accounts = await _accountVaultDataManagerService.getAccounts();
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
   }
@@ -231,7 +226,9 @@ class VfsProfileRepository implements ProfileRepository {
     );
     await profileDataManager.deleteProfile(profile.id);
 
-    await _accountVaultDataManagerService.deleteAccount(
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    await accountVaultDataManagerService.deleteAccount(
         accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
@@ -322,7 +319,9 @@ class VfsProfileRepository implements ProfileRepository {
       permissions: permissions,
     );
 
-    final accounts = await _accountVaultDataManagerService.getAccounts();
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
     final account = accounts
         .where((account) => account.accountIndex == accountIndex)
         .firstOrNull;
@@ -385,8 +384,9 @@ class VfsProfileRepository implements ProfileRepository {
       profileDid: grantedProfileDid,
     );
 
-    final accountsResponse =
-        await _accountVaultDataManagerService.getAccounts();
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accountsResponse = await accountVaultDataManagerService.getAccounts();
     final previousAccountData = accountsResponse
         .firstWhere((account) => account.accountIndex == accountIndex);
 
@@ -403,7 +403,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
-    await _accountVaultDataManagerService.updateAccount(
+    await accountVaultDataManagerService.updateAccount(
       accountIndex: accountIndex,
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
