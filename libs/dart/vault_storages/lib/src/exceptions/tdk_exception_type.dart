@@ -51,6 +51,9 @@ enum TdkExceptionType {
   /// Exception thrown when access cannot be granted.
   unableToGrantAccess('unable_to_grant_access'),
 
+  /// Exception thrown when access has already been granted.
+  unableToGrantAccessAlreadyGranted('unable_to_grant_access_already_granted'),
+
   /// Exception thrown when access cannot be updated.
   unableToUpdateAccess('unable_to_update_access'),
 

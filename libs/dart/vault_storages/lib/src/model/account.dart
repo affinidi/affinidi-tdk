@@ -7,7 +7,10 @@ class DekekInfo {
   final String version;
 
   /// Creates a new DEKEK info instance.
-  DekekInfo({required this.encryptedDekek, required this.version});
+  DekekInfo({
+    required this.encryptedDekek,
+    this.version = '1.0.0',
+  });
 
   /// Creates a [DekekInfo] from a JSON map.
   DekekInfo.fromJson(Map<String, dynamic> json)
@@ -32,10 +35,11 @@ class AccountMetadata {
   final DekekInfo dekekInfo;
 
   /// Creates a new account metadata instance.
-  AccountMetadata(
-      {required this.sharedStorageData,
-      required this.version,
-      required this.dekekInfo});
+  AccountMetadata({
+    required this.sharedStorageData,
+    required this.dekekInfo,
+    this.version = '1.0.0',
+  });
 
   /// Creates an [AccountMetadata] from a JSON map.
   AccountMetadata.fromJson(Map<String, dynamic> json)
