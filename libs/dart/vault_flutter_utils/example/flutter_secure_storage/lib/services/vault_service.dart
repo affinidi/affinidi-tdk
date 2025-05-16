@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -43,9 +46,16 @@ class VaultService extends _$VaultService {
   Future<void> _makeSeedIfNeeded(FlutterSecureVaultStore vaultStore) async {
     final existingSeed = await vaultStore.getSeed();
     if (existingSeed == null) {
-      final seed = vaultStore.getRandomSeed();
+      final seed = _getRandomSeed();
       await vaultStore.setSeed(seed);
     }
+  }
+
+  Uint8List _getRandomSeed() {
+    final length = 32;
+    final random = Random.secure();
+    final bytes = List<int>.generate(length, (_) => random.nextInt(256));
+    return Uint8List.fromList(bytes);
   }
 }
 
