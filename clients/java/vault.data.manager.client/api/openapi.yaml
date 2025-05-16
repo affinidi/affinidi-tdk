@@ -27,13 +27,15 @@ tags:
     name: nodes
   - description: Operations with profiles data manipulations
     name: profile-data
+  - description: Operations with profile and their default configurations
+    name: configuration
 paths:
   /v1/config:
     get:
       description:
         "Retrieves the user profile name and the maximum number of profiles,\
         \ with default values set to 'default' and 1, respectively."
-      operationId: getConfig
+      operationId: getConfiguration
       parameters: []
       responses:
         '200':
@@ -65,7 +67,7 @@ paths:
       security:
         - AwsSigV4: []
       tags:
-        - config
+        - configuration
       x-accepts:
         - application/json
   /v1/scanned-files/{scannedFileJobId}:
@@ -1483,19 +1485,6 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
-    CorsGetConfigOK:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CorsGetConfigOK'
-      description: CorsGetConfigOK
-      headers:
-        Access-Control-Allow-Origin:
-          $ref: '#/components/headers/Access-Control-Allow-Origin'
-        Access-Control-Allow-Methods:
-          $ref: '#/components/headers/Access-Control-Allow-Methods'
-        Access-Control-Allow-Headers:
-          $ref: '#/components/headers/Access-Control-Allow-Headers'
     CorsGetScannedFileInfoOK:
       content:
         application/json:
@@ -1613,6 +1602,19 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
+    CorsGetConfigurationOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CorsGetConfigurationOK'
+      description: CorsGetConfigurationOK
+      headers:
+        Access-Control-Allow-Origin:
+          $ref: '#/components/headers/Access-Control-Allow-Origin'
+        Access-Control-Allow-Methods:
+          $ref: '#/components/headers/Access-Control-Allow-Methods'
+        Access-Control-Allow-Headers:
+          $ref: '#/components/headers/Access-Control-Allow-Headers'
     AwsCredentialExchangeBadRequestError:
       content:
         application/json:
@@ -1639,7 +1641,7 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
-    GetConfigBadRequestError:
+    GetConfigurationBadRequestError:
       content:
         application/json:
           schema:
@@ -1652,7 +1654,7 @@ components:
           $ref: '#/components/headers/Access-Control-Allow-Methods'
         Access-Control-Allow-Headers:
           $ref: '#/components/headers/Access-Control-Allow-Headers'
-    CorsGetConfigBadRequestError:
+    CorsGetConfigurationBadRequestError:
       content:
         application/json:
           schema:
@@ -3251,6 +3253,12 @@ components:
       additionalProperties: false
       properties:
         corsDeleteAccountOk:
+          type: string
+      type: object
+    CorsGetConfigurationOK:
+      additionalProperties: false
+      properties:
+        corsGetConfigurationOk:
           type: string
       type: object
     InvalidParameterError_details_inner:
