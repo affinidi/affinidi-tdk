@@ -26,12 +26,12 @@ void main() {
       );
 
       final iamClient = AffinidiTdkIamClient(
-        dio: Dio(BaseOptions(
-          baseUrl: AffinidiTdkIamClient.basePath,
-          connectTimeout: const Duration(seconds: 5),
-          receiveTimeout: const Duration(seconds: 5),
-        )),
-        authTokenHook: authProvider.fetchProjectScopedToken);
+          dio: Dio(BaseOptions(
+            baseUrl: AffinidiTdkIamClient.basePath,
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 5),
+          )),
+          authTokenHook: authProvider.fetchProjectScopedToken);
 
       policiesApi = iamClient.getPoliciesApi();
       projectsApi = iamClient.getProjectsApi();
@@ -42,20 +42,21 @@ void main() {
       final String testPrincipalId = uuid.v4();
       final String principalType = 'token';
 
-
       test('Adds principal to project', () async {
         final addUserToProjectInputBuilder = AddUserToProjectInputBuilder()
           ..principalId = testPrincipalId
           ..principalType = principalType;
 
         final statusCode = (await projectsApi.addPrincipalToProject(
-          addUserToProjectInput: addUserToProjectInputBuilder.build())).statusCode;
+                addUserToProjectInput: addUserToProjectInputBuilder.build()))
+            .statusCode;
 
         expect(statusCode, 204);
       });
 
       test('List principals for project', () async {
-        final records = (await projectsApi.listPrincipalsOfProject()).data?.records;
+        final records =
+            (await projectsApi.listPrincipalsOfProject()).data?.records;
 
         expect(records, isNotNull);
         expect(records!.length, greaterThan(0));
@@ -63,8 +64,8 @@ void main() {
 
       test('Remove principal from project', () async {
         final statusCode = (await projectsApi.deletePrincipalFromProject(
-          principalId: testPrincipalId,
-          principalType: principalType)).statusCode;
+                principalId: testPrincipalId, principalType: principalType))
+            .statusCode;
 
         expect(statusCode, 204);
       });
@@ -72,8 +73,8 @@ void main() {
 
     test('Reads PAT policies', () async {
       final result = (await policiesApi.getPolicies(
-        principalId: tokenId,
-        principalType: 'token')).data;
+              principalId: tokenId, principalType: 'token'))
+          .data;
 
       expect(result?.version, isNotNull);
       expect(result?.statement, isNotNull);
