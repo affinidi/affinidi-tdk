@@ -59,8 +59,8 @@ class IamApiService implements IamApiServiceInterface {
 
       final isAlreadyGranted = errorResponse.statusCode == 409 &&
           errorResponse.data != null &&
-          (errorResponse.data as Map<String, dynamic>)['type'] ==
-              'Access already granted';
+          (errorResponse.data as Map<String, dynamic>)['name'] ==
+              'AlreadyExistsError';
 
       if (isAlreadyGranted) {
         Error.throwWithStackTrace(
@@ -71,6 +71,8 @@ class IamApiService implements IamApiServiceInterface {
             ),
             stackTrace);
       }
+    } on TdkException catch (_) {
+      rethrow;
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
           TdkException(
