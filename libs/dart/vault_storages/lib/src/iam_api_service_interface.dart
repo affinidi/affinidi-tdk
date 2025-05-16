@@ -16,7 +16,7 @@ abstract interface class IamApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<Response<GrantAccessOutput>> grantAccessVfs(
+  Future<void> grantAccessVfs(
       {required String granteeDid,
       required Permissions permissions,
       CancelToken? cancelToken,

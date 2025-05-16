@@ -114,14 +114,15 @@ class OID4VCIClaimVerifiableCredentialService
     }
 
     try {
-      final credentialOfferResponse =
-          await _getCredentialsOfferResponse(credentialOfferUri);
-      final credentialOffer = OID4VCICredentialOffer.fromJson(
-          credentialOfferResponse.data as Map<String, dynamic>);
       final issuerMetadataResponse = await _claimVerifiableCredentialApiService
           .getIssuerMetadata(offerUri: credentialOfferUri);
       final issuerMetadata = OID4VCIIssuerMetadata.fromJson(
           issuerMetadataResponse.data as Map<String, dynamic>);
+
+      final credentialOfferResponse =
+          await _getCredentialsOfferResponse(credentialOfferUri);
+      final credentialOffer = OID4VCICredentialOffer.fromJson(
+          credentialOfferResponse.data as Map<String, dynamic>);
 
       _logger.info('Completed loading credential offer',
           component: _componentName);

@@ -19,9 +19,6 @@ import 'jwt_helper.dart';
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
 class VfsProfileRepository implements ProfileRepository {
-  /// The derivation path for the root account.
-  static const _rootAccountDerivationPath = "m/44'/60'/0'/0'/0'";
-
   /// The key ID for the root account.
   static const _rootAccountKeyId = '0';
 
@@ -38,7 +35,6 @@ class VfsProfileRepository implements ProfileRepository {
   late final DeterministicWallet _wallet;
 
   late VaultStore _keyStorage;
-  late KeyPair _rootKeyPair;
   bool _configured = false;
 
   /// Creates a new instance of [VfsProfileRepository].
@@ -73,8 +69,6 @@ class VfsProfileRepository implements ProfileRepository {
     _wallet = configuration.wallet;
     _keyStorage = configuration.keyStorage!;
 
-    _rootKeyPair = await _getRootKeyPair();
-
     _configured = true;
   }
 
@@ -105,29 +99,17 @@ class VfsProfileRepository implements ProfileRepository {
     final profileDid = profileDidSigner.did;
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
-    // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    final kek = CryptographyService().getRandomBytes(32); // 'dekek|$keyId'
+    final kek = CryptographyService().getRandomBytes(32);
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
     final encryptedKek = await profileKeyPair.encrypt(Uint8List.fromList(kek));
 
-    final accountsManagerService = await _memoizedDataManagerService(
-      walletKeyId: _rootKeyPair.id,
-      kek: Uint8List.fromList(kek),
-    );
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: nextAccountIndex.toString(),
       kek: Uint8List.fromList(kek),
     );
     await profileDataManager.getProfiles();
 
-    // TODO(MA): Creating a profile can fail as the profile name could be already in use.
-    // DioException [bad response]: null
-    // Error: HTTP 400 Error
-    // - Error Type: NodeCreationError
-    // - Trace ID: 1-680bbaaa-030c66ec1bebc4e953d4bd3d
-    // - Message: NodeCreationError
-    // - Details: [{issue: Profile name should be unique}]
     await profileDataManager.createProfile(
       name: name,
       description: description,
@@ -135,13 +117,15 @@ class VfsProfileRepository implements ProfileRepository {
 
     final accountMetadata = AccountMetadata(
       dekekInfo: DekekInfo(
-          encryptedDekek: base64.encode(encryptedKek), version: 'v.0.1'),
+        encryptedDekek: base64.encode(encryptedKek),
+      ),
       sharedStorageData: [],
-      version: 'v.0.1',
     );
 
     // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
-    await accountsManagerService.createAccount(
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    await accountVaultDataManagerService.createAccount(
       accountIndex: nextAccountIndex,
       accountDid: profileDid,
       didProof: profileDidProof,
@@ -157,10 +141,9 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles() async {
-    // TODO: split services for root one and profile based one
-    final accountsManagerService = await _memoizedDataManagerService(
-        walletKeyId: _rootKeyPair.id, kek: Uint8List(2));
-    final accounts = await accountsManagerService.getAccounts();
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
     final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
     return profiles.nonNulls.toList();
   }
@@ -210,13 +193,13 @@ class VfsProfileRepository implements ProfileRepository {
       profileRepositoryId: id,
       fileStorages: {
         _id: VFSFileStorage(
-          id: '_id',
+          id: _id,
           dataManagerService: profileDataManager,
         )
       },
       credentialStorages: {
         _id: VFSCredentialStorage(
-          id: '_id',
+          id: _id,
           dataManagerService: profileDataManager,
           profileId: profile.id,
         )
@@ -238,22 +221,15 @@ class VfsProfileRepository implements ProfileRepository {
       );
     }
 
-    // TODO(MA): Profiles with files cannot be deleted and an exception should be thrown:
-    // - Message: OperationNotAllowedError
-    // - Details: [{issue: Node with children cannot be operated for HARD_DELETE, field: fileCount, value: 1}]
-
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: profile.accountIndex.toString(),
-      kek: Uint8List(2),
     );
     await profileDataManager.deleteProfile(profile.id);
 
-    // Delete account associated to profile
-    final accountDataManager = await _memoizedDataManagerService(
-      walletKeyId: _rootKeyPair.id,
-      kek: Uint8List(2),
-    );
-    await accountDataManager.deleteAccount(accountIndex: profile.accountIndex);
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    await accountVaultDataManagerService.deleteAccount(
+        accountIndex: profile.accountIndex);
 
     _clearMemoizedProfileData(profile.accountIndex);
   }
@@ -272,7 +248,6 @@ class VfsProfileRepository implements ProfileRepository {
 
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: profile.accountIndex.toString(),
-      kek: Uint8List(2),
     );
     await profileDataManager.updateProfileMetadata(
       id: profile.id,
@@ -293,8 +268,9 @@ class VfsProfileRepository implements ProfileRepository {
   /// Memoize dataManagerService based on the walletKeyId
   Future<VaultDataManagerService> _memoizedDataManagerService({
     required String walletKeyId,
-    required Uint8List kek,
+    Uint8List? kek,
   }) async {
+    kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
     _dataManagers[walletKeyId] ??= await VaultDataManagerService.create(
       didSigner: await _memoizedDidSigner(walletKeyId),
       encryptionKey: kek,
@@ -330,8 +306,6 @@ class VfsProfileRepository implements ProfileRepository {
     required String granteeDid,
     required Permissions permissions,
   }) async {
-    // TODO(KS): add Already_Granted exception
-    // final didSigner = await _memoizedDidSigner(_rootAccountKeyId); // ROOT
     final didSigner = await _memoizedDidSigner('$accountIndex'); // Profile
     final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
     final iamApiService = IamApiService(
@@ -339,12 +313,15 @@ class VfsProfileRepository implements ProfileRepository {
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
       ),
     );
-    await iamApiService.grantAccessVfs(
-        granteeDid: granteeDid, permissions: permissions);
 
-    final accountsManagerService = await _memoizedDataManagerService(
-        walletKeyId: _rootAccountKeyId, kek: Uint8List.fromList([]));
-    final accounts = await accountsManagerService.getAccounts();
+    await iamApiService.grantAccessVfs(
+      granteeDid: granteeDid,
+      permissions: permissions,
+    );
+
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
     final account = accounts
         .where((account) => account.accountIndex == accountIndex)
         .firstOrNull;
@@ -385,11 +362,6 @@ class VfsProfileRepository implements ProfileRepository {
     );
   }
 
-  Future<KeyPair> _getRootKeyPair() async {
-    return await _wallet.deriveKey(
-        derivationPath: _rootAccountDerivationPath, keyId: _rootAccountKeyId);
-  }
-
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {
     return await _wallet.deriveKey(
         derivationPath: _getDerivationPath(accountIndex), keyId: accountIndex);
@@ -404,10 +376,6 @@ class VfsProfileRepository implements ProfileRepository {
   }) async {
     // TODO: ask nucleus to add PATCH to update the only required portion of data
     // TODO: have a GET account by {accountIndex}
-    final accountDataManager = await _memoizedDataManagerService(
-      walletKeyId: _rootAccountKeyId,
-      kek: Uint8List(2),
-    );
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$accountIndex');
     final sharedStorageData = SharedStorageData(
@@ -416,7 +384,9 @@ class VfsProfileRepository implements ProfileRepository {
       profileDid: grantedProfileDid,
     );
 
-    final accountsResponse = await accountDataManager.getAccounts();
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accountsResponse = await accountVaultDataManagerService.getAccounts();
     final previousAccountData = accountsResponse
         .firstWhere((account) => account.accountIndex == accountIndex);
 
@@ -425,7 +395,6 @@ class VfsProfileRepository implements ProfileRepository {
         ...previousAccountData.accountMetadata!.sharedStorageData,
         sharedStorageData
       ],
-      version: previousAccountData.accountMetadata!.version,
       dekekInfo: previousAccountData.accountMetadata!.dekekInfo,
     );
 
@@ -433,7 +402,8 @@ class VfsProfileRepository implements ProfileRepository {
       accountIndex.toString(),
     );
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
-    await accountDataManager.updateAccount(
+
+    await accountVaultDataManagerService.updateAccount(
       accountIndex: accountIndex,
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
