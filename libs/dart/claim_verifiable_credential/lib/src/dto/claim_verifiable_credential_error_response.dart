@@ -1,29 +1,29 @@
-/// A class representing the error response for claiming a verifiable credential.
+/// A class representing the error response for claiming a credential access token.
 ///
 /// This class is used to parse and handle error responses that occur during
-/// the process of claiming a verifiable credential.
+/// the process of obtaining an access token for claiming a credential.
 ///
 /// - [error] (required) - specify error that occurred
 /// - [errorDescription] (optional) - a human-readable description of the error
 ///
 /// Example usage:
 /// ```dart
-/// final errorResponse = ClaimVerifiableCredentialErrorResponse.fromJson(json);
+/// final errorResponse = ClaimCredentialAccessTokenErrorResponse.fromJson(json);
 /// ```
-class ClaimVerifiableCredentialErrorResponse {
-  /// Constructor to create an instance of [ClaimVerifiableCredentialErrorResponse].
+class ClaimCredentialAccessTokenErrorResponse {
+  /// Constructor to create an instance of [ClaimCredentialAccessTokenErrorResponse].
   ///
   /// - [error] (required) - specify error that occurred
   /// - [errorDescription] (optional) - a human-readable description of the error
   ///
   /// Example usage:
   /// ```dart
-  /// final errorResponse = ClaimVerifiableCredentialErrorResponse(
+  /// final errorResponse = ClaimCredentialAccessTokenErrorResponse(
   ///   error: 'invalid_request',
   ///   errorDescription: 'Invalid request parameters',
   /// );
   /// ```
-  ClaimVerifiableCredentialErrorResponse(
+  ClaimCredentialAccessTokenErrorResponse(
       {required this.error, this.errorDescription});
 
   /// error type that occurred
@@ -32,10 +32,10 @@ class ClaimVerifiableCredentialErrorResponse {
   /// human-readable description of the error
   final String? errorDescription;
 
-  /// Creates an instance of [ClaimVerifiableCredentialErrorResponse] from a JSON object.
-  factory ClaimVerifiableCredentialErrorResponse.fromJson(
+  /// Creates an instance of [ClaimCredentialAccessTokenErrorResponse] from a JSON object.
+  factory ClaimCredentialAccessTokenErrorResponse.fromJson(
       Map<String, dynamic> json) {
-    return ClaimVerifiableCredentialErrorResponse(
+    return ClaimCredentialAccessTokenErrorResponse(
       error: json['error'] as String,
       errorDescription: json['error_description'] as String?,
     );

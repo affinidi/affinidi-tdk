@@ -18,8 +18,10 @@ Future<void> main() async {
     final keyStore = InMemoryKeyStore();
     final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
 
-    final keyDerivationPath = "m/44'/60'/0'/0/0";
-    final keyPair = await wallet.generateKey(keyId: keyDerivationPath);
+    final derivationPath = "m/44'/60'/0'/0/0";
+    final keyPair = await wallet.deriveKey(
+      derivationPath: derivationPath,
+    );
 
     final didDocument = DidKey.generateDocument(keyPair.publicKey);
     final signer = DidSigner(
