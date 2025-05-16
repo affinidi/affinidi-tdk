@@ -424,5 +424,88 @@ void main() async {
                 'did:key:aaaabaaaabaaaabaaaabaaaabaaaabaaaabaaaabaaaabaaaa'));
       });
     });
+
+    group('and the access token request fails', () {
+      test('it throws an exception with invalid_proof when proof is invalid',
+          () async {
+        dioAdapter.mockRequestWithReply(
+          url: testTokenEndpoint,
+          statusCode: 400,
+          data: {
+            'error': 'invalid_proof',
+            'error_description':
+                'The proof in the Credential Request is invalid'
+          },
+          httpMethod: HttpMethod.post,
+        );
+
+        expect(
+          () => claimVerifiableCredentialService.claimCredential(
+              claimContext: credentialClaimContext),
+          throwsA(isA<TdkException>().having((error) => error.code, 'code',
+              TdkExceptionType.invalidCredentialProof.code)),
+        );
+      });
+
+      test('it throws an exception with expired_token when token is expired',
+          () async {
+        dioAdapter.mockRequestWithReply(
+          url: testTokenEndpoint,
+          statusCode: 400,
+          data: {
+            'error': 'expired_token',
+            'error_description': 'The access token has expired'
+          },
+          httpMethod: HttpMethod.post,
+        );
+
+        expect(
+          () => claimVerifiableCredentialService.claimCredential(
+              claimContext: credentialClaimContext),
+          throwsA(isA<TdkException>().having((error) => error.code, 'code',
+              TdkExceptionType.expiredToken.code)),
+        );
+      });
+
+      test('it throws an exception with serverError when server error occurs',
+          () async {
+        dioAdapter.mockRequestWithReply(
+          url: testTokenEndpoint,
+          statusCode: 400,
+          data: {
+            'error': 'serverError',
+            'error_description': 'Internal server error'
+          },
+          httpMethod: HttpMethod.post,
+        );
+
+        expect(
+          () => claimVerifiableCredentialService.claimCredential(
+              claimContext: credentialClaimContext),
+          throwsA(isA<TdkException>().having((error) => error.code, 'code',
+              TdkExceptionType.serverError.code)),
+        );
+      });
+
+      test('it throws an exception with other when unknown error occurs',
+          () async {
+        dioAdapter.mockRequestWithReply(
+          url: testTokenEndpoint,
+          statusCode: 400,
+          data: {
+            'error': 'unknown_error',
+            'error_description': 'An unknown error occurred'
+          },
+          httpMethod: HttpMethod.post,
+        );
+
+        expect(
+          () => claimVerifiableCredentialService.claimCredential(
+              claimContext: credentialClaimContext),
+          throwsA(isA<TdkException>().having(
+              (error) => error.code, 'code', TdkExceptionType.other.code)),
+        );
+      });
+    });
   });
 }

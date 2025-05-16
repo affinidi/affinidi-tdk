@@ -36,3 +36,5 @@ git_push.sh
 .gitlab-ci.yml
 .travis.yml
 composer.json
+.github/workflows/maven
+.github

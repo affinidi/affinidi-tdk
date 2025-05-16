@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import 'api_service/oid4vci_claim_verifiable_credential_api_service.dart';
-import 'dto/claim_verifiable_credential_error_response.dart';
 import 'dto/error_response.dart';
 import 'exceptions/tdk_exception_type.dart';
 import 'extensions/dio_exception_extension.dart';
@@ -216,12 +215,11 @@ class OID4VCIClaimVerifiableCredentialService
         _logger.error(
             'Failed loading credential offer - ${accessTokenResponse.data}',
             component: _componentName);
-        final errorResponse = ClaimVerifiableCredentialErrorResponse.fromJson(
-            accessTokenResponse.data as Map<String, dynamic>);
         Error.throwWithStackTrace(
-            TdkExceptionExtension.fromClaimVerifiableCredentialErrorResponse(
-                errorResponse),
-            StackTrace.current);
+          TdkExceptionExtension.fromError(
+              accessTokenResponse.data as Map<String, dynamic>),
+          StackTrace.current,
+        );
       }
 
       final accessTokenResponseJson =
@@ -240,11 +238,11 @@ class OID4VCIClaimVerifiableCredentialService
         _logger.error(
             'Failed claiming credential offer - ${credentialResponse.data}',
             component: _componentName);
-        final errorResponse = ErrorResponse.fromJson(
-            credentialResponse.data as Map<String, dynamic>);
         Error.throwWithStackTrace(
-            TdkExceptionExtension.fromErrorResponse(errorResponse),
-            StackTrace.current);
+          TdkExceptionExtension.fromError(
+              credentialResponse.data as Map<String, dynamic>),
+          StackTrace.current,
+        );
       }
 
       final credentialResponseJson =
