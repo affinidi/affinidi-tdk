@@ -15,20 +15,20 @@
 
 import unittest
 
-from affinidi_tdk_vault_data_manager_client.api.config_api import ConfigApi  # noqa: E501
+from affinidi_tdk_vault_data_manager_client.api.configuration_api import ConfigurationApi  # noqa: E501
 
 
-class TestConfigApi(unittest.TestCase):
-    """ConfigApi unit test stubs"""
+class TestConfigurationApi(unittest.TestCase):
+    """ConfigurationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ConfigApi()
+        self.api = ConfigurationApi()
 
     def tearDown(self) -> None:
         pass
 
-    def test_get_config(self) -> None:
-        """Test case for get_config
+    def test_get_configuration(self) -> None:
+        """Test case for get_configuration
 
         """
         pass

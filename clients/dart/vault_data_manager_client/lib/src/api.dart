@@ -10,7 +10,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/auth/basic_auth.dart'
 import 'package:affinidi_tdk_vault_data_manager_client/src/auth/bearer_auth.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/auth/oauth.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/accounts_api.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/api/config_api.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/api/configuration_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/files_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/nodes_api.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/api/profile_data_api.dart';
@@ -133,10 +133,10 @@ class AffinidiTdkVaultDataManagerClient {
     return AccountsApi(dio, serializers);
   }
 
-  /// Get ConfigApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get ConfigurationApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  ConfigApi getConfigApi() {
-    return ConfigApi(dio, serializers);
+  ConfigurationApi getConfigurationApi() {
+    return ConfigurationApi(dio, serializers);
   }
 
   /// Get FilesApi instance, base route and serializer can be overridden by a given but be careful,
