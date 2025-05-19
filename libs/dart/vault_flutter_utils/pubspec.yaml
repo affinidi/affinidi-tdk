@@ -21,6 +21,10 @@ dev_dependencies:
   dart_flutter_team_lints: ^3.2.1
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.4
+
+flutter:
+  uses-material-design: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
