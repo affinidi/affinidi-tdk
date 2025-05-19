@@ -15,9 +15,9 @@ abstract class VaultStore extends KeyStore {
   /// Returns the stored account index.
   Future<int> readAccountIndex();
 
-  /// Generates a random seed that could be used to initialize a new Vault instance.
+  /// Generates a 32 bytes random seed that could be used to initialize a new Vault instance.
   Uint8List getRandomSeed() {
-    final length = 16;
+    final length = 32;
     final random = Random.secure();
     final bytes = List<int>.generate(length, (_) => random.nextInt(256));
     return Uint8List.fromList(bytes);
