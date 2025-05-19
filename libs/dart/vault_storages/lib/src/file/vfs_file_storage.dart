@@ -5,7 +5,7 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../model/node_status.dart';
 import '../model/node_type.dart';
-import '../services/vault_data_manager_service/vault_data_manager_service.dart';
+import '../services/vault_data_manager_service/cloud_vault_data_manager_service.dart';
 
 /// A VFS based implementation of [FileStorage] for managing files and folders.
 class VFSFileStorage implements FileStorage {
@@ -15,7 +15,7 @@ class VFSFileStorage implements FileStorage {
   /// [dataManagerService] - is used to perform file system operations.
   VFSFileStorage({
     required String id,
-    required VaultDataManagerService dataManagerService,
+    required CloudVaultDataManagerService dataManagerService,
   })  : _id = id,
         _vaultDataManagerService = dataManagerService;
 
@@ -24,7 +24,7 @@ class VFSFileStorage implements FileStorage {
   @override
   String get id => _id;
 
-  final VaultDataManagerService _vaultDataManagerService;
+  final CloudVaultDataManagerService _vaultDataManagerService;
 
   @override
   Future<List<Item>> getFolder({String? folderId}) async {

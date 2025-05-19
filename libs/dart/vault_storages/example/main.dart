@@ -28,7 +28,7 @@ void main() async {
   );
 
   // Initialize the VaultDataManagerService
-  final vaultDataManagerService = await VaultDataManagerService.create(
+  final vaultDataManagerService = await CloudVaultDataManagerService.create(
       didSigner: didSigner, encryptionKey: Uint8List(2));
 
   // once you have the service you need to:

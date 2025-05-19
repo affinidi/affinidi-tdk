@@ -13,7 +13,7 @@ import '../exceptions/tdk_exception_type.dart';
 import '../file/vfs_file_storage.dart';
 import '../iam_api_service.dart';
 import '../model/account.dart';
-import '../services/vault_data_manager_service/vault_data_manager_service.dart';
+import '../services/vault_data_manager_service/cloud_vault_data_manager_service.dart';
 import '../shared_storage/vfs_shared_storage.dart';
 import 'jwt_helper.dart';
 
@@ -175,7 +175,8 @@ class VfsProfileRepository implements ProfileRepository {
         sharedStorages[sharedStorage.nodePath] = VfsSharedStorage(
           id: sharedStorage.nodePath,
           sharedProfileId: sharedStorage.nodePath,
-          dataManagerService: await VaultDataManagerService.createDelegated(
+          dataManagerService:
+              await CloudVaultDataManagerService.createDelegated(
             profileDid: sharedStorage.profileDid,
             encryptionKey: await profileKeyPair
                 .decrypt(base64.decode(sharedStorage.encryptedDekek)),
@@ -257,7 +258,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
   }
 
-  final _dataManagers = <String, VaultDataManagerService>{};
+  final _dataManagers = <String, CloudVaultDataManagerService>{};
 
   /// Deletes any memoized data associated to the accountIndex when a profile is deleted
   void _clearMemoizedProfileData(int accountIndex) {
@@ -266,12 +267,12 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   /// Memoize dataManagerService based on the walletKeyId
-  Future<VaultDataManagerService> _memoizedDataManagerService({
+  Future<CloudVaultDataManagerService> _memoizedDataManagerService({
     required String walletKeyId,
     Uint8List? kek,
   }) async {
     kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
-    _dataManagers[walletKeyId] ??= await VaultDataManagerService.create(
+    _dataManagers[walletKeyId] ??= await CloudVaultDataManagerService.create(
       didSigner: await _memoizedDidSigner(walletKeyId),
       encryptionKey: kek,
     );
