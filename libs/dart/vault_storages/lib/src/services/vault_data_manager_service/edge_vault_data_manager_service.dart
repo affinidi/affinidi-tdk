@@ -1,40 +1,66 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault/src/digital_credential.dart';
 
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
+import 'package:affinidi_tdk_vault_flutter_utils/storages/storage_interface.dart';
 
 import 'package:dio/src/response.dart';
 
-import 'package:ssi/src/credentials/models/verifiable_credential.dart';
+import '../../../affinidi_tdk_vault_storages.dart';
 
-import '../../model/account.dart';
-import '../../model/node.dart';
-import '../../model/profile_data.dart';
-import '../../model/recognized_profile_data.dart';
-import '../../model/scanned_file.dart';
-import '../../model/vault_consumption.dart';
-import '../../model/vault_data_manager_profile.dart';
-import 'vault_data_manager_service_interface.dart';
+/// VaultData
+
+class VaultData {
+  final List<Profile> profiles;
+  final List<DigitalCredential> digitalCredentials;
+
+  VaultData({
+    required this.profiles,
+    required this.digitalCredentials,
+  });
+  factory VaultData.fromJson(Map<String, dynamic> json) {
+    return VaultData(
+      profiles: (json['profiles'] as List)
+          .map((profile) => Profile.fromJson(profile as Map<String, dynamic>))
+          .toList(),
+      digitalCredentials: json['digitalCredentials']
+          .map((digitalCredential) => DigitalCredential.fromJson(
+              digitalCredential as Map<String, dynamic>))
+          .toList() as List<DigitalCredential>,
+    );
+  }
+}
 
 class EdgeVaultDataManagerService implements VaultDataManagerServiceInterface {
   late final CryptographyService _cryptographyService = CryptographyService();
-  late final Storage _storage;
+  late final StorageInterface _storage;
+
+  late final VaultData _vaultData;
+
+  EdgeVaultDataManagerService({
+    required Uint8List encryptionKey,
+    Uint8List? encryptedData,
+  });
+
   @override
-  Future<void> addVerifiableCredentialToProfile(
-      {required String profileId,
-      required VerifiableCredential verifiableCredential}) {
+  Future<void> addVerifiableCredentialToProfile({
+    required String profileId,
+    required VerifiableCredential verifiableCredential,
+  }) {
     // TODO: implement addVerifiableCredentialToProfile
     throw UnimplementedError();
   }
 
   @override
-  Future<void> createAccount(
-      {required int accountIndex,
-      required String accountDid,
-      required String didProof,
-      required AccountMetadata metadata}) {
+  Future<void> createAccount({
+    required int accountIndex,
+    required String accountDid,
+    required String didProof,
+    required AccountMetadata metadata,
+  }) {
     // TODO: implement createAccount
     throw UnimplementedError();
   }

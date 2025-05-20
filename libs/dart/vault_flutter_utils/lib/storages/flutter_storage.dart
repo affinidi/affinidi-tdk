@@ -3,14 +3,9 @@ import 'dart:convert';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-abstract interface class Storage {
-  Future<void> set(String key, StoredKey value);
-  Future<StoredKey?> get(String key);
-  Future<void> remove(String key);
-  Future<bool> contains(String key);
-}
+import 'storage_interface.dart';
 
-class FlutterStorage implements Storage {
+class FlutterStorage implements StorageInterface {
   /// Creates a new instance of [FlutterStorage].
 
   late final _secureStorage = const FlutterSecureStorage(

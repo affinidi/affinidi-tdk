@@ -177,4 +177,33 @@ class Profile {
     }
     _sharedStorages.remove(id);
   }
+
+  /// Converts the profile [Profile] to a JSON representation
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'accountIndex': accountIndex,
+      'name': name,
+      'description': description,
+      'profilePictureURI': profilePictureURI,
+      'profileRepositoryId': profileRepositoryId,
+      'did': did,
+    };
+  }
+
+  /// Creates a [Profile] instance from a JSON representation
+  factory Profile.fromJson(Map<String, dynamic> json) {
+    return Profile(
+      id: json['id'] as String,
+      accountIndex: json['accountIndex'] as int,
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      profilePictureURI: json['profilePictureURI'] as String?,
+      profileRepositoryId: json['profileRepositoryId'] as String,
+      did: json['did'] as String,
+      fileStorages: {},
+      credentialStorages: {},
+      sharedStorages: {},
+    );
+  }
 }
