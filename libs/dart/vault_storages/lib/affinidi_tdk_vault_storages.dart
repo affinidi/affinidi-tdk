@@ -11,6 +11,7 @@ export 'src/credential/vfs_credential_storage.dart';
 export 'src/exceptions/tdk_exception_type.dart';
 export 'src/file/github_file_storage.dart';
 export 'src/file/vfs_file_storage.dart';
+export 'src/iam_api_service_interface.dart';
 export 'src/model/account.dart';
 export 'src/model/item.dart';
 export 'src/model/node.dart';
