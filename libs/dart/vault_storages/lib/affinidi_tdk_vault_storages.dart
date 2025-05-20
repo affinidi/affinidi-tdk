@@ -25,4 +25,5 @@ export 'src/model/vault_data_manager_profile.dart';
 export 'src/profiles/vfs_profile_repository.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
+export 'src/shared_storage/vfs_shared_storage.dart';
 export 'src/vault/in_memory_vault_store.dart';
