@@ -20,13 +20,6 @@ void main() async {
     vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
   };
 
-  // from seed
-  // final vault = await Vault.fromSeed(
-  //   seed: seed,
-  //   vaultStore: vaultStore,
-  //   profileRepositories: profileRepositories,
-  // );
-
   // from keyStorage
   // await vaultStore.setSeed(seed);
   // final vault = await Vault.fromVaultStore(
