@@ -29,4 +29,5 @@ export 'src/services/storage_service/storage_service.dart';
 export 'src/services/storage_service/storage_service_interface.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
+export 'src/shared_storage/vfs_shared_storage.dart';
 export 'src/vault/in_memory_vault_store.dart';

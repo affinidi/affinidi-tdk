@@ -3,13 +3,14 @@ import 'dart:typed_data';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart' as vault;
 import 'package:ssi/ssi.dart';
 
+import '../../affinidi_tdk_vault_storages.dart' as storages;
 import '../credential/vfs_credential_storage.dart';
 import '../file/vfs_file_storage.dart';
-import '../services/vault_data_manager_service/vault_data_manager_service.dart';
+import '../services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 
 /// A VFS-based implementation of [vault.SharedStorage] that combines credential and file storage.
 ///
-/// This implementation uses [VaultDataManagerService] to manage both credentials and files
+/// This implementation uses [storages.VaultDataManagerService] to manage both credentials and files
 /// for a shared profile.
 class VfsSharedStorage implements vault.SharedStorage {
   /// Creates a new instance of [VfsSharedStorage].
@@ -19,7 +20,7 @@ class VfsSharedStorage implements vault.SharedStorage {
   /// [sharedProfileId] - identifies the shared profile.
   VfsSharedStorage({
     required String id,
-    required VaultDataManagerService dataManagerService,
+    required VaultDataManagerServiceInterface dataManagerService,
     required String sharedProfileId, // nodePath
   })  : _id = id,
         _sharedProfileId = sharedProfileId,
