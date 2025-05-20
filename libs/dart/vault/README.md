@@ -42,7 +42,7 @@ import 'dart:typed_data';
 
 import 'package:base_codecs/base_codecs.dart';
 import 'package:iam_api_service/iam_api_service.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
+import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 import 'package:storages_interface/storages.dart';
 import 'package:vault_interface/vault.dart';

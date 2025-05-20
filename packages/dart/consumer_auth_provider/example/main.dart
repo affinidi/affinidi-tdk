@@ -1,6 +1,6 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:base_codecs/base_codecs.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
+import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 void main() async {

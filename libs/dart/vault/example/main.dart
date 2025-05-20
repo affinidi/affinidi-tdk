@@ -28,7 +28,7 @@ void main() async {
   // );
 
   // from wallet
-  final wallet = await Bip32Wallet.fromSeed(seed, vaultStore);
+  final wallet = Bip32Wallet.fromSeed(seed);
   final vault = Vault(
     wallet: wallet,
     vaultStore: vaultStore,

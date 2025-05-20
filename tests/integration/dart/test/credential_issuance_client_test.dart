@@ -2,7 +2,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:built_value/json_object.dart' as built_value;
 import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
+import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
