@@ -29,7 +29,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "flutter test --coverage && mv coverage/lcov.info ../../../coverage/vault_flutter_utils.lcov.info"
+        "command": "flutter test --coverage"
       }
     },
     "build": {
