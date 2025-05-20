@@ -28,12 +28,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for ConfigApi
+ * API tests for ConfigurationApi
  */
 @Disabled
-public class ConfigApiTest {
+public class ConfigurationApiTest {
 
-    private final ConfigApi api = new ConfigApi();
+    private final ConfigurationApi api = new ConfigurationApi();
 
     /**
      * Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
@@ -42,8 +42,8 @@ public class ConfigApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getConfigTest() throws ApiException {
-        GetConfigOK response = api.getConfig();
+    public void getConfigurationTest() throws ApiException {
+        GetConfigOK response = api.getConfiguration();
 
         // TODO: test validations
     }
