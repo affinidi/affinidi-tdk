@@ -20,16 +20,17 @@ class FlutterSecureVaultStore extends VaultStore {
   /// Creates a new instance of [FlutterSecureVaultStore].
   ///
   /// [_vaultId] - Unique identifier for this vault store instance.
-  FlutterSecureVaultStore(this._vaultId);
+  FlutterSecureVaultStore(this._vaultId, [FlutterSecureStorage? secureStorage])
+      : _secureStorage = secureStorage ??
+            const FlutterSecureStorage(
+              aOptions: AndroidOptions(encryptedSharedPreferences: true),
+              iOptions: IOSOptions(
+                  accessibility: KeychainAccessibility.unlocked_this_device),
+            );
 
   final String _vaultId;
 
-  late final _secureStorage = const FlutterSecureStorage(
-    aOptions: AndroidOptions(encryptedSharedPreferences: true),
-    iOptions: IOSOptions(
-      accessibility: KeychainAccessibility.unlocked_this_device,
-    ),
-  );
+  final FlutterSecureStorage _secureStorage;
 
   /// Returns any pre-saved seed or null
   @override
