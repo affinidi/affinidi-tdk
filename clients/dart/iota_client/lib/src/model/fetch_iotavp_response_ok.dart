@@ -23,12 +23,10 @@ abstract class FetchIOTAVPResponseOK implements Built<FetchIOTAVPResponseOK, Fet
   String? get correlationId;
 
   /// A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
-  @Deprecated('presentationSubmission has been deprecated')
   @BuiltValueField(wireName: r'presentation_submission')
   String? get presentationSubmission;
 
   /// A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
-  @Deprecated('vpToken has been deprecated')
   @BuiltValueField(wireName: r'vp_token')
   String? get vpToken;
 
