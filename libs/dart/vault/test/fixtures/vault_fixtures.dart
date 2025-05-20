@@ -38,4 +38,16 @@ class VaultFixtures {
       profileDID: profileDID,
     );
   }
+
+  static Profile defaultTestProfile({
+    required FileStorage fileStorage,
+    required CredentialStorage credentialStorage,
+    required SharedStorage sharedStorage,
+  }) {
+    return createTestProfile(
+      fileStorages: {'test': fileStorage},
+      credentialStorages: {'test': credentialStorage},
+      sharedStorages: {'test': sharedStorage},
+    );
+  }
 }

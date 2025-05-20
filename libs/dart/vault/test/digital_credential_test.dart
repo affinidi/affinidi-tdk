@@ -1,9 +1,8 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
-class MockVerifiableCredential extends Mock implements VerifiableCredential {}
+import 'fixtures/digital_credential_fixtures.dart';
+import 'mocks/mock_digital_credential.dart';
 
 void main() {
   late MockVerifiableCredential mockVerifiableCredential;
@@ -11,9 +10,8 @@ void main() {
 
   setUp(() {
     mockVerifiableCredential = MockVerifiableCredential();
-    digitalCredential = DigitalCredential(
+    digitalCredential = DigitalCredentialFixtures.createTestCredential(
       verifiableCredential: mockVerifiableCredential,
-      id: 'test-id',
     );
   });
 

@@ -29,7 +29,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "DART_VM_OPTIONS=\"--old_gen_heap_size=4096\" flutter test --coverage --concurrency=1 && mv coverage/lcov.info ../../../coverage/vault_flutter_utils.lcov.info"
+        "command": "DART_VM_OPTIONS=\"--old_gen_heap_size=4096\" flutter test --concurrency=1"
       }
     },
     "build": {

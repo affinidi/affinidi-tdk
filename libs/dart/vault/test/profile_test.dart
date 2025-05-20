@@ -1,13 +1,8 @@
-import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-class MockFileStorage extends Mock implements FileStorage {}
-
-class MockCredentialStorage extends Mock implements CredentialStorage {}
-
-class MockSharedStorage extends Mock implements SharedStorage {}
+import 'fixtures/vault_fixtures.dart';
+import 'mocks/mock_profile.dart';
 
 void main() {
   late MockFileStorage mockFileStorage;
@@ -20,16 +15,10 @@ void main() {
     mockCredentialStorage = MockCredentialStorage();
     mockSharedStorage = MockSharedStorage();
 
-    profile = Profile(
-      id: 'test-id',
-      name: 'Test Profile',
-      description: 'Test Description',
-      accountIndex: 0,
-      did: 'did:test:123',
-      profileRepositoryId: 'test',
-      fileStorages: {'test': mockFileStorage},
-      credentialStorages: {'test': mockCredentialStorage},
-      sharedStorages: {'test': mockSharedStorage},
+    profile = VaultFixtures.defaultTestProfile(
+      fileStorage: mockFileStorage,
+      credentialStorage: mockCredentialStorage,
+      sharedStorage: mockSharedStorage,
     );
   });
 
