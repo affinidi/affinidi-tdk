@@ -47,6 +47,7 @@ typedef VaultDelegatedDataManagerServiceFactory
 class VfsProfileRepository implements ProfileRepository {
   /// The key ID for the root account.
   static const _rootAccountKeyId = '0';
+  static const _nonceSize = 32;
 
   /// The expiration time in seconds for authentication tokens.
   static int expiration = 300;
@@ -74,18 +75,21 @@ class VfsProfileRepository implements ProfileRepository {
   /// The [id] parameter is used to identify this repository instance.
   ///
   /// For testing purposes, you can provide mock implementations of:
+  /// - [cryptographyService]: A cryptographyService used to generate KEKs
   /// - [consumerAuthProviderFactory]: A factory function for creating [ConsumerAuthProvider] instances
   /// - [iamApiServiceFactory]: A factory function for creating [IamApiService] instances
   /// - [vaultDataManagerServiceFactory]: A factory function for creating regular [VaultDataManagerService] instances
   /// - [vaultDelegatedDataManagerServiceFactory]: A factory function for creating delegated [VaultDataManagerService] instances
   VfsProfileRepository(
     this._id, {
+    CryptographyServiceInterface? cryptographyService,
     ConsumerAuthProviderFactory? consumerAuthProviderFactory,
     IamApiServiceFactory? iamApiServiceFactory,
     VaultDataManagerServiceFactory? vaultDataManagerServiceFactory,
     VaultDelegatedDataManagerServiceFactory?
         vaultDelegatedDataManagerServiceFactory,
-  })  : _consumerAuthProviderFactory = consumerAuthProviderFactory ??
+  })  : _cryptographyService = cryptographyService ?? CryptographyService(),
+        _consumerAuthProviderFactory = consumerAuthProviderFactory ??
             ((DidSigner didSigner, {Dio? client}) =>
                 ConsumerAuthProvider(signer: didSigner, client: client)),
         _iamApiServiceFactory = iamApiServiceFactory ??
@@ -100,6 +104,8 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   String get id => _id;
+
+  final CryptographyServiceInterface _cryptographyService;
 
   @override
   Future<void> configure(Object configuration) async {
@@ -155,14 +161,15 @@ class VfsProfileRepository implements ProfileRepository {
     final profileDid = profileDidSigner.did;
     final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
 
-    final kek = CryptographyService().getRandomBytes(32);
+    final kekBuffer =
+        Uint8List.fromList(_cryptographyService.getRandomBytes(_nonceSize));
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
-    final encryptedKek = await profileKeyPair.encrypt(Uint8List.fromList(kek));
+    final encryptedKek = await profileKeyPair.encrypt(kekBuffer);
 
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: nextAccountIndex.toString(),
-      kek: Uint8List.fromList(kek),
+      kek: kekBuffer,
     );
     await profileDataManager.getProfiles();
 
@@ -324,10 +331,10 @@ class VfsProfileRepository implements ProfileRepository {
     required String walletKeyId,
     Uint8List? kek,
   }) async {
-    kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
     _dataManagers[walletKeyId] ??= await _vaultDataManagerServiceFactory(
       didSigner: await _memoizedDidSigner(walletKeyId),
-      encryptionKey: kek,
+      encryptionKey: kek ??
+          Uint8List.fromList(_cryptographyService.getRandomBytes(_nonceSize)),
     );
     return _dataManagers[walletKeyId]!;
   }
